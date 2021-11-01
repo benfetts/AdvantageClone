@@ -1,0 +1,99 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_get_direct_exp]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[usp_wv_get_direct_exp]
+GO
+CREATE PROCEDURE [dbo].[usp_wv_get_direct_exp] 
+@startPP	VARCHAR(6),
+@endPP	VARCHAR(6),
+@Office VARCHAR(4),
+@alert_amt DECIMAL(14,2),
+@USER_ID VARCHAR(100),
+@From VARCHAR(6)
+AS
+/*=========== QUERY ===========*/
+	SET NOCOUNT ON;
+
+	IF @Office IS NULL
+	BEGIN
+	
+		SET @Office = '';
+		
+	END
+
+	DECLARE 
+		@sql VARCHAR(MAX),
+		@sql_from VARCHAR(MAX),
+		@sql_where VARCHAR(MAX),
+		@EMP_CODE AS VARCHAR(6),
+		@COUNT AS INTEGER,
+		@EMPLOYEE_HAS_MGMT_RESTRICTIONS BIT
+
+	SELECT @EMP_CODE = EMP_CODE FROM SEC_USER WHERE UPPER(USER_CODE) = UPPER(@USER_ID);
+	SELECT @COUNT = COUNT(*) FROM EMP_OFFICE WHERE EMP_CODE = @EMP_CODE;
+	SELECT @EMPLOYEE_HAS_MGMT_RESTRICTIONS = [dbo].[fn_my_objects_employee_has_dynamic_restriction](@EMP_CODE, 4);
+
+	SET @sql =  '		SELECT 
+							DISTINCT GLACCOUNT.GLACODE, GLACCOUNT.GLADESC, AP_HEADER.VN_FRL_EMP_CODE, VENDOR.VN_NAME, AP_HEADER.AP_INV_VCHR, 
+							SUM([AP_PROD_EXT_AMT]+[EXT_NONRESALE_TAX]) AS AMT, AP_HEADER.AP_ID '
+
+	SET @sql_from =  '	FROM 
+							AP_PRODUCTION WITH(NOLOCK)
+							INNER JOIN GLACCOUNT WITH(NOLOCK) ON AP_PRODUCTION.GLACODE = GLACCOUNT.GLACODE
+							INNER JOIN FUNCTIONS WITH(NOLOCK) ON AP_PRODUCTION.FNC_CODE = FUNCTIONS.FNC_CODE
+							INNER JOIN AP_HEADER WITH(NOLOCK) ON AP_PRODUCTION.AP_SEQ = AP_HEADER.AP_SEQ
+							AND AP_PRODUCTION.AP_ID = AP_HEADER.AP_ID 
+							INNER JOIN VENDOR WITH(NOLOCK) ON AP_HEADER.VN_FRL_EMP_CODE = VENDOR.VN_CODE ';
+
+	SET @sql_where = '  WHERE 
+							(AP_PRODUCTION.AP_PROD_NOBILL_FLG = 1)
+							AND (AP_PRODUCTION.POST_PERIOD BETWEEN  ''' + @startPP + ''' AND ''' + @endPP + ''')';
+		
+	IF @Office <> ''
+	BEGIN
+
+	  SET @sql_from = @sql_from + ' INNER JOIN GLOXREF WITH(NOLOCK) ON GLACCOUNT.GLAOFFICE = GLOXREF.GLOXGLOFFICE 
+									INNER JOIN OFFICE WITH(NOLOCK) ON GLOXREF.GLOXOFFICE = OFFICE.OFFICE_CODE '
+	  SET @sql_where = @sql_where + ' AND (OFFICE.OFFICE_CODE = ''' + @Office + ''')';
+	  
+	END
+	ELSE
+	BEGIN
+		IF @COUNT > 0 
+		BEGIN
+		
+			SET @sql_from = @sql_from + ' INNER JOIN GLOXREF WITH(NOLOCK) ON GLACCOUNT.GLAOFFICE = GLOXREF.GLOXGLOFFICE 
+										  INNER JOIN EMP_OFFICE WITH(NOLOCK) ON GLOXREF.GLOXOFFICE = EMP_OFFICE.OFFICE_CODE
+										  AND (EMP_OFFICE.EMP_CODE = ''' + @EMP_CODE + ''')';
+										  
+		END								
+	END		
+						
+	IF @From = 'mydexp' AND  @EMPLOYEE_HAS_MGMT_RESTRICTIONS = 1
+	BEGIN
+
+		SET @sql_from = @sql_from + ' INNER JOIN JOB_LOG AS JL WITH(NOLOCK) ON AP_PRODUCTION.JOB_NUMBER = JL.JOB_NUMBER ';
+		SET @sql_from = @sql_from + ' INNER JOIN [dbo].[fn_my_objects_get_dynamic_restrictions](4,''' + @EMP_CODE + ''') AS DR 
+									  ON (JL.CL_CODE = DR.CL_CODE 
+									  AND ((JL.DIV_CODE = DR.DIV_CODE) OR (DR.DIV_CODE IS NULL)) 
+									  AND ((JL.PRD_CODE = DR.PRD_CODE) OR (DR.PRD_CODE IS NULL))) ';
+									  
+	END   
+	    
+	SET @sql = @sql + @sql_from + @sql_where;
+	SET @sql = @sql + ' GROUP BY 
+							GLACCOUNT.GLACODE, GLACCOUNT.GLADESC, AP_HEADER.VN_FRL_EMP_CODE, VENDOR.VN_NAME, AP_HEADER.AP_INV_VCHR, AP_HEADER.AP_ID
+						HAVING 
+							SUM(AP_PROD_EXT_AMT+EXT_NONRESALE_TAX) >= ' + CAST(@alert_amt AS VARCHAR);
+
+	PRINT(@sql);
+	EXEC(@sql);
+	
+/*=========== QUERY ===========*/
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO

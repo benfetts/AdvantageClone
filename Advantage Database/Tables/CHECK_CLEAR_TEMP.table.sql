@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[CHECK_CLEAR_TEMP] (
+    [BANK_CODE]    VARCHAR (50)    NULL,
+    [CHECK_NUMBER] INT             NULL,
+    [CHECK_AMOUNT] DECIMAL (10, 2) NULL,
+    [IMPORT_STAT]  SMALLINT        NULL
+);
+

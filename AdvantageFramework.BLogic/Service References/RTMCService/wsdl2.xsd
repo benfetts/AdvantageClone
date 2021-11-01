@@ -1,0 +1,2595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TChek.MasterCard.WebServices.RTMC.BusinessObjects.RTMCv2" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TChek.MasterCard.WebServices.RTMC.BusinessObjects.RTMCv2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfGetBPDDLListRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetBPDDLListRequestTransactionEntity" nillable="true" type="tns:GetBPDDLListRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetBPDDLListRequestTransactionEntity" nillable="true" type="tns:ArrayOfGetBPDDLListRequestTransactionEntity" />
+  <xs:complexType name="GetBPDDLListRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetBPDDLListRequestTransactionEntity" nillable="true" type="tns:GetBPDDLListRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfGetBPDDLListResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetBPDDLListResponseTransactionEntity" nillable="true" type="tns:GetBPDDLListResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetBPDDLListResponseTransactionEntity" nillable="true" type="tns:ArrayOfGetBPDDLListResponseTransactionEntity" />
+  <xs:complexType name="GetBPDDLListResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="BPECDDLListField" nillable="true" type="tns:ArrayOfBPECDDLList" />
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetBPDDLListResponseTransactionEntity" nillable="true" type="tns:GetBPDDLListResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfBPECDDLList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BPECDDLList" nillable="true" type="tns:BPECDDLList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBPECDDLList" nillable="true" type="tns:ArrayOfBPECDDLList" />
+  <xs:complexType name="BPECDDLList">
+    <xs:sequence>
+      <xs:element name="BPECDDLListLabelField" nillable="true" type="xs:string" />
+      <xs:element name="BPECTypeField" nillable="true" type="xs:string" />
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="isIncludedField" type="xs:boolean" />
+      <xs:element name="outsourceIDField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPECDDLList" nillable="true" type="tns:BPECDDLList" />
+  <xs:complexType name="ArrayOfMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
+  <xs:complexType name="Message">
+    <xs:sequence>
+      <xs:element name="messageNumberField" nillable="true" type="xs:string" />
+      <xs:element name="messageTextField" nillable="true" type="xs:string" />
+      <xs:element name="typeField" type="tns:MessageType" />
+      <xs:element name="typeFieldSpecified" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" nillable="true" type="tns:Message" />
+  <xs:simpleType name="MessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ErrorMsg" />
+      <xs:enumeration value="Informational" />
+      <xs:enumeration value="Other" />
+      <xs:enumeration value="Warning" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MessageType" nillable="true" type="tns:MessageType" />
+  <xs:complexType name="ArrayOfGetECDDLListRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetECDDLListRequestTransactionEntity" nillable="true" type="tns:GetECDDLListRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetECDDLListRequestTransactionEntity" nillable="true" type="tns:ArrayOfGetECDDLListRequestTransactionEntity" />
+  <xs:complexType name="GetECDDLListRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetECDDLListRequestTransactionEntity" nillable="true" type="tns:GetECDDLListRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfGetECDDLListResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetECDDLListResponseTransactionEntity" nillable="true" type="tns:GetECDDLListResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetECDDLListResponseTransactionEntity" nillable="true" type="tns:ArrayOfGetECDDLListResponseTransactionEntity" />
+  <xs:complexType name="GetECDDLListResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="BPECDDLListField" nillable="true" type="tns:ArrayOfBPECDDLList" />
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetECDDLListResponseTransactionEntity" nillable="true" type="tns:GetECDDLListResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfEditECDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EditECDDLListItemRequestTransactionEntity" nillable="true" type="tns:EditECDDLListItemRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEditECDDLListItemRequestTransactionEntity" nillable="true" type="tns:ArrayOfEditECDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="EditECDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlGroupField" nillable="true" type="xs:string" />
+      <xs:element name="descriptionField" nillable="true" type="xs:string" />
+      <xs:element name="includeField" type="xs:int" />
+      <xs:element name="listItemTypeField" nillable="true" type="xs:string" />
+      <xs:element name="newDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditECDDLListItemRequestTransactionEntity" nillable="true" type="tns:EditECDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfEditECDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EditECDDLListItemResponseTransactionEntity" nillable="true" type="tns:EditECDDLListItemResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEditECDDLListItemResponseTransactionEntity" nillable="true" type="tns:ArrayOfEditECDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="EditECDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlGroupField" nillable="true" type="xs:string" />
+      <xs:element name="descriptionField" nillable="true" type="xs:string" />
+      <xs:element name="includeField" type="xs:int" />
+      <xs:element name="listItemTypeField" nillable="true" type="xs:string" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="newDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:int" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+      <xs:element name="userIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditECDDLListItemResponseTransactionEntity" nillable="true" type="tns:EditECDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfEditBPDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EditBPDDLListItemRequestTransactionEntity" nillable="true" type="tns:EditBPDDLListItemRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEditBPDDLListItemRequestTransactionEntity" nillable="true" type="tns:ArrayOfEditBPDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="EditBPDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlGroupField" nillable="true" type="xs:string" />
+      <xs:element name="descriptionField" nillable="true" type="xs:string" />
+      <xs:element name="includeField" type="xs:int" />
+      <xs:element name="listItemTypeField" nillable="true" type="xs:string" />
+      <xs:element name="newDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditBPDDLListItemRequestTransactionEntity" nillable="true" type="tns:EditBPDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfEditBPDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EditBPDDLListItemResponseTransactionEntity" nillable="true" type="tns:EditBPDDLListItemResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEditBPDDLListItemResponseTransactionEntity" nillable="true" type="tns:ArrayOfEditBPDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="EditBPDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlGroupField" nillable="true" type="xs:string" />
+      <xs:element name="descriptionField" nillable="true" type="xs:string" />
+      <xs:element name="includeField" type="xs:int" />
+      <xs:element name="listItemTypeField" nillable="true" type="xs:string" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="newDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:int" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+      <xs:element name="userIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditBPDDLListItemResponseTransactionEntity" nillable="true" type="tns:EditBPDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfAddNewBPCustomDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddNewBPCustomDDLListItemRequestTransactionEntity" nillable="true" type="tns:AddNewBPCustomDDLListItemRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddNewBPCustomDDLListItemRequestTransactionEntity" nillable="true" type="tns:ArrayOfAddNewBPCustomDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="AddNewBPCustomDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="isincludedField" type="xs:boolean" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddNewBPCustomDDLListItemRequestTransactionEntity" nillable="true" type="tns:AddNewBPCustomDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfAddNewBPCustomDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddNewBPCustomDDLListItemResponseTransactionEntity" nillable="true" type="tns:AddNewBPCustomDDLListItemResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddNewBPCustomDDLListItemResponseTransactionEntity" nillable="true" type="tns:ArrayOfAddNewBPCustomDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="AddNewBPCustomDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="isincludedField" type="xs:boolean" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddNewBPCustomDDLListItemResponseTransactionEntity" nillable="true" type="tns:AddNewBPCustomDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfAddNewECCustomDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddNewECCustomDDLListItemRequestTransactionEntity" nillable="true" type="tns:AddNewECCustomDDLListItemRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddNewECCustomDDLListItemRequestTransactionEntity" nillable="true" type="tns:ArrayOfAddNewECCustomDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="AddNewECCustomDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="isincludedField" type="xs:boolean" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddNewECCustomDDLListItemRequestTransactionEntity" nillable="true" type="tns:AddNewECCustomDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfAddNewECCustomDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddNewECCustomDDLListItemResponseTransactionEntity" nillable="true" type="tns:AddNewECCustomDDLListItemResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddNewECCustomDDLListItemResponseTransactionEntity" nillable="true" type="tns:ArrayOfAddNewECCustomDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="AddNewECCustomDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="isincludedField" type="xs:boolean" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddNewECCustomDDLListItemResponseTransactionEntity" nillable="true" type="tns:AddNewECCustomDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfEditDDLRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EditDDLRequestTransactionEntity" nillable="true" type="tns:EditDDLRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEditDDLRequestTransactionEntity" nillable="true" type="tns:ArrayOfEditDDLRequestTransactionEntity" />
+  <xs:complexType name="EditDDLRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlCategoryField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="newddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditDDLRequestTransactionEntity" nillable="true" type="tns:EditDDLRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfEditDDLResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EditDDLResponseTransactionEntity" nillable="true" type="tns:EditDDLResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEditDDLResponseTransactionEntity" nillable="true" type="tns:ArrayOfEditDDLResponseTransactionEntity" />
+  <xs:complexType name="EditDDLResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlCategoryField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="newddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EditDDLResponseTransactionEntity" nillable="true" type="tns:EditDDLResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfGetAvailableBalanceRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetAvailableBalanceRequestTransactionEntity" nillable="true" type="tns:GetAvailableBalanceRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetAvailableBalanceRequestTransactionEntity" nillable="true" type="tns:ArrayOfGetAvailableBalanceRequestTransactionEntity" />
+  <xs:complexType name="GetAvailableBalanceRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="companyNumberField" type="xs:int" />
+      <xs:element name="conglomerateNumberField" type="xs:int" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAvailableBalanceRequestTransactionEntity" nillable="true" type="tns:GetAvailableBalanceRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfGetAvailableBalanceResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetAvailableBalanceResponseTransactionEntity" nillable="true" type="tns:GetAvailableBalanceResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetAvailableBalanceResponseTransactionEntity" nillable="true" type="tns:ArrayOfGetAvailableBalanceResponseTransactionEntity" />
+  <xs:complexType name="GetAvailableBalanceResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="companyNumberField" type="xs:int" />
+      <xs:element name="conglomerateNumberField" type="xs:int" />
+      <xs:element name="getAvailableBalanceDataField" nillable="true" type="tns:ArrayOfGetAvailableBalanceData" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:int" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAvailableBalanceResponseTransactionEntity" nillable="true" type="tns:GetAvailableBalanceResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfGetAvailableBalanceData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetAvailableBalanceData" nillable="true" type="tns:GetAvailableBalanceData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetAvailableBalanceData" nillable="true" type="tns:ArrayOfGetAvailableBalanceData" />
+  <xs:complexType name="GetAvailableBalanceData">
+    <xs:sequence>
+      <xs:element name="availableBalanceField" type="xs:decimal" />
+      <xs:element name="companyNameField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAvailableBalanceData" nillable="true" type="tns:GetAvailableBalanceData" />
+  <xs:complexType name="ArrayOfGetPaymentsRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetPaymentsRequestTransactionEntity" nillable="true" type="tns:GetPaymentsRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetPaymentsRequestTransactionEntity" nillable="true" type="tns:ArrayOfGetPaymentsRequestTransactionEntity" />
+  <xs:complexType name="GetPaymentsRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" type="xs:int" />
+      <xs:element name="endTransactionDateField" type="xs:int" />
+      <xs:element name="endTransactionTimeField" type="xs:int" />
+      <xs:element name="maxNumberField" type="xs:int" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="startTransactionDateField" type="xs:int" />
+      <xs:element name="startTransactionTimeField" type="xs:int" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetPaymentsRequestTransactionEntity" nillable="true" type="tns:GetPaymentsRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfGetPaymentsResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetPaymentsResponseTransactionEntity" nillable="true" type="tns:GetPaymentsResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetPaymentsResponseTransactionEntity" nillable="true" type="tns:ArrayOfGetPaymentsResponseTransactionEntity" />
+  <xs:complexType name="GetPaymentsResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="companyNumberField" type="xs:int" />
+          <xs:element name="endTransactionDateField" type="xs:int" />
+          <xs:element name="endTransactionTimeField" type="xs:int" />
+          <xs:element name="maxNumberField" type="xs:int" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="paymentDataField" nillable="true" type="tns:ArrayOfPaymentData" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="startTransactionDateField" type="xs:int" />
+          <xs:element name="startTransactionTimeField" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetPaymentsResponseTransactionEntity" nillable="true" type="tns:GetPaymentsResponseTransactionEntity" />
+  <xs:complexType name="VirtualCardBaseData">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VirtualCardBaseData" nillable="true" type="tns:VirtualCardBaseData" />
+  <xs:complexType name="ArrayOfPaymentData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentData" nillable="true" type="tns:PaymentData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentData" nillable="true" type="tns:ArrayOfPaymentData" />
+  <xs:complexType name="PaymentData">
+    <xs:sequence>
+      <xs:element name="accountNumberField" type="xs:int" />
+      <xs:element name="companyNumberField" type="xs:int" />
+      <xs:element name="documentNumberField" nillable="true" type="xs:string" />
+      <xs:element name="holdFlagField" nillable="true" type="xs:string" />
+      <xs:element name="holdReleaseDateField" type="xs:int" />
+      <xs:element name="paymentAmountField" type="xs:decimal" />
+      <xs:element name="paymentCurrencyField" nillable="true" type="xs:string" />
+      <xs:element name="paymentDateField" type="xs:int" />
+      <xs:element name="paymentTimeField" type="xs:int" />
+      <xs:element name="remitTypeField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentData" nillable="true" type="tns:PaymentData" />
+  <xs:complexType name="ArrayOfGetCreditInfoRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCreditInfoRequestTransactionEntity" nillable="true" type="tns:GetCreditInfoRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetCreditInfoRequestTransactionEntity" nillable="true" type="tns:ArrayOfGetCreditInfoRequestTransactionEntity" />
+  <xs:complexType name="GetCreditInfoRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="companyNumberField" type="xs:int" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCreditInfoRequestTransactionEntity" nillable="true" type="tns:GetCreditInfoRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfGetCreditInfoResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCreditInfoResponseTransactionEntity" nillable="true" type="tns:GetCreditInfoResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetCreditInfoResponseTransactionEntity" nillable="true" type="tns:ArrayOfGetCreditInfoResponseTransactionEntity" />
+  <xs:complexType name="GetCreditInfoResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="arBilledBalanceField" type="xs:decimal" />
+      <xs:element name="availableBalanceField" type="xs:decimal" />
+      <xs:element name="billingCurrencyField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" type="xs:int" />
+      <xs:element name="creditLimitField" type="xs:decimal" />
+      <xs:element name="frequencyField" nillable="true" type="xs:string" />
+      <xs:element name="invoicingLevelField" nillable="true" type="xs:string" />
+      <xs:element name="lastPaymentAmountField" type="xs:decimal" />
+      <xs:element name="lastPaymentDateField" type="xs:int" />
+      <xs:element name="lastUsedDateField" type="xs:int" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:int" />
+      <xs:element name="payTypeField" nillable="true" type="xs:string" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" type="xs:long" />
+      <xs:element name="unbilledAmountField" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCreditInfoResponseTransactionEntity" nillable="true" type="tns:GetCreditInfoResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCardGroupAddRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupAddRequestTransactionEntity" nillable="true" type="tns:CardGroupAddRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupAddRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupAddRequestTransactionEntity" />
+  <xs:complexType name="CardGroupAddRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence>
+          <xs:element name="addressLineField" nillable="true" type="xs:string" />
+          <xs:element name="cardGroupNameField" nillable="true" type="xs:string" />
+          <xs:element name="cityField" nillable="true" type="xs:string" />
+          <xs:element name="contactNameField" nillable="true" type="xs:string" />
+          <xs:element name="countryField" type="tns:CardGroupAddRequestTransactionEntityCountry" />
+          <xs:element name="email1Field" nillable="true" type="xs:string" />
+          <xs:element name="email2Field" nillable="true" type="xs:string" />
+          <xs:element name="faxField" nillable="true" type="xs:string" />
+          <xs:element name="notesField" nillable="true" type="xs:string" />
+          <xs:element name="phoneField" nillable="true" type="xs:string" />
+          <xs:element name="postalCodeField" nillable="true" type="xs:string" />
+          <xs:element name="stateProvField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupAddRequestTransactionEntity" nillable="true" type="tns:CardGroupAddRequestTransactionEntity" />
+  <xs:complexType name="CardGroupBaseData">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="recordTypeField" type="tns:CardGroupBaseDataRecordType" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardGroupBaseData" nillable="true" type="tns:CardGroupBaseData" />
+  <xs:simpleType name="CardGroupBaseDataRecordType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AVS" />
+      <xs:enumeration value="RECEIVE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CardGroupBaseDataRecordType" nillable="true" type="tns:CardGroupBaseDataRecordType" />
+  <xs:simpleType name="CardGroupAddRequestTransactionEntityCountry">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USA" />
+      <xs:enumeration value="CAN" />
+      <xs:enumeration value="MEX" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CardGroupAddRequestTransactionEntityCountry" nillable="true" type="tns:CardGroupAddRequestTransactionEntityCountry" />
+  <xs:complexType name="ArrayOfCardGroupAddResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupAddResponseTransactionEntity" nillable="true" type="tns:CardGroupAddResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupAddResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupAddResponseTransactionEntity" />
+  <xs:complexType name="CardGroupAddResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence>
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupAddResponseTransactionEntity" nillable="true" type="tns:CardGroupAddResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCardGroupDelRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupDelRequestTransactionEntity" nillable="true" type="tns:CardGroupDelRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupDelRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupDelRequestTransactionEntity" />
+  <xs:complexType name="CardGroupDelRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupDelRequestTransactionEntity" nillable="true" type="tns:CardGroupDelRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfCardGroupDelResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupDelResponseTransactionEntity" nillable="true" type="tns:CardGroupDelResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupDelResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupDelResponseTransactionEntity" />
+  <xs:complexType name="CardGroupDelResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence>
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupDelResponseTransactionEntity" nillable="true" type="tns:CardGroupDelResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCardGroupInqRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupInqRequestTransactionEntity" nillable="true" type="tns:CardGroupInqRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupInqRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupInqRequestTransactionEntity" />
+  <xs:complexType name="CardGroupInqRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupInqRequestTransactionEntity" nillable="true" type="tns:CardGroupInqRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfCardGroupInqResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupInqResponseTransactionEntity" nillable="true" type="tns:CardGroupInqResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupInqResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupInqResponseTransactionEntity" />
+  <xs:complexType name="CardGroupInqResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence>
+          <xs:element name="addressLineField" nillable="true" type="xs:string" />
+          <xs:element name="cardGroupNameField" nillable="true" type="xs:string" />
+          <xs:element name="cityField" nillable="true" type="xs:string" />
+          <xs:element name="contactNameField" nillable="true" type="xs:string" />
+          <xs:element name="countryField" type="tns:CardGroupInqResponseTransactionEntityCountry" />
+          <xs:element name="email1Field" nillable="true" type="xs:string" />
+          <xs:element name="email2Field" nillable="true" type="xs:string" />
+          <xs:element name="faxField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="notesField" nillable="true" type="xs:string" />
+          <xs:element name="phoneField" nillable="true" type="xs:string" />
+          <xs:element name="postalCodeField" nillable="true" type="xs:string" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="stateProvField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupInqResponseTransactionEntity" nillable="true" type="tns:CardGroupInqResponseTransactionEntity" />
+  <xs:simpleType name="CardGroupInqResponseTransactionEntityCountry">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USA" />
+      <xs:enumeration value="CAN" />
+      <xs:enumeration value="MEX" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CardGroupInqResponseTransactionEntityCountry" nillable="true" type="tns:CardGroupInqResponseTransactionEntityCountry" />
+  <xs:complexType name="ArrayOfCardGroupUpdRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupUpdRequestTransactionEntity" nillable="true" type="tns:CardGroupUpdRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupUpdRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupUpdRequestTransactionEntity" />
+  <xs:complexType name="CardGroupUpdRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupChangeFieldsField" nillable="true" type="tns:CardGroupChangeFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupUpdRequestTransactionEntity" nillable="true" type="tns:CardGroupUpdRequestTransactionEntity" />
+  <xs:complexType name="CardGroupChangeFields">
+    <xs:sequence>
+      <xs:element name="addressLineField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupNameField" nillable="true" type="xs:string" />
+      <xs:element name="cityField" nillable="true" type="xs:string" />
+      <xs:element name="contactNameField" nillable="true" type="xs:string" />
+      <xs:element name="countryField" nillable="true" type="xs:string" />
+      <xs:element name="email1Field" nillable="true" type="xs:string" />
+      <xs:element name="email2Field" nillable="true" type="xs:string" />
+      <xs:element name="faxField" nillable="true" type="xs:string" />
+      <xs:element name="notesField" nillable="true" type="xs:string" />
+      <xs:element name="phoneField" nillable="true" type="xs:string" />
+      <xs:element name="postalCodeField" nillable="true" type="xs:string" />
+      <xs:element name="stateProvField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardGroupChangeFields" nillable="true" type="tns:CardGroupChangeFields" />
+  <xs:complexType name="ArrayOfCardGroupUpdResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardGroupUpdResponseTransactionEntity" nillable="true" type="tns:CardGroupUpdResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardGroupUpdResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardGroupUpdResponseTransactionEntity" />
+  <xs:complexType name="CardGroupUpdResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardGroupBaseData">
+        <xs:sequence>
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardGroupUpdResponseTransactionEntity" nillable="true" type="tns:CardGroupUpdResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCardInqRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardInqRequestTransactionEntity" nillable="true" type="tns:CardInqRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardInqRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardInqRequestTransactionEntity" />
+  <xs:complexType name="CardInqRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardRequestBaseData">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardInqRequestTransactionEntity" nillable="true" type="tns:CardInqRequestTransactionEntity" />
+  <xs:complexType name="CardRequestBaseData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="keyFieldsField" nillable="true" type="tns:CardKeyFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardRequestBaseData" nillable="true" type="tns:CardRequestBaseData" />
+  <xs:complexType name="CardBaseData">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardBaseData" nillable="true" type="tns:CardBaseData" />
+  <xs:complexType name="CardKeyFields">
+    <xs:sequence>
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardHolderNameField" nillable="true" type="xs:string" />
+      <xs:element name="cardNumberField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardKeyFields" nillable="true" type="tns:CardKeyFields" />
+  <xs:complexType name="ArrayOfCardInqResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardInqResponseTransactionEntity" nillable="true" type="tns:CardInqResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardInqResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardInqResponseTransactionEntity" />
+  <xs:complexType name="CardInqResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="airlinesFlagField" nillable="true" type="xs:string" />
+          <xs:element name="allMCCFlagField" nillable="true" type="xs:string" />
+          <xs:element name="allowMCCOverrideFlagField" nillable="true" type="xs:string" />
+          <xs:element name="approvedMCCField" type="xs:int" />
+          <xs:element name="blockDate1Field" nillable="true" type="xs:string" />
+          <xs:element name="blockDate2Field" nillable="true" type="xs:string" />
+          <xs:element name="businessHoursEndField" nillable="true" type="xs:string" />
+          <xs:element name="businessHoursStartField" nillable="true" type="xs:string" />
+          <xs:element name="carRentalsFlagField" nillable="true" type="xs:string" />
+          <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="cardChipFlagField" nillable="true" type="xs:string" />
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="cardHolderNameField" nillable="true" type="xs:string" />
+          <xs:element name="cardLast4Field" type="xs:short" />
+          <xs:element name="cardMCMGField" nillable="true" type="tns:ArrayOfVirtualCardMCMGFields" />
+          <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+          <xs:element name="cardTypeField" type="xs:byte" />
+          <xs:element name="createDateField" type="xs:int" />
+          <xs:element name="cycleDayField" nillable="true" type="xs:string" />
+          <xs:element name="cycleIndicatorField" nillable="true" type="xs:string" />
+          <xs:element name="cycleRefreshDateField" type="xs:int" />
+          <xs:element name="cycleTransactionAmountLimitField" type="xs:int" />
+          <xs:element name="cycleTransactionAmountUsedField" type="xs:int" />
+          <xs:element name="cycleTransactionCountLimitField" type="xs:int" />
+          <xs:element name="cycleTransactionCountUsedField" type="xs:int" />
+          <xs:element name="dailyTransactionAmountLimitField" type="xs:int" />
+          <xs:element name="dailyTransactionAmountUsedField" type="xs:int" />
+          <xs:element name="dailyTransactionCountLimitField" type="xs:int" />
+          <xs:element name="dailyTransactionCountUsedField" type="xs:int" />
+          <xs:element name="dayTimeOverrideFlagField" nillable="true" type="xs:string" />
+          <xs:element name="driverIDField" type="xs:int" />
+          <xs:element name="driverNameField" nillable="true" type="xs:string" />
+          <xs:element name="driverNumberField" type="xs:int" />
+          <xs:element name="expireDateField" type="xs:int" />
+          <xs:element name="fridayFlagField" nillable="true" type="xs:string" />
+          <xs:element name="holdCancelDateField" type="xs:int" />
+          <xs:element name="holidayFlagField" nillable="true" type="xs:string" />
+          <xs:element name="hotelsFlagField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeDateField" type="xs:int" />
+          <xs:element name="lastCustomerChangeTimeField" type="xs:int" />
+          <xs:element name="lastCustomerChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="lastRejectAuthField" nillable="true" type="xs:string" />
+          <xs:element name="lastRewriteDateField" type="xs:int" />
+          <xs:element name="lastTChekChangeDateField" type="xs:int" />
+          <xs:element name="lastTChekChangeTimeField" type="xs:int" />
+          <xs:element name="lastTChekChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="lastUsedAuthCodeField" nillable="true" type="xs:string" />
+          <xs:element name="lastUsedCountryField" nillable="true" type="xs:string" />
+          <xs:element name="lastUsedDateField" type="xs:int" />
+          <xs:element name="lastUsedStateField" nillable="true" type="xs:string" />
+          <xs:element name="lastUsedTimeField" type="xs:int" />
+          <xs:element name="limitOverrideFlagField" nillable="true" type="xs:string" />
+          <xs:element name="mCCOverrideFlagField" nillable="true" type="xs:string" />
+          <xs:element name="manualEcommerceFlagField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="mondayFlagField" nillable="true" type="xs:string" />
+          <xs:element name="newExpireDateField" type="xs:int" />
+          <xs:element name="overrideLimitField" type="xs:int" />
+          <xs:element name="overrideReasonField" nillable="true" type="xs:string" />
+          <xs:element name="poolTypeField" nillable="true" type="xs:string" />
+          <xs:element name="productRestrictionField" type="xs:byte" />
+          <xs:element name="promptTypeField" type="xs:byte" />
+          <xs:element name="regionField" nillable="true" type="xs:string" />
+          <xs:element name="rejectCountUsedField" type="xs:int" />
+          <xs:element name="rejectThresholdField" type="xs:int" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="restaurantsFlagField" nillable="true" type="xs:string" />
+          <xs:element name="retailSalesFlagField" nillable="true" type="xs:string" />
+          <xs:element name="saturdayFlagField" nillable="true" type="xs:string" />
+          <xs:element name="statusField" nillable="true" type="xs:string" />
+          <xs:element name="sundayFlagField" nillable="true" type="xs:string" />
+          <xs:element name="thursdayFlagField" nillable="true" type="xs:string" />
+          <xs:element name="transactionAmountLimitField" type="xs:int" />
+          <xs:element name="tuesdayFlagField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleNumberField" type="xs:int" />
+          <xs:element name="vehicleValidTypeField" nillable="true" type="xs:string" />
+          <xs:element name="wednesdayFlagField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardInqResponseTransactionEntity" nillable="true" type="tns:CardInqResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardMCMGFields">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardMCMGFields" nillable="true" type="tns:VirtualCardMCMGFields" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardMCMGFields" nillable="true" type="tns:ArrayOfVirtualCardMCMGFields" />
+  <xs:complexType name="VirtualCardMCMGFields">
+    <xs:sequence>
+      <xs:element name="mCMGField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VirtualCardMCMGFields" nillable="true" type="tns:VirtualCardMCMGFields" />
+  <xs:complexType name="ArrayOfCardUpdRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardUpdRequestTransactionEntity" nillable="true" type="tns:CardUpdRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardUpdRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardUpdRequestTransactionEntity" />
+  <xs:complexType name="CardUpdRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardRequestBaseData">
+        <xs:sequence>
+          <xs:element name="changeFieldsField" nillable="true" type="tns:CardChangeFields" />
+          <xs:element name="lastChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastChangeTimeField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardUpdRequestTransactionEntity" nillable="true" type="tns:CardUpdRequestTransactionEntity" />
+  <xs:complexType name="CardChangeFields">
+    <xs:sequence>
+      <xs:element name="approvedMCCField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" type="xs:long" />
+      <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+      <xs:element name="cycleIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="cycleRefreshDayField" nillable="true" type="xs:string" />
+      <xs:element name="cycleTransactionAmountLimitField" nillable="true" type="xs:string" />
+      <xs:element name="cycleTransactionCountLimitField" nillable="true" type="xs:string" />
+      <xs:element name="dailyTransactionAmountLimitField" nillable="true" type="xs:string" />
+      <xs:element name="dailyTransactionCountLimitField" nillable="true" type="xs:string" />
+      <xs:element name="dayTimeOverrideFlagField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="limitOverrideFlagField" nillable="true" type="xs:string" />
+      <xs:element name="mCCOverrideFlagField" nillable="true" type="xs:string" />
+      <xs:element name="overrideLimitField" nillable="true" type="xs:string" />
+      <xs:element name="overrideReasonField" nillable="true" type="xs:string" />
+      <xs:element name="poolTypeField" nillable="true" type="xs:string" />
+      <xs:element name="regionField" nillable="true" type="xs:string" />
+      <xs:element name="rejectCountField" nillable="true" type="xs:string" />
+      <xs:element name="statusField" nillable="true" type="xs:string" />
+      <xs:element name="transactionLimitField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardChangeFields" nillable="true" type="tns:CardChangeFields" />
+  <xs:complexType name="ArrayOfCardUpdResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardUpdResponseTransactionEntity" nillable="true" type="tns:CardUpdResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardUpdResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardUpdResponseTransactionEntity" />
+  <xs:complexType name="CardUpdResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="lastChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastChangeTimeField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardUpdResponseTransactionEntity" nillable="true" type="tns:CardUpdResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardActivityRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardActivityRequestTransactionEntity" nillable="true" type="tns:VirtualCardActivityRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardActivityRequestTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardActivityRequestTransactionEntity" />
+  <xs:complexType name="VirtualCardActivityRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardActivityRequestTransactionEntity" nillable="true" type="tns:VirtualCardActivityRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardActivityResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardActivityResponseTransactionEntity" nillable="true" type="tns:VirtualCardActivityResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardActivityResponseTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardActivityResponseTransactionEntity" />
+  <xs:complexType name="VirtualCardActivityResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="clearedTranSetField" nillable="true" type="tns:ArrayOfClearedTran" />
+          <xs:element name="memoSetField" nillable="true" type="tns:ArrayOfMemo" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="rejectSetField" nillable="true" type="tns:ArrayOfReject" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardActivityResponseTransactionEntity" nillable="true" type="tns:VirtualCardActivityResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfClearedTran">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClearedTran" nillable="true" type="tns:ClearedTran" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClearedTran" nillable="true" type="tns:ArrayOfClearedTran" />
+  <xs:complexType name="ClearedTran">
+    <xs:sequence>
+      <xs:element name="authorizationCodeField" nillable="true" type="xs:string" />
+      <xs:element name="billInvoiceAmountField" type="xs:decimal" />
+      <xs:element name="billingCurrencyField" nillable="true" type="xs:string" />
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardEntryModeField" type="xs:short" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardHolderNameField" nillable="true" type="xs:string" />
+      <xs:element name="cardLast4Field" type="xs:short" />
+      <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+      <xs:element name="clearingReferenceNumberField" nillable="true" type="xs:string" />
+      <xs:element name="customerGLCodeField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNameField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exactMatchField" nillable="true" type="xs:string" />
+      <xs:element name="exceptionIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="exchangeRateField" type="xs:long" />
+      <xs:element name="fee1Field" type="xs:decimal" />
+      <xs:element name="fee2Field" type="xs:decimal" />
+      <xs:element name="fuelAmountField" type="xs:decimal" />
+      <xs:element name="fuelPPUField" type="xs:decimal" />
+      <xs:element name="fuelProductCodeField" type="xs:short" />
+      <xs:element name="fuelQuantityField" type="xs:decimal" />
+      <xs:element name="fuelUoMField" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription1Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription2Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription3Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription4Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription5Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription6Field" nillable="true" type="xs:string" />
+      <xs:element name="mCCField" type="xs:short" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantCountryField" nillable="true" type="xs:string" />
+      <xs:element name="merchantIDField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvField" nillable="true" type="xs:string" />
+      <xs:element name="merchantZipField" nillable="true" type="xs:string" />
+      <xs:element name="motorFuelServiceTypeField" nillable="true" type="xs:string" />
+      <xs:element name="odometerField" nillable="true" type="xs:string" />
+      <xs:element name="oilCompanyBrandField" type="xs:short" />
+      <xs:element name="oilCompanyNameField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverIDField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="pOSVehicleAssignedNumberField" nillable="true" type="xs:string" />
+      <xs:element name="poolIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="poolMemoField" nillable="true" type="xs:string" />
+      <xs:element name="processDateField" nillable="true" type="xs:string" />
+      <xs:element name="processTimeField" nillable="true" type="xs:string" />
+      <xs:element name="productAmount1Field" type="xs:long" />
+      <xs:element name="productAmount2Field" type="xs:long" />
+      <xs:element name="productAmount3Field" type="xs:long" />
+      <xs:element name="productAmount4Field" type="xs:long" />
+      <xs:element name="productAmount5Field" type="xs:long" />
+      <xs:element name="productAmount6Field" type="xs:long" />
+      <xs:element name="productCode1Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode2Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode3Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode4Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode5Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode6Field" nillable="true" type="xs:string" />
+      <xs:element name="promptTypeField" nillable="true" type="xs:string" />
+      <xs:element name="recordTypeField" nillable="true" type="xs:string" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="taxAmount1Field" type="xs:long" />
+      <xs:element name="taxAmount2Field" type="xs:long" />
+      <xs:element name="taxAmount3Field" type="xs:long" />
+      <xs:element name="taxAmount4Field" type="xs:long" />
+      <xs:element name="taxAmount5Field" type="xs:long" />
+      <xs:element name="taxAmount6Field" type="xs:long" />
+      <xs:element name="transactionAmountField" type="xs:decimal" />
+      <xs:element name="transactionDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTimeField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClearedTran" nillable="true" type="tns:ClearedTran" />
+  <xs:complexType name="ArrayOfMemo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Memo" nillable="true" type="tns:Memo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMemo" nillable="true" type="tns:ArrayOfMemo" />
+  <xs:complexType name="Memo">
+    <xs:sequence>
+      <xs:element name="aVSAddressField" nillable="true" type="xs:string" />
+      <xs:element name="aVSResultField" nillable="true" type="xs:string" />
+      <xs:element name="aVSZipField" nillable="true" type="xs:string" />
+      <xs:element name="authorizationCodeField" nillable="true" type="xs:string" />
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardEntryModeField" type="xs:short" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardLast4Field" type="xs:short" />
+      <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+      <xs:element name="clearingReferenceNumberField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNameField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exactMatchField" nillable="true" type="xs:string" />
+      <xs:element name="exceptionIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="mCCField" type="xs:short" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantIDField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverIDField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="pOSVehicleNumberField" nillable="true" type="xs:string" />
+      <xs:element name="poolIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="poolMemoField" nillable="true" type="xs:string" />
+      <xs:element name="processDateField" nillable="true" type="xs:string" />
+      <xs:element name="processTimeField" nillable="true" type="xs:string" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="transactionAmountUSField" type="xs:decimal" />
+      <xs:element name="transactionAmtMerchCurrField" type="xs:decimal" />
+      <xs:element name="transactionDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTimeField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTypeField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Memo" nillable="true" type="tns:Memo" />
+  <xs:complexType name="ArrayOfReject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Reject" nillable="true" type="tns:Reject" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReject" nillable="true" type="tns:ArrayOfReject" />
+  <xs:complexType name="Reject">
+    <xs:sequence>
+      <xs:element name="aVSDataField" nillable="true" type="xs:string" />
+      <xs:element name="additionalResponseDataField" nillable="true" type="xs:string" />
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardHolderNameField" nillable="true" type="xs:string" />
+      <xs:element name="cardLast4Field" type="xs:short" />
+      <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exactMatchField" nillable="true" type="xs:string" />
+      <xs:element name="exchangeRateField" type="xs:decimal" />
+      <xs:element name="mCCField" type="xs:short" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvField" nillable="true" type="xs:string" />
+      <xs:element name="pOSCardExpireDateField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverIDField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="pOSVehicleNumberField" nillable="true" type="xs:string" />
+      <xs:element name="processDateField" nillable="true" type="xs:string" />
+      <xs:element name="processTimeField" nillable="true" type="xs:string" />
+      <xs:element name="reasonCodeField" nillable="true" type="xs:string" />
+      <xs:element name="reasonSubCodeField" nillable="true" type="xs:string" />
+      <xs:element name="rejectMessageField" nillable="true" type="xs:string" />
+      <xs:element name="rejectionCodeField" nillable="true" type="xs:string" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="trackCardExpireDateField" nillable="true" type="xs:string" />
+      <xs:element name="trackCardHolderNameField" nillable="true" type="xs:string" />
+      <xs:element name="transactionAmountUSField" type="xs:decimal" />
+      <xs:element name="transactionAmtMerchCurrField" type="xs:decimal" />
+      <xs:element name="transactionDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTimeField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Reject" nillable="true" type="tns:Reject" />
+  <xs:complexType name="ArrayOfVirtualCardCreateRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardCreateRequestTransactionEntity" nillable="true" type="tns:VirtualCardCreateRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardCreateRequestTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardCreateRequestTransactionEntity" />
+  <xs:complexType name="VirtualCardCreateRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="dollarAmountField" type="xs:decimal" />
+          <xs:element name="numberOfUsesField" type="xs:byte" />
+          <xs:element name="regionField" nillable="true" type="xs:string" />
+          <xs:element name="validThroughDateField" type="xs:int" />
+          <xs:element name="virtualCardMCMGField" nillable="true" type="tns:ArrayOfVirtualCardMCMGFields" />
+          <xs:element name="virtualCardOptionalFieldsField" nillable="true" type="tns:VirtualCardOptionalFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardCreateRequestTransactionEntity" nillable="true" type="tns:VirtualCardCreateRequestTransactionEntity" />
+  <xs:complexType name="VirtualCardOptionalFields">
+    <xs:sequence>
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="customField1Field" nillable="true" type="xs:string" />
+      <xs:element name="customField2Field" nillable="true" type="xs:string" />
+      <xs:element name="customField3Field" nillable="true" type="xs:string" />
+      <xs:element name="customField4Field" nillable="true" type="xs:string" />
+      <xs:element name="customField5Field" nillable="true" type="xs:string" />
+      <xs:element name="customField6Field" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exactMatchField" nillable="true" type="xs:string" />
+      <xs:element name="mCCField" type="xs:short" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantPhoneField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvField" nillable="true" type="xs:string" />
+      <xs:element name="notesField" nillable="true" type="xs:string" />
+      <xs:element name="pONumberField" nillable="true" type="xs:string" />
+      <xs:element name="referenceCardNumberField" nillable="true" type="xs:string" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VirtualCardOptionalFields" nillable="true" type="tns:VirtualCardOptionalFields" />
+  <xs:complexType name="ArrayOfVirtualCardCreateResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardCreateResponseTransactionEntity" nillable="true" type="tns:VirtualCardCreateResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardCreateResponseTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardCreateResponseTransactionEntity" />
+  <xs:complexType name="VirtualCardCreateResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="billingAddressField" nillable="true" type="xs:string" />
+          <xs:element name="cVCField" type="xs:short" />
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="cityField" nillable="true" type="xs:string" />
+          <xs:element name="expirationDateField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="postalCodeField" nillable="true" type="xs:string" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="stateProvField" nillable="true" type="xs:string" />
+          <xs:element name="vcCardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardCreateResponseTransactionEntity" nillable="true" type="tns:VirtualCardCreateResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardInquireRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardInquireRequestTransactionEntity" nillable="true" type="tns:VirtualCardInquireRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardInquireRequestTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardInquireRequestTransactionEntity" />
+  <xs:complexType name="VirtualCardInquireRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardInquireRequestTransactionEntity" nillable="true" type="tns:VirtualCardInquireRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardInquireResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardInquireResponseTransactionEntity" nillable="true" type="tns:VirtualCardInquireResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardInquireResponseTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardInquireResponseTransactionEntity" />
+  <xs:complexType name="VirtualCardInquireResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="cVCField" type="xs:short" />
+          <xs:element name="cardBalanceField" type="xs:decimal" />
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="dollarAmountField" type="xs:decimal" />
+          <xs:element name="expirationDateField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="numberOfUsesField" type="xs:byte" />
+          <xs:element name="regionField" nillable="true" type="xs:string" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="statusField" nillable="true" type="xs:string" />
+          <xs:element name="usedCountField" type="xs:byte" />
+          <xs:element name="validThroughDateField" nillable="true" type="xs:string" />
+          <xs:element name="virtualCardMCMGField" nillable="true" type="tns:ArrayOfVirtualCardMCMGFields" />
+          <xs:element name="virtualCardOptionalFieldsField" nillable="true" type="tns:VirtualCardOptionalFields" />
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardInquireResponseTransactionEntity" nillable="true" type="tns:VirtualCardInquireResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardInquireCardCTSRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardInquireCardCTSRequestTransactionEntity" nillable="true" type="tns:VirtualCardInquireCardCTSRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardInquireCardCTSRequestTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardInquireCardCTSRequestTransactionEntity" />
+  <xs:complexType name="VirtualCardInquireCardCTSRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="virtualMasterCardCardCTSField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardInquireCardCTSRequestTransactionEntity" nillable="true" type="tns:VirtualCardInquireCardCTSRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardInquireCardCTSResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardInquireCardCTSResponseTransactionEntity" nillable="true" type="tns:VirtualCardInquireCardCTSResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardInquireCardCTSResponseTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardInquireCardCTSResponseTransactionEntity" />
+  <xs:complexType name="VirtualCardInquireCardCTSResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="cVCField" nillable="true" type="xs:string" />
+          <xs:element name="cardBalanceField" type="xs:decimal" />
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="dollarAmountField" type="xs:decimal" />
+          <xs:element name="expirationDateField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="numberOfUsesField" type="xs:byte" />
+          <xs:element name="postalCodeField" nillable="true" type="xs:string" />
+          <xs:element name="regionField" nillable="true" type="xs:string" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="statusField" nillable="true" type="xs:string" />
+          <xs:element name="usedCountField" type="xs:byte" />
+          <xs:element name="validThroughDateField" nillable="true" type="xs:string" />
+          <xs:element name="virtualCardMCMGField" nillable="true" type="tns:ArrayOfVirtualCardMCMGFields" />
+          <xs:element name="virtualCardOptionalFieldsField" nillable="true" type="tns:VirtualCardOptionalFields" />
+          <xs:element name="virtualMasterCardCardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardInquireCardCTSResponseTransactionEntity" nillable="true" type="tns:VirtualCardInquireCardCTSResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVirtualCardUpdateRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardUpdateRequestTransactionEntity" nillable="true" type="tns:VirtualCardUpdateRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardUpdateRequestTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardUpdateRequestTransactionEntity" />
+  <xs:complexType name="VirtualCardUpdateRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="virtualCardMCMGField" nillable="true" type="tns:ArrayOfVirtualCardMCMGFields" />
+          <xs:element name="virtualCardUpdateFieldsField" nillable="true" type="tns:VirtualCardUpdateFields" />
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardUpdateRequestTransactionEntity" nillable="true" type="tns:VirtualCardUpdateRequestTransactionEntity" />
+  <xs:complexType name="VirtualCardUpdateFields">
+    <xs:sequence>
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardStatusField" nillable="true" type="xs:string" />
+      <xs:element name="customField1Field" nillable="true" type="xs:string" />
+      <xs:element name="customField2Field" nillable="true" type="xs:string" />
+      <xs:element name="customField3Field" nillable="true" type="xs:string" />
+      <xs:element name="customField4Field" nillable="true" type="xs:string" />
+      <xs:element name="customField5Field" nillable="true" type="xs:string" />
+      <xs:element name="customField6Field" nillable="true" type="xs:string" />
+      <xs:element name="dollarAmountField" type="xs:decimal" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exactMatchField" nillable="true" type="xs:string" />
+      <xs:element name="mCCField" type="xs:short" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantPhoneField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvField" nillable="true" type="xs:string" />
+      <xs:element name="notesField" nillable="true" type="xs:string" />
+      <xs:element name="numberOfUsesField" type="xs:byte" />
+      <xs:element name="pONumberField" nillable="true" type="xs:string" />
+      <xs:element name="referenceCardNumberField" nillable="true" type="xs:string" />
+      <xs:element name="regionField" nillable="true" type="xs:string" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VirtualCardUpdateFields" nillable="true" type="tns:VirtualCardUpdateFields" />
+  <xs:complexType name="ArrayOfVirtualCardUpdateResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualCardUpdateResponseTransactionEntity" nillable="true" type="tns:VirtualCardUpdateResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualCardUpdateResponseTransactionEntity" nillable="true" type="tns:ArrayOfVirtualCardUpdateResponseTransactionEntity" />
+  <xs:complexType name="VirtualCardUpdateResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualCardBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="virtualMasterCardNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualCardUpdateResponseTransactionEntity" nillable="true" type="tns:VirtualCardUpdateResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfDriverPoolAddRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolAddRequestTransactionEntity" nillable="true" type="tns:DriverPoolAddRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolAddRequestTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolAddRequestTransactionEntity" />
+  <xs:complexType name="DriverPoolAddRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="driverCDLExpireDateField" nillable="true" type="xs:string" />
+          <xs:element name="driverCDLField" nillable="true" type="xs:string" />
+          <xs:element name="driverCDLStateField" nillable="true" type="xs:string" />
+          <xs:element name="driverMemoField" nillable="true" type="xs:string" />
+          <xs:element name="driverNameField" nillable="true" type="xs:string" />
+          <xs:element name="driverNotesField" nillable="true" type="xs:string" />
+          <xs:element name="driverPoolStatusField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolAddRequestTransactionEntity" nillable="true" type="tns:DriverPoolAddRequestTransactionEntity" />
+  <xs:complexType name="DriverPoolBaseData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="driverIDField" nillable="true" type="xs:string" />
+          <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolBaseData" nillable="true" type="tns:DriverPoolBaseData" />
+  <xs:complexType name="ArrayOfDriverPoolAddResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolAddResponseTransactionEntity" nillable="true" type="tns:DriverPoolAddResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolAddResponseTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolAddResponseTransactionEntity" />
+  <xs:complexType name="DriverPoolAddResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolAddResponseTransactionEntity" nillable="true" type="tns:DriverPoolAddResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfDriverPoolDelRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolDelRequestTransactionEntity" nillable="true" type="tns:DriverPoolDelRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolDelRequestTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolDelRequestTransactionEntity" />
+  <xs:complexType name="DriverPoolDelRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="driverNameField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolDelRequestTransactionEntity" nillable="true" type="tns:DriverPoolDelRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfDriverPoolDelResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolDelResponseTransactionEntity" nillable="true" type="tns:DriverPoolDelResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolDelResponseTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolDelResponseTransactionEntity" />
+  <xs:complexType name="DriverPoolDelResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolDelResponseTransactionEntity" nillable="true" type="tns:DriverPoolDelResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfDriverPoolInqRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolInqRequestTransactionEntity" nillable="true" type="tns:DriverPoolInqRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolInqRequestTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolInqRequestTransactionEntity" />
+  <xs:complexType name="DriverPoolInqRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolInqRequestTransactionEntity" nillable="true" type="tns:DriverPoolInqRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfDriverPoolInqResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolInqResponseTransactionEntity" nillable="true" type="tns:DriverPoolInqResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolInqResponseTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolInqResponseTransactionEntity" />
+  <xs:complexType name="DriverPoolInqResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="driverCDLExpireDateField" nillable="true" type="xs:string" />
+          <xs:element name="driverCDLField" nillable="true" type="xs:string" />
+          <xs:element name="driverCDLStateField" nillable="true" type="xs:string" />
+          <xs:element name="driverIDNumberTypeField" nillable="true" type="xs:string" />
+          <xs:element name="driverMemoField" nillable="true" type="xs:string" />
+          <xs:element name="driverNameField" nillable="true" type="xs:string" />
+          <xs:element name="driverNotesField" nillable="true" type="xs:string" />
+          <xs:element name="driverPoolStatusField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeTimeField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeTimeField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolInqResponseTransactionEntity" nillable="true" type="tns:DriverPoolInqResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfDriverPoolUpdRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolUpdRequestTransactionEntity" nillable="true" type="tns:DriverPoolUpdRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolUpdRequestTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolUpdRequestTransactionEntity" />
+  <xs:complexType name="DriverPoolUpdRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="changeFieldsField" nillable="true" type="tns:DriverPoolChangeFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolUpdRequestTransactionEntity" nillable="true" type="tns:DriverPoolUpdRequestTransactionEntity" />
+  <xs:complexType name="DriverPoolChangeFields">
+    <xs:sequence>
+      <xs:element name="driverCDLExpiresField" nillable="true" type="xs:string" />
+      <xs:element name="driverCDLLicenseField" nillable="true" type="xs:string" />
+      <xs:element name="driverCDLStateField" nillable="true" type="xs:string" />
+      <xs:element name="driverMemoField" nillable="true" type="xs:string" />
+      <xs:element name="driverNameField" nillable="true" type="xs:string" />
+      <xs:element name="driverNotesField" nillable="true" type="xs:string" />
+      <xs:element name="driverPoolStatusField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DriverPoolChangeFields" nillable="true" type="tns:DriverPoolChangeFields" />
+  <xs:complexType name="ArrayOfDriverPoolUpdResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DriverPoolUpdResponseTransactionEntity" nillable="true" type="tns:DriverPoolUpdResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDriverPoolUpdResponseTransactionEntity" nillable="true" type="tns:ArrayOfDriverPoolUpdResponseTransactionEntity" />
+  <xs:complexType name="DriverPoolUpdResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DriverPoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="lastCustomerChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeTimeField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeTimeField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DriverPoolUpdResponseTransactionEntity" nillable="true" type="tns:DriverPoolUpdResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVehiclePoolAddRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolAddRequestTransactionEntity" nillable="true" type="tns:VehiclePoolAddRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolAddRequestTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolAddRequestTransactionEntity" />
+  <xs:complexType name="VehiclePoolAddRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VehiclePoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="licensePlateExpireDateField" type="xs:int" />
+          <xs:element name="licensePlateField" nillable="true" type="xs:string" />
+          <xs:element name="licensePlateStateField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleMemoField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleNotesField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleStatusField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleTankCapacityField" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolAddRequestTransactionEntity" nillable="true" type="tns:VehiclePoolAddRequestTransactionEntity" />
+  <xs:complexType name="VehiclePoolBaseData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolBaseData" nillable="true" type="tns:VehiclePoolBaseData" />
+  <xs:complexType name="ArrayOfVehiclePoolAddResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolAddResponseTransactionEntity" nillable="true" type="tns:VehiclePoolAddResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolAddResponseTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolAddResponseTransactionEntity" />
+  <xs:complexType name="VehiclePoolAddResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VehiclePoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolAddResponseTransactionEntity" nillable="true" type="tns:VehiclePoolAddResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVehiclePoolDelRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolDelRequestTransactionEntity" nillable="true" type="tns:VehiclePoolDelRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolDelRequestTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolDelRequestTransactionEntity" />
+  <xs:complexType name="VehiclePoolDelRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VehiclePoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolDelRequestTransactionEntity" nillable="true" type="tns:VehiclePoolDelRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfVehiclePoolDelResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolDelResponseTransactionEntity" nillable="true" type="tns:VehiclePoolDelResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolDelResponseTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolDelResponseTransactionEntity" />
+  <xs:complexType name="VehiclePoolDelResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VehiclePoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolDelResponseTransactionEntity" nillable="true" type="tns:VehiclePoolDelResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVehiclePoolInqRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolInqRequestTransactionEntity" nillable="true" type="tns:VehiclePoolInqRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolInqRequestTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolInqRequestTransactionEntity" />
+  <xs:complexType name="VehiclePoolInqRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="keyFieldsField" nillable="true" type="tns:VehiclePoolKeyFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolInqRequestTransactionEntity" nillable="true" type="tns:VehiclePoolInqRequestTransactionEntity" />
+  <xs:complexType name="VehiclePoolKeyFields">
+    <xs:sequence>
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleMemoField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VehiclePoolKeyFields" nillable="true" type="tns:VehiclePoolKeyFields" />
+  <xs:complexType name="ArrayOfVehiclePoolInqResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolInqResponseTransactionEntity" nillable="true" type="tns:VehiclePoolInqResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolInqResponseTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolInqResponseTransactionEntity" />
+  <xs:complexType name="VehiclePoolInqResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VehiclePoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeTimeField" nillable="true" type="xs:string" />
+          <xs:element name="lastCustomerChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeDateField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeTimeField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="licensePlateExpireDateField" nillable="true" type="xs:string" />
+          <xs:element name="licensePlateField" nillable="true" type="xs:string" />
+          <xs:element name="licensePlateStateField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleMemoField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleNotesField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleStatusField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleTankCapacityField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolInqResponseTransactionEntity" nillable="true" type="tns:VehiclePoolInqResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfVehiclePoolUpdRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolUpdRequestTransactionEntity" nillable="true" type="tns:VehiclePoolUpdRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolUpdRequestTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolUpdRequestTransactionEntity" />
+  <xs:complexType name="VehiclePoolUpdRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VehiclePoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="changeFieldsField" nillable="true" type="tns:VehiclePoolChangeFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolUpdRequestTransactionEntity" nillable="true" type="tns:VehiclePoolUpdRequestTransactionEntity" />
+  <xs:complexType name="VehiclePoolChangeFields">
+    <xs:sequence>
+      <xs:element name="licensePlateExpireDateField" nillable="true" type="xs:string" />
+      <xs:element name="licensePlateField" nillable="true" type="xs:string" />
+      <xs:element name="licensePlateStateField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleMemoField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNotesField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleStatusField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleTankCapacityField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VehiclePoolChangeFields" nillable="true" type="tns:VehiclePoolChangeFields" />
+  <xs:complexType name="ArrayOfVehiclePoolUpdResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VehiclePoolUpdResponseTransactionEntity" nillable="true" type="tns:VehiclePoolUpdResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVehiclePoolUpdResponseTransactionEntity" nillable="true" type="tns:ArrayOfVehiclePoolUpdResponseTransactionEntity" />
+  <xs:complexType name="VehiclePoolUpdResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VehiclePoolBaseData">
+        <xs:sequence>
+          <xs:element name="cardGroupField" type="xs:int" />
+          <xs:element name="lastCustomerChangeDateField" type="xs:int" />
+          <xs:element name="lastCustomerChangeTimeField" type="xs:int" />
+          <xs:element name="lastCustomerChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="lastTChekChangeDateField" type="xs:int" />
+          <xs:element name="lastTChekChangeTimeField" type="xs:int" />
+          <xs:element name="lastTChekChangeUserField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VehiclePoolUpdResponseTransactionEntity" nillable="true" type="tns:VehiclePoolUpdResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfTransactionDeliveryMemoRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryMemoRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryMemoRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryMemoRequestTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryMemoRequestTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryMemoRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="keyFieldsField" nillable="true" type="tns:TransactionDeliveryKeyFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryMemoRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryMemoRequestTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryBaseData">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryBaseData" nillable="true" type="tns:TransactionDeliveryBaseData" />
+  <xs:complexType name="TransactionDeliveryKeyFields">
+    <xs:sequence>
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardNumberField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="lastReceivedField" nillable="true" type="tns:TransactionDeliveryLastReceived" />
+      <xs:element name="numberOfTransactionsRequestedField" nillable="true" type="xs:string" />
+      <xs:element name="transactionEndDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionEndTimeField" nillable="true" type="xs:string" />
+      <xs:element name="transactionStartDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionStartTimeField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryKeyFields" nillable="true" type="tns:TransactionDeliveryKeyFields" />
+  <xs:complexType name="TransactionDeliveryLastReceived">
+    <xs:sequence>
+      <xs:element name="referenceDateField" nillable="true" type="xs:string" />
+      <xs:element name="referenceTimeField" nillable="true" type="xs:string" />
+      <xs:element name="referenceValueField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryLastReceived" nillable="true" type="tns:TransactionDeliveryLastReceived" />
+  <xs:complexType name="ArrayOfTransactionDeliveryMemoResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryMemoResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryMemoResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryMemoResponseTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryMemoResponseTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryMemoResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="memoSetField" nillable="true" type="tns:ArrayOfMemoData" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryMemoResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryMemoResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfMemoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MemoData" nillable="true" type="tns:MemoData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMemoData" nillable="true" type="tns:ArrayOfMemoData" />
+  <xs:complexType name="MemoData">
+    <xs:sequence>
+      <xs:element name="aVSAddressField" nillable="true" type="xs:string" />
+      <xs:element name="aVSResultField" nillable="true" type="xs:string" />
+      <xs:element name="aVSZipField" nillable="true" type="xs:string" />
+      <xs:element name="authorizationCodeField" nillable="true" type="xs:string" />
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardEntryModeField" type="xs:short" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardLast4Field" type="xs:short" />
+      <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+      <xs:element name="clearingReferenceNumberField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNameField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exactMatchField" nillable="true" type="xs:string" />
+      <xs:element name="exceptionIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="mCCField" type="xs:short" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantIDField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverIDField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="pOSVehicleNumberField" nillable="true" type="xs:string" />
+      <xs:element name="poolIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="poolMemoField" nillable="true" type="xs:string" />
+      <xs:element name="processDateField" nillable="true" type="xs:string" />
+      <xs:element name="processTimeField" nillable="true" type="xs:string" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="transactionAmountUSField" type="xs:decimal" />
+      <xs:element name="transactionAmtMerchCurrField" type="xs:decimal" />
+      <xs:element name="transactionDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTimeField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTypeField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemoData" nillable="true" type="tns:MemoData" />
+  <xs:complexType name="ArrayOfTransactionDeliveryClearedRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryClearedRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryClearedRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryClearedRequestTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryClearedRequestTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryClearedRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="keyFieldsField" nillable="true" type="tns:TransactionDeliveryKeyFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryClearedRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryClearedRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfTransactionDeliveryClearedResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryClearedResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryClearedResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryClearedResponseTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryClearedResponseTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryClearedResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="clearedSetField" nillable="true" type="tns:ArrayOfCleared" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryClearedResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryClearedResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCleared">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cleared" nillable="true" type="tns:Cleared" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCleared" nillable="true" type="tns:ArrayOfCleared" />
+  <xs:complexType name="Cleared">
+    <xs:sequence>
+      <xs:element name="authorizationCodeField" nillable="true" type="xs:string" />
+      <xs:element name="billInvoiceAmountField" type="xs:decimal" />
+      <xs:element name="billingCurrencyField" nillable="true" type="xs:string" />
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardEntryModeField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardLast4Field" nillable="true" type="xs:string" />
+      <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+      <xs:element name="cardholderNameField" nillable="true" type="xs:string" />
+      <xs:element name="clearingReferenceNumberField" nillable="true" type="xs:string" />
+      <xs:element name="customerGLCodeField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNameField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exactMatchField" nillable="true" type="xs:string" />
+      <xs:element name="exceptionIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="exchangeRateField" type="xs:decimal" />
+      <xs:element name="fee1Field" type="xs:decimal" />
+      <xs:element name="fee2Field" type="xs:decimal" />
+      <xs:element name="fuelAmountField" type="xs:decimal" />
+      <xs:element name="fuelPPUField" type="xs:decimal" />
+      <xs:element name="fuelProductCodeField" nillable="true" type="xs:string" />
+      <xs:element name="fuelQuantityField" type="xs:decimal" />
+      <xs:element name="fuelUoMField" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription1Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription2Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription3Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription4Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription5Field" nillable="true" type="xs:string" />
+      <xs:element name="itemDescription6Field" nillable="true" type="xs:string" />
+      <xs:element name="mCCField" nillable="true" type="xs:string" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantCountryField" nillable="true" type="xs:string" />
+      <xs:element name="merchantIDField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvinceField" nillable="true" type="xs:string" />
+      <xs:element name="merchantZipField" nillable="true" type="xs:string" />
+      <xs:element name="motorFuelServiceTypeField" nillable="true" type="xs:string" />
+      <xs:element name="odometerField" nillable="true" type="xs:string" />
+      <xs:element name="oilCompanyBrandField" nillable="true" type="xs:string" />
+      <xs:element name="oilCompanyNameField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverIDField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="pOSVehicleAssignedNumberField" nillable="true" type="xs:string" />
+      <xs:element name="poolIndicatorField" nillable="true" type="xs:string" />
+      <xs:element name="poolMemoField" nillable="true" type="xs:string" />
+      <xs:element name="processDateField" nillable="true" type="xs:string" />
+      <xs:element name="processTimeField" nillable="true" type="xs:string" />
+      <xs:element name="productAmount1Field" nillable="true" type="xs:string" />
+      <xs:element name="productAmount2Field" nillable="true" type="xs:string" />
+      <xs:element name="productAmount3Field" nillable="true" type="xs:string" />
+      <xs:element name="productAmount4Field" nillable="true" type="xs:string" />
+      <xs:element name="productAmount5Field" nillable="true" type="xs:string" />
+      <xs:element name="productAmount6Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode1Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode2Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode3Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode4Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode5Field" nillable="true" type="xs:string" />
+      <xs:element name="productCode6Field" nillable="true" type="xs:string" />
+      <xs:element name="promptTypeField" nillable="true" type="xs:string" />
+      <xs:element name="recordTypeField" type="tns:ClearedRecordType" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="taxAmount1Field" type="xs:decimal" />
+      <xs:element name="taxAmount2Field" type="xs:decimal" />
+      <xs:element name="taxAmount3Field" type="xs:decimal" />
+      <xs:element name="taxAmount4Field" type="xs:decimal" />
+      <xs:element name="taxAmount5Field" type="xs:decimal" />
+      <xs:element name="taxAmount6Field" type="xs:decimal" />
+      <xs:element name="transactionAmountField" type="xs:decimal" />
+      <xs:element name="transactionDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTimeField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleDescriptionField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cleared" nillable="true" type="tns:Cleared" />
+  <xs:simpleType name="ClearedRecordType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A" />
+      <xs:enumeration value="B" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="R" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="W" />
+      <xs:enumeration value="X" />
+      <xs:enumeration value="Z" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ClearedRecordType" nillable="true" type="tns:ClearedRecordType" />
+  <xs:complexType name="ArrayOfTransactionDeliveryChargeRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryChargeRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryChargeRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryChargeRequestTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryChargeRequestTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryChargeRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="keyFieldsField" nillable="true" type="tns:TransactionDeliveryKeyFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryChargeRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryChargeRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfTransactionDeliveryChargeResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryChargeResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryChargeResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryChargeResponseTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryChargeResponseTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryChargeResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="chargesSetField" nillable="true" type="tns:ArrayOfCharges" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryChargeResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryChargeResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCharges">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Charges" nillable="true" type="tns:Charges" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCharges" nillable="true" type="tns:ArrayOfCharges" />
+  <xs:complexType name="Charges">
+    <xs:sequence>
+      <xs:element name="authorizationCodeField" nillable="true" type="xs:string" />
+      <xs:element name="chargeAmountField" type="xs:decimal" />
+      <xs:element name="chargeCountField" nillable="true" type="xs:string" />
+      <xs:element name="chargeRateField" type="xs:decimal" />
+      <xs:element name="currencyField" nillable="true" type="xs:string" />
+      <xs:element name="processedDateTimeField" type="xs:dateTime" />
+      <xs:element name="reasonCodeField" nillable="true" type="xs:string" />
+      <xs:element name="totalAmountField" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Charges" nillable="true" type="tns:Charges" />
+  <xs:complexType name="ArrayOfTransactionDeliveryRejectRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryRejectRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryRejectRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryRejectRequestTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryRejectRequestTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryRejectRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="keyFieldsField" nillable="true" type="tns:TransactionDeliveryKeyFields" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryRejectRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryRejectRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfTransactionDeliveryRejectResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryRejectResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryRejectResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryRejectResponseTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryRejectResponseTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryRejectResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="rejectsSetField" nillable="true" type="tns:ArrayOfRejects" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryRejectResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryRejectResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfRejects">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rejects" nillable="true" type="tns:Rejects" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRejects" nillable="true" type="tns:ArrayOfRejects" />
+  <xs:complexType name="Rejects">
+    <xs:sequence>
+      <xs:element name="aVSDataField" nillable="true" type="xs:string" />
+      <xs:element name="additionalResponseDataField" nillable="true" type="xs:string" />
+      <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="cardHolderNameField" nillable="true" type="xs:string" />
+      <xs:element name="cardLast4Field" nillable="true" type="xs:string" />
+      <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+      <xs:element name="driverIDField" nillable="true" type="xs:string" />
+      <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="exchangeRateField" type="xs:decimal" />
+      <xs:element name="mCCField" nillable="true" type="xs:string" />
+      <xs:element name="merchantCityField" nillable="true" type="xs:string" />
+      <xs:element name="merchantCountryField" nillable="true" type="xs:string" />
+      <xs:element name="merchantNameField" nillable="true" type="xs:string" />
+      <xs:element name="merchantStateProvinceField" nillable="true" type="xs:string" />
+      <xs:element name="merchantZipField" nillable="true" type="xs:string" />
+      <xs:element name="pOSCardExpireDateField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverIDField" nillable="true" type="xs:string" />
+      <xs:element name="pOSDriverNumberField" nillable="true" type="xs:string" />
+      <xs:element name="pOSVehicleNumberField" nillable="true" type="xs:string" />
+      <xs:element name="processDateField" nillable="true" type="xs:string" />
+      <xs:element name="processTimeField" nillable="true" type="xs:string" />
+      <xs:element name="reasonCodeField" nillable="true" type="xs:string" />
+      <xs:element name="reasonSubCodeField" nillable="true" type="xs:string" />
+      <xs:element name="rejectMessageField" nillable="true" type="xs:string" />
+      <xs:element name="rejectionCodeField" nillable="true" type="xs:string" />
+      <xs:element name="tCCField" nillable="true" type="xs:string" />
+      <xs:element name="trackCardExpireDateField" nillable="true" type="xs:string" />
+      <xs:element name="trackCardHolderNameField" nillable="true" type="xs:string" />
+      <xs:element name="transactionAmountMerchantCurrencyField" type="xs:decimal" />
+      <xs:element name="transactionAmountUSField" type="xs:decimal" />
+      <xs:element name="transactionDateField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTimeField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+      <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rejects" nillable="true" type="tns:Rejects" />
+  <xs:complexType name="ArrayOfTransactionDeliveryDetailsRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryDetailsRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryDetailsRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryDetailsRequestTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryDetailsRequestTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryDetailsRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="keyFieldsField" nillable="true" type="tns:TransactionDeliveryKeyFields" />
+          <xs:element name="typeField" type="tns:TransactionDeliveryDetailsRequestTransactionEntityType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryDetailsRequestTransactionEntity" nillable="true" type="tns:TransactionDeliveryDetailsRequestTransactionEntity" />
+  <xs:simpleType name="TransactionDeliveryDetailsRequestTransactionEntityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="Charges" />
+      <xs:enumeration value="Cleared" />
+      <xs:enumeration value="Memo" />
+      <xs:enumeration value="Rejects" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TransactionDeliveryDetailsRequestTransactionEntityType" nillable="true" type="tns:TransactionDeliveryDetailsRequestTransactionEntityType" />
+  <xs:complexType name="ArrayOfTransactionDeliveryDetailsResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDeliveryDetailsResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryDetailsResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDeliveryDetailsResponseTransactionEntity" nillable="true" type="tns:ArrayOfTransactionDeliveryDetailsResponseTransactionEntity" />
+  <xs:complexType name="TransactionDeliveryDetailsResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TransactionDeliveryBaseData">
+        <xs:sequence>
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+          <xs:element name="transactionsField" nillable="true" type="tns:ArrayOfTransactionQuantity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionDeliveryDetailsResponseTransactionEntity" nillable="true" type="tns:TransactionDeliveryDetailsResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfTransactionQuantity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionQuantity" nillable="true" type="tns:TransactionQuantity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionQuantity" nillable="true" type="tns:ArrayOfTransactionQuantity" />
+  <xs:complexType name="TransactionQuantity">
+    <xs:sequence>
+      <xs:element name="quantityField" nillable="true" type="xs:string" />
+      <xs:element name="transactionTypeField" type="tns:TransactionQuantityTransactionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionQuantity" nillable="true" type="tns:TransactionQuantity" />
+  <xs:simpleType name="TransactionQuantityTransactionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Charges" />
+      <xs:enumeration value="Cleared" />
+      <xs:enumeration value="Memo" />
+      <xs:enumeration value="Rejects" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TransactionQuantityTransactionType" nillable="true" type="tns:TransactionQuantityTransactionType" />
+  <xs:complexType name="ArrayOfCardOrderNewRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardOrderNewRequestTransactionEntity" nillable="true" type="tns:CardOrderNewRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardOrderNewRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardOrderNewRequestTransactionEntity" />
+  <xs:complexType name="CardOrderNewRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="addressLineField" nillable="true" type="xs:string" />
+          <xs:element name="cardCarrierField" nillable="true" type="xs:string" />
+          <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+          <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+          <xs:element name="cardTypeField" nillable="true" type="xs:string" />
+          <xs:element name="cardholderNameField" nillable="true" type="xs:string" />
+          <xs:element name="chipCardField" nillable="true" type="xs:string" />
+          <xs:element name="cityField" nillable="true" type="xs:string" />
+          <xs:element name="contactNameField" nillable="true" type="xs:string" />
+          <xs:element name="countryField" nillable="true" type="xs:string" />
+          <xs:element name="cycleIndicatorField" type="tns:CardOrderNewRequestTransactionEntityCycleIndicator" />
+          <xs:element name="cycleRefreshDayField" nillable="true" type="xs:string" />
+          <xs:element name="cycleTransactionAmountLimitField" type="xs:decimal" />
+          <xs:element name="cycleTransactionCountLimitField" nillable="true" type="xs:string" />
+          <xs:element name="dailyTransactionAmountLimitField" type="xs:decimal" />
+          <xs:element name="dailyTransactionCountLimitField" nillable="true" type="xs:string" />
+          <xs:element name="driverIDField" type="xs:int" />
+          <xs:element name="driverNumberField" type="xs:int" />
+          <xs:element name="phoneNumberField" nillable="true" type="xs:string" />
+          <xs:element name="poolTypeField" type="tns:CardOrderNewRequestTransactionEntityPoolType" />
+          <xs:element name="postalCodeField" nillable="true" type="xs:string" />
+          <xs:element name="productRestrictionField" type="xs:int" />
+          <xs:element name="promptTypeField" nillable="true" type="xs:string" />
+          <xs:element name="regionField" type="tns:CardOrderNewRequestTransactionEntityRegion" />
+          <xs:element name="rushOrderField" type="xs:int" />
+          <xs:element name="sendCardToAlternateAddressField" type="xs:boolean" />
+          <xs:element name="stateProvField" nillable="true" type="xs:string" />
+          <xs:element name="transactionLimitField" type="xs:decimal" />
+          <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+          <xs:element name="vinNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardOrderNewRequestTransactionEntity" nillable="true" type="tns:CardOrderNewRequestTransactionEntity" />
+  <xs:simpleType name="CardOrderNewRequestTransactionEntityCycleIndicator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="W" />
+      <xs:enumeration value="M" />
+      <xs:enumeration value="N" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CardOrderNewRequestTransactionEntityCycleIndicator" nillable="true" type="tns:CardOrderNewRequestTransactionEntityCycleIndicator" />
+  <xs:simpleType name="CardOrderNewRequestTransactionEntityPoolType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="D" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="V" />
+      <xs:enumeration value="N" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CardOrderNewRequestTransactionEntityPoolType" nillable="true" type="tns:CardOrderNewRequestTransactionEntityPoolType" />
+  <xs:simpleType name="CardOrderNewRequestTransactionEntityRegion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INT" />
+      <xs:enumeration value="NAM" />
+      <xs:enumeration value="USA" />
+      <xs:enumeration value="CAN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CardOrderNewRequestTransactionEntityRegion" nillable="true" type="tns:CardOrderNewRequestTransactionEntityRegion" />
+  <xs:complexType name="ArrayOfCardOrderNewResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardOrderNewResponseTransactionEntity" nillable="true" type="tns:CardOrderNewResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardOrderNewResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardOrderNewResponseTransactionEntity" />
+  <xs:complexType name="CardOrderNewResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="cardLast4Field" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardOrderNewResponseTransactionEntity" nillable="true" type="tns:CardOrderNewResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCardOrderReissueRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardOrderReissueRequestTransactionEntity" nillable="true" type="tns:CardOrderReissueRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardOrderReissueRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardOrderReissueRequestTransactionEntity" />
+  <xs:complexType name="CardOrderReissueRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="addressLineField" nillable="true" type="xs:string" />
+          <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="cardCarrierField" nillable="true" type="xs:string" />
+          <xs:element name="cardHolderNameField" nillable="true" type="xs:string" />
+          <xs:element name="cardMemoField" nillable="true" type="xs:string" />
+          <xs:element name="cardNumberField" type="xs:long" />
+          <xs:element name="cardTypeField" nillable="true" type="xs:string" />
+          <xs:element name="chipCardField" nillable="true" type="xs:string" />
+          <xs:element name="cityField" nillable="true" type="xs:string" />
+          <xs:element name="contactNameField" nillable="true" type="xs:string" />
+          <xs:element name="countryField" nillable="true" type="xs:string" />
+          <xs:element name="driverIDField" nillable="true" type="xs:string" />
+          <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+          <xs:element name="phoneNumberField" nillable="true" type="xs:string" />
+          <xs:element name="postalCodeField" nillable="true" type="xs:string" />
+          <xs:element name="rushOrderField" type="xs:int" />
+          <xs:element name="sendCardToAlternateAddressField" type="xs:boolean" />
+          <xs:element name="stateProvField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardOrderReissueRequestTransactionEntity" nillable="true" type="tns:CardOrderReissueRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfCardOrderReissueResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardOrderReissueResponseTransactionEntity" nillable="true" type="tns:CardOrderReissueResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardOrderReissueResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardOrderReissueResponseTransactionEntity" />
+  <xs:complexType name="CardOrderReissueResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardOrderReissueResponseTransactionEntity" nillable="true" type="tns:CardOrderReissueResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCardOrderReissueActivateRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardOrderReissueActivateRequestTransactionEntity" nillable="true" type="tns:CardOrderReissueActivateRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardOrderReissueActivateRequestTransactionEntity" nillable="true" type="tns:ArrayOfCardOrderReissueActivateRequestTransactionEntity" />
+  <xs:complexType name="CardOrderReissueActivateRequestTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="cardHolderNameField" nillable="true" type="xs:string" />
+          <xs:element name="cardNumberField" type="xs:long" />
+          <xs:element name="driverIDField" nillable="true" type="xs:string" />
+          <xs:element name="driverNumberField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleAssignedNameField" nillable="true" type="xs:string" />
+          <xs:element name="vehicleNumberField" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardOrderReissueActivateRequestTransactionEntity" nillable="true" type="tns:CardOrderReissueActivateRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfCardOrderReissueActivateResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CardOrderReissueActivateResponseTransactionEntity" nillable="true" type="tns:CardOrderReissueActivateResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCardOrderReissueActivateResponseTransactionEntity" nillable="true" type="tns:ArrayOfCardOrderReissueActivateResponseTransactionEntity" />
+  <xs:complexType name="CardOrderReissueActivateResponseTransactionEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CardBaseData">
+        <xs:sequence>
+          <xs:element name="cardCTSField" nillable="true" type="xs:string" />
+          <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+          <xs:element name="responseCodeField" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CardOrderReissueActivateResponseTransactionEntity" nillable="true" type="tns:CardOrderReissueActivateResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfGetCustomDDLSRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCustomDDLSRequestTransactionEntity" nillable="true" type="tns:GetCustomDDLSRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetCustomDDLSRequestTransactionEntity" nillable="true" type="tns:ArrayOfGetCustomDDLSRequestTransactionEntity" />
+  <xs:complexType name="GetCustomDDLSRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCustomDDLSRequestTransactionEntity" nillable="true" type="tns:GetCustomDDLSRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfGetCustomDDLSResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCustomDDLSResponseTransactionEntity" nillable="true" type="tns:GetCustomDDLSResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetCustomDDLSResponseTransactionEntity" nillable="true" type="tns:ArrayOfGetCustomDDLSResponseTransactionEntity" />
+  <xs:complexType name="GetCustomDDLSResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="CustomDDLSField" nillable="true" type="tns:ArrayOfCustomDDLS" />
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCustomDDLSResponseTransactionEntity" nillable="true" type="tns:GetCustomDDLSResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCustomDDLS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomDDLS" nillable="true" type="tns:CustomDDLS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomDDLS" nillable="true" type="tns:ArrayOfCustomDDLS" />
+  <xs:complexType name="CustomDDLS">
+    <xs:sequence>
+      <xs:element name="DDLDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlCategoryField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="outsourceIDField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomDDLS" nillable="true" type="tns:CustomDDLS" />
+  <xs:complexType name="ArrayOfAddNewDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddNewDDLListItemRequestTransactionEntity" nillable="true" type="tns:AddNewDDLListItemRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddNewDDLListItemRequestTransactionEntity" nillable="true" type="tns:ArrayOfAddNewDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="AddNewDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="ddlListItemField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="isincludedField" type="xs:boolean" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddNewDDLListItemRequestTransactionEntity" nillable="true" type="tns:AddNewDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfAddNewDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddNewDDLListItemResponseTransactionEntity" nillable="true" type="tns:AddNewDDLListItemResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddNewDDLListItemResponseTransactionEntity" nillable="true" type="tns:ArrayOfAddNewDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="AddNewDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="ddlListItemField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="isincludedField" type="xs:boolean" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddNewDDLListItemResponseTransactionEntity" nillable="true" type="tns:AddNewDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfDeleteDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeleteDDLListItemRequestTransactionEntity" nillable="true" type="tns:DeleteDDLListItemRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeleteDDLListItemRequestTransactionEntity" nillable="true" type="tns:ArrayOfDeleteDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="DeleteDDLListItemRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="ddlListItemField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteDDLListItemRequestTransactionEntity" nillable="true" type="tns:DeleteDDLListItemRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfDeleteDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeleteDDLListItemResponseTransactionEntity" nillable="true" type="tns:DeleteDDLListItemResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeleteDDLListItemResponseTransactionEntity" nillable="true" type="tns:ArrayOfDeleteDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="DeleteDDLListItemResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="ddlListItemField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteDDLListItemResponseTransactionEntity" nillable="true" type="tns:DeleteDDLListItemResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfDeleteDDLRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeleteDDLRequestTransactionEntity" nillable="true" type="tns:DeleteDDLRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeleteDDLRequestTransactionEntity" nillable="true" type="tns:ArrayOfDeleteDDLRequestTransactionEntity" />
+  <xs:complexType name="DeleteDDLRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteDDLRequestTransactionEntity" nillable="true" type="tns:DeleteDDLRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfDeleteDDLResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeleteDDLResponseTransactionEntity" nillable="true" type="tns:DeleteDDLResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeleteDDLResponseTransactionEntity" nillable="true" type="tns:ArrayOfDeleteDDLResponseTransactionEntity" />
+  <xs:complexType name="DeleteDDLResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="ddlDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeleteDDLResponseTransactionEntity" nillable="true" type="tns:DeleteDDLResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfGetCustomDDLListRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCustomDDLListRequestTransactionEntity" nillable="true" type="tns:GetCustomDDLListRequestTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetCustomDDLListRequestTransactionEntity" nillable="true" type="tns:ArrayOfGetCustomDDLListRequestTransactionEntity" />
+  <xs:complexType name="GetCustomDDLListRequestTransactionEntity">
+    <xs:sequence>
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="customDDLDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCustomDDLListRequestTransactionEntity" nillable="true" type="tns:GetCustomDDLListRequestTransactionEntity" />
+  <xs:complexType name="ArrayOfGetCustomDDLListResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCustomDDLListResponseTransactionEntity" nillable="true" type="tns:GetCustomDDLListResponseTransactionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetCustomDDLListResponseTransactionEntity" nillable="true" type="tns:ArrayOfGetCustomDDLListResponseTransactionEntity" />
+  <xs:complexType name="GetCustomDDLListResponseTransactionEntity">
+    <xs:sequence>
+      <xs:element name="CustomDDLListField" nillable="true" type="tns:ArrayOfCustomDDLList" />
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="messageSetField" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:element name="outsourceIDField" type="xs:short" />
+      <xs:element name="responseCodeField" type="xs:short" />
+      <xs:element name="transactionIDField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCustomDDLListResponseTransactionEntity" nillable="true" type="tns:GetCustomDDLListResponseTransactionEntity" />
+  <xs:complexType name="ArrayOfCustomDDLList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomDDLList" nillable="true" type="tns:CustomDDLList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomDDLList" nillable="true" type="tns:ArrayOfCustomDDLList" />
+  <xs:complexType name="CustomDDLList">
+    <xs:sequence>
+      <xs:element name="DDLDescriptorField" nillable="true" type="xs:string" />
+      <xs:element name="DDLListLabelField" nillable="true" type="xs:string" />
+      <xs:element name="accountNumberField" nillable="true" type="xs:string" />
+      <xs:element name="cardGroupField" nillable="true" type="xs:string" />
+      <xs:element name="companyNumberField" nillable="true" type="xs:string" />
+      <xs:element name="dropdownIDField" type="xs:int" />
+      <xs:element name="isIncludedField" type="xs:boolean" />
+      <xs:element name="outsourceIDField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomDDLList" nillable="true" type="tns:CustomDDLList" />
+</xs:schema>

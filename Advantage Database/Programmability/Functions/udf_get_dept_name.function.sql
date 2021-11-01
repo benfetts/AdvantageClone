@@ -1,0 +1,10 @@
+﻿
+CREATE  FUNCTION [dbo].[udf_get_dept_name] ( @dept_code varchar(6) )  		  	
+RETURNS VARCHAR(30) AS  	
+BEGIN  
+	DECLARE @DEPT_NAME	VARCHAR(30)
+
+		SELECT @DEPT_NAME = (SELECT DP_TM_DESC FROM DEPT_TEAM WHERE DP_TM_CODE = @dept_code )
+
+	RETURN @DEPT_NAME 
+END	

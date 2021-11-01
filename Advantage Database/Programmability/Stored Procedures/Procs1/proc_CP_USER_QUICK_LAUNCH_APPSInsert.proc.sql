@@ -1,0 +1,39 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_QUICK_LAUNCH_APPSInsert]
+(
+	@CDP_CONTACT_ID int,
+	@TAB_ID int,
+	@APPLICATION_ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [CP_USER_QUICK_LAUNCH_APPS]
+	(
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[APPLICATION_ID]
+	)
+	VALUES
+	(
+		@CDP_CONTACT_ID,
+		@TAB_ID,
+		@APPLICATION_ID
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+

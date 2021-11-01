@@ -1,0 +1,30 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Vendor_Quote_UpdateRequestFunction]
+(
+	@ESTIMATE_NUMBER INT,
+	@EST_COMPONENT_NBR SMALLINT,
+	@VENDOR_QTE_NBR INT,
+	@EST_FNC_CODE VARCHAR(6),
+	@FNC_NOTES TEXT
+)
+AS
+BEGIN
+	SET NOCOUNT OFF
+
+			UPDATE [VENDOR_QTE_FNC] WITH(ROWLOCK)
+	            SET
+					[FNC_NOTES] = @FNC_NOTES
+	           WHERE
+		            [ESTIMATE_NUMBER] = @ESTIMATE_NUMBER AND 
+		            [EST_COMPONENT_NBR] = @EST_COMPONENT_NBR AND 
+		            [VENDOR_QTE_NBR] = @VENDOR_QTE_NBR AND
+					[EST_FNC_CODE] = @EST_FNC_CODE
+	    
+				
+END
+
+
+
+
+

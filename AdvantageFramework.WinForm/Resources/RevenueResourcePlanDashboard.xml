@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source 1" ComponentName="dashboardObjectDataSource1">
+      <DataSource Type="System.Collections.Generic.List`1[[AdvantageFramework.DTO.FinanceAndAccounting.RevenueResourcePlan.SetupFormDashboardDataSource, AdvantageFramework.BLogic, Version=6.70.8.0, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Hours" DataSource="dashboardObjectDataSource1">
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <DataItems>
+        <Dimension DataMember="Office" DefaultId="DataItem0" />
+        <Dimension DataMember="Description" DefaultId="DataItem4" />
+        <Measure DataMember="Hours" DefaultId="DataItem3" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem4" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem3" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart ComponentName="chartDashboardItem2" Name="Revenue" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="Office" DefaultId="DataItem1" />
+        <Dimension DataMember="Description" DefaultId="DataItem2" />
+        <Measure DataMember="Revenue" DefaultId="DataItem0" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="0.5" />
+      <LayoutItem DashboardItem="chartDashboardItem2" Weight="0.5" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdvantageFramework.BillingCommandCenter.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BillingApprovalBatch" customannotation:ClrType="AdvantageFramework.BillingCommandCenter.Database.Entities.BillingApprovalBatch, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BatchDate" Type="DateTime" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDate" Type="DateTime" />
+    <Property Name="DateCutoff" Type="DateTime" />
+    <Property Name="CutoffPostPeriodCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IncludeNoDTL" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeNB" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeFee" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeInternet" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeNewspaper" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeMagazine" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeOutOfHome" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeRadio" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeTV" Type="Boolean" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsFinished" Type="Boolean" Nullable="false" />
+    <Property Name="ApprovalMethod" Type="Byte" Nullable="false" />
+    <Property Name="SelectionOption" Type="Int16" />
+    <Property Name="ManagerType" Type="Int16" />
+    <Property Name="BillingApprovalExists" Type="Boolean" />
+    <Property Name="BillingApprovalBilledAny" Type="Boolean" />
+    <Property Name="BillingApprovalBilledAll" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="BillingCommandCenter" customannotation:ClrType="AdvantageFramework.BillingCommandCenter.Database.Entities.BillingCommandCenter, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillingUser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="ProductionSelectBy" Type="Int16" />
+    <Property Name="IsProduction" Type="Boolean" />
+    <Property Name="EmployeeTimeDateCutoff" Type="DateTime" />
+    <Property Name="IncomeOnlyDateCutoff" Type="DateTime" />
+    <Property Name="AdvanceBillingDateCutoff" Type="DateTime" />
+    <Property Name="APPostPeriodCodeCutoff" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="BillingApprovalBatchID" Type="Int32" />
+    <Property Name="IsMedia" Type="Boolean" />
+    <Property Name="MediaSelectBy" Type="Int16" />
+    <Property Name="MediaEndDate" Type="DateTime" />
+    <Property Name="IsNewspaper" Type="Boolean" />
+    <Property Name="IsMagazine" Type="Boolean" />
+    <Property Name="IsRadio" Type="Boolean" />
+    <Property Name="IsTelevision" Type="Boolean" />
+    <Property Name="IsOutOfHome" Type="Boolean" />
+    <Property Name="IsInternet" Type="Boolean" />
+    <Property Name="MediaBroadcastMonthStart" Type="DateTime" />
+    <Property Name="MediaBroadcastMonthEnd" Type="DateTime" />
+    <Property Name="IncludeZeroSpots" Type="Boolean" />
+    <Property Name="MediaStartDate" Type="DateTime" />
+    <Property Name="DateCuttoffToUseFlag" Type="Int16" />
+    <Property Name="IncludeUnbilledOrdersOnly" Type="Int16" />
+    <Property Name="ProductionSelectionOption" Type="Int16" />
+    <Property Name="IsRadioDaily" Type="Boolean" />
+    <Property Name="IsTelevisionDaily" Type="Boolean" />
+    <Property Name="IsRadioMonthly" Type="Boolean" />
+    <Property Name="IsTelevisionMonthly" Type="Boolean" />
+    <Property Name="BatchName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="SequenceNumber" Type="Int16" />
+    <Property Name="ProductionJobType" Type="Int16" />
+    <Property Name="IsProductionSelectionLocked" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeLegacy" Type="Boolean" Nullable="false" />
+    <Property Name="JobMediaBillDateFrom" Type="DateTime" />
+    <Property Name="JobMediaBillDateTo" Type="DateTime" />
+    <Property Name="ProductionIncludeJobMediaBillDates" Type="Boolean" Nullable="false" />
+    <Property Name="ProductionJobMediaBillDateFrom" Type="DateTime" />
+    <Property Name="ProductionJobMediaBillDateTo" Type="DateTime" />
+  </EntityType>
+  <EntityContainer Name="DbContext" customannotation:UseClrTypes="true">
+    <EntitySet Name="BillingApprovalBatches" EntityType="Self.BillingApprovalBatch" />
+    <EntitySet Name="BillingCommandCenters" EntityType="Self.BillingCommandCenter" />
+  </EntityContainer>
+</Schema>

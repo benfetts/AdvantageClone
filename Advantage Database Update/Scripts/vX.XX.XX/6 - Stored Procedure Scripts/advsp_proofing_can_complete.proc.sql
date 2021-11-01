@@ -1,0 +1,394 @@
+IF EXISTS ( SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[advsp_proofing_can_complete]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+    DROP PROCEDURE [dbo].[advsp_proofing_can_complete];
+END
+GO
+CREATE PROCEDURE [dbo].[advsp_proofing_can_complete] 
+@USER_CODE VARCHAR(100),
+@EMP_CODE VARCHAR(6) = NULL,
+@ALERT_ID INT = NULL
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	-- PARAMS/VARIABLES
+	BEGIN
+		DECLARE
+			@IS_PROOF BIT = 0,
+			@IS_COMPLETE BIT = 0,
+			@IS_ROUTED BIT = 0,
+			@CAN_COMPLETE BIT = 0,
+			@ALRT_NOTIFY_HDR_ID INT = 0,
+			@ALERT_STATE_ID INT = 0,
+			@OPEN_COUNT INT = 0,
+			@APPROVE_COUNT INT = 0,
+			@REJECT_COUNT INT = 0,
+			@DEFER_COUNT INT = 0,
+			@OPEN_X_COUNT INT = 0,
+			@APPROVE_X_COUNT INT = 0,
+			@REJECT_X_COUNT INT = 0,
+			@DEFER_X_COUNT INT = 0,
+			@COMPLETE_MESSAGE VARCHAR(MAX) = ''
+		;
+	END
+	-- INIT
+	BEGIN
+		SELECT
+			@IS_PROOF =
+				CASE
+					WHEN A.ALERT_CAT_ID = 79 THEN 1
+					ELSE 0
+				END,
+			@IS_ROUTED =
+				CASE
+					WHEN A.ALRT_NOTIFY_HDR_ID IS NOT NULL AND A.ALERT_STATE_ID IS NOT NULL THEN 1
+					ELSE 0
+				END,
+			@IS_COMPLETE =
+				CASE
+					WHEN ISNULL(A.ASSIGN_COMPLETED, 0) = 1 THEN 1
+					ELSE 0
+				END,
+			@ALRT_NOTIFY_HDR_ID = A.ALRT_NOTIFY_HDR_ID,
+			@ALERT_STATE_ID = A.ALERT_STATE_ID
+		FROM
+			ALERT A WITH(NOLOCK)
+		WHERE
+			A.ALERT_ID = @ALERT_ID
+		;
+		IF @EMP_CODE IS NULL OR DATALENGTH(@EMP_CODE) = 0
+		BEGIN
+			SELECT
+				@EMP_CODE =	(
+								SELECT
+									TOP 1 SU.EMP_CODE
+								FROM
+									SEC_USER SU WITH(NOLOCK)
+								WHERE
+									SU.USER_CODE = @USER_CODE
+							)
+			;
+		END
+	END
+	-- COUNT/GET DATA
+	IF @IS_PROOF = 1 AND @IS_COMPLETE = 0
+	BEGIN		
+		--	INTERNAL
+		BEGIN
+			IF @IS_ROUTED = 1
+			BEGIN
+				DECLARE
+					@LAST_STATE_ID INT
+				;
+				SELECT
+					@LAST_STATE_ID = ANS.ALERT_STATE_ID
+				FROM
+					ALERT_NOTIFY_STATES ANS WITH(NOLOCK)
+				WHERE
+					ANS.ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID
+					AND ANS.SORT_ORDER = (SELECT MAX(SORT_ORDER) FROM ALERT_NOTIFY_STATES WITH(NOLOCK) WHERE ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID)
+				SELECT
+					@LAST_STATE_ID = ISNULL(@LAST_STATE_ID, 0)
+				;
+				-- NOT LAST STATE
+				IF @LAST_STATE_ID <> @ALERT_STATE_ID
+				BEGIN 
+					SELECT 
+						@CAN_COMPLETE = 0,
+						@COMPLETE_MESSAGE = @COMPLETE_MESSAGE +	'Proof is not at last state.'
+					;
+				END
+				-- OPEN
+				BEGIN
+					SELECT
+						@OPEN_COUNT = COUNT(1)
+					FROM
+						ALERT_RCPT R WITH(NOLOCK)
+						INNER JOIN ALERT A WITH(NOLOCK) ON R.ALERT_ID = A.ALERT_ID
+							AND R.ALRT_NOTIFY_HDR_ID = A.ALRT_NOTIFY_HDR_ID 
+							AND R.ALERT_STATE_ID = A.ALERT_STATE_ID
+					WHERE
+						R.ALERT_ID = @ALERT_ID
+						AND R.CURRENT_NOTIFY = 1
+					;
+				END
+				-- REJECT
+				BEGIN
+					SELECT 
+						@REJECT_COUNT = COUNT(1)
+					FROM 
+						ALERT_RCPT_DISMISSED R WITH(NOLOCK) 
+						INNER JOIN ALERT A WITH(NOLOCK) ON R.ALERT_ID = A.ALERT_ID 
+							AND R.ALRT_NOTIFY_HDR_ID = A.ALRT_NOTIFY_HDR_ID 
+							AND R.ALERT_STATE_ID = A.ALERT_STATE_ID
+					WHERE 
+						R.ALERT_ID = @ALERT_ID 
+						AND R.CURRENT_NOTIFY =1
+						AND R.PROOFING_STATUS_ID = 2
+					;
+				END
+				-- APPROVED
+				BEGIN
+					SELECT 
+						@APPROVE_COUNT = COUNT(1)
+					FROM 
+						ALERT_RCPT_DISMISSED R WITH(NOLOCK) 
+						INNER JOIN ALERT A WITH(NOLOCK) ON R.ALERT_ID = A.ALERT_ID 
+							AND R.ALRT_NOTIFY_HDR_ID = A.ALRT_NOTIFY_HDR_ID 
+							AND R.ALERT_STATE_ID = A.ALERT_STATE_ID
+					WHERE 
+						R.ALERT_ID = @ALERT_ID 
+						AND R.CURRENT_NOTIFY =1
+						AND R.PROOFING_STATUS_ID = 1
+					;
+				END
+				-- DEFER
+				BEGIN
+					SELECT 
+						@DEFER_COUNT = COUNT(1)
+					FROM 
+						ALERT_RCPT_DISMISSED R WITH(NOLOCK) 
+						INNER JOIN ALERT A WITH(NOLOCK) ON R.ALERT_ID = A.ALERT_ID 
+							AND R.ALRT_NOTIFY_HDR_ID = A.ALRT_NOTIFY_HDR_ID 
+							AND R.ALERT_STATE_ID = A.ALERT_STATE_ID
+					WHERE 
+						R.ALERT_ID = @ALERT_ID 
+						AND R.CURRENT_NOTIFY =1
+						AND R.PROOFING_STATUS_ID = 3
+					;
+				END
+			END
+			ELSE
+			BEGIN
+				-- OPEN
+				BEGIN
+					SELECT
+						@OPEN_COUNT = COUNT(1)
+					FROM
+						ALERT A WITH(NOLOCK)
+						INNER JOIN ALERT_RCPT R ON A.ALERT_ID = R.ALERT_ID
+					WHERE
+						R.ALERT_ID = @ALERT_ID
+						AND R.CURRENT_NOTIFY = 1
+					;
+				END
+				-- APPROVE
+				BEGIN
+					SELECT
+						@APPROVE_COUNT = COUNT(1)
+					FROM
+						ALERT A WITH(NOLOCK)
+						INNER JOIN ALERT_RCPT_DISMISSED R ON A.ALERT_ID = R.ALERT_ID
+					WHERE
+						R.ALERT_ID = @ALERT_ID
+						AND R.CURRENT_NOTIFY = 1
+						AND R.PROOFING_STATUS_ID = 1
+					;
+				END
+				-- REJECT
+				BEGIN
+					SELECT
+						@REJECT_COUNT = COUNT(1)
+					FROM
+						ALERT A WITH(NOLOCK)
+						INNER JOIN ALERT_RCPT_DISMISSED R ON A.ALERT_ID = R.ALERT_ID
+					WHERE
+						R.ALERT_ID = @ALERT_ID
+						AND R.CURRENT_NOTIFY = 1
+						AND R.PROOFING_STATUS_ID = 2
+					;
+				END
+				-- DEFER
+				BEGIN
+					SELECT
+						@DEFER_COUNT = COUNT(1)
+					FROM
+						ALERT A WITH(NOLOCK)
+						INNER JOIN ALERT_RCPT_DISMISSED R ON A.ALERT_ID = R.ALERT_ID
+					WHERE
+						R.ALERT_ID = @ALERT_ID
+						AND R.CURRENT_NOTIFY = 1
+						AND R.PROOFING_STATUS_ID = 3
+					;
+				END
+			END
+		END
+		--	CAN_COMPLETE FLAG (INTERNAL ONLY) APPLIES TO "ALL"
+		BEGIN
+			IF ISNULL(@OPEN_COUNT, 0) = 0 AND ISNULL(@REJECT_COUNT, 0) = 0
+			BEGIN
+				SELECT @CAN_COMPLETE = 1;
+			END
+			ELSE
+			BEGIN
+				SELECT @CAN_COMPLETE = 0;
+			END
+		END
+		--	EXTERNAL REVIEWERS
+		BEGIN
+			-- OPEN
+			BEGIN
+				SELECT
+					@OPEN_X_COUNT = COUNT(1)
+				FROM
+					ALERT_RCPT_X_REVIEWER X WITH(NOLOCK)
+				WHERE
+					X.ALERT_ID = @ALERT_ID
+				;
+			END
+			-- APPROVE
+			BEGIN
+				SELECT
+					@APPROVE_X_COUNT = COUNT(1)
+				FROM
+					ALERT_RCPT_X_REVIEWER_DISMISSED X WITH(NOLOCK)
+				WHERE
+					X.ALERT_ID = @ALERT_ID
+					AND X.PROOFING_STATUS_ID = 1
+				;
+			END
+			-- REJECT
+			BEGIN
+				SELECT
+					@REJECT_X_COUNT = COUNT(1)
+				FROM
+					ALERT_RCPT_X_REVIEWER_DISMISSED X WITH(NOLOCK)
+				WHERE
+					X.ALERT_ID = @ALERT_ID
+					AND X.PROOFING_STATUS_ID = 2
+				;
+			END
+			-- DEFER
+			BEGIN
+				SELECT
+					@DEFER_X_COUNT = COUNT(1)
+				FROM
+					ALERT_RCPT_X_REVIEWER_DISMISSED X WITH(NOLOCK)
+				WHERE
+					X.ALERT_ID = @ALERT_ID
+					AND X.PROOFING_STATUS_ID = 3
+				;
+			END
+		END
+	END
+	--	CLEANUP
+	BEGIN
+		SELECT 
+			@CAN_COMPLETE = CAST(ISNULL(@CAN_COMPLETE, 0) AS BIT),
+			@IS_ROUTED = CAST(ISNULL(@IS_ROUTED, 0) AS BIT),
+			@OPEN_COUNT = CAST(ISNULL(@OPEN_COUNT, 0) AS INT),
+			@REJECT_COUNT = CAST(ISNULL(@REJECT_COUNT, 0) AS INT),
+			@DEFER_COUNT = CAST(ISNULL(@DEFER_COUNT, 0) AS INT),
+			@OPEN_X_COUNT = CAST(ISNULL(@OPEN_X_COUNT, 0) AS INT),
+			@REJECT_X_COUNT = CAST(ISNULL(@REJECT_X_COUNT, 0) AS INT),
+			@DEFER_X_COUNT = CAST(ISNULL(@DEFER_X_COUNT, 0) AS INT),
+			@IS_COMPLETE = CAST(ISNULL(@IS_COMPLETE, 0) AS BIT)
+		;
+	END
+	--	SET MESSAGES
+	BEGIN
+		IF ISNULL(@IS_COMPLETE, 0) = 1
+		BEGIN
+			SELECT @COMPLETE_MESSAGE = @COMPLETE_MESSAGE +	'Proof is already complete.'
+		END
+		ELSE
+		BEGIN
+			IF ISNULL(@OPEN_COUNT, 0) > 0
+			BEGIN
+				SELECT @COMPLETE_MESSAGE =  @COMPLETE_MESSAGE +	CASE
+																	WHEN @OPEN_COUNT = 1 THEN 'One reviewer has not reviewed.'
+																	WHEN @OPEN_COUNT > 1 THEN CAST(@OPEN_COUNT AS VARCHAR) + ' reviewers have not reviewed.'
+																END
+				;
+			END
+			IF ISNULL(@REJECT_COUNT, 0) > 0
+			BEGIN
+				IF DATALENGTH(@COMPLETE_MESSAGE) > 0
+				BEGIN
+					SELECT @COMPLETE_MESSAGE =  @COMPLETE_MESSAGE +	CASE
+																		WHEN @REJECT_COUNT = 1 THEN '  One reviewer has rejected.'
+																		WHEN @REJECT_COUNT > 1 THEN '  ' + CAST(@REJECT_COUNT AS VARCHAR) + ' reviewers have rejected.'
+																	END
+					;
+				END
+				ELSE
+				BEGIN
+					SELECT @COMPLETE_MESSAGE =  CASE
+													WHEN @REJECT_COUNT = 1 THEN 'One reviewer has rejected.'
+													WHEN @REJECT_COUNT > 1 THEN CAST(@REJECT_COUNT AS VARCHAR) + ' reviewers have rejected.'
+												END
+					;
+				END
+			END
+		END
+		IF ISNULL(@OPEN_X_COUNT, 0) > 0
+		BEGIN
+			IF DATALENGTH(@COMPLETE_MESSAGE) > 0
+			BEGIN
+				SELECT
+					@COMPLETE_MESSAGE = @COMPLETE_MESSAGE +	CASE
+																WHEN @OPEN_X_COUNT = 1 THEN '  One external reviewer has not reviewed.'
+																WHEN @OPEN_X_COUNT > 1 THEN '  ' + CAST(@OPEN_X_COUNT AS VARCHAR) + ' external reviewers have not reviewed.'
+															END
+				;
+			END
+			ELSE
+			BEGIN
+				SELECT
+					@COMPLETE_MESSAGE =	CASE
+											WHEN @OPEN_X_COUNT = 1 THEN 'One external reviewer has not reviewed.'
+											WHEN @OPEN_X_COUNT > 1 THEN CAST(@OPEN_X_COUNT AS VARCHAR) + ' external reviewers have not reviewed.'
+										END
+				;
+			END
+		END
+		IF ISNULL(@REJECT_X_COUNT, 0) > 0
+		BEGIN
+			IF DATALENGTH(@COMPLETE_MESSAGE) > 0
+			BEGIN
+				SELECT
+					@COMPLETE_MESSAGE = @COMPLETE_MESSAGE +	CASE
+																WHEN @REJECT_X_COUNT = 1 THEN '  One external reviewer has rejected.'
+																WHEN @REJECT_X_COUNT > 1 THEN '  ' + CAST(@REJECT_X_COUNT AS VARCHAR) + ' external reviewers have rejected.'
+															END
+				;
+			END
+			ELSE
+			BEGIN
+				SELECT
+					@COMPLETE_MESSAGE =	CASE
+											WHEN @REJECT_X_COUNT = 1 THEN 'One external reviewer has rejected.'
+											WHEN @REJECT_X_COUNT > 1 THEN CAST(@REJECT_X_COUNT AS VARCHAR) + ' external reviewers have rejected.'
+										END
+				;
+			END
+		END
+	END
+	--	OVERRIDE IF NOT PROOF TO BE SURE
+	BEGIN
+		IF @IS_PROOF IS NULL OR @IS_PROOF = 0
+		BEGIN
+			SELECT 
+				@CAN_COMPLETE = 1,
+				@COMPLETE_MESSAGE = ''
+			;
+		END
+	END
+	--	RETURN
+	BEGIN
+		SELECT 
+			[CanComplete] = ISNULL(@CAN_COMPLETE, 0),
+			[CompleteMessage] = @COMPLETE_MESSAGE,
+			[IsRouted] = ISNULL(@IS_ROUTED, 0),
+			[IsComplete] = ISNULL(@IS_COMPLETE, 0),
+			[OpenCount] = ISNULL(@OPEN_COUNT, 0),
+			[ApproveCount] = ISNULL(@APPROVE_COUNT, 0),
+			[RejectCount] = ISNULL(@REJECT_COUNT, 0),
+			[DeferCount] = ISNULL(@DEFER_COUNT, 0),
+			[ExternalOpenCount] = ISNULL(@OPEN_X_COUNT, 0),
+			[ExternalApproveCount] = ISNULL(@APPROVE_X_COUNT, 0),
+			[ExternalRejectCount] = ISNULL(@REJECT_X_COUNT, 0),
+			[ExternalDeferCount] = ISNULL(@DEFER_X_COUNT, 0)
+		;
+	END
+END
+/*=========== QUERY ===========*/

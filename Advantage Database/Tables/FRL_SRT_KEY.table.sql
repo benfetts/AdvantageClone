@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[FRL_SRT_KEY] (
+    [FRL_CODE]    VARCHAR (6)  NOT NULL,
+    [FRL_SRT_KEY] VARCHAR (20) NOT NULL
+);
+

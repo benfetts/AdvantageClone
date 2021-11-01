@@ -1,0 +1,34 @@
+@import '../../../../../../theme/colors';
+@import '../../../../../../theme/mixins/font';
+
+.versions {
+
+  &-block {
+    height: 80px;
+    border-bottom: 1px solid $border-color;
+    padding: 13px 10px;
+  }
+
+  &-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-label {
+    @include font-base(13px, normal, 8px);
+    color: $feedback-light-text !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    .icons {
+      img {
+        opacity: 0.5;
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+}

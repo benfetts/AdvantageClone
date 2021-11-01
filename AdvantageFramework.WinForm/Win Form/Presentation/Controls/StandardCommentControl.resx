@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RichEditControl_Comment.HtmlText" xml:space="preserve">
+    <value>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;&lt;title&gt;
+		&lt;/title&gt;
+		&lt;style type="text/css"&gt;
+			.cs95E872D0{text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt}
+			.cs1B16EEB5{color:#000000;background-color:transparent;font-family:Calibri;font-size:11pt;font-weight:normal;font-style:normal;}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p class="cs95E872D0"&gt;&lt;span class="cs1B16EEB5"&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;
+&lt;/html&gt;
+</value>
+  </data>
+  <data name="RichEditControl_Comment.MhtText" xml:space="preserve">
+    <value>MIME-Version: 1.0
+Content-Type: multipart/related;
+  type="text/html";
+  boundary="----=_NextPart_ff7a671c-7ae5-4b4f-8f3b-0f7597030363"
+
+This is a multi-part message in MIME format.
+------=_NextPart_ff7a671c-7ae5-4b4f-8f3b-0f7597030363
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+&lt;!DOCTYPE=20html=20PUBLIC=20"-//W3C//DTD=20XHTML=201.0=20Transitional//EN"=20"h=
+ttp://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;=0D=0A&lt;html=20xmlns=3D"=
+http://www.w3.org/1999/xhtml"&gt;=0D=0A=09&lt;head&gt;=0D=0A=09=09&lt;meta=20http-equiv=3D"=
+Content-Type"=20content=3D"text/html;=20charset=3Dutf-8"=20/&gt;&lt;title&gt;=0D=0A=09=
+=09&lt;/title&gt;=0D=0A=09=09&lt;style=20type=3D"text/css"&gt;=0D=0A=09=09=09.cs95E872D0{te=
+xt-align:left;text-indent:0pt;margin:0pt=200pt=200pt=200pt}=0D=0A=09=09=09.cs1B=
+16EEB5{color:#000000;background-color:transparent;font-family:Calibri;font-size=
+:11pt;font-weight:normal;font-style:normal;}=0D=0A=09=09&lt;/style&gt;=0D=0A=09&lt;/head=
+&gt;=0D=0A=09&lt;body&gt;=0D=0A=09=09&lt;p=20class=3D"cs95E872D0"&gt;&lt;span=20class=3D"cs1B16EE=
+B5"&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;=0D=0A&lt;/html&gt;=0D=0A
+
+
+------=_NextPart_ff7a671c-7ae5-4b4f-8f3b-0f7597030363--
+</value>
+  </data>
+  <data name="RichEditControl_Comment.RtfText" xml:space="preserve">
+    <value>{\rtf1\deff0{\fonttbl{\f0 Calibri;}}{\colortbl ;\red0\green0\blue255 ;}{\*\defchp \fs22}{\stylesheet {\ql\fs22 Normal;}{\*\cs1\fs22 Default Paragraph Font;}{\*\cs2\sbasedon1\fs22 Line Number;}{\*\cs3\ul\fs22\cf1 Hyperlink;}{\*\ts4\tsrowd\fs22\ql\tscellpaddfl3\tscellpaddl108\tscellpaddfb3\tscellpaddfr3\tscellpaddr108\tscellpaddft3\tsvertalt\cltxlrtb Normal Table;}{\*\ts5\tsrowd\sbasedon4\fs22\ql\trbrdrt\brdrs\brdrw10\trbrdrl\brdrs\brdrw10\trbrdrb\brdrs\brdrw10\trbrdrr\brdrs\brdrw10\trbrdrh\brdrs\brdrw10\trbrdrv\brdrs\brdrw10\tscellpaddfl3\tscellpaddl108\tscellpaddfb3\tscellpaddfr3\tscellpaddr108\tscellpaddft3\tsvertalt\cltxlrtb Table Simple 1;}}{\*\listoverridetable}{\info{\creatim\yr2018\mo11\dy5\hr12\min55}{\version1}}\nouicompat\splytwnine\htmautsp\sectd\pard\plain\ql\fs22\par{\*\themedata 
+504b03041400020008000000210201159325ae000000270100000b0000005f72656c732f2e72656c738d8f310ec2300c45af1279a76e1910424dbbb07460415c204a9d34a24da224457036068ec415c8d82206164b5ffe7efffbfd7cd5ed7d1ad98d4234
+ce72a88a121859e97a63358739a9cd1edaa63ed3285276c4c1f8c8f2898d1c8694fc0131ca8126110be7c9e68d72611229cba0d10b79159a705b963b0c4b06ac99aceb3984aeaf805d1e9efe613ba58ca4a393f34436fd88f87264b2089a12879499848b
+791236b70c454e00864d8dab779b0f504b0304140002000800000021027f624aeb730000007b0000001c0000007468656d652f7468656d652f7468656d654d616e616765722e786d6c0d8cc10d83300c005789fc2f4e7954554460820e61810991888392
+b465b73e3a5257a89fa7d3ddeff31da633ede6c5a5c62c1eae9d05c332e7254af0f06cebe50ed338906b1b277e9050e062b491eac8c3d6dae110ebac966a970f16756b2e899a6209b8147aeb2bedd85b7bc34451c0e0f807504b03041400020008000000
+21020a5d705ea60000000c010000270000007468656d652f7468656d652f5f72656c732f7468656d654d616e616765722e786d6c2e72656c738dcf3d0ec2300c05e0ab44dea95b068450d32e2c5d11178852278d687e94a408cec6c091b8021113951818
+9fecf7597e3d9e6d7fb333bb524cc63b0e4d55032327fd689ce6b064b5d943dfb5279a452e1b693221b1527189c39473382026399115a9f2815c99281fadc825468d41c88bd084dbbade61fc36606db261e41087b10176be07fac7f64a1949472f174b2e
+ff3881b974a980226aca1c3eb1a90a030cbb16573f756f504b0304140002000800000021020b868735b9050000e71b0000160000007468656d652f7468656d652f7468656d65312e786d6ced594f6fdb3614ff2a84eead2cdb4a9da06e113b76bbb56983
+c4ebd0232dd3121b4a14483aa96f437b1c30605837ec3260b71d866d055a608775d887c9d661eb807c853dd1b245d9549ab429b661f1c116a9dfeffde57b22e5e39f7eb97afd61ccd0011192f2a4ed78976b0e2249c0473409dbce448d2fb59cebd7aee2
+0d1591982000277203b79d48a974c3756500d3585ee62949e0de988b182b188ad01d097c084262e6d66bb53537c63471508263d276ee8ec734206890897416c27b0cbe1225b3898089bd406b34191a3bdaf7b21f39955d26d001666d07f48cf8e1803c54
+0e62582ab8d1766afae320f7da5577c162aa826c10fbfa3327e68cd17e5d1345385c30bd7e73fdca56a1a13ed3b00aecf57add9e5748d4081c04e0adb7026ef65b5e6721d540cd2e57a5776b7eadb9443034345608eb9d4ec75f2f131a05a1b94268d5d6
+9a9bf532a15910fc551f3a9bddee5a99e01784b51542ffcafa5a7389a05111a3c9fe0a3ccb6c91a20566ccd94d2bbe05f8d6622d1430d75869330189aa5a77317ec0451f003acb58d104a9694ac638005c17c74341b1d6803708366ee573815c9dcbd421
+19089aaab6f37e8aa1400accf18bef8e5f3c43c72f9e1e3d7a7ef4e8c7a3c78f8f1efd6063dec44968325f7df3e95f5f7d84fe7cf6f5ab279f5710a449f8edfb8f7ffdf9b30aa432912fbf78fafbf3a72fbffce48f6f9fd8f09b020f4dfc80c644a23be4
+10edf238f3cfa2820cc519298308d312054700b5217b2a2a21ef4c31b3023ba41cc37b02da82157963f2a064ef5e24268ada90b7a2b884dce69c75b8b0fb744bab337c9a2461857e313181bb181f58d57797b2dc9ba4b0b2a95568372225537718241e87
+24210a65f7f83e2136de7d4a4bf1dda681e0928f15ba4f5107537b600674a8ecac9b3486044dad3642d64b11dabe873a9c59156c918332142a0433ab50c24ad1bc81270ac776ab71cc4ce86dac22aba17b531194022f15243d248ca3de88486925dd15d3
+92c9b730b428fb0ad866d3b80c158aee5ba1b731e726748bef77231ca776bb691299e0f7e43eac588c76b8b2dbc1cb35938d212138a9cefc3d4ad4198bfd031a46f6c592dd99086b8d105eaed1291b6392cc1f00a5561ed3e4a4bece2834f68bbebed4d7
+37e16167ada7e56e5e09fc8ff6f02d3c4976485627172dfca2855fb4f0132afc5d34eea257bbe66e5dcb892bb7ee63cad89e9a32725bea2e2fc1c5511f26f5409316478534824b67a6ae840b05d6d74870f52155d15e845350e3690da1cc458712a55cc2
+09c5a994ad0fbc149cd673be3ea5ea4848acb6f96836dda8cde75d438c1e85d254d4c8049c5659e3cadb29f366c0536af37cbb36ff446dae114da81f84b31711de5a3d3fcecb003332cae23e13304fcbb9a748467844f21c795647bcc629c3d67a7dd40c
+6deb8db7d3769a2499ea9a15eafc73c8526d254bee6a39b2a43c428760955ff71d14e0b4ed8c61530697710af264d6ae300b93b613a8dc95d716f3b2c3f665e9d52a1d2ea94885545b58463396be95935852d85ff79b591ccec7014b373a9d158d96f70f
+5ae12ea7968cc724501533c530bfc7278a88bd687488866c227631d8dd9cadae1195f0aca8cf07022ab4992fbc72e5e755b0fcea28af0eccd208e73da965e47e06d7d70b1bf4c830cfadb0fd0d5d699ca32bfeffd7956ce5c286b731d22733d806088cb2
+35da76b85011872e944634e80bd838685d601782b2c84c422c7bff9dd94a0e8abe3593316b7261a476698804854ea72241c88ecafd7c8d30af6e3e5fe782f23eb33057a6b3df2139206c9055ef5ae6bf83a27937c903a171cb49736dd5350cfbffe29d4f
+b362e773f2f6a050d43ccb5ea469347de351b0fe76269cf1515bb77b5cf74ffda84de1c082b22f68dc5404acd8df0ef82e641f2d76940816e2a5565e7e8bc921d8dc329ccb44bddb6d5491825645becf73f36904bb5111ec93d5bd79b07d4bacfd9343ed
+ae96a86b1c64f468e5af313e7c00bab7e08034614ae62fa61ec2f1b43bff270304e5e7254dbef637504b030414000200080000002102e9278183ee00000010020000130000005b436f6e74656e745f54797065735d2e786d6cad914d4ec3301085af6279
+5bc54e5920849274012cf959708191334e2ce21fd993aa9c8d0547e20a4cd382102a48486c2cd9efcdfb66c66f2fafcd66e727b1c55c5c0cad5cab5a0a0c26f62e0cad9cc9561772d3358fcf098b606b28ad1c89d2a5d6c58ce8a1a89830b06263f6407c
+cd834e609e60407d56d7e7dac44018a8a27d86ec9a6bb4304f246e76fc7cc0669c8a145707e39ed54a486972068875bd0dfd374a752428ae5c3c6574a9acd820853e8958a41f091f85f7bc89ec7a140f90e90e3cdb34f198f8f55cabdfc34eb41bad7506
+fb6866cf256a8959fd097a0b81e7cdff833e867d76a097ffedde01504b010214001400020008000000210201159325ae000000270100000b00000000000000000000000000000000005f72656c732f2e72656c73504b0102140014000200080000002102
+7f624aeb730000007b0000001c00000000000000000000000000d70000007468656d652f7468656d652f7468656d654d616e616765722e786d6c504b01021400140002000800000021020a5d705ea60000000c0100002700000000000000000000000000
+840100007468656d652f7468656d652f5f72656c732f7468656d654d616e616765722e786d6c2e72656c73504b01021400140002000800000021020b868735b9050000e71b000016000000000000000000000000006f0200007468656d652f7468656d65
+2f7468656d65312e786d6c504b0102140014000200080000002102e9278183ee0000001002000013000000000000000000000000005c0800005b436f6e74656e745f54797065735d2e786d6c504b050600000000050005005d0100007b0900000000}{\*\colorschememapping 
+3c3f786d6c2076657273696f6e3d22312e302220656e636f64696e673d227574662d38223f3e3c613a636c724d617020786d6c6e733a613d22687474703a2f2f736368656d61732e6f70656e786d6c666f726d6174732e6f72672f64726177696e676d6c
+2f323030362f6d61696e22206267313d226c743122207478313d22646b3122206267323d226c743222207478323d22646b322220616363656e74313d22616363656e74312220616363656e74323d22616363656e74322220616363656e74333d22616363
+656e74332220616363656e74343d22616363656e74342220616363656e74353d22616363656e74352220616363656e74363d22616363656e74362220686c696e6b3d22686c696e6b2220666f6c486c696e6b3d22666f6c486c696e6b22202f3e}}</value>
+  </data>
+  <data name="RichEditControl_Comment.WordMLText" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;?mso-application progid="Word.Document"?&gt;&lt;w:wordDocument xml:space="preserve" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml"&gt;&lt;o:DocumentProperties&gt;&lt;o:Revision&gt;1&lt;/o:Revision&gt;&lt;o:Created&gt;2018-11-05T17:55:12Z&lt;/o:Created&gt;&lt;/o:DocumentProperties&gt;&lt;w:lists /&gt;&lt;w:styles&gt;&lt;w:style w:type="paragraph" w:styleId="P0" w:default="on"&gt;&lt;w:name w:val="Normal" /&gt;&lt;w:pPr /&gt;&lt;w:rPr /&gt;&lt;/w:style&gt;&lt;w:style w:type="character" w:styleId="C0" w:default="on"&gt;&lt;w:name w:val="Default Paragraph Font" /&gt;&lt;w:semiHidden /&gt;&lt;w:rPr /&gt;&lt;/w:style&gt;&lt;w:style w:type="character" w:styleId="C1"&gt;&lt;w:name w:val="Line Number" /&gt;&lt;w:basedOn w:val="C0" /&gt;&lt;w:semiHidden /&gt;&lt;w:rPr /&gt;&lt;/w:style&gt;&lt;w:style w:type="character" w:styleId="C2"&gt;&lt;w:name w:val="Hyperlink" /&gt;&lt;w:rPr&gt;&lt;w:color w:val="0000FF" /&gt;&lt;w:u w:val="single" /&gt;&lt;/w:rPr&gt;&lt;/w:style&gt;&lt;w:style w:type="table" w:styleId="T0" w:default="on"&gt;&lt;w:name w:val="Normal Table" /&gt;&lt;w:tblPr&gt;&lt;w:tblCellMar&gt;&lt;w:top w:w="0" w:type="dxa" /&gt;&lt;w:left w:w="108" w:type="dxa" /&gt;&lt;w:bottom w:w="0" w:type="dxa" /&gt;&lt;w:right w:w="108" w:type="dxa" /&gt;&lt;/w:tblCellMar&gt;&lt;/w:tblPr&gt;&lt;w:trPr /&gt;&lt;w:tcPr /&gt;&lt;/w:style&gt;&lt;w:style w:type="table" w:styleId="T1"&gt;&lt;w:name w:val="Table Simple 1" /&gt;&lt;w:basedOn w:val="T0" /&gt;&lt;w:tblPr&gt;&lt;w:tblBorders&gt;&lt;w:top w:val="single" w:sz="4" w:space="0" w:shadow="off" w:frame="off" w:color="000000" /&gt;&lt;w:left w:val="single" w:sz="4" w:space="0" w:shadow="off" w:frame="off" w:color="000000" /&gt;&lt;w:bottom w:val="single" w:sz="4" w:space="0" w:shadow="off" w:frame="off" w:color="000000" /&gt;&lt;w:right w:val="single" w:sz="4" w:space="0" w:shadow="off" w:frame="off" w:color="000000" /&gt;&lt;w:insideH w:val="single" w:sz="4" w:space="0" w:shadow="off" w:frame="off" w:color="000000" /&gt;&lt;w:insideV w:val="single" w:sz="4" w:space="0" w:shadow="off" w:frame="off" w:color="000000" /&gt;&lt;/w:tblBorders&gt;&lt;w:tblCellMar&gt;&lt;w:left w:w="108" w:type="dxa" /&gt;&lt;w:right w:w="108" w:type="dxa" /&gt;&lt;/w:tblCellMar&gt;&lt;/w:tblPr&gt;&lt;w:trPr /&gt;&lt;w:tcPr /&gt;&lt;/w:style&gt;&lt;/w:styles&gt;&lt;w:docPr&gt;&lt;w:view w:val="print" /&gt;&lt;w:displayBackgroundShape w:val="off" /&gt;&lt;w:defaultTabStop w:val="720" /&gt;&lt;w:autoHyphenation w:val="off" /&gt;&lt;w:evenAndOddHeaders w:val="off" /&gt;&lt;w:clrSchemeMapping w:bg1="light1" w:t1="dark1" w:bg2="light2" w:t2="dark2" w:accent1="accent1" w:accent2="accent2" w:accent3="accent3" w:accent4="accent4" w:accent5="accent5" w:accent6="accent6" w:hyperlink="hyperlink" w:followedHyperlink="followedHyperlink" /&gt;&lt;/w:docPr&gt;&lt;w:body&gt;&lt;wx:sect xmlns:wx="http://schemas.microsoft.com/office/word/2003/auxHint"&gt;&lt;w:p /&gt;&lt;w:sectPr&gt;&lt;w:type w:val="next-page" /&gt;&lt;w:pgMar w:left="1700" w:right="850" w:top="1133" w:bottom="1133" w:header="708" w:footer="708" w:gutter="0" /&gt;&lt;/w:sectPr&gt;&lt;/wx:sect&gt;&lt;/w:body&gt;&lt;/w:wordDocument&gt;</value>
+  </data>
+</root>

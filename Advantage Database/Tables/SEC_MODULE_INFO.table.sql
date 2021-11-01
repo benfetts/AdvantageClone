@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[SEC_MODULE_INFO] (
+    [SEC_MODULE_INFO_ID]     INT            IDENTITY (1, 1) NOT NULL,
+    [IMAGENAME]              VARCHAR (100)  NOT NULL,
+    [SORT_ORDER]             INT            NOT NULL,
+    [CUSTOM_PERMISSION]      BIT            NOT NULL,
+    [WV_URL]                 VARCHAR (100)  NOT NULL,
+    [WV_IMAGEPATHACTIVE]     VARCHAR (100)  NOT NULL,
+    [WV_IMAGEPATH]           VARCHAR (100)  NOT NULL,
+    [WV_IMAGEPATHLARGE]      VARCHAR (50)   NOT NULL,
+    [PB_APPNAME]             VARCHAR (100)  NOT NULL,
+    [PB_MENU]                VARCHAR (100)  NOT NULL,
+    [PB_NAME]                VARCHAR (10)   NOT NULL,
+    [PB_COMMAND_STRING]      VARCHAR (128)  NOT NULL,
+    [PB_ICON]                INT            NOT NULL,
+    [PB_ALLOW_MULTI]         INT            NOT NULL,
+    [WV_DO_NAME]             VARCHAR (50)   NOT NULL,
+    [WV_DO_DSIZE]            INT            NOT NULL,
+    [WV_RPT_URL]             VARCHAR (50)   NOT NULL,
+    [WV_RPT_IMAGEPATHACTIVE] VARCHAR (50)   NOT NULL,
+    [WV_RPT_IMAGEPATH]       VARCHAR (50)   NOT NULL,
+    [WV_RPT_IMAGEPATHLARGE]  VARCHAR (50)   NOT NULL,
+    [WV_RPT_DESCRIPTION]     VARCHAR (2000) NOT NULL,
+    [WV_RPT_PREVIEWLOCATION] VARCHAR (255)  NOT NULL,
+    [WV_RPT_LOCKED]          BIT            NOT NULL
+);
+

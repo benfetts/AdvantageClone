@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[JOB_SERVICE_FEE] (
+	[JOB_SERVICE_FEE_ID] [int] IDENTITY(1,1),
+    [JOB_NUMBER]        INT             NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT        NOT NULL,
+    [FEE_DESCRIPTION]   VARCHAR (100)   NULL,
+    [FEE_SETUP_DATE]    SMALLDATETIME   NULL,
+    [FEE_START_DATE]    SMALLDATETIME   NULL,
+    [FEE_END_DATE]      SMALLDATETIME   NULL,
+    [FREQUENCY]         SMALLINT        NULL,
+    [NUMBER_OF_FEES]    INT             NULL,
+    [FEE_TYPE]          SMALLINT        NULL,
+    [MEDIA]             SMALLINT        NULL,
+    [PRODUCTION]        SMALLINT        NULL,
+    [EMP_TIME]          SMALLINT        NULL,
+    [FNC_CODE]          VARCHAR (6)     NULL,
+	[FEE_QTY]           DECIMAL (14, 2) NULL,
+	[FEE_RATE]          DECIMAL (12, 4) NULL,
+    [FEE_AMT]           DECIMAL (14, 2) NULL,
+    [MAX_AMT]           DECIMAL (14, 2) NULL,
+    [CONTACT_INFO]      TEXT            NULL,
+    [CLIENT_COMMENT]    TEXT            NULL,
+    [CREATE_DATE]       SMALLDATETIME   NULL,
+    [CREATED_BY]        VARCHAR (100)   NULL,
+    [MODIFY_DATE]       SMALLDATETIME   NULL,
+    [MODIFIED_BY]       VARCHAR (100)   NULL
+);
+

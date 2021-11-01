@@ -1,0 +1,266 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid-toolbar"></require>
+    <require from="resources/elements/switch/switch"></require>
+
+    <div class="wv-k-grid wv-k-grid-full" style="padding-top: 5px;">
+
+        <h4>General</h4>
+        <div class="code-description-container">
+
+            <div class="code-description-label">
+                Days to display:
+            </div>
+            <div class="code-description-description">
+                <ak-drop-down-list k-widget.bind="ddlDaysToDisplay"
+                                   k-data-text-field="Description"
+                                   k-data-value-field="Value"
+                                   k-data-source.bind="daysToDisplayList"
+                                   k-on-open.delegate="adjustDropDownWidth($event.detail)"
+                                   k-min-length.bind="1"
+                                   k-option-label="[Please Select]"
+                                   k-value-primitive.bind="true"
+                                   k-value.two-way="model.DaysToDisplay"
+                                   style="width: 100px;">
+                </ak-drop-down-list>
+                
+            </div>
+        </div>
+        <div id="DivStartWeekOn" class="code-description-container">
+            <div class="code-description-label">
+                Start Week on:
+            </div>
+            <div class="code-description-description">
+                <ak-drop-down-list k-widget.bind="ddlStartWeekOn"
+                                   k-data-text-field="Description"
+                                   k-data-value-field="Value"
+                                   k-data-source.bind="startWeekOnList"
+                                   k-on-open.delegate="adjustDropDownWidth($event.detail)"
+                                   k-min-length.bind="1"
+                                   k-option-label="[Please Select]"
+                                   k-value-primitive.bind="true"
+                                   k-value.two-way="model.StartTimesheetOnDayOfWeek"
+                                   style="width: 150px;">
+                </ak-drop-down-list>
+            </div>
+        </div>
+        <div class="code-description-container">
+            <div class="code-description-label">
+                Show comments:
+            </div>
+            <div class="code-description-description">
+                <ak-drop-down-list k-widget.bind="ddlShowComments"
+                                   k-data-text-field="Description"
+                                   k-data-value-field="Value"
+                                   k-data-source.bind="showCommentsList"
+                                   k-on-open.delegate="adjustDropDownWidth($event.detail)"
+                                   k-min-length.bind="1"
+                                   k-option-label="[Please Select]"
+                                   k-value-primitive.bind="true"
+                                   k-value.two-way="model.ShowCommentsUsing"
+                                   style="width: 150px;">
+                </ak-drop-down-list>
+
+            </div>
+        </div>
+
+        <div class="code-description-container" id="TrDisablePagingOnMainGrid" >
+            <div class="code-description-label">
+
+            </div>
+            <div class="code-description-description">
+                <input type='checkbox' title="Disable paging on main grid" id='CheckBoxDisablePagingOnMainGrid' class='k-checkbox' checked.bind="model.DisablePagingOnMainGrid" change.delegate="save()">
+                <label class='k-checkbox-label' for='CheckBoxDisablePagingOnMainGrid'></label>
+            </div>
+        </div>
+        <div class="code-description-container" id="TrRepeatRowForAllDays" >
+            <div class="code-description-label">
+
+            </div>
+            <div class="code-description-description">
+                <input type='checkbox' title="Repeat row for all days" id='CheckBoxRepeatRowForAllDays' class='k-checkbox' checked.bind="model.RepeatRowForAllDays" change.delegate="save()">
+                <label class='k-checkbox-label' for='CheckBoxRepeatRowForAllDays'></label>
+
+            </div>
+        </div>
+        <div class="code-description-container" id="TrOnlyShowMyProgress" >
+            <div class="code-description-label">
+                Progress bar:
+            </div>
+            <div class="code-description-description">
+                <asp:CheckBox ID="CheckBoxOnlyShowMyProgress" AutoPostBack="true" Text="Only show my hours" />
+
+                <input type='checkbox' title="Only show my hours" id='CheckBoxOnlyShowMyProgress' class='k-checkbox' checked.bind="model.OnlyShowMyProgress" change.delegate="save()">
+                <label class='k-checkbox-label' for='CheckBoxOnlyShowMyProgress'></label>
+
+            </div>
+        </div>
+
+        <h4>Labels</h4>
+        <div class="code-description-container">
+            <div class="code-description-label">
+                Division:
+            </div>
+            <div class="code-description-description">
+                
+                <input id="TextBoxDivisionLabel" type="text" maxlength.bind="30" value.two-way="model.Labels.Division" />
+
+            </div>
+        </div>
+        <div class="code-description-container">
+            <div class="code-description-label">
+                Product:
+            </div>
+            <div class="code-description-description">
+                <input id="TextBoxProductLabel" type="text" maxlength.bind="30" value.two-way="model.Labels.Product" />
+            </div>
+        </div>
+        <div class="code-description-container">
+            <div class="code-description-label">
+                Product Category:
+            </div>
+            <div class="code-description-description">
+                <input id="TextBoxProductCategoryLabel" type="text" maxlength.bind="30" value.two-way="model.Labels.ProdCat" />
+            </div>
+        </div>
+        <div class="code-description-container">
+            <div class="code-description-label">
+                Job:
+            </div>
+            <div class="code-description-description">
+                <input id="TextBoxJobLabel" type="text" maxlength.bind="30" value.two-way="model.Labels.Job" />
+            </div>
+        </div>
+        <div class="code-description-container">
+            <div class="code-description-label">
+                Component:
+            </div>
+            <div class="code-description-description">
+                <input id="TextBoxComponentLabel" type="text" maxlength.bind="30" value.two-way="model.Labels.JobComponent" />
+            </div>
+        </div>
+        <div class="code-description-container">
+            <div class="code-description-label">
+                Function/Category:
+            </div>
+            <div class="code-description-description">
+                <input id="TextBoxFunctionCategoryLabel" type="text" maxlength.bind="30" value.two-way="model.Labels.FuncCat" />
+            </div>
+        </div>
+        <div class="code-description-container">
+            <input id="ButtonSaveLabels" type="button" onclick.delegate="saveLabels()" title="Save Labels" />
+        </div>
+        <div id="TableAgencyOptions" >
+            <h4>Time Entry Options</h4>
+            <div id="FieldsetStopwatchOptions" >
+                <div>Stopwatch*</div>
+                <table width="786" border="0" cellspacing="2" cellpadding="0">
+                    <tr>
+                        <td>
+                            Minimum Time (in minutes)
+                            <telerik:RadComboBox ID="RadComboBoxStopwatchMinimumTime" Width="65">
+                                <Items>
+                                    <telerik:RadComboBoxItem Text="2 *" Value="2" />
+                                    <telerik:RadComboBoxItem Text="10" Value="10" />
+                                    <telerik:RadComboBoxItem Text="15" Value="15" />
+                                    <telerik:RadComboBoxItem Text="30" Value="30" />
+                                    <telerik:RadComboBoxItem Text="60" Value="60" />
+                                </Items>
+                            </telerik:RadComboBox>
+                            <ak-drop-down-list k-widget.bind="ddlStopwatchMinimumTime"
+                                               k-data-text-field="Description"
+                                               k-data-value-field="Value"
+                                               k-data-source.bind="stopwatchMinimumTimeList"
+                                               k-on-open.delegate="adjustDropDownWidth($event.detail)"
+                                               k-min-length.bind="1"
+                                               k-option-label="[Please Select]"
+                                               k-value-primitive.bind="true"
+                                               k-value.two-way="model.ShowCommentsUsing"
+                                               style="width: 150px;">
+                            </ak-drop-down-list>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Round up to next&nbsp;
+                            <telerik:RadComboBox ID="RadComboBoxStopwatchRoundToNextIncrement"  Width="65">
+                                <Items>
+                                    <telerik:RadComboBoxItem Text="0" Value="0" />
+                                    <telerik:RadComboBoxItem Text="10" Value="10" />
+                                    <telerik:RadComboBoxItem Text="15" Value="15" />
+                                    <telerik:RadComboBoxItem Text="30" Value="30" />
+                                    <telerik:RadComboBoxItem Text="60" Value="60" />
+                                </Items>
+                            </telerik:RadComboBox>
+                            &nbsp;minute increment
+                            <br />
+                            <br />
+                            <span style="font-style: italic;">* Stopwatch must run for approximately 1.8 minutes before any time is recorded.</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <fieldset id="FieldsetTimeEntryOptions" >
+                <legend>All Time Entry</legend>
+                <table width="800" border="0" cellspacing="2" cellpadding="0">
+                    <tr>
+                        <td>
+                            Minimum Time (in minutes)
+                            <telerik:RadComboBox ID="RadComboBoxAllTimeEntryMinimumTime"  Width="65">
+                                <Items>
+                                    <telerik:RadComboBoxItem Text="0" Value="0" />
+                                    <telerik:RadComboBoxItem Text="5" Value="5" />
+                                    <telerik:RadComboBoxItem Text="10" Value="10" />
+                                    <telerik:RadComboBoxItem Text="15" Value="15" />
+                                    <telerik:RadComboBoxItem Text="30" Value="30" />
+                                    <telerik:RadComboBoxItem Text="60" Value="60" />
+                                </Items>
+                            </telerik:RadComboBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Round up to next&nbsp;
+                            <telerik:RadComboBox ID="RadComboBoxAllTimeEntryRoundToNextIncrement"  Width="65">
+                                <Items>
+                                    <telerik:RadComboBoxItem Text="0" Value="0" />
+                                    <telerik:RadComboBoxItem Text="5" Value="5" />
+                                    <telerik:RadComboBoxItem Text="10" Value="10" />
+                                    <telerik:RadComboBoxItem Text="15" Value="15" />
+                                    <telerik:RadComboBoxItem Text="30" Value="30" />
+                                    <telerik:RadComboBoxItem Text="60" Value="60" />
+                                </Items>
+                            </telerik:RadComboBox>
+                            &nbsp;minute increment
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:CheckBox ID="CheckBoxCommentsRequiredWhenSubmittingForApproval"  Text="Require comments before submitting for approval" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:CheckBox ID="CheckBoxRequireTimeEntryByAssignment"  Text="Require Time Entry by Assignment" />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <div class="bottom-buttons">
+                <asp:Button ID="ButtonSaveTimeEntryOptions"  Text="Save Time Entry Options" />
+            </div>
+        </div>
+    </div>
+</template>

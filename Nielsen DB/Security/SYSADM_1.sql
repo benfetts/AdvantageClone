@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [SYSADM]
+    WITH PASSWORD = N'~|m{jxhv,tNitmnl+az|l,e@msFT7_&#$!~<qxQijtL}m{sp', SID = 0xE61C330B991838468E84CCAA375F4321, DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

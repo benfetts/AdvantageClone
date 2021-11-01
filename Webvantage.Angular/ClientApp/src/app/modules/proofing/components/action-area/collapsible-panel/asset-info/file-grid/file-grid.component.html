@@ -1,0 +1,27 @@
+<kendo-grid [data]="columnsAsset" scrollable="none">
+  <kendo-grid-column-group title="File">
+    <kendo-grid-column class="column" [width]="leftColumnWidth">
+      <ng-template kendoGridCellTemplate let-columnsAsset let-rowIndex="rowIndex">
+        {{columnsAsset.title}}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column class="column" [width]="rightColumnWidth">
+      <ng-template kendoGridCellTemplate let-columnsAsset let-rowIndex="rowIndex">
+        <ng-container *ngIf="renderColumn(columnsAsset.title); then renderBlock else textBlock"></ng-container>
+        <ng-template #renderBlock>
+          <ng-container [ngSwitch]="columnsAsset.title">
+            <ng-container *ngSwitchCase="'File Name'">
+              <p>{{assetInfo[columnsAsset.name]}}</p>
+            </ng-container>
+            <ng-container *ngSwitchCase="'File Size'">
+              <p>{{assetInfo[columnsAsset.name] | FileSize}}</p>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+        <ng-template #textBlock>
+          {{assetInfo[columnsAsset.name]}}
+        </ng-template>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid-column-group>
+</kendo-grid>

@@ -1,0 +1,145 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_ALERTUpdate]
+(
+	@ALERT_ID int,
+	@ALERT_TYPE_ID int,
+	@ALERT_CAT_ID int,
+	@SUBJECT varchar(254) = NULL,
+	@BODY text = NULL,
+	@GENERATED smalldatetime = NULL,
+	@PRIORITY smallint = NULL,
+	@CL_CODE varchar(6) = NULL,
+	@DIV_CODE varchar(6) = NULL,
+	@PRD_CODE varchar(6) = NULL,
+	@CMP_CODE varchar(6) = NULL,
+	@JOB_NUMBER int = NULL,
+	@JOB_COMPONENT_NBR smallint = NULL,
+	@ESTIMATE_NUMBER int = NULL,
+	@EST_COMPONENT_NBR smallint = NULL,
+	@EST_QUOTE_NBR smallint = NULL,
+	@ESTIMATE_REV_NBR smallint = NULL,
+	@VN_CODE varchar(6) = NULL,
+	@EMP_CODE varchar(100) = NULL,
+	@PO_NUMBER int = NULL,
+	@PO_REVISION smallint = NULL,
+	@ORDER_NBR int = NULL,
+	@REV_NBR smallint = NULL,
+	@ALERT_USER varchar(100) = NULL,
+	@TEMP_PDF_PATH varchar(254) = NULL,
+	@ALERT_LEVEL varchar(50) = NULL,
+	@CMP_IDENTIFIER int = NULL,
+	@OFFICE_CODE varchar(4) = NULL,
+	@BODY_HTML text = NULL,
+	@CP_ALERT smallint = NULL,
+	@BA_BATCH_ID integer = NULL,
+	@TASK_SEQ_NBR smallint = NULL,
+	@DUE_DATE smalldatetime = NULL,
+	@TIME_DUE VARCHAR(10) = NULL,
+	@ALERT_STATE_ID integer = NULL,
+
+
+	@ALRT_NOTIFY_HDR_ID integer = NULL,
+	@VER VARCHAR(10) = NULL,
+	@BUILD VARCHAR(10) = NULL,
+	@ALERT_SEQ_NBR integer = NULL,
+	@SENT SMALLDATETIME = NULL,
+	@ALERT_USER_CP int = NULL
+
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [ALERT] WITH(ROWLOCK)
+	SET
+		[ALERT_TYPE_ID] = @ALERT_TYPE_ID,
+		[ALERT_CAT_ID] = @ALERT_CAT_ID,
+		[SUBJECT] = @SUBJECT,
+		[BODY] = @BODY,
+		[GENERATED] = @GENERATED,
+		[PRIORITY] = @PRIORITY,
+		[CL_CODE] = @CL_CODE,
+		[DIV_CODE] = @DIV_CODE,
+		[PRD_CODE] = @PRD_CODE,
+		[CMP_CODE] = @CMP_CODE,
+		[JOB_NUMBER] = @JOB_NUMBER,
+		[JOB_COMPONENT_NBR] = @JOB_COMPONENT_NBR,
+		[ESTIMATE_NUMBER] = @ESTIMATE_NUMBER,
+		[EST_COMPONENT_NBR] = @EST_COMPONENT_NBR,
+		[EST_QUOTE_NBR] = @EST_QUOTE_NBR,
+		[ESTIMATE_REV_NBR] = @ESTIMATE_REV_NBR,
+		[VN_CODE] = @VN_CODE,
+		[EMP_CODE] = @EMP_CODE,
+		[PO_NUMBER] = @PO_NUMBER,
+		[PO_REVISION] = @PO_REVISION,
+		[ORDER_NBR] = @ORDER_NBR,
+		[REV_NBR] = @REV_NBR,
+		[ALERT_USER] = @ALERT_USER,
+		[TEMP_PDF_PATH] = @TEMP_PDF_PATH,
+		[ALERT_LEVEL] = @ALERT_LEVEL,
+		[CMP_IDENTIFIER] = @CMP_IDENTIFIER,
+		[OFFICE_CODE] = @OFFICE_CODE,
+		[BODY_HTML] = @BODY_HTML,
+		[CP_ALERT] = @CP_ALERT,
+		[BA_BATCH_ID] = @BA_BATCH_ID,
+		[TASK_SEQ_NBR] = @TASK_SEQ_NBR,
+		[DUE_DATE] = @DUE_DATE,
+		[TIME_DUE] = @TIME_DUE,
+		[ALERT_STATE_ID] = @ALERT_STATE_ID,
+		[ALRT_NOTIFY_HDR_ID] = @ALRT_NOTIFY_HDR_ID,
+		[VER] = @VER,
+		[BUILD] = @BUILD,
+		[ALERT_SEQ_NBR] = @ALERT_SEQ_NBR,
+		[SENT] = @SENT,
+		[ALERT_USER_CP] = @ALERT_USER_CP
+	WHERE
+		[ALERT_ID] = @ALERT_ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

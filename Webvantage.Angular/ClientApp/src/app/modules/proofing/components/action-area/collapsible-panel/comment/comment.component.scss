@@ -1,0 +1,62 @@
+#mentionItem.k-header {
+  background-color: white !important;
+  visibility: hidden;
+}
+
+.k-dropdown .k-dropdown-wrap {
+  background: white !important;
+  border: none !important;
+}
+
+markup-comment > div > div > div > div > table > tbody > tr > td.k-editable-area,
+markup-comment-reply > div > div > div > div > table > tbody > tr > td.k-editable-area {
+  height: 30px !important;
+}
+
+markup-comment > div > div > div > div > table.k-editor,
+markup-comment-reply > div > div > div > div > table.k-editor {
+  border: 1px solid #767676 !important;
+  border-radius: 4px;
+}
+
+markup-comment > div > div > div > div#editorDiv,
+markup-comment-reply > div > div > div > div#editorDiv {
+  margin-bottom: 5px;
+  width: 87% !important;
+}
+
+k-placeholder ::before {
+  font-style: italic !important;
+  color: #888 !important;
+}
+
+.mention-dropdown-hide {
+  display: none;
+}
+
+.mention-dropdown-show {
+  display: normal;
+}
+
+.k-list {
+  white-space: nowrap;
+}
+
+.comment-content .comment-header {
+    color: #2196f3;
+    font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 100;
+    display: flex;
+}
+
+.mention-name {
+  background-color: #E8F5FA;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.active {
+  border: 1px solid #808080;
+}
+

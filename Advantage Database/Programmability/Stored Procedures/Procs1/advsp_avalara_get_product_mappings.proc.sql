@@ -1,0 +1,19 @@
+CREATE PROCEDURE [dbo].[advsp_avalara_get_product_mappings]
+	
+AS
+
+BEGIN
+
+	SELECT	[ID] = APM.AVALARA_PRODUCT_MAPPING_ID,
+			[SalesClassCode] = APM.SC_CODE,
+			[SalesClassDescription] = SC.SC_DESCRIPTION,
+			[FunctionCode] = APM.FNC_CODE,
+			[FunctionDescription] = F.FNC_DESCRIPTION,
+			[AvalaraTaxID] = APM.AVALARA_TAX_ID,
+			[AvalaraTaxDescription] = A.[DESCRIPTION]
+	FROM	dbo.AVALARA_PRODUCT_MAPPING APM
+		INNER JOIN dbo.AVALARA_TAX A ON APM.AVALARA_TAX_ID = A.AVALARA_TAX_ID 
+		INNER JOIN dbo.FUNCTIONS F ON APM.FNC_CODE = F.FNC_CODE
+		LEFT OUTER JOIN dbo.SALES_CLASS SC ON APM.SC_CODE = SC.SC_CODE
+END
+GO

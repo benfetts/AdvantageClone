@@ -1,0 +1,76 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_BA_BILL_APPR_AUTOSAVE_SINGLE_CL] /*WITH ENCRYPTION*/
+	@BA_BATCH_ID  INT,
+	@USER_CODE    VARCHAR(100)
+AS
+/*=========== QUERY ===========*/
+	DECLARE @CLIENT_COUNT    INT,
+			@CL_CODE         VARCHAR(6),
+			@CL_DESC         VARCHAR(50),
+			@ALREADY_EXISTS  TINYINT,
+			@TODAY           SMALLDATETIME,
+			@NEW_BA_ID       INT
+        
+	SET @TODAY = GETDATE();       
+	
+	CREATE TABLE #SPROC_DATA
+	(
+		CL_CODE        VARCHAR(6),
+		CL_NAME        VARCHAR(40),
+		code           VARCHAR(6),
+		[description]  VARCHAR(40),
+	)	
+	CREATE TABLE #NEW_BA_ID
+	(
+		BA_ID INT
+	)
+	INSERT INTO #SPROC_DATA
+	  (
+		CL_CODE,
+		CL_NAME,
+		code,
+		[description]
+	  )
+	EXEC usp_wv_dd_Batch_GetClientsByBatchID @BA_BATCH_ID;
+
+	SELECT @CLIENT_COUNT = ISNULL(COUNT(1), 0)
+	FROM   #SPROC_DATA;
+
+	IF @CLIENT_COUNT = 1 -- IF ONLY ONE CLIENT
+	BEGIN
+		SELECT @CL_CODE = CL_CODE,
+			   @CL_DESC = CL_NAME
+		FROM   #SPROC_DATA;
+    
+		SELECT @ALREADY_EXISTS = COUNT(1)
+		FROM   BILL_APPR
+		WHERE  BA_BATCH_ID = @BA_BATCH_ID
+			   AND BA_ID IN (SELECT DISTINCT BA_ID
+							 FROM   BILL_APPR_CL
+							 WHERE  CL_CODE = @CL_CODE);
+		IF @ALREADY_EXISTS = 0 --AND CLIENT ISN'T ALREADY IN THE BILL_APPR TABLE FOR THIS BATCH
+		BEGIN
+			INSERT INTO #NEW_BA_ID
+			  (
+				BA_ID
+			  )
+			EXEC usp_wv_BA_APPROVAL_INSERT 
+				 @BA_BATCH_ID,
+				 @USER_CODE,
+				 @CL_CODE,
+				 @CL_DESC,
+				 @TODAY,
+				 NULL,
+				 NULL,
+				 NULL,
+				 NULL
+		END
+	END
+
+	SELECT @NEW_BA_ID = BA_ID
+	FROM   #NEW_BA_ID;
+
+	SELECT ISNULL(@NEW_BA_ID, -1)
+	DROP TABLE #NEW_BA_ID;
+	DROP TABLE #SPROC_DATA;
+/*=========== QUERY ===========*/

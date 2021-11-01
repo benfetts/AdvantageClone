@@ -1,0 +1,230 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+
+    <!--<style>
+
+        .search-wrapper.search-wrapper-expanded {
+            width: 500px;
+        }
+
+        .search-wrapper {
+            width: 200px;
+            -webkit-transition: width 1s ease-in-out;
+            -moz-transition: width 1s ease-in-out;
+            transition: width 1s ease-in-out;
+        }
+    </style>-->
+
+    <ux-dialog class="add-new-dlg">
+        <ux-dialog-header>
+            New Project Schedule
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <form class="form-horizontal" submit.delegate="submit($event)" ak-validator="k-widget.two-way: validator">
+                <!-- Client-->
+                <div class="wv-form-spacing">
+                    <label>Client</label>
+                    <ak-multiselect k-widget.bind="clientMultiSelect"
+                                    k-filter="contains"
+                                    k-placeholder="Client"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="clientDataSource"
+                                    k-on-change.delegate="clientMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="clientCode">
+                    </ak-multiselect>
+                </div>
+
+                <!-- Division-->
+                <div class="wv-form-spacing">
+                    <label>Division</label>
+                    <ak-multiselect k-placeholder="Division"
+                                    k-filter="contains"
+                                    k-widget.bind="divisionMultiSelect"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="divisionDataSource"
+                                    k-on-change.delegate="divisionMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="divisionCode">
+                    </ak-multiselect>
+                </div>
+                <!-- Product -->
+                <div class="wv-form-spacing">
+                    <label>Product</label>
+                    <ak-multiselect k-widget.bind="productMultiSelect"
+                                    k-filter="contains"
+                                    k-placeholder="Product"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="productDataSource"
+                                    k-on-change.delegate="productMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="productCode">
+                    </ak-multiselect>
+                </div>
+
+                <div class="wv-form-spacing">
+                    <label>Job</label>
+                    <ak-multiselect k-placeholder="Job"
+                                    k-filter="contains"
+                                    k-widget.bind="jobMultiSelect"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="jobDataSource"
+                                    k-on-change.delegate="jobMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="jobCode"></ak-multiselect>
+                </div>
+                <div class="wv-form-spacing">
+                    <label>Component</label>
+                    <ak-multiselect k-placeholder="Component"
+                                    k-filter="contains"
+                                    k-widget.bind="componentMultiSelect"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="componentDataSource"
+                                    k-on-change.delegate="componentMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="componentCode"></ak-multiselect>
+                </div>
+                <div class="wv-form-spacing">
+                    <label>Traffic Status</label>
+                    <ak-multiselect k-placeholder="Traffic Status"
+                                    k-filter="contains"
+                                    k-widget.bind="statusMultiSelect"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="statusDataSource"
+                                    k-on-change.delegate="statusMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="statusCode"></ak-multiselect>
+                </div>
+                <div class="wv-form-spacing">
+                    <label>Project Manager</label>
+                    <ak-multiselect k-placeholder="Project Manager"
+                                    k-filter="contains"
+                                    k-widget.bind="projectManagerMultiSelect"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="projectManagerDataSource"
+                                    k-on-change.delegate="projectManagerMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="projectManagerCode"></ak-multiselect>
+                </div>
+                <h6 if.bind="true">
+                    Copy From Existing Schedule?
+                    <button class="btn btn-link" type="button" aubs-btn-checkbox="state.bind: collapsed">
+                        <span class="k-icon k-i-arrow-60-down"></span>
+                    </button>
+                </h6>
+                <div class="advanced-search wv-form-spacing" aubs-collapse="collapsed.bind: collapsed">
+                    <div class="wv-form-spacing">
+                        <label>Client</label>
+                        <ak-multiselect k-widget.bind="clientMultiSelectCopy"
+                                        k-filter="contains"
+                                        k-placeholder="Client"
+                                        k-data-text-field="Name"
+                                        k-data-value-field="Code"
+                                        k-auto-bind.bind="false"
+                                        k-data-source.bind="clientDataSourceCopy"
+                                        k-on-change.delegate="clientMultiSelectCopy_OnChange($event.detail)"
+                                        k-max-selected-items.bind="1"
+                                        k-value.two-way="clientCodeCopy">
+                        </ak-multiselect>
+                    </div>
+
+                    <!-- Division-->
+                    <div class="wv-form-spacing">
+                        <label>Division</label>
+                        <ak-multiselect k-placeholder="Division"
+                                        k-filter="contains"
+                                        k-widget.bind="divisionMultiSelectCopy"
+                                        k-data-text-field="Name"
+                                        k-data-value-field="Code"
+                                        k-auto-bind.bind="false"
+                                        k-data-source.bind="divisionDataSourceCopy"
+                                        k-on-change.delegate="divisionMultiSelectCopy_OnChange($event.detail)"
+                                        k-max-selected-items.bind="1"
+                                        k-value.two-way="divisionCodeCopy">
+                        </ak-multiselect>
+                    </div>
+                    <!-- Product -->
+                    <div class="wv-form-spacing">
+                        <label>Product</label>
+                        <ak-multiselect k-widget.bind="productMultiSelectCopy"
+                                        k-filter="contains"
+                                        k-placeholder="Product"
+                                        k-data-text-field="Name"
+                                        k-data-value-field="Code"
+                                        k-auto-bind.bind="false"
+                                        k-data-source.bind="productDataSourceCopy"
+                                        k-on-change.delegate="productMultiSelectCopy_OnChange($event.detail)"
+                                        k-max-selected-items.bind="1"
+                                        k-value.two-way="productCodeCopy">
+                        </ak-multiselect>
+                    </div>
+
+                    <div class="wv-form-spacing">
+                        <label>Job</label>
+                        <input class="form-control" />
+                    </div>
+                    <div class="wv-form-spacing">
+                        <label>Component</label>
+                        <input class="form-control" />
+                    </div>
+
+                    <input class="k-checkbox" type="checkbox" id="PSCopyShowClosed" checked.bind="ShowClosed">
+                    <label class="k-checkbox-label" for="PSCopyShowClosed">
+                        Show Closed/Archived Jobs?
+                    </label>
+                    <input class="k-checkbox" type="checkbox" id="StartDate" checked.bind="IncludeStartDate">
+                    <label class="k-checkbox-label" for="StartDate">
+                        Include Start Date
+                    </label>
+                    <input class="k-checkbox" type="checkbox" id="DueDate" checked.bind="IncludeDueDate">
+                    <label class="k-checkbox-label" for="DueDate">
+                        Include Due Date
+                    </label>
+                    <input class="k-checkbox" type="checkbox" id="TaskEmployee" checked.bind="IncludeTaskEmployee">
+                    <label class="k-checkbox-label" for="TaskEmployee">
+                        Include Task Employee(s)
+                    </label>
+                    <input class="k-checkbox" type="checkbox" id="TaskComment" checked.bind="IncludeTaskComment">
+                    <label class="k-checkbox-label" for="TaskComment">
+                        Include Task Comment
+                    </label>
+                    <input class="k-checkbox" type="checkbox" id="DueDateComment" checked.bind="IncludeDueDateComment">
+                    <label class="k-checkbox-label" for="DueDateComment">
+                        Include Due Date Comment
+                    </label>
+                </div>
+            </form>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <ul class="list-inline">
+                <li>
+                    <button class="k-default k-button" click.trigger="controller.cancel()">Cancel</button>
+                </li>
+                <li>
+                    <button class="k-button k-primary" click.trigger="Create()">Create Project Schedule</button>
+                </li>
+            </ul>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ALERT_GROUP] (
+    [E_GROUP]      VARCHAR (50) NOT NULL,
+    [ALERT_CAT_ID] INT          NOT NULL,
+    [ACTIVE_FLAG]  SMALLINT     NULL
+);
+

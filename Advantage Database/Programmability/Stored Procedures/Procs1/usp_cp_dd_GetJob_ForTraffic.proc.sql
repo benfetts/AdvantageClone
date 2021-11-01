@@ -1,0 +1,98 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CHANGE LOG:
+==========================================================
+BJL, 20060502: Changed ORDER BY to descending
+BJL, 20060622: Fixed duplicate rows
+*/
+
+CREATE PROCEDURE [dbo].[usp_cp_dd_GetJob_ForTraffic] 
+@CDPID int,
+@ClientCode VarChar(6), 
+@DivisionCode VarChar(6), 
+@ProductCode VarChar(6)
+AS
+Declare @Rescrictions Int
+
+Set NoCount On
+
+Select @Rescrictions = Count(*) 
+FROM CP_SEC_CLIENT
+Where CDP_CONTACT_ID = @CDPID
+
+If @Rescrictions > 0
+	 SELECT DISTINCT 
+		JOB_LOG.JOB_NUMBER AS Code, 
+		STR(JOB_LOG.JOB_NUMBER) + ' - ' + ISNULL(JOB_LOG.JOB_DESC, '') AS Description
+	   FROM JOB_LOG 
+     INNER JOIN JOB_COMPONENT 
+	     ON JOB_LOG.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER 
+     INNER JOIN CP_SEC_CLIENT 
+	     ON JOB_LOG.CL_CODE = CP_SEC_CLIENT.CL_CODE 
+	    AND JOB_LOG.DIV_CODE = CP_SEC_CLIENT.DIV_CODE 
+	    AND JOB_LOG.PRD_CODE = CP_SEC_CLIENT.PRD_CODE
+     INNER JOIN JOB_TRAFFIC 
+	     ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER 
+	    AND JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR 
+	  WHERE ( JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) 
+	    AND (CP_SEC_CLIENT.CDP_CONTACT_ID = @CDPID)
+	    And JOB_TRAFFIC.COMPLETED_DATE IS NULL
+	    AND (JOB_LOG.CL_CODE Like @ClientCode) 
+	    AND (JOB_LOG.DIV_CODE Like @DivisionCode) 
+	    AND (JOB_LOG.PRD_CODE Like @ProductCode)
+       Order By JOB_LOG.JOB_NUMBER DESC
+ELSE
+	 SELECT DISTINCT 
+		JOB_LOG.JOB_NUMBER as Code, 
+		str(JOB_LOG.JOB_NUMBER) + ' - ' + ISNULL(JOB_LOG.JOB_DESC, '') as Description
+	   FROM JOB_LOG 
+     INNER JOIN JOB_COMPONENT 
+	     ON JOB_LOG.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER 
+     INNER JOIN JOB_TRAFFIC 
+	     ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER 
+	    AND JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR 
+	  WHERE ( JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12) ) 
+	    And JOB_TRAFFIC.COMPLETED_DATE IS NULL
+	    AND(JOB_LOG.CL_CODE Like @ClientCode) 
+	    AND (JOB_LOG.DIV_CODE Like @DivisionCode) 
+	    AND (JOB_LOG.PRD_CODE Like @ProductCode)
+       Order By JOB_LOG.JOB_NUMBER DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

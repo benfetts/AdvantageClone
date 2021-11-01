@@ -1,0 +1,51 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_GetEmailAddressFromGroup] 
+@EmailGroup VarChar(50)
+AS
+
+
+SET NOCOUNT ON
+
+SELECT
+	EMPLOYEE.EMP_CODE, ISNULL(EMPLOYEE.EMP_EMAIL,'') AS EMP_EMAIL
+FROM
+	EMAIL_GROUP
+	INNER JOIN EMPLOYEE ON EMAIL_GROUP.EMP_CODE = EMPLOYEE.EMP_CODE
+WHERE
+	(NOT (EMPLOYEE.EMP_EMAIL IS NULL))
+	AND (EMAIL_GROUP.EMAIL_GR_CODE = @EmailGroup)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

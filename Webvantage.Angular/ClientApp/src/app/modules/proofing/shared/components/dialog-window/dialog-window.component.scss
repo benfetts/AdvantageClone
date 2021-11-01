@@ -1,0 +1,66 @@
+@import '../../../theme/colors';
+@import '../../../theme/mixins/font';
+@import '../../../theme/mixins/breakpoints';
+
+.k-window {
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  width: 270px;
+  padding: 10px;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.alert-block {
+  @include font-base(14px, normal, 18px);
+  display: block;
+  text-align: center;
+  color: $black-light;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    margin-bottom: 10px;
+  }
+}
+
+.k-dialog-button-layout-stretched .k-primary:not(:hover):not(.k-state-hover):not(:active):not(.k-state-active),
+.k-button.k-primary:hover,
+.k-button.k-primary:active {
+  border-color: $border-color;
+  color: $white;
+  background: $blue;
+}
+
+.k-dialog-button-layout-stretched {
+  @include font-base(14px, normal, 12px);
+}
+
+.k-dialog-buttongroup {
+  border: 1px solid $border-color;
+  border-radius: 3px;
+}
+
+.k-dialog-button-layout-stretched .k-button:focus,
+.k-dialog-button-layout-stretched .k-button.k-primary:focus, {
+  box-shadow: none;
+}
+
+.k-button:hover {
+  background-color: inherit;
+  background-image: none;
+}
+
+.k-dialog-button-layout-stretched .k-button:not(:hover):not(.k-state-hover):not(:active):not(.k-state-active),
+.k-dialog-button-layout-stretched .k-button {
+  @include font-base(14px);
+}

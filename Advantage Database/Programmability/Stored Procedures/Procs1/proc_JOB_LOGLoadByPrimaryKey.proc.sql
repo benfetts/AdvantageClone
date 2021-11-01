@@ -1,0 +1,103 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_JOB_LOGLoadByPrimaryKey]
+(
+	@JOB_NUMBER int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[JOB_NUMBER],
+		[OFFICE_CODE],
+		[CL_CODE],
+		[DIV_CODE],
+		[PRD_CODE],
+		[CMP_CODE],
+		[SC_CODE],
+		[USER_ID],
+		[CREATE_DATE],
+		[JOB_DESC],
+		[JOB_DATE_OPENED],
+		[JOB_RUSH_CHARGES],
+		[JOB_ESTIMATE_REQ],
+		[JOB_COMMENTS],
+		[JOB_CLI_REF],
+		[BILL_COOP_CODE],
+		[FORMAT_SC_CODE],
+		[FORMAT_CODE],
+		[COMPLEX_CODE],
+		[PROMO_CODE],
+		[CMP_IDENTIFIER],
+		[CMP_LINE_NBR],
+		[ROWID],
+		[JOB_BILL_COMMENT],
+		[FEE_JOB],
+		[UDV1_CODE],
+		[UDV2_CODE],
+		[UDV3_CODE],
+		[UDV4_CODE],
+		[UDV5_CODE]
+	FROM [JOB_LOG]
+	WHERE
+		([JOB_NUMBER] = @JOB_NUMBER)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+.comment-view small {
+  color: #2196f3;
+}
+
+.comment-view {
+  height: 100% !important;
+  overflow: auto !important;
+}
+
+.comment-view > div > div > div > div#editorDiv > table > tbody > tr > td.k-editable-area {
+  height: 30px !important;
+}
+
+.comment-view > div > div > div > div#editorDiv > table {
+  border: 1px solid #767676 !important;
+  border-radius: 50%;
+}
+
+.comment-view > div > div > div > div#editorDiv {
+  margin-bottom: 5px;
+  width: 100% !important;
+}

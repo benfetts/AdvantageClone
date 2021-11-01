@@ -1,0 +1,15 @@
+--DROP FUNCTION [dbo].[wvfn_get_batch_job_count]
+CREATE FUNCTION [dbo].[wvfn_get_batch_job_count] ( @BA_BATCH_ID AS INT, @INCLUDE_APPROVAL_JOBS BIT )
+RETURNS INT
+AS
+BEGIN
+
+	DECLARE @CT AS INT
+
+	SET @INCLUDE_APPROVAL_JOBS = 1;
+
+	SELECT @CT = COUNT(1) FROM [dbo].[wvtf_get_batch_job_list](@BA_BATCH_ID, @INCLUDE_APPROVAL_JOBS)
+			
+	RETURN ISNULL(@CT, 0)
+
+END

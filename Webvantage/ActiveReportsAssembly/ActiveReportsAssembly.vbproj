@@ -1,0 +1,1377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6737C74B-2B68-4280-A1F8-3BB04CD37435}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ActiveReportsAssembly</RootNamespace>
+    <AssemblyName>ActiveReportsAssembly</AssemblyName>
+    <MyType>Windows</MyType>
+    <SccProjectName>%24/Advantage/Production</SccProjectName>
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccAuxPath>http://tasc-code.gotoadvantage.com:8080/tfs/advantage</SccAuxPath>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>http://localhost/ActiveReportsAssembly/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DebugType>Full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <NoWarn>
+    </NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <NoWarn>
+    </NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>
+    </NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>
+    </NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="ActiveReports.Chart, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.Chart.DLL</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Document, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.HtmlExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.HtmlExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.PdfExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.PdfExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.RtfExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.RtfExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.TextExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.TextExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.TiffExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.TiffExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer6, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.Viewer6.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Web, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.Web.DLL</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Web.Design, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.XlsExport, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports.XlsExport.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports6, Version=6.2.3164.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ActiveReports6.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Webvantage\App_Code\cCreativeBrief.vb">
+      <Link>WebvantageCode\cCreativeBrief.vb</Link>
+    </Compile>
+    <Compile Include="..\Webvantage\App_Code\cTaskCal.vb">
+      <Link>WebvantageCode\cTaskCal.vb</Link>
+    </Compile>
+    <Compile Include="..\Webvantage\App_Code\SQLHelper.vb">
+      <Link>WebvantageCode\SQLHelper.vb</Link>
+    </Compile>
+    <Compile Include="arptAlertAssignments.Designer.vb">
+      <DependentUpon>arptAlertAssignments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptAlertAssignments.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptBillingApproval.Designer.vb">
+      <DependentUpon>arptBillingApproval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptBillingApproval.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptCampaign001.Designer.vb">
+      <DependentUpon>arptCampaign001.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptCampaign001.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptCBHeader1.Designer.vb">
+      <DependentUpon>arptCBHeader1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptCBHeader1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptCBHeader2.Designer.vb">
+      <DependentUpon>arptCBHeader2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptCBHeader2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptClient002DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptClient002DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptClient003DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptClient003DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptClient004DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptClient004DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientARStatement.Designer.vb">
+      <DependentUpon>arptClientARStatement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientARStatement.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptClientARStatement001.Designer.vb">
+      <DependentUpon>arptClientARStatement001.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientARStatement001.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptClientARStatement002.Designer.vb">
+      <DependentUpon>arptClientARStatement002.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientARStatement002.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptClientARStatement003.Designer.vb">
+      <DependentUpon>arptClientARStatement003.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientARStatement003.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptClientARStatement004.Designer.vb">
+      <DependentUpon>arptClientARStatement004.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientARStatement004.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptClientARStatement005.Designer.vb">
+      <DependentUpon>arptClientARStatement005.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientARStatement005.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptCompletedTask.Designer.vb">
+      <DependentUpon>arptCompletedTask.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptCompletedTask.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptCreativeBrief.Designer.vb">
+      <DependentUpon>arptCreativeBrief.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptCreativeBrief.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEmpNPTime.Designer.vb">
+      <DependentUpon>arptEmpNPTime.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEmpNPTime.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstHeader.Designer.vb">
+      <DependentUpon>arptEstHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstHeader.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstHeaderMars.Designer.vb">
+      <DependentUpon>arptEstHeaderMars.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstHeaderMars.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstHeaderTap2.Designer.vb">
+      <DependentUpon>arptEstHeaderTap2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstHeaderTap2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating315.Designer.vb">
+      <DependentUpon>arptEstimating315.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating315.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating.Designer.vb">
+      <DependentUpon>arptEstimating.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating314.Designer.vb">
+      <DependentUpon>arptEstimating314.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating314.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating003.Designer.vb">
+      <DependentUpon>arptEstimating003.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating003.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingBWD1.Designer.vb">
+      <DependentUpon>arptEstimatingBWD1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingBWD1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingBWD2.Designer.vb">
+      <DependentUpon>arptEstimatingBWD2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingBWD2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingMars.Designer.vb">
+      <DependentUpon>arptEstimatingMars.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingMars.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingSS2.designer.vb">
+      <DependentUpon>arptEstimatingSS2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingSS2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobSpecAllVersions.Designer.vb">
+      <DependentUpon>arptJobSpecAllVersions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobSpecAllVersions.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobSpecs.Designer.vb">
+      <DependentUpon>arptJobSpecs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobSpecs.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTemplate.Designer.vb">
+      <DependentUpon>arptJobTemplate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTemplate.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTemplateDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptJobTemplateDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedule.Designer.vb">
+      <DependentUpon>arptJobTrafficSchedule.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedule.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJobDays.Designer.vb">
+      <DependentUpon>arptJobTrafficSchedulebyJobDays.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJobDays.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJob2.Designer.vb">
+      <DependentUpon>arptJobTrafficSchedulebyJob2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJob2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJob3.Designer.vb">
+      <DependentUpon>arptJobTrafficSchedulebyJob3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJob3.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobVersion.Designer.vb">
+      <DependentUpon>arptJobVersion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobVersion.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobVersions.Designer.vb">
+      <DependentUpon>arptJobVersions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobVersions.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptMyTaskList.designer.vb">
+      <DependentUpon>arptMyTaskList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptMyTaskList.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptMyTaskListByDueDate.designer.vb">
+      <DependentUpon>arptMyTaskListByDueDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptMyTaskListByDueDate.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptMyTaskListByTask.designer.vb">
+      <DependentUpon>arptMyTaskListByTask.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptMyTaskListByTask.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptOpenJobs.Designer.vb">
+      <DependentUpon>arptOpenJobs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptOpenJobs.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptOpenJobsDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptOpenJobsDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptOpenJobsSch.Designer.vb">
+      <DependentUpon>arptOpenJobsSch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptOpenJobsSch.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptProduct001DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptProduct001DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptProduct002DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptProduct002DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptProduct003DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptProduct003DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptProduct004DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptProduct004DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptProductARStatement.Designer.vb">
+      <DependentUpon>arptProductARStatement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptProductARStatement.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptProductARStatement001.Designer.vb">
+      <DependentUpon>arptProductARStatement001.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptProductARStatement001.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptProductARStatement002.Designer.vb">
+      <DependentUpon>arptProductARStatement002.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptProductARStatement002.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptProductARStatement003.Designer.vb">
+      <DependentUpon>arptProductARStatement003.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptProductARStatement003.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptProductARStatement004.Designer.vb">
+      <DependentUpon>arptProductARStatement004.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptProductARStatement004.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptPurchaseOrder.Designer.vb">
+      <DependentUpon>arptPurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptPurchaseOrder.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptPurchaseOrder001.Designer.vb">
+      <DependentUpon>arptPurchaseOrder001.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptPurchaseOrder001.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptTaskCalendar.Designer.vb">
+      <DependentUpon>arptTaskCalendar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptTaskCalendar.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptTaskDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptTaskDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptTaskDS.vb">
+      <DependentUpon>arptTaskDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptTaskList.Designer.vb">
+      <DependentUpon>arptTaskList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptTaskList.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptTaskListByDueDate.Designer.vb">
+      <DependentUpon>arptTaskListByDueDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptTaskListByDueDate.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptTaskListByTask.Designer.vb">
+      <DependentUpon>arptTaskListByTask.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptTaskListByTask.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptTest.Designer.vb">
+      <DependentUpon>arptTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptTest.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptOpenJobsSC.Designer.vb">
+      <DependentUpon>arptOpenJobsSC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptOpenJobsSC.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptTimeSheetPrint.Designer.vb">
+      <DependentUpon>arptTimeSheetPrint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptTimeSheetPrint.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJob.Designer.vb">
+      <DependentUpon>arptJobTrafficSchedulebyJob.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJob.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobSpecsVendor.Designer.vb">
+      <DependentUpon>arptJobSpecsVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobSpecsVendor.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobSpecsVendorOut.Designer.vb">
+      <DependentUpon>arptJobSpecsVendorOut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobSpecsVendorOut.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptMediaSpecs.Designer.vb">
+      <DependentUpon>arptMediaSpecs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptMediaSpecs.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptBillingApproval2.Designer.vb">
+      <DependentUpon>arptBillingApproval2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptBillingApproval2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptBillingApprovalReport.Designer.vb">
+      <DependentUpon>arptBillingApprovalReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptBillingApprovalReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptBillingApprovalJobOnly.Designer.vb">
+      <DependentUpon>arptBillingApprovalJobOnly.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptBillingApprovalJobOnly.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptBillingApproval4.Designer.vb">
+      <DependentUpon>arptBillingApproval4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptBillingApproval4.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating004.Designer.vb">
+      <DependentUpon>arptEstimating004.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating004.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating005.Designer.vb">
+      <DependentUpon>arptEstimating005.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating005.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating006.Designer.vb">
+      <DependentUpon>arptEstimating006.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating006.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating007.Designer.vb">
+      <DependentUpon>arptEstimating007.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating007.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating002.Designer.vb">
+      <DependentUpon>arptEstimating002.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating002.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptPurchaseOrder2.Designer.vb">
+      <DependentUpon>arptPurchaseOrder2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptPurchaseOrder2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptMyTaskListSummary.designer.vb">
+      <DependentUpon>arptMyTaskListSummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptMyTaskListSummary.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingSS1.Designer.vb">
+      <DependentUpon>arptEstimatingSS1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingSS1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstHeaderSS1.Designer.vb">
+      <DependentUpon>arptEstHeaderSS1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstHeaderSS1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptVendorQuoteRequest.Designer.vb">
+      <DependentUpon>arptVendorQuoteRequest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptVendorQuoteRequest.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingQuarry.Designer.vb">
+      <DependentUpon>arptEstimatingQuarry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingQuarry.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstHeaderQuarry.Designer.vb">
+      <DependentUpon>arptEstHeaderQuarry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstHeaderQuarry.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJobDueDate.Designer.vb">
+      <DependentUpon>arptJobTrafficSchedulebyJobDueDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedulebyJobDueDate.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating008.Designer.vb">
+      <DependentUpon>arptEstimating008.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating008.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTemplate002.Designer.vb">
+      <DependentUpon>arptJobTemplate002.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTemplate002.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedule002.Designer.vb">
+      <DependentUpon>arptJobTrafficSchedule002.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptJobTrafficSchedule002.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptPurchaseOrderRR.Designer.vb">
+      <DependentUpon>arptPurchaseOrderRR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptPurchaseOrderRR.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptPOHeader1.Designer.vb">
+      <DependentUpon>arptPOHeader1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptPOHeader1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingInfinity.Designer.vb">
+      <DependentUpon>arptEstimatingInfinity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingInfinity.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptPurchaseOrder3.Designer.vb">
+      <DependentUpon>arptPurchaseOrder3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptPurchaseOrder3.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingTPN.Designer.vb">
+      <DependentUpon>arptEstimatingTPN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingTPN.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstHeaderBWD.Designer.vb">
+      <DependentUpon>arptEstHeaderBWD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstHeaderBWD.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingTap.Designer.vb">
+      <DependentUpon>arptEstimatingTap.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingTap.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstHeaderTap.Designer.vb">
+      <DependentUpon>arptEstHeaderTap.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstHeaderTap.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimatingTPN2.Designer.vb">
+      <DependentUpon>arptEstimatingTPN2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimatingTPN2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="arptEstimating313.Designer.vb">
+      <DependentUpon>arptEstimating313.vb</DependentUpon>
+    </Compile>
+    <Compile Include="arptEstimating313.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportFunctions.vb" />
+    <Compile Include="sum_rep_by_client_sc_jdd.designer.vb">
+      <DependentUpon>sum_rep_by_client_sc_jdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="sum_rep_by_client_sc_jdd.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GanttPrint.Designer.vb">
+      <DependentUpon>GanttPrint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GanttPrint.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mediaCalReport.Designer.vb">
+      <DependentUpon>mediaCalReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="mediaCalReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mediaCalReportMonth.Designer.vb">
+      <DependentUpon>mediaCalReportMonth.vb</DependentUpon>
+    </Compile>
+    <Compile Include="mediaCalReportMonth.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="arptClientDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>arptClientDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="arptClientDS.vb">
+      <DependentUpon>arptClientDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sum_rep_by_client.designer.vb">
+      <DependentUpon>sum_rep_by_client.vb</DependentUpon>
+    </Compile>
+    <Compile Include="sum_rep_by_client.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TestReport.Designer.vb">
+      <DependentUpon>TestReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TestReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="arptAlertAssignments.resx">
+      <DependentUpon>arptAlertAssignments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptBillingApproval.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptBillingApproval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptCampaign001.resx">
+      <DependentUpon>arptCampaign001.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptCBHeader1.resx">
+      <DependentUpon>arptCBHeader1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptCBHeader2.resx">
+      <DependentUpon>arptCBHeader2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptClientARStatement.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptClientARStatement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptClientARStatement001.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptClientARStatement001.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptClientARStatement002.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptClientARStatement002.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptClientARStatement003.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptClientARStatement003.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptClientARStatement004.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptClientARStatement004.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptClientARStatement005.resx">
+      <DependentUpon>arptClientARStatement005.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptCompletedTask.resx">
+      <DependentUpon>arptCompletedTask.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptCreativeBrief.resx">
+      <DependentUpon>arptCreativeBrief.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEmpNPTime.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptEmpNPTime.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstHeader.resx">
+      <DependentUpon>arptEstHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstHeaderMars.resx">
+      <DependentUpon>arptEstHeaderMars.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstHeaderTap2.resx">
+      <DependentUpon>arptEstHeaderTap2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating315.resx">
+      <DependentUpon>arptEstimating315.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating.resx">
+      <DependentUpon>arptEstimating.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating314.resx">
+      <DependentUpon>arptEstimating314.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating003.resx">
+      <DependentUpon>arptEstimating003.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingBWD1.resx">
+      <DependentUpon>arptEstimatingBWD1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingBWD2.resx">
+      <DependentUpon>arptEstimatingBWD2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingMars.resx">
+      <DependentUpon>arptEstimatingMars.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingSS2.resx">
+      <DependentUpon>arptEstimatingSS2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobSpecAllVersions.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptJobSpecAllVersions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobSpecs.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptJobSpecs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTemplate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptJobTemplate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTrafficSchedule.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptJobTrafficSchedule.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTrafficSchedulebyJobDays.resx">
+      <DependentUpon>arptJobTrafficSchedulebyJobDays.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTrafficSchedulebyJob2.resx">
+      <DependentUpon>arptJobTrafficSchedulebyJob2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTrafficSchedulebyJob3.resx">
+      <DependentUpon>arptJobTrafficSchedulebyJob3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobVersion.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptJobVersion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobVersions.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptJobVersions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptMyTaskList.resx">
+      <DependentUpon>arptMyTaskList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptMyTaskListByDueDate.resx">
+      <DependentUpon>arptMyTaskListByDueDate.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptMyTaskListByTask.resx">
+      <DependentUpon>arptMyTaskListByTask.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptOpenJobs.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptOpenJobs.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptOpenJobsSch.resx">
+      <DependentUpon>arptOpenJobsSch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptProductARStatement001.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptProductARStatement001.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptProductARStatement002.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptProductARStatement002.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptProductARStatement003.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptProductARStatement003.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptProductARStatement004.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptProductARStatement004.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptPurchaseOrder.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptPurchaseOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptPurchaseOrder001.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptPurchaseOrder001.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptTaskCalendar.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptTaskCalendar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptTaskList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptTaskList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptTaskListByDueDate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptTaskListByDueDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptTaskListByTask.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptTaskListByTask.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptTest.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptTest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptOpenJobsSC.resx">
+      <DependentUpon>arptOpenJobsSC.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptTimeSheetPrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>arptTimeSheetPrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTrafficSchedulebyJob.resx">
+      <DependentUpon>arptJobTrafficSchedulebyJob.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobSpecsVendor.resx">
+      <DependentUpon>arptJobSpecsVendor.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobSpecsVendorOut.resx">
+      <DependentUpon>arptJobSpecsVendorOut.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptMediaSpecs.resx">
+      <DependentUpon>arptMediaSpecs.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptBillingApproval2.resx">
+      <DependentUpon>arptBillingApproval2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptBillingApprovalReport.resx">
+      <DependentUpon>arptBillingApprovalReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptBillingApprovalJobOnly.resx">
+      <DependentUpon>arptBillingApprovalJobOnly.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptBillingApproval4.resx">
+      <DependentUpon>arptBillingApproval4.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating004.resx">
+      <DependentUpon>arptEstimating004.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating005.resx">
+      <DependentUpon>arptEstimating005.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating006.resx">
+      <DependentUpon>arptEstimating006.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating007.resx">
+      <DependentUpon>arptEstimating007.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating002.resx">
+      <DependentUpon>arptEstimating002.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptPurchaseOrder2.resx">
+      <DependentUpon>arptPurchaseOrder2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptMyTaskListSummary.resx">
+      <DependentUpon>arptMyTaskListSummary.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingSS1.resx">
+      <DependentUpon>arptEstimatingSS1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstHeaderSS1.resx">
+      <DependentUpon>arptEstHeaderSS1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptVendorQuoteRequest.resx">
+      <DependentUpon>arptVendorQuoteRequest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingQuarry.resx">
+      <DependentUpon>arptEstimatingQuarry.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstHeaderQuarry.resx">
+      <DependentUpon>arptEstHeaderQuarry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTrafficSchedulebyJobDueDate.resx">
+      <DependentUpon>arptJobTrafficSchedulebyJobDueDate.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating008.resx">
+      <DependentUpon>arptEstimating008.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTemplate002.resx">
+      <DependentUpon>arptJobTemplate002.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptJobTrafficSchedule002.resx">
+      <DependentUpon>arptJobTrafficSchedule002.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptPurchaseOrderRR.resx">
+      <DependentUpon>arptPurchaseOrderRR.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptPOHeader1.resx">
+      <DependentUpon>arptPOHeader1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingInfinity.resx">
+      <DependentUpon>arptEstimatingInfinity.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptPurchaseOrder3.resx">
+      <DependentUpon>arptPurchaseOrder3.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingTPN.resx">
+      <DependentUpon>arptEstimatingTPN.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstHeaderBWD.resx">
+      <DependentUpon>arptEstHeaderBWD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingTap.resx">
+      <DependentUpon>arptEstimatingTap.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstHeaderTap.resx">
+      <DependentUpon>arptEstHeaderTap.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimatingTPN2.resx">
+      <DependentUpon>arptEstimatingTPN2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="arptEstimating313.resx">
+      <DependentUpon>arptEstimating313.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sum_rep_by_client_sc_jdd.resx">
+      <DependentUpon>sum_rep_by_client_sc_jdd.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GanttPrint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GanttPrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mediaCalReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>mediaCalReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mediaCalReportMonth.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>mediaCalReportMonth.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sum_rep_by_client.resx">
+      <DependentUpon>sum_rep_by_client.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="arptClient002DS.xsc">
+      <DependentUpon>arptClient002DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptClient002DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptClient002DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptClient002DS.xss">
+      <DependentUpon>arptClient002DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptClient003DS.xsc">
+      <DependentUpon>arptClient003DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptClient003DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptClient003DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptClient003DS.xss">
+      <DependentUpon>arptClient003DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptClient004DS.xsc">
+      <DependentUpon>arptClient004DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptClient004DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptClient004DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptClient004DS.xss">
+      <DependentUpon>arptClient004DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptJobTemplateDS.xsc">
+      <DependentUpon>arptJobTemplateDS.xsd</DependentUpon>
+    </None>
+    <None Include="arptJobTemplateDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptJobTemplateDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptJobTemplateDS.xss">
+      <DependentUpon>arptJobTemplateDS.xsd</DependentUpon>
+    </None>
+    <None Include="arptOpenJobsDS.xsc">
+      <DependentUpon>arptOpenJobsDS.xsd</DependentUpon>
+    </None>
+    <None Include="arptOpenJobsDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptOpenJobsDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptOpenJobsDS.xss">
+      <DependentUpon>arptOpenJobsDS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct001DS.xsc">
+      <DependentUpon>arptProduct001DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct001DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptProduct001DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptProduct001DS.xss">
+      <DependentUpon>arptProduct001DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct002DS.xsc">
+      <DependentUpon>arptProduct002DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct002DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptProduct002DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptProduct002DS.xss">
+      <DependentUpon>arptProduct002DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct003DS.xsc">
+      <DependentUpon>arptProduct003DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct003DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptProduct003DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptProduct003DS.xss">
+      <DependentUpon>arptProduct003DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct004DS.xsc">
+      <DependentUpon>arptProduct004DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptProduct004DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptProduct004DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptProduct004DS.xss">
+      <DependentUpon>arptProduct004DS.xsd</DependentUpon>
+    </None>
+    <None Include="arptTaskDS.xsc">
+      <DependentUpon>arptTaskDS.xsd</DependentUpon>
+    </None>
+    <None Include="arptTaskDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptTaskDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptTaskDS.xss">
+      <DependentUpon>arptTaskDS.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\Webvantage.wPurchaseOrder.cPurchaseOrder+cPurchaseOrderDetail.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptClientDS.xsc">
+      <DependentUpon>arptClientDS.xsd</DependentUpon>
+    </None>
+    <None Include="arptClientDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>arptClientDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="arptClientDS.xss">
+      <DependentUpon>arptClientDS.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ReportTemplates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj">
+      <Project>{cf80c6a7-30b6-45b8-8ff2-cc3176b95239}</Project>
+      <Name>AdvantageFramework.BLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AdvantageFramework\AdvantageFramework.vbproj">
+      <Project>{a5adbd34-dc5f-45ee-ab6a-8e9122da478d}</Project>
+      <Name>AdvantageFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,35 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_TABSLoadByPrimaryKey]
+(
+	@TAB_ID int,
+	@CDP_CONTACT_ID int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[NAME],
+		[STATE]
+	FROM [CP_USER_TABS]
+	WHERE
+		([TAB_ID] = @TAB_ID) AND
+		([CDP_CONTACT_ID] = @CDP_CONTACT_ID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

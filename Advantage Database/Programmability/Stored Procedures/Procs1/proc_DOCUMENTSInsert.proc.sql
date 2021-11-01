@@ -1,0 +1,76 @@
+﻿CREATE PROCEDURE [dbo].[proc_DOCUMENTSInsert]
+(
+	@DOCUMENT_ID int = NULL output,
+	@FILENAME varchar(300),
+	@REPOSITORY_FILENAME varchar(200),
+	@MIME_TYPE varchar(50),
+	@DESCRIPTION varchar(200) = NULL,
+	@KEYWORDS varchar(255) = NULL,
+	@UPLOADED_DATE datetime,
+	@USER_CODE varchar(100),
+	@FILE_SIZE int,
+	@PRIVATE_FLAG int,
+	@DOCUMENT_TYPE_ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [DOCUMENTS]
+	(
+		[FILENAME],
+		[REPOSITORY_FILENAME],
+		[MIME_TYPE],
+		[DESCRIPTION],
+		[KEYWORDS],
+		[UPLOADED_DATE],
+		[USER_CODE],
+		[FILE_SIZE],
+		[PRIVATE_FLAG],
+		[DOCUMENT_TYPE_ID]
+	)
+	VALUES
+	(
+		@FILENAME,
+		@REPOSITORY_FILENAME,
+		@MIME_TYPE,
+		@DESCRIPTION,
+		@KEYWORDS,
+		@UPLOADED_DATE,
+		@USER_CODE,
+		@FILE_SIZE,
+		@PRIVATE_FLAG,
+		@DOCUMENT_TYPE_ID
+	)
+
+	SET @Err = @@Error
+
+	SELECT @DOCUMENT_ID = SCOPE_IDENTITY()
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

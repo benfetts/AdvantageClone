@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="AdvantageSES.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdvantageSES" customannotation:ClrType="AdvantageSES.Database.Entities.AdvantageSES, Advantage SES, Version=6.70.7.2, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SMTPAuthMethod" Type="Int16" Nullable="false" />
+          <Property Name="SMTPPortNumber" Type="Int16" Nullable="false" />
+          <Property Name="SMTPSecureType" Type="Int16" Nullable="false" />
+          <Property Name="SMTPServer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SMTPSender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailUsername" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailReplyTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DbContext" customannotation:UseClrTypes="true">
+          <EntitySet Name="AdvantageSESs" EntityType="Self.AdvantageSES" />
+        </EntityContainer>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="DbContext">
+          <EntitySetMapping Name="AdvantageSESs">
+            <EntityTypeMapping TypeName="AdvantageSES.Database.AdvantageSES">
+              <MappingFragment StoreEntitySet="AdvantageSES">
+                <ScalarProperty Name="ID" ColumnName="ADVANTAGE_SES_ID" />
+                <ScalarProperty Name="SMTPAuthMethod" ColumnName="SMTP_AUTH_METHOD" />
+                <ScalarProperty Name="SMTPPortNumber" ColumnName="SMTP_PORT_NUMBER" />
+                <ScalarProperty Name="SMTPSecureType" ColumnName="SMTP_SECURE_TYPE" />
+                <ScalarProperty Name="SMTPServer" ColumnName="SMTP_SERVER" />
+                <ScalarProperty Name="SMTPSender" ColumnName="SMTP_SENDER" />
+                <ScalarProperty Name="EmailUsername" ColumnName="EMAIL_USERNAME" />
+                <ScalarProperty Name="EmailPassword" ColumnName="EMAIL_PWD" />
+                <ScalarProperty Name="EmailReplyTo" ColumnName="EMAIL_REPLY_TO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+    <StorageModels>
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdvantageSES">
+          <Key>
+            <PropertyRef Name="ADVANTAGE_SES_ID" />
+          </Key>
+          <Property Name="ADVANTAGE_SES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SMTP_AUTH_METHOD" Type="smallint" Nullable="false" />
+          <Property Name="SMTP_PORT_NUMBER" Type="smallint" Nullable="false" />
+          <Property Name="SMTP_SECURE_TYPE" Type="smallint" Nullable="false" />
+          <Property Name="SMTP_SERVER" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SMTP_SENDER" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL_USERNAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL_PWD" Type="varchar(max)" Nullable="false" />
+          <Property Name="EMAIL_REPLY_TO" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CodeFirstDatabase">
+          <EntitySet Name="AdvantageSES" EntityType="Self.AdvantageSES" Schema="dbo" Table="ADVANTAGE_SES" />
+        </EntityContainer>
+      </Schema>
+    </StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="b2bb7a83939b4933b8d82d0120b9c23e" Name="Diagram1">
+        <EntityTypeShape EntityType="AdvantageSES.Database.AdvantageSES" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>

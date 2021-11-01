@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[DELHDR] (
+    [DHID]    INT           NOT NULL,
+    [DHUSER]  VARCHAR (100) NULL,
+    [DHDATE]  SMALLDATETIME NULL,
+    [DHTABLE] VARCHAR (18)  NULL,
+    [DHMOD]   VARCHAR (1)   NULL
+);
+

@@ -1,0 +1,14 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_cp_getCPUsersClient] 
+@CDPID int
+AS
+
+
+SELECT     dbo.CDP_CONTACT_HDR.CL_CODE, NULL AS DIV_CODE, NULL AS PRD_CODE
+FROM         dbo.CDP_CONTACT_HDR
+WHERE     (dbo.CDP_CONTACT_HDR.CDP_CONTACT_ID = @CDPID)
+ 
+
+
+
+	

@@ -1,0 +1,188 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_ALERTInsert]
+(
+	@ALERT_ID int,
+	@ALERT_TYPE_ID int,
+	@ALERT_CAT_ID int,
+	@SUBJECT varchar(254) = NULL,
+	@BODY text = NULL,
+	@GENERATED smalldatetime = NULL,
+	@PRIORITY smallint = NULL,
+	@CL_CODE varchar(6) = NULL,
+	@DIV_CODE varchar(6) = NULL,
+	@PRD_CODE varchar(6) = NULL,
+	@CMP_CODE varchar(6) = NULL,
+	@JOB_NUMBER int = NULL,
+	@JOB_COMPONENT_NBR smallint = NULL,
+	@ESTIMATE_NUMBER int = NULL,
+	@EST_COMPONENT_NBR smallint = NULL,
+	@EST_QUOTE_NBR smallint = NULL,
+	@ESTIMATE_REV_NBR smallint = NULL,
+	@VN_CODE varchar(6) = NULL,
+	@EMP_CODE varchar(100) = NULL,
+	@PO_NUMBER int = NULL,
+	@PO_REVISION smallint = NULL,
+	@ORDER_NBR int = NULL,
+	@REV_NBR smallint = NULL,
+	@ALERT_USER varchar(100) = NULL,
+	@TEMP_PDF_PATH varchar(254) = NULL,
+	@ALERT_LEVEL varchar(50) = NULL,
+	@CMP_IDENTIFIER int = NULL,
+	@OFFICE_CODE varchar(4) = NULL,
+	@BODY_HTML text = NULL,
+	@CP_ALERT smallint = NULL,
+	@BA_BATCH_ID integer = NULL,
+	@TASK_SEQ_NBR smallint = NULL,
+	@DUE_DATE smalldatetime = NULL,
+	@TIME_DUE VARCHAR(10) = NULL,
+	@ALERT_STATE_ID integer = NULL,
+
+
+	@ALRT_NOTIFY_HDR_ID integer = NULL,
+	@VER VARCHAR(10) = NULL,
+	@BUILD VARCHAR(10) = NULL,
+	@ALERT_SEQ_NBR integer = NULL,
+	@SENT SMALLDATETIME = NULL,
+	@ALERT_USER_CP int = NULL
+
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+	INSERT
+	INTO [ALERT] WITH(ROWLOCK)
+	(
+		[ALERT_ID],
+		[ALERT_TYPE_ID],
+		[ALERT_CAT_ID],
+		[SUBJECT],
+		[BODY],
+		[GENERATED],
+		[PRIORITY],
+		[CL_CODE],
+		[DIV_CODE],
+		[PRD_CODE],
+		[CMP_CODE],
+		[JOB_NUMBER],
+		[JOB_COMPONENT_NBR],
+		[ESTIMATE_NUMBER],
+		[EST_COMPONENT_NBR],
+		[EST_QUOTE_NBR],
+		[ESTIMATE_REV_NBR],
+		[VN_CODE],
+		[EMP_CODE],
+		[PO_NUMBER],
+		[PO_REVISION],
+		[ORDER_NBR],
+		[REV_NBR],
+		[ALERT_USER],
+		[TEMP_PDF_PATH],
+		[ALERT_LEVEL],
+		[CMP_IDENTIFIER],
+		[OFFICE_CODE],
+		[BODY_HTML],
+		[CP_ALERT],
+		[BA_BATCH_ID],
+		[TASK_SEQ_NBR],
+		[DUE_DATE],
+		[TIME_DUE],
+		[ALERT_STATE_ID],
+		[ALRT_NOTIFY_HDR_ID],
+		[VER],
+		[BUILD],
+		[ALERT_SEQ_NBR],
+		[SENT],
+		[ALERT_USER_CP]
+	)
+	VALUES
+	(
+		@ALERT_ID,
+		@ALERT_TYPE_ID,
+		@ALERT_CAT_ID,
+		@SUBJECT,
+		@BODY,
+		@GENERATED,
+		@PRIORITY,
+		@CL_CODE,
+		@DIV_CODE,
+		@PRD_CODE,
+		@CMP_CODE,
+		@JOB_NUMBER,
+		@JOB_COMPONENT_NBR,
+		@ESTIMATE_NUMBER,
+		@EST_COMPONENT_NBR,
+		@EST_QUOTE_NBR,
+		@ESTIMATE_REV_NBR,
+		@VN_CODE,
+		@EMP_CODE,
+		@PO_NUMBER,
+		@PO_REVISION,
+		@ORDER_NBR,
+		@REV_NBR,
+		@ALERT_USER,
+		@TEMP_PDF_PATH,
+		@ALERT_LEVEL,
+		@CMP_IDENTIFIER,
+		@OFFICE_CODE,
+		@BODY_HTML,
+		@CP_ALERT,
+		@BA_BATCH_ID,
+		@TASK_SEQ_NBR,
+		@DUE_DATE,
+		@TIME_DUE,
+		@ALERT_STATE_ID,
+		@ALRT_NOTIFY_HDR_ID,
+		@VER,
+		@BUILD,
+		@ALERT_SEQ_NBR,
+		@SENT,
+		@ALERT_USER_CP
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

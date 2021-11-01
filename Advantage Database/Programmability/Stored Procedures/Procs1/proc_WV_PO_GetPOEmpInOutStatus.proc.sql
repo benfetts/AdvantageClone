@@ -1,0 +1,38 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_WV_PO_GetPOEmpInOutStatus] 
+@POEmpCode varchar(6)
+AS
+
+SELECT INOUT_STAT 
+FROM EMP_INOUTBOARD 
+WHERE EMP_CODE = @POEmpCode
+ AND INOUT_REF = (SELECT MAX(INOUT_REF) FROM EMP_INOUTBOARD E WHERE EMP_INOUTBOARD.EMP_CODE = E.EMP_CODE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

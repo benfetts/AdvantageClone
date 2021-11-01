@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[AP_DOCUMENTS] (
+    [DOCUMENT_ID] INT NOT NULL,
+    [AP_ID]       INT NOT NULL
+);
+

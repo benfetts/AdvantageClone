@@ -1,0 +1,962 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SecurityStoreContainer" CdmEntityContainer="SecurityObjectContextConnection">
+    <EntitySetMapping Name="Applications">
+      <EntityTypeMapping TypeName="SecurityObjectContext.Application">
+        <MappingFragment StoreEntitySet="SEC_APPLICATION">
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="SEC_APPLICATION_ID" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationModules">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ApplicationModule">
+        <MappingFragment StoreEntitySet="SEC_APPLICATION_MOD">
+          <ScalarProperty Name="ID" ColumnName="SEC_APPLICATION_MOD_ID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="SEC_APPLICATION_ID" />
+          <ScalarProperty Name="ModuleID" ColumnName="SEC_MODULE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="SecurityObjectContext.Group">
+        <MappingFragment StoreEntitySet="SEC_GROUP">
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="SEC_GROUP_ID" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupApplicationAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.GroupApplicationAccess">
+        <MappingFragment StoreEntitySet="SEC_GROUP_APPACCESS">
+          <ScalarProperty Name="ID" ColumnName="SEC_GROUP_APPACCESS_ID" />
+          <ScalarProperty Name="GroupID" ColumnName="SEC_GROUP_ID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="SEC_APPLICATION_ID" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="CanPrint" ColumnName="CAN_PRINT" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CAN_UPDATE" />
+          <ScalarProperty Name="CanAdd" ColumnName="CAN_ADD" />
+          <ScalarProperty Name="Custom1" ColumnName="CUSTOM1" />
+          <ScalarProperty Name="Custom2" ColumnName="CUSTOM2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupModuleAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.GroupModuleAccess">
+        <MappingFragment StoreEntitySet="SEC_GROUP_MODACCESS">
+          <ScalarProperty Name="ID" ColumnName="SEC_GROUP_MODACCESS_ID" />
+          <ScalarProperty Name="GroupID" ColumnName="SEC_GROUP_ID" />
+          <ScalarProperty Name="ModuleID" ColumnName="SEC_MODULE_ID" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="CanPrint" ColumnName="CAN_PRINT" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CAN_UPDATE" />
+          <ScalarProperty Name="CanAdd" ColumnName="CAN_ADD" />
+          <ScalarProperty Name="Custom1" ColumnName="CUSTOM1" />
+          <ScalarProperty Name="Custom2" ColumnName="CUSTOM2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupUsers">
+      <EntityTypeMapping TypeName="SecurityObjectContext.GroupUser">
+        <MappingFragment StoreEntitySet="SEC_GROUP_USER">
+          <ScalarProperty Name="ID" ColumnName="SEC_GROUPUSER_ID" />
+          <ScalarProperty Name="GroupID" ColumnName="SEC_GROUP_ID" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modules">
+      <EntityTypeMapping TypeName="SecurityObjectContext.Module">
+        <MappingFragment StoreEntitySet="SEC_MODULE">
+          <ScalarProperty Name="Code" ColumnName="SEC_MODULE_CODE" />
+          <ScalarProperty Name="ModuleInformationID" ColumnName="SEC_MODULE_INFO_ID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_MODULE_ID" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="IsInactive" ColumnName="IS_INACTIVE" />
+          <ScalarProperty Name="IsMenuItem" ColumnName="IS_MENU_ITEM" />
+          <ScalarProperty Name="IsCategory" ColumnName="IS_CATEGORY" />
+          <ScalarProperty Name="IsApplication" ColumnName="IS_APPLICATION" />
+          <ScalarProperty Name="IsReport" ColumnName="IS_REPORT" />
+          <ScalarProperty Name="IsDesktopObject" ColumnName="IS_DESKTOP_OBJECT" />
+          <ScalarProperty Name="IsDashQuery" ColumnName="IS_DASH_QUERY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModuleInformations">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ModuleInformation">
+        <MappingFragment StoreEntitySet="SEC_MODULE_INFO">
+          <ScalarProperty Name="ReportLargeImagePath" ColumnName="WV_RPT_IMAGEPATHLARGE" />
+          <ScalarProperty Name="WebvantageLargeImagePath" ColumnName="WV_IMAGEPATHLARGE" />
+          <ScalarProperty Name="ReportIsLocked" ColumnName="WV_RPT_LOCKED" />
+          <ScalarProperty Name="ReportPreviewLocation" ColumnName="WV_RPT_PREVIEWLOCATION" />
+          <ScalarProperty Name="ReportDescription" ColumnName="WV_RPT_DESCRIPTION" />
+          <ScalarProperty Name="ReportImagePath" ColumnName="WV_RPT_IMAGEPATH" />
+          <ScalarProperty Name="ReportImagePathActive" ColumnName="WV_RPT_IMAGEPATHACTIVE" />
+          <ScalarProperty Name="ReportURL" ColumnName="WV_RPT_URL" />
+          <ScalarProperty Name="DesktopObjectSize" ColumnName="WV_DO_DSIZE" />
+          <ScalarProperty Name="DesktopObjectName" ColumnName="WV_DO_NAME" />
+          <ScalarProperty Name="ID" ColumnName="SEC_MODULE_INFO_ID" />
+          <ScalarProperty Name="ImageName" ColumnName="IMAGENAME" />
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="HasCustomPermission" ColumnName="CUSTOM_PERMISSION" />
+          <ScalarProperty Name="WebvantageURL" ColumnName="WV_URL" />
+          <ScalarProperty Name="WebvantageImagePathActive" ColumnName="WV_IMAGEPATHACTIVE" />
+          <ScalarProperty Name="WebvantageImagePath" ColumnName="WV_IMAGEPATH" />
+          <ScalarProperty Name="ApplicationName" ColumnName="PB_APPNAME" />
+          <ScalarProperty Name="MenuName" ColumnName="PB_MENU" />
+          <ScalarProperty Name="ApplicationCode" ColumnName="PB_NAME" />
+          <ScalarProperty Name="CommandString" ColumnName="PB_COMMAND_STRING" />
+          <ScalarProperty Name="IconIndex" ColumnName="PB_ICON" />
+          <ScalarProperty Name="AllowMultipleInstances" ColumnName="PB_ALLOW_MULTI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModuleSubs">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ModuleSub">
+        <MappingFragment StoreEntitySet="SEC_MODULE_SUB">
+          <ScalarProperty Name="ID" ColumnName="SEC_MODULE_SUB_ID" />
+          <ScalarProperty Name="ParentModuleID" ColumnName="PARENT_MODULE_ID" />
+          <ScalarProperty Name="ModuleID" ColumnName="SEC_MODULE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SecurityObjectContext.User">
+        <MappingFragment StoreEntitySet="SEC_USER">
+          <ScalarProperty Name="WebID" ColumnName="WEB_ID" />
+          <ScalarProperty Name="MenuHWND" ColumnName="MENU_HWND" />
+          <ScalarProperty Name="TimeHWND" ColumnName="TIME_HWND" />
+          <ScalarProperty Name="CheckForUserAccess" ColumnName="CHECK_USER_ACCESS" />
+          <ScalarProperty Name="ServerSQLUserName" ColumnName="USER_NAME" />
+          <ScalarProperty Name="ID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_CODE" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserApplicationAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserApplicationAccess">
+        <MappingFragment StoreEntitySet="SEC_USER_APPACCESS">
+          <ScalarProperty Name="ID" ColumnName="SEC_USER_APPACCESS_ID" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="SEC_APPLICATION_ID" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="CanPrint" ColumnName="CAN_PRINT" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CAN_UPDATE" />
+          <ScalarProperty Name="CanAdd" ColumnName="CAN_ADD" />
+          <ScalarProperty Name="Custom1" ColumnName="CUSTOM1" />
+          <ScalarProperty Name="Custom2" ColumnName="CUSTOM2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserModuleAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserModuleAccess">
+        <MappingFragment StoreEntitySet="SEC_USER_MODACCESS">
+          <ScalarProperty Name="ID" ColumnName="SEC_USER_MODACCESS_ID" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="ModuleID" ColumnName="SEC_MODULE_ID" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="CanPrint" ColumnName="CAN_PRINT" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CAN_UPDATE" />
+          <ScalarProperty Name="CanAdd" ColumnName="CAN_ADD" />
+          <ScalarProperty Name="Custom1" ColumnName="CUSTOM1" />
+          <ScalarProperty Name="Custom2" ColumnName="CUSTOM2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModuleViews">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ModuleView">
+        <MappingFragment StoreEntitySet="V_SEC_MODULES">
+          <ScalarProperty Name="ParentModuleDescription" ColumnName="ParentModuleDescription" />
+          <ScalarProperty Name="ParentModuleCode" ColumnName="ParentModuleCode" />
+          <ScalarProperty Name="WebvantageLargeImagePath" ColumnName="WebvantageLargeImagePath" />
+          <ScalarProperty Name="ReportLargeImagePath" ColumnName="ReportLargeImagePath" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AdvantageAllowMultipleInstances" ColumnName="AdvantageAllowMultipleInstances" />
+          <ScalarProperty Name="AdvantageIconIndex" ColumnName="AdvantageIconIndex" />
+          <ScalarProperty Name="AdvantageCommandString" ColumnName="AdvantageCommandString" />
+          <ScalarProperty Name="AdvantageApplicationCode" ColumnName="AdvantageApplicationCode" />
+          <ScalarProperty Name="AdvantageMenuName" ColumnName="AdvantageMenuName" />
+          <ScalarProperty Name="AdvantageApplicationName" ColumnName="AdvantageApplicationName" />
+          <ScalarProperty Name="WebvantageImagePath" ColumnName="WebvantageImagePath" />
+          <ScalarProperty Name="WebvantageImagePathActive" ColumnName="WebvantageImagePathActive" />
+          <ScalarProperty Name="WebvantageURL" ColumnName="WebvantageURL" />
+          <ScalarProperty Name="HasCustomPermission" ColumnName="HasCustomPermission" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="DesktopObjectName" ColumnName="DesktopObjectName" />
+          <ScalarProperty Name="DesktopObjectSize" ColumnName="DesktopObjectSize" />
+          <ScalarProperty Name="ReportURL" ColumnName="ReportURL" />
+          <ScalarProperty Name="ReportImagePathActive" ColumnName="ReportImagePathActive" />
+          <ScalarProperty Name="ReportImagePath" ColumnName="ReportImagePath" />
+          <ScalarProperty Name="ReportDescription" ColumnName="ReportDescription" />
+          <ScalarProperty Name="ReportPreviewLocation" ColumnName="ReportPreviewLocation" />
+          <ScalarProperty Name="ReportIsLocked" ColumnName="ReportIsLocked" />
+          <ScalarProperty Name="ParentModuleID" ColumnName="ParentModuleID" />
+          <ScalarProperty Name="IsDashQuery" ColumnName="IsDashQuery" />
+          <ScalarProperty Name="IsDesktopObject" ColumnName="IsDesktopObject" />
+          <ScalarProperty Name="IsReport" ColumnName="IsReport" />
+          <ScalarProperty Name="IsApplication" ColumnName="IsApplication" />
+          <ScalarProperty Name="IsCategory" ColumnName="IsCategory" />
+          <ScalarProperty Name="IsMenuItem" ColumnName="IsMenuItem" />
+          <ScalarProperty Name="IsInactive" ColumnName="IsInactive" />
+          <ScalarProperty Name="ModuleDescription" ColumnName="ModuleDescription" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleInformationID" ColumnName="ModuleInformationID" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ApplicationDescription" ColumnName="ApplicationDescription" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatabaseSQLUsers">
+      <EntityTypeMapping TypeName="SecurityObjectContext.DatabaseSQLUser">
+        <MappingFragment StoreEntitySet="V_DATABASE_SQLUSER">
+          <ScalarProperty Name="IsFixedRole" ColumnName="is_fixed_role" />
+          <ScalarProperty Name="SID" ColumnName="sid" />
+          <ScalarProperty Name="OwnerID" ColumnName="owning_principal_id" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="modify_date" />
+          <ScalarProperty Name="CreatedDate" ColumnName="create_date" />
+          <ScalarProperty Name="DefaultSchemaName" ColumnName="default_schema_name" />
+          <ScalarProperty Name="TypeDescription" ColumnName="type_desc" />
+          <ScalarProperty Name="Type" ColumnName="type" />
+          <ScalarProperty Name="ID" ColumnName="principal_id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServerSQLUsers">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ServerSQLUser">
+        <MappingFragment StoreEntitySet="V_SERVER_SQLUSER">
+          <ScalarProperty Name="CredentialID" ColumnName="credential_id" />
+          <ScalarProperty Name="DefaultLanguageName" ColumnName="default_language_name" />
+          <ScalarProperty Name="DefaultDatabaseName" ColumnName="default_database_name" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="modify_date" />
+          <ScalarProperty Name="CreatedDate" ColumnName="create_date" />
+          <ScalarProperty Name="IsDisabled" ColumnName="is_disabled" />
+          <ScalarProperty Name="TypeDescription" ColumnName="type_desc" />
+          <ScalarProperty Name="Type" ColumnName="type" />
+          <ScalarProperty Name="SID" ColumnName="sid" />
+          <ScalarProperty Name="ID" ColumnName="principal_id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSettings">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserSetting">
+        <MappingFragment StoreEntitySet="SEC_USER_SETTING">
+          <ScalarProperty Name="DateValue" ColumnName="DATE_VALUE" />
+          <ScalarProperty Name="NumericValue" ColumnName="NUMERIC_VALUE" />
+          <ScalarProperty Name="StringValue" ColumnName="STRING_VALUE" />
+          <ScalarProperty Name="SettingCode" ColumnName="SETTING_CODE" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_USER_SETTING_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMenus">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserMenu">
+        <MappingFragment StoreEntitySet="SEC_USER_MENU">
+          <ScalarProperty Name="UserMenuTabID" ColumnName="SEC_USER_MENU_TAB_ID" />
+          <ScalarProperty Name="Order" ColumnName="ORDER" />
+          <ScalarProperty Name="MenuType" ColumnName="MENU_TYPE" />
+          <ScalarProperty Name="ModuleID" ColumnName="SEC_MODULE_ID" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_USER_MENU_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMenuTabs">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserMenuTab">
+        <MappingFragment StoreEntitySet="SEC_USER_MENU_TAB">
+          <ScalarProperty Name="HasSmallIcons" ColumnName="SMALL_ICONS" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="Order" ColumnName="ORDER" />
+          <ScalarProperty Name="Name" ColumnName="TAB_NAME" />
+          <ScalarProperty Name="ID" ColumnName="SEC_USER_MENU_TAB_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityEmployees">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityEmployee">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="OfficeCode" ColumnName="OFFICE_CODE" />
+          <ScalarProperty Name="TerminationDate" ColumnName="EMP_TERM_DATE" />
+          <ScalarProperty Name="WorkspaceTemplateID" ColumnName="WV_TMPLT_HDR_ID" />
+          <ScalarProperty Name="DepartmentCode" ColumnName="DP_TM_CODE" />
+          <ScalarProperty Name="MiddleInital" ColumnName="EMP_MI" />
+          <ScalarProperty Name="FirstName" ColumnName="EMP_FNAME" />
+          <ScalarProperty Name="LastName" ColumnName="EMP_LNAME" />
+          <ScalarProperty Name="Code" ColumnName="EMP_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserWorkspaces">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserWorkspace">
+        <MappingFragment StoreEntitySet="WV_USER_WORKSPACE">
+          <ScalarProperty Name="IsClientPortal" ColumnName="CP" />
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_CODE" />
+          <ScalarProperty Name="ID" ColumnName="WORKSPACE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkspaceObjects">
+      <EntityTypeMapping TypeName="SecurityObjectContext.WorkspaceObject">
+        <MappingFragment StoreEntitySet="WV_WORKSPACE_OBJECT">
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="LeftCoordinate" ColumnName="LEFT_COORD" />
+          <ScalarProperty Name="TopCoordinate" ColumnName="TOP_COORD" />
+          <ScalarProperty Name="Width" ColumnName="WIDTH" />
+          <ScalarProperty Name="Height" ColumnName="HEIGHT" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZONE_ID" />
+          <ScalarProperty Name="DesktopObjectID" ColumnName="DESKTOP_OBJECT_ID" />
+          <ScalarProperty Name="WorkspaceID" ColumnName="WORKSPACE_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClientDivisionProductAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserClientDivisionProductAccess">
+        <MappingFragment StoreEntitySet="SEC_CLIENT">
+          <ScalarProperty Name="AllowTimeEntryOnly" ColumnName="TIME_ENTRY" />
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityClients">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityClient">
+        <MappingFragment StoreEntitySet="CLIENT">
+          <ScalarProperty Name="RequireTimeComment" ColumnName="REQ_TIME_COMMENT" />
+          <ScalarProperty Name="IsActive" ColumnName="ACTIVE_FLAG" />
+          <ScalarProperty Name="Name" ColumnName="CL_NAME" />
+          <ScalarProperty Name="Code" ColumnName="CL_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityDivisions">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityDivision">
+        <MappingFragment StoreEntitySet="DIVISION">
+          <ScalarProperty Name="IsActive" ColumnName="ACTIVE_FLAG" />
+          <ScalarProperty Name="Name" ColumnName="DIV_NAME" />
+          <ScalarProperty Name="Code" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityProducts">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityProduct">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="OfficeCode" ColumnName="OFFICE_CODE" />
+          <ScalarProperty Name="IsInactive" ColumnName="INACTIVE" />
+          <ScalarProperty Name="Description" ColumnName="PRD_DESCRIPTION" />
+          <ScalarProperty Name="Code" ColumnName="PRD_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdassistUsers">
+      <EntityTypeMapping TypeName="SecurityObjectContext.AdassistUser">
+        <MappingFragment StoreEntitySet="APPR_PASSWORD">
+          <ScalarProperty Name="IsInactive" ColumnName="INACTIVE" />
+          <ScalarProperty Name="CreatedDate" ColumnName="DATE_CREATED" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_ID" />
+          <ScalarProperty Name="Password" ColumnName="PASSWORD_ID" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="ACCT_EXEC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserEmployeeAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserEmployeeAccess">
+        <MappingFragment StoreEntitySet="SEC_EMP">
+          <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityDepartments">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityDepartment">
+        <MappingFragment StoreEntitySet="DEPT_TEAM">
+          <ScalarProperty Name="RuleCode" ColumnName="PO_APPR_RULE_CODE" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CATEGORY" />
+          <ScalarProperty Name="TargetBillableHours" ColumnName="DIRECT_HRS_PER_GOAL" />
+          <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+          <ScalarProperty Name="Name" ColumnName="DP_TM_DESC" />
+          <ScalarProperty Name="Code" ColumnName="DP_TM_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupSettings">
+      <EntityTypeMapping TypeName="SecurityObjectContext.GroupSetting">
+        <MappingFragment StoreEntitySet="SEC_GROUP_SETTING">
+          <ScalarProperty Name="DateValue" ColumnName="DATE_VALUE" />
+          <ScalarProperty Name="NumericValue" ColumnName="NUMERIC_VALUE" />
+          <ScalarProperty Name="StringValue" ColumnName="STRING_VALUE" />
+          <ScalarProperty Name="SettingCode" ColumnName="SETTING_CODE" />
+          <ScalarProperty Name="GroupID" ColumnName="SEC_GROUP_ID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_GROUP_SETTING_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="SecurityObjectContext.Report">
+        <MappingFragment StoreEntitySet="REPORTS">
+          <ScalarProperty Name="Orient" ColumnName="REPORTORIENT" />
+          <ScalarProperty Name="SubReportNumber" ColumnName="REPORTSUB" />
+          <ScalarProperty Name="Number" ColumnName="REPORTNUMBER" />
+          <ScalarProperty Name="Category" ColumnName="REPORTCATEGORY" />
+          <ScalarProperty Name="IsActive" ColumnName="REPORTACTIVE" />
+          <ScalarProperty Name="Type" ColumnName="REPORTTYPE" />
+          <ScalarProperty Name="Name" ColumnName="REPORTNAME" />
+          <ScalarProperty Name="Code" ColumnName="REPORTFILE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ReportAccess">
+        <MappingFragment StoreEntitySet="SEC_REPORTS">
+          <ScalarProperty Name="Enabled" ColumnName="ENABLE" />
+          <ScalarProperty Name="ReportCode" ColumnName="REPORTFILE" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupUserDefinedReportAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.GroupUserDefinedReportAccess">
+        <MappingFragment StoreEntitySet="SEC_GROUP_UDRACCESS">
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="UserDefinedReportID" ColumnName="USER_DEF_REPORT_ID" />
+          <ScalarProperty Name="GroupID" ColumnName="SEC_GROUP_ID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_GROUP_UDRACCESS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserUserDefinedReportAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserUserDefinedReportAccess">
+        <MappingFragment StoreEntitySet="SEC_USER_UDRACCESS">
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="UserDefinedReportID" ColumnName="USER_DEF_REPORT_ID" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_USER_UDRACCESS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RegisterSecuritySession" FunctionName="Security.Store.advsp_register_session" />
+    <EntitySetMapping Name="UserFavoriteModules">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserFavoriteModule">
+        <MappingFragment StoreEntitySet="WV_USER_QUICK_LAUNCH_APPS">
+          <ScalarProperty Name="ModuleID" ColumnName="APPID" />
+          <ScalarProperty Name="WorkspaceID" ColumnName="TABNO" />
+          <ScalarProperty Name="UserCode" ColumnName="USERID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkspaceTemplateDetails">
+      <EntityTypeMapping TypeName="SecurityObjectContext.WorkspaceTemplateDetail">
+        <MappingFragment StoreEntitySet="WV_WORKSPACE_TMPLT_DTL">
+          <ScalarProperty Name="IsClientPortal" ColumnName="CP" />
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="WorkspaceTemplateID" ColumnName="TEMPLATE_ID" />
+          <ScalarProperty Name="ID" ColumnName="WORKSPACE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkspaceTemplates">
+      <EntityTypeMapping TypeName="SecurityObjectContext.WorkspaceTemplate">
+        <MappingFragment StoreEntitySet="WV_WORKSPACE_TMPLT_HDR">
+          <ScalarProperty Name="IsClientPortal" ColumnName="CP" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CREATED_BY_ID" />
+          <ScalarProperty Name="ID" ColumnName="TEMPLATE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkspaceTemplateItems">
+      <EntityTypeMapping TypeName="SecurityObjectContext.WorkspaceTemplateItem">
+        <MappingFragment StoreEntitySet="WV_WORKSPACE_TMPLT_ITEM">
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="LeftCoordinate" ColumnName="LEFT_COORD" />
+          <ScalarProperty Name="TopCoordinate" ColumnName="TOP_COORD" />
+          <ScalarProperty Name="Width" ColumnName="WIDTH" />
+          <ScalarProperty Name="Height" ColumnName="HEIGHT" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZONE_ID" />
+          <ScalarProperty Name="ModuleID" ColumnName="DESKTOP_OBJECT_ID" />
+          <ScalarProperty Name="WorkspaceTemplateID" ColumnName="WORKSPACE_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UpdateUserAdAssistPassword" FunctionName="Security.Store.advsp_UPDATE_SEC_USER_AUTH" />
+    <EntitySetMapping Name="ClientPortalUsers">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ClientPortalUser">
+        <MappingFragment StoreEntitySet="CP_USER">
+          <ScalarProperty Name="AgencyContactEmployeeCode" ColumnName="AGENCY_CONTACT_CODE" />
+          <ScalarProperty Name="AlertGroupCode" ColumnName="ALERT_GROUP_CODE" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="IsAdminUser" ColumnName="ADMIN_USER" />
+          <ScalarProperty Name="WebID" ColumnName="WEB_ID" />
+          <ScalarProperty Name="DesktopTemplate" ColumnName="DESKTOP_TEMPLATE" />
+          <ScalarProperty Name="ClientContactID" ColumnName="CDP_CONTACT_ID" />
+          <ScalarProperty Name="Theme" ColumnName="THEME" />
+          <ScalarProperty Name="MustChangePassword" ColumnName="MUST_CHANGE_PASSORD" />
+          <ScalarProperty Name="UnlockedDate" ColumnName="UNLOCK_TIME" />
+          <ScalarProperty Name="LoginsAttempted" ColumnName="LOGIN_TRY_COUNT" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EMAIL_ADDRESS" />
+          <ScalarProperty Name="IsLocked" ColumnName="IS_LOCKED" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_TIMESTAMP" />
+          <ScalarProperty Name="CreatedByUserCode" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LAST_LOGON" />
+          <ScalarProperty Name="Password" ColumnName="PASSWORD_HASH" />
+          <ScalarProperty Name="FullName" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="LoweredUserName" ColumnName="LOWERED_USER_NAME" />
+          <ScalarProperty Name="UserName" ColumnName="USER_NAME" />
+          <ScalarProperty Name="ID" ColumnName="USER_GUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPortalUserApplicationAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ClientPortalUserApplicationAccess">
+        <MappingFragment StoreEntitySet="SEC_CPUSER_APPACCESS">
+          <ScalarProperty Name="Custom2" ColumnName="CUSTOM2" />
+          <ScalarProperty Name="Custom1" ColumnName="CUSTOM1" />
+          <ScalarProperty Name="CanAdd" ColumnName="CAN_ADD" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CAN_UPDATE" />
+          <ScalarProperty Name="CanPrint" ColumnName="CAN_PRINT" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="ApplicationID" ColumnName="SEC_APPLICATION_ID" />
+          <ScalarProperty Name="ClientPortalUserID" ColumnName="CPUSER_GUID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_CPUSER_APPACCESS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPortalUserModuleAccesses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ClientPortalUserModuleAccess">
+        <MappingFragment StoreEntitySet="SEC_CPUSER_MODACCESS">
+          <ScalarProperty Name="Custom2" ColumnName="CUSTOM2" />
+          <ScalarProperty Name="Custom1" ColumnName="CUSTOM1" />
+          <ScalarProperty Name="CanAdd" ColumnName="CAN_ADD" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CAN_UPDATE" />
+          <ScalarProperty Name="CanPrint" ColumnName="CAN_PRINT" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IS_BLOCKED" />
+          <ScalarProperty Name="ModuleID" ColumnName="SEC_MODULE_ID" />
+          <ScalarProperty Name="ClientPortalUserID" ColumnName="CPUSER_GUID" />
+          <ScalarProperty Name="ID" ColumnName="SEC_CPUSER_MODACCESS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityClientContactDetails">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityClientContactDetail">
+        <MappingFragment StoreEntitySet="CDP_CONTACT_DTL">
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SEQ_NBR" />
+          <ScalarProperty Name="ClientContactID" ColumnName="CDP_CONTACT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityClientContacts">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityClientContact">
+        <MappingFragment StoreEntitySet="CDP_CONTACT_HDR">
+          <ScalarProperty Name="Comment" ColumnName="CONT_COMMENT" />
+          <ScalarProperty Name="CellPhoneNumber" ColumnName="CELL_PHONE" />
+          <ScalarProperty Name="FullNameFML" ColumnName="CONT_FML" />
+          <ScalarProperty Name="FullNameLF" ColumnName="CONT_LF" />
+          <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+          <ScalarProperty Name="TaskPrimary" ColumnName="TASK_PRIMARY" />
+          <ScalarProperty Name="IsEmailRecipient" ColumnName="EMAIL_RCPT" />
+          <ScalarProperty Name="RecievesAlerts" ColumnName="CP_ALERTS" />
+          <ScalarProperty Name="IsClientPortalUser" ColumnName="CP_USER" />
+          <ScalarProperty Name="DefaultTaskCode" ColumnName="DEFAULT_TASK" />
+          <ScalarProperty Name="ScheduleUser" ColumnName="SCHEDULE_USER" />
+          <ScalarProperty Name="FaxNumberExtention" ColumnName="CONT_FAX_EXTENTION" />
+          <ScalarProperty Name="FaxNumber" ColumnName="CONT_FAX" />
+          <ScalarProperty Name="PhoneNumberExtention" ColumnName="CONT_EXTENTION" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="CONT_TELEPHONE" />
+          <ScalarProperty Name="Zip" ColumnName="CONT_ZIP" />
+          <ScalarProperty Name="Country" ColumnName="CONT_COUNTRY" />
+          <ScalarProperty Name="State" ColumnName="CONT_STATE" />
+          <ScalarProperty Name="County" ColumnName="CONT_COUNTY" />
+          <ScalarProperty Name="City" ColumnName="CONT_CITY" />
+          <ScalarProperty Name="Address2" ColumnName="CONT_ADDRESS2" />
+          <ScalarProperty Name="Address" ColumnName="CONT_ADDRESS1" />
+          <ScalarProperty Name="Title" ColumnName="CONT_TITLE" />
+          <ScalarProperty Name="MiddleInitial" ColumnName="CONT_MI" />
+          <ScalarProperty Name="LastName" ColumnName="CONT_LNAME" />
+          <ScalarProperty Name="FirstName" ColumnName="CONT_FNAME" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EMAIL_ADDRESS" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="Code" ColumnName="CONT_CODE" />
+          <ScalarProperty Name="ID" ColumnName="CDP_CONTACT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceFeeReconciliationSettings">
+      <EntityTypeMapping TypeName="IsTypeOf(SecurityObjectContext.ServiceFeeReconciliationSetting)">
+        <MappingFragment StoreEntitySet="SERVICE_FEE_DEF">
+          <ScalarProperty Name="AddFeeDescriptionToGroupBy" ColumnName="ADD_FEE_DESC_TO_GRP_BY" />
+          <ScalarProperty Name="IncludeServiceFeeTypeLevel" ColumnName="INCLD_SERV_FEE_TYPE_LEVEL" />
+          <ScalarProperty Name="SummaryStyle" ColumnName="SERVICE_SUMMARY_STYLE" />
+          <ScalarProperty Name="GroupByOption" ColumnName="SERVICE_GROUP_BY" />
+          <ScalarProperty Name="ServiceFeeTypeSelection" ColumnName="SERVICE_FEE_SEL" />
+          <ScalarProperty Name="DisplayFunction" ColumnName="GRD_DISPL_OPT_FUNC" />
+          <ScalarProperty Name="DisplayJobComponentName" ColumnName="GRD_DISPL_OPT_COMP_NAME" />
+          <ScalarProperty Name="DisplayJobComponentNumber" ColumnName="GRD_DISPL_OPT_COMP_NBR" />
+          <ScalarProperty Name="DisplayJobName" ColumnName="GRD_DISPL_OPT_JOB_NAME" />
+          <ScalarProperty Name="DisplayJobNumber" ColumnName="GRD_DISPL_OPT_JOB_NBR" />
+          <ScalarProperty Name="DisplayCampaign" ColumnName="GRD_DISPL_OPT_CMPN" />
+          <ScalarProperty Name="PrimaryDisplayOption" ColumnName="PRIMARY_DISPL_OPT" />
+          <ScalarProperty Name="IncludeMediaCommissionFeeTime" ColumnName="FEETIME_TYPE_INCL_MEDIA_COMM" />
+          <ScalarProperty Name="IncludeProductionCommissionFeeTime" ColumnName="FEETIME_TYPE_INCL_PROD_COMM" />
+          <ScalarProperty Name="IncludeIncomeOnlyFeeTime" ColumnName="FEETIME_TYPE_INCL_STD" />
+          <ScalarProperty Name="IncludeUnreconciledOnly" ColumnName="UN_REC_ONLY" />
+          <ScalarProperty Name="ClientDivisionProductIncludeOption" ColumnName="CDP_INCL" />
+          <ScalarProperty Name="OutOfHomeCommission" ColumnName="OOH_COMM" />
+          <ScalarProperty Name="InternetCommission" ColumnName="INT_COMM" />
+          <ScalarProperty Name="NewspaperCommission" ColumnName="NEWS_COMM" />
+          <ScalarProperty Name="MagazineCommission" ColumnName="MAG_COMM" />
+          <ScalarProperty Name="BroadcastCommission" ColumnName="BROAD_COMM" />
+          <ScalarProperty Name="ProductionCommissionPostedBasedOnFunction" ColumnName="PROD_COMM_FUNC" />
+          <ScalarProperty Name="ProductionCommissionPostedBasedOnSalesClass" ColumnName="PROD_COMM_SC" />
+          <ScalarProperty Name="IncomeOnlyPostedBasedOnFunction" ColumnName="STD_FEE_FUNC" />
+          <ScalarProperty Name="IncomeOnlyPostedBasedOnSalesClass" ColumnName="STD_FEE_SC" />
+          <ScalarProperty Name="IncomeOnlyJobCompMarkedAsFee" ColumnName="STD_FEE_JOB_COMP" />
+          <ScalarProperty Name="IncludeMediaCommission" ColumnName="MEDIA_COMM_INCL" />
+          <ScalarProperty Name="IncludeProductionCommission" ColumnName="PRODUCT_COMM_INCL" />
+          <ScalarProperty Name="IncludeIncomeOnly" ColumnName="INCOME_ONLY_INCL" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecurityOffices">
+      <EntityTypeMapping TypeName="SecurityObjectContext.SecurityOffice">
+        <MappingFragment StoreEntitySet="OFFICE">
+          <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+          <ScalarProperty Name="Name" ColumnName="OFFICE_NAME" />
+          <ScalarProperty Name="Code" ColumnName="OFFICE_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPortalUserWorkspaces">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ClientPortalUserWorkspace">
+        <MappingFragment StoreEntitySet="CP_USER_WORKSPACE">
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="ClientContactID" ColumnName="CDP_CONTACT_ID" />
+          <ScalarProperty Name="ID" ColumnName="WORKSPACE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClientPortalWorkspaceObjects">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ClientPortalWorkspaceObject">
+        <MappingFragment StoreEntitySet="CP_WORKSPACE_OBJECT">
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="LeftCoordinate" ColumnName="LEFT_COORD" />
+          <ScalarProperty Name="TopCoordinate" ColumnName="TOP_COORD" />
+          <ScalarProperty Name="Width" ColumnName="WIDTH" />
+          <ScalarProperty Name="Height" ColumnName="HEIGHT" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZONE_ID" />
+          <ScalarProperty Name="DesktopObjectID" ColumnName="DESKTOP_OBJECT_ID" />
+          <ScalarProperty Name="WorkspaceID" ColumnName="WORKSPACE_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdvantageUserLicenseInUses">
+      <EntityTypeMapping TypeName="SecurityObjectContext.AdvantageUserLicenseInUse">
+        <MappingFragment StoreEntitySet="AULU">
+          <ScalarProperty Name="Assigned" ColumnName="AULU_ASSIGN" />
+          <ScalarProperty Name="Type" ColumnName="AULU_TYPE" />
+          <ScalarProperty Name="ID" ColumnName="AULU_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationSettings">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ApplicationSetting">
+        <MappingFragment StoreEntitySet="APP_VARS">
+          <ScalarProperty Name="Value" ColumnName="VARIABLE_VALUE" />
+          <ScalarProperty Name="OrderNumber" ColumnName="VARIABLE_ORDER" />
+          <ScalarProperty Name="Type" ColumnName="VARIABLE_TYPE" />
+          <ScalarProperty Name="Name" ColumnName="VARIABLE_NAME" />
+          <ScalarProperty Name="Group" ColumnName="VARIABLE_GROUP" />
+          <ScalarProperty Name="ApplicationSection" ColumnName="APPLICATION" />
+          <ScalarProperty Name="UserCode" ColumnName="USERID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertUserAdAssistPassword" FunctionName="Security.Store.advsp_INSERT_SEC_USER_AUTH" />
+    <EntitySetMapping Name="ServiceFeeReconciliationSettingDetails">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ServiceFeeReconciliationSettingDetail">
+        <MappingFragment StoreEntitySet="SERVICE_FEE_DEF_DTL">
+          <ScalarProperty Name="Code" ColumnName="DTL_CODE" />
+          <ScalarProperty Name="Type" ColumnName="DTL_TYPE" />
+          <ScalarProperty Name="UserCode" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceFeeReconciliationSettingCDPs">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ServiceFeeReconciliationSettingCDP">
+        <MappingFragment StoreEntitySet="SERVICE_FEE_DEF_CDP">
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="SERVICE_FEE_DEF_CDP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceFeeReconciliationReports">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ServiceFeeReconciliationReport">
+        <MappingFragment StoreEntitySet="SERVICE_FEE_REPORT">
+          <ScalarProperty Name="SummaryStyle" ColumnName="SERVICE_SUMMARY_STYLE" />
+          <ScalarProperty Name="GroupByOption" ColumnName="SERVICE_GROUP_BY" />
+          <ScalarProperty Name="ActiveFilter" ColumnName="ACTIVE_FILTER" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UPDATED_DATE" />
+          <ScalarProperty Name="UpdatedByUserCode" ColumnName="UPDATED_BY" />
+          <ScalarProperty Name="ShowAutoFilterRow" ColumnName="SHOW_AUTOFILTER_ROW" />
+          <ScalarProperty Name="ShowGroupByBox" ColumnName="SHOW_GROUPBY_BOX" />
+          <ScalarProperty Name="ShowViewCaption" ColumnName="SHOW_VIEW_CAPTION" />
+          <ScalarProperty Name="PrintFilterInformation" ColumnName="PRINT_FILTER_INFO" />
+          <ScalarProperty Name="PrintSelectedRowsOnly" ColumnName="PRINT_SEL_ROWS" />
+          <ScalarProperty Name="PrintGroupFooter" ColumnName="PRINT_GROUP_FOOTER" />
+          <ScalarProperty Name="PrintFooter" ColumnName="PRINT_FOOTER" />
+          <ScalarProperty Name="PrintHeader" ColumnName="PRINT_HEADER" />
+          <ScalarProperty Name="AutoSizeColumnsWhenPrinting" ColumnName="PRINT_AUTOSIZE_COL" />
+          <ScalarProperty Name="AllowCellMerge" ColumnName="ALLOW_CELL_MERGE" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CreatedByUserCode" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ID" ColumnName="SERVICE_FEE_REPORT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceFeeReconciliationReportColumns">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ServiceFeeReconciliationReportColumn">
+        <MappingFragment StoreEntitySet="SERVICE_FEE_REPORT_COL">
+          <ScalarProperty Name="GridViewID" ColumnName="GRIDVIEW_ID" />
+          <ScalarProperty Name="VisibleIndex" ColumnName="VISIBLE_INDEX" />
+          <ScalarProperty Name="Width" ColumnName="WIDTH" />
+          <ScalarProperty Name="GroupIndex" ColumnName="GROUP_INDEX" />
+          <ScalarProperty Name="SortIndex" ColumnName="SORT_INDEX" />
+          <ScalarProperty Name="SortOrder" ColumnName="SORT_ORDER" />
+          <ScalarProperty Name="IsVisible" ColumnName="IS_VISIBLE" />
+          <ScalarProperty Name="HeaderText" ColumnName="HEADER_TEXT" />
+          <ScalarProperty Name="FieldName" ColumnName="FIELD_NAME" />
+          <ScalarProperty Name="ServiceFeeReconciliationReportID" ColumnName="SERVICE_FEE_REPORT_ID" />
+          <ScalarProperty Name="ID" ColumnName="SERVICE_FEE_REPORT_COL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceFeeReconciliationReportSummaryItems">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ServiceFeeReconciliationReportSummaryItem">
+        <MappingFragment StoreEntitySet="SERVICE_FEE_REPORT_SUM">
+          <ScalarProperty Name="GridViewID" ColumnName="GRIDVIEW_ID" />
+          <ScalarProperty Name="OnFooter" ColumnName="ON_FOOTER" />
+          <ScalarProperty Name="DisplayFormat" ColumnName="DISPLAY_FORMAT" />
+          <ScalarProperty Name="ColumnName" ColumnName="COLUMN_NAME" />
+          <ScalarProperty Name="FieldName" ColumnName="FIELD_NAME" />
+          <ScalarProperty Name="SummaryItemType" ColumnName="SUM_TYPE" />
+          <ScalarProperty Name="ServiceFeeReconciliationReportID" ColumnName="SERVICE_FEE_REPORT_ID" />
+          <ScalarProperty Name="ID" ColumnName="SERVICE_FEE_REPORT_SUM_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CPUserFavoriteModules">
+      <EntityTypeMapping TypeName="SecurityObjectContext.CPUserFavoriteModule">
+        <MappingFragment StoreEntitySet="CP_USER_QUICK_LAUNCH_APPS">
+          <ScalarProperty Name="LeftCoord" ColumnName="LEFT_COORD" />
+          <ScalarProperty Name="TopCoord" ColumnName="TOP_COORD" />
+          <ScalarProperty Name="Width" ColumnName="WIDTH" />
+          <ScalarProperty Name="Height" ColumnName="HEIGHT" />
+          <ScalarProperty Name="ModuleID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="WorkspaceID" ColumnName="TAB_ID" />
+          <ScalarProperty Name="ID" ColumnName="CDP_CONTACT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeSummaries">
+      <EntityTypeMapping TypeName="SecurityObjectContext.EmployeeSummary">
+        <MappingFragment StoreEntitySet="V_RPT_SEC_EMP_SUMMARY">
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="Employee" ColumnName="Employee" />
+          <ScalarProperty Name="CheckForUserAccess" ColumnName="CheckForUserAccess" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupPermissionsReports">
+      <EntityTypeMapping TypeName="SecurityObjectContext.GroupPermissionsReport">
+        <MappingFragment StoreEntitySet="V_RPT_SEC_GROUP_PERMISSION">
+          <ScalarProperty Name="ApplicationCustom2" ColumnName="ApplicationCustom2" />
+          <ScalarProperty Name="ApplicationCustom1" ColumnName="ApplicationCustom1" />
+          <ScalarProperty Name="ApplicationCanAdd" ColumnName="ApplicationCanAdd" />
+          <ScalarProperty Name="ApplicationCanUpdate" ColumnName="ApplicationCanUpdate" />
+          <ScalarProperty Name="ApplicationCanPrint" ColumnName="ApplicationCanPrint" />
+          <ScalarProperty Name="ApplicationIsBlocked" ColumnName="ApplicationIsBlocked" />
+          <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+          <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+          <ScalarProperty Name="CanAdd" ColumnName="CanAdd" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CanUpdate" />
+          <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="ModuleHasCustomPermission" ColumnName="ModuleHasCustomPermission" />
+          <ScalarProperty Name="ModuleSortOrder" ColumnName="ModuleSortOrder" />
+          <ScalarProperty Name="ModuleInfoID" ColumnName="ModuleInfoID" />
+          <ScalarProperty Name="ModuleIsCategory" ColumnName="ModuleIsCategory" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="SubSubParentModuleSortOrder" ColumnName="SubSubParentModuleSortOrder" />
+          <ScalarProperty Name="SubSubParentModule" ColumnName="SubSubParentModule" />
+          <ScalarProperty Name="SubSubParentModuleID" ColumnName="SubSubParentModuleID" />
+          <ScalarProperty Name="SubParentModuleSortOrder" ColumnName="SubParentModuleSortOrder" />
+          <ScalarProperty Name="SubParentModule" ColumnName="SubParentModule" />
+          <ScalarProperty Name="SubParentModuleID" ColumnName="SubParentModuleID" />
+          <ScalarProperty Name="ParentModuleSortOrder" ColumnName="ParentModuleSortOrder" />
+          <ScalarProperty Name="ParentModule" ColumnName="ParentModule" />
+          <ScalarProperty Name="ParentModuleID" ColumnName="ParentModuleID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPermissionsReports">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserPermissionsReport">
+        <MappingFragment StoreEntitySet="V_RPT_SEC_PERMISSION">
+          <ScalarProperty Name="Employee" ColumnName="Employee" />
+          <ScalarProperty Name="ApplicationCustom2" ColumnName="ApplicationCustom2" />
+          <ScalarProperty Name="ApplicationCustom1" ColumnName="ApplicationCustom1" />
+          <ScalarProperty Name="ApplicationCanAdd" ColumnName="ApplicationCanAdd" />
+          <ScalarProperty Name="ApplicationCanUpdate" ColumnName="ApplicationCanUpdate" />
+          <ScalarProperty Name="ApplicationCanPrint" ColumnName="ApplicationCanPrint" />
+          <ScalarProperty Name="ApplicationIsBlocked" ColumnName="ApplicationIsBlocked" />
+          <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+          <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+          <ScalarProperty Name="CanAdd" ColumnName="CanAdd" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CanUpdate" />
+          <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ModuleHasCustomPermission" ColumnName="ModuleHasCustomPermission" />
+          <ScalarProperty Name="ModuleSortOrder" ColumnName="ModuleSortOrder" />
+          <ScalarProperty Name="ModuleInfoID" ColumnName="ModuleInfoID" />
+          <ScalarProperty Name="ModuleIsCategory" ColumnName="ModuleIsCategory" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="SubSubParentModuleSortOrder" ColumnName="SubSubParentModuleSortOrder" />
+          <ScalarProperty Name="SubSubParentModule" ColumnName="SubSubParentModule" />
+          <ScalarProperty Name="SubSubParentModuleID" ColumnName="SubSubParentModuleID" />
+          <ScalarProperty Name="SubParentModuleSortOrder" ColumnName="SubParentModuleSortOrder" />
+          <ScalarProperty Name="SubParentModule" ColumnName="SubParentModule" />
+          <ScalarProperty Name="SubParentModuleID" ColumnName="SubParentModuleID" />
+          <ScalarProperty Name="ParentModuleSortOrder" ColumnName="ParentModuleSortOrder" />
+          <ScalarProperty Name="ParentModule" ColumnName="ParentModule" />
+          <ScalarProperty Name="ParentModuleID" ColumnName="ParentModuleID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupPermissions">
+      <EntityTypeMapping TypeName="SecurityObjectContext.GroupPermission">
+        <MappingFragment StoreEntitySet="V_SEC_GROUP_PERMISSION">
+          <ScalarProperty Name="ApplicationCustom2" ColumnName="ApplicationCustom2" />
+          <ScalarProperty Name="ApplicationCustom1" ColumnName="ApplicationCustom1" />
+          <ScalarProperty Name="ApplicationCanAdd" ColumnName="ApplicationCanAdd" />
+          <ScalarProperty Name="ApplicationCanUpdate" ColumnName="ApplicationCanUpdate" />
+          <ScalarProperty Name="ApplicationCanPrint" ColumnName="ApplicationCanPrint" />
+          <ScalarProperty Name="ApplicationIsBlocked" ColumnName="ApplicationIsBlocked" />
+          <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+          <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+          <ScalarProperty Name="CanAdd" ColumnName="CanAdd" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CanUpdate" />
+          <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+          <ScalarProperty Name="GroupDescription" ColumnName="GroupDescription" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="ModuleInfoID" ColumnName="ModuleInfoID" />
+          <ScalarProperty Name="ModuleIsCategory" ColumnName="ModuleIsCategory" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModuleStructures">
+      <EntityTypeMapping TypeName="SecurityObjectContext.ModuleStructure">
+        <MappingFragment StoreEntitySet="V_SEC_MODULES_STRUCT">
+          <ScalarProperty Name="ModuleHasCustomPermission" ColumnName="ModuleHasCustomPermission" />
+          <ScalarProperty Name="ModuleSortOrder" ColumnName="ModuleSortOrder" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="SubSubParentModuleSortOrder" ColumnName="SubSubParentModuleSortOrder" />
+          <ScalarProperty Name="SubSubParentModule" ColumnName="SubSubParentModule" />
+          <ScalarProperty Name="SubSubParentModuleID" ColumnName="SubSubParentModuleID" />
+          <ScalarProperty Name="SubParentModuleSortOrder" ColumnName="SubParentModuleSortOrder" />
+          <ScalarProperty Name="SubParentModule" ColumnName="SubParentModule" />
+          <ScalarProperty Name="SubParentModuleID" ColumnName="SubParentModuleID" />
+          <ScalarProperty Name="ParentModuleSortOrder" ColumnName="ParentModuleSortOrder" />
+          <ScalarProperty Name="ParentModule" ColumnName="ParentModule" />
+          <ScalarProperty Name="ParentModuleID" ColumnName="ParentModuleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPermissions">
+      <EntityTypeMapping TypeName="SecurityObjectContext.UserPermission">
+        <MappingFragment StoreEntitySet="V_SEC_PERMISSION">
+          <ScalarProperty Name="ApplicationCustom2" ColumnName="ApplicationCustom2" />
+          <ScalarProperty Name="ApplicationCustom1" ColumnName="ApplicationCustom1" />
+          <ScalarProperty Name="ApplicationCanAdd" ColumnName="ApplicationCanAdd" />
+          <ScalarProperty Name="ApplicationCanUpdate" ColumnName="ApplicationCanUpdate" />
+          <ScalarProperty Name="ApplicationCanPrint" ColumnName="ApplicationCanPrint" />
+          <ScalarProperty Name="ApplicationIsBlocked" ColumnName="ApplicationIsBlocked" />
+          <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+          <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+          <ScalarProperty Name="CanAdd" ColumnName="CanAdd" />
+          <ScalarProperty Name="CanUpdate" ColumnName="CanUpdate" />
+          <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ModuleInfoID" ColumnName="ModuleInfoID" />
+          <ScalarProperty Name="ModuleIsCategory" ColumnName="ModuleIsCategory" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleCode" ColumnName="ModuleCode" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

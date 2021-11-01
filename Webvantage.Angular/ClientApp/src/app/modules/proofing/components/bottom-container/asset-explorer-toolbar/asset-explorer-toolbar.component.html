@@ -1,0 +1,82 @@
+<div class="asset-explorer-toolbar">
+  <kendo-toolbar class="asset-explorer-toolbar__main">
+    <proof-custom-toolbar-item>
+      <div class="asset-explorer-toolbar-container">
+        <div class="asset-explorer-toolbar-left-side">
+        </div>
+        <!--<div class="asset-explorer-toolbar-left-side">
+    <ng-container *ngIf="(itemTypes | async) !== relatedAssets">
+      <fool-file-name [componentType]="fileNameType"
+                      [isToolbarContainer]="true"
+                      [textInIcon]="false"
+                      [innerText]="assetsTypes[(itemTypes | async)].label"
+                      [assetsTypes]="(itemTypes | async)"
+      ></fool-file-name>
+      <div class="vertical-line"></div>
+      <div class="text">
+        {{assetsTypes[(itemTypes | async)].text}}
+      </div>
+    </ng-container>
+  </div>-->
+        <div kendoTooltip tooltipClass="tooltip" class="asset-explorer-toolbar-right-side">
+          <proof-drop-down-selector class="selector" [listItems]="listItems"></proof-drop-down-selector>
+          <ng-container *ngIf="(buttons | async) as buttons">
+            <ng-container *ngIf="(comparisonService.getComparisonFilesAmount() | async) as comprasionFilesAmount">
+              <button kendoButton
+                      *ngIf="!buttons.fileManagerMax.selected"
+                      [title]="tooltips.assetExplorer"
+                      [selected]="buttons.folderOpen.selected"
+                      [imageUrl]="buttons.folderOpen.imageUrl"
+                      (click)="selectedButton(buttons.folderOpen.name)"></button>
+              <button kendoButton
+                      *ngIf="showButtonsOnComprasion((compareAndfileManagerMaxButtons | async), comprasionFilesAmount)"
+                      [title]="tooltips.showPixelsDifferences"
+                      [selected]="buttons.showPixelsDifferences.selected"
+                      [imageUrl]="buttons.showPixelsDifferences.imageUrl"
+                      (click)="selectedButton(buttons.showPixelsDifferences.name)"></button>
+              <button kendoButton
+                      *ngIf="showButtonsOnComprasion((compareAndfileManagerMaxButtons | async), comprasionFilesAmount)"
+                      [title]="tooltips.lock"
+                      [selected]="buttons.lock.selected"
+                      [imageUrl]="buttons.lock.imageUrl"
+                      (click)="selectedButton(buttons.lock.name)"></button>
+              <button kendoButton
+                      *ngIf="!buttons.fileManagerMax.selected"
+                      [title]="tooltips.compare"
+                      [selected]="buttons.compare.selected"
+                      [imageUrl]="buttons.compare.imageUrl"
+                      (click)="selectedButton(buttons.compare.name)"></button>
+              <proof-drop-down class="drop-down"
+                               *ngIf="showButtonsOnComprasion((compareAndfileManagerMaxButtons | async), comprasionFilesAmount)"
+                               [imageUrl]="versionsTypes[0].imageUrl"
+                               [data]="versionsTypes"
+                               dropDownType="versions"></proof-drop-down>
+              <button kendoButton
+                      [title]="tooltips.markers"
+                      *ngIf="!buttons.fileManagerMax.selected"
+                      [selected]="buttons.markerTool.selected"
+                      [imageUrl]="buttons.markerTool.imageUrl"
+                      (click)="selectedButton(buttons.markerTool.name)"></button>
+              <button kendoButton
+                      [title]="tooltips.condensed"
+                      [selected]="buttons.fileManagerMin.selected"
+                      [imageUrl]="buttons.fileManagerMin.imageUrl"
+                      (click)="selectedButton(buttons.fileManagerMin.name)"></button>
+              <button kendoButton
+                      [title]="tooltips.fullSize"
+                      [selected]="buttons.fileManagerMax.selected"
+                      [imageUrl]="buttons.fileManagerMax.imageUrl"
+                      (click)="selectedButton(buttons.fileManagerMax.name)"></button>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </proof-custom-toolbar-item>
+  </kendo-toolbar>
+</div>
+<proof-dialog-window *ngIf="dialogWindowOpened"
+                     [showOneButton]="true"
+                     closeButtonText="Ok"
+                     [dialogWindowText]="dialogWindowText"
+                     (dialogWindowClosed)="setDialogWindowClosed($event)"
+></proof-dialog-window>

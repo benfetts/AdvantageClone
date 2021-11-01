@@ -1,0 +1,41 @@
+CREATE PROCEDURE [dbo].[advsp_billing_rate_check_for_unique]
+	@BILL_RATE_PREC_ID smallint,
+	@EMP_CODE varchar(6),
+	@FNC_CODE varchar(6),
+	@CL_CODE varchar(6),
+	@DIV_CODE varchar(6),
+	@PRD_CODE varchar(6),
+	@SC_CODE varchar(6),
+	@EFFECTIVE_DATE smalldatetime,
+	@EMPLOYEE_TITLE_ID int
+AS
+BEGIN
+
+	DECLARE @IsUnique bit
+
+	IF EXISTS(SELECT BILL_RATE_PREC_ID 
+				FROM dbo.BILLING_RATE 
+				WHERE 
+					BILL_RATE_PREC_ID = @BILL_RATE_PREC_ID
+					AND ISNULL(EMP_CODE, '') = ISNULL(@EMP_CODE, '')
+					AND ISNULL(FNC_CODE, '') = ISNULL(@FNC_CODE, '')
+					AND ISNULL(CL_CODE, '') = ISNULL(@CL_CODE, '')
+					AND ISNULL(DIV_CODE, '') = ISNULL(@DIV_CODE, '')
+					AND ISNULL(PRD_CODE, '') = ISNULL(@PRD_CODE, '')
+					AND ISNULL(SC_CODE, '') = ISNULL(@SC_CODE, '')
+					AND ISNULL(EFFECTIVE_DATE, '01/01/1900') = ISNULL(@EFFECTIVE_DATE, '01/01/1900') 
+					AND ISNULL(EMPLOYEE_TITLE_ID, 0)  = ISNULL(@EMPLOYEE_TITLE_ID, 0)) BEGIN
+
+		SET @IsUnique = 0
+		
+	END ELSE BEGIN 
+
+		SET @IsUnique = 1
+
+	END
+
+	SELECT
+		@IsUnique
+
+END
+GO

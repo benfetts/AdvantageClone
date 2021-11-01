@@ -1,0 +1,37 @@
+﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[advtf_user_product_limits]') AND xtype IN (N'FN', N'IF', N'TF'))
+	DROP FUNCTION [dbo].[advtf_user_product_limits]
+GO
+
+CREATE FUNCTION [dbo].[advtf_user_product_limits] (
+	@UserCode VARCHAR(100)
+) RETURNS TABLE
+RETURN (
+	SELECT
+		P.CL_CODE,
+		P.DIV_CODE,
+		P.PRD_CODE,
+		S.TIME_ENTRY
+	FROM
+		dbo.PRODUCT AS P LEFT OUTER JOIN
+		(SELECT	DISTINCT
+			[USER_ID]
+		 FROM
+			dbo.SEC_CLIENT
+		 WHERE
+			UPPER([USER_ID]) = UPPER(@UserCode)) AS SSUM ON 1 = 1 LEFT OUTER JOIN
+		(SELECT	
+			CL_CODE,
+			DIV_CODE,
+			PRD_CODE,
+			[USER_ID],
+			TIME_ENTRY
+		 FROM
+			dbo.SEC_CLIENT
+		 WHERE 
+			UPPER([USER_ID]) = UPPER(@UserCode)) AS S ON P.CL_CODE = S.CL_CODE AND
+														 P.DIV_CODE = S.DIV_CODE AND
+														 P.PRD_CODE = S.PRD_CODE JOIN
+		dbo.advtf_employee_office_limits((SELECT EMP_CODE FROM dbo.SEC_USER WHERE UPPER(USER_CODE) = UPPER(@UserCode))) AS EO ON P.OFFICE_CODE = EO.OFFICE_CODE
+	WHERE
+		1 = CASE WHEN SSUM.[USER_ID] IS NULL THEN 1 WHEN S.[USER_ID] IS NOT NULL THEN 1 ELSE 0 END
+)

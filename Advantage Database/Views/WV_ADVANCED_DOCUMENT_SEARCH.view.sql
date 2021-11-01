@@ -1,0 +1,61 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE VIEW dbo.WV_ADVANCED_DOCUMENT_SEARCH
+AS
+SELECT     0 AS DOCUMENT_ID, '' AS FILENAME, '' AS DESCRIPTION, '' AS KEYWORDS, 0 AS FILE_SIZE, getdate() AS UPLOADED_DATE, '' AS MIME_TYPE, 
+                      '' AS USER_CODE, '' AS CMP_CODE, '' AS OFFICE_CODE, '' AS CL_CODE, '' AS DIV_CODE, '' AS PRD_CODE, 0 AS JOB_NUMBER, 
+                      0 AS JOB_COMPONENT_NBR, '' AS LEVEL, '' AS OFFICE_NAME, '' AS CAMPAIGN_NAME, '' AS CLIENT_NAME, '' AS DIVISION_NAME, 
+                      '' AS PRODUCT_DESCRIPTION, '' AS JOB_DESCRIPTION, '' AS JOB_COMP_DESCRIPTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

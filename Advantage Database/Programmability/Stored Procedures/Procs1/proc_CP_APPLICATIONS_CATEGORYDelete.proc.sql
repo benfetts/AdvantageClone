@@ -1,0 +1,26 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_APPLICATIONS_CATEGORYDelete]
+(
+	@CATID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	DELETE
+	FROM [CP_APPLICATIONS_CATEGORY]
+	WHERE
+		[CATID] = @CATID
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

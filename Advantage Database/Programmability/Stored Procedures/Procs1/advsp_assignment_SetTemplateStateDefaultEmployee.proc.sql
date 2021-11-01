@@ -1,0 +1,35 @@
+/****** Object:  StoredProcedure [dbo].[advsp_assignment_SetTemplateStateDefaultEmployee]    Script Date: 9/25/2019 9:22:07 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- EXEC advsp_assignment_SetTemplateStateDefaultEmployee 20,198,'sam'
+
+--DROP PROCEDURE [dbo].[advsp_assignment_SetTemplateStateDefaultEmployee]
+CREATE PROCEDURE [dbo].[advsp_assignment_SetTemplateStateDefaultEmployee]
+@ALRT_NOTIFY_HDR_ID INT,
+@ALERT_STATE_ID INT,
+@EMP_CODE VARCHAR(6)
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	IF EXISTS (SELECT 1 FROM ALERT_NOTIFY_EMPS WHERE ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID AND ALERT_STATE_ID = @ALERT_STATE_ID AND EMP_CODE = @EMP_CODE AND IS_DFLT = 1)
+	BEGIN
+		print('remove default')
+		UPDATE ALERT_NOTIFY_STATES set DFLT_EMP_CODE = NULL where ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID AND ALERT_STATE_ID = @ALERT_STATE_ID
+		UPDATE ALERT_NOTIFY_EMPS SET IS_DFLT = 0 WHERE ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID AND ALERT_STATE_ID = @ALERT_STATE_ID AND EMP_CODE = @EMP_CODE
+	END
+	ELSE
+	BEGIN
+		print('set default')
+		UPDATE ALERT_NOTIFY_EMPS SET IS_DFLT = 1 WHERE ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID AND ALERT_STATE_ID = @ALERT_STATE_ID AND EMP_CODE = @EMP_CODE
+	END
+
+END
+/*=========== QUERY ===========*/
+GO
+
+

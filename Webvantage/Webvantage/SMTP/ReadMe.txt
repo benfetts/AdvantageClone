@@ -1,0 +1,1 @@
+﻿This folder and its contents are required by the Configurator.

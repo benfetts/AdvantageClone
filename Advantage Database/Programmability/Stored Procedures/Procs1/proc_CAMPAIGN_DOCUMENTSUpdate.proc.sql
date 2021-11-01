@@ -1,0 +1,62 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CAMPAIGN_DOCUMENTSUpdate]
+(
+	@DOCUMENT_ID int,
+	@CMP_IDENTIFIER int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [CAMPAIGN_DOCUMENTS]
+	SET
+		[CMP_IDENTIFIER] = @CMP_IDENTIFIER
+	WHERE
+		[DOCUMENT_ID] = @DOCUMENT_ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

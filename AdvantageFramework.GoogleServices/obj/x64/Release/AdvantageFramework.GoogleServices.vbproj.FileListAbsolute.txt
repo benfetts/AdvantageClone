@@ -1,0 +1,10 @@
+C:\TFS_ROOT\Advantage\Production\Output\AdvantageFramework.GoogleServices.dll.config
+C:\TFS_ROOT\Advantage\Production\Output\AdvantageFramework.GoogleServices.dll
+C:\TFS_ROOT\Advantage\Production\AdvantageFramework.GoogleServices\obj\x64\Release\AdvantageFramework.GoogleServices.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\AdvantageFramework.GoogleServices\obj\x64\Release\AdvantageFramework.GoogleServices.Resources.resources
+C:\TFS_ROOT\Advantage\Production\AdvantageFramework.GoogleServices\obj\x64\Release\AdvantageFramework.GoogleServices.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\AdvantageFramework.GoogleServices\obj\x64\Release\AdvantageFramework.GoogleServices.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\AdvantageFramework.GoogleServices\obj\x64\Release\AdvantageFramework.GoogleServices.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\AdvantageFramework.GoogleServices\obj\x64\Release\AdvantageFramework.GoogleServices.dll
+C:\TFS_ROOT\Advantage\Production\Output\AdvantageFramework.GoogleServices.xml
+C:\TFS_ROOT\Advantage\Production\AdvantageFramework.GoogleServices\obj\x64\Release\AdvantageFramework.GoogleServices.xml

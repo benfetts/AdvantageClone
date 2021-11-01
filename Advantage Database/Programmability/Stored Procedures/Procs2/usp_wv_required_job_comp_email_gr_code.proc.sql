@@ -1,0 +1,17 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_required_job_comp_email_gr_code]
+@CLI_CODE VARCHAR(6)
+AS
+DECLARE
+@return INT
+
+SELECT @return = 
+	CASE 
+		EMAIL_GR_CODE_R WHEN 1 THEN 1
+	ELSE
+		(SELECT ISNULL(EMAIL_GR_CODE_R,0) FROM AGENCY)
+	END
+FROM CLIENT 
+WHERE CLIENT.CL_CODE = @CLI_CODE
+SELECT ISNULL(@return,0)
+

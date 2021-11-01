@@ -1,0 +1,473 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="resources/elements/search-page/search-page"></require>
+    <require from="resources/elements/search-page/search-option"></require>
+
+    <style>
+
+        .search-wrapper.search-wrapper-expanded {
+            width: 500px;
+        }
+
+        
+
+        .more-options span {
+            margin-right: 0 !important;
+        }
+
+        .document-preview .btn-group > .btn:first-child {
+            margin-left: 0;
+            padding: 8px 0;
+        }
+
+            .document-preview .btn-group > .btn:first-child:hover {
+                text-decoration: none;
+            }
+
+        .search-wrapper {
+            width: 200px;
+            -webkit-transition: width 1s ease-in-out;
+            -moz-transition: width 1s ease-in-out;
+            transition: width 1s ease-in-out;
+        }
+        @media (min-width: 992px) {
+            .col-md-1 {
+                width: 11.0%;
+                margin-bottom: 12px;
+            }
+        }
+    </style>
+    <wv-search-page title="Document Manager" on-search.call="search()">
+        <div slot="searchOptions">
+            <wv-search-option label="Level">
+                <ak-multiselect k-class="required">
+                    <select multiple="multiple" data-placeholder="Please Select">
+                        <option>Ad Number</option>
+                        <option>AP Invoice</option>
+                        <option>AR Invoice</option>
+                        <option>Campaign</option>
+                        <option>Client</option>
+                        <option>Division</option>
+                        <option>Employee</option>
+                        <option>Expense Receipt</option>
+                        <option>Job</option>
+                        <option>Job Component</option>
+                        <option>Office</option>
+                        <option>Product</option>
+                        <option>Vendor</option>
+                    </select>
+                </ak-multiselect>
+            </wv-search-option>
+            <!--<wv-search-option label="Employee">
+        <ak-multiselect k-class="required">
+            <select multiple="multiple" data-placeholder="Employee">
+                <option>Test 1</option>
+                <option>Test 2</option>
+                <option>Test 3</option>
+            </select>
+        </ak-multiselect>
+    </wv-search-option>-->
+            <!--<wv-search-option hide-label.bind="true">
+        <input class="k-checkbox" type="checkbox" id="showClient" data-bind="showClient">
+        <label class="k-checkbox-label" for="showClient">
+            Client
+        </label>
+    </wv-search-option>
+    <wv-search-option hide-label.bind="true">
+        <input class="k-checkbox" type="checkbox" id="showDivision" data-bind="showDivision">
+        <label class="k-checkbox-label" for="showDivision">
+            Division
+        </label>
+    </wv-search-option>
+    <wv-search-option hide-label.bind="true">
+        <input class="k-checkbox" type="checkbox" id="showCampaign" data-bind="showCampaign">
+        <label class="k-checkbox-label" for="showCampaign">
+            Campaign
+        </label>
+    </wv-search-option>-->
+            <!--<ak-treeview k-data-source.bind="data2"
+                         k-checkboxes.bind="{ checkChildren: true}"
+                         k-widget.bind="treeview"
+                         k-on-check.delegate="onCheck()"
+                         id="treeview">
+            </ak-treeview>-->
+        </div>
+        <div slot="advancedSearchOptions" show.bind="false">
+            <wv-search-option label="Level">
+                <ak-multiselect k-class="required">
+                    <select multiple="multiple" data-placeholder="Please Select">
+                        <option>All levels</option>
+                        <option>Ad Number</option>
+                        <option>AP Invoice</option>
+                        <option>AR Invoice</option>
+                        <option>Agency Desktop</option>
+                        <option>Alert Attatchment</option>
+                        <option>Campaign</option>
+                        <option>Client</option>
+                        <option>Contract</option>
+                        <option>Division</option>
+                        <option>Employee</option>
+                        <option>Expense Receipt</option>
+                        <option>Job</option>
+                        <option>Job Component</option>
+                        <option>Office</option>
+                        <option>Product</option>
+                        <option>Vendor</option>
+                    </select>
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Criteria">
+                <ak-multiselect k-class="required">
+                    <select multiple="multiple" data-placeholder="Please Select">
+                        <option>All Criteria</option>
+
+                        <option>Client</option>
+                        <option>Client/Division/Product</option>
+                        <option>Client Contract</option>
+                        <option>Department</option>
+                        <option>Division</option>
+                        <option>Employee</option>
+                        <option>Function Code</option>
+                        <option>Job</option>
+                        <option>Job Component</option>
+                        <option>Media Order/Line</option>
+                        <option>Office</option>
+                        <option>Product</option>
+                        <option>Vendor</option>
+                        <option>Alert Subject</option>
+                        <option>Campaign</option>
+                    </select>
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Type">
+                <ak-multiselect k-class="required">
+                    <select multiple="multiple" data-placeholder="Please Select">
+                        <option>All Types</option>
+
+                        <option>Document</option>
+                        <option>Ad Copy</option>
+                        <option>File</option>
+                        <option>Form</option>
+                        <option>Link</option>
+                        <option>Policy</option>
+                        <option>Procedure</option>
+                        <option>W-9</option>
+
+                    </select>
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="showClosedCB" data-bind="showClosed">
+                <label class="k-checkbox-label" for="showClosedCB">
+                    Show inactive campaigns?
+                </label>
+            </wv-search-option>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="showClosedCB" data-bind="showClosed">
+                <label class="k-checkbox-label" for="showClosedCB">
+                    Show terminated employees?
+                </label>
+            </wv-search-option>
+        </div>
+        <div slot="toolbar">
+            <ul class="list-inline" style="margin-bottom: 0;">
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" click.delegate="search()" class="wv-icon-button k-button " title="Search"><span class="wvi wvi-magnifying-glass"></span></a>
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="wv-icon-button k-button k-normal" title="Upload"><span class="wvi wvi-arrow-up"></span></a>
+
+                </li>
+
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="wv-icon-button k-button k-normal" title="Download"><span class="wvi wvi-arrow-down"></span></a>
+
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="wv-icon-button k-button k-normal" target="Clear Search"><span class="wvi wvi-refresh"></span></a>
+
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="wv-icon-button k-button wv-danger" title="Delete"><span class="wvi wvi-delete"></span></a>
+
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="k-button" title="Label View">Label View</a>
+
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="k-button " title="Proof HQ">Proof HQ</a>
+
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="wv-icon-button k-button k-normal" title="Thumbnail View"><span class="wvi wvi-photos"></span></a>
+
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="wv-icon-button k-button k-normal" title="20% out 1 Gig used"><span class="wvi wvi-data"></span></a>
+
+                </li>
+                <li style="padding-right: 0;">
+                    <a href="#" role="button" class="k-button k-normal" title="Folder View">Folder View</a>
+
+                </li>
+            </ul>
+        </div>
+        <div id="document-manager" slot="content" class="wv-k-grid">
+            <h5 style="border-bottom: transparent;">Recent Documents</h5>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <div class="document-preview">
+                        <div class="document-container">
+                            <a class="text-center">
+                                <img class="img-responsive" src="images/excel-preview-view-no-bg.png" />
+                            </a>
+                        </div>
+                        <div class="document-body">
+                            <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                                <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle>
+                                    <span class="wvi wvi-vertical-ellipsis"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Edit</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Assign to Alert</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">History</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Chat</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Share Document</a></li>
+                                    <li class="divider"></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Delete</a></li>
+                                </ul>
+                            </div>
+                            <h6 class="">
+                                <span class="wvi pull-left wvi-excel-logo"></span> 2018 Larabar Expenses.xls
+
+                            </h6>
+                        </div>
+                        
+
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="document-preview">
+                        <div class="document-container">
+                            <a class="text-center">
+                                <img  class="img-responsive" src="images/document-preview-view.png"/>
+                            </a>
+                        </div>
+                        <div class="document-body">
+                            <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                                <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle>
+                                    <span class="wvi wvi-vertical-ellipsis"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Edit</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Assign to Alert</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">History</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Chat</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Share Document</a></li>
+                                    <li class="divider"></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Delete</a></li>
+                                </ul>
+                            </div>
+                            <h6 class="">
+                                <span class="wvi wvi-file-pdf-regular pull-left pdf wvi-pdf"></span> Candidate Details.pdf
+                            </h6>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <div class="document-preview">
+                        <div class="document-container">
+                            <a class="text-center">
+                                <img class="img-responsive" src="images/document-preview-view.png" />
+                            </a>
+                        </div>
+                        <div class="document-body">
+                            <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                                <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle>
+                                    <span class="wvi wvi-vertical-ellipsis"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Edit</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Assign to Alert</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">History</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Chat</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Share Document</a></li>
+                                    <li class="divider"></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Delete</a></li>
+                                </ul>
+                            </div>
+                            <h6 class="">
+                                <span class="wvi wvi-file-word-regular pull-left wvi-word"></span> Kleenex Pitch.docx
+
+                            </h6>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="document-preview">
+                        <div class="document-container">
+                            <a href=""><img class="img-responsive" src="images/document-preview-view.png" /></a>
+                        </div>
+                        <div class="document-body">
+                            <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                                <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle>
+                                    <span class="wvi wvi-vertical-ellipsis"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Edit</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Assign to Alert</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">History</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Chat</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Share Document</a></li>
+                                    <li class="divider"></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Delete</a></li>
+                                </ul>
+                            </div>
+                            <h6 class="">
+                                <span class="wvi pull-left wvi-excel-logo"></span>2018 Kleenex Expenses.xsls
+                            </h6>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Show all documents by default in thumbanils unless specified - for demo we will do thumbnail view-->
+            <h5 style="border-bottom: transparent; margin: 12px 0;">Folder View</h5>
+            <!--<div class="wv-k-grid wv-campaigns">-->
+            <!--<ak-grid k-widget.bind="grid"
+                 k-class="wv-k-grid"
+                 k-data-source.bind="data"
+                 k-pageable.bind="{ pageSizes: true, buttonCount: 10 }"
+                 k-navigatable.bind="true"
+                 k-editable.bind="false"
+                 k-selectable.bind="false"
+                 k-filterable.bind="false"
+                 k-height="500px"
+                 k-on-data-bound.delegate="gridOnDataBound($event.detail)">
+            <ak-col k-width="65px">
+                <ak-template>
+
+                    <div style="text-align: center;">
+                        <a href="javascript:void(0)" class="wv-icon-button k-button wv-neutral-two"><span class="wvi wvi-magnifying-glass"></span></a>
+                    </div>
+                </ak-template>
+            </ak-col>
+            <ak-col k-width="200px" k-title="File Name" k-field="FileName">
+
+
+            </ak-col>
+            <ak-col k-width="200px" k-field="FileDescription" k-title="File Description"></ak-col>
+
+            <ak-col k-width="100px" k-title="Type" k-field="Type">
+
+            </ak-col>
+            <ak-col k-title="Size" k-field="Size" k-width="75px"></ak-col>
+            <ak-col k-title="Uploaded By" k-field="UploadedBy" k-width="100px"></ak-col>
+            <ak-col k-title="Date/Time" k-field="Date" k-width="100px;" k-format="{0:d}"></ak-col>
+            <ak-col k-width="40px" k-title="">
+                <ak-template>
+                    <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                        <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle click.delegate="test()">
+                            <span class="wvi wvi-vertical-ellipsis"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Edit</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Assign to Alert</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">History</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Chat</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Share Document</a></li>
+                            <li class="divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="">Delete</a></li>
+                        </ul>
+                    </div>
+                </ak-template>
+            </ak-col>
+
+        </ak-grid>
+    </div>-->
+            <div class="col-xs-6 col-md-2 " style="margin: 6px;">
+                <div class="document-manager-btn row">
+                    <span class=" glyphicon glyphicon-folder-close";></span>
+                    <h6 class="pull-left">All Balanced Sports</h6>
+                </div>
+
+            </div>
+            <div class="col-xs-6 col-md-2 " style="margin: 6px;">
+                <div class="document-manager-btn row">
+                    <span class=" glyphicon glyphicon-folder-close"></span>
+                    <h6>Abita Beverage Service</h6>
+                </div>
+                    
+                </div>
+                <div class="col-xs-6 col-md-2 " style="margin: 6px;">
+                    <div class="document-manager-btn row" >
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>Agency New Business</h6>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-4 col-md-2 " style="margin: 6px;">
+                    <div class="document-manager-btn row" >
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>Agency</h6>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-4 col-md-2 " style="margin: 6px;">
+                    <div class="document-manager-btn row">
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>American Express</h6>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-4 col-md-2 " style="margin: 6px;">
+                    <div class="document-manager-btn row">
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>Appleb Restaurant</h6>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-4 col-md-2" style="margin: 6px;">
+                    <div class="document-manager-btn row">
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>Bose</h6>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-4 col-md-2 " style="margin: 6px;">
+                    <div class="document-manager-btn row">
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>Credit One</h6>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-4 col-md-2" style="margin: 6px;">
+                    <div class="document-manager-btn row">
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>Direct Products, Inc.</h6>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-4 col-md-2" style="margin: 6px;">
+                    <div class="document-manager-btn row">
+                        <span class=" glyphicon glyphicon-folder-close"></span>
+                        <h6>Elk Travel Services</h6>
+                    </div>
+                    
+                </div>
+
+            </div>
+    </wv-search-page>
+</template>

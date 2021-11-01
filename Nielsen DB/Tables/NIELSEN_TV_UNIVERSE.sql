@@ -1,0 +1,40 @@
+﻿CREATE TABLE [dbo].[NIELSEN_TV_UNIVERSE] (
+    [NIELSEN_TV_UNIVERSE_ID] BIGINT        IDENTITY (1, 1) NOT NULL,
+    [NIELSEN_MARKET_NUM]     INT           NOT NULL,
+    [YEAR]                   SMALLINT      NOT NULL,
+    [MONTH]                  SMALLINT      NOT NULL,
+    [IS_METERED_MARKET]      BIT           NOT NULL,
+    [METROA_HOUSEHOLD_UE]    INT           NOT NULL,
+    [METROB_HOUSEHOLD_UE]    INT           NOT NULL,
+    [HOUSEHOLD_UE]           INT           NOT NULL,
+    [CHILDREN_2TO5_UE]       INT           NOT NULL,
+    [CHILDREN_6TO11_UE]      INT           NOT NULL,
+    [MALES_12TO14_UE]        INT           NOT NULL,
+    [MALES_15TO17_UE]        INT           NOT NULL,
+    [MALES_18TO20_UE]        INT           NOT NULL,
+    [MALES_21TO24_UE]        INT           NOT NULL,
+    [MALES_25TO34_UE]        INT           NOT NULL,
+    [MALES_35TO49_UE]        INT           NOT NULL,
+    [MALES_50TO54_UE]        INT           NOT NULL,
+    [MALES_55TO64_UE]        INT           NOT NULL,
+    [MALES_65PLUS_UE]        INT           NOT NULL,
+    [FEMALES_12TO14_UE]      INT           NOT NULL,
+    [FEMALES_15TO17_UE]      INT           NOT NULL,
+    [FEMALES_18TO20_UE]      INT           NOT NULL,
+    [FEMALES_21TO24_UE]      INT           NOT NULL,
+    [FEMALES_25TO34_UE]      INT           NOT NULL,
+    [FEMALES_35TO49_UE]      INT           NOT NULL,
+    [FEMALES_50TO54_UE]      INT           NOT NULL,
+    [FEMALES_55TO64_UE]      INT           NOT NULL,
+    [FEMALES_65PLUS_UE]      INT           NOT NULL,
+    [WORKING_WOMEN_UE]       INT           NOT NULL,
+    [SURVEY_START_DATE]      SMALLDATETIME NOT NULL,
+    [SURVEY_END_DATE]        SMALLDATETIME NOT NULL,
+    CONSTRAINT [PK_NIELSEN_TV_UNIVERSE] PRIMARY KEY CLUSTERED ([NIELSEN_TV_UNIVERSE_ID] ASC)
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [NIELSEN_TV_UNIVERSE_UNIQUE]
+    ON [dbo].[NIELSEN_TV_UNIVERSE]([NIELSEN_MARKET_NUM] ASC, [YEAR] ASC, [MONTH] ASC);
+

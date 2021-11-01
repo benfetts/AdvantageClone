@@ -1,0 +1,26 @@
+<div data-options="dxView : { name: 'time_list_month' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxToolbar: navBar">
+        </div>
+        <div class="card-container" data-bind="dxList: timeList">
+            <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: {view: 'time_list', settings: {source: 6,  date: StartDate }}">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-header" data-bind="text: StartDate"></div>
+                        <div class="card-details">
+                            <div style="float:left;margin-right:4px;" data-bind="text: totalHoursText"></div>
+                            <div style="float:left;" data-bind="text: TotalHours"></div>
+                            <br />
+                            <div style="float:left;margin-right:4px;" data-bind="text: statusText"></div>
+                            <div style="float:left;" data-bind="text: TimeEntryStatus"></div>
+                        </div>
+                    </div>
+                  <div class="card-button-container">
+                    <div class="card-action-bar">
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

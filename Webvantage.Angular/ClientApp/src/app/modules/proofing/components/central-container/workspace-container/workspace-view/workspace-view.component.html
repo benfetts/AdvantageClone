@@ -1,0 +1,12 @@
+<ng-container *ngIf="(selectedFileType | async) as selectedFileTypeService">
+  <div class="split-view" [ngClass]="setClassOnBlock('workspace-view')" [class.container-selected]="sideSelected">
+    <ng-content></ng-content>
+    <div class="image-view-container">
+      <proof-workspace-page-preview *ngIf="pageViewerStatus(selectedFileTypeService)"
+                                    [pages]="pages"></proof-workspace-page-preview>
+      <div class="image-area" [style.width]="kendoCardWidth">
+        <web-viewer [mainView]="mainView"></web-viewer>
+      </div>
+    </div>
+  </div>
+</ng-container>

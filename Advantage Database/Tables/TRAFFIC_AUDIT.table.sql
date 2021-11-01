@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[TRAFFIC_AUDIT] (
+    [JOB_NUMBER]        INT            NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT       NOT NULL,
+    [FNC_CODE]          VARCHAR (10)   NULL,
+    [ORIG_DAYS]         SMALLINT       NULL,
+    [NEW_DAYS]          SMALLINT       NULL,
+    [ORIG_HRS]          DECIMAL (8, 2) NULL,
+    [NEW_HRS]           DECIMAL (8, 2) NULL,
+    [ORIG_ORDER]        SMALLINT       NULL,
+    [NEW_ORDER]         SMALLINT       NULL,
+    [OLD_REVISED_DATE]  SMALLDATETIME  NULL,
+    [NEW_REVISED_DATE]  SMALLDATETIME  NULL,
+    [REVISED_NOTES]     TEXT           NULL,
+    [MODIFIED_BY]       VARCHAR (100)  NULL,
+    [MODIFY_DATE]       SMALLDATETIME  DEFAULT (getdate()) NULL,
+    [DELETE_FLAG]       SMALLINT       NULL
+);
+

@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[ERRMSG] (
+    [ERCODE]   VARCHAR (10)  NOT NULL,
+    [EROPTS]   SMALLINT      NULL,
+    [ERMSG]    VARCHAR (254) NULL,
+    [ERDSCRPT] TEXT          NULL,
+    [ERHEAD]   VARCHAR (254) NULL
+);
+

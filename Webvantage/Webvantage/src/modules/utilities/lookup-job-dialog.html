@@ -1,0 +1,17 @@
+﻿<template>
+    <require from="./lookup-job"></require>
+    <ux-dialog>
+        <ux-dialog-header show-close-button.bind="true">
+            <span>Select Job Component</span>
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <lookup-job view-model.ref="lookupJob"></lookup-job>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <div class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal">
+                <button class="k-button k-primary" click.delegate="selectClick()" disabled.bind="">Select</button>
+                <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

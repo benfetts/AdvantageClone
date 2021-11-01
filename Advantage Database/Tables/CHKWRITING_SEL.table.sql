@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[CHKWRITING_SEL] (
+    [USER_ID] VARCHAR (100) NOT NULL,
+    [CODE]    VARCHAR (30)  NOT NULL,
+    [TYPE]    VARCHAR (1)   NOT NULL
+);
+

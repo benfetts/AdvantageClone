@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[TEXTSPEC] (
+    [VN_NAME]        VARCHAR (40) NULL,
+    [VN_FILE]        VARCHAR (10) NULL,
+    [VN_FIELD]       VARCHAR (15) NULL,
+    [VN_FIELD_TYPE]  VARCHAR (2)  NULL,
+    [FIELD_START]    SMALLINT     NULL,
+    [FIELD_LEN]      SMALLINT     NULL,
+    [FIELD_DECIMALS] SMALLINT     NULL
+);
+

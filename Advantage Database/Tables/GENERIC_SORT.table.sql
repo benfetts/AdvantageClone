@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[GENERIC_SORT] (
+    [USER_ID]     VARCHAR (100) NOT NULL,
+    [APP_ID]      VARCHAR (50)  NOT NULL,
+    [SORT_STRING] TEXT          NOT NULL
+);
+

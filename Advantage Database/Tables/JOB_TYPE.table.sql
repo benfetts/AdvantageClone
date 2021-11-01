@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[JOB_TYPE] (
+    [JT_CODE]       VARCHAR (10) NOT NULL,
+    [JT_DESC]       VARCHAR (30) NOT NULL,
+    [INACTIVE_FLAG] SMALLINT     NULL,
+    [SC_CODE]       VARCHAR (6)  NULL
+);
+

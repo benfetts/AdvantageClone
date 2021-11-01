@@ -1,0 +1,92 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CAMPAIGNLoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CL_CODE],
+		[DIV_CODE],
+		[PRD_CODE],
+		[CMP_CODE],
+		[CMP_BEG_DATE],
+		[CMP_END_DATE],
+		[CMP_COMMENTS],
+		[CMP_NAME],
+		[CMP_DIRECT],
+		[CMP_MAGAZINE],
+		[CMP_NEWSPAPER],
+		[CMP_OUTDOOR],
+		[CMP_PRINT_COLL],
+		[CMP_RADIO],
+		[CMP_TELEVISION],
+		[CMP_OTHER],
+		[CMP_OTHER_EXPLAIN],
+		[CMP_IDENTIFIER],
+		[CMP_CLOSED],
+		[ACTIVE_FLAG],
+		[CMP_BILL_BUDGET],
+		[CMP_INC_BUDGET],
+		[CMP_TYPE]
+	FROM [CAMPAIGN]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

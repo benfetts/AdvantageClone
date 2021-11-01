@@ -1,0 +1,5 @@
+<div>
+  <ng-container *ngFor="let searchResult of searchResults; let i = index">
+      <proof-search-result class="search-result" [searchResult]="searchResult" (click)="resultClicked(i)"></proof-search-result>
+  </ng-container>
+</div>

@@ -1,0 +1,22 @@
+<div data-options="dxView : { name: 'expense_header_edit', title: 'Expense Report', disableCache: true } ">
+    <div data-bind="dxCommand: { onExecute: saveExpenseHeader, id: 'save', title: 'Save', icon: 'save', visible : reportStatusOpen } "></div>
+    <div data-bind="dxCommand: clearFields"></div>
+     <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+          <div data-bind="dxScrollView: { }">
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div>Report Date</div>
+                    <div data-bind="dxDateBox: entryDateBox, dxValidator: reportDateValidator"></div>
+                </div>
+                <div class="dx-field">
+                    <div>Description</div>
+                    <div data-bind="dxTextBox: {value: strDescription, maxLength: 30, readOnly: reportReadOnly, placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator: descriptionValidator"></div>
+                </div>
+                <div class="dx-field">
+                    Details:
+                    <div data-bind="dxTextArea: {value: strDetailsDescription,  placeholder: 'Enter Details' }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

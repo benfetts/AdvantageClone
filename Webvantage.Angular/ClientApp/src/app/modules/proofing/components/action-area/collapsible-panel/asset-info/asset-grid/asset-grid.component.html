@@ -1,0 +1,44 @@
+<kendo-grid class="asset-grid" [data]="columnsAsset" scrollable="none">
+  <kendo-grid-column-group title="Asset">
+    <kendo-grid-column class="column" [width]="leftColumnWidth">
+      <ng-template kendoGridCellTemplate let-columnsAsset let-rowIndex="rowIndex">
+        {{columnsAsset.title}}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column class="column" [width]="rightColumnWidth">
+      <ng-template kendoGridCellTemplate let-columnsAsset let-rowIndex="rowIndex">
+        <ng-container *ngIf="renderColumn(columnsAsset.title); then renderBlock else textBlock"></ng-container>
+        <ng-template #renderBlock>
+          <ng-container [ngSwitch]="columnsAsset.title">
+            <ng-container *ngSwitchCase="description">
+              <p>{{assetInfo[columnsAsset.name]}}</p>
+            </ng-container>
+            <ng-container *ngSwitchCase="assetUrl">
+              <div class="link">
+                <img src="assets/icons/link.svg" />
+                {{truncatedLink}}
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="tags">
+              <ng-container *ngFor="let tag of assetInfo[columnsAsset.name]">
+                <proof-tag [text]="tag"></proof-tag>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Created Date'">
+              <p>{{assetInfo[columnsAsset.name] | date:'EEEE, MMMM d, y, h:mm:ss a'}}</p>
+            </ng-container>
+            <ng-container *ngSwitchCase="'Latest Markup Date'">
+              <p>{{assetInfo[columnsAsset.name] | date:'EEEE, MMMM d, y, h:mm:ss a'}}</p>
+            </ng-container>
+            <ng-container *NgSwitchDefault>
+              <p>{{assetInfo[columnsAsset.name]}}</p>
+            </ng-container>
+          </ng-container>
+          </ng-template>
+        <ng-template #textBlock>
+          {{assetInfo[columnsAsset.name]}}
+        </ng-template>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid-column-group>
+</kendo-grid>

@@ -1,0 +1,240 @@
+@import '../../../../../theme/mixins/font';
+@import '../../../../../theme/mixins/breakpoints';
+@import '../../../../../theme/colors';
+
+.approval {
+  &-icons {
+    padding: 0 5%;
+    margin: 5px 0;
+    display: flex;
+    color: $feedback-light-text;
+
+    img {
+      opacity: 0.5;
+    }
+  }
+
+  &-header {
+/*    @include font-base(14px, normal, 14px,normal,'Open Sans');
+*/    color: $black;
+    height: 35px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+  }
+
+  &-reviewers {
+/*    @include font-base(14px, normal, 14px,normal,'Open Sans');
+*/    color: $black-light;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    background: $approval-review;
+    padding: 0 5%;
+    height: 35px;
+
+    .name {
+      width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .date {
+      margin-left: auto;
+    }
+
+    .k-button,
+    .k-button:hover {
+      width: 16px;
+      height: 16px;
+      border: none;
+      background-color: #efefef;
+      background-image: none;
+      border-radius: 3px;
+      cursor: default;
+    }
+
+    .k-image {
+      width: 8px;
+      height: 6px;
+    }
+  }
+
+  &-options {
+    width: 100%;
+    height: 45px;
+    background: $light-grey;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+.approval-options {
+
+  .k-button {
+    width: 80px;
+    height: 30px;
+    background: $white;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    border-radius: 3px !important;
+/*    font-size: 14px;
+*/
+    &:hover,
+    &:focus {
+      background: $white;
+      border: 1px solid $border-color;
+      box-shadow: none;
+    }
+
+    &:hover {
+      background: $very-light-grey;
+    }
+
+    &:active,
+    &.k-state-active {
+      border: 1px solid $border-color;
+      box-shadow: none;
+      background-color: $very-light-grey;
+    }
+  }
+
+  &-buttons {
+/*    @include font-base(14px, normal, 14px,normal,'Open Sans');
+*/  }
+}
+
+.scrollbar-feedback-approval {
+  --scrollbar-size: 0 !important;
+  --scrollbar-hover-size: 0 !important;
+
+  &-margin {
+    --scrollbar-size: 15px !important;
+    --scrollbar-hover-size: 15px !important;
+  }
+}
+
+.scrollbar-feedback-approval,
+.scrollbar-feedback-approval-margin {
+  --scrollbar-thumb-color: #e8e8e8 !important;
+  --scrollbar-track-color: #f8f8f8 !important;
+  --scrollbar-border-radius: 0 !important;
+  border-top: none;
+  width: 100%;
+
+  &-margin {
+    .ng-scroll-content {
+      width: 94%;
+      min-width: auto;
+    }
+  }
+}
+
+.alert-current-state {
+  background-color: #428bca;
+  color:white;
+}
+
+.alert-not-current-state {
+  background-color: lightgray;
+}
+
+.alert-external-reviewer {
+  background-color: white;
+}
+
+.proofing-status-icon {
+  height: 24px !important;
+  width: 24px !important;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: dimgray;
+  font-weight: bold;
+  //padding: 5px 5px 5px 5px;
+  margin-right: 5px !important;
+  margin-top: 3px !important;
+  align-content: center;
+  text-align: center
+}
+
+.status-approved {
+  color: #5CB85C !important;
+}
+
+.status-rejected {
+  color: #DC3545 !important;
+}
+
+.status-deferred {
+  color: #E2A62E !important;
+}
+
+.status-none {
+  color: #666666 !important;
+}
+
+.k-dialog-buttongroup .k-button + .k-button {
+  margin-left: 0;
+}
+
+.k-dialog-buttongroup .k-button:first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.k-dialog-buttongroup .k-button:last-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  order: -1;
+}
+
+.k-dialog-titlebar {
+    border-color: inherit;
+    color: #ffffff;
+    background-color: #ff6358;
+}
+
+.k-dialog-titlebar {
+  display: none;
+}
+
+.k-overlay {
+  opacity: 0.8;
+  background-color: $white;
+}
+
+.blue {
+  .k-button {
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: $white;
+      border: 1px solid $border-color;
+      box-shadow: none;
+    }
+
+    &:hover {
+      background: $very-light-grey;
+    }
+
+    &.k-state-active {
+      border: 1px solid $border-color;
+      box-shadow: none;
+      background-color: $pressed-button;
+
+      img {
+        opacity: 1;
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+}
+

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[OH_SETS] (
+    [OH_SET_ID]   VARCHAR (10) NULL,
+    [OH_SET_DESC] VARCHAR (30) NULL
+);
+

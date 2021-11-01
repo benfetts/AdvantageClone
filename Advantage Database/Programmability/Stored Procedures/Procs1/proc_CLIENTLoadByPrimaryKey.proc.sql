@@ -1,0 +1,146 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CLIENTLoadByPrimaryKey]
+(
+	@CL_CODE varchar(6)
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CL_CODE],
+		[CL_NAME],
+		[CL_ADDRESS1],
+		[CL_ADDRESS2],
+		[CL_CITY],
+		[CL_COUNTY],
+		[CL_STATE],
+		[CL_COUNTRY],
+		[CL_ZIP],
+		[CL_ATTENTION],
+		[CL_BADDRESS1],
+		[CL_BADDRESS2],
+		[CL_BCITY],
+		[CL_BCOUNTY],
+		[CL_BSTATE],
+		[CL_BCOUNTRY],
+		[CL_BZIP],
+		[CL_SADDRESS1],
+		[CL_SADDRESS2],
+		[CL_SCITY],
+		[CL_SCOUNTY],
+		[CL_SSTATE],
+		[CL_SCOUNTRY],
+		[CL_SZIP],
+		[CL_FOOTER],
+		[CL_ALPHA_SORT],
+		[CL_FISCAL_START],
+		[CL_CREDIT_LIMIT],
+		[CL_HIGH_BALANCE],
+		[CL_INV_BY],
+		[INV_FORMAT],
+		[CL_MATTENTION],
+		[PINV_FORMAT],
+		[BINV_FORMAT],
+		[CL_MINV_BY],
+		[CL_MFOOTER],
+		[ACTIVE_FLAG],
+		[NEW_BUSINESS],
+		[CMP_CODE_R],
+		[ACCT_NBR_R],
+		[JT_CODE_R],
+		[PROMO_CODE_R],
+		[REQ_FLDS],
+		[JOB_FIRST_USE_DT_R],
+		[COMPLEX_CODE_R],
+		[FORMAT_SC_CODE_R],
+		[DP_TM_CODE_R],
+		[MARKET_CODE_R],
+		[EMAIL_GR_CODE_R],
+		[BILL_COOP_CODE_R],
+		[AD_NBR_R],
+		[JOB_CLI_REF_R],
+		[JOB_DATE_OPENED_R],
+		[JOB_AD_SIZE_R],
+		[PROD_CONT_CODE_R],
+		[JOB_COMP_BUDGET_R],
+		[OINV_FORMAT],
+		[IINV_FORMAT],
+		[START_DATE_R],
+		[JOB_LOG_UDV1_R],
+		[JOB_LOG_UDV2_R],
+		[JOB_LOG_UDV3_R],
+		[JOB_LOG_UDV4_R],
+		[JOB_LOG_UDV5_R],
+		[JOB_CMP_UDV1_R],
+		[JOB_CMP_UDV2_R],
+		[JOB_CMP_UDV3_R],
+		[JOB_CMP_UDV4_R],
+		[JOB_CMP_UDV5_R],
+		[PINV_FORMAT2],
+		[CL_AR_COMMENT],
+		[REQ_PROD_CAT],
+		[TAX_FLAG_R]
+	FROM [CLIENT]
+	WHERE
+		([CL_CODE] = @CL_CODE)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

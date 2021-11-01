@@ -1,0 +1,29 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_SEC_CLIENTLoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CDP_CONTACT_ID],
+		[CL_CODE],
+		[DIV_CODE],
+		[PRD_CODE]
+	FROM [CP_SEC_CLIENT]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

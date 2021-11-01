@@ -1,0 +1,231 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="resources/elements/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification-template"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="resources/elements/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <div>
+        <div style="margin-top: 10px;">
+            <div class="wv-widget-row">
+                <div class="wv-widget-col wv-form">
+                    <div class="wv-form-group">
+                        <label>Client:</label>
+                        <ak-drop-down-list id="cddl"
+                                           style="width: 350px;"
+                                           k-height="200"
+                                           k-widget.two-way="clientDropDownList"
+                                           k-option-label="[Please Select]"
+                                           k-data-text-field="ClientName"
+                                           k-data-value-field="ClientCode"
+                                           k-value.two-way="Alert.ClientCode"
+                                           k-auto-width.bind="true"
+                                           k-filter="contains"
+                                           k-ignore-case.bind="true"
+                                           k-on-cascade.delegate="clientOnCascade($event.detail)"
+                                           k-data-source.bind="clientsDataSource">
+                        </ak-drop-down-list>
+                    </div>
+                    <div class="wv-form-group">
+                        <label>Division:</label>
+                        <ak-drop-down-list id="dddl"
+                                           style="width: 350px;"
+                                           k-widget.two-way="divisionDropDownList"
+                                           k-auto-bind.bind="false"
+                                           k-cascade-from="cddl"
+                                           k-option-label="[Please Select]"
+                                           k-data-text-field="DivisionName"
+                                           k-data-value-field="DivisionCode"
+                                           k-value.two-way="Alert.DivisionCode"
+                                           k-auto-width.bind="true"
+                                           k-filter="contains"
+                                           k-ignore-case.bind="true"
+                                           k-on-cascade.delegate="divisionOnCascade($event.detail)"
+                                           k-data-source.bind="divisionsDataSource">
+                        </ak-drop-down-list>
+                    </div>
+                    <div class="wv-form-group">
+                        <label>Product:</label>
+                        <ak-drop-down-list id="pddl"
+                                           style="width: 350px;"
+                                           k-widget.two-way="productDropDownList"
+                                           k-auto-bind.bind="false"
+                                           k-cascade-from="dddl"
+                                           k-option-label="[Please Select]"
+                                           k-data-text-field="ProductName"
+                                           k-data-value-field="ProductCode"
+                                           k-value.two-way="Alert.ProductCode"
+                                           k-auto-width.bind="true"
+                                           k-filter="contains"
+                                           k-ignore-case.bind="true"
+                                           k-on-cascade.delegate="productOnCascade($event.detail)"
+                                           k-data-source.bind="productsDataSource">
+                        </ak-drop-down-list>
+                    </div>
+                    <div class="wv-form-group">
+                        <label>Job:</label>
+                        <ak-drop-down-list id="jddl"
+                                           style="width: 350px;"
+                                           k-widget.two-way="jobDropDownList"
+                                           k-option-label="[Please Select]"
+                                           k-data-value-field="JobNumber"
+                                           k-data-text-field="Text"
+                                           k-value.two-way="Alert.JobNumber"
+                                           k-auto-width.bind="true"
+                                           k-filter="contains"
+                                           k-ignore-case.bind="true"
+                                           k-on-cascade.delegate="jobOnCascade($event.detail)"
+                                           k-data-source.bind="jobsDataSource">
+                        </ak-drop-down-list>
+                    </div>
+                    <div class="wv-form-group">
+                        <label>Component:</label>
+                        <ak-drop-down-list style="width: 350px;"
+                                           k-auto-bind.bind="false"
+                                           k-cascade-from="jddl"
+                                           k-widget.two-way="jobComponentDropDownList"
+                                           k-option-label="[Please Select]"
+                                           k-data-value-field="JobComponentNumber"
+                                           k-data-text-field="Text"
+                                           k-value.two-way="Alert.JobComponentNumber"
+                                           k-auto-width.bind="true"
+                                           k-filter="contains"
+                                           k-ignore-case.bind="true"
+                                           k-data-source.bind="componentsDataSource"
+                                           k-on-change.delegate="componentChanged($event.detail)">
+                        </ak-drop-down-list>
+                    </div>
+                    <div id="workflowItems" if.bind="formType == 3">
+                        <div class="wv-form-group">
+                            <label>Workflow:</label>
+                            <ak-drop-down-list style="width: 350px;"
+                                               k-option-label="[Please Select]"
+                                               k-data-text-field="Name"
+                                               k-data-value-field="ID"
+                                               k-value.two-way="Alert.AlertAssignmentTemplateID"
+                                               k-auto-width.bind="true"
+                                               k-data-source.bind="alertTemplatesDataSource"
+                                               k-widget.bind="alertTemplatesDropDownList">
+                            </ak-drop-down-list>
+                        </div>
+                        <div class="wv-form-group">
+                            <label>State:</label>
+                            <ak-drop-down-list style="width: 350px;"
+                                               k-option-label="[Please Select]"
+                                               k-data-text-field="Name"
+                                               k-data-value-field="ID"
+                                               k-value.two-way="Alert.AlertStateID"
+                                               k-auto-width.bind="true"
+                                               k-data-source.bind="alertTemplateStatesDataSource"
+                                               k-widget.bind="alertTemplateStatesDropDownList"
+                                               k-on-change.delegate="alertTemplateStatesDropDownListChange($event.detail)">
+                            </ak-drop-down-list>
+                        </div>
+                        <div class="wv-form-group">
+                            <table style="">
+                                <tr>
+                                    <td>
+                                        <label style="margin-left: 37px;">Assign To:</label>
+                                    </td>
+                                    <td style="width: 350px;">
+                                        <ak-multiselect k-widget.bind="assignToMultiSelectRouted"
+                                                        k-data-source.bind="alertTemplateStateEmployeesDataSourceMultiSelectRouted"
+                                                        k-value.two-way="Alert.Assignees"
+                                                        k-filter="contains"
+                                                        k-on-deselect.delegate="assigneeDeselected($event.detail)" 
+                                                        k-on-select.delegate="assigneeSelected($event.detail)" 
+                                                        k-on-change.delegate="assignToMultiSelectChanged($event.detail)"
+                                                        k-on-data-bound.delegate="assignToMultiSelectDataBound($event.detail)"
+                                                        k-placeholder=""
+                                                        k-data-text-field="Name"
+                                                        k-data-value-field="Code"
+                                                        k-auto-bind.bind="false">
+                                            <ak-template for="tagTemplate">
+                                                <span if.bind="IsTempComplete" class="wv-assignee-complete glyphicon glyphicon-ok "></span>&nbsp;${Name}
+                                            </ak-template>
+                                        </ak-multiselect>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="margin-left: 110px; margin-bottom: 7px;">
+                            <div>
+                                <input type="checkbox" class="k-checkbox" id="showAllEmpsCB" checked.bind="showAllEmployees" change.delegate='showAllEmployeesChanged()'/>
+                                <label class="k-checkbox-label" for="showAllEmpsCB">Show all employees</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="agileItems">
+
+                        <div class="wv-form-group">
+                            <label>Board:</label>
+                            <ak-drop-down-list style="width: 350px;"
+                                               k-option-label="[Please Select]"
+                                               k-data-text-field="Name"
+                                               k-data-value-field="ID"
+                                               k-value.two-way="Alert.BoardID"
+                                               k-auto-width.bind="true"
+                                               k-data-source.bind="boardDataSource"
+                                               k-widget.bind="boardDropDownList"
+                                               k-enable.bind="boardDropDownListEnabled"
+                                               k-on-change.delegate="boardDropDownListChange($event.detail)">
+                            </ak-drop-down-list>
+                        </div>
+                        <div class="wv-form-group">
+                            <label>Sprint:</label>
+                            <ak-drop-down-list style="width: 350px;"
+                                               k-option-label="[Please Select]"
+                                               k-data-text-field="Description"
+                                               k-data-value-field="ID"
+                                               k-value.two-way="Alert.SprintID"
+                                               k-auto-width.bind="true"
+                                               k-data-source.bind="boardSprintDataSource"
+                                               k-widget.bind="boardSprintDropDownList"
+                                               k-enable.bind="boardSprintDropDownListEnabled"
+                                               k-on-change.delegate="boardSprintDropDownListChange($event.detail)">
+                            </ak-drop-down-list>
+                        </div>
+                        <div class="wv-form-group">
+                            <label>State:</label>
+                            <ak-drop-down-list style="width: 350px;"
+                                               k-option-label="[Backlog]"
+                                               k-data-text-field="Name"
+                                               k-data-value-field="ID"
+                                               k-value.two-way="Alert.BoardStateID"
+                                               k-auto-width.bind="true"
+                                               k-data-source.bind="boardStateDataSource"
+                                               k-enable.bind="boardStateDropDownListEnabled"
+                                               k-widget.bind="boardStateDropDownList">
+                            </ak-drop-down-list>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="wv-widget-row" if.bind="isCopy" style="margin-top:5px; margin-left: 110px;">
+                <div class="wv-cb-wrapper">
+                    <input type="checkbox" class="k-checkbox" id="checkBoxCopyComments" checked.bind="copyComments"  />
+                    <label class="k-checkbox-label" for="checkBoxCopyComments"style="font-weight: bold !important;">Copy comments</label>
+                </div>
+                <div class="wv-cb-wrapper" style="margin-left: 15px !important;">
+                    <input type="checkbox" class="k-checkbox" id="checkBoxCopyAttachments"  checked.bind="copyAttachments" />
+                    <label class="k-checkbox-label" for="checkBoxCopyAttachments" style="font-weight: bold !important;">Copy attachments</label>
+                </div>
+            </div>
+        </div>
+        <div if.bind="isCopy == false" style="width: 95%; height: 15px;"></div>
+        <div class="" style="border: none !important;display: block !important; margin-top: 10px; margin-right: 48px; float: right;">
+            <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+            <button class="k-button k-primary" click.delegate="saveClick()">${saveButtonText}</button>
+        </div>
+    </div>
+</template>

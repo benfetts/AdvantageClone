@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[SET_ID] (
+    [SET_ID]   VARCHAR (10) NULL,
+    [SET_DESC] VARCHAR (35) NULL
+);
+

@@ -1,0 +1,4 @@
+﻿CREATE TYPE [dbo].[MEDIA_SPOT_TV_RESEARCH_DEMO_TYPE] AS TABLE (
+    [MediaDemoID] INT      NOT NULL,
+    [Order]       SMALLINT NOT NULL);
+

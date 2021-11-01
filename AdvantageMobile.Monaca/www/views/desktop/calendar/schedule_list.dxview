@@ -1,0 +1,37 @@
+<div data-options="dxView : { name: 'schedule_list', title: 'Schedule' } ">
+  <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+    <div data-bind="dxToolbar: navBar">
+    </div>
+    <div class="search-wrapper" data-bind="dxTextBox: { placeholder: 'Search', mode: 'search', value: scheduleList.searchQuery, valueChangeEvent: 'change' } "></div>
+    <div class="card-container" data-bind="dxList: scheduleList">
+      <div data-options="dxTemplate : { name: 'item' } ">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-header" data-bind="text: HeaderDisplay "></div>
+            <div class="card-details">
+              <div data-bind="css: jobAndComponentCSS">
+                <div data-bind="text: jobAndComponentText"></div>
+              </div>
+              <div data-bind="text: DateDisplay"></div>
+            </div>
+          </div>
+          <div class="card-button-container">
+            <!--<div data-bind="dxButton: {icon: 'icon_book_bookmark', visible: IsTask}"></div>-->
+            <div data-bind="dxButton: {icon: 'icon_book_bookmark', visible: false}"></div>
+            <div data-bind="dxButton: { icon: 'icon_check', visible: IsTask }"></div>
+            <div data-bind="dxButton: { icon: 'icon_clock', visible: HasJobAndComponent, onClick: { view: 'time_entry', settings: {source: 1, jobNumber: JobNumber, jobComponentNumber: JobComponentNumber, sequenceNumber: SequenceNumber}} }">
+            </div>
+            <!--<div data-bind="dxButton: { icon: 'icon_stopwatch', visible: HasJobAndComponent, onClick: {view: 'time_stopwatch', settings: {source: 0,
+                                                                                                                 jobNumber: JobNumber, jobComponentNumber: JobComponentNumber}} }">
+            </div>-->
+            <div data-bind="dxButton: { icon: 'icon_stopwatch', visible: false, onClick: {view: 'time_stopwatch', visible: false, settings: {source: 0,
+                                                                                                                         jobNumber: JobNumber, jobComponentNumber: JobComponentNumber}} }">
+            </div>
+            <div class="card-action-bar" data-bind="css: IndicatorCSS">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

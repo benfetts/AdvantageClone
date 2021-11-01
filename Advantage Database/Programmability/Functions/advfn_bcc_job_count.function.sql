@@ -1,0 +1,1 @@
+﻿  	 CREATE FUNCTION dbo.advfn_bcc_job_count ( @bcc_id_in integer )  		  		RETURNS integer  		AS  		BEGIN  			DECLARE @job_count integer  			SELECT @job_count = ( SELECT COUNT(*) FROM dbo.JOB_COMPONENT WHERE BCC_ID = @bcc_id_in )  		RETURN @job_count  		END

@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[PRESET_FUNC] (
+    [PRESET_CODE] VARCHAR (6)     NOT NULL,
+    [FNC_CODE]    VARCHAR (6)     NOT NULL,
+    [SUPPLIED_BY] VARCHAR (6)     NULL,
+    [HRS_QTY]     DECIMAL (15, 2) NULL,
+    [NET_AMOUNT]  DECIMAL (15, 2) NULL,
+    [ROWID]       INT             IDENTITY (1, 1) NOT NULL
+);
+

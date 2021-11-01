@@ -1,0 +1,100 @@
+﻿
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_TaskMedia_Update_Complete] 
+@OrderNumber Int, 
+@LineNumber Int, 
+@Revision Int,
+@MediaType VarChar(2), 
+@CompDate SmallDateTime
+AS
+
+if @MediaType = 'M' 
+	UPDATE MAGAZINE_DETAIL
+	Set MAT_COMP = @CompDate
+	WHERE (MAGAZINE_DETAIL.ORDER_NBR = @OrderNumber) 
+	AND   (MAGAZINE_DETAIL.LINE_NBR = @LineNumber) 
+	AND   (MAGAZINE_DETAIL.REV_NBR = @Revision)
+if @MediaType = 'N' 
+	UPDATE NEWSPAPER_DETAIL
+	Set MAT_COMP = @CompDate
+	WHERE (NEWSPAPER_DETAIL.ORDER_NBR = @OrderNumber) 
+	AND   (NEWSPAPER_DETAIL.LINE_NBR = @LineNumber) 
+	AND   (NEWSPAPER_DETAIL.REV_NBR = @Revision)
+if @MediaType = 'I' 
+	UPDATE INTERNET_DETAIL
+	Set MAT_COMP = @CompDate
+	WHERE (INTERNET_DETAIL.ORDER_NBR = @OrderNumber) 
+	AND   (INTERNET_DETAIL.LINE_NBR = @LineNumber) 
+	AND   (INTERNET_DETAIL.REV_NBR = @Revision)
+if @MediaType = 'O' 
+	UPDATE OUTDOOR_DETAIL
+	Set MAT_COMP = @CompDate
+	WHERE (OUTDOOR_DETAIL.ORDER_NBR = @OrderNumber) 
+	AND   (OUTDOOR_DETAIL.LINE_NBR = @LineNumber) 
+	AND   (OUTDOOR_DETAIL.REV_NBR = @Revision)
+if @MediaType = 'R' 
+BEGIN
+	IF EXISTS (SELECT ORDER_NBR FROM RADIO_HEADER WHERE ORDER_NBR = @OrderNumber)
+	BEGIN
+		UPDATE RADIO_DETAIL1
+		Set MAT_COMP = @CompDate
+		WHERE (RADIO_DETAIL1.ORDER_NBR = @OrderNumber) 
+		AND   (RADIO_DETAIL1.LINE_NBR = @LineNumber) 
+		AND   (RADIO_DETAIL1.REV_NBR = @Revision)
+	END
+	IF EXISTS (SELECT ORDER_NBR FROM RADIO_HDR WHERE ORDER_NBR = @OrderNumber)
+	BEGIN
+		UPDATE RADIO_DETAIL
+		Set MAT_COMP = @CompDate
+		WHERE (RADIO_DETAIL.ORDER_NBR = @OrderNumber) 
+		AND   (RADIO_DETAIL.LINE_NBR = @LineNumber) 
+		AND   (RADIO_DETAIL.REV_NBR = @Revision)
+	END
+END
+	
+if @MediaType = 'T'
+BEGIN
+	IF EXISTS (SELECT ORDER_NBR FROM TV_HEADER WHERE ORDER_NBR = @OrderNumber)
+	BEGIN
+		UPDATE TV_DETAIL1
+		Set MAT_COMP = @CompDate
+		WHERE (TV_DETAIL1.ORDER_NBR = @OrderNumber) 
+		AND   (TV_DETAIL1.LINE_NBR = @LineNumber) 
+		AND   (TV_DETAIL1.REV_NBR = @Revision)
+	END
+	IF EXISTS (SELECT ORDER_NBR FROM TV_HDR WHERE ORDER_NBR = @OrderNumber)
+	BEGIN
+		UPDATE TV_DETAIL
+		Set MAT_COMP = @CompDate
+		WHERE (TV_DETAIL.ORDER_NBR = @OrderNumber) 
+		AND   (TV_DETAIL.LINE_NBR = @LineNumber) 
+		AND   (TV_DETAIL.REV_NBR = @Revision)
+	END
+END 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

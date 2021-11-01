@@ -1,0 +1,339 @@
+
+<div data-options="dxView : { name: 'ClientEdit', mode: 'edit', title: 'Client' } " >
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-bind="dxCommand: { onExecute: '#_back', id: 'cancel', behavior: 'back', title: 'Cancel', icon: 'close' }" ></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <div data-bind="dxScrollView: { }">
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">Code: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.Code, readOnly: true }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Name: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.Name, placeholder: 'Enter Name' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Address 1: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.Address1, placeholder: 'Enter Address 1' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Address 2: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.Address2, placeholder: 'Enter Address 2' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">City: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.City, placeholder: 'Enter City' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">County: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.County, placeholder: 'Enter County' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">State: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.State, placeholder: 'Enter State' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Country: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.Country, placeholder: 'Enter Country' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Zip: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.Zip, placeholder: 'Enter Zip' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_ATTENTION: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_ATTENTION, placeholder: 'Enter CL_ATTENTION' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BADDRESS1: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_BADDRESS1, placeholder: 'Enter CL_BADDRESS1' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BADDRESS2: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_BADDRESS2, placeholder: 'Enter CL_BADDRESS2' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BCITY: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_BCITY, placeholder: 'Enter CL_BCITY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BCOUNTY: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_BCOUNTY, placeholder: 'Enter CL_BCOUNTY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BSTATE: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_BSTATE, placeholder: 'Enter CL_BSTATE' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BCOUNTRY: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_BCOUNTRY, placeholder: 'Enter CL_BCOUNTRY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BZIP: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_BZIP, placeholder: 'Enter CL_BZIP' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SADDRESS1: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_SADDRESS1, placeholder: 'Enter CL_SADDRESS1' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SADDRESS2: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_SADDRESS2, placeholder: 'Enter CL_SADDRESS2' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SCITY: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_SCITY, placeholder: 'Enter CL_SCITY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SCOUNTY: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_SCOUNTY, placeholder: 'Enter CL_SCOUNTY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SSTATE: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_SSTATE, placeholder: 'Enter CL_SSTATE' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SCOUNTRY: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_SCOUNTRY, placeholder: 'Enter CL_SCOUNTRY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SZIP: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_SZIP, placeholder: 'Enter CL_SZIP' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_FOOTER: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_FOOTER, placeholder: 'Enter CL_FOOTER' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_ALPHA_SORT: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_ALPHA_SORT, placeholder: 'Enter CL_ALPHA_SORT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_FISCAL_START: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CL_FISCAL_START, placeholder: 'Enter CL_FISCAL_START' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_CREDIT_LIMIT: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CL_CREDIT_LIMIT, placeholder: 'Enter CL_CREDIT_LIMIT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_HIGH_BALANCE: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CL_HIGH_BALANCE, placeholder: 'Enter CL_HIGH_BALANCE' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_INV_BY: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CL_INV_BY, placeholder: 'Enter CL_INV_BY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">INV_FORMAT: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.INV_FORMAT, placeholder: 'Enter INV_FORMAT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_MATTENTION: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_MATTENTION, placeholder: 'Enter CL_MATTENTION' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PINV_FORMAT: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.PINV_FORMAT, placeholder: 'Enter PINV_FORMAT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BINV_FORMAT: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.BINV_FORMAT, placeholder: 'Enter BINV_FORMAT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_MINV_BY: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CL_MINV_BY, placeholder: 'Enter CL_MINV_BY' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_MFOOTER: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_MFOOTER, placeholder: 'Enter CL_MFOOTER' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Is active: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.IsActive, placeholder: 'Enter Is active' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">NEW_BUSINESS: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.NEW_BUSINESS, placeholder: 'Enter NEW_BUSINESS' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CMP_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CMP_CODE_R, placeholder: 'Enter CMP_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">ACCT_NBR_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.ACCT_NBR_R, placeholder: 'Enter ACCT_NBR_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JT_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JT_CODE_R, placeholder: 'Enter JT_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PROMO_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.PROMO_CODE_R, placeholder: 'Enter PROMO_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">REQ_FLDS: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.REQ_FLDS, placeholder: 'Enter REQ_FLDS' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_FIRST_USE_DT_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_FIRST_USE_DT_R, placeholder: 'Enter JOB_FIRST_USE_DT_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">COMPLEX_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.COMPLEX_CODE_R, placeholder: 'Enter COMPLEX_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">FORMAT_SC_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.FORMAT_SC_CODE_R, placeholder: 'Enter FORMAT_SC_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">DP_TM_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.DP_TM_CODE_R, placeholder: 'Enter DP_TM_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">MARKET_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.MARKET_CODE_R, placeholder: 'Enter MARKET_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">EMAIL_GR_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.EMAIL_GR_CODE_R, placeholder: 'Enter EMAIL_GR_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BILL_COOP_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.BILL_COOP_CODE_R, placeholder: 'Enter BILL_COOP_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">AD_NBR_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.AD_NBR_R, placeholder: 'Enter AD_NBR_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CLI_REF_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_CLI_REF_R, placeholder: 'Enter JOB_CLI_REF_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_DATE_OPENED_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_DATE_OPENED_R, placeholder: 'Enter JOB_DATE_OPENED_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_AD_SIZE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_AD_SIZE_R, placeholder: 'Enter JOB_AD_SIZE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PROD_CONT_CODE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.PROD_CONT_CODE_R, placeholder: 'Enter PROD_CONT_CODE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_COMP_BUDGET_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_COMP_BUDGET_R, placeholder: 'Enter JOB_COMP_BUDGET_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">OINV_FORMAT: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.OINV_FORMAT, placeholder: 'Enter OINV_FORMAT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">IINV_FORMAT: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.IINV_FORMAT, placeholder: 'Enter IINV_FORMAT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">START_DATE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.START_DATE_R, placeholder: 'Enter START_DATE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV1_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_LOG_UDV1_R, placeholder: 'Enter JOB_LOG_UDV1_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV2_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_LOG_UDV2_R, placeholder: 'Enter JOB_LOG_UDV2_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV3_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_LOG_UDV3_R, placeholder: 'Enter JOB_LOG_UDV3_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV4_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_LOG_UDV4_R, placeholder: 'Enter JOB_LOG_UDV4_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV5_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_LOG_UDV5_R, placeholder: 'Enter JOB_LOG_UDV5_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV1_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_CMP_UDV1_R, placeholder: 'Enter JOB_CMP_UDV1_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV2_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_CMP_UDV2_R, placeholder: 'Enter JOB_CMP_UDV2_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV3_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_CMP_UDV3_R, placeholder: 'Enter JOB_CMP_UDV3_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV4_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_CMP_UDV4_R, placeholder: 'Enter JOB_CMP_UDV4_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV5_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.JOB_CMP_UDV5_R, placeholder: 'Enter JOB_CMP_UDV5_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PINV_FORMAT2: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.PINV_FORMAT2, placeholder: 'Enter PINV_FORMAT2' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_AR_COMMENT: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.CL_AR_COMMENT, placeholder: 'Enter CL_AR_COMMENT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">REQ_PROD_CAT: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.REQ_PROD_CAT, placeholder: 'Enter REQ_PROD_CAT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">TAX_FLAG_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.TAX_FLAG_R, placeholder: 'Enter TAX_FLAG_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">FISCAL_PD_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.FISCAL_PD_R, placeholder: 'Enter FISCAL_PD_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BLACKPLATE_VER_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.BLACKPLATE_VER_R, placeholder: 'Enter BLACKPLATE_VER_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BLACKPLATE_VER2_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.BLACKPLATE_VER2_R, placeholder: 'Enter BLACKPLATE_VER2_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_P_PAYDAYS: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CL_P_PAYDAYS, placeholder: 'Enter CL_P_PAYDAYS' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_M_PAYDAYS: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.CL_M_PAYDAYS, placeholder: 'Enter CL_M_PAYDAYS' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">SERVICE_FEE_TYPE_R: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: client.SERVICE_FEE_TYPE_R, placeholder: 'Enter SERVICE_FEE_TYPE_R' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">REQ_TIME_COMMENT: </div>
+                    <div class="dx-field-value" data-bind="dxSwitch: { value: client.REQ_TIME_COMMENT, placeholder: 'Enter REQ_TIME_COMMENT' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CONTRACT_EXP_DT: </div>
+                    <div class="dx-field-value" data-bind="dxDateBox: { value: client.CONTRACT_EXP_DT, placeholder: 'Enter CONTRACT_EXP_DT', type: 'date' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BATCH_NAME: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: client.BATCH_NAME, placeholder: 'Enter BATCH_NAME' }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

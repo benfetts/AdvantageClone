@@ -1,0 +1,24 @@
+<kendo-dropdownbutton
+  [ngClass]="{'drop-down-opened': isOpen, 'drop-down-closed': !isOpen, 'versions': isBottomToolbar(componentType)}"
+  [popupSettings]="popupSettings"
+  [disabled]="disabled"
+  [data]="dropDownData"
+  (open)="onOpen()"
+  (itemClick)="onItemClick($event)"
+  (close)="onClose()"
+>
+  <ng-container [ngSwitch]="componentType">
+    <ng-container *ngSwitchCase="rangerSelect">
+      {{ value }}
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <div class="images">
+        <div class="images-container">
+          <img class="inner-image" [src]="image"/>
+          <img class="arrow" [src]="imgArrow"/>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <img *ngIf="value" class="icon-drop-down" src="assets/icons/drop-down.svg"/>
+</kendo-dropdownbutton>

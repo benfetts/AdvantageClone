@@ -1,0 +1,324 @@
+﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[advsp_job_component_load_by_user]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE [dbo].[advsp_job_component_load_by_user]
+GO
+CREATE PROCEDURE [dbo].[advsp_job_component_load_by_user]
+@CL_CODE VARCHAR(6) = '',
+@DIV_CODE VARCHAR(6) = '',
+@PRD_CODE VARCHAR(6) = '',
+@JOB_NUMBER INT = 0,
+@OPEN_COMP_ONLY BIT = 0,
+@ALLOWED_PROC_CONTROLS VARCHAR(100) = '',
+@USER_CODE VARCHAR(100),
+@SKIP INT,
+@TAKE INT
+AS
+BEGIN
+
+	DECLARE @ManagerColumn VARCHAR(10), @START_REC INT, @END_REC INT
+	DECLARE @ADVTF_USER_JOB_LIMITS TABLE (CL_CODE VARCHAR(6), DIV_CODE VARCHAR(6), PRD_CODE VARCHAR(6), TIME_ENTRY SMALLINT, JOB_NUMBER INT)
+	SET @START_REC = 0;
+	SET @END_REC = 0;
+	SET @SKIP = ISNULL(@SKIP, 0);
+	SET @TAKE = ISNULL(@TAKE, 0);
+	IF NOT @SKIP IS NULL
+	BEGIN
+		SET @START_REC = @SKIP;
+		SET @END_REC = @SKIP + @TAKE;
+	END
+	SELECT @ManagerColumn = CONVERT(VARCHAR(10), AGY_SETTINGS_VALUE) FROM dbo.AGY_SETTINGS WHERE AGY_SETTINGS_CODE = 'TRAFFIC_MGR_COL'
+
+	INSERT INTO @ADVTF_USER_JOB_LIMITS
+	SELECT CL_CODE, DIV_CODE, PRD_CODE, TIME_ENTRY, JOB_NUMBER FROM advtf_user_job_limits(@USER_CODE);
+
+	IF @ALLOWED_PROC_CONTROLS IS NULL OR @ALLOWED_PROC_CONTROLS = ''
+	BEGIN
+		SELECT 
+			A.*,
+			[ManagerName] = MGR.EMP_FNAME + ISNULL(' ' + MGR.EMP_MI + '. ', ' ') + MGR.EMP_LNAME
+		FROM
+		(
+			SELECT 
+				[ID] = JC.ROWID,
+				[Key] = CAST(JC.JOB_NUMBER AS VARCHAR(1000)) + ',' + CAST(JC.JOB_COMPONENT_NBR AS VARCHAR(1000)),
+				[JobNumber] = J.JOB_NUMBER,
+				[JobComponentNumber] = JC.JOB_COMPONENT_NBR,
+				[Description] = CASE
+									WHEN J.JOB_DESC = JC.JOB_COMP_DESC THEN REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + JC.JOB_COMP_DESC
+									ELSE REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + J.JOB_DESC + ' | ' + JC.JOB_COMP_DESC
+								END,
+				[JobDescription] = J.JOB_DESC, 
+				[JobComponentDescription] = JC.JOB_COMP_DESC, 
+				[ClientCode] = J.CL_CODE,  
+				[ClientName] = C.CL_NAME, 
+				[DivisionCode] = J.DIV_CODE,
+				[DivisionName] = D.DIV_NAME, 
+				[ProductCode] = J.PRD_CODE, 
+				[ProductDescription] = P.PRD_DESCRIPTION, 
+				[OfficeCode] = J.OFFICE_CODE, 
+				[OfficeName] = O.OFFICE_NAME,
+				[IsOpen] = CASE
+								WHEN JC.JOB_PROCESS_CONTRL NOT IN (6, 12) THEN 1
+								ELSE 0
+						   END,
+				[JobProcessControl] = JC.JOB_PROCESS_CONTRL,
+				[SalesClassCode] = J.SC_CODE,
+				[SalesClassDescription] = SC.SC_DESCRIPTION,
+				[ManagerCode] = CASE @ManagerColumn
+									WHEN 'TR_TITLE1' THEN TRF.ASSIGN_1
+									WHEN 'TR_TITLE2' THEN TRF.ASSIGN_2
+									WHEN 'TR_TITLE3' THEN TRF.ASSIGN_3
+									WHEN 'TR_TITLE4' THEN TRF.ASSIGN_4
+									WHEN 'TR_TITLE5' THEN TRF.ASSIGN_5
+								END,
+				[AccountExecutiveCode] = JC.EMP_CODE,
+				[AccountExecutiveName] = AE.EMP_FNAME + ISNULL(' ' + AE.EMP_MI + '. ', ' ') + AE.EMP_LNAME,
+				[JobTypeCode] = JC.JT_CODE,
+				[JobTypeDescription] = JT.JT_DESC
+			FROM 
+				JOB_COMPONENT JC
+				INNER JOIN JOB_LOG J ON JC.JOB_NUMBER = J.JOB_NUMBER 
+				INNER JOIN CLIENT C ON J.CL_CODE = C.CL_CODE 
+				INNER JOIN DIVISION D ON J.CL_CODE = D.CL_CODE AND J.DIV_CODE = D.DIV_CODE 
+				INNER JOIN PRODUCT P ON J.CL_CODE = P.CL_CODE AND J.DIV_CODE = P.DIV_CODE AND J.PRD_CODE = P.PRD_CODE 
+				INNER JOIN EMPLOYEE AE ON JC.EMP_CODE = AE.EMP_CODE
+				LEFT OUTER JOIN	OFFICE O ON J.OFFICE_CODE = O.OFFICE_CODE 
+				INNER JOIN @ADVTF_USER_JOB_LIMITS JL ON JC.JOB_NUMBER = JL.JOB_NUMBER 
+				LEFT OUTER JOIN SALES_CLASS SC ON J.SC_CODE = SC.SC_CODE
+				LEFT OUTER JOIN JOB_TRAFFIC TRF ON JC.JOB_NUMBER = TRF.JOB_NUMBER AND JC.JOB_COMPONENT_NBR = TRF.JOB_COMPONENT_NBR
+				LEFT OUTER JOIN JOB_TYPE JT ON JT.JT_CODE = JC.JT_CODE
+			WHERE
+				1 = CASE WHEN ISNULL(@CL_CODE, '') = '' THEN 1 WHEN J.CL_CODE = @CL_CODE THEN 1 ELSE 0 END AND
+				1 = CASE WHEN ISNULL(@DIV_CODE, '') = '' THEN 1 WHEN J.DIV_CODE = @DIV_CODE THEN 1 ELSE 0 END AND
+				1 = CASE WHEN ISNULL(@PRD_CODE, '') = '' THEN 1 WHEN J.PRD_CODE = @PRD_CODE THEN 1 ELSE 0 END AND
+				1 = CASE WHEN ISNULL(@JOB_NUMBER, 0) = 0 THEN 1 WHEN JC.JOB_NUMBER = @JOB_NUMBER THEN 1 ELSE 0 END AND
+				1 = CASE WHEN ISNULL(@OPEN_COMP_ONLY, 0) = 0 THEN 1 WHEN JC.JOB_PROCESS_CONTRL NOT IN (6, 12) THEN 1 END
+		) AS A
+			LEFT OUTER JOIN EMPLOYEE MGR ON MGR.EMP_CODE = A.ManagerCode
+		ORDER BY 
+			A.JobNumber DESC, 
+			A.JobComponentNumber;
+	END
+	ELSE
+	BEGIN
+		IF @ALLOWED_PROC_CONTROLS = 'timesheet' -- special path for timesheet to make sure it is as fast as possible
+		BEGIN
+			IF @END_REC > 0
+			BEGIN
+				;WITH DataCTE AS (
+						SELECT TOP 100 PERCENT
+							A.*,
+							[ManagerName] = MGR.EMP_FNAME + ISNULL(' ' + MGR.EMP_MI + '. ', ' ') + MGR.EMP_LNAME
+						FROM
+						(
+							SELECT
+								[ID] = JC.ROWID,
+								[Key] = CAST(JC.JOB_NUMBER AS VARCHAR(1000)) + ',' + CAST(JC.JOB_COMPONENT_NBR AS VARCHAR(1000)),
+								[JobNumber] = J.JOB_NUMBER,
+								[JobComponentNumber] = JC.JOB_COMPONENT_NBR,
+								[Description] = CASE
+													WHEN J.JOB_DESC = JC.JOB_COMP_DESC THEN REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + JC.JOB_COMP_DESC
+													ELSE REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + J.JOB_DESC + ' | ' + JC.JOB_COMP_DESC
+												END,
+								[JobDescription] = J.JOB_DESC, 
+								[JobComponentDescription] = JC.JOB_COMP_DESC, 
+								[ClientCode] = J.CL_CODE,  
+								[ClientName] = C.CL_NAME, 
+								[DivisionCode] = J.DIV_CODE,
+								[DivisionName] = D.DIV_NAME, 
+								[ProductCode] = J.PRD_CODE, 
+								[ProductDescription] = P.PRD_DESCRIPTION, 
+								[OfficeCode] = J.OFFICE_CODE, 
+								[OfficeName] = O.OFFICE_NAME,
+								[IsOpen] = CASE
+												WHEN JC.JOB_PROCESS_CONTRL NOT IN (6, 12) THEN 1
+												ELSE 0
+										   END,
+								[JobProcessControl] = JC.JOB_PROCESS_CONTRL,
+								[SalesClassCode] = J.SC_CODE,
+								[SalesClassDescription] = SC.SC_DESCRIPTION,
+								[ManagerCode] = CASE @ManagerColumn
+													WHEN 'TR_TITLE1' THEN TRF.ASSIGN_1
+													WHEN 'TR_TITLE2' THEN TRF.ASSIGN_2
+													WHEN 'TR_TITLE3' THEN TRF.ASSIGN_3
+													WHEN 'TR_TITLE4' THEN TRF.ASSIGN_4
+													WHEN 'TR_TITLE5' THEN TRF.ASSIGN_5
+												END,
+								[AccountExecutiveCode] = JC.EMP_CODE,
+								[AccountExecutiveName] = AE.EMP_FNAME + ISNULL(' ' + AE.EMP_MI + '. ', ' ') + AE.EMP_LNAME,
+								[JobTypeCode] = JC.JT_CODE,
+								[JobTypeDescription] = JT.JT_DESC,
+								ROW_NUMBER() OVER (ORDER BY JC.ROWID) AS RowNumber
+							FROM 
+								JOB_COMPONENT JC
+								INNER JOIN JOB_LOG J ON JC.JOB_NUMBER = J.JOB_NUMBER 
+								INNER JOIN CLIENT C ON J.CL_CODE = C.CL_CODE 
+								INNER JOIN DIVISION D ON J.CL_CODE = D.CL_CODE AND J.DIV_CODE = D.DIV_CODE 
+								INNER JOIN PRODUCT P ON J.CL_CODE = P.CL_CODE AND J.DIV_CODE = P.DIV_CODE AND J.PRD_CODE = P.PRD_CODE 
+								INNER JOIN EMPLOYEE AE ON JC.EMP_CODE = AE.EMP_CODE
+								LEFT OUTER JOIN	OFFICE O ON J.OFFICE_CODE = O.OFFICE_CODE 
+								INNER JOIN @ADVTF_USER_JOB_LIMITS JL ON JC.JOB_NUMBER = JL.JOB_NUMBER 
+								LEFT OUTER JOIN SALES_CLASS SC ON J.SC_CODE = SC.SC_CODE
+								LEFT OUTER JOIN JOB_TRAFFIC TRF ON JC.JOB_NUMBER = TRF.JOB_NUMBER AND JC.JOB_COMPONENT_NBR = TRF.JOB_COMPONENT_NBR
+								LEFT OUTER JOIN JOB_TYPE JT ON JT.JT_CODE = JC.JT_CODE
+							WHERE
+								JC.JOB_PROCESS_CONTRL NOT IN (2,3,5,6,9,10,12,13) AND
+								1 = CASE WHEN ISNULL(@CL_CODE, '') = '' THEN 1 WHEN J.CL_CODE = @CL_CODE THEN 1 ELSE 0 END AND
+								1 = CASE WHEN ISNULL(@DIV_CODE, '') = '' THEN 1 WHEN J.DIV_CODE = @DIV_CODE THEN 1 ELSE 0 END AND
+								1 = CASE WHEN ISNULL(@PRD_CODE, '') = '' THEN 1 WHEN J.PRD_CODE = @PRD_CODE THEN 1 ELSE 0 END AND
+								1 = CASE WHEN ISNULL(@JOB_NUMBER, 0) = 0 THEN 1 WHEN JC.JOB_NUMBER = @JOB_NUMBER THEN 1 ELSE 0 END 
+						) AS A
+							LEFT OUTER JOIN EMPLOYEE MGR ON MGR.EMP_CODE = A.ManagerCode
+						ORDER BY
+							A.JobNumber DESC, A.JobComponentNumber
+					)
+					SELECT * FROM DataCTE
+					WHERE 
+						RowNumber BETWEEN @START_REC AND @END_REC
+					--ORDER BY 
+					--	JobNumber DESC, JobComponentNumber 
+			END
+			ELSE
+			BEGIN
+				SELECT 
+					A.*,
+					[ManagerName] = MGR.EMP_FNAME + ISNULL(' ' + MGR.EMP_MI + '. ', ' ') + MGR.EMP_LNAME
+				FROM
+				(
+					SELECT 
+						[ID] = JC.ROWID,
+						[Key] = CAST(JC.JOB_NUMBER AS VARCHAR(1000)) + ',' + CAST(JC.JOB_COMPONENT_NBR AS VARCHAR(1000)),
+						[JobNumber] = J.JOB_NUMBER,
+						[JobComponentNumber] = JC.JOB_COMPONENT_NBR,
+						[Description] = CASE
+											WHEN J.JOB_DESC = JC.JOB_COMP_DESC THEN REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + JC.JOB_COMP_DESC
+											ELSE REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + J.JOB_DESC + ' | ' + JC.JOB_COMP_DESC
+										END,
+						[JobDescription] = J.JOB_DESC, 
+						[JobComponentDescription] = JC.JOB_COMP_DESC, 
+						[ClientCode] = J.CL_CODE,  
+						[ClientName] = C.CL_NAME, 
+						[DivisionCode] = J.DIV_CODE,
+						[DivisionName] = D.DIV_NAME, 
+						[ProductCode] = J.PRD_CODE, 
+						[ProductDescription] = P.PRD_DESCRIPTION, 
+						[OfficeCode] = J.OFFICE_CODE, 
+						[OfficeName] = O.OFFICE_NAME,
+						[IsOpen] = CASE
+										WHEN JC.JOB_PROCESS_CONTRL NOT IN (6, 12) THEN 1
+										ELSE 0
+									END,
+						[JobProcessControl] = JC.JOB_PROCESS_CONTRL,
+						[SalesClassCode] = J.SC_CODE,
+						[SalesClassDescription] = SC.SC_DESCRIPTION,
+						[ManagerCode] = CASE @ManagerColumn
+											WHEN 'TR_TITLE1' THEN TRF.ASSIGN_1
+											WHEN 'TR_TITLE2' THEN TRF.ASSIGN_2
+											WHEN 'TR_TITLE3' THEN TRF.ASSIGN_3
+											WHEN 'TR_TITLE4' THEN TRF.ASSIGN_4
+											WHEN 'TR_TITLE5' THEN TRF.ASSIGN_5
+										END,
+						[AccountExecutiveCode] = JC.EMP_CODE,
+						[AccountExecutiveName] = AE.EMP_FNAME + ISNULL(' ' + AE.EMP_MI + '. ', ' ') + AE.EMP_LNAME,
+						[JobTypeCode] = JC.JT_CODE,
+						[JobTypeDescription] = JT.JT_DESC,
+						ROW_NUMBER() OVER (ORDER BY JC.ROWID) AS RowNumber
+					FROM 
+						JOB_COMPONENT JC
+						INNER JOIN JOB_LOG J ON JC.JOB_NUMBER = J.JOB_NUMBER 
+						INNER JOIN CLIENT C ON J.CL_CODE = C.CL_CODE 
+						INNER JOIN DIVISION D ON J.CL_CODE = D.CL_CODE AND J.DIV_CODE = D.DIV_CODE 
+						INNER JOIN PRODUCT P ON J.CL_CODE = P.CL_CODE AND J.DIV_CODE = P.DIV_CODE AND J.PRD_CODE = P.PRD_CODE 
+						INNER JOIN EMPLOYEE AE ON JC.EMP_CODE = AE.EMP_CODE
+						LEFT OUTER JOIN	OFFICE O ON J.OFFICE_CODE = O.OFFICE_CODE 
+						INNER JOIN @ADVTF_USER_JOB_LIMITS JL ON JC.JOB_NUMBER = JL.JOB_NUMBER 
+						LEFT OUTER JOIN SALES_CLASS SC ON J.SC_CODE = SC.SC_CODE
+						LEFT OUTER JOIN JOB_TRAFFIC TRF ON JC.JOB_NUMBER = TRF.JOB_NUMBER AND JC.JOB_COMPONENT_NBR = TRF.JOB_COMPONENT_NBR
+						LEFT OUTER JOIN JOB_TYPE JT ON JT.JT_CODE = JC.JT_CODE
+					WHERE
+						JC.JOB_PROCESS_CONTRL NOT IN (2,3,5,6,9,10,12,13) AND
+						1 = CASE WHEN ISNULL(@CL_CODE, '') = '' THEN 1 WHEN J.CL_CODE = @CL_CODE THEN 1 ELSE 0 END AND
+						1 = CASE WHEN ISNULL(@DIV_CODE, '') = '' THEN 1 WHEN J.DIV_CODE = @DIV_CODE THEN 1 ELSE 0 END AND
+						1 = CASE WHEN ISNULL(@PRD_CODE, '') = '' THEN 1 WHEN J.PRD_CODE = @PRD_CODE THEN 1 ELSE 0 END AND
+						1 = CASE WHEN ISNULL(@JOB_NUMBER, 0) = 0 THEN 1 WHEN JC.JOB_NUMBER = @JOB_NUMBER THEN 1 ELSE 0 END 
+				) AS A
+					LEFT OUTER JOIN EMPLOYEE MGR ON MGR.EMP_CODE = A.ManagerCode
+				ORDER BY
+					A.JobNumber DESC, A.JobComponentNumber
+			END
+		END
+		ELSE
+		BEGIN
+			SELECT 
+				A.*,
+				[ManagerName] = MGR.EMP_FNAME + ISNULL(' ' + MGR.EMP_MI + '. ', ' ') + MGR.EMP_LNAME
+			FROM
+			(
+				SELECT 
+					[ID] = JC.ROWID,
+					[Key] = CAST(JC.JOB_NUMBER AS VARCHAR(1000)) + ',' + CAST(JC.JOB_COMPONENT_NBR AS VARCHAR(1000)),
+					[JobNumber] = J.JOB_NUMBER,
+					[JobComponentNumber] = JC.JOB_COMPONENT_NBR,
+					[Description] = CASE
+										WHEN J.JOB_DESC = JC.JOB_COMP_DESC THEN REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + JC.JOB_COMP_DESC
+										ELSE REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + J.JOB_DESC + ' | ' + JC.JOB_COMP_DESC
+									END,
+					[JobDescription] = J.JOB_DESC, 
+					[JobComponentDescription] = JC.JOB_COMP_DESC, 
+					[ClientCode] = J.CL_CODE,  
+					[ClientName] = C.CL_NAME, 
+					[DivisionCode] = J.DIV_CODE,
+					[DivisionName] = D.DIV_NAME, 
+					[ProductCode] = J.PRD_CODE, 
+					[ProductDescription] = P.PRD_DESCRIPTION, 
+					[OfficeCode] = J.OFFICE_CODE, 
+					[OfficeName] = O.OFFICE_NAME,
+					[IsOpen] = CASE
+									WHEN JC.JOB_PROCESS_CONTRL NOT IN (6, 12) THEN 1
+									ELSE 0
+							   END,
+					[JobProcessControl] = JC.JOB_PROCESS_CONTRL,
+					[SalesClassCode] = J.SC_CODE,
+					[SalesClassDescription] = SC.SC_DESCRIPTION,
+					[ManagerCode] = CASE @ManagerColumn
+										WHEN 'TR_TITLE1' THEN TRF.ASSIGN_1
+										WHEN 'TR_TITLE2' THEN TRF.ASSIGN_2
+										WHEN 'TR_TITLE3' THEN TRF.ASSIGN_3
+										WHEN 'TR_TITLE4' THEN TRF.ASSIGN_4
+										WHEN 'TR_TITLE5' THEN TRF.ASSIGN_5
+									END,
+					[AccountExecutiveCode] = JC.EMP_CODE,
+					[AccountExecutiveName] = AE.EMP_FNAME + ISNULL(' ' + AE.EMP_MI + '. ', ' ') + AE.EMP_LNAME,
+					[JobTypeCode] = JC.JT_CODE,
+					[JobTypeDescription] = JT.JT_DESC
+				FROM 
+					JOB_COMPONENT JC
+					INNER JOIN JOB_LOG J ON JC.JOB_NUMBER = J.JOB_NUMBER 
+					INNER JOIN CLIENT C ON J.CL_CODE = C.CL_CODE 
+					INNER JOIN DIVISION D ON J.CL_CODE = D.CL_CODE AND J.DIV_CODE = D.DIV_CODE 
+					INNER JOIN PRODUCT P ON J.CL_CODE = P.CL_CODE AND J.DIV_CODE = P.DIV_CODE AND J.PRD_CODE = P.PRD_CODE 
+					INNER JOIN EMPLOYEE AE ON JC.EMP_CODE = AE.EMP_CODE
+					LEFT OUTER JOIN	OFFICE O ON J.OFFICE_CODE = O.OFFICE_CODE 
+					INNER JOIN @ADVTF_USER_JOB_LIMITS JL ON JC.JOB_NUMBER = JL.JOB_NUMBER 
+					LEFT OUTER JOIN SALES_CLASS SC ON J.SC_CODE = SC.SC_CODE
+					LEFT OUTER JOIN JOB_TRAFFIC TRF ON JC.JOB_NUMBER = TRF.JOB_NUMBER AND JC.JOB_COMPONENT_NBR = TRF.JOB_COMPONENT_NBR
+					LEFT OUTER JOIN JOB_TYPE JT ON JT.JT_CODE = JC.JT_CODE
+					LEFT OUTER JOIN -- THIS IS GREATLY REDUCING SPEED
+						(SELECT
+							JobProcessControl = CONVERT(SMALLINT, items)
+						 FROM
+							[dbo].[udf_split_list] (@ALLOWED_PROC_CONTROLS, ',')) JPC ON JC.JOB_PROCESS_CONTRL = JPC.JobProcessControl
+				WHERE
+					1 = CASE WHEN ISNULL(@CL_CODE, '') = '' THEN 1 WHEN J.CL_CODE = @CL_CODE THEN 1 ELSE 0 END AND
+					1 = CASE WHEN ISNULL(@DIV_CODE, '') = '' THEN 1 WHEN J.DIV_CODE = @DIV_CODE THEN 1 ELSE 0 END AND
+					1 = CASE WHEN ISNULL(@PRD_CODE, '') = '' THEN 1 WHEN J.PRD_CODE = @PRD_CODE THEN 1 ELSE 0 END AND
+					1 = CASE WHEN ISNULL(@JOB_NUMBER, 0) = 0 THEN 1 WHEN JC.JOB_NUMBER = @JOB_NUMBER THEN 1 ELSE 0 END AND
+					1 = CASE WHEN ISNULL(@OPEN_COMP_ONLY, 0) = 0 THEN 1 WHEN JC.JOB_PROCESS_CONTRL NOT IN (6, 12) THEN 1 END AND
+					1 = CASE WHEN ISNULL(@ALLOWED_PROC_CONTROLS, '') = '' THEN 1 WHEN JPC.JobProcessControl IS NOT NULL THEN 1 END
+			) AS A
+				LEFT OUTER JOIN EMPLOYEE MGR ON MGR.EMP_CODE = A.ManagerCode
+			ORDER BY 
+				A.JobNumber DESC, 
+				A.JobComponentNumber;
+		END
+	END
+END

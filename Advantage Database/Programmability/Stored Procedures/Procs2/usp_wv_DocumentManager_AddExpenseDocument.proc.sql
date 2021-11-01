@@ -1,0 +1,12 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_DocumentManager_AddExpenseDocument]
+@DOCUMENT_ID INT,
+@INV_NBR INT
+AS
+
+    INSERT EXPENSE_DOCS ( DOCUMENT_ID, INV_NBR )
+    VALUES( @DOCUMENT_ID, @INV_NBR)
+
+
+

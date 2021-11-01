@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="NationalFramework.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClientOrderDetail" customannotation:ClrType="NationalFramework.Database.Entities.ClientOrderDetail, NationalFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientOrderID" Type="Int32" Nullable="false" />
+          <Property Name="DataType" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsHispanic" Type="Boolean" Nullable="false" />
+          <Property Name="September" Type="Boolean" Nullable="false" />
+          <Property Name="October" Type="Boolean" Nullable="false" />
+          <Property Name="November" Type="Boolean" Nullable="false" />
+          <Property Name="December" Type="Boolean" Nullable="false" />
+          <Property Name="January" Type="Boolean" Nullable="false" />
+          <Property Name="February" Type="Boolean" Nullable="false" />
+          <Property Name="March" Type="Boolean" Nullable="false" />
+          <Property Name="April" Type="Boolean" Nullable="false" />
+          <Property Name="May" Type="Boolean" Nullable="false" />
+          <Property Name="June" Type="Boolean" Nullable="false" />
+          <Property Name="July" Type="Boolean" Nullable="false" />
+          <Property Name="August" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClientOrder" Relationship="Self.ClientOrder_ClientOrderDetails" FromRole="ClientOrder_ClientOrderDetails_Target" ToRole="ClientOrder_ClientOrderDetails_Source" />
+        </EntityType>
+        <EntityType Name="ClientOrder" customannotation:ClrType="NationalFramework.Database.Entities.ClientOrder, NationalFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="OrderDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="LastChangedDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="StartYear" Type="Int16" Nullable="false" />
+          <Property Name="EndYear" Type="Int16" Nullable="false" />
+          <Property Name="OrderDuration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Report" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAlias" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsSuspended" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.Client_ClientOrders" FromRole="Client_ClientOrders_Target" ToRole="Client_ClientOrders_Source" />
+          <NavigationProperty Name="ClientOrderDetails" Relationship="Self.ClientOrder_ClientOrderDetails" FromRole="ClientOrder_ClientOrderDetails_Source" ToRole="ClientOrder_ClientOrderDetails_Target" />
+        </EntityType>
+        <EntityType Name="Client" customannotation:ClrType="NationalFramework.Database.Entities.Client, NationalFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsInactive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClientOrders" Relationship="Self.Client_ClientOrders" FromRole="Client_ClientOrders_Source" ToRole="Client_ClientOrders_Target" />
+        </EntityType>
+        <EntityType Name="DownloadFile" customannotation:ClrType="NationalFramework.Database.Entities.DownloadFile, NationalFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProcessedTime" Type="DateTime" />
+          <Property Name="Skipped" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog" customannotation:ClrType="NationalFramework.Database.Entities.EventLog, NationalFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="EventMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceSetting" customannotation:ClrType="NationalFramework.Database.Entities.ServiceSetting, NationalFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="NationalPath" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimerMinutes" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceStatus" customannotation:ClrType="NationalFramework.Database.Entities.ServiceStatus, NationalFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="LastRan" Type="DateTime" Nullable="false" />
+          <Property Name="IsRunning" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="Client_ClientOrders">
+          <End Role="Client_ClientOrders_Source" Type="Self.Client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Client_ClientOrders_Target" Type="Self.ClientOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_ClientOrders_Source">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client_ClientOrders_Target">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClientOrder_ClientOrderDetails">
+          <End Role="ClientOrder_ClientOrderDetails_Source" Type="Self.ClientOrder" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientOrder_ClientOrderDetails_Target" Type="Self.ClientOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientOrder_ClientOrderDetails_Source">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientOrder_ClientOrderDetails_Target">
+              <PropertyRef Name="ClientOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbContext" customannotation:UseClrTypes="true">
+          <EntitySet Name="ClientOrderDetails" EntityType="Self.ClientOrderDetail" />
+          <EntitySet Name="ClientOrders" EntityType="Self.ClientOrder" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="DownloadFiles" EntityType="Self.DownloadFile" />
+          <EntitySet Name="EventLogs" EntityType="Self.EventLog" />
+          <EntitySet Name="ServiceSettings" EntityType="Self.ServiceSetting" />
+          <EntitySet Name="ServiceStatuses" EntityType="Self.ServiceStatus" />
+          <AssociationSet Name="Client_ClientOrders" Association="Self.Client_ClientOrders">
+            <End Role="Client_ClientOrders_Source" EntitySet="Clients" />
+            <End Role="Client_ClientOrders_Target" EntitySet="ClientOrders" />
+          </AssociationSet>
+          <AssociationSet Name="ClientOrder_ClientOrderDetails" Association="Self.ClientOrder_ClientOrderDetails">
+            <End Role="ClientOrder_ClientOrderDetails_Source" EntitySet="ClientOrders" />
+            <End Role="ClientOrder_ClientOrderDetails_Target" EntitySet="ClientOrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="DbContext">
+          <EntitySetMapping Name="ClientOrderDetails">
+            <EntityTypeMapping TypeName="NationalFramework.Database.ClientOrderDetail">
+              <MappingFragment StoreEntitySet="ClientOrderDetail">
+                <ScalarProperty Name="ID" ColumnName="CLIENT_ORDER_DETAIL_ID" />
+                <ScalarProperty Name="ClientOrderID" ColumnName="CLIENT_ORDER_ID" />
+                <ScalarProperty Name="DataType" ColumnName="DATA_TYPE" />
+                <ScalarProperty Name="TimeType" ColumnName="TIME_TYPE" />
+                <ScalarProperty Name="IsHispanic" ColumnName="IS_HISPANIC" />
+                <ScalarProperty Name="September" ColumnName="SEPTEMBER" />
+                <ScalarProperty Name="October" ColumnName="OCTOBER" />
+                <ScalarProperty Name="November" ColumnName="NOVEMBER" />
+                <ScalarProperty Name="December" ColumnName="DECEMBER" />
+                <ScalarProperty Name="January" ColumnName="JANUARY" />
+                <ScalarProperty Name="February" ColumnName="FEBRUARY" />
+                <ScalarProperty Name="March" ColumnName="MARCH" />
+                <ScalarProperty Name="April" ColumnName="APRIL" />
+                <ScalarProperty Name="May" ColumnName="MAY" />
+                <ScalarProperty Name="June" ColumnName="JUNE" />
+                <ScalarProperty Name="July" ColumnName="JULY" />
+                <ScalarProperty Name="August" ColumnName="AUGUST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientOrders">
+            <EntityTypeMapping TypeName="NationalFramework.Database.ClientOrder">
+              <MappingFragment StoreEntitySet="ClientOrder">
+                <ScalarProperty Name="ID" ColumnName="CLIENT_ORDER_ID" />
+                <ScalarProperty Name="ClientID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="OrderNumber" ColumnName="ORDER_NUMBER" />
+                <ScalarProperty Name="OrderDateTime" ColumnName="ORDER_DATETIME" />
+                <ScalarProperty Name="LastChangedDateTime" ColumnName="LAST_CHANGED_DATETIME" />
+                <ScalarProperty Name="StartYear" ColumnName="START_YEAR" />
+                <ScalarProperty Name="EndYear" ColumnName="END_YEAR" />
+                <ScalarProperty Name="OrderDuration" ColumnName="ORDER_DURATION" />
+                <ScalarProperty Name="Report" ColumnName="REPORT" />
+                <ScalarProperty Name="ClientAlias" ColumnName="CLIENT_ALIAS" />
+                <ScalarProperty Name="IsSuspended" ColumnName="IS_SUSPENDED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="NationalFramework.Database.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="Code" ColumnName="CODE" />
+                <ScalarProperty Name="Name" ColumnName="CLIENT_NAME" />
+                <ScalarProperty Name="IsInactive" ColumnName="IS_INACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DownloadFiles">
+            <EntityTypeMapping TypeName="NationalFramework.Database.DownloadFile">
+              <MappingFragment StoreEntitySet="DownloadFile">
+                <ScalarProperty Name="ID" ColumnName="DOWNLOAD_FILE_ID" />
+                <ScalarProperty Name="FileName" ColumnName="FILENAME" />
+                <ScalarProperty Name="ProcessedTime" ColumnName="PROCESSED_TIME" />
+                <ScalarProperty Name="Skipped" ColumnName="SKIPPED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLogs">
+            <EntityTypeMapping TypeName="NationalFramework.Database.EventLog">
+              <MappingFragment StoreEntitySet="EventLog">
+                <ScalarProperty Name="ID" ColumnName="EVENT_LOG_ID" />
+                <ScalarProperty Name="EventDateTime" ColumnName="EVENT_DATETIME" />
+                <ScalarProperty Name="EventMessage" ColumnName="EVENT_MESSAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceSettings">
+            <EntityTypeMapping TypeName="NationalFramework.Database.ServiceSetting">
+              <MappingFragment StoreEntitySet="ServiceSetting">
+                <ScalarProperty Name="ID" ColumnName="SERVICE_SETTING_ID" />
+                <ScalarProperty Name="NationalPath" ColumnName="NATIONAL_PATH" />
+                <ScalarProperty Name="TimerMinutes" ColumnName="TIMER_MINUTES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceStatuses">
+            <EntityTypeMapping TypeName="NationalFramework.Database.ServiceStatus">
+              <MappingFragment StoreEntitySet="ServiceStatus">
+                <ScalarProperty Name="ID" ColumnName="SERVICE_STATUS_ID" />
+                <ScalarProperty Name="LastRan" ColumnName="LAST_RAN" />
+                <ScalarProperty Name="IsRunning" ColumnName="IS_RUNNING" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+    <StorageModels>
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClientOrderDetail">
+          <Key>
+            <PropertyRef Name="CLIENT_ORDER_DETAIL_ID" />
+          </Key>
+          <Property Name="CLIENT_ORDER_DETAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIENT_ORDER_ID" Type="int" customannotation:Index="{ Name: IX_CLIENT_ORDER_ID, Order: 0 }" Nullable="false" />
+          <Property Name="DATA_TYPE" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="TIME_TYPE" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="IS_HISPANIC" Type="bit" Nullable="false" />
+          <Property Name="SEPTEMBER" Type="bit" Nullable="false" />
+          <Property Name="OCTOBER" Type="bit" Nullable="false" />
+          <Property Name="NOVEMBER" Type="bit" Nullable="false" />
+          <Property Name="DECEMBER" Type="bit" Nullable="false" />
+          <Property Name="JANUARY" Type="bit" Nullable="false" />
+          <Property Name="FEBRUARY" Type="bit" Nullable="false" />
+          <Property Name="MARCH" Type="bit" Nullable="false" />
+          <Property Name="APRIL" Type="bit" Nullable="false" />
+          <Property Name="MAY" Type="bit" Nullable="false" />
+          <Property Name="JUNE" Type="bit" Nullable="false" />
+          <Property Name="JULY" Type="bit" Nullable="false" />
+          <Property Name="AUGUST" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientOrder">
+          <Key>
+            <PropertyRef Name="CLIENT_ORDER_ID" />
+          </Key>
+          <Property Name="CLIENT_ORDER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CLIENT_ID" Type="int" customannotation:Index="{ Name: IX_CLIENT_ID, Order: 0 }" Nullable="false" />
+          <Property Name="ORDER_NUMBER" Type="int" Nullable="false" />
+          <Property Name="ORDER_DATETIME" Type="datetime" Nullable="false" />
+          <Property Name="LAST_CHANGED_DATETIME" Type="datetime" Nullable="false" />
+          <Property Name="START_YEAR" Type="smallint" Nullable="false" />
+          <Property Name="END_YEAR" Type="smallint" Nullable="false" />
+          <Property Name="ORDER_DURATION" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="REPORT" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="CLIENT_ALIAS" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="IS_SUSPENDED" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CLIENT_NAME" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="IS_INACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DownloadFile">
+          <Key>
+            <PropertyRef Name="DOWNLOAD_FILE_ID" />
+          </Key>
+          <Property Name="DOWNLOAD_FILE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FILENAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PROCESSED_TIME" Type="datetime" Nullable="true" />
+          <Property Name="SKIPPED" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EVENT_LOG_ID" />
+          </Key>
+          <Property Name="EVENT_LOG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EVENT_DATETIME" Type="datetime" Nullable="false" />
+          <Property Name="EVENT_MESSAGE" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceSetting">
+          <Key>
+            <PropertyRef Name="SERVICE_SETTING_ID" />
+          </Key>
+          <Property Name="SERVICE_SETTING_ID" Type="int" Nullable="false" />
+          <Property Name="NATIONAL_PATH" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TIMER_MINUTES" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceStatus">
+          <Key>
+            <PropertyRef Name="SERVICE_STATUS_ID" />
+          </Key>
+          <Property Name="SERVICE_STATUS_ID" Type="int" Nullable="false" />
+          <Property Name="LAST_RAN" Type="datetime" Nullable="false" />
+          <Property Name="IS_RUNNING" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="Client_ClientOrders">
+          <End Role="Client" Type="Self.Client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="CLIENT_ID" />
+            </Principal>
+            <Dependent Role="ClientOrder">
+              <PropertyRef Name="CLIENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClientOrder_ClientOrderDetails">
+          <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientOrderDetail" Type="Self.ClientOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientOrder">
+              <PropertyRef Name="CLIENT_ORDER_ID" />
+            </Principal>
+            <Dependent Role="ClientOrderDetail">
+              <PropertyRef Name="CLIENT_ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CodeFirstDatabase">
+          <EntitySet Name="ClientOrderDetail" EntityType="Self.ClientOrderDetail" Schema="dbo" Table="CLIENT_ORDER_DETAIL" />
+          <EntitySet Name="ClientOrder" EntityType="Self.ClientOrder" Schema="dbo" Table="CLIENT_ORDER" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" Table="CLIENT" />
+          <EntitySet Name="DownloadFile" EntityType="Self.DownloadFile" Schema="dbo" Table="DOWNLOAD_FILE" />
+          <EntitySet Name="EventLog" EntityType="Self.EventLog" Schema="dbo" Table="EVENT_LOG" />
+          <EntitySet Name="ServiceSetting" EntityType="Self.ServiceSetting" Schema="dbo" Table="SERVICE_SETTING" />
+          <EntitySet Name="ServiceStatus" EntityType="Self.ServiceStatus" Schema="dbo" Table="SERVICE_STATUS" />
+          <AssociationSet Name="Client_ClientOrders" Association="Self.Client_ClientOrders">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientOrder" EntitySet="ClientOrder" />
+          </AssociationSet>
+          <AssociationSet Name="ClientOrder_ClientOrderDetails" Association="Self.ClientOrder_ClientOrderDetails">
+            <End Role="ClientOrder" EntitySet="ClientOrder" />
+            <End Role="ClientOrderDetail" EntitySet="ClientOrderDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="74a9acaba22a408b9abb4bdc548f69e5" Name="Diagram1">
+        <EntityTypeShape EntityType="NationalFramework.Database.ClientOrderDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NationalFramework.Database.ClientOrder" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NationalFramework.Database.Client" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NationalFramework.Database.DownloadFile" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NationalFramework.Database.EventLog" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NationalFramework.Database.ServiceSetting" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NationalFramework.Database.ServiceStatus" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="NationalFramework.Database.Client_ClientOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="NationalFramework.Database.ClientOrder_ClientOrderDetails" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>

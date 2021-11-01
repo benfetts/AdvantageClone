@@ -1,0 +1,75 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/chart/chart"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+
+    <style>
+        .wv-chart-area {
+            border: 1px dashed #ccc;
+            min-height: 250px;
+        }
+
+        .row {
+            margin-top: 5px;
+        }
+
+        .panel > .panel-body {
+            min-height: 500px;
+        }
+    </style>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <div slot="toolbar">
+                    <ul class="list-inline" style="margin-bottom: 0;">
+                        <li style="padding-left: 6px;">
+                            <a href="#" role="button" title="Bookmark" class="wv-icon-button k-button k-normal" click.delegate="bookmark()"><span class="wvi wvi-book-bookmark"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--<div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <iframe src="DesktopObjectLoadWindow.aspx?dtoname=DesktopCurrentRatioGraph.ascx" style="height: 475px; width: 100%; border: 0px; overflow: auto;"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <iframe src="DesktopObjectLoadWindow.aspx?dtoname=DesktopCurrentRatio.ascx" style="height: 475px; width: 100%; border: 0px; overflow: auto;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h5>
+                            <span>Cash Balance</span>
+                        </h5>
+                        <iframe src="DesktopObjectLoadWindow.aspx?dtoname=DesktopCashBalance.ascx" style="height: 475px; width: 100%; border: 0px; overflow: auto;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h5>
+                            <span>AR Cash Forecast</span>
+                        </h5>
+                        <iframe src="DesktopObjectLoadWindow.aspx?from=acct&dtoname=DesktopARCashForecast.ascx" style="height: 475px; width: 100%; border: 0px; overflow: auto;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

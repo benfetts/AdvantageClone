@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88572257efce4b1da7557d376159a333" Name="Core" ZoomLevel="77">
+        <EntityTypeShape EntityType="DataModel.Client" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.Division" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.Office" Width="1.5" PointX="6.75" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.Product" Width="2.5" PointX="4" PointY="0.5" IsExpanded="false" />
+        <AssociationConnector Association="DataModel.DivisionClient" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.ProductDivision" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.ProductOffice" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DataModel.DepartmentTeam" Width="2.75" PointX="0.5" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.Function" Width="2" PointX="3.625" PointY="1.25" IsExpanded="false" />
+        <AssociationConnector Association="DataModel.FunctionDepartmentTeam" />
+        <EntityTypeShape EntityType="DataModel.Employee" Width="2.75" PointX="5.75" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.EmployeePicture" Width="3.125" PointX="8.75" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.Agency" Width="1.5" PointX="8.875" PointY="0.5" IsExpanded="false" />
+      </Diagram>
+      <Diagram DiagramId="4ed4b4cd8c024e05b5c29b6e1e9903d9" Name="Timesheet" >
+        <EntityTypeShape EntityType="DataModel.EmployeeTime" Width="2.625" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.EmployeeTimeDetail" Width="1.875" PointX="0.5" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DataModel.EmployeeTimeComment" Width="2.25" PointX="8.125" PointY="0.5" IsExpanded="false" FillColor="0, 122, 204" />
+        <EntityTypeShape EntityType="DataModel.EmployeeTimeIndirect" Width="2.625" PointX="5.375" PointY="0.5" IsExpanded="false" />
+        <AssociationConnector Association="DataModel.EmployeeTimeDetailEmployeeTime" />
+        <AssociationConnector Association="DataModel.EmployeeTimeIndirectEmployeeTime" />
+        <EntityTypeShape EntityType="DataModel.TimeCategory" Width="2.25" PointX="7.125" PointY="2.875" IsExpanded="false" />
+        <AssociationConnector Association="DataModel.EmployeeTimeIndirectTimeCategory" />
+        <EntityTypeShape EntityType="DataModel.TimeCategoryType" Width="2.125" PointX="4.25" PointY="3.125" IsExpanded="false" />
+        <AssociationConnector Association="DataModel.TimeCategoryTimeCategoryType" />
+        <EntityTypeShape EntityType="DataModel.EmployeeTimeTemplate" Width="5.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DataModel.EmployeeTimesheetFunction" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DataModel.EmployeeDepartmentTeam" Width="1.5" PointX="7.375" PointY="7.75" />
+      </Diagram>
+      <Diagram DiagramId="42b760b6ce64451c921be3004fb613b0" Name="Job Jacket" ZoomLevel="99" >
+        <EntityTypeShape EntityType="DataModel.JobComponent" Width="2.875" PointX="3.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.JobLog" Width="2.875" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.JobComponentJobLog" />
+      </Diagram>
+      <Diagram DiagramId="c09bb77954c7495ca40fe2ceaa9d9379" Name="Project Schedule" >
+        <EntityTypeShape EntityType="DataModel.JobTraffic" Width="2.375" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.JobTrafficDetail" Width="2.5" PointX="3.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DataModel.JobTrafficDetailEmployee" Width="2.25" PointX="6.125" PointY="2" />
+        <AssociationConnector Association="DataModel.JobTrafficDetailJobTrafficDetailEmployee" />
+      </Diagram>
+      <Diagram DiagramId="cce58a94c68349bbb5eac404246278f7" Name="Alert" ZoomLevel="81" >
+        <EntityTypeShape EntityType="DataModel.Alert" Width="2.625" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DataModel.AlertComment" Width="2.625" PointX="3.875" PointY="8.875" />
+        <EntityTypeShape EntityType="DataModel.AlertRecipient" Width="2.625" PointX="3.375" PointY="0.5" />
+        <EntityTypeShape EntityType="DataModel.DismissedAlertRecipient" Width="2.625" PointX="6.25" PointY="0.5" />
+        <AssociationConnector Association="DataModel.AlertCommentAlert" />
+        <AssociationConnector Association="DataModel.AlertRecipientAlert" />
+        <AssociationConnector Association="DataModel.DismissedAlertRecipientAlert" />
+        <EntityTypeShape EntityType="DataModel.AlertGroup" Width="2" PointX="7.125" PointY="8.25" />
+        <EntityTypeShape EntityType="DataModel.AlertAssignmentTemplateDepartmentTeam" Width="2.5" PointX="14.875" PointY="7.875" />
+        <EntityTypeShape EntityType="DataModel.AlertAssignmentEmailGroup" Width="2.5" PointX="10.125" PointY="8.5" />
+        <EntityTypeShape EntityType="DataModel.AlertAssignmentTemplateEmployee" Width="2.875" PointX="9.75" PointY="5" />
+        <EntityTypeShape EntityType="DataModel.AlertAssignmentTemplate" Width="3" PointX="12.75" PointY="1" />
+        <EntityTypeShape EntityType="DataModel.AlertAssignmentTemplateRole" Width="2.5" PointX="15.75" PointY="5.125" />
+        <EntityTypeShape EntityType="DataModel.AlertAssignmentTemplateState" Width="2.375" PointX="13.125" PointY="4.25" />
+        <EntityTypeShape EntityType="DataModel.AlertAssignmentState" Width="2.375" PointX="6.625" PointY="4.75" />
+        <EntityTypeShape EntityType="DataModel.AlertType" Width="2.125" PointX="4" PointY="6.875" />
+        <AssociationConnector Association="DataModel.AlertAlertAssignmentState" />
+        <AssociationConnector Association="DataModel.AlertAlertType" />
+        <AssociationConnector Association="DataModel.AlertAssignmentTemplateEmployeeAlertAssignmentTemplate" />
+        <AssociationConnector Association="DataModel.AlertAssignmentTemplateEmployeeAlertAssignmentState" />
+        <AssociationConnector Association="DataModel.AlertAssignmentStateAlertAssignmentTemplate" />
+        <AssociationConnector Association="DataModel.AlertAssignmentTemplateStateAlertAssignmentState" />
+      </Diagram>
+      <Diagram DiagramId="df12626df651408385b14b1c393a6c50" Name="Security" >
+        <EntityTypeShape EntityType="DataModel.SecurityUser" Width="2.125" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.SecurityPermission" Width="3.25" PointX="4.125" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.SecurityGroupPermission" Width="2.625" PointX="1" PointY="3.5" />
+        <EntityTypeShape EntityType="DataModel.SecurityClient" Width="1.5" PointX="4.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DataModel.SecurityUserSetting" Width="2.875" PointX="8" PointY="1" />
+        <AssociationConnector Association="DataModel.SecurityUserSettingSecurityUser" />
+        <EntityTypeShape EntityType="DataModel.SecurityLicense" Width="1.5" PointX="6.375" PointY="6.75" />
+      </Diagram>
+      <Diagram DiagramId="c50da209d36740aabd806344103bd1ff" Name="Accounting" >
+        <EntityTypeShape EntityType="DataModel.PostPeriod" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+      <Diagram DiagramId="ec96a8794d024411aef67237320e8796" Name="DocumentManager" >
+        <EntityTypeShape EntityType="DataModel.AlertAttachment" Width="3.125" PointX="0.625" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.Document" Width="3.125" PointX="4" PointY="0.75" />
+        <EntityTypeShape EntityType="DataModel.ExpenseDetailDocument" Width="1.5" PointX="7.875" PointY="7.25" />
+        <EntityTypeShape EntityType="DataModel.ExpenseDocument" Width="1.5" PointX="7.875" PointY="5" />
+        <AssociationConnector Association="DataModel.ExpenseDetailDocumentDocument" />
+        <AssociationConnector Association="DataModel.ExpenseDocumentDocument" />
+        <AssociationConnector Association="DataModel.FK_ALERT_ATTACHMENT_DOCUMENTS" />
+      </Diagram>
+      <Diagram DiagramId="720694950e47465da6a49820c9b31d15" Name="Expense" >
+        <EntityTypeShape EntityType="DataModel.ExpenseDetail" Width="3" PointX="4.875" PointY="1.875" />
+        <EntityTypeShape EntityType="DataModel.Expense" Width="3" PointX="1.375" PointY="0.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

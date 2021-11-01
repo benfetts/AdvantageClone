@@ -1,0 +1,19 @@
+<div class="asset-item-with-thumbnail" [class.selected]="selected">
+  <div class="asset-item-switch">
+    <button class="icon"
+            kendoButton
+            (click)="onRemove(uid)"
+            [imageUrl]="'assets/icons/delete-uploaded-file.svg'"
+    ></button>
+  </div>
+  <div class="asset-item-thumbnail">
+    <img class="icon" src="assets/icons/empty_doc.svg"/>
+  </div>
+  <fool-file-name class="file-name"
+                  [isImageUploadContainer]="true"
+                  [isLinkContainer]="true"
+                  [textInIcon]="textInIcon"
+                  [componentType]="itemType"
+                  [fileName]="fileName">
+  </fool-file-name>
+</div>

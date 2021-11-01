@@ -1,0 +1,99 @@
+﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_wv_AAMCompleteTempComplete]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[usp_wv_AAMCompleteTempComplete]
+GO
+
+/****** Object:  StoredProcedure [dbo].[usp_wv_AAMCompleteTempComplete]    Script Date: 7/21/2020 4:21:43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_wv_AAMCompleteTempComplete] 
+
+@UserID		Varchar(100),
+@EmpCode	Varchar(140),
+@Role		Varchar(140),
+@ManagerCode Varchar(6),
+@Office		varchar(4),
+@TaskStatus Varchar(10),
+@Search as Varchar(500),
+@AlertID as VARCHAR(1000)
+
+AS
+
+BEGIN
+
+	DECLARE @StartDate AS SMALLDATETIME, @EndDate AS SMALLDATETIME	
+	
+	CREATE TABLE #ALERTID (	ALERT_ID INT);
+
+	BEGIN
+		INSERT INTO #ALERTID
+		SELECT CONVERT(INT, LTRIM(RTRIM(items))) AS ALERT_ID 
+		FROM [dbo].udf_split_list(@AlertID, ',');
+	END
+
+	BEGIN 
+		SELECT @StartDate = MIN(JTD.JOB_REVISED_DATE), @EndDate = MAX(JTD.JOB_REVISED_DATE)
+		FROM JOB_TRAFFIC_DET JTD LEFT JOIN ALERT A ON JTD.JOB_NUMBER = A.JOB_NUMBER 
+		AND JTD.JOB_COMPONENT_NBR = A.JOB_COMPONENT_NBR 
+		AND JTD.SEQ_NBR = A.TASK_SEQ_NBR
+		WHERE A.ALERT_ID IN (SELECT ALERT_ID FROM #ALERTID)	
+	END
+
+    CREATE TABLE #TASKS --TASKS TO COMPLETE
+    (
+		[CDP]              VARCHAR(50) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[JobData]          VARCHAR(4000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[Task]             VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[TaskComment]      TEXT ,
+		[StartDate]        SMALLDATETIME ,
+		[DueDate]          SMALLDATETIME ,
+		[DueTime]          VARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[JobNo]            INT NULL ,
+		[JobComp]          INT NULL ,
+		[HoursAllowed]     DECIMAL(18 , 2) NULL ,
+		[SeqNo]            INT NULL ,
+		[TempCompleteDate] SMALLDATETIME NULL ,
+		[Employee]         VARCHAR(100) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[EmpCode]          VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[OFFICE_CODE]      VARCHAR(4) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[IS_EVENT]         SMALLINT NULL ,
+		[EVENT_TASK_ID]    INT NULL ,
+		[TASK_STATUS]      VARCHAR(1) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[JOB_DESC]         VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[JOB_COMP_DESC]    VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[JOB_COMP]         VARCHAR(4000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+		[HAS_DOCUMENTS]    BIT ,
+		[HAS_CHILDREN]     BIT ,
+		ALERT_ID			 INT NULL,
+		SPRINT_ID			 INT NULL,
+		[PRIORITY]	INT NULL
+    )	
+
+	INSERT INTO #TASKS
+	EXEC [dbo].[usp_wv_dto_tasks_new] @UserID,
+	@EmpCode,
+	@Role,
+	@StartDate,
+	@EndDate,
+	@ManagerCode,
+	@Office,
+	@TaskStatus,
+	@Search
+	
+	UPDATE JOB_TRAFFIC_DET
+	SET
+		JOB_TRAFFIC_DET.JOB_COMPLETED_DATE = #TASKS.TempCompleteDate
+	FROM #TASKS INNER JOIN JOB_TRAFFIC_DET ON #TASKS.JobNo = JOB_TRAFFIC_DET.JOB_NUMBER AND #TASKS.JobComp = JOB_TRAFFIC_DET.JOB_COMPONENT_NBR
+	AND #TASKS.SeqNo = JOB_TRAFFIC_DET.SEQ_NBR
+	WHERE (NOT(JOB_TRAFFIC_DET.TEMP_COMP_DATE IS NULL));
+
+	SELECT DISTINCT #TASKS.JobNo AS JobNumber, #TASKS.JobComp AS JobComponentNumber, #TASKS.SeqNo AS TaskSequenceNumber
+	FROM #TASKS INNER JOIN JOB_TRAFFIC_DET ON #TASKS.JobNo = JOB_TRAFFIC_DET.JOB_NUMBER AND #TASKS.JobComp = JOB_TRAFFIC_DET.JOB_COMPONENT_NBR
+	AND #TASKS.SeqNo = JOB_TRAFFIC_DET.SEQ_NBR
+	WHERE (NOT(JOB_TRAFFIC_DET.TEMP_COMP_DATE IS NULL));	
+
+	DROP TABLE #TASKS;
+	DROP TABLE #ALERTID
+END

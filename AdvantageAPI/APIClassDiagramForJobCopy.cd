@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="AdvantageAPI.Product">
+    <Position X="5.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AIIBAAAgEAAAQcAQEEMwAQQgQAAAEBIgEYAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Product.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Client">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAEAAAQYAYkAIgCQQgAAIAABICEQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Client.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Division">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAgEAAAAIAIEAAgCQQgAAIAAAACAQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Division.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Job">
+    <Position X="8.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAABAAAgEAAAAAQIAAAAAEABAAAAAAAAQIABAAAgJAA=</HashCode>
+      <FileName>APIDbContext\Entities\Job.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.User">
+    <Position X="5.5" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAAAAAAEAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\User.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.SalesClass">
+    <Position X="3.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\SalesClass.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AccountExecutive">
+    <Position X="0.5" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAEAACAAAAAAAAAIgAAAAAIAA=</HashCode>
+      <FileName>APIDbContext\Entities\AccountExecutive.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Campaign">
+    <Position X="3.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAEAAgAAQAAAAAAEAAAIAAAAAAIAA=</HashCode>
+      <FileName>APIDbContext\Entities\Campaign.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AddClientDivisionProductResponse">
+    <Position X="8.25" Y="5.25" Width="2.75" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAIAAIAAAIAA=</HashCode>
+      <FileName>Classes\Maintenance\AddClientDivisionProductResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AddCampaignResponse">
+    <Position X="3.25" Y="8.25" Width="2" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\AddCampaign.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ClientTypeResponse">
+    <Position X="0.5" Y="7.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAAMAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\ClientTypeResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ClientTypes">
+    <Position X="8.25" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\ClientType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.CreateJobResponse">
+    <Position X="5.5" Y="7.75" Width="2.5" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>CreateJobResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.JobLogUserDefinedValues">
+    <Position X="8.25" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAABAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\JobLogUserDefinedValue.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

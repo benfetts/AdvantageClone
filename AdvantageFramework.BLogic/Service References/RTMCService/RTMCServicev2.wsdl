@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://rtmc.tchek.com/v2/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RTMCServicev2" targetNamespace="http://rtmc.tchek.com/v2/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://rtmc.tchek.com/v2/Imports">
+      <xsd:import schemaLocation="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?xsd=xsd2" namespace="http://rtmc.tchek.com/v2/" />
+      <xsd:import schemaLocation="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/TChek.MasterCard.WebServices.RTMC.BusinessObjects.RTMCv2" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetBPDDLListRequest">
+    <wsdl:part name="GetBPDDLListRequest" element="tns:GetBPDDLListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBPDDLListResponse">
+    <wsdl:part name="GetBPDDLListResponse" element="tns:GetBPDDLListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetECDDLListRequest">
+    <wsdl:part name="GetECDDLListRequest" element="tns:GetECDDLListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetECDDLListResponse">
+    <wsdl:part name="GetECDDLListResponse" element="tns:GetECDDLListResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditECDDLListItemRequest">
+    <wsdl:part name="EditECDDLListItemRequest" element="tns:EditECDDLListItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="EditECDDLListItemResponse">
+    <wsdl:part name="EditECDDLListItemResponse" element="tns:EditECDDLListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditBPDDLListItemRequest">
+    <wsdl:part name="EditBPDDLListItemRequest" element="tns:EditBPDDLListItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="EditBPDDLListItemResponse">
+    <wsdl:part name="EditBPDDLListItemResponse" element="tns:EditBPDDLListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewBPCustomDDLListItemRequest">
+    <wsdl:part name="AddNewBPCustomDDLListItemRequest" element="tns:AddNewBPCustomDDLListItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddNewBPCustomDDLListItemResponse">
+    <wsdl:part name="AddNewBPCustomDDLListItemResponse" element="tns:AddNewBPCustomDDLListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewECCustomDDLListItemRequest">
+    <wsdl:part name="AddNewECCustomDDLListItemRequest" element="tns:AddNewECCustomDDLListItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddNewECCustomDDLListItemResponse">
+    <wsdl:part name="AddNewECCustomDDLListItemResponse" element="tns:AddNewECCustomDDLListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="EditDDLRequest">
+    <wsdl:part name="EditDDLRequest" element="tns:EditDDLRequest" />
+  </wsdl:message>
+  <wsdl:message name="EditDDLResponse">
+    <wsdl:part name="EditDDLResponse" element="tns:EditDDLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableBalanceRequest">
+    <wsdl:part name="GetAvailableBalanceRequest" element="tns:GetAvailableBalanceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableBalanceResponse">
+    <wsdl:part name="GetAvailableBalanceResponse" element="tns:GetAvailableBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentsRequest">
+    <wsdl:part name="GetPaymentsRequest" element="tns:GetPaymentsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentsResponse">
+    <wsdl:part name="GetPaymentsResponse" element="tns:GetPaymentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditInfoRequest">
+    <wsdl:part name="GetCreditInfoRequest" element="tns:GetCreditInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCreditInfoResponse">
+    <wsdl:part name="GetCreditInfoResponse" element="tns:GetCreditInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRTMCService_GetVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="IRTMCService_GetVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupAddRequest">
+    <wsdl:part name="CardGroupAddRequest" element="tns:CardGroupAddRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupAddResponse">
+    <wsdl:part name="CardGroupAddResponse" element="tns:CardGroupAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupDelRequest">
+    <wsdl:part name="CardGroupDelRequest" element="tns:CardGroupDelRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupDelResponse">
+    <wsdl:part name="CardGroupDelResponse" element="tns:CardGroupDelResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupInqRequest">
+    <wsdl:part name="CardGroupInqRequest" element="tns:CardGroupInqRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupInqResponse">
+    <wsdl:part name="CardGroupInqResponse" element="tns:CardGroupInqResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupUpdRequest">
+    <wsdl:part name="CardGroupUpdRequest" element="tns:CardGroupUpdRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardGroupUpdResponse">
+    <wsdl:part name="CardGroupUpdResponse" element="tns:CardGroupUpdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardInqRequest">
+    <wsdl:part name="CardInqRequest" element="tns:CardInqRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardInqResponse">
+    <wsdl:part name="CardInqResponse" element="tns:CardInqResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardUpdRequest">
+    <wsdl:part name="CardUpdRequest" element="tns:CardUpdRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardUpdResponse">
+    <wsdl:part name="CardUpdResponse" element="tns:CardUpdResponse" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardActivityRequest">
+    <wsdl:part name="VirtualCardActivityRequest" element="tns:VirtualCardActivityRequest" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardActivityResponse">
+    <wsdl:part name="VirtualCardActivityResponse" element="tns:VirtualCardActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardCreateRequest">
+    <wsdl:part name="VirtualCardCreateRequest" element="tns:VirtualCardCreateRequest" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardCreateResponse">
+    <wsdl:part name="VirtualCardCreateResponse" element="tns:VirtualCardCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardInquireRequest">
+    <wsdl:part name="VirtualCardInquireRequest" element="tns:VirtualCardInquireRequest" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardInquireResponse">
+    <wsdl:part name="VirtualCardInquireResponse" element="tns:VirtualCardInquireResponse" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardInquireCardCTSRequest">
+    <wsdl:part name="VirtualCardInquireCardCTSRequest" element="tns:VirtualCardInquireCardCTSRequest" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardInquireCardCTSResponse">
+    <wsdl:part name="VirtualCardInquireCardCTSResponse" element="tns:VirtualCardInquireCardCTSResponse" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardUpdateRequest">
+    <wsdl:part name="VirtualCardUpdateRequest" element="tns:VirtualCardUpdateRequest" />
+  </wsdl:message>
+  <wsdl:message name="VirtualCardUpdateResponse">
+    <wsdl:part name="VirtualCardUpdateResponse" element="tns:VirtualCardUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolAddRequest">
+    <wsdl:part name="DriverPoolAddRequest" element="tns:DriverPoolAddRequest" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolAddResponse">
+    <wsdl:part name="DriverPoolAddResponse" element="tns:DriverPoolAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolDelRequest">
+    <wsdl:part name="DriverPoolDelRequest" element="tns:DriverPoolDelRequest" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolDelResponse">
+    <wsdl:part name="DriverPoolDelResponse" element="tns:DriverPoolDelResponse" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolInqRequest">
+    <wsdl:part name="DriverPoolInqRequest" element="tns:DriverPoolInqRequest" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolInqResponse">
+    <wsdl:part name="DriverPoolInqResponse" element="tns:DriverPoolInqResponse" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolUpdRequest">
+    <wsdl:part name="DriverPoolUpdRequest" element="tns:DriverPoolUpdRequest" />
+  </wsdl:message>
+  <wsdl:message name="DriverPoolUpdResponse">
+    <wsdl:part name="DriverPoolUpdResponse" element="tns:DriverPoolUpdResponse" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolAddRequest">
+    <wsdl:part name="VehiclePoolAddRequest" element="tns:VehiclePoolAddRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolAddResponse">
+    <wsdl:part name="VehiclePoolAddResponse" element="tns:VehiclePoolAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolDelRequest">
+    <wsdl:part name="VehiclePoolDelRequest" element="tns:VehiclePoolDelRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolDelResponse">
+    <wsdl:part name="VehiclePoolDelResponse" element="tns:VehiclePoolDelResponse" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolInqRequest">
+    <wsdl:part name="VehiclePoolInqRequest" element="tns:VehiclePoolInqRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolInqResponse">
+    <wsdl:part name="VehiclePoolInqResponse" element="tns:VehiclePoolInqResponse" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolUpdRequest">
+    <wsdl:part name="VehiclePoolUpdRequest" element="tns:VehiclePoolUpdRequest" />
+  </wsdl:message>
+  <wsdl:message name="VehiclePoolUpdResponse">
+    <wsdl:part name="VehiclePoolUpdResponse" element="tns:VehiclePoolUpdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryMemoRequest">
+    <wsdl:part name="TransactionDeliveryMemoRequest" element="tns:TransactionDeliveryMemoRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryMemoResponse">
+    <wsdl:part name="TransactionDeliveryMemoResponse" element="tns:TransactionDeliveryMemoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryClearedRequest">
+    <wsdl:part name="TransactionDeliveryClearedRequest" element="tns:TransactionDeliveryClearedRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryClearedResponse">
+    <wsdl:part name="TransactionDeliveryClearedResponse" element="tns:TransactionDeliveryClearedResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryChargeRequest">
+    <wsdl:part name="TransactionDeliveryChargeRequest" element="tns:TransactionDeliveryChargeRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryChargeResponse">
+    <wsdl:part name="TransactionDeliveryChargeResponse" element="tns:TransactionDeliveryChargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryRejectRequest">
+    <wsdl:part name="TransactionDeliveryRejectRequest" element="tns:TransactionDeliveryRejectRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryRejectResponse">
+    <wsdl:part name="TransactionDeliveryRejectResponse" element="tns:TransactionDeliveryRejectResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryDetailsRequest">
+    <wsdl:part name="TransactionDeliveryDetailsRequest" element="tns:TransactionDeliveryDetailsRequest" />
+  </wsdl:message>
+  <wsdl:message name="TransactionDeliveryDetailsResponse">
+    <wsdl:part name="TransactionDeliveryDetailsResponse" element="tns:TransactionDeliveryDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardOrderNewRequest">
+    <wsdl:part name="CardOrderNewRequest" element="tns:CardOrderNewRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardOrderNewResponse">
+    <wsdl:part name="CardOrderNewResponse" element="tns:CardOrderNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardOrderReissueRequest">
+    <wsdl:part name="CardOrderReissueRequest" element="tns:CardOrderReissueRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardOrderReissueResponse">
+    <wsdl:part name="CardOrderReissueResponse" element="tns:CardOrderReissueResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardOrderReissueActivateRequest">
+    <wsdl:part name="CardOrderReissueActivateRequest" element="tns:CardOrderReissueActivateRequest" />
+  </wsdl:message>
+  <wsdl:message name="CardOrderReissueActivateResponse">
+    <wsdl:part name="CardOrderReissueActivateResponse" element="tns:CardOrderReissueActivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomDDLSRequest">
+    <wsdl:part name="GetCustomDDLSRequest" element="tns:GetCustomDDLSRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomDDLSResponse">
+    <wsdl:part name="GetCustomDDLSResponse" element="tns:GetCustomDDLSResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewDDLListItemRequest">
+    <wsdl:part name="AddNewDDLListItemRequest" element="tns:AddNewDDLListItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddNewDDLListItemResponse">
+    <wsdl:part name="AddNewDDLListItemResponse" element="tns:AddNewDDLListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDDLListItemRequest">
+    <wsdl:part name="DeleteDDLListItemRequest" element="tns:DeleteDDLListItemRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDDLListItemResponse">
+    <wsdl:part name="DeleteDDLListItemResponse" element="tns:DeleteDDLListItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDDLRequest">
+    <wsdl:part name="DeleteDDLRequest" element="tns:DeleteDDLRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDDLResponse">
+    <wsdl:part name="DeleteDDLResponse" element="tns:DeleteDDLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomDDLListRequest">
+    <wsdl:part name="GetCustomDDLListRequest" element="tns:GetCustomDDLListRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomDDLListResponse">
+    <wsdl:part name="GetCustomDDLListResponse" element="tns:GetCustomDDLListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRTMCService">
+    <wsdl:operation name="GetBPDDLList">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetBPDDLList" name="GetBPDDLListRequest" message="tns:GetBPDDLListRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetBPDDLListResponse" name="GetBPDDLListResponse" message="tns:GetBPDDLListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetECDDLList">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetECDDLList" name="GetECDDLListRequest" message="tns:GetECDDLListRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetECDDLListResponse" name="GetECDDLListResponse" message="tns:GetECDDLListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EditECDDLListItem">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/EditECDDLListItem" name="EditECDDLListItemRequest" message="tns:EditECDDLListItemRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/EditECDDLListItemResponse" name="EditECDDLListItemResponse" message="tns:EditECDDLListItemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EditBPDDLListItem">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/EditBPDDLListItem" name="EditBPDDLListItemRequest" message="tns:EditBPDDLListItemRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/EditBPDDLListItemResponse" name="EditBPDDLListItemResponse" message="tns:EditBPDDLListItemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewBPCustomDDLListItem">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/AddNewBPCustomDDLListItem" name="AddNewBPCustomDDLListItemRequest" message="tns:AddNewBPCustomDDLListItemRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/AddNewBPCustomDDLListItemResponse" name="AddNewBPCustomDDLListItemResponse" message="tns:AddNewBPCustomDDLListItemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewECCustomDDLListItem">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/AddNewECCustomDDLListItem" name="AddNewECCustomDDLListItemRequest" message="tns:AddNewECCustomDDLListItemRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/AddNewECCustomDDLListItemResponse" name="AddNewECCustomDDLListItemResponse" message="tns:AddNewECCustomDDLListItemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EditDDL">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/EditDDL" name="EditDDLRequest" message="tns:EditDDLRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/EditDDLResponse" name="EditDDLResponse" message="tns:EditDDLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBalance">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetAvailableBalance" name="GetAvailableBalanceRequest" message="tns:GetAvailableBalanceRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetAvailableBalanceResponse" name="GetAvailableBalanceResponse" message="tns:GetAvailableBalanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPayments">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetPayments" name="GetPaymentsRequest" message="tns:GetPaymentsRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetPaymentsResponse" name="GetPaymentsResponse" message="tns:GetPaymentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditInfo">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetCreditInfo" name="GetCreditInfoRequest" message="tns:GetCreditInfoRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetCreditInfoResponse" name="GetCreditInfoResponse" message="tns:GetCreditInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetVersion" message="tns:IRTMCService_GetVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetVersionResponse" message="tns:IRTMCService_GetVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupAdd">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupAdd" name="CardGroupAddRequest" message="tns:CardGroupAddRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupAddResponse" name="CardGroupAddResponse" message="tns:CardGroupAddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupDel">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupDel" name="CardGroupDelRequest" message="tns:CardGroupDelRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupDelResponse" name="CardGroupDelResponse" message="tns:CardGroupDelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupInq">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupInq" name="CardGroupInqRequest" message="tns:CardGroupInqRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupInqResponse" name="CardGroupInqResponse" message="tns:CardGroupInqResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupUpd">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupUpd" name="CardGroupUpdRequest" message="tns:CardGroupUpdRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardGroupUpdResponse" name="CardGroupUpdResponse" message="tns:CardGroupUpdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardInq">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardInq" name="CardInqRequest" message="tns:CardInqRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardInqResponse" name="CardInqResponse" message="tns:CardInqResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardUpd">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardUpd" name="CardUpdRequest" message="tns:CardUpdRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardUpdResponse" name="CardUpdResponse" message="tns:CardUpdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardActivity">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardActivity" name="VirtualCardActivityRequest" message="tns:VirtualCardActivityRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardActivityResponse" name="VirtualCardActivityResponse" message="tns:VirtualCardActivityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardCreate">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardCreate" name="VirtualCardCreateRequest" message="tns:VirtualCardCreateRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardCreateResponse" name="VirtualCardCreateResponse" message="tns:VirtualCardCreateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardInquire">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardInquire" name="VirtualCardInquireRequest" message="tns:VirtualCardInquireRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardInquireResponse" name="VirtualCardInquireResponse" message="tns:VirtualCardInquireResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardInquireCardCTS">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardInquireCardCTS" name="VirtualCardInquireCardCTSRequest" message="tns:VirtualCardInquireCardCTSRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardInquireCardCTSResponse" name="VirtualCardInquireCardCTSResponse" message="tns:VirtualCardInquireCardCTSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardUpdate">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardUpdate" name="VirtualCardUpdateRequest" message="tns:VirtualCardUpdateRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardUpdateResponse" name="VirtualCardUpdateResponse" message="tns:VirtualCardUpdateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolAdd">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolAdd" name="DriverPoolAddRequest" message="tns:DriverPoolAddRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolAddResponse" name="DriverPoolAddResponse" message="tns:DriverPoolAddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolDel">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolDel" name="DriverPoolDelRequest" message="tns:DriverPoolDelRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolDelResponse" name="DriverPoolDelResponse" message="tns:DriverPoolDelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolInq">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolInq" name="DriverPoolInqRequest" message="tns:DriverPoolInqRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolInqResponse" name="DriverPoolInqResponse" message="tns:DriverPoolInqResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolUpd">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolUpd" name="DriverPoolUpdRequest" message="tns:DriverPoolUpdRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolUpdResponse" name="DriverPoolUpdResponse" message="tns:DriverPoolUpdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolAdd">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolAdd" name="VehiclePoolAddRequest" message="tns:VehiclePoolAddRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolAddResponse" name="VehiclePoolAddResponse" message="tns:VehiclePoolAddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolDel">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolDel" name="VehiclePoolDelRequest" message="tns:VehiclePoolDelRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolDelResponse" name="VehiclePoolDelResponse" message="tns:VehiclePoolDelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolInq">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolInq" name="VehiclePoolInqRequest" message="tns:VehiclePoolInqRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolInqResponse" name="VehiclePoolInqResponse" message="tns:VehiclePoolInqResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolUpd">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolUpd" name="VehiclePoolUpdRequest" message="tns:VehiclePoolUpdRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolUpdResponse" name="VehiclePoolUpdResponse" message="tns:VehiclePoolUpdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryMemo">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryMemo" name="TransactionDeliveryMemoRequest" message="tns:TransactionDeliveryMemoRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryMemoResponse" name="TransactionDeliveryMemoResponse" message="tns:TransactionDeliveryMemoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryCleared">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryCleared" name="TransactionDeliveryClearedRequest" message="tns:TransactionDeliveryClearedRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryClearedResponse" name="TransactionDeliveryClearedResponse" message="tns:TransactionDeliveryClearedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryCharge">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryCharge" name="TransactionDeliveryChargeRequest" message="tns:TransactionDeliveryChargeRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryChargeResponse" name="TransactionDeliveryChargeResponse" message="tns:TransactionDeliveryChargeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryReject">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryReject" name="TransactionDeliveryRejectRequest" message="tns:TransactionDeliveryRejectRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryRejectResponse" name="TransactionDeliveryRejectResponse" message="tns:TransactionDeliveryRejectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryDetails">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryDetails" name="TransactionDeliveryDetailsRequest" message="tns:TransactionDeliveryDetailsRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryDetailsResponse" name="TransactionDeliveryDetailsResponse" message="tns:TransactionDeliveryDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardOrderNew">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardOrderNew" name="CardOrderNewRequest" message="tns:CardOrderNewRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardOrderNewResponse" name="CardOrderNewResponse" message="tns:CardOrderNewResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardOrderReissue">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardOrderReissue" name="CardOrderReissueRequest" message="tns:CardOrderReissueRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardOrderReissueResponse" name="CardOrderReissueResponse" message="tns:CardOrderReissueResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CardOrderReissueActivate">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardOrderReissueActivate" name="CardOrderReissueActivateRequest" message="tns:CardOrderReissueActivateRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/CardOrderReissueActivateResponse" name="CardOrderReissueActivateResponse" message="tns:CardOrderReissueActivateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomDDLS">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetCustomDDLS" name="GetCustomDDLSRequest" message="tns:GetCustomDDLSRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetCustomDDLSResponse" name="GetCustomDDLSResponse" message="tns:GetCustomDDLSResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewDDLListItem">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/AddNewDDLListItem" name="AddNewDDLListItemRequest" message="tns:AddNewDDLListItemRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/AddNewDDLListItemResponse" name="AddNewDDLListItemResponse" message="tns:AddNewDDLListItemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDDLListItem">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DeleteDDLListItem" name="DeleteDDLListItemRequest" message="tns:DeleteDDLListItemRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DeleteDDLListItemResponse" name="DeleteDDLListItemResponse" message="tns:DeleteDDLListItemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDDL">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DeleteDDL" name="DeleteDDLRequest" message="tns:DeleteDDLRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/DeleteDDLResponse" name="DeleteDDLResponse" message="tns:DeleteDDLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomDDLList">
+      <wsdl:input wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetCustomDDLList" name="GetCustomDDLListRequest" message="tns:GetCustomDDLListRequest" />
+      <wsdl:output wsaw:Action="http://rtmc.tchek.com/v2/IRTMCService/GetCustomDDLListResponse" name="GetCustomDDLListResponse" message="tns:GetCustomDDLListResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="RTMCServicev2">
+    <wsdl:port name="wsHttpEndpoint" binding="i0:wsHttpEndpoint">
+      <soap12:address location="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

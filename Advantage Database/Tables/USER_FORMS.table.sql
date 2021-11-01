@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[USER_FORMS] (
+    [RPTCODE]  VARCHAR (50) NOT NULL,
+    [USE]      SMALLINT     NULL,
+    [IMPORTED] SMALLINT     NULL
+);
+

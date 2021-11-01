@@ -1,0 +1,85 @@
+﻿if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_dd_GetClients_All]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[usp_wv_dd_GetClients_All]
+GO
+
+
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetClients_All] 
+@UserID VarChar(100) 
+AS
+Declare @Restrictions Int
+Set NoCount on
+
+DECLARE @EMP_CODE AS VARCHAR(6)
+DECLARE @OfficeCount AS INTEGER
+
+SELECT @EMP_CODE = EMP_CODE FROM SEC_USER WHERE UPPER(USER_CODE) = UPPER(@UserID)
+
+SELECT @OfficeCount = COUNT(*) FROM EMP_OFFICE WHERE EMP_CODE = @EMP_CODE
+
+Select @Restrictions = Count(*) FROM SEC_CLIENT WHERE UPPER(USER_ID) = UPPER(@UserID)
+
+If @Restrictions > 0
+  Begin
+	If @OfficeCount = 0
+		Begin
+			SELECT     DISTINCT CLIENT.CL_CODE AS Code, CLIENT.CL_CODE + ' - ' + isnull(CLIENT.CL_NAME, '') AS Description
+			FROM         CLIENT INNER JOIN
+							  SEC_CLIENT ON CLIENT.CL_CODE = SEC_CLIENT.CL_CODE
+			WHERE     (UPPER(SEC_CLIENT.USER_ID) = UPPER(@UserID)) AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)
+			ORDER BY  CLIENT.CL_CODE
+		End
+		Else
+		Begin
+			SELECT     DISTINCT CLIENT.CL_CODE AS Code, CLIENT.CL_CODE + ' - ' + isnull(CLIENT.CL_NAME, '') AS Description
+			FROM         CLIENT INNER JOIN
+                          DIVISION ON CLIENT.CL_CODE = DIVISION.CL_CODE INNER JOIN
+                           PRODUCT ON DIVISION.CL_CODE = PRODUCT.CL_CODE AND DIVISION.DIV_CODE = PRODUCT.DIV_CODE INNER JOIN
+							  SEC_CLIENT ON CLIENT.CL_CODE = SEC_CLIENT.CL_CODE INNER JOIN EMP_OFFICE ON PRODUCT.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE AND EMP_OFFICE.EMP_CODE = @EMP_CODE
+			WHERE     (UPPER(SEC_CLIENT.USER_ID) = UPPER(@UserID)) AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)
+			ORDER BY  CLIENT.CL_CODE
+		End	
+  End	
+ELSE
+  Begin
+	If @OfficeCount = 0
+		Begin
+			SELECT     DISTINCT CL_CODE AS Code, CLIENT.CL_CODE + ' - ' + isnull(CL_NAME, '') AS Description
+			FROM         CLIENT
+			ORDER BY  CLIENT.CL_CODE
+		End
+		Else
+		Begin
+			SELECT     DISTINCT CLIENT.CL_CODE AS Code, CLIENT.CL_CODE + ' - ' + isnull(CL_NAME, '') AS Description
+			FROM         CLIENT INNER JOIN
+                          DIVISION ON CLIENT.CL_CODE = DIVISION.CL_CODE INNER JOIN
+                           PRODUCT ON DIVISION.CL_CODE = PRODUCT.CL_CODE AND DIVISION.DIV_CODE = PRODUCT.DIV_CODE INNER JOIN 
+						   EMP_OFFICE ON PRODUCT.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE AND EMP_OFFICE.EMP_CODE = @EMP_CODE
+			ORDER BY  CLIENT.CL_CODE
+		End	
+  End
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

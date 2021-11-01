@@ -1,0 +1,99 @@
+'=====================================================================
+'  File:      PublishWebvantageReports.rss
+'
+' Script created: 5/3/2005
+'=====================================================================*/
+Dim definition As [Byte]() = Nothing
+Dim warnings As Warning() = Nothing
+Dim parentPath As String = "/" + parentFolder
+
+Public Sub Main()
+
+ rs.Credentials = System.Net.CredentialCache.DefaultCredentials
+ Dim name As String
+
+ 'Create the parent folder
+ Try
+  rs.CreateFolder(parentFolder, "/", Nothing)
+  Console.WriteLine("Parent folder created: {0}", parentFolder)
+  
+ Catch e As Exception
+  'Console.WriteLine(e.Message)
+  
+ End Try
+    
+ CreateHOSDataSource(sqlServerName)
+ 
+ PublishReport("clientarstatement")
+ PublishReport("clientarstatement002")
+ PublishReport("clientarstatement003")
+ PublishReport("productarstatement")
+ PublishReport("productarstatement002")
+ PublishReport("productarstatement003")
+ 
+End Sub
+
+Public Sub CreateHOSDataSource(ByVal sqlServerName As String)
+
+ Dim name As String = "wvSQLDB"
+ Dim parent As String = "/" + parentFolder
+
+'Define the data source definition.
+ Dim definition As New DataSourceDefinition()
+ definition.CredentialRetrieval = CredentialRetrievalEnum.Integrated
+ definition.ConnectString = ""
+ definition.Enabled = True
+ definition.EnabledSpecified = True
+ definition.Extension = "WVSQLDB"
+ definition.ImpersonateUser = False
+ definition.ImpersonateUserSpecified = True
+ 'definition.WindowsCredentials = True
+ 'definition.UserName = "SYSADM"
+ 'definition.Password = "sysadm"
+ 
+
+ Try
+  rs.CreateDataSource(name, parent, True, definition, Nothing)
+  
+ Catch e As Exception
+  Console.WriteLine(e.Message)
+
+ End Try
+ 
+End Sub 
+
+
+Public Sub PublishReport(ByVal reportName As String)
+
+ Try
+  Dim stream As FileStream = File.OpenRead(filePath + "\" + reportName + ".rdl")
+  definition = New [Byte](stream.Length) {}
+        stream.Read(definition, 0, CInt(stream.Length))
+        stream.Close()
+        
+    Catch e As IOException
+        Console.WriteLine(e.Message)
+        
+    End Try
+
+    Try
+        warnings = rs.CreateReport(reportName, parentPath, True, definition, Nothing)
+
+        If Not (warnings Is Nothing) Then
+            Dim warning As Warning
+            For Each warning In warnings
+                Console.WriteLine(warning.Message)
+            Next warning
+            
+        Else
+            Console.WriteLine("Report: {0} published successfully with no warnings", reportName)
+            
+        End If
+        
+    Catch e As Exception
+        Console.WriteLine(e.Message)
+        
+    End Try
+    
+End Sub
+

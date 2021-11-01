@@ -1,0 +1,9 @@
+﻿
+CREATE PROCEDURE [dbo].[advsp_dddw_project_schedule_status] 
+AS
+SET NOCOUNT ON
+
+SELECT TRF_CODE, TRF_DESCRIPTION
+  FROM dbo.TRAFFIC
+ WHERE ( INACTIVE_FLAG = 0 OR INACTIVE_FLAG IS NULL ) 
+  

@@ -1,0 +1,41 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_DESKTOP_OBJECTSUpdate]
+(
+	@ID int,
+	@CATEGORY_ID int,
+	@NAME varchar(50),
+	@DESCRIPTION varchar(100),
+	@SECURITY_LEVEL int,
+	@ACTIVE bit,
+	@ASCX_FILENAME varchar(50) = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [CP_DESKTOP_OBJECTS]
+	SET
+		[CATEGORY_ID] = @CATEGORY_ID,
+		[NAME] = @NAME,
+		[DESCRIPTION] = @DESCRIPTION,
+		[SECURITY_LEVEL] = @SECURITY_LEVEL,
+		[ACTIVE] = @ACTIVE,
+		[ASCX_FILENAME] = @ASCX_FILENAME
+	WHERE
+		[ID] = @ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+

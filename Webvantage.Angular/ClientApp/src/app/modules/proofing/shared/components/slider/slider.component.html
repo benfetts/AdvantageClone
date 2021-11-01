@@ -1,0 +1,11 @@
+<kendo-slider
+  [ngClass]="isSidePanel ? 'side-panel-slider' : 'slider'"
+  [showButtons]="showButtons"
+  [min]="parseFloat(min)"
+  [max]="parseFloat(max)"
+  [smallStep]="parseFloat(smallStep)"
+  [(ngModel)] = "value"
+  (valueChange)="onValueChange($event)"
+  [tickPlacement]="tickPlacement"
+  [disabled]=disabled
+></kendo-slider>

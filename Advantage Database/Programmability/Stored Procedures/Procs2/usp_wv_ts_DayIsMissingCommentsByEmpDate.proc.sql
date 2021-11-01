@@ -1,0 +1,40 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_wv_ts_DayIsMissingCommentsByEmpDate]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[usp_wv_ts_DayIsMissingCommentsByEmpDate]
+GO
+CREATE PROCEDURE [dbo].[usp_wv_ts_DayIsMissingCommentsByEmpDate] /*WITH ENCRYPTION*/
+@EMP_CODE VARCHAR(6), 
+@DATE SMALLDATETIME, 
+@USER_CODE VARCHAR(100)
+AS
+/*=========== QUERY ===========*/
+	DECLARE 
+		@IS_MISSING_COMMENTS BIT,
+		@ET_ID INT
+		
+	SET @IS_MISSING_COMMENTS = 0;
+	
+	SELECT @ET_ID = ET_ID FROM EMP_TIME WHERE EMP_CODE = @EMP_CODE AND EMP_DATE = @DATE;
+	
+	IF NOT @ET_ID IS NULL
+	BEGIN
+		
+		IF 	[dbo].[fn_ts_day_is_missing_comments]( @ET_ID, @USER_CODE) = 1
+		BEGIN
+		
+			SET @IS_MISSING_COMMENTS = 1;
+		
+		END 
+		
+	END
+		
+	SELECT @IS_MISSING_COMMENTS AS IS_MISSING_COMMENTS;
+/*=========== QUERY ===========*/
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO

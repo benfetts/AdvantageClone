@@ -1,0 +1,151 @@
+<ng-container *ngIf="(buttons | async) as buttons">
+  <div kendoTooltip tooltipClass="tooltip" class="workspace-toolbar">
+    <kendo-toolbar class="workspace-toolbar__main">
+      <proof-custom-toolbar-item>
+        <ng-container *ngIf="(markerToolButton | async) as markerToolButton">
+          <div class="workspace-toolbar-container">
+            <div class="workspace-toolbar-tools-left-side">
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.move"
+                        [selected]="buttons.handSpread.selected"
+                        [imageUrl]="buttons.handSpread.imageUrl"
+                        (click)="setSelectedButton(buttons.handSpread.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.pencil"
+                        [selected]="buttons.brush.selected"
+                        [imageUrl]="buttons.brush.imageUrl"
+                        [disabled]="disableEdits || compare"
+                        (click)="setSelectedButton(buttons.brush.name, markerToolButton.selected)"></button>
+                <!--(dropDownOpen)="setSelectedButton(buttons.shapes.name, markerToolButton.selected)"-->
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.arrow"
+                        [selected]="buttons.arrow.selected"
+                        [imageUrl]="buttons.arrow.imageUrl"
+                        [disabled]="disableEdits || compare"
+                        (click)="setSelectedButton(buttons.arrow.name, markerToolButton.selected)"
+                        class="rotate90"></button>
+              </div>
+              <div kendoTooltip>
+                <proof-drop-down class="drop-down"
+                                 [title]="tooltips.shape"
+                                 [imageUrl]="buttons.shapes.shapeTypes[0].imageUrl"
+                                 [data]="buttons.shapes.shapeTypes"
+                                 [disabled]="disableEdits || compare"
+                                 dropDownType="tools"></proof-drop-down>
+              </div>
+              <div kendoTooltip>
+                <proof-drop-down class="drop-down"
+                                 [title]="tooltips.text"
+                                 [imageUrl]="buttons.text.textTypes[0].imageUrl"
+                                 [data]="buttons.text.textTypes"
+                                 [disabled]="!canCreateTextAnnotation()"
+                                 dropDownType="text"></proof-drop-down>
+              </div>
+              <!--<div kendoTooltip>
+    <button kendoButton
+            [title]="tooltips.selection"
+            [selected]="buttons.selection.selected"
+            [imageUrl]="buttons.selection.imageUrl"
+            (click)="setSelectedButton(buttons.selection.name, markerToolButton.selected)"></button>
+  </div>-->
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.addPicture"
+                        [selected]="buttons.pasteImage.selected"
+                        [imageUrl]="buttons.pasteImage.imageUrl"
+                        [disabled]="disableEdits || compare"
+                        (click)="setSelectedButton(buttons.pasteImage.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.linkAsset"
+                        [selected]="buttons.link.selected"
+                        [imageUrl]="buttons.link.imageUrl"
+                        [disabled]="disableEdits || compare"
+                        (click)="setSelectedButton(buttons.link.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.search"
+                        [selected]="buttons.magnifyingGlass.selected"
+                        [imageUrl]="buttons.magnifyingGlass.imageUrl"
+                        [disabled]="!canSearchText()"
+                        (click)="setSelectedButton(buttons.magnifyingGlass.name, markerToolButton.selected)"></button>
+              </div>
+              <!--<div kendoTooltip>
+    <button kendoButton
+            [title]="tooltips.delete"
+            [selected]="buttons.garbageCan.selected"
+            [imageUrl]="buttons.garbageCan.imageUrl"
+            [disabled]="disableEdits"
+            (click)="setSelectedButton(buttons.garbageCan.name, markerToolButton.selected)"></button>
+  </div>-->
+            </div>
+            <div class="workspace-toolbar-tools-right-side blue">
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.markers"
+                        [selected]="buttons.markerTool.selected"
+                        [imageUrl]="buttons.markerTool.imageUrl"
+                        (click)="setSelectedButton(buttons.markerTool.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.version"
+                        [selected]="buttons.version.selected"
+                        [imageUrl]="buttons.version.imageUrl"
+                        (click)="setSelectedButton(buttons.version.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.compare"
+                        [selected]="buttons.compare.selected"
+                        [imageUrl]="buttons.compare.imageUrl"
+                        (click)="setSelectedButton(buttons.compare.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.overlay"
+                        [selected]="buttons.overlay.selected"
+                        [imageUrl]="buttons.overlay.imageUrl"
+                        (click)="setSelectedButton(buttons.overlay.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.expandPageNavigation"
+                        [selected]="buttons.pageNavigation.selected"
+                        [imageUrl]="buttons.pageNavigation.imageUrl"
+                        (click)="setSelectedButton(buttons.pageNavigation.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.expandBottomNavigation"
+                        [selected]="buttons.bottomNavigation.selected"
+                        [imageUrl]="buttons.bottomNavigation.imageUrl"
+                        (click)="setSelectedButton(buttons.bottomNavigation.name, markerToolButton.selected)"></button>
+              </div>
+              <div class="workspace-size-panel" [ngClass]="isDropDownOpen ? 'drop-down-opened' : 'drop-down-closed'">
+                <proof-slider class="workspace-slider" (changeValue)="setSizePercents($event)"></proof-slider>
+                <proof-drop-down class="workspace-slider-percents"
+                                 [data]="sliderActions"
+                                 [value]="sizePercents"
+                                 (dropDownToggle)="onDropDownToggle($event)"
+                                 dropDownType="percents-ranger"></proof-drop-down>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </proof-custom-toolbar-item>
+    </kendo-toolbar>
+  </div>
+  <proof-dialog-window *ngIf="dialogWindowOpened"
+                       closeButtonText="Ok"
+                       [showOneButton]="false"
+                       [dialogWindowText]="dialogWindowText"
+                       (dialogWindowClosed)="setSelectedButton(buttons.garbageCan.name)"></proof-dialog-window>
+</ng-container>

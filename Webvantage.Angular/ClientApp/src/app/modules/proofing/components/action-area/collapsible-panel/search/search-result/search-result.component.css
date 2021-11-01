@@ -1,0 +1,12 @@
+.search {
+  background-color: inherit;
+  min-height: 40px;
+  padding: 8px;
+  /*border: 1px solid #dce3e6*/
+}
+
+.active {
+  /*background-color:greenyellow !important;*/
+  border: 1px solid #808080;
+}
+

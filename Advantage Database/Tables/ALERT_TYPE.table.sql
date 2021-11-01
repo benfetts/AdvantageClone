@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[ALERT_TYPE] (
+    [ALERT_TYPE_ID]   INT          NOT NULL,
+    [ALERT_TYPE_DESC] VARCHAR (40) NOT NULL
+);
+

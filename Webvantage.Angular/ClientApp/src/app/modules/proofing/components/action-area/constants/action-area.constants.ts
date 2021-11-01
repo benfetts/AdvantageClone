@@ -1,0 +1,2 @@
+export const ACTION_AREA_OPENED_WIDTH = 405;
+export const ACTION_AREA_CLOSED_WIDTH = 50;

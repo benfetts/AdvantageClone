@@ -1,0 +1,95 @@
+﻿/* Put css styles for home view here */
+.home-view p {
+	padding: 5px;
+}
+.home-logo > img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -154px;
+}
+
+@media screen 
+and (max-height : 361px) 
+and (orientation : landscape) {
+    .home-logo > img {
+        margin-left: -70px;
+        margin-top: -92px;
+    }
+}
+
+.home-content {
+    position: relative;
+    height: 100%;  
+    padding-left:8px;
+    padding-right:8px;
+}
+
+/*
+.dx-theme-generic .user-photo {
+    height: 140px;
+    width: 140px;
+    margin-right: 10px;  
+    border: 1px solid #d2d3d5;
+    border-radius: 50%;
+}
+*/
+.user-container {
+    position: relative;
+    width: 100%;
+    padding: 10px 0px 0px 20px;
+    color: #808080;
+}
+.user-photo {
+    height: 100px;
+    width: 100px;
+    float:left;
+    border-radius: 10px;
+}
+.user-photo-container {
+    width:105px;
+}
+.user-info {
+    float:left;
+    font-size: 36px;
+    text-align: left;
+    margin-top: 0px;
+    color: #FFFFFF !important;
+    padding: 0px 0px 0px 10px;
+    vertical-align: top;
+}
+.home-user-name {
+    font-size: 26px;
+    color: #FFFFFF !important;
+    vertical-align:middle;
+    padding: 0px 0px 0px 10px;
+    text-align:left !important;
+}
+.home-date{
+    font-size:smaller;
+    height: 20px;
+}
+
+.panel-container {
+    width: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+    display: inline-block;
+    font-size:20px;
+    padding: 10px 0px 8px 0px;
+}
+.panel-title {
+    width: 69%;
+    float:left;
+    color: #808080;
+}
+
+.panel-value {
+    width: 29%;
+    text-align: right;
+    float:right;
+    padding-right:4px;
+    color: #808080;
+}

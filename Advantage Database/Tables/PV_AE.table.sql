@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[PV_AE] (
+    [USERID]   VARCHAR (100) NOT NULL,
+    [EMP_CODE] VARCHAR (6)   NOT NULL
+);
+

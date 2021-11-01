@@ -1,0 +1,46 @@
+CREATE PROC advsp_bcc_job_details_get_open_po @BillingCommandCenterID int, @JobNumber int, @JobComponentNumber smallint
+
+AS
+
+DECLARE @prod_lock_selection bit
+
+SELECT @prod_lock_selection = PROD_LOCK_SELECTION
+FROM dbo.BILLING_CMD_CENTER
+WHERE BCC_ID = @BillingCommandCenterID
+
+SELECT
+		[IssueDate] = PO.PO_DATE,
+		[VendorName] = V.VN_NAME,
+		[PONumber] = PO.PO_NUMBER,
+		[Description] = PO.PO_DESCRIPTION,
+		[LineNumber] = POD.LINE_NUMBER,
+		[LineDescription] = POD.LINE_DESC,
+		[Quantity] = POD.PO_QTY,
+		[Rate] = POD.PO_RATE,
+		[Amount] = POD.PO_EXT_AMOUNT,
+		[MarkupAmount] = POD.EXT_MARKUP_AMT,
+		[Total] = COALESCE(POD.PO_EXT_AMOUNT, 0) + COALESCE(POD.EXT_MARKUP_AMT, 0),
+		[OpenPOAmount] = CASE WHEN Prod.AP_PROD_EXT_AMT IS NULL THEN PO_EXT_AMOUNT ELSE PO_EXT_AMOUNT - Prod.AP_PROD_EXT_AMT END,
+		[DetailDescription] = POD.DET_DESC,
+		[DetailInstructions] = POD.DET_INSTRUCT 
+FROM dbo.PURCHASE_ORDER_DET POD
+	INNER JOIN dbo.PURCHASE_ORDER PO ON POD.PO_NUMBER = PO.PO_NUMBER
+	LEFT OUTER JOIN dbo.VENDOR V ON PO.VN_CODE = V.VN_CODE
+	LEFT OUTER JOIN (
+					SELECT AP_PROD_EXT_AMT = SUM(COALESCE(AP_PROD_EXT_AMT, 0)),
+							JOB_NUMBER, JOB_COMPONENT_NBR, PO_NUMBER, PO_LINE_NUMBER
+					FROM dbo.AP_PRODUCTION
+					WHERE ((@prod_lock_selection = 1 AND BCC_ID = @BillingCommandCenterID) OR @prod_lock_selection = 0)
+					AND JOB_NUMBER = @JobNumber
+					AND JOB_COMPONENT_NBR = @JobComponentNumber
+					GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR, PO_NUMBER, PO_LINE_NUMBER
+					) Prod ON POD.JOB_NUMBER = Prod.JOB_NUMBER AND POD.JOB_COMPONENT_NBR = Prod.JOB_COMPONENT_NBR 
+						AND POD.PO_NUMBER = Prod.PO_NUMBER AND POD.LINE_NUMBER = Prod.PO_LINE_NUMBER 
+WHERE
+		FNC_CODE IS NOT NULL
+AND		POD.JOB_NUMBER = @JobNumber
+AND		POD.JOB_COMPONENT_NBR = @JobComponentNumber
+AND		(POD.PO_COMPLETE IS NULL OR POD.PO_COMPLETE = 0)
+AND		(VOID_FLAG IS NULL OR VOID_FLAG = 0) 
+
+GO

@@ -1,0 +1,35 @@
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[advsp_agile_load_sprints]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE [dbo].[advsp_agile_load_sprints]
+GO
+
+CREATE PROCEDURE [dbo].[advsp_agile_load_sprints] 
+@BOARD_ID INT
+AS
+BEGIN
+	SELECT DISTINCT
+		SH.ID,
+		[Description] = SH.[DESCRIPTION],
+		Comments = SH.COMMENT,
+		BoardID = SH.BOARD_ID,
+		SequenceNumber = SH.SEQ_NBR,
+		StartDate = SH.[START_DATE],
+		StartWeekNumber = SH.START_WEEK_NUM,
+		NumberOfWeeks = SH.NUM_WEEKS,
+		IsActive = SH.IS_ACTIVE,
+		CompletedDate = SH.COMPLETED_DATE,
+		IsComplete = SH.IS_COMPLETE,
+		CreatedByUserCode = SH.CREATE_USER,
+		CreatedDate = SH.CREATE_DATE,
+		TrackChanges = SH.TRACK_CHANGES,
+		EmailOnChange = SH.EMAIL_ON_CHANGE,
+		ItemCount = ISNULL(CT.ACTIVE_COUNT, 0)
+	FROM 
+		SPRINT_HDR SH WITH(NOLOCK)
+		LEFT OUTER JOIN SPRINT_DTL SD WITH(NOLOCK) ON SH.ID = SD.SPRINT_HDR_ID
+		LEFT OUTER JOIN (SELECT SDD.SPRINT_HDR_ID, COUNT(1) AS ACTIVE_COUNT
+						 FROM SPRINT_DTL SDD INNER JOIN ALERT A ON SDD.ALERT_ID = A.ALERT_ID 
+						 WHERE (A.ASSIGN_COMPLETED IS NULL OR A.ASSIGN_COMPLETED = 0) 
+						 GROUP BY SDD.SPRINT_HDR_ID) AS CT ON SH.ID = CT.SPRINT_HDR_ID
+	WHERE
+		SH.BOARD_ID = @BOARD_ID;
+END

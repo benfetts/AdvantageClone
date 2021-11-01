@@ -1,0 +1,83 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid-toolbar"></require>
+    <require from="resources/elements/switch/switch"></require>
+    <div class="wv-container">
+        <div id="job-status" class="wv-k-grid wv-k-grid-full" style="padding-top: 5px;">
+            <ak-grid view-model.ref="gridVM"
+                     k-widget.bind="grid"
+                     k-no-init.bind="true"
+                     k-data-source.bind="datasource"
+                     k-navigatable.bind="true"
+                     k-toolbar.bind="['create', 'save', 'cancel', 'excel']"
+                     k-editable.bind="true"
+                     k-selectable.bind="true"
+                     k-filterable.bind="true"
+                     k-sortable.bind="true"
+                     k-scrollable.bind="true"
+                     k-on-edit.delegate="gridOnEdit($event.detail)"
+                     k-on-excel-export.delegate="excelExport($event.detail)"
+                     k-on-data-bound.delegate="gridOnDataBound($event.detail)">
+                <ak-grid-toolbar>
+                    <ak-template>
+                        <a href="#" role="button" class="wv-icon-button k-button k-grid-add wv-add-new" title="New">
+                            <span class="wvi wvi-navigate-plus"></span>
+                            <!--Add-->
+                        </a>
+                        <a href="#" role="button" class=" wv-icon-button wv-save k-button ${hasChanges === true ? '' : 'k-state-disabled'}" click.delegate="save()" title="Save">
+                            <span class="wvi wvi-floppy-disk"></span>
+                            <!--Save-->
+                        </a>
+                        <a class="wv-icon-button k-button wv-cancel ${hasChanges === true ? '' : 'k-state-disabled'}" href="javascript:void(0);" click.delegate="cancel()" title="Cancel">
+                            <span class="wvi wvi-sign-forbidden"></span>
+                            <!-- Cancel Changes -->
+                        </a>
+                        <a href="#" role="button" class="wv-icon-button k-button wv-neutral" click.delegate="export()" title="Export to Excel">
+                            <span class="wvi wvi-excel-logo"></span>
+                            <!--Export-->
+                        </a>
+                        <span class="pull-right">
+                            <wv-switch label="Show Inactive" checked.bind="showInactive"></wv-switch>
+                        </span>
+                    </ak-template>
+                </ak-grid-toolbar>
+
+                <ak-col k-title="Code" k-field="Code" k-width="120px"></ak-col>
+                <ak-col k-title="Description" k-field="Description" k-width="200px"></ak-col>
+                <ak-col k-title="Is Inactive" k-field="IsInactive" k-width="120px" k-filterable.bind="false">
+                    <ak-template>
+                        <div style="text-align: center;">
+                            <input type="checkbox" class="k-checkbox" id="cb_in_${Code}" k-data-type="boolean" name="IsInactive" checked.bind='IsInactive' change.delegate="inactiveChanged(uid)" /><label class="k-checkbox-label" for="cb_in_${Code}">&nbsp;</label>
+                        </div>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-width="140px">
+                    <ak-template>
+                        <div style="text-align: left;">
+                            <a if.bind="!isNew()" role="button" class="wv-icon-button k-button wv-cancel" title="Delete Row" href="javascript:void(0)" data-toggle="tooltip" data-placement="left" click.delegate="delete(uid)">
+                                <span class="wvi wvi-delete"></span>
+                            </a>
+                            <a role="button" class="wv-icon-button k-button wv-cancel" title="Cancel Changes" css="visibility: ${dirty || Code == '' ? 'visible' : 'hidden'}" href="javascript:void(0)" data-toggle="tooltip" data-placement="left" click.delegate="cancelRowChanges(uid)">
+                                <span class="wvi wvi-sign-forbidden"></span>
+                            </a>
+                        </div>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-header-attributes.bind="{ style: 'border-left: none;'}" k-attributes.bind="{ style: 'border-left: none;'}"></ak-col>
+            </ak-grid>
+        </div>
+    </div>
+    
+</template>

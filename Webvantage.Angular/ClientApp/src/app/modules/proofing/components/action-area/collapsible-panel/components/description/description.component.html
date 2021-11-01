@@ -1,0 +1,7 @@
+<div class="description">
+  <proof-textarea #textArea [(text)]="description" (onChange)="onChange($event)" (onMention)="onMention($event)" [disabled]="disabled"></proof-textarea>
+</div>
+<div class="buttons-container">
+  <button class="description-buttons" kendoButton (click)="onClearClick()" [disabled]="disabled">{{descriptionButtons.clear.label}}</button>
+  <proof-save-button (click)="onSaveClick()" [disabled]="disabled">{{descriptionButtons.save.label}}</proof-save-button>
+</div>

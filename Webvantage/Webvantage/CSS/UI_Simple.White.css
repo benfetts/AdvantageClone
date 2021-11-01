@@ -1,0 +1,25 @@
+﻿.main-count-container {
+    text-align:center;
+    cursor:pointer;
+    color: #ffffff !important;
+}
+.framecontentTextColor{
+    color: #ffffff !important;
+}
+.panel-label {
+    color: #ffffff !important;
+}
+fieldset {
+   border: 1px solid #ffffff !important; 
+   color: #ffffff !important;
+}
+legend {
+    color: #ffffff !important;
+}
+#connection-info-panel {
+    /*color: #ffffff !important;*/
+}
+.weather-panel {
+    /*color: #ffffff !important;*/
+}
+

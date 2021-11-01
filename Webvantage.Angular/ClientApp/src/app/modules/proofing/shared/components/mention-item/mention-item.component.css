@@ -1,0 +1,21 @@
+#mentionItem.k-header {
+  background-color: white !important;
+  visibility: hidden;
+}
+
+.k-dropdown .k-dropdown-wrap {
+  background: white !important;
+  border: none !important;
+}
+
+.mention-dropdown-hide {
+  display: none;
+}
+
+.mention-dropdown-show {
+  display: normal;
+}
+
+.k-list {
+  white-space: nowrap;
+}

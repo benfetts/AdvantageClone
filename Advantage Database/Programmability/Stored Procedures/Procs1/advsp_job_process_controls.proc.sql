@@ -1,0 +1,8 @@
+﻿
+CREATE PROCEDURE [dbo].[advsp_job_process_controls] 
+AS
+SET NOCOUNT ON
+
+SELECT JOB_PROCESS_CONTRL, JOB_PROCESS_DESC
+  FROM dbo.JOB_PROC_CONTROLS
+  

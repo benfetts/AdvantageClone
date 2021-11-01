@@ -1,0 +1,32 @@
+﻿
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_SEC_APPDelete]
+(
+	@CDP_CONTACT_ID int,
+	@APPID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	DELETE
+	FROM [CP_USER_SEC_APP]
+	WHERE
+		[CDP_CONTACT_ID] = @CDP_CONTACT_ID AND
+		[APPID] = @APPID
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

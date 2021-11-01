@@ -1,0 +1,15 @@
+﻿CREATE PROCEDURE [dbo].[usp_wv_empcode_validate] 
+@EmpCode VarChar(6)
+AS
+
+SET NOCOUNT ON
+ 
+IF EXISTS(
+	SELECT     EMP_CODE
+	FROM         EMPLOYEE WITH (NOLOCK)
+	WHERE     (EMP_CODE = @EmpCode) 
+			AND (EMP_TERM_DATE IS NULL OR EMP_TERM_DATE > GETDATE())
+)
+	SELECT 1;
+ELSE
+	SELECT 0;

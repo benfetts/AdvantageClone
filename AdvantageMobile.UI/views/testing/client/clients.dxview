@@ -1,0 +1,16 @@
+<div data-options="dxView : { name: 'Clients', title: 'Clients', targetFrame: 'navigation' } " >
+    <div data-bind="dxCommand: { onExecute: '#ClientEdit', direction: 'none', id: 'create', title: 'Add', icon: 'plus' }"></div>
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >             
+        <div style="margin:8px;">
+            <div data-bind="dxSelectBox: { dataSource: dataSource, displayExpr: 'Name', valueExpr: 'Code' }"></div>
+        </div>
+      <div data-bind="dxList: { dataSource: dataSource, pullRefreshEnabled: true }">
+          <div data-bind="dxAction: '#ClientDetails/{Code}'" data-options="dxTemplate : { name: 'item' } " >
+<!--
+                <img height="55" style="padding: 10px; float:left;" data-bind="attr: { src: imageUrlPropertyName }" />
+-->
+                <div class="list-item" data-bind="text: Name"></div>
+          </div>                  
+        </div>
+    </div>
+</div>

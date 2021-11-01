@@ -1,0 +1,72 @@
+@import '../../../../../theme/colors';
+@import '../../../../../theme/mixins/font';
+
+.asset-grid {
+  .link {
+    display: flex;
+    align-items: center;
+
+    img {
+      opacity: 0.5;
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.k-grid-header {
+  background-color: $color-palette-background;
+}
+
+.k-grid {
+  border-width: 0;
+}
+
+.k-grid tr.k-alt {
+  background-color: #fcfcfc;
+}
+
+.k-grid tr:nth-child(2) {
+  th {
+    display: none;
+  }
+}
+
+.k-grid-header .k-header:first-child,
+.k-grid td {
+  color: $black-light;
+}
+
+.k-grid-header .k-header:first-child {
+  @include font-base(15px, normal, 15px, 600);
+}
+
+.k-grid td {
+  font-family: 'Open Sans', serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  border-bottom: 1px solid $border-color;
+  max-width: 65px;
+}
+
+.k-grid td {
+  border-color: $border-color;
+}
+
+.k-grid th {
+  padding: 8px 9px;
+}
+
+.k-grid td {
+  padding: 5px 5px 10px 8px;
+}
+
+.k-grid tbody {
+  color: $black-light;
+}
+
+.k-grid tbody tr:hover {
+  background: $very-light-grey;
+}

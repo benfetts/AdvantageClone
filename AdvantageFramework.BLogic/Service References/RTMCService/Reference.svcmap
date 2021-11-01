@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="43f69a46-5adf-4b63-a626-68fffb56f7ff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="wsdl.disco" MetadataType="Disco" ID="52609ca1-1778-4ac3-be28-6812dda5baed" SourceId="1" SourceUrl="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?disco" />
+    <MetadataFile FileName="wsdl.wsdl" MetadataType="Wsdl" ID="aea228db-da94-4564-a577-d26f68f21b28" SourceId="1" SourceUrl="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?wsdl=wsdl0" />
+    <MetadataFile FileName="wsdl.xsd" MetadataType="Schema" ID="25b2acfe-3185-4788-b385-4d5f8ad21b1d" SourceId="1" SourceUrl="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?xsd=xsd0" />
+    <MetadataFile FileName="wsdl1.xsd" MetadataType="Schema" ID="b8809e71-2949-4ffb-87dc-d2f7d87e78d1" SourceId="1" SourceUrl="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?xsd=xsd2" />
+    <MetadataFile FileName="RTMCServicev2.wsdl" MetadataType="Wsdl" ID="1e34d92b-f9b0-4012-8b2b-28993fd84d1d" SourceId="1" SourceUrl="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?wsdl" />
+    <MetadataFile FileName="wsdl2.xsd" MetadataType="Schema" ID="9e1beb85-ab3e-465e-9ba9-1e8ea364a14a" SourceId="1" SourceUrl="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

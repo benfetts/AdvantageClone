@@ -1,0 +1,28 @@
+<div>
+  <div title="" expanded="true">
+
+    <div>
+      <div class="title">
+        <div class="left">
+          <img class="title-burger" src="assets/icons/icon-header-side-panel.svg"/>
+          Comments
+        </div>
+        <!--<div class="right" [class.flag-checked]="flag.flagChecked">
+          <img class="title-icons" src="assets/icons/filter.svg"/>
+          <img class="title-icons flag"
+               [src]="flag.imageUrl"
+               (click)="onFlagClick($event)"/>
+        </div>-->
+      </div>
+    </div>
+
+    <div>
+      <div class="feedback-block">
+        <proof-feedback [feedbacks]="feedback"></proof-feedback>
+      </div>
+      <div class="add-new-comment">
+        <button class="add-new-comment-button" kendoButton (click)="onNewComment($event)">Add New Comment</button>
+      </div>
+    </div>
+  </div>
+</div>

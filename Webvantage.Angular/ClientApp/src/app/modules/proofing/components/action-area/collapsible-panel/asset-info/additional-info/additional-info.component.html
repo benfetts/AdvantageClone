@@ -1,0 +1,11 @@
+<kendo-grid [data]="oneBlock" scrollable="none">
+  <kendo-grid-column-group title="Additional info">
+    <kendo-grid-column class="column" [width]="columnWidth">
+      <ng-template kendoGridCellTemplate let-oneBlock let-rowIndex="rowIndex">
+        <div [class.align-center]="additionalInfoMock === noneStr">
+          {{additionalInfoMock}}
+        </div>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid-column-group>
+</kendo-grid>

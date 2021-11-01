@@ -1,0 +1,63 @@
+﻿
+CREATE PROCEDURE [dbo].[advsp_ar_job_comp_header_comments] 
+(
+	@list_option tinyint, @list varchar(max)
+)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	-- Creates job table, @list_option: 0=AR Invoice List, 1=Billing User List
+	CREATE TABLE #ar_inv_joblist(JOB_NUMBER	int null)
+	INSERT INTO #ar_inv_joblist
+	SELECT DISTINCT jobs.JOB_NUMBER
+	FROM fn_invoice_list_to_job_table(@list_option, @list) jobs
+--SELECT * FROM #ar_inv_joblist
+
+	--Create a job/component comments table
+	SELECT 
+		jc.JOB_NUMBER, 
+		jc.JOB_COMPONENT_NBR,
+		jc.JOB_AD_SIZE,
+		jc.JOB_COMP_DESC, 
+		jc.JOB_COMP_COMMENTS,
+		jc.ACCT_NBR,
+		jc.MARKET_CODE,
+		jc.UDV1_CODE,
+		jc.UDV2_CODE,
+		jc.UDV3_CODE,
+		jc.UDV4_CODE,
+		jc.UDV5_CODE,
+		IsNull(jc.PRD_CONT_CODE,'ZZ') AS PRD_CONT_CODE,
+		jc.JOB_CL_PO_NBR, 
+		el.EST_LOG_COMMENT, 
+		ec.EST_COMP_COMMENT, 
+		eq.EST_QTE_COMMENT, 
+		er.EST_REV_COMMENT,
+		mk.MARKET_DESC,
+		e.EMP_FNAME + ' ' + e.EMP_LNAME AS EMPLOYEE
+	FROM dbo.JOB_COMPONENT AS jc 
+	JOIN #ar_inv_joblist aij
+		ON jc.JOB_NUMBER = aij.JOB_NUMBER
+	LEFT JOIN dbo.ESTIMATE_APPROVAL AS ea 
+		ON jc.JOB_NUMBER = ea.JOB_NUMBER 
+		AND jc.JOB_COMPONENT_NBR = ea.JOB_COMPONENT_NBR 
+	LEFT JOIN dbo.ESTIMATE_LOG AS el 
+		ON ea.ESTIMATE_NUMBER = el.ESTIMATE_NUMBER 
+	LEFT JOIN dbo.ESTIMATE_COMPONENT AS ec 
+		ON ea.EST_COMPONENT_NBR = ec.EST_COMPONENT_NBR 
+		AND ea.ESTIMATE_NUMBER = ec.ESTIMATE_NUMBER 
+	LEFT JOIN dbo.ESTIMATE_REV AS er 
+		ON ea.EST_REVISION_NBR = er.EST_REV_NBR 
+		AND ea.EST_QUOTE_NBR = er.EST_QUOTE_NBR 
+		AND ea.EST_COMPONENT_NBR = er.EST_COMPONENT_NBR 
+		AND ea.ESTIMATE_NUMBER = er.ESTIMATE_NUMBER
+	LEFT JOIN dbo.ESTIMATE_QUOTE AS eq 
+		ON ea.EST_QUOTE_NBR = eq.EST_QUOTE_NBR 
+		AND ea.EST_COMPONENT_NBR = eq.EST_COMPONENT_NBR 
+		AND ea.ESTIMATE_NUMBER = eq.ESTIMATE_NUMBER
+	LEFT JOIN dbo.EMPLOYEE e
+		ON jc.EMP_CODE = e.EMP_CODE
+	LEFT JOIN dbo.MARKET mk
+		ON jc.MARKET_CODE = mk.MARKET_CODE
+END

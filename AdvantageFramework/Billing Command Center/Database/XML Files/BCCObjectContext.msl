@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BCCObjectContextStoreContainer" CdmEntityContainer="BCCObjectContextConnection">
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByBillingApprovals" FunctionName="BCCDbContext.Store.advsp_bill_select_bill_appr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByBillingApproval">
+          <ScalarProperty Name="BillingApprovalID" ColumnName="BillingApprovalID" />
+          <ScalarProperty Name="BillingApprovalClientName" ColumnName="BillingApprovalClientName" />
+          <ScalarProperty Name="BillingApprovalBatchID" ColumnName="BillingApprovalBatchID" />
+          <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="JobComponentNumber" ColumnName="JobComponentNumber" />
+          <ScalarProperty Name="ComponentDescription" ColumnName="ComponentDescription" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+          <ScalarProperty Name="BillingApprovalHeaderID" ColumnName="BillingApprovalHeaderID" />
+          <ScalarProperty Name="BatchDescription" ColumnName="BatchDescription" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByCampaigns" FunctionName="BCCDbContext.Store.advsp_bill_select_campaign">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByCampaign">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+          <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByClientDivisions" FunctionName="BCCDbContext.Store.advsp_bill_select_cli_div">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByClientDivision">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByClientDivisionProducts" FunctionName="BCCDbContext.Store.advsp_bill_select_cli_div_prd">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByClientDivisionProduct">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByClients" FunctionName="BCCDbContext.Store.advsp_bill_select_client">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByClient">
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="ClientName" ColumnName="CL_NAME" />
+          <ScalarProperty Name="IsSelected" ColumnName="cc_selected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByJobComponents" FunctionName="BCCDbContext.Store.advsp_bill_select_comp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByJobComponent">
+          <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="JobComponentNumber" ColumnName="JobComponentNumber" />
+          <ScalarProperty Name="ComponentDescription" ColumnName="ComponentDescription" />
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+          <ScalarProperty Name="ID" ColumnName="ROWID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByJobs" FunctionName="BCCDbContext.Store.advsp_bill_select_job">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByJob">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadOtherUsersMediaSelections" FunctionName="BCCDbContext.Store.advsp_bcc_other_user_media">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.OtherUsersMediaSelection">
+          <ScalarProperty Name="BillingCommandCenterID" ColumnName="BCC_ID" />
+          <ScalarProperty Name="BillingUser" ColumnName="BILLING_USER" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EMP_FML" />
+          <ScalarProperty Name="MediaFrom" ColumnName="MEDIA_FROM" />
+          <ScalarProperty Name="OrderNumber" ColumnName="ORDER_NBR" />
+          <ScalarProperty Name="LineNumber" ColumnName="LINE_NBR" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+          <ScalarProperty Name="BatchName" ColumnName="BATCH_NAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadOtherUsersProductionSelections" FunctionName="BCCDbContext.Store.advsp_bcc_other_user_prod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.OtherUsersProductionSelection">
+          <ScalarProperty Name="BillingCommandCenterID" ColumnName="BCC_ID" />
+          <ScalarProperty Name="BillingUser" ColumnName="BILLING_USER" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EMP_FML" />
+          <ScalarProperty Name="JobNumber" ColumnName="JOB_NUMBER" />
+          <ScalarProperty Name="JobComponentNumber" ColumnName="JOB_COMPONENT_NBR" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+          <ScalarProperty Name="BatchName" ColumnName="BATCH_NAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadBillingStatus" FunctionName="BCCDbContext.Store.advsp_get_billing_status">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.BillingStatus">
+          <ScalarProperty Name="IsAssigned" ColumnName="INV_ASSIGN" />
+          <ScalarProperty Name="IsPrinted" ColumnName="INV_PRINT" />
+          <ScalarProperty Name="IsProcessed" ColumnName="INV_PROCESSED" />
+          <ScalarProperty Name="IsCoopSaved" ColumnName="COOP_SAVED" />
+          <ScalarProperty Name="HasCoopJobs" ColumnName="HAS_COOP_JOBS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionByAccountExecutives" FunctionName="BCCDbContext.Store.advsp_bill_select_acct_exec">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionByAccountExecutive">
+          <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EMP_FML" />
+          <ScalarProperty Name="IsSelected" ColumnName="cc_selected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionJobs" FunctionName="BCCDbContext.Store.advsp_bill_cmd_ctr_prod_job_list">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionJob">
+          <ScalarProperty Name="JobNumber" ColumnName="JOB_NUMBER" />
+          <ScalarProperty Name="JobComponentNumber" ColumnName="JOB_COMPONENT_NBR" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+          <ScalarProperty Name="AdvanceBillingReconcileStatus" ColumnName="CC_RECONCILE_STATUS" />
+          <ScalarProperty Name="ReconcilePendingAmount" ColumnName="CC_RECOG_PENDING" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="BillingApprovalBatches">
+      <EntityTypeMapping TypeName="BCCDbContext.BillingApprovalBatch">
+        <MappingFragment StoreEntitySet="BILL_APPR_BATCH">
+          <ScalarProperty Name="BillingApprovalBilledAll" ColumnName="BILLED_ALL" />
+          <ScalarProperty Name="BillingApprovalBilledAny" ColumnName="BILLED_ANY" />
+          <ScalarProperty Name="BillingApprovalExists" ColumnName="BA_EXISTS" />
+          <ScalarProperty Name="ManagerType" ColumnName="MANAGER_TYPE" />
+          <ScalarProperty Name="SelectionOption" ColumnName="SEL_OPTION" />
+          <ScalarProperty Name="ApprovalMethod" ColumnName="APPR_METHOD" />
+          <ScalarProperty Name="IsFinished" ColumnName="FINISHED" />
+          <ScalarProperty Name="IsApproved" ColumnName="APPROVED" />
+          <ScalarProperty Name="IncludeTV" ColumnName="INCL_TV" />
+          <ScalarProperty Name="IncludeRadio" ColumnName="INCL_RA" />
+          <ScalarProperty Name="IncludeOutOfHome" ColumnName="INCL_OD" />
+          <ScalarProperty Name="IncludeMagazine" ColumnName="INCL_MAG" />
+          <ScalarProperty Name="IncludeNewspaper" ColumnName="INCL_NP" />
+          <ScalarProperty Name="IncludeInternet" ColumnName="INCL_INT" />
+          <ScalarProperty Name="IncludeFee" ColumnName="INCL_FEE" />
+          <ScalarProperty Name="IncludeNB" ColumnName="INCL_NB" />
+          <ScalarProperty Name="IncludeNoDTL" ColumnName="INCL_NO_DTL" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+          <ScalarProperty Name="CutoffPostPeriodCode" ColumnName="PERIOD_CUTOFF" />
+          <ScalarProperty Name="DateCutoff" ColumnName="DATE_CUTOFF" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="MODIFY_DATE" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="MODIFY_USER" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CREATE_USER" />
+          <ScalarProperty Name="BatchDate" ColumnName="BATCH_DATE" />
+          <ScalarProperty Name="Description" ColumnName="BA_BATCH_DESC" />
+          <ScalarProperty Name="ID" ColumnName="BA_BATCH_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="LoadBillingCommandCenterAgencySettings" FunctionName="BCCDbContext.Store.advsp_get_bcc_agy_settings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.BillingCommandCenterAgencySetting">
+          <ScalarProperty Name="Code" ColumnName="AGY_SETTINGS_CODE" />
+          <ScalarProperty Name="Value" ColumnName="AGY_SETTINGS_VALUE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="BillingCommandCenters">
+      <EntityTypeMapping TypeName="BCCDbContext.BillingCommandCenter">
+        <MappingFragment StoreEntitySet="BILLING_CMD_CENTER">
+          <ScalarProperty Name="JobMediaBillDateTo" ColumnName="JOB_MEDIA_BILL_DATE_TO" />
+          <ScalarProperty Name="JobMediaBillDateFrom" ColumnName="JOB_MEDIA_BILL_DATE_FROM" />
+          <ScalarProperty Name="IncludeLegacy" ColumnName="INCLUDE_LEGACY" />
+          <ScalarProperty Name="IsProductionSelectionLocked" ColumnName="PROD_LOCK_SELECTION" />
+          <ScalarProperty Name="ProductionJobType" ColumnName="PROD_JOB_TYPE" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SEQ_NO" />
+          <ScalarProperty Name="BatchName" ColumnName="BATCH_NAME" />
+          <ScalarProperty Name="IsTelevisionMonthly" ColumnName="TV_MONTHLY" />
+          <ScalarProperty Name="IsRadioMonthly" ColumnName="RADIO_MONTHLY" />
+          <ScalarProperty Name="IsTelevisionDaily" ColumnName="TV_DAILY" />
+          <ScalarProperty Name="IsRadioDaily" ColumnName="RADIO_DAILY" />
+          <ScalarProperty Name="ProductionSelectionOption" ColumnName="SEL_OPTION" />
+          <ScalarProperty Name="IncludeUnbilledOrdersOnly" ColumnName="INCL_UNBILLED_ONLY" />
+          <ScalarProperty Name="DateCuttoffToUseFlag" ColumnName="DATE_CUTOFF_TO_USE" />
+          <ScalarProperty Name="MediaStartDate" ColumnName="M_START_DATE" />
+          <ScalarProperty Name="IncludeZeroSpots" ColumnName="INCL_ZERO_SPOTS" />
+          <ScalarProperty Name="MediaBroadcastMonthEnd" ColumnName="M_BRDCAST_MTH2" />
+          <ScalarProperty Name="MediaBroadcastMonthStart" ColumnName="M_BRDCAST_MTH1" />
+          <ScalarProperty Name="IsInternet" ColumnName="INTERNET" />
+          <ScalarProperty Name="IsOutOfHome" ColumnName="OUT_OF_HOME" />
+          <ScalarProperty Name="IsTelevision" ColumnName="TELEVISION" />
+          <ScalarProperty Name="IsRadio" ColumnName="RADIO" />
+          <ScalarProperty Name="IsMagazine" ColumnName="MAGAZINE" />
+          <ScalarProperty Name="IsNewspaper" ColumnName="NEWSPAPER" />
+          <ScalarProperty Name="MediaEndDate" ColumnName="M_CUTOFF_DATE" />
+          <ScalarProperty Name="MediaSelectBy" ColumnName="M_SELECT_BY" />
+          <ScalarProperty Name="IsMedia" ColumnName="MEDIA_FLAG" />
+          <ScalarProperty Name="BillingApprovalBatchID" ColumnName="BA_BATCH_ID" />
+          <ScalarProperty Name="APPostPeriodCodeCutoff" ColumnName="P_AP_CUTOFF_PPD" />
+          <ScalarProperty Name="AdvanceBillingDateCutoff" ColumnName="P_AB_CUTOFF_DATE" />
+          <ScalarProperty Name="IncomeOnlyDateCutoff" ColumnName="P_IO_CUTOFF_DATE" />
+          <ScalarProperty Name="EmployeeTimeDateCutoff" ColumnName="P_ET_CUTOFF_DATE" />
+          <ScalarProperty Name="IsProduction" ColumnName="PROD_FLAG" />
+          <ScalarProperty Name="ProductionSelectBy" ColumnName="P_SELECT_BY" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="BillingUser" ColumnName="BILLING_USER" />
+          <ScalarProperty Name="ID" ColumnName="BCC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByCampaigns" FunctionName="BCCDbContext.Store.advsp_bill_select_m_campaign">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByCampaign">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+          <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByClientDivisions" FunctionName="BCCDbContext.Store.advsp_bill_select_m_cli_div">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByClientDivision">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByClientDivisionProducts" FunctionName="BCCDbContext.Store.advsp_bill_select_m_cli_div_prd">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByClientDivisionProduct">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByClients" FunctionName="BCCDbContext.Store.advsp_bill_select_m_client">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByClient">
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="ClientName" ColumnName="CL_NAME" />
+          <ScalarProperty Name="IsSelected" ColumnName="cc_selected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByClientPOs" FunctionName="BCCDbContext.Store.advsp_bill_select_m_client_po">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByClientPO">
+          <ScalarProperty Name="ClientPO" ColumnName="CLIENT_PO" />
+          <ScalarProperty Name="IsSelected" ColumnName="cc_selected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByMarkets" FunctionName="BCCDbContext.Store.advsp_bill_select_m_market">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByMarket">
+          <ScalarProperty Name="MarketCode" ColumnName="MARKET_CODE" />
+          <ScalarProperty Name="MarketDescription" ColumnName="MARKET_DESC" />
+          <ScalarProperty Name="IsSelected" ColumnName="cc_selected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByOrders" FunctionName="BCCDbContext.Store.advsp_bill_select_m_order">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByOrder">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="MediaFrom" ColumnName="MediaFrom" />
+          <ScalarProperty Name="Units" ColumnName="Units" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaSelectionByOrderLines" FunctionName="BCCDbContext.Store.advsp_bill_select_m_order_line">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaSelectionByOrderLine">
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="MediaFrom" ColumnName="MediaFrom" />
+          <ScalarProperty Name="Units" ColumnName="Units" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadMediaOrders" FunctionName="BCCDbContext.Store.advsp_bill_cmd_ctr_media_order_list">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.MediaOrder">
+          <ScalarProperty Name="OrderNumber" ColumnName="ORDER_NUMBER" />
+          <ScalarProperty Name="LineNumber" ColumnName="LINE_NUMBER" />
+          <ScalarProperty Name="BroadcastYear" ColumnName="BRDCAST_YEAR" />
+          <ScalarProperty Name="BroadcastMonth" ColumnName="BRDCAST_MONTH" />
+          <ScalarProperty Name="MediaFrom" ColumnName="MEDIA_FROM" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadBillingCommandCenterInvoiceDatePostPeriod" FunctionName="BCCDbContext.Store.advsp_bill_cmd_ctr_inv_pp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.BillingCommandCenterInvoiceDatePostPeriod">
+          <ScalarProperty Name="PostPeriodCode" ColumnName="POST_PERIOD" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="INV_DATE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionReconcileInterimDetails" FunctionName="BCCDbContext.Store.advsp_populate_interim_rec_dtl">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionReconcileInterimDetail">
+          <ScalarProperty Name="FNC_CODE" ColumnName="FNC_CODE" />
+          <ScalarProperty Name="FNC_TYPE" ColumnName="FNC_TYPE" />
+          <ScalarProperty Name="FNC_DESCRIPTION" ColumnName="FNC_DESCRIPTION" />
+          <ScalarProperty Name="ITEM_ID" ColumnName="ITEM_ID" />
+          <ScalarProperty Name="LINE_NUMBER" ColumnName="LINE_NUMBER" />
+          <ScalarProperty Name="AP_SEQ" ColumnName="AP_SEQ" />
+          <ScalarProperty Name="EXT_AMOUNT" ColumnName="EXT_AMOUNT" />
+          <ScalarProperty Name="EXT_MARKUP_AMT" ColumnName="EXT_MARKUP_AMT" />
+          <ScalarProperty Name="EXT_STATE_RESALE" ColumnName="EXT_STATE_RESALE" />
+          <ScalarProperty Name="EXT_COUNTY_RESALE" ColumnName="EXT_COUNTY_RESALE" />
+          <ScalarProperty Name="EXT_CITY_RESALE" ColumnName="EXT_CITY_RESALE" />
+          <ScalarProperty Name="EXT_NONRESALE_TAX" ColumnName="EXT_NONRESALE_TAX" />
+          <ScalarProperty Name="LINE_TOTAL" ColumnName="LINE_TOTAL" />
+          <ScalarProperty Name="BA_ID" ColumnName="BA_ID" />
+          <ScalarProperty Name="WIP_AMOUNT" ColumnName="WIP_AMOUNT" />
+          <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+          <ScalarProperty Name="AB_FLAG" ColumnName="AB_FLAG" />
+          <ScalarProperty Name="AR_INV_NBR" ColumnName="AR_INV_NBR" />
+          <ScalarProperty Name="TAX_CODE" ColumnName="TAX_CODE" />
+          <ScalarProperty Name="GLACODE_STATE" ColumnName="GLACODE_STATE" />
+          <ScalarProperty Name="GLACODE_CNTY" ColumnName="GLACODE_CNTY" />
+          <ScalarProperty Name="GLACODE_CITY" ColumnName="GLACODE_CITY" />
+          <ScalarProperty Name="PREV_REC" ColumnName="PREV_REC" />
+          <ScalarProperty Name="REC_FLAG" ColumnName="REC_FLAG" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadProductionSelectionBySalesClass" FunctionName="BCCDbContext.Store.advsp_bill_select_sales_class">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.ProductionSelectionBySalesClass">
+          <ScalarProperty Name="SalesClassCode" ColumnName="SalesClassCode" />
+          <ScalarProperty Name="SalesClassDescription" ColumnName="SalesClassDescription" />
+          <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadInvoiceAssigned" FunctionName="BCCDbContext.Store.advsp_bcc_get_inv_assigned">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.InvoiceAssigned">
+          <ScalarProperty Name="ARInvoiceNumber" ColumnName="AR_INV_NBR" />
+          <ScalarProperty Name="ARInvoiceSequence" ColumnName="AR_INV_SEQ" />
+          <ScalarProperty Name="ARInvoiceDate" ColumnName="AR_INV_DATE" />
+          <ScalarProperty Name="ARInvoiceAmount" ColumnName="AR_INV_AMOUNT" />
+          <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadInvoiceAssignedJournalEntry" FunctionName="BCCDbContext.Store.advsp_bcc_get_journal_entries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.InvoiceAssignedJournalEntry">
+          <ScalarProperty Name="GLTransaction" ColumnName="GLETXACT" />
+          <ScalarProperty Name="GLSequenceNumber" ColumnName="GLETSEQ" />
+          <ScalarProperty Name="GLACode" ColumnName="GLETCODE" />
+          <ScalarProperty Name="GLDescription" ColumnName="GLADESC" />
+          <ScalarProperty Name="PostPeriodCode" ColumnName="GLEHPP" />
+          <ScalarProperty Name="Amount" ColumnName="GLETAMT" />
+          <ScalarProperty Name="Remark" ColumnName="GLETREM" />
+          <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+          <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadInvoiceAssignedCoop" FunctionName="BCCDbContext.Store.advsp_get_bcc_coop_dist_prod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.InvoiceAssignedCoop">
+          <ScalarProperty Name="WorkARFunctionID" ColumnName="WorkARFunctionID" />
+          <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+          <ScalarProperty Name="JobComponentNumber" ColumnName="JobComponentNumber" />
+          <ScalarProperty Name="JobComponentDescription" ColumnName="JobComponentDescription" />
+          <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+          <ScalarProperty Name="FunctionCode" ColumnName="FunctionCode" />
+          <ScalarProperty Name="FunctionDescription" ColumnName="FunctionDescription" />
+          <ScalarProperty Name="FunctionType" ColumnName="FunctionType" />
+          <ScalarProperty Name="CoopPercent" ColumnName="CoopPercent" />
+          <ScalarProperty Name="CostAmount" ColumnName="CostAmount" />
+          <ScalarProperty Name="CCCostAmount" ColumnName="CCCostAmount" />
+          <ScalarProperty Name="IncomeAmount" ColumnName="IncomeAmount" />
+          <ScalarProperty Name="CCIncomeAmount" ColumnName="CCIncomeAmount" />
+          <ScalarProperty Name="SalesTaxCode" ColumnName="SalesTaxCode" />
+          <ScalarProperty Name="DetailTaxFlag" ColumnName="DetailTaxFlag" />
+          <ScalarProperty Name="InvoiceTaxFlag" ColumnName="InvoiceTaxFlag" />
+          <ScalarProperty Name="CoopCode" ColumnName="CoopCode" />
+          <ScalarProperty Name="CostPercent" ColumnName="CostPercent" />
+          <ScalarProperty Name="IncomePercent" ColumnName="IncomePercent" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="JobAdvanceBillingFlag" ColumnName="JobAdvanceBillingFlag" />
+          <ScalarProperty Name="IsSummaryFlag" ColumnName="IsSummaryFlag" />
+          <ScalarProperty Name="FromAdv" ColumnName="FromAdv" />
+          <ScalarProperty Name="EmployeeTimeAmount" ColumnName="EmployeeTimeAmount" />
+          <ScalarProperty Name="IncomeOnlyAmount" ColumnName="IncomeOnlyAmount" />
+          <ScalarProperty Name="AdvanceBillIncomeAmount" ColumnName="AdvanceBillIncomeAmount" />
+          <ScalarProperty Name="AdvanceBillCostAmount" ColumnName="AdvanceBillCostAmount" />
+          <ScalarProperty Name="MarkupAmount" ColumnName="MarkupAmount" />
+          <ScalarProperty Name="AdvanceBillMarkupAmount" ColumnName="AdvanceBillMarkupAmount" />
+          <ScalarProperty Name="AdvanceBillSaleAmount" ColumnName="AdvanceBillSaleAmount" />
+          <ScalarProperty Name="AdvanceBillNonResaleTaxAmount" ColumnName="AdvanceBillNonResaleTaxAmount" />
+          <ScalarProperty Name="StateTaxAmount" ColumnName="StateTaxAmount" />
+          <ScalarProperty Name="CountyTaxAmount" ColumnName="CountyTaxAmount" />
+          <ScalarProperty Name="CityTaxAmount" ColumnName="CityTaxAmount" />
+          <ScalarProperty Name="NonResaleTaxAmount" ColumnName="NonResaleTaxAmount" />
+          <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+          <ScalarProperty Name="IsModified" ColumnName="IsModified" />
+          <ScalarProperty Name="CCBalancedFlag" ColumnName="CCBalancedFlag" />
+          <ScalarProperty Name="CCAmountModified" ColumnName="CCAmountModified" />
+          <ScalarProperty Name="CCVariance" ColumnName="CCVariance" />
+          <ScalarProperty Name="CCInterimReconcile" ColumnName="CCInterimReconcile" />
+          <ScalarProperty Name="FunctionRowCount" ColumnName="FunctionRowCount" />
+          <ScalarProperty Name="NewspaperCoopSplit" ColumnName="NewspaperCoopSplit" />
+          <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+          <ScalarProperty Name="SummaryRowId" ColumnName="SummaryRowId" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadInvoiceAssignedCoopJob" FunctionName="BCCDbContext.Store.advsp_bcc_get_coop_jobs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.InvoiceAssignedCoopJob">
+          <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+          <ScalarProperty Name="JobComponentNumber" ColumnName="JobComponentNumber" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoadBillingHistory" FunctionName="BCCDbContext.Store.advsp_bcc_get_billing_history">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BCCDbContext.BillingHistory">
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="PostingPeriod" ColumnName="PostingPeriod" />
+          <ScalarProperty Name="RetainedAdvanceBilling" ColumnName="RetainedAdvanceBilling" />
+          <ScalarProperty Name="IncomeRecognized" ColumnName="IncomeRecognized" />
+          <ScalarProperty Name="HasDocuments" ColumnName="HasDocuments" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Actual" ColumnName="Actual" />
+          <ScalarProperty Name="AdvanceAmount" ColumnName="AdvanceAmount" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ResaleTax" ColumnName="ResaleTax" />
+          <ScalarProperty Name="InvoiceTotal" ColumnName="InvoiceTotal" />
+          <ScalarProperty Name="ReconciledMethod" ColumnName="ReconciledMethod" />
+          <ScalarProperty Name="GLTransaction" ColumnName="GLTransaction" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

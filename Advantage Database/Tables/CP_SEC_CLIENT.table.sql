@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[CP_SEC_CLIENT] (
+    [CDP_CONTACT_ID] INT         NOT NULL,
+    [CL_CODE]        VARCHAR (6) NOT NULL,
+    [DIV_CODE]       VARCHAR (6) NULL,
+    [PRD_CODE]       VARCHAR (6) NULL
+);
+

@@ -1,0 +1,25 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_job_JobIsOpen] 
+@JobNum INT,
+@JobCompNum INT
+AS
+	DECLARE @ThisReturn AS INT
+	SELECT @ThisReturn = 0
+		
+	SELECT DISTINCT 
+		@ThisReturn = ISNULL(JOB_LOG.JOB_NUMBER,0)
+	FROM         
+		JOB_LOG WITH (NOLOCK) INNER JOIN
+		JOB_COMPONENT WITH (NOLOCK) ON JOB_LOG.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER 
+	WHERE     
+		(JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6,12))
+		-- IF ZERO IS RETURNED, THEN JOB IS CLOSED, if return value is same as 
+		-- passed in value, job is open
+		AND JOB_LOG.JOB_NUMBER = @JobNum
+		AND JOB_COMPONENT.JOB_COMPONENT_NBR = @JobCompNum
+	
+	SELECT @ThisReturn
+
+
+

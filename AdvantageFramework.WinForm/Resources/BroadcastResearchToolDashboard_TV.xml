@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource ComponentName="DashboardObjectDataSource1">
+      <Name>Object Data Source 1</Name>
+      <DataSource Type="System.Collections.Generic.List`1[[AdvantageFramework.DTO.Media.SpotTV.ResearchResult, AdvantageFramework.BLogic, Version=6.70.8.0, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="ChartDashboardItem1" Name="Chart 1" DataSource="DashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="Times" DefaultId="DataItem4" />
+        <Dimension DataMember="Days" DefaultId="DataItem2" />
+        <Measure DataMember="Rating" DefaultId="DataItem3">
+          <NumericFormat FormatType="Number" />
+        </Measure>
+        <Dimension DataMember="Station" DefaultId="DataItem0" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+        <Argument DefaultId="DataItem4" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY Title="Rating" AlwaysShowZeroLevel="false" />
+          <Series>
+            <Simple ShowPointMarkers="true" SeriesType="Line">
+              <Value DefaultId="DataItem3" />
+              <PointLabelOptions Visible="true" Content="SeriesName" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <ChartLegend IsInsidePosition="true" InsidePosition="TopCenterHorizontal" OutsidePosition="TopLeftHorizontal" />
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="ChartDashboardItem1" Weight="100" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

@@ -1,0 +1,203 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/editor/editor"></require>
+    <require from="aurelia-kendoui-bridge/upload/upload"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/progressbar/progressbar"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="./comment"></require>
+    <require from="./mention-item"></require>
+    <style>
+        .k-editor .k-editable-area iframe {
+            height: 100%;
+        }
+        [contenteditable="true"].single-line {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        [contenteditable="true"].single-line br {
+            display: none;
+        }
+        [contenteditable="true"].single-line * {
+            display: inline;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+        [contentEditable=true].e-textbox:empty:focus:before {
+            content: attr(data-text);
+            font-style: italic;
+            color: #888;
+        }
+        #replyInputComment {
+            padding-top: 3px;
+        }
+    </style>
+    <div class="comment-viewer wv-widget ${cssClass}">
+    <header>
+        <div>
+            <div id="newMentionContainer" style="position:absolute;">
+                <mention-item view-model.ref="mentionItemNew" mention-comment-div="newCommentDiv" comment-editor.bind="newCommentInput" vertical-offset="0" horizontal-offset="0" mention-container="newMentionContainer"></mention-item>
+            </div>
+            <div class="wv-simple-editor" id="newCommentDiv">
+                <textarea ak-rich-editor="k-widget.two-way: newCommentInput;
+                                            k-tools.bind: [];
+                                            k-resizable.bind: false;" k-on-keydown.delegate="mentionItemNew.commentKeyDownEvent($event.detail)"
+                            style="height: 75px;"></textarea>
+            </div>
+        </div>
+        <div if.bind="progressValue > 0" style="margin-top: 4px;">
+            <div ak-progress-bar="type: percent;
+                                    animation.bind: { duration: 600 };
+                                    k-widget.two-way: uploadProgressBar" style="width: 100%;"></div>
+        </div>
+        <div if.bind="files.length > 0" style="padding-top: 5px;">
+            <button class="btn btn-primary btn-sm" style="margin-right: 3px; margin-bottom: 3px;" repeat.for="file of files" click.delegate="deleteFile(file)">${file.name} <span class="k-icon k-i-close"></span></button>
+        </div>
+        <div if.bind="links.length > 0" style="padding-top: 5px;">
+            <button class="btn btn-primary btn-sm" style="margin-right: 3px; margin-bottom: 3px;" repeat.for="link of links" click.delegate="deleteLink(link)">${link.title} <span class="k-icon k-i-close"></span></button>
+        </div>
+        <div style="text-align: right; margin-top: 5px;">
+            <div class="wv-cb-wrapper">
+                <input type="checkbox" class="k-checkbox" id="cmtHideSystemCommentsCb" checked.bind="hideSystemComments" change.delegate="showHideSystemComments()" />
+                <label class="k-checkbox-label" for="cmtHideSystemCommentsCb">Hide system comments</label>
+            </div>
+            <div style="display:inline-block;">
+                <button title="Show all comments" class="btn btn-sm btn-default" click.delegate="refreshComments()" style="display: none !important;"><span class="wvi wvi-refresh"></span></button>
+                <button title="Add Comment" class="btn btn-sm btn-success" click.delegate="addComment()" disabled.bind="saveDisabled"><span class="glyphicon glyphicon-plus"></span></button>
+                <!--<button class="btn btn-sm btn-default" id="comment-attatchment"><span class="glyphicon glyphicon-paperclip"></span></button>-->
+                <button class="btn btn-sm btn-default" click.delegate="uploadFileClick()"><span class="glyphicon glyphicon-arrow-up" title="Attach file(s) to this comment."></span></button>
+                <button class="btn btn-sm btn-default" click.delegate="showFullScreenComment(false)"><span class="glyphicon glyphicon-fullscreen"></span></button>
+            </div>
+        </div>
+    </header>
+        <div role="main" ref="commentScrollWindow" style="max-height: 300px; overflow: auto">
+            <div class="comments">
+                <comment repeat.for="comment of comments"
+                         alert-id.bind="comment.AlertID"
+                         is-truncated.bind="comment.IsTruncated"
+                         comment-id.bind="comment.CommentID"
+                         short-comment.bind="comment.ShortComment"
+                         comment.bind="comment.Comment"
+                         generated-date.bind="comment.sGeneratedDate"
+                         custody-start-date.bind="comment.sCustodyStartDate"
+                         custody-end-date.bind="comment.sCustodyEndDate"
+                         employee-code.bind="comment.EmployeeCode"
+                         employee-full-name.bind="comment.EmployeeFullName"
+                         open-reply.call="openReply(comment)"
+                         refresh-list.call="refreshList()"
+                         document-list.bind="comment.Documents"
+                         reply-level.bind="comment.ReplyLevel"
+                         reply-list.bind="comment.Replies"
+                         has-image.bind="comment.HasImage"
+                         proofing-external-reviewer-id.bind="comment.ProofingExternalReviewerID"
+                         initials.bind="comment.Initials"></comment>
+            </div>
+        </div>
+    </div>
+    <div id="fullScreenCommentDialog"
+         ak-dialog="k-widget.bind: commentDialog;
+                    k-width: 800px;
+                    k-closeable.bind: true;
+                    k-actions.bind: commentDialogActions;
+                    k-title.bind: dialogTitle;
+                    k-visible.bind: false;
+                    k-modal.bind: true;
+                    k-button-layout: normal;" k-on-close.delegate="onFullScreenCommentDialogClose()">
+        <div id="fullMentionContainer" style="position:absolute;">
+            <mention-item view-model.ref="mentionItemFull" mention-comment-div="fullScreenCommentDiv" comment-editor.bind="fullScreenComment" vertical-offset="90" horizontal-offset="13" mention-container="fullMentionContainer"></mention-item>
+        </div>
+        <div id="fullScreenCommentDiv">
+            <textarea ak-rich-editor="k-widget.two-way: fullScreenComment; k-resizable.bind: true; k-tools.bind: defaultTools;" k-on-keydown.delegate="mentionItemFull.commentKeyDownEvent($event.detail)"></textarea>
+        </div>
+        <div style="margin-top: 5px;">
+            <div class="wv-form">
+                <div style="margin-bottom: 6px;">
+                    <div id="buttonsContainer" class="k-button-group">
+                        <button class="k-button ${uploadingFilePrimary}"
+                                title="Upload File"
+                                click.delegate="setUploadToFile()"
+                                focus.bind="focusUploadFileButton">
+                            Upload File
+                        </button>
+                        <button class="k-button ${uploadingLinkPrimary}"
+                                title="Upload Link"
+                                click.delegate="setUploadToLink()"
+                                if.bind="isProof == false">
+                            Upload Link
+                        </button>
+                    </div>
+                    <div class="pull-right" if.bind="isProof == false">
+                        <div class="wv-cb-wrapper">
+                            <input type="checkbox" class="k-checkbox" id="cmtViewUploadToDocumentManagerCb" checked.bind="uploadToDocumentManager" />
+                            <label class="k-checkbox-label" for="cmtViewUploadToDocumentManagerCb">Upload to Document Manager</label>
+                        </div>
+                        <div class="wv-cb-wrapper" if.bind="isUploadingFile == true && AllowProofHQ == true">
+                            <input type="checkbox" class="k-checkbox" id="cmtViewUploadToProofHQCb" checked.bind="uploadToProofHQ" />
+                            <label class="k-checkbox-label" for="cmtViewUploadToProofHQCb">Upload to ProofHQ</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div if.bind="isUploadingFile == true">
+                <div class="upload-container">
+                    <div class="upload-control-container">
+                        <ak-upload k-widget.bind="attachmentUpload"
+                                   k-async.bind="{
+											saveUrl: 'Desktop/Alert/TempUploadAttachment',
+											removeUrl: 'Desktop/Alert/DeleteTempUploadAttachment',
+											autoUpload: true
+										 }"
+                                   k-show-file-list.bind="false"
+                                   k-on-success.delegate="attachmentUploadSuccess($event.detail)"
+                                   k-on-upload.delegate="attachmentOnUpload($event.detail)"
+                                   k-on-error.delegate="attachmentOnError($event.detail)"
+                                   k-on-remove.delegate="attachmentOnRemove($event.detail)"
+                                   k-on-cancel.delegate="attachmentOnCancel($event.detail)"
+                                   k-on-progress.delegate="attachmentOnProcess($event.detail)">
+                            <input name="File" type="file" />
+                        </ak-upload>
+                    </div>
+                    <div class="upload-text-container">
+                        <span class="upload-text">*Drag files into the dotted area above to upload.</span>
+                    </div>
+                </div>
+            </div>
+            <div if.bind="isUploadingFile == false">
+                <div style="width: 100%; margin: 4px 0px 0px 0px;">
+                    <div style="width: 100%; margin: 4px 0px 0px 0px;">
+                        <input type="text"
+                               class="e-textbox"
+                               style="width: 100%;"
+                               value.bind="urlTitle"
+                               placeholder=" Enter a title for your link. (Optional)"
+                               title="Optional title for your link.  TAB to go to URL field."
+                               keyup.delegate="keyUpLinkTitle($event)"
+                               focus.bind="focusLinkTitle" />
+                    </div>
+                    <div style="width: 100%; margin: 4px 0px 4px 0px;">
+                        <input type="text"
+                               class="e-textbox RequiredInput"
+                               style="width: 100%;"
+                               value.bind="urlLink"
+                               placeholder=" Type or paste a URL for your link and press the enter key."
+                               title="The URL (web address) for your link.  You can type one in or copy/paste the URL."
+                               keyup.delegate="keyUpLinkURL($event)"
+                               focus.bind="focusLinkURL" />
+                    </div>
+                    <div style="width: 100%; text-align: right; display: none !important;">
+                        <button class="btn btn-sm btn-success" click.delegate="uploadLink()">Upload</button>
+                    </div>
+                </div>
+            </div>
+            <div style="border: 0px solid #cccccc; width: 769px; height:40px; overflow-x:hidden; overflow-y:auto; margin-top: 5px; padding: 4px;">
+                <div if.bind="files.length > 0" style="">
+                    <button class="btn btn-primary btn-sm" style="margin-right: 3px; margin-bottom: 3px;" repeat.for="file of files" click.delegate="deleteFile(file)">${file.name} <span class="k-icon k-i-close"></span></button>
+                </div>
+                <div if.bind="links.length > 0" style="">
+                    <button class="btn btn-primary btn-sm" style="margin-right: 3px; margin-bottom: 3px;" repeat.for="link of links" click.delegate="deleteLink(link)">${link.Title} <span class="k-icon k-i-close"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

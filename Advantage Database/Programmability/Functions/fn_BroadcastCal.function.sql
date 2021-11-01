@@ -1,0 +1,81 @@
+﻿
+-- Returns the date and month for the beginning of the broadcast week for the given week number
+CREATE FUNCTION dbo.fn_BroadcastCal ( )
+RETURNS @BroadcastCal TABLE ( brd_year smallint, weeknum smallint, brd_month varchar(3), weekdate smalldatetime )
+AS
+BEGIN
+	DECLARE @WeekDate smalldatetime, @Count smallint, @WeekFound smallint, @BrdYear smallint, @BrdMonth varchar(3)
+
+	-- Declare a Cursor to get all the broadcast years
+	DECLARE brdcast_cal_cursor CURSOR FOR 
+		SELECT DISTINCT BRD_YEAR
+		  FROM BRDCAST_CAL
+
+	OPEN brdcast_cal_cursor
+
+	FETCH NEXT FROM brdcast_cal_cursor INTO @BrdYear
+
+	WHILE ( @@FETCH_STATUS <> -1 )
+	BEGIN
+
+		SET @WeekFound = 0
+		SET @Count = 0
+		WHILE ( @Count < 60 ) AND ( @WeekFound < 53 )
+		BEGIN		
+			SET @Count = @Count + 1 
+
+			SELECT @BrdMonth = 
+				CASE  
+					WHEN @Count BETWEEN 1 AND 5 THEN 'JAN'
+					WHEN @Count BETWEEN 6 AND 10 THEN 'FEB'
+					WHEN @Count BETWEEN 11 AND 15 THEN 'MAR'
+					WHEN @Count BETWEEN 16 AND 20 THEN 'APR'
+					WHEN @Count BETWEEN 21 AND 25 THEN 'MAY'
+					WHEN @Count BETWEEN 26 AND 30 THEN 'JUN'
+					WHEN @Count BETWEEN 31 AND 35 THEN 'JUL'
+					WHEN @Count BETWEEN 36 AND 40 THEN 'AUG'
+					WHEN @Count BETWEEN 41 AND 45 THEN 'SEP'
+					WHEN @Count BETWEEN 46 AND 50 THEN 'OCT'
+					WHEN @Count BETWEEN 51 AND 55 THEN 'NOV'
+					WHEN @Count BETWEEN 56 AND 60 THEN 'DEC'
+				END,
+				@WeekDate =
+				CASE @Count 
+					WHEN 1 THEN JAN_WK1 WHEN 2 THEN JAN_WK2	WHEN 3 THEN JAN_WK3	WHEN 4 THEN JAN_WK4	WHEN 5 THEN JAN_WK5
+					WHEN 6 THEN FEB_WK1	WHEN 7 THEN FEB_WK2	WHEN 8 THEN FEB_WK3	WHEN 9 THEN FEB_WK4	WHEN 10 THEN FEB_WK5
+					WHEN 11 THEN MAR_WK1 WHEN 12 THEN MAR_WK2 WHEN 13 THEN MAR_WK3 WHEN 14 THEN MAR_WK4	WHEN 15 THEN MAR_WK5
+					WHEN 16 THEN APR_WK1 WHEN 17 THEN APR_WK2 WHEN 18 THEN APR_WK3 WHEN 19 THEN APR_WK4 WHEN 20 THEN APR_WK5
+					WHEN 21 THEN MAY_WK1 WHEN 22 THEN MAY_WK2 WHEN 23 THEN MAY_WK3 WHEN 24 THEN MAY_WK4	WHEN 25 THEN MAY_WK5
+					WHEN 26 THEN JUN_WK1 WHEN 27 THEN JUN_WK2 WHEN 28 THEN JUN_WK3 WHEN 29 THEN JUN_WK4	WHEN 30 THEN JUN_WK5
+					WHEN 31 THEN JUL_WK1 WHEN 32 THEN JUL_WK2 WHEN 33 THEN JUL_WK3 WHEN 34 THEN JUL_WK4	WHEN 35 THEN JUL_WK5
+					WHEN 36 THEN AUG_WK1 WHEN 37 THEN AUG_WK2 WHEN 38 THEN AUG_WK3 WHEN 39 THEN AUG_WK4	WHEN 40 THEN AUG_WK5
+					WHEN 41 THEN SEP_WK1 WHEN 42 THEN SEP_WK2 WHEN 43 THEN SEP_WK3 WHEN 44 THEN SEP_WK4 WHEN 45 THEN SEP_WK5
+					WHEN 46 THEN OCT_WK1 WHEN 47 THEN OCT_WK2 WHEN 48 THEN OCT_WK3 WHEN 49 THEN OCT_WK4	WHEN 50 THEN OCT_WK5 
+					WHEN 51 THEN NOV_WK1 WHEN 52 THEN NOV_WK2 WHEN 53 THEN NOV_WK3 WHEN 54 THEN NOV_WK4	WHEN 55 THEN NOV_WK5
+					WHEN 56 THEN DEC_WK1 WHEN 57 THEN DEC_WK2 WHEN 58 THEN DEC_WK3 WHEN 59 THEN DEC_WK4	WHEN 60 THEN DEC_WK5
+				END
+			 FROM dbo.BRDCAST_CAL
+		    WHERE BRD_YEAR = @BrdYear
+		
+			IF ( @WeekDate IS NOT NULL )
+			BEGIN
+				SET @WeekFound = @WeekFound + 1
+				INSERT INTO @BroadcastCal VALUES ( @BrdYear, @WeekFound, @BrdMonth, @WeekDate )
+			END
+
+			IF ( @Count > 60 )
+				BREAK
+
+		END -- WHILE
+
+		FETCH NEXT FROM brdcast_cal_cursor INTO @BrdYear
+	END -- @@FETCH_STATUS
+
+	-- close the cursor
+	CLOSE brdcast_cal_cursor
+
+	-- remove the cursor data structures
+	DEALLOCATE brdcast_cal_cursor
+
+	RETURN
+END

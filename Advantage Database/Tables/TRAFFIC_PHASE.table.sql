@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[TRAFFIC_PHASE] (
+    [TRAFFIC_PHASE_ID] INT          NOT NULL,
+    [PHASE_DESC]       VARCHAR (40) NOT NULL,
+    [PHASE_ORDER]      INT          NULL,
+    [INACTIVE_FLAG]    SMALLINT     DEFAULT (0) NOT NULL
+);
+

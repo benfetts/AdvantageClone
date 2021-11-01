@@ -1,0 +1,40 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Job_Template_AddJobProcessLog] 
+@JOB_NUMBER AS INT,
+@JOB_COMPONENT_NBR AS SMALLINT,
+@ORIG_CONTROL AS SMALLINT,
+@NEW_CONTROL AS SMALLINT,
+@USER_CODE VARCHAR(6),
+@COMMENT TEXT
+
+AS
+
+BEGIN
+    
+    --Add new component:
+    INSERT INTO [dbo].[JOB_PROCESS_LOG] (
+	    [JOB_NUMBER],
+	    [JOB_COMPONENT_NBR],
+	    [ORIG_PROCESS_CNTRL],
+	    [NEW_PROCESS_CNTRL],
+	    [PROCESS_DATE], 
+	    [PROCESS_USER],
+	    [PROCESS_COMMENT], 
+	    [BCC_FLAG]
+    ) 
+    VALUES (
+	    @JOB_NUMBER,
+	    @JOB_COMPONENT_NBR,
+	    @ORIG_CONTROL,
+	    @NEW_CONTROL,
+	    GETDATE(),
+	    @USER_CODE,
+	    @COMMENT,
+	    NULL
+    )
+
+END
+
+
+

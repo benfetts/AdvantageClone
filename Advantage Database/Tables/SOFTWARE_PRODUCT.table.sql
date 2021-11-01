@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[SOFTWARE_PRODUCT] (
+    [PRODUCT_ID]   INT           IDENTITY (1, 1) NOT NULL,
+    [PRODUCT_DESC] VARCHAR (100) NULL,
+    [ACTIVE_FLAG]  BIT           NULL
+);
+

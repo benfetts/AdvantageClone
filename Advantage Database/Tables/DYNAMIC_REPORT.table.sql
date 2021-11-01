@@ -1,0 +1,21 @@
+﻿CREATE TABLE [dbo].[DYNAMIC_REPORT] (
+    [DYNAMIC_REPORT_ID]   INT            IDENTITY (1, 1) NOT NULL,
+    [DYNAMIC_REPORT_TYPE] INT            NOT NULL,
+    [DESCRIPTION]         VARCHAR (50)   NOT NULL,
+    [CREATED_BY]          VARCHAR (100)  NOT NULL,
+    [CREATED_DATE]        SMALLDATETIME  NOT NULL,
+    [ALLOW_CELL_MERGE]    BIT            NOT NULL,
+    [PRINT_AUTOSIZE_COL]  BIT            NOT NULL,
+    [PRINT_HEADER]        BIT            NOT NULL,
+    [PRINT_FOOTER]        BIT            NOT NULL,
+    [PRINT_GROUP_FOOTER]  BIT            NOT NULL,
+    [PRINT_SEL_ROWS]      BIT            NOT NULL,
+    [PRINT_FILTER_INFO]   BIT            NOT NULL,
+    [SHOW_VIEW_CAPTION]   BIT            NOT NULL,
+    [SHOW_GROUPBY_BOX]    BIT            NOT NULL,
+    [SHOW_AUTOFILTER_ROW] BIT            NOT NULL,
+    [UPDATED_BY]          VARCHAR (100)  NOT NULL,
+    [UPDATED_DATE]        SMALLDATETIME  NOT NULL,
+    [ACTIVE_FILTER]       VARCHAR (8000) NOT NULL
+);
+

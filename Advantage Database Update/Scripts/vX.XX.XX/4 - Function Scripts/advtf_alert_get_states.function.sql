@@ -1,0 +1,88 @@
+IF EXISTS ( SELECT * FROM sysobjects WHERE id = OBJECT_ID( N'[dbo].[advtf_alert_get_states]' ) AND xtype IN ( N'FN', N'IF', N'TF' ))
+BEGIN
+	DROP FUNCTION [dbo].[advtf_alert_get_states]
+END
+GO
+CREATE FUNCTION [dbo].[advtf_alert_get_states] (
+@ALERT_ID INT
+)
+RETURNS @STATES TABLE (	ID INT IDENTITY,
+						AlertTemplateID INT,
+						AlertStateID INT,
+						AlertTemplateName VARCHAR(100),
+						AlertStateName VARCHAR(100),
+						SortOrder SMALLINT,
+						CanEditAssignees BIT,
+						IsCurrentState BIT)
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	--	VARS
+	BEGIN
+		DECLARE
+			@CURRENT_ALRT_NOTIFY_HDR_ID INT,
+			@CURRENT_ALERT_STATE_ID INT,
+			@CURRENT_STATE_REC_ID INT,
+			@CAN_EDIT BIT
+		;
+
+	END
+	--	INIT
+	BEGIN
+		SELECT
+			@CURRENT_ALRT_NOTIFY_HDR_ID = ALRT_NOTIFY_HDR_ID,
+			@CURRENT_ALERT_STATE_ID = ALERT_STATE_ID
+		FROM
+			ALERT A WITH(NOLOCK)
+		WHERE
+			A.ALERT_ID = @ALERT_ID
+		;
+	END
+	--	DATA
+	BEGIN
+		INSERT INTO @STATES (AlertTemplateID, AlertStateID, AlertTemplateName, AlertStateName, SortOrder, CanEditAssignees, IsCurrentState)
+		SELECT
+			ANS.ALRT_NOTIFY_HDR_ID,
+			ANS.ALERT_STATE_ID,
+			ANH.ALERT_NOTIFY_NAME,
+			S.ALERT_STATE_NAME,
+			ISNULL(ANS.SORT_ORDER, 0),
+			0,
+			0
+		FROM
+			ALERT_NOTIFY_STATES ANS WITH(NOLOCK)
+			INNER JOIN ALERT_STATES S WITH(NOLOCK) ON ANS.ALERT_STATE_ID = S.ALERT_STATE_ID
+			INNER JOIN ALERT_NOTIFY_HDR ANH WITH(NOLOCK) ON ANS.ALRT_NOTIFY_HDR_ID = ANH.ALRT_NOTIFY_HDR_ID
+		WHERE
+			ANS.ALRT_NOTIFY_HDR_ID = @CURRENT_ALRT_NOTIFY_HDR_ID
+		ORDER BY
+			ANS.SORT_ORDER ASC
+		;
+	END
+	--	CAN EDIT
+	BEGIN
+		SELECT
+			@CURRENT_STATE_REC_ID = S.ID
+		FROM
+			@STATES S
+		WHERE
+			S.AlertStateID = @CURRENT_ALERT_STATE_ID
+		;
+		UPDATE S SET CanEditAssignees = 1
+		FROM
+			@STATES S
+		WHERE
+			S.ID >= @CURRENT_STATE_REC_ID
+		;
+		UPDATE S SET IsCurrentState = 1
+		FROM
+			@STATES S
+		WHERE
+			S.AlertStateID = @CURRENT_ALERT_STATE_ID
+		;
+	END
+/*=========== QUERY ===========*/
+
+RETURN
+
+END

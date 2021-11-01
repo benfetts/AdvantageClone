@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[DIV_SRT_KEY] (
+    [CL_CODE]     VARCHAR (6)  NOT NULL,
+    [DIV_CODE]    VARCHAR (6)  NOT NULL,
+    [DIV_SRT_KEY] VARCHAR (20) NOT NULL
+);
+

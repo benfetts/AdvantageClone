@@ -1,0 +1,62 @@
+<div data-options="dxView : { name: 'sign_in', title: 'Sign In' } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxScrollView: { }">
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">URL</div>
+                    <div class="dx-field-value">
+                        <div data-bind="dxTextBox: { value: strURL, placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator: urlValidator"></div>
+                    </div>
+                </div>
+                <div class="dx-field" data-bind="css: serverFieldCSS">
+                    <div class="dx-field-label">Server</div>
+                    <div class="dx-field-value">
+                        <div data-bind="dxTextBox: {value: strServer, placeholder: 'Please Enter', valueChangeEvent: 'change' }"></div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Database</div>
+                    <div class="dx-field-value">
+                        <div data-bind="dxTextBox: {value: strDatabase, placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator: databaseValidator"></div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Windows Authentication</div>
+                    <div class="dx-field-value" style="float:left !important;" data-bind="dxSwitch: { value: boolWindowsAuthentication, onValueChanged: windowsAuthValueChanged }"></div>
+                </div>
+                <div class="dx-field" data-bind="visible: false">
+                    <div class="dx-field-label">Domain</div>
+                    <div class="dx-field-value">
+                        <div data-bind="dxTextBox: { value: strDomainName, placeholder: 'Please Enter', valueChangeEvent: 'change' }"></div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">User ID</div>
+                    <div class="dx-field-value">
+                        <div data-bind="dxTextBox: { value: strUserCode, placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator: userIdValidator"></div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Password</div>
+                    <div class="dx-field-value">
+                        <div data-bind="dxTextBox: { value: strPassword, mode: 'password', placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator: passwordValidator"></div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Remember User ID</div>
+                    <div class="dx-field-value" style="float:left !important;" data-bind="dxSwitch: { value: boolRememberUserCode }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Remember Password</div>
+                    <div class="dx-field-value" style="float:left !important;" data-bind="dxSwitch: { value: boolRememberPassword }"></div>
+                </div>
+            </div>
+            <div style="text-align:center;">
+                <div style="width:90%;display:none !important;" data-bind="dxButton: signOutButton"></div>
+                <div style="width:90%;margin:15px 0px 0px 0px;background-color:#F44336 !important;" data-bind="dxButton: clearSavedSettingsButton"></div>
+            </div>
+            <div style="height:500px;"></div>
+        </div>
+    </div>
+</div>

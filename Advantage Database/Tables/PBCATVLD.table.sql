@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[PBCATVLD] (
+    [PBV_NAME] VARCHAR (30)  NOT NULL,
+    [PBV_VALD] VARCHAR (254) NULL,
+    [PBV_TYPE] SMALLINT      NULL,
+    [PBV_CNTR] INT           NULL,
+    [PBV_MSG]  VARCHAR (254) NULL
+);
+

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[MEDIA_SPECS_DTL] (
+    [SPEC_ID]    INT           NOT NULL,
+    [LABEL_ID]   VARCHAR (10)  NOT NULL,
+    [MEDIA_TYPE] VARCHAR (1)   NULL,
+    [SPEC_DATA]  VARCHAR (100) NULL
+);
+

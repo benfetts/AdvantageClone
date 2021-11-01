@@ -1,0 +1,25 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_QUICK_LAUNCH_REPORTSLoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[REPORT_ID]
+	FROM [CP_USER_QUICK_LAUNCH_REPORTS]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

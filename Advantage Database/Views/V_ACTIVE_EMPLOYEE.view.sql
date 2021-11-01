@@ -1,0 +1,4 @@
+﻿
+
+CREATE VIEW dbo.V_ACTIVE_EMPLOYEE ( EMP_CODE, EMP_FML, EMP_LF, EMP_FIL )  		AS  	   SELECT EMP_CODE,  		  COALESCE( RTRIM( EMP_FNAME ) + ' ', '' ) +  			COALESCE( EMP_MI + '. ', '' ) +  			COALESCE( EMP_LNAME, '' ),  		  COALESCE( EMP_LNAME + ', ', '' ) +  			COALESCE( RTRIM( EMP_FNAME ), '' ),  		  COALESCE( LEFT( EMP_FNAME, 1 ) + '. ', '' ) +  			COALESCE( EMP_LNAME, '' )  	     FROM EMPLOYEE  	    WHERE ( EMP_TERM_DATE IS NULL OR EMP_TERM_DATE > getdate() )
+

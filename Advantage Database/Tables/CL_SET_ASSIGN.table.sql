@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[CL_SET_ASSIGN] (
+    [CL_CODE] VARCHAR (6)  NOT NULL,
+    [SET_ID]  VARCHAR (10) NULL
+);
+

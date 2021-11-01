@@ -1,0 +1,31 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_SEC_APPLoadByPrimaryKey]
+(
+	@CDP_CONTACT_ID int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CDP_CONTACT_ID],
+		[APPID]
+	FROM [CP_USER_SEC_APP]
+	WHERE
+		([CDP_CONTACT_ID] = @CDP_CONTACT_ID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

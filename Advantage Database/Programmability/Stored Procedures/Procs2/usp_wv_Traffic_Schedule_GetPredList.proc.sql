@@ -1,0 +1,18 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Traffic_Schedule_GetPredList]
+@JOB_NUMBER INT,
+@JOB_COMPONENT_NBR INT,
+@SEQ SMALLINT
+AS
+
+    SELECT     
+        PREDECESSOR_SEQ_NBR
+    FROM         
+        JOB_TRAFFIC_DET_PREDS
+    WHERE     
+        (JOB_NUMBER = @JOB_NUMBER) 
+        AND (JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR) 
+        AND (SEQ_NBR = @SEQ)
+
+

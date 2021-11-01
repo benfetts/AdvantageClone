@@ -1,0 +1,115 @@
+﻿SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_wv_dd_GetEmpCodesBySup]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[usp_wv_dd_GetEmpCodesBySup]
+GO
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetEmpCodesBySup] 
+
+@UserID VARCHAR(100), 
+@SuperCode VARCHAR(6),
+@FromApp VARCHAR(10)
+
+AS
+/*=========== QUERY ===========*/
+	SET NOCOUNT ON
+
+	DECLARE @OfficeRestrictions AS INTEGER	
+	DECLARE @EMP_CODE AS varchar(6)
+
+	SELECT @EMP_CODE = EMP_CODE FROM [dbo].[SEC_USER] WHERE UPPER([USER_CODE]) = UPPER(@UserID)
+	SELECT @OfficeRestrictions = COUNT(*) FROM EMP_OFFICE WHERE EMP_CODE = @EMP_CODE
+
+	DECLARE @DATA_LOADED BIT;
+
+	SET @DATA_LOADED = 0;
+
+	IF @FromApp = 'exp'
+	BEGIN
+
+		SELECT    EMP_CODE AS Code, dbo.udf_get_empl_name(EMPLOYEE.EMP_CODE, 'FML') AS Description
+		FROM         EMPLOYEE WITH(NOLOCK)
+		WHERE (EMP_TERM_DATE IS NULL OR EMP_TERM_DATE > GETDATE())
+		AND  (EMPLOYEE.SUPERVISOR_CODE = @SuperCode AND EXP_RPT_APPROVER IS NULL) OR (EXP_RPT_APPROVER = @SuperCode)
+		ORDER BY EMP_CODE;
+
+		SET @DATA_LOADED = 1;
+
+	END
+
+	IF @FromApp = 'ts_appr'
+	BEGIN
+
+		DECLARE 
+		@TIME_APPR_ACTIVE SMALLINT
+	
+		SELECT @TIME_APPR_ACTIVE = ISNULL(TIME_APPR_ACTIVE,0) 
+		FROM AGENCY WITH(NOLOCK);
+	
+		SET @TIME_APPR_ACTIVE = ISNULL(@TIME_APPR_ACTIVE,0);
+
+		IF @TIME_APPR_ACTIVE = 1
+		BEGIN
+
+			SELECT    EMP_CODE AS Code, dbo.udf_get_empl_name(EMPLOYEE.EMP_CODE, 'FML') AS Description
+			FROM         EMPLOYEE WITH(NOLOCK)
+			WHERE (EMP_TERM_DATE IS NULL OR EMP_TERM_DATE > GETDATE())
+			AND  EMPLOYEE.SUPERVISOR_CODE = @SuperCode
+			AND (EMPLOYEE.TS_APPR_FLAG = 0 OR EMPLOYEE.TS_APPR_FLAG IS NULL) --*SEE EXPLANATION
+			ORDER BY EMP_CODE;
+
+			/*
+			 EMPLOYEE.TS_APPR_FLAG = 1 are emps that are exceptions to the rule.
+			 Meaning if the agency flag is true, the emps that have the flag as true are exempt from approval
+			 And the emps that have the flag as not true (not 1) ARE still required for approval
+			*/
+
+			SET @DATA_LOADED = 1;
+
+		END
+
+		IF @TIME_APPR_ACTIVE = 0
+		BEGIN
+
+			SELECT    EMP_CODE AS Code, dbo.udf_get_empl_name(EMPLOYEE.EMP_CODE, 'FML') AS Description
+			FROM         EMPLOYEE WITH(NOLOCK)
+			WHERE (EMP_TERM_DATE IS NULL OR EMP_TERM_DATE > GETDATE())
+			AND  EMPLOYEE.SUPERVISOR_CODE = @SuperCode
+			ORDER BY EMP_CODE;
+
+			SET @DATA_LOADED = 1;
+
+		END
+
+	END
+
+	IF @FromApp = '' OR @FromApp IS NULL OR @DATA_LOADED = 0
+	BEGIN
+		if @OfficeRestrictions > 0
+		Begin
+			SELECT    EMPLOYEE.EMP_CODE AS Code, dbo.udf_get_empl_name(EMPLOYEE.EMP_CODE, 'FML') AS Description
+			FROM         EMPLOYEE WITH(NOLOCK) INNER JOIN
+						EMP_OFFICE ON EMPLOYEE.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE AND EMP_OFFICE.EMP_CODE = @EMP_CODE
+			WHERE (EMP_TERM_DATE IS NULL OR EMP_TERM_DATE > GETDATE())
+			AND  EMPLOYEE.SUPERVISOR_CODE = @SuperCode
+			ORDER BY EMPLOYEE.EMP_CODE;
+		End
+		Else
+		Begin
+			SELECT    EMP_CODE AS Code, dbo.udf_get_empl_name(EMPLOYEE.EMP_CODE, 'FML') AS Description
+			FROM         EMPLOYEE WITH(NOLOCK)
+			WHERE (EMP_TERM_DATE IS NULL OR EMP_TERM_DATE > GETDATE())
+			AND  EMPLOYEE.SUPERVISOR_CODE = @SuperCode
+			ORDER BY EMP_CODE;
+		End
+		
+
+	END
+
+/*=========== QUERY ===========*/
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[ADVANTAGE_MODULES] (
+    [MODULE]           VARCHAR (2)  NOT NULL,
+    [MODULE_DESC]      VARCHAR (50) NULL,
+    [APP_SECURITY_COL] VARCHAR (25) NULL,
+    [ICON]             SMALLINT     NULL
+);
+

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[D_CSL_COMMENTS] (
+    [CSL_COMM_ID]    VARCHAR (60) NOT NULL,
+    [INV_NBR]        DECIMAL (10) NULL,
+    [CONSOL_DESC]    VARCHAR (50) NULL,
+    [D_CSL_COMMENTS] TEXT         NULL
+);
+

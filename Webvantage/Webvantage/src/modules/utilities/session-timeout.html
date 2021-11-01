@@ -1,0 +1,39 @@
+﻿<template>
+    <style>
+        .wv-cancel {
+            color: #d9534f;
+            display: block;
+            font-size: 58px;
+            margin: 10px auto 2px auto;
+            text-align: center
+        }
+
+        h5 {
+            font-size: 18px;
+        }
+    </style>
+    <ux-dialog>
+        <ux-dialog-header showCloseButton.bind="false">
+            Session Timeout
+        </ux-dialog-header>
+
+        <ux-dialog-body>
+            <div>
+                <div style="text-align:center; display:block; margin-top: 15px;">
+                    <img src="Images/Icons/sign_warning_128.png" alt="Warning" title="See ya next time!" style="height: 100px; width: 100px;" />
+                </div>
+                <div class="text-center" style="display:block; margin-bottom: 18px; margin-top: 3px;">
+                    <span style="padding-top: 10px; font-size: 20px;">${message & signal:'need-update'}</span>
+                </div>
+            </div>
+        </ux-dialog-body>
+
+        <ux-dialog-footer>
+            <div id="buttonsContainer" class="k-button-group">
+                <button class="k-button k-secondary" click.delegate="dialogController.ok()" if.bind="!timedOut" title="Click to sign out">Sign Out</button>
+                <button class="k-button k-primary" click.delegate="dialogController.ok()" ref="timedOutButton" if.bind="timedOut" tile="Happy trails!">OK</button>
+                <button class="k-button k-primary" click.delegate="dialogController.cancel()" if.bind="!timedOut" title="Click to continue">Continue</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

@@ -1,0 +1,19 @@
+@import '../../../../../theme/colors';
+@import '../../../../../theme/mixins/font';
+@import '../../../../../theme/mixins/breakpoints';
+
+.scrollbar-feedback,
+.scrollbar-feedback-margin {
+  --scrollbar-size: 15px !important;
+  --scrollbar-thumb-color: #e8e8e8 !important;
+  --scrollbar-hover-size: 15px !important;
+  --scrollbar-track-color: #f8f8f8 !important;
+  --scrollbar-border-radius: 0 !important;
+
+  &-margin {
+    .ng-scroll-content {
+      width: 94%;
+      min-width: auto;
+    }
+  }
+}

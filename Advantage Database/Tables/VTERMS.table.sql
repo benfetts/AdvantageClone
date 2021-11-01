@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[VTERMS] (
+    [VT_CODE]            VARCHAR (3)    NOT NULL,
+    [VT_DESCRIPTION]     VARCHAR (30)   NULL,
+    [VT_DAYS_TO_PAY]     SMALLINT       NULL,
+    [VT_DISCOUNT_PCT]    DECIMAL (6, 3) NULL,
+    [VT_MEDIA_FLAG]      SMALLINT       NULL,
+    [VT_OTHER_FLAG]      SMALLINT       NULL,
+    [VT_PRODUCTION_FLAG] SMALLINT       NULL,
+    [INACTIVE_FLAG]      SMALLINT       NULL
+);
+

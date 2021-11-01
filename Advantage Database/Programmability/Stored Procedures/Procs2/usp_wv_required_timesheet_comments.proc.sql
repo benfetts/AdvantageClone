@@ -1,0 +1,34 @@
+﻿--DROP PROCEDURE [dbo].[usp_wv_required_timesheet_comments]
+CREATE PROCEDURE [dbo].[usp_wv_required_timesheet_comments]
+AS
+	DECLARE
+		@COMMENTS_REQ SMALLINT;
+	
+	SELECT
+		@COMMENTS_REQ = ISNULL(TIME_COMMENTS_REQ,0)
+	FROM
+		AGENCY WITH(NOLOCK);
+	
+	SET @COMMENTS_REQ = ISNULL(@COMMENTS_REQ, 0);
+
+	-- if there is one client time req, set entire ts to client req
+	IF @COMMENTS_REQ = 0
+	BEGIN
+		DECLARE 
+			@COUNT_CLIENT_COMMENT_REQ INT;
+	
+		SELECT 
+			@COUNT_CLIENT_COMMENT_REQ = COUNT(1) 
+		FROM 
+			CLIENT WITH(NOLOCK)
+		WHERE 
+			REQ_TIME_COMMENT = 1
+			AND (ACTIVE_FLAG IS NULL OR ACTIVE_FLAG = 1);
+	
+		IF @COUNT_CLIENT_COMMENT_REQ > 0
+		BEGIN
+			SET @COMMENTS_REQ = 1;
+		END	
+	END	
+
+	SELECT @COMMENTS_REQ AS TIME_COMMENTS_REQ;	

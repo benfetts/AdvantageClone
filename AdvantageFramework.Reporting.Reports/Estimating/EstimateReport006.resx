@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="XrRichTextDetailComments.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAewBcAGYAMQAgAEEAcgBpAGEAbAA7AH0ADQAKAH0ADQAKAHsADQAKAFwAYwBvAGwAbwByAHQAYgBsAA0ACgA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMgA1ADUAOwANAAoAfQANAAoAXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcAB7AFwAcwBlAGMAdABkAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAZgAxAFwAZgBzADEAOABcAGMAZgAxACAAWAByAFIAaQBjAGgAVABlAHgAdABEAGUAdABhAGkAbABDAG8AbQBtAGUAbgB0AHMAfQBcAHAAYQByAH0ADQAKAH0ADQAKAA==</value>
+  </data>
+  <data name="XrRichTextSuppliedByNotes.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAewBcAGYAMQAgAEEAcgBpAGEAbAA7AH0ADQAKAH0ADQAKAHsADQAKAFwAYwBvAGwAbwByAHQAYgBsAA0ACgA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMgA1ADUAOwANAAoAfQANAAoAXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcAB7AFwAcwBlAGMAdABkAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAZgAxAFwAZgBzADEAOABcAGMAZgAxACAAWAByAFIAaQBjAGgAVABlAHgAdABTAHUAcABwAGwAaQBlAGQAQgB5AE4AbwB0AGUAcwB9AFwAcABhAHIAfQANAAoAfQANAAoA</value>
+  </data>
+  <data name="XrRichTextQuoteComment.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAewBcAGYAMQAgAEEAcgBpAGEAbAA7AH0ADQAKAH0ADQAKAHsADQAKAFwAYwBvAGwAbwByAHQAYgBsAA0ACgA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMgA1ADUAOwANAAoAfQANAAoAXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcAB7AFwAcwBlAGMAdABkAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAZgAxAFwAZgBzADEAOABcAGMAZgAxACAAWAByAFIAaQBjAGgAVABlAHgAdABRAHUAbwB0AGUAQwBvAG0AbQBlAG4AdAB9AFwAcABhAHIAfQANAAoAfQANAAoA</value>
+  </data>
+  <data name="XrRichTextEstimateComponentComment.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAewBcAGYAMQAgAEEAcgBpAGEAbAA7AH0ADQAKAH0ADQAKAHsADQAKAFwAYwBvAGwAbwByAHQAYgBsAA0ACgA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMgA1ADUAOwANAAoAfQANAAoAXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcAB7AFwAcwBlAGMAdABkAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAZgAxAFwAZgBzADEAOABcAGMAZgAxACAAWAByAFIAaQBjAGgAVABlAHgAdABFAHMAdABpAG0AYQB0AGUAQwBvAG0AcABvAG4AZQBuAHQAQwBvAG0AbQBlAG4AdAB9AFwAcABhAHIAfQANAAoAfQANAAoA</value>
+  </data>
+  <data name="XrRichTextEstimateComment.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAewBcAGYAMQAgAEEAcgBpAGEAbAA7AH0ADQAKAH0ADQAKAHsADQAKAFwAYwBvAGwAbwByAHQAYgBsAA0ACgA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMgA1ADUAOwANAAoAfQANAAoAXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcAB7AFwAcwBlAGMAdABkAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAZgAxAFwAZgBzADEAOABcAGMAZgAxACAAWAByAFIAaQBjAGgAVABlAHgAdABFAHMAdABpAG0AYQB0AGUAQwBvAG0AbQBlAG4AdAB9AFwAcABhAHIAfQANAAoAfQANAAoA</value>
+  </data>
+  <data name="XrRichTextRevisionComment.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAewBcAGYAMQAgAEEAcgBpAGEAbAA7AH0ADQAKAH0ADQAKAHsADQAKAFwAYwBvAGwAbwByAHQAYgBsAA0ACgA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAA7AA0ACgBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMgA1ADUAOwANAAoAfQANAAoAXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcAB7AFwAcwBlAGMAdABkAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbAB7AFwAZgAxAFwAZgBzADEAOABcAGMAZgAxACAAWAByAFIAaQBjAGgAVABlAHgAdABSAGUAdgBpAHMAaQBvAG4AQwBvAG0AbQBlAG4AdAB9AFwAcABhAHIAfQANAAoAfQANAAoA</value>
+  </data>
+  <data name="XrRichTextDefaultFooter.SerializableRtfString" xml:space="preserve">
+    <value>ewBcAHIAdABmADEAXABhAG4AcwBpAGMAcABnADEAMgA1ADIADQAKAHsADQAKAFwAZgBvAG4AdAB0AGIAbAANAAoAewBcAGYAMAAgAFQAaQBtAGUAcwAgAE4AZQB3ACAAUgBvAG0AYQBuADsAfQANAAoAfQANAAoAewANAAoAXABjAG8AbABvAHIAdABiAGwADQAKADsADQAKAFwAcgBlAGQAMABcAGcAcgBlAGUAbgAwAFwAYgBsAHUAZQAwADsADQAKAFwAcgBlAGQAMABcAGcAcgBlAGUAbgAwAFwAYgBsAHUAZQAyADUANQA7AA0ACgB9AA0ACgBcAG4AbwB1AGkAYwBvAG0AcABhAHQAXABzAHAAbAB5AHQAdwBuAGkAbgBlAFwAaAB0AG0AYQB1AHQAcwBwAHsAXABzAGUAYwB0AGQAXABwAGEAcgBkAFwAcABsAGEAaQBuAFwAcQBsAFwAcABhAHIAfQANAAoAfQANAAoA</value>
+  </data>
+  <data name="CalculatedField1.Expression" xml:space="preserve">
+    <value>Iif([GroupOption] =  'T',[FunctionType] ,
+Iif([GroupOption] =  'H' Or [GroupOption] = 'HT',[FunctionHeadingSequence],
+Iif([GroupOption] =  'I', [InOut] ,
+Iif([GroupOption] =  'P',[EstimatePhaseID],[FunctionType]  ) ) ) )</value>
+  </data>
+  <data name="FunctionAmount.Expression" xml:space="preserve">
+    <value>Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[EstimateExtAmount]+[EstimateMarkupAmount]+[EstimateTaxAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[EstimateExtAmount]+[EstimateMarkupAmount] , 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[EstimateExtAmount]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[EstimateExtAmount]+[EstimateTaxAmount],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[EstimateExtAmount]+[EstimateMarkupAmount]+[EstimateTaxAmount]+[EstimateContingencyAmount]+[EstimateMarkupContingency],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[EstimateExtAmount]+[EstimateMarkupAmount]+[EstimateTaxAmount]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1, [EstimateExtAmount]+[EstimateTaxAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[EstimateExtAmount]+[EstimateMarkupAmount]  ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[EstimateExtAmount] ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[EstimateExtAmount]+[EstimateContingencyAmount]  ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[EstimateExtAmount]+[EstimateMarkupAmount]+[EstimateContingencyAmount]+[EstimateMarkupContingency] , [EstimateExtAmount]))
+ ) ) ) ) ) ) )))</value>
+  </data>
+  <data name="SubTotal.Expression" xml:space="preserve">
+    <value>Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [PrintNonBillable] = 0,[ActualTotal]+[ActualMarkup]+[ActualTax]-[NonBillableMarkup]-[NonBillableTax], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [PrintNonBillable] = 0,[ActualTotal]+[ActualMarkup]-[NonBillableMarkup]-[NonBillableTax],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [PrintNonBillable] = 0,[ActualTotal]+[ActualTax]-[NonBillableTax]-[NonBillableMarkup],
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [PrintNonBillable] = 0,[ActualTotal]-[NonBillableMarkup]-[NonBillableTax] ,[ActualTotal] ) ) ))</value>
+  </data>
+  <data name="RevisedTotalAmount.Expression" xml:space="preserve">
+    <value>Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[RevisedAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[RevisedAmount]+[RevisedTax] , 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[RevisedAmount]+[RevisedMarkupAmount]+[RevisedTax],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[RevisedAmount]+[RevisedMarkupAmount],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[RevisedAmount],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[RevisedAmount]+[RevisedContingency]+[RevisedMarkupContingency]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1, [RevisedAmount]+[RevisedMarkupAmount]+[RevisedContingency]+[RevisedMarkupContingency], 
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [ContingencySeparate] = 0 And [IncludeContingency] = 1, [RevisedAmount]+[RevisedMarkupAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[RevisedAmount]+[RevisedTax]+[RevisedContingency]+[RevisedMarkupContingency],
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[RevisedAmount]+[RevisedMarkupAmount]+[RevisedTax]+[RevisedContingency]+[RevisedMarkupContingency],
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[RevisedAmount]+[RevisedMarkupAmount]+[RevisedTax] ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[RevisedAmount]+[RevisedTax] , [RevisedAmount]))
+ ) ) ) )) ) ) )))</value>
+  </data>
+  <data name="OriginalTotalAmount.Expression" xml:space="preserve">
+    <value>Iif([OneRevision] = 0,Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[OriginalAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[OriginalAmount]+[OriginalTax] , 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[OriginalAmount]+[OriginalMarkupAmount]+[OriginalTax],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[OriginalAmount]+[OriginalMarkupAmount],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[OriginalAmount],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[OriginalAmount]+[OriginalContingency]+[OriginalMarkupContingency]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1, [OriginalAmount]+[OriginalMarkupAmount]+[OriginalContingency]+[OriginalMarkupContingency], 
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [ContingencySeparate] = 0 And [IncludeContingency] = 1, [OriginalAmount]+[OriginalMarkupAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[OriginalAmount]+[OriginalTax]+[OriginalContingency]+[OriginalMarkupContingency] ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[OriginalAmount]+[OriginalMarkupAmount]+[OriginalTax]+[OriginalContingency]+[OriginalMarkupContingency],
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[OriginalAmount]+[OriginalMarkupAmount]+[OriginalTax] ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[OriginalAmount]+[OriginalTax] , [OriginalAmount]))
+ ) ) ) ) )) ) )))  ,'' )</value>
+  </data>
+  <data name="OriginalSubTotal.Expression" xml:space="preserve">
+    <value>Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[OriginalAmount]+[OriginalMarkupAmount]+[OriginalTax], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[OriginalAmount] , 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[OriginalAmount]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[OriginalAmount],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[OriginalAmount]+[OriginalMarkupAmount]+[OriginalTax],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[OriginalAmount]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1, [OriginalAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[OriginalAmount]  ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[OriginalAmount] ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[OriginalAmount]  ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[OriginalAmount] , [OriginalAmount]))
+ ) ) ) ) ) ) )))</value>
+  </data>
+  <data name="RevisedSubTotal.Expression" xml:space="preserve">
+    <value>Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[RevisedAmount]+[RevisedMarkupAmount]+[RevisedTax], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [IncludeContingency] = 0,[RevisedAmount] , 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[RevisedAmount]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [IncludeContingency] = 0,[RevisedAmount],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[RevisedAmount]+[RevisedMarkupAmount]+[RevisedTax],
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[RevisedAmount]  ,
+Iif([TaxSeparate] = 0 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1, [RevisedAmount], 
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[RevisedAmount]  ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 1 And [IncludeContingency] = 1,[RevisedAmount] ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 1 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[RevisedAmount]  ,
+Iif([TaxSeparate] = 1 And [CommissionSeparate] = 0 And [ContingencySeparate] = 0 And [IncludeContingency] = 1,[RevisedAmount] , [RevisedAmount]))
+ ) ) ) ) ) ) )))</value>
+  </data>
+  <metadata name="BindingSource3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 134</value>
+  </metadata>
+  <metadata name="BindingSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+</root>

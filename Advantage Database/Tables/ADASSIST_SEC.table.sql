@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ADASSIST_SEC] (
+    [RPT_CODE] VARCHAR (10)  NULL,
+    [USER_ID]  VARCHAR (100) NULL,
+    [ENABLE]   SMALLINT      NULL
+);
+

@@ -1,0 +1,21 @@
+﻿
+
+CREATE PROCEDURE [proc_JOB_TRAFFIC_DET_PREDSDelete]
+(
+	@ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	DELETE
+	FROM [JOB_TRAFFIC_DET_PREDS]
+	WHERE
+		[ID] = @ID
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+

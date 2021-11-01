@@ -1,0 +1,13 @@
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Custom Report Import.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Custom Report Import.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Custom Report Import.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Custom Report Import.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage Custom Report Import.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage_Custom_Report_Import.AdvantageCustomReportImportForm.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage_Custom_Report_Import.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage Custom Report Import.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage Custom Report Import.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage Custom Report Import.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage Custom Report Import.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage Custom Report Import.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Custom Report Import\obj\Debug\Advantage Custom Report Import.pdb

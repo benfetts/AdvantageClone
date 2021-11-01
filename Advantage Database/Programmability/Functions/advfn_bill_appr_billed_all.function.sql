@@ -1,0 +1,28 @@
+﻿ALTER TABLE dbo.BILL_APPR_BATCH DROP COLUMN BILLED_ALL
+GO
+
+ALTER FUNCTION dbo.advfn_bill_appr_billed_all ( @ba_batch_id integer )
+RETURNS bit
+AS
+BEGIN
+	RETURN
+	(
+			CASE WHEN NOT EXISTS(
+			SELECT *
+			FROM dbo.BILL_APPR_BATCH bab
+				LEFT OUTER JOIN dbo.BILL_APPR ba ON ( bab.BA_BATCH_ID = ba.BA_BATCH_ID )
+				LEFT OUTER JOIN dbo.BILL_APPR_HDR bah ON ( ba.BA_ID = bah.BA_ID )
+				LEFT OUTER JOIN dbo.JOB_COMPONENT jc ON ( bah.JOB_NUMBER = jc.JOB_NUMBER AND bah.JOB_COMPONENT_NBR = jc.JOB_COMPONENT_NBR )
+			WHERE bab.BA_BATCH_ID = @ba_batch_id
+			AND (
+					bah.AR_INV_NBR IS NULL
+				AND
+					COALESCE(jc.JOB_BILL_HOLD, 0) = 0
+				)
+			) THEN 1 ELSE 0 END
+	)
+END
+GO
+  
+ALTER TABLE dbo.BILL_APPR_BATCH ADD BILLED_ALL AS ([dbo].[advfn_bill_appr_billed_all]([BA_BATCH_ID]))
+GO

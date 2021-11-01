@@ -1,0 +1,40 @@
+<div [ngClass]="{'active': feedback.active === true}">
+  <div style="margin-top: 5px">
+    <div class="small-employee" title="{{feedback.employeeFullName}}">
+      <div *ngIf="isExternal(feedback); else notExternal">
+        <span class="comment-image-text comment-image">{{getEmployeeInit(feedback)}}</span>
+      </div>
+      <ng-template #notExternal>
+        <img src="./api/EmployeePicture/{{getEmployeeCode(feedback)}}?dl={{dl}}" />
+      </ng-template>
+    </div>
+    <div class="comment-content" style="padding-bottom:10px">
+      <div class="comment-header">
+        <small>
+          {{feedback.employeeFullName}}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;{{feedback.generatedDate | date:'short'}}
+          <div style="float:right">&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="showHideReplyTextarea($event, feedback.commentId)" title="Reply to this comment"><span>Reply</span></a></div>
+          <ng-template [ngIf]="feedback.markupSeqNumber && markerToolButton">
+            &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
+            <div style="background-color: #5cb85c; border-radius: 3px; padding-left: 3px; padding-right: 3px; float: right ">
+              <div style="color: white; background-color: #5cb85c">{{feedback.markupSeqNumber}}</div>
+            </div>
+          </ng-template>
+        </small>
+      </div>
+      <div class="comment-text" style="min-height:19px" [innerHTML]="feedback.comment"></div>
+    </div>
+  </div>
+
+
+  <div style="padding-left:35px;display:grid">
+    <div *ngIf="reply">
+      <div id="editorDiv">
+        <textarea kendo-editor #myEditor id="editor" [attr.editor-data]="feedback.commentId"></textarea>
+      </div>
+      <mention-item #myMention id="mention" commentType="reply" [attr.mention-data]="feedback.commentId"></mention-item>
+    </div>
+    <ng-container *ngFor="let reply of feedback.replies; let i = index">
+      <markup-comment-reply [feedback]="reply"></markup-comment-reply>
+    </ng-container>
+  </div>
+</div>

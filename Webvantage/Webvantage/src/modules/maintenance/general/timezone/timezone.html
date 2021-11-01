@@ -1,0 +1,20 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+
+    <div id='main_toolbar'>
+        <ak-toolbar>
+            <ak-toolbar-item k-type="button" k-text="Save" k-overflow="never" k-click.call="save()"></ak-toolbar-item>
+        </ak-toolbar>
+    </div>
+    Timezone Maintenance Page
+</template>

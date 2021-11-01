@@ -1,0 +1,663 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+AdvantageFramework.Web
+</name>
+</assembly>
+<members>
+<member name="T:AdvantageFramework.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:AdvantageFramework.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:AdvantageFramework.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:AdvantageFramework.Web.QueryStringOld">
+ <summary>
+Internet Explorer 5 -8 has url limit of 2,083 chars !!!!!!!!!!!
+Need to handle this....if over limit, send QS to session???
+  STEPS TO ADD
+  1.  Add Private Property
+  2.  Add Public Property
+  3.  Add to Build function
+  4.  Add to FromURL function    
+ 
+ </summary>
+ 
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ConnString">
+ <summary>
+ QueryString key: con
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.Page">
+ <summary>
+ QueryString key: N/A
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.App">
+ <summary>
+ QueryString key: f
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.IsSession">
+ <summary>
+ QueryString key: SSSN
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.AlertId">
+ <summary>
+ QueryString key: a
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.AlertTemplateID">
+ <summary>
+ QueryString key: ani
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.AlertStateId">
+ <summary>
+ QueryString key: asi
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.AccountExecutiveCode">
+ <summary>
+ QueryString key: ae
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.APInvoice">
+ <summary>
+ QueryString key: api
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.APID">
+ <summary>
+ QueryString key: apid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.BillingApprovalBatchId">
+ <summary>
+ QueryString key: bid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.BillingApprovalId">
+ <summary>
+ QueryString key: aid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.BoardID">
+ <summary>
+ QueryString key: brdid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.BoardHeaderID">
+ <summary>
+ QueryString key: brdhid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.BoardColumnID">
+ <summary>
+ QueryString key: brdcid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.BoardDetailID">
+ <summary>
+ QueryString key: brdcid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.BoardStateID">
+ <summary>
+ QueryString key: brdstid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.CampaignCode">
+ <summary>
+ QueryString key: cmp
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ChatRoomId">
+ <summary>
+ QueryString key: crid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ClientCode">
+ <summary>
+ QueryString key: c
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.CampaignIdentifier">
+ <summary>
+ QueryString key: cid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ContentArea">
+ <summary>
+ QueryString key: contaid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ContractId">
+ <summary>
+ QueryString key: conid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.CutOffDate">
+ <summary>
+ QueryString key: cod
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.DeepLink">
+ <summary>
+ QueryString key: dl
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.DepartmentTeamCode">
+ <summary>
+ QueryString key: dtc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.DivisionCode">
+ <summary>
+ QueryString key: d
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.DocumentId">
+ <summary>
+ QueryString key: doc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.DocumentLabelId">
+ <summary>
+ QueryString key: doclblid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.DueDate">
+ <summary>
+ QueryString key: dd
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EmailGroup">
+ <summary>
+ QueryString key: eg
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EmployeeCode">
+ <summary>
+ QueryString key: emp
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EmployeeName">
+ <summary>
+ QueryString key: en
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EmployeeTimeId">
+ <summary>
+ QueryString key: etid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EmployeeTimeDetailId">
+ <summary>
+ QueryString key: etdid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EmployeeTimeForecastOfficeDetailId">
+ <summary>
+ QueryString key: etfod
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EndDate">
+ <summary>
+ QueryString key: ed
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EstimateComponentNumber">
+ <summary>
+ QueryString key: ec
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EstimateNumber">
+ <summary>
+ QueryString key: e
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EstimateQuoteNumber">
+ <summary>
+ QueryString key: eq
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EstimateRevisionNumber">
+ <summary>
+ QueryString key: er
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EventId">
+ <summary>
+ QueryString key: evt
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.EventTaskId">
+ <summary>
+ QueryString key: evtt
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ExcludeProjectedTasks">
+ <summary>
+ QueryString key: ept
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ExpenseId">
+ <summary>
+ QueryString key: xid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.FunctionCode">
+ <summary>
+ QueryString key: fn
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.IncludeCompletedSchedules">
+ <summary>
+ QueryString key: ics
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.IncludeCompletedTasks">
+ <summary>
+ QueryString key: ict
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.IncludeOnlyPendingTasks">
+ <summary>
+ QueryString key: ipt
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.InvoiceNumber">
+ <summary>
+ QueryString key: inv
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.InvoiceSequenceNumber">
+ <summary>
+ QueryString key: invseq
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.IsBookmark">
+ <summary>
+ QueryString key: bm
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.IsJobDashboard">
+ <summary>
+ QueryString key: jd
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.JobComponentNumber">
+ <summary>
+ QueryString key: jc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.JobNumber">
+ <summary>
+ QueryString key: j
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.JobVersionHeaderID">
+ <summary>
+ QueryString key: jvid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.JobVersionSequenceNumber">
+ <summary>
+ QueryString key: jvs
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ManagerCode">
+ <summary>
+ QueryString key: m
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaATBRevisionID">
+ <summary>
+ QueryString key: matbrevid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaATBNumber">
+ <summary>
+ QueryString key: matbnum
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaOrderNumber">
+ <summary>
+ QueryString key: mon
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaOrderLineNumber">
+ <summary>
+ QueryString key: moln
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaOrderRevisionNumber">
+ <summary>
+ QueryString key: morn
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaOrderSequenceNumber">
+ <summary>
+ QueryString key: morsn
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaATBRevisionNumber">
+ <summary>
+ QueryString key: matbrevid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MediaType">
+ <summary>
+ QueryString key: mt
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.MilestonesOnly">
+ <summary>
+ QueryString key: mso
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.Month">
+ <summary>
+ QueryString key: mm
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.OfficeCode">
+ <summary>
+ QueryString key: o
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.PhaseFilter">
+ <summary>
+ QueryString key: pf
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.PurchaseOrderNumber">
+ <summary>
+ QueryString key: po
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.PostPeriod">
+ <summary>
+ QueryString key: pp
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ProductCode">
+ <summary>
+ QueryString key: p
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.Quantity">
+ <summary>
+ QueryString key: qty
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.RevisionId">
+ <summary>
+ QueryString key: rv
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.RoleCode">
+ <summary>
+ QueryString key: rc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.RoomID">
+ <summary>
+ QueryString key: ri
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.RoomName">
+ <summary>
+ QueryString key: rn
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.Rush">
+ <summary>
+ QueryString key: rsh
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.SalesClassCode">
+ <summary>
+ QueryString key: sc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.SearchText">
+ <summary>
+ QueryString key: st
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.Skip">
+ <summary>
+ QueryString key: skip
+ </summary>
+ <returns>Integer</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.SpecificationId">
+ <summary>
+ QueryString key: spid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.SprintHeaderID">
+ <summary>
+ QueryString key: sprhid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.SprintDetailID">
+ <summary>
+ QueryString key: sprdid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.StartDate">
+ <summary>
+ QueryString key: sd
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.Take">
+ <summary>
+ QueryString key: take
+ </summary>
+ <returns>Integer</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.TaskCode">
+ <summary>
+ QueryString key: tc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.TaskSequenceNumber">
+ <summary>
+ QueryString key: s
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.TimeType">
+ <summary>
+ QueryString key: tt
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.TrafficStatusCode">
+ <summary>
+ QueryString key: tsc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.TrafficScheduleVersionId">
+ <summary>
+ QueryString key: tsv
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.UserCode">
+ <summary>
+ QueryString key: usr
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.VendorCode">
+ <summary>
+ QueryString key: vc
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.VersionId">
+ <summary>
+ QueryString key: vid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.WorkspaceId">
+ <summary>
+ QueryString key: w
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.Year">
+ <summary>
+ QueryString key: yyyy
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.DocumentLevel">
+ <summary>
+ QueryString key: doclvl
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ContractReportId">
+ <summary>
+ QueryString key: conrptid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ConceptShareBaseReviewType">
+ <summary>
+ QueryString key: csbcsrt
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ConceptShareProjectID">
+ <summary>
+ QueryString key: cspid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ConceptShareReviewID">
+ <summary>
+ QueryString key: csrid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ConceptShareAssetID">
+ <summary>
+ QueryString key: csaid
+ </summary>
+ <returns>String</returns>
+</member>
+<member name="P:AdvantageFramework.Web.QueryStringOld.ConceptShareCommentID">
+ <summary>
+ QueryString key: cscid
+ </summary>
+ <returns>String</returns>
+</member>
+</members>
+</doc>

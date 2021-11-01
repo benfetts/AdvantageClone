@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="003c2b36-6ffb-464f-bdfc-0d184d8e650e" ChangeDateTime="10/06/2017 18:42:38">
+    <Property Name="ElementName" Value="[dbo].[NCC_TV_FUSION_AUDIENCE].[NIELSEN_MARKET_NUM]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NCC_TV_FUSION_AUDIENCE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NCC_TV_FUSION_UE_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="87f50634-75d5-4253-a602-ad43774fd7d9" ChangeDateTime="10/06/2017 18:44:29">
+    <Property Name="ElementName" Value="[dbo].[NCC_TV_FUSION_HUTPUT].[NIELSEN_MARKET_NUM]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NCC_TV_FUSION_HUTPUT]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NCC_TV_FUSION_UE_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dfa9ba77-57ce-4cfd-98c6-bb651b1d32de" ChangeDateTime="10/12/2017 18:13:26">
+    <Property Name="ElementName" Value="[dbo].[NCC_TV_FUSION_UE].[NCC_TV_FUSION_UE_ID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NCC_TV_FUSION_UE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NCC_TV_FUSION_UE_REVISIONID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c7fd8979-3d1c-4c89-b00c-2d4ce2854a12" ChangeDateTime="10/13/2017 11:08:37">
+    <Property Name="ElementName" Value="[dbo].[NCC_TV_AI_UE].[YEAR]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NCC_TV_AI_UE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NCC_TV_AI_UE_LOG_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dcc30e1b-fc60-4df1-b2af-efb2ede4dfc1" ChangeDateTime="10/13/2017 11:10:08">
+    <Property Name="ElementName" Value="[dbo].[NCC_TV_CARRIAGE_UE].[YEAR]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NCC_TV_CARRIAGE_UE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NCC_TV_CARRIAGE_UE_LOG_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dd9535a3-c3c0-4ff6-90cd-246d696f44af" ChangeDateTime="10/19/2017 13:36:01">
+    <Property Name="ElementName" Value="[dbo].[DOWNLOAD_FILE].[DOWNLOAD_DATE]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DOWNLOAD_FILE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LAST_WRITE_TIME" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="04ba1cef-ca00-4ae5-84a9-5ce3ae8f9972" ChangeDateTime="10/19/2017 15:40:43">
+    <Property Name="ElementName" Value="[dbo].[NIELSEN_TV_PROGRAM].[NIELSEN_MARKET_NUM]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NIELSEN_TV_PROGRAM]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NIELSEN_TV_PROGRAM_BOOK_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="227570af-9af2-464f-9016-772b3f640e43" ChangeDateTime="10/19/2017 17:30:41">
+    <Property Name="ElementName" Value="[dbo].[NIELSEN_TV_PROGRAM_BOOK_REVISION].[NIELSEN_TV_PROGRAM_BOOK_REVISION]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NIELSEN_TV_PROGRAM_BOOK_REVISION]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NIELSEN_TV_PROGRAM_BOOK_REVISION_ID" />
+  </Operation>
+</Operations>

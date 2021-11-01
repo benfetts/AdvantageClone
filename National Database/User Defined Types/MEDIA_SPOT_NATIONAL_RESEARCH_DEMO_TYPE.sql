@@ -1,0 +1,4 @@
+CREATE TYPE [dbo].[MEDIA_SPOT_NATIONAL_RESEARCH_DEMO_TYPE] AS TABLE(
+	[MediaDemoID] [int] NOT NULL,
+	[Order] [smallint] NOT NULL
+);

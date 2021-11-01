@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION dbo.advfn_bill_appr_billed_any ( @ba_batch_id integer )  	RETURNS bit  	AS  	BEGIN  		RETURN ( CASE WHEN EXISTS( SELECT *   					     FROM dbo.BILL_APPR ba INNER JOIN dbo.BILL_APPR_HDR bah  					       ON ( ba.BA_ID = bah.BA_ID )  					    WHERE ba.BA_BATCH_ID = @ba_batch_id   					      AND bah.AR_INV_NBR IS NOT NULL ) THEN 1 ELSE 0 END )  	END

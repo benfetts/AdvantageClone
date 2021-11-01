@@ -1,0 +1,37 @@
+﻿
+
+
+/* ============================================================ */
+/*   View: GLENTRY                                              */
+/* ============================================================ */
+CREATE VIEW dbo.GLENTRY ( GLEXACT, GLESEQ, GLECODE, GLEENTDATE, GLECD, GLEPOSTSUM, GLESOURCE, GLESOURCETIME, GLEAMT, GLEFCAMT, 
+	GLECUR, GLEQTY, GLEREM, GLEJOBCOSTID, GLECFF1, GLENFF1, GLEDTFF1, GLEUSER, GLEPP, GLELPP, GLEREVFLG, GLEMOD) 
+AS
+ SELECT GLEHXACT, 
+	GLETSEQ, 
+	GLETCODE, 
+	GLEHENTDATE, 
+	' ',
+	GLEHPOSTSUM, 
+	GLETSOURCE, 
+	GLEHSOURCETIME,      
+	GLETAMT, 
+	GLETFCAMT, 
+	GLETCUR, 
+	GLETQTY,
+	GLETREM,
+	GLETJOBCOSTID,      
+	GLETCFF1, 
+	GLETNFF1, 
+	GLETDTFF1,      
+	GLEHUSER, 
+	GLEHPP, 
+	GLEHLPP, 
+	GLEHREVFLG,    
+	GLEHMOD  
+   FROM GLENTHDR,
+	GLENTTRL  
+  WHERE GLEHXACT = GLETXACT
+
+
+

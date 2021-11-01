@@ -1,0 +1,236 @@
+﻿@accentBg: #dddddd;
+@accentBorder: #cccccc;
+@accentBorderColor: rgba(97, 106, 120, 0.07);
+@activeState: #5CB85C;
+@activity: #009688;
+@activityA: #9C27B0;
+@activityC: #3F51B5;
+@activityM: #FF5722;
+@activityTD: #9E9E9E;
+@addNew: #449d44;
+@alertPriorityHighest: #D63251;
+@alertPriorityHigh: #DC3545;
+@alertPriorityNormal: #808080;
+@alertPriorityLow: #4D82B8;
+@alertPriorityLowest: #B2C9E0;
+@altBgColor: #fbfbfb;
+@appTypeDefault: #666666;
+@appTypeDefaultDX: #00BCD4;
+@appTypeCustom: #666666;
+@appTypeAbout: #03A9F4;
+@appTypeDesktop: #FF9800;
+@appTypeEmployee: #9C27B0;
+@appTypeProjectManagement: #009688;
+@appTypeMedia: #673AB7;
+@appTypeBilling: #4B7D70;
+@appTypeFinance: #388E3C;
+@appTypeMaintenance: #3F51B5;
+@appTypeSecurity: #F44336;
+@borderRadius: 2px;
+@borderWidth: 1px;
+@boxShadow: #ececec;
+@boxHeaderHeight: @lineHeight * 2;
+@borderColor: #dce3e6;
+@calendarActivity: #20C997;
+@calendarActivityA: #2A579A;
+@calendarActivityC: #4D82B8;
+@calendarActivityM: #FD7E14;
+@calendarActivityTD: #808080;
+@calendarAssignment: #007BFF;
+@calendarEvent: #653208;
+@calendarEventTask: #B89A7C;
+@calendarHoliday: #E2A62E;
+@calendarTask: #5CB85C;
+@calendarTaskPending: #808080;
+@cardCalendarEvent: #6F42C1;
+@cardCalendarEventTask: #3C0F8E;
+@cardCalendarAssignment: #1976D2;
+@cancel: #DC3545;
+@color: #767676;
+@contentBG: #ffffff;
+@danger: #DC3545;
+@dangerBorder: #d43f3a;
+@dangerBorderHover: #ac2925;
+@dangerHover: #c9302c;
+@floatyBlack: #000000;
+@floatyBlue: #03A9F4;
+@floatyGreen: #4CAF50;
+@floatyOrange: #FF9800;
+@fontFamily: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif;
+@fontSize: 13px;
+@holiday: #FF9800;
+@inputBorderRadius: 2px;
+@inputFontFamily: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+@inputFontSize: 12px;
+@largeStart: 1200px;
+@lineHeight: @fontSize + @lineHeightOffset;
+@lineHeightOffset: 4;
+@linkHoverDark: #424242;
+@mediumEnd: 1199px;
+@mediumStart: 992px;
+@neutral: #c0c0c0;
+@pendingState: #666666;
+@projectedState: #FFC107; 
+@red: #F44336;
+/*@save: #2956B2;*/
+@save: #337ab7;
+@saveBorder: #2e6da4;
+@saveBorderHover: #204d74;
+@saveHover: #286090;
+@smallStart: 768px;
+@smallEnd: 991px;
+@success: #5cb85c;
+@successBorder: #4cae4c;
+@successHover: #449d44;
+@successBorderHover: #398439;
+@taskDueOverdue: #E9360A;
+@taskDueToday: #EC6400;
+@xsmallStart: 0px;
+@xsmallEnd: 767px;
+@warning: #FFC107;
+
+//Document Icon Colors
+@invoice: #85bb65;
+@img: #16648c;
+@pdf: #ff3300;
+@powerpoint: #e9692c;
+@word: #3788b2;
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), url(../fonts/open-sans/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), url(../fonts/open-sans/OpenSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Open Sans Semi Bold'), url(../fonts/open-sans/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: local('Open Sans Extra Bold'), url(../fonts/open-sans/OpenSans-ExtraBold.ttf);
+}
+
+.fontSize(@size) {
+    font-size: @size;
+    line-height: @size + @lineHeightOffset;
+}
+
+.h6() {
+    .fontSize(@fontSize);
+}
+
+.h5() {
+    .fontSize(@fontSize + 2);
+}
+
+.h4() {
+    .fontSize(@fontSize + 5);
+}
+
+.h3() {
+    .fontSize(@fontSize + 9);
+}
+
+.h2() {
+    .fontSize(@fontSize + 14);
+}
+
+.h1() {
+    .fontSize(@fontSize + 20);
+}
+
+.boxshadow(@x: 0; @y: 1px; @blur: 1px; @color: @boxShadow) {
+    -moz-box-shadow: @arguments;
+    -webkit-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
+
+.border(@t: 1px; @r: 1px; @b: 1px; @l: 1px; @style: solid; @color: @borderColor) {
+    border-left: @l @style @color;
+    border-right: @r @style @color;
+    border-top: @t @style @color;
+    border-bottom: @b @style @color;
+}
+
+.border-accent(@t: 1px; @r: 1px; @b: 1px; @l: 1px; @style: solid) {
+    .border(@t, @r, @b, @l, @style, @accentBorder);
+}
+
+.cardState(@bgColor, @badgeColor: #fff) {
+    border-bottom-color: @bgColor;
+
+    .wv-badge {
+        background: @bgColor;
+        color: @badgeColor;
+    }
+}
+
+.badgeStateless() {
+    .badgeState(@borderColor, #000);
+}
+
+.badgeOverdue() {
+    .badgeState(@taskDueOverdue);
+}
+
+.badgeState(@bgColor, @color: #ffffff) {
+    background: @bgColor;
+    color: @color;
+}
+
+.wv-employee-img-thumbnail-hdr() {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 32px !important;
+    width: 32px !important;
+    border-radius: 5px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+.wv-employee-img-thumbnail() {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 5px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+.wv-employee-img-thumbnail-lg() {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 48px !important;
+    width: 48px !important;
+    border-radius: 7px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+.wv-employee-img-thumbnail-xxlg() {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 80px !important;
+    width: 80px !important;
+    border-radius: 10px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}

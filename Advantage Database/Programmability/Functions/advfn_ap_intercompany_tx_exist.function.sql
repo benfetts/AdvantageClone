@@ -1,0 +1,54 @@
+CREATE FUNCTION [dbo].[advfn_ap_intercompany_tx_exist](
+	@ap_id int)
+RETURNS bit
+AS
+BEGIN
+	DECLARE @header_office_code varchar(4),
+			@result bit
+
+	SET @result = 0
+
+	SELECT @header_office_code = OFFICE_CODE
+	FROM dbo.AP_HEADER
+	WHERE AP_ID = @ap_id
+	AND MODIFY_FLAG IS NULL
+
+	IF EXISTS (
+			SELECT OFFICE_CODE 
+			FROM (
+					SELECT DISTINCT OFFICE_CODE FROM AP_GL_DIST
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+					UNION
+					SELECT OFFICE_CODE FROM AP_PRODUCTION 
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+					UNION
+					SELECT OFFICE_CODE FROM AP_INTERNET 
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+					UNION
+					SELECT OFFICE_CODE FROM AP_MAGAZINE
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+					UNION
+					SELECT OFFICE_CODE FROM AP_NEWSPAPER
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+					UNION
+					SELECT OFFICE_CODE FROM AP_OUTDOOR  
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+					UNION
+					SELECT OFFICE_CODE FROM AP_RADIO 
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+					UNION
+					SELECT OFFICE_CODE FROM AP_TV
+					WHERE AP_ID = @ap_id
+					AND MODIFY_DELETE IS NULL
+				) apdetail
+			WHERE apdetail.OFFICE_CODE <> @header_office_code) SET @result = 1
+
+	RETURN @result
+END

@@ -1,0 +1,50 @@
+﻿
+CREATE PROCEDURE [dbo].[advsp_cleanup_temp_bill_hold] @bcc_id_in integer, @ret_val integer OUTPUT 
+AS
+
+SET NOCOUNT ON
+
+ UPDATE dbo.AP_PRODUCTION
+    SET AP_PROD_BILL_HOLD = 0
+  WHERE AP_PROD_BILL_HOLD = 1
+    AND BCC_ID IS NULL
+    AND BILLING_USER IS NULL 
+    AND EXISTS ( SELECT * 
+                   FROM dbo.JOB_COMPONENT jc 
+                  WHERE jc.JOB_NUMBER = dbo.AP_PRODUCTION.JOB_NUMBER 
+	                AND jc.JOB_COMPONENT_NBR = dbo.AP_PRODUCTION.JOB_COMPONENT_NBR
+	                AND jc.BILLING_USER IS NULL
+		            AND jc.JOB_BILL_HOLD IN ( 1, 3 )
+		            AND jc.BCC_ID IS NULL )
+
+ UPDATE dbo.EMP_TIME_DTL
+    SET BILL_HOLD_FLG = 0
+  WHERE BILL_HOLD_FLG = 1 
+    AND BCC_ID IS NULL 
+    AND BILLING_USER IS NULL
+    AND EXISTS ( SELECT * 
+                   FROM dbo.JOB_COMPONENT jc 
+                  WHERE jc.JOB_NUMBER = dbo.EMP_TIME_DTL.JOB_NUMBER 
+	                AND jc.JOB_COMPONENT_NBR = dbo.EMP_TIME_DTL.JOB_COMPONENT_NBR
+	                AND jc.BILLING_USER IS NULL
+		            AND jc.JOB_BILL_HOLD IN ( 1, 3 )
+		            AND jc.BCC_ID IS NULL )
+
+ UPDATE dbo.INCOME_ONLY
+    SET BILL_HOLD_FLAG = 0
+  WHERE BILL_HOLD_FLAG = 1 
+    AND BCC_ID IS NULL 
+    AND BILLING_USER IS NULL
+    AND EXISTS ( SELECT * 
+                   FROM dbo.JOB_COMPONENT jc 
+                  WHERE jc.JOB_NUMBER = dbo.INCOME_ONLY.JOB_NUMBER 
+	                AND jc.JOB_COMPONENT_NBR = dbo.INCOME_ONLY.JOB_COMPONENT_NBR
+	                AND jc.BILLING_USER IS NULL
+		            AND jc.JOB_BILL_HOLD IN ( 1, 3 )
+		            AND jc.BCC_ID IS NULL )
+
+ UPDATE dbo.JOB_COMPONENT
+    SET JOB_BILL_HOLD = 0
+  WHERE JOB_BILL_HOLD IN ( 1, 3 )
+    AND BCC_ID IS NULL
+    AND BILLING_USER IS NULL

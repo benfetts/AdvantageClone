@@ -1,0 +1,16 @@
+CREATE PROCEDURE [dbo].[advsp_employee_save_signature]
+	@EMP_CODE VARCHAR(6),
+	@IMAGE VARBINARY(MAX)
+AS
+BEGIN
+
+	UPDATE 
+		dbo.EMPLOYEE
+	SET 
+		EMP_SIG = @IMAGE
+	WHERE 
+		EMP_CODE = @EMP_CODE
+
+END
+GO
+

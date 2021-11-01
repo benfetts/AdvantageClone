@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ASSIGN_NBR] (
+    [COLUMNNAME] VARCHAR (30)  NOT NULL,
+    [LAST_NBR]   INT           NULL,
+    [USER_ID]    VARCHAR (100) NULL
+);
+

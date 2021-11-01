@@ -1,0 +1,25 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_QUICK_LAUNCH_APPSLoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[APPLICATION_ID]
+	FROM [CP_USER_QUICK_LAUNCH_APPS]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

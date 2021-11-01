@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[NEWSPAPER_OTH_CHGS] (
+    [REC_ID]       INT             IDENTITY (1, 1) NOT NULL,
+    [ORDER_NBR]    INT             NOT NULL,
+    [LINE_NBR]     SMALLINT        NOT NULL,
+    [CHG_TYPE]     VARCHAR (2)     NOT NULL,
+    [CHG_DESC]     VARCHAR (60)    NULL,
+    [QUANTITY]     DECIMAL (11, 2) NULL,
+    [RATE]         DECIMAL (15, 4) NULL,
+    [AMOUNT]       DECIMAL (15, 2) NULL,
+    [RATE_TYPE]    VARCHAR (3)     NULL,
+    [REVISED_DATE] SMALLDATETIME   NULL,
+    [REVISED_BY]   VARCHAR (100)   NULL
+);
+

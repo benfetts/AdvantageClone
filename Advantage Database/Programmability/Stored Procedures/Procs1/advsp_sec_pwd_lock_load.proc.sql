@@ -1,0 +1,60 @@
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id(N'[advsp_sec_pwd_lock_load]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE [dbo].[advsp_sec_pwd_lock_load]
+GO
+CREATE PROCEDURE [dbo].[advsp_sec_pwd_lock_load]
+@USER_CODE VARCHAR(100)
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	--	INIT
+	BEGIN
+		DECLARE
+			@ID INT,
+			@CT INT,
+			@INSERT BIT,
+			@LOCKOUT_MINUTES AS INT
+		;
+		SELECT @INSERT = 0;
+	END
+	--	REC CLEANUP
+	BEGIN
+		SELECT @CT = COUNT(1) FROM SEC_PWD_LOCK WITH(NOLOCK) WHERE USER_CODE = @USER_CODE;
+		IF @CT > 1
+		BEGIN
+			DELETE FROM SEC_PWD_LOCK WITH(ROWLOCK) WHERE USER_CODE = @USER_CODE;
+			SELECT @INSERT = 1;
+		END
+		IF @CT = 0
+		BEGIN
+			SELECT @INSERT = 1;
+		END
+		IF @INSERT = 1
+		BEGIN
+			INSERT INTO SEC_PWD_LOCK WITH(ROWLOCK) (USER_CODE, ATTEMPTS, LOCK_DATE)
+			VALUES (@USER_CODE, 0, NULL);
+		END
+	END
+	--	GET ONE REC
+	BEGIN
+		SELECT @ID = (SELECT 
+						TOP 1 S.ID 
+					  FROM 
+						SEC_PWD_LOCK S WITH(NOLOCK) 
+					  WHERE 
+						S.USER_CODE = @USER_CODE);
+	END
+	--  GET DATA
+	IF @ID IS NOT NULL AND @ID > 0
+	BEGIN
+		SELECT TOP 1
+			[ID] = S.ID,
+			[UserCode] = S.USER_CODE,
+			[Attempts] = ISNULL(S.ATTEMPTS, 0),
+			[LockDate] = S.LOCK_DATE
+		FROM
+			SEC_PWD_LOCK S WITH(NOLOCK)
+		WHERE
+			S.ID = @ID;
+	END
+END
+/*=========== QUERY ===========*/

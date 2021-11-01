@@ -1,0 +1,11 @@
+<div data-options="dxView : { name: 'view_alert_attachments', title: 'Attachments' } ">
+    <div data-bind="dxCommand: { title: 'Add', id: 'create', icon: 'plus'}"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxList: attachmentsList">
+            <div data-options="dxTemplate : { name: 'item' } ">
+                <div data-bind="text: Filename, dxAction: function(e) {$root.attachmentClick(e, $data);}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

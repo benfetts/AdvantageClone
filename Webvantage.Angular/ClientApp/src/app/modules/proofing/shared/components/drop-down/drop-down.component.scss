@@ -1,0 +1,135 @@
+@import '../../../theme/colors';
+@import '../../../theme/mixins/font';
+
+.k-popup {
+  border-width: 0;
+}
+
+.k-list .k-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border: 1px solid $border-color;
+  border-top: none;
+  padding: 4px 7px;
+}
+
+.k-list .k-item.k-state-focused {
+  box-shadow: none;
+}
+
+.drop-down-opened {
+  &.k-state-focused > .k-button {
+    border: 1px solid $border-color;
+    box-shadow: none;
+    background-color: $very-light-grey;
+
+    img {
+      opacity: 0.5;
+    }
+
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+}
+
+.k-list .k-item:focus {
+  box-shadow: none;
+}
+
+.k-list {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+
+  li:last-child {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+}
+
+.k-animation-container > .k-popup {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.tools,
+.versions {
+  .k-list {
+    width: 32px;
+  }
+}
+
+.percents-ranger {
+  .k-list {
+    @include font-base(14px, normal);
+    width: 100px;
+    background: white;
+
+    li:first-child {
+      border-top: 1px solid $border-color;
+    }
+
+    & .k-item {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.icon-drop-down {
+  margin-left: 5px;
+  margin-right: 10px;
+  min-width: 8px;
+  min-height: 8px;
+  @-moz-document url-prefix() {
+    width: 6px;
+    height: 3.88px;
+  }
+}
+
+.images {
+  width: 12px;
+  height: 20px;
+  align-content: center;
+  justify-content: center;
+
+  &-container {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .arrow {
+    margin-top: 7px;
+    position: absolute;
+    top: 15px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .inner-image {
+    min-width: 16px;
+    min-height: 16px;
+  }
+}
+
+.k-image {
+  width: 14px;
+}
+
+.versions {
+  &.drop-down-opened {
+    &.k-state-focused > .k-button {
+      background: $pressed-button;
+      border: 1px solid $border-color;
+      box-shadow: none;
+
+      img {
+        opacity: 1;
+      }
+
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+  }
+}

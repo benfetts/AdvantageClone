@@ -1,0 +1,28 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Client_DeleteContactDP]
+(
+	@CDP_ID smallint
+)
+AS
+BEGIN
+	SET NOCOUNT OFF
+	
+	DECLARE 
+	@ERR INT
+
+
+	DELETE FROM CDP_CONTACT_DTL
+	WHERE CDP_CONTACT_ID = @CDP_ID
+
+	
+
+	
+	SET @ERR = @@Error
+
+	--RETURN @ERR
+END
+
+
+
+

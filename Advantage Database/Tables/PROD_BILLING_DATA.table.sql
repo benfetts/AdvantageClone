@@ -1,0 +1,80 @@
+IF ( OBJECT_ID( N'PROD_BILLING_DATA', 'U' ) IS NOT NULL )
+	DROP TABLE dbo.PROD_BILLING_DATA
+GO	
+
+-- Creates temp table PROD_BILLING_DATA (JP 3/29/2012)
+-- #00 03/29/12 - original
+-- #01 08/17/12 - added new column FNC_CODE_TYPE and removed several unused columns
+-- #02 03/20/13 - chanded TAX_CODE from 6 to 30 chars
+-- #03 03/31/13 - added CDP and OFFICE codes
+-- #04 01/30/15 - re-dimensioned ITEM from 50 to 100 chars for v6.60.04 (1864-163)
+
+
+CREATE TABLE dbo.PROD_BILLING_DATA (
+	PBD_ID					integer identity(1, 1) NOT NULL,
+	[USER_ID]				varchar(100) NOT NULL,
+	APP_TYPE				varchar(2) NOT NULL,
+	LINK_ID					tinyint NULL DEFAULT 1,
+	REC_TYPE				varchar(1) NULL,
+	AR_INV_NBR				int NULL,
+	AR_INV_NBR_STR			varchar(100) NULL,
+	AR_INV_SEQ				int NULL,
+	AR_TYPE					varchar (3) NULL DEFAULT 'IN',
+	INVOICE_NUMBER			varchar(100) NULL,
+	INVOICE_DATE			smalldatetime NULL,
+	JOB_NUMBER				int NULL,
+	JOB_COMPONENT_NBR		smallint NULL,
+	CL_CODE					varchar(6) NULL,
+	DIV_CODE				varchar(6) NULL,
+	PRD_CODE				varchar(6) NULL,
+	OFFICE_CODE				varchar(6) NULL,
+	STD_FNC_CODE			varchar(6) NULL,
+	FNC_CODE_TYPE			varchar(1) NULL,
+	FNC_CODE				varchar(10) NULL,
+	CONSOL_FNC_CODE			varchar(10) NULL,
+	ITEM_TYPE				varchar(2) NULL,
+	ITEM_ID					int NULL,
+	ITEM_SEQ_NBR			int NULL,
+	ITEM_LINE_NBR			int NULL,
+	ITEM_CODE				varchar(10) NULL,
+	ITEM					varchar(100) NULL,			--#04
+	ITEM_DATE				smalldatetime NULL,
+	ITEM_DETAIL				varchar(40) NULL,
+	AP_DESC					varchar(60) NULL,
+	HOURS_QTY				decimal(15,2) NULL DEFAULT 0,
+	RATE					decimal(15,2) NULL DEFAULT 0,
+	NET						decimal(15,2) NULL DEFAULT 0,
+	COMMISSION				decimal(15,2) NULL DEFAULT 0,
+	TAX_CODE				varchar(30) NULL,
+	EXT_NONRESALE_TAX		decimal(15,2) NULL DEFAULT 0,
+	EXT_CITY_RESALE			decimal(15,2) NULL DEFAULT 0,
+	EXT_COUNTY_RESALE		decimal(15,2) NULL DEFAULT 0,
+	EXT_STATE_RESALE		decimal(15,2) NULL DEFAULT 0,
+	LINE_TOTAL				decimal(15,2) NULL DEFAULT 0,
+	PRIOR_HOURS_QTY			decimal(15,2) NULL DEFAULT 0,
+	PRIOR_RATE				decimal(15,2) NULL DEFAULT 0,
+	PRIOR_NET				decimal(15,2) NULL DEFAULT 0,
+	PRIOR_COMMISSION		decimal(15,2) NULL DEFAULT 0,
+	PRIOR_EXT_NONRESALE_TAX	decimal(15,2) NULL DEFAULT 0,
+	PRIOR_EXT_CITY_RESALE	decimal(15,2) NULL DEFAULT 0,
+	PRIOR_EXT_COUNTY_RESALE	decimal(15,2) NULL DEFAULT 0,
+	PRIOR_EXT_STATE_RESALE	decimal(15,2) NULL DEFAULT 0,
+	PRIOR_LINE_TOTAL		decimal(15,2) NULL DEFAULT 0,
+	EST_QTY					decimal(15,2) NULL DEFAULT 0,
+	EST_NET					decimal(15,2) NULL DEFAULT 0,
+	EST_COMM				decimal(15,2) NULL DEFAULT 0,
+	EST_EXT_NONRESALE_TAX	decimal(15,2) NULL DEFAULT 0,
+	EST_EXT_CITY_RESALE		decimal(15,2) NULL DEFAULT 0,
+	EST_EXT_COUNTY_RESALE	decimal(15,2) NULL DEFAULT 0,
+	EST_EXT_STATE_RESALE	decimal(15,2) NULL DEFAULT 0,
+	EST_LINE_TOTAL			decimal(15,2) NULL DEFAULT 0,
+	EST_TOTAL_NC			decimal(15,2) NULL DEFAULT 0,
+	IO_FEE					decimal(15,2) NULL DEFAULT 0,
+	PRD_CONSOL				varchar(500) NULL,
+	INV_SEQ_LINK			varchar(500) NULL,
+	PRIOR_INV_NBR			int NULL DEFAULT 0,
+	PRIOR_INV_DATE			smalldatetime NULL,
+	EMPLOYEE_TITLE_ID		int NULL,
+  CONSTRAINT PK_PROD_BILLING_DATA PRIMARY KEY ( PBD_ID )
+ )
+GO

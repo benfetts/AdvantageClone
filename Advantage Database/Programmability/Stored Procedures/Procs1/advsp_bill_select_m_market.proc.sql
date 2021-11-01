@@ -1,0 +1,39 @@
+﻿CREATE PROCEDURE [dbo].[advsp_bill_select_m_market] 
+	@bcc_id_in integer, @ret_val integer OUTPUT 
+AS
+
+SET NOCOUNT ON
+
+DECLARE @selection TABLE (
+	selection_id		integer identity( 1, 1 ) NOT NULL,
+	MARKET_CODE			varchar(10) COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL,
+	MARKET_DESC			varchar(40) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	cc_selected			smallint NULL
+)	
+
+SELECT @ret_val = 0
+
+IF ( @bcc_id_in IS NOT NULL )
+	INSERT INTO @selection ( MARKET_CODE, MARKET_DESC, cc_selected )
+	 SELECT DISTINCT C.MARKET_CODE, C.MARKET_DESC, 1
+	   FROM dbo.MARKET C 
+ INNER JOIN dbo.V_MEDIA_HDR B ON ( C.MARKET_CODE = B.MARKET_CODE )
+	  WHERE BCC_ID = @bcc_id_in
+
+INSERT INTO @selection ( MARKET_CODE, MARKET_DESC, cc_selected )
+SELECT DISTINCT C.MARKET_CODE, C.MARKET_DESC, 0
+FROM dbo.MARKET C 
+	INNER JOIN dbo.V_MEDIA_HDR B ON ( C.MARKET_CODE = B.MARKET_CODE )
+WHERE B.MEDIA_TYPE IS NOT NULL
+AND B.ORD_PROCESS_CONTRL IN ( 1, 5 )
+AND BCC_ID IS NULL
+AND B.MEDIA_FROM NOT IN ( 'Mag', 'News' )
+AND (C.INACTIVE_FLAG IS NULL OR C.INACTIVE_FLAG = 0)
+AND NOT EXISTS (SELECT * 
+				FROM @selection 
+				WHERE MARKET_CODE = C.MARKET_CODE
+				AND cc_selected = 1)
+
+  SELECT s.MARKET_CODE, s.MARKET_DESC, s.cc_selected
+	FROM @selection s
+ORDER BY s.MARKET_CODE, s.MARKET_DESC

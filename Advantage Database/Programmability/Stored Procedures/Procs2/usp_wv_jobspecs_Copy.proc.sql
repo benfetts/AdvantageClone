@@ -1,0 +1,808 @@
+﻿
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_jobspecs_Copy]
+	@JobNumber int,
+	@JobCompNumber int,
+	@Version int,
+	@Revision int,
+	@RevCopy bit,
+	@NewRevision int,
+	@VerCopy bit,
+	@NewVersion int,
+	@VerNew bit,
+	@Reason varchar(254),
+	@AuthorizedBy varchar(40),
+	@UserID varchar(100),
+	@Date smalldatetime
+	
+AS
+DECLARE
+	@JOB_NUMBER int,
+    @JOB_COMPONENT_NBR smallint,
+    @SPEC_VER int,
+    @SPEC_REV int,
+    @SPEC_REV_REASON VARCHAR(254),
+    @SPEC_REV_AUTH VARCHAR(400),
+    @SPEC_REV_USER_ID VARCHAR(100),
+    @SPEC_REV_USER_DATE smalldatetime,
+    @SPEC_TYPE_CODE VARCHAR(6),
+    @SPEC_VER_DESC VARCHAR(60),
+	@QTY1 VARCHAR(50),
+	@QTY2 VARCHAR(50),
+	@QTY3 VARCHAR(50),
+	@QTY4 VARCHAR(50),
+	@QTY5 VARCHAR(50),
+	@CHAR1_1 VARCHAR(1),
+	@CHAR1_2 VARCHAR(1),
+	@CHAR1_3 VARCHAR(1),
+	@CHAR1_4 VARCHAR(1),
+	@CHAR1_5 VARCHAR(1),
+	@CHAR10_1 VARCHAR(10),
+	@CHAR10_2 VARCHAR(10),
+	@CHAR10_3 VARCHAR(10),
+	@CHAR10_4 VARCHAR(10),
+	@CHAR10_5 VARCHAR(10),
+	@CHAR50_1 VARCHAR(50),
+	@CHAR50_2 VARCHAR(50),
+	@CHAR50_3 VARCHAR(50),
+	@CHAR50_4 VARCHAR(50),
+	@CHAR50_5 VARCHAR(50),
+	@CHAR50_6 VARCHAR(50),
+	@CHAR50_7 VARCHAR(50),
+	@CHAR254_1 VARCHAR(254),
+	@CHAR254_2 VARCHAR(254),
+	@CHAR254_3 VARCHAR(254),
+	@CHAR254_4 VARCHAR(254),
+	@SMALLINT_1 VARCHAR(50),
+	@SMALLINT_2 VARCHAR(50),
+	@SMALLINT_3 VARCHAR(50),
+	@SMALLINT_4 VARCHAR(50),
+	@SMALLINT_5 VARCHAR(50),
+	@SMALLINT_6 VARCHAR(50),
+	@SMALLINT_7 VARCHAR(50),
+	@SMALLINT_8 VARCHAR(50),
+	@INT_1 VARCHAR(50),
+	@INT_2 VARCHAR(50),
+	@INT_3 VARCHAR(50),
+	@INT_4 VARCHAR(50),
+	@INT_5 VARCHAR(50),
+	@INT_6 VARCHAR(50),
+	@INT_7 VARCHAR(50),
+	@INT_8 VARCHAR(50),
+	@INT_9 VARCHAR(50),
+	@INT_10 VARCHAR(50),	
+	@TEXT_1 VARCHAR(4000),
+	@TEXT_2 VARCHAR(4000),
+	@TEXT_3 VARCHAR(4000),
+	@TEXT_4 VARCHAR(4000),
+	@TEXT_5 VARCHAR(4000),
+	@TEXT_6 VARCHAR(4000),
+	@TEXT_7 VARCHAR(4000),
+	@TEXT_8 VARCHAR(4000),
+	@CHAR1_6 VARCHAR(1),
+	@CHAR1_7 VARCHAR(1),
+	@CHAR1_8 VARCHAR(1),
+	@CHAR1_9 VARCHAR(1),
+	@CHAR1_10 VARCHAR(1),
+	@CHAR1_11 VARCHAR(1),
+	@CHAR1_12 VARCHAR(1),
+	@CHAR1_13 VARCHAR(1),
+	@CHAR1_14 VARCHAR(1),
+	@CHAR1_15 VARCHAR(1),
+	@CHAR1_16 VARCHAR(1),
+	@CHAR1_17 VARCHAR(1),
+	@CHAR1_18 VARCHAR(1),
+	@CHAR1_19 VARCHAR(1),
+	@CHAR1_20 VARCHAR(1),
+	@CHAR10_6 VARCHAR(10),
+	@CHAR10_7 VARCHAR(10),
+	@CHAR10_8 VARCHAR(10),
+	@CHAR10_9 VARCHAR(10),
+	@CHAR10_10 VARCHAR(10),
+	@CHAR10_11 VARCHAR(10),
+	@CHAR10_12 VARCHAR(10),
+	@CHAR10_13 VARCHAR(10),
+	@CHAR10_14 VARCHAR(10),
+	@CHAR10_15 VARCHAR(10),
+	@CHAR10_16 VARCHAR(10),
+	@CHAR10_17 VARCHAR(10),
+	@CHAR10_18 VARCHAR(10),
+	@CHAR10_19 VARCHAR(10),
+	@CHAR10_20 VARCHAR(10),
+	@CHAR50_8 VARCHAR(50),
+	@CHAR50_9 VARCHAR(50),
+	@CHAR50_10 VARCHAR(50),
+	@CHAR50_11 VARCHAR(50),
+	@CHAR50_12 VARCHAR(50),
+	@CHAR50_13 VARCHAR(50),
+	@CHAR50_14 VARCHAR(50),
+	@CHAR50_15 VARCHAR(50),
+	@CHAR50_16 VARCHAR(50),
+	@CHAR50_17 VARCHAR(50),
+	@CHAR50_18 VARCHAR(50),
+	@CHAR50_19 VARCHAR(50),
+	@CHAR50_20 VARCHAR(50),
+	@CHAR254_5 VARCHAR(254),
+	@CHAR254_6 VARCHAR(254),
+	@CHAR254_7 VARCHAR(254),
+	@CHAR254_8 VARCHAR(254),
+	@CHAR254_9 VARCHAR(254),
+	@CHAR254_10 VARCHAR(254),
+	@SMALLINT_9 VARCHAR(50),
+	@SMALLINT_10 VARCHAR(50),
+	@SMALLINT_11 VARCHAR(50),
+	@SMALLINT_12 VARCHAR(50),
+	@SMALLINT_13 VARCHAR(50),
+	@SMALLINT_14 VARCHAR(50),
+	@SMALLINT_15 VARCHAR(50),
+	@SMALLINT_16 VARCHAR(50),
+	@SMALLINT_17 VARCHAR(50),
+	@SMALLINT_18 VARCHAR(50),
+	@SMALLINT_19 VARCHAR(50),
+	@SMALLINT_20 VARCHAR(50),
+	@INT_11 VARCHAR(50),
+	@INT_12 VARCHAR(50),
+	@INT_13 VARCHAR(50),
+	@INT_14 VARCHAR(50),
+	@INT_15 VARCHAR(50),
+	@INT_16 VARCHAR(50),
+	@INT_17 VARCHAR(50),
+	@INT_18 VARCHAR(50),
+	@INT_19 VARCHAR(50),
+	@INT_20 VARCHAR(50),
+	@TEXT_9 VARCHAR(4000),
+	@TEXT_10 VARCHAR(4000),
+	@TEXT_11 VARCHAR(4000),
+	@TEXT_12 VARCHAR(4000),
+	@TEXT_13 VARCHAR(4000),
+	@TEXT_14 VARCHAR(4000),
+	@TEXT_15 VARCHAR(4000),
+	@TEXT_16 VARCHAR(4000),
+	@TEXT_17 VARCHAR(4000),
+	@TEXT_18 VARCHAR(4000),
+	@TEXT_19 VARCHAR(4000),
+	@TEXT_20 VARCHAR(4000)
+
+
+--Get current Job spec data for copying
+SELECT  @JOB_NUMBER = JOB_NUMBER,
+		@JOB_COMPONENT_NBR  = JOB_COMPONENT_NBR,
+		@SPEC_VER = SPEC_VER,
+		@SPEC_REV = SPEC_REV,
+		@SPEC_REV_REASON = SPEC_REV_REASON,
+		@SPEC_REV_AUTH = SPEC_REV_AUTH,
+		@SPEC_REV_USER_ID = @UserID,
+		@SPEC_REV_USER_DATE = @Date,
+		@SPEC_TYPE_CODE  = SPEC_TYPE_CODE,
+		@SPEC_VER_DESC = SPEC_VER_DESC,
+		@QTY1 = QTY1,
+		@QTY2 = QTY2,
+		@QTY3 = QTY3, 
+		@QTY4 = QTY4, 
+		@QTY5 = QTY5, 
+		@CHAR1_1 = CHAR1_1,	
+		@CHAR1_2 = CHAR1_2, 
+		@CHAR1_3 = CHAR1_3, 
+		@CHAR1_4 = CHAR1_4, 
+		@CHAR1_5 = CHAR1_5, 
+		@CHAR10_1 = CHAR10_1, 
+		@CHAR10_2 = CHAR10_2, 
+		@CHAR10_3 = CHAR10_3, 
+		@CHAR10_4 = CHAR10_4, 
+		@CHAR10_5 = CHAR10_5, 
+        @CHAR50_1 = CHAR50_1, 
+		@CHAR50_2 = CHAR50_2, 
+		@CHAR50_3 = CHAR50_3, 
+		@CHAR50_4 = CHAR50_4, 
+		@CHAR50_5 = CHAR50_5, 
+		@CHAR50_6 = CHAR50_6, 
+		@CHAR50_7 = CHAR50_7, 
+		@CHAR254_1 = CHAR254_1, 
+		@CHAR254_2 = CHAR254_2, 
+		@CHAR254_3 = CHAR254_3, 
+		@CHAR254_4 = CHAR254_4, 
+		@SMALLINT_1 = SMALLINT_1, 
+        @SMALLINT_2 = SMALLINT_2, 
+		@SMALLINT_3 = SMALLINT_3, 
+		@SMALLINT_4 = SMALLINT_4, 
+		@SMALLINT_5 = SMALLINT_5, 
+		@SMALLINT_6 = SMALLINT_6, 
+		@SMALLINT_7 = SMALLINT_7, 
+		@SMALLINT_8 = SMALLINT_8, 
+		@INT_1 = INT_1, 
+		@INT_2 = INT_2, 
+		@INT_3 = INT_3, 
+		@INT_4 = INT_4, 
+		@INT_5 = INT_5, 
+		@INT_6 = INT_6, 
+		@INT_7 = INT_7, 
+        @INT_8 = INT_8, 
+		@INT_9 = INT_9, 
+		@INT_10 = INT_10, 
+		@TEXT_1 = TEXT_1, 
+		@TEXT_2 = TEXT_2, 
+		@TEXT_3 = TEXT_3, 
+		@TEXT_4 = TEXT_4, 
+		@TEXT_5 = TEXT_5, 
+		@TEXT_6 = TEXT_6, 
+		@TEXT_7 = TEXT_7, 
+		@TEXT_8 = TEXT_8, 
+		@CHAR1_6 = CHAR1_6, 
+		@CHAR1_7 = CHAR1_7, 
+		@CHAR1_8 = CHAR1_8, 
+		@CHAR1_9 = CHAR1_9, 
+		@CHAR1_10 = CHAR1_10, 
+        @CHAR1_11 = CHAR1_11, 
+		@CHAR1_12 = CHAR1_12, 
+		@CHAR1_13 = CHAR1_13, 
+		@CHAR1_14 = CHAR1_14, 
+		@CHAR1_15 = CHAR1_15, 
+		@CHAR1_16 = CHAR1_16, 
+		@CHAR1_17 = CHAR1_17, 
+		@CHAR1_18 = CHAR1_18, 
+		@CHAR1_19 = CHAR1_19, 
+		@CHAR1_20 = CHAR1_20, 
+		@CHAR10_6 = CHAR10_6, 
+		@CHAR10_7 = CHAR10_7, 
+        @CHAR10_8 = CHAR10_8, 
+		@CHAR10_9 = CHAR10_9, 
+		@CHAR10_10 = CHAR10_10, 
+		@CHAR10_11 = CHAR10_11, 
+		@CHAR10_12 = CHAR10_12, 
+		@CHAR10_13 = CHAR10_13, 
+		@CHAR10_14 = CHAR10_14, 
+		@CHAR10_15 = CHAR10_15, 
+		@CHAR10_16 = CHAR10_16, 
+		@CHAR10_17 = CHAR10_17, 
+		@CHAR10_18 = CHAR10_18, 
+        @CHAR10_19 = CHAR10_19, 
+		@CHAR10_20 = CHAR10_20, 
+		@CHAR50_8 = CHAR50_8, 
+		@CHAR50_9 = CHAR50_9, 
+		@CHAR50_10 = CHAR50_10, 
+		@CHAR50_11 = CHAR50_11, 
+		@CHAR50_12 = CHAR50_12, 
+		@CHAR50_13 = CHAR50_13, 
+		@CHAR50_14 = CHAR50_14, 
+		@CHAR50_15 = CHAR50_15, 
+		@CHAR50_16 = CHAR50_16, 
+        @CHAR50_17 = CHAR50_17, 
+		@CHAR50_18 = CHAR50_18, 
+		@CHAR50_19 = CHAR50_19, 
+		@CHAR50_20 = CHAR50_20, 
+		@CHAR254_5 = CHAR254_5, 
+		@CHAR254_6 = CHAR254_6, 
+		@CHAR254_7 = CHAR254_7, 
+		@CHAR254_8 = CHAR254_8, 
+		@CHAR254_9 = CHAR254_9, 
+		@CHAR254_10 = CHAR254_10, 
+		@SMALLINT_9 = SMALLINT_9, 
+        @SMALLINT_10 = SMALLINT_10, 
+		@SMALLINT_11 = SMALLINT_11, 
+		@SMALLINT_12 = SMALLINT_12, 
+		@SMALLINT_13 = SMALLINT_13, 
+		@SMALLINT_14 = SMALLINT_14, 
+		@SMALLINT_15 = SMALLINT_15, 
+		@SMALLINT_16 = SMALLINT_16, 
+		@SMALLINT_17 = SMALLINT_17, 
+		@SMALLINT_18 = SMALLINT_18, 
+        @SMALLINT_19 = SMALLINT_19, 
+		@SMALLINT_20 = SMALLINT_20, 
+		@INT_11 = INT_11, 
+		@INT_12 = INT_12, 
+		@INT_13 = INT_13, 
+		@INT_14 = INT_14, 
+		@INT_15 = INT_15, 
+		@INT_16 = INT_16, 
+		@INT_17 = INT_17, 
+		@INT_18 = INT_18, 
+		@INT_19 = INT_19, 
+		@INT_20 = INT_20, 
+		@TEXT_9 = TEXT_9, 
+		@TEXT_10 = TEXT_10, 
+		@TEXT_11 = TEXT_11, 
+        @TEXT_12 = TEXT_12, 
+		@TEXT_13 = TEXT_13, 
+		@TEXT_14 = TEXT_14, 
+		@TEXT_15 = TEXT_15, 
+		@TEXT_16 = TEXT_16, 
+		@TEXT_17 = TEXT_17, 
+		@TEXT_18 = TEXT_18, 
+		@TEXT_19 = TEXT_19, 
+		@TEXT_20 = TEXT_20
+
+FROM    JOB_SPECS 
+WHERE 
+	JOB_COMPONENT_NBR = @JobCompNumber 
+	AND JOB_NUMBER = @JobNumber
+	AND SPEC_VER = @Version
+	AND SPEC_REV = @Revision
+
+--increment revision
+if @RevCopy = 1 
+	Begin
+		SET @SPEC_REV = @NewRevision
+		SET @SPEC_REV_REASON = @Reason
+		SET @SPEC_REV_AUTH = @AuthorizedBy
+	End
+
+--increment version for copy
+if @VerCopy = 1
+	Begin
+		SET @SPEC_VER = @NewVersion
+		SET @SPEC_REV = @NewRevision
+	End
+
+--setup for new version
+if @VerNew = 1
+	Begin
+		SET @SPEC_VER = @NewVersion
+		SET @SPEC_REV = @NewRevision
+		SET @SPEC_REV_REASON = NULL
+		SET @SPEC_REV_AUTH = NULL		
+		SET @SPEC_VER_DESC = NULL
+		SET @QTY1 = NULL
+		SET @QTY2 = NULL
+		SET @QTY3 = NULL 
+		SET @QTY4 = NULL 
+		SET @QTY5 = NULL 
+		SET @CHAR1_1 = NULL	
+		SET @CHAR1_2 = NULL 
+		SET @CHAR1_3 = NULL 
+		SET @CHAR1_4 = NULL 
+		SET @CHAR1_5 = NULL 
+		SET @CHAR10_1 = NULL 
+		SET @CHAR10_2 = NULL 
+		SET @CHAR10_3 = NULL 
+		SET @CHAR10_4 = NULL 
+		SET @CHAR10_5 = NULL 
+        SET @CHAR50_1 = NULL 
+		SET @CHAR50_2 = NULL 
+		SET @CHAR50_3 = NULL 
+		SET @CHAR50_4 = NULL 
+		SET @CHAR50_5 = NULL 
+		SET @CHAR50_6 = NULL 
+		SET @CHAR50_7 = NULL 
+		SET @CHAR254_1 = NULL 
+		SET @CHAR254_2 = NULL 
+		SET @CHAR254_3 = NULL 
+		SET @CHAR254_4 = NULL 
+		SET @SMALLINT_1 = NULL 
+        SET @SMALLINT_2 = NULL 
+		SET @SMALLINT_3 = NULL 
+		SET @SMALLINT_4 = NULL 
+		SET @SMALLINT_5 = NULL 
+		SET @SMALLINT_6 = NULL 
+		SET @SMALLINT_7 = NULL 
+		SET @SMALLINT_8 = NULL 
+		SET @INT_1 = NULL 
+		SET @INT_2 = NULL 
+		SET @INT_3 = NULL 
+		SET @INT_4 = NULL 
+		SET @INT_5 = NULL 
+		SET @INT_6 = NULL 
+		SET @INT_7 = NULL 
+        SET @INT_8 = NULL 
+		SET @INT_9 = NULL 
+		SET @INT_10 = NULL 
+		SET @TEXT_1 = NULL 
+		SET @TEXT_2 = NULL 
+		SET @TEXT_3 = NULL 
+		SET @TEXT_4 = NULL 
+		SET @TEXT_5 = NULL 
+		SET @TEXT_6 = NULL 
+		SET @TEXT_7 = NULL 
+		SET @TEXT_8 = NULL 
+		SET @CHAR1_6 = NULL 
+		SET @CHAR1_7 = NULL
+		SET @CHAR1_8 = NULL 
+		SET @CHAR1_9 = NULL 
+		SET @CHAR1_10 = NULL 
+        SET @CHAR1_11 = NULL 
+		SET @CHAR1_12 = NULL 
+		SET @CHAR1_13 = NULL 
+		SET @CHAR1_14 = NULL 
+		SET @CHAR1_15 = NULL 
+		SET @CHAR1_16 = NULL 
+		SET @CHAR1_17 = NULL 
+		SET @CHAR1_18 = NULL 
+		SET @CHAR1_19 = NULL 
+		SET @CHAR1_20 = NULL 
+		SET @CHAR10_6 = NULL 
+		SET @CHAR10_7 = NULL 
+        SET @CHAR10_8 = NULL 
+		SET @CHAR10_9 = NULL 
+		SET @CHAR10_10 = NULL 
+		SET @CHAR10_11 = NULL 
+		SET @CHAR10_12 = NULL 
+		SET @CHAR10_13 = NULL 
+		SET @CHAR10_14 = NULL 
+		SET @CHAR10_15 = NULL 
+		SET @CHAR10_16 = NULL 
+		SET @CHAR10_17 = NULL 
+		SET @CHAR10_18 = NULL 
+        SET @CHAR10_19 = NULL 
+		SET @CHAR10_20 = NULL 
+		SET @CHAR50_8 = NULL 
+		SET @CHAR50_9 = NULL 
+		SET @CHAR50_10 = NULL 
+		SET @CHAR50_11 = NULL 
+		SET @CHAR50_12 = NULL 
+		SET @CHAR50_13 = NULL 
+		SET @CHAR50_14 = NULL 
+		SET @CHAR50_15 = NULL 
+		SET @CHAR50_16 = NULL 
+        SET @CHAR50_17 = NULL 
+		SET @CHAR50_18 = NULL 
+		SET @CHAR50_19 = NULL 
+		SET @CHAR50_20 = NULL 
+		SET @CHAR254_5 = NULL 
+		SET @CHAR254_6 = NULL 
+		SET @CHAR254_7 = NULL 
+		SET @CHAR254_8 = NULL 
+		SET @CHAR254_9 = NULL 
+		SET @CHAR254_10 = NULL 
+		SET @SMALLINT_9 = NULL 
+        SET @SMALLINT_10 = NULL 
+		SET @SMALLINT_11 = NULL 
+		SET @SMALLINT_12 = NULL 
+		SET @SMALLINT_13 = NULL 
+		SET @SMALLINT_14 = NULL 
+		SET @SMALLINT_15 = NULL 
+		SET @SMALLINT_16 = NULL 
+		SET @SMALLINT_17 = NULL 
+		SET @SMALLINT_18 = NULL 
+        SET @SMALLINT_19 = NULL 
+		SET @SMALLINT_20 = NULL 
+		SET @INT_11 = NULL 
+		SET @INT_12 = NULL
+		SET @INT_13 = NULL 
+		SET @INT_14 = NULL 
+		SET @INT_15 = NULL 
+		SET @INT_16 = NULL 
+		SET @INT_17 = NULL 
+		SET @INT_18 = NULL 
+		SET @INT_19 = NULL 
+		SET @INT_20 = NULL 
+		SET @TEXT_9 = NULL 
+		SET @TEXT_10 = NULL 
+		SET @TEXT_11 = NULL 
+        SET @TEXT_12 = NULL 
+		SET @TEXT_13 = NULL 
+		SET @TEXT_14 = NULL 
+		SET @TEXT_15 = NULL 
+		SET @TEXT_16 = NULL 
+		SET @TEXT_17 = NULL 
+		SET @TEXT_18 = NULL 
+		SET @TEXT_19 = NULL 
+		SET @TEXT_20 = NULL
+	End
+ 
+--insert new job spec data
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+INSERT INTO [JOB_SPECS]
+           ([JOB_NUMBER]
+           ,[JOB_COMPONENT_NBR]
+           ,[SPEC_VER]
+           ,[SPEC_REV]
+           ,[SPEC_REV_REASON]
+           ,[SPEC_REV_AUTH]
+           ,[SPEC_REV_USER_ID]
+           ,[SPEC_REV_USER_DATE]
+           ,[SPEC_TYPE_CODE]
+           ,[SPEC_VER_DESC]
+           ,[QTY1]
+           ,[QTY2]
+           ,[QTY3]
+           ,[QTY4]
+           ,[QTY5]
+           ,[CHAR1_1]
+           ,[CHAR1_2]
+           ,[CHAR1_3]
+           ,[CHAR1_4]
+           ,[CHAR1_5]
+           ,[CHAR10_1]
+           ,[CHAR10_2]
+           ,[CHAR10_3]
+           ,[CHAR10_4]
+           ,[CHAR10_5]
+           ,[CHAR50_1]
+           ,[CHAR50_2]
+           ,[CHAR50_3]
+           ,[CHAR50_4]
+           ,[CHAR50_5]
+           ,[CHAR50_6]
+           ,[CHAR50_7]
+           ,[CHAR254_1]
+           ,[CHAR254_2]
+           ,[CHAR254_3]
+           ,[CHAR254_4]
+           ,[SMALLINT_1]
+           ,[SMALLINT_2]
+           ,[SMALLINT_3]
+           ,[SMALLINT_4]
+           ,[SMALLINT_5]
+           ,[SMALLINT_6]
+           ,[SMALLINT_7]
+           ,[SMALLINT_8]
+           ,[INT_1]
+           ,[INT_2]
+           ,[INT_3]
+           ,[INT_4]
+           ,[INT_5]
+           ,[INT_6]
+           ,[INT_7]
+           ,[INT_8]
+           ,[INT_9]
+           ,[INT_10]
+           ,[TEXT_1]
+           ,[TEXT_2]
+           ,[TEXT_3]
+           ,[TEXT_4]
+           ,[TEXT_5]
+           ,[TEXT_6]
+           ,[TEXT_7]
+           ,[TEXT_8]
+           ,[CHAR1_6]
+           ,[CHAR1_7]
+           ,[CHAR1_8]
+           ,[CHAR1_9]
+           ,[CHAR1_10]
+           ,[CHAR1_11]
+           ,[CHAR1_12]
+           ,[CHAR1_13]
+           ,[CHAR1_14]
+           ,[CHAR1_15]
+           ,[CHAR1_16]
+           ,[CHAR1_17]
+           ,[CHAR1_18]
+           ,[CHAR1_19]
+           ,[CHAR1_20]
+           ,[CHAR10_6]
+           ,[CHAR10_7]
+           ,[CHAR10_8]
+           ,[CHAR10_9]
+           ,[CHAR10_10]
+           ,[CHAR10_11]
+           ,[CHAR10_12]
+           ,[CHAR10_13]
+           ,[CHAR10_14]
+           ,[CHAR10_15]
+           ,[CHAR10_16]
+           ,[CHAR10_17]
+           ,[CHAR10_18]
+           ,[CHAR10_19]
+           ,[CHAR10_20]
+           ,[CHAR50_8]
+           ,[CHAR50_9]
+           ,[CHAR50_10]
+           ,[CHAR50_11]
+           ,[CHAR50_12]
+           ,[CHAR50_13]
+           ,[CHAR50_14]
+           ,[CHAR50_15]
+           ,[CHAR50_16]
+           ,[CHAR50_17]
+           ,[CHAR50_18]
+           ,[CHAR50_19]
+           ,[CHAR50_20]
+           ,[CHAR254_5]
+           ,[CHAR254_6]
+           ,[CHAR254_7]
+           ,[CHAR254_8]
+           ,[CHAR254_9]
+           ,[CHAR254_10]
+           ,[SMALLINT_9]
+           ,[SMALLINT_10]
+           ,[SMALLINT_11]
+           ,[SMALLINT_12]
+           ,[SMALLINT_13]
+           ,[SMALLINT_14]
+           ,[SMALLINT_15]
+           ,[SMALLINT_16]
+           ,[SMALLINT_17]
+           ,[SMALLINT_18]
+           ,[SMALLINT_19]
+           ,[SMALLINT_20]
+           ,[INT_11]
+           ,[INT_12]
+           ,[INT_13]
+           ,[INT_14]
+           ,[INT_15]
+           ,[INT_16]
+           ,[INT_17]
+           ,[INT_18]
+           ,[INT_19]
+           ,[INT_20]
+           ,[TEXT_9]
+           ,[TEXT_10]
+           ,[TEXT_11]
+           ,[TEXT_12]
+           ,[TEXT_13]
+           ,[TEXT_14]
+           ,[TEXT_15]
+           ,[TEXT_16]
+           ,[TEXT_17]
+           ,[TEXT_18]
+           ,[TEXT_19]
+           ,[TEXT_20])
+     VALUES
+           (@JOB_NUMBER,
+			@JOB_COMPONENT_NBR,
+			@SPEC_VER,
+			@SPEC_REV,
+			@SPEC_REV_REASON,
+			@SPEC_REV_AUTH,
+			@SPEC_REV_USER_ID,
+			@SPEC_REV_USER_DATE,
+			@SPEC_TYPE_CODE,
+			@SPEC_VER_DESC,
+			@QTY1,
+			@QTY2,
+			@QTY3,
+			@QTY4,
+			@QTY5,
+			@CHAR1_1,
+			@CHAR1_2,
+			@CHAR1_3,
+			@CHAR1_4,
+			@CHAR1_5,
+			@CHAR10_1,
+			@CHAR10_2,
+			@CHAR10_3,
+			@CHAR10_4,
+			@CHAR10_5,
+			@CHAR50_1,
+			@CHAR50_2,
+			@CHAR50_3,
+			@CHAR50_4,
+			@CHAR50_5,
+			@CHAR50_6,
+			@CHAR50_7,
+			@CHAR254_1,
+			@CHAR254_2,
+			@CHAR254_3,
+			@CHAR254_4,
+			@SMALLINT_1,
+			@SMALLINT_2,
+			@SMALLINT_3,
+			@SMALLINT_4,
+			@SMALLINT_5,
+			@SMALLINT_6,
+			@SMALLINT_7,
+			@SMALLINT_8,
+			@INT_1,
+			@INT_2,
+			@INT_3,
+			@INT_4,
+			@INT_5,
+			@INT_6,
+			@INT_7,
+			@INT_8,
+			@INT_9,
+			@INT_10,	
+			@TEXT_1,
+			@TEXT_2,
+			@TEXT_3,
+			@TEXT_4,
+			@TEXT_5,
+			@TEXT_6,
+			@TEXT_7,
+			@TEXT_8,
+			@CHAR1_6,
+			@CHAR1_7,
+			@CHAR1_8,
+			@CHAR1_9,
+			@CHAR1_10,
+			@CHAR1_11,
+			@CHAR1_12,
+			@CHAR1_13,
+			@CHAR1_14,
+			@CHAR1_15,
+			@CHAR1_16,
+			@CHAR1_17,
+			@CHAR1_18,
+			@CHAR1_19,
+			@CHAR1_20,
+			@CHAR10_6,
+			@CHAR10_7,
+			@CHAR10_8,
+			@CHAR10_9,
+			@CHAR10_10,
+			@CHAR10_11,
+			@CHAR10_12,
+			@CHAR10_13,
+			@CHAR10_14,
+			@CHAR10_15,
+			@CHAR10_16,
+			@CHAR10_17,
+			@CHAR10_18,
+			@CHAR10_19,
+			@CHAR10_20,
+			@CHAR50_8,
+			@CHAR50_9,
+			@CHAR50_10,
+			@CHAR50_11,
+			@CHAR50_12,
+			@CHAR50_13,
+			@CHAR50_14,
+			@CHAR50_15,
+			@CHAR50_16,
+			@CHAR50_17,
+			@CHAR50_18,
+			@CHAR50_19,
+			@CHAR50_20,
+			@CHAR254_5,
+			@CHAR254_6,
+			@CHAR254_7,
+			@CHAR254_8,
+			@CHAR254_9,
+			@CHAR254_10,
+			@SMALLINT_9,
+			@SMALLINT_10,
+			@SMALLINT_11,
+			@SMALLINT_12,
+			@SMALLINT_13,
+			@SMALLINT_14,
+			@SMALLINT_15,
+			@SMALLINT_16,
+			@SMALLINT_17,
+			@SMALLINT_18,
+			@SMALLINT_19,
+			@SMALLINT_20,
+			@INT_11,
+			@INT_12,
+			@INT_13,
+			@INT_14,
+			@INT_15,
+			@INT_16,
+			@INT_17,
+			@INT_18,
+			@INT_19,
+			@INT_20,
+			@TEXT_9,
+			@TEXT_10,
+			@TEXT_11,
+			@TEXT_12,
+			@TEXT_13,
+			@TEXT_14,
+			@TEXT_15,
+			@TEXT_16,
+			@TEXT_17,
+			@TEXT_18,
+			@TEXT_19,
+			@TEXT_20)
+
+	SET @Err = @@Error
+
+	
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[DTL_STD_COMMENTS] (
+    [COMM_ID]      VARCHAR (20) NOT NULL,
+    [INV_NBR]      DECIMAL (10) NULL,
+    [AD_FNC]       VARCHAR (6)  NULL,
+    [DTL_COMMENTS] TEXT         NULL
+);
+

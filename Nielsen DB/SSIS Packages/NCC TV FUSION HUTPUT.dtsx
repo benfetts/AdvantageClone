@@ -1,0 +1,906 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/16/2017 9:03:06 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TASC-SQL2014"
+  DTS:CreatorName="ADVANTAGE\mikec"
+  DTS:Description="NCC TV FUSION HUTPUT"
+  DTS:DTSID="{3BA5A57A-4084-4FBA-92D6-CF80AC2861E1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="NCC TV FUSION HUTPUT"
+  DTS:ProtectionLevel="2"
+  DTS:VersionGUID="{B3394C90-58D5-432D-96D8-5F928E560283}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1E5AF8D6-2BF7-466F-BA53-55CB8FAF2FE9}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TASC-SQL2014;User ID=SYSADM;Initial Catalog=NIELSENHOSTED;Provider=SQLNCLI11;Auto Translate=false;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="gE4GVdxt+w=="
+            IV="MywSAv2aCks=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>MywSAv2aCktwSmpDxFjbXPxv5jE3oDS0J9zt3Tv2DR1n8pGmBbGzB/ytquM4AzKuo8/7TI20pcWC0Ffq8U/0+Mx52XN8aAaqvVkMgDqsafVLlnpcmGaBO1xLfn9IvaEA+JlXwfscKWb7KHDn5EOaDHMzOaOCahjxn3kYMYzArDw=</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CB943040-20FB-4C62-9A94-DD9A4CAD47DF}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TASC-SQL2014;User ID=SYSADM;Initial Catalog=NIELSENDATASTORE;Provider=SQLNCLI11;Auto Translate=false;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="5+Cu5N2W0Q=="
+            IV="SFDIFuki6/E=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>SFDIFuki6/EahyQDwm2dAvLXCKko5aPHYgBRrWpdH9ck9Ib8NfmdC+ih7WvcpPJWyaq3plxJBLE6SlhQkPVNLOlUQOBrlnuFaeG7A6xgG1islWkKqDPkJ8KdJqVC3Lu6jD5IX6r5VG2hUNspmaQJxsvCAM+9PWzBVTZctQ3RIgE=</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{2FE225B1-571D-46DB-9F48-4CE7C40F2D07}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - NCC_TV_FUSION_HUTPUT"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[NCC_TV_FUSION_HUTPUT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[NCC_TV_FUSION_HUTPUT_ID]"
+                      cachedDataType="i4"
+                      cachedName="NCC_TV_FUSION_HUTPUT_ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[NCC_TV_FUSION_HUTPUT_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NCC_TV_FUSION_HUTPUT_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[NCC_TV_FUSION_UE_ID]"
+                      cachedDataType="i4"
+                      cachedName="NCC_TV_FUSION_UE_ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[NCC_TV_FUSION_UE_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NCC_TV_FUSION_UE_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[HUTPUT_DATETIME]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HUTPUT_DATETIME"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[HUTPUT_DATETIME]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HUTPUT_DATETIME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[HOUSEHOLD_HUT]"
+                      cachedDataType="i4"
+                      cachedName="HOUSEHOLD_HUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[HOUSEHOLD_HUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HOUSEHOLD_HUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[CHILDREN_2TO5_PUT]"
+                      cachedDataType="i4"
+                      cachedName="CHILDREN_2TO5_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[CHILDREN_2TO5_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHILDREN_2TO5_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[CHILDREN_6TO11_PUT]"
+                      cachedDataType="i4"
+                      cachedName="CHILDREN_6TO11_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[CHILDREN_6TO11_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHILDREN_6TO11_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_12TO17_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_12TO17_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_12TO17_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_12TO17_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_18TO20_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_18TO20_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_18TO20_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_18TO20_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_21TO24_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_21TO24_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_21TO24_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_21TO24_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_25TO34_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_25TO34_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_25TO34_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_25TO34_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_35TO49_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_35TO49_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_35TO49_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_35TO49_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_50TO54_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_50TO54_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_50TO54_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_50TO54_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_55TO64_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_55TO64_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_55TO64_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_55TO64_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[MALES_65PLUS_PUT]"
+                      cachedDataType="i4"
+                      cachedName="MALES_65PLUS_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_65PLUS_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_65PLUS_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_12TO17_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_12TO17_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_12TO17_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_12TO17_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_18TO20_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_18TO20_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_18TO20_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_18TO20_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_21TO24_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_21TO24_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_21TO24_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_21TO24_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_25TO34_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_25TO34_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_25TO34_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_25TO34_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_35TO49_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_35TO49_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_35TO49_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_35TO49_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_50TO54_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_50TO54_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_50TO54_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_50TO54_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_55TO64_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_55TO64_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_55TO64_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_55TO64_PUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].Columns[FEMALES_65PLUS_PUT]"
+                      cachedDataType="i4"
+                      cachedName="FEMALES_65PLUS_PUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_65PLUS_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_65PLUS_PUT]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[NCC_TV_FUSION_HUTPUT_ID]"
+                      dataType="i4"
+                      name="NCC_TV_FUSION_HUTPUT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[NCC_TV_FUSION_UE_ID]"
+                      dataType="i4"
+                      name="NCC_TV_FUSION_UE_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[HUTPUT_DATETIME]"
+                      dataType="dbTimeStamp"
+                      name="HUTPUT_DATETIME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[HOUSEHOLD_HUT]"
+                      dataType="i4"
+                      name="HOUSEHOLD_HUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[CHILDREN_2TO5_PUT]"
+                      dataType="i4"
+                      name="CHILDREN_2TO5_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[CHILDREN_6TO11_PUT]"
+                      dataType="i4"
+                      name="CHILDREN_6TO11_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_12TO17_PUT]"
+                      dataType="i4"
+                      name="MALES_12TO17_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_18TO20_PUT]"
+                      dataType="i4"
+                      name="MALES_18TO20_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_21TO24_PUT]"
+                      dataType="i4"
+                      name="MALES_21TO24_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_25TO34_PUT]"
+                      dataType="i4"
+                      name="MALES_25TO34_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_35TO49_PUT]"
+                      dataType="i4"
+                      name="MALES_35TO49_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_50TO54_PUT]"
+                      dataType="i4"
+                      name="MALES_50TO54_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_55TO64_PUT]"
+                      dataType="i4"
+                      name="MALES_55TO64_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[MALES_65PLUS_PUT]"
+                      dataType="i4"
+                      name="MALES_65PLUS_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_12TO17_PUT]"
+                      dataType="i4"
+                      name="FEMALES_12TO17_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_18TO20_PUT]"
+                      dataType="i4"
+                      name="FEMALES_18TO20_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_21TO24_PUT]"
+                      dataType="i4"
+                      name="FEMALES_21TO24_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_25TO34_PUT]"
+                      dataType="i4"
+                      name="FEMALES_25TO34_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_35TO49_PUT]"
+                      dataType="i4"
+                      name="FEMALES_35TO49_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_50TO54_PUT]"
+                      dataType="i4"
+                      name="FEMALES_50TO54_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_55TO64_PUT]"
+                      dataType="i4"
+                      name="FEMALES_55TO64_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input].ExternalColumns[FEMALES_65PLUS_PUT]"
+                      dataType="i4"
+                      name="FEMALES_65PLUS_PUT" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Query"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @MAXID bigint
+
+SELECT @MAXID = COALESCE(MAX(NCC_TV_FUSION_HUTPUT_ID), 0)
+FROM NIELSENHOSTED.dbo.NCC_TV_FUSION_HUTPUT
+
+SELECT *
+FROM dbo.NCC_TV_FUSION_HUTPUT
+WHERE NCC_TV_FUSION_HUTPUT_ID &gt; @MAXID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NCC_TV_FUSION_HUTPUT_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NCC_TV_FUSION_HUTPUT_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NCC_TV_FUSION_HUTPUT_ID]"
+                      name="NCC_TV_FUSION_HUTPUT_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NCC_TV_FUSION_UE_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NCC_TV_FUSION_UE_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NCC_TV_FUSION_UE_ID]"
+                      name="NCC_TV_FUSION_UE_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HUTPUT_DATETIME]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[HUTPUT_DATETIME]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HUTPUT_DATETIME]"
+                      name="HUTPUT_DATETIME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HOUSEHOLD_HUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[HOUSEHOLD_HUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HOUSEHOLD_HUT]"
+                      name="HOUSEHOLD_HUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHILDREN_2TO5_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CHILDREN_2TO5_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHILDREN_2TO5_PUT]"
+                      name="CHILDREN_2TO5_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHILDREN_6TO11_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CHILDREN_6TO11_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHILDREN_6TO11_PUT]"
+                      name="CHILDREN_6TO11_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_12TO17_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_12TO17_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_12TO17_PUT]"
+                      name="MALES_12TO17_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_18TO20_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_18TO20_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_18TO20_PUT]"
+                      name="MALES_18TO20_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_21TO24_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_21TO24_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_21TO24_PUT]"
+                      name="MALES_21TO24_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_25TO34_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_25TO34_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_25TO34_PUT]"
+                      name="MALES_25TO34_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_35TO49_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_35TO49_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_35TO49_PUT]"
+                      name="MALES_35TO49_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_50TO54_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_50TO54_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_50TO54_PUT]"
+                      name="MALES_50TO54_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_55TO64_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_55TO64_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_55TO64_PUT]"
+                      name="MALES_55TO64_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_65PLUS_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_65PLUS_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MALES_65PLUS_PUT]"
+                      name="MALES_65PLUS_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_12TO17_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_12TO17_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_12TO17_PUT]"
+                      name="FEMALES_12TO17_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_18TO20_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_18TO20_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_18TO20_PUT]"
+                      name="FEMALES_18TO20_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_21TO24_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_21TO24_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_21TO24_PUT]"
+                      name="FEMALES_21TO24_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_25TO34_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_25TO34_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_25TO34_PUT]"
+                      name="FEMALES_25TO34_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_35TO49_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_35TO49_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_35TO49_PUT]"
+                      name="FEMALES_35TO49_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_50TO54_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_50TO54_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_50TO54_PUT]"
+                      name="FEMALES_50TO54_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_55TO64_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_55TO64_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_55TO64_PUT]"
+                      name="FEMALES_55TO64_PUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_65PLUS_PUT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_65PLUS_PUT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FEMALES_65PLUS_PUT]"
+                      name="FEMALES_65PLUS_PUT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NCC_TV_FUSION_HUTPUT_ID]"
+                      dataType="i4"
+                      name="NCC_TV_FUSION_HUTPUT_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NCC_TV_FUSION_UE_ID]"
+                      dataType="i4"
+                      name="NCC_TV_FUSION_UE_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[HUTPUT_DATETIME]"
+                      dataType="dbTimeStamp"
+                      name="HUTPUT_DATETIME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[HOUSEHOLD_HUT]"
+                      dataType="i4"
+                      name="HOUSEHOLD_HUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CHILDREN_2TO5_PUT]"
+                      dataType="i4"
+                      name="CHILDREN_2TO5_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CHILDREN_6TO11_PUT]"
+                      dataType="i4"
+                      name="CHILDREN_6TO11_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_12TO17_PUT]"
+                      dataType="i4"
+                      name="MALES_12TO17_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_18TO20_PUT]"
+                      dataType="i4"
+                      name="MALES_18TO20_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_21TO24_PUT]"
+                      dataType="i4"
+                      name="MALES_21TO24_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_25TO34_PUT]"
+                      dataType="i4"
+                      name="MALES_25TO34_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_35TO49_PUT]"
+                      dataType="i4"
+                      name="MALES_35TO49_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_50TO54_PUT]"
+                      dataType="i4"
+                      name="MALES_50TO54_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_55TO64_PUT]"
+                      dataType="i4"
+                      name="MALES_55TO64_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MALES_65PLUS_PUT]"
+                      dataType="i4"
+                      name="MALES_65PLUS_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_12TO17_PUT]"
+                      dataType="i4"
+                      name="FEMALES_12TO17_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_18TO20_PUT]"
+                      dataType="i4"
+                      name="FEMALES_18TO20_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_21TO24_PUT]"
+                      dataType="i4"
+                      name="FEMALES_21TO24_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_25TO34_PUT]"
+                      dataType="i4"
+                      name="FEMALES_25TO34_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_35TO49_PUT]"
+                      dataType="i4"
+                      name="FEMALES_35TO49_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_50TO54_PUT]"
+                      dataType="i4"
+                      name="FEMALES_50TO54_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_55TO64_PUT]"
+                      dataType="i4"
+                      name="FEMALES_55TO64_PUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FEMALES_65PLUS_PUT]"
+                      dataType="i4"
+                      name="FEMALES_65PLUS_PUT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NCC_TV_FUSION_HUTPUT_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NCC_TV_FUSION_HUTPUT_ID]"
+                      name="NCC_TV_FUSION_HUTPUT_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NCC_TV_FUSION_UE_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NCC_TV_FUSION_UE_ID]"
+                      name="NCC_TV_FUSION_UE_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[HUTPUT_DATETIME]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[HUTPUT_DATETIME]"
+                      name="HUTPUT_DATETIME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[HOUSEHOLD_HUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[HOUSEHOLD_HUT]"
+                      name="HOUSEHOLD_HUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CHILDREN_2TO5_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CHILDREN_2TO5_PUT]"
+                      name="CHILDREN_2TO5_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CHILDREN_6TO11_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CHILDREN_6TO11_PUT]"
+                      name="CHILDREN_6TO11_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_12TO17_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_12TO17_PUT]"
+                      name="MALES_12TO17_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_18TO20_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_18TO20_PUT]"
+                      name="MALES_18TO20_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_21TO24_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_21TO24_PUT]"
+                      name="MALES_21TO24_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_25TO34_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_25TO34_PUT]"
+                      name="MALES_25TO34_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_35TO49_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_35TO49_PUT]"
+                      name="MALES_35TO49_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_50TO54_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_50TO54_PUT]"
+                      name="MALES_50TO54_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_55TO64_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_55TO64_PUT]"
+                      name="MALES_55TO64_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_65PLUS_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MALES_65PLUS_PUT]"
+                      name="MALES_65PLUS_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_12TO17_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_12TO17_PUT]"
+                      name="FEMALES_12TO17_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_18TO20_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_18TO20_PUT]"
+                      name="FEMALES_18TO20_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_21TO24_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_21TO24_PUT]"
+                      name="FEMALES_21TO24_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_25TO34_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_25TO34_PUT]"
+                      name="FEMALES_25TO34_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_35TO49_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_35TO49_PUT]"
+                      name="FEMALES_35TO49_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_50TO54_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_50TO54_PUT]"
+                      name="FEMALES_50TO54_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_55TO64_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_55TO64_PUT]"
+                      name="FEMALES_55TO64_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_65PLUS_PUT]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FEMALES_65PLUS_PUT]"
+                      name="FEMALES_65PLUS_PUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - NCC_TV_FUSION_HUTPUT.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

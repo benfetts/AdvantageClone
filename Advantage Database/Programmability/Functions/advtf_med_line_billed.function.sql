@@ -1,0 +1,109 @@
+/****** Gets the max rev/seq for a given order/line - 05/15/2015 16:07:12 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[advtf_med_line_billed]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION [dbo].[advtf_med_line_billed]
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[advtf_med_line_billed]    Script Date: 05/15/2015 16:07:12 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/* 
+SELECT * FROM advtf_med_line_billed(35, 1, 'NP')
+*/
+
+
+CREATE FUNCTION [dbo].[advtf_med_line_billed] (
+		@order_nbr		int, 
+		@line_nbr		int,
+		@order_type	varchar (2))
+	RETURNS @med_billed TABLE ( 
+		BILLED	int NOT NULL,
+		ORDER_TYPE			varchar(2) NOT NULL 
+		)
+AS
+
+/* PJH 05/15/15 - Created */
+/* PJH 06/14/18 - Leave 0 */
+
+BEGIN
+	DECLARE @biiled_cnt int
+	
+	--SELECT @order_nbr = 609, @line_nbr = 1
+	
+	IF @order_type = 'NP' BEGIN				
+		SELECT @biiled_cnt = COUNT(1) FROM NEWSPAPER_DETAIL A 
+		LEFT JOIN (
+				SELECT ORDER_NBR, LINE_NBR, REV_NBR, AR_INV_NBR FROM NEWSPAPER_DETAIL
+				WHERE ORDER_NBR = @order_nbr AND LINE_NBR = @line_nbr
+				AND (AR_INV_NBR IS NOT NULL) AND AR_TYPE = 'VO' ) B
+			ON A.ORDER_NBR = B.ORDER_NBR AND A.LINE_NBR = B.LINE_NBR AND A.REV_NBR = B.REV_NBR AND A.AR_INV_NBR = B.AR_INV_NBR
+		WHERE A.ORDER_NBR = @order_nbr AND A.LINE_NBR = @line_nbr AND A.AR_INV_NBR IS NOT NULL
+			AND B.ORDER_NBR IS NULL
+	END
+	ELSE 	IF @order_type = 'MA' BEGIN	
+		SELECT @biiled_cnt = COUNT(1) FROM MAGAZINE_DETAIL A 
+		LEFT JOIN (
+				SELECT ORDER_NBR, LINE_NBR, REV_NBR, AR_INV_NBR FROM MAGAZINE_DETAIL
+				WHERE ORDER_NBR = @order_nbr AND LINE_NBR = @line_nbr
+				AND (AR_INV_NBR IS NOT NULL) AND AR_TYPE = 'VO' ) B
+			ON A.ORDER_NBR = B.ORDER_NBR AND A.LINE_NBR = B.LINE_NBR AND A.REV_NBR = B.REV_NBR AND A.AR_INV_NBR = B.AR_INV_NBR
+		WHERE A.ORDER_NBR = @order_nbr AND A.LINE_NBR = @line_nbr AND A.AR_INV_NBR IS NOT NULL
+			AND B.ORDER_NBR IS NULL
+	END
+	ELSE 	IF @order_type = 'IN' BEGIN	
+		SELECT @biiled_cnt = COUNT(1) FROM INTERNET_DETAIL A 
+		LEFT JOIN (
+				SELECT ORDER_NBR, LINE_NBR, REV_NBR, AR_INV_NBR FROM INTERNET_DETAIL
+				WHERE ORDER_NBR = @order_nbr AND LINE_NBR = @line_nbr
+				AND (AR_INV_NBR IS NOT NULL) AND AR_TYPE = 'VO' ) B
+			ON A.ORDER_NBR = B.ORDER_NBR AND A.LINE_NBR = B.LINE_NBR AND A.REV_NBR = B.REV_NBR AND A.AR_INV_NBR = B.AR_INV_NBR
+		WHERE A.ORDER_NBR = @order_nbr AND A.LINE_NBR = @line_nbr AND A.AR_INV_NBR IS NOT NULL
+			AND B.ORDER_NBR IS NULL
+	END
+	ELSE 	IF @order_type = 'OD' BEGIN	
+		SELECT @biiled_cnt = COUNT(1) FROM OUTDOOR_DETAIL A 
+		LEFT JOIN (
+				SELECT ORDER_NBR, LINE_NBR, REV_NBR, AR_INV_NBR FROM OUTDOOR_DETAIL
+				WHERE ORDER_NBR = @order_nbr AND LINE_NBR = @line_nbr
+				AND (AR_INV_NBR IS NOT NULL) AND AR_TYPE = 'VO' ) B
+			ON A.ORDER_NBR = B.ORDER_NBR AND A.LINE_NBR = B.LINE_NBR AND A.REV_NBR = B.REV_NBR AND A.AR_INV_NBR = B.AR_INV_NBR
+		WHERE A.ORDER_NBR = @order_nbr AND A.LINE_NBR = @line_nbr AND A.AR_INV_NBR IS NOT NULL
+			AND B.ORDER_NBR IS NULL
+	END
+	ELSE 	IF @order_type = 'RA' BEGIN	
+		SELECT @biiled_cnt = COUNT(1) FROM RADIO_DETAIL A 
+		LEFT JOIN (
+				SELECT ORDER_NBR, LINE_NBR, REV_NBR, AR_INV_NBR FROM RADIO_DETAIL
+				WHERE ORDER_NBR = @order_nbr AND LINE_NBR = @line_nbr
+				AND (AR_INV_NBR IS NOT NULL) AND AR_TYPE = 'VO' ) B
+			ON A.ORDER_NBR = B.ORDER_NBR AND A.LINE_NBR = B.LINE_NBR AND A.REV_NBR = B.REV_NBR AND A.AR_INV_NBR = B.AR_INV_NBR
+		WHERE A.ORDER_NBR = @order_nbr AND A.LINE_NBR = @line_nbr AND A.AR_INV_NBR IS NOT NULL
+			AND B.ORDER_NBR IS NULL
+	END
+	ELSE 	IF @order_type = 'TV' BEGIN	
+		SELECT @biiled_cnt = COUNT(1) FROM TV_DETAIL A 
+		LEFT JOIN (
+				SELECT ORDER_NBR, LINE_NBR, REV_NBR, AR_INV_NBR FROM TV_DETAIL
+				WHERE ORDER_NBR = @order_nbr AND LINE_NBR = @line_nbr
+				AND (AR_INV_NBR IS NOT NULL) AND AR_TYPE = 'VO' ) B
+			ON A.ORDER_NBR = B.ORDER_NBR AND A.LINE_NBR = B.LINE_NBR AND A.REV_NBR = B.REV_NBR AND A.AR_INV_NBR = B.AR_INV_NBR
+		WHERE A.ORDER_NBR = @order_nbr AND A.LINE_NBR = @line_nbr AND A.AR_INV_NBR IS NOT NULL
+			AND B.ORDER_NBR IS NULL
+	END				
+	
+	/* PJH 06/14/18 - Leave 0 */
+	--IF @biiled_cnt = 0
+	--	SET @biiled_cnt = NULL
+	
+	INSERT INTO @med_billed
+	VALUES (@biiled_cnt, @order_type)
+
+RETURN
+END
+
+GO
+
+

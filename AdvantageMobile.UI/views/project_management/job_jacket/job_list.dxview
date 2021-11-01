@@ -1,0 +1,23 @@
+<div data-options="dxView : { name: 'job_list', title: 'Jobs' } ">
+  <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+    <div class="search-wrapper" data-bind="dxTextBox: { placeholder: 'Search', mode: 'search', value: jobList.searchQuery, valueChangeEvent: 'change' } "></div>
+    <div class="card-container" data-bind="dxList: { dataSource: jobList.dataSource }">
+      <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: {view: 'time_entry', settings: {source: 8, jobNumber: JobNumber, jobComponentNumber: JobComponentNumber}}">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-details">
+              <div class="card-header" data-bind="text: JobDisplay "></div>
+              <div style="float:left;" data-bind="text: CdpDisplay"></div>
+            </div>
+          </div>
+          <div class="card-button-container" style="display:none !important;">
+            <div data-bind="dxButton: { icon: 'icon_book_bookmark', visible: false }"></div>
+            <div data-bind="dxButton: { icon: 'icon_clock' }"></div>
+            <div class="card-action-bar">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

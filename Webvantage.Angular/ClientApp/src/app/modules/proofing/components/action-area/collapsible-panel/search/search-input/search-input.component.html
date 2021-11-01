@@ -1,0 +1,18 @@
+<div style="padding:8px">
+  <div class="input-container">
+    <input class="wv-input"  [(ngModel)]="searchOptions.searchPhrase"/><button  kendoButton
+                        [title]="Search"
+                        (click)="Search()"
+                        imageUrl="assets/icons/magnifying_glass.svg"></button>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="searchOptions.caseSensitive" />
+      Case sesitive
+    </label>
+    <label>
+      <input type="checkbox"  [(ngModel)]="searchOptions.wholeWord" />
+      Whole word
+    </label>
+  </div>
+</div>

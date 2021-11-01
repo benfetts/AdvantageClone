@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[WV_USER_QUICK_LAUNCH_REPORTS] (
+    [USERID]   VARCHAR (100) NOT NULL,
+    [TABNO]    INT           NOT NULL,
+    [REPORTID] INT           NOT NULL
+);
+

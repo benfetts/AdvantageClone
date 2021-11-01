@@ -1,0 +1,54 @@
+﻿
+
+CREATE  FUNCTION [dbo].[udf_get_job_spec_qty] ( @job_nbr integer, @job_comp integer, @spec_ver integer)  		  	
+RETURNS VARCHAR(50) AS  
+
+BEGIN  
+	DECLARE @QTY_RANGE	VARCHAR(50)
+	DECLARE @SEQ_MAX INTEGER
+	DECLARE @SEQ_IDX INTEGER
+	DECLARE @JOB_QTY INTEGER
+	DECLARE @MAX_REV INTEGER
+	
+	SET @QTY_RANGE = ''
+	
+	SELECT @MAX_REV = MAX(SPEC_REV) FROM JOB_SPECS
+	WHERE JOB_NUMBER = @job_nbr
+	AND JOB_COMPONENT_NBR = @job_comp
+	AND SPEC_VER = @spec_ver
+
+	SELECT @SEQ_MAX = MAX(SEQ_NBR)
+	FROM JOB_SPEC_QTY
+		WHERE JOB_NUMBER = @job_nbr
+		AND JOB_COMPONENT_NBR = @job_comp
+		AND SPEC_VER = @spec_ver
+		AND SPEC_REV = @MAX_REV
+
+	DECLARE job_qty_cursor CURSOR FOR
+		SELECT SEQ_NBR, CAST(JOB_QTY AS VARCHAR(10))
+		FROM JOB_SPEC_QTY
+		WHERE JOB_NUMBER = @job_nbr
+		AND JOB_COMPONENT_NBR = @job_comp
+		AND SPEC_VER = @spec_ver
+		AND SPEC_REV = @MAX_REV
+		ORDER BY SEQ_NBR
+			
+	OPEN job_qty_cursor
+
+	FETCH NEXT FROM job_qty_cursor INTO @SEQ_IDX, @JOB_QTY
+	WHILE (@@FETCH_STATUS = 0)
+	BEGIN   		
+		IF @SEQ_IDX <> @SEQ_MAX
+			SET @QTY_RANGE = @QTY_RANGE + CAST(@JOB_QTY AS VARCHAR(25)) + ' / '
+		ELSE
+			SET @QTY_RANGE = @QTY_RANGE + CAST(@JOB_QTY AS VARCHAR(25))	
+					
+		FETCH NEXT FROM job_qty_cursor INTO @SEQ_IDX, @JOB_QTY	
+	END
+	
+	CLOSE job_qty_cursor
+	DEALLOCATE job_qty_cursor
+
+	RETURN @QTY_RANGE
+
+END	

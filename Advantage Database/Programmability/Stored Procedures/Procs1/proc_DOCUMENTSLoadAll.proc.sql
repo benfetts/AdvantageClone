@@ -1,0 +1,80 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_DOCUMENTSLoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[DOCUMENT_ID],
+		[FILENAME],
+		[REPOSITORY_FILENAME],
+		[MIME_TYPE],
+		[DESCRIPTION],
+		[KEYWORDS],
+		[UPLOADED_DATE],
+		[USER_CODE],
+		[FILE_SIZE],
+		ISNULL([PRIVATE_FLAG],0) AS PRIVATE_FLAG,
+		[DOCUMENT_TYPE_ID]
+	FROM [DOCUMENTS]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

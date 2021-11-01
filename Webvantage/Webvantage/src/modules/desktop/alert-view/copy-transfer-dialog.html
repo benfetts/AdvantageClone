@@ -1,0 +1,16 @@
+﻿<template>
+    <require from="./copy-transfer"></require>
+    <ux-dialog>
+        <ux-dialog-header>
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <copy-transfer view-model.ref="copyTransfer"></copy-transfer>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <div class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal">
+                <button class="k-button k-primary" click.delegate="saveClick()">Copy</button>
+                <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

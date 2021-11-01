@@ -1,0 +1,55 @@
+<ng-container *ngIf="(bottomPanelButtons | async) as bottomPanelButtons">
+  <ng-container *ngIf="(comparisonService.getComparisonFilesAmount() | async) as amountOfComparisonFiles">
+    <div [ngClass]="setClassOnBlock(bottomPanelButtons.folderOpen.selected, bottomPanelButtons.fileManagerMin.selected)">
+      <ng-container [ngSwitch]="bottomPanelButtons.versions.selectedType">
+
+        <ng-container *ngSwitchCase="splitView">
+          <div class="split-view">
+            <proof-workspace-view [sideSelected]="leftSide.selected && isSplitViewForComparisonFiles(amountOfComparisonFiles)"
+                                  (click)="handleFocusOnSide('first')" [mainView]="true"></proof-workspace-view>
+          </div>
+          <div *ngIf="isSplitViewForComparisonFiles(amountOfComparisonFiles); then thenBlock else elseBlock"></div>
+
+          <ng-template #thenBlock>
+            <ng-container *ngIf="(centralPanelButtons | async) as centralPanelButtons">
+              <div class="split-view">
+                <proof-workspace-view [sideSelected]="rightSide.selected" (click)="handleFocusOnSide('second')" [mainView]="false">
+                </proof-workspace-view>
+              </div>
+            </ng-container>
+          </ng-template>
+
+          <ng-template #elseBlock>
+            <div [ngClass]="setClassOnEmptyCompare('select-to-compare')">
+              <div>
+                <img src="assets/icons/file-to-compare.svg" />
+                <span>Select an asset to compare</span>
+              </div>
+            </div>
+          </ng-template>
+
+        </ng-container>
+
+        <ng-container *ngSwitchCase="splitVertical">
+          <div class="only-one-view">
+            <proof-workspace-view-split-vertical [onlyOneAsset]="true"></proof-workspace-view-split-vertical>
+          </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="splitHorizontal">
+          <div class="only-one-view">
+            <proof-workspace-view-split-horizontal [onlyOneAsset]="true"></proof-workspace-view-split-horizontal>
+          </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="oneAsset">
+          <div class="only-one-view">
+            <proof-workspace-view [onlyOneAsset]="true" [mainView]="true"></proof-workspace-view>
+          </div>
+        </ng-container>
+
+      </ng-container>
+      <img id="marker" style="display:none" title="this is the title" src="assets/icons/pin-selected.svg">
+    </div>
+  </ng-container>
+</ng-container>

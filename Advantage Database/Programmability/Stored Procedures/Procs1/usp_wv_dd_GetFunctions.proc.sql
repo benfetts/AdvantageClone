@@ -1,0 +1,69 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetFunctions] 
+@UserID as VarChar(100)
+AS
+
+	Declare @Limit Char(1)
+	Declare @EmpCode VarChar(10)
+	DECLARE @SEC_USER_ID int
+
+	SELECT 
+		@EmpCode = EMP_CODE,
+		@SEC_USER_ID = SEC_USER_ID
+	FROM 
+		[dbo].[SEC_USER]
+	WHERE 
+		UPPER(USER_CODE) = UPPER(@UserID)
+
+	IF EXISTS(SELECT * FROM [dbo].[SEC_USER_SETTING] WHERE SEC_USER_ID = @SEC_USER_ID AND SETTING_CODE = 'EMP_TS_FNC' AND STRING_VALUE = 'Y') BEGIN
+
+		SET @Limit = 'Y'
+
+	END
+
+	If @Limit = 'Y' 
+		Begin
+			SELECT     FUNCTIONS.FNC_CODE AS Code, FUNCTIONS.FNC_CODE + ' - ' + ISNULL(FUNCTIONS.FNC_DESCRIPTION,FUNCTIONS.FNC_CODE) AS Description
+			FROM         EMP_TS_FNC INNER JOIN
+								  FUNCTIONS ON EMP_TS_FNC.FNC_CODE = FUNCTIONS.FNC_CODE
+			WHERE     (FUNCTIONS.FNC_TYPE = 'E') AND (EMP_TS_FNC.EMP_CODE = @EmpCode and (FUNCTIONS.FNC_INACTIVE = 0 or FUNCTIONS.FNC_INACTIVE IS NULL))
+		End
+	Else
+		Begin
+			SELECT FNC_CODE as Code, FNC_CODE + ' - ' + ISNULL(FNC_DESCRIPTION,'') as Description
+			FROM FUNCTIONS
+			WHERE FNC_TYPE='E'  and (FUNCTIONS.FNC_INACTIVE = 0 or FUNCTIONS.FNC_INACTIVE IS NULL)
+		End
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

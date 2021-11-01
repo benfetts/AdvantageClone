@@ -1,0 +1,17 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/editor/editor"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+
+    <ak-drop-down-list k-widget.two-way="mentionAutoComplete"
+                       k-data-source.bind="mentionEmployeeDataSource"
+                       k-data-text-field="Name"
+                       k-data-value-field="Code"
+                       k-auto-width="true"
+                       k-height="200"
+                       k-filter="contains"                   
+                       k-on-change.delegate="mentionAutoCompleteChange($event.detail)"
+                       k-on-ready.delegate="mentionAutoCompleteReady($event.detail)"
+                       k-on-close.delegate="mentionAutoCompleteClose($event.detail)"
+                       style="width:225px;z-index:1000;visibility:hidden;">
+    </ak-drop-down-list>
+</template>

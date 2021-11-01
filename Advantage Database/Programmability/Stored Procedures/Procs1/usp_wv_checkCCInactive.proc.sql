@@ -1,0 +1,11 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_checkCCInactive] 
+@CDPID int
+AS
+
+Set NoCount On
+
+SELECT     ISNULL(CDP_CONTACT_HDR.INACTIVE_FLAG,0) as INACTIVE_FLAG
+FROM         CDP_CONTACT_HDR
+WHERE     (CDP_CONTACT_ID = @CDPID)	
+	

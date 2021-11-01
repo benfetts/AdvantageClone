@@ -1,0 +1,487 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="ChildPage.master.vb" Inherits="Webvantage.ChildPage" %>
+
+<!DOCTYPE html>
+<html>
+<head id="Head1" runat="server" style="height: 100% !important;">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <asp:PlaceHolder runat="server">
+        <link type="text/css" href="<%= String.Format("CSS/Material/{0}", If(String.IsNullOrEmpty(Me.ThemeCssFile), "Bootstrap.Cyan.css", Me.ThemeCssFile)) %>" rel="stylesheet" />
+    </asp:PlaceHolder>
+    <link type="text/css" href="CSS/Common.css" rel="stylesheet" />
+    <link type="text/css" href="CSS/CardLayout.css" rel="stylesheet" />
+    <link type="text/css" href="CSS/CardLayout.Colors.css" rel="stylesheet" />
+    <link type="text/css" href="CSS/prism.css" rel="stylesheet" />
+    <link type="text/css" href="Content/bootstrap.css" rel="stylesheet" />
+    <script type="text/javascript" src="Scripts/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="Scripts/darkreader.js"></script>
+    <script type="text/javascript" src="Jscripts/ChildPage.js"></script>
+    <script type="text/javascript" src="Jscripts/common.js"></script>
+<telerik:RadScriptBlock ID="RadScriptBlock1" runat="server"
+        EnableViewState="true" ViewStateMode="Enabled">
+    <script>
+                <%= Me.DarkModeScript %>
+    </script>
+		    </telerik:RadScriptBlock>
+    <script type="text/javascript" src="Jscripts/UIHelper.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-dateFormat.min.js"></script>
+
+    <link href="Content/kendo/current/kendo.common-bootstrap.min.css" rel="stylesheet"/>
+    <link href="Content/kendo/current/kendo.bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="Scripts/kendo/current/kendo.all.min.js"></script>
+    <script type="text/javascript" src="Scripts/kendo/current/kendo.aspnetmvc.min.js"></script>
+    <script type="text/javascript" src="Scripts/kendo/current/kendo.dialog.min.js"></script>
+    <script>
+        function radToolBarConfirm(sender, args, message) {
+            args.set_cancel(true);
+            //var commandName = args.get_item().get_commandName();
+            var postBackReference = "";
+            var itemIndex = 0;
+            var runIt = false;
+            postBackReference = sender._postBackReference;
+            if (!postBackReference || postBackReference == null || postBackReference == undefined || postBackReference == "") {
+                postBackReference = sender._rawPostBackReference;
+            }
+            if (postBackReference) {
+                RadToolBarConfirm(sender, args, message).done(function () {
+                    try {
+                        if (postBackReference.indexOf("{0}") > -1) {
+                            //  RadToolBar
+                            runIt = true;
+                        } else {
+                            //  RadContext
+                            if (postBackReference.indexOf("'arguments'") > -1) {
+                                postBackReference = postBackReference.replace("'arguments'", "'{0}'");
+                                runIt = true;
+                            }
+                        }
+                        if (runIt == true) {
+                            eval(kendo.format(postBackReference + ";", args.get_item().get_index()));
+                        } else {
+                            args.set_cancel(!confirm(message));
+                        }
+                    } catch (e) {
+                        args.set_cancel(!confirm(message));
+                    }
+                }).fail(function () {
+                })
+            } else {
+                args.set_cancel(!confirm(message));
+            }
+        }
+        function aspNetButtonConfirm(ctrl, message) {
+            console.log("ctrl?", ctrl);
+            //var result = ShowKendoConfirm(message);
+            //if (result) {
+            //    //console.log("result?", result);
+            //    result.done(function () { console.log("yes!") }).fail(function () { console.log("fail!") });
+            //}
+            //console.log("???", ShowKendoConfirm(message));
+            //return ShowKendoConfirm(message);
+            //ShowKendoConfirm(message).done(function () {
+            //    console.log("Yessss")
+            //}).fail(function () {
+            //    console.log("Nooooo")
+            //})
+        }
+    </script>
+    <telerik:RadScriptBlock ID="RadScriptBlockChildRadWindowFunctions" runat="server"
+        EnableViewState="true" ViewStateMode="Enabled">
+        <script type="text/javascript">
+            function RefreshPage(radWindowCaller) {
+                setTimeout(function () {
+                   __doPostBack('onclick#Refresh', 'Refresh');
+                }, 0);               
+            }
+            function OpenRadWindowLookup(WindowURL, OpenerWindowName, WindowHeight, WindowWidth) {
+                try {
+                    if (typeof WindowURL === 'undefined') {
+                        ShowMessage('No page to navigate');
+                        return false;
+                    }
+                    if (typeof OpenerWindowName === 'undefined') {
+                        OpenerWindowName = '';
+                    }
+                    if (typeof WindowHeight === 'undefined') {
+                        WindowHeight = 0;
+                    }
+                    if (typeof WindowWidth === 'undefined') {
+                        WindowWidth = 0;
+                    }
+                    WindowHeight = 700;
+                    WindowWidth = 620;
+                    if (WindowURL.indexOf("LookUp_AdNumber.aspx") > -1) {
+                        WindowHeight = 600;
+                        WindowWidth = 950;
+                    }
+                    if (WindowURL.indexOf("LookUp_Recipients.aspx") > -1) {
+                        WindowHeight = 800;
+                        WindowWidth = 620;
+                    }
+                    if (WindowURL.indexOf("LookUp_EmailRecipients.aspx") > -1) {
+                        WindowHeight = 800;
+                        WindowWidth = 900;
+                    }
+
+                    if (WindowURL.indexOf("TrafficScheduleVersion_New.aspx") > -1) {
+                        WindowHeight = 500;
+                        WindowWidth = 620;
+                    }
+
+                    var WindowNameParam = '';
+                    if (WindowURL.indexOf(".aspx?") > -1) {
+                        WindowNameParam = "&opener=" + OpenerWindowName;
+                    } else {
+                        if (WindowURL.indexOf("?") === -1) {
+                            WindowNameParam = "?";
+                        } else {
+                            WindowNameParam = "&";
+                        }
+                        WindowNameParam += "opener=" + OpenerWindowName;
+                    }
+                    var mainContentHeight = window.innerHeight;
+                    var mainContentWidth = window.innerWidth;
+                    if (WindowHeight >= mainContentHeight) {
+                        WindowHeight = mainContentHeight - 10;
+                    }
+                    if (WindowWidth >= mainContentWidth) {
+                        WindowWidth = mainContentWidth - 10;
+                    }
+                    var oWnd = $find('<%=RadWindowLookUp.ClientID %>');
+                    window.setTimeout(function () {
+                        oWnd.setActive(true);
+                        oWnd.set_height(WindowHeight);
+                        oWnd.set_width(WindowWidth);
+                        oWnd.set_modal(true);
+                        oWnd.set_visibleTitlebar(true);
+                        oWnd.set_visibleStatusbar(false);
+                        oWnd.set_behaviors(Telerik.Web.UI.WindowBehaviors.Resize + Telerik.Web.UI.WindowBehaviors.Move + Telerik.Web.UI.WindowBehaviors.Close);
+                        oWnd.moveTo(((window.innerWidth - WindowWidth) / 2), 0);
+                        oWnd.setUrl(WindowURL);
+                        oWnd.Parent = this;
+                        oWnd.show();
+                    }, 1);
+                } catch (err) {
+                    ShowMessage("Error opening window\n" + err);
+                }
+            }
+            function OpenRadWindowLookup2(WindowURL, currentCriteria, scope) {
+
+                let oWnd = $find('<%=RadWindowLookUp.ClientID %>');
+
+                var WindowHeight = 600;
+                var WindowWidth = 620;
+
+                setTimeout(function () {
+
+                    oWnd.setActive(true);
+                    oWnd.set_height(WindowHeight);
+                    oWnd.set_width(WindowWidth);
+                    oWnd.set_modal(true);
+                    oWnd.set_visibleTitlebar(true);
+                    oWnd.set_visibleStatusbar(false);
+                    oWnd.set_behaviors(Telerik.Web.UI.WindowBehaviors.Resize + Telerik.Web.UI.WindowBehaviors.Move + Telerik.Web.UI.WindowBehaviors.Close);
+                    oWnd.moveTo(((window.innerWidth - WindowWidth) / 2), 0);
+                    oWnd.setUrl(WindowURL);
+                    oWnd.Parent = this;
+                    var contentWindow = oWnd.get_contentFrame().contentWindow;
+                    oWnd.add_pageLoad(function () {
+                        contentWindow.initialSearchResults(currentCriteria, scope);
+                    });
+                    oWnd.add_close(function () {
+                        var attachedpageLoadHandlers = oWnd.get_events()._getEvent("pageLoad"); // Get all close handlers ; 
+                        while (attachedpageLoadHandlers.length > 0) 
+                        { 
+                            oWnd.remove_pageLoad(attachedpageLoadHandlers[0]); 
+                        } 
+
+                        var attachedCloseHandlers = oWnd.get_events()._getEvent("close"); // Get all close handlers ; 
+                        while (attachedCloseHandlers.length > 0) 
+                        { 
+                            oWnd.remove_close(attachedCloseHandlers[0]); 
+                        } 
+                    });
+
+                    oWnd.show();
+                }, 0);
+            }
+            function CallFunctionOnCallingWindow(CallingWindowPageName, FunctionName) {
+                var oWindow = GetRadWindow();
+                var CallingWindow = oWindow.BrowserWindow.FindWindow(CallingWindowPageName);
+                <%= Me.CallFunctionOnCallingWindowString %>
+            };
+            var name = "#floatMenu";
+            var menuYloc = 0;
+            var floatMenu = $("#floatMenu")
+            $(document).ready(function () {
+                extendTimeout();
+                if ($(name) && $(name).length) {
+                    if ($(name).css("top")) {
+                        menuYloc = parseInt($(name).css("top").substring(0, $(name).css("top").indexOf("px")));
+                    } else {
+                        menuYloc = 0;
+                    }
+                    $(window).scroll(function () {
+                        offset = menuYloc + $(document).scrollTop() + "px";
+                        $(name).animate({ top: offset }, { duration: 500, queue: false });
+                    });
+                };
+                //$("body").css("display", "none");
+                //$("body").fadeIn(200);
+                //enableDarkMode();
+            });
+            $(document).on("keydown", function (e) {
+                if (e.which === 8 && !$(e.target).is("input, textarea, div")) {
+                    e.preventDefault();
+                }
+            });
+            $(document).on("keydown", function (e) {
+                //extendTimeout();
+            });
+            $(document).on("mousemove", function (e) {
+                //extendTimeout();
+            });
+            $(document).on("mousedown", function (e) {
+                //extendTimeout();
+            });
+            $('input[type="text"]').on({
+                dblclick: function () {
+                    window.setTimeout(function () {
+                        this.focus();
+                    }, 100);
+                    window.setTimeout(function () {
+                        this.selectionEnd = this.selectionStart;
+                    }, 200);
+                }
+            });
+            var disableAjax = false;
+            function RadAjaxManagerOnRequestStart(sender, args) {
+                if (disableAjax === true) {
+                    args.set_enableAjax(false);
+                }
+                disableAjax = false;
+            }
+        </script>
+        <style type="text/css">
+            .background-color-background {
+                background-color: <%=Me.BackgroundColor%> !important;
+            }
+
+            .card-bottom-header-bg {
+                background-color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .card-edge {
+                border-bottom: 4px solid #<%=Me.DarkHighlightColor%> !important;
+            }
+
+            .sub-header-color {
+                border-bottom: 1px solid <%=Me.DarkHighlightColor%> !important;
+                color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .dark-highlight-bg {
+                background-color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .dark-highlight-color {
+                color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .ew-title-color {
+                background-color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .rtUL, .rtLI {
+                color: <%=Me.DarkHighlightColor%> !important;
+                font-size: 16px !important;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            .treeview-folder {
+                background-color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .treeview-folder-content {
+                color: #FFFFFF !important;
+            }
+
+            .treeview-bookmark-content {
+                color: #FFFFFF !important;
+            }
+
+            .RadWindow_Bootstrap .rwControlButtons li a:hover {
+                background-color: <%=Me.DarkHighlightColor%> !important;
+                border-color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .calendar-default {
+                background-color: <%=Me.DarkHighlightColor%> !important;
+                border: 0px solid <%=Me.DarkHighlightColor%> !important;
+                color: #ffffff !important;
+            }
+
+            .timesheet-dialog-selector {
+                color: <%=Me.DarkHighlightColor%>;
+                text-decoration: underline;
+            }
+
+            .dark-highlight-box {
+                border: 1px solid <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .background-color-box {
+                border: 1px solid <%=Me.BackgroundColor%> !important;
+            }
+
+            .sidebar-color-box {
+                border: 1px solid <%=Me.SideBarColor%> !important;
+            }
+
+            .RadWindow_Metro {
+                border-width: 2px 2px 2px 3px !important;
+                border-style: solid !important;
+                border-color: <%=Me.SideBarColor%> !important;
+            }
+
+                .RadWindow_Metro .rwTopLeft,
+                .RadWindow_Metro .rwTopRight,
+                .RadWindow_Metro .rwTitlebar,
+                .RadWindow_Metro .rwTopResize {
+                    background: <%=Me.SideBarColor%> !important;
+                }
+
+                .RadWindow_Metro .rwControlButtons a {
+                    background-color: <%=Me.SideBarColor%> !important;
+                    background-image: url('Window/CommandButtonSprites.gif');
+                    width: 29px;
+                    height: 19px;
+                    border: 1px solid <%=Me.SideBarColor%> !important;
+                }
+
+            .RadTabStripTop_Metro .rtsLevel1 {
+                background-color: <%=Me.SideBarColor%> !important;
+            }
+
+            .RadTabStrip_Metro .rtsLevel1 .rtsUL {
+                background-color: <%=Me.SideBarColor%> !important;
+            }
+
+            .RadTabStrip_Metro .rtsLevel1 .rtsLink {
+                color: #ffffff;
+                border: 1px solid <%=Me.SideBarColor%> !important;
+            }
+
+            .RadListBox_Metro .rlbItem.rlbSelected {
+                color: #ffffff;
+                background-color: <%=Me.SideBarColor%> !important;
+            }
+
+            .RadListBox_Metro .rlbButton:active {
+                border-color: <%=Me.SideBarColor%> !important;
+                color: #ffffff;
+                background-color: <%=Me.SideBarColor%> !important;
+            }
+
+            .RadListBox_Metro .rlbButton:active {
+                border-color: <%=Me.SideBarColor%> !important;
+                color: #ffffff;
+                background-color: <%=Me.SideBarColor%> !important;
+            }
+
+            .RadGrid_Metro .rgSelectedRow {
+                background-image: none !important;
+                background-color: <%=Me.LightHighlightColor%> !important;
+            }
+
+            .RadScheduler_Metro .rsHeader {
+                border-color: <%=Me.SideBarColor%> !important;
+                background-color: <%=Me.SideBarColor%> !important;
+            }
+
+                .RadScheduler_Metro .rsHeader li a {
+                    border-top-color: <%=Me.SideBarColor%> !important;
+                    border-right-color: <%=Me.SideBarColor%> !important;
+                    border-left-color: <%=Me.SideBarColor%> !important;
+                    border-bottom-color: <%=Me.SideBarColor%> !important;
+                }
+
+            .RadTreeView_Metro .rtHover .rtIn {
+                color: #FFFFFF !important;
+                background-color: <%=Me.DarkHighlightColor%> !important;
+            }
+
+            .RadToolBar_Metro .rtbChecked .rtbWrap {
+                color: #ffffff;
+                background-color: <%=Me.SideBarColor%> !important;
+                border-color: <%=Me.SideBarColor%> !important;
+            }
+
+            .RadToolBar_Metro .rtbItemClicked .rtbWrap {
+                color: #ffffff;
+                background-color: <%=Me.SideBarColor%> !important;
+                border-color: <%=Me.SideBarColor%> !important;
+            }
+
+            .row-spacer {
+                margin: 0px 0px 8px 0px !important;
+            }
+            /* SyncFusion Grid header */
+            .e-headercell {
+                border: 0px !important;
+                background-color: <%=Me.SideBarColor%> !important;
+                color: #FFFFFF;
+            }
+            .e-rowcell {
+                border: 0px !important;
+            }
+        </style>
+    </telerik:RadScriptBlock>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="BodyTagMain" runat="server" style="height: 100% !important;">
+    <div></div>
+    <form id="FormMain" runat="server" autocomplete="off" style="height: 100% !important;">
+        <telerik:RadScriptManager ID="RadScriptManagerMain" runat="server" 
+            EnablePageMethods="true" EnableScriptGlobalization="true" AsyncPostBackTimeout="900" 
+            EnablePartialRendering="true" EnableEmbeddedjQuery="false">
+            <Scripts>
+                <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js" />
+                <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js" />
+                <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
+            </Scripts>
+        </telerik:RadScriptManager>
+        <telerik:RadSkinManager ID="RadSkinManagerMain" runat="server" ShowChooser="false">
+            <TargetControls>
+                <telerik:TargetControl ControlsToApplySkin="NotSet" />
+            </TargetControls>
+        </telerik:RadSkinManager>
+        <telerik:RadFormDecorator ID="RadFormDecoratorMain" runat="server" DecoratedControls="All" RenderMode="Classic"
+            EnableRoundedCorners="false" EnableEmbeddedBaseStylesheet="true" EnableAjaxSkinRendering="true"
+            EnableEmbeddedScripts="true" EnableEmbeddedSkins="true" />
+        <telerik:RadAjaxManager ID="RadAjaxManagerMain" runat="server" EnableAJAX="true" EnableHistory="true"
+            EnableEmbeddedScripts="true" EnableViewState="true" EnablePageHeadUpdate="true" ClientEvents-OnRequestStart="RadAjaxManagerOnRequestStart">
+        </telerik:RadAjaxManager>
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelMain" runat="server" EnableEmbeddedSkins="false" CssClass="rwLoading" Height="100%" Width="100%">
+        </telerik:RadAjaxLoadingPanel>
+        <telerik:RadPersistenceManager ID="RadPersistenceManagerMain" runat="server">
+            <PersistenceSettings>
+            </PersistenceSettings>
+        </telerik:RadPersistenceManager>
+        <div style="position: absolute; top: 0 !important; bottom: 5px !important; right: 0 !important; left: 0 !important; clear: both !important; overflow: auto; width: 100%">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <telerik:RadWindow ID="RadWindowLookUp" runat="server" VisibleStatusbar="false" VisibleOnPageLoad="false">
+        </telerik:RadWindow>
+    </form>
+</body>
+</html>

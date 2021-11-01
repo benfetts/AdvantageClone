@@ -1,0 +1,35 @@
+<div data-options="dxView : { name: 'submit_options', title: 'Submit Expense Report' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+      <div data-bind="dxLoadPanel: { message: loadPanelMessage, visible: loadPanelVisible, shading: false }"></div>
+      <div data-bind="css: warningBlockCSS">
+        <div class="message-block-text" data-bind="text: headerMessage"></div>
+      </div>
+      <div data-bind="dxScrollView: { }">
+        <div class="dx-fieldset">
+          <div class="dx-field">
+            <div>Select Approver:</div>
+            <div data-bind="dxLookup: clientsSelectBox"></div>
+            <div style="font-size: 11px; font-style: italic; margin-left: 10px;">
+              <span id="footnoteSupervisor" style="margin-right: 10px;">* Supervisor</span>
+              <span id="footnoteAlternate">** Alternate</span>
+            </div>
+          </div>
+          <div class="dx-field">
+             <input type="checkbox" id="chkIncludeReceiptsInEmailAndAlert" class="k-checkbox" checked="checked"/>
+             <label class="k-checkbox-label" for="eq1">Include Receipts In Email And Alert</label>
+          </div>
+        
+        </div>
+        <table style="width: 100%; border: 0;">
+          <tr>
+            <td style="width: 50%; padding-left: 28px;">
+              <div data-bind="dxButton: submitButton" class="landing-page-button"></div>
+            </td>
+            <td style="width: 50%; padding-right: 6px;">
+              <div data-bind="dxButton: cancelButton" class="landing-page-button"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>

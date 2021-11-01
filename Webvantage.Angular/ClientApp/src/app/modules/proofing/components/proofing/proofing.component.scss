@@ -1,0 +1,42 @@
+@import '../../theme/mixins/breakpoints';
+@import '../../theme/mixins/font';
+@import '../../theme/colors';
+
+.main {
+  &-container {
+    @include breakpoint(large) {
+      margin: auto;
+    }
+    min-width: 994px;
+    height: 100vh;
+    min-height: 648px;
+    max-height: 961px;
+    padding: 16px 15px;
+    background: $very-light-grey;
+    border-radius: 3px;
+    display: flex;
+    box-sizing: border-box;
+
+    .action-area {
+      margin-left: 15px;
+    }
+  }
+
+  &-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .central-container,
+    .bottom-container {
+      width: 100%;
+    }
+
+    .central-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

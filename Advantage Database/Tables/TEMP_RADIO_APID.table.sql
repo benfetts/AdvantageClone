@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[TEMP_RADIO_APID] (
+    [AP_ID]     INT NULL,
+    [ORDER_NBR] INT NULL
+);
+

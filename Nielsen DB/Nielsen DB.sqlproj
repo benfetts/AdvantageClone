@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Nielsen_DB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{4b83306c-1794-46fc-8a37-f2a3280afc60}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Nielsen_DB</RootNamespace>
+    <AssemblyName>Nielsen_DB</AssemblyName>
+    <ModelCollation>1033,CS</ModelCollation>
+    <DefaultFileStructure>BySchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CS_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <SuppressTSqlWarnings>71562</SuppressTSqlWarnings>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Functions\" />
+    <Folder Include="Stored Procedures\" />
+    <Folder Include="User Defined Types\" />
+    <Folder Include="SQL Jobs" />
+    <Folder Include="SSIS Packages" />
+    <Folder Include="Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\NIELSEN_TV_STATION.sql" />
+    <Build Include="Tables\NIELSEN_TV_STATION_HISTORY.sql" />
+    <Build Include="Tables\RATINGS_SERVICE.sql" />
+    <Build Include="Tables\SERVICE_STATUS.sql" />
+    <Build Include="Tables\NCC_TV_MVPD.sql" />
+    <Build Include="Tables\NCC_TV_SYSCODE.sql" />
+    <Build Include="Tables\NCC_TV_AI_UE.sql" />
+    <Build Include="Tables\NIELSEN_MARKET.sql" />
+    <Build Include="Tables\NCC_TV_CABLENET.sql" />
+    <Build Include="Tables\NCC_TV_CARRIAGE_UE.sql" />
+    <Build Include="Tables\NCC_TV_FUSION_UE.sql" />
+    <Build Include="Tables\NCC_TV_FUSION_HUTPUT.sql" />
+    <Build Include="Tables\NCC_TV_FUSION_AUDIENCE.sql" />
+    <Build Include="Tables\NIELSEN_DEMO.sql" />
+    <Build Include="Tables\NIELSEN_TV_BOOK_REVISION.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_SEGMENT_CHILD.sql" />
+    <Build Include="Tables\LicenseKeyHistory.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_AUDIENCE.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_INTAB.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_PUR.sql" />
+    <Build Include="Tables\NCC_TV_LPM_MARKET.sql" />
+    <Build Include="Tables\NIELSEN_TV_DAYPART.sql" />
+    <Build Include="Tables\SERVICE_SETTING.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_UNIVERSE.sql" />
+    <Build Include="Tables\NIELSEN_TV_CUME_BOOK.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_SEGMENT_PARENT.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_PERIOD.sql" />
+    <Build Include="Tables\NIELSEN_TV_CUME_BOOK_REVISION.sql" />
+    <Build Include="Tables\NIELSEN_TV_CUME_DAYPART_IMPRESSION.sql" />
+    <Build Include="Tables\NIELSEN_TV_AUDIENCE.sql" />
+    <Build Include="Tables\NIELSEN_TV_BOOK.sql" />
+    <Build Include="Tables\NIELSEN_TV_HUTPUT.sql" />
+    <Build Include="Tables\NIELSEN_TV_INTAB.sql" />
+    <Build Include="Tables\NIELSEN_TV_UNIVERSE.sql" />
+    <Build Include="Tables\NIELSEN_TV_PROGRAM.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_PERIOD_REVISION.sql" />
+    <Build Include="Tables\BROADCAST_TYPE.sql" />
+    <Build Include="Tables\CLIENT.sql" />
+    <Build Include="Tables\CLIENT_ORDER.sql" />
+    <Build Include="Tables\CLIENT_ORDER_MARKET.sql" />
+    <Build Include="Tables\DOWNLOAD_FILE.sql" />
+    <Build Include="Tables\EVENT_LOG.sql" />
+    <Build Include="Tables\MEDIA_MARKET_BREAK.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_DAYPART.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_DEMOGRAPHIC.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_FORMAT.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_MARKET.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_QUALITATIVE.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_REPORT_TYPE.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_STATION.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_STATION_HISTORY.sql" />
+    <Build Include="Tables\NIELSEN_RADIO_V_STAGING.sql" />
+    <Build Include="Security\SYSADM.sql" />
+    <Build Include="Security\SYSADM_1.sql" />
+    <None Include="Functions\advfn_nielsen_ignore_intab_check.function.sql" />
+    <None Include="Functions\advfn_nielsen_radio_columnname_pur.function.sql" />
+    <None Include="Functions\advfn_nielsen_spot_radio_rowcount.function.sql" />
+    <None Include="Functions\advfn_nielsen_spot_tv_rowcount.function.sql" />
+    <None Include="Functions\advfn_nielsen_program_get.function.sql" />
+    <None Include="Functions\advfn_nielsen_radio_columnname_audience.function.sql" />
+    <None Include="Functions\advfn_nielsen_spot_tv_cume_rowcount.function.sql" />
+    <None Include="Functions\udf_split_list.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_intab_get_intab.function.sql" />
+    <None Include="Functions\advtf_nielsen_tv_cume_impressions.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_pur_get_pur.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_audience_spot_radio_research_aqh.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_audience_spot_radio_research_cume.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_audience_spot_radio_research_ecume.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_pur_spot_radio_research.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_intab_spot_radio_research.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_universe_spot_radio_research.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_audience_get_aqh.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_audience_get_cume.function.sql" />
+    <None Include="Functions\advtf_nielsen_audience_spot_tv_research.function.sql" />
+    <None Include="Functions\advtf_nielsen_hutput_spot_tv_research.function.sql" />
+    <None Include="Functions\advtf_nielsen_intab_spot_tv_research.function.sql" />
+    <None Include="Functions\advtf_nielsen_radio_universe_get.function.sql" />
+    <None Include="Functions\advtf_nielsen_audience_get.function.sql" />
+    <None Include="Functions\advtf_nielsen_universe_spot_tv_research.function.sql" />
+    <None Include="Functions\advtf_nielsen_hutput_get_avg.function.sql" />
+    <None Include="Functions\advtf_nielsen_intab_get_avg.function.sql" />
+    <None Include="Functions\advtf_nielsen_universe_get.function.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spotradio_get_market_numbers.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spottv_get_book_ids.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spottv_get_market_numbers.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_validate_radio_periods.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_validate_tv_books.proc.sql" />
+    <None Include="Stored Procedures\advsp_media_spot_radio_stations.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_audience_metrics.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_radio_audience_insert.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_radio_pur_insert.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_radio_segment_child_insert.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_radio_get_client_periods.proc.sql" />
+    <None Include="Stored Procedures\advsp_ncc_tv_market_syscodes.proc.sql" />
+    <None Include="Stored Procedures\advsp_media_spot_tv_stations.proc.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_rating.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_radio_audience_metrics.proc.sql" />
+    <None Include="Stored Procedures\advsp_radio_worksheet_rating.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_radio_research_ranker.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_radio_research_audience_composition.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_tv_get_client_books.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_tv_research_results.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_client_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_neilsen_radio_period_delete.proc.sql" />
+    <None Include="Stored Procedures\advsp_neilsen_tv_book_delete.proc.sql" />
+    <None Include="Stored Procedures\advsp_neilsen_tv_cume_book_delete.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_validate_tv_cume_books.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_tv_cume_get_client_books.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spotradio_delete_reissues.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spotradio_delete_reissued_periods.proc.sql" />
+    <Build Include="User Defined Types\MEDIA_DEMO_DETAIL_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_DEMO_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_SPOT_RADIO_RESEARCH_BOOK_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_SPOT_RADIO_RESEARCH_DAYPART_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_SPOT_TV_RESEARCH_BOOK_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_SPOT_TV_RESEARCH_DEMO_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_SPOT_TV_RESEARCH_TYPE.sql" />
+    <None Include="SQL Jobs\Update Client Tables.sql" />
+    <None Include="SQL Jobs\Update Hosted Nielsen Radio Tables from Data Store.sql" />
+    <None Include="SQL Jobs\Update Hosted Nielsen TV Tables from Data Store.sql" />
+    <None Include="SSIS Packages\SSIS_template_source.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_audience.function.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_hutput.function.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_rating_cable.proc.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_universe.function.sql" />
+    <Build Include="Tables\NCC_TV_FUSION_UE_REVISION.sql" />
+    <Build Include="Tables\NCC_TV_AI_UE_LOG.sql" />
+    <Build Include="Tables\NCC_TV_AI_UE_LOG_REVISION.sql" />
+    <Build Include="Tables\NCC_TV_CARRIAGE_UE_LOG.sql" />
+    <Build Include="Tables\NCC_TV_CARRIAGE_UE_LOG_REVISION.sql" />
+    <None Include="Stored Procedures\advsp_hosted_sync_NCC_TV_CABLENET.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_sync_NCC_TV_SYSCODE.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_sync_NCC_TV_LPM_MARKET.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_ncc_tv_ai_ue_log_delete_reissues.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_ncc_tv_carriage_ue_log_delete_reissues.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_ncc_tv_fusion_ue_delete_reissues.proc.sql" />
+    <None Include="SQL Jobs\Update Hosted NCC Tables from Data Store.sql" />
+    <None Include="Stored Procedures\advsp_ncc_get_fusion_tv_ue_ids_by_client_code.proc.sql" />
+    <None Include="Functions\advfn_ncc_rowcount_by_fusion_ue_id.function.sql" />
+    <None Include="Functions\advfn_ncc_rowcount_by_ai_ue_log_id.function.sql" />
+    <None Include="Functions\advfn_ncc_rowcount_by_carriage_ue_log_id.function.sql" />
+    <None Include="Stored Procedures\advsp_hosted_validate_ncc_data.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spottv_delete_cume_reissues.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spottv_delete_reissues.proc.sql" />
+    <Build Include="Tables\NIELSEN_TV_PROGRAM_BOOK.sql" />
+    <Build Include="Tables\NIELSEN_TV_PROGRAM_BOOK_REVISION.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_tv_get_client_program_books.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spottv_delete_program_reissues.proc.sql" />
+    <None Include="Functions\advfn_nielsen_spot_tv_program_rowcount.function.sql" />
+    <None Include="Stored Procedures\advsp_hosted_validate_tv_program_books.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_radio_markets.proc.sql" />
+    <None Include="Views\V_HOSTED_TV_BOOKS.view.sql" />
+    <Build Include="Views\V_HOSTED_RADIO_PERIODS.view.sql" />
+    <None Include="Functions\advtf_nielsen_audience_tv_book_weeks.function.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_rating_program_drilldown.proc.sql" />
+    <None Include="Functions\advtf_nielsen_hutput_tv_book_weeks.function.sql" />
+    <None Include="Functions\advtf_nielsen_intab_tv_book_weeks.function.sql" />
+    <None Include="Functions\advtf_nielsen_program_get_by_week.function.sql" />
+    <None Include="Functions\udf_split_list_int.function.sql" />
+    <Build Include="Tables\CUSTOM_CUME.sql" />
+    <None Include="Functions\advfn_calculate_num_quarter_hours.function.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_rating_cable_program_drilldown.proc.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_audience_book_weeks.function.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_hutput_book_weeks.function.sql" />
+    <None Include="Stored Procedures\advsp_hosted_ncc_tv_market_syscodes.proc.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_postbuy_rating.proc.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_postbuy_rating_cable.proc.sql" />
+    <None Include="Functions\advtf_nielsen_radio_audience_aqh_daypart.function.sql" />
+    <None Include="Functions\advtf_nielsen_audience_spot_tv_postbuy.function.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_audience_postbuy.function.sql" />
+    <None Include="Stored Procedures\advsp_eastlan_radio_get_periods.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spottv_get_fusion_ue_ids.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_tv_research_results_v2.proc.sql" />
+    <None Include="Stored Procedures\advsp_media_spot_radio_stations_v2.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_radio_get_periods.proc.sql" />
+    <None Include="Functions\advtf_nielsen_intab_tv_book_quarter_hour.function.sql" />
+    <None Include="Functions\advtf_nielsen_hutput_tv_book_quarter_hour.function.sql" />
+    <None Include="Functions\advtf_nielsen_audience_tv_book_quarter_hour.function.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_rating_program_leadinout.proc.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_audience_book_quarter_hour.function.sql" />
+    <None Include="Functions\advtf_ncc_tv_fusion_hutput_book_quarter_hour.function.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_rating_cable_program_leadinout.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_tv_books_revisions_load.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_radio_period_revisions_load.proc.sql" />
+    <Build Include="Tables\CLIENT_ORDER_STATE.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_market_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_station_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_period_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_county_period_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_county_audience_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_county_cluster_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_county_intab_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_county_station_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_radio_county_universe_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_radio_county_get_periods.proc.sql" />
+    <None Include="Functions\advfn_nielsen_radio_county_rowcount_by_period.function.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_tv_book_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_tv_program_book_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spotradio_nielsen_get_counties.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spotradio_nielsen_get_county_years.proc.sql" />
+    <None Include="Stored Procedures\advsp_spotradiocounty_get_counties.proc.sql" />
+    <None Include="User Defined Types\MEDIA_SPOT_RADIO_COUNTY_RESEARCH_YEAR_TYPE.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_spot_radio_county_research_ranker.proc.sql" />
+    <None Include="Stored Procedures\advsp_tv_worksheet_comscore_cdma.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spottv_get_available_books.proc.sql" />
+    <None Include="Stored Procedures\advsp_hosted_spotradio_get_available_periods.proc.sql" />
+    <None Include="Stored Procedures\advsp_radio_worksheet_postbuy_rating.proc.sql" />
+    <None Include="Functions\advtf_nielsen_radio_audience_get_aqh_postbuy.function.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_tv_universe_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_tv_book_revision_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_tv_cume_book_to_hosted.proc.sql" />
+    <None Include="Stored Procedures\advsp_api_get_tv_audience.proc.sql" />
+    <None Include="Stored Procedures\advsp_nielsen_tv_book_delete_datastore.proc.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SSIS Packages\Nielsen Radio Audience.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Demographic.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Intab.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Market.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Period.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio PUR.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Qualitative.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Segment Child.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Segment Parent.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Station History.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Station.dtsx" />
+    <None Include="SSIS Packages\Nielsen Radio Universe.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Audience.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Book.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Cume Book.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV CUME Daypart Impression.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Daypart.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV HUTPUT.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Intab.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Program.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Station History.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Station.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Universe.dtsx" />
+    <None Include="SSIS Packages\NCC TV AI UE LOG.dtsx" />
+    <None Include="SSIS Packages\NCC TV AI UE.dtsx" />
+    <None Include="SSIS Packages\NCC TV CARRIAGE UE LOG.dtsx" />
+    <None Include="SSIS Packages\NCC TV CARRIAGE UE.dtsx" />
+    <None Include="SSIS Packages\NCC TV FUSION AUDIENCE.dtsx" />
+    <None Include="SSIS Packages\NCC TV FUSION HUTPUT.dtsx" />
+    <None Include="SSIS Packages\NCC TV FUSION UE.dtsx" />
+    <None Include="SSIS Packages\NCC TV MVPD.dtsx" />
+    <None Include="SSIS Packages\Nielsen TV Program Book.dtsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Nielsen DB.refactorlog" />
+  </ItemGroup>
+</Project>

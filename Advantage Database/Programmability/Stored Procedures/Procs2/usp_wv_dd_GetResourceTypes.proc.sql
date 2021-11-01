@@ -1,0 +1,16 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetResourceTypes] 
+
+AS
+
+    SELECT 
+        RESOURCE_TYPE_CODE AS code,
+        RESOURCE_TYPE_DESC AS DESCRIPTION,
+        RESOURCE_TYPE_CODE + ' - ' + RESOURCE_TYPE_DESC AS display
+    FROM   
+        RESOURCE_TYPE WITH(NOLOCK)
+    WHERE  
+        ((INACTIVE_FLAG IS NULL) OR (INACTIVE_FLAG = 0))
+    ORDER BY
+        RESOURCE_TYPE_CODE ASC;
+           

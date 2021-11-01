@@ -1,0 +1,62 @@
+CREATE FUNCTION [dbo].[advfn_get_affiliations_by_company_profile_id](
+	@COMPANY_PROFILE_ID int)			
+RETURNS varchar(MAX)
+WITH SCHEMABINDING
+AS
+BEGIN
+	
+	DECLARE @ROW_COUNT AS integer
+	DECLARE @ROW_ID AS integer
+	DECLARE @DESCRIPTION AS varchar(MAX)
+	DECLARE @AffiliationDescriptions AS varchar(MAX)
+	
+	SET @AffiliationDescriptions = ''
+
+	DECLARE @AFFILIATION_DESCRIPTIONS TABLE([ROW_ID] [int] NOT NULL IDENTITY,
+											[DESCRIPTION] [varchar](MAX) NULL)
+
+	INSERT INTO @AFFILIATION_DESCRIPTIONS
+		SELECT 
+			CAST(A.[DESCRIPTION] AS varchar(MAX))
+		FROM 
+			[dbo].[COMPANY_PROFILE_AFFILIATION] AS CPA
+				INNER JOIN [dbo].[AFFILIATION] A on CPA.AFFILIATION_ID = A.AFFILIATION_ID 
+		WHERE 
+			CPA.COMPANY_PROFILE_ID = @COMPANY_PROFILE_ID
+	
+	SET @ROW_COUNT = @@ROWCOUNT
+	SET @ROW_ID = 1
+
+	WHILE @ROW_ID <= @ROW_COUNT BEGIN
+
+		SET @DESCRIPTION = ''
+
+		SELECT
+			@DESCRIPTION = [DESCRIPTION]
+		FROM 
+			@AFFILIATION_DESCRIPTIONS
+		WHERE
+			ROW_ID = @ROW_ID
+
+		IF LTRIM(RTRIM(ISNULL(@DESCRIPTION, ''))) <> '' BEGIN
+		
+			IF @AffiliationDescriptions = '' BEGIN
+
+				SET @AffiliationDescriptions = @DESCRIPTION
+
+			END ELSE BEGIN
+			
+				SET @AffiliationDescriptions = @AffiliationDescriptions + ', ' + @DESCRIPTION
+
+			END
+
+		END
+
+		SET @ROW_ID = @ROW_ID + 1
+	
+	END
+
+	RETURN LTRIM(RTRIM(@AffiliationDescriptions))
+
+END
+GO

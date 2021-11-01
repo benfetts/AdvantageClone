@@ -1,0 +1,76 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_ts_check_emp]
+@UserID as VarChar(100)
+ AS
+
+	DECLARE @SETTING_VALUE char(1)
+	DECLARE @SEC_USER_ID int
+
+	SELECT 
+		@SEC_USER_ID = SEC_USER_ID
+	FROM 
+		[dbo].[SEC_USER]
+	WHERE 
+		UPPER(USER_CODE) = UPPER(@UserID)
+
+	IF EXISTS(SELECT * FROM [dbo].[SEC_USER_SETTING] WHERE SEC_USER_ID = @SEC_USER_ID AND SETTING_CODE = 'SI_DO_OWN_TS' AND STRING_VALUE = 'Y') BEGIN
+
+		SET @SETTING_VALUE = 'Y'
+
+	END ELSE BEGIN
+
+		SET @SETTING_VALUE = 'N'
+
+	END
+
+	SELECT
+		[SI_DO_OWN_TS] = @SETTING_VALUE 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

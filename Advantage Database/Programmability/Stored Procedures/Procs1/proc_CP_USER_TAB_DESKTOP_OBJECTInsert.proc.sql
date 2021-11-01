@@ -1,0 +1,45 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_TAB_DESKTOP_OBJECTInsert]
+(
+	@CDP_CONTACT_ID int,
+	@TAB_ID int,
+	@DESKTOP_OBJECT_ID int,
+	@PARENT_ZONE varchar(50) = NULL,
+	@LOAD_INDEX int = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [CP_USER_TAB_DESKTOP_OBJECT]
+	(
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[DESKTOP_OBJECT_ID],
+		[PARENT_ZONE],
+		[LOAD_INDEX]
+	)
+	VALUES
+	(
+		@CDP_CONTACT_ID,
+		@TAB_ID,
+		@DESKTOP_OBJECT_ID,
+		@PARENT_ZONE,
+		@LOAD_INDEX
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+

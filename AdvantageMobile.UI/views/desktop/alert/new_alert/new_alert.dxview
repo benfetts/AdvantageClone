@@ -1,0 +1,5 @@
+﻿<div data-options="dxView : { name: 'new_alert', title: 'new_alert' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+
+    </div>
+</div>

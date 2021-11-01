@@ -1,0 +1,44 @@
+﻿CREATE PROCEDURE [dbo].[usp_wv_dd_po] (
+	@OmitVoided varchar(6),
+	@OmitClosed varchar(6),
+	@UserID VARCHAR(100)
+)
+AS
+
+DECLARE @OMIT_VOID BIT
+DECLARE @OMIT_COMPLETE BIT
+DECLARE @POs TABLE (PO_NUMBER INT,
+					PO_DESCRIPTION VARCHAR(40),
+					EMP_CODE VARCHAR(6),
+					EMP_NAME VARCHAR(64),
+					VN_CODE VARCHAR(6),
+					VN_NAME VARCHAR(40),
+					PO_DATE SMALLDATETIME,
+					PO_DUE_DATE SMALLDATETIME,
+					VOID_FLAG SMALLINT,
+					PO_COMPLETE SMALLINT,
+					USER_MODIFIED VARCHAR(100),
+					MODIFIED_DATE SMALLDATETIME,
+					DISPLAY_PO_NUMBER VARCHAR(12),
+					SortOrder INT)
+					
+IF @OmitVoided = 'true'
+	SET @OMIT_VOID = 1
+ELSE 
+	SET @OMIT_VOID = 0
+
+IF @OmitClosed = 'true'
+	SET @OMIT_COMPLETE = 1
+ELSE 
+	SET @OMIT_COMPLETE = 0
+	
+INSERT INTO @POs
+	Exec dbo.advsp_load_po_list @OMIT_VOID, @OMIT_COMPLETE, null, null, null, null, null, 0, 0, null, null, @UserID
+
+SELECT
+	[code] =  PO.PO_NUMBER,
+	[description] = PO.DISPLAY_PO_NUMBER + '-' + ISNULL(PO.PO_DESCRIPTION, '')
+FROM
+	@POs PO
+ORDER BY
+	PO.PO_NUMBER DESC

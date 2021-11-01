@@ -1,0 +1,208 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="resources/elements/slider/slider"></require>
+    <require from="resources/elements/search-page/search-page"></require>
+    <require from="resources/elements/search-page/search-option"></require>
+
+    <wv-search-page title="" on-search.call="search()">
+        <div slot="searchOptions" show-advanced-filters.bind="false">
+            <wv-search-option label="Employee">
+                <ak-multiselect k-placeholder="Employee"
+                                k-filter="contains"
+                                k-widget.bind="employeeMultiSelect"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="employeeDataSource"
+                                k-on-change.delegate="employeeMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="employeeCode"></ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="From">
+                <input id="fromdatepicker" ak-datepicker="k-value.two-way:StartDate; k-widget.two-way: fromDatePicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="fromdatepicker" data-type="date" change.delegate="onChange()" />
+                <span data-for='fromdatepicker' class='k-invalid-msg'></span>
+            </wv-search-option>
+            <wv-search-option label="To">
+                <input id="todatepicker" ak-datepicker="k-value.two-way:EndDate; k-widget.two-way: toDatePicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="todatepicker" data-type="date" change.delegate="onChange()" />
+                <span data-for='todatepicker' class='k-invalid-msg'></span>
+            </wv-search-option>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="showOpenCB" checked.bind="showOpen" change.delegate="onChange()">
+                <label class="k-checkbox-label" for="showOpenCB">
+                    <span class="pill wv-save">Open</span>
+                </label>
+            </wv-search-option>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="showPendingCB" checked.bind="showPending" change.delegate="onChange()">
+                <label class="k-checkbox-label" for="showPendingCB">
+                    <span class="pill wv-warning">Pending</span>
+                </label>
+            </wv-search-option>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="showDeniedCB" checked.bind="showDenied" change.delegate="onChange()">
+                <label class="k-checkbox-label" for="showDeniedCB">
+                    <span class=" wv-danger pill">Denied</span>
+                </label>
+            </wv-search-option>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="showApprovedCB" checked.bind="showApproved" change.delegate="onChange()">
+                <label class="k-checkbox-label" for="showApprovedCB">
+                    <span class="wv-success pill">Approved</span>
+                </label>
+            </wv-search-option>
+            <ul class="list-unstyled wv-form-spacing pill-checklist"></ul>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="excludePaid" checked.bind="excludePaid" change.delegate="excludePaidChange()">
+                <label class="k-checkbox-label" for="excludePaid">
+                    Exclude Paid
+                </label>
+            </wv-search-option>
+
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="excludeUnpaid" checked.bind="excludeUnpaid" change.delegate="excludeUnPaidChange()">
+                <label class="k-checkbox-label" for="excludeUnpaid">
+                    Exclude Unpaid
+                </label>
+            </wv-search-option>
+
+        </div>
+        <div slot="advancedSearchOptions">
+            <wv-search-option label="Client">
+                <ak-multiselect k-widget.bind="clientMultiSelect"
+                                k-filter="contains"
+                                k-placeholder="Client"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="clientDataSource"
+                                k-on-change.delegate="clientMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="clientCode">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Job">
+                <ak-multiselect k-widget.bind="jobMultiSelect"
+                                k-filter="contains"
+                                k-placeholder="Job"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="jobDataSource"
+                                k-on-change.delegate="jobMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="jobCode">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Function">
+                <ak-multiselect k-widget.bind="functionMultiSelect"
+                                k-filter="contains"
+                                k-placeholder="Function"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="functionDataSource"
+                                k-on-change.delegate="functionMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="functionCode">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Description">
+                <input type="text" value.two-way="descriptionSearch" placeholder="Description Search" class="form-control keyword-search" />
+            </wv-search-option>
+            <wv-search-option label="Item Date">
+                <input id="itemdatepicker" ak-datepicker="k-value.two-way:ItemDate; k-widget.two-way: itemDatePicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="itemdatepicker" data-type="date" />
+                <span data-for='itemdatepicker' class='k-invalid-msg'></span>
+            </wv-search-option>
+            <wv-search-option hide-label.bind="true">
+                <input class="k-checkbox" type="checkbox" id="showTerminatedEmp" checked.bind="showTerminatedEmp" change.delegate="showTerminatedEmpChange()">
+                <label class="k-checkbox-label" for="showTerminatedEmp">
+                    Show Terminated Employees?
+                </label>
+            </wv-search-option>
+        </div>
+        <div slot="toolbar">
+            <ul class="list-inline" style="margin-bottom: 0;">
+                <li style="padding-right: 5px !important;">
+                    <!--<a href="#" click.delegate="newExpenseReport()" title="New" role="button" class="wv-icon-button k-button k-grid-add wv-add-new"><span class="wvi wvi-navigate-plus"></span></a>-->
+                    <button title="New" href="#" disabled.bind="!canAdd" click.delegate="newExpenseReport()" role="button" class="wv-icon-button k-button k-grid-add wv-add-new ${!canAdd ? 'disabled' : ''}">
+                        <span class="wvi wvi-navigate-plus"></span>
+                    </button>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" click.delegate="search()" title="Search/Find" role="button" class="wv-icon-button k-button k-normal"><span class="wvi wvi-magnifying-glass"></span></a>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" click.delegate="clearSearch()" title="Clear" role="button" class="wv-icon-button k-button k-normal"><span class="wvi wvi-undo"></span></a>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" click.delegate="bookmark()" title="Bookmark" role="button" class="wv-icon-button k-button k-normal"><span class="wvi wvi-book-bookmark"></span></a>
+                </li>
+            </ul>
+        </div>
+        <div slot="content" class="wv-k-grid wv-expenses">
+            <ak-grid k-widget.bind="grid"
+                     k-class="wv-k-grid"
+                     k-auto-bind.bind="false"
+                     k-data-source.bind="data"
+                     k-pageable.bind="{ pageSizes: [10,15,20,50,100,200], buttonCount: 10 }"
+                     k-navigatable.bind="true"
+                     k-editable.bind="false"
+                     k-selectable.bind="false"
+                     k-filterable.bind="true"
+                     k-sortable.bind="true"
+                     k-resizable.bind="true"
+                     k-reorderable.bind="true"
+                     k-column-menu.bind="false"
+                     k-on-data-bound.delegate="gridOnDataBound($event.detail)">
+                <ak-col k-width="75px" class="wv-row-${StatusCode}">
+                    <ak-template>
+                        <div style="text-align: center;">
+                            <a href="#" click.delegate="openModule(getTitle(InvoiceNumber,Description),showDetailView(InvoiceNumber))" class="wv-icon-button k-button wv-neutral-two"><span class="wvi wvi-magnifying-glass"></span></a>
+                        </div>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-title="Invoice Number" k-field="InvoiceNumber" k-width="150px"></ak-col>
+                <ak-col k-title="Report Date" k-field="ReportDate" k-format="{0:d}" k-width="125px" k-align="center"></ak-col>
+                <ak-col k-title="Created Date" k-field="CreatedDate" k-format="{0:d}" k-width="125px" k-align="center"></ak-col>
+                <ak-col k-title="Description" k-field="Description" k-width="300px" k-align="center">
+                    <ak-template>
+                        <div>${Description}</div>
+                        <span class="pill wv-${Status}" title.bind="getStatusTitle(Status,ApprovedBy,ApprovedDate)">${Status}</span>
+                    </ak-template>
+                </ak-col>
+
+                <ak-col k-title="Total Non Billable" k-field="TotalNonBillable" k-format="{0:c}" k-width="175px" k-align="center"></ak-col>
+                <ak-col k-title="Total Billable" k-field="TotalBillable" k-format="{0:c}" k-width="175px" k-align="center"></ak-col>
+                <ak-col k-title="Total Expenses" k-field="TotalAmount" k-format="{0:c}" k-width="175px" k-align="center"></ak-col>
+                <ak-col k-title="Paid" k-field="Paid" k-width="80px" k-attributes.bind="{ class: 'text-center'}">
+                    <ak-template k-class="text-center" k-field="Paid">
+                        <a if.bind="Paid" href="#" click.delegate="ExpensePaidDetail(InvoiceNumber)" title="Paid Details" role="button"><span class="wvi wvi-check"></span></a>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-title="Has Receipts"  k-width="105px" k-attributes.bind="{ class: 'text-center'}">
+                    <ak-template k-title="" k-field="HasDocuments">
+                        <div if.bind="HasDocuments" class='icon-background background-color-sidebar standard-light-green'><input style='cursor:default !important;' class='icon-image' type='image' id='image' src='Images/Icons/White/256/documents_empty.png' title='${AttachmentCount} receipt(s)'></div>
+                    </ak-template>
+                </ak-col>
+                <ak-col></ak-col>
+            </ak-grid>
+
+            <div style="display:none !important;">
+                Slider test!!!
+                <style>
+                    /*.slider {
+                        width: 100%;
+                    }*/
+                </style>
+                <wv-slider label="Test Slider" Max="100" Value="20"></wv-slider>
+            </div>
+        </div>
+        <!--</div>-->
+    </wv-search-page>
+</template>

@@ -1,0 +1,201 @@
+﻿/* Put css styles for employee view here */
+.am-er-banner {
+    background-color: #00bcd4;
+    color: white;
+    height: 54px;
+    vertical-align: middle;
+}
+
+.am-er-banner-content {
+    padding-top: 0.68em;
+}
+
+.dx-tabs.dx-navbar {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+.dx-content {
+    height: 90%;
+    position: absolute;
+    bottom: 0;
+}
+
+#ribbon {
+    padding: 0 0 10px 0;
+    position: absolute;
+    right: 0.25em;
+    top: -0.25em;
+    width: 40px;
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+    #ribbon div {
+        background: #00bcd4;
+        color: #00bcd4;
+        padding: 0.5em 0;
+        text-align: center;
+        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+    }
+
+        #ribbon div:after {
+            border-left: 20px solid #00bcd4;
+            border-right: 20px solid #00bcd4;
+            border-bottom: 10px solid transparent;
+            bottom: 0;
+            content: '';
+            height: 0;
+            left: 0;
+            position: absolute;
+            width: 0;
+        }
+
+.am-er-summary-banner, .am-er-report-banner, .am-er-details-banner {
+    font-size: 20px;
+    color: #FFF;
+}
+
+    .am-er-summary-banner .rectangle, .am-er-report-banner .rectangle, .am-er-details-banner .rectangle {
+        width: 100%;
+        background-color: #0097A7;
+        margin-top: 6px;
+        padding-left: 40px;
+    }
+
+
+
+
+.am-er-expense-detail-total {
+    background-image: url('../../Resources/Asset 5.png');
+    background-size: contain;
+    background-position-y: center;
+    background-repeat:no-repeat;
+}
+
+.am-er-detail-description-title {
+    background-color: #00bcd4;
+    padding-left: 0px;
+}
+
+
+.am-er-summary-parent {
+    margin: 0 auto;
+    width: 100%;
+    background: #00bcd4;
+}
+
+.am-er-bookmark {
+    height: 150px;
+}
+
+    .am-er-bookmark h2 {
+        height: 98%;
+        width: 30px;
+        position: relative;
+        float: left;
+        background-color: #00bcd4;
+    }
+
+        .am-er-bookmark h2 span {
+            text-align: left;
+            width: 150px;
+            transform-origin: 84px 70px;
+            -webkit-transform-origin: 84px 70px;
+            display: inline-block;
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            color: #fff;
+            margin-left:-20px;
+
+        }
+
+        .am-er-bookmark h2.am-er-bookmark-inactive {
+            font-size: 16px;
+            text-align: left;
+            color: #fff;
+            background-color: gray;
+            height: 100%;
+        }
+
+    .am-er-bookmark .am-er-summary-content {
+        float: left;
+        padding: 5px;
+        width: 90%;
+        height: 100%;
+        font-size: 16px;
+    }
+
+.am-er-ico-add::before {
+    content: url('../../Resources/Asset 11.png');
+}
+
+.am-er-ico-copy::before {
+    content: url('../../Resources/Asset 12.png');
+}
+
+.am-er-ico-close::before {
+    content: url('../../Resources/Asset 14.png');
+}
+
+.am-er-ico-edit::before {
+    content: url('../../Resources/icon_pencil_20.png');
+ }
+.am-er-ico-exp-sum {
+    height:81px;width:78px;
+    content: url('../../Resources/Travel_button.png');
+    background-size:cover;
+ }
+
+
+.am-er-ico-question::before {
+    content: url('../../Resources/Asset 14.png');
+}
+
+.am-er-ico-save::before {
+    content: url('../../Resources/Asset 12.png');
+}
+
+select {
+    text-align: center;
+    text-align-last: center;
+}
+
+option {
+    text-align: center;
+}
+.rect{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 10px;
+    height: 100%;
+}
+
+.demo-light{
+    background: rgba(245, 229, 166, 0.5)
+}
+
+.demo-dark{
+    background: rgba(148, 215, 199, 0.5);
+}
+
+.demo-dark.header{
+    background: rgba(243, 158, 108, 0.5);
+}
+
+.demo-dark.footer{
+    background: rgba(123, 155, 207, 0.5);
+}
+
+.small{
+    height: 50px;
+    border: 1px solid lightgray;
+}
+.dx-fileuploader-file, .dx-fileuploader-file-container,.dx-fileuploader-button > span{
+    display:none;
+}
+.dx-fileuploader-button > img{
+    height:51px;
+    width:60px;
+}

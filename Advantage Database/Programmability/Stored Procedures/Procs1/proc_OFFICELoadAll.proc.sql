@@ -1,0 +1,99 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_OFFICELoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[OFFICE_CODE],
+		[OFFICE_NAME],
+		[GLACODE_AR],
+		[GLACODE_AP],
+		[GLACODE_AP_DISC],
+		[PGLACODE_SALES],
+		[PGLACODE_COS],
+		[PGLACODE_WIP],
+		[PGLACODE_DEF_SALES],
+		[PGLACODE_DEF_COS],
+		[PGLACODE_ACC_COS],
+		[PGLACODE_ACC_AP],
+		[PGLACODE_ACC_TAX],
+		[MGLACODE_ACC_AP],
+		[MGLACODE_ACC_COS],
+		[MGLACODE_COS],
+		[MGLACODE_DEF_COS],
+		[MGLACODE_DEF_SALES],
+		[MGLACODE_SALES],
+		[MGLACODE_WIP],
+		[MGLACODE_ACC_TAX],
+		[GLACODE_SUSPENSE],
+		[GLACODE_STATE],
+		[GLACODE_COUNTY],
+		[GLACODE_CITY],
+		[PRD_AB_INCOME],
+		[MED_AB_INCOME],
+		[GLACODE_VOL_DISC],
+		[GLACODE_AP_WH],
+		[INACTIVE_FLAG]
+	FROM [OFFICE]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

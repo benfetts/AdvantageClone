@@ -1,0 +1,323 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+    <require from="resources/elements/search-page/search-page"></require>
+    <require from="resources/elements/search-page/search-option"></require>
+
+    <!--<h3>
+        Expenses
+        <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">New Expense</button>
+    </h3>-->
+    <style>
+
+        .search-wrapper.search-wrapper-expanded {
+            width: 500px;
+        }
+
+        .search-wrapper {
+            width: 200px;
+            -webkit-transition: width 1s ease-in-out;
+            -moz-transition: width 1s ease-in-out;
+            transition: width 1s ease-in-out;
+        }
+        .wv-grid > .sidebar {
+            min-height: 950px;
+            height: 100%;
+        }
+    </style>
+    <wv-search-page title="" on-search.call="search()">
+        <div slot="searchOptions" show-advanced-filters.bind="false">
+            <wv-search-option label="PO Number">
+                <ak-multiselect k-widget.bind="poNumberMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-placeholder="PO Number"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="poNumberDataSource"
+                                k-on-change.delegate="poNumberMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-value.two-way="poNumber">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Description">
+                <input type="text" value.two-way="description" placeholder="Description Search" class="form-control keyword-search" />
+            </wv-search-option>
+            <wv-search-option label="Client" if.bind="!isClientPortal">
+                <ak-multiselect ID="ClientMultiSelect_pos"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="clientMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-placeholder="Client"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-data-source.bind="clientDataSource"
+                                k-auto-bind.bind="false"
+                                k-on-change.delegate="clientMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="clientCode"
+                                k-virtual.bind="virtualClient"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onClientReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Division">
+                <ak-multiselect ID="DivisionMultiSelect_pos"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="divisionMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-placeholder="Division"
+                                k-data-text-field="Name"
+                                k-data-value-field="ID"
+                                k-data-source.bind="divisionDataSource"
+                                k-auto-bind.bind="false"
+                                k-on-change.delegate="divisionMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="divisionID"
+                                k-virtual.bind="virtualDivision"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onDivisionReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Product">
+                <ak-multiselect ID="ProductMultiSelect_pos"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="productMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-placeholder="Product"
+                                k-data-text-field="Name"
+                                k-data-value-field="ID"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="productDataSource"
+                                k-on-change.delegate="productMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="productID"
+                                k-virtual.bind="virtualProduct"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onProductReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Job">
+                <ak-multiselect id="JobMultiSelect_pos"
+                                k-widget.bind="jobMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-placeholder="Job"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="jobDataSource"
+                                k-on-change.delegate="jobMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="jobCode"
+                                k-virtual.bind="virtualJob"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onJobReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Component">
+                <ak-multiselect id="ComponentMultiSelect_pos"
+                                k-widget.bind="componentMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-placeholder="Component"
+                                k-data-text-field="Name"
+                                k-data-value-field="ID"
+                                k-auto-bind.bind="false"
+                                k-min-length.bind="1"
+                                k-data-source.bind="componentDataSource"
+                                k-on-change.delegate="componentMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="componentCode"
+                                k-virtual.bind="virtualComponent"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onComponentReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Vendor">
+                <ak-multiselect k-widget.bind="vendorMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-placeholder="Vendor"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="vendorDataSource"
+                                k-on-change.delegate="vendorMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-value.two-way="vendorCode">
+                </ak-multiselect>
+            </wv-search-option>
+            <div class="wv-form-spacing">
+                <div class="row ">
+                    <div class="col-md-3 wv-form-spacing">
+                        <div class="form-group text-left">
+                            <label class="text-left">From</label>
+                        </div>
+                    </div>
+                    <div class="col-md-9 wv-form-spacing">
+                        <div class="form-group">
+                            <input id="pofromdatepicker" ak-datepicker="k-value.two-way:FromDate; k-widget.two-way: fromDatePicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="fromdatepicker" data-type="date" required="required" />
+                            <span data-for='pofromdatepicker' class='k-invalid-msg'></span>
+                        </div>
+                    </div>
+                </div>
+                <div class=" row">
+                    <div class="col-md-3 wv-form-spacing">
+                        <div class="form-group">
+                            <label class="text-left">To</label>
+                        </div>
+                    </div>
+                    <div class="col-md-9 wv-form-spacing">
+                        <div class="form-group">
+                            <input id="potodatepicker" ak-datepicker="k-value.two-way:ToDate; k-widget.two-way: toDatePicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="todatepicker" data-type="date" required="required" />
+                            <span data-for='potodatepicker' class='k-invalid-msg'></span>
+                        </div>
+                    </div>
+                </div>
+                <div class=" row">
+                    <div class="col-md-3 wv-form-spacing">
+                        <div class="form-group">
+                            <label class="text-left">Due</label>
+                        </div>
+                    </div>
+                    <div class="col-md-9 wv-form-spacing">
+                        <div class="form-group">
+                            <input id="poduedatepicker" ak-datepicker="k-value.two-way:DueDate; k-widget.two-way: dueDatePicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="dodatepicker" data-type="date" required="required" />
+                            <span data-for='pduedatepicker' class='k-invalid-msg'></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <wv-search-option label="Issued By">
+                <ak-multiselect k-placeholder="Issued By"
+                                k-filter="contains"
+                                k-widget.bind="employeeMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="employeeDataSource"
+                                k-on-change.delegate="employeeMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="employeeCode"></ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Approver">
+                <ak-multiselect k-placeholder="Approver"
+                                k-filter="contains"
+                                k-widget.bind="approversMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="approversDataSource"
+                                k-on-change.delegate="approversMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="approversCode"></ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="PO Status">
+                <ak-multiselect k-class="required" k-value.two-way="status" k-max-selected-items.bind="1" k-widget.bind="statusMultiSelect">
+                    <select multiple="multiple" data-placeholder="PO Status">
+                        <option value="2">Approved</option>
+                        <option value="1">Pending</option>
+                        <!--<option value="2">Complete</option>-->
+                        <option value="3">Denied</option>
+                    </select>
+                </ak-multiselect>
+            </wv-search-option>
+        </div>
+
+        <div slot="advancedSearchOptions">
+            <input class="k-checkbox" type="checkbox" id="${PrintedId}" checked.bind="Printed" change.delegate="showPrintedChanged()">
+            <label class="k-checkbox-label" for="${PrintedId}">
+                Printed
+            </label>
+            <div class="wv-form-spacing">
+                <input class="k-checkbox" type="checkbox" id="${OmitVoidedId}" checked.bind="OmitVoided" change.delegate="showOmitVoidedChanged()">
+                <label class="k-checkbox-label " for="${OmitVoidedId}">
+                    Omit Voided PO's
+                </label>
+            </div>
+            <div class="wv-form-spacing">
+                <input class="k-checkbox " type="checkbox" id="${OmitClosedId}" checked.bind="OmitClosed" change.delegate="showOmitClosedChanged()">
+                <label class="k-checkbox-label  " for="${OmitClosedId}">
+                    Omit Closed PO's
+                </label>
+            </div>
+        </div>
+
+        <div slot="toolbar">
+            <ul class="list-inline" style="margin-bottom: 0;">
+                <li style="padding-right: 5px !important;">
+                    <a href="#" title="New" class="wv-icon-button k-button k-grid-add wv-add-new" click.delegate="OpenRadWindow('New Purchase Order','purchaseorder.aspx',0,0)"><span class="wvi wvi-navigate-plus"></span></a>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" role="button" class="wv-icon-button k-button" click.delegate="search()"><span class="wvi wvi-magnifying-glass"></span></a>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" role="button" class="wv-icon-button k-button k-normal" click.delegate="clear()"><span class="wvi wvi-undo"></span></a>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" role="button" class="wv-icon-button k-button k-normal" click.delegate="bookmark()"><span class="wvi wvi-book-bookmark"></span></a>
+                </li>
+            </ul>
+            <!--<a href="#" role="button" class="k-button k-normal">My Purchase Orders</a>-->
+        </div>
+
+        <div slot="content" class="wv-k-grid wv-campaigns">
+            <ak-grid k-widget.bind="grid"
+                     k-sortable.bind="true"
+                     k-class="wv-k-grid"
+                     k-auto-bind.bind="false"
+                     k-data-source.bind="data"
+                     k-navigatable.bind="true"
+                     k-editable.bind="false"
+                     k-pageable.bind="{ pageSizes: [10,15,20,50,100], buttonCount: 10 }"
+                     k-selectable.bind="false"
+                     k-filterable.bind="false"
+                     k-resizable.bind="true"
+                     k-reorderable.bind="true"
+                     k-column-menu.bind="false"
+                     k-on-data-bound.delegate="onDataBound($event)"
+                     k-on-ready.delegate="gridReady($event)">
+                <ak-col k-width="65px">
+                    <ak-template>
+
+                        <div style="text-align: center;">
+                            <a href="javascript:void(0)" click.delegate="showDetailView(PONumber,DisplayPONumber,Description)" class="wv-icon-button k-button wv-neutral-two"><span title="View Details" class="wvi wvi-magnifying-glass"></span></a>
+                        </div>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-width="350px" k-title="PO Number / Vendor" k-field="VendorName">
+                    <ak-template>
+                        <span style="padding:5px 0;">${DisplayPONumber} - <!--(${VendorCode})--> ${VendorName}</span>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-title="Description" k-field="Description" k-width="300px"></ak-col>
+                <ak-col k-title="PO Date" k-field="PODate" k-format="{0:d}" k-width="90px" k-align="center"></ak-col>
+                <ak-col k-title="Due Date" k-field="DueDate" k-format="{0:d}" k-width="90px"></ak-col>
+                <ak-col k-title="Issued By" k-field="IssuedBy" k-width="150px"></ak-col>
+                <ak-col k-title="Void Date" k-field="VoidDate" k-format="{0:d}" k-width="150px"></ak-col>
+                <ak-col k-title="" k-field="" k-width=""></ak-col>
+
+            </ak-grid>
+        </div>
+    </wv-search-page>
+</template>

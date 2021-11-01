@@ -1,0 +1,68 @@
+<widget id="com.devexpress.apptemplate" version="1.0" versionCode="1" 
+        xmlns:android="http://schemas.android.com/apk/res/android" 
+        android-packageName="app.id_97dea075d743478ca7802bff9d28df20">
+  <name>ApplicationTemplate</name>
+  <description>Application Template</description>
+  <author email="support@gotoadvantage.com" href="http://www.gotoadvantage.com">Advantage Software Company, Inc.</author>
+  <!--<preference name="deployment-target" value="13.0.0" />-->
+  <preference name="permissions" value="none" />
+  <preference name="prerendered-icon" value="true" />
+  <preference name="android-windowSoftInputMode" value="adjustPan" />
+  <preference name="SplashScreen" value="splash" />
+  <preference name="SplashScreenDelay" value="60000" />
+  <preference name="AutoHideSplashScreen" value="false" />
+  <preference name="SplashShowOnlyFirstTime" value="false" />
+  <preference name="FadeSplashScreen" value="false" />
+  <preference name="ShowSplashScreenSpinner" value="false" />
+  <preference name="DisallowOverscroll" value="true" />
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <preference name="StatusBarBackgroundColor" value="#000000" />
+  <preference name="android-minSdkVersion" value="28" />
+  <preference name="android-targetSdkVersion" value="29" />
+  <preference name="phonegap-version" value="cli-9.0.0" />
+  <feature name="Camera">
+    <param name="ios-package" value="CDVCamera" />
+  </feature>
+  <feature name="Camera">
+    <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+  </feature>
+  <allow-navigation href="*" />
+  <allow-intent href="*" />
+  <config-file platform="android" parent="/manifest" mode="merge">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+  </config-file>
+  <plugin name="cordova-plugin-device" />
+  <plugin name="cordova-plugin-device-motion" />
+  <plugin name="cordova-plugin-device-orientation" />
+  <plugin name="cordova-plugin-dialogs" />
+  <plugin name="cordova-plugin-file" />
+  <plugin name="cordova-plugin-file-transfer" />
+  <plugin name="cordova-plugin-media" />
+  <plugin name="cordova-plugin-media-capture" />
+  <plugin name="cordova-plugin-network-information" />
+  <plugin name="cordova-plugin-splashscreen" onload="true" />
+  <plugin name="cordova-plugin-vibration" />
+  <plugin name="cordova-plugin-whitelist" />
+  <plugin name="cordova-plugin-ios-longpress-fix" />
+  <plugin name="cordova-plugin-statusbar" onload="true" />
+  <plugin name="cordova-plugin-camera">
+    <param name="CAMERA_USAGE_DESCRIPTION" value="We are using the Camera to take pictures of receipts for upload to expense reports" />
+    <param name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="We are using the Photo Library to get pictures of receipts for upload to expense reports" />
+  </plugin>
+  <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="overwrite">
+    <string>App requires camera and storage access to take pictures and upload expense receipts</string>
+  </edit-config>
+  <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="overwrite">
+    <string>App requires camera and storage access to take pictures and upload expense receipts</string>
+  </edit-config>
+  <edit-config target="NSLocationAlwaysUsageDescription" file="*-Info.plist" mode="overwrite">
+    <string>App does not currently use this feature</string>
+  </edit-config>
+  <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="overwrite">
+    <string>App does not currently use this feature</string>
+  </edit-config>
+  <access origin="*" />
+</widget>

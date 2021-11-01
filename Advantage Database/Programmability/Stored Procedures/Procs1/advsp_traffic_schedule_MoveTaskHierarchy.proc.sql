@@ -1,0 +1,77 @@
+﻿CREATE PROCEDURE dbo.advsp_traffic_schedule_MoveTaskHierarchy
+	@JOB_NUMBER INT,
+	@JOB_COMPONENT_NBR SMALLINT,
+	@SEQ_NBR SMALLINT,
+	@PARENT_TASK_SEQ SMALLINT
+AS
+BEGIN
+
+	IF ISNULL(@PARENT_TASK_SEQ, -1) >= 0
+	BEGIN
+
+		UPDATE 
+			dbo.JOB_TRAFFIC_DET
+		SET 
+			PARENT_TASK_SEQ = @PARENT_TASK_SEQ
+		WHERE 
+			JOB_NUMBER = @JOB_NUMBER AND
+			JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR AND
+			SEQ_NBR = @SEQ_NBR
+			
+		-- Parent task cannot have a est fnc	
+		UPDATE
+			dbo.JOB_TRAFFIC_DET
+		SET
+			FNC_EST = NULL
+		WHERE
+			JOB_NUMBER = @JOB_NUMBER AND
+			JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR AND
+			SEQ_NBR = @PARENT_TASK_SEQ			
+
+		-- Parent task cannot be a Predecessor or have Predecessor(s)
+		DELETE FROM 
+			dbo.JOB_TRAFFIC_DET_PREDS 
+		WHERE 
+			JOB_NUMBER = @JOB_NUMBER AND 
+			JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR AND 
+			(SEQ_NBR = @PARENT_TASK_SEQ OR 
+			 PREDECESSOR_SEQ_NBR = @PARENT_TASK_SEQ)
+
+	END
+	ELSE
+	BEGIN
+
+		UPDATE 
+			dbo.JOB_TRAFFIC_DET
+		SET 
+			PARENT_TASK_SEQ = NULL
+		WHERE 
+			JOB_NUMBER = @JOB_NUMBER AND
+			JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR AND
+			SEQ_NBR = @SEQ_NBR
+
+	END
+	
+	-- Remove all Employee Assigments for rows w/ Child Rows
+	DELETE 
+		JTDE
+	FROM
+		dbo.JOB_TRAFFIC_DET_EMPS JTDE JOIN
+		dbo.advtf_traffic_schedule_GetHierarchyDates(@JOB_NUMBER, @JOB_COMPONENT_NBR) HD ON JTDE.JOB_NUMBER = HD.JOB_NUMBER AND
+																						    JTDE.JOB_COMPONENT_NBR = HD.JOB_COMPONENT_NBR AND
+																						    JTDE.SEQ_NBR = HD.SEQ_NBR
+	WHERE
+		HD.HAS_CHILDREN = 1
+
+	-- Remove all Client Assignments for rows w/ Child Rows
+	DELETE
+		JTDC
+	FROM
+		dbo.JOB_TRAFFIC_DET_CNTS JTDC JOIN 
+		dbo.advtf_traffic_schedule_GetHierarchyDates(@JOB_NUMBER, @JOB_COMPONENT_NBR) HD ON JTDC.JOB_NUMBER = HD.JOB_NUMBER AND
+																							JTDC.JOB_COMPONENT_NBR = HD.JOB_COMPONENT_NBR AND
+																							JTDC.SEQ_NBR = HD.SEQ_NBR
+	WHERE
+		HD.HAS_CHILDREN = 1
+
+END

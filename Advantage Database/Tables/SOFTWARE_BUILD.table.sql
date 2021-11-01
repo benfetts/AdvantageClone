@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[SOFTWARE_BUILD] (
+    [BUILD_ID]    INT           IDENTITY (1, 1) NOT NULL,
+    [VERSION_ID]  INT           NOT NULL,
+    [BUILD]       VARCHAR (10)  NOT NULL,
+    [BUILD_DESC]  VARCHAR (100) NULL,
+    [ACTIVE_FLAG] BIT           NULL
+);
+

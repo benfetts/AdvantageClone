@@ -1,0 +1,28 @@
+@import '../../../theme/mixins/font';
+
+.file-icons {
+  @include font-base(14px, normal, 14px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .icon {
+    margin-left: 0;
+    margin-right: 3px;
+  }
+
+  div {
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.smaller {
+  @include font-base(10px, normal, 14px);
+}

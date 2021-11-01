@@ -1,0 +1,19 @@
+﻿<template>
+    <require from="./add-timesheet-row"></require>
+
+    <ux-dialog>
+        <ux-dialog-header show-close-button.bind="true">
+            Add Row
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <add-timesheet-row view-model.ref="addTimesheetRow"></add-timesheet-row>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <div class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal">
+                <button class="k-button k-primary" click.delegate="addClick()">Add</button>
+                <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+
+</template>

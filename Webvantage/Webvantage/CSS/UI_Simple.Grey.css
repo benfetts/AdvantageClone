@@ -1,0 +1,40 @@
+﻿.main-count-container {
+    text-align:center;
+    cursor:pointer;
+    color: #252525 !important;
+}
+.framecontentTextColor{
+    color: #252525 !important;
+}
+.panel-label {
+    color: #252525 !important;
+}
+.longdate {
+    color: #252525 !important;
+    text-decoration: none !important;
+    font-size: 28px;
+    cursor: pointer;
+    text-align:center;
+}
+.longdate-smaller {
+    color: #252525 !important;
+    text-decoration: none !important;
+    font-size: 24px;
+    cursor: pointer;
+    text-align:center;
+}
+
+fieldset {
+   border: 1px solid #252525 !important; 
+   color: #252525 !important;
+}
+legend {
+    color: #252525 !important;
+}
+#connection-info-panel {
+    /*color: #ffffff !important;*/
+}
+.weather-panel {
+    /*color: #ffffff !important;*/
+}
+

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ALERT_NOTIFY_HDR] (
+    [ALRT_NOTIFY_HDR_ID] INT           IDENTITY (1, 1) NOT NULL,
+    [ALERT_NOTIFY_NAME]  VARCHAR (100) NOT NULL,
+    [ACTIVE_FLAG]        BIT           NULL
+);
+

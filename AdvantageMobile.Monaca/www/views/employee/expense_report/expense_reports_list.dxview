@@ -1,0 +1,32 @@
+<div data-options="dxView : { name: 'expense_reports_list', title: 'Expenses' } ">
+  <div data-bind="dxCommand: captureReceiptCommand"></div>
+  <div data-bind="dxCommand: newExpenseReportCommand"></div>
+  <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+
+    <div class="card-container" data-bind="dxList: { dataSource:  expenseListDataSource}">
+
+      <div class="card" data-options="dxTemplate : { name: 'item' } ">
+
+        <div class="card-content">
+
+          <h1 data-bind="text: Description, dxAction: {view: 'expense_report', settings: {invoiceNumber: InvoiceNumber}} "></h1>
+
+          <div class="card-details">
+
+            <div style="float:left;" data-bind="text: DetailsDescription"></div>
+
+          </div>
+
+
+        </div>
+        <div class="card-button-container">
+          <div class="card-action-bar">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,233 @@
+@import '../../../theme/colors';
+@import '../../../theme/mixins/font';
+
+.color-picker-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $border-color;
+}
+
+.tools-optionts-container {
+  display: block;
+}
+
+.mate-info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.k-panelbar {
+  color: $black-light;
+  font-family: $font-family-base;
+  font-size: 13px;
+  /*  font-size: 10px;
+  font-weight: 600;
+*/ border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.k-button {
+  font-size: 13px;
+}
+
+.k-panelbar > .k-item > .k-link {
+  border-top-left-radius: 2px;
+}
+
+.k-panelbar > .k-item > .k-link:hover,
+.k-panelbar > .k-item > .k-link,
+.k-panelbar > .k-item > .k-link.k-state-selected:hover,
+.k-panelbar > .k-item > .k-link.k-state-selected,
+.k-panelbar > .k-item.k-state-expanded > .k-link {
+  background-color: $white;
+  color: $black-light;
+  font-weight: 600;
+}
+
+/*.k-panelbar > .k-item > .k-link.k-state-selected:hover,
+.k-panelbar > .k-item > .k-link.k-state-selected{
+  background-color: $light-grey;
+}
+*/
+.k-panelbar > .k-item > .k-link.k-state-selected:focus {
+  box-shadow: none !important;
+}
+
+
+.k-panelbar > .k-item > .k-link.k-state-selected {
+  box-shadow: none !important;
+}
+
+.k-panelbar{
+    background-color:white;
+}
+
+.color-picker {
+  padding: 10px;
+
+  &-container {
+    width: 100%;
+  }
+}
+
+.panel {
+  .title {
+    border-bottom: 1px solid #cccccc;
+
+    &-burger {
+      margin-right: 10px;
+      min-width: 14px;
+    }
+
+    &-icons {
+      margin-right: 10px;
+    }
+
+    .right {
+      display: flex;
+    }
+  }
+
+  .buttons-container {
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .size-tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid $border-color;
+    height: 30px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .opacity {
+      margin-left: 1px;
+    }
+  }
+
+  .k-slider-horizontal {
+    height: 6px;
+    width: 100%;
+  }
+}
+
+.title .left {
+  @include font-base(15px, 600, 20px);
+  padding: 8px;
+  color: black !important;
+  display: flex;
+  align-items: center;
+  //border-bottom: 1px solid #cccccc;
+  //border-top: 1px solid #cccccc;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+p {
+  @include font-base(14px, 400, 18px)
+}
+
+.k-content {
+  border-bottom-left-radius: 3px;
+}
+
+.area-options {
+  height: 60px;
+}
+
+.description-text-area {
+  min-height: 180px;
+  max-height: 180px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.tools-options {
+
+  &-container {
+    height: 30px;
+    padding: 15px;
+  }
+
+  &-button {
+    .k-image {
+      width: 30px;
+      height: 20px;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    .k-button {
+      width: 32px;
+      height: 32px;
+      background: $white;
+      border: 1px solid $border-color;
+      box-sizing: border-box;
+      border-radius: 3px !important;
+
+/*      &:hover,
+      &:focus {
+        background: $light-grey;
+        border: 1px solid $border-color;
+        box-shadow: none;
+      }
+
+      &:hover {
+        background: $very-light-grey;
+      }
+*/
+/*      &:active,
+      &.k-state-active {
+        border: 1px solid $border-color;
+        box-shadow: none;
+        background-color: $very-light-grey;
+      }
+*/    }
+  }
+}
+.panel {
+  height: -webkit-fill-available;
+}
+
+.asset-info,
+.review {
+  .k-panelbar {
+    border-bottom: none;
+  }
+}
+
+.flag-checked .flag {
+  -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(800%) contrast(2);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(800%) contrast(0.8);
+}
+
+.title-icons {
+  width: 15px;
+  height: 15px;
+}
+
+.title-icons:hover {
+  -webkit-filter: grayscale(10%) brightness(80%);
+  filter: grayscale(10%) brightness(80%);
+}
+
+.title .left {
+  @include font-base(15px, 600, 20px);
+  display: flex;
+  align-items: center;
+}

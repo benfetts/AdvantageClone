@@ -1,0 +1,15 @@
+C:\TFS_ROOT\Advantage\Production\Output\Resources\AmericanXLG.xlg
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAFF.aff
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAlphabet.txt
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Login.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Login.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Login.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Login.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\Advantage Access Login.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\AdvantageAccessLogin.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\Advantage Access Login.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\Advantage Access Login.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\Advantage Access Login.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\Advantage Access Login.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\Advantage Access Login.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Access Login\obj\Debug\Advantage Access Login.pdb

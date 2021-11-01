@@ -1,0 +1,38 @@
+﻿
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_ts_SetSubmitLabel]
+@Empcode VarChar(6),
+@EmpDate SmallDateTime
+AS
+
+DECLARE @return int
+	
+SELECT @return =
+	CASE
+		WHEN ( ISNULL(APPR_FLAG, 0)=0 AND ISNULL(APPR_PENDING, 0)=0 ) THEN 0 --Submit (edit)
+		WHEN ( ISNULL(APPR_FLAG, 0)=0 AND ISNULL(APPR_PENDING, 0)=1 ) THEN 5 --Pending
+		WHEN ( ISNULL(APPR_FLAG, 0)=1 AND ISNULL(APPR_PENDING, 0)=1 ) THEN 6 --Approved	
+		WHEN ( ISNULL(APPR_FLAG, 0)=1 AND ISNULL(APPR_PENDING, 0)=0 ) THEN 6 --Approved	
+		WHEN ( ISNULL(APPR_FLAG, 0)=0 AND ISNULL(APPR_PENDING, 0)=2 ) THEN 7 --Denied
+		ELSE 0
+	END
+	FROM EMP_TIME WITH (NOLOCK) 
+	WHERE EMP_CODE = @Empcode 
+	AND EMP_DATE = @EmpDate
+
+SELECT ISNULL(@return,0)
+
+
+
+
+
+
+
+

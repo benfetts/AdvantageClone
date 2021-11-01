@@ -1,0 +1,15 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_reports_ar_statements_client_CC] 
+@CLI_CODE VARCHAR(6),
+@CONTACT_CODE VARCHAR(6)
+AS
+
+SELECT 
+    ISNULL(CONT_FNAME,'')+' '+ISNULL(CONT_LNAME,'') AS ContactName,    
+    EMAIL_ADDRESS
+FROM         
+    CL_CONTACT
+WHERE     
+    (CL_CODE = @CLI_CODE) 
+    AND  (CONT_CODE <> @CONTACT_CODE)
+    AND (NOT (EMAIL_ADDRESS IS NULL))

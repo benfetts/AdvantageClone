@@ -1,0 +1,39 @@
+<div data-options="dxView : { name: 'view_alert_comments', title: 'Comments' } ">
+    <div data-bind="dxCommand: { onExecute: showAddCommentPopUp, title: 'Add', id: 'create', icon: 'plus'}"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxList: commentsList">
+            <div data-options="dxTemplate : { name: 'item' } ">
+                <div style="border-bottom: solid 1px#cecece;overflow:hidden; margin-top:-10px;margin-bottom:-10px;">
+
+                    <div data-bind="text: Comment" class="wordwrap" style="text-align:justify;">
+                    </div>
+
+                    <div style="font-size:smaller;padding-bottom:5px;">
+                        <div style="float:left;">
+                            -
+                        </div>
+                        <div style="float:left;margin-left:4px;" data-bind="text: EmployeeFullName">
+                        </div>
+                        <div style="float:left;">
+                            ,
+                        </div>
+                        <div style="float:left;margin-left:4px;" data-bind="text: GeneratedDate.toShortDateString() ">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div data-bind="dxPopup: addCommentPopUp">
+            <div data-options="dxTemplate : { name: 'content' } ">
+                <div data-bind="dxTextArea: commentsTextArea"></div>
+                <div style="width:100%;text-align:center;margin-top:20px;">
+                    <div style="width:40%" data-bind="dxButton: saveButton"></div>
+                    <div style="width:40%" data-bind="dxButton: cancelButton"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_Traffic_Schedule_SaveDetComments]
+	@JOB_NUMBER INT,
+	@JOB_COMPONENT_NBR INT,
+	@SEQ SMALLINT,
+	@EMP_CODE varchar(6),
+	@Create_User varchar(100),
+	@Create_Date datetime,
+	@Create_Time datetime,
+	@COMMENT text
+AS
+BEGIN
+	
+SET NOCOUNT ON;
+
+  INSERT INTO JOB_TRAFFIC_DET_CMTS WITH(ROWLOCK)(JOB_NUMBER, JOB_COMPONENT_NBR, SEQ_NBR, EMP_CODE,CREATE_USER,CREATE_DATE,CREATE_TIME,COMMENT)
+  values(@JOB_NUMBER,@JOB_COMPONENT_NBR,@SEQ,@EMP_CODE,@Create_User,@Create_Date,@Create_Time,@COMMENT)
+  
+END
+

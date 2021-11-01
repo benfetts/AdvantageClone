@@ -1,0 +1,383 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "CSS/wv-icons.css";
+
+html,
+body,
+form,
+#wrapper {
+  height: 100% !important;
+  width: 100% !important;
+  font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  -webkit-font-smoothing: antialiased;
+  color: #767676 !important
+}
+
+Body,
+th,
+td {
+  Font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 13px !important
+}
+
+.k-image {
+  height: 20px !important;
+  width: 20px !important;
+  font-size: 20px !important;
+}
+
+button.k-button-icon.k-button {
+  height: 32px !important;
+  width: 32px !important;
+}
+
+.k-button {
+  border-radius: 4px;
+}
+
+  .k-button.wv-icon-button {
+    height: 32px;
+    line-height: 32px;
+    width: 32px;
+    text-align: center;
+    padding: 0 5px;
+    font-size: 20px !important;
+  }
+
+  .k-button.wv-add-new:not(.k-state-disabled) {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
+
+    .k-button.wv-add-new:not(.k-state-disabled):hover {
+      color: #fff;
+      background-color: #449d44;
+      border-color: #398439;
+    }
+
+  .k-button.wv-save:not(.k-state-disabled) {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+  }
+
+    .k-button.wv-save:not(.k-state-disabled):hover {
+      color: #fff;
+      background-color: #286090;
+      border-color: #204d74;
+    }
+
+  .k-button.wv-cancel:not(.k-state-disabled) {
+    color: #fff;
+    background-color: #DC3545;
+    border-color: #d43f3a;
+  }
+
+    .k-button.wv-cancel:not(.k-state-disabled):hover {
+      color: #fff;
+      background-color: #c9302c;
+      border-color: #ac2925;
+    }
+
+  .k-button.wv-neutral:not(.k-state-disabled) {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+  }
+
+    .k-button.wv-neutral:not(.k-state-disabled):hover {
+      color: #333;
+      background-color: #e6e6e6;
+      border-color: #adadad;
+    }
+
+  .k-button.wv-neutral-two:not(.k-state-disabled) {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #ccc;
+  }
+
+    .k-button.wv-neutral-two:not(.k-state-disabled):hover {
+      color: #333;
+      background-color: #d3d3d3;
+      border-color: #333;
+    }
+
+  .k-button:hover {
+    transition: background-color 0.3s ease;
+  }
+
+.wv-input {
+  border-color: #CCCCCC !important;
+  box-shadow: rgb(0 0 0 / 7%) 0 1px 1px inset;
+  width: 250px;
+  line-height: 1.908em;
+  outline: medium none;
+  border: 1px solid;
+  border: 1px solid;
+  border-color: #CCCCCC !important;
+  height: 34px;
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 7px;
+}
+
+  .wv-input:hover {
+    border-color: #AEAEAE !important;
+  }
+
+  .wv-input::-webkit-input-placeholder {
+    font-style: italic;
+    padding-left: 20px;
+    color: rgb(0 0 0 / 33%);
+  }
+
+.small-employee {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  float: left;
+  padding-left: 7px;
+}
+
+  .small-employee img {
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+  }
+
+.comment-content .comment-header,
+.comment-header small {
+  font-weight: 100;
+  font-size: 85%;
+}
+
+  .comment-content .comment-header,
+  .comment-header small span {
+    color: #2196f3;
+  }
+
+  .comment-header small a {
+    color: #2196f3;
+    text-decoration: none;
+  }
+
+    .comment-header small a :hover {
+      text-decoration: underline;
+    }
+
+.comment-text {
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 100;
+  color: #767676;
+}
+
+.comment-content {
+  overflow: hidden;
+  min-height: 34px;
+  height: auto;
+  padding-left: 4px;
+}
+
+.comment-view-item {
+  /*  padding-top:7px;
+  border-left: 0 solid #dce3e6;
+  border-right: 0 solid #dce3e6;
+  border-top: 0 solid #dce3e6;
+  border-bottom: 1px solid #dce3e6;
+*/
+}
+
+  .comment-view-item:nth-child(even) {
+    background: #efefef !important;
+  }
+
+  .comment-view-item:nth-child(odd) {
+    background: #fff !important;
+  }
+
+.search-result:nth-child(even) {
+  background: #efefef !important;
+}
+
+.search-result:nth-child(odd) {
+  background: #fff !important;
+}
+
+.rotate90 .k-image {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.comment-image {
+  height: 32px;
+  width: 32px;
+  border-radius: 5px;
+  background-color: #428bca;
+}
+
+.comment-image-text {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  text-align: center;
+  float: left;
+  margin: 0 0 0 2px;
+  line-height: 30px;
+  font-size: 13px;
+  background-color: #428bca;
+  color: white;
+}
+
+.comment-view > div > div > div > div#editorDiv > table > tbody > tr > td.k-editable-area {
+  height: 30px !important;
+}
+
+.comment-view > div > div > div > div#editorDiv > table {
+  border: 1px solid #767676 !important;
+  border-radius: 4px;
+}
+
+.k-dialog-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  outline: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10001;
+}
+
+  .k-dialog-wrapper .k-dialog {
+    position: relative;
+  }
+
+.k-dialog {
+  padding: 0;
+  position: fixed;
+  box-sizing: border-box;
+}
+
+  .k-dialog.k-dialog-centered {
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+
+  .k-dialog .k-multiselect, .k-dialog .k-dropdowntree {
+    width: 100%;
+  }
+
+.k-dialog-close {
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+  .k-dialog-buttongroup .k-button {
+    width: auto !important;
+    max-width: 100%;
+  }
+
+.k-ie .k-dialog-buttongroup .k-button ~ .k-button {
+  margin-left: 8px;
+}
+
+.k-rtl .k-ie .k-dialog-buttongroup .k-button ~ .k-button,
+[dir="rtl"] .k-ie .k-dialog-buttongroup .k-button ~ .k-button {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+.k-dialog-titlebar {
+  border-color: inherit;
+  color: #ffffff;
+  background-color: #ff6358;
+}
+
+.k-button {
+  border-radius: 2px;
+  padding: 4px 8px;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 14px;
+  line-height: 1.4285714286;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 4px;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  position: relative;
+}
+
+.k-window-titlebar {
+  background-clip: padding-box;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 12px 16px;
+  border-width: 0 0 1px;
+  border-style: solid;
+  white-space: nowrap;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.k-dialog-buttongroup {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-color: #ccc;
+  margin: 0;
+  padding: 6px 6px;
+  width: 100%;
+  border-width: 1px 0 0;
+  border-style: solid;
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+

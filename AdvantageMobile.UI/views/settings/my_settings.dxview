@@ -1,0 +1,23 @@
+<div data-options="dxView : { name: 'my_settings', title: 'Settings' } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxScrollView: { }">
+
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div>Language</div>
+                    <div data-bind="dxSelectBox: languageSelectBox"></div>
+                </div>
+                <div style="display:none;"class="dx-field">
+                    <div>Theme</div>
+                    <div data-bind="dxSelectBox: themeSelectBox "></div>
+                </div>
+                <div style="display:none;" class="dx-field">
+                    <div style="color:red;">Platform (for testing and demo only!)</div>
+                    <div data-bind="dxSelectBox: platformSelectBox "></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

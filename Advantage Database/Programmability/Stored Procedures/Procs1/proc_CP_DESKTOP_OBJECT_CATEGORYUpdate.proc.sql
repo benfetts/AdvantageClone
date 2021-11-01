@@ -1,0 +1,30 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_DESKTOP_OBJECT_CATEGORYUpdate]
+(
+	@ID int,
+	@CATEGORY varchar(50)
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [CP_DESKTOP_OBJECT_CATEGORY]
+	SET
+		[CATEGORY] = @CATEGORY
+	WHERE
+		[ID] = @ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+

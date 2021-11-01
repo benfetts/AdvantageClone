@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AdvantageAPI.ValidationMessage">
+    <Position X="5.5" Y="18.75" Width="1.75" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ValidationMessage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.APInvoices">
+    <Position X="13.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACCAAIAACAAAABAAgAAFQAAAAAACACAAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\APInvoice.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ARInvoices">
+    <Position X="8.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AABCCAIAACAAECAIEgAAAQACAAAACACAgAAQAAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\ARInvoice.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AccountExecutive">
+    <Position X="5.5" Y="9.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAEAACAAAAAAAAAIgAAAAAIAA=</HashCode>
+      <FileName>APIDbContext\Entities\AccountExecutive.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AlertGroup">
+    <Position X="15.25" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAgEAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\AlertGroup.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Bank">
+    <Position X="5.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Bank.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.BillingCoop">
+    <Position X="13.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\BillingCoop.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Campaign">
+    <Position X="15.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAEAAgAAQAAAAAAEAAAIAAAAAAIAA=</HashCode>
+      <FileName>APIDbContext\Entities\Campaign.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Client">
+    <Position X="3" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAEAAAQYAYkAIgCQQgAAIAABICEQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Client.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ClientTypes">
+    <Position X="15.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\ClientType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.DepartmentTeam">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\DepartmentTeam.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Division">
+    <Position X="3.25" Y="13" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAgEAAAAIAIEAAgCQQgAAIAAAACAQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Division.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Employee">
+    <Position X="5.5" Y="12" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAECAACAAAAAAAAAgAAEAAAAAAgBAAAAABAAEAAg=</HashCode>
+      <FileName>APIDbContext\Entities\Employee.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.EmployeeTimeRecord">
+    <Position X="13.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEhAUAQAAAIAIAAIEBBAAgAAgAAwIAAAAAAJAA=</HashCode>
+      <FileName>EmployeeTimeRecord.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.[Function]">
+    <Position X="8.5" Y="13.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAgAAAQAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Function.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.IndirectCategory">
+    <Position X="11.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\IndirectCategory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.JobLogUserDefinedValues">
+    <Position X="8.5" Y="11.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAABAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Classes\Maintenance\JobLogUserDefinedValue.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.JobType">
+    <Position X="7.5" Y="18.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\JobType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Market">
+    <Position X="13.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Market.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.MediaOrder">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>rNQTVFc0NL+ogwzMBkIZAGprMiKgKgFwzZwAENU+5AA=</HashCode>
+      <FileName>APIDbContext\Entities\MediaOrder.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Product">
+    <Position X="3" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIIBAAAgEAAAQcAQEEMwAQQgQAAAEBIgEYAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Product.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.SalesClass">
+    <Position X="13.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\SalesClass.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ScheduleStatus">
+    <Position X="15.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\ScheduleStatus.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Task">
+    <Position X="9.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Task.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.User">
+    <Position X="9.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAAAAAAEAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\User.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.VendorCategory">
+    <Position X="7.75" Y="15.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VendorCategory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Vendor">
+    <Position X="5.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QASAgIAAAGoAgQAKABEiQAQghAoEAUAhAAEAJgAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Vendor.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Jobs">
+    <Position X="8.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAQBCFAgFAAAAAQIAAAAAEAZAgAAEAACQYABAAAgJAA=</HashCode>
+      <FileName>Classes\Maintenance\Jobs.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.JobComponents">
+    <Position X="10.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>OAQRCEAgEAgAoAQYAAAgAEBZAhAAEIACwYABAAAgJAA=</HashCode>
+      <FileName>Classes\Maintenance\JobComponents.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ContactType">
+    <Position X="11.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\ContactType.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.VendorContact">
+    <Position X="15.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAEAAgCAAAEAIABBkCAUCAAIAAAQAAAAAJAAAAgg=</HashCode>
+      <FileName>APIDbContext\Entities\VendorContact.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.VendorRepResponse">
+    <Position X="11" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BCACAEAAgAAAAAAIABAkCAUCAAoAAAAIAIAABkAAIAg=</HashCode>
+      <FileName>Classes\Maintenance\VendorRepResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.OrderStatusResponse">
+    <Position X="13" Y="18.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIgAAACAAAAAAgIAAABAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Media\OrderStatusResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.APInvoiceDetails">
+    <Position X="13.25" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAgAAAAgAgAAgAAAAACAAAAAACAQAAAAAIAAAA=</HashCode>
+      <FileName>Classes\Maintenance\APInvoiceDetail.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

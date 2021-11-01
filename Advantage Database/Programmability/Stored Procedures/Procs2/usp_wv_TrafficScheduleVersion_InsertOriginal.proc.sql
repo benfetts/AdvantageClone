@@ -1,0 +1,47 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_TrafficScheduleVersion_InsertOriginal]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[usp_wv_TrafficScheduleVersion_InsertOriginal]
+GO
+
+CREATE PROCEDURE [dbo].[usp_wv_TrafficScheduleVersion_InsertOriginal] /*WITH ENCRYPTION*/
+@JOB_NUMBER INT,
+@JOB_COMPONENT_NBR SMALLINT,
+@USER_CODE VARCHAR(100)
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	DECLARE
+	@VERSION_COUNT AS INT,
+	@SCHEDULE_EXISTS BIT;
+
+	SET @JOB_NUMBER = ISNULL(@JOB_NUMBER, 0);
+	SET @JOB_COMPONENT_NBR = ISNULL(@JOB_COMPONENT_NBR, 0);
+	SET @SCHEDULE_EXISTS = 0;
+
+	IF EXISTS (SELECT 1 FROM JOB_TRAFFIC WITH(NOLOCK) WHERE JOB_NUMBER = @JOB_NUMBER AND JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR)
+	BEGIN
+		SET @SCHEDULE_EXISTS = 1;
+	END
+
+	IF @SCHEDULE_EXISTS = 1
+	BEGIN
+
+		SELECT @VERSION_COUNT = COUNT(1)
+		FROM JOB_TRAFFIC_VER WITH(NOLOCK) 
+		WHERE JOB_NUMBER = @JOB_NUMBER AND JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR AND NOT VER_CREATED_COMMENT LIKE 'Created for template:%';
+
+		IF @VERSION_COUNT = 0
+		BEGIN
+
+			--SELECT 'AUTO CREATE FIRST VERSION'
+			EXEC usp_wv_TrafficScheduleVersion_Insert @USER_CODE, 1, 'Original', 'The original version', 'Automatically created', @JOB_NUMBER, @JOB_COMPONENT_NBR;
+
+		END
+
+	END
+END
+/*=========== QUERY ===========*/
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO

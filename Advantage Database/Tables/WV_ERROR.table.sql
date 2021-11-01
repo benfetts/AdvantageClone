@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[WV_ERROR] (
+    [USERID]         VARCHAR (100) NULL,
+    [ERRDATETIME]    DATETIME      NULL,
+    [ERRNUMBER]      INT           NULL,
+    [ERRDESCRIPTION] VARCHAR (255) NULL,
+    [ERRSOURCE]      VARCHAR (255) NULL
+);
+

@@ -1,0 +1,44 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetADSizes]
+@Vendor as Varchar(6)
+AS
+
+SELECT     MEDIA_SPECS_HDR.AD_SIZE as Code, MEDIA_SPECS_HDR.AD_SIZE + ' ' + AD_SIZE.SIZE_DESC as Description
+FROM         AD_SIZE INNER JOIN
+                      MEDIA_SPECS_HDR ON AD_SIZE.SIZE_CODE = MEDIA_SPECS_HDR.AD_SIZE
+WHERE     (ISNULL(AD_SIZE.INACTIVE_FLAG,0) <> 1) AND (MEDIA_SPECS_HDR.VN_CODE = @Vendor)
+ORDER BY MEDIA_SPECS_HDR.AD_SIZE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

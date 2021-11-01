@@ -1,0 +1,1025 @@
+﻿
+
+/*****************************************************************
+Webvantage
+This Stored Procedure gets a Tasks By a Date, 
+******************************************************************/
+CREATE PROCEDURE [dbo].[usp_wv_calendar_workload_employee] 
+    @UserID VARCHAR(100),
+    @EmpCode VARCHAR(6),
+    @start_date SMALLDATETIME,
+    @end_date SMALLDATETIME,
+    @OfficeCode	VARCHAR(4),
+    @ClientCode VARCHAR(6),
+    @DivisionCode VARCHAR(6),
+    @ProductCode VARCHAR(6),
+    @JobNum VARCHAR(6),
+    @JobComp VARCHAR(6),
+    @ROLES VARCHAR(8000),
+    @TaskStatus VARCHAR(1),
+    @ExcludeTempComplete CHAR(1),
+    @Manager VARCHAR(6),
+	@QUERY_TYPE VARCHAR(10),
+	@PSWL_JOB_NUMBER INT,
+	@PSWL_JOB_COMPONENT_NBR SMALLINT,
+	@EMP_LIST VARCHAR(8000),
+	@JC_LIST VARCHAR(8000),
+	@OVERRIDE_EMP_SEC AS SMALLINT,
+    @DEPTS VARCHAR(8000)
+
+AS
+
+
+
+
+	SET ANSI_NULLS ON
+	SET ANSI_WARNINGS OFF
+	SET ARITHABORT OFF
+	SET ARITHIGNORE ON
+
+
+        DECLARE 
+	        @Restrictions 	    INT,
+	        @RestrictionsEmp    INT,
+	        @StartDate 			VARCHAR(1000),
+	        @EndDate 			VARCHAR(1000),
+	        @sql 				VARCHAR(8000),
+	        @sql_from 			VARCHAR(8000),
+	        @sql_where 			VARCHAR(8000)   
+
+        IF @OfficeCode IS NULL 
+	        SET @OfficeCode = ''
+        	
+        IF @ClientCode IS NULL 
+	        SET @ClientCode = ''	
+
+        IF	@DivisionCode IS NULL 
+	        SET @DivisionCode = '' 	
+        	
+        IF	@ProductCode  IS NULL 
+	        SET @ProductCode = ''
+        		
+        IF	@JobNum  IS NULL OR @JobNum = '0'
+	        SET @JobNum = ''	
+        	
+        IF	@JobComp  IS NULL OR @JobComp = '0'
+	        SET @JobComp = ''	
+        	
+        IF	@ROLES  IS NULL 
+	        SET @ROLES = ''	
+        		
+        IF	@TaskStatus  IS NULL 
+	        SET @TaskStatus = ''	
+        	
+        IF	@ExcludeTempComplete  IS NULL 
+	        SET @ExcludeTempComplete = ''
+
+        IF	@EmpCode IS NULL OR @EmpCode = '%'
+	        SET @EmpCode = ''	
+        	
+        IF	@Manager  IS NULL 
+	        SET @Manager = ''
+	        
+	    IF @DEPTS IS NULL
+			SET @DEPTS = ''    
+    	
+	    IF @QUERY_TYPE = 'PSWL'
+		    BEGIN
+			    --GENERATE LIST OF DISTINCT EMPS:
+			    SET @EMP_LIST = NULL;
+			    SELECT @EMP_LIST = COALESCE(@EMP_LIST + ''',', '') + A.EMP_CODE
+			    FROM   (
+						    SELECT     
+							    DISTINCT  '''' + JOB_TRAFFIC_DET_EMPS.EMP_CODE AS EMP_CODE
+						    FROM         
+								JOB_TRAFFIC_DET_EMPS WITH (NOLOCK) INNER JOIN
+								JOB_COMPONENT ON JOB_TRAFFIC_DET_EMPS.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER INNER JOIN
+								JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+								JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+						    WHERE     
+							    JOB_TRAFFIC_DET_EMPS.JOB_NUMBER = @PSWL_JOB_NUMBER AND JOB_TRAFFIC_DET_EMPS.JOB_COMPONENT_NBR = @PSWL_JOB_COMPONENT_NBR
+							    AND JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6,12) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL) 
+				       ) AS A;
+               SET @EMP_LIST = @EMP_LIST + ''''
+--               SELECT @EMP_LIST
+		    END    
+        ELSE IF  @QUERY_TYPE = 'PSWL2'
+		    BEGIN
+	    	    SET @EMP_LIST = @EMP_LIST
+	    	    
+	    		IF @JC_LIST <> ''
+	    		BEGIN
+					CREATE TABLE #TASK_RANGE 
+					(
+					START_DATE						SMALLDATETIME,
+					END_DATE	SMALLDATETIME
+					)
+
+					SET @sql = ''
+					   SELECT @sql = @sql + '
+									INSERT INTO #TASK_RANGE
+									SELECT     MIN(JOB_TRAFFIC_DET.TASK_START_DATE), MAX(JOB_TRAFFIC_DET.JOB_REVISED_DATE) 
+									FROM         
+									JOB_TRAFFIC_DET INNER JOIN
+									JOB_TRAFFIC_DET_EMPS ON JOB_TRAFFIC_DET.JOB_NUMBER = JOB_TRAFFIC_DET_EMPS.JOB_NUMBER AND 
+									JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_TRAFFIC_DET_EMPS.JOB_COMPONENT_NBR AND 
+									JOB_TRAFFIC_DET.SEQ_NBR = JOB_TRAFFIC_DET_EMPS.SEQ_NBR INNER JOIN
+									JOB_COMPONENT ON JOB_TRAFFIC_DET.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+									JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+									JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+									JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+									WHERE 1 = 1  AND (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)'
+						SELECT @sql = @sql + @JC_LIST
+							EXEC(@sql)
+					IF EXISTS (SELECT COUNT(1) FROM #TASK_RANGE WHERE NOT START_DATE IS NULL AND NOT END_DATE IS NULL)
+					BEGIN
+						SELECT @start_date = START_DATE, @end_date = END_DATE FROM #TASK_RANGE
+						
+					END		
+						
+					DROP TABLE #TASK_RANGE		
+					--        PRINT (@sql)
+	    		END    
+		    END
+	    ELSE	
+    	    BEGIN
+	    	    SET @EMP_LIST = @EMP_LIST
+	    	    IF @EMP_LIST IS NULL
+	    	    BEGIN
+	    	    	SET @EMP_LIST = ''
+	    	    END
+    	    END	
+
+        --SCRUB THE START AND END DATE STRING VERSIONS
+ 	        SET @StartDate = CONVERT(
+				           DATETIME,
+				           CONVERT(CHAR(10), DATEPART(yyyy, @start_date), 101) 
+				           +
+				           '-' +
+				           CONVERT(CHAR(10), DATEPART(mm, @start_date), 101) +
+				           '-' +
+				           CONVERT(CHAR(10), DATEPART(dd, @start_date), 101) +
+				           ' 00:00:00' 
+				           );
+    				       
+ 	        SET @EndDate = CONVERT(
+				           DATETIME,
+				           CONVERT(CHAR(10), DATEPART(yyyy, @end_date), 101) 
+				           +
+				           '-' +
+				           CONVERT(CHAR(10), DATEPART(mm, @end_date), 101) +
+				           '-' +
+				           CONVERT(CHAR(10), DATEPART(dd, @end_date), 101) +
+				           ' 23:59:00' 
+				           );
+
+--		--test:
+--		SELECT @StartDate AS StartDate, @EndDate AS EndDate;
+--		SELECT @EMP_LIST AS EMP_LIST
+        SELECT @Restrictions = COUNT(1) FROM SEC_CLIENT WITH(NOLOCK) WHERE UPPER(USER_ID) = UPPER(@UserID);
+        IF  @OVERRIDE_EMP_SEC = 1
+			BEGIN
+        		SET @RestrictionsEmp = 0
+			END
+        ELSE
+        	BEGIN
+    	        SELECT @RestrictionsEmp = COUNT(1) FROM SEC_EMP WITH(NOLOCK) WHERE UPPER(USER_ID) = UPPER(@UserID);
+        	END
+       	
+--		SELECT @Restrictions
+--		SELECT @RestrictionsEmp
+        CREATE TABLE #MY_DATA --MASTER TABLE TO RETURN
+        (
+    	    ROW_ID						INT IDENTITY(1,1) NOT NULL,
+	        JOB_NUMBER					INT NULL,
+	        JOB_COMPONENT_NBR			SMALLINT NULL,
+	        FNC_CODE					VARCHAR(10) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        TASK_DESCRIPTION			VARCHAR(40) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        JOB_COMP_DESC				VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        TASK_START_DATE				SMALLDATETIME NULL,
+	        JOB_REVISED_DATE			SMALLDATETIME NULL,
+	        EMP_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        JOB_DESC					VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        OFFICE_CODE					VARCHAR(4) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        CL_CODE						VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        DIV_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        PRD_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        SORT						SMALLDATETIME NULL,
+	        JOB_HRS						DECIMAL(18,6) NULL,
+	        SEQ_NBR						SMALLINT NULL,
+	        EMP_FML_NAME				VARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        REC_TYPE					VARCHAR(5),
+			NON_TASK_ID					SMALLINT NULL,
+    	    
+	        ADJ_JOB_HRS					DECIMAL(18,6) NULL,
+	        IS_EVENT_TASK				SMALLINT NULL,
+	        TASK_TOTAL_WORKING_DAYS				INT NULL,
+	        HOURS_PER_DAY				DECIMAL(18,6) NULL,
+	        WORKING_DAYS_IN_TASK_RANGE	INT NULL,
+    	    
+	        HRS_USED_NON_TASK			DECIMAL(18,6) NULL,
+	        HRS_AVAIL					DECIMAL(18,6) NULL,
+	        HRS_ASSIGNED_TASK			DECIMAL(18,6) NULL,
+	        HRS_ASSIGNED_EVENT			DECIMAL(18,6) NULL,
+	        HRS_BALANCE_AVAIL			DECIMAL(18,6) NULL,
+	        STD_HRS_AVAIL				DECIMAL(18,6) NULL
+        )
+
+        CREATE TABLE #WORKLOAD_DATA 
+        (
+	        EMP_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,   
+	        HRS_USED_NON_TASK			DECIMAL(18,6) NULL,
+	        HRS_AVAIL					DECIMAL(18,6) NULL,
+	        HRS_ASSIGNED_TASK			DECIMAL(18,6) NULL,
+	        HRS_ASSIGNED_EVENT			DECIMAL(18,6) NULL,
+	        HRS_BALANCE_AVAIL			DECIMAL(18,6) NULL
+        )
+
+
+
+
+        SELECT @sql = ' INSERT INTO #MY_DATA
+        SELECT *, 
+        00.000000, 0 ,0,0,0,00.000000,00.000000,00.000000,00.000000,00.000000,00.000000
+        FROM
+        (SELECT V_JOB_TRAFFIC_DET.JOB_NUMBER, V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR, V_JOB_TRAFFIC_DET.FNC_CODE, V_JOB_TRAFFIC_DET.TASK_DESCRIPTION, JOB_COMPONENT.JOB_COMP_DESC,
+	        V_JOB_TRAFFIC_DET.TASK_START_DATE, V_JOB_TRAFFIC_DET.JOB_REVISED_DATE, V_JOB_TRAFFIC_DET.EMP_CODE,
+	        JOB_LOG.JOB_DESC, JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE, CASE WHEN V_JOB_TRAFFIC_DET.TASK_START_DATE IS NULL THEN V_JOB_TRAFFIC_DET.JOB_REVISED_DATE ELSE V_JOB_TRAFFIC_DET.TASK_START_DATE END AS SORT,
+	        SUM(V_JOB_TRAFFIC_DET.JOB_HRS) AS JOB_HRS, V_JOB_TRAFFIC_DET.SEQ_NBR, ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,'''') AS EMP_FML_NAME, ''T'' AS REC_TYPE, -1 AS NON_TASK_ID '
+
+        SELECT @sql_from = ' FROM JOB_COMPONENT 
+        INNER JOIN JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+        INNER JOIN V_JOB_TRAFFIC_DET ON JOB_COMPONENT.JOB_NUMBER = V_JOB_TRAFFIC_DET.JOB_NUMBER AND JOB_COMPONENT.JOB_COMPONENT_NBR = V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR 
+        INNER JOIN JOB_LOG ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER  INNER JOIN
+                              EMPLOYEE ON V_JOB_TRAFFIC_DET.EMP_CODE = EMPLOYEE.EMP_CODE '
+
+        SELECT @sql_where = ' WHERE 1 = 1 AND (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)  AND (V_JOB_TRAFFIC_DET.JOB_COMPLETED_DATE IS NULL AND V_JOB_TRAFFIC_DET.TEMP_COMP_DATE IS NULL) '
+--	    IF @QUERY_TYPE = 'PSWL'
+--		BEGIN
+--			SELECT @sql_where = @sql_where + ' AND (V_JOB_TRAFFIC_DET.JOB_REVISED_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + '''' 
+--			SELECT @sql_where = @sql_where + ' OR V_JOB_TRAFFIC_DET.TASK_START_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + ''')' 
+--		END
+		
+		
+		
+    --	IF NOT @DUE_DATE IS NULL
+    --	BEGIN
+    --		SELECT 'NOT NULL'
+    --	END
+
+
+
+        If @Restrictions > 0	
+	        Begin
+	          SELECT @sql_from = @sql_from + ' INNER JOIN SEC_CLIENT ON JOB_LOG.CL_CODE = SEC_CLIENT.CL_CODE AND JOB_LOG.DIV_CODE = SEC_CLIENT.DIV_CODE AND JOB_LOG.PRD_CODE = SEC_CLIENT.PRD_CODE '
+
+	          SELECT @sql_where = @sql_where + ' AND UPPER(SEC_CLIENT.USER_ID) = UPPER(''' + @UserID + ''') AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)'
+	        End
+
+        If @RestrictionsEmp > 0 
+	        Begin
+	          SELECT @sql_from = @sql_from + ' INNER JOIN [dbo].[advtf_sec_emp] (''' + @UserID + ''') AS SEC_EMP ON V_JOB_TRAFFIC_DET.EMP_CODE = SEC_EMP.EMP_CODE '
+	        End
+
+        If @Manager <> ''
+	          SELECT @sql_where = @sql_where + ' AND JOB_TRAFFIC.MGR_EMP_CODE = ''' + @Manager + ''' '
+
+        If @ROLES <> ''
+	        Begin
+			  SELECT @sql_from = @sql_from + '
+				   LEFT OUTER JOIN EMP_TRAFFIC_ROLE  ON V_JOB_TRAFFIC_DET.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE '
+			  SELECT @sql_where = @sql_where + ' AND (EMP_TRAFFIC_ROLE.ROLE_CODE IN ('+ @ROLES +')) ' 	
+	        End
+
+        If @OfficeCode  <> ''
+	        SELECT @sql_where = @sql_where + ' AND JOB_LOG.OFFICE_CODE = ''' + @OfficeCode + ''''
+        If @EmpCode  <> '' AND @EmpCode <> '%'
+	        SELECT @sql_where = @sql_where + ' AND V_JOB_TRAFFIC_DET.EMP_CODE = '''+ @EmpCode + ''''
+        IF @EMP_LIST  <> '' AND (@EmpCode = '%' OR @EmpCode = '')
+		    BEGIN
+			    SELECT @sql_where = @sql_where + ' AND V_JOB_TRAFFIC_DET.EMP_CODE IN ('+ @EMP_LIST + ') '
+		    END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql_where = @sql_where + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+        If @ClientCode <> '' And @ClientCode IS NOT NULL
+	        SELECT @sql_where = @sql_where + ' AND JOB_LOG.CL_CODE = ''' + @ClientCode + ''''
+        If @DivisionCode  <> '' And @DivisionCode  IS NOT NULL
+	        SELECT @sql_where = @sql_where + ' AND JOB_LOG.DIV_CODE = ''' + @DivisionCode + ''''
+        If @ProductCode   <> '' And @ProductCode   IS NOT NULL
+	        SELECT @sql_where = @sql_where + ' AND JOB_LOG.PRD_CODE = '''+ @ProductCode + ''''
+        If @JobNum  <> '' And @JobNum  IS NOT NULL
+	        SELECT @sql_where = @sql_where + ' AND JOB_LOG.JOB_NUMBER = ''' + @JobNum + ''''
+        If @JobComp  <> '' And @JobComp  IS NOT NULL
+	        SELECT @sql_where = @sql_where + ' AND JOB_COMPONENT.JOB_COMPONENT_NBR = ''' + @JobComp + ''''
+	    IF @QUERY_TYPE = 'PSWL2' AND @JC_LIST <> ''
+	    BEGIN
+		    SET @JC_LIST = REPLACE(@JC_LIST,'JOB_TRAFFIC_DET_EMPS','JOB_COMPONENT')
+		    SELECT @sql_where = @sql_where + @JC_LIST
+	    END
+        If @TaskStatus <> '' And @TaskStatus IS NOT NULL
+	        SELECT @sql_where = @sql_where + ' AND V_JOB_TRAFFIC_DET.TASK_STATUS = ''' + @TaskStatus + ''''
+        if @ExcludeTempComplete = 'Y'
+	        SELECT @sql_where = @sql_where + ' AND V_JOB_TRAFFIC_DET.TEMP_COMP_DATE IS NULL '
+
+        SELECT @sql = @sql + @sql_from + @sql_where
+        SELECT @sql = @sql + ' GROUP BY V_JOB_TRAFFIC_DET.JOB_NUMBER, V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR, V_JOB_TRAFFIC_DET.SEQ_NBR,
+        V_JOB_TRAFFIC_DET.FNC_CODE, V_JOB_TRAFFIC_DET.TASK_DESCRIPTION, JOB_COMPONENT.JOB_COMP_DESC,
+        V_JOB_TRAFFIC_DET.TASK_START_DATE, V_JOB_TRAFFIC_DET.JOB_REVISED_DATE, V_JOB_TRAFFIC_DET.EMP_CODE,
+        JOB_LOG.JOB_DESC, JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, 
+                              EMPLOYEE.EMP_LNAME '
+        SELECT @sql = @sql + ' UNION ALL
+	        SELECT JOB_NUMBER, JOB_COMPONENT_NBR,  FNC_CODE, NON_TASK_DESC AS TASK_DESCRIPTION, '''' AS JOB_COMP_DESC, 
+	    	        CASE WHEN ALL_DAY = 1 THEN START_DATE ELSE (STR(DATEPART(month, START_DATE)) + ''/'' + STR(DATEPART(day, START_DATE)) + ''/'' + STR(DATEPART(year, START_DATE)) + '' '' + STR(DATEPART(hour, START_TIME)) + '':'' + STR(DATEPART(minute, START_TIME)) + '':'' + STR(DATEPART(second, START_TIME))) END AS TASK_START_DATE,
+		        CASE WHEN ALL_DAY = 1 THEN END_DATE ELSE (STR(DATEPART(month, END_DATE)) + ''/'' + STR(DATEPART(day, END_DATE)) + ''/'' + STR(DATEPART(year, END_DATE)) + '' '' + STR(DATEPART(hour, END_TIME)) + '':'' + STR(DATEPART(minute, END_TIME)) + '':'' + STR(DATEPART(second, END_TIME))) END AS JOB_REVISED_DATE,  
+		        EMP_NON_TASKS.EMP_CODE, '''' AS JOB_DESC, 
+		        '''' AS OFFICE_CODE, '''' AS CL_CODE, '''' AS DIV_CODE, '''' AS PRD_CODE,
+		        CASE WHEN ALL_DAY = 1 THEN START_DATE ELSE (STR(DATEPART(month, START_DATE)) + ''/'' + STR(DATEPART(day, START_DATE)) + ''/'' + STR(DATEPART(year, START_DATE)) + '' '' + STR(DATEPART(hour, START_TIME)) + '':'' + STR(DATEPART(minute, START_TIME)) + '':'' + STR(DATEPART(second, START_TIME))) END AS SORT,
+		        HOURS AS JOB_HRS, -1 AS SEQ_NBR, ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,'''') AS EMP_FML_NAME, ''H'' AS REC_TYPE, NON_TASK_ID
+	        FROM   EMP_NON_TASKS	 LEFT OUTER JOIN
+                              EMPLOYEE ON EMP_NON_TASKS.EMP_CODE = EMPLOYEE.EMP_CODE '
+       SELECT @sql = @sql + ' WHERE (START_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + '''' 
+        SELECT @sql = @sql + ' OR END_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + ''')' 
+	    SELECT @sql = @sql + '    AND TYPE = ''H''			
+        UNION ALL
+        SELECT EMP_NON_TASKS.JOB_NUMBER, EMP_NON_TASKS.JOB_COMPONENT_NBR, EMP_NON_TASKS.FNC_CODE, EMP_NON_TASKS.NON_TASK_DESC AS TASK_DESCRIPTION, '''' AS JOB_COMP_DESC, 
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 THEN EMP_NON_TASKS.START_DATE ELSE (STR(DATEPART(month, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(day, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(year, EMP_NON_TASKS.START_DATE)) + '' '' + STR(DATEPART(hour, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(minute, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(second, EMP_NON_TASKS.START_TIME))) END AS TASK_START_DATE,
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 THEN EMP_NON_TASKS.END_DATE ELSE (STR(DATEPART(month, EMP_NON_TASKS.END_DATE)) + ''/'' + STR(DATEPART(day, EMP_NON_TASKS.END_DATE)) + ''/'' + STR(DATEPART(year, EMP_NON_TASKS.END_DATE)) + '' '' + STR(DATEPART(hour, EMP_NON_TASKS.END_TIME)) + '':'' + STR(DATEPART(minute, EMP_NON_TASKS.END_TIME)) + '':'' + STR(DATEPART(second, EMP_NON_TASKS.END_TIME))) END AS JOB_REVISED_DATE,  
+	        EMP_NON_TASKS.EMP_CODE, '''' AS JOB_DESC, 
+	        '''' AS OFFICE_CODE, '''' AS CL_CODE, '''' AS DIV_CODE, '''' AS PRD_CODE,
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 THEN EMP_NON_TASKS.START_DATE ELSE (STR(DATEPART(month, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(day, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(year, EMP_NON_TASKS.START_DATE)) + '' '' + STR(DATEPART(hour, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(minute, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(second, EMP_NON_TASKS.START_TIME))) END AS SORT,
+	        EMP_NON_TASKS.HOURS AS JOB_HRS, -1 AS SEQ_NBR, ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,'''') AS EMP_FML_NAME,
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 AND ISNULL(TIME_CATEGORY.VAC_SICK_FLAG,0) = 0 THEN ''ADA''
+			     WHEN EMP_NON_TASKS.ALL_DAY = 1 AND ISNULL(TIME_CATEGORY.VAC_SICK_FLAG,0) > 0 THEN ''ADHO'' 
+				 WHEN ISNULL(TIME_CATEGORY.VAC_SICK_FLAG,0) > 0 THEN ''AHO'' ELSE ''A'' END AS REC_TYPE, NON_TASK_ID
+        FROM  EMP_NON_TASKS  INNER JOIN
+              EMPLOYEE ON EMP_NON_TASKS.EMP_CODE = EMPLOYEE.EMP_CODE LEFT OUTER JOIN
+			  TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY' 
+        If @RestrictionsEmp > 0 
+              SELECT @sql = @sql + ' INNER JOIN [dbo].[advtf_sec_emp] (''' + @UserID + ''') AS SEC_EMP ON EMP_NON_TASKS.EMP_CODE = SEC_EMP.EMP_CODE '
+        SELECT @sql = @sql + ' WHERE '
+        SELECT @sql = @sql + ' (EMP_NON_TASKS.START_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + '''' 
+        SELECT @sql = @sql + ' OR EMP_NON_TASKS.END_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + ''')' 
+        SELECT @sql = @sql + ' AND EMP_NON_TASKS.TYPE = ''A''' 
+        If @EmpCode  <> '' AND @EmpCode <> '%'
+	        SELECT @sql = @sql + ' AND EMP_NON_TASKS.EMP_CODE = ''' + @EmpCode + '''' 
+
+        IF @EMP_LIST  <> '' AND (@EmpCode = '%' OR @EmpCode = '')
+		    BEGIN
+			    SELECT @sql = @sql + ' AND EMP_NON_TASKS.EMP_CODE IN ('+ @EMP_LIST + ') '
+		    END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql = @sql + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+        SELECT @sql = @sql + ' ) AS A'	
+
+        --SELECT @sql = @sql + ' ORDER BY SORT '	
+
+--        PRINT (@sql)
+        EXEC(@sql)
+        
+        --SELECT * FROM #MY_DATA;
+        --ADD IN EVENT TASKS:
+        SET @sql = ''
+
+        SET @sql = '
+        INSERT INTO #MY_DATA
+        SELECT     
+	        EVENT.JOB_NUMBER, EVENT.JOB_COMPONENT_NBR, TRAFFIC_FNC.TRF_CODE AS FNC_CODE, TRAFFIC_FNC.TRF_DESC AS TASK_DESCRIPTION, 
+	        JOB_COMPONENT.JOB_COMP_DESC, EVENT_TASK.START_TIME, EVENT_TASK.END_TIME, EVENT_TASK.EMP_CODE, JOB_LOG.JOB_DESC, 
+	        JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE, EVENT_TASK.START_TIME AS SORT, 
+	        EVENT_TASK.HOURS_ALLOWED AS JOB_HRS, - 1 AS SEQ_NBR, 
+	        ISNULL(ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,''''),'''') AS EMP_FML_NAME, ''ET'' AS REC_TYPE, EVENT_TASK_ID AS NON_TASK_ID,
+	        00.000000 AS ADJ_JOB_HRS, 1 AS IS_EVENT_TASK, 0,0,0,00.000000,00.000000,00.000000,00.000000,00.000000,00.000000
+				FROM         EVENT_TASK WITH (NOLOCK) INNER JOIN
+                      EVENT WITH (NOLOCK) ON EVENT_TASK.EVENT_ID = EVENT.EVENT_ID INNER JOIN
+                      JOB_COMPONENT WITH (NOLOCK) ON EVENT.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+                      EVENT.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+                      JOB_LOG WITH (NOLOCK) ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER INNER JOIN
+                      TRAFFIC_FNC WITH (NOLOCK) ON EVENT_TASK.TASK_CODE = TRAFFIC_FNC.TRF_CODE LEFT OUTER JOIN
+                      JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+                      JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR LEFT OUTER JOIN
+                      EMPLOYEE WITH (NOLOCK) ON EVENT_TASK.EMP_CODE = EMPLOYEE.EMP_CODE'
+        IF @Restrictions > 0
+        BEGIN
+	        SET @sql = @sql +  ' INNER JOIN SEC_CLIENT ON JOB_LOG.CL_CODE = SEC_CLIENT.CL_CODE AND JOB_LOG.DIV_CODE = SEC_CLIENT.DIV_CODE AND JOB_LOG.PRD_CODE = SEC_CLIENT.PRD_CODE '
+        END	
+        IF @RestrictionsEmp > 0 
+        BEGIN
+	        SET @sql = @sql + ' INNER JOIN [dbo].[advtf_sec_emp] (''' + @UserID + ''') AS SEC_EMP ON EVENT_TASK.EMP_CODE = SEC_EMP.EMP_CODE '
+        END
+        IF @ROLES <> ''
+        BEGIN
+	        SET @sql = @sql + ' 
+	        LEFT OUTER JOIN EMP_TRAFFIC_ROLE ON EVENT_TASK.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE
+		        '
+        END	
+        --BEGIN THE WHERE CLAUSE
+        SET @sql = @sql+'	
+        WHERE (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL) AND EVENT_TASK.END_TIME BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + '''' 
+        IF @Restrictions > 0
+        BEGIN
+	        SET @sql = @sql + ' AND UPPER(SEC_CLIENT.USER_ID) = UPPER(''' + @UserID + ''') AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)'
+        END	
+        IF @ROLES <> ''
+        BEGIN
+	        SET @sql = @sql +  ' AND ((EMP_TRAFFIC_ROLE.ROLE_CODE IN ('+ @ROLES +'))) ' 	
+        END
+        IF @OfficeCode <> ''
+        BEGIN
+	        SET @sql = @sql + ' AND JOB_LOG.OFFICE_CODE = ''' + @OfficeCode + ''''  
+        END
+        
+        SET @sql = @sql + ' AND (NOT (EVENT_TASK.EMP_CODE IS NULL)) '
+	        
+        IF @EmpCode  <> '' AND @EmpCode <> '%'
+        BEGIN
+	        SET @sql = @sql + ' AND EVENT_TASK.EMP_CODE = '''+ @EmpCode + ''''
+        END
+        IF @EMP_LIST  <> '' AND (@EmpCode = '%' OR @EmpCode = '')
+        BEGIN
+		    SET @sql = @sql + ' AND EVENT_TASK.EMP_CODE IN ('+ @EMP_LIST + ') '
+        END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql = @sql + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+        IF @ClientCode <> '' And @ClientCode IS NOT NULL
+        BEGIN
+	        SET @sql = @sql + ' AND JOB_LOG.CL_CODE = ''' + @ClientCode + ''''
+        END	
+        IF @DivisionCode  <> '' And @DivisionCode  IS NOT NULL
+        BEGIN
+	        SET @sql = @sql + ' AND JOB_LOG.DIV_CODE = ''' + @DivisionCode + ''''
+        END	
+        IF @ProductCode   <> '' And @ProductCode   IS NOT NULL
+        BEGIN
+	        SET @sql = @sql + ' AND JOB_LOG.PRD_CODE = '''+ @ProductCode + ''''
+        END	
+        IF @JobNum  <> '' And @JobNum  IS NOT NULL
+        BEGIN
+	        SET @sql = @sql + ' AND JOB_LOG.JOB_NUMBER = ''' + @JobNum + ''''
+        END	
+        IF @JobComp  <> '' And @JobComp  IS NOT NULL
+        BEGIN
+	        SET @sql = @sql + ' AND JOB_COMPONENT.JOB_COMPONENT_NBR = ''' + @JobComp + ''''
+        END	
+        EXEC(@sql)
+        --SELECT * FROM #MY_DATA;
+    --Add in daily job hours?
+    DECLARE
+	    @ROW_ROW_ID AS INT,
+	    @ROW_TASK_START AS SMALLDATETIME,
+	    @ROW_TASK_END AS SMALLDATETIME,
+	    @ROW_CALC_START AS SMALLDATETIME,
+	    @ROW_CALC_END AS SMALLDATETIME,
+	    @ROW_EMP_CODE AS VARCHAR(6),
+	    @ROW_JOB_HOURS AS DECIMAL(18,6),
+	    @ROW_REC_TYPE VARCHAR(4),
+	    @ROW_STD_HOURS AS DECIMAL(18,6)
+		            DECLARE MY_ROWS                         CURSOR  
+		            FOR
+			            SELECT ROW_ID FROM #MY_DATA ORDER BY ROW_ID;
+		            OPEN MY_ROWS;
+			            FETCH NEXT FROM MY_ROWS INTO @ROW_ROW_ID;
+					    WHILE @@FETCH_STATUS = 0
+					    BEGIN
+						    SELECT 
+								@ROW_TASK_START = TASK_START_DATE, 
+								@ROW_TASK_END = JOB_REVISED_DATE, 
+								@ROW_EMP_CODE = EMP_CODE, 
+								@ROW_JOB_HOURS = ISNULL(JOB_HRS, 0.000000),
+								@ROW_REC_TYPE = REC_TYPE 
+						    FROM #MY_DATA WHERE ROW_ID = @ROW_ROW_ID;
+    						
+						    IF @start_date > @ROW_TASK_START
+							    BEGIN
+								    SET @ROW_CALC_START = @start_date
+							    END
+						    ELSE
+							    BEGIN
+								    SET @ROW_CALC_START = @ROW_TASK_START
+							    END
+    							
+						    IF @end_date > @ROW_TASK_END
+							    BEGIN
+								    SET @ROW_CALC_END = @ROW_TASK_END
+							    END	
+						    ELSE
+							    BEGIN
+								    SET @ROW_CALC_END = @end_date
+							    END
+							DECLARE @THIS_WORKING_DAYS INT
+							SET @THIS_WORKING_DAYS = 0;
+							SELECT @THIS_WORKING_DAYS = [dbo].[wvfn_get_emp_workday_count](@ROW_EMP_CODE,@ROW_TASK_START,@ROW_TASK_END,1)
+							UPDATE #MY_DATA SET
+								TASK_TOTAL_WORKING_DAYS = @THIS_WORKING_DAYS,
+								HOURS_PER_DAY = 
+								CASE 
+									WHEN @THIS_WORKING_DAYS > 0 THEN @ROW_JOB_HOURS/@THIS_WORKING_DAYS
+									ELSE 0
+								END,
+								WORKING_DAYS_IN_TASK_RANGE = [dbo].[wvfn_get_emp_workday_count](@ROW_EMP_CODE,@ROW_CALC_START,@ROW_CALC_END,1)
+							WHERE ROW_ID = @ROW_ROW_ID;	
+							
+							IF @ROW_REC_TYPE = 'ADA'
+							BEGIN
+								DECLARE @THIS_ADA_HRS AS DECIMAL(18,2)
+								SELECT @THIS_ADA_HRS = ISNULL(TOTAL_HOURS, 0.000000) FROM [dbo].[wvfn_get_emp_workday_workhours_count_incl_appt](@ROW_EMP_CODE,@ROW_CALC_START,@ROW_CALC_END,1)
+								UPDATE #MY_DATA SET ADJ_JOB_HRS = @THIS_ADA_HRS, JOB_HRS = @THIS_ADA_HRS 
+								WHERE ROW_ID = @ROW_ROW_ID AND REC_TYPE = 'ADA'
+							END
+							IF @ROW_REC_TYPE = 'ADHO'
+							BEGIN
+								DECLARE @THIS_ADHO_HRS AS DECIMAL(18,2)
+								SELECT @THIS_ADHO_HRS = ISNULL(TOTAL_HOURS, 0.000000) FROM [dbo].[wvfn_get_emp_workday_workhours_count_incl_appt](@ROW_EMP_CODE,@ROW_CALC_START,@ROW_CALC_END,1)
+								UPDATE #MY_DATA SET ADJ_JOB_HRS = @THIS_ADHO_HRS, JOB_HRS = @THIS_ADHO_HRS 
+								WHERE ROW_ID = @ROW_ROW_ID AND REC_TYPE = 'ADHO'
+							END
+			            FETCH NEXT FROM MY_ROWS INTO @ROW_ROW_ID;
+		            END
+    CLOSE MY_ROWS;
+    DEALLOCATE MY_ROWS;
+            --SELECT * FROM #MY_DATA WHERE REC_TYPE = 'ADA'
+
+    --GET SOME EMP DATA....
+    DECLARE @TOTAL_WORKING_DAYS AS INT, @TOTAL_WORKING_HOURS AS DECIMAL(18,6), @ROW_EMP AS VARCHAR(6),@EMP_COUNT AS INTEGER
+    SET @TOTAL_WORKING_DAYS = 0
+    SET @TOTAL_WORKING_HOURS = 0.00
+    SET @EMP_COUNT = 0;
+    DECLARE MY_ROWS2                         CURSOR  
+    FOR
+        SELECT DISTINCT EMP_CODE FROM #MY_DATA WHERE (NOT(EMP_CODE IS NULL));
+
+    OPEN MY_ROWS2;
+        FETCH NEXT FROM MY_ROWS2 INTO @ROW_EMP;
+	    WHILE @@FETCH_STATUS = 0
+	    BEGIN
+			SELECT @TOTAL_WORKING_DAYS = @TOTAL_WORKING_DAYS + TOTAL_DAYS, @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS + ISNULL(TOTAL_HOURS, 0.000000) 
+			FROM [dbo].[wvfn_get_emp_workday_workhours_count_incl_appt](@ROW_EMP,@start_date,@end_date,1)
+        FETCH NEXT FROM MY_ROWS2 INTO @ROW_EMP;
+        
+    END
+    CLOSE MY_ROWS2;
+    DEALLOCATE MY_ROWS2;
+
+    UPDATE #MY_DATA SET ADJ_JOB_HRS = HOURS_PER_DAY * WORKING_DAYS_IN_TASK_RANGE;
+
+    --SOME MORE CLEAN UP FOR PSWL?
+    IF @QUERY_TYPE = 'PSWL' OR @QUERY_TYPE = 'PSWL2'
+    BEGIN
+        CREATE TABLE #WORKLOAD_DATA_NEW 
+        (
+	        EMP_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,   
+	        MIN_DATE					SMALLDATETIME NULL,
+	        MAX_DATE					SMALLDATETIME NULL,
+	        STD_HRS_AVAIL				DECIMAL(18,6) NULL,
+	        HRS_OFF						DECIMAL(18,6) NULL,
+	        ADJ_HRS_ASSIGNED_TASK			DECIMAL(18,6) NULL,
+	        VARIANCE					DECIMAL(18,6) NULL,
+	        APPT_HRS					DECIMAL(18,6) NULL
+        )
+        IF @QUERY_TYPE = 'PSWL2'
+        BEGIN
+			INSERT INTO #WORKLOAD_DATA_NEW(EMP_CODE,MIN_DATE,MAX_DATE)
+			SELECT 
+				DISTINCT EMP_CODE, 
+				MIN(TASK_START_DATE) AS MIN_DATE,
+				MAX(JOB_REVISED_DATE) AS MAX_DATE
+			FROM #MY_DATA
+			WHERE NOT EMP_CODE IS NULL AND (REC_TYPE = 'T' OR REC_TYPE = 'ET')
+			GROUP BY EMP_CODE;
+        END
+        IF @QUERY_TYPE = 'PSWL'
+        BEGIN
+			INSERT INTO #WORKLOAD_DATA_NEW(EMP_CODE,MIN_DATE,MAX_DATE)
+			SELECT 
+				DISTINCT EMP_CODE, 
+				MIN(TASK_START_DATE) AS MIN_DATE,
+				MAX(JOB_REVISED_DATE) AS MAX_DATE
+			FROM #MY_DATA
+			WHERE 
+			(NOT (EMP_CODE IS NULL)) 
+			AND (REC_TYPE = 'T' OR REC_TYPE = 'ET') 
+			GROUP BY EMP_CODE;
+        END
+        
+	    
+		DECLARE @ROW_EMP_3 AS VARCHAR(6), @THIS_STD_HRS AS DECIMAL(18,6), @THIS_MIN_DATE AS SMALLDATETIME, @THIS_MAX_DATE AS SMALLDATETIME
+		DECLARE MY_ROWS3                         CURSOR  
+		FOR
+			SELECT DISTINCT EMP_CODE FROM #WORKLOAD_DATA_NEW;
+
+		OPEN MY_ROWS3;
+			FETCH NEXT FROM MY_ROWS3 INTO @ROW_EMP_3;
+			WHILE @@FETCH_STATUS = 0
+			BEGIN
+				--VARS
+
+			SELECT @THIS_STD_HRS = ISNULL(TOTAL_HOURS, 0.000000) FROM [dbo].[wvfn_get_emp_workday_workhours_count_incl_appt](@ROW_EMP_3,@StartDate,@EndDate,1)
+			
+			UPDATE #WORKLOAD_DATA_NEW SET STD_HRS_AVAIL = @THIS_STD_HRS, MIN_DATE = @THIS_MIN_DATE, MAX_DATE = @THIS_MAX_DATE WHERE EMP_CODE = @ROW_EMP_3;
+				--UPDATE HRS OFF
+				UPDATE #WORKLOAD_DATA_NEW
+				SET #WORKLOAD_DATA_NEW.HRS_OFF = 
+				A.SUM_HRS_OFF
+				FROM
+				(
+					SELECT ISNULL(SUM(#MY_DATA.JOB_HRS),0.000000) AS SUM_HRS_OFF, #MY_DATA.EMP_CODE 
+					FROM #MY_DATA 
+					WHERE #MY_DATA.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS  = @ROW_EMP_3 COLLATE SQL_Latin1_General_CP1_CS_AS 
+					AND #MY_DATA.TASK_START_DATE >= @StartDate
+					AND #MY_DATA.JOB_REVISED_DATE <= @EndDate
+					AND (#MY_DATA.REC_TYPE COLLATE SQL_Latin1_General_CP1_CS_AS  = 'AHO' COLLATE SQL_Latin1_General_CP1_CS_AS OR #MY_DATA.REC_TYPE COLLATE SQL_Latin1_General_CP1_CS_AS  = 'ADHO' COLLATE SQL_Latin1_General_CP1_CS_AS )
+					GROUP BY #MY_DATA.EMP_CODE
+				) AS A INNER JOIN #WORKLOAD_DATA_NEW ON A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS  = #WORKLOAD_DATA_NEW.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS 
+				;
+				--UPDATE APPT HRS
+				UPDATE #WORKLOAD_DATA_NEW
+				SET #WORKLOAD_DATA_NEW.APPT_HRS = 
+				A.SUM_APPT_HRS
+				FROM
+				(
+					SELECT ISNULL(SUM(#MY_DATA.ADJ_JOB_HRS),0.000000) AS SUM_APPT_HRS, #MY_DATA.EMP_CODE 
+					FROM #MY_DATA 
+					WHERE #MY_DATA.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS  = @ROW_EMP_3 COLLATE SQL_Latin1_General_CP1_CS_AS 
+					AND #MY_DATA.TASK_START_DATE >= @StartDate
+					AND #MY_DATA.JOB_REVISED_DATE <= @EndDate
+					AND (#MY_DATA.REC_TYPE COLLATE SQL_Latin1_General_CP1_CS_AS  = 'A' COLLATE SQL_Latin1_General_CP1_CS_AS OR #MY_DATA.REC_TYPE COLLATE SQL_Latin1_General_CP1_CS_AS  = 'ADA' COLLATE SQL_Latin1_General_CP1_CS_AS )
+					GROUP BY #MY_DATA.EMP_CODE
+				) AS A INNER JOIN #WORKLOAD_DATA_NEW ON A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS  = #WORKLOAD_DATA_NEW.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS 
+				;
+			FETCH NEXT FROM MY_ROWS3 INTO @ROW_EMP_3;
+		END
+		CLOSE MY_ROWS3;
+		DEALLOCATE MY_ROWS3;
+		
+		--VARIANCE
+		UPDATE #WORKLOAD_DATA_NEW SET VARIANCE = ISNULL(STD_HRS_AVAIL,00.000000) - ISNULL(HRS_OFF,00.000000) - ISNULL(ADJ_HRS_ASSIGNED_TASK,00.000000) - ISNULL(APPT_HRS,00.000000)
+    END
+
+    IF @QUERY_TYPE = '' --OR @QUERY_TYPE = 'PSWL' --OR @QUERY_TYPE = 'PSWL2'
+    BEGIN --RETURN THE DEFAULT TABLE, NOT SUMMARIZED
+    --MAIN TABLE RETURNED
+	                --SELECT * FROM #MY_DATA WHERE REC_TYPE = 'ADA'
+    SELECT
+		    ROW_ID,
+		    JOB_NUMBER,
+		    JOB_COMPONENT_NBR,
+		    FNC_CODE,
+		    TASK_DESCRIPTION,
+		    JOB_COMP_DESC,
+		    TASK_START_DATE,
+		    JOB_REVISED_DATE,
+		    EMP_CODE,
+		    JOB_DESC,
+		    OFFICE_CODE,
+		    CL_CODE,
+		    DIV_CODE,
+		    PRD_CODE,
+		    SORT,
+		    JOB_HRS,
+		    SEQ_NBR,
+		    EMP_FML_NAME,
+		    IS_EVENT_TASK,
+		    TASK_TOTAL_WORKING_DAYS,
+			HOURS_PER_DAY,
+			ADJ_JOB_HRS,
+		  --  CASE 
+				--WHEN REC_TYPE = 'ADA' THEN [dbo].[udf_get_emp_total_daily_hrs](EMP_CODE,TASK_START_DATE)
+				--ELSE HOURS_PER_DAY 
+		  --  END AS HOURS_PER_DAY,
+		  --  WORKING_DAYS_IN_TASK_RANGE,
+		  --  CASE 
+				--WHEN REC_TYPE = 'ADA' THEN [dbo].[udf_get_emp_total_daily_hrs](EMP_CODE,TASK_START_DATE)
+				--ELSE ADJ_JOB_HRS 
+		  --  END AS ADJ_JOB_HRS,
+		    REC_TYPE,
+			NON_TASK_ID,
+		    ISNULL(HRS_USED_NON_TASK,0.00) AS HRS_USED_NON_TASK,
+		    ISNULL(HRS_AVAIL,0.00) AS HRS_AVAIL,
+		    ISNULL(HRS_ASSIGNED_TASK,0.00) AS HRS_ASSIGNED_TASK,
+		    ISNULL(HRS_ASSIGNED_EVENT,0.00) AS HRS_ASSIGNED_EVENT,
+		    ISNULL(HRS_ASSIGNED_TASK,0.00) + ISNULL(HRS_ASSIGNED_EVENT,0.00) AS TOTAL_HRS_ASSIGNED,
+		    ISNULL(HRS_BALANCE_AVAIL,0.00) AS HRS_BALANCE_AVAIL,
+		    ISNULL(HRS_AVAIL,0.00) - ISNULL(HRS_USED_NON_TASK,0.00) - (ISNULL(HRS_ASSIGNED_TASK,0.00) + ISNULL(HRS_ASSIGNED_EVENT,0.00)) AS VARIANCE,
+		    STD_HRS_AVAIL
+	    FROM
+		    #MY_DATA
+	    WHERE
+	        (REC_TYPE <> 'H' AND ((JOB_REVISED_DATE BETWEEN @StartDate AND @EndDate) OR (TASK_START_DATE BETWEEN @StartDate AND @EndDate)
+			 OR (@StartDate BETWEEN TASK_START_DATE AND JOB_REVISED_DATE) OR (@EndDate BETWEEN TASK_START_DATE AND JOB_REVISED_DATE)))
+			 OR REC_TYPE = 'ADA' OR REC_TYPE = 'ADHO'
+	    ORDER BY 
+    --		ROW_ID;
+		    EMP_CODE,SORT;
+    END
+
+
+    IF @QUERY_TYPE = 'PSWL' OR @QUERY_TYPE = 'PSWL2'
+    BEGIN
+		DECLARE 
+			@ROW_EMP_7 AS VARCHAR(6), 
+			@THIS_ADJ_HRS AS DECIMAL(18,6),
+			@THIS_APPT_HRS AS DECIMAL(18,6)
+		DECLARE MY_ROWS7                         CURSOR  
+		FOR
+			SELECT DISTINCT EMP_CODE FROM #WORKLOAD_DATA_NEW;
+
+		OPEN MY_ROWS7;
+			FETCH NEXT FROM MY_ROWS7 INTO @ROW_EMP_7;
+			WHILE @@FETCH_STATUS = 0
+			BEGIN
+				--VARS
+
+			SELECT @THIS_ADJ_HRS = SUM(ADJ_JOB_HRS) 
+			FROM
+				#MY_DATA
+			WHERE
+				REC_TYPE <> 'H' AND REC_TYPE <> 'A'
+				AND EMP_CODE = @ROW_EMP_7
+			UPDATE #WORKLOAD_DATA_NEW SET ADJ_HRS_ASSIGNED_TASK = @THIS_ADJ_HRS WHERE EMP_CODE = @ROW_EMP_7;
+			
+			
+			FETCH NEXT FROM MY_ROWS7 INTO @ROW_EMP_7;
+		END
+		CLOSE MY_ROWS7;
+		DEALLOCATE MY_ROWS7;
+
+		UPDATE #WORKLOAD_DATA_NEW SET VARIANCE = ISNULL(STD_HRS_AVAIL,00.000000) - ISNULL(HRS_OFF,00.000000) - ISNULL(ADJ_HRS_ASSIGNED_TASK,00.000000) - ISNULL(APPT_HRS,00.000000)
+		
+		--RETURN THE TABLE
+	    SELECT 
+			#WORKLOAD_DATA_NEW.EMP_CODE, 
+			ISNULL(EMPLOYEE.EMP_FNAME+' ','')+ISNULL(EMPLOYEE.EMP_MI+'. ','')+ISNULL(EMPLOYEE.EMP_LNAME,'') AS EMP_FML_NAME,
+			#WORKLOAD_DATA_NEW.MIN_DATE, 
+			#WORKLOAD_DATA_NEW.MAX_DATE,
+			ISNULL(#WORKLOAD_DATA_NEW.STD_HRS_AVAIL,00.000000) AS STD_HRS_AVAIL,
+			ISNULL(#WORKLOAD_DATA_NEW.HRS_OFF,00.000000) AS HRS_OFF,
+			ISNULL(#WORKLOAD_DATA_NEW.APPT_HRS,00.000000) AS APPT_HRS,
+			ISNULL(#WORKLOAD_DATA_NEW.ADJ_HRS_ASSIGNED_TASK,00.000000) AS ADJ_HRS_ASSIGNED_TASK,
+			ISNULL(#WORKLOAD_DATA_NEW.VARIANCE,00.000000) AS VARIANCE
+	    FROM #WORKLOAD_DATA_NEW INNER JOIN EMPLOYEE ON #WORKLOAD_DATA_NEW.EMP_CODE = EMPLOYEE.EMP_CODE
+	    ;
+	    
+    
+		DROP TABLE #WORKLOAD_DATA_NEW;
+
+		    
+    END
+
+    --SUMMARY TABLE STUFF FOR USE ON TASK ASSIGNEMENTS AND TASK WORKLOAD; NOT GOING TO RETURN FOR PROJECT SCHEDULE WORKLOAD...
+    IF @QUERY_TYPE <> 'PSWL' AND @QUERY_TYPE <> 'PSWL2'
+    BEGIN
+		    DECLARE
+			    @TOTAL_ADJ_JOB_HRS AS DECIMAL(18,6),
+			    @TOTAL_HOLIDAY_HRS AS DECIMAL(18,6),
+			    @TOTAL_APPT_HRS AS DECIMAL(18,6),	
+				@TOTAL_HRS_OFF AS DECIMAL(18,6),
+			    @MY_DATA_REC_COUNT AS INT
+    			
+		    SET @MY_DATA_REC_COUNT = 0;	
+		    SELECT @MY_DATA_REC_COUNT = COUNT(1) FROM #MY_DATA	WHERE REC_TYPE <> 'H';
+    			
+			--TEST:
+--			SELECT @MY_DATA_REC_COUNT AS MyDataRecCount;
+		    IF @MY_DATA_REC_COUNT > 0  --HAS RECORDS TO GET THIS INFO FROM
+			    BEGIN
+				    SELECT @TOTAL_ADJ_JOB_HRS = ISNULL(SUM(ADJ_JOB_HRS),00.000000) FROM #MY_DATA WHERE REC_TYPE = 'T' OR REC_TYPE = 'ET';
+				    SELECT @TOTAL_APPT_HRS = ISNULL(SUM(ADJ_JOB_HRS),00.000000) FROM #MY_DATA WHERE REC_TYPE = 'A';
+				    SELECT @TOTAL_APPT_HRS = @TOTAL_APPT_HRS + ISNULL(SUM(JOB_HRS),00.000000) FROM #MY_DATA WHERE REC_TYPE = 'ADA';
+					SELECT @TOTAL_HRS_OFF = ISNULL(SUM(JOB_HRS),00.000000) FROM #MY_DATA WHERE (REC_TYPE = 'AHO' OR REC_TYPE = 'ADHO');
+			    END	
+		    ELSE --no recs at all (no tasks, event tasks or appointments!), need to do some finagling to get the header info:
+			    BEGIN 
+				     SET @sql = ''
+				    SET @sql = @sql + 'DELETE FROM #MY_DATA;'
+				    SET @sql = @sql + 'INSERT INTO #MY_DATA(EMP_CODE) SELECT DISTINCT EMP_CODE FROM EMPLOYEE WHERE 1=1'
+				    IF @EmpCode  <> '' AND @EmpCode <> '%'
+				    BEGIN
+					    SET @sql = @sql + ' AND EMPLOYEE.EMP_CODE = '''+ @EmpCode + ''''
+				    END
+					IF @EMP_LIST  <> '' AND (@EmpCode = '%' OR @EmpCode = '')
+					BEGIN
+						SET @sql = @sql + ' AND EMPLOYEE.EMP_CODE IN ('+ @EMP_LIST + ') '
+					END
+					IF @DEPTS <> ''
+					BEGIN
+						SELECT @sql = @sql + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+					END
+				    EXEC(@sql);
+				    --LOOP TO GET SOME BASE EMP DATA
+				    SET @TOTAL_WORKING_DAYS = 0
+				    SET @TOTAL_WORKING_HOURS = 0.00
+				    SET @ROW_EMP = NULL
+    			    
+				    DECLARE MY_ROWS3                         CURSOR  
+				    FOR
+					    SELECT DISTINCT EMP_CODE FROM #MY_DATA;
+				    OPEN MY_ROWS3;
+					    FETCH NEXT FROM MY_ROWS3 INTO @ROW_EMP;
+					    WHILE @@FETCH_STATUS = 0
+					    BEGIN
+					    SELECT @TOTAL_WORKING_DAYS = @TOTAL_WORKING_DAYS + TOTAL_DAYS, @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS + TOTAL_HOURS FROM [dbo].[wvfn_get_emp_workday_workhours_count_incl_appt](@ROW_EMP,@start_date,@end_date,0)
+					    FETCH NEXT FROM MY_ROWS3 INTO @ROW_EMP;
+				    END
+				    CLOSE MY_ROWS3;
+				    DEALLOCATE MY_ROWS3;
+			    END	
+			    
+		    --ONE MORE OVERRIDE FOR GETTING CORRECT TOTAL HOURS IF CHOOSING ALL EMPS
+		    IF (@EmpCode  = '' OR @EmpCode = '%') AND @EMP_LIST = '' AND @DEPTS = ''
+		    BEGIN
+			    SET @TOTAL_WORKING_DAYS = 0
+			    SET @TOTAL_WORKING_HOURS = 0.00
+			    SET @ROW_EMP = NULL
+			    DECLARE MY_ROWS4                         CURSOR  
+			    FOR
+				    SELECT DISTINCT EMP_CODE FROM EMPLOYEE WHERE EMP_TERM_DATE IS NULL;
+
+			    OPEN MY_ROWS4;
+				    FETCH NEXT FROM MY_ROWS4 INTO @ROW_EMP;
+				    WHILE @@FETCH_STATUS = 0
+				    BEGIN
+				    SELECT @TOTAL_WORKING_DAYS = @TOTAL_WORKING_DAYS + TOTAL_DAYS, @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS + TOTAL_HOURS FROM [dbo].[wvfn_get_emp_workday_workhours_count_incl_appt](@ROW_EMP,@start_date,@end_date,0)
+				    FETCH NEXT FROM MY_ROWS4 INTO @ROW_EMP;
+			    END
+			    CLOSE MY_ROWS4;
+			    DEALLOCATE MY_ROWS4;
+		    END
+		    
+		    --ONE MORE OVERRIDE FOR GETTING CORRECT TOTAL HOURS IF CHOOSING DEPARTMENT EMPLOYEES...
+		    IF @DEPTS <> ''
+		    BEGIN
+				CREATE TABLE #DEPT_EMPS 
+				(
+					EMP_CODE VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NOT NULL
+				)   
+				DECLARE @DEPT_SQL VARCHAR(8000)
+				SET @DEPT_SQL = 'INSERT INTO #DEPT_EMPS SELECT EMP_CODE FROM EMPLOYEE WHERE EMPLOYEE.DP_TM_CODE IN ('+ @DEPTS +');'
+				EXEC(@DEPT_SQL)
+			    SET @TOTAL_WORKING_HOURS = 0.00
+			    SET @ROW_EMP = NULL
+			    DECLARE MY_ROWS4                         CURSOR  
+			    FOR
+				    SELECT DISTINCT EMPLOYEE.EMP_CODE FROM EMPLOYEE INNER JOIN #DEPT_EMPS ON EMPLOYEE.EMP_CODE = #DEPT_EMPS.EMP_CODE WHERE EMPLOYEE.EMP_TERM_DATE IS NULL;
+
+			    OPEN MY_ROWS4;
+				    FETCH NEXT FROM MY_ROWS4 INTO @ROW_EMP;
+				    WHILE @@FETCH_STATUS = 0
+				    BEGIN
+				    SELECT @TOTAL_WORKING_DAYS = @TOTAL_WORKING_DAYS + TOTAL_DAYS, @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS + TOTAL_HOURS FROM [dbo].[wvfn_get_emp_workday_workhours_count_incl_appt](@ROW_EMP,@start_date,@end_date,0)
+				    FETCH NEXT FROM MY_ROWS4 INTO @ROW_EMP;
+				    
+			    END
+			    CLOSE MY_ROWS4;
+			    DEALLOCATE MY_ROWS4;
+			    
+			    DROP TABLE #DEPT_EMPS;
+		    END
+	    --    SELECT * FROM #MY_DATA;
+    	    
+
+	    ----	--JUST TESTING!
+	    --	SELECT * FROM #MY_DATA
+	    --	SELECT * FROM #WORKLOAD_DATA
+
+    END
+    
+CREATE TABLE #ONE_VAR 
+(
+VAL						DECIMAL(18,6) NULL
+)
+
+	SET @sql = ''
+	SELECT @sql = @sql + '
+        INSERT INTO #ONE_VAR
+         SELECT SUM(HOURS)        FROM  EMP_NON_TASKS WITH(NOLOCK)  INNER JOIN
+                              EMPLOYEE WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = EMPLOYEE.EMP_CODE INNER JOIN
+												  TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY' 
+        If @RestrictionsEmp > 0 
+              SELECT @sql = @sql + ' INNER JOIN [dbo].[advtf_sec_emp] (''' + @UserID + ''') AS SEC_EMP ON EMP_NON_TASKS.EMP_CODE = SEC_EMP.EMP_CODE '
+        SELECT @sql = @sql + ' WHERE '
+        SELECT @sql = @sql + ' (EMP_NON_TASKS.START_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + '''' 
+        SELECT @sql = @sql + ' OR EMP_NON_TASKS.END_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + ''')' 
+		SELECT @sql = @sql + ' AND ((TIME_CATEGORY.VAC_SICK_FLAG NOT IN (1, 2, 3) OR TIME_CATEGORY.VAC_SICK_FLAG IS NULL ))'
+        SELECT @sql = @sql + ' AND EMP_NON_TASKS.ALL_DAY = 1 AND EMP_NON_TASKS.TYPE = ''A'''  
+
+
+        If @EmpCode  <> '' AND @EmpCode <> '%'
+	        SELECT @sql = @sql + ' AND EMP_NON_TASKS.EMP_CODE = ''' + @EmpCode + '''' 
+
+        IF @EMP_LIST  <> '' AND (@EmpCode = '%' OR @EmpCode = '')
+		    BEGIN
+			    SELECT @sql = @sql + ' AND EMP_NON_TASKS.EMP_CODE IN ('+ @EMP_LIST + ') '
+		    END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql = @sql + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+
+        EXEC(@sql)
+SELECT @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS + ISNULL(VAL,0.000000) FROM #ONE_VAR;
+
+
+DELETE FROM #ONE_VAR;
+SET @sql = '';
+IF @EmpCode  <> '' AND @EmpCode <> '%'
+BEGIN
+	SET @EMP_COUNT = 1;
+END
+IF @EMP_LIST  <> '' AND (@EmpCode = '%' OR @EmpCode = '')
+BEGIN
+	SET @sql = 'INSERT INTO #ONE_VAR SELECT COUNT(1) FROM EMPLOYEE WHERE EMP_CODE IN (' + @EMP_LIST + ');'
+	EXEC(@sql)
+	SELECT @EMP_COUNT = ISNULL(VAL,0.000000) FROM #ONE_VAR;
+END
+IF @DEPTS <> ''
+BEGIN
+	SET @sql = 'INSERT INTO #ONE_VAR SELECT COUNT(1) FROM EMPLOYEE WHERE EMPLOYEE.DP_TM_CODE IN (' + @DEPTS + ');'
+	EXEC(@sql)
+	SELECT @EMP_COUNT = ISNULL(VAL,0.000000) FROM #ONE_VAR;
+	
+END
+
+DELETE FROM #ONE_VAR;
+SET @sql = '';
+SELECT @sql = @sql + '
+    INSERT INTO #ONE_VAR
+     SELECT SUM(HOURS) FROM EMP_NON_TASKS WITH(NOLOCK)' 
+    SELECT @sql = @sql + ' WHERE '
+    SELECT @sql = @sql + ' (EMP_NON_TASKS.START_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + '''' 
+    SELECT @sql = @sql + ' OR EMP_NON_TASKS.END_DATE BETWEEN ''' + @StartDate + ''' AND  ''' + @EndDate + ''')' 
+    SELECT @sql = @sql + ' AND EMP_NON_TASKS.ALL_DAY = 0 AND EMP_NON_TASKS.TYPE = ''H'''  
+EXEC(@sql)
+--multiply part day holidays by number of emps for search:
+IF ISNULL(@EMP_COUNT,0) > 0
+	BEGIN
+		SELECT @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS - (ISNULL(VAL,0.000000) * @EMP_COUNT) FROM #ONE_VAR;
+	END
+ELSE
+	BEGIN
+		SELECT @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS - ISNULL(VAL,0.000000) FROM #ONE_VAR;
+	END
+
+
+
+DROP TABLE #ONE_VAR;
+    
+    -------------------
+
+    IF @QUERY_TYPE <> 'PSWL' AND @QUERY_TYPE <> 'PSWL2' AND @QUERY_TYPE <> 'WA' --RETURN AS A SECOND DATATABLE FOR TASK ASSIGNMENT
+    BEGIN
+		    SELECT 
+			    ISNULL(@TOTAL_WORKING_DAYS,0.00) AS TOTAL_WORKING_DAYS, 
+			    ISNULL(@TOTAL_WORKING_HOURS,0.00) AS TOTAL_WORKING_HOURS, 
+			    ISNULL(@TOTAL_WORKING_HOURS,0.00) - ISNULL(@TOTAL_APPT_HRS,0.00) AS TOTAL_AVAIL_WORKING_HOURS, 
+			    ISNULL(@TOTAL_ADJ_JOB_HRS,0.00) AS TOTAL_ADJ_JOB_HRS,
+			    ISNULL(@TOTAL_APPT_HRS,0.00) AS TOTAL_APPT_HRS,
+			    ISNULL(@EMP_COUNT,0) AS EMP_COUNT,
+				ISNULL(@TOTAL_HRS_OFF,0) AS TOTAL_HRS_OFF
+		    --		ISNULL(@TOTAL_HOLIDAY_HRS,0.00) AS TOTAL_HOLIDAY_HRS,
+    	
+    END
+
+    IF @QUERY_TYPE = 'WA'
+    BEGIN
+	    --MAIN TABLE RETURNED
+	    SELECT
+		    ISNULL(JOB_NUMBER, -1) AS JOB_NUMBER,
+		    ISNULL(JOB_COMPONENT_NBR, -1) AS JOB_COMPONENT_NBR,
+		    ISNULL(SUM(HOURS_PER_DAY),0) AS TOTAL_HOURS_PER_DAY,
+		    ISNULL(SUM(ADJ_JOB_HRS),0) AS TOTAL_ADJ_JOB_HRS,
+    		
+		    ISNULL(@TOTAL_WORKING_DAYS,0.00) AS GRAND_TOTAL_WORKING_DAYS, 
+		    ISNULL(@TOTAL_WORKING_HOURS,0.00) AS GRAND_TOTAL_WORKING_HOURS, 
+		    ISNULL(@TOTAL_WORKING_HOURS,0.00) - ISNULL(@TOTAL_APPT_HRS,0.00) AS GRAND_TOTAL_AVAIL_WORKING_HOURS, 
+		    ISNULL(@TOTAL_ADJ_JOB_HRS,0.00) AS GRAND_TOTAL_ADJ_JOB_HRS,
+		    ISNULL(@TOTAL_APPT_HRS,0.00) AS GRAND_TOTAL_APPT_HRS,
+		    ISNULL(@EMP_COUNT,0) AS GRAND_TOTAL_EMP_COUNT,
+			ISNULL(@TOTAL_HRS_OFF,0) AS GRAND_TOTAL_HRS_OFF
+	    FROM
+		    #MY_DATA
+	    WHERE
+	        REC_TYPE <> 'H'	
+	    GROUP BY
+		    JOB_NUMBER, JOB_COMPONENT_NBR;    
+    END
+
+
+DROP TABLE #MY_DATA;
+DROP TABLE #WORKLOAD_DATA;
+
+
+
+
+
+
+
+
+
+
+
+

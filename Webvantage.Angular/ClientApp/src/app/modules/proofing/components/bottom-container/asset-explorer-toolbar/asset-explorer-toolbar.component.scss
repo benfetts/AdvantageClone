@@ -1,0 +1,135 @@
+@import '../../../theme/colors';
+@import '../../../theme/mixins/font';
+
+.asset-explorer-toolbar {
+  width: 100%;
+
+  .k-toolbar > :last-child {
+    width: 100%;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-left-side {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    .vertical-line {
+      border-left: 1px solid $border-color;
+      height: 30px;
+      margin-right: 5px;
+    }
+
+    .text {
+      @include font-base(14px);
+      color: $black-light;
+    }
+  }
+
+  &-right-side {
+    justify-content: center;
+
+    .k-image {
+      min-width: 20px;
+      min-height: 20px;
+    }
+
+    .selector {
+      margin-right: 10px;
+    }
+  }
+
+  &__main {
+    height: 50px;
+    background: $light-grey;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+
+  .k-button {
+    width: 32px;
+    height: 32px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: $white;
+      border: 1px solid $border-color;
+      box-shadow: none;
+    }
+
+    &:hover {
+      background: $very-light-grey;
+    }
+
+    &.k-state-active {
+      border: 1px solid $border-color;
+      box-shadow: none;
+      background-color: $pressed-button;
+
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+
+  button {
+    margin-right: 10px;
+    background: $white;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    border-radius: 3px !important;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .drop-down {
+
+    button {
+      margin-right: 10px;
+      background: $pressed-button;
+      border: 1px solid $border-color;
+      box-sizing: border-box;
+
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .k-button {
+
+      &:hover,
+      &:active,
+      &:focus {
+        background: $pressed-button;
+        border: 1px solid $border-color;
+        box-shadow: none;
+      }
+
+      &.k-state-active {
+        border: 1px solid $border-color;
+        box-shadow: none;
+        background-color: $pressed-button;
+
+        img {
+          filter: brightness(0) invert(1);
+        }
+      }
+    }
+  }
+}
+
+.tooltip * {
+  font-family: 'Open Sans', serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  cursor: default;
+}

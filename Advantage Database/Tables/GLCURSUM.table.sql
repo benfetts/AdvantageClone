@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[GLCURSUM] (
+    [GLCCODE]       VARCHAR (30) NOT NULL,
+    [GLCPP]         VARCHAR (6)  NOT NULL,
+    [GLCCUR]        VARCHAR (3)  NOT NULL,
+    [GLCDEBIT]      FLOAT        DEFAULT (0) NOT NULL,
+    [GLCCREDIT]     FLOAT        DEFAULT (0) NOT NULL,
+    [GLCFCNET]      FLOAT        DEFAULT (0) NOT NULL,
+    [GLCFCGAINLOSS] FLOAT        DEFAULT (0) NOT NULL,
+    [GLCMOD]        VARCHAR (1)  NULL
+);
+

@@ -1,0 +1,36 @@
+<div [ngClass]="{
+'current-file-with-delete': isFrameContainer,
+'current-file': isToolbarContainer,
+'current-file-link': isLinkContainer,
+'current-file-image': isImageUploadContainer
+}">
+  <!--<div class="current-file-icon">
+    <img [src]="imageUrl"/>
+    <div *ngIf="showVersions || textInIcon" class="current-file-icon-text">{{textInIcon}}</div>
+  </div>-->
+  <div class="current-file-text">
+    <p class="file-name">{{fileName}}</p>
+    <ng-container [ngSwitch]="componentType">
+
+      <ng-container *ngSwitchCase="noSplitType"></ng-container>
+
+      <ng-container *ngSwitchCase="oneAssetType">
+        <proof-file-icons [reviewComponent]="true"></proof-file-icons>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="imageContainerType">
+        <p class="file-label">{{innerText}}</p>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="relatedAssetsType">
+        <div class="file-icons">
+          <div>
+            <img class="icon" src="assets/icons/floppy_disks.svg"/>3
+          </div>
+        </div>
+      </ng-container>
+
+    </ng-container>
+  </div>
+  <img *ngIf="showDeleteButton" src="assets/icons/delete.svg"/>
+</div>

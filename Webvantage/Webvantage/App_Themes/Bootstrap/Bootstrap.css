@@ -1,0 +1,973 @@
+﻿html,
+body,
+form,
+#wrapper {
+    height: 100% !important;
+    width: 100% !important;
+    font-family: Calibri, Tahoma, Verdana, Arial !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    -webkit-font-smoothing: antialiased;
+    color: #767676 !important
+}
+
+Body,
+th,
+td {
+    Font-family: Calibri, Tahoma, Verdana, Arial !important;
+    font-size: 18px !important
+}
+
+::-webkit-scrollbar {
+    width: 12px !important;
+    height: 12px !important
+}
+
+::-webkit-scrollbar-button {
+    width: 0 !important;
+    height: 0 !important
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cfcfcf !important;
+    border: 0 none #fff !important;
+    border-radius: 0 !important
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b7b7b7 !important
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: #000 !important
+    }
+
+::-webkit-scrollbar-track {
+    background: #fff !important;
+    border: 0 none #fff !important;
+    border-radius: 0 !important
+}
+
+    ::-webkit-scrollbar-track:hover {
+        background: #b7b7b7 !important
+    }
+
+    ::-webkit-scrollbar-track:active {
+        background: #b7b7b7 !important
+    }
+
+::-webkit-scrollbar-corner {
+    background: transparent !important
+}
+
+.icon-background {
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 50% !important;
+    vertical-align: middle !important;
+    text-align: center !important
+}
+
+.icon-image {
+    position: relative;
+    height: 29px !important;
+    width: 29px !important;
+    bottom: -5px !important;
+    vertical-align: middle !important;
+    text-align: center !important
+}
+
+span.icon-image {
+    background-size: 29px 29px !important
+}
+
+.icon-text {
+    position: relative;
+    font-size: 34px !important;
+    color: #fff !important;
+    bottom: 5px !important;
+    text-decoration: none !important
+}
+
+.icon-text-two {
+    position: relative;
+    font-size: 30px !important;
+    color: #fff !important;
+    bottom: 2px !important;
+    text-decoration: none !important
+}
+
+.icon-text-three {
+    position: relative;
+    font-size: 20px !important;
+    color: #fff !important;
+    bottom: -6px !important;
+    text-decoration: none !important
+}
+
+a.icon-text {
+    position: relative;
+    font-size: 34px !important;
+    color: #fff !important;
+    bottom: 5px !important;
+    text-decoration: none !important
+}
+
+a.icon-text-two {
+    position: relative;
+    font-size: 30px !important;
+    color: #fff !important;
+    bottom: 2px !important;
+    text-decoration: none !important
+}
+
+a.icon-text-three {
+    position: relative;
+    font-size: 20px !important;
+    color: #fff !important;
+    bottom: -6px !important;
+    text-decoration: none !important
+}
+
+.rtbIcon {
+    position: relative;
+    height: 22px !important;
+    width: 22px !important;
+    vertical-align: middle !important;
+    text-align: center !important
+}
+
+.treeview-bookmark-content {
+    font-size: 14px !important
+}
+
+.content-page-short-menu-text {
+    font-size: 30px !important;
+    text-decoration: none !important
+}
+
+    .content-page-short-menu-text:hover {
+        font-size: 30px !important;
+        font-weight: bold !important;
+        color: #000 !important;
+        text-decoration: none !important
+    }
+
+.content-page-short-menu-text-selected {
+    font-size: 30px !important;
+    font-weight: bold !important;
+    color: #000 !important;
+    text-decoration: none !important
+}
+
+.column-prefs-icon {
+    height: 32px !important;
+    width: 32px !important;
+    cursor: pointer !important
+}
+
+div.RadScheduler_Bootstrap .rsAptContent {
+    background-image: none;
+    color: #000;
+    background-color: #fff;
+    border-top-width: 5px;
+    /*height: 30px*/
+}
+
+div.RadScheduler_Bootstrap .rsMonthView .rsAptContent {    
+    height: 30px
+}
+
+div.RadScheduler_Bootstrap .rsTimelineView .rsAptContent {
+    height: 30px
+}
+
+.calendar-appt {
+    min-height: 110px !important;
+    display: block !important
+}
+
+.calendar-appt-time-span {
+    font-weight: bold
+}
+
+.calendar-appt-total-hours {
+    font-size: large;
+    font-weight: bold
+}
+
+#outerNotificationContainer {
+    padding: 6px 0px 0px 0px;
+    height: 142px;
+    overflow: hidden;
+    display: block !important;
+}
+
+#leftNotificationContainer {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 38px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 142px;
+    padding-right: 4px;
+}
+
+#rightNotificationContainer {
+    display: inline-block;
+    position: absolute;
+    left: auto;
+    right: 0px;
+    width: 30px;
+    overflow: hidden;
+    height: 142px;
+    vertical-align: top;
+}
+
+.alert-notification-container {
+    cursor: pointer;
+    overflow: hidden !important;
+    border-radius: 4px 4px 4px 4px;
+    color: #FFFFFF;
+    margin: 0px 0px 4px 0px;
+    padding: 0px;
+    height: 28px;
+    width: 100%;
+    clear: both;
+}
+
+.alert-notification {
+    overflow: hidden;
+    text-align: left !important;
+    padding-left: 6px;
+    padding-top: 2px;
+}
+
+
+.ew-css {
+    border: 1px solid #cecece;
+    position: relative;
+    background-color: #fff;
+    padding: 15px;
+    -webkit-border-radius: 0 0 2px 2px;
+    -moz-border-radius: 0 0 2px 2px;
+    border-radius: 0 0 2px 2px;
+    margin: 0 0 20px 0;
+    box-shadow: 2px 2px 2px #cecece;
+    overflow: auto
+}
+
+.ew-title-link {
+    text-decoration: none;
+    padding: 6px 10px 10px 10px;
+    color: #fff !important;
+    font-size: 22px;
+}
+
+.ew-title {
+    height: 40px;
+    -webkit-border-radius: 2px 2px 0 0;
+    -moz-border-radius: 2px 2px 0 0;
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 2px 0 #cecece !important
+}
+
+.code-description-container {
+    overflow: auto;
+    vertical-align: middle;
+    padding: 0 0 6px 0
+}
+
+.code-description-label {
+    display: inline-block;
+    min-width: 170px;
+    vertical-align: middle;
+    padding: 0 6px 0 0;
+    text-align: right
+}
+
+.code-description-label-xxl {
+    display: inline-block;
+    min-width: 250px;
+    vertical-align: middle;
+    padding: 0 6px 0 0;
+    text-align: right
+}
+
+.code-description-label-xxxl {
+    display: inline-block;
+    min-width: 350px;
+    vertical-align: middle;
+    padding: 0 6px 0 0;
+    text-align: right
+}
+
+.code-description-code {
+    display: inline-block;
+    min-width: 116px;
+    vertical-align: middle;
+    margin: 0 0 0 0;
+    text-align: left
+}
+
+.code-description-description {
+    display: inline-block;
+    min-width: 400px;
+    vertical-align: middle;
+    margin: 0 0 0 0;
+    text-align: left
+}
+
+.code-description-description-sm {
+    display: inline-block;
+    min-width: 210px;
+    vertical-align: middle;
+    margin: 0 0 0 0;
+    text-align: left
+}
+
+.code-description-description-text {
+    display: inline-block;
+    min-width: 400px;
+    vertical-align: middle;
+    margin: 0 0 0 0;
+    padding-top: 5px;
+    text-align: left
+}
+
+a.JobTemplateLabel:link {
+    cursor: default !important;
+    text-decoration: none !important;
+    color: #333 !important
+}
+
+a.JobTemplateLabel:visited {
+    cursor: default !important;
+    text-decoration: none !important;
+    color: #333 !important
+}
+
+a.JobTemplateLabel:hover {
+    cursor: default !important;
+    text-decoration: none !important;
+    color: #333 !important
+}
+
+a.JobTemplateLabel:active {
+    cursor: default !important;
+    text-decoration: none !important;
+    color: #333 !important
+}
+
+.JobTemplateLabel {
+    cursor: default !important;
+    text-decoration: none !important;
+    color: #333 !important
+}
+
+.more-info {
+    width: 100% !important;
+    margin: 0 0 0 0 !important;
+    padding: 15px 0 15px 10px !important
+}
+
+.timesheet-day-hours-textbox {
+    float: left;
+    text-align: right;
+    vertical-align: top;
+    margin-top: 0;
+    width: 55px !important
+}
+
+.timesheet-day-hours-textbox-container {
+    display: inline-block;
+    float: left
+}
+
+.timesheet-day-comments-textbox {
+    float: left;
+    min-width: 185px !important;
+    min-height: 42px !important;
+    resize: both !important
+}
+
+.timesheet-day-comments-textbox-container {
+    float: left;
+    min-width: 115px
+}
+
+.timesheet-day-buttons-container {
+    float: left;
+    vertical-align: middle;
+    padding: 2px 2px 2px 2px;
+    display: inline-block;
+    height: 40px
+}
+
+.timesheet-day-grid-button {
+    float: left;
+    display: inline-block;
+    padding: 0 0 0 4px
+}
+
+.timesheet-day-radgrid-column-none {
+    min-width: 25px !important;
+    width: 25px !important;
+    max-width: 25px !important
+}
+
+.timesheet-day-radgrid-column-none-today {
+    min-width: 100px !important;
+    width: 100px !important;
+    max-width: 100px !important
+}
+
+.timesheet-day-radgrid-column-icon {
+    min-width: 80px !important;
+    width: 80px !important;
+    max-width: 80px !important
+}
+
+.timesheet-day-radgrid-column-icon-today {
+    min-width: 155px !important;
+    width: 155px !important;
+    max-width: 155px !important
+}
+
+.timesheet-day-radgrid-column-textbox {
+    min-width: 130px !important;
+    width: 130px !important;
+    max-width: 130px !important
+}
+
+.timesheet-day-radgrid-column-textbox-today {
+    min-width: 150px !important;
+    width: 150px !important;
+    max-width: 150px !important
+}
+
+.timesheet-day-edit-item-template-container-no-comment {
+    margin-top: 5px;
+    min-height: 60px;
+    display: block !important;
+    float: left !important;
+    white-space: nowrap !important;
+    clear: both
+}
+
+.timesheet-day-hours-textbox-container #radNumericTextBox_NewItemSunday,
+.timesheet-day-hours-textbox-container #radNumericTextBox_NewItemMonday,
+.timesheet-day-hours-textbox-container #radNumericTextBox_NewItemTuesday,
+.timesheet-day-hours-textbox-container #radNumericTextBox_NewItemWednesday,
+.timesheet-day-hours-textbox-container #radNumericTextBox_NewItemThursday,
+.timesheet-day-hours-textbox-container #radNumericTextBox_NewItemFriday,
+.timesheet-day-hours-textbox-container #radNumericTextBox_NewItemSaturday {
+    margin-top: 0;
+    width: 64px;
+    height: 34px !important
+}
+
+#ctl00_ContentPlaceHolderMain_RadGridTimesheetNew_ctl00 th.timesheet-day-radgrid-column-icon-today.rgHeader {
+    font-weight: bolder;
+    background-color: #c0c0c0
+}
+
+input {
+    color: #252525 !important
+}
+
+
+.nav-new-app-alert {
+    height: 16px;
+    width: 16px
+}
+
+.nav-bookmarks {
+    height: 16px;
+    width: 16px
+}
+
+.nav-quick-launch {
+    height: 16px;
+    width: 16px
+}
+
+.nav-next-workspace {
+    height: 16px;
+    width: 16px
+}
+
+.nav-previouse-workspace {
+    height: 16px;
+    width: 16px
+}
+
+.nav-home {
+    height: 16px;
+    width: 16px
+}
+
+.radgrid-icon-column {
+    vertical-align: middle !important;
+    width: 38px !important;
+    min-width: 38px !important
+}
+
+.radgrid-usercode-column {
+    min-width: 10px !important;
+    width: 75px !important;
+    max-width: 100px !important;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -ms-word-break: normal !important;
+    word-break: normal !important;
+    -ms-word-wrap: normal !important;
+    word-wrap: normal !important;
+    text-align: left !important
+}
+
+.radgrid-employee-name-column {
+    max-width: 255px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -ms-word-break: normal !important;
+    word-break: normal !important;
+    -ms-word-wrap: normal !important;
+    word-wrap: normal !important;
+    text-align: left !important
+}
+
+.radgrid-description-column {
+    vertical-align: middle !important;
+    min-width: 175px !important;
+    max-width: 255px;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -ms-word-break: normal !important;
+    word-break: normal !important;
+    -ms-word-wrap: normal !important;
+    word-wrap: normal !important;
+    text-align: left !important
+}
+
+.radgrid-large-description-column {
+    max-width: 305px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -ms-word-break: normal !important;
+    word-break: normal !important;
+    -ms-word-wrap: normal !important;
+    word-wrap: normal !important;
+    text-align: left !important
+}
+
+.radgrid-textarea-column {
+    min-width: 150px
+}
+
+.radgrid-textarea {
+    min-height: 50px;
+    min-width: 150px;
+    resize: both !important
+}
+
+.radgrid-amount-column {
+    width: 105px !important;
+    vertical-align: middle !important;
+    text-align: right !important
+}
+
+.radgrid-amount-input {
+    width: 105px !important;
+    vertical-align: middle !important;
+    text-align: right !important
+}
+
+.radgrid-shortdate-column {
+    vertical-align: middle !important;
+    text-align: right !important
+}
+
+.radgrid-datetime-column {
+    vertical-align: middle !important;
+    text-align: right !important;
+    width: 180px !important;
+    max-width: 180px !important
+}
+
+.radgrid-code-column {
+    vertical-align: middle !important;
+    text-align: left !important
+}
+
+.RadGrid_Bootstrap .rgRow > td,
+.RadGrid_Bootstrap .rgEditRow > td,
+.RadGrid_Bootstrap .rgFooter > td {
+    border-left-style: none !important;
+    vertical-align: middle !important
+}
+
+.RadGrid_Bootstrap .rgAltRow > td {
+    border-left-style: none !important;
+    vertical-align: middle !important
+}
+
+.RadGrid_Bootstrap .rgHeader,
+.RadGrid_Bootstrap th.rgResizeCol {
+    border-left-style: none !important;
+    vertical-align: middle !important
+}
+
+.RadGrid_Bootstrap textarea {
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    resize: both !important
+}
+
+.RadGrid_Bootstrap input[type='text'].rfdDecorated,
+input[type='text'].rfdDecorated.sizeFix {
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    height: 34px !important;
+    padding: 0 5px !important
+}
+
+.RadPicker .RadInput .riTextBox {
+    min-height: 34px !important
+}
+
+.rgPagerTextBox {
+    min-height: 34px !important
+}
+
+.RadToolBar_Bootstrap {
+    color: #333;
+    background-color: transparent !important;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.42857
+}
+
+.RadToolBar_Bootstrap_Horizontal .rtbText {
+    height: 22px !important;
+    padding-top: 4px !important
+}
+
+.RadWindow_Bootstrap .rwTable .rwTitlebarControls em {
+    color: #fff !important;
+    font-weight: normal;
+    font-size: larger !important;
+    margin: -3px 0 0 -20px !important
+}
+
+.RadForm_Bootstrap.RadForm.rfdTextbox input[type="text"].riTextBox {
+    height: 32px !important;
+    padding: 0 5px;
+    vertical-align: middle;
+    -moz-perspective-origin: 42.5px 16px;
+    -webkit-perspective-origin: 42.5px 16px;
+    -ms-perspective-origin: 42.5px 16px;
+    perspective-origin: 42.5px 16px;
+    -moz-transform-origin: 42.5px 16px;
+    -o-transform-origin: 42.5px 16px;
+    -webkit-transform-origin: 42.5px 16px;
+    -ms-transform-origin: 42.5px 16px;
+    transform-origin: 42.5px 16px
+}
+
+.RadToolTip_Bootstrap.rtLoading {
+    background: url('Images/hourglass.png') no-repeat center !important;
+    box-shadow: none !important
+}
+
+.radtooltip-style {
+    min-width: 100px !important
+}
+
+.RadForm_Bootstrap.RadForm.rfdHeading h4,
+.RadForm_Bootstrap.RadForm.rfdHeading h5 {
+    color: #555 !important;
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 15px !important;
+    font-size: large !important
+}
+
+.RadTreeView_Bootstrap .rtEdit .rtIn input {
+    color: #fff !important
+}
+
+.grid-lookup-combobox-dropdown-container {
+    width: 304px;
+    display: inline-block
+}
+
+.grid-lookup-combobox-dropdown-container-wide {
+    width: 450px;
+    display: inline-block
+}
+
+.grid-lookup-combobox-dropdown-code {
+    width: 90px;
+    display: inline-block;
+    overflow: hidden
+}
+
+.grid-lookup-combobox-dropdown-name {
+    width: 210px;
+    display: inline-block;
+    overflow: hidden
+}
+
+.form-layout > ul li:first-child {
+    width: 150px
+}
+
+.form-layout.label-3xl > ul li:first-child {
+    width: 250px
+}
+
+.form-layout.label-2xl > ul li:first-child {
+    width: 225px
+}
+
+.form-layout.label-xl > ul li:first-child {
+    width: 200px
+}
+
+.form-layout.label-l > ul li:first-child {
+    width: 175px
+}
+
+.form-layout.label-m > ul li:first-child {
+    width: 125px
+}
+
+.form-layout.label-s > ul li:first-child {
+    width: 100px
+}
+
+.form-layout.label-xs > ul li:first-child {
+    width: 100px
+}
+
+.RadGrid_Bootstrap .rgDrag {
+    background-image: url('Images/DragDropHandle.gif')
+}
+
+.rgMasterTable .radgrid-description-column {
+    min-width: 70px !important
+}
+
+.team_task_employee_icon {
+    margin-top: 2px;
+    display: inline-block;
+    height: 50px;
+    vertical-align: middle
+}
+
+.ps-radgrid-code-column {
+    width: 100px !important
+}
+
+.ps-radgrid-description-column {
+    width: 190px !important
+}
+
+.ps-radgrid-code-small-column {
+    width: 90px !important
+}
+
+.ps-radgrid-code-medium-column {
+    width: 100px !important
+}
+
+.ps-RadComboBoxText15-col {
+    width: 150px !important
+}
+
+.ps-RadComboBoxText10-col {
+    width: 110px !important
+}
+
+.ps-RadComboBoxText30-col {
+    width: 270px !important
+}
+
+.ps-TextBoxText3-col {
+    width: 45px !important
+}
+
+.ps-TextBoxText5-col {
+    width: 65px
+}
+
+tfoot td.align-r-pad {
+    padding-right: 7px !important
+}
+
+.ps-TextBoxShortDate-col {
+    width: 95px !important;
+    text-align: right
+}
+
+    .ps-TextBoxShortDate-col > input {
+        text-align: right
+    }
+
+    .ps-TextBoxShortDate-col > span {
+        padding-left: 3px;
+        padding-right: 3px
+    }
+
+.ps-linkBtnWithHdrText-col {
+    width: 105px !important
+}
+
+.ps-checkbox-col {
+    width: 45px !important
+}
+
+.ps-radgrid-iconX2-column {
+    width: 70px
+}
+
+    .ps-radgrid-iconX2-column ul li {
+        display: inline;
+        margin: 0;
+        padding: 0
+    }
+
+    .ps-radgrid-iconX2-column ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        width: 70px
+    }
+
+.ps-DispersedHours-col {
+    width: 105px !important;
+    text-align: right
+}
+
+.ps-PostedHours-col {
+    width: 65px !important;
+    text-align: right
+}
+
+.ps-EmployeesLink-col {
+    width: 90px !important
+}
+
+.ps-radgrid-textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 150px !important
+}
+
+.ps-drag-drop-column {
+    width: 25px !important;
+    min-width: 25px !important
+}
+
+.workspace-checkbox {
+    font-size: 15px !important
+}
+
+.workspace-checkbox-container {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    vertical-align: top
+}
+
+.workspace-delete-link-container {
+    display: inline-block;
+    padding: 1px 0 0 0;
+    vertical-align: top
+}
+
+.pmd-floatie {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding-top: -10px;
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.content-left-full {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 5px;
+}
+
+.content-main-full {
+    position: fixed;
+    top: 0;
+    left: 200px;
+    right: 0px;
+    bottom: 20px;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.content-left-short {
+    position: absolute;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 5px;
+}
+
+.content-main-short {
+    position: fixed;
+    top: 0;
+    left: 50px;
+    right: 0px;
+    bottom: 0;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.short-menu-item {
+    height: 40px;
+}
+
+.short-link-button {
+    font-size: 36px;
+}
+
+.short-link-button-selected {
+    font-size: 48px;
+    font-weight: bold;
+}
+.dxgvControl{
+    color: #333 !important;
+}
+.dash-pager-container {
+    margin: -10px 0px 0px 11px;
+}

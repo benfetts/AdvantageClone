@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>%24/Advantage/Dev/Webvantage.Angular</SccProjectName>
+    <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
+    <SccAuxPath>http://tasc-code.gotoadvantage.com:8080/tfs/advantage</SccAuxPath>
+    <SccLocalPath>.</SccLocalPath>
+    <Configurations>Debug;Release;Base</Configurations>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <UserSecretsId>66c02f09-def7-42fd-b20a-9cf9db85a302</UserSecretsId>
+    <AspNetCoreModuleName>AspNetCoreModuleV2</AspNetCoreModuleName>
+    <RootNamespace>Webvantage.Angular</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CS0168;CS0219;CS0414;CA1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;CS0168;CS0219;CS0414;CA1416</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Base|AnyCPU'">
+    <NoWarn>1701;1702;CS0168;CS0219;CS0414;CA1416</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\dist\**" />
+    <Compile Remove="ClientApp\src\app\contracts\**" />
+    <Compile Remove="ClientApp\src\app\creative-brief\**" />
+    <Compile Remove="ClientApp\src\app\dashboard\**" />
+    <Compile Remove="ClientApp\src\app\desktop\**" />
+    <Compile Remove="ClientApp\src\app\employee\**" />
+    <Compile Remove="ClientApp\src\app\estimate\**" />
+    <Compile Remove="ClientApp\src\app\finance-and-accounting\**" />
+    <Compile Remove="ClientApp\src\app\general-ledger\**" />
+    <Compile Remove="ClientApp\src\app\job-jacket\**" />
+    <Compile Remove="ClientApp\src\app\job-specification\**" />
+    <Compile Remove="ClientApp\src\app\job-version\**" />
+    <Compile Remove="ClientApp\src\app\maintenance\**" />
+    <Compile Remove="ClientApp\src\app\media\**" />
+    <Compile Remove="ClientApp\src\app\print-send\**" />
+    <Compile Remove="ClientApp\src\app\project-management\**" />
+    <Compile Remove="ClientApp\src\app\project-schedule\**" />
+    <Compile Remove="ClientApp\src\app\purchase-order\**" />
+    <Compile Remove="ClientApp\src\app\qva\**" />
+    <Compile Remove="ClientApp\src\app\reporting\**" />
+    <Compile Remove="ClientApp\src\app\shared\**" />
+    <Compile Remove="ClientApp\src\app\sign-in\**" />
+    <Compile Remove="ClientApp\src\app\utilities\**" />
+    <Compile Remove="ClientApp\src\app\vendor-maintenance\**" />
+    <Compile Remove="logs\**" />
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\dist\**" />
+    <Content Remove="ClientApp\src\app\contracts\**" />
+    <Content Remove="ClientApp\src\app\creative-brief\**" />
+    <Content Remove="ClientApp\src\app\dashboard\**" />
+    <Content Remove="ClientApp\src\app\desktop\**" />
+    <Content Remove="ClientApp\src\app\employee\**" />
+    <Content Remove="ClientApp\src\app\estimate\**" />
+    <Content Remove="ClientApp\src\app\finance-and-accounting\**" />
+    <Content Remove="ClientApp\src\app\general-ledger\**" />
+    <Content Remove="ClientApp\src\app\job-jacket\**" />
+    <Content Remove="ClientApp\src\app\job-specification\**" />
+    <Content Remove="ClientApp\src\app\job-version\**" />
+    <Content Remove="ClientApp\src\app\maintenance\**" />
+    <Content Remove="ClientApp\src\app\media\**" />
+    <Content Remove="ClientApp\src\app\print-send\**" />
+    <Content Remove="ClientApp\src\app\project-management\**" />
+    <Content Remove="ClientApp\src\app\project-schedule\**" />
+    <Content Remove="ClientApp\src\app\purchase-order\**" />
+    <Content Remove="ClientApp\src\app\qva\**" />
+    <Content Remove="ClientApp\src\app\reporting\**" />
+    <Content Remove="ClientApp\src\app\shared\**" />
+    <Content Remove="ClientApp\src\app\sign-in\**" />
+    <Content Remove="ClientApp\src\app\utilities\**" />
+    <Content Remove="ClientApp\src\app\vendor-maintenance\**" />
+    <Content Remove="logs\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\contracts\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\creative-brief\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\dashboard\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\desktop\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\employee\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\estimate\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\finance-and-accounting\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\general-ledger\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\job-jacket\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\job-specification\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\job-version\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\maintenance\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\media\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\print-send\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\project-management\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\project-schedule\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\purchase-order\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\qva\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\reporting\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\shared\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\sign-in\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\utilities\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\vendor-maintenance\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="ClientApp\dist\**" />
+    <None Remove="ClientApp\src\app\contracts\**" />
+    <None Remove="ClientApp\src\app\creative-brief\**" />
+    <None Remove="ClientApp\src\app\dashboard\**" />
+    <None Remove="ClientApp\src\app\desktop\**" />
+    <None Remove="ClientApp\src\app\employee\**" />
+    <None Remove="ClientApp\src\app\estimate\**" />
+    <None Remove="ClientApp\src\app\finance-and-accounting\**" />
+    <None Remove="ClientApp\src\app\general-ledger\**" />
+    <None Remove="ClientApp\src\app\job-jacket\**" />
+    <None Remove="ClientApp\src\app\job-specification\**" />
+    <None Remove="ClientApp\src\app\job-version\**" />
+    <None Remove="ClientApp\src\app\maintenance\**" />
+    <None Remove="ClientApp\src\app\media\**" />
+    <None Remove="ClientApp\src\app\print-send\**" />
+    <None Remove="ClientApp\src\app\project-management\**" />
+    <None Remove="ClientApp\src\app\project-schedule\**" />
+    <None Remove="ClientApp\src\app\purchase-order\**" />
+    <None Remove="ClientApp\src\app\qva\**" />
+    <None Remove="ClientApp\src\app\reporting\**" />
+    <None Remove="ClientApp\src\app\shared\**" />
+    <None Remove="ClientApp\src\app\sign-in\**" />
+    <None Remove="ClientApp\src\app\utilities\**" />
+    <None Remove="ClientApp\src\app\vendor-maintenance\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ClientApp.rar" />
+    <None Remove="ClientApp\src\app\modules\proofing\components\action-area\collapsible-panel\feedbacks\edit-feedback\edit-feedback.component.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\constants\types\quad-typets.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\constants\types\tool-type-constants.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\agency.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\approval-review-buttons.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\asset-info.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\document.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\reviewer.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\search-options.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\search-results.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\interfaces\text-buttons.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\active-file.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\agency.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\alert-document.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\annotation.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\approval.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\asset-info.serivice.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\base.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\can-markup.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\can-update-status.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\comparison-annotation.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\current-version.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\document-history.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\document-version.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\feedback.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\latest-version.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\search.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\signalr.services.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\text-select.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\update-wv-alert.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\services\web-viewer-ready.service.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\shared\Models\Annotation.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\shared\Pipes\file-size.ts" />
+    <None Remove="ClientApp\src\app\modules\proofing\shared\Pipes\order-by.ts" />
+    <None Remove="ClientApp\src\app\wv_folders.rar" />
+    <None Remove="ClientApp\src\app\wv_folders.rar" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\modules\contracts\" />
+    <Folder Include="ClientApp\src\app\modules\creative-brief\" />
+    <Folder Include="ClientApp\src\app\modules\dashboard\" />
+    <Folder Include="ClientApp\src\app\modules\desktop\" />
+    <Folder Include="ClientApp\src\app\modules\employee\" />
+    <Folder Include="ClientApp\src\app\modules\estimate\" />
+    <Folder Include="ClientApp\src\app\modules\finance-and-accounting\" />
+    <Folder Include="ClientApp\src\app\modules\general-ledger\" />
+    <Folder Include="ClientApp\src\app\modules\job-jacket\" />
+    <Folder Include="ClientApp\src\app\modules\job-specification\" />
+    <Folder Include="ClientApp\src\app\modules\job-version\" />
+    <Folder Include="ClientApp\src\app\modules\maintenance\" />
+    <Folder Include="ClientApp\src\app\modules\media\" />
+    <Folder Include="ClientApp\src\app\modules\print-send\" />
+    <Folder Include="ClientApp\src\app\modules\project-management\" />
+    <Folder Include="ClientApp\src\app\modules\project-schedule\" />
+    <Folder Include="ClientApp\src\app\modules\purchase-order\" />
+    <Folder Include="ClientApp\src\app\modules\qva\" />
+    <Folder Include="ClientApp\src\app\modules\reporting\" />
+    <Folder Include="ClientApp\src\app\modules\shared\" />
+    <Folder Include="ClientApp\src\app\modules\sign-in\" />
+    <Folder Include="ClientApp\src\app\modules\utilities\" />
+    <Folder Include="ClientApp\src\app\modules\vendor-maintenance\" />
+    <Folder Include="ClientApp\src\app\utils\" />
+    <Folder Include="ClientApp\src\styles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvantageFramework.Core.BLogic\AdvantageFramework.Core.BLogic.csproj" />
+    <ProjectReference Include="..\AdvantageFramework.Core\AdvantageFramework.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\components\action-area\collapsible-panel\feedbacks\edit-feedback\edit-feedback.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\constants\types\quad-typets.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\constants\types\tool-type-constants.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\agency.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\approval-review-buttons.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\asset-info.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\document.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\reviewer.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\search-options.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\search-results.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\interfaces\text-buttons.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\active-file.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\agency.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\alert-document.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\annotation.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\approval.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\asset-info.serivice.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\base.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\can-markup.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\can-update-status.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\comparison-annotation.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\current-version.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\document-history.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\document-version.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\feedback.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\latest-version.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\search.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\signalr.services.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\text-select.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\update-wv-alert.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\services\web-viewer-ready.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\shared\Models\Annotation.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\shared\Pipes\file-size.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\proofing\shared\Pipes\order-by.ts" />
+  </ItemGroup>
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>

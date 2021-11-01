@@ -1,0 +1,14 @@
+<div [ngClass]="setClassOnBlock()">
+  <ng-scrollbar class="scrollbar-page-preview">
+    <kendo-buttongroup [selection]="'single'">
+      <button *ngFor="let page of pages" class="page-preview-buttton"
+              kendoButton
+              [selected]="page.selected"
+              [toggleable]="true"
+              [imageUrl]="'assets/images/thumbnail.svg'"
+      >
+        <span class="page-preview-number">{{page.id}}</span>
+      </button>
+    </kendo-buttongroup>
+  </ng-scrollbar>
+</div>

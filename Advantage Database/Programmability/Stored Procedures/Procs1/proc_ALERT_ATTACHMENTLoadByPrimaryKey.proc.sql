@@ -1,0 +1,80 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_ALERT_ATTACHMENTLoadByPrimaryKey]
+(
+	@ATTACHMENT_ID int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[ATTACHMENT_ID],
+		[ALERT_ID],
+		[USER_CODE],
+		[GENERATED_DATE],
+		[EMAILSENT],
+		[DOCUMENT_ID],
+		[USER_CODE_CP]
+	FROM [ALERT_ATTACHMENT]
+	WHERE
+		([ATTACHMENT_ID] = @ATTACHMENT_ID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

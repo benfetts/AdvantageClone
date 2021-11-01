@@ -1,0 +1,45 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_ALERT_NOTIFY_EMPS_BY_ALERT_ID] 
+	@ALERT_ID INT
+AS
+/*=========== QUERY ===========*/
+
+    DECLARE @ALRT_NOTIFY_HDR_ID  INT,
+            @ALERT_STATE_ID      INT
+
+    SELECT @ALRT_NOTIFY_HDR_ID = JOB_COMPONENT.ALRT_NOTIFY_HDR_ID,
+           @ALERT_STATE_ID = ALERT.ALERT_STATE_ID
+    FROM   ALERT WITH(NOLOCK)
+           INNER JOIN JOB_COMPONENT WITH(NOLOCK)
+                ON  ALERT.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER
+                    AND ALERT.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR
+    WHERE  (ALERT.ALERT_ID = @ALERT_ID)
+           
+    SET @ALRT_NOTIFY_HDR_ID = ISNULL(@ALRT_NOTIFY_HDR_ID, 0);
+
+    SELECT DISTINCT EMPLOYEE.EMP_CODE,
+           [dbo].[udf_get_empl_name](EMPLOYEE.EMP_CODE, 'FML') EMP_FML,
+           EMPLOYEE.EMP_EMAIL
+    FROM   ALERT_STATES WITH(NOLOCK)
+           INNER JOIN ALERT_NOTIFY_EMPS WITH(NOLOCK)
+                ON  ALERT_STATES.ALERT_STATE_ID = ALERT_NOTIFY_EMPS.ALERT_STATE_ID
+           INNER JOIN EMPLOYEE WITH(NOLOCK)
+                ON  ALERT_NOTIFY_EMPS.EMP_CODE = EMPLOYEE.EMP_CODE
+    WHERE  (ALERT_STATES.ALERT_STATE_ID = @ALERT_STATE_ID)
+           AND ALERT_NOTIFY_EMPS.ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID
+           AND (
+                   EMPLOYEE.EMP_TERM_DATE IS NULL
+                   OR EMPLOYEE.EMP_TERM_DATE > GETDATE()
+               )
+           AND (
+                   ALERT_STATES.ACTIVE_FLAG IS NULL
+                   OR ALERT_STATES.ACTIVE_FLAG = 1
+               )
+           AND (
+                   EMPLOYEE.EMP_CODE NOT IN (SELECT DISTINCT EMP_CODE
+                                             FROM   ALERT_RCPT WITH(NOLOCK)
+                                             WHERE  ALERT_ID = @ALERT_ID)
+               );
+           
+
+/*=========== QUERY ===========*/

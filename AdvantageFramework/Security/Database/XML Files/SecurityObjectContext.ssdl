@@ -1,0 +1,2379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Security.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SecurityStoreContainer">
+    <EntitySet Name="APP_VARS" EntityType="Security.Store.APP_VARS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="APPR_PASSWORD" EntityType="Security.Store.APPR_PASSWORD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AULU" EntityType="Security.Store.AULU" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CDP_CONTACT_DTL" EntityType="Security.Store.CDP_CONTACT_DTL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CDP_CONTACT_HDR" EntityType="Security.Store.CDP_CONTACT_HDR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CLIENT" EntityType="Security.Store.CLIENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CP_USER" EntityType="Security.Store.CP_USER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CP_USER_QUICK_LAUNCH_APPS" EntityType="Security.Store.CP_USER_QUICK_LAUNCH_APPS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CP_USER_WORKSPACE" EntityType="Security.Store.CP_USER_WORKSPACE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CP_WORKSPACE_OBJECT" EntityType="Security.Store.CP_WORKSPACE_OBJECT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DEPT_TEAM" EntityType="Security.Store.DEPT_TEAM" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DIVISION" EntityType="Security.Store.DIVISION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OFFICE" EntityType="Security.Store.OFFICE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PRODUCT" EntityType="Security.Store.PRODUCT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="REPORTS" EntityType="Security.Store.REPORTS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_APPLICATION" EntityType="Security.Store.SEC_APPLICATION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_APPLICATION_MOD" EntityType="Security.Store.SEC_APPLICATION_MOD" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_CLIENT" EntityType="Security.Store.SEC_CLIENT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_CPUSER_APPACCESS" EntityType="Security.Store.SEC_CPUSER_APPACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_CPUSER_MODACCESS" EntityType="Security.Store.SEC_CPUSER_MODACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_EMP" EntityType="Security.Store.SEC_EMP" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_GROUP" EntityType="Security.Store.SEC_GROUP" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_GROUP_APPACCESS" EntityType="Security.Store.SEC_GROUP_APPACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_GROUP_MODACCESS" EntityType="Security.Store.SEC_GROUP_MODACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_GROUP_SETTING" EntityType="Security.Store.SEC_GROUP_SETTING" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_GROUP_UDRACCESS" EntityType="Security.Store.SEC_GROUP_UDRACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_GROUP_USER" EntityType="Security.Store.SEC_GROUP_USER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_MODULE" EntityType="Security.Store.SEC_MODULE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_MODULE_INFO" EntityType="Security.Store.SEC_MODULE_INFO" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_MODULE_SUB" EntityType="Security.Store.SEC_MODULE_SUB" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_REPORTS" EntityType="Security.Store.SEC_REPORTS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_USER" EntityType="Security.Store.SEC_USER" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_USER_APPACCESS" EntityType="Security.Store.SEC_USER_APPACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_USER_MENU" EntityType="Security.Store.SEC_USER_MENU" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_USER_MENU_TAB" EntityType="Security.Store.SEC_USER_MENU_TAB" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_USER_MODACCESS" EntityType="Security.Store.SEC_USER_MODACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_USER_SETTING" EntityType="Security.Store.SEC_USER_SETTING" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SEC_USER_UDRACCESS" EntityType="Security.Store.SEC_USER_UDRACCESS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SERVICE_FEE_DEF" EntityType="Security.Store.SERVICE_FEE_DEF" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SERVICE_FEE_DEF_CDP" EntityType="Security.Store.SERVICE_FEE_DEF_CDP" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SERVICE_FEE_DEF_DTL" EntityType="Security.Store.SERVICE_FEE_DEF_DTL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SERVICE_FEE_REPORT" EntityType="Security.Store.SERVICE_FEE_REPORT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SERVICE_FEE_REPORT_COL" EntityType="Security.Store.SERVICE_FEE_REPORT_COL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SERVICE_FEE_REPORT_SUM" EntityType="Security.Store.SERVICE_FEE_REPORT_SUM" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WV_USER_QUICK_LAUNCH_APPS" EntityType="Security.Store.WV_USER_QUICK_LAUNCH_APPS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WV_USER_WORKSPACE" EntityType="Security.Store.WV_USER_WORKSPACE" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WV_WORKSPACE_OBJECT" EntityType="Security.Store.WV_WORKSPACE_OBJECT" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WV_WORKSPACE_TMPLT_DTL" EntityType="Security.Store.WV_WORKSPACE_TMPLT_DTL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WV_WORKSPACE_TMPLT_HDR" EntityType="Security.Store.WV_WORKSPACE_TMPLT_HDR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WV_WORKSPACE_TMPLT_ITEM" EntityType="Security.Store.WV_WORKSPACE_TMPLT_ITEM" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EMPLOYEE" EntityType="Security.Store.EMPLOYEE" store:Type="Views" store:Schema="dbo" store:Name="EMPLOYEE">
+      <DefiningQuery>SELECT 
+      [EMPLOYEE].[EMP_CODE] AS [EMP_CODE], 
+      [EMPLOYEE].[DP_TM_CODE] AS [DP_TM_CODE], 
+      [EMPLOYEE].[EMP_LNAME] AS [EMP_LNAME], 
+      [EMPLOYEE].[EMP_FNAME] AS [EMP_FNAME], 
+      [EMPLOYEE].[EMP_MI] AS [EMP_MI], 
+      [EMPLOYEE].[EMP_COST_RATE] AS [EMP_COST_RATE], 
+      [EMPLOYEE].[EMP_ADDRESS1] AS [EMP_ADDRESS1], 
+      [EMPLOYEE].[EMP_ADDRESS2] AS [EMP_ADDRESS2], 
+      [EMPLOYEE].[EMP_ALPHA_SORT] AS [EMP_ALPHA_SORT], 
+      [EMPLOYEE].[EMP_CITY] AS [EMP_CITY], 
+      [EMPLOYEE].[EMP_COUNTRY] AS [EMP_COUNTRY], 
+      [EMPLOYEE].[EMP_COUNTY] AS [EMP_COUNTY], 
+      [EMPLOYEE].[EMP_PAY_TO_ADDR1] AS [EMP_PAY_TO_ADDR1], 
+      [EMPLOYEE].[EMP_PAY_TO_ADDR2] AS [EMP_PAY_TO_ADDR2], 
+      [EMPLOYEE].[EMP_PAY_TO_CITY] AS [EMP_PAY_TO_CITY], 
+      [EMPLOYEE].[EMP_PAY_TO_COUNTRY] AS [EMP_PAY_TO_COUNTRY], 
+      [EMPLOYEE].[EMP_PAY_TO_COUNTY] AS [EMP_PAY_TO_COUNTY], 
+      [EMPLOYEE].[EMP_PAY_TO_STATE] AS [EMP_PAY_TO_STATE], 
+      [EMPLOYEE].[EMP_PAY_TO_ZIP] AS [EMP_PAY_TO_ZIP], 
+      [EMPLOYEE].[EMP_PHONE] AS [EMP_PHONE], 
+      [EMPLOYEE].[EMP_STATE] AS [EMP_STATE], 
+      [EMPLOYEE].[EMP_SS_NBR] AS [EMP_SS_NBR], 
+      [EMPLOYEE].[EMP_ZIP] AS [EMP_ZIP], 
+      [EMPLOYEE].[EMP_DATE] AS [EMP_DATE], 
+      [EMPLOYEE].[EMP_TERM_DATE] AS [EMP_TERM_DATE], 
+      [EMPLOYEE].[EMP_BIRTH_DATE] AS [EMP_BIRTH_DATE], 
+      [EMPLOYEE].[EMP_LAST_INCREASE] AS [EMP_LAST_INCREASE], 
+      [EMPLOYEE].[EMP_NEXT_REVIEW] AS [EMP_NEXT_REVIEW], 
+      [EMPLOYEE].[EMP_ANNUAL_SALARY] AS [EMP_ANNUAL_SALARY], 
+      [EMPLOYEE].[EMP_MONTHLY_SALARY] AS [EMP_MONTHLY_SALARY], 
+      [EMPLOYEE].[EMP_EMAIL] AS [EMP_EMAIL], 
+      [EMPLOYEE].[MTH_HRS_GOAL] AS [MTH_HRS_GOAL], 
+      [EMPLOYEE].[OFFICE_CODE] AS [OFFICE_CODE], 
+      [EMPLOYEE].[SUPERVISOR_CODE] AS [SUPERVISOR_CODE], 
+      [EMPLOYEE].[VAC_HRS] AS [VAC_HRS], 
+      [EMPLOYEE].[VAC_FROM_DATE] AS [VAC_FROM_DATE], 
+      [EMPLOYEE].[VAC_TO_DATE] AS [VAC_TO_DATE], 
+      [EMPLOYEE].[SICK_HRS] AS [SICK_HRS], 
+      [EMPLOYEE].[SICK_FROM_DATE] AS [SICK_FROM_DATE], 
+      [EMPLOYEE].[SICK_TO_DATE] AS [SICK_TO_DATE], 
+      [EMPLOYEE].[STD_WORK_HRS] AS [STD_WORK_HRS], 
+      [EMPLOYEE].[EMP_WORK_DAYS] AS [EMP_WORK_DAYS], 
+      [EMPLOYEE].[EMP_TIME_ALERT] AS [EMP_TIME_ALERT], 
+      [EMPLOYEE].[SMTP_SERVER] AS [SMTP_SERVER], 
+      [EMPLOYEE].[EMAIL_PWD] AS [EMAIL_PWD], 
+      [EMPLOYEE].[MON_HRS] AS [MON_HRS], 
+      [EMPLOYEE].[TUE_HRS] AS [TUE_HRS], 
+      [EMPLOYEE].[WED_HRS] AS [WED_HRS], 
+      [EMPLOYEE].[THU_HRS] AS [THU_HRS], 
+      [EMPLOYEE].[FRI_HRS] AS [FRI_HRS], 
+      [EMPLOYEE].[SAT_HRS] AS [SAT_HRS], 
+      [EMPLOYEE].[SUN_HRS] AS [SUN_HRS], 
+      [EMPLOYEE].[ALERT_EMAIL] AS [ALERT_EMAIL], 
+      [EMPLOYEE].[FREELANCE] AS [FREELANCE], 
+      [EMPLOYEE].[PERS_HRS] AS [PERS_HRS], 
+      [EMPLOYEE].[PERS_FROM_DATE] AS [PERS_FROM_DATE], 
+      [EMPLOYEE].[PERS_TO_DATE] AS [PERS_TO_DATE], 
+      [EMPLOYEE].[DEF_FNC_CODE] AS [DEF_FNC_CODE], 
+      [EMPLOYEE].[PO_LIMIT] AS [PO_LIMIT], 
+      [EMPLOYEE].[EMP_ACCOUNT_NBR] AS [EMP_ACCOUNT_NBR], 
+      [EMPLOYEE].[EMP_PHONE_WORK] AS [EMP_PHONE_WORK], 
+      [EMPLOYEE].[EMP_PHONE_CELL] AS [EMP_PHONE_CELL], 
+      [EMPLOYEE].[EMP_PHONE_ALT] AS [EMP_PHONE_ALT], 
+      [EMPLOYEE].[EMP_PHONE_WORK_EXT] AS [EMP_PHONE_WORK_EXT], 
+      [EMPLOYEE].[STD_ANNUAL_HRS] AS [STD_ANNUAL_HRS], 
+      [EMPLOYEE].[VN_CODE_EXP] AS [VN_CODE_EXP], 
+      [EMPLOYEE].[CC_NUMBER] AS [CC_NUMBER], 
+      [EMPLOYEE].[CC_DESC] AS [CC_DESC], 
+      [EMPLOYEE].[CC_GL_ACCOUNT] AS [CC_GL_ACCOUNT], 
+      [EMPLOYEE].[EXP_APPR_REQ] AS [EXP_APPR_REQ], 
+      [EMPLOYEE].[MISSING_TIME] AS [MISSING_TIME], 
+      [EMPLOYEE].[WEEKLY_TIME] AS [WEEKLY_TIME], 
+      [EMPLOYEE].[SIGNATURE_PATH] AS [SIGNATURE_PATH], 
+      [EMPLOYEE].[STATUS] AS [STATUS], 
+      [EMPLOYEE].[DIRECT_HRS_PER] AS [DIRECT_HRS_PER], 
+      [EMPLOYEE].[DEF_TRF_ROLE] AS [DEF_TRF_ROLE], 
+      [EMPLOYEE].[EMP_COMMENT] AS [EMP_COMMENT], 
+      [EMPLOYEE].[EMPLOYEE_TITLE_ID] AS [EMPLOYEE_TITLE_ID], 
+      [EMPLOYEE].[PO_APPR_RULE_CODE] AS [PO_APPR_RULE_CODE], 
+      [EMPLOYEE].[PO_GL_SELECTION] AS [PO_GL_SELECTION], 
+      [EMPLOYEE].[PO_GL_LIMIT_BY_OFFICE] AS [PO_GL_LIMIT_BY_OFFICE], 
+      [EMPLOYEE].[SENIORITY] AS [SENIORITY], 
+      [EMPLOYEE].[EMP_START_TIME] AS [EMP_START_TIME], 
+      [EMPLOYEE].[EMP_END_TIME] AS [EMP_END_TIME], 
+      [EMPLOYEE].[EMP_START_TIME_MON] AS [EMP_START_TIME_MON], 
+      [EMPLOYEE].[EMP_END_TIME_MON] AS [EMP_END_TIME_MON], 
+      [EMPLOYEE].[EMP_START_TIME_TUE] AS [EMP_START_TIME_TUE], 
+      [EMPLOYEE].[EMP_END_TIME_TUE] AS [EMP_END_TIME_TUE], 
+      [EMPLOYEE].[EMP_START_TIME_WED] AS [EMP_START_TIME_WED], 
+      [EMPLOYEE].[EMP_END_TIME_WED] AS [EMP_END_TIME_WED], 
+      [EMPLOYEE].[EMP_START_TIME_THU] AS [EMP_START_TIME_THU], 
+      [EMPLOYEE].[EMP_END_TIME_THU] AS [EMP_END_TIME_THU], 
+      [EMPLOYEE].[EMP_START_TIME_FRI] AS [EMP_START_TIME_FRI], 
+      [EMPLOYEE].[EMP_END_TIME_FRI] AS [EMP_END_TIME_FRI], 
+      [EMPLOYEE].[EMP_START_TIME_SAT] AS [EMP_START_TIME_SAT], 
+      [EMPLOYEE].[EMP_END_TIME_SAT] AS [EMP_END_TIME_SAT], 
+      [EMPLOYEE].[EMP_START_TIME_SUN] AS [EMP_START_TIME_SUN], 
+      [EMPLOYEE].[EMP_END_TIME_SUN] AS [EMP_END_TIME_SUN], 
+      [EMPLOYEE].[EMAIL_USERNAME] AS [EMAIL_USERNAME], 
+      [EMPLOYEE].[EMAIL_REPLY_TO] AS [EMAIL_REPLY_TO], 
+      [EMPLOYEE].[EMP_SIG] AS [EMP_SIG], 
+      [EMPLOYEE].[WV_TMPLT_HDR_ID] AS [WV_TMPLT_HDR_ID], 
+      [EMPLOYEE].[ALT_COST_RATE] AS [ALT_COST_RATE], 
+      [EMPLOYEE].[ALT_DATE_FRM] AS [ALT_DATE_FRM], 
+      [EMPLOYEE].[ALT_DATE_TO] AS [ALT_DATE_TO], 
+      [EMPLOYEE].[CREATED_BY] AS [CREATED_BY], 
+      [EMPLOYEE].[CREATED_DATE] AS [CREATED_DATE], 
+      [EMPLOYEE].[LAST_MODIFIED_BY] AS [LAST_MODIFIED_BY], 
+      [EMPLOYEE].[LAST_MODIFIED_DATE] AS [LAST_MODIFIED_DATE], 
+      [EMPLOYEE].[METHOD] AS [METHOD], 
+      [EMPLOYEE].[EXP_RPT_APPROVER] AS [EXP_RPT_APPROVER], 
+      [EMPLOYEE].[VAC_TIME_RULE_ID] AS [VAC_TIME_RULE_ID], 
+      [EMPLOYEE].[SICK_TIME_RULE_ID] AS [SICK_TIME_RULE_ID], 
+      [EMPLOYEE].[PERS_TIME_RULE_ID] AS [PERS_TIME_RULE_ID], 
+      [EMPLOYEE].[EMP_TITLE] AS [EMP_TITLE], 
+      [EMPLOYEE].[EMP_BILL_RATE] AS [EMP_BILL_RATE]
+      FROM [dbo].[EMPLOYEE] AS [EMPLOYEE]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_DATABASE_SQLUSER" EntityType="Security.Store.V_DATABASE_SQLUSER" store:Type="Views" store:Schema="dbo" store:Name="V_DATABASE_SQLUSER">
+      <DefiningQuery>SELECT 
+      [V_DATABASE_SQLUSER].[name] AS [name], 
+      [V_DATABASE_SQLUSER].[principal_id] AS [principal_id], 
+      [V_DATABASE_SQLUSER].[type] AS [type], 
+      [V_DATABASE_SQLUSER].[type_desc] AS [type_desc], 
+      [V_DATABASE_SQLUSER].[default_schema_name] AS [default_schema_name], 
+      [V_DATABASE_SQLUSER].[create_date] AS [create_date], 
+      [V_DATABASE_SQLUSER].[modify_date] AS [modify_date], 
+      [V_DATABASE_SQLUSER].[owning_principal_id] AS [owning_principal_id], 
+      [V_DATABASE_SQLUSER].[sid] AS [sid], 
+      [V_DATABASE_SQLUSER].[is_fixed_role] AS [is_fixed_role]
+      FROM [dbo].[V_DATABASE_SQLUSER] AS [V_DATABASE_SQLUSER]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_RPT_SEC_EMP_SUMMARY" EntityType="Security.Store.V_RPT_SEC_EMP_SUMMARY" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_SEC_EMP_SUMMARY">
+      <DefiningQuery>SELECT 
+      [V_RPT_SEC_EMP_SUMMARY].[ID] AS [ID], 
+      [V_RPT_SEC_EMP_SUMMARY].[UserCode] AS [UserCode], 
+      [V_RPT_SEC_EMP_SUMMARY].[CheckForUserAccess] AS [CheckForUserAccess], 
+      [V_RPT_SEC_EMP_SUMMARY].[Employee] AS [Employee], 
+      [V_RPT_SEC_EMP_SUMMARY].[EmployeeCode] AS [EmployeeCode], 
+      [V_RPT_SEC_EMP_SUMMARY].[EmployeeName] AS [EmployeeName], 
+      [V_RPT_SEC_EMP_SUMMARY].[Group] AS [Group], 
+      [V_RPT_SEC_EMP_SUMMARY].[GroupName] AS [GroupName], 
+      [V_RPT_SEC_EMP_SUMMARY].[GroupDescription] AS [GroupDescription]
+      FROM [dbo].[V_RPT_SEC_EMP_SUMMARY] AS [V_RPT_SEC_EMP_SUMMARY]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_RPT_SEC_GROUP_PERMISSION" EntityType="Security.Store.V_RPT_SEC_GROUP_PERMISSION" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_SEC_GROUP_PERMISSION">
+      <DefiningQuery>SELECT 
+      [V_RPT_SEC_GROUP_PERMISSION].[ID] AS [ID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ApplicationID] AS [ApplicationID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ParentModuleID] AS [ParentModuleID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ParentModule] AS [ParentModule], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ParentModuleSortOrder] AS [ParentModuleSortOrder], 
+      [V_RPT_SEC_GROUP_PERMISSION].[SubParentModuleID] AS [SubParentModuleID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[SubParentModule] AS [SubParentModule], 
+      [V_RPT_SEC_GROUP_PERMISSION].[SubParentModuleSortOrder] AS [SubParentModuleSortOrder], 
+      [V_RPT_SEC_GROUP_PERMISSION].[SubSubParentModuleID] AS [SubSubParentModuleID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[SubSubParentModule] AS [SubSubParentModule], 
+      [V_RPT_SEC_GROUP_PERMISSION].[SubSubParentModuleSortOrder] AS [SubSubParentModuleSortOrder], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ModuleID] AS [ModuleID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ModuleCode] AS [ModuleCode], 
+      [V_RPT_SEC_GROUP_PERMISSION].[Module] AS [Module], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ModuleIsCategory] AS [ModuleIsCategory], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ModuleInfoID] AS [ModuleInfoID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ModuleSortOrder] AS [ModuleSortOrder], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ModuleHasCustomPermission] AS [ModuleHasCustomPermission], 
+      [V_RPT_SEC_GROUP_PERMISSION].[GroupID] AS [GroupID], 
+      [V_RPT_SEC_GROUP_PERMISSION].[GroupName] AS [GroupName], 
+      [V_RPT_SEC_GROUP_PERMISSION].[GroupDescription] AS [GroupDescription], 
+      [V_RPT_SEC_GROUP_PERMISSION].[IsBlocked] AS [IsBlocked], 
+      [V_RPT_SEC_GROUP_PERMISSION].[CanPrint] AS [CanPrint], 
+      [V_RPT_SEC_GROUP_PERMISSION].[CanUpdate] AS [CanUpdate], 
+      [V_RPT_SEC_GROUP_PERMISSION].[CanAdd] AS [CanAdd], 
+      [V_RPT_SEC_GROUP_PERMISSION].[Custom1] AS [Custom1], 
+      [V_RPT_SEC_GROUP_PERMISSION].[Custom2] AS [Custom2], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ApplicationIsBlocked] AS [ApplicationIsBlocked], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ApplicationCanPrint] AS [ApplicationCanPrint], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ApplicationCanUpdate] AS [ApplicationCanUpdate], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ApplicationCanAdd] AS [ApplicationCanAdd], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ApplicationCustom1] AS [ApplicationCustom1], 
+      [V_RPT_SEC_GROUP_PERMISSION].[ApplicationCustom2] AS [ApplicationCustom2]
+      FROM [dbo].[V_RPT_SEC_GROUP_PERMISSION] AS [V_RPT_SEC_GROUP_PERMISSION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_RPT_SEC_PERMISSION" EntityType="Security.Store.V_RPT_SEC_PERMISSION" store:Type="Views" store:Schema="dbo" store:Name="V_RPT_SEC_PERMISSION">
+      <DefiningQuery>SELECT 
+      [V_RPT_SEC_PERMISSION].[ID] AS [ID], 
+      [V_RPT_SEC_PERMISSION].[ApplicationID] AS [ApplicationID], 
+      [V_RPT_SEC_PERMISSION].[ParentModuleID] AS [ParentModuleID], 
+      [V_RPT_SEC_PERMISSION].[ParentModule] AS [ParentModule], 
+      [V_RPT_SEC_PERMISSION].[ParentModuleSortOrder] AS [ParentModuleSortOrder], 
+      [V_RPT_SEC_PERMISSION].[SubParentModuleID] AS [SubParentModuleID], 
+      [V_RPT_SEC_PERMISSION].[SubParentModule] AS [SubParentModule], 
+      [V_RPT_SEC_PERMISSION].[SubParentModuleSortOrder] AS [SubParentModuleSortOrder], 
+      [V_RPT_SEC_PERMISSION].[SubSubParentModuleID] AS [SubSubParentModuleID], 
+      [V_RPT_SEC_PERMISSION].[SubSubParentModule] AS [SubSubParentModule], 
+      [V_RPT_SEC_PERMISSION].[SubSubParentModuleSortOrder] AS [SubSubParentModuleSortOrder], 
+      [V_RPT_SEC_PERMISSION].[ModuleID] AS [ModuleID], 
+      [V_RPT_SEC_PERMISSION].[ModuleCode] AS [ModuleCode], 
+      [V_RPT_SEC_PERMISSION].[Module] AS [Module], 
+      [V_RPT_SEC_PERMISSION].[ModuleIsCategory] AS [ModuleIsCategory], 
+      [V_RPT_SEC_PERMISSION].[ModuleInfoID] AS [ModuleInfoID], 
+      [V_RPT_SEC_PERMISSION].[ModuleSortOrder] AS [ModuleSortOrder], 
+      [V_RPT_SEC_PERMISSION].[ModuleHasCustomPermission] AS [ModuleHasCustomPermission], 
+      [V_RPT_SEC_PERMISSION].[UserID] AS [UserID], 
+      [V_RPT_SEC_PERMISSION].[UserCode] AS [UserCode], 
+      [V_RPT_SEC_PERMISSION].[EmployeeCode] AS [EmployeeCode], 
+      [V_RPT_SEC_PERMISSION].[Employee] AS [Employee], 
+      [V_RPT_SEC_PERMISSION].[IsBlocked] AS [IsBlocked], 
+      [V_RPT_SEC_PERMISSION].[CanPrint] AS [CanPrint], 
+      [V_RPT_SEC_PERMISSION].[CanUpdate] AS [CanUpdate], 
+      [V_RPT_SEC_PERMISSION].[CanAdd] AS [CanAdd], 
+      [V_RPT_SEC_PERMISSION].[Custom1] AS [Custom1], 
+      [V_RPT_SEC_PERMISSION].[Custom2] AS [Custom2], 
+      [V_RPT_SEC_PERMISSION].[ApplicationIsBlocked] AS [ApplicationIsBlocked], 
+      [V_RPT_SEC_PERMISSION].[ApplicationCanPrint] AS [ApplicationCanPrint], 
+      [V_RPT_SEC_PERMISSION].[ApplicationCanUpdate] AS [ApplicationCanUpdate], 
+      [V_RPT_SEC_PERMISSION].[ApplicationCanAdd] AS [ApplicationCanAdd], 
+      [V_RPT_SEC_PERMISSION].[ApplicationCustom1] AS [ApplicationCustom1], 
+      [V_RPT_SEC_PERMISSION].[ApplicationCustom2] AS [ApplicationCustom2]
+      FROM [dbo].[V_RPT_SEC_PERMISSION] AS [V_RPT_SEC_PERMISSION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_SEC_GROUP_PERMISSION" EntityType="Security.Store.V_SEC_GROUP_PERMISSION" store:Type="Views" store:Schema="dbo" store:Name="V_SEC_GROUP_PERMISSION">
+      <DefiningQuery>SELECT 
+      [V_SEC_GROUP_PERMISSION].[ID] AS [ID], 
+      [V_SEC_GROUP_PERMISSION].[ApplicationID] AS [ApplicationID], 
+      [V_SEC_GROUP_PERMISSION].[ModuleID] AS [ModuleID], 
+      [V_SEC_GROUP_PERMISSION].[ModuleCode] AS [ModuleCode], 
+      [V_SEC_GROUP_PERMISSION].[Module] AS [Module], 
+      [V_SEC_GROUP_PERMISSION].[ModuleIsCategory] AS [ModuleIsCategory], 
+      [V_SEC_GROUP_PERMISSION].[ModuleInfoID] AS [ModuleInfoID], 
+      [V_SEC_GROUP_PERMISSION].[GroupID] AS [GroupID], 
+      [V_SEC_GROUP_PERMISSION].[GroupName] AS [GroupName], 
+      [V_SEC_GROUP_PERMISSION].[GroupDescription] AS [GroupDescription], 
+      [V_SEC_GROUP_PERMISSION].[IsBlocked] AS [IsBlocked], 
+      [V_SEC_GROUP_PERMISSION].[CanPrint] AS [CanPrint], 
+      [V_SEC_GROUP_PERMISSION].[CanUpdate] AS [CanUpdate], 
+      [V_SEC_GROUP_PERMISSION].[CanAdd] AS [CanAdd], 
+      [V_SEC_GROUP_PERMISSION].[Custom1] AS [Custom1], 
+      [V_SEC_GROUP_PERMISSION].[Custom2] AS [Custom2], 
+      [V_SEC_GROUP_PERMISSION].[ApplicationIsBlocked] AS [ApplicationIsBlocked], 
+      [V_SEC_GROUP_PERMISSION].[ApplicationCanPrint] AS [ApplicationCanPrint], 
+      [V_SEC_GROUP_PERMISSION].[ApplicationCanUpdate] AS [ApplicationCanUpdate], 
+      [V_SEC_GROUP_PERMISSION].[ApplicationCanAdd] AS [ApplicationCanAdd], 
+      [V_SEC_GROUP_PERMISSION].[ApplicationCustom1] AS [ApplicationCustom1], 
+      [V_SEC_GROUP_PERMISSION].[ApplicationCustom2] AS [ApplicationCustom2]
+      FROM [dbo].[V_SEC_GROUP_PERMISSION] AS [V_SEC_GROUP_PERMISSION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_SEC_MODULES" EntityType="Security.Store.V_SEC_MODULES" store:Type="Views" store:Schema="dbo" store:Name="V_SEC_MODULES">
+      <DefiningQuery>SELECT 
+      [V_SEC_MODULES].[ID] AS [ID], 
+      [V_SEC_MODULES].[ApplicationID] AS [ApplicationID], 
+      [V_SEC_MODULES].[ApplicationName] AS [ApplicationName], 
+      [V_SEC_MODULES].[ApplicationDescription] AS [ApplicationDescription], 
+      [V_SEC_MODULES].[ModuleCode] AS [ModuleCode], 
+      [V_SEC_MODULES].[ModuleInformationID] AS [ModuleInformationID], 
+      [V_SEC_MODULES].[ModuleID] AS [ModuleID], 
+      [V_SEC_MODULES].[ModuleDescription] AS [ModuleDescription], 
+      [V_SEC_MODULES].[IsInactive] AS [IsInactive], 
+      [V_SEC_MODULES].[IsMenuItem] AS [IsMenuItem], 
+      [V_SEC_MODULES].[IsCategory] AS [IsCategory], 
+      [V_SEC_MODULES].[IsApplication] AS [IsApplication], 
+      [V_SEC_MODULES].[IsReport] AS [IsReport], 
+      [V_SEC_MODULES].[IsDesktopObject] AS [IsDesktopObject], 
+      [V_SEC_MODULES].[IsDashQuery] AS [IsDashQuery], 
+      [V_SEC_MODULES].[ParentModuleID] AS [ParentModuleID], 
+      [V_SEC_MODULES].[ParentModuleCode] AS [ParentModuleCode], 
+      [V_SEC_MODULES].[ParentModuleDescription] AS [ParentModuleDescription], 
+      [V_SEC_MODULES].[ReportIsLocked] AS [ReportIsLocked], 
+      [V_SEC_MODULES].[ReportPreviewLocation] AS [ReportPreviewLocation], 
+      [V_SEC_MODULES].[ReportDescription] AS [ReportDescription], 
+      [V_SEC_MODULES].[ReportImagePath] AS [ReportImagePath], 
+      [V_SEC_MODULES].[ReportImagePathActive] AS [ReportImagePathActive], 
+      [V_SEC_MODULES].[ReportLargeImagePath] AS [ReportLargeImagePath], 
+      [V_SEC_MODULES].[ReportURL] AS [ReportURL], 
+      [V_SEC_MODULES].[DesktopObjectSize] AS [DesktopObjectSize], 
+      [V_SEC_MODULES].[DesktopObjectName] AS [DesktopObjectName], 
+      [V_SEC_MODULES].[ImageName] AS [ImageName], 
+      [V_SEC_MODULES].[SortOrder] AS [SortOrder], 
+      [V_SEC_MODULES].[HasCustomPermission] AS [HasCustomPermission], 
+      [V_SEC_MODULES].[WebvantageURL] AS [WebvantageURL], 
+      [V_SEC_MODULES].[WebvantageImagePathActive] AS [WebvantageImagePathActive], 
+      [V_SEC_MODULES].[WebvantageImagePath] AS [WebvantageImagePath], 
+      [V_SEC_MODULES].[WebvantageLargeImagePath] AS [WebvantageLargeImagePath], 
+      [V_SEC_MODULES].[AdvantageApplicationName] AS [AdvantageApplicationName], 
+      [V_SEC_MODULES].[AdvantageMenuName] AS [AdvantageMenuName], 
+      [V_SEC_MODULES].[AdvantageApplicationCode] AS [AdvantageApplicationCode], 
+      [V_SEC_MODULES].[AdvantageCommandString] AS [AdvantageCommandString], 
+      [V_SEC_MODULES].[AdvantageIconIndex] AS [AdvantageIconIndex], 
+      [V_SEC_MODULES].[AdvantageAllowMultipleInstances] AS [AdvantageAllowMultipleInstances]
+      FROM [dbo].[V_SEC_MODULES] AS [V_SEC_MODULES]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_SEC_MODULES_STRUCT" EntityType="Security.Store.V_SEC_MODULES_STRUCT" store:Type="Views" store:Schema="dbo" store:Name="V_SEC_MODULES_STRUCT">
+      <DefiningQuery>SELECT 
+      [V_SEC_MODULES_STRUCT].[ID] AS [ID], 
+      [V_SEC_MODULES_STRUCT].[ParentModuleID] AS [ParentModuleID], 
+      [V_SEC_MODULES_STRUCT].[ParentModule] AS [ParentModule], 
+      [V_SEC_MODULES_STRUCT].[ParentModuleSortOrder] AS [ParentModuleSortOrder], 
+      [V_SEC_MODULES_STRUCT].[SubParentModuleID] AS [SubParentModuleID], 
+      [V_SEC_MODULES_STRUCT].[SubParentModule] AS [SubParentModule], 
+      [V_SEC_MODULES_STRUCT].[SubParentModuleSortOrder] AS [SubParentModuleSortOrder], 
+      [V_SEC_MODULES_STRUCT].[SubSubParentModuleID] AS [SubSubParentModuleID], 
+      [V_SEC_MODULES_STRUCT].[SubSubParentModule] AS [SubSubParentModule], 
+      [V_SEC_MODULES_STRUCT].[SubSubParentModuleSortOrder] AS [SubSubParentModuleSortOrder], 
+      [V_SEC_MODULES_STRUCT].[ModuleID] AS [ModuleID], 
+      [V_SEC_MODULES_STRUCT].[ModuleCode] AS [ModuleCode], 
+      [V_SEC_MODULES_STRUCT].[Module] AS [Module], 
+      [V_SEC_MODULES_STRUCT].[ModuleSortOrder] AS [ModuleSortOrder], 
+      [V_SEC_MODULES_STRUCT].[ModuleHasCustomPermission] AS [ModuleHasCustomPermission]
+      FROM [dbo].[V_SEC_MODULES_STRUCT] AS [V_SEC_MODULES_STRUCT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_SEC_PERMISSION" EntityType="Security.Store.V_SEC_PERMISSION" store:Type="Views" store:Schema="dbo" store:Name="V_SEC_PERMISSION">
+      <DefiningQuery>SELECT 
+      [V_SEC_PERMISSION].[ID] AS [ID], 
+      [V_SEC_PERMISSION].[ApplicationID] AS [ApplicationID], 
+      [V_SEC_PERMISSION].[ModuleID] AS [ModuleID], 
+      [V_SEC_PERMISSION].[ModuleCode] AS [ModuleCode], 
+      [V_SEC_PERMISSION].[Module] AS [Module], 
+      [V_SEC_PERMISSION].[ModuleIsCategory] AS [ModuleIsCategory], 
+      [V_SEC_PERMISSION].[ModuleInfoID] AS [ModuleInfoID], 
+      [V_SEC_PERMISSION].[UserID] AS [UserID], 
+      [V_SEC_PERMISSION].[UserCode] AS [UserCode], 
+      [V_SEC_PERMISSION].[EmployeeCode] AS [EmployeeCode], 
+      [V_SEC_PERMISSION].[IsBlocked] AS [IsBlocked], 
+      [V_SEC_PERMISSION].[CanPrint] AS [CanPrint], 
+      [V_SEC_PERMISSION].[CanUpdate] AS [CanUpdate], 
+      [V_SEC_PERMISSION].[CanAdd] AS [CanAdd], 
+      [V_SEC_PERMISSION].[Custom1] AS [Custom1], 
+      [V_SEC_PERMISSION].[Custom2] AS [Custom2], 
+      [V_SEC_PERMISSION].[ApplicationIsBlocked] AS [ApplicationIsBlocked], 
+      [V_SEC_PERMISSION].[ApplicationCanPrint] AS [ApplicationCanPrint], 
+      [V_SEC_PERMISSION].[ApplicationCanUpdate] AS [ApplicationCanUpdate], 
+      [V_SEC_PERMISSION].[ApplicationCanAdd] AS [ApplicationCanAdd], 
+      [V_SEC_PERMISSION].[ApplicationCustom1] AS [ApplicationCustom1], 
+      [V_SEC_PERMISSION].[ApplicationCustom2] AS [ApplicationCustom2]
+      FROM [dbo].[V_SEC_PERMISSION] AS [V_SEC_PERMISSION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_SERVER_SQLUSER" EntityType="Security.Store.V_SERVER_SQLUSER" store:Type="Views" store:Schema="dbo" store:Name="V_SERVER_SQLUSER">
+      <DefiningQuery>SELECT 
+      [V_SERVER_SQLUSER].[name] AS [name], 
+      [V_SERVER_SQLUSER].[principal_id] AS [principal_id], 
+      [V_SERVER_SQLUSER].[sid] AS [sid], 
+      [V_SERVER_SQLUSER].[type] AS [type], 
+      [V_SERVER_SQLUSER].[type_desc] AS [type_desc], 
+      [V_SERVER_SQLUSER].[is_disabled] AS [is_disabled], 
+      [V_SERVER_SQLUSER].[create_date] AS [create_date], 
+      [V_SERVER_SQLUSER].[modify_date] AS [modify_date], 
+      [V_SERVER_SQLUSER].[default_database_name] AS [default_database_name], 
+      [V_SERVER_SQLUSER].[default_language_name] AS [default_language_name], 
+      [V_SERVER_SQLUSER].[credential_id] AS [credential_id]
+      FROM [dbo].[V_SERVER_SQLUSER] AS [V_SERVER_SQLUSER]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CDP_CONT_HDR_CLI" Association="Security.Store.FK_CDP_CONT_HDR_CLI">
+      <End Role="CLIENT" EntitySet="CLIENT" />
+      <End Role="CDP_CONTACT_HDR" EntitySet="CDP_CONTACT_HDR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CDP_CONTACT" Association="Security.Store.FK_CDP_CONTACT">
+      <End Role="CDP_CONTACT_HDR" EntitySet="CDP_CONTACT_HDR" />
+      <End Role="CDP_CONTACT_DTL" EntitySet="CDP_CONTACT_DTL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CP_USER_CONTACT" Association="Security.Store.FK_CP_USER_CONTACT">
+      <End Role="CDP_CONTACT_HDR" EntitySet="CDP_CONTACT_HDR" />
+      <End Role="CP_USER" EntitySet="CP_USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CP_USER_WORKSPACE_SEC_USER" Association="Security.Store.FK_CP_USER_WORKSPACE_SEC_USER">
+      <End Role="CDP_CONTACT_HDR" EntitySet="CDP_CONTACT_HDR" />
+      <End Role="CP_USER_WORKSPACE" EntitySet="CP_USER_WORKSPACE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CP_WORKSPACE_OBJECT_WV_USER_WORKSPACE" Association="Security.Store.FK_CP_WORKSPACE_OBJECT_WV_USER_WORKSPACE">
+      <End Role="CP_USER_WORKSPACE" EntitySet="CP_USER_WORKSPACE" />
+      <End Role="CP_WORKSPACE_OBJECT" EntitySet="CP_WORKSPACE_OBJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DIVISION_CLIENT" Association="Security.Store.FK_DIVISION_CLIENT">
+      <End Role="CLIENT" EntitySet="CLIENT" />
+      <End Role="DIVISION" EntitySet="DIVISION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_DIVISION" Association="Security.Store.FK_PRODUCT_DIVISION">
+      <End Role="DIVISION" EntitySet="DIVISION" />
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_OFFICE" Association="Security.Store.FK_PRODUCT_OFFICE">
+      <End Role="OFFICE" EntitySet="OFFICE" />
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_APPLICATION_MOD_SEC_APPLICATION" Association="Security.Store.FK_SEC_APPLICATION_MOD_SEC_APPLICATION">
+      <End Role="SEC_APPLICATION" EntitySet="SEC_APPLICATION" />
+      <End Role="SEC_APPLICATION_MOD" EntitySet="SEC_APPLICATION_MOD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_APPLICATION_MOD_SEC_MODULE" Association="Security.Store.FK_SEC_APPLICATION_MOD_SEC_MODULE">
+      <End Role="SEC_MODULE" EntitySet="SEC_MODULE" />
+      <End Role="SEC_APPLICATION_MOD" EntitySet="SEC_APPLICATION_MOD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_CLIENT_SECCLI" Association="Security.Store.FK_SEC_CLIENT_SECCLI">
+      <End Role="PRODUCT" EntitySet="PRODUCT" />
+      <End Role="SEC_CLIENT" EntitySet="SEC_CLIENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_CPUSER_APPACCESS_CP_USER" Association="Security.Store.FK_SEC_CPUSER_APPACCESS_CP_USER">
+      <End Role="CP_USER" EntitySet="CP_USER" />
+      <End Role="SEC_CPUSER_APPACCESS" EntitySet="SEC_CPUSER_APPACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_CPUSER_APPACCESS_SEC_APPLICATION" Association="Security.Store.FK_SEC_CPUSER_APPACCESS_SEC_APPLICATION">
+      <End Role="SEC_APPLICATION" EntitySet="SEC_APPLICATION" />
+      <End Role="SEC_CPUSER_APPACCESS" EntitySet="SEC_CPUSER_APPACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_CPUSER_MODACCESS_CP_USER" Association="Security.Store.FK_SEC_CPUSER_MODACCESS_CP_USER">
+      <End Role="CP_USER" EntitySet="CP_USER" />
+      <End Role="SEC_CPUSER_MODACCESS" EntitySet="SEC_CPUSER_MODACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_CPUSER_MODACCESS_SEC_MODULE" Association="Security.Store.FK_SEC_CPUSER_MODACCESS_SEC_MODULE">
+      <End Role="SEC_MODULE" EntitySet="SEC_MODULE" />
+      <End Role="SEC_CPUSER_MODACCESS" EntitySet="SEC_CPUSER_MODACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_APPACCESS_SEC_APPLICATION" Association="Security.Store.FK_SEC_GROUP_APPACCESS_SEC_APPLICATION">
+      <End Role="SEC_APPLICATION" EntitySet="SEC_APPLICATION" />
+      <End Role="SEC_GROUP_APPACCESS" EntitySet="SEC_GROUP_APPACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_APPACCESS_SEC_GROUP" Association="Security.Store.FK_SEC_GROUP_APPACCESS_SEC_GROUP">
+      <End Role="SEC_GROUP" EntitySet="SEC_GROUP" />
+      <End Role="SEC_GROUP_APPACCESS" EntitySet="SEC_GROUP_APPACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_MODACCESS_SEC_GROUP" Association="Security.Store.FK_SEC_GROUP_MODACCESS_SEC_GROUP">
+      <End Role="SEC_GROUP" EntitySet="SEC_GROUP" />
+      <End Role="SEC_GROUP_MODACCESS" EntitySet="SEC_GROUP_MODACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_MODACCESS_SEC_MODULE" Association="Security.Store.FK_SEC_GROUP_MODACCESS_SEC_MODULE">
+      <End Role="SEC_MODULE" EntitySet="SEC_MODULE" />
+      <End Role="SEC_GROUP_MODACCESS" EntitySet="SEC_GROUP_MODACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_SETTING_SEC_GROUP" Association="Security.Store.FK_SEC_GROUP_SETTING_SEC_GROUP">
+      <End Role="SEC_GROUP" EntitySet="SEC_GROUP" />
+      <End Role="SEC_GROUP_SETTING" EntitySet="SEC_GROUP_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_UDRACCESS_SEC_GROUP" Association="Security.Store.FK_SEC_GROUP_UDRACCESS_SEC_GROUP">
+      <End Role="SEC_GROUP" EntitySet="SEC_GROUP" />
+      <End Role="SEC_GROUP_UDRACCESS" EntitySet="SEC_GROUP_UDRACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_USER_SEC_GROUP" Association="Security.Store.FK_SEC_GROUP_USER_SEC_GROUP">
+      <End Role="SEC_GROUP" EntitySet="SEC_GROUP" />
+      <End Role="SEC_GROUP_USER" EntitySet="SEC_GROUP_USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_GROUP_USER_SEC_USER" Association="Security.Store.FK_SEC_GROUP_USER_SEC_USER">
+      <End Role="SEC_USER" EntitySet="SEC_USER" />
+      <End Role="SEC_GROUP_USER" EntitySet="SEC_GROUP_USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_MODULE_SEC_MODULE_INFO" Association="Security.Store.FK_SEC_MODULE_SEC_MODULE_INFO">
+      <End Role="SEC_MODULE_INFO" EntitySet="SEC_MODULE_INFO" />
+      <End Role="SEC_MODULE" EntitySet="SEC_MODULE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_MODULE_SUB_SEC_MODULE" Association="Security.Store.FK_SEC_MODULE_SUB_SEC_MODULE">
+      <End Role="SEC_MODULE" EntitySet="SEC_MODULE" />
+      <End Role="SEC_MODULE_SUB" EntitySet="SEC_MODULE_SUB" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_MODULE_SUB_SEC_MODULE1" Association="Security.Store.FK_SEC_MODULE_SUB_SEC_MODULE1">
+      <End Role="SEC_MODULE" EntitySet="SEC_MODULE" />
+      <End Role="SEC_MODULE_SUB" EntitySet="SEC_MODULE_SUB" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_USER_APPACCESS_SEC_APPLICATION" Association="Security.Store.FK_SEC_USER_APPACCESS_SEC_APPLICATION">
+      <End Role="SEC_APPLICATION" EntitySet="SEC_APPLICATION" />
+      <End Role="SEC_USER_APPACCESS" EntitySet="SEC_USER_APPACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_USER_APPACCESS_SEC_USER" Association="Security.Store.FK_SEC_USER_APPACCESS_SEC_USER">
+      <End Role="SEC_USER" EntitySet="SEC_USER" />
+      <End Role="SEC_USER_APPACCESS" EntitySet="SEC_USER_APPACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_USER_MODACCESS_SEC_MODULE" Association="Security.Store.FK_SEC_USER_MODACCESS_SEC_MODULE">
+      <End Role="SEC_MODULE" EntitySet="SEC_MODULE" />
+      <End Role="SEC_USER_MODACCESS" EntitySet="SEC_USER_MODACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_USER_MODACCESS_SEC_USER" Association="Security.Store.FK_SEC_USER_MODACCESS_SEC_USER">
+      <End Role="SEC_USER" EntitySet="SEC_USER" />
+      <End Role="SEC_USER_MODACCESS" EntitySet="SEC_USER_MODACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_USER_SETTING_SEC_USER" Association="Security.Store.FK_SEC_USER_SETTING_SEC_USER">
+      <End Role="SEC_USER" EntitySet="SEC_USER" />
+      <End Role="SEC_USER_SETTING" EntitySet="SEC_USER_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SEC_USER_UDRACCESS_SEC_USER" Association="Security.Store.FK_SEC_USER_UDRACCESS_SEC_USER">
+      <End Role="SEC_USER" EntitySet="SEC_USER" />
+      <End Role="SEC_USER_UDRACCESS" EntitySet="SEC_USER_UDRACCESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SERVICE_FEE_REPORT_COL" Association="Security.Store.FK_SERVICE_FEE_REPORT_COL">
+      <End Role="SERVICE_FEE_REPORT" EntitySet="SERVICE_FEE_REPORT" />
+      <End Role="SERVICE_FEE_REPORT_COL" EntitySet="SERVICE_FEE_REPORT_COL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SERVICE_FEE_REPORT_SUM" Association="Security.Store.FK_SERVICE_FEE_REPORT_SUM">
+      <End Role="SERVICE_FEE_REPORT" EntitySet="SERVICE_FEE_REPORT" />
+      <End Role="SERVICE_FEE_REPORT_SUM" EntitySet="SERVICE_FEE_REPORT_SUM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WV_WORKSPACE_OBJECT_WV_USER_WORKSPACE" Association="Security.Store.FK_WV_WORKSPACE_OBJECT_WV_USER_WORKSPACE">
+      <End Role="WV_USER_WORKSPACE" EntitySet="WV_USER_WORKSPACE" />
+      <End Role="WV_WORKSPACE_OBJECT" EntitySet="WV_WORKSPACE_OBJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WV_WORKSPACE_TMPLT_DTL_WV_WORKSPACE_TMPLT_HDR" Association="Security.Store.FK_WV_WORKSPACE_TMPLT_DTL_WV_WORKSPACE_TMPLT_HDR">
+      <End Role="WV_WORKSPACE_TMPLT_HDR" EntitySet="WV_WORKSPACE_TMPLT_HDR" />
+      <End Role="WV_WORKSPACE_TMPLT_DTL" EntitySet="WV_WORKSPACE_TMPLT_DTL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WV_WORKSPACE_TMPLT_ITEM_WV_WORKSPACE_TMPLT_DTL" Association="Security.Store.FK_WV_WORKSPACE_TMPLT_ITEM_WV_WORKSPACE_TMPLT_DTL">
+      <End Role="WV_WORKSPACE_TMPLT_DTL" EntitySet="WV_WORKSPACE_TMPLT_DTL" />
+      <End Role="WV_WORKSPACE_TMPLT_ITEM" EntitySet="WV_WORKSPACE_TMPLT_ITEM" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="APP_VARS">
+    <Key>
+      <PropertyRef Name="USERID" />
+      <PropertyRef Name="APPLICATION" />
+      <PropertyRef Name="VARIABLE_GROUP" />
+      <PropertyRef Name="VARIABLE_NAME" />
+    </Key>
+    <Property Name="USERID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="APPLICATION" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="VARIABLE_GROUP" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="VARIABLE_NAME" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="VARIABLE_TYPE" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="VARIABLE_ORDER" Type="int" />
+    <Property Name="VARIABLE_VALUE" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="APPR_PASSWORD">
+    <Key>
+      <PropertyRef Name="ACCT_EXEC" />
+    </Key>
+    <Property Name="ACCT_EXEC" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="PASSWORD_ID" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="USER_ID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DATE_CREATED" Type="smalldatetime" />
+    <Property Name="INACTIVE" Type="smallint" />
+  </EntityType>
+  <EntityType Name="AULU">
+    <Key>
+      <PropertyRef Name="AULU_ID" />
+    </Key>
+    <Property Name="AULU_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AULU_TYPE" Type="tinyint" Nullable="false" />
+    <Property Name="AULU_ASSIGN" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CDP_CONTACT_DTL">
+    <Key>
+      <PropertyRef Name="CDP_CONTACT_ID" />
+      <PropertyRef Name="SEQ_NBR" />
+    </Key>
+    <Property Name="CDP_CONTACT_ID" Type="int" Nullable="false" />
+    <Property Name="SEQ_NBR" Type="int" Nullable="false" />
+    <Property Name="DIV_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="PRD_CODE" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="CDP_CONTACT_HDR">
+    <Key>
+      <PropertyRef Name="CDP_CONTACT_ID" />
+    </Key>
+    <Property Name="CDP_CONTACT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CONT_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="CL_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="EMAIL_ADDRESS" Type="varchar" MaxLength="50" />
+    <Property Name="CONT_FNAME" Type="varchar" MaxLength="30" />
+    <Property Name="CONT_LNAME" Type="varchar" MaxLength="30" />
+    <Property Name="CONT_MI" Type="varchar" MaxLength="1" />
+    <Property Name="CONT_TITLE" Type="varchar" MaxLength="40" />
+    <Property Name="CONT_ADDRESS1" Type="varchar" MaxLength="40" />
+    <Property Name="CONT_ADDRESS2" Type="varchar" MaxLength="40" />
+    <Property Name="CONT_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="CONT_COUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="CONT_STATE" Type="varchar" MaxLength="10" />
+    <Property Name="CONT_COUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="CONT_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="CONT_TELEPHONE" Type="varchar" MaxLength="13" />
+    <Property Name="CONT_EXTENTION" Type="varchar" MaxLength="5" />
+    <Property Name="CONT_FAX" Type="varchar" MaxLength="13" />
+    <Property Name="CONT_FAX_EXTENTION" Type="varchar" MaxLength="5" />
+    <Property Name="SCHEDULE_USER" Type="smallint" />
+    <Property Name="DEFAULT_TASK" Type="varchar" MaxLength="10" />
+    <Property Name="CP_USER" Type="smallint" />
+    <Property Name="CP_ALERTS" Type="smallint" />
+    <Property Name="EMAIL_RCPT" Type="smallint" />
+    <Property Name="TASK_PRIMARY" Type="smallint" />
+    <Property Name="INACTIVE_FLAG" Type="smallint" />
+    <Property Name="CONT_LF" Type="varchar" MaxLength="62" StoreGeneratedPattern="Computed" />
+    <Property Name="CONT_FML" Type="varchar" MaxLength="64" StoreGeneratedPattern="Computed" />
+    <Property Name="CELL_PHONE" Type="varchar" MaxLength="13" />
+    <Property Name="CONT_COMMENT" Type="text" />
+  </EntityType>
+  <EntityType Name="CLIENT">
+    <Key>
+      <PropertyRef Name="CL_CODE" />
+    </Key>
+    <Property Name="CL_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="CL_NAME" Type="varchar" MaxLength="40" />
+    <Property Name="CL_ADDRESS1" Type="varchar" MaxLength="40" />
+    <Property Name="CL_ADDRESS2" Type="varchar" MaxLength="40" />
+    <Property Name="CL_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="CL_COUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="CL_STATE" Type="varchar" MaxLength="10" />
+    <Property Name="CL_COUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="CL_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="CL_ATTENTION" Type="varchar" MaxLength="40" />
+    <Property Name="CL_BADDRESS1" Type="varchar" MaxLength="40" />
+    <Property Name="CL_BADDRESS2" Type="varchar" MaxLength="40" />
+    <Property Name="CL_BCITY" Type="varchar" MaxLength="30" />
+    <Property Name="CL_BCOUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="CL_BSTATE" Type="varchar" MaxLength="10" />
+    <Property Name="CL_BCOUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="CL_BZIP" Type="varchar" MaxLength="10" />
+    <Property Name="CL_SADDRESS1" Type="varchar" MaxLength="40" />
+    <Property Name="CL_SADDRESS2" Type="varchar" MaxLength="40" />
+    <Property Name="CL_SCITY" Type="varchar" MaxLength="30" />
+    <Property Name="CL_SCOUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="CL_SSTATE" Type="varchar" MaxLength="10" />
+    <Property Name="CL_SCOUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="CL_SZIP" Type="varchar" MaxLength="10" />
+    <Property Name="CL_FOOTER" Type="varchar" MaxLength="60" />
+    <Property Name="CL_ALPHA_SORT" Type="varchar" MaxLength="20" />
+    <Property Name="CL_FISCAL_START" Type="smallint" />
+    <Property Name="CL_CREDIT_LIMIT" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="CL_HIGH_BALANCE" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="CL_INV_BY" Type="smallint" />
+    <Property Name="INV_FORMAT" Type="varchar" MaxLength="12" />
+    <Property Name="CL_MATTENTION" Type="varchar" MaxLength="40" />
+    <Property Name="PINV_FORMAT" Type="varchar" MaxLength="12" />
+    <Property Name="BINV_FORMAT" Type="varchar" MaxLength="12" />
+    <Property Name="CL_MINV_BY" Type="smallint" />
+    <Property Name="CL_MFOOTER" Type="varchar" MaxLength="60" />
+    <Property Name="ACTIVE_FLAG" Type="smallint" />
+    <Property Name="NEW_BUSINESS" Type="smallint" />
+    <Property Name="CMP_CODE_R" Type="smallint" />
+    <Property Name="ACCT_NBR_R" Type="smallint" />
+    <Property Name="JT_CODE_R" Type="smallint" />
+    <Property Name="PROMO_CODE_R" Type="smallint" />
+    <Property Name="REQ_FLDS" Type="smallint" />
+    <Property Name="JOB_FIRST_USE_DT_R" Type="smallint" />
+    <Property Name="COMPLEX_CODE_R" Type="smallint" />
+    <Property Name="FORMAT_SC_CODE_R" Type="smallint" />
+    <Property Name="DP_TM_CODE_R" Type="smallint" />
+    <Property Name="MARKET_CODE_R" Type="smallint" />
+    <Property Name="EMAIL_GR_CODE_R" Type="smallint" />
+    <Property Name="BILL_COOP_CODE_R" Type="smallint" />
+    <Property Name="AD_NBR_R" Type="smallint" />
+    <Property Name="JOB_CLI_REF_R" Type="smallint" />
+    <Property Name="JOB_DATE_OPENED_R" Type="smallint" />
+    <Property Name="JOB_AD_SIZE_R" Type="smallint" />
+    <Property Name="PROD_CONT_CODE_R" Type="smallint" />
+    <Property Name="JOB_COMP_BUDGET_R" Type="smallint" />
+    <Property Name="OINV_FORMAT" Type="varchar" MaxLength="12" />
+    <Property Name="IINV_FORMAT" Type="varchar" MaxLength="12" />
+    <Property Name="START_DATE_R" Type="smallint" />
+    <Property Name="JOB_LOG_UDV1_R" Type="smallint" />
+    <Property Name="JOB_LOG_UDV2_R" Type="smallint" />
+    <Property Name="JOB_LOG_UDV3_R" Type="smallint" />
+    <Property Name="JOB_LOG_UDV4_R" Type="smallint" />
+    <Property Name="JOB_LOG_UDV5_R" Type="smallint" />
+    <Property Name="JOB_CMP_UDV1_R" Type="smallint" />
+    <Property Name="JOB_CMP_UDV2_R" Type="smallint" />
+    <Property Name="JOB_CMP_UDV3_R" Type="smallint" />
+    <Property Name="JOB_CMP_UDV4_R" Type="smallint" />
+    <Property Name="JOB_CMP_UDV5_R" Type="smallint" />
+    <Property Name="PINV_FORMAT2" Type="varchar" MaxLength="12" />
+    <Property Name="CL_AR_COMMENT" Type="text" />
+    <Property Name="REQ_PROD_CAT" Type="smallint" />
+    <Property Name="TAX_FLAG_R" Type="smallint" />
+    <Property Name="FISCAL_PD_R" Type="smallint" />
+    <Property Name="BLACKPLATE_VER_R" Type="smallint" />
+    <Property Name="BLACKPLATE_VER2_R" Type="smallint" />
+    <Property Name="CL_P_PAYDAYS" Type="smallint" />
+    <Property Name="CL_M_PAYDAYS" Type="smallint" />
+    <Property Name="SERVICE_FEE_TYPE_R" Type="smallint" />
+    <Property Name="REQ_TIME_COMMENT" Type="bit" Nullable="false" />
+    <Property Name="CONTRACT_EXP_DT" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="CP_USER">
+    <Key>
+      <PropertyRef Name="USER_GUID" />
+    </Key>
+    <Property Name="USER_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="USER_NAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="LOWERED_USER_NAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="FULL_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="PASSWORD_HASH" Type="varchar" Nullable="false" MaxLength="44" />
+    <Property Name="LAST_LOGON" Type="datetime" />
+    <Property Name="CREATED_BY" Type="varchar" MaxLength="100" />
+    <Property Name="CREATED_TIMESTAMP" Type="datetime" />
+    <Property Name="IS_LOCKED" Type="bit" />
+    <Property Name="EMAIL_ADDRESS" Type="varchar" MaxLength="100" />
+    <Property Name="LOGIN_TRY_COUNT" Type="smallint" Nullable="false" />
+    <Property Name="UNLOCK_TIME" Type="datetime" />
+    <Property Name="MUST_CHANGE_PASSORD" Type="bit" Nullable="false" />
+    <Property Name="THEME" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="CDP_CONTACT_ID" Type="int" Nullable="false" />
+    <Property Name="DESKTOP_TEMPLATE" Type="int" />
+    <Property Name="WEB_ID" Type="varchar" MaxLength="50" />
+    <Property Name="ADMIN_USER" Type="bit" Nullable="false" />
+    <Property Name="CL_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="ALERT_GROUP_CODE" Type="varchar" MaxLength="50" />
+    <Property Name="AGENCY_CONTACT_CODE" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="CP_USER_QUICK_LAUNCH_APPS">
+    <Key>
+      <PropertyRef Name="CDP_CONTACT_ID" />
+      <PropertyRef Name="TAB_ID" />
+      <PropertyRef Name="APPLICATION_ID" />
+    </Key>
+    <Property Name="CDP_CONTACT_ID" Type="int" Nullable="false" />
+    <Property Name="TAB_ID" Type="int" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="int" Nullable="false" />
+    <Property Name="HEIGHT" Type="int" />
+    <Property Name="WIDTH" Type="int" />
+    <Property Name="TOP_COORD" Type="int" />
+    <Property Name="LEFT_COORD" Type="int" />
+  </EntityType>
+  <EntityType Name="CP_USER_WORKSPACE">
+    <Key>
+      <PropertyRef Name="WORKSPACE_ID" />
+    </Key>
+    <Property Name="WORKSPACE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CDP_CONTACT_ID" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+    <Property Name="SORT_ORDER" Type="int" />
+  </EntityType>
+  <EntityType Name="CP_WORKSPACE_OBJECT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WORKSPACE_ID" Type="int" Nullable="false" />
+    <Property Name="DESKTOP_OBJECT_ID" Type="int" Nullable="false" />
+    <Property Name="ZONE_ID" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="HEIGHT" Type="int" />
+    <Property Name="WIDTH" Type="int" />
+    <Property Name="TOP_COORD" Type="int" />
+    <Property Name="LEFT_COORD" Type="int" />
+    <Property Name="SORT_ORDER" Type="int" />
+  </EntityType>
+  <EntityType Name="DEPT_TEAM">
+    <Key>
+      <PropertyRef Name="DP_TM_CODE" />
+    </Key>
+    <Property Name="DP_TM_CODE" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="DP_TM_DESC" Type="varchar" MaxLength="30" />
+    <Property Name="INACTIVE_FLAG" Type="smallint" />
+    <Property Name="DIRECT_HRS_PER_GOAL" Type="decimal" Precision="7" Scale="4" />
+    <Property Name="CATEGORY" Type="varchar" MaxLength="30" />
+    <Property Name="PO_APPR_RULE_CODE" Type="varchar" MaxLength="6" />
+    <Property Name="SERVICE_FEE_TYPE_CODE" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="DIVISION">
+    <Key>
+      <PropertyRef Name="CL_CODE" />
+      <PropertyRef Name="DIV_CODE" />
+    </Key>
+    <Property Name="CL_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="DIV_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="DIV_NAME" Type="varchar" MaxLength="40" />
+    <Property Name="DIV_ATTENTION" Type="varchar" MaxLength="40" />
+    <Property Name="DIV_BADDRESS1" Type="varchar" MaxLength="40" />
+    <Property Name="DIV_BADDRESS2" Type="varchar" MaxLength="40" />
+    <Property Name="DIV_BCITY" Type="varchar" MaxLength="30" />
+    <Property Name="DIV_BCOUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="DIV_BSTATE" Type="varchar" MaxLength="10" />
+    <Property Name="DIV_BCOUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="DIV_BZIP" Type="varchar" MaxLength="10" />
+    <Property Name="DIV_SADDRESS1" Type="varchar" MaxLength="40" />
+    <Property Name="DIV_SADDRESS2" Type="varchar" MaxLength="40" />
+    <Property Name="DIV_SCITY" Type="varchar" MaxLength="30" />
+    <Property Name="DIV_SCOUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="DIV_SSTATE" Type="varchar" MaxLength="10" />
+    <Property Name="DIV_SCOUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="DIV_SZIP" Type="varchar" MaxLength="10" />
+    <Property Name="DIV_ALPHA_SORT" Type="varchar" MaxLength="20" />
+    <Property Name="ACTIVE_FLAG" Type="smallint" />
+  </EntityType>
+  <EntityType Name="OFFICE">
+    <Key>
+      <PropertyRef Name="OFFICE_CODE" />
+    </Key>
+    <Property Name="OFFICE_CODE" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="OFFICE_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_AR" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_AP" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_AP_DISC" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_SALES" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_COS" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_WIP" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_DEF_SALES" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_DEF_COS" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_ACC_COS" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_ACC_AP" Type="varchar" MaxLength="30" />
+    <Property Name="PGLACODE_ACC_TAX" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_ACC_AP" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_ACC_COS" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_COS" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_DEF_COS" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_DEF_SALES" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_SALES" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_WIP" Type="varchar" MaxLength="30" />
+    <Property Name="MGLACODE_ACC_TAX" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_SUSPENSE" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_STATE" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_COUNTY" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="PRD_AB_INCOME" Type="smallint" />
+    <Property Name="MED_AB_INCOME" Type="smallint" />
+    <Property Name="GLACODE_VOL_DISC" Type="varchar" MaxLength="30" />
+    <Property Name="GLACODE_AP_WH" Type="varchar" MaxLength="30" />
+    <Property Name="INACTIVE_FLAG" Type="smallint" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="CL_CODE" />
+      <PropertyRef Name="DIV_CODE" />
+      <PropertyRef Name="PRD_CODE" />
+    </Key>
+    <Property Name="CL_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="DIV_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="PRD_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="PRD_DESCRIPTION" Type="varchar" MaxLength="40" />
+    <Property Name="PRD_ATTENTION" Type="varchar" MaxLength="40" />
+    <Property Name="PRD_BILL_ADDRESS1" Type="varchar" MaxLength="40" />
+    <Property Name="PRD_BILL_ADDRESS2" Type="varchar" MaxLength="40" />
+    <Property Name="PRD_BILL_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="PRD_BILL_COUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="PRD_BILL_STATE" Type="varchar" MaxLength="10" />
+    <Property Name="PRD_BILL_COUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="PRD_BILL_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="PRD_BILL_TELEPHONE" Type="varchar" MaxLength="13" />
+    <Property Name="PRD_BILL_EXTENTION" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_BILL_FAX" Type="varchar" MaxLength="13" />
+    <Property Name="PRD_BILL_FAX_EXT" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_STATE_ADDR1" Type="varchar" MaxLength="40" />
+    <Property Name="PRD_STATE_ADDR2" Type="varchar" MaxLength="40" />
+    <Property Name="PRD_STATE_CITY" Type="varchar" MaxLength="30" />
+    <Property Name="PRD_STATE_COUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="PRD_STATE_STATE" Type="varchar" MaxLength="10" />
+    <Property Name="PRD_STATE_COUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="PRD_STATE_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="PRD_STATE_TELEPHON" Type="varchar" MaxLength="13" />
+    <Property Name="PRD_STATE_EXT" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_STATE_FAX" Type="varchar" MaxLength="13" />
+    <Property Name="PRD_STATE_FAX_EXT" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_ALPHA_SORT" Type="varchar" MaxLength="20" />
+    <Property Name="OFFICE_CODE" Type="varchar" Nullable="false" MaxLength="4" />
+    <Property Name="PRD_CONSOL_FUNC" Type="smallint" />
+    <Property Name="PRD_CONT_PCT" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_PROD_MARKUP" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_PROD_BCYCLE" Type="varchar" MaxLength="6" />
+    <Property Name="PRD_PROD_BILL_NET" Type="smallint" />
+    <Property Name="PRD_PROD_VEN_DISC" Type="smallint" />
+    <Property Name="PRD_PROD_ESTIMATE" Type="smallint" />
+    <Property Name="PRD_PROD_TAX_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_PROD_COMMENTS" Type="text" />
+    <Property Name="PRD_MEDIA_BCYCLE" Type="varchar" MaxLength="6" />
+    <Property Name="PRD_RADIO_REBATE" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_RADIO_BILL_NET" Type="smallint" />
+    <Property Name="PRD_RADIO_VEN_DISC" Type="smallint" />
+    <Property Name="PRD_RADIO_COM_ONLY" Type="smallint" />
+    <Property Name="PRD_RADIO_TAX_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_RADIO_DAYS" Type="smallint" />
+    <Property Name="PRD_RADIO_PRE_POST" Type="smallint" />
+    <Property Name="PRD_RADIO_BF_AF" Type="smallint" />
+    <Property Name="PRD_TV_REBATE" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_TV_BILL_NET" Type="smallint" />
+    <Property Name="PRD_TV_VEN_DISC" Type="smallint" />
+    <Property Name="PRD_TV_COM_ONLY" Type="smallint" />
+    <Property Name="PRD_TV_TAX_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_TV_DAYS" Type="smallint" />
+    <Property Name="PRD_TV_PRE_POST" Type="smallint" />
+    <Property Name="PRD_TV_BF_AF" Type="smallint" />
+    <Property Name="PRD_MAG_REBATE" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_MAG_BILL_NET" Type="smallint" />
+    <Property Name="PRD_MAG_VEN_DISC" Type="smallint" />
+    <Property Name="PRD_MAG_COM_ONLY" Type="smallint" />
+    <Property Name="PRD_MAG_TAX_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_MAG_DAYS" Type="smallint" />
+    <Property Name="PRD_MAG_PRE_POST" Type="smallint" />
+    <Property Name="PRD_MAG_BF_AF" Type="smallint" />
+    <Property Name="PRD_NEWS_COMM" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_NEWS_BILL_NET" Type="smallint" />
+    <Property Name="PRD_NEWS_VEN_DISC" Type="smallint" />
+    <Property Name="PRD_NEWS_COM_ONLY" Type="smallint" />
+    <Property Name="PRD_NEWS_TAX_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_NEWS_DAYS" Type="smallint" />
+    <Property Name="PRD_NEWS_PRE_POST" Type="smallint" />
+    <Property Name="PRD_NEWS_BF_AF" Type="smallint" />
+    <Property Name="PRD_RADIO_COMMENT" Type="text" />
+    <Property Name="PRD_SF_BEGIN_DATE" Type="smalldatetime" />
+    <Property Name="PRD_SF_NBR_OF_MTHS" Type="smallint" />
+    <Property Name="PRD_SF_PER_GUARAN" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="PRD_SF_RECON_CODE" Type="varchar" MaxLength="1" />
+    <Property Name="PRD_SF_BCYCLE" Type="varchar" MaxLength="6" />
+    <Property Name="PRD_SF_TAX_TIME" Type="smallint" />
+    <Property Name="PRD_SF_EMP_TIME" Type="smallint" />
+    <Property Name="PRD_SF_MEDIA_COMM" Type="smallint" />
+    <Property Name="PRD_SF_PROD_COMM" Type="smallint" />
+    <Property Name="PRD_SF_AMT" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="PRD_TV_COMMENT" Type="text" />
+    <Property Name="PRD_MAG_COMMENT" Type="text" />
+    <Property Name="PRD_NEWS_COMMENT" Type="text" />
+    <Property Name="PRD_OTDR_COMMENT" Type="text" />
+    <Property Name="PRD_MISC_COMMENT" Type="text" />
+    <Property Name="PRD_NEWS_REBATE" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_OTDR_REBATE" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_MISC_REBATE" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_RADIO_COMM" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_TV_COMM" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_MAG_COMM" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_OTDR_COMM" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_MISC_COMM" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="PRD_OTDR_BF_AF" Type="smallint" />
+    <Property Name="PRD_OTDR_BILL_NET" Type="smallint" />
+    <Property Name="PRD_OTDR_COM_ONLY" Type="smallint" />
+    <Property Name="PRD_OTDR_DAYS" Type="smallint" />
+    <Property Name="PRD_OTDR_PRE_POST" Type="smallint" />
+    <Property Name="PRD_OTDR_TAX_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_OTDR_VEN_DISC" Type="smallint" />
+    <Property Name="PRD_MISC_BF_AF" Type="smallint" />
+    <Property Name="PRD_MISC_BILL_NET" Type="smallint" />
+    <Property Name="PRD_MISC_COM_ONLY" Type="smallint" />
+    <Property Name="PRD_MISC_DAYS" Type="smallint" />
+    <Property Name="PRD_MISC_PRE_POST" Type="smallint" />
+    <Property Name="PRD_MISC_TAX_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="PRD_MISC_VEN_DISC" Type="smallint" />
+    <Property Name="EMAIL_GR_CODE" Type="varchar" MaxLength="50" />
+    <Property Name="TECHNOLOGY_FEE" Type="decimal" Precision="7" Scale="3" />
+    <Property Name="INACTIVE" Type="smallint" />
+    <Property Name="ACTIVE_FLAG" Type="smallint" />
+    <Property Name="USER_DEFINED1" Type="varchar" MaxLength="50" />
+    <Property Name="USER_DEFINED2" Type="varchar" MaxLength="50" />
+    <Property Name="USER_DEFINED3" Type="varchar" MaxLength="50" />
+    <Property Name="USER_DEFINED4" Type="varchar" MaxLength="50" />
+    <Property Name="BILLED_TIME" Type="smallint" />
+    <Property Name="BILLED_MARKUP" Type="smallint" />
+    <Property Name="BILLED_COMM" Type="smallint" />
+    <Property Name="NEWSPAPER" Type="smallint" />
+    <Property Name="MAGAZINE" Type="smallint" />
+    <Property Name="RADIO" Type="smallint" />
+    <Property Name="TELEVISION" Type="smallint" />
+    <Property Name="OUTDOOR" Type="smallint" />
+    <Property Name="INTERNET" Type="smallint" />
+    <Property Name="USE_TAX_FLAGS_R" Type="smallint" />
+    <Property Name="TAXAPPLYLN_R" Type="smallint" />
+    <Property Name="TAXAPPLYND_R" Type="smallint" />
+    <Property Name="TAXAPPLYNC_R" Type="smallint" />
+    <Property Name="TAXAPPLYAI_R" Type="smallint" />
+    <Property Name="TAXAPPLYC_R" Type="smallint" />
+    <Property Name="TAXAPPLYR_R" Type="smallint" />
+    <Property Name="USE_TAX_FLAGS_T" Type="smallint" />
+    <Property Name="TAXAPPLYLN_T" Type="smallint" />
+    <Property Name="TAXAPPLYND_T" Type="smallint" />
+    <Property Name="TAXAPPLYNC_T" Type="smallint" />
+    <Property Name="TAXAPPLYAI_T" Type="smallint" />
+    <Property Name="TAXAPPLYC_T" Type="smallint" />
+    <Property Name="TAXAPPLYR_T" Type="smallint" />
+    <Property Name="USE_TAX_FLAGS_M" Type="smallint" />
+    <Property Name="TAXAPPLYLN_M" Type="smallint" />
+    <Property Name="TAXAPPLYND_M" Type="smallint" />
+    <Property Name="TAXAPPLYNC_M" Type="smallint" />
+    <Property Name="TAXAPPLYAI_M" Type="smallint" />
+    <Property Name="TAXAPPLYC_M" Type="smallint" />
+    <Property Name="TAXAPPLYR_M" Type="smallint" />
+    <Property Name="USE_TAX_FLAGS_N" Type="smallint" />
+    <Property Name="TAXAPPLYLN_N" Type="smallint" />
+    <Property Name="TAXAPPLYND_N" Type="smallint" />
+    <Property Name="TAXAPPLYNC_N" Type="smallint" />
+    <Property Name="TAXAPPLYAI_N" Type="smallint" />
+    <Property Name="TAXAPPLYC_N" Type="smallint" />
+    <Property Name="TAXAPPLYR_N" Type="smallint" />
+    <Property Name="USE_TAX_FLAGS_O" Type="smallint" />
+    <Property Name="TAXAPPLYLN_O" Type="smallint" />
+    <Property Name="TAXAPPLYND_O" Type="smallint" />
+    <Property Name="TAXAPPLYNC_O" Type="smallint" />
+    <Property Name="TAXAPPLYAI_O" Type="smallint" />
+    <Property Name="TAXAPPLYC_O" Type="smallint" />
+    <Property Name="TAXAPPLYR_O" Type="smallint" />
+    <Property Name="USE_TAX_FLAGS_I" Type="smallint" />
+    <Property Name="TAXAPPLYLN_I" Type="smallint" />
+    <Property Name="TAXAPPLYND_I" Type="smallint" />
+    <Property Name="TAXAPPLYNC_I" Type="smallint" />
+    <Property Name="TAXAPPLYAI_I" Type="smallint" />
+    <Property Name="TAXAPPLYC_I" Type="smallint" />
+    <Property Name="TAXAPPLYR_I" Type="smallint" />
+    <Property Name="PRD_BILL_RATE" Type="decimal" Precision="9" Scale="3" StoreGeneratedPattern="Computed" />
+    <Property Name="PRD_BILL_EMP_TIME" Type="smallint" StoreGeneratedPattern="Computed" />
+    <Property Name="PROD_SETUP_COMPLETE" Type="smallint" />
+    <Property Name="RADIO_SETUP_COMPLETE" Type="smallint" />
+    <Property Name="TV_SETUP_COMPLETE" Type="smallint" />
+    <Property Name="MAG_SETUP_COMPLETE" Type="smallint" />
+    <Property Name="NEWS_SETUP_COMPLETE" Type="smallint" />
+    <Property Name="OOH_SETUP_COMPLETE" Type="smallint" />
+    <Property Name="INET_SETUP_COMPLETE" Type="smallint" />
+    <Property Name="USE_EST_BILL_RATE" Type="smallint" />
+    <Property Name="CURRENCY_CODE" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="REPORTS">
+    <Key>
+      <PropertyRef Name="REPORTFILE" />
+    </Key>
+    <Property Name="REPORTFILE" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="REPORTNAME" Type="varchar" MaxLength="100" />
+    <Property Name="REPORTTYPE" Type="smallint" Nullable="false" />
+    <Property Name="REPORTACTIVE" Type="varchar" MaxLength="1" />
+    <Property Name="REPORTCATEGORY" Type="varchar" MaxLength="4" />
+    <Property Name="REPORTNUMBER" Type="smallint" />
+    <Property Name="REPORTSUB" Type="int" />
+    <Property Name="REPORTORIENT" Type="smallint" />
+  </EntityType>
+  <EntityType Name="SEC_APPLICATION">
+    <Key>
+      <PropertyRef Name="SEC_APPLICATION_ID" />
+    </Key>
+    <Property Name="SEC_APPLICATION_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SEC_APPLICATION_MOD">
+    <Key>
+      <PropertyRef Name="SEC_APPLICATION_MOD_ID" />
+    </Key>
+    <Property Name="SEC_APPLICATION_MOD_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_APPLICATION_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_MODULE_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_CLIENT">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="CL_CODE" />
+      <PropertyRef Name="DIV_CODE" />
+      <PropertyRef Name="PRD_CODE" />
+    </Key>
+    <Property Name="USER_ID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CL_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="DIV_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="PRD_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="TIME_ENTRY" Type="smallint" />
+  </EntityType>
+  <EntityType Name="SEC_CPUSER_APPACCESS">
+    <Key>
+      <PropertyRef Name="SEC_CPUSER_APPACCESS_ID" />
+    </Key>
+    <Property Name="SEC_CPUSER_APPACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CPUSER_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SEC_APPLICATION_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+    <Property Name="CAN_PRINT" Type="bit" Nullable="false" />
+    <Property Name="CAN_UPDATE" Type="bit" Nullable="false" />
+    <Property Name="CAN_ADD" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM1" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM2" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_CPUSER_MODACCESS">
+    <Key>
+      <PropertyRef Name="SEC_CPUSER_MODACCESS_ID" />
+    </Key>
+    <Property Name="SEC_CPUSER_MODACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CPUSER_GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SEC_MODULE_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+    <Property Name="CAN_PRINT" Type="bit" Nullable="false" />
+    <Property Name="CAN_UPDATE" Type="bit" Nullable="false" />
+    <Property Name="CAN_ADD" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM1" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM2" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_EMP">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="EMP_CODE" />
+    </Key>
+    <Property Name="USER_ID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="EMP_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="SEC_GROUP">
+    <Key>
+      <PropertyRef Name="SEC_GROUP_ID" />
+    </Key>
+    <Property Name="SEC_GROUP_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SEC_GROUP_APPACCESS">
+    <Key>
+      <PropertyRef Name="SEC_GROUP_APPACCESS_ID" />
+    </Key>
+    <Property Name="SEC_GROUP_APPACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_GROUP_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_APPLICATION_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+    <Property Name="CAN_PRINT" Type="bit" Nullable="false" />
+    <Property Name="CAN_UPDATE" Type="bit" Nullable="false" />
+    <Property Name="CAN_ADD" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM1" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM2" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_GROUP_MODACCESS">
+    <Key>
+      <PropertyRef Name="SEC_GROUP_MODACCESS_ID" />
+    </Key>
+    <Property Name="SEC_GROUP_MODACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_GROUP_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_MODULE_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+    <Property Name="CAN_PRINT" Type="bit" Nullable="false" />
+    <Property Name="CAN_UPDATE" Type="bit" Nullable="false" />
+    <Property Name="CAN_ADD" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM1" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM2" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_GROUP_SETTING">
+    <Key>
+      <PropertyRef Name="SEC_GROUP_ID" />
+      <PropertyRef Name="SETTING_CODE" />
+    </Key>
+    <Property Name="SEC_GROUP_SETTING_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_GROUP_ID" Type="int" Nullable="false" />
+    <Property Name="SETTING_CODE" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="STRING_VALUE" Type="varchar" />
+    <Property Name="NUMERIC_VALUE" Type="decimal" Precision="9" Scale="4" />
+    <Property Name="DATE_VALUE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SEC_GROUP_UDRACCESS">
+    <Key>
+      <PropertyRef Name="SEC_GROUP_UDRACCESS_ID" />
+    </Key>
+    <Property Name="SEC_GROUP_UDRACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_GROUP_ID" Type="int" Nullable="false" />
+    <Property Name="USER_DEF_REPORT_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_GROUP_USER">
+    <Key>
+      <PropertyRef Name="SEC_GROUPUSER_ID" />
+    </Key>
+    <Property Name="SEC_GROUPUSER_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_GROUP_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_MODULE">
+    <Key>
+      <PropertyRef Name="SEC_MODULE_ID" />
+    </Key>
+    <Property Name="SEC_MODULE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_MODULE_CODE" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="IS_INACTIVE" Type="bit" Nullable="false" />
+    <Property Name="IS_MENU_ITEM" Type="bit" Nullable="false" />
+    <Property Name="IS_CATEGORY" Type="bit" Nullable="false" />
+    <Property Name="IS_APPLICATION" Type="bit" Nullable="false" />
+    <Property Name="IS_REPORT" Type="bit" Nullable="false" />
+    <Property Name="IS_DESKTOP_OBJECT" Type="bit" Nullable="false" />
+    <Property Name="IS_DASH_QUERY" Type="bit" Nullable="false" />
+    <Property Name="SEC_MODULE_INFO_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_MODULE_INFO">
+    <Key>
+      <PropertyRef Name="SEC_MODULE_INFO_ID" />
+    </Key>
+    <Property Name="SEC_MODULE_INFO_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IMAGENAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="SORT_ORDER" Type="int" Nullable="false" />
+    <Property Name="CUSTOM_PERMISSION" Type="bit" Nullable="false" />
+    <Property Name="WV_URL" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="WV_IMAGEPATHACTIVE" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="WV_IMAGEPATH" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="WV_IMAGEPATHLARGE" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PB_APPNAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="PB_MENU" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="PB_NAME" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="PB_COMMAND_STRING" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="PB_ICON" Type="int" Nullable="false" />
+    <Property Name="PB_ALLOW_MULTI" Type="int" Nullable="false" />
+    <Property Name="WV_DO_NAME" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="WV_DO_DSIZE" Type="int" Nullable="false" />
+    <Property Name="WV_RPT_URL" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="WV_RPT_IMAGEPATHACTIVE" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="WV_RPT_IMAGEPATH" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="WV_RPT_IMAGEPATHLARGE" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="WV_RPT_DESCRIPTION" Type="varchar" Nullable="false" MaxLength="2000" />
+    <Property Name="WV_RPT_PREVIEWLOCATION" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="WV_RPT_LOCKED" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_MODULE_SUB">
+    <Key>
+      <PropertyRef Name="SEC_MODULE_SUB_ID" />
+    </Key>
+    <Property Name="SEC_MODULE_SUB_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PARENT_MODULE_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_MODULE_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_REPORTS">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="REPORTFILE" />
+    </Key>
+    <Property Name="USER_ID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="REPORTFILE" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="ENABLE" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6035: The relationship 'FK_WV_USER_WORKSPACE_SEC_USER' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
+  <EntityType Name="SEC_USER">
+    <Key>
+      <PropertyRef Name="SEC_USER_ID" />
+    </Key>
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="USER_CODE" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="USER_NAME" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="EMP_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="CHECK_USER_ACCESS" Type="bit" Nullable="false" />
+    <Property Name="TIME_HWND" Type="int" />
+    <Property Name="MENU_HWND" Type="int" />
+    <Property Name="WEB_ID" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SEC_USER_APPACCESS">
+    <Key>
+      <PropertyRef Name="SEC_USER_APPACCESS_ID" />
+    </Key>
+    <Property Name="SEC_USER_APPACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_APPLICATION_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+    <Property Name="CAN_PRINT" Type="bit" Nullable="false" />
+    <Property Name="CAN_UPDATE" Type="bit" Nullable="false" />
+    <Property Name="CAN_ADD" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM1" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM2" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_USER_MENU">
+    <Key>
+      <PropertyRef Name="SEC_USER_MENU_ID" />
+    </Key>
+    <Property Name="SEC_USER_MENU_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_MODULE_ID" Type="int" Nullable="false" />
+    <Property Name="MENU_TYPE" Type="int" Nullable="false" />
+    <Property Name="ORDER" Type="int" Nullable="false" />
+    <Property Name="SEC_USER_MENU_TAB_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="SEC_USER_MENU_TAB">
+    <Key>
+      <PropertyRef Name="SEC_USER_MENU_TAB_ID" />
+    </Key>
+    <Property Name="SEC_USER_MENU_TAB_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+    <Property Name="TAB_NAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ORDER" Type="int" Nullable="false" />
+    <Property Name="SMALL_ICONS" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_USER_MODACCESS">
+    <Key>
+      <PropertyRef Name="SEC_USER_MODACCESS_ID" />
+    </Key>
+    <Property Name="SEC_USER_MODACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+    <Property Name="SEC_MODULE_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+    <Property Name="CAN_PRINT" Type="bit" Nullable="false" />
+    <Property Name="CAN_UPDATE" Type="bit" Nullable="false" />
+    <Property Name="CAN_ADD" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM1" Type="bit" Nullable="false" />
+    <Property Name="CUSTOM2" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEC_USER_SETTING">
+    <Key>
+      <PropertyRef Name="SEC_USER_ID" />
+      <PropertyRef Name="SETTING_CODE" />
+    </Key>
+    <Property Name="SEC_USER_SETTING_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+    <Property Name="SETTING_CODE" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="STRING_VALUE" Type="varchar" />
+    <Property Name="NUMERIC_VALUE" Type="decimal" Precision="9" Scale="4" />
+    <Property Name="DATE_VALUE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SEC_USER_UDRACCESS">
+    <Key>
+      <PropertyRef Name="SEC_USER_UDRACCESS_ID" />
+    </Key>
+    <Property Name="SEC_USER_UDRACCESS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+    <Property Name="USER_DEF_REPORT_ID" Type="int" Nullable="false" />
+    <Property Name="IS_BLOCKED" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SERVICE_FEE_DEF">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="INCOME_ONLY_INCL" Type="smallint" />
+    <Property Name="PRODUCT_COMM_INCL" Type="smallint" />
+    <Property Name="MEDIA_COMM_INCL" Type="smallint" />
+    <Property Name="STD_FEE_JOB_COMP" Type="smallint" />
+    <Property Name="STD_FEE_SC" Type="smallint" />
+    <Property Name="STD_FEE_FUNC" Type="smallint" />
+    <Property Name="PROD_COMM_SC" Type="smallint" />
+    <Property Name="PROD_COMM_FUNC" Type="smallint" />
+    <Property Name="BROAD_COMM" Type="smallint" />
+    <Property Name="MAG_COMM" Type="smallint" />
+    <Property Name="NEWS_COMM" Type="smallint" />
+    <Property Name="INT_COMM" Type="smallint" />
+    <Property Name="OOH_COMM" Type="smallint" />
+    <Property Name="CDP_INCL" Type="smallint" />
+    <Property Name="UN_REC_ONLY" Type="smallint" />
+    <Property Name="FEETIME_TYPE_INCL_STD" Type="smallint" />
+    <Property Name="FEETIME_TYPE_INCL_PROD_COMM" Type="smallint" />
+    <Property Name="FEETIME_TYPE_INCL_MEDIA_COMM" Type="smallint" />
+    <Property Name="PRIMARY_DISPL_OPT" Type="smallint" />
+    <Property Name="GRD_DISPL_OPT_CMPN" Type="smallint" />
+    <Property Name="GRD_DISPL_OPT_JOB_NBR" Type="smallint" />
+    <Property Name="GRD_DISPL_OPT_JOB_NAME" Type="smallint" />
+    <Property Name="GRD_DISPL_OPT_COMP_NBR" Type="smallint" />
+    <Property Name="GRD_DISPL_OPT_COMP_NAME" Type="smallint" />
+    <Property Name="GRD_DISPL_OPT_FUNC" Type="smallint" />
+    <Property Name="SERVICE_FEE_SEL" Type="int" />
+    <Property Name="SERVICE_GROUP_BY" Type="int" />
+    <Property Name="SERVICE_SUMMARY_STYLE" Type="int" />
+    <Property Name="INCLD_SERV_FEE_TYPE_LEVEL" Type="bit" Nullable="false" />
+    <Property Name="ADD_FEE_DESC_TO_GRP_BY" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SERVICE_FEE_DEF_CDP">
+    <Key>
+      <PropertyRef Name="SERVICE_FEE_DEF_CDP" />
+    </Key>
+    <Property Name="SERVICE_FEE_DEF_CDP" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+    <Property Name="CL_CODE" Type="varchar" MaxLength="6" />
+    <Property Name="DIV_CODE" Type="varchar" MaxLength="6" />
+    <Property Name="PRD_CODE" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="SERVICE_FEE_DEF_DTL">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="DTL_TYPE" />
+      <PropertyRef Name="DTL_CODE" />
+    </Key>
+    <Property Name="USER_ID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DTL_TYPE" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="DTL_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="SERVICE_FEE_REPORT">
+    <Key>
+      <PropertyRef Name="SERVICE_FEE_REPORT_ID" />
+    </Key>
+    <Property Name="SERVICE_FEE_REPORT_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPTION" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CREATED_BY" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CREATED_DATE" Type="smalldatetime" Nullable="false" />
+    <Property Name="ALLOW_CELL_MERGE" Type="bit" Nullable="false" />
+    <Property Name="PRINT_AUTOSIZE_COL" Type="bit" Nullable="false" />
+    <Property Name="PRINT_HEADER" Type="bit" Nullable="false" />
+    <Property Name="PRINT_FOOTER" Type="bit" Nullable="false" />
+    <Property Name="PRINT_GROUP_FOOTER" Type="bit" Nullable="false" />
+    <Property Name="PRINT_SEL_ROWS" Type="bit" Nullable="false" />
+    <Property Name="PRINT_FILTER_INFO" Type="bit" Nullable="false" />
+    <Property Name="SHOW_VIEW_CAPTION" Type="bit" Nullable="false" />
+    <Property Name="SHOW_GROUPBY_BOX" Type="bit" Nullable="false" />
+    <Property Name="SHOW_AUTOFILTER_ROW" Type="bit" Nullable="false" />
+    <Property Name="UPDATED_BY" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="UPDATED_DATE" Type="smalldatetime" Nullable="false" />
+    <Property Name="ACTIVE_FILTER" Type="varchar" Nullable="false" />
+    <Property Name="SERVICE_GROUP_BY" Type="int" Nullable="false" />
+    <Property Name="SERVICE_SUMMARY_STYLE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SERVICE_FEE_REPORT_COL">
+    <Key>
+      <PropertyRef Name="SERVICE_FEE_REPORT_COL_ID" />
+    </Key>
+    <Property Name="SERVICE_FEE_REPORT_COL_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SERVICE_FEE_REPORT_ID" Type="int" Nullable="false" />
+    <Property Name="FIELD_NAME" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="HEADER_TEXT" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IS_VISIBLE" Type="bit" Nullable="false" />
+    <Property Name="SORT_ORDER" Type="int" Nullable="false" />
+    <Property Name="SORT_INDEX" Type="int" Nullable="false" />
+    <Property Name="GROUP_INDEX" Type="int" Nullable="false" />
+    <Property Name="WIDTH" Type="int" Nullable="false" />
+    <Property Name="VISIBLE_INDEX" Type="int" Nullable="false" />
+    <Property Name="GRIDVIEW_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SERVICE_FEE_REPORT_SUM">
+    <Key>
+      <PropertyRef Name="SERVICE_FEE_REPORT_SUM_ID" />
+    </Key>
+    <Property Name="SERVICE_FEE_REPORT_SUM_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SERVICE_FEE_REPORT_ID" Type="int" Nullable="false" />
+    <Property Name="SUM_TYPE" Type="int" Nullable="false" />
+    <Property Name="FIELD_NAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="COLUMN_NAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DISPLAY_FORMAT" Type="varchar" Nullable="false" MaxLength="1000" />
+    <Property Name="ON_FOOTER" Type="bit" Nullable="false" />
+    <Property Name="GRIDVIEW_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WV_USER_QUICK_LAUNCH_APPS">
+    <Key>
+      <PropertyRef Name="USERID" />
+      <PropertyRef Name="TABNO" />
+      <PropertyRef Name="APPID" />
+    </Key>
+    <Property Name="USERID" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="TABNO" Type="int" Nullable="false" />
+    <Property Name="APPID" Type="int" Nullable="false" />
+    <Property Name="HEIGHT" Type="int" />
+    <Property Name="WIDTH" Type="int" />
+    <Property Name="TOP_COORD" Type="int" />
+    <Property Name="LEFT_COORD" Type="int" />
+  </EntityType>
+  <EntityType Name="WV_USER_WORKSPACE">
+    <Key>
+      <PropertyRef Name="WORKSPACE_ID" />
+    </Key>
+    <Property Name="WORKSPACE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="USER_CODE" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+    <Property Name="SORT_ORDER" Type="int" />
+    <Property Name="CP" Type="int" />
+  </EntityType>
+  <EntityType Name="WV_WORKSPACE_OBJECT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WORKSPACE_ID" Type="int" Nullable="false" />
+    <Property Name="DESKTOP_OBJECT_ID" Type="int" Nullable="false" />
+    <Property Name="ZONE_ID" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="HEIGHT" Type="int" />
+    <Property Name="WIDTH" Type="int" />
+    <Property Name="TOP_COORD" Type="int" />
+    <Property Name="LEFT_COORD" Type="int" />
+    <Property Name="SORT_ORDER" Type="int" />
+  </EntityType>
+  <EntityType Name="WV_WORKSPACE_TMPLT_DTL">
+    <Key>
+      <PropertyRef Name="WORKSPACE_ID" />
+    </Key>
+    <Property Name="WORKSPACE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TEMPLATE_ID" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+    <Property Name="SORT_ORDER" Type="int" Nullable="false" />
+    <Property Name="CP" Type="int" />
+  </EntityType>
+  <EntityType Name="WV_WORKSPACE_TMPLT_HDR">
+    <Key>
+      <PropertyRef Name="TEMPLATE_ID" />
+    </Key>
+    <Property Name="TEMPLATE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CREATED_BY_ID" Type="int" Nullable="false" />
+    <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+    <Property Name="CREATE_DATE" Type="smalldatetime" />
+    <Property Name="CP" Type="int" />
+  </EntityType>
+  <EntityType Name="WV_WORKSPACE_TMPLT_ITEM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WORKSPACE_ID" Type="int" Nullable="false" />
+    <Property Name="DESKTOP_OBJECT_ID" Type="int" Nullable="false" />
+    <Property Name="ZONE_ID" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="HEIGHT" Type="int" />
+    <Property Name="WIDTH" Type="int" />
+    <Property Name="TOP_COORD" Type="int" />
+    <Property Name="LEFT_COORD" Type="int" />
+    <Property Name="SORT_ORDER" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.EMPLOYEE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMP_CODE" />
+    </Key>
+    <Property Name="EMP_CODE" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="DP_TM_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="EMP_LNAME" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_FNAME" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_MI" Type="varchar" MaxLength="1" />
+    <Property Name="EMP_COST_RATE" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="EMP_ADDRESS1" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_ADDRESS2" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_ALPHA_SORT" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_CITY" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_COUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_COUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_PAY_TO_ADDR1" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_PAY_TO_ADDR2" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_PAY_TO_CITY" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_PAY_TO_COUNTRY" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_PAY_TO_COUNTY" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_PAY_TO_STATE" Type="varchar" MaxLength="10" />
+    <Property Name="EMP_PAY_TO_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="EMP_PHONE" Type="varchar" MaxLength="13" />
+    <Property Name="EMP_STATE" Type="varchar" MaxLength="10" />
+    <Property Name="EMP_SS_NBR" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_ZIP" Type="varchar" MaxLength="10" />
+    <Property Name="EMP_DATE" Type="smalldatetime" />
+    <Property Name="EMP_TERM_DATE" Type="smalldatetime" />
+    <Property Name="EMP_BIRTH_DATE" Type="smalldatetime" />
+    <Property Name="EMP_LAST_INCREASE" Type="smalldatetime" />
+    <Property Name="EMP_NEXT_REVIEW" Type="smalldatetime" />
+    <Property Name="EMP_ANNUAL_SALARY" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="EMP_MONTHLY_SALARY" Type="decimal" Precision="11" Scale="2" />
+    <Property Name="EMP_EMAIL" Type="varchar" MaxLength="50" />
+    <Property Name="MTH_HRS_GOAL" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="OFFICE_CODE" Type="varchar" MaxLength="4" />
+    <Property Name="SUPERVISOR_CODE" Type="varchar" MaxLength="6" />
+    <Property Name="VAC_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="VAC_FROM_DATE" Type="smalldatetime" />
+    <Property Name="VAC_TO_DATE" Type="smalldatetime" />
+    <Property Name="SICK_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="SICK_FROM_DATE" Type="smalldatetime" />
+    <Property Name="SICK_TO_DATE" Type="smalldatetime" />
+    <Property Name="STD_WORK_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="EMP_WORK_DAYS" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_TIME_ALERT" Type="smallint" />
+    <Property Name="SMTP_SERVER" Type="varchar" MaxLength="40" />
+    <Property Name="EMAIL_PWD" Type="varchar" MaxLength="50" />
+    <Property Name="MON_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="TUE_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="WED_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="THU_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="FRI_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="SAT_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="SUN_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="ALERT_EMAIL" Type="smallint" />
+    <Property Name="FREELANCE" Type="smallint" />
+    <Property Name="PERS_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="PERS_FROM_DATE" Type="smalldatetime" />
+    <Property Name="PERS_TO_DATE" Type="smalldatetime" />
+    <Property Name="DEF_FNC_CODE" Type="varchar" MaxLength="6" />
+    <Property Name="PO_LIMIT" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="EMP_ACCOUNT_NBR" Type="varchar" MaxLength="30" />
+    <Property Name="EMP_PHONE_WORK" Type="varchar" MaxLength="13" />
+    <Property Name="EMP_PHONE_CELL" Type="varchar" MaxLength="13" />
+    <Property Name="EMP_PHONE_ALT" Type="varchar" MaxLength="13" />
+    <Property Name="EMP_PHONE_WORK_EXT" Type="varchar" MaxLength="10" />
+    <Property Name="STD_ANNUAL_HRS" Type="decimal" Precision="9" Scale="3" />
+    <Property Name="VN_CODE_EXP" Type="varchar" MaxLength="6" />
+    <Property Name="CC_NUMBER" Type="varchar" MaxLength="30" />
+    <Property Name="CC_DESC" Type="varchar" MaxLength="40" />
+    <Property Name="CC_GL_ACCOUNT" Type="varchar" MaxLength="30" />
+    <Property Name="EXP_APPR_REQ" Type="smallint" />
+    <Property Name="MISSING_TIME" Type="smallint" />
+    <Property Name="WEEKLY_TIME" Type="smallint" />
+    <Property Name="SIGNATURE_PATH" Type="varchar" MaxLength="256" />
+    <Property Name="STATUS" Type="smallint" />
+    <Property Name="DIRECT_HRS_PER" Type="decimal" Precision="7" Scale="4" />
+    <Property Name="DEF_TRF_ROLE" Type="varchar" MaxLength="6" />
+    <Property Name="EMP_COMMENT" Type="text" />
+    <Property Name="EMPLOYEE_TITLE_ID" Type="int" />
+    <Property Name="PO_APPR_RULE_CODE" Type="varchar" MaxLength="6" />
+    <Property Name="PO_GL_SELECTION" Type="smallint" />
+    <Property Name="PO_GL_LIMIT_BY_OFFICE" Type="smallint" />
+    <Property Name="SENIORITY" Type="smallint" />
+    <Property Name="EMP_START_TIME" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME" Type="smalldatetime" />
+    <Property Name="EMP_START_TIME_MON" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME_MON" Type="smalldatetime" />
+    <Property Name="EMP_START_TIME_TUE" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME_TUE" Type="smalldatetime" />
+    <Property Name="EMP_START_TIME_WED" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME_WED" Type="smalldatetime" />
+    <Property Name="EMP_START_TIME_THU" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME_THU" Type="smalldatetime" />
+    <Property Name="EMP_START_TIME_FRI" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME_FRI" Type="smalldatetime" />
+    <Property Name="EMP_START_TIME_SAT" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME_SAT" Type="smalldatetime" />
+    <Property Name="EMP_START_TIME_SUN" Type="smalldatetime" />
+    <Property Name="EMP_END_TIME_SUN" Type="smalldatetime" />
+    <Property Name="EMAIL_USERNAME" Type="varchar" MaxLength="50" />
+    <Property Name="EMAIL_REPLY_TO" Type="varchar" MaxLength="50" />
+    <Property Name="EMP_SIG" Type="image" />
+    <Property Name="WV_TMPLT_HDR_ID" Type="int" />
+    <Property Name="ALT_COST_RATE" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="ALT_DATE_FRM" Type="smalldatetime" />
+    <Property Name="ALT_DATE_TO" Type="smalldatetime" />
+    <Property Name="CREATED_BY" Type="varchar" MaxLength="100" />
+    <Property Name="CREATED_DATE" Type="smalldatetime" />
+    <Property Name="LAST_MODIFIED_BY" Type="varchar" MaxLength="100" />
+    <Property Name="LAST_MODIFIED_DATE" Type="smalldatetime" />
+    <Property Name="METHOD" Type="varchar" MaxLength="1" />
+    <Property Name="EXP_RPT_APPROVER" Type="varchar" MaxLength="6" />
+    <Property Name="VAC_TIME_RULE_ID" Type="int" />
+    <Property Name="SICK_TIME_RULE_ID" Type="int" />
+    <Property Name="PERS_TIME_RULE_ID" Type="int" />
+    <Property Name="EMP_TITLE" Type="varchar" MaxLength="50" />
+    <Property Name="EMP_BILL_RATE" Type="decimal" Precision="10" Scale="3" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_DATABASE_SQLUSER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_DATABASE_SQLUSER">
+    <Key>
+      <PropertyRef Name="principal_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="type" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="type_desc" Type="nvarchar" MaxLength="60" />
+    <Property Name="default_schema_name" Type="nvarchar" MaxLength="128" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+    <Property Name="owning_principal_id" Type="int" />
+    <Property Name="sid" Type="varbinary" MaxLength="85" />
+    <Property Name="is_fixed_role" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_RPT_SEC_EMP_SUMMARY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_RPT_SEC_EMP_SUMMARY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="CheckForUserAccess" Type="bit" Nullable="false" />
+    <Property Name="Employee" Type="varchar" MaxLength="73" />
+    <Property Name="EmployeeCode" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="EmployeeName" Type="varchar" MaxLength="64" />
+    <Property Name="Group" Type="varchar" MaxLength="153" />
+    <Property Name="GroupName" Type="varchar" MaxLength="50" />
+    <Property Name="GroupDescription" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_RPT_SEC_GROUP_PERMISSION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_RPT_SEC_GROUP_PERMISSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="ParentModuleID" Type="int" />
+    <Property Name="ParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="ParentModuleSortOrder" Type="int" />
+    <Property Name="SubParentModuleID" Type="int" />
+    <Property Name="SubParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="SubParentModuleSortOrder" Type="int" />
+    <Property Name="SubSubParentModuleID" Type="int" />
+    <Property Name="SubSubParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="SubSubParentModuleSortOrder" Type="int" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="ModuleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Module" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleIsCategory" Type="bit" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="int" Nullable="false" />
+    <Property Name="ModuleSortOrder" Type="int" />
+    <Property Name="ModuleHasCustomPermission" Type="bit" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="GroupName" Type="varchar" MaxLength="50" />
+    <Property Name="GroupDescription" Type="varchar" MaxLength="100" />
+    <Property Name="IsBlocked" Type="bit" Nullable="false" />
+    <Property Name="CanPrint" Type="bit" Nullable="false" />
+    <Property Name="CanUpdate" Type="bit" Nullable="false" />
+    <Property Name="CanAdd" Type="bit" Nullable="false" />
+    <Property Name="Custom1" Type="bit" Nullable="false" />
+    <Property Name="Custom2" Type="bit" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_RPT_SEC_PERMISSION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_RPT_SEC_PERMISSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="ParentModuleID" Type="int" />
+    <Property Name="ParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="ParentModuleSortOrder" Type="int" />
+    <Property Name="SubParentModuleID" Type="int" />
+    <Property Name="SubParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="SubParentModuleSortOrder" Type="int" />
+    <Property Name="SubSubParentModuleID" Type="int" />
+    <Property Name="SubSubParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="SubSubParentModuleSortOrder" Type="int" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="ModuleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Module" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleIsCategory" Type="bit" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="int" Nullable="false" />
+    <Property Name="ModuleSortOrder" Type="int" />
+    <Property Name="ModuleHasCustomPermission" Type="bit" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="EmployeeCode" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="Employee" Type="varchar" MaxLength="73" />
+    <Property Name="IsBlocked" Type="bit" Nullable="false" />
+    <Property Name="CanPrint" Type="bit" Nullable="false" />
+    <Property Name="CanUpdate" Type="bit" Nullable="false" />
+    <Property Name="CanAdd" Type="bit" Nullable="false" />
+    <Property Name="Custom1" Type="bit" Nullable="false" />
+    <Property Name="Custom2" Type="bit" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_SEC_GROUP_PERMISSION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_SEC_GROUP_PERMISSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="ModuleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Module" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleIsCategory" Type="bit" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="int" Nullable="false" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="GroupName" Type="varchar" MaxLength="50" />
+    <Property Name="GroupDescription" Type="varchar" MaxLength="100" />
+    <Property Name="IsBlocked" Type="bit" Nullable="false" />
+    <Property Name="CanPrint" Type="bit" Nullable="false" />
+    <Property Name="CanUpdate" Type="bit" Nullable="false" />
+    <Property Name="CanAdd" Type="bit" Nullable="false" />
+    <Property Name="Custom1" Type="bit" Nullable="false" />
+    <Property Name="Custom2" Type="bit" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_SEC_MODULES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_SEC_MODULES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="ApplicationName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ApplicationDescription" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleInformationID" Type="int" Nullable="false" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="ModuleDescription" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="IsInactive" Type="bit" Nullable="false" />
+    <Property Name="IsMenuItem" Type="bit" Nullable="false" />
+    <Property Name="IsCategory" Type="bit" Nullable="false" />
+    <Property Name="IsApplication" Type="bit" Nullable="false" />
+    <Property Name="IsReport" Type="bit" Nullable="false" />
+    <Property Name="IsDesktopObject" Type="bit" Nullable="false" />
+    <Property Name="IsDashQuery" Type="bit" Nullable="false" />
+    <Property Name="ParentModuleID" Type="int" />
+    <Property Name="ParentModuleCode" Type="varchar" MaxLength="100" />
+    <Property Name="ParentModuleDescription" Type="varchar" MaxLength="100" />
+    <Property Name="ReportIsLocked" Type="bit" Nullable="false" />
+    <Property Name="ReportPreviewLocation" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ReportDescription" Type="varchar" Nullable="false" MaxLength="2000" />
+    <Property Name="ReportImagePath" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ReportImagePathActive" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ReportLargeImagePath" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ReportURL" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DesktopObjectSize" Type="int" Nullable="false" />
+    <Property Name="DesktopObjectName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ImageName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="HasCustomPermission" Type="bit" Nullable="false" />
+    <Property Name="WebvantageURL" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="WebvantageImagePathActive" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="WebvantageImagePath" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="WebvantageLargeImagePath" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AdvantageApplicationName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="AdvantageMenuName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="AdvantageApplicationCode" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="AdvantageCommandString" Type="varchar" Nullable="false" MaxLength="128" />
+    <Property Name="AdvantageIconIndex" Type="int" Nullable="false" />
+    <Property Name="AdvantageAllowMultipleInstances" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_SEC_MODULES_STRUCT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_SEC_MODULES_STRUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="ParentModuleID" Type="int" />
+    <Property Name="ParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="ParentModuleSortOrder" Type="int" />
+    <Property Name="SubParentModuleID" Type="int" />
+    <Property Name="SubParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="SubParentModuleSortOrder" Type="int" />
+    <Property Name="SubSubParentModuleID" Type="int" />
+    <Property Name="SubSubParentModule" Type="varchar" MaxLength="100" />
+    <Property Name="SubSubParentModuleSortOrder" Type="int" />
+    <Property Name="ModuleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Module" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleSortOrder" Type="int" />
+    <Property Name="ModuleHasCustomPermission" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_SEC_PERMISSION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_SEC_PERMISSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplicationID" Type="int" Nullable="false" />
+    <Property Name="ModuleID" Type="int" Nullable="false" />
+    <Property Name="ModuleCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Module" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ModuleIsCategory" Type="bit" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserCode" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="EmployeeCode" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="IsBlocked" Type="bit" Nullable="false" />
+    <Property Name="CanPrint" Type="bit" Nullable="false" />
+    <Property Name="CanUpdate" Type="bit" Nullable="false" />
+    <Property Name="CanAdd" Type="bit" Nullable="false" />
+    <Property Name="Custom1" Type="bit" Nullable="false" />
+    <Property Name="Custom2" Type="bit" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="bit" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'ADVANEF.dbo.V_SERVER_SQLUSER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="V_SERVER_SQLUSER">
+    <Key>
+      <PropertyRef Name="principal_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="sid" Type="varbinary" MaxLength="85" />
+    <Property Name="type" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="type_desc" Type="nvarchar" MaxLength="60" />
+    <Property Name="is_disabled" Type="bit" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+    <Property Name="default_database_name" Type="nvarchar" MaxLength="128" />
+    <Property Name="default_language_name" Type="nvarchar" MaxLength="128" />
+    <Property Name="credential_id" Type="int" />
+  </EntityType>
+  <Association Name="FK_CDP_CONT_HDR_CLI">
+    <End Role="CLIENT" Type="Security.Store.CLIENT" Multiplicity="1" />
+    <End Role="CDP_CONTACT_HDR" Type="Security.Store.CDP_CONTACT_HDR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENT">
+        <PropertyRef Name="CL_CODE" />
+      </Principal>
+      <Dependent Role="CDP_CONTACT_HDR">
+        <PropertyRef Name="CL_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CDP_CONTACT">
+    <End Role="CDP_CONTACT_HDR" Type="Security.Store.CDP_CONTACT_HDR" Multiplicity="1" />
+    <End Role="CDP_CONTACT_DTL" Type="Security.Store.CDP_CONTACT_DTL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CDP_CONTACT_HDR">
+        <PropertyRef Name="CDP_CONTACT_ID" />
+      </Principal>
+      <Dependent Role="CDP_CONTACT_DTL">
+        <PropertyRef Name="CDP_CONTACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CP_USER_CONTACT">
+    <End Role="CDP_CONTACT_HDR" Type="Security.Store.CDP_CONTACT_HDR" Multiplicity="1" />
+    <End Role="CP_USER" Type="Security.Store.CP_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CDP_CONTACT_HDR">
+        <PropertyRef Name="CDP_CONTACT_ID" />
+      </Principal>
+      <Dependent Role="CP_USER">
+        <PropertyRef Name="CDP_CONTACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CP_USER_WORKSPACE_SEC_USER">
+    <End Role="CDP_CONTACT_HDR" Type="Security.Store.CDP_CONTACT_HDR" Multiplicity="1" />
+    <End Role="CP_USER_WORKSPACE" Type="Security.Store.CP_USER_WORKSPACE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CDP_CONTACT_HDR">
+        <PropertyRef Name="CDP_CONTACT_ID" />
+      </Principal>
+      <Dependent Role="CP_USER_WORKSPACE">
+        <PropertyRef Name="CDP_CONTACT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CP_WORKSPACE_OBJECT_WV_USER_WORKSPACE">
+    <End Role="CP_USER_WORKSPACE" Type="Security.Store.CP_USER_WORKSPACE" Multiplicity="1" />
+    <End Role="CP_WORKSPACE_OBJECT" Type="Security.Store.CP_WORKSPACE_OBJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CP_USER_WORKSPACE">
+        <PropertyRef Name="WORKSPACE_ID" />
+      </Principal>
+      <Dependent Role="CP_WORKSPACE_OBJECT">
+        <PropertyRef Name="WORKSPACE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DIVISION_CLIENT">
+    <End Role="CLIENT" Type="Security.Store.CLIENT" Multiplicity="1" />
+    <End Role="DIVISION" Type="Security.Store.DIVISION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENT">
+        <PropertyRef Name="CL_CODE" />
+      </Principal>
+      <Dependent Role="DIVISION">
+        <PropertyRef Name="CL_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_DIVISION">
+    <End Role="DIVISION" Type="Security.Store.DIVISION" Multiplicity="1" />
+    <End Role="PRODUCT" Type="Security.Store.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIVISION">
+        <PropertyRef Name="CL_CODE" />
+        <PropertyRef Name="DIV_CODE" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="CL_CODE" />
+        <PropertyRef Name="DIV_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_OFFICE">
+    <End Role="OFFICE" Type="Security.Store.OFFICE" Multiplicity="1" />
+    <End Role="PRODUCT" Type="Security.Store.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFFICE">
+        <PropertyRef Name="OFFICE_CODE" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="OFFICE_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_APPLICATION_MOD_SEC_APPLICATION">
+    <End Role="SEC_APPLICATION" Type="Security.Store.SEC_APPLICATION" Multiplicity="1" />
+    <End Role="SEC_APPLICATION_MOD" Type="Security.Store.SEC_APPLICATION_MOD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_APPLICATION">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Principal>
+      <Dependent Role="SEC_APPLICATION_MOD">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_APPLICATION_MOD_SEC_MODULE">
+    <End Role="SEC_MODULE" Type="Security.Store.SEC_MODULE" Multiplicity="1" />
+    <End Role="SEC_APPLICATION_MOD" Type="Security.Store.SEC_APPLICATION_MOD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_MODULE">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Principal>
+      <Dependent Role="SEC_APPLICATION_MOD">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_CLIENT_SECCLI">
+    <End Role="PRODUCT" Type="Security.Store.PRODUCT" Multiplicity="1" />
+    <End Role="SEC_CLIENT" Type="Security.Store.SEC_CLIENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCT">
+        <PropertyRef Name="CL_CODE" />
+        <PropertyRef Name="DIV_CODE" />
+        <PropertyRef Name="PRD_CODE" />
+      </Principal>
+      <Dependent Role="SEC_CLIENT">
+        <PropertyRef Name="CL_CODE" />
+        <PropertyRef Name="DIV_CODE" />
+        <PropertyRef Name="PRD_CODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_CPUSER_APPACCESS_CP_USER">
+    <End Role="CP_USER" Type="Security.Store.CP_USER" Multiplicity="1" />
+    <End Role="SEC_CPUSER_APPACCESS" Type="Security.Store.SEC_CPUSER_APPACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CP_USER">
+        <PropertyRef Name="USER_GUID" />
+      </Principal>
+      <Dependent Role="SEC_CPUSER_APPACCESS">
+        <PropertyRef Name="CPUSER_GUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_CPUSER_APPACCESS_SEC_APPLICATION">
+    <End Role="SEC_APPLICATION" Type="Security.Store.SEC_APPLICATION" Multiplicity="1" />
+    <End Role="SEC_CPUSER_APPACCESS" Type="Security.Store.SEC_CPUSER_APPACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_APPLICATION">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Principal>
+      <Dependent Role="SEC_CPUSER_APPACCESS">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_CPUSER_MODACCESS_CP_USER">
+    <End Role="CP_USER" Type="Security.Store.CP_USER" Multiplicity="1" />
+    <End Role="SEC_CPUSER_MODACCESS" Type="Security.Store.SEC_CPUSER_MODACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CP_USER">
+        <PropertyRef Name="USER_GUID" />
+      </Principal>
+      <Dependent Role="SEC_CPUSER_MODACCESS">
+        <PropertyRef Name="CPUSER_GUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_CPUSER_MODACCESS_SEC_MODULE">
+    <End Role="SEC_MODULE" Type="Security.Store.SEC_MODULE" Multiplicity="1" />
+    <End Role="SEC_CPUSER_MODACCESS" Type="Security.Store.SEC_CPUSER_MODACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_MODULE">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Principal>
+      <Dependent Role="SEC_CPUSER_MODACCESS">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_APPACCESS_SEC_APPLICATION">
+    <End Role="SEC_APPLICATION" Type="Security.Store.SEC_APPLICATION" Multiplicity="1" />
+    <End Role="SEC_GROUP_APPACCESS" Type="Security.Store.SEC_GROUP_APPACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_APPLICATION">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_APPACCESS">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_APPACCESS_SEC_GROUP">
+    <End Role="SEC_GROUP" Type="Security.Store.SEC_GROUP" Multiplicity="1" />
+    <End Role="SEC_GROUP_APPACCESS" Type="Security.Store.SEC_GROUP_APPACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_GROUP">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_APPACCESS">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_MODACCESS_SEC_GROUP">
+    <End Role="SEC_GROUP" Type="Security.Store.SEC_GROUP" Multiplicity="1" />
+    <End Role="SEC_GROUP_MODACCESS" Type="Security.Store.SEC_GROUP_MODACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_GROUP">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_MODACCESS">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_MODACCESS_SEC_MODULE">
+    <End Role="SEC_MODULE" Type="Security.Store.SEC_MODULE" Multiplicity="1" />
+    <End Role="SEC_GROUP_MODACCESS" Type="Security.Store.SEC_GROUP_MODACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_MODULE">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_MODACCESS">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_SETTING_SEC_GROUP">
+    <End Role="SEC_GROUP" Type="Security.Store.SEC_GROUP" Multiplicity="1" />
+    <End Role="SEC_GROUP_SETTING" Type="Security.Store.SEC_GROUP_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_GROUP">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_SETTING">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_UDRACCESS_SEC_GROUP">
+    <End Role="SEC_GROUP" Type="Security.Store.SEC_GROUP" Multiplicity="1" />
+    <End Role="SEC_GROUP_UDRACCESS" Type="Security.Store.SEC_GROUP_UDRACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_GROUP">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_UDRACCESS">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_USER_SEC_GROUP">
+    <End Role="SEC_GROUP" Type="Security.Store.SEC_GROUP" Multiplicity="1" />
+    <End Role="SEC_GROUP_USER" Type="Security.Store.SEC_GROUP_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_GROUP">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_USER">
+        <PropertyRef Name="SEC_GROUP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_GROUP_USER_SEC_USER">
+    <End Role="SEC_USER" Type="Security.Store.SEC_USER" Multiplicity="1" />
+    <End Role="SEC_GROUP_USER" Type="Security.Store.SEC_GROUP_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_USER">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Principal>
+      <Dependent Role="SEC_GROUP_USER">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_MODULE_SEC_MODULE_INFO">
+    <End Role="SEC_MODULE_INFO" Type="Security.Store.SEC_MODULE_INFO" Multiplicity="1" />
+    <End Role="SEC_MODULE" Type="Security.Store.SEC_MODULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_MODULE_INFO">
+        <PropertyRef Name="SEC_MODULE_INFO_ID" />
+      </Principal>
+      <Dependent Role="SEC_MODULE">
+        <PropertyRef Name="SEC_MODULE_INFO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_MODULE_SUB_SEC_MODULE">
+    <End Role="SEC_MODULE" Type="Security.Store.SEC_MODULE" Multiplicity="1" />
+    <End Role="SEC_MODULE_SUB" Type="Security.Store.SEC_MODULE_SUB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_MODULE">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Principal>
+      <Dependent Role="SEC_MODULE_SUB">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_MODULE_SUB_SEC_MODULE1">
+    <End Role="SEC_MODULE" Type="Security.Store.SEC_MODULE" Multiplicity="1" />
+    <End Role="SEC_MODULE_SUB" Type="Security.Store.SEC_MODULE_SUB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_MODULE">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Principal>
+      <Dependent Role="SEC_MODULE_SUB">
+        <PropertyRef Name="PARENT_MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_USER_APPACCESS_SEC_APPLICATION">
+    <End Role="SEC_APPLICATION" Type="Security.Store.SEC_APPLICATION" Multiplicity="1" />
+    <End Role="SEC_USER_APPACCESS" Type="Security.Store.SEC_USER_APPACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_APPLICATION">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_APPACCESS">
+        <PropertyRef Name="SEC_APPLICATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_USER_APPACCESS_SEC_USER">
+    <End Role="SEC_USER" Type="Security.Store.SEC_USER" Multiplicity="1" />
+    <End Role="SEC_USER_APPACCESS" Type="Security.Store.SEC_USER_APPACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_USER">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_APPACCESS">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_USER_MODACCESS_SEC_MODULE">
+    <End Role="SEC_MODULE" Type="Security.Store.SEC_MODULE" Multiplicity="1" />
+    <End Role="SEC_USER_MODACCESS" Type="Security.Store.SEC_USER_MODACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_MODULE">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_MODACCESS">
+        <PropertyRef Name="SEC_MODULE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_USER_MODACCESS_SEC_USER">
+    <End Role="SEC_USER" Type="Security.Store.SEC_USER" Multiplicity="1" />
+    <End Role="SEC_USER_MODACCESS" Type="Security.Store.SEC_USER_MODACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_USER">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_MODACCESS">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_USER_SETTING_SEC_USER">
+    <End Role="SEC_USER" Type="Security.Store.SEC_USER" Multiplicity="1" />
+    <End Role="SEC_USER_SETTING" Type="Security.Store.SEC_USER_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_USER">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_SETTING">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SEC_USER_UDRACCESS_SEC_USER">
+    <End Role="SEC_USER" Type="Security.Store.SEC_USER" Multiplicity="1" />
+    <End Role="SEC_USER_UDRACCESS" Type="Security.Store.SEC_USER_UDRACCESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEC_USER">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Principal>
+      <Dependent Role="SEC_USER_UDRACCESS">
+        <PropertyRef Name="SEC_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SERVICE_FEE_REPORT_COL">
+    <End Role="SERVICE_FEE_REPORT" Type="Security.Store.SERVICE_FEE_REPORT" Multiplicity="1" />
+    <End Role="SERVICE_FEE_REPORT_COL" Type="Security.Store.SERVICE_FEE_REPORT_COL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICE_FEE_REPORT">
+        <PropertyRef Name="SERVICE_FEE_REPORT_ID" />
+      </Principal>
+      <Dependent Role="SERVICE_FEE_REPORT_COL">
+        <PropertyRef Name="SERVICE_FEE_REPORT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SERVICE_FEE_REPORT_SUM">
+    <End Role="SERVICE_FEE_REPORT" Type="Security.Store.SERVICE_FEE_REPORT" Multiplicity="1" />
+    <End Role="SERVICE_FEE_REPORT_SUM" Type="Security.Store.SERVICE_FEE_REPORT_SUM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICE_FEE_REPORT">
+        <PropertyRef Name="SERVICE_FEE_REPORT_ID" />
+      </Principal>
+      <Dependent Role="SERVICE_FEE_REPORT_SUM">
+        <PropertyRef Name="SERVICE_FEE_REPORT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WV_WORKSPACE_OBJECT_WV_USER_WORKSPACE">
+    <End Role="WV_USER_WORKSPACE" Type="Security.Store.WV_USER_WORKSPACE" Multiplicity="1" />
+    <End Role="WV_WORKSPACE_OBJECT" Type="Security.Store.WV_WORKSPACE_OBJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WV_USER_WORKSPACE">
+        <PropertyRef Name="WORKSPACE_ID" />
+      </Principal>
+      <Dependent Role="WV_WORKSPACE_OBJECT">
+        <PropertyRef Name="WORKSPACE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WV_WORKSPACE_TMPLT_DTL_WV_WORKSPACE_TMPLT_HDR">
+    <End Role="WV_WORKSPACE_TMPLT_HDR" Type="Security.Store.WV_WORKSPACE_TMPLT_HDR" Multiplicity="1" />
+    <End Role="WV_WORKSPACE_TMPLT_DTL" Type="Security.Store.WV_WORKSPACE_TMPLT_DTL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WV_WORKSPACE_TMPLT_HDR">
+        <PropertyRef Name="TEMPLATE_ID" />
+      </Principal>
+      <Dependent Role="WV_WORKSPACE_TMPLT_DTL">
+        <PropertyRef Name="TEMPLATE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WV_WORKSPACE_TMPLT_ITEM_WV_WORKSPACE_TMPLT_DTL">
+    <End Role="WV_WORKSPACE_TMPLT_DTL" Type="Security.Store.WV_WORKSPACE_TMPLT_DTL" Multiplicity="1" />
+    <End Role="WV_WORKSPACE_TMPLT_ITEM" Type="Security.Store.WV_WORKSPACE_TMPLT_ITEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WV_WORKSPACE_TMPLT_DTL">
+        <PropertyRef Name="WORKSPACE_ID" />
+      </Principal>
+      <Dependent Role="WV_WORKSPACE_TMPLT_ITEM">
+        <PropertyRef Name="WORKSPACE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="advfn_SEC_USER_AUTH" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sec_user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_INSERT_SEC_USER_AUTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sec_user_id" Type="int" Mode="In" />
+    <Parameter Name="pwd_d" Type="varchar" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_register_session" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sec_user_id" Type="int" Mode="In" />
+    <Parameter Name="menu_hwnd_in" Type="int" Mode="In" />
+    <Parameter Name="web_id_in" Type="varchar" Mode="In" />
+    <Parameter Name="time_hwnd_in" Type="int" Mode="In" />
+    <Parameter Name="connect" Type="bit" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_UPDATE_SEC_USER_AUTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sec_user_id" Type="int" Mode="In" />
+    <Parameter Name="pwd_d" Type="varchar" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+</Schema>

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[JOB_ATTACHMENTS] (
+    [FILE_PATH]         VARCHAR (216) NOT NULL,
+    [JOB_NUMBER]        INT           NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT      NOT NULL,
+    [FILE_NOTES]        VARCHAR (144) NULL
+);
+

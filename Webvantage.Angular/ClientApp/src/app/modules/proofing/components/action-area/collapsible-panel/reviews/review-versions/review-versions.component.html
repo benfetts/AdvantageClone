@@ -1,0 +1,18 @@
+<div [ngStyle]="{'height': heightScroll}">
+<ng-scrollbar [ngClass]="contentMoreThanHeight ? 'scrollbar-feedback' : 'scrollbar-feedback-margin'">
+  <div class="custom-viewport">
+    <div #elementsContainer class="scroll-content-wrapper">
+      <ng-container *ngFor="let review of reviewVersions">
+        <div class="review-container">
+          <proof-review-user-block [review]="review"></proof-review-user-block>
+
+          <ng-container *ngFor="let version of review.versions">
+            <proof-review-version-block [version]="version"></proof-review-version-block>
+          </ng-container>
+
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-scrollbar>
+</div>

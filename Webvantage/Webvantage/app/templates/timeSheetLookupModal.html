@@ -1,0 +1,84 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Timesheet Search - <span ng-show="searchCriteria.SearchLevel == 'Component'">Job</span> {{searchCriteria.SearchLevel}}</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-11">
+                <input type="text" ng-model="searchText" placeholder="Search Terms" id="textBoxContractSearchDialog" ng-keyup="refreshSearchResults()" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="resultsReturned && searchResults.length == 0">
+        No results - please try some different search terms.
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-condensed">
+            <thead>
+                <tr ng-show="searchCriteria.SearchLevel == 'Client' || searchCriteria.SearchLevel == 'Division' ">
+                    <th>Code</th>
+                    <th>Name</th>
+                </tr>
+                <tr ng-show="searchCriteria.SearchLevel == 'Product' ">
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Client</th>
+                    <th>Division</th>
+                </tr>
+                <tr ng-show="searchCriteria.SearchLevel == 'Job' ">
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Client</th>
+                    <th>Division</th>
+                    <th>Product</th>
+                </tr>
+                <tr ng-show="searchCriteria.SearchLevel == 'Component' ">
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Client</th>
+                    <th>Division</th>
+                    <th>Product</th>
+                    <th>Job</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="result in searchResults | filter: paginate" ng-show="searchCriteria.SearchLevel == 'Client'" ng-dblclick="setSelectedRowAndClose(result)" ng-click="setSelectedRow(result)" ng-class="{info: selectedItem === result}">
+                    <td>{{result.ClientCode}}</td>
+                    <td>{{result.ClientName}}</td>
+                </tr>
+                <tr ng-repeat="result in searchResults | filter: paginate" ng-show="searchCriteria.SearchLevel == 'Division'" ng-dblclick="setSelectedRowAndClose(result)" ng-click="setSelectedRow(result)" ng-class="{info: selectedItem === result}">
+                    <td>{{result.DivisionCode}}</td>
+                    <td>{{result.DivisionName}}</td>
+                </tr>
+                <tr ng-repeat="result in searchResults | filter: paginate" ng-show="searchCriteria.SearchLevel == 'Product'" ng-dblclick="setSelectedRowAndClose(result)" ng-click="setSelectedRow(result)" ng-class="{info: selectedItem === result}">
+                    <td>{{result.ProductCode}}</td>
+                    <td>{{result.ProductName}}</td>
+                    <td>{{result.ClientCode}} - {{result.ClientName}}</td>
+                    <td>{{result.DivisionCode}} - {{result.DivisionName}}</td>
+                </tr>
+                <tr ng-repeat="result in searchResults | filter: paginate" ng-show="searchCriteria.SearchLevel == 'Job'" ng-dblclick="setSelectedRowAndClose(result)" ng-click="setSelectedRow(result)" ng-class="{info: selectedItem === result}">
+                    <td>{{result.JobCode}} </td>
+                    <td> {{result.JobName}}</td>
+                    <td>{{result.ClientCode}} - {{result.ClientName}}</td>
+                    <td>{{result.DivisionCode}} - {{result.DivisionName}}</td>
+                    <td>{{result.ProductCode}} - {{result.ProductName}}</td>
+                </tr>
+                <tr ng-repeat="result in searchResults | filter: paginate" ng-show="searchCriteria.SearchLevel == 'Component'" ng-dblclick="setSelectedRowAndClose(result)" ng-click="setSelectedRow(result)" ng-class="{info: selectedItem === result}">
+                    <td>{{result.ComponentCode}} </td>
+                    <td> {{result.ComponentName}}</td>
+                    <td>{{result.ClientCode}} - {{result.ClientName}}</td>
+                    <td>{{result.DivisionCode}} - {{result.DivisionName}}</td>
+                    <td>{{result.ProductCode}} - {{result.ProductName}}</td>
+                    <td>{{result.JobCode}} - {{result.JobName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" boundary-links="true" items-per-page="maximumItemsPerPage" max-size="maximumPageDisplayCount"></pagination>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-disabled="!selectionMade" ng-click="confirmSelection()">Select</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

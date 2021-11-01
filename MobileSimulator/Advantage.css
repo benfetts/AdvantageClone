@@ -1,0 +1,256 @@
+﻿html {
+    height: 100%;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    color: #a6a6a6;
+    background: #37474F;
+    font-family: Helvetica Neue, Helvetica;
+    font-size: 100%;
+    font-weight: 300;
+}
+
+.clearfix:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ".";
+    line-height: 0;
+}
+
+.wrapper {
+    height: 100%;
+    margin: 0 auto;
+}
+
+.logo {
+    display: block;
+    width: 200px;
+    height: 62px;
+    margin: 10px auto 0;
+    background: url(Images/logo-aqua.png) 0 0 no-repeat;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+    background: #455A64;
+    min-height: 900px;
+    z-index: 1;
+}
+
+.menu {
+    margin-top: 0px;
+}
+
+.menu ul {
+    list-style-type: none;
+}
+
+.menu ul li a {
+    display: block;
+    height: 60px;
+    padding-left: 40px;
+    text-decoration: none;
+    color: #a6a6a6;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.menu ul li a.active {
+    width: 190px;
+    color: #fff;
+    background: #90A4AE;
+    font-size: 28px;
+}
+
+.menu ul li a.selected {
+    background-color: #90A4AE!important;
+    color: white;
+}
+
+.courier-app-links {
+    margin-bottom: 20px;
+}
+
+.courier-app-links a {
+    text-decoration: none;
+    color: #00BCD4;
+}
+
+.courier-app-links a:hover {
+    text-decoration: underline;
+}
+
+.main {
+    position: relative;
+    margin-left: 220px;
+    padding-top: 100px;
+    min-height: 100%;
+    margin-bottom: -59px;
+    padding-bottom: 40px;
+            
+    overflow: hidden;
+            
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.toolbar {
+    position: absolute;
+    width: 260px;
+    height: 80px;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background: #1D1D1D;
+    border-radius: 0 0 0 6px;
+}
+
+.toolbar.ios {
+    width: 410px;
+}
+.toolbar.android {
+    width: 400px;
+}
+
+.toolbar .os-version-chooser,
+.toolbar .android-version-chooser {
+    display: none;
+}
+
+.toolbar.ios .os-version-chooser,
+.toolbar.android .android-version-chooser {
+    display: block;
+}
+
+.toolbar .os-version-chooser + .separator,
+.toolbar .android-version-chooser + .separator {
+    display: none;
+}
+
+.toolbar.ios .os-version-chooser + .separator,
+.toolbar.android .android-version-chooser + .separator {
+    display: block;
+}
+
+.toolbar ul {
+    float: left;
+    list-style-type: none;
+}
+
+.toolbar ul:nth-child(1),
+.toolbar ul:nth-child(3) {
+    float: left;
+    list-style-type: none;
+    margin-left: 17px;
+}
+
+.separator {
+    float: left;
+    width: 1px;
+    height: 27px;
+    margin: 27px 10px 0 10px;
+    background: #3f3f3f;
+}
+
+.toolbar ul li {
+    float: left;
+    background: black;
+    margin: 17px 2px 0 2px;
+}
+
+.toolbar ul li a {
+    display: block;
+    width: 47px;
+    height: 47px;
+}
+
+.toolbar ul li a.active,
+.toolbar ul li a:hover {
+    background-color: #474747;
+    color: white;
+}
+
+.orientation-p {
+    background: url(Images/orientation-p.png) center center no-repeat;
+}
+
+.orientation-l {
+    background: url(Images/orientation-l.png) center center no-repeat;
+}
+
+.size-half {
+    background: url(Images/size-half.png) center center no-repeat;
+}
+
+.size-one {
+    background: url(Images/size-one.png) center center no-repeat;
+}
+        
+.device-chooser [data-device="win8Phone"] {
+    -ms-word-wrap: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.device-chooser > li {
+    position: relative;
+}
+
+.device-chooser > li > a:hover {
+    background-color: #90A4AE!important;
+    color: white;
+}
+
+.device-chooser .sub-menu {
+    background: #90A4AE;
+    left: 220px;
+    top: 0px;
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    z-index: 10001;
+}
+
+.device-chooser .sub-menu li a {
+    padding: 5px 5px 5px 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px!important;
+}
+
+.device-chooser .sub-menu li a.active {
+    color: black;
+}
+
+.device-chooser .sub-menu li a:hover {
+    color: black;
+}
+
+.android, .ios-7, .ios-6 {
+    text-decoration: none;
+    font-size: 13px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 45px;
+}
+
+.toolbar ul li a.ios-7 {
+    width: 57px;
+}

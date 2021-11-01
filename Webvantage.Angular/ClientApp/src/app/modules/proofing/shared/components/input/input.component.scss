@@ -1,0 +1,14 @@
+@import '../../../theme/colors';
+@import '../../../theme/mixins/font';
+
+.k-textbox,
+.k-textbox:focus,
+.k-textbox:focus-within,
+.k-textbox.k-state-focus,
+.k-textbox.k-state-focused {
+  @include font-base(14px);
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  color: $black;
+}

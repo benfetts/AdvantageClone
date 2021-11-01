@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[JOB_SLS_TEAM] (
+    [JOB_NUMBER]        INT             NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT        NOT NULL,
+    [SLS_TEAM_CODE]     VARCHAR (6)     NOT NULL,
+    [SLS_TEAM_PCT]      DECIMAL (7, 3)  NULL,
+    [SLS_TEAM_AMT]      DECIMAL (14, 2) NULL
+);
+

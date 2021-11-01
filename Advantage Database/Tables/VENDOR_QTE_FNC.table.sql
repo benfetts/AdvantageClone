@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[VENDOR_QTE_FNC] (
+    [ESTIMATE_NUMBER]   INT         NOT NULL,
+    [EST_COMPONENT_NBR] SMALLINT    NOT NULL,
+    [VENDOR_QTE_NBR]    INT         NOT NULL,
+    [EST_FNC_CODE]      VARCHAR (6) NOT NULL,
+    [FNC_NOTES]         TEXT        NULL
+);
+

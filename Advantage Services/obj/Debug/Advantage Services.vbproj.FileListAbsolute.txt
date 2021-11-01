@@ -1,0 +1,17 @@
+C:\TFS_ROOT\Advantage\Production\Output\Resources\AmericanXLG.xlg
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAFF.aff
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAlphabet.txt
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Services.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Services.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Services.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Services.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\Advantage Services.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\AdvantageServices.AdvantageServicesFormOld.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\AdvantageServices.AdvantageServicesForm.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\AdvantageServices.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\Advantage Services.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\Advantage Services.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\Advantage Services.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\Advantage Services.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\Advantage Services.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Services\obj\Debug\Advantage Services.pdb

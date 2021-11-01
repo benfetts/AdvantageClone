@@ -1,0 +1,51 @@
+<ng-container *ngIf="buttons">
+  <div #rightPanel class="action-area"
+       [ngClass]="isExpanded() ? 'action-area-open' : 'action-area-closed'"
+       [style.width.px]="isExpanded() ? openWidth : closeWidth">
+    <div *ngIf="isExpanded()" class="panelbar-wrapper">
+      <proof-collapsible-panel></proof-collapsible-panel>
+    </div>
+    <div kendoTooltip tooltipClass="tooltip" class="action-area_buttons"
+         [ngClass]="isExpanded() ? 'action-area_buttons-open' : 'action-area_buttons'"
+         [style.width.px]="closeWidth">
+      <div class="blue">
+        <!--[class.blue]="buttons.expanded.selected"-->
+        <div kendoTooltip>
+          <button kendoButton
+                  [title]="tooltips.feedback"
+                  [selected]="buttons.expanded.selected"
+                  [imageUrl]="buttons.expanded.imageUrl"
+                  (click)="selectedButton(buttons.expanded.name)"></button>
+        </div>
+        <div kendoTooltip>
+          <button kendoButton
+                  title="Comments"
+                  [selected]="buttons.feedback.selected"
+                  [imageUrl]="buttons.feedback.imageUrl"
+                  (click)="selectedButton(buttons.feedback.name)">
+            <!--<img *ngIf="!buttons.feedback.selected" class="notification" src="assets/icons/red-circle.svg" />-->
+          </button>
+        </div>
+        <div kendoTooltip>
+          <button kendoButton
+                  [title]="tooltips.review"
+                  [selected]="buttons.review.selected"
+                  [imageUrl]="buttons.review.imageUrl"
+                  (click)="selectedButton(buttons.review.name)"></button>
+        </div>
+        <div kendoTooltip>
+          <button kendoButton
+                  [title]="tooltips.assetInfo"
+                  [selected]="buttons.assetInfo.selected"
+                  [imageUrl]="buttons.assetInfo.imageUrl"
+                  (click)="selectedButton(buttons.assetInfo.name)"></button>
+        </div>
+          <!--<button kendoButton
+    [title]="tooltips.assetInfo"
+    [selected]="buttons.search.selected"
+    [imageUrl]="buttons.search.imageUrl"
+    (click)="selectedButton(buttons.search.name)"></button>-->
+        </div>
+      </div>
+  </div>
+</ng-container>

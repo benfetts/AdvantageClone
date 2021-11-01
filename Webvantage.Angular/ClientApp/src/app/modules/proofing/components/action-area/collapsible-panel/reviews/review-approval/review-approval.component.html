@@ -1,0 +1,71 @@
+<div class="approval-container">
+
+  <kendo-dialog title="Please confirm"
+                *ngIf="opened"
+                (close)="close('cancel')"
+                [minWidth]="250"
+                [width]="450">
+    <p style="margin: 30px; text-align: center;">
+      You have unsaved annotations, if you continue they will be lost, do you wish to continue?
+    </p>
+    <kendo-dialog-actions>
+      <button kendoButton (click)="close('no')">No</button>
+      <button kendoButton (click)="close('yes')" ng-class="blue">Yes</button>
+    </kendo-dialog-actions>
+  </kendo-dialog>
+
+  <div class="approval-options">
+    <button class="approval-options-buttons" (click)="Approve(defer)" kendoButton [disabled]="disabled">{{approvalReviewButtons.defer.label}}</button>
+    <button class="approval-options-buttons" (click)="Approve(accept)" kendoButton [disabled]="disabled">{{approvalReviewButtons.approve.label}}</button>
+    <button class="approval-options-buttons" (click)="Approve(reject)" kendoButton [disabled]="disabled">{{approvalReviewButtons.reject.label}}</button>
+  </div>
+  <div [ngStyle]="{'height': heightScroll}">
+    <ng-scrollbar [ngClass]="contentMoreThanHeight ? 'scrollbar-feedback-approval' : 'scrollbar-feedback-approval-margin'">
+      <div class="approval-header">
+        <ng-container *ngFor="let column of approvalTableHeader">
+          <div>{{column}}</div>
+        </ng-container>
+      </div>
+      <div #elementsContainer>
+        <ng-container *ngFor="let group of reviewers">
+          <div class="approval-reviewers" [ngClass]="{'alert-not-current-state' : !group.group.isCurrentState,'alert-current-state' : group.group.isCurrentState, 'alert-external-reviewer' : group.group.alertStateId == 999}">{{group.group.alertStateName || '' | uppercase}}</div>
+          <ng-container *ngFor="let review of group.reviewers">
+            <div class="approval-reviewers">
+              <div class="name" title="{{review.employeeName}}">{{review.employeeName}}</div>
+              <div [ngSwitch]="review.proofingStatusID">
+                <div title="Approved" *ngSwitchCase="'1'">
+                  <!--<span title="Approved" class="status-approved">A</span>-->
+                  <div kendoTooltip>
+                    <button class="approval" title="Approved"
+                            kendoButton
+                            [imageUrl]="'assets/icons/approved.svg'"></button>
+                  </div>
+                </div>
+
+                <div title="Rejected" *ngSwitchCase="'2'">
+                  <div kendoTooltip>
+                    <!--<span title="Rejected" class="status-rejected">R</span>-->
+                    <button class="status" title="Rejected"
+                            kendoButton
+                            [imageUrl]="'assets/icons/Red_X.svg'"></button>
+                  </div>
+                </div>
+
+                <div title="Deferred" *ngSwitchCase="'3'">
+                  <div kendoTooltip>
+
+                    <!--<span title="Deferred" class="status-deferred">D</span>-->
+                    <button class="status" title="Deferred"
+                            kendoButton
+                            [imageUrl]="'assets/icons/dash.svg'"></button>
+                  </div>
+                </div>
+              </div>
+              <div class="date">{{review.approveDate | date: 'short'}}</div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </ng-scrollbar>
+  </div>
+</div>

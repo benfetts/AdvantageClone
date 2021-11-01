@@ -1,0 +1,13 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_GetTrafficPhaseDesc]
+@PhaseID Int
+AS
+
+	SELECT  ISNULL(PHASE_DESC, '') AS DESCRIPTION
+		FROM   TRAFFIC_PHASE WITH(NOLOCK)
+		WHERE TRAFFIC_PHASE_ID = @PhaseID
+	 
+
+
+

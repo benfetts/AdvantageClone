@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Fields xmlns="http://tempuri.org/DirectTime_Fields.xsd">
+	<Field>
+		<Order>1</Order>
+		<Name>Employee Code</Name>
+		<Description>Employee Code</Description>
+	</Field>
+	<Field>
+		<Name>Employee Name</Name>
+		<Description>Employee Name</Description>
+		<Order>2</Order>
+	</Field>
+  <Field>
+    <Name>Employee Office</Name>
+    <Description>Employee Office</Description>
+    <Order>3</Order>
+  </Field>
+	<Field>
+		<Name>Department Code</Name>
+		<Description>Department Code</Description>
+		<Order>4</Order>
+	</Field>
+	<Field>
+		<Name>Department Name</Name>
+		<Description>Department Name</Description>
+		<Order>5</Order>
+	</Field>
+	<Field>
+		<Name>Client Code</Name>
+		<Description>Client Code</Description>
+		<Order>6</Order>
+	</Field>
+	<Field>
+		<Name>Client Name</Name>
+		<Description>Client Name</Description>
+		<Order>7</Order>
+	</Field>
+	<Field>
+		<Name>JDivision Code</Name>
+		<Description>Division Code</Description>
+		<Order>8</Order>
+	</Field>
+	<Field>
+		<Name>Division Name</Name>
+		<Description>Division Name</Description>
+		<Order>9</Order>
+	</Field>
+	<Field>
+		<Name>Product Code</Name>
+		<Description>Product Code</Description>
+		<Order>10</Order>
+	</Field>
+	<Field>
+		<Name>Product Description</Name>
+		<Description>Product Description</Description>
+		<Order>11</Order>
+	</Field>
+	<Field>
+		<Name>Product Category Code</Name>
+		<Description>Product category Code</Description>
+		<Order>12</Order>
+	</Field>
+	<Field>
+		<Name>Product Category Description</Name>
+		<Description>Product Category Description</Description>
+		<Order>13</Order>
+	</Field>
+    <Field>
+        <Name>Campaign Code</Name>
+        <Description>Campaign Code</Description>
+        <Order>14</Order>
+    </Field>
+    <Field>
+        <Name>Campaign Name</Name>
+        <Description>Campaign Name</Description>
+        <Order>15</Order>
+    </Field>
+	<Field>
+		<Name>Job Number</Name>
+		<Description>Job Number</Description>
+		<Order>16</Order>
+	</Field>
+	<Field>
+		<Name>Job Description</Name>
+		<Description>Job Description</Description>
+		<Order>17</Order>
+	</Field>
+  <Field>
+    <Name>Job Office</Name>
+    <Description>Job Office</Description>
+    <Order>18</Order>
+  </Field>
+	<Field>
+		<Name>Sales Class</Name>
+		<Description>Sales Class</Description>
+		<Order>19</Order>
+	</Field>
+	<Field>
+		<Name>Job Component Number</Name>
+		<Description>Job Component Number</Description>
+		<Order>20</Order>
+	</Field>
+	<Field>
+		<Name>Job Component Description</Name>
+		<Description>Job Component Description</Description>
+		<Order>21</Order>
+	</Field>
+	<Field>
+		<Name>Account Executive</Name>
+		<Description>Account Executive</Description>
+		<Order>22</Order>
+	</Field>
+	<Field>
+		<Name>Job Type</Name>
+		<Description>Job Type</Description>
+		<Order>23</Order>
+	</Field>
+	<Field>
+		<Name>Function Code</Name>
+		<Description>Function Code</Description>
+		<Order>24</Order>
+	</Field>
+	<Field>
+		<Name>Function Description</Name>
+		<Description>Function Description</Description>
+		<Order>25</Order>
+	</Field>
+	<Field>
+		<Name>Date</Name>
+		<Description>Date</Description>
+		<Order>26</Order>
+	</Field>
+	<Field>
+		<Name>Hours</Name>
+		<Description>Hours</Description>
+		<Order>27</Order>
+	</Field>
+	<Field>
+		<Name>Amount</Name>
+		<Description>Amount</Description>
+		<Order>28</Order>
+	</Field>
+	<Field>
+		<Name>Mark Up/Down</Name>
+		<Description>Mark Up/Down</Description>
+		<Order>29</Order>
+	</Field>
+	<Field>
+		<Name>Resale Tax</Name>
+		<Description>Resale Tax</Description>
+		<Order>30</Order>
+	</Field>
+	<Field>
+		<Name>Total Amount</Name>
+		<Description>Total Amount</Description>
+		<Order>31</Order>
+	</Field>
+	<Field>
+		<Name>Total Amount w/ Tax</Name>
+		<Description>Total Amount w/ Tax</Description>
+		<Order>32</Order>
+	</Field>
+	<Field>
+		<Name>Non Billable Flag</Name>
+		<Description>Non Billable Flag</Description>
+		<Order>33</Order>
+	</Field>
+	<Field>
+		<Name>Billed Flag</Name>
+		<Description>Billed Flag</Description>
+		<Order>34</Order>
+	</Field>
+    <Field>
+        <Name>Function Heading</Name>
+        <Description>Function Heading</Description>
+        <Order>35</Order>
+    </Field>
+    <Field>
+        <Name>Time Comments</Name>
+        <Description>Time Comments</Description>
+        <Order>36</Order>
+    </Field>
+    
+</Fields>

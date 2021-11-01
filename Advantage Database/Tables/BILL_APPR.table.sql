@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[BILL_APPR] (
+    [BA_ID]       INT           NOT NULL,
+    [BA_BATCH_ID] INT           NULL,
+    [CREATE_USER] VARCHAR (100) NULL,
+    [CREATE_DATE] SMALLDATETIME NULL
+);
+

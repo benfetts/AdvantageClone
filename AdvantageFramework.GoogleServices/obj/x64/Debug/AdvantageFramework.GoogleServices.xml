@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+AdvantageFramework.GoogleServices
+</name>
+</assembly>
+<members>
+<member name="T:AdvantageFramework.GoogleServices.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:AdvantageFramework.GoogleServices.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:AdvantageFramework.GoogleServices.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:AdvantageFramework.GoogleServices.Methods.AuthorizeAll(System.String,System.String,System.Boolean,System.String)">
+ <summary>
+ Use this method to Authorize ALL Google Services (gmail + calendar sync)
+ </summary>
+ <param name="ConnectionString"></param>
+ <param name="EmployeeCode"></param>
+ <returns></returns>
+</member>
+<member name="M:AdvantageFramework.GoogleServices.Methods.DeauthorizeAll(System.String,System.String,System.Boolean,System.String)">
+ <summary>
+ Use this method to Deauthorize ALL Google Services (gmail + calendar sync)
+ </summary>
+ <param name="ConnectionString"></param>
+ <param name="EmployeeCode"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

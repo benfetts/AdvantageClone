@@ -1,0 +1,67 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CAMPAIGN_DOCUMENTSInsert]
+(
+	@DOCUMENT_ID int,
+	@CMP_IDENTIFIER int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [CAMPAIGN_DOCUMENTS]
+	(
+		[DOCUMENT_ID],
+		[CMP_IDENTIFIER]
+	)
+	VALUES
+	(
+		@DOCUMENT_ID,
+		@CMP_IDENTIFIER
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

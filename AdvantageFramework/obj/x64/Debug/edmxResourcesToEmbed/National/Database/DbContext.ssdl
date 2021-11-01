@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MarketBreak">
+    <Key>
+      <PropertyRef Name="MARKET_BREAK_ID" />
+    </Key>
+    <Property Name="MARKET_BREAK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NTI_ID" Type="int" Nullable="false" />
+    <Property Name="SECTION" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="CATEGORY" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IS_DELUXE" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalAudienceCorrection">
+    <Key>
+      <PropertyRef Name="NATIONAL_AUDIENCE_CORRECTION_ID" />
+    </Key>
+    <Property Name="NATIONAL_AUDIENCE_CORRECTION_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MARKET_BREAK_ID" Type="int" Nullable="false" />
+    <Property Name="DATA_TYPE" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="STREAM" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="TIME_TYPE" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="NETWORK" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="AUDIENCE_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="PROGRAM_CODE" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TRACKAGE_CODE" Type="smallint" Nullable="false" />
+    <Property Name="START_DATE" Type="datetime" Nullable="false" />
+    <Property Name="COMMERCIAL_PROGRAM_DURATION" Type="int" Nullable="false" />
+    <Property Name="EVENT_DURATION" Type="int" Nullable="false" />
+    <Property Name="PROGRAM_TOTAL_DURATION" Type="int" Nullable="false" />
+    <Property Name="PROGRAM_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="TRACKAGE_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="EPISODE_NAME" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="NIELSEN_DAYPART" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="PROGRAM_TYPE" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="IS_CORRECTION" Type="bit" Nullable="false" />
+    <Property Name="IS_BREAKOUT" Type="bit" Nullable="false" />
+    <Property Name="IS_SPECIAL" Type="bit" Nullable="false" />
+    <Property Name="IS_REPEAT" Type="bit" Nullable="false" />
+    <Property Name="IS_PREMIERE" Type="bit" Nullable="false" />
+    <Property Name="IS_DNA" Type="bit" Nullable="false" />
+    <Property Name="IS_MULTICAST" Type="bit" Nullable="false" />
+    <Property Name="IS_COMPLEX" Type="bit" Nullable="false" />
+    <Property Name="IS_SHORT_DURATION" Type="bit" Nullable="false" />
+    <Property Name="IS_VARIOUS_METADATA" Type="bit" Nullable="false" />
+    <Property Name="IS_VARIOUS_TIMES" Type="bit" Nullable="false" />
+    <Property Name="IS_GAPPED" Type="bit" Nullable="false" />
+    <Property Name="IS_WEEKLY_AVERAGE" Type="bit" Nullable="false" />
+    <Property Name="SYNDICATOR_INFO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TELECAST_NUMBER" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="COVERAGE_SAMPLE_IDENTIFICATION" Type="int" Nullable="false" />
+    <Property Name="TOTAL_PROGRAM_INDICATOR" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="DAYS_OF_WEEK_INDICATOR" Type="char" MaxLength="7" Nullable="false" />
+    <Property Name="STATION_COUNT" Type="int" Nullable="false" />
+    <Property Name="HEADEND_COUNT" Type="int" Nullable="false" />
+    <Property Name="COVERAGE_PERCENT" Type="smallint" Nullable="false" />
+    <Property Name="PROGRAM_HUT" Type="int" Nullable="false" />
+    <Property Name="HOUSEHOLD_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_2TO5_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_6TO8_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_9TO11_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_12TO14_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_15TO17_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_18TO20_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_21TO24_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_25TO29_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_30TO34_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_35TO39_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_40TO44_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_45TO49_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_50TO54_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_55TO64_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_65PLUS_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_2TO5_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_6TO8_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_9TO11_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_12TO14_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_15TO17_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_18TO20_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_21TO24_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_25TO29_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_30TO34_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_35TO39_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_40TO44_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_45TO49_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_50TO54_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_55TO64_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_65PLUS_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_18TO20_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_21TO24_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_25TO34_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_35TO44_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_45TO49_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_50TO54_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_55PLUS_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_25TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_35TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_55PLUS_PUT" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalAudience">
+    <Key>
+      <PropertyRef Name="NATIONAL_AUDIENCE_ID" />
+    </Key>
+    <Property Name="NATIONAL_AUDIENCE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NATIONAL_DATA_ID" Type="int" customannotation:Index="{ Name: IX_NATIONAL_DATA_ID, Order: 0 }" Nullable="false" />
+    <Property Name="TIME_TYPE" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="NETWORK" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="AUDIENCE_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="COMMERCIAL_PROGRAM_DURATION" Type="int" Nullable="false" />
+    <Property Name="EVENT_DURATION" Type="int" Nullable="false" />
+    <Property Name="PROGRAM_TOTAL_DURATION" Type="int" Nullable="false" />
+    <Property Name="PROGRAM_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="TRACKAGE_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="EPISODE_NAME" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="PROGRAM_CODE" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TRACKAGE_CODE" Type="smallint" Nullable="false" />
+    <Property Name="NIELSEN_DAYPART" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="PROGRAM_TYPE" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="IS_CORRECTION" Type="bit" Nullable="false" />
+    <Property Name="IS_BREAKOUT" Type="bit" Nullable="false" />
+    <Property Name="IS_SPECIAL" Type="bit" Nullable="false" />
+    <Property Name="IS_REPEAT" Type="bit" Nullable="false" />
+    <Property Name="IS_PREMIERE" Type="bit" Nullable="false" />
+    <Property Name="IS_DNA" Type="bit" Nullable="false" />
+    <Property Name="IS_MULTICAST" Type="bit" Nullable="false" />
+    <Property Name="IS_COMPLEX" Type="bit" Nullable="false" />
+    <Property Name="IS_SHORT_DURATION" Type="bit" Nullable="false" />
+    <Property Name="IS_VARIOUS_METADATA" Type="bit" Nullable="false" />
+    <Property Name="IS_VARIOUS_TIMES" Type="bit" Nullable="false" />
+    <Property Name="IS_GAPPED" Type="bit" Nullable="false" />
+    <Property Name="IS_WEEKLY_AVERAGE" Type="bit" Nullable="false" />
+    <Property Name="SYNDICATOR_INFO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TELECAST_NUMBER" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="COVERAGE_SAMPLE_IDENTIFICATION" Type="int" Nullable="false" />
+    <Property Name="TOTAL_PROGRAM_INDICATOR" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="DAYS_OF_WEEK_INDICATOR" Type="char" MaxLength="7" Nullable="false" />
+    <Property Name="STATION_COUNT" Type="int" Nullable="false" />
+    <Property Name="HEADEND_COUNT" Type="int" Nullable="false" />
+    <Property Name="COVERAGE_PERCENT" Type="smallint" Nullable="false" />
+    <Property Name="PROGRAM_HUT" Type="int" Nullable="false" />
+    <Property Name="HOUSEHOLD_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_2TO5_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_6TO8_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_9TO11_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_12TO14_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_15TO17_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_18TO20_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_21TO24_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_25TO29_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_30TO34_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_35TO39_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_40TO44_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_45TO49_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_50TO54_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_55TO64_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_65PLUS_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_2TO5_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_6TO8_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_9TO11_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_12TO14_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_15TO17_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_18TO20_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_21TO24_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_25TO29_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_30TO34_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_35TO39_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_40TO44_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_45TO49_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_50TO54_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_55TO64_AUD" Type="int" Nullable="false" />
+    <Property Name="MALES_65PLUS_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_18TO20_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_21TO24_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_25TO34_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_35TO44_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_45TO49_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_50TO54_AUD" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_55PLUS_AUD" Type="int" Nullable="false" />
+    <Property Name="FEMALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_25TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_35TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_55PLUS_PUT" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalData">
+    <Key>
+      <PropertyRef Name="NATIONAL_DATA_ID" />
+    </Key>
+    <Property Name="NATIONAL_DATA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DATA_TYPE" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="STREAM" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="IS_PRELIMINARY" Type="bit" Nullable="false" />
+    <Property Name="START_DATE" Type="datetime" Nullable="false" />
+    <Property Name="END_DATE" Type="datetime" Nullable="false" />
+    <Property Name="YEAR" Type="int" Nullable="false" />
+    <Property Name="IS_HISPANIC" Type="bit" Nullable="false" />
+    <Property Name="MARKET_BREAK_ID" Type="int" Nullable="false" />
+    <Property Name="IS_CORRECTION" Type="bit" Nullable="false" />
+    <Property Name="IS_PBS_NSS" Type="bit" Nullable="false" />
+    <Property Name="FILENAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalHutputCorrection">
+    <Key>
+      <PropertyRef Name="NATIONAL_HUTPUT_CORRECTION_ID" />
+    </Key>
+    <Property Name="NATIONAL_HUTPUT_CORRECTION_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MARKET_BREAK_ID" Type="int" Nullable="false" />
+    <Property Name="DATA_TYPE" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="STREAM" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="HUTPUT_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="FEED_PATTERN" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="START_DATE" Type="datetime" Nullable="false" />
+    <Property Name="HOUSEHOLD_HUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_25TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_35TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_55PLUS_PUT" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalHutput">
+    <Key>
+      <PropertyRef Name="NATIONAL_HUTPUT_ID" />
+    </Key>
+    <Property Name="NATIONAL_HUTPUT_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NATIONAL_DATA_ID" Type="int" customannotation:Index="{ Name: IX_NATIONAL_DATA_ID, Order: 0 }" Nullable="false" />
+    <Property Name="HUTPUT_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="FEED_PATTERN" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="HOUSEHOLD_HUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="FEMALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_2TO5_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_6TO8_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_9TO11_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_12TO14_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_15TO17_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_25TO29_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_30TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_35TO39_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_40TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_55TO64_PUT" Type="int" Nullable="false" />
+    <Property Name="MALES_65PLUS_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_18TO20_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_21TO24_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_25TO34_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_35TO44_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_45TO49_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_50TO54_PUT" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_55PLUS_PUT" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalNetwork">
+    <Key>
+      <PropertyRef Name="NATIONAL_NETWORK_ID" />
+    </Key>
+    <Property Name="NATIONAL_NETWORK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODE" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="VENUE_CODE" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalUniverse">
+    <Key>
+      <PropertyRef Name="NATIONAL_UNIVERSE_ID" />
+    </Key>
+    <Property Name="NATIONAL_UNIVERSE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YEAR" Type="int" Nullable="false" />
+    <Property Name="IS_HISPANIC" Type="bit" Nullable="false" />
+    <Property Name="MARKET_BREAK_ID" Type="int" customannotation:Index="{ Name: IX_MARKET_BREAK_ID, Order: 0 }" Nullable="false" />
+    <Property Name="HOUSEHOLD_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_2TO5_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_6TO8_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_9TO11_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_12TO14_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_15TO17_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_18TO20_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_21TO24_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_25TO29_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_30TO34_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_35TO39_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_40TO44_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_45TO49_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_50TO54_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_55TO64_UE" Type="int" Nullable="false" />
+    <Property Name="FEMALES_65PLUS_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_2TO5_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_6TO8_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_9TO11_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_12TO14_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_15TO17_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_18TO20_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_21TO24_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_25TO29_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_30TO34_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_35TO39_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_40TO44_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_45TO49_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_50TO54_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_55TO64_UE" Type="int" Nullable="false" />
+    <Property Name="MALES_65PLUS_UE" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_18TO20_UE" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_21TO24_UE" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_25TO34_UE" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_35TO44_UE" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_45TO49_UE" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_50TO54_UE" Type="int" Nullable="false" />
+    <Property Name="WORKING_WOMEN_55PLUS_UE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalYear">
+    <Key>
+      <PropertyRef Name="NATIONAL_YEAR_ID" />
+    </Key>
+    <Property Name="NATIONAL_YEAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YEAR" Type="int" Nullable="false" />
+    <Property Name="START_DATE" Type="datetime" Nullable="false" />
+    <Property Name="END_DATE" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProgramType">
+    <Key>
+      <PropertyRef Name="PROGRAM_TYPE_ID" />
+    </Key>
+    <Property Name="PROGRAM_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CODE" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SHORT_NAME" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="NationalAudience_NationalData">
+    <End Role="NationalData" Type="Self.NationalData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NationalAudience" Type="Self.NationalAudience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalData">
+        <PropertyRef Name="NATIONAL_DATA_ID" />
+      </Principal>
+      <Dependent Role="NationalAudience">
+        <PropertyRef Name="NATIONAL_DATA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NationalHutput_NationalData">
+    <End Role="NationalData" Type="Self.NationalData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NationalHutput" Type="Self.NationalHutput" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalData">
+        <PropertyRef Name="NATIONAL_DATA_ID" />
+      </Principal>
+      <Dependent Role="NationalHutput">
+        <PropertyRef Name="NATIONAL_DATA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NationalUniverse_MarketBreak">
+    <End Role="MarketBreak" Type="Self.MarketBreak" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="NationalUniverse" Type="Self.NationalUniverse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MarketBreak">
+        <PropertyRef Name="MARKET_BREAK_ID" />
+      </Principal>
+      <Dependent Role="NationalUniverse">
+        <PropertyRef Name="MARKET_BREAK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CodeFirstDatabase">
+    <EntitySet Name="MarketBreak" EntityType="Self.MarketBreak" Schema="dbo" Table="MARKET_BREAK" />
+    <EntitySet Name="NationalAudienceCorrection" EntityType="Self.NationalAudienceCorrection" Schema="dbo" Table="NATIONAL_AUDIENCE_CORRECTION" />
+    <EntitySet Name="NationalAudience" EntityType="Self.NationalAudience" Schema="dbo" Table="NATIONAL_AUDIENCE" />
+    <EntitySet Name="NationalData" EntityType="Self.NationalData" Schema="dbo" Table="NATIONAL_DATA" />
+    <EntitySet Name="NationalHutputCorrection" EntityType="Self.NationalHutputCorrection" Schema="dbo" Table="NATIONAL_HUTPUT_CORRECTION" />
+    <EntitySet Name="NationalHutput" EntityType="Self.NationalHutput" Schema="dbo" Table="NATIONAL_HUTPUT" />
+    <EntitySet Name="NationalNetwork" EntityType="Self.NationalNetwork" Schema="dbo" Table="NATIONAL_NETWORK" />
+    <EntitySet Name="NationalUniverse" EntityType="Self.NationalUniverse" Schema="dbo" Table="NATIONAL_UNIVERSE" />
+    <EntitySet Name="NationalYear" EntityType="Self.NationalYear" Schema="dbo" Table="NATIONAL_YEAR" />
+    <EntitySet Name="ProgramType" EntityType="Self.ProgramType" Schema="dbo" Table="PROGRAM_TYPE" />
+    <AssociationSet Name="NationalAudience_NationalData" Association="Self.NationalAudience_NationalData">
+      <End Role="NationalData" EntitySet="NationalData" />
+      <End Role="NationalAudience" EntitySet="NationalAudience" />
+    </AssociationSet>
+    <AssociationSet Name="NationalHutput_NationalData" Association="Self.NationalHutput_NationalData">
+      <End Role="NationalData" EntitySet="NationalData" />
+      <End Role="NationalHutput" EntitySet="NationalHutput" />
+    </AssociationSet>
+    <AssociationSet Name="NationalUniverse_MarketBreak" Association="Self.NationalUniverse_MarketBreak">
+      <End Role="MarketBreak" EntitySet="MarketBreak" />
+      <End Role="NationalUniverse" EntitySet="NationalUniverse" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

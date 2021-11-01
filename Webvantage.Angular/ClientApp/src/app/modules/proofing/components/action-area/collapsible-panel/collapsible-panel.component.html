@@ -1,0 +1,170 @@
+<ng-container *ngIf="(rightPanelButtons | async) as rightPanelButtons">
+
+  <kendo-dialog title="Please confirm"
+                *ngIf="opened"
+                (close)="close('cancel')"
+                [minWidth]="250"
+                [width]="450">
+    <p style="margin: 30px; text-align: center;">
+      You have unsaved annotations, if you continue they will be lost, do you wish to continue?
+    </p>
+    <kendo-dialog-actions>
+      <button kendoButton (click)="close('no')">No</button>
+      <button kendoButton (click)="close('yes')" ng-class="blue">Yes</button>
+    </kendo-dialog-actions>
+  </kendo-dialog>
+
+  <div class="panel">
+
+    <ng-container *ngIf="rightPanelButtons.feedback.selected">
+      <!--<proof-feedbacks></proof-feedbacks>-->
+      <markup-comment-view style="height:100%"></markup-comment-view>
+    </ng-container>
+
+    <ng-container *ngIf="rightPanelButtons.review.selected">
+      <proof-reviews class="review"></proof-reviews>
+    </ng-container>
+
+    <ng-container *ngIf="rightPanelButtons.assetInfo.selected">
+      <proof-asset-info class="asset-info"></proof-asset-info>
+    </ng-container>
+
+    <ng-container *ngIf="rightPanelButtons.search.selected">
+      <proof-search></proof-search>
+    </ng-container>
+
+    <ng-container *ngIf="rightPanelButtons.expanded.selected">
+      <div>
+        <div title="" expanded="true">
+          <div>
+            <div class="title">
+              <div class="left">
+                <img class="title-burger" src="assets/icons/icon-header-side-panel.svg" />
+                Feedback
+              </div>
+              <!--<div class="right" [class.flag-checked]="flag.flagChecked">
+                <img class="title-icons" src="assets/icons/filter.svg"/>
+                <img class="title-icons flag"
+                     [src]="flag.imageUrl"
+                     (click)="onFlagClick($event)"/>
+              </div>-->
+            </div>
+          </div>
+
+          <div>
+            <div class="description-text-area">
+              <proof-description [(description)]="description"></proof-description>
+            </div>
+          </div>
+
+        </div>
+
+        <div title="" expanded="true">
+          <div>
+            <div class="title">
+              <div class="left">
+                <img class="title-burger" src="assets/icons/icon-header-side-panel.svg" />
+                Tools Options
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="selectedAnnotation">
+            <ng-container *ngIf="selectedAnnotation.markupTypeId === 7">
+              <div>
+                <div class="tools-options-container" style="height:60px">
+                  <div class="tools-options-buttons">
+                    <ng-container *ngFor="let editTextButton of editTextButtons">
+                      <button class="tools-options-button"
+                              [title]="editTextButton.name"
+                              kendoButton
+                              [imageUrl]="editTextButton.icon"
+                              (click)="setSelectedButton(editTextButton)">
+                      </button>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="tools-optionts-container">
+                  <div class="size-tools">
+                    <img src="assets/icons/side-panel/size-tools.svg" />
+                    <proof-slider isSidePanel="true" [(value)]="ToolSize" (changeValue)="changeSize($event)" min="1.0" max="50.0" [disabled]="disabled"></proof-slider>
+                    <p>1</p>
+                  </div>
+                  <div class="size-tools">
+                    <img class="opacity" src="assets/icons/side-panel/opacity.svg" />
+                    <proof-slider isSidePanel="true" [(value)]="ToolOpacity" (changeValue)="changeOpacity($event)" min=".01" max="1" smallStep=".01" [disabled]="disabled"></proof-slider>
+                    <p>0</p>
+                  </div>
+                </div>
+                <div class="color-picker-container">
+                  <proof-color-picker class="color-picker" (ColorChange)="ColorChange($event)" [disabled]="disabled"></proof-color-picker>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="selectedAnnotation.markupTypeId < 7">
+              <div>
+                <div class="tools-optionts-container">
+                  <div class="size-tools">
+                    <img src="assets/icons/side-panel/size-tools.svg" />
+                    <proof-slider isSidePanel="true" [(value)]="ToolSize" (changeValue)="changeSize($event)" min="1.0" max="50.0" [disabled]="disabled"></proof-slider>
+                    <p>{{ToolSize}}</p>
+                  </div>
+                  <div class="size-tools">
+                    <img class="opacity" src="assets/icons/side-panel/opacity.svg" />
+                    <proof-slider isSidePanel="true" [(value)]="ToolOpacity" (changeValue)="changeOpacity($event)" min=".01" max="1" smallStep=".01" [disabled]="disabled"></proof-slider>
+                    <p>{{ToolOpacity | number:'1.2'}}</p>
+                  </div>
+                </div>
+                <div class="color-picker-container">
+                  <proof-color-picker class="color-picker" (ColorChange)="ColorChange($event)" [disabled]="disabled"></proof-color-picker>
+                </div>
+              </div>
+            </ng-container>
+
+            <!--<ng-container *ngIf="centralPanelButtons.selection.selected">
+              <ng-template kendoPanelBarContent>
+                <div class="tools-optionts-container">
+                  <div class="size-tools">
+                    <img src="assets/icons/side-panel/size-tools.svg"/>
+                    <proof-slider isSidePanel="true"></proof-slider>
+                    <p>1</p>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+
+            <ng-container *ngIf="centralPanelButtons.pasteImage.selected">
+              <ng-template kendoPanelBarContent>
+                <div class="tools-optionts-container">
+                  <proof-drag-and-drop-image></proof-drag-and-drop-image>
+                  <div class="tools-optionts-container">
+                    <div class="size-tools">
+                      <img src="assets/icons/side-panel/size-tools.svg"/>
+                      <proof-slider isSidePanel="true"></proof-slider>
+                      <p>1</p>
+                    </div>
+                    <div class="size-tools">
+                      <img class="opacity" src="assets/icons/side-panel/opacity.svg"/>
+                      <proof-slider isSidePanel="true"></proof-slider>
+                      <p>0</p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>-->
+            <!--<ng-container *ngIf="centralPanelButtons.link.selected">
+              <ng-template kendoPanelBarContent>
+                <div class="tools-optionts-container">
+                  <proof-drag-and-drop-link></proof-drag-and-drop-link>
+                </div>
+              </ng-template>
+            </ng-container>-->
+
+          </ng-container>
+
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</ng-container>

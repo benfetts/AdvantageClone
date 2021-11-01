@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="AdvantageAPI.Vendor">
+    <Position X="8.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QASAgIAAAGoAgQAKABEiQAQghAoEAUAhAAEAJgAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Vendor.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.VendorRepresentative">
+    <Position X="3.25" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACACAEAAgAAAAAAIABAkCAUCAAoAAAAIAIAABkAAIAg=</HashCode>
+      <FileName>APIDbContext\Entities\VendorRepresentative.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Client">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAEAAAQYAYkAIgCQQgAAIAABICEQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Client.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Division">
+    <Position X="3.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAgEAAAAIAIEAAgCQQgAAIAAAACAQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Division.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.VendorCategory">
+    <Position X="0.5" Y="6.5" Width="2.5" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VendorCategory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Product">
+    <Position X="5.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AIIBAAAgEAAAQcAQEEMwAQQgQAAAEBIgEYAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Product.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Market">
+    <Position X="0.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Market.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.SalesClass">
+    <Position X="0.5" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\SalesClass.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ValidationMessage">
+    <Position X="5.75" Y="9.75" Width="2.25" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ValidationMessage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Campaign">
+    <Position X="5.75" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAEAAgAAQAAAAAAEAAAIAAAAAAIAA=</HashCode>
+      <FileName>APIDbContext\Entities\Campaign.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

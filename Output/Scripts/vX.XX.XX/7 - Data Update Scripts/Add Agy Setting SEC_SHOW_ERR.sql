@@ -1,0 +1,15 @@
+IF NOT EXISTS (SELECT AGY.AGY_SETTINGS_VALUE FROM AGY_SETTINGS AGY WITH(NOLOCK) WHERE AGY.AGY_SETTINGS_CODE = 'SEC_SHOW_ERR')
+BEGIN
+
+	INSERT INTO AGY_SETTINGS WITH(ROWLOCK) (AGY_SETTINGS_CODE, 
+											AGY_SETTINGS_DESC, 
+											AGY_SETTINGS_VALUE, 
+											AGY_SETTINGS_DEF, 
+											DTYPE_ID) 
+									VALUES ('SEC_SHOW_ERR', 
+											'Show error details on error page', 
+											1, 
+											1, 
+											16);
+
+END

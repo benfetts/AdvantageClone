@@ -1,0 +1,13 @@
+<div data-options="dxView : { name: 'desktop', title: 'Desktop' } ">
+    <div data-bind="dxTabs: desktopNavBar">
+    </div>
+    <div style="padding:30px; width: 100%; text-align:center; height: 100%; vertical-align: middle;">
+        <div data-bind="dxButton: alertsButton" class="landing-page-button"></div>
+        <br />
+        <br />
+        <div data-bind="dxButton: assignmentsButton" class="landing-page-button"></div>
+        <br />
+        <br />
+        <div data-bind="dxButton: scheduleButton" class="landing-page-button"></div>
+    </div>
+</div>

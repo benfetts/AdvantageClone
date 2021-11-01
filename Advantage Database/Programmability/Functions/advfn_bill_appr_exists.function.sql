@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION dbo.advfn_bill_appr_exists ( @ba_batch_id integer )  	RETURNS bit  	AS  	BEGIN  		RETURN ( CASE WHEN EXISTS( SELECT * FROM dbo.BILL_APPR WHERE BA_BATCH_ID = @ba_batch_id ) THEN 1 ELSE 0 END )  	END

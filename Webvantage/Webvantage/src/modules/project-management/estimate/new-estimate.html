@@ -1,0 +1,199 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+    <require from="aurelia-kendoui-bridge/editor/editor"></require>
+
+    <div class="wv-search-container row">
+        <!--<h3>
+            Expenses
+            <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">New Expense</button>
+        </h3>-->
+        <style>
+
+            .search-wrapper.search-wrapper-expanded {
+                width: 500px;
+            }
+
+            .search-wrapper {
+                width: 200px;
+                -webkit-transition: width 1s ease-in-out;
+                -moz-transition: width 1s ease-in-out;
+                transition: width 1s ease-in-out;
+            }
+        </style>
+        <div class="col-xs-12">
+
+            <div data-role="toolbar" class="wv-bar k-toolbar k-widget k-toolbar-resizable">
+                <ul class="list-inline" style="margin-bottom: 0;">
+                    <li style="padding: 0;">
+                        <a href="#" role="button" class="wv-icon-button k-button k-normal"><span class="wvi wvi-floppy-disk"></span></a>
+                    </li>
+                    <li style="padding: 0;">
+                        <a href="#" role="button" title="Refresh" class="wv-icon-button k-button k-normal"><span class="wvi wvi-copy"></span></a>
+                    </li>
+                    <li style="padding: 0;">
+                        <a href="#" role="button" title="Add New" class="wv-icon-button k-button k-normal">New Component</a>
+                    </li>
+                    <li style="padding: 0;">
+                        <a href="#" role="button" title="Delete" class="wv-icon-button k-button k-normal">Delete Estimate</a>
+                    </li>
+                    <li style="padding: 0;">
+                        <a href="#" role="button" title="" class="k-button k-normal">Delete Component</a>
+                    </li>
+
+                    <li style="padding: 0;">
+                        <a href="#" role="button" title="Refresh" class="wv-icon-button k-button k-normal"><span class="wvi wvi-refresh"></span></a>
+                    </li>
+
+                </ul>
+            </div>
+            <ak-panel-bar k-expand-mode="single">
+                <li class="k-state-active">
+                    <span class="k-link k-state-selected">Estimate Information</span>
+                    <div style="padding: 10px;">
+                        <div class="wv-form-spacing">
+                            <label>Office</label>
+                            <ak-multiselect k-class="required">
+                                <select multiple="multiple" data-placeholder="Office">
+                                    <option>Asheville</option>
+                                    <option>Charlotte</option>
+                                    <option>Denver</option>
+                                </select>
+                            </ak-multiselect>
+                        </div>
+                        <div class="wv-form-spacing">
+                            <label>Client</label>
+                            <ak-multiselect k-class="required">
+                                <select multiple="multiple" data-placeholder="Client">
+                                    <option>abc - All Balanced Sports</option>
+                                    <option>abita - Abita Beverage Service</option>
+                                    <option>agcynb - Agency New Business</option>
+                                </select>
+                            </ak-multiselect>
+                        </div>
+                        <div class="wv-form-spacing">
+                            <label>Division</label>
+                            <ak-multiselect k-class="required">
+                                <select multiple="multiple" data-placeholder="Division">
+                                    <option>abc - All Balanced Sports</option>
+                                    <option>abita - Abita Beverage Service</option>
+                                    <option>agcynb - Agency New Business</option>
+                                </select>
+                            </ak-multiselect>
+                        </div>
+                        <div class="wv-form-spacing">
+                            <label>Campaign ID</label>
+                            <input type="text"
+                                   class="form-control" />
+                        </div>
+                        <div class="wv-form-spacing">
+                            <label>Alert Group</label>
+                            <ak-drop-down-list k-value.two-way="capSize">
+                                <select style="width: 100%;" data-placeholder="[None]">
+                                    <option>ABC</option>
+                                    <option>A-Team</option>
+                                    <option>Accounting</option>
+                                    <option>AETemp</option>
+                                    <option>Gen</option>
+                                    <option>HHf -Standard Team</option>
+                                </select>
+                            </ak-drop-down-list>
+                        </div>
+                        <div class="wv-form-spacing" style="margin-top: 10px;">
+                            <div class="wv-form-spacing">
+                                <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                                <label class="k-checkbox-label" for="showClosedCB">
+                                    Assigned to Jobs and Orders
+                                </label>
+                            </div>
+                            <div class="wv-form-spacing">
+                                <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                                <label class="k-checkbox-label" for="showClosedCB">
+                                    Overall
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Comments
+                    <div class="wv-form-spacing">
+                        <textarea ak-rich-editor="k-resizable.bind: resizable"
+                                  k-on-change.delegate="onChange($event.detail)"
+                                  k-on-select.delegate="onSelect($event.detail)"
+                                  k-on-execute.delegate="onExecute($event.detail)"
+                                  k-on-paste.delegate="onPaste ($event.detail)"
+                                  style="height:360px">
+
+                                &lt;p&gt;&lt;img src=&quot;http://demos.telerik.com/kendo-ui/content/web/editor/kendo-ui-web.png&quot; alt=&quot;Editor for ASP.NET MVC logo&quot; style=&quot;display:block;margin-left:auto;margin-right:auto;&quot; /&gt;&lt;/p&gt;
+                                &lt;p&gt;
+                                    Kendo UI Editor allows your users to edit HTML in a familiar, user-friendly way.&lt;br /&gt;
+                                    In this version, the Editor provides the core HTML editing engine, which includes basic text formatting, hyperlinks, lists,
+                                    and image handling. The widget &lt;strong&gt;outputs identical HTML&lt;/strong&gt; across all major browsers, follows
+                                    accessibility standards and provides API for content manipulation.
+                                &lt;/p&gt;
+                                &lt;p&gt;Features include:&lt;/p&gt;
+                                &lt;ul&gt;
+                                    &lt;li&gt;Text formatting &amp; alignment&lt;/li&gt;
+                                    &lt;li&gt;Bulleted and numbered lists&lt;/li&gt;
+                                    &lt;li&gt;Hyperlink and image dialogs&lt;/li&gt;
+                                    &lt;li&gt;Cross-browser support&lt;/li&gt;
+                                    &lt;li&gt;Identical HTML output across browsers&lt;/li&gt;
+                                    &lt;li&gt;Gracefully degrades to a &lt;code&gt;textarea&lt;/code&gt; when JavaScript is turned off&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;p&gt;
+                                    Read &lt;a href=&quot;http://docs.telerik.com/kendo-ui&quot;&gt;more details&lt;/a&gt; or send us your
+                                    &lt;a href=&quot;http://www.telerik.com/forums/&quot;&gt;feedback&lt;/a&gt;!
+                                &lt;/p&gt;
+                         </textarea>
+                    </div>
+
+                </li>
+                <li>
+                    Footer Comments
+                    <div class="col-xs-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Beginning Date</label>
+                                <input id="datepicker" ak-datepicker="k-value.bind:'5/02/2018'" style="width: 100%" />
+                            </div>
+                            <div class="form-group">
+                                <label>Ending Date</label>
+                                <input id="datepicker" ak-datepicker="k-value.bind:'5/02/2018'" style="width: 100%" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Total Billing</label>
+                                <input class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Other Information
+                </li>
+                <li>
+                    Quotes
+                    <div class="wv-form-spacing">
+                        <textarea class="form-control">
+    
+                </textarea>
+                    </div>
+
+                </li>
+                <li>
+                    Associated Jobs and Media Orders
+                </li>
+                <li>
+                    Assign Jobs and Media Orders
+                </li>
+            </ak-panel-bar>
+        </div>
+</template>

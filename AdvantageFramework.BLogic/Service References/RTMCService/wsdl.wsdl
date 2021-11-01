@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://rtmc.tchek.com/v2/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="wsHttpEndpoint_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportRefKeyIdentifier />
+            <sp:MustSupportRefIssuerSerial />
+            <sp:MustSupportRefThumbprint />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://rtmc.tchek.com/v2/" location="https://webservicestest.tchek.com/RTMC/v5/RTMCService.svc/wsdl?wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="wsHttpEndpoint" type="i0:IRTMCService">
+    <wsp:PolicyReference URI="#wsHttpEndpoint_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBPDDLList">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetBPDDLList" style="document" />
+      <wsdl:input name="GetBPDDLListRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBPDDLListResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetECDDLList">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetECDDLList" style="document" />
+      <wsdl:input name="GetECDDLListRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetECDDLListResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditECDDLListItem">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/EditECDDLListItem" style="document" />
+      <wsdl:input name="EditECDDLListItemRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="EditECDDLListItemResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditBPDDLListItem">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/EditBPDDLListItem" style="document" />
+      <wsdl:input name="EditBPDDLListItemRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="EditBPDDLListItemResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewBPCustomDDLListItem">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/AddNewBPCustomDDLListItem" style="document" />
+      <wsdl:input name="AddNewBPCustomDDLListItemRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddNewBPCustomDDLListItemResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewECCustomDDLListItem">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/AddNewECCustomDDLListItem" style="document" />
+      <wsdl:input name="AddNewECCustomDDLListItemRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddNewECCustomDDLListItemResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditDDL">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/EditDDL" style="document" />
+      <wsdl:input name="EditDDLRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="EditDDLResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableBalance">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetAvailableBalance" style="document" />
+      <wsdl:input name="GetAvailableBalanceRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAvailableBalanceResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayments">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetPayments" style="document" />
+      <wsdl:input name="GetPaymentsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPaymentsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCreditInfo">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetCreditInfo" style="document" />
+      <wsdl:input name="GetCreditInfoRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCreditInfoResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupAdd">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardGroupAdd" style="document" />
+      <wsdl:input name="CardGroupAddRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardGroupAddResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupDel">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardGroupDel" style="document" />
+      <wsdl:input name="CardGroupDelRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardGroupDelResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupInq">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardGroupInq" style="document" />
+      <wsdl:input name="CardGroupInqRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardGroupInqResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardGroupUpd">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardGroupUpd" style="document" />
+      <wsdl:input name="CardGroupUpdRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardGroupUpdResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInq">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardInq" style="document" />
+      <wsdl:input name="CardInqRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardInqResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardUpd">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardUpd" style="document" />
+      <wsdl:input name="CardUpdRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardUpdResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardActivity">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardActivity" style="document" />
+      <wsdl:input name="VirtualCardActivityRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VirtualCardActivityResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardCreate">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardCreate" style="document" />
+      <wsdl:input name="VirtualCardCreateRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VirtualCardCreateResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardInquire">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardInquire" style="document" />
+      <wsdl:input name="VirtualCardInquireRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VirtualCardInquireResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardInquireCardCTS">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardInquireCardCTS" style="document" />
+      <wsdl:input name="VirtualCardInquireCardCTSRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VirtualCardInquireCardCTSResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VirtualCardUpdate">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VirtualCardUpdate" style="document" />
+      <wsdl:input name="VirtualCardUpdateRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VirtualCardUpdateResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolAdd">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolAdd" style="document" />
+      <wsdl:input name="DriverPoolAddRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DriverPoolAddResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolDel">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolDel" style="document" />
+      <wsdl:input name="DriverPoolDelRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DriverPoolDelResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolInq">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolInq" style="document" />
+      <wsdl:input name="DriverPoolInqRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DriverPoolInqResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DriverPoolUpd">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/DriverPoolUpd" style="document" />
+      <wsdl:input name="DriverPoolUpdRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DriverPoolUpdResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolAdd">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolAdd" style="document" />
+      <wsdl:input name="VehiclePoolAddRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VehiclePoolAddResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolDel">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolDel" style="document" />
+      <wsdl:input name="VehiclePoolDelRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VehiclePoolDelResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolInq">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolInq" style="document" />
+      <wsdl:input name="VehiclePoolInqRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VehiclePoolInqResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VehiclePoolUpd">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/VehiclePoolUpd" style="document" />
+      <wsdl:input name="VehiclePoolUpdRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VehiclePoolUpdResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryMemo">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryMemo" style="document" />
+      <wsdl:input name="TransactionDeliveryMemoRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TransactionDeliveryMemoResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryCleared">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryCleared" style="document" />
+      <wsdl:input name="TransactionDeliveryClearedRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TransactionDeliveryClearedResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryCharge">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryCharge" style="document" />
+      <wsdl:input name="TransactionDeliveryChargeRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TransactionDeliveryChargeResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryReject">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryReject" style="document" />
+      <wsdl:input name="TransactionDeliveryRejectRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TransactionDeliveryRejectResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionDeliveryDetails">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/TransactionDeliveryDetails" style="document" />
+      <wsdl:input name="TransactionDeliveryDetailsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TransactionDeliveryDetailsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardOrderNew">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardOrderNew" style="document" />
+      <wsdl:input name="CardOrderNewRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardOrderNewResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardOrderReissue">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardOrderReissue" style="document" />
+      <wsdl:input name="CardOrderReissueRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardOrderReissueResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardOrderReissueActivate">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/CardOrderReissueActivate" style="document" />
+      <wsdl:input name="CardOrderReissueActivateRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CardOrderReissueActivateResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomDDLS">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetCustomDDLS" style="document" />
+      <wsdl:input name="GetCustomDDLSRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCustomDDLSResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewDDLListItem">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/AddNewDDLListItem" style="document" />
+      <wsdl:input name="AddNewDDLListItemRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddNewDDLListItemResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDDLListItem">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/DeleteDDLListItem" style="document" />
+      <wsdl:input name="DeleteDDLListItemRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeleteDDLListItemResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDDL">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/DeleteDDL" style="document" />
+      <wsdl:input name="DeleteDDLRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DeleteDDLResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomDDLList">
+      <soap12:operation soapAction="http://rtmc.tchek.com/v2/IRTMCService/GetCustomDDLList" style="document" />
+      <wsdl:input name="GetCustomDDLListRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCustomDDLListResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

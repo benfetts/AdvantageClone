@@ -1,0 +1,127 @@
+﻿
+<template>
+
+    <style>
+        .search-wrapper.search-wrapper-expanded {
+            width: 500px;
+            height: 100vh;
+        }
+
+        .search-wrapper {
+            width: 200px;
+            -webkit-transition: width .3s ease-in-out;
+            -moz-transition: width .3s ease-in-out;
+            transition: width .3s ease-in-out;
+        }
+
+        .wv-grid {
+            position: relative;
+        }
+        /*sidebar*/
+        .wv-sidebar {
+            height: 100vh;
+            float: left;
+        }
+        .k-grouping-header {
+            display: none!important;
+        }
+
+        .wv-content {
+     
+        
+            /*max-width: 1600px;*/
+   
+        }
+
+            .wv-content .wv-k-grid {
+                padding: 4px;
+            }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .wv-search .k-dropdown ul li:nth-of-type(even) {
+            background: #F5F5F5 !important;
+            background-color: #F5F5F5 !important;
+        }
+
+        .k-list li:nth-of-type(even) {
+            background: #F5F5F5;
+            background-color: #F5F5F5;
+        }
+
+        .wv-k-grid tr:nth-of-type(even) {
+            background: #F5F5F5;
+            background-color: #F5F5F5;
+        }
+
+        .k-grid-content {
+            min-height: 20px;
+        }
+        .wv-grid > .sidebar {
+            min-height: 900px;
+            height: 100%;
+        }
+
+        .wv-k-grid .k-grid-header {
+            padding: 0 !important;
+        }
+
+        .wv-k-grid .k-grid-content {
+            overflow-y: visible;
+        }
+
+
+        .k-virtual-content {
+            overflow-y: auto;
+        }
+       
+
+    </style>
+
+    <div class="wv-search-container row">
+        <div class="wv-grid col-xs-12">
+            <div class="wv-sidebar-new sidebar col-md-2">
+                <div class="row">
+                    <div class="wv-search col-xs-12">
+                        <!-- <h5>${title}&nbsp;<a class="" title="reset search criteria"><span class="glyphicon glyphicon-refresh pull-right"></span></a></h5>-->
+                        <slot name="searchOptions"></slot>
+                        <h6 if.bind="showAdvancedFilters">
+                            <span class="glyphicon glyphicon-filter"></span>&nbsp;Advanced Filters
+                            <button class="btn btn-link" type="button" aubs-btn-checkbox="state.bind: collapsed">
+                                <span class="k-icon k-i-arrow-60-down"></span>
+                            </button>
+                        </h6>
+                        <div class="advanced-search wv-form-spacing" aubs-collapse="collapsed.bind: collapsed" style="height: auto; min-height: 20px;">
+                            <slot name="advancedSearchOptions"></slot>
+                        </div>
+                        <!--<div class="wv-form-spacing row" style="margin-bottom: 120px;">
+                            <button type="button" class="btn btn-primary pull-right" style="margin-top: 5px;" click.delegate="onSearch()">Search</button>
+                        </div>-->
+                    </div>
+                </div>
+                
+            </div>
+            <div class="wv-content col-md-10 ">
+                <div data-role="toolbar" class="wv-bar k-toolbar k-widget k-toolbar-resizable">
+                    <slot name="toolbar"></slot>
+                    <!--<div class="pull-right">
+                        <div if.bind="showSearch" class="input-group search-wrapper ${searchInputExpanded ? 'search-wrapper-expanded' : ''} ">
+                            <input type="text" class="form-control" placeholder="Search Keywords" focus.trigger="expandSearch()" blur.trigger="collapseSearch()">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="section">
+                    <slot name="content"></slot>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</template>

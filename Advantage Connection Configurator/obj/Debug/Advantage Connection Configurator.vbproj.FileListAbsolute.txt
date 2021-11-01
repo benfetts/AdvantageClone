@@ -1,0 +1,13 @@
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Connection Configurator.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Connection Configurator.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Connection Configurator.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Connection Configurator.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage Connection Configurator.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage_Connection_Configurator.AdvantageConnectionConfiguratorForm.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage_Connection_Configurator.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage Connection Configurator.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage Connection Configurator.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage Connection Configurator.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage Connection Configurator.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage Connection Configurator.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Connection Configurator\obj\Debug\Advantage Connection Configurator.pdb

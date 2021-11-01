@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[TRAFFIC_FNC] (
+    [TRF_CODE]     VARCHAR (10)   NOT NULL,
+    [TRF_DESC]     VARCHAR (40)   NULL,
+    [TRF_ORDER]    SMALLINT       NULL,
+    [TRF_DAYS]     SMALLINT       NULL,
+    [TRF_HRS]      DECIMAL (8, 2) NULL,
+    [TRF_INACTIVE] SMALLINT       NULL,
+    [FNC_CODE]     VARCHAR (6)    NULL,
+    [MILESTONE]    SMALLINT       DEFAULT (0) NOT NULL,
+    [DEF_STATUS]   VARCHAR (10)   NULL,
+    [DEF_TRF_ROLE] VARCHAR (6)    NULL
+);
+

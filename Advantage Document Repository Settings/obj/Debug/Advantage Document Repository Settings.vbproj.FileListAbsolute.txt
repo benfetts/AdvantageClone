@@ -1,0 +1,14 @@
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Document Repository Settings.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Document Repository Settings.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Document Repository Settings.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Document Repository Settings.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\Advantage Document Repository Settings.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\AdvantageDocumentRepositorySettings.AdvantageDocumentRepositorySettingsForm.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\AdvantageDocumentRepositorySettings.LoginDialog.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\AdvantageDocumentRepositorySettings.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\Advantage Document Repository Settings.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\Advantage Document Repository Settings.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\Advantage Document Repository Settings.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\Advantage Document Repository Settings.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\Advantage Document Repository Settings.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Document Repository Settings\obj\Debug\Advantage Document Repository Settings.pdb

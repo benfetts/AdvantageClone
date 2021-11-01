@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[INVOICE_RPT_DATES] (
+    [RPT_DATES_ID]       INT           IDENTITY (1, 1) NOT NULL,
+    [USER_ID]            VARCHAR (100) NOT NULL,
+    [INVOICE_TYPE]       VARCHAR (1)   NOT NULL,
+    [CL_CODE]            VARCHAR (6)   NOT NULL,
+    [AR_INV_NBR]         INT           NOT NULL,
+    [AR_INV_SEQ]         INT           NULL,
+    [CONTACT_EMAIL]      VARCHAR (50)  NULL,
+    [INVOICE_PRINT_DATE] SMALLDATETIME NULL,
+    [INVOICE_EMAIL_DATE] SMALLDATETIME NULL
+);
+

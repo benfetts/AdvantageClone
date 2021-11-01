@@ -1,0 +1,37 @@
+﻿
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_GetAPID]
+@Vendor varchar(6),
+@APInvoice varchar(20)
+AS
+
+SELECT DISTINCT AP_ID, AP_INV_VCHR, ISNULL(AP_DESC,'') AS AP_DESC, AP_INV_DATE, ISNULL(VN_FRL_EMP_CODE,'') AS VN_FRL_EMP_CODE, ISNULL(VN_NAME, '') AS VN_NAME
+FROM AP_HEADER 
+	INNER JOIN VENDOR ON AP_HEADER.VN_FRL_EMP_CODE = VENDOR.VN_CODE
+WHERE VN_FRL_EMP_CODE = @Vendor AND AP_INV_VCHR = @APInvoice  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

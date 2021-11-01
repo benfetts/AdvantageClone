@@ -1,0 +1,42 @@
+<div data-options="dxView : { name: 'home', title: 'ADVANTAGE' } ">
+    <div class="home-view" data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div id="scrollView" data-bind="dxScrollView: scrollView">
+            <div data-bind="dxLoadPanel: { message: loadPanelMessage, visible: loadPanelVisible, shading: false }"></div>
+            <div data-bind="dxclick: infoPanelClick" style="background-color:#00BCD4;height:133px;margin: -3px 0px 0px 0px;">
+                <div class="user-container dx-clearfix">
+                    <div class="user-photo-container">
+                        <img class="user-photo" data-bind="attr: { src: userPhoto }" />
+                    </div>
+                    <div class="user-info">
+                        <div class="home-user-name" data-bind="text: userName"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;background-color:#0097A7;height:50px;" data-bind="dxclick: dateClick">
+                <div style="font-size: 18px;padding: 13px 0px 0px 0px;color:#FFFFFF;" data-bind="text: displayDate"></div>
+            </div>
+            <div style="padding: 14px 10px 0px 10px;">
+
+                <div class="panel-container" data-bind="dxAction: { view: 'alert_list', settings: {source: 0} }" style="border-bottom: solid 1px #cecece;">
+                    <div class="panel-title">Assignments:</div>
+                    <div class="panel-value" data-bind="text: assignmentCount"></div>
+                </div>
+                <div class="panel-container" data-bind="dxAction: { view: 'alert_list', settings: {source: 1} }" style="border-bottom: solid 1px #cecece;">
+                    <div class="panel-title">Alerts:</div>
+                    <div class="panel-value" data-bind="text: alertCount"></div>
+                </div>
+                <div class="panel-container" data-bind="dxclick: guageClick" style="border-bottom: solid 1px #cecece;">
+                    <div class="panel-title">Timesheet:</div>
+                    <div class="panel-value" data-bind="text: totalHoursToday"></div>
+                </div>
+                <div class="panel-container" data-bind="dxclick: expensesClick" style="border-bottom: solid 1px #cecece;">
+                    <div class="panel-title">Expenses:</div>
+                    <div class="panel-value" data-bind="text: expenseCount"></div>
+                </div>
+                <!--<div class="panel-container" data-bind="dxclick: guageClick">
+                    <div style="width:100%;" data-bind="dxLinearGauge: totalHoursGuage"></div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>

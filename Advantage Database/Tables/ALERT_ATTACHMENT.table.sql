@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ALERT_ATTACHMENT] (
+    [ATTACHMENT_ID]  INT           IDENTITY (1, 1) NOT NULL,
+    [ALERT_ID]       INT           NOT NULL,
+    [USER_CODE]      VARCHAR (100) NOT NULL,
+    [GENERATED_DATE] SMALLDATETIME NOT NULL,
+    [EMAILSENT]      BIT           DEFAULT (0) NOT NULL,
+    [DOCUMENT_ID]    INT           NOT NULL
+);
+

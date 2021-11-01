@@ -1,0 +1,599 @@
+﻿@import 'base.less';
+
+@fontSize: 13px;
+@inputFontSize: 12px;
+@inputHeight: 34px;
+@iconBgSize: 24px;
+@iconBtnSize: 30px;
+@iconSize: 18px;
+@iconOffset: 2px;
+@addonBtnPadding: 4px;
+@tbCode6Width: 95px;
+@tbCode10Width: 135px;
+@tbCode60Width: 250px;
+@tbCode60FullWidth: 390px;
+@tdCheckboxSmallHeader: 25px;
+@tdCode6: 90px;
+@tdCombo6: 80px;
+@tdCombo15: 110px;
+@tdCombo40: 265px;
+@tdDateSmall: 110px;
+@tdIconCol: 24px;
+@tdNumber3: 40px;
+@tdNumber4-2: 60px;
+@tdText40: 160px;
+@tdTextXL: 150px;
+// app specific
+@psPostedHours: 50px;
+@psPctComplete: 75px;
+@psDisbHours: 65px;
+@psDefHours: 60px;
+@psAddByLink: 75px;
+@psMoveLR: 55px;
+@psPredInput: 95px;
+@psPredList: 75px;
+@cardImgHeight: 30px;
+@inputPaddingLeft: 4px;
+@ejToolbarIconHeight: 20px;
+@ejRteToolbarIconMarginTop: 3px;
+@formGroupLabelWidth: 100px;
+@kendoToolbarIconHeight: 22px;
+@kendoMultiSelectTokenHeight: 17px;
+@kendoMultiSelectCloseTopOffset: 3px;
+@kendoEditorToolHeight: 23px;
+@kendoEditorToolLineHeight: 20px;
+@toolbarButtonSquare: 30px;
+@toolbarButtonPaddingX: 3px;
+
+html, body, table, th, td {
+    font-family: @fontFamily !important;
+    font-size: @fontSize !important;
+    color: @color !important;
+}
+
+h1, .h1 {
+    .h1();
+}
+
+h2, .h2 {
+    .h2();
+}
+
+h3, .h3 {
+    .h3();
+}
+
+h4, .h4 {
+    .h4();
+}
+
+h5, .h5 {
+    .h5();
+}
+
+h6, .h6 {
+    .h6();
+}
+
+.wv-icon-link {
+
+    & > img {
+        height: @fontSize + 10;
+    }
+}
+
+.wv-box, .wv-card {
+
+    .wv-header {
+        line-height: @boxHeaderHeight;
+        font-size: @fontSize + 1;
+    }
+
+    .wv-header, .wv-footer {
+
+        .action-link {
+            min-width: @boxHeaderHeight;
+            line-height: @lineHeight * 2;
+        }
+    }
+}
+
+.wv-card {
+    .fontSize(@fontSize);
+
+    .title {
+        .fontSize(@fontSize + 1);
+    }
+
+    .assignees {
+
+        & > img, & > .rounded {
+            width: @cardImgHeight;
+            height: @cardImgHeight;
+            line-height: @cardImgHeight;
+        }
+    }
+
+    .wv-footer {
+        line-height: @boxHeaderHeight;
+    }
+}
+
+.k-button,
+.k-input[type="number"],
+.k-input[type="text"],
+.k-picker-wrap .k-input,
+.k-textbox,
+.k-textbox > input,
+.k-datepicker,
+.k-dropdown,
+.k-numerictextbox {
+    font-size: @inputFontSize !important;
+    font-family: @inputFontFamily !important;
+}
+
+.icon-background {
+    height: @iconBgSize;
+    width: @iconBgSize;
+}
+
+.icon-image {
+    width: @iconSize;
+    height: @iconSize;
+    bottom: @iconOffset !important;
+}
+
+.icon-btn {
+    width: @iconBtnSize;
+    height: @iconBtnSize;
+}
+
+.addon-btn {
+    padding-right: @addonBtnPadding;
+    padding-left: @addonBtnPadding;
+}
+
+#main_toolbar {
+
+    .k-button {
+        line-height: @kendoToolbarIconHeight;
+    }
+
+    .k-toolbar {
+
+        .k-button {
+
+            &.k-button-icon {
+                & > img {
+                    height: @kendoToolbarIconHeight;
+                }
+            }
+        }
+    }
+}
+
+/*
+    Editors
+    -------------------
+    * numbers denote text/numeric length (code-6 = code input 6 characters, number-4-2 = numeric input 4 digits 2 decimals, etc)
+    * cb = checkbox
+    * combo = dropdown/combobox
+    * text = text input, use -xl for multiline
+    * date = date picker
+    * number = numeric input
+*/
+
+.k-textbox.code-6, .k-widget.code-6 {
+    width: @tbCode6Width !important;
+}
+
+.k-textbox.code-10, .k-widget.code-10 {
+    width: @tbCode10Width !important;
+}
+
+.k-textbox.text-60 {
+    width: @tbCode60Width !important;
+}
+
+.k-textbox.text-60-full {
+    width: @tbCode60FullWidth !important;
+}
+
+/* 
+    Grid Editor Columns 
+    -------------------
+    * Widths define inner content width
+    * numbers denote text/numeric length (code-6 = code input 6 characters, number-4-2 = numeric input 4 digits 2 decimals, etc)
+    * cb = checkbox
+    * combo = dropdown/combobox
+    * text = text input, use -xl for multiline
+    * date = date picker
+    * number = numeric input
+
+*/
+
+th.cb-sm-hdr, td.cb-sm-hdr { /* no or small header */
+    width: @tdCheckboxSmallHeader;
+}
+
+th.code-6, td.code-6 {
+    width: @tdCode6;
+}
+
+th.combo-6, td.combo-6 {
+    width: @tdCombo6;
+}
+
+th.combo-15, td.combo-15 {
+    width: @tdCombo15;
+}
+
+th.combo-40, td.combo-40 {
+    width: @tdCombo40;
+}
+
+th.date-sm, td.date-sm {
+    width: @tdDateSmall;
+}
+
+th.icon-col, td.icon-col {
+    width: @tdIconCol;
+}
+
+th.number-3, td.number-3 {
+    width: @tdNumber3;
+}
+
+th.number-4-2, td.number-4-2 {
+    width: @tdNumber4-2;
+}
+
+th.text-40, td.text-40 {
+    width: @tdText40;
+}
+
+th.text-xl, td.text-xl {
+    width: @tdTextXL;
+}
+
+/*
+    Application Specific 
+*/
+
+/* Project Schedule = @ps */
+th.posted-hrs, td.posted-hrs {
+    width: @psPostedHours;
+}
+
+th.pct-comp, td.pct-comp {
+    width: @psPctComplete;
+}
+
+th.disb-hrs, td.disb-hrs {
+    width: @psDisbHours;
+}
+
+th.def-hrs, td.def-hrs {
+    width: @psDefHours;
+}
+
+th.add-by-link, td.add-by-link {
+    width: @psAddByLink;
+}
+
+th.move-lr, td.move-lr {
+    width: @psMoveLR;
+}
+
+th.pred-input, td.pred-input {
+    width: @psPredInput;
+}
+
+th.pred-list, td.pred-list {
+    width: @psPredList;
+}
+
+.e-kanban .e-kanbanheader .e-headercelldiv .e-headerOpen,
+.ej-kanban-hdr {
+    font-family: @fontFamily !important;
+    font-size: @fontSize !important;
+}
+
+.e-ddl, .e-datewidget, .e-textbox, .e-atc {
+    height: @inputHeight;
+}
+
+.e-ddl.e-rte-format-ddl {
+    height: @inputHeight !important;
+}
+
+span.e-split.e-widget {
+    height: @inputHeight !important;
+}
+
+.e-toolbar > ul > li {
+    padding: 3px;
+}
+
+.e-rte-toolbar > .e-toolbar > ul {
+    height: 29px !important;
+}
+
+.e-rte .e-toolbar .e-icon.e-toolbar-res-arrow:before {
+    margin-top: 7px;
+}
+
+.e-input, .e-tooltipbox, .e-btn, .e-time-popup, .e-datepicker.e-calendar,
+.e-menu, .e-uploadbox .e-file-name-txt, .e-uploadbox .e-selectpart, .e-uploadbox .e-uploadbtn,
+.e-uploadbox .e-uploadclosebtn, .e-waitpopup-pane .e-text, .e-tagcloud, .e-toolbar, .e-progressbar,
+.e-scale .e-tick .tick-value, .e-datetime-popup .e-dt-button, .e-grid, .e-ejinputtext, .e-pager,
+.e-fileexplorer, .e-textbox, .e-textarea {
+    font-size: @inputFontSize;
+}
+
+.e-atc .e-autocomplete {
+    font-size: @inputFontSize;
+    font-family: @fontFamily;
+}
+
+.e-ddl .e-input, .e-ddl .e-input[readonly], .e-ddl-popup, .e-ddl .e-options {
+    font-size: @fontSize - 1;
+    font-family: @fontFamily;
+}
+
+.e-datepicker .e-header, .e-datetime-popup .e-timecontainer .e-header {
+    font-size: @fontSize + 2;
+}
+
+input.e-input, input[type="text"].e-input, .e-input.e-placeholder, .e-textbox, .e-textarea {
+    padding-left: @inputPaddingLeft;
+}
+
+.e-atc-popup, .e-atc .e-in-wrap, .e-atc .e-in-wrap .e-input, .e-acrdn-scroller, .e-acrdn .e-select,
+.e-chkbox-wrap div > span, .e-datepicker.e-popup, .e-datewidget .e-in-wrap, .e-datewidget .e-in-wrap .e-input,
+.e-daterangepicker-popup.e-popup, .e-daterangewidget .e-in-wrap, .e-daterangewidget .e-in-wrap .e-input, .e-drpbuttons,
+.e-daterangepicker-popup.e-popup .e-custom-dateranges li, .e-datetime-popup.e-popup, .e-datetime-popup .e-dt-button,
+.e-datetime-wrap .e-in-wrap, .e-datetime-wrap .e-in-wrap .e-input, .e-dialog-wrap, .e-dialog-wrap > .e-header .e-dialog-icon,
+.e-ddl-popup.e-popup, .e-ddl .e-in-wrap, .e-ddl .e-in-wrap .e-input, .e-numeric .e-in-wrap, .e-numeric .e-in-wrap .e-input,
+.e-percent .e-in-wrap, .e-percent .e-in-wrap .e-input, .e-currency .e-in-wrap, .e-currency .e-in-wrap .e-input, .e-mask .e-in-wrap,
+.e-mask .e-in-wrap .e-input, .e-textbox, .e-textarea, .e-menu, .e-tab, .e-time-popup.e-popup, .e-timewidget .e-in-wrap,
+.e-timewidget .e-in-wrap .e-input, .e-toolbar, .e-toolbar .e-tooltxt, .e-upload-box .e-selectpart, .e-upload-box .e-btn,
+.e-treeview .e-text, .e-fullrow-wrap .e-fullrow, .e-dragedNode, .e-splitbutton, .e-fileexplorer .e-tilenode, .e-rte,
+.e-rte.e-dialog .e-inputtext, .e-btn.e-select, .e-progressbar, .e-check-wrap .e-chk-inact, .e-check-wrap .e-chk-act, .e-check-wrap .e-chk-indeter {
+    border-radius: @inputBorderRadius;
+}
+
+.e-rte-toolbar-icon, .e-background-color, .e-font, .e-rte-footericon, .e-rte-footer .e-resize-handle {
+    font-size: @fontSize + 1;
+}
+
+.e-rte .e-background-color, .e-rteItem-backgroundColor .e-background-color, .e-rte .e-font, .e-rteItem-fontColor .e-font, .e-rte-toolbar-icon {
+    height: @ejToolbarIconHeight;
+    width: @ejToolbarIconHeight;
+}
+
+.e-rte-toolbar-icon:before {
+    margin-top: @ejRteToolbarIconMarginTop;
+}
+
+.e-rte.e-rte-wrapper .e-ul.e-horizontal {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.e-responsive-toolbar > .e-horizontal.e-ul {
+    height: 32px;
+    border-right: none;
+}
+
+.k-autocomplete, .k-block, .k-calendar .k-link, .k-calendar td, .k-calendar-container, .k-colorpicker, .k-combobox, .k-datepicker,
+.k-datetimepicker, .k-drag-clue, .k-dropdown, .k-dropdown-wrap, .k-editor-inline, .k-grid .k-filter-options, .k-grouping-header .k-group-indicator,
+.k-inline-block, .k-list-container, .k-multiselect, .k-notification, .k-numeric-wrap, .k-numerictextbox, .k-picker-wrap, .k-slider-selection,
+.k-slider-track, .k-split-button, .k-textbox, .k-tile, .k-timepicker, .k-tooltip, .k-touch-scrollbar, .k-treeview .k-in, .k-upload, .k-window,
+.k-window-action, .k-window-titleless .k-window-content, .k-editor {
+    border-radius: @inputBorderRadius;
+}
+
+.k-widget.k-combobox, .k-widget.k-datepicker {
+    width: 143px;
+}
+
+.k-combobox .k-dropdown-wrap, .k-datepicker .k-picker-wrap, .k-dropdown .k-dropdown-wrap {
+    height: @inputHeight - 2;
+
+    .k-input {
+        height: 100%;
+        padding: 0px;
+        line-height: @inputHeight - 2;
+    }
+
+    .k-select {
+        min-height: @inputHeight - 1;
+        max-height: @inputHeight - 1;
+        line-height: @inputHeight - 3;
+    }
+}
+
+.k-autocomplete .k-input, .k-dropdown-wrap .k-input, .k-numeric-wrap .k-input, .k-picker-wrap .k-input, .k-selectbox .k-input, .k-textbox > input {
+    text-indent: @inputPaddingLeft;
+}
+
+.e-input, .e-tooltipbox, .e-btn, .e-time-popup, .e-datepicker.e-calendar, .e-menu, .e-uploadbox .e-file-name-txt,
+.e-uploadbox .e-selectpart, .e-uploadbox .e-uploadbtn, .e-uploadbox .e-uploadclosebtn, .e-waitpopup-pane .e-text,
+.e-tagcloud, .e-toolbar, .e-progressbar, .e-scale .e-tick .tick-value, .e-datetime-popup .e-dt-button, .e-grid,
+.e-ejinputtext, .e-pager, .e-fileexplorer, .e-textbox, .e-textarea {
+    font-family: @fontFamily;
+}
+
+input.k-textbox {
+    box-shadow: rgba(0,0,0,.0745098) 0 1px 1px inset;
+    text-indent: 0;
+    padding-left: @inputPaddingLeft;
+    height: @inputHeight !important;
+}
+.wv-form {
+
+    .wv-form-group {
+
+        & > label {
+            line-height: @inputHeight;
+            width: @formGroupLabelWidth;
+
+            &.lbl-lg {
+                width: @formGroupLabelWidth + 20;
+            }
+
+            &.lbl-xl {
+                width: @formGroupLabelWidth + 40;
+            }
+
+            &.lbl-sm {
+                width: @formGroupLabelWidth - 20;
+            }
+
+            &.lbl-xs {
+                width: @formGroupLabelWidth - 40;
+            }
+        }
+
+        & > div {
+            line-height: @inputHeight;
+        }
+    }
+}
+
+.k-multiselect-wrap li {
+    line-height: @kendoMultiSelectTokenHeight;
+}
+
+.k-multiselect-wrap {
+    min-height: @inputHeight - 2;
+    font-size: @inputFontSize;
+}
+
+.k-multiselect > .k-multiselect-wrap > .k-i-close {
+    top: @kendoMultiSelectCloseTopOffset;
+}
+
+.k-dropzone, .k-fieldselector .k-list .k-item, .k-list .k-state-focused, .k-list .k-state-highlight, .k-list .k-state-hover, .k-list .k-state-selected, .k-list-optionlabel, .k-listbox .k-item {
+    border-radius: 0px;
+}
+
+.k-item {
+
+    .wv-list-icon-item {
+
+        & > span:first-child {
+            width: @iconBgSize;
+            height: @iconBgSize;
+
+            & > img {
+                height: @iconBgSize;
+                width: @iconBgSize;
+            }
+        }
+
+        span {
+            line-height: @iconBgSize;
+        }
+    }
+}
+
+.wv-cb-wrapper {
+    height: @inputHeight;
+}
+
+.k-button-group .k-tool { // for editor
+    width: @kendoEditorToolHeight + 2;
+    height: @kendoEditorToolHeight;
+    line-height: @kendoEditorToolLineHeight;
+}
+
+.k-numerictextbox .k-input {
+    height: @inputHeight - 2;
+    line-height: @inputHeight - 2;
+}
+
+.k-numeric-wrap:before, .k-picker-wrap:before {
+    height: @inputHeight - 2;
+}
+
+.k-webkit .k-combobox .k-dropdown-wrap::before, .k-webkit .k-numeric-wrap::before, .k-webkit .k-picker-wrap::before {
+    height: @inputHeight - 2;
+}
+
+.k-button.k-button-icon {
+    padding: 3px @toolbarButtonPaddingX;
+
+    & > img {
+        height: @kendoToolbarIconHeight;
+    }
+
+    & > span.k-icon {
+        margin: 3px 0px;
+    }
+}
+
+.k-toolbar {
+
+    > .k-button {
+        height: @toolbarButtonSquare;
+
+        > .glyphicon, .icon {
+            position: relative;
+            top: 2px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+.e-textbox {
+    border-color: #CCCCCC !important;
+}
+
+.e-textbox:hover {
+    border-color: #AEAEAE !important;
+}
+.wv-employee-img-thumbnail-hdr {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 32px !important;
+    width: 32px !important;
+    border-radius: 5px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+.wv-employee-img-thumbnail {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 5px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+.wv-employee-img-thumbnail-lg {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 48px !important;
+    width: 48px !important;
+    border-radius: 7px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
+
+.wv-employee-img-thumbnail-xxlg {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 80px !important;
+    width: 80px !important;
+    border-radius: 10px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+}

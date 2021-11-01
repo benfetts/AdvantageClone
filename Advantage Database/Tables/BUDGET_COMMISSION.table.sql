@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[BUDGET_COMMISSION] (
+    [BUDGET_CODE] VARCHAR (10)   NOT NULL,
+    [REV_NBR]     SMALLINT       NOT NULL,
+    [SEQ_NBR]     INT            NOT NULL,
+    [PROD_MARKUP] DECIMAL (7, 3) NULL
+);
+

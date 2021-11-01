@@ -1,0 +1,96 @@
+@import '../../../theme/mixins/font';
+@import '../../../theme/colors';
+
+.current-file,
+.current-file-link,
+.current-file-with-delete {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  &-icon {
+    @include font-base(6px, 600, 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &-text {
+      position: absolute;
+      @include font-base(6px, 600, 10px);
+    }
+  }
+
+  &-text {
+    @include font-base;
+    display: block;
+
+    .file-name {
+      @include font-base(14px, normal, 14px);
+      color: $black;
+    }
+
+    .file-label {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 10px;
+      text-overflow: ellipsis;
+      color: $black-light;
+    }
+  }
+}
+
+.current-file {
+  min-width: 75px;
+  max-width: 175px;
+  width: max-content;
+  justify-content: space-between;
+
+  &-text {
+    min-width: 55px;
+    max-width: 155px;
+    width: auto;
+  }
+}
+
+.current-file-with-delete {
+  justify-content: space-between;
+  width: 72px;
+
+  .current-file-text {
+    width: auto;
+  }
+}
+
+.current-file-link {
+  width: 135px;
+
+  .file-name {
+    margin-left: 10px;
+    width: 110px;
+  }
+}
+
+.current-file-image {
+  width: 80px;
+
+  .file-name {
+    margin-left: 10px;
+    width: auto;
+  }
+}
+
+.file-icons {
+  .icon {
+    margin-left: 0;
+  }
+
+  img {
+    margin-right: 3px;
+    width: 10px;
+    height: 10px;
+  }
+
+  @include font-base(14px, normal, 14px);
+}

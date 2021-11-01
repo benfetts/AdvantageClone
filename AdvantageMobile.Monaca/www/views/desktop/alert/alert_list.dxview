@@ -1,0 +1,57 @@
+<div data-options="dxView : { name: 'alert_list', title: 'Alerts' } ">
+  <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+    <div data-bind="dxLoadPanel: { message: loadPanelMessage, visible: loadPanelVisible, shading: false }"></div>
+    <div class="search-wrapper" data-bind="dxTextBox: { placeholder: 'Search', mode: 'search', value: alertList.searchQuery, valueChangeEvent: 'change' } "></div>
+    <div id="dxAlertList" data-bind="dxList: alertList" class="card-container">
+      <div data-options="dxTemplate : { name: 'item' } ">
+        <div class="card">
+          <div data-bind="css: priorityBlockCSS, dxAction: {view: 'view_alert', settings: {source: 0, alertId: ID, isAssignment: isAssignment}}">
+          </div>
+          <div class="card-content" data-bind="dxAction: {view: 'view_alert', settings: {source: 0, alertId: ID, isAssignment: isAssignment}}">
+            <div class="card-header" data-bind="text: Subject"></div>
+            <div class="card-details">
+              <div data-bind="css: clientDisplayCSS">
+                <div class="list-line" data-bind="text: ClientDisplay"></div>
+                <br/>
+              </div>
+              <div data-bind="css: dueDateCSS">
+                <div class="list-line" data-bind="text: dueText"></div>
+                <div class="list-line" style="float:left;" data-bind="text: strDueDate"></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-button-container">
+            <div data-bind="dxButton: { icon: DismissOrCompleteIcon, visible: true, onClick: function(e) {$root.dismissComplete(e, $data);}  }"></div>
+            <div data-bind="dxButton: { icon: 'icon_book_bookmark', visible: false }"></div>
+            <div data-bind="dxButton: { icon: 'icon_users_relation2', visible: showReassign, onClick: {view: 'view_alert_assignment', settings: {alertId: ID,
+                                                                                                                                      templateId: AlertAssignmentTemplateID,
+                                                                                                                                      stateId: AlertAssignmentStateID,
+                                                                                                                                      source: 1} } }">
+            </div>
+            <div data-bind="dxButton: { icon: 'icon_messages', onClick: {view: 'view_alert_comments', settings: {alertId: ID, isAssignment: isAssignment, source: commentSource} } }">
+            </div>
+            <div data-bind="dxButton: { icon: 'icon_clock', visible: showTimeButtons, onClick: {view: 'time_entry', settings: {source: timeSource,
+                                                                                                                 alertId: ID,
+                                                                                                                 jobNumber: JobNumber, jobComponentNumber: JobComponentNumber,
+                                                                                                                 clientCode: ClientCode, divisionCode: DivisionCode, productCode: ProductCode}} }">
+            </div>
+            <!--
+                        <div data-bind="dxButton: { icon: 'icon_stopwatch', visible: showTimeButtons, onClick:{view: 'time_stopwatch', settings: {source: 0,
+                                                                                                                     alertId: ID,
+                                                                                                                     jobNumber: JobNumber, jobComponentNumber: JobComponentNumber,
+                                                                                                                     clientCode: ClientCode, divisionCode: DivisionCode, productCode: ProductCode}}  }">
+                        </div>
+                        -->
+            <div data-bind="dxButton: { icon: 'icon_stopwatch', visible: false, onClick:{view: 'time_stopwatch', settings: {source: 0,
+                                                                                                                 alertId: ID,
+                                                                                                                 jobNumber: JobNumber, jobComponentNumber: JobComponentNumber,
+                                                                                                                 clientCode: ClientCode, divisionCode: DivisionCode, productCode: ProductCode}}  }">
+            </div>
+            <div class="card-action-bar" data-bind="css: priorityBlockCSS">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

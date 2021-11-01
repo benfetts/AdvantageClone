@@ -1,0 +1,106 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/chart/chart"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+  
+    <style>
+        .wv-chart-area {
+            border: 1px dashed #ccc;
+            min-height: 250px;
+        }
+        .row {
+            margin-top: 10px;
+        }
+        .panel > .panel-body {
+            padding: 2px;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Projects Pending by Client</div>
+                    <div class="panel-body">
+                        <ak-chart  
+                            k-theme="bootstrap"
+                            k-widget.two-way="projectsPendingByClientChart"
+                            k-legend.bind="chart1.legend"
+                            k-series-defaults.bind="chart1.seriesDefaults"
+                            k-series.bind="chart1.series"
+                            k-tooltip.bind="chart1.tooltip"
+                            k-chart-area.bind="{ height:255 }"
+                            k-data-source.bind="projectsPendingByClientDs">
+                      </ak-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Projects Due by Client</div>
+                    <div class="panel-body">
+                        <ak-chart  
+                            k-theme="bootstrap"
+                            k-widget.two-way="projectsDueByClientChart"
+                            k-legend.bind="chart2.legend"
+                            k-series-defaults.bind="chart2.seriesDefaults"
+                            k-series.bind="chart2.series"
+                            k-tooltip.bind="chart2.tooltip"
+                            k-chart-area.bind="{ height:255 }"
+                            k-data-source.bind="projectsDueByClientDs">
+                      </ak-chart>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-sm-4">
+                <div class="">
+                    <ak-chart  
+                        k-theme="bootstrap"
+                        k-title.bind="{text: 'Gross Domestic product growth \n /GDP annual %/'}"
+                        k-legend.bind="{position: 'bottom'}"
+                        k-series-defaults.bind="chart3.seriesDefaults"
+                        k-series.bind="chart3.series"
+                        k-value-axis.bind="chart3.valueAxis"
+                        k-category-axis.bind="chart3.categoryAxis"
+                        k-tooltip.bind="chart3.tooltip">
+                </div>
+            </div>-->
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Job Statistics by Office</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <ak-chart  
+                                    k-theme="bootstrap"
+                                    k-widget.two-way="jobStatisticByOfficeChart"
+                                    k-data-source.bind="jobStatisticByOfficeDs"
+                                    k-legend.bind="{position: 'top'}"
+                                    k-series.bind="chart4.series"
+                                    k-series-defaults.bind="{type: 'bar', stack: true}"
+                                    k-value-axis.bind="chart4.valueAxis"
+                                    k-category-axis.bind="chart4.categoryAxis"
+                                    k-chart-area.bind="{ height:255 }"
+                                    k-tooltip.bind="chart4.tooltip">
+                                </ak-chart>
+                            </div>
+                            <div class="col-sm-5">
+                                <ak-grid k-widget.two-way="jobStatisticByOfficeGrid" k-data-source.bind="jobStatisticByOfficeDs" k-pageable.bind="pageable" k-sortable.bind="true">
+                                    <ak-col k-title="Office" k-field="OfficeName"></ak-col>
+                                    <ak-col k-title="Created" k-field="Created" k-width="65px" k-attributes.bind="{style: 'text-align:center;'}" k-header-attributes.bind="{style: 'text-align:center;'}" ></ak-col>
+                                    <ak-col k-title="Completed" k-field="Completed" k-width="85px" k-attributes.bind="{style: 'text-align:center;'}" k-header-attributes.bind="{style: 'text-align:center;'}" ></ak-col>
+                                    <ak-col k-title="Due" k-field="Due" k-width="40px" k-attributes.bind="{style: 'text-align:center;'}" k-header-attributes.bind="{style: 'text-align:center;'}" ></ak-col>
+                                    <ak-col k-title="In Progress" k-field="InProgress" k-width="85px" k-attributes.bind="{style: 'text-align:center;'}" k-header-attributes.bind="{style: 'text-align:center;'}" ></ak-col>
+                                    <ak-col k-title="Cancelled" k-field="Cancelled" k-width="75px" k-attributes.bind="{style: 'text-align:center;'}" k-header-attributes.bind="{style: 'text-align:center;'}" ></ak-col>
+                                </ak-grid>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

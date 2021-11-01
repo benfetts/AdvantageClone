@@ -1,0 +1,10 @@
+﻿CREATE PROCEDURE [dbo].[usp_wv_job_type_desc] 
+@JT_CODE VARCHAR(10)
+AS
+		SELECT JT_DESC 
+		FROM JOB_TYPE
+		WHERE JT_CODE =@JT_CODE
+
+
+
+

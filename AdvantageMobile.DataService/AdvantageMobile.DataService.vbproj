@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{668CD63D-D595-43FC-A15B-70AEA1438FCD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AdvantageMobile</RootNamespace>
+    <AssemblyName>DataService</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <NoWarn>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109,42353,42354,42355</NoWarn>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42099,42104,42105,42106,42107,42108,42109,42353,42354,42355</NoWarn>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.8.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.8.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.5.8.4\lib\net40\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.8.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OData.EntityFrameworkProvider, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.EntityFrameworkProvider.1.0.0-beta2\lib\net40\Microsoft.OData.EntityFrameworkProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Spatial, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.8.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="JavascriptViewModels\agencys_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_assignment_email_groups_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_assignment_states_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_assignment_templates_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_assignment_template_department_teams_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_assignment_template_employees_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_assignment_template_roles_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_assignment_template_states_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_attachments_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_groups_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_types_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\documents_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_department_teams_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_timesheet_functions_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\expenses_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\expense_details_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\expense_detail_documents_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\expense_documents_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\post_periods_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\security_clients_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\security_licenses_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\security_user_settings_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="MobileConfigurator.exe" />
+    <Content Include="_ReadMe\Adding Entities to Mobile.UI.txt" />
+    <Content Include="DataService.svc" />
+    <Content Include="JavascriptViewModels\alerts_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_comments_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\alert_recipients_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\clients_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\department_teams_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\dismissed_alert_recipients_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\divisions_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employees_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_pictures_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_times_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_time_comments_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_time_details_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_time_indirects_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\employee_time_templates_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\functions_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\job_components_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\job_logs_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\job_traffics_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\job_traffic_details_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\job_traffic_detail_employees_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\offices_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\products_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\security_group_permissions_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\security_permissions_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\security_users_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\time_categorys_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\time_category_types_view_model.js">
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\_ViewModelTemplate.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewModelTemplate.tt</DependentUpon>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Code\Application\ApplicationMethods.vb" />
+    <Compile Include="Code\Application\DataServiceUser.vb" />
+    <Compile Include="Code\Core\ClientMethods.vb" />
+    <Compile Include="Code\Core\DepartmentTeamMethods.vb" />
+    <Compile Include="Code\Core\DivisionMethods.vb" />
+    <Compile Include="Code\Core\EmployeeMethods.vb" />
+    <Compile Include="Code\Core\FunctionMethods.vb" />
+    <Compile Include="Code\Core\MiscFN.vb" />
+    <Compile Include="Code\Core\ProductMethods.vb" />
+    <Compile Include="Code\DataService\SQLHelper.vb" />
+    <Compile Include="Code\Desktop\Alert\Classes\Alert.vb" />
+    <Compile Include="Code\Desktop\Alert\AlertMethods.vb" />
+    <Compile Include="Code\Desktop\Calendar\CalendarMethods.vb" />
+    <Compile Include="Code\Desktop\DocumentRepository\Classes\Repository.vb" />
+    <Compile Include="Code\Desktop\DocumentRepository\DocumentRepositoryMethods.vb" />
+    <Compile Include="Code\Core\DocumentRepository.vb" />
+    <Compile Include="Code\Employee\Classes\ExpenseReportOptionsViewModel.vb" />
+    <Compile Include="Code\Employee\Expense\ExpenseMethods.vb" />
+    <Compile Include="Code\ProjectManagement\JobJacket\JobComponent\JobComponentMethods.vb" />
+    <Compile Include="Code\ProjectManagement\JobJacket\Job\JobMethods.vb" />
+    <Compile Include="Code\ProjectManagement\ProjectSchedule\ProjectScheduleMethods.vb" />
+    <Compile Include="Code\ProjectManagement\ProjectSchedule\Task\TaskMethods.vb" />
+    <Compile Include="Code\Security\Classes\Authorization.vb" />
+    <Compile Include="Code\Security\SecurityMethods.vb" />
+    <Compile Include="Code\Employee\Timesheet\TimesheetMethods.vb" />
+    <Compile Include="DataModel\advtf_alert_recipient_get_Result.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Agency.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Alert.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAssignmentEmailGroup.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAssignmentState.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAssignmentTemplate.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAssignmentTemplateDepartmentTeam.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAssignmentTemplateEmployee.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAssignmentTemplateRole.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAssignmentTemplateState.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAttachment.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertAttachmentsList.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertComment.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertCommentsList.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertGroup.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertPriority.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertRecipient.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertRecipientsList.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AlertType.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\AvailableApprover.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\CalendarItem.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Client.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DataModel.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DataModel.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DataModel.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DismissedAlertRecipient.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Document.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmailRecipients.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeDepartmentTeam.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeePicture.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeSummary.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeTimesheetFunction.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeTimeTemplate.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ErrorMessage.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Expense.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ExpenseDetail.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ExpenseDetailDocument.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ExpenseDocument.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ExpenseReportSubmitOptions.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\JobComponent.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\JobLog.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\JobTraffic.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\JobTrafficDetail.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\JobTrafficDetailEmployee.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\MobileUser.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\MyTask.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\PostPeriod.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ProjectViewpoint.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SaveTimeEntryResult.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SecurityClient.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SecurityGroupPermission.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SecurityLicense.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SecurityPermission.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SecurityUser.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SecurityUserSetting.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SimpleJob.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\TimeCategory.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\TimeCategoryType.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\TimeEntry.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\TimesheetDay.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\TimeSummary.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\TimeTemplate.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataService.svc.vb">
+      <DependentUpon>DataService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\DepartmentTeam.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Division.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Employee.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeTime.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeTimeComment.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeTimeDetail.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\EmployeeTimeIndirect.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Function.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataService\ImageStreamProvider.vb" />
+    <Compile Include="Code\DataService\JSONPSupportBehavior.vb" />
+    <Compile Include="DataModel\DataModelExtensions.vb" />
+    <Compile Include="DataModel\Office.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Product.vb">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Content Include="Global.asax" />
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataService\CorsSupport.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataModel\DataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModel.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataModel\DataModel.edmx.diagram">
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataModel\DataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataModel.Context.vb</LastGenOutput>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataModel\DataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataModel.vb</LastGenOutput>
+      <DependentUpon>DataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="JavascriptViewModels\_ViewModelTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>_ViewModelTemplate.js</LastGenOutput>
+    </Content>
+    <None Include="My Project\PublishProfiles\Advantage.pubxml" />
+    <None Include="My Project\PublishProfiles\FileSystem.pubxml" />
+    <None Include="My Project\PublishProfiles\To IIS.pubxml" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.NTAuth.config" />
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Code\FinanceAndAccounting\" />
+    <Folder Include="Code\Media\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj">
+      <Project>{cf80c6a7-30b6-45b8-8ff2-cc3176b95239}</Project>
+      <Name>AdvantageFramework.BLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantageFramework.Web\AdvantageFramework.Web.vbproj">
+      <Project>{2854aba2-ce90-406b-8041-c9b84d2f97b6}</Project>
+      <Name>AdvantageFramework.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantageFramework\AdvantageFramework.vbproj">
+      <Project>{a5adbd34-dc5f-45ee-ab6a-8e9122da478d}</Project>
+      <Name>AdvantageFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50365</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/DataService67007</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

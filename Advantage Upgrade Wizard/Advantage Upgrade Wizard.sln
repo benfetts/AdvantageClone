@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Advantage Upgrade Wizard", "Advantage Upgrade Wizard.vbproj", "{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework", "..\AdvantageFramework\AdvantageFramework.vbproj", "{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Debug|x64.Build.0 = Debug|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Debug|x86.Build.0 = Debug|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Release|x64.ActiveCfg = Release|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Release|x64.Build.0 = Release|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Release|x86.ActiveCfg = Release|Any CPU
+		{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}.Release|x86.Build.0 = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.ActiveCfg = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.Build.0 = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.ActiveCfg = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.Build.0 = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.ActiveCfg = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.Build.0 = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.ActiveCfg = Release|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91D02428-FD5E-4D82-8A96-EE21BBBBD448}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccProjectUniqueName0 = ..\\AdvantageFramework\\AdvantageFramework.vbproj
+		SccProjectName0 = ../AdvantageFramework
+		SccLocalPath0 = ..\\AdvantageFramework
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = Advantage\u0020Upgrade\u0020Wizard.vbproj
+		SccLocalPath2 = .
+	EndGlobalSection
+EndGlobal

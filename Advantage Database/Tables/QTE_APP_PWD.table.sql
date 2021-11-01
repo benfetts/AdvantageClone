@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[QTE_APP_PWD] (
+    [EMP_CODE]    VARCHAR (6)  NOT NULL,
+    [EMP_PWD]     VARCHAR (10) NOT NULL,
+    [DELETE_FLAG] SMALLINT     NOT NULL
+);
+

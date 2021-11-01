@@ -1,0 +1,34 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_SEC_APPUpdate]
+(
+	@CDP_CONTACT_ID int,
+	@APPID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [CP_USER_SEC_APP]
+	SET
+		[APPID] = @APPID
+	WHERE
+		[CDP_CONTACT_ID] = @CDP_CONTACT_ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+

@@ -1,0 +1,130 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+
+    <style>
+        .setting-table tr td {
+            padding: 3px;
+        }
+        .setting-table tr td:last-child {
+            padding-left: 10px;
+        }
+
+        .wv-vertical-tabs .tab-content {
+            padding-top: 10px;
+        }
+        .k-textbox.wv-txt-8000, .k-textbox.wv-txt-1000, .k-textbox.wv-txt-100 {
+            width: 475px;
+        }
+        .k-textbox.wv-txt-20 {
+            width: 275px;
+        }
+        .k-dropdown.wv-ddl-25 {
+            width: 275px;
+        }
+        .k-dropdown.wv-ddl-10 {
+            width: 275px;
+        }
+        .k-textbox.wv-txt-25 {
+            width: 275px;
+        }
+
+    </style>
+    <div class="wv-vertical-tabs" style="height: 100%;">
+        <aubs-tabset vertical.bind="true" type="pills" >
+            <aubs-tab header="${tab.Description}" repeat.for="tab of settings">
+                <table class="setting-table">
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">${tab.Footer}</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <a href="#" id="load-default-settings" role="button" title="Load Default Settings" class="wv-icon-button k-button pull-right" click.delegate="loadDefaults()"><span class="wvi wvi-undo"></span> </a>
+
+                        <tr repeat.for="setting of tab.Settings">
+                            <td><label>${setting.DisplayDescription ? setting.DisplayDescription: setting.Description}:</label></td>
+                            <td>
+                                <!-- Textbox -->
+                                <div if.bind="setting.InputType === 0">
+                                    <input id="${setting.Code}" type="text" maxlength.bind="setting.SettingDatabaseType.Precision" value.bind="setting.Value" class="k-textbox wv-txt-${setting.SettingDatabaseType.Precision}" change.delegate="saveSetting(setting)" />
+                                </div>
+                                <!-- Password -->
+                                <div if.bind="setting.InputType === 1">
+                                    <input id="${setting.Code}" type="password"
+                                           maxlength.bind="setting.SettingDatabaseType.Precision" value.two-way="setting.Value" class="k-textbox wv-txt-${setting.SettingDatabaseType.Precision}"
+                                           change.delegate="saveSetting(setting)" />
+                                </div>
+                                <!-- NumericTextbox -->
+                                <div if.bind="setting.InputType === 2">
+                                    <input id="${setting.Code}" type="number"
+                                           ak-numerictextbox="k-value.two-way:setting.Value; k-min.bind:setting.MinimumValue; k-max.bind:setting.MaximumValue;k-decimals.bind:setting.SettingDatabaseType.Scale;k-restrict-decimals.bind:true;k-format.bind: (setting.FormatString ? setting.FormatString : 'n' + setting.SettingDatabaseType.Scale); k-spinners.bind: false; k-step.bind:0"
+                                           style="width: 150px;" k-on-change.delegate="saveSetting(setting)" />
+                                </div>
+                                <!-- Combobox -->
+                                <div if.bind="setting.InputType === 3">
+                                    <ak-drop-down-list id="${setting.Code}"
+                                                        k-data-text-field="DisplayText"
+                                                        k-data-value-field="Value"
+                                                        k-auto-width.bind="true"
+                                                        k-data-source.bind="setting.SettingValues"
+                                                        k-value.two-way="setting.Value"
+                                                        k-on-change.delegate="saveSetting(setting)"
+                                                        k-option-label.bind="setting.ShowPleaseSelect ? '[Please Select]' : ''"
+                                                        class="wv-ddl-${setting.SettingDatabaseType.Precision} ${setting.Code}-ddl">
+                                    </ak-drop-down-list>
+                                </div>
+                                <!-- Checkbox -->
+                                <div if.bind="setting.InputType === 4">
+                                    <input type="checkbox" id="${setting.Code}" model.bind="1" class="k-checkbox" checked.bind="setting.Value" change.delegate="checkedChanged(setting)">
+                                    <label class="k-checkbox-label" for="${setting.Code}">&nbsp;</label>
+                                </div>
+
+                                <!-- Parent Checkbox -->
+                                <div if.bind="setting.InputType === 5">
+                                    <ak-drop-down-list id="${setting.Code}"
+                                                       k-data-text-field="DisplayText"
+                                                       k-data-value-field="Value"
+                                                       k-auto-width.bind="true"
+                                                       k-data-source.bind="setting.SettingValues"
+                                                       k-value.two-way="setting.Value"
+                                                       k-on-change.delegate="saveSettingsFilterData(setting)"
+                                                       k-option-label.bind="setting.ShowPleaseSelect ? '[Please Select]' : ''"
+                                                       class="wv-ddl-${setting.SettingDatabaseType.Precision} ${setting.Code}-ddl">
+                                    </ak-drop-down-list>
+                                </div>
+                                <!--<div if.bind="setting.SettingDatabaseType.DatabaseTypeID === 1">-->
+                                <!-- Dropdown list box = 1 and Code = 'JR_DFLT_CONTACT'-->
+                                <!--<ak-drop-down-list if.bind="setting.Code === 'JR_DFLT_CONTACT'"
+               id="${setting.Code}"
+               k-data-text-field="Name"
+               k-data-value-field="Code"
+               k-data-source.bind="employees"
+               k-value.two-way="setting.Value"
+               k-on-change.delegate="saveSetting(setting)"
+               style="width: 250px;">
+            </ak-drop-down-list>-->
+                                <!-- Dropdown list box = 1 and Code = 'JR_ASSIGN_TMPLT'-->
+                                <!--<ak-drop-down-list if.bind="setting.Code === 'JR_ASSIGN_TMPLT'"
+               id="${setting.Code}"
+               k-data-text-field="Description"
+               k-data-value-field="Code"
+               k-data-source.bind="alertAssignmentStates"
+               k-value.two-way="setting.Value"
+               k-on-change.delegate="saveSetting(setting)"
+               style="width: 250px;">
+            </ak-drop-down-list>-->
+                                <!--</div>-->
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </aubs-tab>
+        </aubs-tabset>
+    </div>
+
+</template>

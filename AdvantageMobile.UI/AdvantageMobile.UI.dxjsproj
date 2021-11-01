@@ -1,0 +1,2281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>83999dbf-6a65-4011-afb2-bcc97a53ec46</ProjectGuid>
+    <AutoAssignPort>True</AutoAssignPort>
+    <RunInSimulator>True</RunInSimulator>
+    <ApplicationPage>index.html</ApplicationPage>
+    <Name>AdvantageMobile.UI</Name>
+    <RootNamespace>AdvantageMobile.UI</RootNamespace>
+    <Accelerometer>False</Accelerometer>
+    <Camera>True</Camera>
+    <Capture>True</Capture>
+    <Compass>False</Compass>
+    <Connection>True</Connection>
+    <Contacts>False</Contacts>
+    <Device>True</Device>
+    <Events>True</Events>
+    <File>True</File>
+    <Geolocation>True</Geolocation>
+    <Media>False</Media>
+    <Notification>True</Notification>
+    <Storage>True</Storage>
+    <WhiteList>*</WhiteList>
+    <XapPackagePublisherID>{77103428-6118-47d0-a390-092e995143ba}</XapPackagePublisherID>
+    <XapPackageProductID>{b914c21f-f577-4944-a283-a402301934e4}</XapPackageProductID>
+    <DebugSitePortNumber>50000</DebugSitePortNumber>
+    <UseWebDev>False</UseWebDev>
+    <DefaultDevice>androidPhone</DefaultDevice>
+    <DeviceOrientation>Portrait</DeviceOrientation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <KeyApkPath>certificates\android_certificate.p12</KeyApkPath>
+    <KeyApkAlias>tmpl</KeyApkAlias>
+    <ApkDexFilePackageName>app.id_97dea075d743478ca7802bff9d28df20</ApkDexFilePackageName>
+    <VersionCode>36</VersionCode>
+    <TemplateFileApk>templates\ApplicationTemplate.apk</TemplateFileApk>
+    <UseCustomTemplateNameApk>True</UseCustomTemplateNameApk>
+    <ScreenOrientation>Default</ScreenOrientation>
+    <ApplicationTitle>Advantage Mobile</ApplicationTitle>
+    <BundleIdentifier>com.gotoadvantage.advantagemobile</BundleIdentifier>
+    <VersionPackage>0.0.36</VersionPackage>
+    <ShowSplashScreen>True</ShowSplashScreen>
+    <IpaPrivateKeyFile>certificates\ios_private_key.txt</IpaPrivateKeyFile>
+    <DisplayUnhandledExceptions>True</DisplayUnhandledExceptions>
+    <IsCompassProject>True</IsCompassProject>
+    <KeyDebuggable>False</KeyDebuggable>
+    <KeyIpaPath>certificates\ios_certificate.p12</KeyIpaPath>
+    <ProvisionProfile>certificates\AdvantageMobile2019.mobileprovision</ProvisionProfile>
+    <TemplateFileXap />
+    <UseCustomTemplateNameXap>False</UseCustomTemplateNameXap>
+    <XapSupportedLanguages />
+    <DefaultLanguageXAP>en-US</DefaultLanguageXAP>
+    <TemplateFileIpa />
+    <UseCustomTemplateNameIpa>False</UseCustomTemplateNameIpa>
+    <IpaDevicesFamily>Universal</IpaDevicesFamily>
+    <IpaSupportedLanguages>fr,de</IpaSupportedLanguages>
+    <PhoneGapTokenKey>szS96shCDxjbnnaxfZac</PhoneGapTokenKey>
+    <UpgradeNotifyShown>18.1.12</UpgradeNotifyShown>
+    <PackagePublisherID>8d678882-31b3-4c4e-a08b-4d106e35932b</PackagePublisherID>
+    <KeyPackageIdentityPublisher>CN=8d678882-31b3-4c4e-a08b-4d106e35932b</KeyPackageIdentityPublisher>
+    <KeyPfxCertificatePathName>certificates\AppxCertificate.pfx</KeyPfxCertificatePathName>
+    <AppxPackageProductID>c269c716-3568-4746-8a21-470f039d49aa</AppxPackageProductID>
+    <TemplateFileAppx />
+    <UseCustomTemplateNameAppx>False</UseCustomTemplateNameAppx>
+    <AppxSupportedLanguages />
+    <DefaultLanguageAppx>en-US</DefaultLanguageAppx>
+    <KeyPackageIdentityName>Advantage.AdvantageMobile</KeyPackageIdentityName>
+    <KeyPackageDisplayName>Advantage Mobile</KeyPackageDisplayName>
+    <KeyPublisherDisplayName>Advantage Software Company</KeyPublisherDisplayName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="cordova.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\adv.aqua.light.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\adv.advgeneric.dark.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\adv.advgeneric.light.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap-theme.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap-theme.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap-theme.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap-theme.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\bootstrap.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\card_layout\cards.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\card_layout\colors.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\custom.icons.color.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\custom.icons.white.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\adv.android5.dark.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.android5.light.css" />
+    <Content Include="css\dx.dark.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.generic.light.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\editor.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\imagebrowser.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\indeterminate.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\loading-image.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\loading.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\loading_2x.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\markers.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\markers_2x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\slider-h.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\slider-v.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\sprite.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\sprite_2x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\sprite_kpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Bootstrap\sprite_kpi_2x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\editor.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\imagebrowser.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\indeterminate.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\loading-image.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\loading.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\loading_2x.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\markers.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\markers_2x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\slider-h.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\slider-v.gif">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\sprite.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\sprite_2x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\sprite_kpi.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\Default\sprite_kpi_2x.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSans-Bold.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSans-BoldOblique.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSans-ExtraLight.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSans-Oblique.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSans.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSansMono-Bold.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSansMono-Oblique.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSansMono.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSerif-Bold.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSerif-Italic.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\DejaVuSerif.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\DejaVu\LICENSE.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\KendoUIGlyphs.eot">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\KendoUIGlyphs.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\KendoUIGlyphs.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\KendoUIGlyphs.woff">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\WebComponentsIcons.eot">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\WebComponentsIcons.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\WebComponentsIcons.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\fonts\glyphs\WebComponentsIcons.woff">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\images\back.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\images\kendoui.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\images\kendoui.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\images\kendoui.woff">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\images\wp8_icons.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\images\wp8_inverseicons.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.bootstrap-v4.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.bootstrap-v4.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.bootstrap.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.bootstrap.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.bootstrap.mobile.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.bootstrap.mobile.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.common-bootstrap.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.common-bootstrap.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.common.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.common.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.dataviz.bootstrap.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.dataviz.bootstrap.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.dataviz.default.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.dataviz.default.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.default-v2.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.default-v2.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.default.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.default.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.default.mobile.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.default.mobile.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.all.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.all.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.android.dark.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.android.dark.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.android.light.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.android.light.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.common.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\kendo.mobile.common.min.css.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\brushed-metal.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots10.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots11.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots12.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots13.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots2.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots3.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots4.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots5.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots6.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots7.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots8.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\dots9.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\glass-lighter.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\glass.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\highlight.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\hsv-gradient.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\hue.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\image-default.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\leather1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\leather2.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\noise.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\stripe1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\stripe2.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\stripe3.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\stripe4.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\stripe5.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\stripe6.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\transparency-reversed.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\transparency.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\textures\transtexture.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\kendoui\_CurrentVersion.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\wv-icons.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\data.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="data\User.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="fonts\wv-icons.eot">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="fonts\wv-icons.svg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="fonts\wv-icons.ttf">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="fonts\wv-icons.woff">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="fonts\wv-icons.woff2">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="index.js" />
+    <Content Include="index.html" />
+    <Content Include="index.css" />
+    <Content Include="css\dx.spa.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\icons\dxicons.eot" />
+    <Content Include="css\icons\dxicons.ttf" />
+    <Content Include="css\icons\dxicons.woff" />
+    <Content Include="css\icons\dxiconsios.eot" />
+    <Content Include="css\icons\dxiconsios.ttf" />
+    <Content Include="css\icons\dxiconsios.woff" />
+    <Content Include="css\dx.dark.compact.css" />
+    <Content Include="css\dx.light.compact.css" />
+    <Content Include="css\dx.contrast.compact.css" />
+    <Content Include="css\dx.contrast.css" />
+    <Content Include="css\dx.win10.black.css" />
+    <Content Include="css\dx.win10.white.css" />
+    <Content Include="css\icons\dxicons.woff2" />
+    <Content Include="css\icons\dxiconsios.woff2" />
+    <Content Include="css\dx.common.css" />
+    <Content Include="css\dx.light.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.desktop.default.css" />
+    <Content Include="css\dx.ios7.default.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.win8.black.css" />
+    <Content Include="css\dx.win8.white.css" />
+    <Content Include="css\dx.win8.black.small.css" />
+    <Content Include="data\db.js" />
+    <Content Include="js\bootstrap.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\bootstrap.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\common.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\controls.buttons.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\darkreader.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\jquery-1.12.3.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\jquery-2.2.3.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\jquery-2.2.3.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\jquery-2.2.3.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\jquery-3.5.1.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\angular.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\cultures\kendo.culture.en-US.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\cultures\kendo.culture.en.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\jquery.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\jquery.min.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\jszip.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.all.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.all.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.angular.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.angular.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.autocomplete.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.autocomplete.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.badge.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.badge.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.binder.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.binder.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.breadcrumb.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.breadcrumb.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.button.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.button.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.buttongroup.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.buttongroup.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.calendar.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.calendar.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.chat.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.chat.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.color.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.color.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.colorpicker.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.colorpicker.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.columnmenu.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.columnmenu.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.columnsorter.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.columnsorter.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.combobox.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.combobox.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.core.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.core.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.odata.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.odata.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.signalr.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.signalr.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.xml.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.data.xml.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.barcode.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.barcode.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.chart.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.chart.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.core.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.core.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.diagram.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.diagram.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.gauge.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.gauge.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.map.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.map.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.mobile.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.mobile.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.qrcode.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.qrcode.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.sparkline.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.sparkline.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.stock.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.stock.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.themes.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.themes.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.treemap.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dataviz.treemap.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dateinput.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dateinput.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.datepicker.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.datepicker.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.daterangepicker.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.daterangepicker.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.datetimepicker.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.datetimepicker.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dialog.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dialog.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dom.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dom.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.draganddrop.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.draganddrop.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.drawer.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.drawer.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.drawing.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.drawing.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dropdownlist.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dropdownlist.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dropdowntree.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.dropdowntree.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.editable.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.editable.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.editor.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.editor.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.excel.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.excel.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filebrowser.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filebrowser.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filemanager.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filemanager.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filter.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filter.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filtercell.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filtercell.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filtermenu.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.filtermenu.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.fx.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.fx.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.gantt.list.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.gantt.list.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.gantt.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.gantt.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.gantt.timeline.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.gantt.timeline.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.grid.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.grid.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.groupable.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.groupable.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.imagebrowser.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.imagebrowser.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.list.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.list.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.listbox.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.listbox.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.listview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.listview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.maskedtextbox.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.maskedtextbox.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mediaplayer.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mediaplayer.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.menu.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.menu.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.actionsheet.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.actionsheet.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.application.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.application.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.button.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.button.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.buttongroup.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.buttongroup.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.collapsible.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.collapsible.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.drawer.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.drawer.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.listview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.listview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.loader.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.loader.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.modalview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.modalview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.navbar.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.navbar.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.pane.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.pane.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.popover.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.popover.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.scroller.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.scroller.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.scrollview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.scrollview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.shim.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.shim.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.splitview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.splitview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.switch.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.switch.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.tabstrip.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.tabstrip.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.view.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.mobile.view.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.multicolumncombobox.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.multicolumncombobox.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.multiselect.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.multiselect.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.multiviewcalendar.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.multiviewcalendar.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.notification.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.notification.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.numerictextbox.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.numerictextbox.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.ooxml.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.ooxml.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pager.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pager.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pane.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pane.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.panelbar.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.panelbar.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pdf.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pdf.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pdfviewer.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pdfviewer.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pivot.configurator.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pivot.configurator.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pivot.fieldmenu.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pivot.fieldmenu.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pivotgrid.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.pivotgrid.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.popup.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.popup.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.progressbar.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.progressbar.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.rating.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.rating.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.reorderable.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.reorderable.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.resizable.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.resizable.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.responsivepanel.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.responsivepanel.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.ripple.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.ripple.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.router.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.router.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.agendaview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.agendaview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.dayview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.dayview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.monthview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.monthview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.recurrence.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.recurrence.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.timelineview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.timelineview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.view.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scheduler.view.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scrollview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.scrollview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.selectable.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.selectable.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.slider.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.slider.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.sortable.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.sortable.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.splitter.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.splitter.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.spreadsheet.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.spreadsheet.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.switch.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.switch.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.tabstrip.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.tabstrip.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.timeline.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.timeline.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.timepicker.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.timepicker.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.timezones.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.timezones.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.toolbar.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.toolbar.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.tooltip.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.tooltip.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.touch.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.touch.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.treelist.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.treelist.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.treeview.draganddrop.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.treeview.draganddrop.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.treeview.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.treeview.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.upload.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.upload.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.userevents.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.userevents.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.validator.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.validator.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.view.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.view.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.virtuallist.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.virtuallist.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.web.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.web.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.window.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\kendo.window.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\messages\kendo.messages.en-GB.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\messages\kendo.messages.en-GB.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\messages\kendo.messages.en-US.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\messages\kendo.messages.en-US.min.js.map">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\pako_deflate.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\kendoui\_CurrentVersion.txt">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\knockout-3.4.0.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\knockout-3.5.0.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\dx.messages.ru.js" />
+    <Content Include="js\localization\dx.messages.ja.js" />
+    <Content Include="js\localization\dx.messages.en.js" />
+    <Content Include="js\localization\dx.messages.de.js" />
+    <Content Include="js\localization\dx.all.de.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\dx.all.ja.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\dx.all.ru.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\dx.phonejs.de.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\dx.phonejs.fr.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\dx.phonejs.ja.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\dx.phonejs.ru.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\globalize.culture.de.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\globalize.culture.fr.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\globalize.culture.ja.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\globalize.culture.ru.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\localization.de.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\localization.default.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\localization\localization.fr.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\messages.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\sjcl.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\type-prototypes.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Pivot\PivotLayout.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Pivot\PivotLayout.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Pivot\PivotLayout.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Navbar\NavbarLayout.css" />
+    <Content Include="layouts\Navbar\NavbarLayout.html" />
+    <Content Include="layouts\Navbar\NavbarLayout.js" />
+    <Content Include="layouts\Simple\SimpleLayout.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Simple\SimpleLayout.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Simple\SimpleLayout.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\SlideOut\SlideOutLayout.js" />
+    <Content Include="layouts\SlideOut\SlideOutLayout.css" />
+    <Content Include="layouts\SlideOut\SlideOutLayout.html" />
+    <Content Include="layouts\Empty\EmptyLayout.js" />
+    <Content Include="layouts\Empty\EmptyLayout.css" />
+    <Content Include="layouts\Empty\EmptyLayout.html" />
+    <Content Include="layouts\Desktop\DesktopLayout.css" />
+    <Content Include="layouts\Desktop\DesktopLayout.html" />
+    <Content Include="js\dx.all.js" />
+    <Content Include="js\dx.all.debug.js" />
+    <Content Include="js\cldr.min.js" />
+    <Content Include="js\cldr\event.min.js" />
+    <Content Include="js\cldr\supplemental.min.js" />
+    <Content Include="js\globalize\number.min.js" />
+    <Content Include="js\globalize\date.min.js" />
+    <Content Include="js\globalize\message.min.js" />
+    <Content Include="js\globalize\currency.min.js" />
+    <Content Include="js\globalize.min.js" />
+    <Content Include="app.config.js" />
+    <Content Include="layouts\Split\SplitLayout.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Split\SplitLayout.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Split\SplitLayout.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 1.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 10.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 11.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 12.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 13.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 14.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 15.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 2.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 3.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 4.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 5.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 6.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 7.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 8.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Asset 9.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Cost_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Dollar_sign.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Expensetitle_FlagIcon.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\icon_pencil.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\icon_pencil_20.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Page3_receiptsnippet_placeholder.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\PENCIL.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\PENCIL_BUTTON.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Travel_button.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="shared.config.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\about\about.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\about\about.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\about\about.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\alert_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\alert_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\alert_main.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\alert_main.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\new_alert\new_alert.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\new_alert\new_alert.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\select_recipients.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\select_recipients.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_assignment.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_assignment.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_attachments.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_attachments.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_comments.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_comments.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_recipients.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\alert\view_alert\view_alert_recipients.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\calendar\calendar_main.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\calendar\calendar_main.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\calendar\schedule_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\calendar\schedule_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\desktop.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\desktop.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\desktop\desktop.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\employee.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\employee.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\employee.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_detail.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_detail.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_receipts.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_receipts.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_report.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_report.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_summary.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expenses_summary.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expense_documents.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expense_documents.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expense_header_edit.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\expense_header_edit.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\submit_options.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expenses\submit_options.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_entry.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_entry.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_main.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_main.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_receipt.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_receipt.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_report.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_report.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_reports_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\expense_report\expense_reports_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\favorites\favorites_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\favorites\favorites_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\select_calendar.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\select_calendar.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_entry.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_entry.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_list_week.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_list_week.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_list_month.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_list_month.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_main.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_main.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_stopwatch.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_stopwatch.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_template_detail.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_template_detail.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_template_edit.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_template_edit.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_template_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\employee\timesheet\time_template_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\finance_accounting\finance_accounting.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\finance_accounting\finance_accounting.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\finance_accounting\finance_accounting.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\home\home.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\home\home.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\home\home.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\maintenance\maintenance.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\maintenance\maintenance.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\maintenance\maintenance.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\media\media.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\media\media.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\media\media.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\job_jacket\job_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\job_jacket\job_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\project_management.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\project_management.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\project_management.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\project_schedule\project_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\project_schedule\project_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\project_schedule\task_list.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\project_management\project_schedule\task_list.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\security\licensing.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\security\licensing.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\security\security.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\security\security.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\security\security.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\security\sign_in.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\security\sign_in.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\settings\my_settings.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\settings\my_settings.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\client\client-details.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\client\client-details.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\client\client-edit.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\client\client-edit.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\client\clients.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\client\clients.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\TestView.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\testing\TestView.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\utilities\rich_editor.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\utilities\rich_editor.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\utilities\select_date.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\utilities\select_date.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\utilities\upload_file.dxview">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="views\utilities\upload_file.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\agencys_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alerts_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_assignment_email_groups_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_assignment_states_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_assignment_templates_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_assignment_template_department_teams_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_assignment_template_employees_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_assignment_template_roles_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_assignment_template_states_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_comments_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_groups_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_recipients_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\alert_types_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\clients_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\department_teams_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\dismissed_alert_recipients_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\divisions_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\documents_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employees_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_department_teams_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_pictures_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_summary_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_times_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_time_comments_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_time_details_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_time_indirects_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\employee_time_templates_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\error_messages_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\expenses_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\expense_details_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\expense_report_submit_options_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\functions_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\job_components_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\job_logs_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\job_traffics_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\job_traffic_details_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\job_traffic_detail_employees_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\mobile_user_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\my_tasks_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\offices_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\products_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\project_viewpoints_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\security_clients_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\security_group_permissions_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\security_permissions_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\security_users_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\time_categorys_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\time_category_types_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\time_entries_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\time_entry_result_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\time_templates_view_model.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="view_models\_ViewModelTemplate.js">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="css\card_layout" />
+    <Folder Include="css\icons\" />
+    <Folder Include="css\kendoui\" />
+    <Folder Include="css\kendoui\Bootstrap\" />
+    <Folder Include="css\kendoui\Default\" />
+    <Folder Include="css\kendoui\fonts\" />
+    <Folder Include="css\kendoui\fonts\DejaVu\" />
+    <Folder Include="css\kendoui\fonts\glyphs\" />
+    <Folder Include="css\kendoui\images\" />
+    <Folder Include="css\kendoui\textures\" />
+    <Folder Include="data\" />
+    <Folder Include="js\" />
+    <Folder Include="js\cldr\" />
+    <Folder Include="js\globalize\" />
+    <Folder Include="js\kendoui\cultures\" />
+    <Folder Include="js\kendoui\messages\" />
+    <Folder Include="js\localization" />
+    <Folder Include="js\kendoui" />
+    <Folder Include="layouts\" />
+    <Folder Include="layouts\Desktop\" />
+    <Folder Include="layouts\Empty\" />
+    <Folder Include="layouts\Navbar\" />
+    <Folder Include="layouts\Pivot\" />
+    <Folder Include="layouts\Simple\" />
+    <Folder Include="layouts\SlideOut\" />
+    <Folder Include="layouts\Split\" />
+    <Folder Include="fonts" />
+    <Folder Include="Resources\" />
+    <Folder Include="templates\" />
+    <Folder Include="views\" />
+    <Folder Include="views\desktop\alert" />
+    <Folder Include="views\desktop\alert\new_alert" />
+    <Folder Include="views\desktop\alert\view_alert" />
+    <Folder Include="views\desktop\calendar" />
+    <Folder Include="views\desktop\document_manager" />
+    <Folder Include="views\employee\expense_report" />
+    <Folder Include="views\employee\favorites" />
+    <Folder Include="views\employee\expenses" />
+    <Folder Include="views\employee\expense_approval" />
+    <Folder Include="views\employee\timesheet" />
+    <Folder Include="views\home" />
+    <Folder Include="views\about" />
+    <Folder Include="views\desktop" />
+    <Folder Include="views\employee" />
+    <Folder Include="views\media" />
+    <Folder Include="views\finance_accounting" />
+    <Folder Include="views\maintenance" />
+    <Folder Include="views\utilities" />
+    <Folder Include="views\settings" />
+    <Folder Include="views\testing" />
+    <Folder Include="views\project_management\job_jacket" />
+    <Folder Include="views\project_management\project_schedule" />
+    <Folder Include="views\security" />
+    <Folder Include="views\project_management" />
+    <Folder Include="views\testing\client" />
+    <Folder Include="view_models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.xml" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_36_36.png" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_48_48.png" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_72_72.png" />
+    <None Include="Resources\PackageIcons.Android.ic_launcher_96_96.png" />
+    <None Include="Resources\PackageIcons.Android.splash_1280_720.png" />
+    <None Include="Resources\PackageIcons.Android.splash_200_320.png" />
+    <None Include="Resources\PackageIcons.Android.splash_320_200.png" />
+    <None Include="Resources\PackageIcons.Android.splash_320_480.png" />
+    <None Include="Resources\PackageIcons.Android.splash_480_320.png" />
+    <None Include="Resources\PackageIcons.Android.splash_480_800.png" />
+    <None Include="Resources\PackageIcons.Android.splash_720_1280.png" />
+    <None Include="Resources\PackageIcons.Android.splash_800_480.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon29x29%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon29x29%403x.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon29x29.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon40x40%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon40x40%403x.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon40x40~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon50x50%402x~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.AppIcon50x50~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.Default%402x~iphone.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-568h%402x~iphone.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-667h.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-736h.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-Landscape%402x~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-Landscape-736h.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-Landscape~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-Portrait%402x~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.Default-Portrait~ipad.png" />
+    <None Include="Resources\PackageIcons.iOS.Default~iphone.png" />
+    <None Include="Resources\PackageIcons.iOS.icon%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-60%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-60%403x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-60.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-72%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-72.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-76%402x.png" />
+    <None Include="Resources\PackageIcons.iOS.icon-76.png" />
+    <None Include="Resources\PackageIcons.iOS.icon.png" />
+    <None Include="Resources\PackageIcons.iOS.iTunesArtwork.png" />
+    <None Include="Resources\PackageIcons.WP.ApplicationIcon_99_99.png" />
+    <None Include="Resources\PackageIcons.WP.Background.png_144_144.png" />
+    <None Include="Resources\PackageIcons.WP.SplashScreenImage_768_1280.jpg" />
+    <None Include="Resources\PackageIcons.WP.TileMedium.png" />
+    <None Include="Resources\PackageIcons.WP.TileSmall.png" />
+    <None Include="templates\ApplicationTemplate.apk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Target Name="Build">
+    <!--
+    <Message Text="'$(MSBuildToolsPath)'"></Message>
+    -->
+    <Message Text="Build JSProject '$(MSBuildProjectFile)':" Importance="high">
+    </Message>
+    <Message Text="Copying refenecses to output dir..." Importance="high" />
+    <MSBuild Targets="Build" Projects="@(ProjectReference)" Properties="OutputPath=$([System.IO.Path]::GetFullPath('$(OutputPath)'))">
+    </MSBuild>
+    <Message Text="Copying files to output dir..." Importance="high" />
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content-&gt;'$(OutputPath)$([MSBuild]::MakeRelative($(MSBuildProjectDirectory),'%(FullPath)'))')" />
+    <Message Text="Finished Build JSProject '$(MSBuildProjectFile)'." Importance="high">
+    </Message>
+  </Target>
+  <Target Name="CreateManifestResourceNames" Condition="'@(ResxWithNoCulture)@(ResxWithCulture)@(NonResxWithNoCulture)@(NonResxWithCulture)'!=''" />
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+  </Target>
+  <Target Name="Clean">
+    <!--
+    <Message Text="Cleaning Output files..." Importance="high" />
+    <Delete Files="@([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+    -->
+    <Message Text="Cleaning Output dir ($([System.IO.Path]::GetFullPath('$(OutputPath)')))..." Importance="high" />
+    <RemoveDir Directories="$([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+  </Target>
+</Project>

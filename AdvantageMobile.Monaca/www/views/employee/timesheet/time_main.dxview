@@ -1,0 +1,23 @@
+<div data-options="dxView : { name: 'time_main', title: 'Time' } ">
+    <div data-bind="dxCommand: addButton"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxScrollView: { }">
+                <div style="background-color:#00BCD4">
+                    <div >
+                        <div style="display:block;color:#FFFFFF;font-size:18px;padding: 0px 0px 0px 10px;">Add From My:</div>
+                        <div data-bind="dxTabs: addFromMyTab">
+                        </div>
+                    </div>
+                    <div style="margin: 0px 0px 20px 0px;color:#FFFFFF !important;">
+                        <div style="display:block;color:#FFFFFF;font-size:18px;padding: 0px 0px 0px 10px;">View:</div>
+                        <div style="padding: 0px 0px 0px 10px;" data-bind="css: AdvantageMobile_UI.whiteDateBoxCss, dxDateBox: dateBox"></div>
+                        <div data-bind="dxTabs: viewTab">
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 0px 20px 0px 20px;" data-bind="event: {dxclick: guageClick}">
+                    <div style="width:100%;margin-top:-13px;" data-bind="dxLinearGauge: totalHoursGuage"></div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+<div data-options="dxView : { name: 'expenses_report', title: 'Expense Item', disableCache: true } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save', visible: reportCanSave } "></div>
+    <!--<div data-bind="dxCommand: copyButton"></div>-->
+    <div data-bind="dxCommand: clearButton"></div>
+    <div data-bind="dxCommand: deleteButton"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' }">
+        <div id="scrollView" data-bind="dxScrollView: scrollView">
+            <div style="text-align:left;background-color:#0097A7;height:40px;">
+                <div style="font-size: 18px;padding: 12px 0px 0px 10px;color:#FFFFFF;">Report Information</div>
+            </div>
+            <div class="dx-fieldset">
+                <div class="dx-field" data-bind="visible: ShowReportSelectBox">
+                    <div data-bind="dxLookup: reportsSelectBox"></div>
+                </div>
+                <div class="dx-field" data-bind="visible: IsNewInvoice">
+                    <div class="dx-field-label">Report Date</div>
+                    <div class="dx-field-value" style="padding: 0px 0px 0px 10px;" data-bind="dxDateBox: reportDateBox, dxValidator: reportDateValidator"></div>
+                </div>
+                <div class="dx-field" data-bind="visible: IsNewInvoice">
+                    <div class="dx-field-label">Description</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: {value: strDescription, readOnly: reportReadOnly ,  placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator: descriptionValidator"></div>
+                </div>
+                <div class="dx-field" data-bind="visible: IsNewInvoice">
+                    <div class="dx-field-label">Details</div>
+                    <div class="dx-field-value" data-bind="dxTextArea: {value: strDetailsDescription,  placeholder: 'Please Enter',  }"></div>
+                </div>
+                <div data-bind="dxLookup: clientsSelectBox"></div>
+                <div data-bind="dxLookup: divisionsSelectBox"></div>
+                <div data-bind="dxLookup: productsSelectBox"></div>
+                <div data-bind="dxLookup: jobsSelectBox"></div>
+                <div data-bind="dxLookup: jobComponentsSelectBox"></div>
+                <div data-bind="dxLookup: functionsSelectBox"></div>
+            </div>
+            <div style="text-align:left;background-color:#0097A7;height:40px;">
+                <div style="font-size: 18px;padding: 12px 0px 0px 10px;color:#FFFFFF;">Expense Details</div>
+            </div>
+
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">Expense Date</div>
+                    <div class="dx-field-value" style="padding: 0px 0px 0px 10px;" data-bind="dxDateBox: expDateBox, dxValidator: expDateValidator, readOnly:reportReadOnly"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Description</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: {value: strExpenseDescription, placeholder: 'Please Enter', valueChangeEvent: 'change', readOnly:reportReadOnly }, dxValidator:expDescriptionValidator"></div>
+                </div>
+                <div class="dx-field" data-bind="visible: ShowRate">
+                    <div class="dx-field-label">Quantity</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: {value: Quantity, onValueChanged: onQuantityChanged, placeholder: 'Please Enter', valueChangeEvent: 'change', readOnly:reportReadOnly}, dxValidator:  quantityValidator"></div>
+                </div>
+                <div class="dx-field" data-bind="visible: ShowRate">
+                    <div class="dx-field-label">Rate</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: {value: Rate, onValueChanged: onRateChanged, placeholder: 'Please Enter', valueChangeEvent: 'change', readOnly:reportReadOnly}, dxValidator:  rateValidator"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Amount</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: {value: ExpAmount, onValueChanged: onAmountChanged, placeholder: 'Please Enter', valueChangeEvent: 'change',readOnly: reportReadOnly }, dxValidator:  amountValidator"></div>
+                </div>
+            </div>
+            <div style="text-align:center;padding-bottom:20px;" align="center">
+                <div data-bind="dxCheckBox: CompanyChargeFlag"></div>
+
+            </div>
+            <div style="text-align:left;background-color:#0097A7;height:40px;">
+                <div style="font-size: 18px;padding: 12px 0px 0px 10px;color:#FFFFFF;">Receipts</div>
+            </div>
+            <table style="width: 100%;">
+                <tr>
+                    <td align="left">
+                        <div data-bind="dxButton: {icon: 'fa fa-camera', text: 'Take Photo', onClick: getPicture, visible: reportCanSave }">
+                        </div>
+                    </td>
+                    <td align="right">
+                        <div data-bind="dxFileUploader: { 
+                                              width: '100%',
+                                              multiple: false,
+                                              accept: 'image/*',
+                                              uploadMode: 'instantly',
+                                              uploaded: onUploaded,
+                                              onValueChanged: onValueChanged,
+                                              onContentReady: onContentReady,
+                                              visible: reportCanSave,
+                                              itemMargin: 2
+                                             }"></div>
+                    </td>
+                </tr>
+            </table>
+            <div style="background-color: #101010;color: #ffffff;" data-bind="visible: isToastVisible">
+                Receipt is uploading now...Please wait.
+            </div>
+            <div id="tileview" style="min-height:250px;margin:10px;">
+            </div>
+            <div data-bind="dxLoadPanel: { visible: isVisible }">
+            </div>
+        </div>
+    </div>
+</div>

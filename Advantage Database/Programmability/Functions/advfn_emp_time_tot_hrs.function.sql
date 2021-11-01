@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION dbo.advfn_emp_time_tot_hrs ( @et_id integer )  		RETURNS decimal(15,2)  		AS  		BEGIN  			RETURN ( SELECT COALESCE( EMP_DTL_HRS + EMP_NP_HRS, 0 ) FROM dbo.EMP_TIME WHERE ET_ID = @et_id )  		END 

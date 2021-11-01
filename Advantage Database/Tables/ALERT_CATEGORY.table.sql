@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ALERT_CATEGORY] (
+    [ALERT_CAT_ID]       INT          NOT NULL,
+    [ALERT_TYPE_ID]      INT          NOT NULL,
+    [ALERT_DESC]         VARCHAR (40) NOT NULL,
+    [PROMPT]             SMALLINT     NULL,
+    [GROUP_LVL_SECURITY] SMALLINT     NULL,
+    [PDF_ATTACHMENT]     SMALLINT     NULL
+);
+

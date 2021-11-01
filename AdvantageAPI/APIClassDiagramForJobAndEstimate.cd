@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="AdvantageAPI.Product">
+    <Position X="5.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AIIBAAAgEAAAQcAQEEMwAQQgQAAAEBIgEYAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Product.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Client">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAEAAAQYAYkAIgCQQgAAIAABICEQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Client.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Division">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAgEAAAAIAIEAAgCQQgAAIAAAACAQAABAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Division.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ValidationMessage">
+    <Position X="3.25" Y="9.75" Width="2.75" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ValidationMessage.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.JobComponent">
+    <Position X="8.25" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAARAAAgEAAAgAQIAAAAAEBBAgAAAAAAwIABAAAgJAA=</HashCode>
+      <FileName>APIDbContext\Entities\JobComponent.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Job">
+    <Position X="8.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAABAAAgEAAAAAQIAAAAAEABAAAAAAAAQIABAAAgJAA=</HashCode>
+      <FileName>APIDbContext\Entities\Job.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.User">
+    <Position X="5.5" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAAAAAAEAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\User.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.[Function]">
+    <Position X="0.5" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAgAAAQAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\Function.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.ScheduleStatus">
+    <Position X="3.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\ScheduleStatus.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.SalesClass">
+    <Position X="3.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>APIDbContext\Entities\SalesClass.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AccountExecutive">
+    <Position X="0.5" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAEAACAAAAAAAAAIgAAAAAIAA=</HashCode>
+      <FileName>APIDbContext\Entities\AccountExecutive.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Campaign">
+    <Position X="3.25" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAEAAgAAQAAAAAAEAAAIAAAAAAIAA=</HashCode>
+      <FileName>APIDbContext\Entities\Campaign.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.EstimateRevisionDetail">
+    <Position X="8.25" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAABAAAAAgAAAAAAAAACAAAAAAAAAAAAAhQAAAAA=</HashCode>
+      <FileName>Classes\Estimate\EstimateRevisionDetail.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AddOrUpdateEstimateResponse">
+    <Position X="5.5" Y="7.75" Width="2.5" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAgAAQgAAAAAAAAAAAAgAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Classes\Estimate\AddOrUpdateEstimateResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.AddJobAndComponentResponse">
+    <Position X="0.5" Y="9.5" Width="2.5" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAgAAAIAAAAAA=</HashCode>
+      <FileName>Classes\Job\AddJobAndComponentResponse.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

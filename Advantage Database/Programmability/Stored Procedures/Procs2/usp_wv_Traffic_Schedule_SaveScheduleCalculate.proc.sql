@@ -1,0 +1,35 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_Traffic_Schedule_SaveScheduleCalculate] 
+@JOB_NUMBER INT,
+@JOB_COMPONENT_NBR SMALLINT,
+@SCHEDULE_CALC INT
+
+AS
+
+
+    IF @JOB_NUMBER > 0 AND @JOB_COMPONENT_NBR > 0 
+    BEGIN	   
+	    UPDATE JOB_TRAFFIC
+	    SET SCHEDULE_CALC = @SCHEDULE_CALC
+	    WHERE JOB_NUMBER = @JOB_NUMBER AND JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR;
+    END
+	
+    -- update parent task dates
+	IF @SCHEDULE_CALC = 1 
+	BEGIN
+	
+		UPDATE 
+			dbo.JOB_COMPONENT 
+		SET 
+			TRF_SCHEDULE_BY = 1 
+		WHERE 
+			JOB_NUMBER = @JOB_NUMBER AND 
+			JOB_COMPONENT_NBR = @JOB_COMPONENT_NBR
+
+		EXEC [advsp_traffic_schedule_UpdateDatesByHierarchy] @JOB_NUMBER, @JOB_COMPONENT_NBR
+
+	END
+
+    
+
+

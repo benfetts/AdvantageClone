@@ -1,0 +1,44 @@
+<div class="small-employee" title="{{feedback.employeeFullName}}">
+  <div *ngIf="feedback.proofingXReviwerId && feedback.proofingXReviwerId > 0; else notExternal">
+    <span class="comment-image-text comment-image">{{getEmployeeInit(feedback)}}</span>
+  </div>
+  <ng-template #notExternal>
+    <img src="./api/EmployeePicture/{{getEmployeeCode(feedback)}}?dl={{dl}}" />
+  </ng-template>
+</div>
+<div class="comment-content">
+  <div class="comment-header">
+    <small>
+      {{feedback.employeeFullName}}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;{{feedback.generatedDate | date:'short'}}
+      &nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="showHideReplyTextarea($event, feedback.commentId)" title="Reply to this comment"><span class="">Reply</span></a>
+    </small>
+  </div>
+  <div class="comment-text" [innerHTML]="feedback.comment"></div>
+  <div style="padding-top: 7px;display:grid">
+    <div [hidden]="!reply">
+      <div id="editorDiv">
+        <textarea kendo-editor #myEditor [attr.editor-data]="feedback.commentId"></textarea>
+      </div>
+      <mention-item #myMention id="mention" commentType="reply" [attr.mention-data]="feedback.commentId"></mention-item>
+    </div>
+
+    <ng-container *ngFor="let _reply of feedback.replies; let i = index" style="">
+      <div>
+        <div class="small-employee" title="{{_reply.employeeFullName}}">
+          <div *ngIf="_reply.proofingXReviwerId && _reply.proofingXReviwerId > 0; else notExternal">
+            <span class="comment-image-text comment-image">{{getEmployeeInit(_reply)}}</span>
+          </div>
+          <ng-template #notExternal>
+            <img src="./api/EmployeePicture/{{getEmployeeCode(_reply)}}?dl={{dl}}" />
+          </ng-template>
+        </div>
+        <div class="comment-content">
+          <div class="comment-header">
+            <small>{{_reply.employeeFullName}}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;{{_reply.generatedDate | date:'short'}}</small>
+          </div>
+          <div class="comment-text" [innerHTML]="_reply.comment"></div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

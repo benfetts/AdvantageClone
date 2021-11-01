@@ -1,0 +1,29 @@
+@import '../../../theme/colors';
+@import '../../../theme/mixins/breakpoints';
+
+.explorer-area,
+.fileManagerMax,
+.explorer-area-min {
+  background: $white;
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  border-radius: 3px;
+  height: 150px;
+  margin: 15px 0 0 0;
+  overflow: hidden;
+
+  proof-item:first-child {
+    .asset-item-with-thumbnail {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+  }
+}
+
+.explorer-area-min {
+  height: 40px;
+}
+
+.fileManagerMax {
+  height: 865px;
+}

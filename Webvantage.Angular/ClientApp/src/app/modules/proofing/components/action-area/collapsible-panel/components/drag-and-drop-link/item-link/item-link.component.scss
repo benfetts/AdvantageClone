@@ -1,0 +1,52 @@
+@import '../../../../../../theme/colors';
+@import '../../../../../../components/action-area/action-area.component';
+
+.asset-item {
+  width: $actionAreaOpenedWidth - $actionAreaClosedWidth;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  height: 35px;
+
+  .file-name {
+    padding: 7px;
+  }
+
+  &-switch {
+    height: 30px;
+    display: flex;
+    align-items: center;
+
+    .k-button {
+      border: none;
+      background-color: transparent;
+      height: 5px;
+      width: 8px;
+      margin: 8px;
+      background-image: none;
+    }
+  }
+
+  .file-name {
+    display: flex;
+    padding: 10px 9px;
+  }
+}
+
+.asset-item-with-thumbnail {
+
+}
+
+.selected {
+  background: $very-light-grey;
+}
+
+.asset-item-switch {
+  img {
+    @-moz-document url-prefix() {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

@@ -1,0 +1,113 @@
+﻿CREATE VIEW dbo.V_JOB_COMP_ACTUALS
+AS
+
+	SELECT
+		[JobNumber] = S.[JobNumber],
+		[ComponentNumber] = S.[JobComponentNumber],
+		[FunctionCode] = S.[FunctionCode],
+		[ActualBillableNetAmount] = S.ActualBillableNetAmount,
+		[ActualBillableMarkupAmount] = S.ActualBillableMarkupAmount,
+		[ActualBillableAmount] = S.ActualBillableNetAmount + S.ActualBillableMarkupAmount,
+		[ActualRevenueAmount] = CASE WHEN F.FNC_TYPE IN ('E', 'I') THEN S.ActualBillableNetAmount + S.ActualBillableMarkupAmount WHEN F.FNC_TYPE = 'V' THEN S.ActualBillableMarkupAmount END,
+		[FunctionType] = F.FNC_TYPE,
+		[ItemID] = S.[ItemID],
+		[ItemDate] = S.[ItemDate],
+		[ItemPostPeriodCode] = S.[PostPeriodCode]
+	FROM
+		(SELECT
+			[JobNumber] = JC.JOB_NUMBER,
+			[JobComponentNumber] = JC.JOB_COMPONENT_NBR,
+			[FunctionCode] = AP.FNC_CODE,
+			[ActualBillableNetAmount] = CASE WHEN ISNULL(AP.AP_PROD_NOBILL_FLG, 0) = 0 THEN ISNULL(AP.AP_PROD_EXT_AMT, 0) + ISNULL(AP.EXT_NONRESALE_TAX, 0) ELSE 0 END,
+			[ActualBillableMarkupAmount] = CASE WHEN ISNULL(AP.AP_PROD_NOBILL_FLG, 0) = 0 THEN ISNULL(AP.EXT_MARKUP_AMT, 0) ELSE 0 END,
+			[ItemID] = AP.AP_ID,
+			[ItemDate] = APH.AP_INV_DATE,
+			[PostPeriodCode] = AP.POST_PERIOD
+		FROM
+			dbo.JOB_COMPONENT JC
+		INNER JOIN
+			dbo.AP_PRODUCTION AP ON JC.JOB_NUMBER = AP.JOB_NUMBER AND
+									JC.JOB_COMPONENT_NBR = AP.JOB_COMPONENT_NBR
+		INNER JOIN
+			dbo.AP_HEADER APH ON AP.AP_ID = APH.AP_ID
+		CROSS JOIN
+			(SELECT [PPPERIOD] = MAX(PPPERIOD) FROM dbo.POSTPERIOD) PPCUTOFF	
+		WHERE
+			1 = 1 
+			AND AP.POST_PERIOD <= PPCUTOFF.PPPERIOD
+			AND ISNULL(AP.AP_PROD_NOBILL_FLG, 0) = 0 
+			AND ISNULL(AP.MODIFY_DELETE, 0) = 0
+			AND ISNULL(APH.MODIFY_FLAG, 0) = 0
+		UNION ALL
+		SELECT
+			[JobNumber] = JC.JOB_NUMBER,
+			[JobComponentNumber] = JC.JOB_COMPONENT_NBR,
+			[FunctionCode] = ETD.FNC_CODE,
+			[ActualBillableNetAmount] = CASE WHEN ISNULL(ETD.EMP_NON_BILL_FLAG, 0) = 0 THEN ISNULL(ETD.TOTAL_BILL, 0) ELSE 0 END,
+			[ActualBillableMarkupAmount] = CASE WHEN ISNULL(ETD.EMP_NON_BILL_FLAG, 0) = 0 THEN ISNULL(ETD.EXT_MARKUP_AMT, 0) ELSE 0 END,
+			[ItemID] = ETD.ET_ID,
+			[ItemDate] = ET.EMP_DATE,
+			[PostPeriodCode] = NULL
+		FROM
+			dbo.JOB_COMPONENT JC
+		INNER JOIN
+			dbo.EMP_TIME_DTL ETD ON JC.JOB_NUMBER = ETD.JOB_NUMBER AND
+									JC.JOB_COMPONENT_NBR = ETD.JOB_COMPONENT_NBR
+		INNER JOIN
+			dbo.EMP_TIME ET ON ETD.ET_ID = ET.ET_ID
+		CROSS JOIN
+			(SELECT [EMP_DATE] = MAX(EMP_DATE) FROM dbo.EMP_TIME) ETCUTOFF	
+		WHERE
+			ET.EMP_DATE <= ETCUTOFF.EMP_DATE
+			AND ISNULL(ETD.EMP_NON_BILL_FLAG, 0) = 0 
+			AND ISNULL(ETD.EDIT_FLAG, 0) = 0
+		UNION ALL
+		SELECT
+			[JobNumber] = JC.JOB_NUMBER,
+			[JobComponentNumber] = JC.JOB_COMPONENT_NBR,
+			[FunctionCode] = I.FNC_CODE,
+			[ActualBillableNetAmount] = CASE WHEN ISNULL(I.NON_BILL_FLAG, 0) = 0 THEN ISNULL(I.IO_AMOUNT, 0) ELSE 0 END,
+			[ActualBillableMarkupAmount] = CASE WHEN ISNULL(I.NON_BILL_FLAG, 0) = 0 THEN ISNULL(I.EXT_MARKUP_AMT, 0) ELSE 0 END,
+			[ItemID] = I.IO_ID,
+			[ItemDate] = I.IO_INV_DATE,
+			[ItemPostPeriodCode] = NULL
+		FROM
+			dbo.JOB_COMPONENT JC
+		INNER JOIN
+			dbo.INCOME_ONLY I ON JC.JOB_NUMBER = I.JOB_NUMBER AND
+								 JC.JOB_COMPONENT_NBR = I.JOB_COMPONENT_NBR
+		INNER JOIN	
+			(SELECT
+				IO_ID,
+				SEQ_NBR
+			 FROM
+				dbo.INCOME_ONLY
+			 WHERE
+				ISNULL(DELETE_FLAG, 0) = 0 AND
+				ISNULL(MODIFY_FLAG, 0) = 0
+			 UNION
+			 SELECT	
+				INCO.IO_ID,
+				INCO.SEQ_NBR
+			 FROM
+				dbo.INCOME_ONLY INCO
+			 INNER JOIN	
+				(SELECT	
+					IO_ID,
+					MAX_SEQ_NBR = MAX(SEQ_NBR)
+				 FROM
+					dbo.INCOME_ONLY
+				 GROUP BY
+					IO_ID) MAXIO ON INCO.IO_ID = MAXIO.IO_ID AND
+									INCO.SEQ_NBR = MAXIO.MAX_SEQ_NBR
+			 WHERE
+				ISNULL(INCO.MODIFY_FLAG, 0) = 1 AND
+				ISNULL(INCO.DELETE_FLAG, 0) = 0) IOC ON I.IO_ID = IOC.IO_ID AND
+														I.SEQ_NBR = IOC.SEQ_NBR
+		CROSS JOIN
+			(SELECT [IO_INV_DATE] = MAX(IO_INV_DATE) FROM dbo.INCOME_ONLY) IOCUTOFF	
+		WHERE
+			I.IO_INV_DATE <= IOCUTOFF.IO_INV_DATE 
+			AND ISNULL(I.NON_BILL_FLAG, 0) = 0) S 
+	INNER JOIN
+		dbo.FUNCTIONS F ON S.FunctionCode = F.FNC_CODE

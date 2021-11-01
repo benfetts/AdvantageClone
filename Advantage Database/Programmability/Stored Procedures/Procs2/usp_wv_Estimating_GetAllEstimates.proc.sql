@@ -1,0 +1,186 @@
+﻿/****** Object:  StoredProcedure [dbo].[usp_wv_Estimating_GetAllEstimates]    Script Date: 7/19/2019 11:11:11 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/*
+	exec usp_wv_Estimating_GetAllEstimates '','','','abc','print','ama',0,0,0,0,'',0
+*/
+CREATE PROCEDURE [dbo].[usp_wv_Estimating_GetAllEstimates]
+@OfficeCode     VARCHAR(6) ,
+@Client         VARCHAR(6) ,
+@Division       VARCHAR(6) ,
+@Product        VARCHAR(6) ,
+@SalesClassCode VARCHAR(6) ,
+@UserID         VARCHAR(100) ,
+@EstNum         INT ,
+@EstComp        INT ,
+@JobNum         INT ,
+@JobComp        INT ,
+@CampaignID     INT ,
+@ShowAll        BIT
+AS
+     BEGIN
+         DECLARE @Restrictions INT , @sql NVARCHAR(mAX) , @paramlist NVARCHAR(4000);
+         SELECT @Restrictions = COUNT(*)
+         FROM SEC_CLIENT
+         WHERE UPPER(USER_ID) = UPPER(@UserID);
+         DECLARE @EMP_CODE AS VARCHAR(6);
+         DECLARE @OfficeCount AS INTEGER;
+         SELECT @EMP_CODE = EMP_CODE
+         FROM SEC_USER
+         WHERE UPPER(USER_CODE) = UPPER(@UserID);
+         SELECT @OfficeCount = COUNT(*)
+         FROM EMP_OFFICE
+         WHERE EMP_CODE = @EMP_CODE;
+         SELECT @sql = '
+					SELECT DISTINCT
+						   ESTIMATE_LOG.ESTIMATE_NUMBER,
+						   ESTIMATE_LOG.EST_LOG_DESC,
+						   ESTIMATE_COMPONENT.EST_COMPONENT_NBR,
+						   ESTIMATE_COMPONENT.EST_COMP_DESC,
+						   ESTIMATE_LOG.CL_CODE,
+						   ESTIMATE_LOG.DIV_CODE,
+						   ESTIMATE_LOG.PRD_CODE,
+						   ISNULL(JOB_COMPONENT.JOB_NUMBER, 0) AS JOB_NUMBER,
+						   ISNULL(JOB_COMPONENT.JOB_COMPONENT_NBR, 0) AS JOB_COMPONENT_NBR,
+						   CASE
+							   WHEN JOB_COMPONENT.JOB_NUMBER IS NULL
+							   THEN ESTIMATE_LOG.CMP_CODE
+							   ELSE JOB_LOG.CMP_CODE
+						   END AS CMP_CODE,
+						   ESTIMATE_LOG.ESTIMATE_NUMBER EstimateNumber,
+						   ESTIMATE_LOG.EST_LOG_DESC EstimateDescription,
+						   ESTIMATE_COMPONENT.EST_COMPONENT_NBR EstimateComponentNumber,
+						   ESTIMATE_COMPONENT.EST_COMP_DESC EstimateComponentDescription,
+						   ESTIMATE_LOG.CL_CODE ClientCode,
+						   ESTIMATE_LOG.DIV_CODE DivisionCode,
+						   ESTIMATE_LOG.PRD_CODE ProductCode,
+						   CLIENT.CL_NAME ClientName,
+						   DIVISION.DIV_NAME DivisionName,
+						   PRODUCT.PRD_DESCRIPTION ProductName,
+						   ISNULL(JOB_COMPONENT.JOB_NUMBER, 0) JobNumber,
+						   ISNULL(JOB_LOG.JOB_DESC,'''') JobDescription,
+						   ISNULL(JOB_COMPONENT.JOB_COMPONENT_NBR, 0) JobComponentNumber,
+						   ISNULL(JOB_COMPONENT.JOB_COMP_DESC,'''') JobComponentDEscription,
+						   CASE
+											  WHEN JOB_COMPONENT.JOB_NUMBER IS NULL
+											  THEN ESTIMATE_LOG.CMP_CODE
+											  ELSE JOB_LOG.CMP_CODE
+										  END as CampaignCode,
+							CASE WHEN JOB_COMPONENT.JOB_NUMBER IS NULL THEN ESTIMATE_LOG.SC_CODE ELSE JOB_LOG.SC_CODE END AS SalesClassCode,
+							CASE WHEN JOB_COMPONENT.JOB_NUMBER IS NULL THEN ESC.SC_DESCRIPTION ELSE SC.SC_DESCRIPTION END AS SalesClassDescription,
+							JOB_COMPONENT.JOB_FIRST_USE_DATE JobComponentDueDate,
+							JOB_LOG.OFFICE_CODE OfficeCode,
+							OFFICE.OFFICE_NAME OfficeName,
+							CASE WHEN JOB_COMPONENT.JOB_NUMBER IS NOT NULL THEN (SELECT EST_APPR_DATE FROM ESTIMATE_APPROVAL EA WHERE EA.ESTIMATE_NUMBER = ESTIMATE_COMPONENT.ESTIMATE_NUMBER AND EA.EST_COMPONENT_NBR = ESTIMATE_COMPONENT.EST_COMPONENT_NBR)
+							     WHEN JOB_COMPONENT.JOB_NUMBER IS NULL AND ESTIMATE_LOG.CMP_CODE IS NOT NULL THEN 
+										(SELECT EST_APPR_DATE FROM EST_CAMP_APPROVAL EA WHERE EA.ESTIMATE_NUMBER = ESTIMATE_COMPONENT.ESTIMATE_NUMBER AND EA.EST_COMPONENT_NBR = ESTIMATE_COMPONENT.EST_COMPONENT_NBR AND APPR_TYPE = ''C'')
+								 ELSE NULL END AS ClientApproved,
+							CASE WHEN JOB_COMPONENT.JOB_NUMBER IS NOT NULL THEN (SELECT EST_APPR_DATE FROM ESTIMATE_INT_APPR EIA WHERE EIA.ESTIMATE_NUMBER = ESTIMATE_COMPONENT.ESTIMATE_NUMBER AND EIA.EST_COMPONENT_NBR = ESTIMATE_COMPONENT.EST_COMPONENT_NBR)
+							     WHEN JOB_COMPONENT.JOB_NUMBER IS NULL AND ESTIMATE_LOG.CMP_CODE IS NOT NULL THEN 
+										(SELECT EST_APPR_DATE FROM EST_CAMP_APPROVAL EA WHERE EA.ESTIMATE_NUMBER = ESTIMATE_COMPONENT.ESTIMATE_NUMBER AND EA.EST_COMPONENT_NBR = ESTIMATE_COMPONENT.EST_COMPONENT_NBR AND APPR_TYPE = ''I'')
+								 ELSE NULL END AS InternallyApproved,
+							CASE WHEN JOB_COMPONENT.JOB_NUMBER IS NULL AND ESTIMATE_LOG.CMP_IDENTIFIER IS NULL THEN ''''
+							     WHEN JOB_COMPONENT.JOB_NUMBER IS NOT NULL THEN RIGHT(REPLICATE(''0'', 6) + CONVERT(VARCHAR(20),ISNULL(JOB_LOG.JOB_NUMBER,0)), 6)+ ''/'' +RIGHT(REPLICATE(''0'', 3) + CONVERT(VARCHAR(20),ISNULL(JOB_COMPONENT.JOB_COMPONENT_NBR,0)), 3)+ ''-'' + CASE WHEN JOB_COMP_DESC = JOB_DESC THEN JOB_DESC ELSE JOB_DESC + ''|'' + JOB_COMP_DESC END
+								 WHEN ESTIMATE_LOG.CMP_IDENTIFIER IS NOT NULL THEN CAMPAIGN.CMP_NAME
+								 ELSE '''' END AS Detail
+					FROM ESTIMATE_COMPONENT
+						 INNER JOIN ESTIMATE_LOG ON ESTIMATE_COMPONENT.ESTIMATE_NUMBER = ESTIMATE_LOG.ESTIMATE_NUMBER
+						 LEFT OUTER JOIN JOB_COMPONENT ON ESTIMATE_COMPONENT.ESTIMATE_NUMBER = JOB_COMPONENT.ESTIMATE_NUMBER
+														  AND ESTIMATE_COMPONENT.EST_COMPONENT_NBR = JOB_COMPONENT.EST_COMPONENT_NBR
+						 LEFT OUTER JOIN JOB_LOG ON JOB_LOG.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER
+						 LEFT OUTER JOIN OFFICE ON OFFICE.OFFICE_CODE = JOB_LOG.OFFICE_CODE
+						 LEFT OUTER JOIN SALES_CLASS SC ON JOB_LOG.SC_CODE = SC.SC_CODE
+						 LEFT OUTER JOIN SALES_CLASS ESC ON ESTIMATE_LOG.SC_CODE = ESC.SC_CODE
+						 INNER JOIN DIVISION ON DIVISION.DIV_CODE = ESTIMATE_LOG.DIV_CODE
+												AND DIVISION.CL_CODE = ESTIMATE_LOG.CL_CODE
+						 INNER JOIN CLIENT ON CLIENT.CL_CODE = ESTIMATE_LOG.CL_CODE	
+						 LEFT OUTER JOIN CAMPAIGN ON CAMPAIGN.CMP_IDENTIFIER = ESTIMATE_LOG.CMP_IDENTIFIER
+						  ';
+         IF @Restrictions > 0
+             BEGIN
+                 SELECT @sql = @sql+' INNER JOIN SEC_CLIENT ON ESTIMATE_LOG.CL_CODE = SEC_CLIENT.CL_CODE AND  ESTIMATE_LOG.DIV_CODE = SEC_CLIENT.DIV_CODE AND ESTIMATE_LOG.PRD_CODE = SEC_CLIENT.PRD_CODE';
+             END;
+
+         IF @OfficeCount > 0
+             BEGIN
+                 SELECT @sql = @sql+' INNER JOIN PRODUCT ON ESTIMATE_LOG.CL_CODE = PRODUCT.CL_CODE AND ( ESTIMATE_LOG.DIV_CODE = PRODUCT.DIV_CODE OR CAMPAIGN.DIV_CODE IS NULL )	AND ( ESTIMATE_LOG.PRD_CODE = PRODUCT.PRD_CODE OR ESTIMATE_LOG.PRD_CODE IS NULL )
+									 INNER JOIN EMP_OFFICE ON PRODUCT.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE	AND EMP_OFFICE.EMP_CODE = '''+@EMP_CODE+'''
+		'
+--		INNER JOIN EMP_OFFICE ON PRODUCT.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE AND EMP_OFFICE.EMP_CODE = '''+@EMP_CODE+'''';
+             END
+		ELSE
+		BEGIN
+				SELECT @sql = @sql+' INNER JOIN PRODUCT ON PRODUCT.CL_CODE = ESTIMATE_LOG.CL_CODE  AND PRODUCT.DIV_CODE = ESTIMATE_LOG.DIV_CODE  AND PRODUCT.PRD_CODE = ESTIMATE_LOG.PRD_CODE
+		'
+		END
+
+
+
+         IF @ShowAll = 0
+             BEGIN
+                 SELECT @sql = @sql+' WHERE ((JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) OR JOB_COMPONENT.ESTIMATE_NUMBER IS NULL)';
+             END;
+             ELSE
+             BEGIN
+                 SELECT @sql = @sql+' WHERE 1=1';
+             END;
+         IF @Client <> ''
+             BEGIN
+                 SELECT @sql = @sql+' AND (ESTIMATE_LOG.CL_CODE = @Client)';
+             END;
+         IF @Division <> ''
+             BEGIN
+                 SELECT @sql = @sql+' AND (ESTIMATE_LOG.DIV_CODE = @Division)';
+             END;
+         IF @Product <> ''
+             BEGIN
+                 SELECT @sql = @sql+' AND (ESTIMATE_LOG.PRD_CODE = @Product)';
+             END;
+         IF @JobNum <> 0
+             BEGIN
+                 SELECT @sql = @sql+' AND (JOB_COMPONENT.JOB_NUMBER = @JobNum)';
+             END;
+         IF @JobComp <> 0
+             BEGIN
+                 SELECT @sql = @sql+' AND (JOB_COMPONENT.JOB_COMPONENT_NBR = @JobComp)';
+             END;
+         IF @EstNum <> 0
+             BEGIN
+                 SELECT @sql = @sql+' AND (ESTIMATE_LOG.ESTIMATE_NUMBER = @EstNum)';
+             END;
+         IF @EstComp <> 0
+             BEGIN
+                 SELECT @sql = @sql+' AND (ESTIMATE_COMPONENT.EST_COMPONENT_NBR = @EstComp)';
+             END;
+         IF @CampaignID <> 0
+             BEGIN
+                 SELECT @sql = @sql+' AND (ESTIMATE_LOG.CMP_IDENTIFIER = @CampaignID OR JOB_LOG.CMP_IDENTIFIER = @CampaignID)';
+             END;
+         IF @OfficeCode <> ''
+             BEGIN
+                 SELECT @sql = @sql+' AND (OFFICE.OFFICE_CODE = @OfficeCode)';
+             END;
+         IF @SalesClassCode <> ''
+             BEGIN
+                 SELECT @sql = @sql+' AND ((JOB_COMPONENT.JOB_NUMBER IS NOT NULL AND JOB_LOG.SC_CODE = @SalesClassCode ) OR (JOB_COMPONENT.JOB_NUMBER IS NULL AND ESTIMATE_LOG.SC_CODE = @SalesClassCode))';
+             END;
+
+         IF @Restrictions > 0
+             BEGIN
+                 SELECT @sql = @sql+' AND (UPPER(SEC_CLIENT.USER_ID) = UPPER(@UserID)) AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)';
+             END;
+         SELECT @sql = @sql+' ORDER BY ESTIMATE_LOG.ESTIMATE_NUMBER DESC';
+         SELECT @paramlist = '@OfficeCode VarChar(6),@Client VarChar(6), @Product VarChar(6), @Division VarChar(6), @SalesClassCode VarChar(6), @UserID Varchar(100), @EstNum int, @EstComp int, @JobNum int, @JobComp int, @CampaignID int';
+
+		 print @sql
+
+         EXEC sp_executesql @sql , @paramlist , @OfficeCode , @Client , @Product , @Division , @SalesClassCode , @UserID , @EstNum , @EstComp , @JobNum , @JobComp , @CampaignID;
+     END;
+
+GO
+
+

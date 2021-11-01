@@ -1,0 +1,12 @@
+<div data-options="dxView : { name: 'view_alert_recipients', title: 'Recipients' } ">
+    <div data-bind="dxCommand: { title: 'Add', id: 'create', icon: 'plus', onExecute: showAddRecipient}"></div>
+     <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxList: recipientList">
+            <div data-options="dxTemplate : { name: 'item' } ">
+                <div data-bind="text: EmployeeFullName">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

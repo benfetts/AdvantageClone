@@ -1,0 +1,41 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Webvantage.Angular",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "http://localhost:55107/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:55107/Webvantage.Angular?dl=8sdLsP+Pld22hZjemY0vfIB0TCkq6rANVSjXrzBnD+9HdMNVhtOq+ex1Nf28CU15JxjC8gtM+1r6eQ4BoGc2KJJyPg8ZnHHUib5bPocYWC+th7dGQqcgLXvxV3mFgXh9FYVfz09BfKJW8CJCXyEDnpSu00CMYNk0kTNIQIbgw7JKZGmLP65PWTr8GAlXaL4R9mIvfbLAo8TuNY+lcU7T1f5JV79YAFPoZKECUGR9R2HlaFwtRcoCpYkXOTQ04lfK6eyoFXDxE6j8Xri4rOEq6lvvEVstj4QuStxNvDLTEj4DZFpvTgLpGlui4ti0MSgOZjn/9rzIE2POFQ92C/2ZQu6d+5xHbM2Oa1XSCV4xJFO87K+WktxsVQ+TGCBqPggqTY0TmVxAdQVE4f+RPM0adcFYg+8RdD24tyJ4cg1NB04=A",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Webvantage.Angular": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:55107/"
+    },
+    "IIS": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost/Webvantage.Angular?dl=gIFscjMZSqxZ1XvHLLvZ1/QsFhwrAcVX9K/ipS1MjpPPRV9A6RfRUoungG5KiFzkcgzgYBdkLdxxc5i7Pgkwr69+lufWiKr/4derkIew+TBSVo/DL4c4uegkaf5GxFPx4LHVMnJXa2RGgShfdpSw2u7i7x9FqPjihqz/4vYiCimWmD4BAywwH/DKIPniXdRGfdaUNjxJnAf3UWdpjjrUnyEl5NYd0AFUiTVqjXd+BvbRf7sqE1Byw+CU0djV38IPhYSb3m+UX5x30nZBGKjPonq+A9Re/qE/OSXd7f05oUi55fYpcZGEC3TWvCgQVK36A",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "nativeDebugging": false
+    }
+  }
+}

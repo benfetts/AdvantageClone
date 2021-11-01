@@ -1,0 +1,18 @@
+﻿
+CREATE PROCEDURE [dbo].[advsp_populate_billing_m_selection]
+	@bill_user_in varchar(100),	@ret_val integer OUTPUT 
+AS
+
+SET NOCOUNT ON
+
+ SELECT SELECTION, ADJUSTMENTS, INV_ASSIGN, INV_PRINT, 
+		CONVERT( varchar(10), INV_DATE, 101 ), 
+		POST_PERIOD, M_SELECT_BY, MEDIA, 
+		CAST( NULL AS varchar(10) ) AS M_START_DATE,		
+		CONVERT( varchar(10), M_CUTOFF_DATE, 101 ),
+		CONVERT( varchar(10), M_CUTOFF_MONTH1, 101 ), 
+		CONVERT( varchar(10), M_CUTOFF_MONTH2, 101 ), 
+		NEWSPAPER, MAGAZINE, RADIO, TELEVISION, 
+		OUTDOOR, INTERNET, BCC_FLAG
+   FROM dbo.BILLING 
+  WHERE BILLING_USER = @bill_user_in

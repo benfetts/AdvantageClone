@@ -1,0 +1,26 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Search - {{searchResults.DisplayName}}</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <input type="text" ng-model="searchText" id="textBoxSearchDialog" ng-keyup="refreshSearchResults()" class="form-control" /><span ng-show="$scope.searchText.length < 3">Please enter at least 3 characters to search on.</span>
+    </div>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th ng-repeat="column in searchResults.Columns">{{column.HeaderText}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="result in searchResults.Results | filter: paginate" ng-dblclick="setSelectedRowAndClose(result)" ng-click="setSelectedRow(result)" ng-class="{info: selectedItem === result}">
+                <td ng-repeat="column in searchResults.Columns">{{result[column.FieldName]}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" boundary-links="true" items-per-page="numPerPage" max-size="10"></pagination>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-disabled="!selectionMade" ng-click="confirmSelection()">Select</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

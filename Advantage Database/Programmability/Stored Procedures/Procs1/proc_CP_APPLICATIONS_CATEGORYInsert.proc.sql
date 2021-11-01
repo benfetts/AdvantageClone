@@ -1,0 +1,41 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_APPLICATIONS_CATEGORYInsert]
+(
+	@CATID int = NULL output,
+	@CATEGORY varchar(50),
+	@ICONPATH varchar(100) = NULL,
+	@SORT_ORDER int = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [CP_APPLICATIONS_CATEGORY]
+	(
+		[CATEGORY],
+		[ICONPATH],
+		[SORT_ORDER]
+	)
+	VALUES
+	(
+		@CATEGORY,
+		@ICONPATH,
+		@SORT_ORDER
+	)
+
+	SET @Err = @@Error
+
+	SELECT @CATID = SCOPE_IDENTITY()
+
+	RETURN @Err
+END
+
+
+
+
+

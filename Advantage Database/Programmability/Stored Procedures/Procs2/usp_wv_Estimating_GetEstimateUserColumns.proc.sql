@@ -1,0 +1,222 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_Estimating_GetEstimateUserColumns] 
+@HDR_CODE VARCHAR(6),
+-- -1 = SHOW ALL TRUE
+@SHOW_ALL INT,
+@IS_SETUP INT
+--@IS_ADDNEW INT
+AS
+DECLARE
+@HAS_CUSTOM INT,
+@DISPLAY_TYPE VARCHAR(4)
+
+--TEMP:
+--SELECT @HDR_CODE = 'ALLITM'
+
+SELECT @HAS_CUSTOM = ISNULL(COUNT(1),0) FROM ESTIMATE_SETUP_DTL WHERE HDR_CODE = @HDR_CODE
+
+----IF @IS_SETUP = 1 
+----BEGIN
+----    SELECT @HAS_CUSTOM = 1
+----END
+
+--IF @IS_ADDNEW = 1
+--    BEGIN
+--        SET @DISPLAY_TYPE = 'A'
+--    END
+--ELSE
+--    BEGIN
+SET @DISPLAY_TYPE = 'G'
+--    END
+
+--OR DO WE CREATE A USER TEMPLATE BASED ON THE DEFAULT HERE
+IF @HAS_CUSTOM = 0 AND @HDR_CODE <> 'DFLT'
+BEGIN
+--CLEAR OUT COLUMNS, DON'T REALLY NEED THIS, JUST IN TESTING:
+--DELETE FROM ESTIMATE_SETUP_DTL WHERE  HDR_CODE = @HDR_CODE
+INSERT INTO ESTIMATE_SETUP_DTL WITH(ROWLOCK) (HDR_CODE,COLUMN_ID,SHOW_LONG_DESC,SEQ,DISPLAY_TYPE)
+SELECT @HDR_CODE, COLUMN_ID,SHOW_LONG_DESC, SEQ,DISPLAY_TYPE FROM ESTIMATE_SETUP_DTL WHERE (HDR_CODE = 'DFLT')
+
+END
+
+SELECT @HAS_CUSTOM = ISNULL(COUNT(1),0) FROM ESTIMATE_SETUP_DTL WHERE HDR_CODE = @HDR_CODE
+
+IF @HAS_CUSTOM = 0 
+    BEGIN
+ -- START DEFAULT
+       SELECT 
+				        A.ID,   
+				        A.COLUMN_NAME, 
+				        ISNULL(A.COLUMN_LONG_DESC,'') AS COLUMN_LONG_DESC, 
+				        ISNULL(A.COLUMN_SHORT_DESC,'') AS COLUMN_SHORT_DESC, 
+				        ISNULL(A.AGENCY_REQ,0) AS AGENCY_REQ, 
+				        ISNULL(A.CLIENT_REQ,0) AS CLIENT_REQ, 
+				        ISNULL(A.ACTIVE,0) AS ACTIVE, 
+				        ISNULL(A.DEF_SHOW_LONG_DESC,0) AS DEF_SHOW_LONG_DESC, 
+				        ISNULL(A.SHOW_LONG_DESC,0) AS SHOW_LONG_DESC, 
+				        ISNULL(A.SEQ,-1) AS SEQ,
+				        ISNULL(A.HDR_CODE,'') AS HDR_CODE,
+				        --CASE A.HDR_CODE
+				        --    WHEN NULL THEN 'False'
+				        --    ELSE 'True'
+				        --END AS SHOW_ON_GRID,
+ 				        CASE A.DISPLAY_TYPE
+ 				                WHEN 'G' THEN 'True'
+ 				                --WHEN 'GA' THEN 'True'
+ 				                WHEN NULL THEN 'False'
+ 				                ELSE 'False'
+				        END AS SHOW_ON_GRID,
+ 				        CASE A.DISPLAY_TYPE
+ 				                WHEN 'A' THEN 'True'
+ 				                --WHEN 'GA' THEN 'True'
+ 				                WHEN NULL THEN 'False'
+ 				                ELSE 'False'
+				        END AS SHOW_ON_ADDNEW,
+				        CASE A.SHOW_LONG_DESC
+				            WHEN 1 THEN 'True'
+				            ELSE 'False'
+				        END AS SHOW_FULL,
+				        CASE A.SHOW_LONG_DESC
+				            WHEN 1 THEN ISNULL(A.COLUMN_LONG_DESC,'')
+				            ELSE ISNULL(A.COLUMN_SHORT_DESC,'')
+				        END AS HEADER_TEXT,
+				        A.DISPLAY_TYPE
+        FROM
+	        (
+			        SELECT  
+				        ESTIMATE_SETUP_ITEMS.ID,   
+				        ESTIMATE_SETUP_ITEMS.COLUMN_NAME, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_LONG_DESC, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_SHORT_DESC, 
+				        ESTIMATE_SETUP_ITEMS.AGENCY_REQ, 
+				        ESTIMATE_SETUP_ITEMS.CLIENT_REQ, 
+				        ESTIMATE_SETUP_ITEMS.ACTIVE, 
+				        ESTIMATE_SETUP_ITEMS.DEF_SHOW_LONG_DESC, 
+				        ESTIMATE_SETUP_DTL.SHOW_LONG_DESC, 
+				        ESTIMATE_SETUP_DTL.SEQ,
+				        ESTIMATE_SETUP_DTL.HDR_CODE,
+				        ESTIMATE_SETUP_DTL.DISPLAY_TYPE
+			        FROM         
+				        ESTIMATE_SETUP_ITEMS WITH(NOLOCK) LEFT OUTER JOIN
+				        ESTIMATE_SETUP_DTL WITH(NOLOCK) ON ESTIMATE_SETUP_ITEMS.ID = ESTIMATE_SETUP_DTL.COLUMN_ID
+			        WHERE     
+				        (ESTIMATE_SETUP_DTL.HDR_CODE = 'DFLT') --AND (ESTIMATE_SETUP_DTL.DISPLAY_TYPE = @DISPLAY_TYPE)
+		        UNION
+			        SELECT     
+				        ESTIMATE_SETUP_ITEMS.ID,
+				        ESTIMATE_SETUP_ITEMS.COLUMN_NAME, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_LONG_DESC, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_SHORT_DESC, 
+				        ESTIMATE_SETUP_ITEMS.AGENCY_REQ, 
+				        ESTIMATE_SETUP_ITEMS.CLIENT_REQ, 
+				        ESTIMATE_SETUP_ITEMS.ACTIVE, 
+				        ESTIMATE_SETUP_ITEMS.DEF_SHOW_LONG_DESC, 
+				        0 AS SHOW_LONG_DESC, 
+				        -1 AS SEQ,
+				        NULL AS HDR_CODE,
+				        NULL AS DISPLAY_TYPE
+			        FROM         
+				        ESTIMATE_SETUP_ITEMS WITH(NOLOCK) 
+			        WHERE     
+				        (ESTIMATE_SETUP_ITEMS.ID NOT IN
+				        (SELECT ESTIMATE_SETUP_DTL.COLUMN_ID FROM ESTIMATE_SETUP_DTL WITH(NOLOCK) WHERE ESTIMATE_SETUP_DTL.HDR_CODE = 'DFLT'))
+	        ) AS A
+        WHERE
+            (NOT (A.COLUMN_NAME IS NULL)) AND
+	        (A.SEQ > 0 OR A.SEQ = @SHOW_ALL	) AND
+	        (A.ACTIVE = 1 OR A.ACTIVE = 3)
+        ORDER BY 
+	        A.ID
+-- END DEFAULT
+    END
+ELSE
+    BEGIN
+--  START USER    
+        SELECT 
+				        A.ID,   
+				        A.COLUMN_NAME, 
+				        ISNULL(A.COLUMN_LONG_DESC,'') AS COLUMN_LONG_DESC, 
+				        ISNULL(A.COLUMN_SHORT_DESC,'') AS COLUMN_SHORT_DESC, 
+				        ISNULL(A.AGENCY_REQ,0) AS AGENCY_REQ, 
+				        ISNULL(A.CLIENT_REQ,0) AS CLIENT_REQ, 
+				        ISNULL(A.ACTIVE,0) AS ACTIVE, 
+				        ISNULL(A.DEF_SHOW_LONG_DESC,0) AS DEF_SHOW_LONG_DESC, 
+				        ISNULL(A.SHOW_LONG_DESC,0) AS SHOW_LONG_DESC, 
+				        ISNULL(A.SEQ,-1) AS SEQ,
+				        ISNULL(A.HDR_CODE,'') AS HDR_CODE,
+				        --CASE A.HDR_CODE
+				        --    WHEN NULL THEN 'False'
+				        --    ELSE 'True'
+				        --END AS SHOW_ON_GRID,
+ 				        CASE A.DISPLAY_TYPE
+ 				                WHEN 'G' THEN 'True'
+ 				                --WHEN 'GA' THEN 'True'
+ 				                WHEN NULL THEN 'False'
+ 				                ELSE 'False'
+				        END AS SHOW_ON_GRID,
+ 				        CASE A.DISPLAY_TYPE
+ 				                WHEN 'A' THEN 'True'
+ 				                --WHEN 'GA' THEN 'True'
+ 				                WHEN NULL THEN 'False'
+ 				                ELSE 'False'
+				        END AS SHOW_ON_ADDNEW,
+				        
+				        CASE A.SHOW_LONG_DESC
+				            WHEN 1 THEN 'True'
+				            ELSE 'False'
+				        END AS SHOW_FULL,
+				        CASE A.SHOW_LONG_DESC
+				            WHEN 1 THEN ISNULL(A.COLUMN_LONG_DESC,'')
+				            ELSE ISNULL(A.COLUMN_SHORT_DESC,'')
+				        END AS HEADER_TEXT,
+				        A.DISPLAY_TYPE
+       FROM
+	        (
+			        SELECT  
+				        ESTIMATE_SETUP_ITEMS.ID,   
+				        ESTIMATE_SETUP_ITEMS.COLUMN_NAME, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_LONG_DESC, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_SHORT_DESC, 
+				        ESTIMATE_SETUP_ITEMS.AGENCY_REQ, 
+				        ESTIMATE_SETUP_ITEMS.CLIENT_REQ, 
+				        ESTIMATE_SETUP_ITEMS.ACTIVE, 
+				        ESTIMATE_SETUP_ITEMS.DEF_SHOW_LONG_DESC, 
+				        ESTIMATE_SETUP_DTL.SHOW_LONG_DESC, 
+				        ESTIMATE_SETUP_DTL.SEQ,
+				        ESTIMATE_SETUP_DTL.HDR_CODE,
+				        ESTIMATE_SETUP_DTL.DISPLAY_TYPE
+			        FROM         
+				        ESTIMATE_SETUP_ITEMS WITH(NOLOCK) LEFT OUTER JOIN
+				        ESTIMATE_SETUP_DTL WITH(NOLOCK) ON ESTIMATE_SETUP_ITEMS.ID = ESTIMATE_SETUP_DTL.COLUMN_ID
+			        WHERE     
+				        (ESTIMATE_SETUP_DTL.HDR_CODE = @HDR_CODE) --AND (ESTIMATE_SETUP_DTL.DISPLAY_TYPE = @DISPLAY_TYPE)
+		        UNION
+			        SELECT     
+				        ESTIMATE_SETUP_ITEMS.ID,
+				        ESTIMATE_SETUP_ITEMS.COLUMN_NAME, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_LONG_DESC, 
+				        ESTIMATE_SETUP_ITEMS.COLUMN_SHORT_DESC, 
+				        ESTIMATE_SETUP_ITEMS.AGENCY_REQ, 
+				        ESTIMATE_SETUP_ITEMS.CLIENT_REQ, 
+				        ESTIMATE_SETUP_ITEMS.ACTIVE, 
+				        ESTIMATE_SETUP_ITEMS.DEF_SHOW_LONG_DESC, 
+				        0 AS SHOW_LONG_DESC, 
+				        -1 AS SEQ,
+				        NULL AS HDR_CODE,
+				        NULL AS DISPLAY_TYPE
+			        FROM         
+				        ESTIMATE_SETUP_ITEMS WITH(NOLOCK) 
+			        WHERE     
+				        (ESTIMATE_SETUP_ITEMS.ID NOT IN
+				        (SELECT ESTIMATE_SETUP_DTL.COLUMN_ID FROM ESTIMATE_SETUP_DTL WITH(NOLOCK) WHERE ESTIMATE_SETUP_DTL.HDR_CODE = @HDR_CODE))
+	        ) AS A
+        	
+        WHERE
+            (NOT (A.COLUMN_NAME IS NULL)) AND
+	        (A.SEQ > 0 OR A.SEQ = @SHOW_ALL	) AND
+	        (A.ACTIVE = 1 OR A.ACTIVE = 3)
+        ORDER BY 
+	        A.ID
+--  END USER    
+    END
+	

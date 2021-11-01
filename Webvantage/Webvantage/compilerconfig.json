@@ -1,0 +1,178 @@
+﻿[
+    {
+        "outputFile": "CSS/Material/Advantage.css",
+        "inputFile": "CSS/Material/Advantage.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrapper.Advantage.css",
+        "inputFile": "CSS/Material/Bootstrapper.Advantage.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrapper.Amber.css",
+        "inputFile": "CSS/Material/Bootstrapper.Amber.less"
+    },
+    {
+        "outputFile": "CSS/Material/Theme.Advantage.css",
+        "inputFile": "CSS/Material/Theme.Advantage.less"
+    },
+    {
+        "outputFile": "CSS/Material/Theme.Amber.css",
+        "inputFile": "CSS/Material/Theme.Amber.less"
+    },
+    {
+        "outputFile": "CSS/Material/Theme.Black.css",
+        "inputFile": "CSS/Material/Theme.Black.less"
+    },
+    {
+        "outputFile": "CSS/webvantage-main.css",
+        "inputFile": "CSS/webvantage-main.less"
+    },
+    {
+        "outputFile": "CSS/main.css",
+        "inputFile": "CSS/main.less"
+    },
+    {
+        "outputFile": "CSS/main-large.css",
+        "inputFile": "CSS/main-large.less"
+    },
+    {
+        "outputFile": "CSS/site.css",
+        "inputFile": "CSS/site.less"
+    },
+    {
+        "outputFile": "CSS/site-large.css",
+        "inputFile": "CSS/site-large.less"
+    },
+    {
+        "outputFile": "CSS/Material/Theme.Cyan.css",
+        "inputFile": "CSS/Material/Theme.Cyan.less"
+    },
+    {
+        "outputFile": "CSS/Material/Theme.Blue.css",
+        "inputFile": "CSS/Material/Theme.Blue.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Advantage.css",
+        "inputFile": "CSS/Material/Bootstrap.Advantage.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Amber.css",
+        "inputFile": "CSS/Material/Bootstrap.Amber.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Black.css",
+        "inputFile": "CSS/Material/Bootstrap.Black.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Blue.css",
+        "inputFile": "CSS/Material/Bootstrap.Blue.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.BlueGrey.css",
+        "inputFile": "CSS/Material/Bootstrap.BlueGrey.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Brown.css",
+        "inputFile": "CSS/Material/Bootstrap.Brown.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Cyan.css",
+        "inputFile": "CSS/Material/Bootstrap.Cyan.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.DeepOrange.css",
+        "inputFile": "CSS/Material/Bootstrap.DeepOrange.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.DeepPurple.css",
+        "inputFile": "CSS/Material/Bootstrap.DeepPurple.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Gray.css",
+        "inputFile": "CSS/Material/Bootstrap.Gray.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Green.css",
+        "inputFile": "CSS/Material/Bootstrap.Green.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Grey.css",
+        "inputFile": "CSS/Material/Bootstrap.Grey.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Indigo.css",
+        "inputFile": "CSS/Material/Bootstrap.Indigo.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.LightBlue.css",
+        "inputFile": "CSS/Material/Bootstrap.LightBlue.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.LightGreen.css",
+        "inputFile": "CSS/Material/Bootstrap.LightGreen.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Lime.css",
+        "inputFile": "CSS/Material/Bootstrap.Lime.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Orange.css",
+        "inputFile": "CSS/Material/Bootstrap.Orange.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Peach.css",
+        "inputFile": "CSS/Material/Bootstrap.Peach.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Pink.css",
+        "inputFile": "CSS/Material/Bootstrap.Pink.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Purple.css",
+        "inputFile": "CSS/Material/Bootstrap.Purple.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Red.css",
+        "inputFile": "CSS/Material/Bootstrap.Red.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Teal.css",
+        "inputFile": "CSS/Material/Bootstrap.Teal.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.TweetyBird.css",
+        "inputFile": "CSS/Material/Bootstrap.TweetyBird.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.Yellow.css",
+        "inputFile": "CSS/Material/Bootstrap.Yellow.less"
+    },
+    {
+        "outputFile": "CSS/Material/Bootstrap.White.css",
+        "inputFile": "CSS/Material/Bootstrap.White.less"
+    },
+    {
+        "outputFile": "CSS/app.css",
+        "inputFile": "CSS/app.less"
+    },
+    {
+        "outputFile": "CSS/kendo.custom-dark.css",
+        "inputFile": "CSS/kendo.custom-dark.less"
+    },
+    {
+        "outputFile": "CSS/CardLayout.Colors.css",
+        "inputFile": "CSS/CardLayout.Colors.less"
+    },
+    {
+        "outputFile": "CSS/app.common.css",
+        "inputFile": "CSS/app.common.less"
+    },
+    {
+        "outputFile": "CSS/base.css",
+        "inputFile": "CSS/base.less"
+    },
+    {
+        "outputFile": "CSS/site-new.css",
+        "inputFile": "CSS/site-new.less"
+    }
+]

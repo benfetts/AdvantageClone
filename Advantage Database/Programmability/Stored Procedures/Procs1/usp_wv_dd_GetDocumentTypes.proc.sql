@@ -1,0 +1,33 @@
+﻿--DROP PROCEDURE [dbo].[usp_wv_dd_GetDocumentTypes] 
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetDocumentTypes] 
+AS
+SELECT 
+	DOCUMENT_TYPE_ID as Code, ISNULL(DOCUMENT_TYPE_DESC,'') as Description
+FROM 
+	DOCUMENT_TYPE WITH(NOLOCK)
+WHERE 
+	INACTIVE_FLAG IS NULL OR INACTIVE_FLAG = 0
+ORDER BY
+	DOCUMENT_TYPE_DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

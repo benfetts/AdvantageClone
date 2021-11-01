@@ -1,0 +1,274 @@
+CREATE PROCEDURE [dbo].[advsp_project_summary_task_load]
+	@DATE_TYPE AS int,
+	@START_DATE AS smalldatetime,
+	@END_DATE AS smalldatetime, 	
+	@ClientCodeList varchar(max),
+	@AECodeList varchar(max),
+	@SalesClassCodeList varchar(max),
+	@JobTypeList varchar(max)
+AS
+BEGIN
+
+	SELECT
+		[ID] = NEWID(),     
+		[ClientCode] = J.CL_CODE,
+		[ClientName] = C.CL_NAME,
+		[DivisionCode] = J.DIV_CODE,
+		[DivisionName] = D.DIV_NAME,
+		[ProductCode] = J.PRD_CODE,
+		[ProductName] = P.PRD_DESCRIPTION, 
+		[ClientContactCode] = JC.PRD_CONT_CODE,
+		[ClientContactID] = JC.CDP_CONTACT_ID,
+		[ClientContact] = CASE WHEN CC.CONT_MI IS NULL OR CC.CONT_MI = '' THEN RTRIM(LTRIM(ISNULL(CC.CONT_FNAME, '') + ' ' + ISNULL(CC.CONT_LNAME, ''))) ELSE CC.CONT_FNAME + ' ' + CC.CONT_MI + '. ' + CC.CONT_LNAME END,
+		[AccountExecutiveCode] = JC.EMP_CODE,
+		[AccountExecutive] = COALESCE((RTRIM(EMP.EMP_FNAME) + ' '),'') + COALESCE((EMP.EMP_MI + '. '),'') + COALESCE(EMP.EMP_LNAME,''),
+		[ManagerCode] = JOBT.MGR_EMP_CODE,
+		[Manager] = COALESCE((RTRIM(MEMP.EMP_FNAME) + ' '),'') + COALESCE((MEMP.EMP_MI + '. '),'') + COALESCE(MEMP.EMP_LNAME,''),
+		[JobNumber] = JC.JOB_NUMBER,
+		[JobDescription] = J.JOB_DESC,
+		[ComponentNumber] = JC.JOB_COMPONENT_NBR,
+		[JobComponent] = RIGHT(REPLICATE('0', 6) + CONVERT(VARCHAR(20), JC.JOB_NUMBER), 6) + '-' + RIGHT(REPLICATE('0', 2) + CONVERT(VARCHAR(20), JC.JOB_COMPONENT_NBR), 2),
+		[ComponentDescription] = JC.JOB_COMP_DESC,
+		[JobQuantity] = JC.JOB_QTY,
+		[JobTypeCode] = JC.JT_CODE,
+		[JobTypeDescription] = JT.JT_DESC,
+		[StatusCode] = JOBT.TRF_CODE,
+		[Status] = T.TRF_DESCRIPTION,
+		[GutPercentComplete] = JOBT.PERCENT_COMPLETE,
+		[ClientReference] = J.JOB_CLI_REF,
+		[StartDate] = JC.[START_DATE],
+		[DueDate] = JC.JOB_FIRST_USE_DATE,
+		[JobComments] = J.JOB_COMMENTS,
+		[ProjectScheduleComments] = JOBT.TRF_COMMENTS,
+		[NextTaskDue] = NDT.TASK_DESCRIPTION,
+		[NextTaskDueDate] = NDT.JOB_REVISED_DATE,
+		[NextTaskDueComment] = NDT.FNC_COMMENTS,
+		[EstimateClientContactID] = EC.CDP_CONTACT_ID,
+		[EstimateClientContact] = CASE WHEN ECC.CONT_MI IS NULL OR ECC.CONT_MI = '' THEN RTRIM(LTRIM(ISNULL(ECC.CONT_FNAME, '') + ' ' + ISNULL(ECC.CONT_LNAME, ''))) ELSE ECC.CONT_FNAME + ' ' + ECC.CONT_MI + '. ' + ECC.CONT_LNAME END,
+		[EstimateDate] = EA.[EstimateDate],
+		[EstimateApprovedDate] = EA.[EstimateApprovedDate],
+		[EstimateApprovedBy] = EA.[EstimateApprovedBy],
+		[EstimateAmount] = EA.[EstimateAmount],
+		[EstimateAmountWithContingency] = EA.[EstimateAmountWithContingency],
+		[EstimateHours] = EA.[EstimateHours],
+		[QvAPercent] = CASE WHEN EA.[EstimateAmount] = 0 THEN 0 ELSE (JTOT.[Total] / EA.[EstimateAmount]) END,
+		[QvAPercentHours] = CASE WHEN EA.[EstimateHours] = 0 THEN 0 ELSE (JTOT.[Hours] / EA.[EstimateHours]) END,
+		[QvAPercentWithContingency] = CASE WHEN EA.[EstimateAmountWithContingency] = 0 THEN 0 ELSE (JTOT.[Total] / EA.[EstimateAmountWithContingency]) END,
+		[TaskCode] = JOBTD.FNC_CODE,
+		[TaskDescription] = JOBTD.TASK_DESCRIPTION,
+		[TaskStartDate] = JOBTD.TASK_START_DATE,
+		[TaskDueDate] = JOBTD.JOB_REVISED_DATE,		
+		[DueDateChange] = CASE WHEN JOBTD.JOB_DUE_DATE <> JOBTD.JOB_REVISED_DATE THEN 'Changed' ELSE NULL END,
+		[TaskComments] = JOBTD.FNC_COMMENTS,
+		[PhaseID] = JOBTD.TRAFFIC_PHASE_ID,
+		[PhaseOrder] = TP.PHASE_ORDER,
+		[Phase] = TP.PHASE_DESC,
+		[NextMilestoneTaskDue] = NDTM.TASK_DESCRIPTION,
+		[NextMilestoneDueDate] = NDTM.JOB_REVISED_DATE,
+		[NextMilestoneDueComment] = NDTM.FNC_COMMENTS
+	FROM         
+		[dbo].[JOB_LOG] AS J INNER JOIN
+		[dbo].[JOB_COMPONENT] AS JC ON JC.JOB_NUMBER = J.JOB_NUMBER INNER JOIN
+		[dbo].[EMPLOYEE_CLOAK] AS EMP ON EMP.EMP_CODE = JC.EMP_CODE LEFT OUTER JOIN
+		[dbo].[JOB_TYPE] AS JT ON JT.JT_CODE = JC.JT_CODE INNER JOIN
+		[dbo].[CLIENT] AS C ON C.CL_CODE = J.CL_CODE INNER JOIN
+		[dbo].[DIVISION] AS D ON D.CL_CODE = J.CL_CODE AND
+								 D.DIV_CODE = J.DIV_CODE INNER JOIN
+		[dbo].[PRODUCT] AS P ON P.CL_CODE = J.CL_CODE AND
+								P.DIV_CODE = J.DIV_CODE AND
+								P.PRD_CODE = J.PRD_CODE INNER JOIN
+		[dbo].[SALES_CLASS] AS SC ON SC.SC_CODE = J.SC_CODE INNER JOIN
+		[dbo].[JOB_TRAFFIC] AS JOBT ON JOBT.JOB_NUMBER = JC.JOB_NUMBER AND
+									   JOBT.JOB_COMPONENT_NBR = JC.JOB_COMPONENT_NBR LEFT OUTER JOIN
+		[dbo].[TRAFFIC] AS T ON T.TRF_CODE = JOBT.TRF_CODE INNER JOIN
+		[dbo].[JOB_TRAFFIC_DET] AS JOBTD ON JOBTD.JOB_NUMBER = JC.JOB_NUMBER AND
+											JOBTD.JOB_COMPONENT_NBR = JC.JOB_COMPONENT_NBR LEFT OUTER JOIN
+		[dbo].[TRAFFIC_PHASE] AS TP ON TP.TRAFFIC_PHASE_ID = JOBTD.TRAFFIC_PHASE_ID LEFT OUTER JOIN
+		(SELECT 
+			[JobNumber] = EA.JOB_NUMBER,
+			[ComponentNumber] = EA.JOB_COMPONENT_NBR,
+			[EstimateNumber] = ERD.ESTIMATE_NUMBER,
+			[EstimateComponentNumber] = ERD.EST_COMPONENT_NBR,
+			[EstimateQuoteNumber] = ERD.EST_QUOTE_NBR,
+			[EstimateRevisionNumber] = ERD.EST_REV_NBR,
+			[EstimateDate] = EA.CREATE_DATE,
+			[EstimateApprovedDate] = EA.EST_APPR_DATE,
+			[EstimateApprovedBy] = EA.EST_APPR_BY,
+			[EstimateAmount] = SUM(ISNULL(ERD.LINE_TOTAL, 0)),
+			[EstimateAmountWithContingency] = SUM(ISNULL(ERD.LINE_TOTAL, 0)) + SUM(ISNULL(ERD.LINE_TOTAL_CONT, 0)),
+			[EstimateHours] = SUM(CASE WHEN F.FNC_TYPE = 'E' THEN ISNULL(ERD.EST_REV_QUANTITY, 0) ELSE 0 END),
+			[EstimateHoursWithContingency] = SUM(CASE WHEN F.FNC_TYPE = 'E' THEN ISNULL(ERD.EXT_CONTINGENCY, 0) ELSE 0 END)
+		FROM 
+			[dbo].[ESTIMATE_APPROVAL] AS EA INNER JOIN 
+			[dbo].[ESTIMATE_REV_DET] AS ERD ON ERD.ESTIMATE_NUMBER = EA.ESTIMATE_NUMBER AND 
+											   ERD.EST_COMPONENT_NBR = EA.EST_COMPONENT_NBR AND 
+											   ERD.EST_QUOTE_NBR = EA.EST_QUOTE_NBR AND 
+											   ERD.EST_REV_NBR = EA.EST_REVISION_NBR INNER JOIN 
+			[dbo].[FUNCTIONS] AS F ON F.FNC_CODE = ERD.FNC_CODE
+		GROUP BY 
+			EA.JOB_NUMBER,
+			EA.JOB_COMPONENT_NBR,
+			ERD.ESTIMATE_NUMBER,
+			ERD.EST_COMPONENT_NBR,
+			ERD.EST_QUOTE_NBR,
+			ERD.EST_REV_NBR,
+			EA.CREATE_DATE,
+			EA.EST_APPR_DATE,
+			EA.EST_APPR_BY) AS EA ON EA.[JobNumber] = JC.JOB_NUMBER AND 
+									 EA.[ComponentNumber] = JC.JOB_COMPONENT_NBR LEFT OUTER JOIN
+		[dbo].[ESTIMATE_COMPONENT] AS EC ON EC.ESTIMATE_NUMBER = EA.[EstimateNumber] AND 
+										    EC.EST_COMPONENT_NBR = EA.[EstimateComponentNumber] LEFT OUTER JOIN
+		[dbo].[CDP_CONTACT_HDR] AS ECC ON ECC.CDP_CONTACT_ID = EC.CDP_CONTACT_ID LEFT OUTER JOIN
+		[dbo].[CDP_CONTACT_HDR] AS CC ON CC.CDP_CONTACT_ID = JC.CDP_CONTACT_ID LEFT OUTER JOIN
+		[dbo].[EMPLOYEE_CLOAK] AS MEMP ON MEMP.EMP_CODE = JOBT.MGR_EMP_CODE LEFT OUTER JOIN
+		(SELECT  
+				[ID] = ROW_NUMBER() OVER(PARTITION BY SJOBDT.JOB_NUMBER, SJOBDT.JOB_COMPONENT_NBR ORDER BY SJOBDT.JOB_NUMBER, SJOBDT.JOB_COMPONENT_NBR, SJOBDT.JOB_REVISED_DATE, SJOBDT.SEQ_NBR),
+				SJOBDT.JOB_NUMBER, 
+				SJOBDT.JOB_COMPONENT_NBR,
+				SJOBDT.FNC_CODE,
+				SJOBDT.JOB_REVISED_DATE,
+				SJOBDT.FNC_COMMENTS, 
+				SJOBDT.TASK_DESCRIPTION
+			FROM         
+				[dbo].[JOB_TRAFFIC_DET] AS SJOBDT 
+			WHERE				  
+				SJOBDT.JOB_COMPLETED_DATE IS NULL) AS NDT ON NDT.JOB_NUMBER = JC.JOB_NUMBER AND 
+															 NDT.JOB_COMPONENT_NBR = JC.JOB_COMPONENT_NBR AND
+															 NDT.ID = 1 LEFT OUTER JOIN
+		(SELECT  
+				[ID] = ROW_NUMBER() OVER(PARTITION BY SJOBDT.JOB_NUMBER, SJOBDT.JOB_COMPONENT_NBR ORDER BY SJOBDT.JOB_NUMBER, SJOBDT.JOB_COMPONENT_NBR, SJOBDT.JOB_REVISED_DATE, SJOBDT.SEQ_NBR),
+				SJOBDT.JOB_NUMBER, 
+				SJOBDT.JOB_COMPONENT_NBR,
+				SJOBDT.FNC_CODE,
+				SJOBDT.JOB_REVISED_DATE,
+				SJOBDT.FNC_COMMENTS, 
+				SJOBDT.TASK_DESCRIPTION
+			FROM         
+				[dbo].[JOB_TRAFFIC_DET] AS SJOBDT 
+			WHERE				  
+				SJOBDT.JOB_COMPLETED_DATE IS NULL AND SJOBDT.MILESTONE = 1) AS NDTM ON NDTM.JOB_NUMBER = JC.JOB_NUMBER AND 
+															 NDTM.JOB_COMPONENT_NBR = JC.JOB_COMPONENT_NBR AND
+															 NDTM.ID = 1 LEFT OUTER JOIN 
+		(SELECT 
+			[JobNumber] = JOBTOTALS.[JobNumber],
+			[JobComponentNumber] = JOBTOTALS.[JobComponentNumber],
+			[Total] = SUM(JOBTOTALS.[Total]),
+			[Hours] = SUM(JOBTOTALS.[Hours])
+		FROM
+			(SELECT
+				[ResourceType] = 'AB',
+				[JobNumber] = AB.JOB_NUMBER,
+				[JobComponentNumber] = AB.JOB_COMPONENT_NBR,
+				[Total] = 0,
+				[Hours] = 0
+			FROM 
+				[dbo].[ADVANCE_BILLING] AS AB
+					
+			UNION ALL
+
+			SELECT
+				[ResourceType] = 'C',
+				[JobNumber] = COOP.JOB_NUMBER,
+				[JobComponentNumber] = COOP.JOB_COMPONENT_NBR,
+				[Total] = ISNULL(COOP.AMOUNT, 0),
+				[Hours] = 0
+			FROM 
+				[dbo].[CLIENT_OOP] AS COOP
+						
+			UNION ALL
+
+			SELECT
+				[ResourceType] = 'E',
+				[JobNumber] = ETD.JOB_NUMBER,
+				[JobComponentNumber] = ETD.JOB_COMPONENT_NBR,
+				[Total] = ISNULL(ETD.LINE_TOTAL, 0),
+				[Hours] = CASE WHEN F.FNC_TYPE = 'E' THEN ISNULL(ETD.EMP_HOURS, 0) ELSE 0 END
+			FROM 
+				[dbo].[EMP_TIME_DTL] AS ETD INNER JOIN 
+				[dbo].[EMP_TIME] AS ET ON ET.ET_ID = ETD.ET_ID INNER JOIN 
+				[dbo].[FUNCTIONS] AS F ON F.FNC_CODE = ETD.FNC_CODE
+							
+			UNION ALL
+
+			SELECT
+				[ResourceType] = 'EI',
+				[JobNumber] = EIA.JOB_NUMBER,
+				[JobComponentNumber] = EIA.JOB_COMPONENT_NBR,
+				[Total] = 0,
+				[Hours] = 0
+			FROM 
+				[dbo].[ESTIMATE_INT_APPR] AS EIA
+				
+			UNION ALL
+
+			SELECT
+				[ResourceType] = 'ES',
+				[JobNumber] = EA.JOB_NUMBER,
+				[JobComponentNumber] = EA.JOB_COMPONENT_NBR,
+				[Total] = 0,
+				[Hours] = 0
+			FROM 
+				[dbo].[ESTIMATE_APPROVAL] AS EA
+				
+			UNION ALL
+
+			SELECT
+				[ResourceType] = 'I',
+				[JobNumber] = [IO].JOB_NUMBER,
+				[JobComponentNumber] = [IO].JOB_COMPONENT_NBR,
+				[Total] = ISNULL([IO].LINE_TOTAL, 0),
+				[Hours] = CASE WHEN F.FNC_TYPE = 'E' THEN ISNULL([IO].IO_QTY, 0) ELSE 0 END
+			FROM 
+				[dbo].[INCOME_ONLY] AS [IO] INNER JOIN 
+				[dbo].[FUNCTIONS] AS F ON F.FNC_CODE = [IO].FNC_CODE
+					
+			UNION ALL
+
+			SELECT
+				[ResourceType] = 'PO',
+				[JobNumber] = POD.JOB_NUMBER,
+				[JobComponentNumber] = POD.JOB_COMPONENT_NBR,
+				[Total] = 0,
+				[Hours] = 0
+			FROM 
+				[dbo].[PURCHASE_ORDER] AS PO INNER JOIN 
+				[dbo].[PURCHASE_ORDER_DET] AS POD ON POD.PO_NUMBER = PO.PO_NUMBER
+						
+			UNION ALL
+
+			SELECT
+				[ResourceType] = 'V',
+				[JobNumber] = APP.JOB_NUMBER,
+				[JobComponentNumber] = APP.JOB_COMPONENT_NBR,
+				[Total] = ISNULL(APP.LINE_TOTAL, 0),
+				[Hours] = CASE WHEN F.FNC_TYPE = 'E' THEN ISNULL(APP.AP_PROD_QUANTITY, 0) ELSE 0 END
+			FROM 
+				[dbo].[AP_PRODUCTION] AS APP INNER JOIN 
+				[dbo].[AP_HEADER] AS APH ON APH.AP_ID = APP.AP_ID AND 
+									   APH.AP_SEQ = APP.AP_SEQ INNER JOIN 
+				[dbo].[FUNCTIONS] AS F ON F.FNC_CODE = APP.FNC_CODE) AS JOBTOTALS
+		GROUP BY
+			JOBTOTALS.[JobNumber],
+			JOBTOTALS.[JobComponentNumber]) AS JTOT ON JTOT.JobNumber = JC.JOB_NUMBER AND
+													   JTOT.JobComponentNumber = JC.JOB_COMPONENT_NBR
+	WHERE     
+		(JC.JOB_PROCESS_CONTRL <> 6) AND 
+		(JC.JOB_PROCESS_CONTRL <> 12) AND 
+		(JOBT.COMPLETED_DATE IS NULL) AND
+		1 = CASE WHEN @DATE_TYPE = 0 THEN CASE WHEN JC.[START_DATE] >= @START_DATE AND JC.[START_DATE] <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END
+				 WHEN @DATE_TYPE = 1 THEN CASE WHEN JC.JOB_FIRST_USE_DATE >= @START_DATE AND JC.JOB_FIRST_USE_DATE <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END
+				 WHEN @DATE_TYPE = 2 THEN CASE WHEN NDT.JOB_REVISED_DATE >= @START_DATE AND NDT.JOB_REVISED_DATE <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END
+				 WHEN @DATE_TYPE = 3 THEN CASE WHEN EA.[EstimateDate] >= @START_DATE AND EA.[EstimateDate] <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END
+				 WHEN @DATE_TYPE = 4 THEN CASE WHEN EA.[EstimateApprovedDate] >= @START_DATE AND EA.[EstimateApprovedDate] <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END
+				 WHEN @DATE_TYPE = 5 THEN CASE WHEN JOBTD.TASK_START_DATE >= @START_DATE AND JOBTD.TASK_START_DATE <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END 
+				 WHEN @DATE_TYPE = 6 THEN CASE WHEN JOBTD.JOB_REVISED_DATE >= @START_DATE AND JOBTD.JOB_REVISED_DATE <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END 
+				 WHEN @DATE_TYPE = 7 THEN CASE WHEN J.CREATE_DATE >= @START_DATE AND J.CREATE_DATE <= CONVERT(DATETIME, @END_DATE +' 23:59:59', 101) THEN 1 ELSE 0 END END
+        AND	(@ClientCodeList IS NULL OR (@ClientCodeList IS NOT NULL AND J.CL_CODE IN (SELECT * FROM dbo.udf_split_list(@ClientCodeList, ','))))
+		AND	(@AECodeList IS NULL OR (@AECodeList IS NOT NULL AND JC.EMP_CODE IN (SELECT * from dbo.udf_split_list(@AECodeList, ','))))
+		AND	(@SalesClassCodeList IS NULL OR (@SalesClassCodeList IS NOT NULL AND J.SC_CODE IN (SELECT * from dbo.udf_split_list(@SalesClassCodeList, ','))))
+		AND (@JobTypeList IS NULL OR (@JobTypeList IS NOT NULL AND JC.JT_CODE IN (SELECT * FROM dbo.udf_split_list(@JobTypeList, ','))))
+		
+END
+GO
+
+

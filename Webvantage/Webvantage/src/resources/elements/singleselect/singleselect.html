@@ -1,0 +1,26 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <ak-multiselect class="wv-search"
+                    style="width: 100%;"
+                    k-widget.bind="widget"
+                    k-placeholder.bind="placeholder"
+                    k-value.two-way="_values"
+                    k-data-text-field.bind="textField"
+                    k-data-value-field.bind="valueField"
+                    k-enable.bind="enabled"
+                    k-auto-bind.bind="false"
+                    k-data-source.bind="dataSource"
+                    k-max-selected-items.bind="1"
+                    k-filter="contains"
+                    k-ignore-case.bind="true"
+                    k-virtual.bind="virtual"
+                    k-tag-template="<span title='#: ${textField} #'>#: ${textField} #</span>"
+                    k-on-change.delegate="changed($event.detail)"
+                    k-on-select.delegate="selected($event.detail)"
+                    k-on-deselect.delegate="deselected($event.detail)"
+                    k-on-data-bound.delegate="dataBound($event.detail)"
+                    k-on-ready.delegate="widgetReady($event.detail)">
+        <slot></slot>
+    </ak-multiselect>
+</template>

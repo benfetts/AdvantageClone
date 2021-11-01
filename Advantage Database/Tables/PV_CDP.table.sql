@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[PV_CDP] (
+    [USERID]   VARCHAR (100) NOT NULL,
+    [CL_CODE]  VARCHAR (6)   NOT NULL,
+    [DIV_CODE] VARCHAR (6)   NULL,
+    [PRD_CODE] VARCHAR (6)   NULL
+);
+

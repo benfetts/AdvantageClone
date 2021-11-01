@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[CP_LOGO] (
+    [LOGO_PATH_ID] INT           IDENTITY (1, 1) NOT NULL,
+    [LOGO_PATH]    VARCHAR (254) NULL
+);
+

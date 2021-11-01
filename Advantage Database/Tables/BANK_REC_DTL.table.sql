@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[BANK_REC_DTL] (
+    [BKD_REC_ID]     INT             NOT NULL,
+    [BKD_CODE]       VARCHAR (4)     NOT NULL,
+    [BKD_STMT_DT]    SMALLDATETIME   NOT NULL,
+    [BKD_CLEARED]    SMALLINT        NULL,
+    [BKD_TYPE]       VARCHAR (10)    NOT NULL,
+    [BKD_CHECK_NBR]  INT             NULL,
+    [BKD_CHECK_DATE] SMALLDATETIME   NULL,
+    [BKD_CHECK_AMT]  DECIMAL (15, 2) NULL,
+    [BKD_VOID_FLAG]  SMALLINT        NULL,
+    [BKD_PAYEE]      VARCHAR (40)    NULL,
+    [GL_ENT_EXACT]   INT             NULL,
+    [GL_ENT_SEQ]     SMALLINT        NULL
+);
+

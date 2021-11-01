@@ -1,0 +1,42 @@
+@import '../../../theme/colors';
+@import '../../../theme/mixins/font';
+
+.k-dropdown {
+  @include font-base(14px);
+  width: 135px;
+  height: 27px;
+
+  & &-wrap .k-input {
+    height: 25px;
+  }
+}
+
+.k-list {
+  @include font-base(14px);
+  background: $white;
+}
+
+.k-dropdown .k-dropdown-wrap.k-state-focused {
+  box-shadow: none;
+}
+
+.k-dropdown .k-dropdown-wrap,
+.k-dropdown .k-dropdown-wrap.k-state-focused,
+.k-dropdown .k-dropdown-wrap:hover {
+  background: $light-grey;
+}
+
+.k-dropdown .k-dropdown-wrap:hover {
+  background-image: none;
+}
+
+.k-list .k-item.k-state-selected,
+.k-list .k-item.k-state-selected:hover,
+.k-list .k-item.k-state-selected:active {
+  background: $blue;
+  color: $black-light;
+}
+
+.k-list .k-item {
+  align-content: flex-start;
+}

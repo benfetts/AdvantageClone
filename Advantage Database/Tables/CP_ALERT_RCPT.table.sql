@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[CP_ALERT_RCPT] (
+    [ALERT_ID]       INT           NOT NULL,
+    [ALERT_RCPT_ID]  INT           NOT NULL,
+    [CDP_CONTACT_ID] INT           NOT NULL,
+    [EMAIL_ADDRESS]  VARCHAR (50)  NULL,
+    [PROCESSED]      SMALLDATETIME NULL,
+    [NEW_ALERT]      SMALLINT      NULL,
+    [READ_ALERT]     SMALLINT      NULL,
+    [CURRENT_RCPT]   SMALLINT      NULL
+);
+

@@ -1,0 +1,9 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_dd_Traffic_Schedule_GetEstimateFunctions] 
+AS
+		SELECT DISTINCT FNC_CODE as Code, ISNULL(FNC_DESCRIPTION,'') as Description
+		FROM FUNCTIONS
+		WHERE FNC_TYPE='E'  and (FUNCTIONS.FNC_INACTIVE = 0 or FUNCTIONS.FNC_INACTIVE IS NULL)
+
+

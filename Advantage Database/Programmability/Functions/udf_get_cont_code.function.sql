@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION [dbo].[udf_get_cont_code] ( @cdp_contact_id integer )  		  	RETURNS varchar(6) AS  	BEGIN  		DECLARE @cont_code varchar(6)  		BEGIN  			SELECT @cont_code = ( SELECT CONT_CODE FROM dbo.CDP_CONTACT_HDR WHERE CDP_CONTACT_ID = @cdp_contact_id )  		END  	RETURN @cont_code  	END

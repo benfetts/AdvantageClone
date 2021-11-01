@@ -1,0 +1,14 @@
+﻿<template>
+    <div class="comment-view">
+        <div class="comment-employee" if.bind="employeeCode">
+            ${employeeCode}
+        </div>
+        <div class="comment-expand">
+            <span class="glyphicon glyphicon-zoom-in"></span>
+        </div>
+        <div class="comment-content">
+            <div style="font-weight: bold">${employeeName}</div>
+            <span ref="commentText">${message}</span>
+        </div>
+    </div>
+</template>

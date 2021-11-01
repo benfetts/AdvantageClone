@@ -1,0 +1,61 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="resources/elements/display-templates/job/job-display-template"></require>
+
+    <div style="margin: 0px 0px 0px 0px;">
+        <input ref="filter" value.bind="filterString" type="text" class="k-textbox" style="margin-bottom: 5px; margin-top: 5px; width: 100%;" placeholder="Search..." />
+        <ak-grid id="selectJobsGrid"
+                 k-widget.bind="lookupGrid"
+                 k-data-source.bind="lookupDataSource"
+                 k-selectable="[row]"
+                 k-pageable.bind="false"
+                 k-scrollable.bind="{ virtual: true }"
+                 k-on-change.delegate="lookupGridOnChange($event.detail)"
+                 dblclick.delegate="doubleClick($event.detail)"
+                 k-on-data-bound.delegate="lookupGridOnDataBound($event.detail)"
+                 k-height="495px">
+            <ak-col k-title="Description" k-field="Description">
+                <ak-template>
+                    <wv-job-display-template job-and-component="${Description}"
+                                             client-name="${ClientName}"
+                                             client-code="${ClientCode}"
+                                             division-code="${DivisionCode}"
+                                             product-code="${ProductCode}">
+                    </wv-job-display-template>
+                </ak-template>
+            </ak-col>
+            <ak-col k-title.bind="salesClassColumnHeaderText" k-field="SalesClassDescription" k-width="175px">
+                <ak-template>
+                    <span style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="Sales Class: ${SalesClassDescription}">
+                        ${SalesClassDescription}&nbsp;
+                    </span>
+                    <span style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="Job Type: ${JobTypeDescription}">
+                        ${JobTypeDescription}&nbsp;
+                    </span>
+                </ak-template>
+            </ak-col>
+            <ak-col k-title="Account Executive<br/>Manager" k-field="AccountExecutiveName" k-width="175px" k-hidden.bind="hideInfo">
+                <ak-template>
+                    <span if.bind="AccountExecutiveName === ManagerName" title="AE/Manager: ${AccountExecutiveName}">
+                        ${AccountExecutiveName}&nbsp;
+                    </span>
+                    <span if.bind="AccountExecutiveName !== ManagerName" style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="AE: ${AccountExecutiveName}">
+                        ${AccountExecutiveName}&nbsp;
+                    </span>
+                    <span if.bind="AccountExecutiveName !== ManagerName && ManagerName.trim() != ''" style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="Manager: ${ManagerName}">
+                        ${ManagerName}&nbsp;
+                    </span>
+                </ak-template>
+            </ak-col>
+        </ak-grid>
+    </div>
+    <div style="text-align:right; margin-right: 2px;">
+        Page: ${currentPage} of ${totalPages}, Total Records: ${recordCount}
+    </div>
+    <div id="buttonsForOldPages" class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal" style="float:right; margin-top: 35px;" >
+        <button class="k-button k-primary" click.delegate="selectClick()">Select</button>
+        <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+    </div>
+</template>

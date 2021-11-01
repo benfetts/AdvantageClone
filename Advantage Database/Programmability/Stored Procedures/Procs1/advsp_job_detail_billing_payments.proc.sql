@@ -1,0 +1,97 @@
+﻿CREATE PROCEDURE [dbo].[advsp_job_detail_billing_payments] 
+
+AS
+BEGIN
+
+CREATE TABLE #INVOICE
+	(
+		[ID] [int] IDENTITY(1,1) NOT NULL,
+		[InvoiceNumber] int,
+		[InvoiceDate] datetime,
+		[InvoiceAmount] decimal(18,2),
+		[JobNumber] int,
+		[JobComponentNumber] smallint,
+		[CheckNumber] varchar(50),
+		[CheckDate] datetime
+	);	
+
+CREATE TABLE #CHECK
+	(
+		[ID] [int] IDENTITY(1,1) NOT NULL,
+		[InvoiceNumber] int,		
+		[CheckNumber] varchar(50),
+		[CheckDate] datetime
+	);	
+
+
+	SET NOCOUNT ON;
+
+	INSERT INTO #INVOICE
+	SELECT ISNULL(AR.AR_INV_NBR,0) AS InvoiceNumber, ISNULL(A.AR_INV_DATE,'') AS InvoiceDate, SUM(ISNULL(AR.TOTAL_BILL,0)) AS InvoiceAmount, AR.JOB_NUMBER, AR.JOB_COMPONENT_NBR,NULL,NULL
+	FROM  AR_SUMMARY AS AR INNER JOIN
+						 ACCT_REC A ON A.AR_INV_NBR = AR.AR_INV_NBR AND A.AR_INV_SEQ = AR.AR_INV_SEQ AND 
+						  A.AR_TYPE = AR.AR_TYPE
+	WHERE AR.JOB_NUMBER	IS NOT NULL --= @JobNumber AND AR.JOB_COMPONENT_NBR = @JobComponentNumber     
+	GROUP BY AR.AR_INV_NBR,A.AR_INV_DATE, AR.JOB_NUMBER, AR.JOB_COMPONENT_NBR   
+	
+	--SELECT * FROM #INVOICE  
+
+	DECLARE @ROW_ID AS INT,
+			@ROW_ID_CHECK AS INT,
+			@CURR_AR_INV_NBR AS INTEGER,
+			@CURR_AR_INV_NBR_CHECK AS INTEGER,
+			@CURR_CHECK AS VARCHAR(50),
+			@CURR_CHECK_DATE AS SMALLDATETIME,
+			@CURR_JOB AS INT,
+			@CURR_COMP AS SMALLINT
+
+	DECLARE MY_ROWS                         CURSOR  
+        FOR
+	        SELECT ID, [InvoiceNumber],[JobNumber],[JobComponentNumber]
+	        FROM   #INVOICE
+			WHERE [InvoiceDate] IS NOT NULL
+        ;
+        OPEN MY_ROWS;
+        FETCH NEXT FROM MY_ROWS INTO @ROW_ID,@CURR_AR_INV_NBR,@CURR_JOB,@CURR_COMP;
+        WHILE @@FETCH_STATUS = 0
+        BEGIN
+			INSERT INTO #CHECK
+			SELECT DISTINCT @CURR_AR_INV_NBR, ISNULL(CR_CLIENT.CR_CHECK_NBR,''), ISNULL(CR_CLIENT.CR_CHECK_DATE,'')
+			FROM  CR_CLIENT_DTL INNER JOIN CR_CLIENT ON CR_CLIENT_DTL.REC_ID = CR_CLIENT.REC_ID AND CR_CLIENT_DTL.SEQ_NBR = CR_CLIENT.SEQ_NBR
+			WHERE AR_INV_NBR = @CURR_AR_INV_NBR
+
+			INSERT INTO #INVOICE
+			SELECT [InvoiceNumber],NULL,NULL,@CURR_JOB,@CURR_COMP,[CheckNumber],[CheckDate]
+			FROM #CHECK 
+			WHERE [InvoiceNumber] = @CURR_AR_INV_NBR			
+
+			DELETE FROM #CHECK
+			
+	        --GO TO NEXT EVENT
+	        FETCH NEXT FROM MY_ROWS INTO @ROW_ID,@CURR_AR_INV_NBR,@CURR_JOB,@CURR_COMP;
+        END
+        CLOSE MY_ROWS;
+        DEALLOCATE MY_ROWS;
+
+
+
+ SELECT [InvoiceNumber],
+		CASE WHEN [InvoiceDate] IS NULL THEN '' ELSE [InvoiceDate] END AS InvoiceDate,
+		[InvoiceAmount],
+		[CheckNumber],
+		CASE WHEN [CheckDate] IS NULL THEN '' ELSE [CheckDate] END AS CheckDate,
+		[JobNumber],
+		[JobComponentNumber]
+ FROM #INVOICE
+ ORDER BY [InvoiceNumber],[InvoiceDate] DESC
+	
+	--SELECT ISNULL(ACCT_REC.AR_INV_NBR,0) AS InvoiceNumber, ISNULL(ACCT_REC.AR_INV_DATE,'') AS InvoiceDate, ISNULL(ACCT_REC.AR_INV_AMOUNT,0) AS InvoiceAmount, ISNULL(CR_CLIENT.CR_CHECK_NBR,'') AS CheckNumber, 
+ --                     ISNULL(CR_CLIENT.CR_CHECK_DATE,'') AS CheckDate, ISNULL(CR_CLIENT_DTL.CR_PAY_AMT,0) AS CheckAmount, ACCT_REC.JOB_NUMBER AS JobNumber, ISNULL(ACCT_REC.JOB_COMPONENT_NBR,'') AS JobComponentNumber
+	--FROM  CR_CLIENT INNER JOIN
+ --                     CR_CLIENT_DTL ON CR_CLIENT.REC_ID = CR_CLIENT_DTL.REC_ID AND 
+ --                     CR_CLIENT.SEQ_NBR = CR_CLIENT_DTL.SEQ_NBR RIGHT OUTER JOIN
+ --                     ACCT_REC ON ACCT_REC.AR_INV_NBR = CR_CLIENT_DTL.AR_INV_NBR AND ACCT_REC.AR_INV_SEQ = CR_CLIENT_DTL.AR_INV_SEQ AND 
+ --                     ACCT_REC.AR_TYPE = CR_CLIENT_DTL.AR_TYPE
+	--WHERE ACCT_REC.JOB_NUMBER IS NOT NULL
+
+END	

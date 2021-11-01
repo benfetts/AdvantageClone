@@ -1,0 +1,137 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+    <require from="aurelia-kendoui-bridge/editor/editor"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification-template"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/listbox/listbox"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/window/window"></require>
+    <require from="resources/elements/dropdownlist/dropdownlist"></require>
+    <require from="resources/elements/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/sortable/sortable"></require>
+    <require from="resources/elements/switch/switch"></require>
+    <require from="resources/elements/checklist/checklist"></require>
+    <style>
+    </style>
+    <div style="">
+        <div class="wv-form wv-vert-form" if.bind="isRouted">
+            <div if.bind="isRouted">
+                <div class="col-sm-12 wv-form-group form-x wv-form-group-inline">
+                    <label>Workflow:</label>
+                    <div>
+                        ${Alert.AlertAssignmentTemplateName}
+                    </div>
+                </div>
+            </div>
+            <div if.bind="isRouted">
+                <div class="col-xs-6">
+                    <div class="wv-form-group">
+                        <label>State:</label>
+                        <div>
+                            <ak-list-box style="width: 100%; max-height: 220px;"
+                                         k-widget.bind="alertTemplateStatesListBox"
+                                         k-data-source.bind="alertTemplateStatesDataSource"
+                                         k-data-text-field="Name"
+                                         k-data-value-field="ID"
+                                         k-on-data-bound.delegate="alertTemplateStatesDataBound($event.detail)"
+                                         k-on-change.delegate="alertTemplateStatesChange($event.detail)">
+                            </ak-list-box>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="wv-form-group">
+                        <label>Assign To:</label>
+                        <div>
+                            <ak-multiselect k-widget.bind="assignToMultiSelectRouted"
+                                            k-data-source.bind="alertTemplateStateEmployeesDataSourceMultiSelectRouted"
+                                            k-value.two-way="Alert.Assignees"
+                                            k-filter="contains"
+                                            k-on-deselect.delegate="assigneeDeselected($event.detail)" 
+                                            k-on-select.delegate="assigneeSelected($event.detail)" 
+                                            k-on-change.delegate="assignToMultiSelectChanged($event.detail)"
+                                            k-on-data-bound.delegate="assignToMultiSelectDataBound($event.detail)"
+                                            k-placeholder=""
+                                            k-data-text-field="Name"
+                                            k-data-value-field="Code"
+                                            k-auto-bind.bind="false">
+                                <ak-template for="tagTemplate">
+                                    <span if.bind="IsTempComplete" class="wv-assignee-complete glyphicon glyphicon-ok "></span>&nbsp;${Name}
+                                </ak-template>
+                            </ak-multiselect>
+                        </div>
+                    </div>
+                    <div class="wv-form-group">
+                        <div>
+                            <div class="wv-cb-wrapper">
+                                <div if.bind="!Alert.IsCompleted">
+                                    <input type="checkbox" class="k-checkbox" id="showAllEmpsCB" checked.bind='showingAllEmployees' change.delegate='showAllEmployeesChanged()' />
+                                    <label class="k-checkbox-label" for="showAllEmpsCB">Show All Employees</label>
+                                </div>
+                                <div if.bind="Alert.IsCompleted">
+                                    <input type="checkbox" disabled class="k-checkbox" id="showAllEmpsCB" />
+                                    <label class="k-checkbox-label" for="showAllEmpsCB">Show All Employees</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wv-form-group">
+                        <label>Comment:</label>
+                        <div class="wv-simple-editor wv-simple-editor-l">
+                            <textarea ak-rich-editor="k-widget.two-way: sendAssignmentComment; k-tools.bind: []; k-resizable.bind: false;" style="height: 100px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div if.bind="isRouted && !Alert.IsCompleted">
+                        <div class="wv-form-group">
+                            <div style="text-align: right;">
+                                <button class="btn btn-sm btn-success" click.delegate="sendAssignmentClicked()">Send Assignment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wv-form wv-vert-form" if.bind="!isRouted">
+            <div if.bind="Alert.IsWorkItem && !isRouted">
+                <div class="wv-form-group">
+                    <label>Assign To:</label>
+                    <div>
+                        <wv-multiselect k-widget.bind="assignToNotRoutedAndTasks"
+                                        value.two-way="Alert.Assignees" 
+                                        enabled.bind="CanUpdate" 
+                                        data-bound.delegate="assigneeDataBound($event.detail)" 
+                                        deselect.delegate="assigneeDeselected($event.detail)" 
+                                        select.delegate="assigneeSelected($event.detail)" 
+                                        change.delegate="assigneeChange($event.detail)" 
+                                        text-field="Name" 
+                                        value-field="Code" 
+                                        data-source.bind="employeeDataSource"
+                                        height="500"
+                                        >
+                            <ak-template for="tagTemplate">
+                                <span if.bind="IsTempComplete" class="wv-assignee-complete glyphicon glyphicon-ok "></span>&nbsp;${Name}
+                            </ak-template>
+                        </wv-multiselect>
+                    </div>
+                </div>
+                <div if.bind="!isRouted && !Alert.IsCompleted">
+                    <div class="wv-form-group">
+                        <div style="text-align: right;">
+                            <button class="btn btn-sm btn-success" click.delegate="sendAssignmentClicked()">Send Assignment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

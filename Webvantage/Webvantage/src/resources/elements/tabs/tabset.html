@@ -1,0 +1,8 @@
+﻿<template>
+    <ul class="nav nav-tabs wv-tabs">
+        <li repeat.for="tab of tabs" class="${tab.active ? 'active' : ''}"><a data-toggle="tab" href="javascript:void(0)" click.delegate="selectTab(tab)" innerhtml.bind="tab.title"></a></li>
+    </ul>
+    <div class="tab-content">
+        <slot></slot>
+    </div>
+</template>

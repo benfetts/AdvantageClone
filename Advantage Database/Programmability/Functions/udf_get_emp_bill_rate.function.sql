@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION [dbo].[udf_get_emp_bill_rate] ( @emp_code varchar(6) )  		  	RETURNS decimal(9,2) AS  	BEGIN  		DECLARE @emp_bill_rate decimal(9,2)  		SELECT @emp_bill_rate = ( SELECT BILLING_RATE   					    FROM dbo.BILLING_RATE   					   WHERE BILL_RATE_PREC_ID = 2   					     AND EMP_CODE = @emp_code )     	RETURN @emp_bill_rate  	END

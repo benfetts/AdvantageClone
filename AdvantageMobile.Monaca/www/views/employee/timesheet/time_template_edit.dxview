@@ -1,0 +1,52 @@
+<div data-options="dxView : { name: 'time_template_edit', title: 'time_template_edit' } " >
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-bind="dxCommand: { onExecute: '#_back', id: 'cancel', behavior: 'back', title: 'Cancel', icon: 'close' }"></div>
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+
+        <div data-bind="dxScrollView: { }">
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">Employee time template ID: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: employeetimetemplate.EmployeeTimeTemplateID, readOnly: true }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Employee code: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: employeetimetemplate.EmployeeCode, placeholder: 'Enter Employee code' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Job number: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: employeetimetemplate.JobNumber, placeholder: 'Enter Job number' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Job component number: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: employeetimetemplate.JobComponentNumber, placeholder: 'Enter Job component number' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Function code: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: employeetimetemplate.FunctionCode, placeholder: 'Enter Function code' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Default comment: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: employeetimetemplate.DefaultComment, placeholder: 'Enter Default comment' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Department team code: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: employeetimetemplate.DepartmentTeamCode, placeholder: 'Enter Department team code' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Product category code: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: employeetimetemplate.ProductCategoryCode, placeholder: 'Enter Product category code' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Employee hours: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: employeetimetemplate.EmployeeHours, placeholder: 'Enter Employee hours' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Apply to days: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: employeetimetemplate.ApplyToDays, placeholder: 'Enter Apply to days' }"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

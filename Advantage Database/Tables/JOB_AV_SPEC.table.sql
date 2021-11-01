@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[JOB_AV_SPEC] (
+    [JOB_NUMBER]        INT          NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT     NOT NULL,
+    [JOB_AV_OTHER_DESC] VARCHAR (40) NULL,
+    [JOB_AV_AUDIO]      SMALLINT     NULL,
+    [JOB_AV_VIDEO]      SMALLINT     NULL,
+    [JOB_AV_SLIDES]     SMALLINT     NULL,
+    [JOB_AV_OTHER]      SMALLINT     NULL,
+    [AV_COMMENTS]       TEXT         NULL,
+    [ROWID]             INT          IDENTITY (1, 1) NOT NULL
+);
+

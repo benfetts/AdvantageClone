@@ -1,0 +1,2 @@
+﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="Document_Label_Tree.ascx.vb" Inherits="Webvantage.Document_Label_Tree_UC" %>
+<telerik:RadTreeView ID="RadTreeViewLabels" runat="server"></telerik:RadTreeView>

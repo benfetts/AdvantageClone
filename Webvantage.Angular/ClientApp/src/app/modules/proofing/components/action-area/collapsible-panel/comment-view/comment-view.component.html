@@ -1,0 +1,28 @@
+<div class="comment-view">
+
+  <div class="title">
+    <div class="left">
+      <img class="title-burger" src="assets/icons/icon-header-side-panel.svg" />
+      Comments
+    </div>
+    <div class="right" style="color:green; float:right; padding-right: 6px;">
+      <button (click)="addComment()" role="button" class=" wv-icon-button k-button k-grid-add wv-add-new" title="Add comment" style="width: 24px; height: 24px;">
+        <span class="wvi wvi-navigate-plus"></span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <div style="display:grid">
+      <div *ngIf="newComment">
+        <div id="editorDiv">
+          <textarea kendo-editor #myEditor id="editor"></textarea>
+        </div>
+        <mention-item #myMention id="mention"></mention-item>
+      </div>
+
+      <ng-container *ngFor="let feedback of feedback | orderBy:'commentId' ; let i = index">
+        <markup-comment class="comment-view-item" [feedback]="feedback" (click)="markUpclicked(i)"></markup-comment>
+      </ng-container>
+    </div>
+  </div>
+</div>

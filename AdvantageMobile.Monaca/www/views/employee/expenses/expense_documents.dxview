@@ -1,0 +1,8 @@
+<div data-options="dxView : { name: 'expense_documents', title: 'View Receipt' } " >
+    <div data-bind="dxCommand: { onExecute: deleteButton, id: 'save', title: 'Delete' ,  visible: reportLocked} "></div>
+
+       <!--<div data-bind="dxCommand: $root.deleteButton"></div>-->
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+        <img style="width:100%;" data-bind="attr:{src: ImageSRC}" />
+     </div>
+</div>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <DataSources>
+    <DataSource Name="DataSource" />
+  </DataSources>
+  <Items>
+    <Pie UniqueName="Pies 1" Name="By Media Type" DataSource="DataSource" LabelContentType="ArgumentValueAndPercent" TooltipContentType="ArgumentValueAndPercent">
+      <DataItems>
+        <Measure DataMember="Dollars" UniqueName="DataItem0" />
+        <Dimension DataMember="MediaType" UniqueName="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value UniqueName="DataItem0" />
+      </Values>
+      <Names>
+        <Name Value="DataItem0" Name="Dollars" />
+      </Names>
+    </Pie>
+    <Pie UniqueName="Pies 2" Name="By Sales Class" DataSource="DataSource" LabelContentType="ArgumentValueAndPercent" TooltipContentType="ArgumentValueAndPercent">
+      <DataItems>
+        <Measure DataMember="Dollars" UniqueName="DataItem0" />
+        <Dimension DataMember="SalesClass" UniqueName="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument UniqueName="DataItem1" />
+      </Arguments>
+      <Values>
+        <Value UniqueName="DataItem0" />
+      </Values>
+      <Names>
+        <Name Value="DataItem0" Name="Dollars" />
+      </Names>
+    </Pie>
+    <Chart UniqueName="Chart 1" Name="By Media Type Duration Of Plan" DataSource="DataSource">
+      <DataItems>
+        <Dimension DataMember="EntryDate" DateTimeGroupInterval="MonthYear" UniqueName="DataItem0" />
+        <Dimension DataMember="MediaType" UniqueName="DataItem1" />
+        <Measure DataMember="Dollars" UniqueName="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem0" />
+      </Arguments>
+      <Panes>
+        <Pane>
+          <Series>
+            <Simple SeriesType="Line">
+              <Value UniqueName="DataItem2" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <Layout>
+    <LayoutItem Name="Pies 1" Left="0" Top="0" Right="0.5" Bottom="0.5" />
+    <LayoutItem Name="Pies 2" Left="0.5" Top="0" Right="1" Bottom="0.5" />
+    <LayoutItem Name="Chart 1" Left="0" Top="0.5" Right="1" Bottom="1" />
+  </Layout>
+</Dashboard>

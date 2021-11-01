@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[AGENCY_CLIENTS] (
+    [CL_CODE] VARCHAR (6) NOT NULL
+);
+

@@ -1,0 +1,206 @@
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[advsp_timesheet_get_grouped_summary]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[advsp_timesheet_get_grouped_summary]
+GO
+CREATE PROCEDURE [dbo].[advsp_timesheet_get_grouped_summary] /*WITH ENCRYPTION*/
+@EMP_CODE VARCHAR(6),
+@GROUP_TYPE SMALLINT, -- 0 = WEEK, 1 = MONTH, 2 = YEAR
+@ENTER_DATE SMALLDATETIME
+AS
+/*=========== QUERY ===========*/
+/*
+        TimesheetApprovalType
+            ReadyToSubmit = 0
+            Pending = 1
+            Approved = 2
+            Denied = 3
+            NotSubmitted = 4
+            Missing = 5
+            AllTime = 6 'disregard approval status
+            DoesNotExist = 7 'represent days that don't exist in db...
+            PostPeriodClosed = 8
+            Entered = 9
+*/
+	DECLARE
+		@START_DATE SMALLDATETIME,
+		@END_DATE SMALLDATETIME,
+		@START_WEEK_ON INT;
+
+	SET @START_WEEK_ON = 0; -- GET FROM DB?
+
+	-- .NET IS ZERO BASED ENUM; SQL STARTS AT ONE
+	SET @START_WEEK_ON = @START_WEEK_ON + 1;
+
+	DECLARE	@GROUPED_DATA TABLE (
+			ID INT,
+			[START_DATE] SMALLDATETIME,
+			END_DATE SMALLDATETIME,
+			TOTAL_HOURS DECIMAL (7,3),
+			TIMESHEET_APPROVAL_TYPE SMALLINT, 
+			PERCENT_OF_STD_HRS DECIMAL(9,2), 
+			STD_HRS DECIMAL(9,2),
+			POSTPERIOD_CLOSED INT
+		);
+	DECLARE @DATE_RANGE TABLE ([DATE] SMALLDATETIME, 
+								TOTAL_HOURS DECIMAL(9,2), 
+								TIMESHEET_APPROVAL_TYPE SMALLINT, 
+								PERCENT_OF_STD_HRS DECIMAL(9,2), 
+								STD_HRS DECIMAL(9,2),
+								POSTPERIOD_CLOSED INT,
+								IS_HOLIDAY BIT,
+								IS_ALL_DAY_HOLIDAY INT,
+								HOLIDAY_HOURS DECIMAL(15,2)
+							  );
+
+	IF @GROUP_TYPE = 0 -- WEEK
+	BEGIN
+
+		DECLARE
+			@DAY_OF_WEEK INT
+		
+		SET @DAY_OF_WEEK = DATEPART(dw, @ENTER_DATE);
+
+		IF @DAY_OF_WEEK = @START_WEEK_ON
+		BEGIN
+
+			SET @START_DATE = @ENTER_DATE;
+			
+		END
+		ELSE
+		BEGIN
+
+			SET @START_DATE = DATEADD(dd, ((@DAY_OF_WEEK * -1) + @START_WEEK_ON), @ENTER_DATE);
+
+		END
+
+		SET @END_DATE = DATEADD(dd, 6, @START_DATE);
+
+	END
+	IF @GROUP_TYPE = 1 -- MONTH
+	BEGIN
+
+		SET @START_DATE = CONVERT(DATETIME, CONVERT(VARCHAR, DATEPART(yyyy, @ENTER_DATE)) + '-' + CONVERT(VARCHAR, DATEPART(mm, @ENTER_DATE)) + '-01 00:00:00', 102);
+		SET @END_DATE = DATEADD(mi, -1, DATEADD(mm, DATEDIFF(m, 0, @ENTER_DATE) + 1, 0));
+
+	END
+	IF @GROUP_TYPE = 2 -- YEAR
+	BEGIN
+
+		SET @START_DATE = CONVERT(DATETIME, CONVERT(VARCHAR, DATEPART(yyyy, @ENTER_DATE)) + '-01-01 00:00:00', 102);
+		SET @END_DATE = CONVERT(DATETIME, CONVERT(VARCHAR, DATEPART(yyyy, @ENTER_DATE)) + '-12-31 23:59:00', 102);
+
+	END
+
+	INSERT INTO @DATE_RANGE ([DATE], TOTAL_HOURS, TIMESHEET_APPROVAL_TYPE, PERCENT_OF_STD_HRS, STD_HRS, POSTPERIOD_CLOSED, IS_HOLIDAY, IS_ALL_DAY_HOLIDAY, HOLIDAY_HOURS)
+	EXEC [dbo].[usp_wv_ts_DaysByApprovalStatus] @START_DATE, @END_DATE, @EMP_CODE, 0;
+
+	IF @GROUP_TYPE = 0 -- WEEK
+	BEGIN
+
+		UPDATE @DATE_RANGE SET [DATE] = CONVERT(DATETIME, 
+														(CONVERT(VARCHAR, DATEPART(yyyy, [DATE])) + '-' + 
+														CONVERT(VARCHAR, DATEPART(mm, [DATE])) + '-' + 
+														CONVERT(VARCHAR, DATEPART(dd, [DATE]))) + ' 00:00:00', 102)
+		INSERT INTO @GROUPED_DATA (ID, 
+								   [START_DATE],
+								   END_DATE, 
+								   TOTAL_HOURS, 
+								   TIMESHEET_APPROVAL_TYPE,
+								   PERCENT_OF_STD_HRS,
+								   STD_HRS,
+								   POSTPERIOD_CLOSED 
+								   )
+		SELECT        
+			DATEPART(dd, A.[DATE]), 
+			A.[DATE],
+			DATEADD(mi, -1, DATEADD(dd, 1, A.[DATE])),
+			TOTAL_HOURS, 
+			TIMESHEET_APPROVAL_TYPE,
+			PERCENT_OF_STD_HRS, 
+			STD_HRS,
+			POSTPERIOD_CLOSED
+		FROM            
+			@DATE_RANGE A
+		ORDER BY
+			A.[DATE];
+
+	END
+	IF @GROUP_TYPE = 1 -- MONTH
+	BEGIN
+
+		INSERT INTO @GROUPED_DATA (ID, 
+								   [START_DATE],
+								   END_DATE, 
+								   TOTAL_HOURS, 
+								   TIMESHEET_APPROVAL_TYPE,
+								   PERCENT_OF_STD_HRS,
+								   STD_HRS,
+								   POSTPERIOD_CLOSED 
+								   )
+		SELECT        
+			DATEPART(dd, A.[DATE]), 
+			A.[DATE],
+			DATEADD(mi, -1, DATEADD(dd, 1, A.[DATE])),
+			SUM(TOTAL_HOURS), 
+			TIMESHEET_APPROVAL_TYPE,
+			NULL, 
+			SUM(STD_HRS),
+			POSTPERIOD_CLOSED
+		FROM            
+			@DATE_RANGE A
+		GROUP BY 
+			DATEPART(dd, A.[DATE]), 
+			A.[DATE],
+			DATEADD(mi, -1, DATEADD(dd, 1, A.[DATE])),
+			TIMESHEET_APPROVAL_TYPE,
+			POSTPERIOD_CLOSED
+		ORDER BY
+			A.[DATE];
+
+	END
+	IF @GROUP_TYPE = 2 -- YEAR
+	BEGIN
+
+		INSERT INTO @GROUPED_DATA (ID, 
+								   [START_DATE],
+								   END_DATE, 
+								   TOTAL_HOURS, 
+								   TIMESHEET_APPROVAL_TYPE,
+								   PERCENT_OF_STD_HRS,
+								   STD_HRS,
+								   POSTPERIOD_CLOSED 
+								   )
+		SELECT        
+			DATEPART(mm, A.[DATE]), 
+			CONVERT(DATETIME, CONVERT(VARCHAR, DATEPART(yyyy, A.[DATE])) + '-' + CONVERT(VARCHAR, DATEPART(mm, A.[DATE])) + '-01 00:00:00', 102),
+			DATEADD(mi, -1, DATEADD(mm, DATEDIFF(m, 0, A.[DATE]) + 1, 0)),
+			SUM(A.TOTAL_HOURS), 
+			NULL,
+			NULL, 
+			SUM(A.STD_HRS),
+			POSTPERIOD_CLOSED
+		FROM            
+			@DATE_RANGE A
+		GROUP BY 
+			DATEPART(mm, A.[DATE]), 
+			CONVERT(DATETIME, CONVERT(VARCHAR, DATEPART(yyyy, A.[DATE])) + '-' + CONVERT(VARCHAR, DATEPART(mm, A.[DATE])) + '-01 00:00:00', 102),
+			DATEADD(mi, -1, DATEADD(mm, DATEDIFF(m, 0, A.[DATE]) + 1, 0)),
+			POSTPERIOD_CLOSED
+		ORDER BY
+			DATEPART(mm, A.[DATE]);
+	END
+
+	IF @GROUP_TYPE <> 0
+	BEGIN
+
+		UPDATE @GROUPED_DATA
+		SET PERCENT_OF_STD_HRS = (ISNULL(TOTAL_HOURS, 0) / STD_HRS) * 100
+		WHERE STD_HRS > 0 AND PERCENT_OF_STD_HRS IS NULL;
+
+		UPDATE @GROUPED_DATA
+		SET PERCENT_OF_STD_HRS = 0
+		WHERE PERCENT_OF_STD_HRS IS NULL;
+
+	END
+
+	SELECT * FROM @GROUPED_DATA;
+/*=========== QUERY ===========*/

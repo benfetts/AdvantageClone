@@ -1,0 +1,17 @@
+﻿CREATE TABLE [dbo].[TRF_PRESET_DTL] (
+    [TRF_PRESET_CODE]  VARCHAR (6)    NOT NULL,
+    [FNC_CODE]         VARCHAR (10)   NOT NULL,
+    [TRF_PRESET_ORDER] SMALLINT       NULL,
+    [TRF_PRESET_DAYS]  SMALLINT       NULL,
+    [TRF_PRESET_HRS]   DECIMAL (8, 2) NULL,
+    [TRAFFIC_PHASE_ID] INT            NULL,
+    [MILESTONE]        SMALLINT       NOT NULL,
+    [PARENT_TASK]      VARCHAR (10)   NULL,
+    [DEFAULT_EMP]      VARCHAR (6)    NULL,
+    [ROWID]            INT            IDENTITY (1, 1) NOT NULL,
+    [RUSH_DAYS]        SMALLINT       NULL,
+    [RUSH_HOURS]       DECIMAL (8, 2) NULL,
+    [DEF_TRF_ROLE]     VARCHAR (6)    NULL,
+    [EST_FNC_CODE]     VARCHAR (6)    NULL
+);
+

@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[JOB_OUTDOOR_SPECS] (
+    [JOB_NUMBER]        INT      NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT NOT NULL,
+    [JOB_OUT_QUANTITY]  INT      NULL,
+    [JOB_OUT_TYPE]      SMALLINT NULL,
+    [OUT_COMMENTS]      TEXT     NULL,
+    [ROWID]             INT      IDENTITY (1, 1) NOT NULL
+);
+

@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[ARINV_MEDIA] (
+    [AR_INV_NBR]    INT           NOT NULL,
+    [AR_INV_SEQ]    SMALLINT      NOT NULL,
+    [AR_TYPE]       VARCHAR (3)   NOT NULL,
+    [AR_INV_DATE]   SMALLDATETIME NOT NULL,
+    [ORDER_NBR]     INT           NOT NULL,
+    [ORDER_TYPE]    VARCHAR (1)   NOT NULL,
+    [BRDCAST_YEAR]  INT           NOT NULL,
+    [LINE_NBR]      SMALLINT      NOT NULL,
+    [REV_NBR]       SMALLINT      NULL,
+    [SEQ_NBR]       SMALLINT      NULL,
+    [BILL_MONTHS]   VARCHAR (36)  NULL,
+    [BILL_COMM_NET] SMALLINT      NULL
+);
+

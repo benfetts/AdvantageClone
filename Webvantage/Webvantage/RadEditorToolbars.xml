@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <modules>
+    <module name="RadEditorStatistics" dockingZone="Bottom" enabled="false" visible="false" dockable="true" />
+    <module name="RadEditorDomInspector" dockingZone="Module" enabled="false" visible="false" dockable="true" />
+    <module name="RadEditorNodeInspector" dockingZone="Module" enabled="false" visible="false" dockable="true" />
+    <module name="RadEditorDiagnostics" dockingZone="Module" enabled="false" visible="false" dockable="true" />
+    <module name="RadEditorHtmlInspector" dockingZone="Module" enabled="false" visible="false" dockable="true" />
+  </modules>
+  <tools name="MainToolbar" dockable="true" enabled="true">
+    <tool name="AjaxSpellCheck"/>
+    <tool name="FindAndReplace" />
+    <tool separator="true"/>
+    <tool name="Undo" />
+    <tool name="Redo" />
+    <tool name="Cut" />
+    <tool name="Copy" />
+    <tool separator="true"/>
+    <tool name="Paste"/>
+    <tool name="PastePlainText" />
+    <tool separator="true"/>
+    <tool name="InsertLink" />
+    <tool name="Unlink" />
+    <tool separator="true"/>
+    <tool name="Indent" />
+    <tool name="Outdent" />
+    <tool name="InsertOrderedList" />
+    <tool name="InsertUnorderedList"/>
+  </tools>
+  <tools name="Formatting" enabled="true" dockable="true">
+    <tool name="Bold" />
+    <tool name="Italic" />
+    <tool name="Underline" />
+    <tool name="strikethrough" />
+    <tool separator="true"/>
+    <tool name="ForeColor" />
+    <tool name="BackColor"/>
+    <tool separator="true"/>
+    <tool name="FontName"/>
+    <tool name="FontSize"/>
+  </tools>
+</root>

@@ -1,0 +1,34 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Contract Search - {{searchCriteria.SearchLevel}}</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <input type="text" ng-model="searchText" id="textBoxContractSearchDialog" ng-keyup="refreshSearchResults()" class="form-control" /><span ng-show="$scope.searchText.length < 3">Please enter at least 3 characters to search on.</span>
+    </div>
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Office</th>
+                <th>Client</th>
+                <th>Division</th>
+                <th>Product</th>
+                <th>Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="result in searchResults" ng-dblclick="setSelectedRowAndClose(result)" ng-click="setSelectedRow(result)" ng-class="{info: selectedItem === result}">
+                <td>{{result.OfficeName}} <span ng-hide="result.OfficeCode === ''">({{result.OfficeCode}})</span></td>
+                <td>{{result.ClientName}} <span ng-hide="result.ClientCode === ''">({{result.ClientCode}})</span></td>
+                <td>{{result.DivisionName}} <span ng-hide="result.DivisionCode === ''">({{result.DivisionCode}})</span></td>
+                <td>{{result.ProductName}} <span ng-hide="result.ProductCode === ''">({{result.ProductCode}})</span></td>
+                <td>{{result.ContractCode}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" ng-disabled="!selectionMade" ng-click="confirmSelection()">Select</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

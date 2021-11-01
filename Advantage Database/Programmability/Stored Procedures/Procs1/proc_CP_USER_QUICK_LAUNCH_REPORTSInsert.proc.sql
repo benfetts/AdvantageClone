@@ -1,0 +1,39 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_QUICK_LAUNCH_REPORTSInsert]
+(
+	@CDP_CONTACT_ID int,
+	@TAB_ID int,
+	@REPORT_ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [CP_USER_QUICK_LAUNCH_REPORTS]
+	(
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[REPORT_ID]
+	)
+	VALUES
+	(
+		@CDP_CONTACT_ID,
+		@TAB_ID,
+		@REPORT_ID
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+

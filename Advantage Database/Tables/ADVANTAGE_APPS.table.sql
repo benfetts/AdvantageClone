@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[ADVANTAGE_APPS] (
+    [APPLICATION_ID]   VARCHAR (10) NOT NULL,
+    [APPLICATION_DESC] VARCHAR (40) NULL,
+    [APP_ID]           INT          NULL,
+    [APP_SECURITY_COL] VARCHAR (25) NULL,
+    [MODULE]           VARCHAR (2)  NULL,
+    [COMMAND_STRING]   VARCHAR (50) NULL,
+    [SUBGROUP]         VARCHAR (25) NULL,
+    [ICON]             SMALLINT     NULL,
+    [DTL_RIGHTS_FLAG]  SMALLINT     NULL,
+    [ALLOW_MULTI]      SMALLINT     NULL,
+    [INCLUDE1]         VARCHAR (20) NULL,
+    [INCLUDE2]         VARCHAR (20) NULL,
+    [INCLUDE3]         VARCHAR (20) NULL,
+    [INCLUDE4]         VARCHAR (20) NULL,
+    [INCLUDE5]         VARCHAR (20) NULL,
+    [INCLUDE6]         VARCHAR (20) NULL,
+    [INCLUDE7]         VARCHAR (20) NULL,
+    [INCLUDE8]         VARCHAR (20) NULL,
+    [INCLUDE9]         VARCHAR (20) NULL
+);
+

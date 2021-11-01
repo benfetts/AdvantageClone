@@ -1,0 +1,82 @@
+-- V_PROD_PURCHASE_ORDER
+-- #00 08/31/12 - initial version
+
+SET QUOTED_IDENTIFIER ON 
+GO
+
+SET ANSI_NULLS ON 
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[V_PROD_PURCHASE_ORDER]') and OBJECTPROPERTY(id, N'IsView') = 1)
+drop view [dbo].[V_PROD_PURCHASE_ORDER]
+GO
+
+CREATE VIEW dbo.V_PROD_PURCHASE_ORDER 
+AS
+
+	SELECT
+		s.[USER_ID],
+		s.APP_TYPE,
+		o.PO_NUMBER,
+		d.LINE_NUMBER,
+		o.VN_CODE,
+		v.VN_NAME,
+		v.VN_ADDRESS1,
+		v.VN_ADDRESS2,
+		v.VN_CITY,
+		v.VN_STATE,
+		v.VN_ZIP,
+		ISNULL(v.VN_CITY,'') + ', ' + ISNULL(v.VN_STATE,'') + ' ' + ISNULL(v.VN_ZIP,'') AS CSZ,
+		o.EMP_CODE,
+		ISNULL(e.EMP_FNAME,'') + ' ' + ISNULL(e.EMP_LNAME,'') AS EMP_NAME,
+		o.PO_DATE,
+		o.PO_DUE_DATE,
+		o.PO_DESCRIPTION,
+		o.PO_MAIN_INSTRUCT,
+		o.VOID_FLAG,
+		d.JOB_NUMBER,
+		d.JOB_COMPONENT_NBR,
+		j.CL_CODE,
+		j.DIV_CODE,
+		j.PRD_CODE,
+		j.JOB_CLI_REF,
+		d.FNC_CODE,
+		f.FNC_DESCRIPTION,
+		d.LINE_DESC,
+		d.DET_DESC,
+		d.DET_INSTRUCT,
+		d.PO_QTY,
+		d.PO_RATE,
+		d.PO_EXT_AMOUNT
+		
+		FROM dbo.RPT_RUNTIME_SPECS AS s
+		JOIN dbo.RPT_SEL_NBRS AS n
+			ON s.[USER_ID] = n.[USER_ID]
+			AND s.APP_TYPE = n.APP_TYPE
+		JOIN dbo.PURCHASE_ORDER AS o
+			ON n.ORDER_NBR = o.PO_NUMBER
+		JOIN dbo.PURCHASE_ORDER_DET AS d
+			ON o.PO_NUMBER = d.PO_NUMBER
+		JOIN dbo.VENDOR AS v
+			ON o.VN_CODE = v.VN_CODE
+		JOIN dbo.EMPLOYEE AS e
+			ON o.EMP_CODE = e.EMP_CODE
+		LEFT JOIN dbo.JOB_LOG AS j
+			ON d.JOB_NUMBER = j.JOB_NUMBER
+		LEFT JOIN dbo.FUNCTIONS AS f
+			ON d.FNC_CODE = f.FNC_CODE
+		LEFT JOIN dbo.PRODUCT AS p
+			ON j.CL_CODE = p.CL_CODE
+			AND j.DIV_CODE = p.DIV_CODE
+			AND j.PRD_CODE = p.PRD_CODE						
+		WHERE 
+			s.[USER_ID] = dbo.fn_AdvanUser()
+			AND s.APP_TYPE = 'PO'
+GO
+
+IF ( @@ERROR = 0 )	
+	GRANT ALL ON V_PROD_PURCHASE_ORDER TO PUBLIC AS dbo
+GO	

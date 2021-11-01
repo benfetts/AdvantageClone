@@ -1,0 +1,179 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid-toolbar"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+
+    <style>
+        #Grid .k-grid-header {
+            padding: 0 !important;
+        }
+
+        #Grid .k-grid-content {
+            overflow-y: visible;
+        }
+
+        .campaign-periods-container h5 {
+            margin: 15px 0;
+            font-size: 13px;
+        }
+    </style>
+
+
+    <div class="" style="margin-top: 5px;">
+        <div class="campaign-periods-container">
+            <div class="panel panel-default" style="margin-top: 7px;">
+                <div class="panel-body">
+                    <div class="row" style="background: #f5f5f5;border:1px solid #ccc; padding: 5px;">
+                        <a value="save" title="Save" role="button" class="wv-toolbar-button k-button" id="save" href="javascript:void(0)" click.delegate="save()">
+                            <span class=""><img src="Images/Icons/Grey/256/floppy_disk.png" /></span>
+                        </a>
+                        <a value="copy" title="Copy" role="button" class="wv-toolbar-button k-button" id="copy" href="javascript:void(0)" click.delegate="copy()">
+                            <span class=""><img src="Images/Icons/Grey/256/copy.png" /></span>
+                        </a>
+                        <a value="delete" ref="Delete" title="Delete" role="button" class="wv-toolbar-button k-button" id="delete" href="javascript:void(0)" click.delegate="delete()">
+                            <span class=""><img src="Images/Icons/Grey/256/delete.png" /></span>
+                        </a>
+                        <span style="width: 2px;background: #f5f5f5;border:1px solid #ccc; margin-left:3px;"></span>
+                        <a value="submitExpenseReport" ref="submitExpenseReport" title="Submit expense report." role="button" class="wv-toolbar-button k-button" id="submitExpenseReport" href="javascript:void(0)" click.delegate="submit()" Disable.bind="CanSubmit">
+                            <span class="">Submit</span>
+                        </a>
+                        <span style="width: 2px;background: #f5f5f5;border:1px solid #ccc; margin-left:3px;"></span>
+                        <a value="print" title="Print" role="button" class="wv-toolbar-button k-button" id="print" href="javascript:void(0)" click.delegate="print()">
+                            <span class=""><img src="Images/Icons/Grey/256/printer.png" /></span>
+                        </a>
+                        <span style="width: 2px;background: #f5f5f5;border:1px solid #ccc; margin-left:3px;"></span>
+                        <a value="uploadReceipt" title="Upload a Receipt" role="button" class="wv-toolbar-button k-button" id="uploadReceipt" href="javascript:void(0)" click.delegate="uploadReceipt()">
+                            <span class="">Upload Receipts</span>
+                        </a>
+                        <a value="viewReceipts" title="View Receipts" role="button" class="wv-toolbar-button k-button" id="viewReceipts" href="javascript:void(0)" click.delegate="viewReceipts()">
+                            <span class="">View Receipts</span>
+                        </a>
+                        <span style="width: 2px;background: #f5f5f5;border:1px solid #ccc; margin-left:3px;"></span>
+                        <a value="refresh" title="Refesh" role="button" class="wv-toolbar-button k-button" id="refresh" href="javascript:void(0)" click.delegate="refresh()">
+                            <span class=""><img src="Images/Icons/Grey/256/refresh.png" /></span>
+                        </a>
+
+                        <a value="bookmark" title="Bookmark" role="button" class="wv-toolbar-button k-button" id="bookmark" href="javascript:void(0)" click.delegate="bookmark()">
+                            <span class=""><img src="Images/Icons/Grey/256/book_bookmark.png" /></span>
+                        </a>
+
+                        <span style="width: 2px;background: #f5f5f5;border:1px solid #ccc; margin-left:3px;"></span>
+
+                        <a value="deleteSelectedRows" title="Delete Selected Rows" role="button" class="wv-toolbar-button k-button" id="deleteSelectedRow" href="javascript:void(0)" click.delegate="deleteSelectedRow()">
+                            <span class="">Delete Selected Row</span>
+                        </a>
+                    </div>
+                    <div class="pull-left billing-col" style="margin-left: 15px;">
+                        <ul class="list-unstyled">
+                            <li>
+                                <label>Invoice Number:</label> ${expenseReport.InvoiceNumber}
+                            </li>
+                            <li>
+                                <label>Employee:</label>${expenseReport.EmployeeName}
+                            </li>
+                            <li>
+                                <label>Status:</label> ${expenseReport.StatusCode}
+                            </li>
+                            <li>
+                                <label for="reportDate">Report Date:</label>
+                                <input id="reportDate" class="RequiredInput" ak-datepicker="k-value.two-way: expenseReport.InvoiceDate" />
+                            </li>
+                            <li>
+                                <label for="description">Description:</label>
+                                <input ref="descriptionInput" type="text" name="description" class="k-textbox RequiredInput" value.bind="expenseReport.Description" maxlength="30" style="width: 100%;" required validationMessage="Enter {0}" />
+                            </li>
+                            <li>
+                                <label for="detail">Detail:</label>
+                                <textarea id="detail" type="text" class="k-textbox" style="height: 80px; width: 100%; resize: none!important; white-space: pre-wrap;" value.bind="expenseReport.Details"></textarea>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="pull-left billing-col">
+                        <ul class="list-unstyled">
+                            <li>
+                                <label>Total Expenses:</label> ${formatCurrency(totalExpenses)}
+                            </li>
+                            <li>
+                                <label>Less Credit Card:</label> ${formatCurrency(lessCreditCard)}
+                            </li>
+                            <li>
+                                <label>Total Due:</label> ${formatCurrency(totalDue)}
+                            </li>
+                            <li>
+                                <label>Created Date:</label> ${formatDate(expenseReport.CreatedDate)}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ak-grid view-model.ref="gridVM"
+                     k-widget.bind="grid"
+                     k-data-source.bind="datasource"
+                     k-pageable.bind="{ pageSizes: true, buttonCount: 10 }"
+                     k-navigatable.bind="true"
+                     k-editable.bind="true"
+                     k-selectable="multiple"
+                     k-filterable.bind="true"
+                     k-editmode="incell"
+                     k-on-before-edit.delegate="beforeEdit($event.detail)">
+                <ak-grid-toolbar>
+                    <ak-template>
+                        <a href="#" role="button" class="wv-toolbar-button k-button k-grid-add">
+                            <span class=""><img src="Images/Icons/Grey/256/navigate_plus.png" /></span>
+                        </a>
+                    </ak-template>
+                </ak-grid-toolbar>
+                <ak-col k-width="30px">
+                    <ak-template for="headerTemplate">
+                        <input type='checkbox' title="Select All" id='header-chb' class='k-checkbox header-checkbox' checked.bind="selectAll" change.delegate="toggleAll(header-chb.checked)"><label class='k-checkbox-label' for='header-chb'></label>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-title="Date" k-field="ItemDate" k-format="{0:d}" k-width="110px" k-editor.bind="editDate"></ak-col>
+                <ak-col k-title="Description" k-field="Description" k-width="250px" k-align="center" k-editor.bind="editDescriptionMemo"></ak-col>
+                <ak-col k-title="Client" k-field="ClientCode" k-width="125px" k-align="center" k-editor.bind="clientEditor"></ak-col>
+                <ak-col k-title="Job Number" k-field="JobNumber" k-width="125px" k-align="center" k-editor.bind="jobEditor"></ak-col>
+                <ak-col k-title="Function" k-field="FunctionCode" k-width="125px" k-align="center" k-editor.bind="functionCodeEditor" k-values.bind="functionCodes"></ak-col>
+                <ak-col k-title="Quantity" k-field="Quantity" k-width="120px" k-align="center" k-editor.bind="editQuantity"></ak-col>
+                <ak-col k-title="Rate" k-field="Rate" k-width="75px" k-align="center" k-editor.bind="editRate"></ak-col>
+                <ak-col k-title="Amount" k-field="Amount" k-format="{0:c}" k-width="125px" k-align="center" k-editor.bind="editNumber"></ak-col>
+                <ak-col k-title="Payment Type" k-field="PaymentType" k-width="125px" k-align="center" k-editor.bind="paymentTypeEditor" k-values.bind="paymentTypes"></ak-col>
+                <ak-col k-title="Non Billable" k-width="125px" k-align="center">
+                    <a role="button" class="wv-toolbar-button k-button-icon standard-green" css="display: ${NonBillable == true ? 'initial' : 'none'}" href="javascript:void(0)" click.delegate="cancelRowChanges(uid)">
+                        <img src="Images/Icons/Grey/256/check.png" />
+                    </a>
+                </ak-col>
+                <ak-col k-width="150px">
+                    <ak-template>
+                        <div style="text-align: left; padding-left: 5px; width:100%;">
+                            <a role="button" class="wv-toolbar-button k-button-icon" href="javascript:void(0)" click.delegate="copyRow(uid)">
+                                <img src="Images/Icons/Grey/256/copy.png" />
+                            </a>
+                            <a role="button" class="wv-toolbar-button k-button-icon" href="javascript:void(0)" click.delegate="attachFile(uid)">
+                                <img src="Images/Icons/Grey/256/paperclip.png" />
+                            </a>
+                            <a role="button" class="wv-toolbar-button k-button-icon" href="javascript:void(0)" click.delegate="delete(uid)">
+                                <img src="Images/Icons/Grey/256/delete.png" />
+                            </a>
+                            <a role="button" class="wv-toolbar-button k-button-icon" css="display: ${dirty || ID == '' ? 'initial' : 'none'}" href="javascript:void(0)" click.delegate="cancelRowChanges(uid)">
+                                <img src="Images/Icons/Grey/256/sign_forbidden.png" />
+                            </a>
+                        </div>
+                    </ak-template>
+                </ak-col>
+            </ak-grid>
+
+        </div>
+    </div>
+    </div>
+</template>

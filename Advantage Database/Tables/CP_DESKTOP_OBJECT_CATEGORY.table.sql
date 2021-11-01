@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[CP_DESKTOP_OBJECT_CATEGORY] (
+    [ID]       INT          IDENTITY (1, 1) NOT NULL,
+    [CATEGORY] VARCHAR (50) NOT NULL
+);
+

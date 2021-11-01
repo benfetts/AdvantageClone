@@ -1,0 +1,72 @@
+<div data-options="dxView : { name: 'expenses_detail', title: 'Expense Report' } ">
+    <div data-bind="dxCommand:  $root.addButton  "></div>
+    <div data-bind="dxCommand: $root.submitButton"></div>
+    <div data-bind="dxCommand: $root.UnsubmitButton"></div>
+    <div data-bind="dxCommand: $root.copyButton"></div>
+    <div data-bind="dxCommand: $root.deleteButton"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' }">
+        <div id="scrollView" data-bind="dxScrollView: scrollView">
+            <div data-bind="dxBox: expDetailTitleBox" style="margin-top:15px;">
+                <div data-options="dxItem: {ratio: 2}">
+                </div>
+                <div data-options="dxItem: {ratio: 4}">
+                    <div class="am-er-expense-detail-total" style="padding-top: 10px;margin-bottom:10px; height: 52px; ">
+                        <span class="card-header" style="font-size: 20px; padding-left:40px;" data-bind="text: $parent.InvoiceAmount">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="am-er-detail-description-title">
+                <div class="am-er-summary-parent">
+                    <div class="am-er-bookmark" style="height: 100%;">
+                        <div class="am-er-summary-content" style="float: none; width:99%;">
+                            <div>
+                                <span style="float:right;color:white;margin:2px;padding-right:2px;height:20px;width:20px;" data-bind="dxAction: NavigateToExpenseHeaderEdit">
+                                    <i class="am-er-ico-edit"></i>
+                                </span>
+                                <span style="float:left;color:white;margin:2px;" data-bind="text: InvoiceDate"></span>
+                            </div>
+                            <div style="clear:both;margin-bottom:10px;"></div>
+                            <div style="text-transform:uppercase; color:#fff; margin-bottom:5px;" data-bind="text: Title"></div>
+
+                            <div style="color:#fff;margin-bottom:5px;" data-bind="text: DetailsDescription"></div>
+                            
+                            <div style="color:white;margin-bottom:5px">Status: <span style="color:white;margin:2px;" data-bind="text: expensesApprovalStatus"></span></div>
+                            <div style="color:white;margin-bottom:5px">Total Expenses: <span style="color:white;margin:2px;" data-bind="text: ExpenseAmount"></span></div>
+                            <div style="color:white;margin-bottom:5px">Total Due: <span style="color:white;margin:2px;" data-bind="text: InvoiceAmount"></span></div>
+                            <div data-bind="visible: HasApprovalNotes">
+                                <div style="color:white;">Approval Notes: <span style="color:white;margin:2px;" data-bind="text: expApprovalNotes"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:left;background-color:#0097A7;height:40px;">
+                <div style="font-size: 18px;padding: 12px 0px 0px 10px;color:#FFFFFF;">Expense Details</div>
+            </div>
+            <div data-bind="dxList: expenseDetailList">
+                <div data-options="dxTemplate : { name: 'item' }">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-header" data-bind="text: Description"></div>
+                            <div class="card-details">
+                                <div class="list-line" data-bind="text: FunctionCode"></div>
+                                <div style="clear:both;"></div>
+                                <div>
+                                    <span data-bind="text:ItemDate" style="float:left;"></span>
+                                    <span data-bind="text:Amount" style="float:right;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-button-container">
+                            <div data-bind="dxButton:{ icon: 'fa fa-copy', visible: $root.reportStatusOpen ,onClick:  $root.CopyExpenseDetailEvent.bind($data) }"></div>
+                            <div data-bind="dxButton: { icon: 'icon_delete',visible: $root.reportStatusOpen , onClick: $root.DeleteExpenseDetailEvent.bind($data) }"></div>
+                            <div class="card-action-bar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

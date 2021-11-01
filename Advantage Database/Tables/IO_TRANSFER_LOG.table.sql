@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[IO_TRANSFER_LOG] (
+    [IO_TL_ID]   INT NOT NULL,
+    [ORIG_IO_ID] INT NOT NULL,
+    [IO_ID_FROM] INT NOT NULL,
+    [IO_ID_TO]   INT NOT NULL
+);
+

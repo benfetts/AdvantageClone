@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[PO_APPROVAL] (
+    [PO_NUMBER]         INT           NOT NULL,
+    [PO_APPR_RULE_CODE] VARCHAR (6)   NOT NULL,
+    [SEQ_NBR]           SMALLINT      NOT NULL,
+    [PO_APPR_RULE_ID]   INT           NULL,
+    [PO_APPROVAL_FLAG]  BIT           NULL,
+    [PO_APPROVAL_USER]  VARCHAR (100) NULL,
+    [PO_APPROVAL_DATE]  SMALLDATETIME NULL,
+    [PO_APPROVAL_NOTES] TEXT          NULL
+);
+

@@ -1,0 +1,29 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Vendor_Quote_UpdateRequestMemo]
+(
+	@ESTIMATE_NUMBER INT,
+	@EST_COMPONENT_NBR SMALLINT,
+	@VENDOR_QTE_NBR INT,
+	@VN_QTE_MEMO TEXT,
+	@USER_ID VARCHAR(100)
+)
+AS
+BEGIN
+	SET NOCOUNT OFF
+
+			UPDATE [VENDOR_QTE_HDR] WITH(ROWLOCK)
+	            SET
+					[VN_QTE_MEMO] = @VN_QTE_MEMO
+	           WHERE
+		            [ESTIMATE_NUMBER] = @ESTIMATE_NUMBER AND 
+		            [EST_COMPONENT_NBR] = @EST_COMPONENT_NBR AND 
+		            [VENDOR_QTE_NBR] = @VENDOR_QTE_NBR
+	    
+				
+END
+
+
+
+
+

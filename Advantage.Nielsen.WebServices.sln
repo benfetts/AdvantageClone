@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Advantage.Nielsen.WebServices", "Advantage.Nielsen.WebServices\Advantage.Nielsen.WebServices.vbproj", "{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework", "AdvantageFramework\AdvantageFramework.vbproj", "{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.BLogic", "AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj", "{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Debug|x64.Build.0 = Debug|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Debug|x86.ActiveCfg = Debug|x86
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Debug|x86.Build.0 = Debug|x86
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Release|x64.ActiveCfg = Release|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Release|x64.Build.0 = Release|Any CPU
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Release|x86.ActiveCfg = Release|x86
+		{2398E00B-945A-4BA9-87E4-6E22CDD0B05A}.Release|x86.Build.0 = Release|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.ActiveCfg = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.Build.0 = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.ActiveCfg = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.Build.0 = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.ActiveCfg = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.Build.0 = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.ActiveCfg = Release|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.Build.0 = Release|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.ActiveCfg = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.Build.0 = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.ActiveCfg = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.Build.0 = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.ActiveCfg = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.Build.0 = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.ActiveCfg = Release|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4879ADFD-C283-4975-9861-400AFEE6096F}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccProjectUniqueName0 = Advantage.Nielsen.WebServices\\Advantage.Nielsen.WebServices.vbproj
+		SccProjectName0 = Advantage.Nielsen.WebServices
+		SccAuxPath0 = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccLocalPath0 = Advantage.Nielsen.WebServices
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = AdvantageFramework\\AdvantageFramework.vbproj
+		SccProjectName1 = AdvantageFramework
+		SccAuxPath1 = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccLocalPath1 = AdvantageFramework
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = AdvantageFramework.BLogic\\AdvantageFramework.BLogic.vbproj
+		SccProjectName2 = AdvantageFramework.BLogic
+		SccAuxPath2 = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccLocalPath2 = AdvantageFramework.BLogic
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

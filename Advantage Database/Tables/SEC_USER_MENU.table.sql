@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[SEC_USER_MENU] (
+    [SEC_USER_MENU_ID]     INT IDENTITY (1, 1) NOT NULL,
+    [SEC_USER_ID]          INT NOT NULL,
+    [SEC_MODULE_ID]        INT NOT NULL,
+    [MENU_TYPE]            INT NOT NULL,
+    [ORDER]                INT NOT NULL,
+    [SEC_USER_MENU_TAB_ID] INT NULL
+);
+

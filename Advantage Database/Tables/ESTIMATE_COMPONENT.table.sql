@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[ESTIMATE_COMPONENT] (
+    [ESTIMATE_NUMBER]   INT           NOT NULL,
+    [EST_COMPONENT_NBR] SMALLINT      NOT NULL,
+    [EST_COMP_DESC]     VARCHAR (60)  NULL,
+    [EST_COMP_COMMENT]  TEXT          NULL,
+    [PRESET_CODE]       VARCHAR (6)   NULL,
+    [FNC_SORT_ORDER]    INT           NULL,
+    [MODIFIED_BY]       VARCHAR (100) NULL,
+    [MODIFIED_DATE]     SMALLDATETIME NULL,
+    [CDP_CONTACT_ID]    INT           NULL,
+    [EST_PRD_CONT_CODE] AS            ([dbo].[udf_get_cont_code]([CDP_CONTACT_ID])),
+    [DISPLAY_EMP_TITLE] SMALLINT      NULL
+);
+

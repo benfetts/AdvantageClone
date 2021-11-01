@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[EMPLOYEE_PICTURE] (
+    [EMP_PICTURE_ID] INT          IDENTITY (1, 1) NOT NULL,
+    [EMP_CODE]       VARCHAR (6)  NOT NULL,
+    [EMP_IMAGE]      IMAGE        NULL,
+    [EMP_NICKNAME]   VARCHAR (10) NULL,
+    [EMP_WALLPAPER]  IMAGE        NULL
+);
+

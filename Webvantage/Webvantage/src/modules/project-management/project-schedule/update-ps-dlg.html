@@ -1,0 +1,52 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="resources/elements/display-templates/job/job-display-template"></require>
+    <require from="resources/elements/search-page/search-page"></require>
+    <require from="resources/elements/search-page/search-option"></require>
+
+    <style>
+        .fieldlist {
+            margin: 0 0 -1em;
+            padding: 1em;
+        }
+
+            .fieldlist li {
+                list-style: none;
+                padding-bottom: 1em;
+            }
+
+        .k-multiselect .k-multiselect-wrap {
+            width: 260px;
+            margin-left: 10px;
+        }
+        .wv-form-spacing label {
+            margin-left: 10px !important;
+        }
+    </style>
+
+    <ux-dialog>
+        <ux-dialog-header>
+            Update Project Schedule(s)
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <ul class="fieldlist">
+                <li repeat.for="Item of updateAll">
+                    <label>
+                        <input type="radio" name="group2"
+                               model.bind="Item.id" checked.bind="alertGroup.UpdateSelected">
+                        ${Item.name}
+                    </label>
+                </li>
+            </ul>      
+
+        </ux-dialog-body>
+
+        <ux-dialog-footer>
+            <button click.trigger="controller.ok(alertGroup)">Ok</button>
+            <button click.trigger="controller.cancel()">Cancel</button>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

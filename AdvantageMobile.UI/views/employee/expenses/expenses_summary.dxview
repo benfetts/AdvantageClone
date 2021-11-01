@@ -1,0 +1,66 @@
+<div data-options="dxView: { name: 'expenses_summary', title: 'Expenses' } ">
+    <div data-bind="dxCommand: $root.addButton"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' }">
+        <div id="scrollView" data-bind="dxScrollView: scrollView">
+            <div style="padding-left:20px;padding-right:20px;">
+                <div data-bind="dxBox: expSummaryBox" style="margin-top:15px;">
+                    <div data-options="dxItem: {ratio: 2}">
+                        <i class="am-er-ico-exp-sum"></i>
+                    </div>
+                    <div data-options="dxItem: {ratio: 2}">
+                        <div id="expensesTotals" class="dx-fieldset">
+                            <div class="dx-field" style="padding-top:0px !important; padding-bottom:5px !important;">
+                                <span class="card-header" style="padding-top:0px !important; padding-bottom:0px !important; ">Open</span>
+                            </div>
+                            <div class="dx-field" style="padding-top:0px !important; padding-bottom:5px !important;">
+                                <span class="card-header" style="padding-top:0px !important; padding-bottom:0px !important;">Pending</span>
+                            </div>
+                            <div class="dx-field" style="padding-top:0px !important; padding-bottom:5px !important;">
+                                <span class="card-header" style="padding-top:0px !important; padding-bottom:0px !important;">Denied</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-options="dxItem: {ratio: 3}">
+                        <div id="expensesTotals" class="dx-fieldset">
+                            <div class="dx-field" style="padding-top:0px !important; padding-bottom:5px !important;">
+                                <span class="card-header" style="padding-top:0px !important; padding-bottom:0px !important;text-align:left;" data-bind="text: $parent.openAmount()"></span>
+                            </div>
+                            <div class="dx-field" style="padding-top:0px !important; padding-bottom:5px !important;">
+                                <span class="card-header" style="padding-top:0px !important; padding-bottom:0px !important;text-align:left;" data-bind="text: $parent.pendingAmount()"></span>
+                            </div>
+                            <div class="dx-field" style="padding-top:0px !important; padding-bottom:5px !important;">
+                                <span class="card-header" style="padding-top:0px !important; padding-bottom:0px !important;text-align:left;" data-bind="text: $parent.deniedAmount()"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dxExpList" data-bind="dxList: expSummaryList" class="card-container">
+                <div data-options="dxTemplate : { name: 'item' } ">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-header" data-bind="text: expensesDescription"></div>
+                            <div class="card-details">
+                                <div data-bind="text: expensesReportDate.toShortDateString()"></div>
+                                <div data-bind="text: expensesApprovalStatus"></div>
+                                <div data-bind="text: expensesDetailDescription"></div>
+                                <div data-bind="text: expApprovalNotes"></div>
+                            </div>
+                        </div>
+
+                        <div class="card-button-container">
+                            <div data-bind="dxButton: {icon : 'icon_check', visible: isReportOpen, onClick: $root.submitExpense.bind($data) }"></div>
+                            <div data-bind="dxButton:{ icon: 'fa fa-copy', visible: true ,onClick:  $root.CopyExpenseReportEvent.bind($data) }"></div>
+                            <div data-bind="dxButton: {icon : 'icon_undo', visible: isReadOnly, onClick: $root.unSubmitExpense.bind($data) }"></div>
+                            <div data-bind="dxButton: { icon: 'icon_delete',visible: isReportOpen , onClick: $root.DeleteExpenseEvent.bind($data) }"></div>
+                            <div class="card-action-bar">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

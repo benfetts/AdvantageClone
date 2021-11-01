@@ -1,0 +1,33 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <style>
+        #edDialogBody.au-target {
+            width: 800px
+        }
+
+    </style>
+    <ux-dialog>
+        <ux-dialog-header>
+            Existing Documents
+        </ux-dialog-header>
+        <ux-dialog-body id="edDialogBody">
+            <div if.bind="hasDocuments > 0">
+                <ak-grid  k-widget.bind="existingDocumentsGrid" k-data-source.bind="existingDocumentsDataSource" k-pageable.bind="false" k-sortable.bind="true" k-selectable="[row, multiple]">
+                    <ak-col k-title="&nbsp;" k-field="LongDescription"></ak-col>
+                </ak-grid>
+            </div>
+            <div if.bind="hasDocuments == 0">
+                No documents were found.
+            </div>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <div id="buttonsContainer" class="k-button-group">
+                <button class="k-button" title="Cancel" click.trigger="controller.cancel()">Cancel</button>
+                <button class="k-button k-primary" title="Save" click.trigger="save()">Save</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

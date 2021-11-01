@@ -1,0 +1,636 @@
+﻿/*@save: #2956B2;*/
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), url(../fonts/open-sans/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), url(../fonts/open-sans/OpenSans-Bold.ttf);
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semi Bold'), url(../fonts/open-sans/OpenSans-SemiBold.ttf);
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extra Bold'), url(../fonts/open-sans/OpenSans-ExtraBold.ttf);
+}
+html,
+body,
+table,
+th,
+td {
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif !important;
+  font-size: 13px !important;
+  color: #767676 !important;
+}
+h1,
+.h1 {
+  font-size: 33px;
+  line-height: 37px;
+}
+h2,
+.h2 {
+  font-size: 27px;
+  line-height: 31px;
+}
+h3,
+.h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+h4,
+.h4 {
+  font-size: 18px;
+  line-height: 22px;
+}
+h5,
+.h5 {
+  font-size: 15px;
+  line-height: 19px;
+}
+h6,
+.h6 {
+  font-size: 13px;
+  line-height: 17px;
+}
+.wv-icon-link > img {
+  height: 23px;
+}
+.wv-box .wv-header,
+.wv-card .wv-header {
+  line-height: 34px;
+  font-size: 14px;
+}
+.wv-box .wv-header .action-link,
+.wv-card .wv-header .action-link,
+.wv-box .wv-footer .action-link,
+.wv-card .wv-footer .action-link {
+  min-width: 34px;
+  line-height: 34px;
+}
+.wv-card {
+  font-size: 13px;
+  line-height: 17px;
+}
+.wv-card .title {
+  font-size: 14px;
+  line-height: 18px;
+}
+.wv-card .assignees > img,
+.wv-card .assignees > .rounded {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+.wv-card .wv-footer {
+  line-height: 34px;
+}
+.k-button,
+.k-input[type="number"],
+.k-input[type="text"],
+.k-picker-wrap .k-input,
+.k-textbox,
+.k-textbox > input,
+.k-datepicker,
+.k-dropdown,
+.k-numerictextbox {
+  font-size: 12px !important;
+  font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+.icon-background {
+  height: 24px;
+  width: 24px;
+}
+.icon-image {
+  width: 18px;
+  height: 18px;
+  bottom: 2px !important;
+}
+.icon-btn {
+  width: 30px;
+  height: 30px;
+}
+.addon-btn {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+#main_toolbar .k-button {
+  line-height: 22px;
+}
+#main_toolbar .k-toolbar .k-button.k-button-icon > img {
+  height: 22px;
+}
+/*
+    Editors
+    -------------------
+    * numbers denote text/numeric length (code-6 = code input 6 characters, number-4-2 = numeric input 4 digits 2 decimals, etc)
+    * cb = checkbox
+    * combo = dropdown/combobox
+    * text = text input, use -xl for multiline
+    * date = date picker
+    * number = numeric input
+*/
+.k-textbox.code-6,
+.k-widget.code-6 {
+  width: 95px !important;
+}
+.k-textbox.code-10,
+.k-widget.code-10 {
+  width: 135px !important;
+}
+.k-textbox.text-60 {
+  width: 250px !important;
+}
+.k-textbox.text-60-full {
+  width: 390px !important;
+}
+/* 
+    Grid Editor Columns 
+    -------------------
+    * Widths define inner content width
+    * numbers denote text/numeric length (code-6 = code input 6 characters, number-4-2 = numeric input 4 digits 2 decimals, etc)
+    * cb = checkbox
+    * combo = dropdown/combobox
+    * text = text input, use -xl for multiline
+    * date = date picker
+    * number = numeric input
+
+*/
+th.cb-sm-hdr,
+td.cb-sm-hdr {
+  /* no or small header */
+  width: 25px;
+}
+th.code-6,
+td.code-6 {
+  width: 90px;
+}
+th.combo-6,
+td.combo-6 {
+  width: 80px;
+}
+th.combo-15,
+td.combo-15 {
+  width: 110px;
+}
+th.combo-40,
+td.combo-40 {
+  width: 265px;
+}
+th.date-sm,
+td.date-sm {
+  width: 110px;
+}
+th.icon-col,
+td.icon-col {
+  width: 24px;
+}
+th.number-3,
+td.number-3 {
+  width: 40px;
+}
+th.number-4-2,
+td.number-4-2 {
+  width: 60px;
+}
+th.text-40,
+td.text-40 {
+  width: 160px;
+}
+th.text-xl,
+td.text-xl {
+  width: 150px;
+}
+/*
+    Application Specific 
+*/
+/* Project Schedule = @ps */
+th.posted-hrs,
+td.posted-hrs {
+  width: 50px;
+}
+th.pct-comp,
+td.pct-comp {
+  width: 75px;
+}
+th.disb-hrs,
+td.disb-hrs {
+  width: 65px;
+}
+th.def-hrs,
+td.def-hrs {
+  width: 60px;
+}
+th.add-by-link,
+td.add-by-link {
+  width: 75px;
+}
+th.move-lr,
+td.move-lr {
+  width: 55px;
+}
+th.pred-input,
+td.pred-input {
+  width: 95px;
+}
+th.pred-list,
+td.pred-list {
+  width: 75px;
+}
+.e-kanban .e-kanbanheader .e-headercelldiv .e-headerOpen,
+.ej-kanban-hdr {
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+.e-ddl,
+.e-datewidget,
+.e-textbox,
+.e-atc {
+  height: 34px;
+}
+.e-ddl.e-rte-format-ddl {
+  height: 34px !important;
+}
+span.e-split.e-widget {
+  height: 34px !important;
+}
+.e-toolbar > ul > li {
+  padding: 3px;
+}
+.e-rte-toolbar > .e-toolbar > ul {
+  height: 29px !important;
+}
+.e-rte .e-toolbar .e-icon.e-toolbar-res-arrow:before {
+  margin-top: 7px;
+}
+.e-input,
+.e-tooltipbox,
+.e-btn,
+.e-time-popup,
+.e-datepicker.e-calendar,
+.e-menu,
+.e-uploadbox .e-file-name-txt,
+.e-uploadbox .e-selectpart,
+.e-uploadbox .e-uploadbtn,
+.e-uploadbox .e-uploadclosebtn,
+.e-waitpopup-pane .e-text,
+.e-tagcloud,
+.e-toolbar,
+.e-progressbar,
+.e-scale .e-tick .tick-value,
+.e-datetime-popup .e-dt-button,
+.e-grid,
+.e-ejinputtext,
+.e-pager,
+.e-fileexplorer,
+.e-textbox,
+.e-textarea {
+  font-size: 12px;
+}
+.e-atc .e-autocomplete {
+  font-size: 12px;
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif;
+}
+.e-ddl .e-input,
+.e-ddl .e-input[readonly],
+.e-ddl-popup,
+.e-ddl .e-options {
+  font-size: 12px;
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif;
+}
+.e-datepicker .e-header,
+.e-datetime-popup .e-timecontainer .e-header {
+  font-size: 15px;
+}
+input.e-input,
+input[type="text"].e-input,
+.e-input.e-placeholder,
+.e-textbox,
+.e-textarea {
+  padding-left: 4px;
+}
+.e-atc-popup,
+.e-atc .e-in-wrap,
+.e-atc .e-in-wrap .e-input,
+.e-acrdn-scroller,
+.e-acrdn .e-select,
+.e-chkbox-wrap div > span,
+.e-datepicker.e-popup,
+.e-datewidget .e-in-wrap,
+.e-datewidget .e-in-wrap .e-input,
+.e-daterangepicker-popup.e-popup,
+.e-daterangewidget .e-in-wrap,
+.e-daterangewidget .e-in-wrap .e-input,
+.e-drpbuttons,
+.e-daterangepicker-popup.e-popup .e-custom-dateranges li,
+.e-datetime-popup.e-popup,
+.e-datetime-popup .e-dt-button,
+.e-datetime-wrap .e-in-wrap,
+.e-datetime-wrap .e-in-wrap .e-input,
+.e-dialog-wrap,
+.e-dialog-wrap > .e-header .e-dialog-icon,
+.e-ddl-popup.e-popup,
+.e-ddl .e-in-wrap,
+.e-ddl .e-in-wrap .e-input,
+.e-numeric .e-in-wrap,
+.e-numeric .e-in-wrap .e-input,
+.e-percent .e-in-wrap,
+.e-percent .e-in-wrap .e-input,
+.e-currency .e-in-wrap,
+.e-currency .e-in-wrap .e-input,
+.e-mask .e-in-wrap,
+.e-mask .e-in-wrap .e-input,
+.e-textbox,
+.e-textarea,
+.e-menu,
+.e-tab,
+.e-time-popup.e-popup,
+.e-timewidget .e-in-wrap,
+.e-timewidget .e-in-wrap .e-input,
+.e-toolbar,
+.e-toolbar .e-tooltxt,
+.e-upload-box .e-selectpart,
+.e-upload-box .e-btn,
+.e-treeview .e-text,
+.e-fullrow-wrap .e-fullrow,
+.e-dragedNode,
+.e-splitbutton,
+.e-fileexplorer .e-tilenode,
+.e-rte,
+.e-rte.e-dialog .e-inputtext,
+.e-btn.e-select,
+.e-progressbar,
+.e-check-wrap .e-chk-inact,
+.e-check-wrap .e-chk-act,
+.e-check-wrap .e-chk-indeter {
+  border-radius: 2px;
+}
+.e-rte-toolbar-icon,
+.e-background-color,
+.e-font,
+.e-rte-footericon,
+.e-rte-footer .e-resize-handle {
+  font-size: 14px;
+}
+.e-rte .e-background-color,
+.e-rteItem-backgroundColor .e-background-color,
+.e-rte .e-font,
+.e-rteItem-fontColor .e-font,
+.e-rte-toolbar-icon {
+  height: 20px;
+  width: 20px;
+}
+.e-rte-toolbar-icon:before {
+  margin-top: 3px;
+}
+.e-rte.e-rte-wrapper .e-ul.e-horizontal {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.e-responsive-toolbar > .e-horizontal.e-ul {
+  height: 32px;
+  border-right: none;
+}
+.k-autocomplete,
+.k-block,
+.k-calendar .k-link,
+.k-calendar td,
+.k-calendar-container,
+.k-colorpicker,
+.k-combobox,
+.k-datepicker,
+.k-datetimepicker,
+.k-drag-clue,
+.k-dropdown,
+.k-dropdown-wrap,
+.k-editor-inline,
+.k-grid .k-filter-options,
+.k-grouping-header .k-group-indicator,
+.k-inline-block,
+.k-list-container,
+.k-multiselect,
+.k-notification,
+.k-numeric-wrap,
+.k-numerictextbox,
+.k-picker-wrap,
+.k-slider-selection,
+.k-slider-track,
+.k-split-button,
+.k-textbox,
+.k-tile,
+.k-timepicker,
+.k-tooltip,
+.k-touch-scrollbar,
+.k-treeview .k-in,
+.k-upload,
+.k-window,
+.k-window-action,
+.k-window-titleless .k-window-content,
+.k-editor {
+  border-radius: 2px;
+}
+.k-widget.k-combobox,
+.k-widget.k-datepicker {
+  width: 143px;
+}
+.k-combobox .k-dropdown-wrap,
+.k-datepicker .k-picker-wrap,
+.k-dropdown .k-dropdown-wrap {
+  height: 32px;
+}
+.k-combobox .k-dropdown-wrap .k-input,
+.k-datepicker .k-picker-wrap .k-input,
+.k-dropdown .k-dropdown-wrap .k-input {
+  height: 100%;
+  padding: 0px;
+  line-height: 32px;
+}
+.k-combobox .k-dropdown-wrap .k-select,
+.k-datepicker .k-picker-wrap .k-select,
+.k-dropdown .k-dropdown-wrap .k-select {
+  min-height: 33px;
+  max-height: 33px;
+  line-height: 31px;
+}
+.k-autocomplete .k-input,
+.k-dropdown-wrap .k-input,
+.k-numeric-wrap .k-input,
+.k-picker-wrap .k-input,
+.k-selectbox .k-input,
+.k-textbox > input {
+  text-indent: 4px;
+}
+.e-input,
+.e-tooltipbox,
+.e-btn,
+.e-time-popup,
+.e-datepicker.e-calendar,
+.e-menu,
+.e-uploadbox .e-file-name-txt,
+.e-uploadbox .e-selectpart,
+.e-uploadbox .e-uploadbtn,
+.e-uploadbox .e-uploadclosebtn,
+.e-waitpopup-pane .e-text,
+.e-tagcloud,
+.e-toolbar,
+.e-progressbar,
+.e-scale .e-tick .tick-value,
+.e-datetime-popup .e-dt-button,
+.e-grid,
+.e-ejinputtext,
+.e-pager,
+.e-fileexplorer,
+.e-textbox,
+.e-textarea {
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif;
+}
+input.k-textbox {
+  box-shadow: rgba(0, 0, 0, 0.0745098) 0 1px 1px inset;
+  text-indent: 0;
+  padding-left: 4px;
+  height: 34px !important;
+}
+.wv-form .wv-form-group > label {
+  line-height: 34px;
+  width: 100px;
+}
+.wv-form .wv-form-group > label.lbl-lg {
+  width: 120px;
+}
+.wv-form .wv-form-group > label.lbl-xl {
+  width: 140px;
+}
+.wv-form .wv-form-group > label.lbl-sm {
+  width: 80px;
+}
+.wv-form .wv-form-group > label.lbl-xs {
+  width: 60px;
+}
+.wv-form .wv-form-group > div {
+  line-height: 34px;
+}
+.k-multiselect-wrap li {
+  line-height: 17px;
+}
+.k-multiselect-wrap {
+  min-height: 32px;
+  font-size: 12px;
+}
+.k-multiselect > .k-multiselect-wrap > .k-i-close {
+  top: 3px;
+}
+.k-dropzone,
+.k-fieldselector .k-list .k-item,
+.k-list .k-state-focused,
+.k-list .k-state-highlight,
+.k-list .k-state-hover,
+.k-list .k-state-selected,
+.k-list-optionlabel,
+.k-listbox .k-item {
+  border-radius: 0px;
+}
+.k-item .wv-list-icon-item > span:first-child {
+  width: 24px;
+  height: 24px;
+}
+.k-item .wv-list-icon-item > span:first-child > img {
+  height: 24px;
+  width: 24px;
+}
+.k-item .wv-list-icon-item span {
+  line-height: 24px;
+}
+.wv-cb-wrapper {
+  height: 34px;
+}
+.k-button-group .k-tool {
+  width: 25px;
+  height: 23px;
+  line-height: 20px;
+}
+.k-numerictextbox .k-input {
+  height: 32px;
+  line-height: 32px;
+}
+.k-numeric-wrap:before,
+.k-picker-wrap:before {
+  height: 32px;
+}
+.k-webkit .k-combobox .k-dropdown-wrap::before,
+.k-webkit .k-numeric-wrap::before,
+.k-webkit .k-picker-wrap::before {
+  height: 32px;
+}
+.k-button.k-button-icon {
+  padding: 3px 3px;
+}
+.k-button.k-button-icon > img {
+  height: 22px;
+}
+.k-button.k-button-icon > span.k-icon {
+  margin: 3px 0px;
+}
+.k-toolbar > .k-button {
+  height: 30px;
+}
+.k-toolbar > .k-button > .glyphicon,
+.k-toolbar > .k-button .icon {
+  position: relative;
+  top: 2px;
+  font-size: 16px;
+}
+.e-textbox {
+  border-color: #CCCCCC !important;
+}
+.e-textbox:hover {
+  border-color: #AEAEAE !important;
+}
+.wv-employee-img-thumbnail-hdr {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 32px !important;
+  width: 32px !important;
+  border-radius: 5px !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+.wv-employee-img-thumbnail {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 25px !important;
+  width: 25px !important;
+  border-radius: 5px !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+.wv-employee-img-thumbnail-lg {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 48px !important;
+  width: 48px !important;
+  border-radius: 7px !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+.wv-employee-img-thumbnail-xxlg {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 80px !important;
+  width: 80px !important;
+  border-radius: 10px !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+}

@@ -1,0 +1,100 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************************************
+Webvantage
+This Stored Procedure gets a Tasks By a Date, 
+******************************************************************/
+CREATE PROCEDURE [dbo].[usp_task_week] 
+@EmpCode Varchar(6),
+@StartDate Varchar(10),
+@EndDate Varchar(10)
+AS
+
+SET NOCOUNT ON
+
+SELECT  
+    CONVERT(CHAR(10), JOB_TRAFFIC_DET.JOB_REVISED_DATE, 101)  as JobDate,
+    '(' + JOB_LOG.CL_CODE + ')' +
+    CLIENT.CL_NAME + ' | ' +
+    '(' + JOB_LOG.DIV_CODE + ')' +
+    DIVISION.DIV_NAME + ' | ' +
+    '(' + JOB_LOG.PRD_CODE + ')' +
+    PRODUCT.PRD_DESCRIPTION + ' | ' +
+    '(' + str(JOB_LOG.JOB_NUMBER) + ')' +
+    JOB_LOG.JOB_DESC + ' | ' +
+    '(' + str(JOB_COMPONENT.JOB_COMPONENT_NBR) + ')' +
+    JOB_COMPONENT.JOB_COMP_DESC + ' | ' +
+    JOB_TRAFFIC_DET.TASK_DESCRIPTION + '(' + JOB_TRAFFIC_DET.FNC_CODE + ')' +
+    '| For:' + EMPLOYEE.EMP_FNAME + ' ' + EMPLOYEE.EMP_LNAME as Description
+FROM JOB_LOG
+INNER JOIN CLIENT
+    ON CLIENT.CL_CODE = JOB_LOG.CL_CODE
+INNER JOIN DIVISION
+    ON DIVISION.DIV_CODE = JOB_LOG.DIV_CODE
+    AND DIVISION.CL_CODE = JOB_LOG.CL_CODE
+INNER JOIN PRODUCT
+    ON PRODUCT.CL_CODE = JOB_LOG.CL_CODE
+    AND PRODUCT.DIV_CODE = JOB_LOG.DIV_CODE
+    AND PRODUCT.PRD_CODE = JOB_LOG.PRD_CODE
+INNER JOIN JOB_COMPONENT
+    ON JOB_LOG.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER
+INNER JOIN JOB_TRAFFIC_DET
+    ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC_DET.JOB_NUMBER
+    AND JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC_DET.JOB_COMPONENT_NBR
+INNER JOIN EMPLOYEE
+    ON JOB_TRAFFIC_DET.EMP_CODE = EMPLOYEE.EMP_CODE
+WHERE (NOT (JOB_COMPONENT.JOB_PROCESS_CONTRL IN (6, 12)))
+AND (JOB_TRAFFIC_DET.EMP_CODE = @EmpCode)
+And JOB_TRAFFIC_DET.JOB_REVISED_DATE >= @StartDate
+And JOB_TRAFFIC_DET.JOB_REVISED_DATE <= @EndDate
+Order by JOB_TRAFFIC_DET.JOB_REVISED_DATE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

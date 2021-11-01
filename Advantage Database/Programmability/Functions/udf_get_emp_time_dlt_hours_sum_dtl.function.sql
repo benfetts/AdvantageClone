@@ -1,0 +1,17 @@
+﻿
+
+CREATE FUNCTION [dbo].[udf_get_emp_time_dlt_hours_sum_dtl] ( @et_id integer, @et_dtl_id integer )  		  	
+RETURNS DECIMAL(7,2) AS  	
+
+BEGIN  
+	DECLARE @EMP_HOURS	DECIMAL(7,2)
+
+	SELECT @EMP_HOURS = SUM(EMP_TIME_DTL.EMP_HOURS)
+	FROM EMP_TIME_DTL 
+	WHERE EMP_TIME_DTL.ET_ID = @et_id
+	  AND EMP_TIME_DTL.ET_DTL_ID = @et_dtl_id
+	GROUP BY  EMP_TIME_DTL.ET_ID, EMP_TIME_DTL.ET_DTL_ID
+
+
+	RETURN ISNULL(@EMP_HOURS,0)
+END	

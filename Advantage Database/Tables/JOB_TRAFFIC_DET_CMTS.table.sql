@@ -1,0 +1,17 @@
+﻿IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[JOB_TRAFFIC_DET_CMTS]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+
+	CREATE TABLE [dbo].[JOB_TRAFFIC_DET_CMTS] (
+		[ID]                INT           IDENTITY (1, 1) NOT NULL,
+		[JOB_NUMBER]        INT           NOT NULL,
+		[JOB_COMPONENT_NBR] SMALLINT      NOT NULL,
+		[SEQ_NBR]           SMALLINT      NOT NULL,
+		[EMP_CODE]          VARCHAR (6)   NOT NULL,
+		[CREATE_USER]       VARCHAR (100) NULL,
+		[CREATE_DATE]       SMALLDATETIME NULL,
+		[CREATE_TIME]       SMALLDATETIME NULL,
+		[COMMENT]           TEXT          NULL
+	);
+
+END
+

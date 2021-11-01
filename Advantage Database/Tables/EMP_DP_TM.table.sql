@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[EMP_DP_TM] (
+    [EMP_CODE]   VARCHAR (6)  NOT NULL,
+    [DP_TM_CODE] VARCHAR (6)  NOT NULL,
+    [DP_TM_DESC] VARCHAR (30) NULL
+);
+

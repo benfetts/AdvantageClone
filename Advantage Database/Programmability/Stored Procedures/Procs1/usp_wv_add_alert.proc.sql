@@ -1,0 +1,82 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_add_alert]
+
+@ALERT_TYPE_ID Int,
+@ALERT_CAT_ID Int, 
+@SUBJECT Varchar(254), 
+@BODY text, 
+@GENERATED datetime, 
+@PRIORITY Int, 
+@OFFICE_CODE varchar(4),
+@CL_CODE Varchar(6), 
+@DIV_CODE Varchar(6), 
+@PRD_CODE Varchar(6), 
+@CMP_CODE VarChar(6), 
+@JOB_NUMBER Int,
+@JOB_COMPONENT_NBR Int, 
+@EMP_CODE Varchar(6), 
+@ALERT_LEVEL Varchar(50),
+@ALERT_USER varchar(100)
+AS
+
+	DECLARE @AlertID            AS INT
+
+	SELECT @AlertID = (MAX(ALERT_ID) + 1)
+	FROM   ALERT WITH(NOLOCK);
+	IF @AlertID IS NULL
+	BEGIN
+		SET @AlertID = 1;
+	END
+	INSERT INTO ALERT WITH(ROWLOCK)
+	  (
+		ALERT_ID,
+		ALERT_TYPE_ID,
+		ALERT_CAT_ID,
+		SUBJECT,
+		BODY,
+		GENERATED,
+		PRIORITY,
+		OFFICE_CODE,
+		CL_CODE,
+		DIV_CODE,
+		PRD_CODE,
+		CMP_CODE,
+		JOB_NUMBER,
+		JOB_COMPONENT_NBR,
+		EMP_CODE,
+		ALERT_LEVEL,
+		ALERT_USER
+	  )
+	VALUES
+	  (
+		ISNULL(@AlertID,1),
+		@ALERT_TYPE_ID,
+		@ALERT_CAT_ID,
+		@SUBJECT,
+		@BODY,
+		@GENERATED,
+		@PRIORITY,
+		@OFFICE_CODE,
+		@CL_CODE,
+		@DIV_CODE,
+		@PRD_CODE,
+		@CMP_CODE,
+		@JOB_NUMBER,
+		@JOB_COMPONENT_NBR,
+		@EMP_CODE,
+		@ALERT_LEVEL,
+		@ALERT_USER
+	  );
+
+	SELECT ALERTID = @AlertID;
+
+
+
+
+
+

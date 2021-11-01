@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[AR_COLL_NOTES] (
+    [AR_INV_NBR]    INT         NOT NULL,
+    [AR_TYPE]       VARCHAR (3) NOT NULL,
+    [AR_INV_SEQ]    SMALLINT    NOT NULL,
+    [COLLECT_NOTES] TEXT        NULL
+);
+

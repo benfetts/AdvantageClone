@@ -1,0 +1,89 @@
+﻿--DROP PROCEDURE [dbo].[usp_wv_alert_checkforduplicates]
+CREATE PROCEDURE [dbo].[usp_wv_alert_checkforduplicates]
+@AlertID Int, 
+@EmpCode VarChar(6)
+AS
+/*========== QUERY ==========*/
+	DECLARE 
+		@RETURN_VAL INT, -- 1 = IS A DUPLICATE, 0 = OK TO ADD
+		@EMP_IS_ASSIGNEE BIT
+
+	SET @RETURN_VAL = 0;
+	SET @EMP_IS_ASSIGNEE = 0;
+
+	IF EXISTS(
+			SELECT EMP_CODE
+			FROM   ALERT_RCPT WITH(NOLOCK)
+			WHERE  ALERT_ID = @AlertID
+				   AND EMP_CODE = @EmpCode
+				   AND CURRENT_NOTIFY = 1
+			UNION
+			SELECT EMP_CODE
+			FROM   ALERT_RCPT_DISMISSED WITH(NOLOCK)
+			WHERE  ALERT_ID = @AlertID
+				   AND EMP_CODE = @EmpCode
+				   AND CURRENT_NOTIFY = 1
+		)
+	BEGIN
+		SET @EMP_IS_ASSIGNEE = 1;
+	END
+
+	-- NORMAL PATH
+	IF @EMP_IS_ASSIGNEE = 0
+	BEGIN
+
+		IF EXISTS(
+			   SELECT EMP_CODE
+			   FROM   ALERT_RCPT WITH(NOLOCK)
+			   WHERE  ALERT_ID = @AlertID
+					  AND EMP_CODE = @EmpCode
+			   UNION
+			   SELECT EMP_CODE
+			   FROM   ALERT_RCPT_DISMISSED WITH(NOLOCK)
+			   WHERE  ALERT_ID = @AlertID
+					  AND EMP_CODE = @EmpCode
+		   )
+		BEGIN
+			SELECT @RETURN_VAL = 1;
+		END
+
+	END
+
+	/*
+		TO HANDLE WHEN THE ASSIGNEE IS A CC TOO
+		Normally one employee code will have one record in either ALERT_RCPT or ALERT_RCPT_DISMISSED.
+		If the employee is the assignee AND a CC, he/she will have two records
+	*/
+	IF @EMP_IS_ASSIGNEE = 1
+	BEGIN
+
+		DECLARE 
+			@EMP_RCPT_COUNT INT,
+			@EMP_RCPT_DISMISSED_COUNT INT
+
+		SET @EMP_RCPT_COUNT = 0;
+		SET @EMP_RCPT_DISMISSED_COUNT = 0;
+
+		SELECT @EMP_RCPT_COUNT = COUNT(1)
+		FROM   ALERT_RCPT WITH(NOLOCK)
+		WHERE  ALERT_ID = @AlertID
+			   AND EMP_CODE = @EmpCode;
+
+		SELECT @EMP_RCPT_DISMISSED_COUNT = COUNT(1)
+		FROM   ALERT_RCPT_DISMISSED WITH(NOLOCK)
+		WHERE  ALERT_ID = @AlertID
+			   AND EMP_CODE = @EmpCode;
+
+		--SELECT @EMP_RCPT_COUNT + @EMP_RCPT_DISMISSED_COUNT AS CT
+		IF @EMP_RCPT_COUNT + @EMP_RCPT_DISMISSED_COUNT = 2
+		BEGIN
+
+			SELECT @RETURN_VAL = 1; -- HAS MAX NUMBER OF RECORDS, 2. BECAUSE HE/SHE IS ASSIGNEE AND CC
+
+		END
+
+	END
+
+	SELECT @RETURN_VAL;
+/*========== QUERY ==========*/
+

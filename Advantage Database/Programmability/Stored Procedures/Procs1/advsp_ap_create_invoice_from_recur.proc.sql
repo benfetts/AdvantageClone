@@ -1,0 +1,41 @@
+CREATE PROCEDURE [dbo].[advsp_ap_create_invoice_from_recur] @post_period varchar(6), @cycle_code varchar(6)
+AS
+BEGIN
+	SET NOCOUNT ON;
+	
+	SELECT
+		[AccountPayableRecurID] = A.RECUR_ID,
+		[VendorCode] = A.VENDOR_CODE,
+		[VendorName] = V.VN_NAME,
+		[InvoiceNumber] = A.INV_NBR + '-' + (SELECT CAST(COALESCE(T.TOTAL_POSTED,0) + 1 AS VARCHAR(4))
+											 FROM [dbo].AP_RECUR_HDR T
+											 WHERE T.RECUR_ID = A.RECUR_ID),
+		[InvoiceAmount] = INV_AMT + COALESCE(SALES_TAX,0) + COALESCE(SHIPPING_AMT,0),
+		[NumberRemaining] = CASE WHEN A.[UNLIMITED] = 1 THEN NULL
+							ELSE A.NUMBER_TO_POST - COALESCE(A.TOTAL_POSTED,0) END,
+		[UnlimitedPostings] = A.[UNLIMITED],
+		[CreateAP] = CASE WHEN L.RECUR_ID IS NOT NULL THEN 0
+					 ELSE 1 END,
+		[APCreatedForPostPeriod] = CASE WHEN L.RECUR_ID IS NOT NULL THEN 1
+								   ELSE 0 END,
+		[InvoiceDate] = L.INVOICE_DATE,
+		[DatePosted] = L.DATE_POSTED,
+		[StartPostPeriod] = A.START_PP,
+		[CycleCode] = A.CYCODE,
+		[LastLogPostPeriod] = L.POST_PERIOD
+	FROM [dbo].AP_RECUR_HDR AS A
+		INNER JOIN 
+		(SELECT VN_NAME, VN_CODE, VN_ACCT_NBR 
+		FROM [dbo].VENDOR) AS V ON A.VENDOR_CODE = V.VN_CODE
+		LEFT OUTER JOIN
+		(SELECT RECUR_ID, POST_PERIOD, MAX(INVOICE_DATE) AS INVOICE_DATE, MAX(DATE_POSTED) AS DATE_POSTED
+		FROM [dbo].AP_RECUR_LOG
+		GROUP BY RECUR_ID, POST_PERIOD) AS L ON A.RECUR_ID = L.RECUR_ID AND L.POST_PERIOD = @post_period
+
+	WHERE (A.INACTIVE_FLAG is null or A.INACTIVE_FLAG = 0)
+	AND ((TOTAL_POSTED < NUMBER_TO_POST OR UNLIMITED=1)
+		OR TOTAL_POSTED IS NULL)
+	AND A.START_PP <= @post_period
+	AND A.CYCODE = @cycle_code
+
+END

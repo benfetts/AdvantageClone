@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[EVENT] (
+    [EVENT_ID]            INT             IDENTITY (1, 1) NOT NULL,
+    [EVENT_LABEL]         VARCHAR (50)    NULL,
+    [EVENT_DESC_LONG]     TEXT            NULL,
+    [TYPE]                VARCHAR (6)     NULL,
+    [EVENT_DATE]          SMALLDATETIME   NOT NULL,
+    [EVENT_END_DATE]      SMALLDATETIME   NULL,
+    [QTY_HRS]             DECIMAL (15, 2) NULL,
+    [QTY_TYPE]            SMALLINT        NULL,
+    [START_TIME]          SMALLDATETIME   NULL,
+    [END_TIME]            SMALLDATETIME   NULL,
+    [ALL_DAY]             BIT             NULL,
+    [RESOURCE_CODE]       VARCHAR (6)     NULL,
+    [JOB_NUMBER]          INT             NOT NULL,
+    [JOB_COMPONENT_NBR]   SMALLINT        NOT NULL,
+    [FNC_CODE]            VARCHAR (6)     NOT NULL,
+    [AD_NUMBER]           VARCHAR (30)    NULL,
+    [EVENT_COMMENT]       TEXT            NULL,
+    [INCOME_ONLY_ID]      INT             NULL,
+    [INCOME_ONLY_SEQ_NBR] SMALLINT        NULL,
+    [EVENT_GEN_ID]        INT             NULL,
+    [CREATE_DATE]         SMALLDATETIME   NOT NULL,
+    [CREATE_USER]         VARCHAR (100)   NOT NULL,
+    [MODIFY_DATE]         SMALLDATETIME   NULL,
+    [MODIFY_USER]         VARCHAR (100)   NULL,
+    [EVENT_TYPE_ID]       SMALLINT        NULL
+);
+

@@ -1,0 +1,31 @@
+<div [ngClass]="{'asset-item-with-thumbnail': thumbnail, 'asset-item': !thumbnail}" [title]="fileName">
+  <div [ngClass]="{'selected' : selected, 'divTable' : true}">
+    <div [ngClass]="{'divTableBody' : true}">
+      <div class="divTableRow thumbnail-link" style="height: 40px;" [title]="fileName">
+        <div class="divTableCell" style="height:44px">
+          <div style="margin: 4px;">
+            <span class="ellipsis-filename" style="">{{fileName}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divTableRow thumbnail-link" click.delegate="changeSelectedDocument(attachment.DocumentID)" title="Click to load comments">
+        <ng-container *ngIf="thumbnail">
+          <div class="asset-item-thumbnail" style="height: 100px; overflow: hidden">
+            <div *ngIf="isImage(); else fontBlock" style="height: 100px; display: flex; align-items: flex-start; overflow:hidden">
+              <img class="icon" src="data:image/JPEG;base64,{{imageThumbnail}}" />
+            </div>
+            <ng-template #fontBlock>
+              <span style="font-size: 50px; color: black" class="wvi" [ngClass]="getClass()"></span>
+            </ng-template>
+          </div>
+        </ng-container>
+      </div>
+      <div class="divTableRow" style="text-align: center; padding-right:5px;">
+        <div class="divTableCell">
+          <span>{{version}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

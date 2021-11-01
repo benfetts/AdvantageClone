@@ -1,0 +1,16 @@
+﻿CREATE TABLE [dbo].[ZIP_CODE] (
+    [REC_ID]       INT           IDENTITY (1, 1) NOT NULL,
+    [ORDER_NBR]    INT           NOT NULL,
+    [LINE_NBR]     SMALLINT      NOT NULL,
+    [ZIP_CODE]     VARCHAR (10)  NOT NULL,
+    [DESCRIPTION]  VARCHAR (30)  NOT NULL,
+    [ATZ_ZONE]     VARCHAR (20)  NULL,
+    [QTY]          INT           NULL,
+    [BRANCH]       VARCHAR (30)  NULL,
+    [IN_HOME]      VARCHAR (20)  NULL,
+    [DUE_DATE]     SMALLDATETIME NULL,
+    [REVISED_DATE] SMALLDATETIME NULL,
+    [REVISED_BY]   VARCHAR (100) NULL,
+    [COMMENTS]     VARCHAR (50)  NULL
+);
+

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[MSG_MGR] (
+    [USER_ID]       VARCHAR (100) NOT NULL,
+    [APP_NAME]      VARCHAR (50)  NOT NULL,
+    [WINDOW_HANDLE] INT           NOT NULL
+);
+

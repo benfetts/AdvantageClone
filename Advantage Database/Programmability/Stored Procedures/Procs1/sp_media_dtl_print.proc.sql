@@ -1,0 +1,2483 @@
+﻿
+CREATE PROCEDURE [dbo].[sp_media_dtl_print] ( @user_code varchar(100) )
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+-- ======================================================================================
+-- MAIN DATA TABLE - MEDIA ORDER DETAIL (Modified 8/7/08 - JR)
+-- ======================================================================================
+CREATE TABLE #MediaOrderDetail(
+	[REC_TYPE]				varchar(20) COLLATE SQL_Latin1_General_CP1_CS_AS, 		
+	[ORDER_NBR]				int NOT NULL,
+	[LINE_NBR]				int NULL,
+	[REV_NBR]				smallint NULL,
+	[SEQ_NBR]				smallint NULL,
+	[MONTH]					smallint NULL,
+	[YEAR]					int NULL,
+	[INSERT_DATE]			datetime NULL,
+	[START_DATE]			datetime NULL,
+	[END_DATE]				datetime NULL,
+	[DATE_TO_BILL]			datetime NULL,
+	[CLOSE_DATE]			datetime NULL,
+	[EXT_CLOSE_DATE]		datetime NULL,
+	[MATL_CLOSE_DATE]		datetime NULL,
+	[EXT_MATL_DATE]			datetime NULL,
+	[MAT_COMP]				datetime NULL,
+	[SIZE_CODE]				varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[AD_SIZE]				varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[PRINT_COLUMNS]			decimal(6,2) NULL,
+	[PRINT_INCHES]			decimal(6,2) NULL,
+	[PRINT_LINES]			decimal(11,2) NULL,
+	[PRODUCTION_SIZE]		varchar(40) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[HEADLINE]				varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,		
+	[EDITION_ISSUE]			varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[SECTION]				varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[PLACEMENT_1]			varchar(256) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[PLACEMENT_2]			varchar(160) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[LOCATION]				varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[MATERIAL]				varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,		
+	[MATL_NOTES]			varchar(8000) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[JOB_NUMBER]			int NULL,
+	[JOB_COMPONENT_NBR]		smallint NULL,
+	[BILLED_TYPE_FLAG]		smallint NULL, --various sources for different media types
+	[LINE_CANCELLED]		smallint NULL,
+	[NON_BILL_FLAG]			smallint NULL, --Added 8/7/08 - JR
+	[RECONCILE_LINE]		smallint NULL,
+	[DO_NOT_BILL]			smallint NULL,
+	[EXT_NET_AMT]			decimal(15,2) NULL,
+	[NETCHARGES]			decimal(15,2) NULL,
+	[DISCOUNTS]				decimal(15,2) NULL,
+	[ADDL_CHARGE]			decimal(15,2) NULL,
+	[COMM_AMT]				decimal(15,2) NULL,
+	[REBATE_AMT]			decimal(15,2) NULL,
+	[NON_RESALE_TAX]		decimal(15,2) NULL,
+	[STATE_AMT]				decimal(15,2) NULL,
+	[COUNTY_AMT]			decimal(15,2) NULL,
+	[CITY_AMT]				decimal(15,2) NULL,
+	[LINE_TOTAL]			decimal(15,2) NULL,
+	[BILLING_AMT]			decimal(15,2) NULL,
+	[BILLED_EXT_NET_AMT]	decimal(15,2) NULL,
+	[BILLED_NETCHARGES]		decimal(15,2) NULL,
+	[BILLED_DISCOUNTS]		decimal(15,2) NULL,
+	[BILLED_ADDL_CHARGE]	decimal(15,2) NULL,
+	[BILLED_COMM_AMT]		decimal(15,2) NULL,
+	[BILLED_REBATE_AMT]		decimal(15,2) NULL,
+	[BILLED_NON_RESALE_AMT]	decimal(15,2) NULL,
+	[BILLED_STATE_AMT]		decimal(15,2) NULL,
+	[BILLED_COUNTY_AMT]		decimal(15,2) NULL,
+	[BILLED_CITY_AMT]		decimal(15,2) NULL,
+	[BILLED_BILLING_AMT]	decimal(15,2) NULL,
+	[AR_INV_NBR]			int NULL,
+	[AR_SEQ]				tinyint NULL,
+	[AR_TYPE]				varchar(3) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[AR_GLEXACT]			int NULL,
+	[AR_INV_DATE]			datetime NULL,
+	[AR_POST_PERIOD]		varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[AP_NET_AMT]			decimal(15,2) NULL,
+	[AP_NETCHARGES]			decimal(15,2) NULL,
+	[AP_DISCOUNT_AMT]		decimal(15,2) NULL,
+	[AP_ADDL_CHARGE]		decimal(15,2) NULL, --order addl chg where a/p exists for a/p bill amt
+	[AP_COMM_AMT]			decimal(15,2) NULL,
+	[AP_REBATE_AMT]			decimal(15,2) NULL,
+	[AP_VENDOR_TAX]			decimal(15,2) NULL,
+	[AP_STATE_TAX]			decimal(15,2) NULL,
+	[AP_COUNTY_TAX]			decimal(15,2) NULL,
+	[AP_CITY_TAX]			decimal(15,2) NULL,
+	[AP_LINE_TOTAL]			decimal(15,2) NULL,		
+	[AP_INV_VCHR]			varchar(20) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[AP_GLEXACT]			int NULL,
+	[AP_INV_DATE]			datetime NULL,
+	[AP_POST_PERIOD]		varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS)
+
+-- ==========================================================
+-- SECONDARY TABLES
+-- ==========================================================
+
+-- Table #media_orders (filtered by @user_code JP 9/4/08)
+CREATE TABLE #media_orders(
+	[USER_ID]				varchar(100) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	ORDER_NBR				int NULL)
+INSERT INTO #media_orders
+SELECT
+	[USER_ID],
+	ORDER_NBR
+FROM dbo.MEDIA_RPT_ORDERS AS rd
+WHERE UPPER(rd.[USER_ID]) = UPPER(@user_code)
+
+-- ==========================================================
+-- Tables INTERNET, MAGAZINE, NEWSPAPER, OUTDOOR
+-- ==========================================================
+
+-- Table #OutdoorAdSize (Used for Outdoor Detail MaxDates)
+CREATE TABLE #OutdoorAdSize(
+	[SIZE_CODE] varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[SIZE_DESC] varchar(30) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[INACTIVE_FLAG] smallint NULL,
+	[MEDIA_TYPE] varchar(1) COLLATE SQL_Latin1_General_CP1_CS_AS)
+
+INSERT INTO #OutdoorAdSize
+SELECT s.SIZE_CODE,
+	s.SIZE_DESC,
+	s.INACTIVE_FLAG,
+	s.MEDIA_TYPE
+FROM dbo.AD_SIZE AS s
+WHERE s.MEDIA_TYPE = 'O'
+
+-- ==========================================================
+-- Tables MAG, NEWS (Old Print)
+-- ==========================================================
+-- Table #AcctRecUnvoidedList
+CREATE TABLE #AcctRecUnvoidedList(
+	[AR_INV_NBR] int NULL,
+	[REC_TYPE] varchar(3) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[MANUAL_INV] smallint NULL)
+
+INSERT INTO #AcctRecUnvoidedList
+SELECT ar.AR_INV_NBR,
+	ar.REC_TYPE,
+	ar.MANUAL_INV
+FROM dbo.ACCT_REC AS ar
+WHERE (ar.VOID_FLAG = 0 OR ar.VOID_FLAG IS NULL)
+	AND ar.AR_INV_SEQ <> 99
+GROUP BY AR_INV_NBR, REC_TYPE, MANUAL_INV
+
+-- ==========================================================
+--Table #PrintMaxRev
+CREATE TABLE #PrintMaxRev(
+	[ORDER_NBR]	int NULL,
+	[LINE_NBR]	smallint NULL,
+	[REV_NBR]	smallint NULL)
+
+INSERT INTO #PrintMaxRev
+SELECT ba.ORDER_NBR,
+	ba.LINE_NBR,
+	MAX(ba.REV_NBR)
+FROM dbo.MEDIA_BILL_AMTS AS ba
+JOIN #AcctRecUnvoidedList AS ar
+	ON ba.AR_INV_NBR = ar.AR_INV_NBR
+GROUP BY ba.ORDER_NBR, ba.LINE_NBR
+
+-- Table #PrintMaxRevBilled
+CREATE TABLE #PrintMaxRevBilled(
+	[ORDER_NBR] int NULL,
+	[LINE_NBR] smallint NULL,
+	[REV_NBR] smallint NULL, --Max Rev
+	[SEQ_NBR] smallint NULL, --Max Seq for MaxOfRev
+	[BILLING_USER] varchar(100) COLLATE SQL_Latin1_General_CP1_CS_AS, --Max Billing User
+	[BILLING_SEQ] int NULL) -- Max Billing Seq
+
+INSERT INTO #PrintMaxRevBilled
+SELECT ba.ORDER_NBR,
+	ba.LINE_NBR,
+	ba.REV_NBR,
+	MAX(ba.SEQ_NBR) AS SEQ_NBR,
+	MAX(ba.BILLING_USER) AS BILLING_USER,
+	MAX(ba.BILLING_SEQ) AS BILLING_SEQ
+FROM dbo.MEDIA_BILL_AMTS AS ba
+JOIN #PrintMaxRev AS mr
+	ON ba.ORDER_NBR = mr.ORDER_NBR
+	AND ba.LINE_NBR = mr.LINE_NBR
+	AND ba.REV_NBR = mr.REV_NBR
+JOIN #AcctRecUnvoidedList AS ar
+	ON ba.AR_INV_NBR = ar.AR_INV_NBR
+GROUP BY ba.ORDER_NBR, ba.LINE_NBR, ba.REV_NBR
+
+-- ==========================================================
+-- Table PrintBilledTypeFlag
+CREATE TABLE #PrintBilledTypeFlag(
+	[ORDER_NBR] int NULL,
+	[LINE_NBR] smallint NULL,
+	[BILL_COMM_NET] smallint NULL)
+
+INSERT INTO #PrintBilledTypeFlag
+SELECT ba.ORDER_NBR,
+	ba.LINE_NBR,
+	ba.BILL_COMM_NET
+FROM dbo.MEDIA_BILL_AMTS AS ba
+JOIN #PrintMaxRevBilled AS mr
+	ON ba.ORDER_NBR = mr.ORDER_NBR
+	AND ba.LINE_NBR = mr.LINE_NBR
+	AND ba.REV_NBR = mr.REV_NBR
+	AND ba.SEQ_NBR = mr.SEQ_NBR
+	AND ba.BILLING_USER = mr.BILLING_USER
+	AND ba.BILLING_SEQ = mr.BILLING_SEQ
+
+-- ==========================================================
+-- Tables MagMaxRev => MagMaxSeq
+CREATE TABLE #MagMaxRev(
+	[ORDER_NBR]	int NULL,
+	[LINE_NBR]	smallint NULL,
+	[REV_NBR]	smallint NULL)
+
+INSERT INTO #MagMaxRev
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	MAX(d.REV_NBR)
+FROM dbo.MAG_DETAIL AS d
+GROUP BY d.ORDER_NBR, d.LINE_NBR
+
+CREATE TABLE #MagMaxSeq(
+	[ORDER_NBR] int NULL,
+	[LINE_NBR] smallint NULL,
+	[REV_NBR] smallint NULL,
+	[SEQ_NBR] smallint NULL)
+
+INSERT INTO #MagMaxSeq
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	Max(d.SEQ_NBR)
+FROM dbo.MAG_DETAIL AS d
+JOIN #MagMaxRev AS mr
+	ON d.ORDER_NBR = mr.ORDER_NBR
+	AND d.LINE_NBR = mr.LINE_NBR
+	AND d.REV_NBR = mr.REV_NBR
+GROUP BY d.ORDER_NBR, d.LINE_NBR, d.REV_NBR
+
+-- ==========================================================
+-- Tables NewsMaxRev => NewsMaxSeq
+CREATE TABLE #NewsMaxRev(
+	[ORDER_NBR]	int NULL,
+	[LINE_NBR]	smallint NULL,
+	[REV_NBR]	smallint NULL)
+
+INSERT INTO #NewsMaxRev
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	MAX(d.REV_NBR)
+FROM dbo.NEWS_DETAIL AS d
+GROUP BY d.ORDER_NBR, d.LINE_NBR
+
+CREATE TABLE #NewsMaxSeq(
+	[ORDER_NBR] int NULL,
+	[LINE_NBR] smallint NULL,
+	[REV_NBR] smallint NULL,
+	[SEQ_NBR] smallint NULL)
+
+INSERT INTO #NewsMaxSeq
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	Max(d.SEQ_NBR)
+FROM dbo.NEWS_DETAIL AS d
+JOIN #NewsMaxRev AS mr
+	ON d.ORDER_NBR = mr.ORDER_NBR
+	AND d.LINE_NBR = mr.LINE_NBR
+	AND d.REV_NBR = mr.REV_NBR
+GROUP BY d.ORDER_NBR, d.LINE_NBR, d.REV_NBR
+
+-- ==========================================================
+-- Table #ARInfo
+CREATE TABLE #ARInfo(
+	[AR_INV_NBR] int NULL,
+	[AR_TYPE] varchar(3) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[GLEXACT] int NULL,
+	[AR_INV_DATE] datetime NULL,
+	[AR_POST_PERIOD] varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS)
+
+INSERT INTO #ARInfo
+SELECT ar.AR_INV_NBR,
+	ar.AR_TYPE,
+	ar.GLEXACT,
+	ar.AR_INV_DATE,
+	ar.AR_POST_PERIOD
+FROM dbo.ACCT_REC AS ar
+GROUP BY ar.AR_INV_NBR, ar.AR_TYPE, ar.GLEXACT, ar.AR_INV_DATE, ar.AR_POST_PERIOD
+
+
+-- ==========================================================
+-- Table DETAIL MAX DATES (All Media Types)
+CREATE TABLE #DetailMaxDates (
+	[ORDER_NBR]			int NULL,
+	[LINE_NBR]			int NULL,
+	[REV_NBR]			smallint NULL, --Active Rev
+	[SEQ_NBR]			smallint NULL, --Max Seq of Active Rev
+	[MONTH]				smallint NULL,
+	[YEAR]				int NULL,
+	[INSERT_DATE]		datetime NULL,
+	[START_DATE]		datetime NULL,
+	[END_DATE]			datetime NULL,
+	[DATE_TO_BILL]		datetime NULL,
+	[CLOSE_DATE]		datetime NULL,
+	[EXT_CLOSE_DATE]	datetime NULL,
+	[MATL_CLOSE_DATE]	datetime NULL,
+	[EXT_MATL_DATE]		datetime NULL,
+	[MAT_COMP]			datetime NULL,
+	[SIZE_CODE]			varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[AD_SIZE]			varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[PRINT_COLUMNS]		decimal(6,2), --Newspaper detail only
+	[PRINT_INCHES]		decimal(6,2), --Newspaper detail only
+	[PRINT_LINES]		decimal(11,2), --Newspaper detail only
+	[PRODUCTION_SIZE]	varchar(40) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[HEADLINE]			varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[EDITION_ISSUE]		varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[SECTION]			varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[PLACEMENT_1]		varchar(256) COLLATE SQL_Latin1_General_CP1_CS_AS, --Internet detail only
+	[PLACEMENT_2]		varchar(160) COLLATE SQL_Latin1_General_CP1_CS_AS, --Internet detail only
+	[LOCATION]			varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS, --Outdoor detail only
+	[MATERIAL]			varchar(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[MATL_NOTES]		varchar(8000) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	[JOB_NUMBER]		int NULL,
+	[JOB_COMPONENT_NBR]	smallint NULL,
+	[BILLED_TYPE_FLAG]	smallint NULL,
+	[LINE_CANCELLED]	smallint NULL,
+	[NON_BILL_FLAG]		smallint NULL) --Added 8/7/08 - JR
+
+-- INTERNET, MAGAZINE, NEWSPAPER, OUTDOOR DetailMaxDates
+-- Internet DetailMaxDates
+INSERT INTO #DetailMaxDates
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	d.SEQ_NBR,
+	Month(d.START_DATE) AS [MONTH],
+	Year(d.START_DATE) AS [YEAR],
+	d.START_DATE AS INSERT_DATE,
+	d.START_DATE,
+	d.END_DATE,
+	d.DATE_TO_BILL,
+	d.CLOSE_DATE,
+	d.EXT_CLOSE_DATE,
+	d.MATL_CLOSE_DATE,
+	d.EXT_MATL_DATE,
+	d.MAT_COMP,
+	d.SIZE AS SIZE_CODE,
+	d.CREATIVE_SIZE AS AD_SIZE, --SIZE
+	NULL, --PRINT_COLUMNS
+	NULL, --PRINT_INCHES
+	NULL, --PRINT_LINES
+	d.COPY_AREA AS PRODUCTION_SIZE,
+	d.HEADLINE,
+	NULL, --EDITION_SECTION
+	NULL, --SECTION
+	d.PLACEMENT_1,
+	d.PLACEMENT_2,
+	NULL, --LOCATION
+	NULL, --MATERIAL
+	c.MATL_NOTES,
+	d.JOB_NUMBER,
+	d.JOB_COMPONENT_NBR,
+	d.BILL_TYPE_FLAG AS BILLED_TYPE_FLAG,
+	d.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0) --Added 8/7/08 - JR
+FROM dbo.INTERNET_DETAIL AS d
+JOIN #media_orders AS rd
+	ON (d.ORDER_NBR = rd.ORDER_NBR) 
+LEFT JOIN dbo.INTERNET_COMMENTS AS c
+	ON d.ORDER_NBR = c.ORDER_NBR
+	AND d.LINE_NBR = c.LINE_NBR
+WHERE d.ACTIVE_REV = 1
+	AND d.SEQ_NBR = (SELECT MAX(d2.SEQ_NBR) FROM dbo.INTERNET_DETAIL AS d2
+		WHERE d.ORDER_NBR = d2.ORDER_NBR
+			AND d.LINE_NBR = d2.LINE_NBR
+			AND d.REV_NBR = d2.REV_NBR)
+
+-- Magazine DetailMaxDates
+INSERT INTO #DetailMaxDates
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	d.SEQ_NBR,
+	Month(d.START_DATE) AS [MONTH],
+	Year(d.START_DATE) AS [YEAR],
+	d.START_DATE AS INSERT_DATE,
+	d.START_DATE,
+	d.END_DATE,
+	d.DATE_TO_BILL,
+	d.CLOSE_DATE,
+	d.EXT_CLOSE_DATE,
+	d.MATL_CLOSE_DATE,
+	d.EXT_MATL_DATE,
+	d.MAT_COMP,
+	d.SIZE_CODE,
+	d.SIZE AS AD_SIZE,
+	NULL, --PRINT_COLUMNS
+	NULL, --PRINT_INCHES
+	NULL, --PRINT_LINES
+	d.PRODUCTION_SIZE,
+	d.HEADLINE,
+	d.EDITION_ISSUE,
+	d.SECTION,
+	NULL, --PLACEMENT_1
+	NULL, --PLACEMENT_2
+	NULL, --LOCATION
+	d.MATERIAL,
+	c.MATL_NOTES,
+	d.JOB_NUMBER,
+	d.JOB_COMPONENT_NBR,
+	d.BILL_TYPE_FLAG AS BILLED_TYPE_FLAG,
+	d.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0) --Added 8/7/08 - JR
+FROM dbo.MAGAZINE_DETAIL AS d
+JOIN #media_orders AS rd
+	ON (d.ORDER_NBR = rd.ORDER_NBR) 
+LEFT JOIN dbo.MAGAZINE_COMMENTS AS c
+	ON d.ORDER_NBR = c.ORDER_NBR
+	AND d.LINE_NBR = c.LINE_NBR
+WHERE d.ACTIVE_REV = 1
+	AND d.SEQ_NBR = (SELECT MAX(d2.SEQ_NBR) FROM dbo.MAGAZINE_DETAIL AS d2
+		WHERE d.ORDER_NBR = d2.ORDER_NBR
+			AND d.LINE_NBR = d2.LINE_NBR
+			AND d.REV_NBR = d2.REV_NBR)
+
+-- Newspaper DetailMaxDates
+INSERT INTO #DetailMaxDates
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	d.SEQ_NBR,
+	Month(d.START_DATE) AS [MONTH],
+	Year(d.START_DATE) AS [YEAR],
+	d.START_DATE AS INSERT_DATE,
+	d.START_DATE,
+	d.END_DATE,
+	d.DATE_TO_BILL,
+	d.CLOSE_DATE,
+	d.EXT_CLOSE_DATE,
+	d.MATL_CLOSE_DATE,
+	d.EXT_MATL_DATE,
+	d.MAT_COMP,
+	d.SIZE_CODE,	
+	d.SIZE AS AD_SIZE, --In Adassist query this is a formula: If([PRINT_LINES]=0,[SIZE],If([PRINT_COLUMNS]<>0,[PRINT_COLUMNS] & " x " & [PRINT_INCHES],[PRINT_LINES] & " Lines")) 
+	d.PRINT_COLUMNS,
+	d.PRINT_INCHES,
+	d.PRINT_LINES,
+	d.PRODUCTION_SIZE,
+	d.HEADLINE,
+	d.EDITION_ISSUE,
+	d.SECTION,
+	NULL, --PLACEMENT_1
+	NULL, --PLACEMENT_2
+	NULL, --LOCATION
+	d.MATERIAL,
+	c.MATL_NOTES,
+	d.JOB_NUMBER,
+	d.JOB_COMPONENT_NBR,
+	d.BILL_TYPE_FLAG AS BILLED_TYPE_FLAG,
+	d.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0) --Added 8/7/08 - JR
+FROM dbo.NEWSPAPER_DETAIL AS d
+JOIN #media_orders AS rd
+	ON (d.ORDER_NBR = rd.ORDER_NBR) 
+LEFT JOIN dbo.NEWSPAPER_COMMENTS AS c
+	ON d.ORDER_NBR = c.ORDER_NBR
+	AND d.LINE_NBR = c.LINE_NBR
+WHERE d.ACTIVE_REV = 1
+	AND d.SEQ_NBR = (SELECT MAX(d2.SEQ_NBR) FROM dbo.NEWSPAPER_DETAIL AS d2
+		WHERE d.ORDER_NBR = d2.ORDER_NBR
+			AND d.LINE_NBR = d2.LINE_NBR
+			AND d.REV_NBR = d2.REV_NBR)
+
+-- Outdoor DetailMaxDates
+INSERT INTO #DetailMaxDates
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	d.SEQ_NBR,
+	Month(d.POST_DATE) AS [MONTH],
+	Year(d.POST_DATE) AS [YEAR],
+	d.POST_DATE AS INSERT_DATE,
+	d.POST_DATE AS [START_DATE],
+	d.END_DATE,
+	d.DATE_TO_BILL,
+	d.CLOSE_DATE,
+	d.EXT_CLOSE_DATE,
+	d.MATL_CLOSE_DATE,
+	d.EXT_MATL_DATE,
+	d.MAT_COMP,
+	d.SIZE AS SIZE_CODE,
+	s.SIZE_DESC AS AD_SIZE, --FROM #OutdoorAdSize
+	NULL, --PRINT_COLUMNS
+	NULL, --PRINT_INCHES
+	NULL, --PRINT_LINES
+	d.COPY_AREA AS PRODUCTION_SIZE,
+	d.HEADLINE,
+	NULL, --EDITION_ISSUE
+	NULL, --SECTION
+	NULL, --PLACEMENT_1
+	NULL, --PLACEMENT_2
+	d.LOCATION,	
+	NULL, --MATERIAL
+	c.MATL_NOTES,
+	d.JOB_NUMBER,
+	d.JOB_COMPONENT_NBR,
+	d.BILL_TYPE_FLAG AS BILLED_TYPE_FLAG,
+	d.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0) --Added 8/7/08 - JR
+FROM dbo.OUTDOOR_DETAIL AS d
+JOIN #media_orders AS rd
+	ON (d.ORDER_NBR = rd.ORDER_NBR) 
+LEFT JOIN #OutdoorAdSize AS s
+	ON d.SIZE = s.SIZE_CODE
+LEFT JOIN dbo.OUTDOOR_COMMENTS AS c
+	ON d.ORDER_NBR = c.ORDER_NBR
+	AND d.LINE_NBR = c.LINE_NBR
+WHERE d.ACTIVE_REV = 1
+	AND d.SEQ_NBR = (SELECT MAX(d2.SEQ_NBR) FROM dbo.OUTDOOR_DETAIL AS d2
+		WHERE d.ORDER_NBR = d2.ORDER_NBR
+			AND d.LINE_NBR = d2.LINE_NBR
+			AND d.REV_NBR = d2.REV_NBR)
+
+-- MAG, NEWS (Old Print) DetailMaxDates
+-- Mag Detail MaxDates
+INSERT INTO #DetailMaxDates
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	d.SEQ_NBR,
+	Month(d.INSERT_DATE) AS [MONTH],
+	Year(d.INSERT_DATE) AS [YEAR],
+	d.INSERT_DATE,
+	d.INSERT_DATE AS [START_DATE],
+	NULL, --END_DATE
+	d.DATE_TO_BILL,
+	d.CLOSE_DATE,
+	d.EXT_CLOSE_DATE,
+	d.MATL_CLOSE_DATE,
+	d.EXT_MATL_DATE,
+	NULL, --MAT_COMP
+	NULL, --SIZE_CODE
+	d.AD_SIZE,
+	NULL, --PRINT_COLUMNS
+	NULL, --PRINT_INCHES
+	NULL, --PRINT_LINES
+	NULL, --PRODUCTION_SIZE
+	d.HEADLINE,
+	d.ISSUE AS EDITION_ISSUE,
+	NULL, --SECTION
+	NULL, --PLACEMENT_1
+	NULL, --PLACEMENT_2
+	NULL, --LOCATION
+	d.MATERIAL,
+	c.MATL_NOTES,
+	d.JOB_NUMBER,
+	d.JOB_COMPONENT_NBR,
+	bt.BILL_COMM_NET AS BILLED_TYPE_FLAG,
+	d.LINE_CANCELLED,
+	0 --NON_BILL_FLAG	Added 8/7/08 - JR
+FROM dbo.MAG_DETAIL AS d
+JOIN #media_orders AS rd
+	ON (d.ORDER_NBR = rd.ORDER_NBR) 
+JOIN #MagMaxSeq AS ms
+	ON d.ORDER_NBR = ms.ORDER_NBR
+	AND d.LINE_NBR = ms.LINE_NBR
+	AND d.REV_NBR = ms.REV_NBR
+	AND d.SEQ_NBR = ms.SEQ_NBR
+LEFT JOIN dbo.MAG_COMMENTS AS c
+	ON d.ORDER_NBR = c.ORDER_NBR
+	AND d.LINE_NBR = c.LINE_NBR
+	AND d.REV_NBR = c.REV_NBR
+	AND d.SEQ_NBR = c.SEQ_NBR
+LEFT JOIN #PrintBilledTypeFlag AS bt
+	ON d.ORDER_NBR = bt.ORDER_NBR
+	AND d.LINE_NBR = bt.LINE_NBR
+
+-- News Detail MaxDates
+INSERT INTO #DetailMaxDates
+SELECT d.ORDER_NBR,
+	d.LINE_NBR,
+	d.REV_NBR,
+	d.SEQ_NBR,
+	Month(d.INSERT_DATE) AS [MONTH],
+	Year(d.INSERT_DATE) AS [YEAR],
+	d.INSERT_DATE,
+	d.INSERT_DATE AS [START_DATE],
+	NULL, --END_DATE
+	d.DATE_TO_BILL,
+	d.CLOSE_DATE,
+	d.EXT_CLOSE_DATE,
+	d.MATL_CLOSE_DATE,
+	d.EXT_MATL_DATE,
+	NULL, --MAT_COMP
+	NULL, --SIZE_CODE
+	NULL, --AD_SIZE
+	d.SIZE1 AS PRINT_COLUMNS,
+	d.SIZE2 AS PRINT_INCHES,
+	NULL, --PRINT_LINES
+	NULL, --PRODUCTION_SIZE
+	d.HEADLINE,
+	d.EDITION AS EDITION_ISSUE,
+	d.SECTION,
+	NULL, --PLACEMENT_1
+	NULL, --PLACEMENT_2
+	NULL, --LOCATION
+	d.MATERIAL,
+	c.MATL_NOTES,
+	d.JOB_NUMBER,
+	d.JOB_COMPONENT_NBR,
+	bt.BILL_COMM_NET AS BILLED_TYPE_FLAG,
+	d.LINE_CANCELLED,
+	0 --NON_BILL_FLAG	Added 8/7/08 - JR
+FROM dbo.NEWS_DETAIL AS d
+JOIN #media_orders AS rd
+	ON (d.ORDER_NBR = rd.ORDER_NBR) 
+JOIN #NewsMaxSeq AS ms
+	ON d.ORDER_NBR = ms.ORDER_NBR
+	AND d.LINE_NBR = ms.LINE_NBR
+	AND d.REV_NBR = ms.REV_NBR
+	AND d.SEQ_NBR = ms.SEQ_NBR
+LEFT JOIN dbo.NEWS_COMMENTS AS c
+	ON d.ORDER_NBR = c.ORDER_NBR
+	AND d.LINE_NBR = c.LINE_NBR
+	AND d.REV_NBR = c.REV_NBR
+	AND d.SEQ_NBR = c.SEQ_NBR
+LEFT JOIN #PrintBilledTypeFlag AS bt
+	ON d.ORDER_NBR = bt.ORDER_NBR
+	AND d.LINE_NBR = bt.LINE_NBR
+
+-- ===============================================================================
+-- MAIN TABLE DATA - MEDIA DETAIL
+-- ===============================================================================
+-- INTERNET, MAGAZINE, NEWSPAPER, OUTDOOR ORDERED AMOUNTS
+-- ======================================================
+-- Internet Order Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'ORDER', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	md.NON_BILL_FLAG, --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	ISNULL(d.EXT_NET_AMT,0),
+	ISNULL(d.NETCHARGE,0),
+	ISNULL(d.DISCOUNT_AMT,0),
+	ISNULL(d.ADDL_CHARGE,0),
+	ISNULL(d.COMM_AMT,0),
+	ISNULL(d.REBATE_AMT,0),
+	ISNULL(d.NON_RESALE_AMT,0),
+	ISNULL(d.STATE_AMT,0),
+	ISNULL(d.COUNTY_AMT,0),
+	ISNULL(d.CITY_AMT,0),
+	ISNULL(d.LINE_TOTAL,0),
+	ISNULL(d.BILLING_AMT,0),
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.INTERNET_DETAIL AS d 
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE (d.LINE_CANCELLED = 0 OR d.LINE_CANCELLED IS NULL)
+
+-- Magazine Order Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'ORDER', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	md.NON_BILL_FLAG, --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	ISNULL(d.EXT_NET_AMT,0),
+	ISNULL(d.NETCHARGE,0),
+	ISNULL(d.DISCOUNT_AMT,0),
+	ISNULL(d.ADDL_CHARGE,0),
+	ISNULL(d.COMM_AMT,0),
+	ISNULL(d.REBATE_AMT,0),
+	ISNULL(d.NON_RESALE_AMT,0),
+	ISNULL(d.STATE_AMT,0),
+	ISNULL(d.COUNTY_AMT,0),
+	ISNULL(d.CITY_AMT,0),
+	ISNULL(d.LINE_TOTAL,0),
+	ISNULL(d.BILLING_AMT,0),
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.MAGAZINE_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE (d.LINE_CANCELLED = 0 OR d.LINE_CANCELLED IS NULL)
+
+-- Newspaper Order Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'ORDER', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	md.NON_BILL_FLAG, --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	ISNULL(d.EXT_NET_AMT,0),
+	ISNULL(d.NETCHARGE,0),
+	ISNULL(d.DISCOUNT_AMT,0),
+	ISNULL(d.ADDL_CHARGE,0),
+	ISNULL(d.COMM_AMT,0),
+	ISNULL(d.REBATE_AMT,0),
+	ISNULL(d.NON_RESALE_AMT,0),
+	ISNULL(d.STATE_AMT,0),
+	ISNULL(d.COUNTY_AMT,0),
+	ISNULL(d.CITY_AMT,0),
+	ISNULL(d.LINE_TOTAL,0),
+	ISNULL(d.BILLING_AMT,0),
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.NEWSPAPER_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE (d.LINE_CANCELLED = 0 OR d.LINE_CANCELLED IS NULL)
+
+-- Outdoor Order Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'ORDER', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	md.NON_BILL_FLAG, --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	ISNULL(d.EXT_NET_AMT,0),
+	ISNULL(d.NETCHARGE,0),
+	ISNULL(d.DISCOUNT_AMT,0),
+	ISNULL(d.ADDL_CHARGE,0),
+	ISNULL(d.COMM_AMT,0),
+	ISNULL(d.REBATE_AMT,0),
+	ISNULL(d.NON_RESALE_AMT,0),
+	ISNULL(d.STATE_AMT,0),
+	ISNULL(d.COUNTY_AMT,0),
+	ISNULL(d.CITY_AMT,0),
+	ISNULL(d.LINE_TOTAL,0),
+	ISNULL(d.BILLING_AMT,0),
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.OUTDOOR_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE (d.LINE_CANCELLED = 0 OR d.LINE_CANCELLED IS NULL)
+
+-- MAG, NEWS (OLD PRINT) ORDERED AMOUNTS
+-- ======================================================
+-- Mag Order Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'ORDER', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	ISNULL(d.EXT_NET_AMT,0),
+	ISNULL(dn.NETCHARGES,0),
+	(ISNULL(dd.LINE_NET_DISC,0)+ISNULL(dd.NETCHARGES_DISC,0)) AS [DISCOUNTS],
+	0, --ADDL CHARGE
+	ISNULL(d.COMM_AMT,0),
+	ISNULL(d.REBATE_AMT,0),
+	ISNULL(dt.VENDOR_TAX,0),
+	ISNULL(dt.STATE_TAX,0),
+	ISNULL(dt.COUNTY_TAX,0),
+	ISNULL(dt.CITY_TAX,0),
+	ISNULL(d.LINE_TOTAL,0),
+	0, --BILL_AMT not held in table, to be calculated based on billed_type_flag or bill_type_flag
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.MAG_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+JOIN dbo.MAG_NET_CHG AS dn
+	ON d.ORDER_NBR = dn.ORDER_NBR
+	AND d.LINE_NBR = dn.LINE_NBR
+	AND d.REV_NBR = dn.REV_NBR
+	AND d.SEQ_NBR = dn.SEQ_NBR
+JOIN dbo.MAG_DISC AS dd
+	ON d.ORDER_NBR = dd.ORDER_NBR
+	AND d.LINE_NBR = dd.LINE_NBR
+	AND d.REV_NBR = dd.REV_NBR
+	AND d.SEQ_NBR = dd.SEQ_NBR
+JOIN dbo.MAG_TAXES AS dt
+	ON d.ORDER_NBR = dt.ORDER_NBR
+	AND d.LINE_NBR = dt.LINE_NBR
+	AND d.REV_NBR = dt.REV_NBR
+	AND d.SEQ_NBR = dt.SEQ_NBR
+WHERE (d.LINE_CANCELLED = 0 OR d.LINE_CANCELLED IS NULL)
+
+-- News Order Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'ORDER', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	ISNULL(d.EXT_NET_AMT,0),
+	ISNULL(dn.NETCHARGES,0),
+	(ISNULL(dd.LINE_NET_DISC,0)+ISNULL(dd.NETCHARGES_DISC,0)) AS [DISCOUNTS],
+	0, --ADDL CHARGE
+	ISNULL(d.COMM_AMT,0),
+	ISNULL(d.REBATE_AMT,0),
+	ISNULL(dt.VENDOR_TAX,0),
+	ISNULL(dt.STATE_TAX,0),
+	ISNULL(dt.COUNTY_TAX,0),
+	ISNULL(dt.CITY_TAX,0),
+	ISNULL(d.LINE_TOTAL,0),
+	0, --BILL_AMT not held in table, to be calculated based on bill type flag
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.NEWS_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+JOIN dbo.NEWS_NET_CHG AS dn
+	ON d.ORDER_NBR = dn.ORDER_NBR
+	AND d.LINE_NBR = dn.LINE_NBR
+	AND d.REV_NBR = dn.REV_NBR
+	AND d.SEQ_NBR = dn.SEQ_NBR
+JOIN dbo.NEWS_DISC AS dd
+	ON d.ORDER_NBR = dd.ORDER_NBR
+	AND d.LINE_NBR = dd.LINE_NBR
+	AND d.REV_NBR = dd.REV_NBR
+	AND d.SEQ_NBR = dd.SEQ_NBR
+JOIN dbo.NEWS_TAXES AS dt
+	ON d.ORDER_NBR = dt.ORDER_NBR
+	AND d.LINE_NBR = dt.LINE_NBR
+	AND d.REV_NBR = dt.REV_NBR
+	AND d.SEQ_NBR = dt.SEQ_NBR
+WHERE (d.LINE_CANCELLED = 0 OR d.LINE_CANCELLED IS NULL)
+
+-- INTERNET, MAGAZINE, NEWSPAPER, OUTDOOR BILLED AMOUNTS
+-- ======================================================
+-- Internet Billed Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'BILLING', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0), --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	SUM(ISNULL(d.EXT_NET_AMT,0)),
+	SUM(ISNULL(d.NETCHARGE,0)),
+	SUM(ISNULL(d.DISCOUNT_AMT,0)),
+	SUM(ISNULL(d.ADDL_CHARGE,0)),
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.NON_RESALE_AMT,0)),
+	SUM(ISNULL(d.STATE_AMT,0)),
+	SUM(ISNULL(d.COUNTY_AMT,0)),
+	SUM(ISNULL(d.CITY_AMT,0)),
+	SUM(ISNULL(d.BILLING_AMT,0)),
+	d.AR_INV_NBR,
+	d.AR_INV_SEQ,
+	d.AR_TYPE,
+	ar.GLEXACT,
+	ar.AR_INV_DATE,
+	ar.AR_POST_PERIOD,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.INTERNET_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+JOIN #ARInfo AS ar
+	ON d.AR_INV_NBR = ar.AR_INV_NBR
+	AND d.AR_TYPE = ar.AR_TYPE
+GROUP BY d.ORDER_NBR, d.LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, d.NON_BILL_FLAG, d.AR_INV_NBR, d.AR_INV_SEQ, d.AR_TYPE, ar.GLEXACT,
+	ar.AR_INV_DATE, ar.AR_POST_PERIOD
+
+-- Magazine Billed Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'BILLING', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0), --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	SUM(ISNULL(d.EXT_NET_AMT,0)),
+	SUM(ISNULL(d.NETCHARGE,0)),
+	SUM(ISNULL(d.DISCOUNT_AMT,0)),
+	SUM(ISNULL(d.ADDL_CHARGE,0)),
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.NON_RESALE_AMT,0)),
+	SUM(ISNULL(d.STATE_AMT,0)),
+	SUM(ISNULL(d.COUNTY_AMT,0)),
+	SUM(ISNULL(d.CITY_AMT,0)),
+	SUM(ISNULL(d.BILLING_AMT,0)),
+	d.AR_INV_NBR,
+	d.AR_INV_SEQ,
+	d.AR_TYPE,
+	ar.GLEXACT,
+	ar.AR_INV_DATE,
+	ar.AR_POST_PERIOD,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.MAGAZINE_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+JOIN #ARInfo AS ar
+	ON d.AR_INV_NBR = ar.AR_INV_NBR
+	AND d.AR_TYPE = ar.AR_TYPE
+GROUP BY d.ORDER_NBR, d.LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, d.NON_BILL_FLAG, d.AR_INV_NBR, d.AR_INV_SEQ, d.AR_TYPE, ar.GLEXACT,
+	ar.AR_INV_DATE, ar.AR_POST_PERIOD
+
+-- Newspaper Billed Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'BILLING', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0), --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	SUM(ISNULL(d.EXT_NET_AMT,0)),
+	SUM(ISNULL(d.NETCHARGE,0)),
+	SUM(ISNULL(d.DISCOUNT_AMT,0)),
+	SUM(ISNULL(d.ADDL_CHARGE,0)),
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.NON_RESALE_AMT,0)),
+	SUM(ISNULL(d.STATE_AMT,0)),
+	SUM(ISNULL(d.COUNTY_AMT,0)),
+	SUM(ISNULL(d.CITY_AMT,0)),
+	SUM(ISNULL(d.BILLING_AMT,0)),
+	d.AR_INV_NBR,
+	d.AR_INV_SEQ,
+	d.AR_TYPE,
+	ar.GLEXACT,
+	ar.AR_INV_DATE,
+	ar.AR_POST_PERIOD,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.NEWSPAPER_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+JOIN #ARInfo AS ar
+	ON d.AR_INV_NBR = ar.AR_INV_NBR
+	AND d.AR_TYPE = ar.AR_TYPE
+GROUP BY d.ORDER_NBR, d.LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, d.NON_BILL_FLAG, d.AR_INV_NBR, d.AR_INV_SEQ, d.AR_TYPE, ar.GLEXACT,
+	ar.AR_INV_DATE, ar.AR_POST_PERIOD
+
+-- Outdoor Billed Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'BILLING', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	ISNULL(d.NON_BILL_FLAG,0), --Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	SUM(ISNULL(d.EXT_NET_AMT,0)),
+	SUM(ISNULL(d.NETCHARGE,0)),
+	SUM(ISNULL(d.DISCOUNT_AMT,0)),
+	SUM(ISNULL(d.ADDL_CHARGE,0)),
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.NON_RESALE_AMT,0)),
+	SUM(ISNULL(d.STATE_AMT,0)),
+	SUM(ISNULL(d.COUNTY_AMT,0)),
+	SUM(ISNULL(d.CITY_AMT,0)),
+	SUM(ISNULL(d.BILLING_AMT,0)),
+	d.AR_INV_NBR,
+	d.AR_INV_SEQ,
+	d.AR_TYPE,
+	ar.GLEXACT,
+	ar.AR_INV_DATE,
+	ar.AR_POST_PERIOD,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.OUTDOOR_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+JOIN #ARInfo AS ar
+	ON d.AR_INV_NBR = ar.AR_INV_NBR
+	AND d.AR_TYPE = ar.AR_TYPE
+GROUP BY d.ORDER_NBR, d.LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, d.NON_BILL_FLAG, d.AR_INV_NBR, d.AR_INV_SEQ, d.AR_TYPE, ar.GLEXACT,
+	ar.AR_INV_DATE, ar.AR_POST_PERIOD
+
+-- MAG, NEWS (OLD PRINT) BILLED AMOUNTS
+-- ======================================================
+-- Mag Billed Amounts + News Billed Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'BILLING', --REC_TYPE
+	ba.ORDER_NBR,
+	ba.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	ISNULL(ba.BILL_COMM_NET,0),
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	SUM(ISNULL(ba.LINE_NET,0)),
+	SUM(ISNULL(ba.NETCHARGES,0)),
+	SUM(ISNULL(ba.LINE_DISC,0)),
+	0, --ADDL CHARGE
+	SUM(ISNULL(ba.COMM_AMT,0)),
+	SUM(ISNULL(ba.REBATE_AMT,0)),
+	SUM(ISNULL(ba.VENDOR_TAX,0)),
+	SUM(ISNULL(ba.STATE_TAX,0)),
+	SUM(ISNULL(ba.COUNTY_TAX,0)),
+	SUM(ISNULL(ba.CITY_TAX,0)),
+	SUM(ISNULL(ba.BILL_AMT,0)),
+	ba.AR_INV_NBR,
+	ISNULL(ba.AR_INV_SEQ,0),
+	ba.AR_TYPE,
+	ar.GLEXACT,
+	ar.AR_INV_DATE,
+	ar.AR_POST_PERIOD,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.MEDIA_BILL_AMTS AS ba
+JOIN #DetailMaxDates AS md
+	ON ba.ORDER_NBR = md.ORDER_NBR
+	AND ba.LINE_NBR = md.LINE_NBR
+JOIN #ARInfo AS ar
+	ON ba.AR_INV_NBR = ar.AR_INV_NBR
+	AND ba.AR_TYPE = ar.AR_TYPE
+GROUP BY ba.ORDER_NBR, ba.LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	ba.BILL_COMM_NET, md.LINE_CANCELLED, ba.AR_INV_NBR, ba.AR_INV_SEQ, ba.AR_TYPE, ar.GLEXACT,
+	ar.AR_INV_DATE, ar.AR_POST_PERIOD
+
+-- INTERNET, MAGAZINE, NEWSPAPER, OUTDOOR + MAG, NEWS ACCOUNTS PAYABLE AMOUNTS
+-- ===========================================================================
+-- Internet A/P Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.ORDER_LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	SUM(ISNULL(d.NET_AMT,0)),
+	SUM(ISNULL(d.NETCHARGES,0)),
+	SUM(ISNULL(d.DISCOUNT_AMT,0)),
+	0, --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.VENDOR_TAX,0)),
+	SUM(ISNULL(d.STATE_TAX,0)),
+	SUM(ISNULL(d.COUNTY_TAX,0)),
+	SUM(ISNULL(d.CITY_TAX,0)),
+	SUM(ISNULL(d.LINE_TOTAL,0)),
+	h.AP_INV_VCHR,
+	d.GLEXACT,
+	h.AP_INV_DATE,
+	d.POST_PERIOD
+FROM dbo.AP_INTERNET AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.ORDER_LINE_NBR = md.LINE_NBR
+JOIN dbo.AP_HEADER AS h
+	ON d.AP_ID = h.AP_ID
+	WHERE h.AP_SEQ = (SELECT MAX(h2.AP_SEQ) FROM dbo.AP_HEADER AS h2
+		WHERE h.AP_ID = h2.AP_ID)
+GROUP BY d.ORDER_NBR, d.ORDER_LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, h.AP_INV_VCHR, d.GLEXACT, h.AP_INV_DATE, d.POST_PERIOD
+
+-- Internet A/P Addl Charge Amounts from order detail to calculate a/p bill amt for rec rpts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	ISNULL(d.ADDL_CHARGE,0), --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.INTERNET_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE EXISTS (SELECT ap.ORDER_NBR, ap.ORDER_LINE_NBR FROM dbo.AP_INTERNET AS ap
+	WHERE ap.ORDER_NBR = d.ORDER_NBR
+	AND ap.ORDER_LINE_NBR = d.LINE_NBR)
+	AND (d.LINE_CANCELLED IS NULL OR d.LINE_CANCELLED = 0)
+
+-- Magazine A/P Amounts + Mag A/P Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.ORDER_LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	SUM(ISNULL(d.NET_PLUS,0)),
+	SUM(ISNULL(d.NETCHARGES,0)),
+	(SUM(ISNULL(d.DISCOUNT_LN,0))+SUM(ISNULL(d.DISCOUNT_NC,0))) AS [AP_DISCOUNT_AMT],
+	0, --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.VENDOR_TAX,0)),
+	SUM(ISNULL(d.STATE_TAX,0)),
+	SUM(ISNULL(d.COUNTY_TAX,0)),
+	SUM(ISNULL(d.CITY_TAX,0)),
+	SUM(ISNULL(d.LINE_TOTAL,0)),
+	h.AP_INV_VCHR,
+	d.GLEXACT,
+	h.AP_INV_DATE,
+	d.POST_PERIOD
+FROM dbo.AP_MAGAZINE AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.ORDER_LINE_NBR = md.LINE_NBR
+JOIN dbo.AP_HEADER AS h
+	ON d.AP_ID = h.AP_ID
+	AND d.AP_SEQ = h.AP_SEQ
+--	WHERE h.AP_SEQ = (SELECT MAX(h2.AP_SEQ) FROM dbo.AP_HEADER AS h2
+--		WHERE h.AP_ID = h2.AP_ID
+	AND (h.DELETE_FLAG IS NULL OR h.DELETE_FLAG = 0)
+GROUP BY d.ORDER_NBR, d.ORDER_LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, h.AP_INV_VCHR, d.GLEXACT, h.AP_INV_DATE, d.POST_PERIOD
+
+-- Magazine A/P Addl Charge Amounts from order detail to calculate a/p bill amt for rec rpts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	ISNULL(d.ADDL_CHARGE,0), --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.MAGAZINE_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE EXISTS (SELECT ap.ORDER_NBR, ap.ORDER_LINE_NBR FROM dbo.AP_MAGAZINE AS ap
+	WHERE ap.ORDER_NBR = d.ORDER_NBR
+	AND ap.ORDER_LINE_NBR = d.LINE_NBR)
+	AND (d.LINE_CANCELLED IS NULL OR d.LINE_CANCELLED = 0)
+
+-- Newspaper A/P Amounts + News A/P Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.ORDER_LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	SUM(ISNULL(d.NET_PLUS,0)),
+	SUM(ISNULL(d.NETCHARGES,0)),
+	(SUM(ISNULL(d.DISCOUNT_LN,0))+SUM(ISNULL(d.DISCOUNT_NC,0))) AS [AP_DISCOUNT_AMT],
+	0, --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.VENDOR_TAX,0)),
+	SUM(ISNULL(d.STATE_TAX,0)),
+	SUM(ISNULL(d.COUNTY_TAX,0)),
+	SUM(ISNULL(d.CITY_TAX,0)),
+	SUM(ISNULL(d.LINE_TOTAL,0)),
+	h.AP_INV_VCHR,
+	d.GLEXACT,
+	h.AP_INV_DATE,
+	d.POST_PERIOD
+FROM dbo.AP_NEWSPAPER AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.ORDER_LINE_NBR = md.LINE_NBR
+JOIN dbo.AP_HEADER AS h
+	ON d.AP_ID = h.AP_ID
+	AND d.AP_SEQ = h.AP_SEQ
+--	WHERE h.AP_SEQ = (SELECT MAX(h2.AP_SEQ) FROM dbo.AP_HEADER AS h2
+--		WHERE h.AP_ID = h2.AP_ID)
+	AND (h.DELETE_FLAG IS NULL OR h.DELETE_FLAG = 0)
+GROUP BY d.ORDER_NBR, d.ORDER_LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, h.AP_INV_VCHR, d.GLEXACT, h.AP_INV_DATE, d.POST_PERIOD
+
+-- Newspaper A/P Addl Charge Amounts from order detail to calculate a/p bill amt for rec rpts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	ISNULL(d.ADDL_CHARGE,0), --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.NEWSPAPER_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE EXISTS (SELECT ap.ORDER_NBR, ap.ORDER_LINE_NBR FROM dbo.AP_NEWSPAPER AS ap
+	WHERE ap.ORDER_NBR = d.ORDER_NBR
+	AND ap.ORDER_LINE_NBR = d.LINE_NBR)
+	AND (d.LINE_CANCELLED IS NULL OR d.LINE_CANCELLED = 0)
+
+-- Outdoor A/P Amounts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.ORDER_LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	SUM(ISNULL(d.NET_AMT,0)),
+	SUM(ISNULL(d.NETCHARGES,0)),
+	SUM(ISNULL(d.DISCOUNT_AMT,0)),
+	0, --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	SUM(ISNULL(d.COMM_AMT,0)),
+	SUM(ISNULL(d.REBATE_AMT,0)),
+	SUM(ISNULL(d.VENDOR_TAX,0)),
+	SUM(ISNULL(d.STATE_TAX,0)),
+	SUM(ISNULL(d.COUNTY_TAX,0)),
+	SUM(ISNULL(d.CITY_TAX,0)),
+	SUM(ISNULL(d.LINE_TOTAL,0)),
+	h.AP_INV_VCHR,
+	d.GLEXACT,
+	h.AP_INV_DATE,
+	d.POST_PERIOD
+FROM dbo.AP_OUTDOOR AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.ORDER_LINE_NBR = md.LINE_NBR
+JOIN dbo.AP_HEADER AS h
+	ON d.AP_ID = h.AP_ID
+	WHERE h.AP_SEQ = (SELECT MAX(h2.AP_SEQ) FROM dbo.AP_HEADER AS h2
+		WHERE h.AP_ID = h2.AP_ID)
+GROUP BY d.ORDER_NBR, d.ORDER_LINE_NBR, md.REV_NBR, md.SEQ_NBR, md.[MONTH], md.[YEAR], md.INSERT_DATE,
+	md.START_DATE, md.END_DATE, md.DATE_TO_BILL, md.CLOSE_DATE, md.EXT_CLOSE_DATE, md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE, md.MAT_COMP, md.SIZE_CODE, md.AD_SIZE, md.PRINT_COLUMNS, md.PRINT_INCHES,
+	md.PRINT_LINES, md.PRODUCTION_SIZE, md.HEADLINE, md.EDITION_ISSUE, md.SECTION, md.PLACEMENT_1,
+	md.PLACEMENT_2, md.LOCATION, md.MATERIAL, md.MATL_NOTES, md.JOB_NUMBER, md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG, md.LINE_CANCELLED, h.AP_INV_VCHR, d.GLEXACT, h.AP_INV_DATE, d.POST_PERIOD
+
+-- Outdoor A/P Addl Charge Amounts from order detail to calculate a/p bill amt for rec rpts
+INSERT INTO #MediaOrderDetail
+SELECT 'AP', --REC_TYPE
+	d.ORDER_NBR,
+	d.LINE_NBR,
+	md.REV_NBR,
+	md.SEQ_NBR,
+	md.[MONTH],
+	md.[YEAR],
+	md.INSERT_DATE,
+	md.START_DATE,
+	md.END_DATE,
+	md.DATE_TO_BILL,
+	md.CLOSE_DATE,
+	md.EXT_CLOSE_DATE,
+	md.MATL_CLOSE_DATE,
+	md.EXT_MATL_DATE,
+	md.MAT_COMP,
+	md.SIZE_CODE,
+	md.AD_SIZE,
+	md.PRINT_COLUMNS,
+	md.PRINT_INCHES,
+	md.PRINT_LINES,
+	md.PRODUCTION_SIZE,
+	md.HEADLINE,
+	md.EDITION_ISSUE,
+	md.SECTION,
+	md.PLACEMENT_1,
+	md.PLACEMENT_2,
+	md.LOCATION,
+	md.MATERIAL,
+	md.MATL_NOTES,
+	md.JOB_NUMBER,
+	md.JOB_COMPONENT_NBR,
+	md.BILLED_TYPE_FLAG,
+	md.LINE_CANCELLED,
+	0, --NON_BILL_FLAG	Added 8/7/08 - JR
+	0, --RECONCILE_LINE
+	0, --DO_NOT_BILL
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	0,
+	0,
+	ISNULL(d.ADDL_CHARGE,0), --ADDL CHARGE FROM ORDER DETAIL WHERE AP EXISTS
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+FROM dbo.OUTDOOR_DETAIL AS d
+JOIN #DetailMaxDates AS md
+	ON d.ORDER_NBR = md.ORDER_NBR
+	AND d.LINE_NBR = md.LINE_NBR
+	AND d.REV_NBR = md.REV_NBR
+	AND d.SEQ_NBR = md.SEQ_NBR
+WHERE EXISTS (SELECT ap.ORDER_NBR, ap.ORDER_LINE_NBR FROM dbo.AP_OUTDOOR AS ap
+	WHERE ap.ORDER_NBR = d.ORDER_NBR
+	AND ap.ORDER_LINE_NBR = d.LINE_NBR)
+	AND (d.LINE_CANCELLED IS NULL OR d.LINE_CANCELLED = 0)
+
+SELECT * FROM #MediaOrderDetail AS od
+--ORDER BY od.ORDER_NBR, od.LINE_NBR, od.REV_NBR, od.SEQ_NBR, od.[YEAR], od.[MONTH], od.REC_TYPE DESC
+
+END

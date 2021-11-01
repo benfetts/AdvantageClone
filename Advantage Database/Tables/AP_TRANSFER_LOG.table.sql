@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[AP_TRANSFER_LOG] (
+    [AP_ID]         INT      NOT NULL,
+    [AP_SEQ]        SMALLINT DEFAULT (0) NOT NULL,
+    [TL_ID]         INT      NOT NULL,
+    [LINE_NBR_FROM] SMALLINT NOT NULL,
+    [LINE_NBR_TO]   SMALLINT NOT NULL
+);
+

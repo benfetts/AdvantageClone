@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[MAR_CB_SETTINGS] (
+    [CODE]     VARCHAR (3)   NOT NULL,
+    [ATTN]     VARCHAR (100) NULL,
+    [COMMENTS] TEXT          NULL
+);
+

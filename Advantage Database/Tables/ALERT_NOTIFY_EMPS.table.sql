@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ALERT_NOTIFY_EMPS] (
+    [ALERT_STATE_ID]     INT         NOT NULL,
+    [ALRT_NOTIFY_HDR_ID] INT         NOT NULL,
+    [EMP_CODE]           VARCHAR (6) NOT NULL
+);
+

@@ -1,0 +1,33 @@
+﻿
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetJobCompTimeLine] 
+@ClientCode VarChar(6), 
+@DivisionCode VarChar(6), 
+@ProductCode VarChar(6), 
+@Job INT
+AS
+
+Set NoCount On
+
+SELECT     JOB_COMPONENT.JOB_COMPONENT_NBR as Code,  str(JOB_COMPONENT.JOB_COMPONENT_NBR) + ' - ' + JOB_COMPONENT.JOB_COMP_DESC as Description
+FROM         JOB_LOG INNER JOIN
+                      JOB_COMPONENT ON JOB_LOG.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER
+WHERE     (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6,12)) 
+	AND (JOB_LOG.CL_CODE Like @ClientCode + '%') 
+	AND (JOB_LOG.DIV_CODE Like @DivisionCode + '%') 
+	AND (JOB_LOG.PRD_CODE Like @ProductCode + '%')
+	AND (JOB_COMPONENT.JOB_NUMBER = @Job)
+ORDER BY JOB_LOG.JOB_NUMBER DESC, JOB_COMPONENT.JOB_COMPONENT_NBR ASC
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<div data-options="dxView : { name: 'task_list', title: 'Tasks' } ">
+  <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+    <div data-bind="dxLoadPanel: { message: loadPanelMessage, visible: loadPanelVisible, shading: false }"></div>
+    <div class="search-wrapper" data-bind="dxTextBox: { placeholder: 'Search', mode: 'search', value: taskList.searchQuery, valueChangeEvent: 'change' } "></div>
+    <div id="dxTaskList" data-bind="dxList: taskList" class="card-container">
+      <div data-options="dxTemplate : { name: 'item' } " >
+        <div class="card">
+          <div data-bind="css: CardCSS">
+            <div class="card-header" data-bind="text: Description"></div>
+            <div class="card-details">
+              <div data-bind="text: cdp"></div>
+              <div data-bind="text: jobData"></div>
+              <div data-bind="css: startDueCSS">
+                <div data-bind="css: startCSS">
+                  <div data-bind="css: lineLabelCSS, text: startText"></div>
+                  <div data-bind="css: floatStartCSS, text: StartDate"></div>
+                </div>
+                <div data-bind="css: commaCSS" style="float:left;position:relative;margin-right:8px;">,</div>
+                <div data-bind="css: dueCSS">
+                  <div data-bind="css: lineLabelCSS, text: dueText"></div>
+                  <div data-bind="text: DueDate "></div>
+                </div>
+              </div>
+              <div data-bind="css: lineLabelCSS, text: statusText"></div>
+              <div data-bind="text: TaskStatus"></div>
+            </div>
+          </div>
+          <div class="card-button-container">
+            <div data-bind="dxButton: { icon: 'icon_book_bookmark', visible: false }"></div>
+            <div data-bind="dxButton: { icon: TempCompleteIcon, onClick: function(e) {$root.markTempComplete(e, $data);} }"></div>
+            <div data-bind="dxButton: { icon: 'icon_clock', onClick: { view: 'time_entry', settings: {source: 1, jobNumber: JobNumber, jobComponentNumber: JobComponentNumber, sequenceNumber: SequenceNumber}} }">
+            </div>
+            <div data-bind="dxButton: { icon: 'icon_stopwatch', visible: false, onClick: {view: 'time_stopwatch', settings: {source: 0,
+                                                                                                                         jobNumber: JobNumber, jobComponentNumber: JobComponentNumber, sequenceNumber: SequenceNumber}} }">
+            </div>
+            <div class="card-action-bar" data-bind="css: TaskPriorityIndicatorCSS">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

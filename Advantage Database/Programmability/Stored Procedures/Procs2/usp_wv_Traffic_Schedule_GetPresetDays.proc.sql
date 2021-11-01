@@ -1,0 +1,12 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_Traffic_Schedule_GetPresetDays] 
+@TRF_PRESET_CODE VARCHAR(6)
+
+AS
+    SELECT     
+	    ISNULL(SUM(TRF_PRESET_DAYS),0) AS SUM_STD_DAYS, 
+	    ISNULL(SUM(RUSH_DAYS),0) AS SUM_RUSH_DAYS
+    FROM         
+	    TRF_PRESET_DTL
+    WHERE     
+	    (TRF_PRESET_CODE = @TRF_PRESET_CODE)

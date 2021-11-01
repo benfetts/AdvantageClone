@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[BILL_COMMENTS_JOB] (
+    [INV_NBR]           INT      NOT NULL,
+    [JOB_NUMBER]        INT      NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT NOT NULL,
+    [JOB_COMMENT]       TEXT     NULL,
+    [COMMENT_SOURCE]    SMALLINT NULL
+);
+

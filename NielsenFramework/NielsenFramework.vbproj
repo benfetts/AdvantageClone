@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3437F063-A5AD-4162-A05E-50585C59DEF1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NielsenFramework</RootNamespace>
+    <AssemblyName>NielsenFramework</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\Output\</OutputPath>
+    <DocumentationFile>NielsenFramework.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DocumentationFile>NielsenFramework.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\Output\</OutputPath>
+    <DocumentationFile>NielsenFramework.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>NielsenFramework.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvantageFramework">
+      <HintPath>..\Output\AdvantageFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="AdvantageFramework.BLogic">
+      <HintPath>..\Output\AdvantageFramework.BLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Cells, Version=8.6.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Output\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\Output\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Common, Version=2.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Output\Rebex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Ftp, Version=4.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Output\Rebex.Ftp.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Networking, Version=3.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Output\Rebex.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel.DataAnnotations" />
+    <Import Include="System.ComponentModel.DataAnnotations.Schema" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base Classes\DbContext.vb" />
+    <Compile Include="Base Classes\Entity.vb" />
+    <Compile Include="Base Classes\Interfaces\IValidatingClass.vb" />
+    <Compile Include="Base Classes\Interfaces\IValidatingClassBase.vb" />
+    <Compile Include="Classes\NationalAudienceLines.vb" />
+    <Compile Include="Classes\RadioIntabStaging.vb" />
+    <Compile Include="Classes\RadioUniverseStaging.vb" />
+    <Compile Include="Controller\LicenseKeyController.vb" />
+    <Compile Include="Controller\ServiceEventController.vb" />
+    <Compile Include="Controller\Maintenance\ClientOrderController.vb" />
+    <Compile Include="Controller\Maintenance\ClientOrderSetupController.vb" />
+    <Compile Include="Controller\Maintenance\ClientSetupController.vb" />
+    <Compile Include="Database\Entities\ClientOrderState.vb" />
+    <Compile Include="Database\Entities\ServiceSetting.vb" />
+    <Compile Include="Database\Entities\ServiceStatus.vb" />
+    <Compile Include="Database\Entities\EventLog.vb" />
+    <Compile Include="Database\Entities\Client.vb" />
+    <Compile Include="Database\Entities\ClientOrder.vb" />
+    <Compile Include="Database\Entities\ClientOrderMarket.vb" />
+    <Compile Include="Database\Entities\DownloadFile.vb" />
+    <Compile Include="Database\Entities\Methods.vb" />
+    <Compile Include="Database\Entities\NielsenMarket.vb" />
+    <Compile Include="Database\NielsenDbContext.Designer.vb">
+      <DependentUpon>NielsenDbContext.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Database\NielsenDbContext.vb" />
+    <Compile Include="Database\NielsenDbContext.Views.vb" />
+    <Compile Include="Database\NielsenDbContext1.Designer.vb" />
+    <Compile Include="Database\NielsenDbContext2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NielsenDbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Procedures\ClientOrderState.vb" />
+    <Compile Include="Database\Procedures\DownloadFile.vb" />
+    <Compile Include="Database\Procedures\ServiceSetting.vb" />
+    <Compile Include="Database\Procedures\ServiceStatus.vb" />
+    <Compile Include="Database\Procedures\Client.vb" />
+    <Compile Include="Database\Procedures\EventLog.vb" />
+    <Compile Include="Database\Procedures\ClientOrder.vb" />
+    <Compile Include="Database\Procedures\ClientOrderMarket.vb" />
+    <Compile Include="Database\Procedures\NielsenMarket.vb" />
+    <Compile Include="DTO\ClientOrderState.vb" />
+    <Compile Include="DTO\File.vb" />
+    <Compile Include="DTO\State.vb" />
+    <Compile Include="DTO\NielsenRadioPeriod.vb" />
+    <Compile Include="DTO\ServiceStatus.vb" />
+    <Compile Include="DTO\NielsenTVBook.vb" />
+    <Compile Include="DTO\DownloadFile.vb" />
+    <Compile Include="DTO\LicenseKey.vb" />
+    <Compile Include="DTO\EventLog.vb" />
+    <Compile Include="DTO\Client.vb" />
+    <Compile Include="DTO\ClientOrder.vb" />
+    <Compile Include="DTO\ClientOrderMarket.vb" />
+    <Compile Include="DTO\NielsenMarket.vb" />
+    <Compile Include="Service\Methods.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="View Models\LicenseKeyViewModel.vb" />
+    <Compile Include="View Models\ServiceEventViewModel.vb" />
+    <Compile Include="View Models\Maintenance\ClientOrderDetailViewModel.vb" />
+    <Compile Include="View Models\Maintenance\ClientOrderViewModel.vb" />
+    <Compile Include="View Models\Maintenance\ClientSetupDetailViewModel.vb" />
+    <Compile Include="View Models\Maintenance\ClientSetupViewModel.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Database\NielsenDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NielsenDbContext2.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Aspose.Total.lic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

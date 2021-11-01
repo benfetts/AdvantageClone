@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[CP_USER_SEC_DO] (
+    [CDP_CONTACT_ID] INT NOT NULL,
+    [DOID]           INT NULL
+);
+

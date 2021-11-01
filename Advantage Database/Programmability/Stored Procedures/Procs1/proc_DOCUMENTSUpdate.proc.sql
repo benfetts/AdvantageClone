@@ -1,0 +1,86 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_DOCUMENTSUpdate]
+(
+	@DOCUMENT_ID int,
+	@FILENAME varchar(100),
+	@REPOSITORY_FILENAME varchar(200),
+	@MIME_TYPE varchar(50),
+	@DESCRIPTION varchar(200) = NULL,
+	@KEYWORDS varchar(255) = NULL,
+	@UPLOADED_DATE datetime,
+	@USER_CODE varchar(100),
+	@FILE_SIZE int,
+	@PRIVATE_FLAG int,
+	@DOCUMENT_TYPE_ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [DOCUMENTS]
+	SET
+		[FILENAME] = @FILENAME,
+		[REPOSITORY_FILENAME] = @REPOSITORY_FILENAME,
+		[MIME_TYPE] = @MIME_TYPE,
+		[DESCRIPTION] = @DESCRIPTION,
+		[KEYWORDS] = @KEYWORDS,
+		[UPLOADED_DATE] = @UPLOADED_DATE,
+		[USER_CODE] = @USER_CODE,
+		[FILE_SIZE] = @FILE_SIZE,
+		[PRIVATE_FLAG] = @PRIVATE_FLAG,
+		[DOCUMENT_TYPE_ID] = @DOCUMENT_TYPE_ID
+	WHERE
+		[DOCUMENT_ID] = @DOCUMENT_ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,220 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CLIENTUpdate]
+(
+	@CL_CODE varchar(6),
+	@CL_NAME varchar(40) = NULL,
+	@CL_ADDRESS1 varchar(40) = NULL,
+	@CL_ADDRESS2 varchar(40) = NULL,
+	@CL_CITY varchar(20) = NULL,
+	@CL_COUNTY varchar(20) = NULL,
+	@CL_STATE varchar(10) = NULL,
+	@CL_COUNTRY varchar(20) = NULL,
+	@CL_ZIP varchar(10) = NULL,
+	@CL_ATTENTION varchar(40) = NULL,
+	@CL_BADDRESS1 varchar(40) = NULL,
+	@CL_BADDRESS2 varchar(40) = NULL,
+	@CL_BCITY varchar(20) = NULL,
+	@CL_BCOUNTY varchar(20) = NULL,
+	@CL_BSTATE varchar(10) = NULL,
+	@CL_BCOUNTRY varchar(20) = NULL,
+	@CL_BZIP varchar(10) = NULL,
+	@CL_SADDRESS1 varchar(40) = NULL,
+	@CL_SADDRESS2 varchar(40) = NULL,
+	@CL_SCITY varchar(20) = NULL,
+	@CL_SCOUNTY varchar(20) = NULL,
+	@CL_SSTATE varchar(10) = NULL,
+	@CL_SCOUNTRY varchar(20) = NULL,
+	@CL_SZIP varchar(10) = NULL,
+	@CL_FOOTER varchar(60) = NULL,
+	@CL_ALPHA_SORT varchar(20) = NULL,
+	@CL_FISCAL_START smallint = NULL,
+	@CL_CREDIT_LIMIT decimal(15,2) = NULL,
+	@CL_HIGH_BALANCE decimal(15,2) = NULL,
+	@CL_INV_BY smallint = NULL,
+	@INV_FORMAT varchar(12) = NULL,
+	@CL_MATTENTION varchar(40) = NULL,
+	@PINV_FORMAT varchar(12) = NULL,
+	@BINV_FORMAT varchar(12) = NULL,
+	@CL_MINV_BY smallint = NULL,
+	@CL_MFOOTER varchar(60) = NULL,
+	@ACTIVE_FLAG smallint = NULL,
+	@NEW_BUSINESS smallint = NULL,
+	@CMP_CODE_R smallint = NULL,
+	@ACCT_NBR_R smallint = NULL,
+	@JT_CODE_R smallint = NULL,
+	@PROMO_CODE_R smallint = NULL,
+	@REQ_FLDS smallint = NULL,
+	@JOB_FIRST_USE_DT_R smallint = NULL,
+	@COMPLEX_CODE_R smallint = NULL,
+	@FORMAT_SC_CODE_R smallint = NULL,
+	@DP_TM_CODE_R smallint = NULL,
+	@MARKET_CODE_R smallint = NULL,
+	@EMAIL_GR_CODE_R smallint = NULL,
+	@BILL_COOP_CODE_R smallint = NULL,
+	@AD_NBR_R smallint = NULL,
+	@JOB_CLI_REF_R smallint = NULL,
+	@JOB_DATE_OPENED_R smallint = NULL,
+	@JOB_AD_SIZE_R smallint = NULL,
+	@PROD_CONT_CODE_R smallint = NULL,
+	@JOB_COMP_BUDGET_R smallint = NULL,
+	@OINV_FORMAT varchar(12) = NULL,
+	@IINV_FORMAT varchar(12) = NULL,
+	@START_DATE_R smallint = NULL,
+	@JOB_LOG_UDV1_R smallint = NULL,
+	@JOB_LOG_UDV2_R smallint = NULL,
+	@JOB_LOG_UDV3_R smallint = NULL,
+	@JOB_LOG_UDV4_R smallint = NULL,
+	@JOB_LOG_UDV5_R smallint = NULL,
+	@JOB_CMP_UDV1_R smallint = NULL,
+	@JOB_CMP_UDV2_R smallint = NULL,
+	@JOB_CMP_UDV3_R smallint = NULL,
+	@JOB_CMP_UDV4_R smallint = NULL,
+	@JOB_CMP_UDV5_R smallint = NULL,
+	@PINV_FORMAT2 varchar(12) = NULL,
+	@CL_AR_COMMENT text = NULL,
+	@REQ_PROD_CAT smallint = NULL,
+	@TAX_FLAG_R smallint = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [CLIENT]
+	SET
+		[CL_NAME] = @CL_NAME,
+		[CL_ADDRESS1] = @CL_ADDRESS1,
+		[CL_ADDRESS2] = @CL_ADDRESS2,
+		[CL_CITY] = @CL_CITY,
+		[CL_COUNTY] = @CL_COUNTY,
+		[CL_STATE] = @CL_STATE,
+		[CL_COUNTRY] = @CL_COUNTRY,
+		[CL_ZIP] = @CL_ZIP,
+		[CL_ATTENTION] = @CL_ATTENTION,
+		[CL_BADDRESS1] = @CL_BADDRESS1,
+		[CL_BADDRESS2] = @CL_BADDRESS2,
+		[CL_BCITY] = @CL_BCITY,
+		[CL_BCOUNTY] = @CL_BCOUNTY,
+		[CL_BSTATE] = @CL_BSTATE,
+		[CL_BCOUNTRY] = @CL_BCOUNTRY,
+		[CL_BZIP] = @CL_BZIP,
+		[CL_SADDRESS1] = @CL_SADDRESS1,
+		[CL_SADDRESS2] = @CL_SADDRESS2,
+		[CL_SCITY] = @CL_SCITY,
+		[CL_SCOUNTY] = @CL_SCOUNTY,
+		[CL_SSTATE] = @CL_SSTATE,
+		[CL_SCOUNTRY] = @CL_SCOUNTRY,
+		[CL_SZIP] = @CL_SZIP,
+		[CL_FOOTER] = @CL_FOOTER,
+		[CL_ALPHA_SORT] = @CL_ALPHA_SORT,
+		[CL_FISCAL_START] = @CL_FISCAL_START,
+		[CL_CREDIT_LIMIT] = @CL_CREDIT_LIMIT,
+		[CL_HIGH_BALANCE] = @CL_HIGH_BALANCE,
+		[CL_INV_BY] = @CL_INV_BY,
+		[INV_FORMAT] = @INV_FORMAT,
+		[CL_MATTENTION] = @CL_MATTENTION,
+		[PINV_FORMAT] = @PINV_FORMAT,
+		[BINV_FORMAT] = @BINV_FORMAT,
+		[CL_MINV_BY] = @CL_MINV_BY,
+		[CL_MFOOTER] = @CL_MFOOTER,
+		[ACTIVE_FLAG] = @ACTIVE_FLAG,
+		[NEW_BUSINESS] = @NEW_BUSINESS,
+		[CMP_CODE_R] = @CMP_CODE_R,
+		[ACCT_NBR_R] = @ACCT_NBR_R,
+		[JT_CODE_R] = @JT_CODE_R,
+		[PROMO_CODE_R] = @PROMO_CODE_R,
+		[REQ_FLDS] = @REQ_FLDS,
+		[JOB_FIRST_USE_DT_R] = @JOB_FIRST_USE_DT_R,
+		[COMPLEX_CODE_R] = @COMPLEX_CODE_R,
+		[FORMAT_SC_CODE_R] = @FORMAT_SC_CODE_R,
+		[DP_TM_CODE_R] = @DP_TM_CODE_R,
+		[MARKET_CODE_R] = @MARKET_CODE_R,
+		[EMAIL_GR_CODE_R] = @EMAIL_GR_CODE_R,
+		[BILL_COOP_CODE_R] = @BILL_COOP_CODE_R,
+		[AD_NBR_R] = @AD_NBR_R,
+		[JOB_CLI_REF_R] = @JOB_CLI_REF_R,
+		[JOB_DATE_OPENED_R] = @JOB_DATE_OPENED_R,
+		[JOB_AD_SIZE_R] = @JOB_AD_SIZE_R,
+		[PROD_CONT_CODE_R] = @PROD_CONT_CODE_R,
+		[JOB_COMP_BUDGET_R] = @JOB_COMP_BUDGET_R,
+		[OINV_FORMAT] = @OINV_FORMAT,
+		[IINV_FORMAT] = @IINV_FORMAT,
+		[START_DATE_R] = @START_DATE_R,
+		[JOB_LOG_UDV1_R] = @JOB_LOG_UDV1_R,
+		[JOB_LOG_UDV2_R] = @JOB_LOG_UDV2_R,
+		[JOB_LOG_UDV3_R] = @JOB_LOG_UDV3_R,
+		[JOB_LOG_UDV4_R] = @JOB_LOG_UDV4_R,
+		[JOB_LOG_UDV5_R] = @JOB_LOG_UDV5_R,
+		[JOB_CMP_UDV1_R] = @JOB_CMP_UDV1_R,
+		[JOB_CMP_UDV2_R] = @JOB_CMP_UDV2_R,
+		[JOB_CMP_UDV3_R] = @JOB_CMP_UDV3_R,
+		[JOB_CMP_UDV4_R] = @JOB_CMP_UDV4_R,
+		[JOB_CMP_UDV5_R] = @JOB_CMP_UDV5_R,
+		[PINV_FORMAT2] = @PINV_FORMAT2,
+		[CL_AR_COMMENT] = @CL_AR_COMMENT,
+		[REQ_PROD_CAT] = @REQ_PROD_CAT,
+		[TAX_FLAG_R] = @TAX_FLAG_R
+	WHERE
+		[CL_CODE] = @CL_CODE
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

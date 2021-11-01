@@ -1,0 +1,100 @@
+﻿<#@ template language="VB" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.VB.ttinclude"#><#@
+ output extension=".js"#><#
+
+Dim code As New CodeGenerationTools(Me)
+Dim loader As New MetadataLoader(Me)
+Dim region As New CodeRegion(Me)
+Dim ef As New MetadataTools(Me)
+
+Dim inputFile As String = "C:\TFS_ROOT\Advantage\Dev\AdvantageMobile.DataService\DataModel\DataModel.edmx"
+Dim metadataWorkspace As MetadataWorkspace = Nothing
+Dim allMetadataLoaded As Boolean = loader.TryLoadAllMetadata(inputFile, metadataWorkspace)
+Dim ItemCollection As EdmItemCollection = DirectCast(metadataWorkspace.GetItemCollection(DataSpace.CSpace), EdmItemCollection)
+Dim namespaceName As String = code.VsNamespaceSuggestion()
+
+Dim fileManager As EntityFrameworkTemplateFileManager = EntityFrameworkTemplateFileManager.Create(Me)
+
+
+For Each loopEntity As EntityType In ItemCollection.GetItems(Of EntityType)().OrderBy(Function(e) e.Name)
+    Dim entity As EntityType = loopEntity
+    fileManager.StartNewFile(SetJavascriptFileName(entity.Name) & "s_view_model.js")
+
+#>
+
+(function() {
+    AdvantageMobile_UI.<#=entity.Name#>ViewModel = function(data) {
+		<#
+		For Each edmProperty As EdmProperty in entity.Properties.Where(Function(p) p.DeclaringType Is entity AndAlso TypeOf p.TypeUsage.EdmType Is PrimitiveType)
+		#>
+		this.<#=code.Escape(code.FieldName(edmProperty).SubString(1).SubString(0, 1).ToUpper & code.FieldName(edmProperty).SubString(2)).Replace("[", "").Replace("]", "")#> = ko.observable();
+		<#
+		Next
+		#>
+        if(data)
+					this.fromJS(data);
+    };
+
+    $.extend(AdvantageMobile_UI.<#=entity.Name#>ViewModel.prototype, {
+        toJS: function() {
+            return {
+<#
+For Each edmProperty As EdmProperty in entity.Properties.Where(Function(p) p.DeclaringType Is entity AndAlso TypeOf p.TypeUsage.EdmType Is PrimitiveType)
+#>
+<#
+If code.Escape(edmProperty.TypeUsage).Trim().ToLower() = "nullable(of decimal)" Then
+#>
+			<#=code.Escape(code.FieldName(edmProperty).SubString(1).SubString(0, 1).ToUpper & code.FieldName(edmProperty).SubString(2)).Replace("[", "").Replace("]", "")#>: String(this.<#=code.Escape(code.FieldName(edmProperty).SubString(1).SubString(0, 1).ToUpper & code.FieldName(edmProperty).SubString(2)).Replace("[", "").Replace("]", "")#>() || 0),
+<#
+Else
+#>
+			<#=code.Escape(code.FieldName(edmProperty).SubString(1).SubString(0, 1).ToUpper & code.FieldName(edmProperty).SubString(2)).Replace("[", "").Replace("]", "")#>: this.<#=code.Escape(code.FieldName(edmProperty).SubString(1).SubString(0, 1).ToUpper & code.FieldName(edmProperty).SubString(2)).Replace("[", "").Replace("]", "")#>(),
+<#
+End If
+#>
+<#
+Next
+#>
+			};
+        },
+
+        fromJS: function(data) {
+            if(data) {
+		<#
+		For Each edmProperty As EdmProperty in entity.Properties.Where(Function(p) p.DeclaringType Is entity AndAlso TypeOf p.TypeUsage.EdmType Is PrimitiveType)
+		#>
+		this.<#=code.Escape(code.FieldName(edmProperty).SubString(1).SubString(0, 1).ToUpper & code.FieldName(edmProperty).SubString(2)).Replace("[", "").Replace("]", "")#>(data.<#=code.Escape(code.FieldName(edmProperty).SubString(1).SubString(0, 1).ToUpper & code.FieldName(edmProperty).SubString(2)).Replace("[", "").Replace("]", "")#>);
+		<#
+		Next
+		#>
+
+            }
+        }
+    });
+})();<#
+Next
+fileManager.Process()
+#>
+<#+ 
+    Private Function SetJavascriptFileName(ByVal ObjectName As String) As String
+        Dim FileName As String = ""
+        Try
+            Dim i As Integer = 0
+            For Each c As Char In ObjectName
+                Dim charCode As Integer = AscW(c)
+                If charCode >= 65 AndAlso charCode < 91 Then
+                    If i > 0 Then
+                        FileName &= "_"
+                    End If
+                    FileName &= c.ToString().ToLower()
+                Else
+                    FileName &= c
+                End If
+                i += 1
+            Next
+        Catch ex As Exception
+            FileName = ObjectName
+        End Try
+        Return filename
+    End Function
+#>

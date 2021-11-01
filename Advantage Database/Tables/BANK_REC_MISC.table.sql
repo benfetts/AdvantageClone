@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[BANK_REC_MISC] (
+    [BKM_REC_ID]      INT             NOT NULL,
+    [BKM_CODE]        VARCHAR (4)     NOT NULL,
+    [BKM_STMT_DT]     SMALLDATETIME   NOT NULL,
+    [BKM_DESC]        VARCHAR (40)    NULL,
+    [BKM_TRANS_DATE]  SMALLDATETIME   NULL,
+    [BKM_TRANS_TYPE]  VARCHAR (1)     NULL,
+    [BKM_POST_PERIOD] VARCHAR (6)     NULL,
+    [BKM_AMT]         DECIMAL (15, 2) NOT NULL,
+    [BKM_GL_ACCT]     VARCHAR (30)    NOT NULL
+);
+

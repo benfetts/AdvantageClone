@@ -1,0 +1,253 @@
+﻿
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_dto_CashBalance]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[usp_wv_dto_CashBalance]
+GO
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_dto_CashBalance] 
+AS
+
+	DECLARE @TotalCash    DECIMAL(20, 6)
+	DECLARE @PostedTodayCash    DECIMAL(20, 6)
+	DECLARE @OpenAPTemp1  DECIMAL(20, 6)
+	DECLARE @OpenAPTemp2  DECIMAL(20, 6)
+	DECLARE @OpenAP       DECIMAL(20, 6)
+	DECLARE @APToday      DECIMAL(20, 6)
+	DECLARE @OpenAR       DECIMAL(20, 6)	
+	DECLARE @Debit       DECIMAL(20, 6)
+	DECLARE @Credit       DECIMAL(20, 6)
+
+	CREATE TABLE #invamt
+	(
+		Amount DECIMAL(20, 6)
+	);
+
+	CREATE TABLE #summary
+	(
+		CashType  VARCHAR(30),
+		Amount    DECIMAL(20, 6),
+		Debit    DECIMAL(20, 6),
+		Credit    DECIMAL(20, 6)
+	);
+
+		------ Cash Total
+	SELECT @TotalCash = SUM(GLENTTRL.GLETAMT)
+	FROM  BANK INNER JOIN
+                      GLACCOUNT ON BANK.GLACODE_AR_CASH = GLACCOUNT.GLACODE INNER JOIN
+                      GLENTTRL ON GLACCOUNT.GLACODE = GLENTTRL.GLETCODE INNER JOIN
+                      GLENTHDR ON GLENTTRL.GLETXACT = GLENTHDR.GLEHXACT
+	WHERE ((BANK.INACTIVE_FLAG IS NULL) OR (BANK.INACTIVE_FLAG = 0)) AND (GLACCOUNT.GLATYPE = '2');  
+	
+	--SUM(ISNULL(GLSUMMARY.GLSDEBIT, 0) + ISNULL(GLSUMMARY.GLSCREDIT, 0))
+	--FROM   BANK WITH(NOLOCK)
+	--	   INNER JOIN GLSUMMARY WITH(NOLOCK)
+	--			ON  BANK.GLACODE_AR_CASH = GLSUMMARY.GLSCODE
+	--WHERE  ((BANK.INACTIVE_FLAG IS NULL) OR (BANK.INACTIVE_FLAG = 0));
+	INSERT INTO #summary
+	  (
+		CashType,
+		Amount,
+		Debit,
+		Credit
+	  )
+	VALUES
+	  (
+		'Total Cash',
+		@TotalCash,
+		0,
+		0
+	  );
+
+	  	------ Cash Posted Today
+	SELECT @Debit = ISNULL(SUM(GLENTTRL.GLETAMT),0)
+	FROM  BANK INNER JOIN
+                      GLACCOUNT ON BANK.GLACODE_AR_CASH = GLACCOUNT.GLACODE INNER JOIN
+                      GLENTTRL ON GLACCOUNT.GLACODE = GLENTTRL.GLETCODE INNER JOIN
+                      GLENTHDR ON GLENTTRL.GLETXACT = GLENTHDR.GLEHXACT
+	WHERE ((BANK.INACTIVE_FLAG IS NULL) OR (BANK.INACTIVE_FLAG = 0)) AND (GLACCOUNT.GLATYPE = '2') AND GLENTTRL.GLETAMT > 0 
+				AND GLEHENTDATE BETWEEN CAST(CONVERT(VARCHAR, GETDATE(), 101) + ' 00:00:00' AS DATETIME)
+						AND CAST(CONVERT(VARCHAR, GETDATE(), 101) + ' 23:59:59' AS DATETIME)
+
+	SELECT @Credit = ISNULL(SUM(GLENTTRL.GLETAMT),0)
+	FROM  BANK INNER JOIN
+                      GLACCOUNT ON BANK.GLACODE_AR_CASH = GLACCOUNT.GLACODE INNER JOIN
+                      GLENTTRL ON GLACCOUNT.GLACODE = GLENTTRL.GLETCODE INNER JOIN
+                      GLENTHDR ON GLENTTRL.GLETXACT = GLENTHDR.GLEHXACT
+	WHERE ((BANK.INACTIVE_FLAG IS NULL) OR (BANK.INACTIVE_FLAG = 0)) AND (GLACCOUNT.GLATYPE = '2') AND GLENTTRL.GLETAMT < 0 
+				AND GLEHENTDATE BETWEEN CAST(CONVERT(VARCHAR, GETDATE(), 101) + ' 00:00:00' AS DATETIME)
+						AND CAST(CONVERT(VARCHAR, GETDATE(), 101) + ' 23:59:59' AS DATETIME)
+
+
+	SELECT @PostedTodayCash = @Debit + @Credit
+		
+	INSERT INTO #summary
+	  (
+		CashType,
+		Amount,
+		Debit,
+		Credit
+	  )
+	VALUES
+	  (
+		'Cash Posted Today',
+		@PostedTodayCash,
+		@Debit,
+		@Credit--'DR '+ CAST(CAST(ROUND(@Debit,2) AS DECIMAL(20,2)) AS VARCHAR(30)) + '        CR (' + CAST(CAST(ROUND(@Credit,2) AS DECIMAL(20,2)) AS VARCHAR(30)) + ')        Total ' + CAST(CAST(ROUND(@PostedTodayCash,2) AS DECIMAL(20,2)) AS VARCHAR(30))
+	  );
+
+		------ Open AP
+	SELECT @OpenAPTemp1 = SUM(ISNULL(AP_HEADER.AP_INV_AMT, 0)) 
+		   + SUM(ISNULL(AP_HEADER.AP_SHIPPING, 0))
+		   + SUM(ISNULL(AP_HEADER.AP_SALES_TAX, 0))
+	FROM   AP_HEADER WITH(NOLOCK)
+	WHERE  (AP_HEADER.DELETE_FLAG IS NULL)
+		   AND AP_HEADER.MODIFY_FLAG IS NULL;
+
+	SELECT @OpenAPTemp2 = SUM(ISNULL(AP_PMT_HIST.AP_DISC_AMT, 0))
+		   + SUM(ISNULL(AP_PMT_HIST.AP_CHK_AMT, 0))
+	FROM   AP_PMT_HIST WITH(NOLOCK); 
+
+	SELECT @OpenAP = @OpenAPTemp1 - @OpenAPTemp2;
+	INSERT INTO #summary
+	  (
+		CashType,
+		Amount,
+		Debit,
+		Credit
+	  )
+	VALUES
+	  (
+		'Open AP',
+		@OpenAP,
+		0,
+		0
+	  );
+
+
+		------ Open AP as of Today
+	SELECT @OpenAPTemp1 = SUM(ISNULL(AP_HEADER.AP_INV_AMT, 0)) 
+		   + SUM(ISNULL(AP_HEADER.AP_SHIPPING, 0))
+		   + SUM(ISNULL(AP_HEADER.AP_SALES_TAX, 0))
+	FROM   AP_HEADER WITH(NOLOCK)
+	WHERE  (AP_HEADER.DELETE_FLAG IS NULL)
+		   AND AP_HEADER.MODIFY_FLAG IS NULL
+		   AND (AP_HEADER.AP_DATE_PAY <= GETDATE());
+
+	SELECT @OpenAPTemp2 = SUM(ISNULL(AP_PMT_HIST.AP_DISC_AMT, 0))
+		   + SUM(ISNULL(AP_PMT_HIST.AP_CHK_AMT, 0))
+	FROM   AP_PMT_HIST WITH(NOLOCK);
+
+	SELECT @APToday = ISNULL(@OpenAPTemp1, 0) - ISNULL(@OpenAPTemp2, 0)
+	INSERT INTO #summary
+	  (
+		CashType,
+		Amount,
+		Debit,
+		Credit
+	  )
+	VALUES
+	  (
+		'AP Due Today',
+		@APToday,
+		0,
+		0
+	  );
+		------ Open AR 
+
+	DECLARE @CRAmount DECIMAL(20, 2)
+
+	INSERT INTO #invamt
+	SELECT SUM(ISNULL(ACCT_REC.AR_INV_AMOUNT, 0))
+	FROM   ACCT_REC WITH(NOLOCK)
+	WHERE  (ACCT_REC.AR_INV_SEQ <> 99 OR ACCT_REC.AR_INV_SEQ IS NULL)
+	GROUP BY
+		   ACCT_REC.CL_CODE,
+		   ACCT_REC.AR_INV_NBR,
+		   ACCT_REC.AR_INV_DATE;
+
+	SELECT @CRAmount = SUM(ISNULL(CR_CLIENT_DTL.CR_PAY_AMT, 0)) + SUM(ISNULL(CR_CLIENT_DTL.CR_ADJ_AMT, 0))
+	FROM   CR_CLIENT_DTL WITH(NOLOCK)
+	WHERE  (
+			   CR_CLIENT_DTL.AR_INV_SEQ <> 99
+			   OR CR_CLIENT_DTL.AR_INV_SEQ IS NULL
+		   );
+
+	SELECT @OpenAR = SUM(ISNULL(Amount, 0)) - ISNULL(@CRAmount, 0)
+	FROM   #invamt;
+
+	DECLARE @OpenAPPerc  DECIMAL(20, 6),
+			@OpenARPerc  DECIMAL(20, 6);
+	
+	SELECT @OpenARPerc = CASE 
+							  WHEN @OpenAR > 0 THEN ISNULL((@OpenAP / @OpenAR), 0)
+							  ELSE 0
+						 END,
+		   @OpenAPPerc = CASE 
+							  WHEN @TotalCash > 0 THEN ISNULL((@OpenAP / @TotalCash), 0)
+							  ELSE 0
+						 END;
+
+	INSERT INTO #summary
+	  (
+		CashType,
+		Amount,
+		Debit,
+		Credit
+	  )
+	VALUES
+	  (
+		'AP % of Cash',
+		ISNULL(@OpenAPPerc, 0),
+		0,
+		0
+	  );
+	INSERT INTO #summary
+	  (
+		CashType,
+		Amount,
+		Debit,
+		Credit
+	  )
+	VALUES
+	  (
+		'Open AR',
+		ISNULL(@OpenAR, 0),
+		0,
+		0
+	  );
+	INSERT INTO #summary
+	  (
+		CashType,
+		Amount,
+		Debit,
+		Credit
+	  )
+	VALUES
+	  (
+		'AP % of Open AR',
+		ISNULL(@OpenARPerc, 0),
+		0,
+		0
+	  );
+
+       
+	SELECT *
+	FROM   #summary;
+
+		------ Cash Balance 
+	SELECT BANK.BK_CODE AS BankCode, BK_DESCRIPTION AS Bank,
+		   BANK.GLACODE_AR_CASH AS Account,
+		   ISNULL(SUM(GLENTTRL.GLETAMT),0) AS Balance
+	FROM  BANK INNER JOIN
+           GLACCOUNT ON BANK.GLACODE_AR_CASH = GLACCOUNT.GLACODE INNER JOIN
+           GLENTTRL ON GLACCOUNT.GLACODE = GLENTTRL.GLETCODE INNER JOIN
+           GLENTHDR ON GLENTTRL.GLETXACT = GLENTHDR.GLEHXACT
+	WHERE  ((BANK.INACTIVE_FLAG IS NULL) OR (BANK.INACTIVE_FLAG = 0)) AND (GLACCOUNT.GLATYPE = '2')
+	GROUP BY
+		   BANK.BK_CODE,BK_DESCRIPTION,
+		   BANK.GLACODE_AR_CASH;
+
+	DROP TABLE #invamt;
+	DROP TABLE #summary;
+

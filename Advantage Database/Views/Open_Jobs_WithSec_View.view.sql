@@ -1,0 +1,26 @@
+﻿
+CREATE VIEW [dbo].[Open_Jobs_WithSec_View]
+AS
+SELECT     dbo.JOB_LOG.CL_CODE, dbo.JOB_LOG.DIV_CODE, dbo.JOB_LOG.PRD_CODE, dbo.CLIENT.CL_NAME AS Client, dbo.DIVISION.DIV_NAME AS Division, 
+                      dbo.PRODUCT.PRD_DESCRIPTION AS Product, dbo.JOB_LOG.JOB_NUMBER, dbo.JOB_LOG.OFFICE_CODE, dbo.JOB_LOG.JOB_DESC, 
+                      dbo.JOB_COMPONENT.JOB_COMP_DATE, dbo.JOB_COMPONENT.JOB_COMPONENT_NBR, dbo.JOB_COMPONENT.JOB_COMP_DESC, 
+                      dbo.JOB_COMPONENT.JOB_PROCESS_CONTRL, dbo.EMPLOYEE.EMP_CODE, 
+                      dbo.EMPLOYEE.EMP_FNAME + ' ' + dbo.EMPLOYEE.EMP_LNAME AS [Account Executive], 
+                      dbo.JOB_COMPONENT.JOB_FIRST_USE_DATE AS [Due Date], dbo.JOB_LOG.USER_ID AS [User ID], 
+                      dbo.CLIENT.CL_CODE + ' - ' + dbo.DIVISION.DIV_CODE + ' - ' + dbo.PRODUCT.PRD_CODE AS CDP, dbo.JOB_LOG.SC_CODE, 
+                      dbo.SALES_CLASS.SC_DESCRIPTION, dbo.JOB_TRAFFIC.COMPLETED_DATE, dbo.JOB_TRAFFIC.ROWID, 
+                      dbo.JOB_COMPONENT.TRF_SCHEDULE_REQ
+FROM         dbo.JOB_LOG INNER JOIN
+                      dbo.JOB_COMPONENT ON dbo.JOB_LOG.JOB_NUMBER = dbo.JOB_COMPONENT.JOB_NUMBER INNER JOIN
+                      dbo.EMPLOYEE ON dbo.JOB_COMPONENT.EMP_CODE = dbo.EMPLOYEE.EMP_CODE INNER JOIN
+                      dbo.CLIENT ON dbo.JOB_LOG.CL_CODE = dbo.CLIENT.CL_CODE INNER JOIN
+                      dbo.PRODUCT ON dbo.JOB_LOG.CL_CODE = dbo.PRODUCT.CL_CODE AND dbo.JOB_LOG.DIV_CODE = dbo.PRODUCT.DIV_CODE AND 
+                      dbo.JOB_LOG.PRD_CODE = dbo.PRODUCT.PRD_CODE INNER JOIN
+                      dbo.DIVISION ON dbo.JOB_LOG.CL_CODE = dbo.DIVISION.CL_CODE AND dbo.JOB_LOG.DIV_CODE = dbo.DIVISION.DIV_CODE INNER JOIN
+                      dbo.SEC_CLIENT ON dbo.JOB_LOG.CL_CODE = dbo.SEC_CLIENT.CL_CODE AND dbo.JOB_LOG.DIV_CODE = dbo.SEC_CLIENT.DIV_CODE AND 
+                      dbo.JOB_LOG.PRD_CODE = dbo.SEC_CLIENT.PRD_CODE INNER JOIN
+                      dbo.SALES_CLASS ON dbo.JOB_LOG.SC_CODE = dbo.SALES_CLASS.SC_CODE LEFT OUTER JOIN
+                      dbo.JOB_TRAFFIC ON dbo.JOB_LOG.JOB_NUMBER = dbo.JOB_TRAFFIC.JOB_NUMBER AND 
+                      dbo.JOB_COMPONENT.JOB_COMPONENT_NBR = dbo.JOB_TRAFFIC.JOB_COMPONENT_NBR
+
+

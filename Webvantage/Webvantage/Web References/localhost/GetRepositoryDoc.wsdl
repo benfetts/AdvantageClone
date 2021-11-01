@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://Webvantage.net/GetRepositoryDoc" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://Webvantage.net/GetRepositoryDoc" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Webvantage.net/GetRepositoryDoc">
+      <s:element name="EncryptPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="savefile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filebytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserDomain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocRepPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="savefileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="savefileResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserDomain" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keywords" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="authorName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocRepPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddDocumentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EncryptPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:EncryptPassword" />
+  </wsdl:message>
+  <wsdl:message name="EncryptPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="savefileSoapIn">
+    <wsdl:part name="parameters" element="tns:savefile" />
+  </wsdl:message>
+  <wsdl:message name="savefileSoapOut">
+    <wsdl:part name="parameters" element="tns:savefileResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDocument" />
+  </wsdl:message>
+  <wsdl:message name="AddDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDocumentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GetRepositoryDocSoap">
+    <wsdl:operation name="EncryptPassword">
+      <wsdl:input message="tns:EncryptPasswordSoapIn" />
+      <wsdl:output message="tns:EncryptPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="savefile">
+      <wsdl:input message="tns:savefileSoapIn" />
+      <wsdl:output message="tns:savefileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDocument">
+      <wsdl:input message="tns:AddDocumentSoapIn" />
+      <wsdl:output message="tns:AddDocumentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetRepositoryDocSoap" type="tns:GetRepositoryDocSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EncryptPassword">
+      <soap:operation soapAction="http://Webvantage.net/GetRepositoryDoc/EncryptPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="savefile">
+      <soap:operation soapAction="http://Webvantage.net/GetRepositoryDoc/savefile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDocument">
+      <soap:operation soapAction="http://Webvantage.net/GetRepositoryDoc/AddDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GetRepositoryDocSoap12" type="tns:GetRepositoryDocSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EncryptPassword">
+      <soap12:operation soapAction="http://Webvantage.net/GetRepositoryDoc/EncryptPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="savefile">
+      <soap12:operation soapAction="http://Webvantage.net/GetRepositoryDoc/savefile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDocument">
+      <soap12:operation soapAction="http://Webvantage.net/GetRepositoryDoc/AddDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetRepositoryDoc">
+    <wsdl:port name="GetRepositoryDocSoap" binding="tns:GetRepositoryDocSoap">
+      <soap:address location="http://localhost/Webvantage/GetRepositoryDoc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GetRepositoryDocSoap12" binding="tns:GetRepositoryDocSoap12">
+      <soap12:address location="http://localhost/Webvantage/GetRepositoryDoc.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

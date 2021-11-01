@@ -1,0 +1,32 @@
+@import '../../../../theme/colors';
+@import '../../../../theme/mixins/font';
+
+.k-panelbar > .k-item > .k-link {
+  border-bottom: 1px solid $border-color;
+}
+
+.scrollbar-asset-info,
+.scrollbar-asset-info-margin {
+  --scrollbar-size: 15px !important;
+  --scrollbar-hover-size: 15px !important;
+  --scrollbar-thumb-color: #e8e8e8 !important;
+  --scrollbar-track-color: #f8f8f8 !important;
+  --scrollbar-border-radius: 0 !important;
+  border-top: none;
+  width: 100%;
+
+  &-margin {
+    .ng-scroll-content {
+      width: 95%;
+      min-width: auto;
+    }
+  }
+}
+
+.title .left {
+  @include font-base(15px, 600, 20px);
+  padding: 8px;
+  color: black !important;
+  display: flex;
+  align-items: center;
+}

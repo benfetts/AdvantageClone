@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[TYPES] (
+    [TYPE_CODE]  VARCHAR (3)  NULL,
+    [TYPE_DESC]  VARCHAR (30) NULL,
+    [TYPE_ORDER] INT          NULL
+);
+

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[USER_FORMS_PATH] (
+    [UFP_ID]     INT           NOT NULL,
+    [FORMS_PATH] VARCHAR (254) NULL
+);
+

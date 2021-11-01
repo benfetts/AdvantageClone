@@ -1,0 +1,42 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_AdvanDB_ClientAll] 
+
+AS
+
+SELECT  CL_CODE, CL_NAME, CL_BADDRESS1, CL_BADDRESS2, CL_BCITY, CL_BCOUNTY, CL_BSTATE, CL_BCOUNTRY, CL_BZIP, ACTIVE_FLAG
+FROM        CLIENT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

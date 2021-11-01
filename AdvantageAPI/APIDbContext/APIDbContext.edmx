@@ -1,0 +1,2242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="AdvantageAPI" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountExecutive" customannotation:ClrType="AdvantageAPI.AccountExecutive, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ClientCode" />
+            <PropertyRef Name="DivisionCode" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="EmployeeCode" />
+          </Key>
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsInactive" Type="Int16" />
+          <Property Name="IsDefaultAccountExecutive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="AdNumber" customannotation:ClrType="AdvantageAPI.AdNumber, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="AdSize" customannotation:ClrType="AdvantageAPI.AdSize, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="MediaType" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="MediaType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="AlertGroup" customannotation:ClrType="AdvantageAPI.AlertGroup, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="EmployeeCode" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsInactive" Type="Int16" />
+          <Property Name="IncludeOnSchedule" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Bank" customannotation:ClrType="AdvantageAPI.Bank, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="BillingCoop" customannotation:ClrType="AdvantageAPI.BillingCoop, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Campaign" customannotation:ClrType="AdvantageAPI.Campaign, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="IsClosed" Type="Int16" />
+          <Property Name="IsActive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="ClientDiscount" customannotation:ClrType="AdvantageAPI.ClientDiscount, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Percent" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="IsInactive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client" customannotation:ClrType="AdvantageAPI.Client, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int16" />
+          <Property Name="BillingAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCounty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BillingState" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillingZip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StatementAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StatementAddress2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StatementCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="StatementCounty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StatementState" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StatementZip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StatementCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RequireTimeComment" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactType" customannotation:ClrType="AdvantageAPI.ContactType, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartmentTeam" customannotation:ClrType="AdvantageAPI.DepartmentTeam, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Division" customannotation:ClrType="AdvantageAPI.Division, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ClientCode" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int16" />
+          <Property Name="BillingAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCounty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BillingState" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillingZip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EmployeeDepartmentTeam" customannotation:ClrType="AdvantageAPI.EmployeeDepartmentTeam, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="EmployeeCode" />
+            <PropertyRef Name="DepartmentTeamCode" />
+          </Key>
+          <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentTeamCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee" customannotation:ClrType="AdvantageAPI.Employee, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentTeamCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="IsActiveFreelance" Type="Boolean" Nullable="false" />
+          <Property Name="IsAPIUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TerminationDate" Type="DateTime" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FunctionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FiscalPeriod" customannotation:ClrType="AdvantageAPI.FiscalPeriod, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Function" customannotation:ClrType="AdvantageAPI.Function, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentTeamCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="IndirectCategory" customannotation:ClrType="AdvantageAPI.IndirectCategory, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="InternetOrderDetailComment" customannotation:ClrType="AdvantageAPI.InternetOrderDetailComment, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="OrderNumber" />
+            <PropertyRef Name="LineNumber" />
+          </Key>
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="LineNumber" Type="Int16" Nullable="false" />
+          <Property Name="Instructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiscInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderCopy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaterialNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="InternetOrderDetail" customannotation:ClrType="AdvantageAPI.InternetOrderDetail, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="OrderNumber" />
+            <PropertyRef Name="LineNumber" />
+            <PropertyRef Name="RevisionNumber" />
+            <PropertyRef Name="SequenceNumber" />
+          </Key>
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="LineNumber" Type="Int16" Nullable="false" />
+          <Property Name="RevisionNumber" Type="Int16" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int16" Nullable="false" />
+          <Property Name="IsActiveRevision" Type="Int16" />
+          <Property Name="LinkDetailID" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="CloseDate" Type="DateTime" />
+          <Property Name="MaterialCloseDate" Type="DateTime" />
+          <Property Name="ExtendedCloseDate" Type="DateTime" />
+          <Property Name="ExtendedMaterialDate" Type="DateTime" />
+          <Property Name="Headline" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="InternetTypeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectedImpressions" Type="Int32" />
+          <Property Name="GuaranteedImpressions" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="TargetAudience" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="CopyArea" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="JobNumber" Type="Int32" />
+          <Property Name="JobComponentNumber" Type="Int16" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrossRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ExtendedNetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ExtendedGrossAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CommissionAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RebateAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="StateTaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CountyTaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CityTaxAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NonResalesAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetCharge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetChargeDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalCharge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AdditionalChargeDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LineTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsLineCancelled" Type="Int16" />
+          <Property Name="DateToBill" Type="DateTime" />
+          <Property Name="BillingUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ARInvoiceNumber" Type="Int32" />
+          <Property Name="ARType" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ARSequenceNumber" Type="Int16" />
+          <Property Name="GLTransaction" Type="Int32" />
+          <Property Name="GLSequenceSales" Type="Int16" />
+          <Property Name="GLSequenceNumberCostOfSales" Type="Int16" />
+          <Property Name="GLSequenceWorkInProgress" Type="Int16" />
+          <Property Name="GLSequenceState" Type="Int16" />
+          <Property Name="GLSequenceNumberCounty" Type="Int16" />
+          <Property Name="GLSequenceNumberCity" Type="Int16" />
+          <Property Name="GLTransactionDeferred" Type="Int32" />
+          <Property Name="GLACodeSales" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GLACodeCostOfSales" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GLACodeWorkInProgress" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GLACodeState" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GLACodeCounty" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GLACodeCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsNonBillable" Type="Int16" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <Property Name="ModifiedComments" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="BillTypeFlag" Type="Int16" />
+          <Property Name="CreativeSize" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Placement1" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Placement2" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="CommissionPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MarkupPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RebatePercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SalesTaxCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CityTaxPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CountyTaxPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="StateTaxPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsResaleTax" Type="Int16" />
+          <Property Name="TaxApplyC" Type="Int16" />
+          <Property Name="TaxApplyLN" Type="Int16" />
+          <Property Name="TaxApplyLND" Type="Int16" />
+          <Property Name="TaxApplyNC" Type="Int16" />
+          <Property Name="TaxApplyR" Type="Int16" />
+          <Property Name="TaxApplyAI" Type="Int16" />
+          <Property Name="ActualImpressions" Type="Int32" />
+          <Property Name="GLSequenceSalesDeferred" Type="Int16" />
+          <Property Name="GLSequenceNumberCostOfSalesDeferred" Type="Int16" />
+          <Property Name="GLACodeSalesDeferred" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GLACodeCostOfSalesDeferred" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BillingAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CostType" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CostRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetBaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GrossBaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsBillCancelled" Type="Int16" />
+          <Property Name="EstimateNumber" Type="Int32" />
+          <Property Name="EstimateLineNumber" Type="Int16" />
+          <Property Name="EstimateRevisionNumber" Type="Int16" />
+          <Property Name="AdNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MatCompDate" Type="DateTime" />
+          <Property Name="AdServerPlacementID" Type="Int64" />
+          <Property Name="AdServerCreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AdServerCreatedDateTime" Type="DateTime" />
+          <Property Name="AdServerLastModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AdServerLastModifiedByDateTime" Type="DateTime" />
+          <Property Name="AdServerPlacementGroupID" Type="Int64" />
+          <Property Name="AdServerID" Type="Int16" />
+          <Property Name="MarketCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdServerPlacementManual" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="InternetOrder" customannotation:ClrType="AdvantageAPI.InternetOrder, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="OrderNumber" />
+          </Key>
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OfficeCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CampaignCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="MediaTypeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="VendorCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="VendorRepCode1" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="VendorRepCode2" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPO" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ClientReference" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" />
+          <Property Name="Buyer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="OrderComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HouseComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MailToVender" Type="Int16" />
+          <Property Name="MailToVenderRep1" Type="Int16" />
+          <Property Name="MailToVenderRep2" Type="Int16" />
+          <Property Name="BillingCoopCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="OrderProcessControl" Type="Int16" />
+          <Property Name="MarketCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Units" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="NetGross" Type="Int16" />
+          <Property Name="CreatedDate" Type="DateTime" />
+          <Property Name="CreatedByUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cancelled" Type="Int16" />
+          <Property Name="CancelledByUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CancelledDate" Type="DateTime" />
+          <Property Name="ModifiedByUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <Property Name="ModifiedComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Revised" Type="Int16" />
+          <Property Name="LinkID" Type="Int32" />
+          <Property Name="Reconile" Type="Int16" />
+          <Property Name="CampaignID" Type="Int32" />
+          <Property Name="Printed" Type="Int16" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="OrderAccepted" Type="Int16" />
+          <Property Name="PostPeriodCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="IsLocked" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="LockedByUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BCCUserID" Type="Int32" />
+          <Property Name="BuyerEmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="InternetType" customannotation:ClrType="AdvantageAPI.InternetType, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsInactive" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobComponent" customannotation:ClrType="AdvantageAPI.JobComponent, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobComponentNumber" Type="Int16" Nullable="false" />
+          <Property Name="JobComponentDescription" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="JobNumber" Type="Int32" Nullable="false" />
+          <Property Name="JobDescription" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsOpen" Type="Int32" Nullable="false" />
+          <Property Name="JobProcessControl" Type="Int16" />
+          <Property Name="CampaignID" Type="Int32" />
+          <Property Name="CampaignName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="JobComponentDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job" customannotation:ClrType="AdvantageAPI.Job, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="JobNumber" />
+          </Key>
+          <Property Name="JobNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="JobDescription" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsOpen" Type="Int32" Nullable="false" />
+          <Property Name="CampaignID" Type="Int32" />
+          <Property Name="CampaignName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobType" customannotation:ClrType="AdvantageAPI.JobType, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsInactive" Type="Int16" />
+          <Property Name="SalesClassCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Market" customannotation:ClrType="AdvantageAPI.Market, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="MediaOrderView" customannotation:ClrType="AdvantageAPI.MediaOrderView, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="MediaType" />
+            <PropertyRef Name="OrderNumber" />
+          </Key>
+          <Property Name="MediaType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="OrderDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ClientName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="DivisionName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="VendorCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="VendorName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PostPeriod" customannotation:ClrType="AdvantageAPI.PostPeriod, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ARStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Month" Type="Int16" />
+          <Property Name="Year" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="GLStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="APStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnteredDate" Type="DateTime" />
+          <Property Name="ModifiedDate" Type="DateTime" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeTimeStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product" customannotation:ClrType="AdvantageAPI.Product, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ClientCode" />
+            <PropertyRef Name="DivisionCode" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int16" />
+          <Property Name="BillingAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCounty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BillingState" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillingZip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BillingPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="BillingPhoneExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="BillingFax" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="BillingFaxExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="StatementAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StatementAddress2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StatementCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="StatementCounty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StatementState" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StatementZip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StatementCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StatementPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="StatementPhoneExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="StatementFax" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="StatementFaxExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesClass" customannotation:ClrType="AdvantageAPI.SalesClass, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="ScheduleStatus" customannotation:ClrType="AdvantageAPI.ScheduleStatus, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Task" customannotation:ClrType="AdvantageAPI.Task, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <EntityType Name="User" customannotation:ClrType="AdvantageAPI.User, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CheckForUserAccess" Type="Boolean" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSetting" customannotation:ClrType="AdvantageAPI.UserSetting, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="SettingCode" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="SettingCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StringValue" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="NumericValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DateValue" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="VendorContact" customannotation:ClrType="AdvantageAPI.VendorContact, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="VendorCode" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="VendorCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneExt" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="FaxExt" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+          <Property Name="Cell" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VendorRepresentative" customannotation:ClrType="AdvantageAPI.VendorRepresentative, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="VendorCode" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="VendorCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="FirmName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="FaxExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+          <Property Name="CellPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTypeID" Type="Int32" />
+          <NavigationProperty Name="Vendor" Relationship="Self.VendorRepresentative_Vendor" FromRole="VendorRepresentative_Vendor_Source" ToRole="VendorRepresentative_Vendor_Target" />
+        </EntityType>
+        <EntityType Name="Vendor" customannotation:ClrType="AdvantageAPI.Vendor, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StreetAddressLine1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StreetAddressLine2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StreetAddressLine3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="FaxPhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="FaxPhoneNumberExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PayToCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="PayToName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PayToAddressLine1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PayToAddressLine2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PayToStreetAddressLine3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PayToCity" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PayToCounty" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PayToState" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PayToCountry" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PayToZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PayToPhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="PayToPhoneNumberExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PayToFaxPhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="PayToFaxPhoneNumberExtension" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="TaxID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentManagerEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveFlag" Type="Int16" />
+          <Property Name="DefaultVendorContactCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultVendorRepresentativeCode1" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultVendorRepresentativeCode2" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="VCCStatus" Type="Int16" />
+          <Property Name="BankCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="VendorCategory" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="VendorTermCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="HasSpecialTerms" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="VendorTerm" customannotation:ClrType="AdvantageAPI.VendorTerm, AdvantageAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IsInactive" Type="Int16" />
+        </EntityType>
+        <Association Name="VendorRepresentative_Vendor">
+          <End Role="VendorRepresentative_Vendor_Source" Type="Self.VendorRepresentative" Multiplicity="*" />
+          <End Role="VendorRepresentative_Vendor_Target" Type="Self.Vendor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="VendorRepresentative_Vendor_Target">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="VendorRepresentative_Vendor_Source">
+              <PropertyRef Name="VendorCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="APIDbContext" customannotation:UseClrTypes="true">
+          <EntitySet Name="AccountExecutives" EntityType="Self.AccountExecutive" />
+          <EntitySet Name="AdNumbers" EntityType="Self.AdNumber" />
+          <EntitySet Name="AdSizes" EntityType="Self.AdSize" />
+          <EntitySet Name="AlertGroups" EntityType="Self.AlertGroup" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="BillingCoops" EntityType="Self.BillingCoop" />
+          <EntitySet Name="Campaigns" EntityType="Self.Campaign" />
+          <EntitySet Name="ClientDiscounts" EntityType="Self.ClientDiscount" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="ContactTypes" EntityType="Self.ContactType" />
+          <EntitySet Name="DepartmentTeams" EntityType="Self.DepartmentTeam" />
+          <EntitySet Name="Divisions" EntityType="Self.Division" />
+          <EntitySet Name="EmployeeDepartmentTeams" EntityType="Self.EmployeeDepartmentTeam" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="FiscalPeriods" EntityType="Self.FiscalPeriod" />
+          <EntitySet Name="Functions" EntityType="Self.Function" />
+          <EntitySet Name="IndirectCategories" EntityType="Self.IndirectCategory" />
+          <EntitySet Name="InternetOrderDetailComments" EntityType="Self.InternetOrderDetailComment" />
+          <EntitySet Name="InternetOrderDetails" EntityType="Self.InternetOrderDetail" />
+          <EntitySet Name="InternetOrders" EntityType="Self.InternetOrder" />
+          <EntitySet Name="InternetTypes" EntityType="Self.InternetType" />
+          <EntitySet Name="JobComponents" EntityType="Self.JobComponent" />
+          <EntitySet Name="Jobs" EntityType="Self.Job" />
+          <EntitySet Name="JobTypes" EntityType="Self.JobType" />
+          <EntitySet Name="Markets" EntityType="Self.Market" />
+          <EntitySet Name="MediaOrderViews" EntityType="Self.MediaOrderView" />
+          <EntitySet Name="PostPeriods" EntityType="Self.PostPeriod" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="SalesClasses" EntityType="Self.SalesClass" />
+          <EntitySet Name="ScheduleStatuses" EntityType="Self.ScheduleStatus" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserSettings" EntityType="Self.UserSetting" />
+          <EntitySet Name="VendorContacts" EntityType="Self.VendorContact" />
+          <EntitySet Name="VendorRepresentatives" EntityType="Self.VendorRepresentative" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+          <EntitySet Name="VendorTerms" EntityType="Self.VendorTerm" />
+          <AssociationSet Name="VendorRepresentative_Vendor" Association="Self.VendorRepresentative_Vendor">
+            <End Role="VendorRepresentative_Vendor_Source" EntitySet="VendorRepresentatives" />
+            <End Role="VendorRepresentative_Vendor_Target" EntitySet="Vendors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="APIDbContext">
+          <EntitySetMapping Name="AccountExecutives">
+            <EntityTypeMapping TypeName="AdvantageAPI.AccountExecutive">
+              <MappingFragment StoreEntitySet="AccountExecutive">
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+                <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+                <ScalarProperty Name="IsDefaultAccountExecutive" ColumnName="DEFAULT_AE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdNumbers">
+            <EntityTypeMapping TypeName="AdvantageAPI.AdNumber">
+              <MappingFragment StoreEntitySet="AdNumber">
+                <ScalarProperty Name="Number" ColumnName="AD_NBR" />
+                <ScalarProperty Name="Description" ColumnName="AD_NBR_DESC" />
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="IsActive" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdSizes">
+            <EntityTypeMapping TypeName="AdvantageAPI.AdSize">
+              <MappingFragment StoreEntitySet="AdSize">
+                <ScalarProperty Name="MediaType" ColumnName="MEDIA_TYPE" />
+                <ScalarProperty Name="Code" ColumnName="SIZE_CODE" />
+                <ScalarProperty Name="Description" ColumnName="SIZE_DESC" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlertGroups">
+            <EntityTypeMapping TypeName="AdvantageAPI.AlertGroup">
+              <MappingFragment StoreEntitySet="AlertGroup">
+                <ScalarProperty Name="Code" ColumnName="EMAIL_GR_CODE" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+                <ScalarProperty Name="IncludeOnSchedule" ColumnName="PRIMARY_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="AdvantageAPI.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="Code" ColumnName="BK_CODE" />
+                <ScalarProperty Name="Description" ColumnName="BK_DESCRIPTION" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillingCoops">
+            <EntityTypeMapping TypeName="AdvantageAPI.BillingCoop">
+              <MappingFragment StoreEntitySet="BillingCoop">
+                <ScalarProperty Name="Code" ColumnName="BILL_COOP_CODE" />
+                <ScalarProperty Name="Description" ColumnName="BILL_COOP_DESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="AdvantageAPI.Campaign">
+              <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="ID" ColumnName="CMP_IDENTIFIER" />
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+                <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="Code" ColumnName="CMP_CODE" />
+                <ScalarProperty Name="Name" ColumnName="CMP_NAME" />
+                <ScalarProperty Name="IsClosed" ColumnName="CMP_CLOSED" />
+                <ScalarProperty Name="IsActive" ColumnName="ACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientDiscounts">
+            <EntityTypeMapping TypeName="AdvantageAPI.ClientDiscount">
+              <MappingFragment StoreEntitySet="ClientDiscount">
+                <ScalarProperty Name="Code" ColumnName="CLIENT_DISCOUNT_CODE" />
+                <ScalarProperty Name="Name" ColumnName="NAME" />
+                <ScalarProperty Name="Percent" ColumnName="PERCENT" />
+                <ScalarProperty Name="IsInactive" ColumnName="IS_INACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="AdvantageAPI.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Code" ColumnName="CL_CODE" />
+                <ScalarProperty Name="Name" ColumnName="CL_NAME" />
+                <ScalarProperty Name="Address" ColumnName="CL_ADDRESS1" />
+                <ScalarProperty Name="Address2" ColumnName="CL_ADDRESS2" />
+                <ScalarProperty Name="City" ColumnName="CL_CITY" />
+                <ScalarProperty Name="County" ColumnName="CL_COUNTY" />
+                <ScalarProperty Name="State" ColumnName="CL_STATE" />
+                <ScalarProperty Name="Country" ColumnName="CL_COUNTRY" />
+                <ScalarProperty Name="Zip" ColumnName="CL_ZIP" />
+                <ScalarProperty Name="IsActive" ColumnName="ACTIVE_FLAG" />
+                <ScalarProperty Name="BillingAddress" ColumnName="CL_BADDRESS1" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="CL_BADDRESS2" />
+                <ScalarProperty Name="BillingCity" ColumnName="CL_BCITY" />
+                <ScalarProperty Name="BillingCounty" ColumnName="CL_BCOUNTY" />
+                <ScalarProperty Name="BillingState" ColumnName="CL_BSTATE" />
+                <ScalarProperty Name="BillingZip" ColumnName="CL_BZIP" />
+                <ScalarProperty Name="BillingCountry" ColumnName="CL_BCOUNTRY" />
+                <ScalarProperty Name="StatementAddress" ColumnName="CL_SADDRESS1" />
+                <ScalarProperty Name="StatementAddress2" ColumnName="CL_SADDRESS2" />
+                <ScalarProperty Name="StatementCity" ColumnName="CL_SCITY" />
+                <ScalarProperty Name="StatementCounty" ColumnName="CL_SCOUNTY" />
+                <ScalarProperty Name="StatementState" ColumnName="CL_SSTATE" />
+                <ScalarProperty Name="StatementZip" ColumnName="CL_SZIP" />
+                <ScalarProperty Name="StatementCountry" ColumnName="CL_SCOUNTRY" />
+                <ScalarProperty Name="RequireTimeComment" ColumnName="REQ_TIME_COMMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactTypes">
+            <EntityTypeMapping TypeName="AdvantageAPI.ContactType">
+              <MappingFragment StoreEntitySet="ContactType">
+                <ScalarProperty Name="ID" ColumnName="CONTACT_TYPE_ID" />
+                <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentTeams">
+            <EntityTypeMapping TypeName="AdvantageAPI.DepartmentTeam">
+              <MappingFragment StoreEntitySet="DepartmentTeam">
+                <ScalarProperty Name="Code" ColumnName="DP_TM_CODE" />
+                <ScalarProperty Name="Description" ColumnName="DP_TM_DESC" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="AdvantageAPI.Division">
+              <MappingFragment StoreEntitySet="Division">
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="Code" ColumnName="DIV_CODE" />
+                <ScalarProperty Name="Name" ColumnName="DIV_NAME" />
+                <ScalarProperty Name="Address" ColumnName="DIV_SADDRESS1" />
+                <ScalarProperty Name="Address2" ColumnName="DIV_SADDRESS2" />
+                <ScalarProperty Name="City" ColumnName="DIV_SCITY" />
+                <ScalarProperty Name="County" ColumnName="DIV_SCOUNTY" />
+                <ScalarProperty Name="State" ColumnName="DIV_SSTATE" />
+                <ScalarProperty Name="Country" ColumnName="DIV_SCOUNTRY" />
+                <ScalarProperty Name="Zip" ColumnName="DIV_SZIP" />
+                <ScalarProperty Name="IsActive" ColumnName="ACTIVE_FLAG" />
+                <ScalarProperty Name="BillingAddress" ColumnName="DIV_BADDRESS1" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="DIV_BADDRESS2" />
+                <ScalarProperty Name="BillingCity" ColumnName="DIV_BCITY" />
+                <ScalarProperty Name="BillingCounty" ColumnName="DIV_BCOUNTY" />
+                <ScalarProperty Name="BillingState" ColumnName="DIV_BSTATE" />
+                <ScalarProperty Name="BillingZip" ColumnName="DIV_BZIP" />
+                <ScalarProperty Name="BillingCountry" ColumnName="DIV_BCOUNTRY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDepartmentTeams">
+            <EntityTypeMapping TypeName="AdvantageAPI.EmployeeDepartmentTeam">
+              <MappingFragment StoreEntitySet="EmployeeDepartmentTeam">
+                <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="DepartmentTeamCode" ColumnName="DP_TM_CODE" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DP_TM_DESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="AdvantageAPI.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Code" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="DepartmentTeamCode" ColumnName="DP_TM_CODE" />
+                <ScalarProperty Name="LastName" ColumnName="EMP_LNAME" />
+                <ScalarProperty Name="FirstName" ColumnName="EMP_FNAME" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="EMP_MI" />
+                <ScalarProperty Name="IsActiveFreelance" ColumnName="IS_ACTIVE_FREELANCE" />
+                <ScalarProperty Name="IsAPIUser" ColumnName="IS_API_USER" />
+                <ScalarProperty Name="TerminationDate" ColumnName="EMP_TERM_DATE" />
+                <ScalarProperty Name="Email" ColumnName="EMP_EMAIL" />
+                <ScalarProperty Name="FunctionCode" ColumnName="DEF_FNC_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FiscalPeriods">
+            <EntityTypeMapping TypeName="AdvantageAPI.FiscalPeriod">
+              <MappingFragment StoreEntitySet="FiscalPeriod">
+                <ScalarProperty Name="Code" ColumnName="FISCAL_PERIOD_CODE" />
+                <ScalarProperty Name="Description" ColumnName="FISCAL_PERIOD_DESC" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Functions">
+            <EntityTypeMapping TypeName="AdvantageAPI.Function">
+              <MappingFragment StoreEntitySet="Function">
+                <ScalarProperty Name="Code" ColumnName="FNC_CODE" />
+                <ScalarProperty Name="Description" ColumnName="FNC_DESCRIPTION" />
+                <ScalarProperty Name="Type" ColumnName="FNC_TYPE" />
+                <ScalarProperty Name="DepartmentTeamCode" ColumnName="DP_TM_CODE" />
+                <ScalarProperty Name="IsInactive" ColumnName="FNC_INACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndirectCategories">
+            <EntityTypeMapping TypeName="AdvantageAPI.IndirectCategory">
+              <MappingFragment StoreEntitySet="IndirectCategory">
+                <ScalarProperty Name="Code" ColumnName="CATEGORY" />
+                <ScalarProperty Name="Description" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternetOrderDetailComments">
+            <EntityTypeMapping TypeName="AdvantageAPI.InternetOrderDetailComment">
+              <MappingFragment StoreEntitySet="InternetOrderDetailComment">
+                <ScalarProperty Name="OrderNumber" ColumnName="ORDER_NBR" />
+                <ScalarProperty Name="LineNumber" ColumnName="LINE_NBR" />
+                <ScalarProperty Name="Instructions" ColumnName="INSTRUCTIONS" />
+                <ScalarProperty Name="MiscInfo" ColumnName="MISC_INFO" />
+                <ScalarProperty Name="OrderCopy" ColumnName="ORDER_COPY" />
+                <ScalarProperty Name="MaterialNotes" ColumnName="MATL_NOTES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternetOrderDetails">
+            <EntityTypeMapping TypeName="AdvantageAPI.InternetOrderDetail">
+              <MappingFragment StoreEntitySet="InternetOrderDetail">
+                <ScalarProperty Name="OrderNumber" ColumnName="ORDER_NBR" />
+                <ScalarProperty Name="LineNumber" ColumnName="LINE_NBR" />
+                <ScalarProperty Name="RevisionNumber" ColumnName="REV_NBR" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SEQ_NBR" />
+                <ScalarProperty Name="IsActiveRevision" ColumnName="ACTIVE_REV" />
+                <ScalarProperty Name="LinkDetailID" ColumnName="LINK_DETID" />
+                <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+                <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+                <ScalarProperty Name="CloseDate" ColumnName="CLOSE_DATE" />
+                <ScalarProperty Name="MaterialCloseDate" ColumnName="MATL_CLOSE_DATE" />
+                <ScalarProperty Name="ExtendedCloseDate" ColumnName="EXT_CLOSE_DATE" />
+                <ScalarProperty Name="ExtendedMaterialDate" ColumnName="EXT_MATL_DATE" />
+                <ScalarProperty Name="Headline" ColumnName="HEADLINE" />
+                <ScalarProperty Name="InternetTypeCode" ColumnName="INTERNET_TYPE" />
+                <ScalarProperty Name="Size" ColumnName="SIZE" />
+                <ScalarProperty Name="ProjectedImpressions" ColumnName="PROJ_IMPRESSIONS" />
+                <ScalarProperty Name="GuaranteedImpressions" ColumnName="GUARANTEED_IMPRESS" />
+                <ScalarProperty Name="Url" ColumnName="URL" />
+                <ScalarProperty Name="TargetAudience" ColumnName="TARGET_AUDIENCE" />
+                <ScalarProperty Name="CopyArea" ColumnName="COPY_AREA" />
+                <ScalarProperty Name="JobNumber" ColumnName="JOB_NUMBER" />
+                <ScalarProperty Name="JobComponentNumber" ColumnName="JOB_COMPONENT_NBR" />
+                <ScalarProperty Name="Quantity" ColumnName="QUANTITY" />
+                <ScalarProperty Name="Rate" ColumnName="RATE" />
+                <ScalarProperty Name="NetRate" ColumnName="NET_RATE" />
+                <ScalarProperty Name="GrossRate" ColumnName="GROSS_RATE" />
+                <ScalarProperty Name="ExtendedNetAmount" ColumnName="EXT_NET_AMT" />
+                <ScalarProperty Name="ExtendedGrossAmount" ColumnName="EXT_GROSS_AMT" />
+                <ScalarProperty Name="CommissionAmount" ColumnName="COMM_AMT" />
+                <ScalarProperty Name="RebateAmount" ColumnName="REBATE_AMT" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DISCOUNT_AMT" />
+                <ScalarProperty Name="DiscountDescription" ColumnName="DISCOUNT_DESC" />
+                <ScalarProperty Name="StateTaxAmount" ColumnName="STATE_AMT" />
+                <ScalarProperty Name="CountyTaxAmount" ColumnName="COUNTY_AMT" />
+                <ScalarProperty Name="CityTaxAmount" ColumnName="CITY_AMT" />
+                <ScalarProperty Name="NonResalesAmount" ColumnName="NON_RESALE_AMT" />
+                <ScalarProperty Name="NetCharge" ColumnName="NETCHARGE" />
+                <ScalarProperty Name="NetChargeDescription" ColumnName="NCDESC" />
+                <ScalarProperty Name="AdditionalCharge" ColumnName="ADDL_CHARGE" />
+                <ScalarProperty Name="AdditionalChargeDescription" ColumnName="ADDL_CHARGE_DESC" />
+                <ScalarProperty Name="LineTotal" ColumnName="LINE_TOTAL" />
+                <ScalarProperty Name="IsLineCancelled" ColumnName="LINE_CANCELLED" />
+                <ScalarProperty Name="DateToBill" ColumnName="DATE_TO_BILL" />
+                <ScalarProperty Name="BillingUserCode" ColumnName="BILLING_USER" />
+                <ScalarProperty Name="ARInvoiceNumber" ColumnName="AR_INV_NBR" />
+                <ScalarProperty Name="ARType" ColumnName="AR_TYPE" />
+                <ScalarProperty Name="ARSequenceNumber" ColumnName="AR_INV_SEQ" />
+                <ScalarProperty Name="GLTransaction" ColumnName="GLEXACT" />
+                <ScalarProperty Name="GLSequenceSales" ColumnName="GLESEQ_SALES" />
+                <ScalarProperty Name="GLSequenceNumberCostOfSales" ColumnName="GLESEQ_COS" />
+                <ScalarProperty Name="GLSequenceWorkInProgress" ColumnName="GLESEQ_WIP" />
+                <ScalarProperty Name="GLSequenceState" ColumnName="GLESEQ_STATE" />
+                <ScalarProperty Name="GLSequenceNumberCounty" ColumnName="GLESEQ_COUNTY" />
+                <ScalarProperty Name="GLSequenceNumberCity" ColumnName="GLESEQ_CITY" />
+                <ScalarProperty Name="GLTransactionDeferred" ColumnName="GLEXACT_DEF" />
+                <ScalarProperty Name="GLACodeSales" ColumnName="GLACODE_SALES" />
+                <ScalarProperty Name="GLACodeCostOfSales" ColumnName="GLACODE_COS" />
+                <ScalarProperty Name="GLACodeWorkInProgress" ColumnName="GLACODE_WIP" />
+                <ScalarProperty Name="GLACodeState" ColumnName="GLACODE_STATE" />
+                <ScalarProperty Name="GLACodeCounty" ColumnName="GLACODE_COUNTY" />
+                <ScalarProperty Name="GLACodeCity" ColumnName="GLACODE_CITY" />
+                <ScalarProperty Name="IsNonBillable" ColumnName="NON_BILL_FLAG" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="ModifiedComments" ColumnName="MODIFIED_COMMENTS" />
+                <ScalarProperty Name="BillTypeFlag" ColumnName="BILL_TYPE_FLAG" />
+                <ScalarProperty Name="CreativeSize" ColumnName="CREATIVE_SIZE" />
+                <ScalarProperty Name="Placement1" ColumnName="PLACEMENT_1" />
+                <ScalarProperty Name="Placement2" ColumnName="PLACEMENT_2" />
+                <ScalarProperty Name="CommissionPercent" ColumnName="COMM_PCT" />
+                <ScalarProperty Name="MarkupPercent" ColumnName="MARKUP_PCT" />
+                <ScalarProperty Name="RebatePercent" ColumnName="REBATE_PCT" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DISCOUNT_PCT" />
+                <ScalarProperty Name="SalesTaxCode" ColumnName="TAX_CODE" />
+                <ScalarProperty Name="CityTaxPercent" ColumnName="TAX_CITY_PCT" />
+                <ScalarProperty Name="CountyTaxPercent" ColumnName="TAX_COUNTY_PCT" />
+                <ScalarProperty Name="StateTaxPercent" ColumnName="TAX_STATE_PCT" />
+                <ScalarProperty Name="IsResaleTax" ColumnName="TAX_RESALE" />
+                <ScalarProperty Name="TaxApplyC" ColumnName="TAXAPPLYC" />
+                <ScalarProperty Name="TaxApplyLN" ColumnName="TAXAPPLYLN" />
+                <ScalarProperty Name="TaxApplyLND" ColumnName="TAXAPPLYND" />
+                <ScalarProperty Name="TaxApplyNC" ColumnName="TAXAPPLYNC" />
+                <ScalarProperty Name="TaxApplyR" ColumnName="TAXAPPLYR" />
+                <ScalarProperty Name="TaxApplyAI" ColumnName="TAXAPPLYAI" />
+                <ScalarProperty Name="ActualImpressions" ColumnName="ACT_IMPRESSIONS" />
+                <ScalarProperty Name="GLSequenceSalesDeferred" ColumnName="GLESEQ_SALES_DEF" />
+                <ScalarProperty Name="GLSequenceNumberCostOfSalesDeferred" ColumnName="GLESEQ_COS_DEF" />
+                <ScalarProperty Name="GLACodeSalesDeferred" ColumnName="GLACODE_SALES_DEF" />
+                <ScalarProperty Name="GLACodeCostOfSalesDeferred" ColumnName="GLACODE_COS_DEF" />
+                <ScalarProperty Name="BillingAmount" ColumnName="BILLING_AMT" />
+                <ScalarProperty Name="CostType" ColumnName="COST_TYPE" />
+                <ScalarProperty Name="CostRate" ColumnName="COST_RATE" />
+                <ScalarProperty Name="NetBaseRate" ColumnName="NET_BASE_RATE" />
+                <ScalarProperty Name="GrossBaseRate" ColumnName="GROSS_BASE_RATE" />
+                <ScalarProperty Name="IsBillCancelled" ColumnName="BILL_CANCELLED" />
+                <ScalarProperty Name="EstimateNumber" ColumnName="EST_NBR" />
+                <ScalarProperty Name="EstimateLineNumber" ColumnName="EST_LINE_NBR" />
+                <ScalarProperty Name="EstimateRevisionNumber" ColumnName="EST_REV_NBR" />
+                <ScalarProperty Name="AdNumber" ColumnName="AD_NUMBER" />
+                <ScalarProperty Name="MatCompDate" ColumnName="MAT_COMP" />
+                <ScalarProperty Name="AdServerPlacementID" ColumnName="AD_SERVER_PLACEMENT_ID" />
+                <ScalarProperty Name="AdServerCreatedBy" ColumnName="AD_SERVER_CREATED_BY" />
+                <ScalarProperty Name="AdServerCreatedDateTime" ColumnName="AD_SERVER_CREATED_DATETIME" />
+                <ScalarProperty Name="AdServerLastModifiedBy" ColumnName="AD_SERVER_LAST_MODIFIED_BY" />
+                <ScalarProperty Name="AdServerLastModifiedByDateTime" ColumnName="AD_SERVER_LAST_MODIFIED_DATETIME" />
+                <ScalarProperty Name="AdServerPlacementGroupID" ColumnName="AD_SERVER_PLACEMENT_GROUP_ID" />
+                <ScalarProperty Name="AdServerID" ColumnName="AD_SERVER_ID" />
+                <ScalarProperty Name="MarketCode" ColumnName="MARKET_CODE" />
+                <ScalarProperty Name="AdServerPlacementManual" ColumnName="AD_SERVER_PLACEMENT_MANUAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternetOrders">
+            <EntityTypeMapping TypeName="AdvantageAPI.InternetOrder">
+              <MappingFragment StoreEntitySet="InternetOrder">
+                <ScalarProperty Name="OrderNumber" ColumnName="ORDER_NBR" />
+                <ScalarProperty Name="Description" ColumnName="ORDER_DESC" />
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+                <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OFFICE_CODE" />
+                <ScalarProperty Name="CampaignCode" ColumnName="CMP_CODE" />
+                <ScalarProperty Name="MediaTypeCode" ColumnName="MEDIA_TYPE" />
+                <ScalarProperty Name="VendorCode" ColumnName="VN_CODE" />
+                <ScalarProperty Name="VendorRepCode1" ColumnName="VR_CODE" />
+                <ScalarProperty Name="VendorRepCode2" ColumnName="VR_CODE2" />
+                <ScalarProperty Name="ClientPO" ColumnName="CLIENT_PO" />
+                <ScalarProperty Name="ClientReference" ColumnName="CLIENT_REF" />
+                <ScalarProperty Name="Status" ColumnName="STATUS" />
+                <ScalarProperty Name="OrderDate" ColumnName="ORDER_DATE" />
+                <ScalarProperty Name="Buyer" ColumnName="BUYER" />
+                <ScalarProperty Name="OrderComment" ColumnName="ORDER_COMMENT" />
+                <ScalarProperty Name="HouseComment" ColumnName="HOUSE_COMMENT" />
+                <ScalarProperty Name="MailToVender" ColumnName="PUB" />
+                <ScalarProperty Name="MailToVenderRep1" ColumnName="REP1" />
+                <ScalarProperty Name="MailToVenderRep2" ColumnName="REP2" />
+                <ScalarProperty Name="BillingCoopCode" ColumnName="BILL_COOP_CODE" />
+                <ScalarProperty Name="OrderProcessControl" ColumnName="ORD_PROCESS_CONTRL" />
+                <ScalarProperty Name="MarketCode" ColumnName="MARKET_CODE" />
+                <ScalarProperty Name="Units" ColumnName="UNITS" />
+                <ScalarProperty Name="NetGross" ColumnName="NET_GROSS" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="CreatedByUserCode" ColumnName="USER_ID" />
+                <ScalarProperty Name="Cancelled" ColumnName="CANCELLED" />
+                <ScalarProperty Name="CancelledByUserCode" ColumnName="CANCELLED_BY" />
+                <ScalarProperty Name="CancelledDate" ColumnName="CANCELLED_DATE" />
+                <ScalarProperty Name="ModifiedByUserCode" ColumnName="MODIFIED_BY" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="ModifiedComment" ColumnName="MODIFIED_COMMENTS" />
+                <ScalarProperty Name="Revised" ColumnName="REVISED_FLAG" />
+                <ScalarProperty Name="LinkID" ColumnName="LINK_ID" />
+                <ScalarProperty Name="Reconile" ColumnName="RECONCILE_FLAG" />
+                <ScalarProperty Name="CampaignID" ColumnName="CMP_IDENTIFIER" />
+                <ScalarProperty Name="Printed" ColumnName="PRINTED" />
+                <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+                <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+                <ScalarProperty Name="OrderAccepted" ColumnName="ORDER_ACCEPTED" />
+                <ScalarProperty Name="PostPeriodCode" ColumnName="FISCAL_PERIOD_CODE" />
+                <ScalarProperty Name="IsLocked" ColumnName="LOCKED" />
+                <ScalarProperty Name="LockedByUserCode" ColumnName="LOCKED_BY" />
+                <ScalarProperty Name="BCCUserID" ColumnName="BCC_ID" />
+                <ScalarProperty Name="BuyerEmployeeCode" ColumnName="BUYER_EMP_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternetTypes">
+            <EntityTypeMapping TypeName="AdvantageAPI.InternetType">
+              <MappingFragment StoreEntitySet="InternetType">
+                <ScalarProperty Name="Code" ColumnName="OD_CODE" />
+                <ScalarProperty Name="Description" ColumnName="OD_DESC" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobComponents">
+            <EntityTypeMapping TypeName="AdvantageAPI.JobComponent">
+              <MappingFragment StoreEntitySet="JobComponent">
+                <ScalarProperty Name="ID" ColumnName="ROWID" />
+                <ScalarProperty Name="JobComponentNumber" ColumnName="JOB_COMPONENT_NBR" />
+                <ScalarProperty Name="JobComponentDescription" ColumnName="JOB_COMP_DESC" />
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="ClientName" ColumnName="CL_NAME" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+                <ScalarProperty Name="DivisionName" ColumnName="DIV_NAME" />
+                <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="ProductDescription" ColumnName="PRD_DESCRIPTION" />
+                <ScalarProperty Name="JobNumber" ColumnName="JOB_NUMBER" />
+                <ScalarProperty Name="JobDescription" ColumnName="JOB_DESC" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OFFICE_CODE" />
+                <ScalarProperty Name="OfficeName" ColumnName="OFFICE_NAME" />
+                <ScalarProperty Name="IsOpen" ColumnName="COMP_OPEN" />
+                <ScalarProperty Name="JobProcessControl" ColumnName="JOB_PROCESS_CONTRL" />
+                <ScalarProperty Name="CampaignID" ColumnName="CMP_IDENTIFIER" />
+                <ScalarProperty Name="CampaignName" ColumnName="CMP_NAME" />
+                <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="JobComponentDate" ColumnName="JOB_COMP_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="AdvantageAPI.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="JobNumber" ColumnName="JOB_NUMBER" />
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="ClientName" ColumnName="CL_NAME" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+                <ScalarProperty Name="DivisionName" ColumnName="DIV_NAME" />
+                <ScalarProperty Name="ProductCode" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="ProductDescription" ColumnName="PRD_DESCRIPTION" />
+                <ScalarProperty Name="JobDescription" ColumnName="JOB_DESC" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OFFICE_CODE" />
+                <ScalarProperty Name="OfficeName" ColumnName="OFFICE_NAME" />
+                <ScalarProperty Name="IsOpen" ColumnName="COMP_OPEN" />
+                <ScalarProperty Name="CampaignID" ColumnName="CMP_IDENTIFIER" />
+                <ScalarProperty Name="CampaignName" ColumnName="CMP_NAME" />
+                <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTypes">
+            <EntityTypeMapping TypeName="AdvantageAPI.JobType">
+              <MappingFragment StoreEntitySet="JobType">
+                <ScalarProperty Name="Code" ColumnName="JT_CODE" />
+                <ScalarProperty Name="Description" ColumnName="JT_DESC" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+                <ScalarProperty Name="SalesClassCode" ColumnName="SC_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markets">
+            <EntityTypeMapping TypeName="AdvantageAPI.Market">
+              <MappingFragment StoreEntitySet="Market">
+                <ScalarProperty Name="Code" ColumnName="MARKET_CODE" />
+                <ScalarProperty Name="Description" ColumnName="MARKET_DESC" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaOrderViews">
+            <EntityTypeMapping TypeName="AdvantageAPI.MediaOrderView">
+              <MappingFragment StoreEntitySet="MediaOrderView">
+                <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OfficeCode" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostPeriods">
+            <EntityTypeMapping TypeName="AdvantageAPI.PostPeriod">
+              <MappingFragment StoreEntitySet="PostPeriod">
+                <ScalarProperty Name="Code" ColumnName="PPPERIOD" />
+                <ScalarProperty Name="ARStatus" ColumnName="PPARCURMTH" />
+                <ScalarProperty Name="Month" ColumnName="PPGLMONTH" />
+                <ScalarProperty Name="Year" ColumnName="PPGLYEAR" />
+                <ScalarProperty Name="GLStatus" ColumnName="PPGLCURMTH" />
+                <ScalarProperty Name="APStatus" ColumnName="PPAPCURMTH" />
+                <ScalarProperty Name="StartDate" ColumnName="PPSRTDATE" />
+                <ScalarProperty Name="EndDate" ColumnName="PPENDDATE" />
+                <ScalarProperty Name="Description" ColumnName="PPDESC" />
+                <ScalarProperty Name="UserCode" ColumnName="PPUSER" />
+                <ScalarProperty Name="EnteredDate" ColumnName="PPENTDATE" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="PPMODDATE" />
+                <ScalarProperty Name="ID" ColumnName="ROWID" />
+                <ScalarProperty Name="EmployeeTimeStatus" ColumnName="PPTECURMTH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AdvantageAPI.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ClientCode" ColumnName="CL_CODE" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DIV_CODE" />
+                <ScalarProperty Name="Code" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="Name" ColumnName="PRD_DESCRIPTION" />
+                <ScalarProperty Name="IsActive" ColumnName="ACTIVE_FLAG" />
+                <ScalarProperty Name="BillingAddress" ColumnName="PRD_BILL_ADDRESS1" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="PRD_BILL_ADDRESS2" />
+                <ScalarProperty Name="BillingCity" ColumnName="PRD_BILL_CITY" />
+                <ScalarProperty Name="BillingCounty" ColumnName="PRD_BILL_COUNTY" />
+                <ScalarProperty Name="BillingState" ColumnName="PRD_BILL_STATE" />
+                <ScalarProperty Name="BillingZip" ColumnName="PRD_BILL_ZIP" />
+                <ScalarProperty Name="BillingCountry" ColumnName="PRD_BILL_COUNTRY" />
+                <ScalarProperty Name="BillingPhone" ColumnName="PRD_BILL_TELEPHONE" />
+                <ScalarProperty Name="BillingPhoneExtension" ColumnName="PRD_BILL_EXTENTION" />
+                <ScalarProperty Name="BillingFax" ColumnName="PRD_BILL_FAX" />
+                <ScalarProperty Name="BillingFaxExtension" ColumnName="PRD_BILL_FAX_EXT" />
+                <ScalarProperty Name="StatementAddress" ColumnName="PRD_STATE_ADDR1" />
+                <ScalarProperty Name="StatementAddress2" ColumnName="PRD_STATE_ADDR2" />
+                <ScalarProperty Name="StatementCity" ColumnName="PRD_STATE_CITY" />
+                <ScalarProperty Name="StatementCounty" ColumnName="PRD_STATE_COUNTY" />
+                <ScalarProperty Name="StatementState" ColumnName="PRD_STATE_STATE" />
+                <ScalarProperty Name="StatementZip" ColumnName="PRD_STATE_ZIP" />
+                <ScalarProperty Name="StatementCountry" ColumnName="PRD_STATE_COUNTRY" />
+                <ScalarProperty Name="StatementPhone" ColumnName="PRD_STATE_TELEPHON" />
+                <ScalarProperty Name="StatementPhoneExtension" ColumnName="PRD_STATE_EXT" />
+                <ScalarProperty Name="StatementFax" ColumnName="PRD_STATE_FAX" />
+                <ScalarProperty Name="StatementFaxExtension" ColumnName="PRD_STATE_FAX_EXT" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OFFICE_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesClasses">
+            <EntityTypeMapping TypeName="AdvantageAPI.SalesClass">
+              <MappingFragment StoreEntitySet="SalesClass">
+                <ScalarProperty Name="Code" ColumnName="SC_CODE" />
+                <ScalarProperty Name="Description" ColumnName="SC_DESCRIPTION" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduleStatuses">
+            <EntityTypeMapping TypeName="AdvantageAPI.ScheduleStatus">
+              <MappingFragment StoreEntitySet="ScheduleStatus">
+                <ScalarProperty Name="Code" ColumnName="TRF_CODE" />
+                <ScalarProperty Name="Description" ColumnName="TRF_DESCRIPTION" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="AdvantageAPI.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Code" ColumnName="TRF_CODE" />
+                <ScalarProperty Name="Description" ColumnName="TRF_DESC" />
+                <ScalarProperty Name="IsInactive" ColumnName="TRF_INACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AdvantageAPI.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="SEC_USER_ID" />
+                <ScalarProperty Name="UserCode" ColumnName="USER_CODE" />
+                <ScalarProperty Name="UserName" ColumnName="USER_NAME" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="CheckForUserAccess" ColumnName="CHECK_USER_ACCESS" />
+                <ScalarProperty Name="Password" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSettings">
+            <EntityTypeMapping TypeName="AdvantageAPI.UserSetting">
+              <MappingFragment StoreEntitySet="UserSetting">
+                <ScalarProperty Name="UserID" ColumnName="SEC_USER_ID" />
+                <ScalarProperty Name="SettingCode" ColumnName="SETTING_CODE" />
+                <ScalarProperty Name="ID" ColumnName="SEC_USER_SETTING_ID" />
+                <ScalarProperty Name="StringValue" ColumnName="STRING_VALUE" />
+                <ScalarProperty Name="NumericValue" ColumnName="NUMERIC_VALUE" />
+                <ScalarProperty Name="DateValue" ColumnName="DATE_VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorContacts">
+            <EntityTypeMapping TypeName="AdvantageAPI.VendorContact">
+              <MappingFragment StoreEntitySet="VendorContact">
+                <ScalarProperty Name="VendorCode" ColumnName="VN_CODE" />
+                <ScalarProperty Name="Code" ColumnName="VC_CODE" />
+                <ScalarProperty Name="FirstName" ColumnName="VC_FNAME" />
+                <ScalarProperty Name="LastName" ColumnName="VC_LNAME" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="VC_MI" />
+                <ScalarProperty Name="Title" ColumnName="VC_TITLE" />
+                <ScalarProperty Name="Address1" ColumnName="VC_ADDRESS1" />
+                <ScalarProperty Name="Address2" ColumnName="VC_ADDRESS2" />
+                <ScalarProperty Name="City" ColumnName="VC_CITY" />
+                <ScalarProperty Name="County" ColumnName="VC_COUNTY" />
+                <ScalarProperty Name="State" ColumnName="VC_STATE" />
+                <ScalarProperty Name="Country" ColumnName="VC_COUNTRY" />
+                <ScalarProperty Name="Zip" ColumnName="VC_ZIP" />
+                <ScalarProperty Name="Phone" ColumnName="VC_TELEPHONE" />
+                <ScalarProperty Name="PhoneExt" ColumnName="VC_EXTENTION" />
+                <ScalarProperty Name="Fax" ColumnName="VC_FAX" />
+                <ScalarProperty Name="FaxExt" ColumnName="VC_FAX_EXTENTION" />
+                <ScalarProperty Name="Email" ColumnName="EMAIL_ADDRESS" />
+                <ScalarProperty Name="IsInactive" ColumnName="VC_INACTIVE_FLAG" />
+                <ScalarProperty Name="Cell" ColumnName="VC_PHONE_CELL" />
+                <ScalarProperty Name="ContactTypeID" ColumnName="CONTACT_TYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorRepresentatives">
+            <EntityTypeMapping TypeName="AdvantageAPI.VendorRepresentative">
+              <MappingFragment StoreEntitySet="VendorRepresentative">
+                <ScalarProperty Name="VendorCode" ColumnName="VN_CODE" />
+                <ScalarProperty Name="Code" ColumnName="VR_CODE" />
+                <ScalarProperty Name="FirstName" ColumnName="VR_FNAME" />
+                <ScalarProperty Name="LastName" ColumnName="VR_LNAME" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="VR_MI" />
+                <ScalarProperty Name="FirmName" ColumnName="VR_FIRM_NAME" />
+                <ScalarProperty Name="Address1" ColumnName="VR_ADDRESS1" />
+                <ScalarProperty Name="Address2" ColumnName="VR_ADDRESS2" />
+                <ScalarProperty Name="City" ColumnName="VR_CITY" />
+                <ScalarProperty Name="County" ColumnName="VR_COUNTY" />
+                <ScalarProperty Name="State" ColumnName="VR_STATE" />
+                <ScalarProperty Name="Country" ColumnName="VR_COUNTRY" />
+                <ScalarProperty Name="Zip" ColumnName="VR_ZIP" />
+                <ScalarProperty Name="Telephone" ColumnName="VR_TELEPHONE" />
+                <ScalarProperty Name="TelephoneExtension" ColumnName="VR_EXTENTION" />
+                <ScalarProperty Name="Fax" ColumnName="VR_FAX" />
+                <ScalarProperty Name="FaxExtension" ColumnName="VR_FAX_EXTENTION" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EMAIL_ADDRESS" />
+                <ScalarProperty Name="IsInactive" ColumnName="VR_INACTIVE_FLAG" />
+                <ScalarProperty Name="CellPhone" ColumnName="VR_PHONE_CELL" />
+                <ScalarProperty Name="ContactTypeID" ColumnName="CONTACT_TYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="AdvantageAPI.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="Code" ColumnName="VN_CODE" />
+                <ScalarProperty Name="Name" ColumnName="VN_NAME" />
+                <ScalarProperty Name="StreetAddressLine1" ColumnName="VN_ADDRESS1" />
+                <ScalarProperty Name="StreetAddressLine2" ColumnName="VN_ADDRESS2" />
+                <ScalarProperty Name="StreetAddressLine3" ColumnName="VN_ADDRESS3" />
+                <ScalarProperty Name="City" ColumnName="VN_CITY" />
+                <ScalarProperty Name="County" ColumnName="VN_COUNTY" />
+                <ScalarProperty Name="State" ColumnName="VN_STATE" />
+                <ScalarProperty Name="Country" ColumnName="VN_COUNTRY" />
+                <ScalarProperty Name="ZipCode" ColumnName="VN_ZIP" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="VN_PHONE" />
+                <ScalarProperty Name="PhoneNumberExtension" ColumnName="VN_PHONE_EXT" />
+                <ScalarProperty Name="FaxPhoneNumber" ColumnName="VN_FAX_NUMBER" />
+                <ScalarProperty Name="FaxPhoneNumberExtension" ColumnName="VN_FAX_EXTENTION" />
+                <ScalarProperty Name="PayToCode" ColumnName="VN_PAY_TO_CODE" />
+                <ScalarProperty Name="PayToName" ColumnName="VN_PAY_TO_NAME" />
+                <ScalarProperty Name="PayToAddressLine1" ColumnName="VN_PAY_TO_ADDRESS1" />
+                <ScalarProperty Name="PayToAddressLine2" ColumnName="VN_PAY_TO_ADDRESS2" />
+                <ScalarProperty Name="PayToStreetAddressLine3" ColumnName="VN_PAY_TO_ADDRESS3" />
+                <ScalarProperty Name="PayToCity" ColumnName="VN_PAY_TO_CITY" />
+                <ScalarProperty Name="PayToCounty" ColumnName="VN_PAY_TO_COUNTY" />
+                <ScalarProperty Name="PayToState" ColumnName="VN_PAY_TO_STATE" />
+                <ScalarProperty Name="PayToCountry" ColumnName="VN_PAY_TO_COUNTRY" />
+                <ScalarProperty Name="PayToZipCode" ColumnName="VN_PAY_TO_ZIP" />
+                <ScalarProperty Name="PayToPhoneNumber" ColumnName="VN_PAY_TO_PHONE" />
+                <ScalarProperty Name="PayToPhoneNumberExtension" ColumnName="VN_PAY_TO_EXT" />
+                <ScalarProperty Name="PayToFaxPhoneNumber" ColumnName="VN_PAY_TO_FAX_NBR" />
+                <ScalarProperty Name="PayToFaxPhoneNumberExtension" ColumnName="VN_PAY_TO_FAX_EXT" />
+                <ScalarProperty Name="TaxID" ColumnName="VN_TAX_ID" />
+                <ScalarProperty Name="AccountNumber" ColumnName="VN_ACCT_NBR" />
+                <ScalarProperty Name="EmailAddress" ColumnName="VN_EMAIL" />
+                <ScalarProperty Name="PaymentManagerEmailAddress" ColumnName="PYMT_MGR_EMAIL" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="VN_ACTIVE_FLAG" />
+                <ScalarProperty Name="DefaultVendorContactCode" ColumnName="DEF_VN_CONT" />
+                <ScalarProperty Name="DefaultVendorRepresentativeCode1" ColumnName="DEF_VN_REP1" />
+                <ScalarProperty Name="DefaultVendorRepresentativeCode2" ColumnName="DEF_VN_REP2" />
+                <ScalarProperty Name="Website" ColumnName="WEB_ADDR" />
+                <ScalarProperty Name="VCCStatus" ColumnName="VCC_STATUS" />
+                <ScalarProperty Name="BankCode" ColumnName="BK_CODE" />
+                <ScalarProperty Name="VendorCategory" ColumnName="VN_CATEGORY" />
+                <ScalarProperty Name="VendorTermCode" ColumnName="VT_CODE" />
+                <ScalarProperty Name="HasSpecialTerms" ColumnName="HAS_SPECIAL_TERMS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorTerms">
+            <EntityTypeMapping TypeName="AdvantageAPI.VendorTerm">
+              <MappingFragment StoreEntitySet="VendorTerm">
+                <ScalarProperty Name="Code" ColumnName="VT_CODE" />
+                <ScalarProperty Name="Description" ColumnName="VT_DESCRIPTION" />
+                <ScalarProperty Name="IsInactive" ColumnName="INACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+    <StorageModels>
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountExecutive">
+          <Key>
+            <PropertyRef Name="CL_CODE" />
+            <PropertyRef Name="DIV_CODE" />
+            <PropertyRef Name="PRD_CODE" />
+            <PropertyRef Name="EMP_CODE" />
+          </Key>
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PRD_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="EMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="DEFAULT_AE" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="AdNumber">
+          <Key>
+            <PropertyRef Name="AD_NBR" />
+          </Key>
+          <Property Name="AD_NBR" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="AD_NBR_DESC" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="CL_CODE" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="ACTIVE" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="AdSize">
+          <Key>
+            <PropertyRef Name="MEDIA_TYPE" />
+            <PropertyRef Name="SIZE_CODE" />
+          </Key>
+          <Property Name="MEDIA_TYPE" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="SIZE_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="SIZE_DESC" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="AlertGroup">
+          <Key>
+            <PropertyRef Name="EMAIL_GR_CODE" />
+            <PropertyRef Name="EMP_CODE" />
+          </Key>
+          <Property Name="EMAIL_GR_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="PRIMARY_EMP" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BK_CODE" />
+          </Key>
+          <Property Name="BK_CODE" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="BK_DESCRIPTION" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="BillingCoop">
+          <Key>
+            <PropertyRef Name="BILL_COOP_CODE" />
+          </Key>
+          <Property Name="BILL_COOP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="BILL_COOP_DESC" Type="varchar" MaxLength="30" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CMP_IDENTIFIER" />
+          </Key>
+          <Property Name="CMP_IDENTIFIER" Type="int" Nullable="false" />
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="PRD_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="CMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CMP_NAME" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="CMP_CLOSED" Type="smallint" Nullable="true" />
+          <Property Name="ACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="ClientDiscount">
+          <Key>
+            <PropertyRef Name="CLIENT_DISCOUNT_CODE" />
+          </Key>
+          <Property Name="CLIENT_DISCOUNT_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PERCENT" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="IS_INACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="CL_CODE" />
+          </Key>
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CL_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_ADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_ADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_CITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="CL_COUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="CL_STATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="CL_COUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="CL_ZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="ACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="CL_BADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_BADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_BCITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="CL_BCOUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="CL_BSTATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="CL_BZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="CL_BCOUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="CL_SADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_SADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_SCITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="CL_SCOUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="CL_SSTATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="CL_SZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="CL_SCOUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="REQ_TIME_COMMENT" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="CONTACT_TYPE_ID" />
+          </Key>
+          <Property Name="CONTACT_TYPE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartmentTeam">
+          <Key>
+            <PropertyRef Name="DP_TM_CODE" />
+          </Key>
+          <Property Name="DP_TM_CODE" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="DP_TM_DESC" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="CL_CODE" />
+            <PropertyRef Name="DIV_CODE" />
+          </Key>
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DIV_SADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DIV_SADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DIV_SCITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="DIV_SCOUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="DIV_SSTATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="DIV_SCOUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="DIV_SZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="ACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="DIV_BADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DIV_BADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DIV_BCITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="DIV_BCOUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="DIV_BSTATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="DIV_BZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="DIV_BCOUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+        </EntityType>
+        <EntityType Name="EmployeeDepartmentTeam">
+          <Key>
+            <PropertyRef Name="EMP_CODE" />
+            <PropertyRef Name="DP_TM_CODE" />
+          </Key>
+          <Property Name="EMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DP_TM_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DP_TM_DESC" Type="varchar" MaxLength="30" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EMP_CODE" />
+          </Key>
+          <Property Name="EMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DP_TM_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="EMP_LNAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="EMP_FNAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="EMP_MI" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="IS_ACTIVE_FREELANCE" Type="bit" Nullable="false" />
+          <Property Name="IS_API_USER" Type="varchar(max)" Nullable="true" />
+          <Property Name="EMP_TERM_DATE" Type="datetime" Nullable="true" />
+          <Property Name="EMP_EMAIL" Type="varchar" MaxLength="50" Nullable="true" />
+          <Property Name="DEF_FNC_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+        </EntityType>
+        <EntityType Name="FiscalPeriod">
+          <Key>
+            <PropertyRef Name="FISCAL_PERIOD_CODE" />
+          </Key>
+          <Property Name="FISCAL_PERIOD_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="FISCAL_PERIOD_DESC" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="FNC_CODE" />
+          </Key>
+          <Property Name="FNC_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="FNC_DESCRIPTION" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="FNC_TYPE" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DP_TM_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="FNC_INACTIVE" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="IndirectCategory">
+          <Key>
+            <PropertyRef Name="CATEGORY" />
+          </Key>
+          <Property Name="CATEGORY" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="InternetOrderDetailComment">
+          <Key>
+            <PropertyRef Name="ORDER_NBR" />
+            <PropertyRef Name="LINE_NBR" />
+          </Key>
+          <Property Name="ORDER_NBR" Type="int" Nullable="false" />
+          <Property Name="LINE_NBR" Type="smallint" Nullable="false" />
+          <Property Name="INSTRUCTIONS" Type="varchar" MaxLength="8000" Nullable="true" />
+          <Property Name="MISC_INFO" Type="varchar" MaxLength="8000" Nullable="true" />
+          <Property Name="ORDER_COPY" Type="varchar" MaxLength="8000" Nullable="true" />
+          <Property Name="MATL_NOTES" Type="varchar" MaxLength="8000" Nullable="true" />
+        </EntityType>
+        <EntityType Name="InternetOrderDetail">
+          <Key>
+            <PropertyRef Name="ORDER_NBR" />
+            <PropertyRef Name="LINE_NBR" />
+            <PropertyRef Name="REV_NBR" />
+            <PropertyRef Name="SEQ_NBR" />
+          </Key>
+          <Property Name="ORDER_NBR" Type="int" Nullable="false" />
+          <Property Name="LINE_NBR" Type="smallint" Nullable="false" />
+          <Property Name="REV_NBR" Type="smallint" Nullable="false" />
+          <Property Name="SEQ_NBR" Type="smallint" Nullable="false" />
+          <Property Name="ACTIVE_REV" Type="smallint" Nullable="true" />
+          <Property Name="LINK_DETID" Type="int" Nullable="true" />
+          <Property Name="START_DATE" Type="datetime" Nullable="true" />
+          <Property Name="END_DATE" Type="datetime" Nullable="true" />
+          <Property Name="CLOSE_DATE" Type="datetime" Nullable="true" />
+          <Property Name="MATL_CLOSE_DATE" Type="datetime" Nullable="true" />
+          <Property Name="EXT_CLOSE_DATE" Type="datetime" Nullable="true" />
+          <Property Name="EXT_MATL_DATE" Type="datetime" Nullable="true" />
+          <Property Name="HEADLINE" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="INTERNET_TYPE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="SIZE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="PROJ_IMPRESSIONS" Type="int" Nullable="true" />
+          <Property Name="GUARANTEED_IMPRESS" Type="int" Nullable="true" />
+          <Property Name="URL" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="TARGET_AUDIENCE" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="COPY_AREA" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="JOB_NUMBER" Type="int" Nullable="true" />
+          <Property Name="JOB_COMPONENT_NBR" Type="smallint" Nullable="true" />
+          <Property Name="QUANTITY" Type="int" Nullable="true" />
+          <Property Name="RATE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="NET_RATE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="GROSS_RATE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="EXT_NET_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="EXT_GROSS_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="COMM_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="REBATE_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="DISCOUNT_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="DISCOUNT_DESC" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="STATE_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="COUNTY_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="CITY_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="NON_RESALE_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="NETCHARGE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="NCDESC" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="ADDL_CHARGE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="ADDL_CHARGE_DESC" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="LINE_TOTAL" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="LINE_CANCELLED" Type="smallint" Nullable="true" />
+          <Property Name="DATE_TO_BILL" Type="datetime" Nullable="true" />
+          <Property Name="BILLING_USER" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="AR_INV_NBR" Type="int" Nullable="true" />
+          <Property Name="AR_TYPE" Type="varchar" MaxLength="2" Nullable="true" />
+          <Property Name="AR_INV_SEQ" Type="smallint" Nullable="true" />
+          <Property Name="GLEXACT" Type="int" Nullable="true" />
+          <Property Name="GLESEQ_SALES" Type="smallint" Nullable="true" />
+          <Property Name="GLESEQ_COS" Type="smallint" Nullable="true" />
+          <Property Name="GLESEQ_WIP" Type="smallint" Nullable="true" />
+          <Property Name="GLESEQ_STATE" Type="smallint" Nullable="true" />
+          <Property Name="GLESEQ_COUNTY" Type="smallint" Nullable="true" />
+          <Property Name="GLESEQ_CITY" Type="smallint" Nullable="true" />
+          <Property Name="GLEXACT_DEF" Type="int" Nullable="true" />
+          <Property Name="GLACODE_SALES" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="GLACODE_COS" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="GLACODE_WIP" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="GLACODE_STATE" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="GLACODE_COUNTY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="GLACODE_CITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="NON_BILL_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="MODIFIED_BY" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="MODIFIED_DATE" Type="datetime" Nullable="true" />
+          <Property Name="MODIFIED_COMMENTS" Type="varchar" MaxLength="254" Nullable="true" />
+          <Property Name="BILL_TYPE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="CREATIVE_SIZE" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="PLACEMENT_1" Type="varchar" MaxLength="160" Nullable="true" />
+          <Property Name="PLACEMENT_2" Type="varchar" MaxLength="160" Nullable="true" />
+          <Property Name="COMM_PCT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="MARKUP_PCT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="REBATE_PCT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="DISCOUNT_PCT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="TAX_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="TAX_CITY_PCT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="TAX_COUNTY_PCT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="TAX_STATE_PCT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="TAX_RESALE" Type="smallint" Nullable="true" />
+          <Property Name="TAXAPPLYC" Type="smallint" Nullable="true" />
+          <Property Name="TAXAPPLYLN" Type="smallint" Nullable="true" />
+          <Property Name="TAXAPPLYND" Type="smallint" Nullable="true" />
+          <Property Name="TAXAPPLYNC" Type="smallint" Nullable="true" />
+          <Property Name="TAXAPPLYR" Type="smallint" Nullable="true" />
+          <Property Name="TAXAPPLYAI" Type="smallint" Nullable="true" />
+          <Property Name="ACT_IMPRESSIONS" Type="int" Nullable="true" />
+          <Property Name="GLESEQ_SALES_DEF" Type="smallint" Nullable="true" />
+          <Property Name="GLESEQ_COS_DEF" Type="smallint" Nullable="true" />
+          <Property Name="GLACODE_SALES_DEF" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="GLACODE_COS_DEF" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="BILLING_AMT" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="COST_TYPE" Type="varchar" MaxLength="3" Nullable="true" />
+          <Property Name="COST_RATE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="NET_BASE_RATE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="GROSS_BASE_RATE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="BILL_CANCELLED" Type="smallint" Nullable="true" />
+          <Property Name="EST_NBR" Type="int" Nullable="true" />
+          <Property Name="EST_LINE_NBR" Type="smallint" Nullable="true" />
+          <Property Name="EST_REV_NBR" Type="smallint" Nullable="true" />
+          <Property Name="AD_NUMBER" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="MAT_COMP" Type="datetime" Nullable="true" />
+          <Property Name="AD_SERVER_PLACEMENT_ID" Type="bigint" Nullable="true" />
+          <Property Name="AD_SERVER_CREATED_BY" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="AD_SERVER_CREATED_DATETIME" Type="datetime" Nullable="true" />
+          <Property Name="AD_SERVER_LAST_MODIFIED_BY" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="AD_SERVER_LAST_MODIFIED_DATETIME" Type="datetime" Nullable="true" />
+          <Property Name="AD_SERVER_PLACEMENT_GROUP_ID" Type="bigint" Nullable="true" />
+          <Property Name="AD_SERVER_ID" Type="smallint" Nullable="true" />
+          <Property Name="MARKET_CODE" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="AD_SERVER_PLACEMENT_MANUAL" Type="bit" Nullable="true" />
+        </EntityType>
+        <EntityType Name="InternetOrder">
+          <Key>
+            <PropertyRef Name="ORDER_NBR" />
+          </Key>
+          <Property Name="ORDER_NBR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDER_DESC" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PRD_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="OFFICE_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="CMP_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="MEDIA_TYPE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="VN_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="VR_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VR_CODE2" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="CLIENT_PO" Type="varchar" MaxLength="25" Nullable="true" />
+          <Property Name="CLIENT_REF" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="STATUS" Type="varchar" MaxLength="3" Nullable="true" />
+          <Property Name="ORDER_DATE" Type="datetime" Nullable="true" />
+          <Property Name="BUYER" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="ORDER_COMMENT" Type="varchar(max)" Nullable="true" />
+          <Property Name="HOUSE_COMMENT" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="PUB" Type="smallint" Nullable="true" />
+          <Property Name="REP1" Type="smallint" Nullable="true" />
+          <Property Name="REP2" Type="smallint" Nullable="true" />
+          <Property Name="BILL_COOP_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="ORD_PROCESS_CONTRL" Type="smallint" Nullable="true" />
+          <Property Name="MARKET_CODE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="UNITS" Type="varchar" MaxLength="2" Nullable="true" />
+          <Property Name="NET_GROSS" Type="smallint" Nullable="true" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="true" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="CANCELLED" Type="smallint" Nullable="true" />
+          <Property Name="CANCELLED_BY" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="CANCELLED_DATE" Type="datetime" Nullable="true" />
+          <Property Name="MODIFIED_BY" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="MODIFIED_DATE" Type="datetime" Nullable="true" />
+          <Property Name="MODIFIED_COMMENTS" Type="nvarchar(max)" Nullable="true" />
+          <Property Name="REVISED_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="LINK_ID" Type="int" Nullable="true" />
+          <Property Name="RECONCILE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="CMP_IDENTIFIER" Type="int" Nullable="true" />
+          <Property Name="PRINTED" Type="smallint" Nullable="true" />
+          <Property Name="START_DATE" Type="datetime" Nullable="true" />
+          <Property Name="END_DATE" Type="datetime" Nullable="true" />
+          <Property Name="ORDER_ACCEPTED" Type="smallint" Nullable="true" />
+          <Property Name="FISCAL_PERIOD_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="LOCKED" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="LOCKED_BY" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="BCC_ID" Type="int" Nullable="true" />
+          <Property Name="BUYER_EMP_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+        </EntityType>
+        <EntityType Name="InternetType">
+          <Key>
+            <PropertyRef Name="OD_CODE" />
+          </Key>
+          <Property Name="OD_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="OD_DESC" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobComponent">
+          <Key>
+            <PropertyRef Name="ROWID" />
+          </Key>
+          <Property Name="ROWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JOB_COMPONENT_NBR" Type="smallint" Nullable="false" />
+          <Property Name="JOB_COMP_DESC" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CL_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DIV_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="PRD_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PRD_DESCRIPTION" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="JOB_NUMBER" Type="int" Nullable="false" />
+          <Property Name="JOB_DESC" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="OFFICE_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="OFFICE_NAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="COMP_OPEN" Type="int" Nullable="false" />
+          <Property Name="JOB_PROCESS_CONTRL" Type="smallint" Nullable="true" />
+          <Property Name="CMP_IDENTIFIER" Type="int" Nullable="true" />
+          <Property Name="CMP_NAME" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="JOB_COMP_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JOB_NUMBER" />
+          </Key>
+          <Property Name="JOB_NUMBER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CL_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DIV_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="PRD_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PRD_DESCRIPTION" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="JOB_DESC" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="OFFICE_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="OFFICE_NAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="COMP_OPEN" Type="int" Nullable="false" />
+          <Property Name="CMP_IDENTIFIER" Type="int" Nullable="true" />
+          <Property Name="CMP_NAME" Type="varchar" MaxLength="60" Nullable="true" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobType">
+          <Key>
+            <PropertyRef Name="JT_CODE" />
+          </Key>
+          <Property Name="JT_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="JT_DESC" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="SC_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Market">
+          <Key>
+            <PropertyRef Name="MARKET_CODE" />
+          </Key>
+          <Property Name="MARKET_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MARKET_DESC" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="MediaOrderView">
+          <Key>
+            <PropertyRef Name="MediaType" />
+            <PropertyRef Name="OrderNumber" />
+          </Key>
+          <Property Name="MediaType" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" Nullable="false" />
+          <Property Name="OrderDescription" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="OfficeCode" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="OfficeName" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="ClientCode" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="ClientName" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="DivisionCode" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="DivisionName" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VendorCode" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="VendorName" Type="varchar" MaxLength="40" Nullable="true" />
+        </EntityType>
+        <EntityType Name="PostPeriod">
+          <Key>
+            <PropertyRef Name="PPPERIOD" />
+          </Key>
+          <Property Name="PPPERIOD" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PPARCURMTH" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="PPGLMONTH" Type="smallint" Nullable="true" />
+          <Property Name="PPGLYEAR" Type="varchar" MaxLength="5" Nullable="true" />
+          <Property Name="PPGLCURMTH" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="PPAPCURMTH" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="PPSRTDATE" Type="datetime" Nullable="true" />
+          <Property Name="PPENDDATE" Type="datetime" Nullable="true" />
+          <Property Name="PPDESC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PPUSER" Type="varchar" MaxLength="100" Nullable="true" />
+          <Property Name="PPENTDATE" Type="datetime" Nullable="true" />
+          <Property Name="PPMODDATE" Type="datetime" Nullable="true" />
+          <Property Name="ROWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PPTECURMTH" Type="varchar" MaxLength="1" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="CL_CODE" />
+            <PropertyRef Name="DIV_CODE" />
+            <PropertyRef Name="PRD_CODE" />
+          </Key>
+          <Property Name="CL_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="DIV_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PRD_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="PRD_DESCRIPTION" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="ACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="PRD_BILL_ADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="PRD_BILL_ADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="PRD_BILL_CITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="PRD_BILL_COUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="PRD_BILL_STATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="PRD_BILL_ZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="PRD_BILL_COUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="PRD_BILL_TELEPHONE" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="PRD_BILL_EXTENTION" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="PRD_BILL_FAX" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="PRD_BILL_FAX_EXT" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="PRD_STATE_ADDR1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="PRD_STATE_ADDR2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="PRD_STATE_CITY" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="PRD_STATE_COUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="PRD_STATE_STATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="PRD_STATE_ZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="PRD_STATE_COUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="PRD_STATE_TELEPHON" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="PRD_STATE_EXT" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="PRD_STATE_FAX" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="PRD_STATE_FAX_EXT" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="OFFICE_CODE" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesClass">
+          <Key>
+            <PropertyRef Name="SC_CODE" />
+          </Key>
+          <Property Name="SC_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="SC_DESCRIPTION" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="ScheduleStatus">
+          <Key>
+            <PropertyRef Name="TRF_CODE" />
+          </Key>
+          <Property Name="TRF_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TRF_DESCRIPTION" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TRF_CODE" />
+          </Key>
+          <Property Name="TRF_CODE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TRF_DESC" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="TRF_INACTIVE" Type="smallint" Nullable="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="SEC_USER_ID" />
+          </Key>
+          <Property Name="SEC_USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_CODE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="EMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="CHECK_USER_ACCESS" Type="bit" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSetting">
+          <Key>
+            <PropertyRef Name="SEC_USER_ID" />
+            <PropertyRef Name="SETTING_CODE" />
+          </Key>
+          <Property Name="SEC_USER_ID" Type="int" Nullable="false" />
+          <Property Name="SETTING_CODE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SEC_USER_SETTING_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STRING_VALUE" Type="varchar" MaxLength="8000" Nullable="true" />
+          <Property Name="NUMERIC_VALUE" Type="decimal" Precision="18" Scale="2" Nullable="true" />
+          <Property Name="DATE_VALUE" Type="datetime" Nullable="true" />
+        </EntityType>
+        <EntityType Name="VendorContact">
+          <Key>
+            <PropertyRef Name="VN_CODE" />
+            <PropertyRef Name="VC_CODE" />
+          </Key>
+          <Property Name="VN_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="VC_CODE" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="VC_FNAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="VC_LNAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="VC_MI" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="VC_TITLE" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VC_ADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VC_ADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VC_CITY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VC_COUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VC_STATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VC_COUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VC_ZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VC_TELEPHONE" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VC_EXTENTION" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VC_FAX" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VC_FAX_EXTENTION" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="EMAIL_ADDRESS" Type="varchar" MaxLength="50" Nullable="true" />
+          <Property Name="VC_INACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="VC_PHONE_CELL" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="CONTACT_TYPE_ID" Type="int" Nullable="true" />
+        </EntityType>
+        <EntityType Name="VendorRepresentative">
+          <Key>
+            <PropertyRef Name="VN_CODE" />
+            <PropertyRef Name="VR_CODE" />
+          </Key>
+          <Property Name="VN_CODE" Type="varchar" customannotation:Index="{ Name: IX_VN_CODE, Order: 0 }" MaxLength="6" Nullable="false" />
+          <Property Name="VR_CODE" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="VR_FNAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="VR_LNAME" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="VR_MI" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="VR_FIRM_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VR_ADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VR_ADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VR_CITY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VR_COUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VR_STATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VR_COUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VR_ZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VR_TELEPHONE" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VR_EXTENTION" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VR_FAX" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VR_FAX_EXTENTION" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="EMAIL_ADDRESS" Type="varchar" MaxLength="50" Nullable="true" />
+          <Property Name="VR_INACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="VR_PHONE_CELL" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="CONTACT_TYPE_ID" Type="int" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VN_CODE" />
+          </Key>
+          <Property Name="VN_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="VN_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VN_ADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VN_ADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VN_ADDRESS3" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="VN_CITY" Type="varchar" MaxLength="25" Nullable="true" />
+          <Property Name="VN_COUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VN_STATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VN_COUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VN_ZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VN_PHONE" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VN_PHONE_EXT" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VN_FAX_NUMBER" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VN_FAX_EXTENTION" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VN_PAY_TO_CODE" Type="varchar" MaxLength="6" Nullable="true" />
+          <Property Name="VN_PAY_TO_NAME" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VN_PAY_TO_ADDRESS1" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VN_PAY_TO_ADDRESS2" Type="varchar" MaxLength="40" Nullable="true" />
+          <Property Name="VN_PAY_TO_ADDRESS3" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="VN_PAY_TO_CITY" Type="varchar" MaxLength="25" Nullable="true" />
+          <Property Name="VN_PAY_TO_COUNTY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VN_PAY_TO_STATE" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VN_PAY_TO_COUNTRY" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VN_PAY_TO_ZIP" Type="varchar" MaxLength="10" Nullable="true" />
+          <Property Name="VN_PAY_TO_PHONE" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VN_PAY_TO_EXT" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VN_PAY_TO_FAX_NBR" Type="varchar" MaxLength="13" Nullable="true" />
+          <Property Name="VN_PAY_TO_FAX_EXT" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VN_TAX_ID" Type="varchar" MaxLength="20" Nullable="true" />
+          <Property Name="VN_ACCT_NBR" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="VN_EMAIL" Type="varchar" MaxLength="50" Nullable="true" />
+          <Property Name="PYMT_MGR_EMAIL" Type="varchar" MaxLength="50" Nullable="true" />
+          <Property Name="VN_ACTIVE_FLAG" Type="smallint" Nullable="true" />
+          <Property Name="DEF_VN_CONT" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="DEF_VN_REP1" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="DEF_VN_REP2" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="WEB_ADDR" Type="varchar" MaxLength="250" Nullable="true" />
+          <Property Name="VCC_STATUS" Type="smallint" Nullable="true" />
+          <Property Name="BK_CODE" Type="varchar" MaxLength="4" Nullable="true" />
+          <Property Name="VN_CATEGORY" Type="varchar" MaxLength="1" Nullable="true" />
+          <Property Name="VT_CODE" Type="varchar" MaxLength="3" Nullable="true" />
+          <Property Name="HAS_SPECIAL_TERMS" Type="bit" Nullable="true" />
+        </EntityType>
+        <EntityType Name="VendorTerm">
+          <Key>
+            <PropertyRef Name="VT_CODE" />
+          </Key>
+          <Property Name="VT_CODE" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="VT_DESCRIPTION" Type="varchar" MaxLength="30" Nullable="true" />
+          <Property Name="INACTIVE_FLAG" Type="smallint" Nullable="true" />
+        </EntityType>
+        <Association Name="VendorRepresentative_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VendorRepresentative" Type="Self.VendorRepresentative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VN_CODE" />
+            </Principal>
+            <Dependent Role="VendorRepresentative">
+              <PropertyRef Name="VN_CODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CodeFirstDatabase">
+          <EntitySet Name="AccountExecutive" EntityType="Self.AccountExecutive" Schema="dbo" Table="ACCOUNT_EXECUTIVE" />
+          <EntitySet Name="AdNumber" EntityType="Self.AdNumber" Schema="dbo" Table="AD_NUMBER" />
+          <EntitySet Name="AdSize" EntityType="Self.AdSize" Schema="dbo" Table="AD_SIZE" />
+          <EntitySet Name="AlertGroup" EntityType="Self.AlertGroup" Schema="dbo" Table="EMAIL_GROUP" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" Table="BANK" />
+          <EntitySet Name="BillingCoop" EntityType="Self.BillingCoop" Schema="dbo" Table="BILLING_COOP" />
+          <EntitySet Name="Campaign" EntityType="Self.Campaign" Schema="dbo" Table="CAMPAIGN" />
+          <EntitySet Name="ClientDiscount" EntityType="Self.ClientDiscount" Schema="dbo" Table="CLIENT_DISCOUNT" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" Table="CLIENT" />
+          <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" Table="CONTACT_TYPE" />
+          <EntitySet Name="DepartmentTeam" EntityType="Self.DepartmentTeam" Schema="dbo" Table="DEPT_TEAM" />
+          <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" Table="DIVISION" />
+          <EntitySet Name="EmployeeDepartmentTeam" EntityType="Self.EmployeeDepartmentTeam" Schema="dbo" Table="EMP_DP_TM" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" Table="EMPLOYEE" />
+          <EntitySet Name="FiscalPeriod" EntityType="Self.FiscalPeriod" Schema="dbo" Table="FISCAL_PERIOD" />
+          <EntitySet Name="Function" EntityType="Self.Function" Schema="dbo" Table="FUNCTIONS" />
+          <EntitySet Name="IndirectCategory" EntityType="Self.IndirectCategory" Schema="dbo" Table="TIME_CATEGORY" />
+          <EntitySet Name="InternetOrderDetailComment" EntityType="Self.InternetOrderDetailComment" Schema="dbo" Table="INTERNET_COMMENTS" />
+          <EntitySet Name="InternetOrderDetail" EntityType="Self.InternetOrderDetail" Schema="dbo" Table="INTERNET_DETAIL" />
+          <EntitySet Name="InternetOrder" EntityType="Self.InternetOrder" Schema="dbo" Table="INTERNET_HEADER" />
+          <EntitySet Name="InternetType" EntityType="Self.InternetType" Schema="dbo" Table="INTERNET_TYPE" />
+          <EntitySet Name="JobComponent" EntityType="Self.JobComponent" Schema="dbo" Table="V_JOB_COMPONENT_API" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" Table="V_JOB_LOG_API" />
+          <EntitySet Name="JobType" EntityType="Self.JobType" Schema="dbo" Table="JOB_TYPE" />
+          <EntitySet Name="Market" EntityType="Self.Market" Schema="dbo" Table="MARKET" />
+          <EntitySet Name="MediaOrderView" EntityType="Self.MediaOrderView" Schema="dbo" Table="V_ORDER" />
+          <EntitySet Name="PostPeriod" EntityType="Self.PostPeriod" Schema="dbo" Table="POSTPERIOD" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" Table="PRODUCT" />
+          <EntitySet Name="SalesClass" EntityType="Self.SalesClass" Schema="dbo" Table="SALES_CLASS" />
+          <EntitySet Name="ScheduleStatus" EntityType="Self.ScheduleStatus" Schema="dbo" Table="TRAFFIC" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" Table="TRAFFIC_FNC" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" Table="SEC_USER" />
+          <EntitySet Name="UserSetting" EntityType="Self.UserSetting" Schema="dbo" Table="SEC_USER_SETTING" />
+          <EntitySet Name="VendorContact" EntityType="Self.VendorContact" Schema="dbo" Table="VEN_CONT" />
+          <EntitySet Name="VendorRepresentative" EntityType="Self.VendorRepresentative" Schema="dbo" Table="VEN_REP" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" Table="VENDOR" />
+          <EntitySet Name="VendorTerm" EntityType="Self.VendorTerm" Schema="dbo" Table="VTERMS" />
+          <AssociationSet Name="VendorRepresentative_Vendor" Association="Self.VendorRepresentative_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="VendorRepresentative" EntitySet="VendorRepresentative" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="abe42f0fb0d5430d9f712fa323e79cc1" Name="Diagram1">
+        <EntityTypeShape EntityType="AdvantageAPI.AccountExecutive" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.AdNumber" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.AdSize" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.AlertGroup" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Bank" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.BillingCoop" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Campaign" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.ClientDiscount" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Client" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.ContactType" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.DepartmentTeam" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Division" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.EmployeeDepartmentTeam" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Employee" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.FiscalPeriod" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Function" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.IndirectCategory" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.InternetOrderDetailComment" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.InternetOrderDetail" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.InternetOrder" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.InternetType" Width="1.5" PointX="13.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.JobComponent" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Job" Width="1.5" PointX="13.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.JobType" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Market" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.MediaOrderView" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.PostPeriod" Width="1.5" PointX="15.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Product" Width="1.5" PointX="4.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.SalesClass" Width="1.5" PointX="6.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.ScheduleStatus" Width="1.5" PointX="8.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Task" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.User" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.UserSetting" Width="1.5" PointX="17.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.VendorContact" Width="1.5" PointX="17.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.VendorRepresentative" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.Vendor" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdvantageAPI.VendorTerm" Width="1.5" PointX="17.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="AdvantageAPI.VendorRepresentative_Vendor" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>

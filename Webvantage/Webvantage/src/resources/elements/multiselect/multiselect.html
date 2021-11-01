@@ -1,0 +1,22 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+
+    <ak-multiselect 
+        ak-multiselect.ref="widget"
+        k-placeholder=" "
+        k-value.two-way="value"
+        k-data-text-field.bind="textField"
+        k-data-value-field.bind="valueField"
+        k-enable.bind="enabled"
+        k-auto-bind.bind="false"
+        k-data-source.bind="dataSource"
+        k-clear-button.bind="clearButton"
+        k-on-change.delegate="changed($event.detail)"
+        k-on-select.delegate="selected($event.detail)"
+        k-on-deselect.delegate="deselected($event.detail)"
+        k-on-data-bound.delegate="dataBound($event.detail)">
+         <slot></slot>
+    </ak-multiselect>
+
+</template>

@@ -1,0 +1,13 @@
+CREATE PROCEDURE [dbo].[advsp_hosted_tv_books_revisions_load]
+AS
+BEGIN
+
+	SELECT
+		[ID] = R.NIELSEN_TV_BOOK_REVISION_ID,
+		[OldNielsenTVBookID] = R.OLD_NIELSEN_TV_BOOK_ID,
+		[NewNielsenTVBookID] = R.NEW_NIELSEN_TV_BOOK_ID
+	FROM 
+		NIELSENDATASTORE.dbo.NIELSEN_TV_BOOK_REVISION R
+
+END
+GO

@@ -1,0 +1,100 @@
+@import '../../../../theme/colors';
+@import '../../../../theme/mixins/breakpoints';
+@import '../../../../theme/mixins/font';
+
+$outer-padding: 2px;
+
+.page-preview,
+.page-preview-horizontal,
+.page-preview-vertical {
+  width: 45px;
+  height: calc(100% - #{$outer-padding});
+  overflow: hidden;
+  background: transparent;
+  margin: -5px 5px 5px -5px;
+
+  .k-button-group {
+    display: grid;
+  }
+
+  .k-button {
+    border: none;
+
+    &-icon {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  &-button {
+    position: relative;
+  }
+
+  .k-button {
+    padding: 4px;
+    background: none;
+    &-icontext .k-image {
+     margin: 0;
+    }
+
+    &-group .k-button.k-state-active,
+    &-group .k-button:active,{
+      border: none;
+      box-shadow: none;
+      background-image: none;
+      background-color: $very-light-grey;
+      width: 45px;
+      height: 55px;
+    }
+
+    &-group .k-button {
+      border-radius: 3px;
+    }
+  }
+
+  &-number {
+    @include font-base(14px, 600, 17px);
+    position: absolute;
+    text-align: center;
+    color: $black-light;
+    width: 20px;
+    height: 20px;
+    background: $white;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    border-radius: 3px;
+    top: 50%;
+  }
+
+  .ng-scrollbar-wrapper>scrollbar-y.scrollbar-control>.ng-scrollbar-track {
+    height: 100%!important;
+  }
+
+  .ng-scrollbar-wrapper>scrollbar-y.scrollbar-control {
+    width: 1px!important;
+  }
+
+  .ng-scroll-content {
+    display: block!important;
+  }
+}
+
+.page-preview-horizontal {
+  margin: 0;
+  height: calc(100% - #{$outer-padding});
+}
+
+.page-preview-vertical {
+  margin: 0;
+  padding: 5px 0 0 5px;
+  height: calc(100% - #{$outer-padding});
+}
+
+.scrollbar-page-preview {
+  --scrollbar-size: 1px !important;
+  --scrollbar-thumb-color: transparent !important;
+  --scrollbar-hover-size: 1px !important;
+  --scrollbar-track-color: transparent !important;
+  --scrollbar-border-radius: 0 !important;
+  height: 100% !important;
+}

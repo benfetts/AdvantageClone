@@ -1,0 +1,80 @@
+CREATE PROCEDURE [dbo].[advsp_clientinvoice_batch_report] @user_code varchar(100), @from_date smalldatetime, @to_date smalldatetime, @is_batch int
+
+AS
+
+BEGIN
+
+	SELECT
+			ClientCode = A.CL_CODE,
+			ClientName = C.CL_NAME,
+			DivisionCode = A.DIV_CODE,
+			DivisionName = D.DIV_NAME,
+			ProductCode = A.PRD_CODE,
+			ProductName = P.PRD_DESCRIPTION,
+			OfficeCode = A.OFFICE_CODE,
+			OfficeName = O.OFFICE_NAME,
+			GLACodeAR = A.GLACODE_AR,
+			GLACodeARDescription = GAR.GLADESC,
+			GLACodeSales = A.GLACODE_SALES,
+			GLACodeSalesDescription = GSALES.GLADESC,
+			GLACodeCOS = A.GLACODE_COS,
+			GLACodeCOSDescription = GCOS.GLADESC,
+			GLACodeOffset = A.GLACODE_OFFSET,
+			GLACodeOffsetDescription = GOFFSET.GLADESC,
+			GLACodeState = A.GLACODE_STATE,
+			GLACodeStateDescription = GSTATE.GLADESC,
+			GLACodeCounty = A.GLACODE_COUNTY,
+			GLACodeCountyDescription = GCOUNTY.GLADESC,
+			GLACodeCity = A.GLACODE_CITY,
+			GLACodeCityDescription = GCITY.GLADESC, 
+			InvoiceNumber = A.AR_INV_NBR,
+			[Description] = A.AR_DESCRIPTION,
+			PostPeriodCode = A.AR_POST_PERIOD,
+			GLTransaction = A.GLEXACT,
+			InvoiceDate = A.AR_INV_DATE,
+			InvoiceAmount = COALESCE(A.AR_INV_AMOUNT,0),
+			CostOfSalesAmount= COALESCE(A.AR_COS_AMT,0),
+			StateAmount = COALESCE(A.AR_STATE_AMT,0),
+			CountyAmount = COALESCE(A.AR_COUNTY_AMT,0),
+			CityAmount = COALESCE(A.AR_CITY_AMT,0),
+			SalesAmount = CASE WHEN A.AR_SALE_AMT IS NULL THEN
+								    COALESCE(A.AR_INV_AMOUNT,0) - (COALESCE(A.AR_STATE_AMT,0) + COALESCE(A.AR_COUNTY_AMT,0) + COALESCE(A.AR_CITY_AMT,0))
+						  ELSE A.AR_SALE_AMT
+						  END,
+			GrossProfit = CASE WHEN A.AR_SALE_AMT IS NULL THEN
+								    COALESCE(A.AR_INV_AMOUNT,0) - (COALESCE(A.AR_STATE_AMT,0) + COALESCE(A.AR_COUNTY_AMT,0) + COALESCE(A.AR_CITY_AMT,0))
+						  ELSE A.AR_SALE_AMT
+						  END - COALESCE(A.AR_COS_AMT,0)
+			
+		FROM ACCT_REC A
+			INNER JOIN [dbo].CLIENT C ON A.CL_CODE = C.CL_CODE 
+			LEFT OUTER JOIN [dbo].DIVISION D ON A.CL_CODE = D.CL_CODE AND A.DIV_CODE = D.DIV_CODE 
+			LEFT OUTER JOIN [dbo].PRODUCT P ON A.CL_CODE = P.CL_CODE AND A.DIV_CODE = P.DIV_CODE AND A.PRD_CODE = P.PRD_CODE 
+			LEFT OUTER JOIN [dbo].OFFICE O ON A.OFFICE_CODE = O.OFFICE_CODE 
+			LEFT OUTER JOIN [dbo].GLACCOUNT GAR ON A.GLACODE_AR = GAR.GLACODE 
+			LEFT OUTER JOIN [dbo].GLACCOUNT GSALES ON A.GLACODE_SALES = GSALES.GLACODE 
+			LEFT OUTER JOIN [dbo].GLACCOUNT GCOS ON A.GLACODE_COS = GCOS.GLACODE 
+			LEFT OUTER JOIN [dbo].GLACCOUNT GOFFSET ON A.GLACODE_OFFSET = GOFFSET.GLACODE 
+			LEFT OUTER JOIN [dbo].GLACCOUNT GSTATE ON A.GLACODE_STATE = GSTATE.GLACODE 
+			LEFT OUTER JOIN [dbo].GLACCOUNT GCOUNTY ON A.GLACODE_COUNTY = GCOUNTY.GLACODE 
+			LEFT OUTER JOIN [dbo].GLACCOUNT GCITY ON A.GLACODE_CITY = GCITY.GLACODE 
+		WHERE
+			A.GLEXACT IN
+				(SELECT
+						GLEHXACT
+				 FROM
+						[dbo].GLENTHDR
+				 WHERE 
+						UPPER(GLEHUSER) = UPPER(@user_code)
+				 AND	GLEHSOURCE = 'MI'
+				 AND	
+						((@is_batch = 0 AND GLEHENTDATE between @from_date and @to_date)
+						OR
+						(@is_batch = 1 AND BATCH_DATE = @from_date))
+				)
+		AND	A.MANUAL_INV = 1
+		AND (A.IMPORTED_INV IS NULL OR A.IMPORTED_INV = 0)
+		ORDER BY
+			A.GLEXACT 
+END
+GO

@@ -1,0 +1,51 @@
+﻿<template bindable="title">
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+
+    <div ref="element" class="wv-collapse ${isCollapsed && !isFullScreen ? 'collapsed' : ''}">
+        <div class="wv-collapse-title">
+            <a href="javascript:void(0)" click.delegate="toggleCollapse()">
+                <i if.bind="icon" class="${icon}"></i><span if.bind="!(allowEditTitle && isEditingTitle)" maxlength>${title}</span>
+            </a>
+            <input ref="titleInputEditor" class="k-textbox input-sm" type="text" value.bind="title" if.bind="allowEditTitle && isEditingTitle" maxlength="100" />
+            <!--<a href="javascript:void(0)" title="Save change" if.bind="allowEditTitle && isEditingTitle" click.delegate="onTitleChange(title)">
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+            </a>&nbsp;
+            <a href="javascript:void(0)" title="Cancel" if.bind="allowEditTitle && isEditingTitle" click.delegate="cancelTitleChange()">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+            </a>-->
+            <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle title="Menu options">
+                    <span class="glyphicon glyphicon-option-horizontal"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-left">
+                    <li class="dropdown-item">
+                        <a href="javascript:void(0)" click.delegate="toggleFullScreen()">Fullscreen</a>
+                    </li>
+                    <!--<li class="divider" if.bind="allowShowOnCard"></li>-->
+                    <!--<li class="dropdown-item" if.bind="allowShowOnCard">
+                        <input type="checkbox" class="k-checkbox" change.delegate="onShowOnCardChange($event.target.checked)">
+                        <label class="k-checkbox-label">Show On Card</label>
+                    </li>-->
+                    <!--<li class="dropdown-item" if.bind="allowShowOnCard">
+                        <a href="javascript:void(0)" click.delegate="onShowOnCardChange()">
+                            ${showOnCardText}
+                        </a>
+                    </li>-->
+                    <li class="dropdown-item">
+                        <a href="javascript:void(0)" if.bind="allowEditTitle" click.delegate="toggleEditTitle()">Edit Title</a>
+                    </li>
+                    <!--<li class="divider" if.bind="showDelete"></li>-->
+                    <li class="dropdown-item" if.bind="showDelete">
+                        <a href="javascript:void(0)" click.delegate="onDelete()">Delete</a>
+                    </li>
+                </ul>
+            </div>
+            <!---
+    <a href="javascript:void(0)" if.bind="allowEditTitle" style="float:right;" click.delegate="toggleEditTitle()"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a href="javascript:void(0)" style="float:right;" click.delegate="toggleFullScreen()"><span class="glyphicon ${isFullScreen ? 'glyphicon-resize-small' : 'glyphicon-resize-full'}"></span></a>-->
+        </div>
+        <div class="wv-collapse-content">
+            <slot></slot>
+        </div>
+    </div>
+</template>

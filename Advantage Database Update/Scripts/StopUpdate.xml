@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ArrayOfStopUpdate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <StopUpdate>
+    <SQL>
+      SELECT CASE WHEN (
+        SELECT COUNT(1) FROM dbo.EXPENSE_HEADER
+        WHERE VN_CODE NOT IN (SELECT VN_CODE FROM dbo.VENDOR)
+      ) > 0 THEN 1 ELSE 0 END
+    </SQL>
+    <Message>Update failed due to invalid vendors found on expense reports.  Please contact Advantage Software for assistance.</Message>
+    <ReleaseVersion>6.70.00.15</ReleaseVersion>
+  </StopUpdate>
+  <StopUpdate>
+    <SQL>
+      SELECT CASE WHEN (SELECT COUNT(1) FROM dbo.BILLING_CMD_CENTER) > 0 THEN 1 ELSE 0 END
+    </SQL>
+    <Message>You must process or delete any pending billing command center records before updating.</Message>
+    <ReleaseVersion>6.70.00.00</ReleaseVersion>
+  </StopUpdate>
+  <StopUpdate>
+    <SQL>
+      SELECT CASE WHEN (
+      SELECT COUNT(1)
+      FROM dbo.PRINT_ORDER
+      WHERE MEDIA_INTERFACE IN ('OT','AM','AP','AB')
+      AND COALESCE(POST_FLAG, 0) IN (0,2)
+      ) +
+      (
+      SELECT COUNT(1)
+      FROM dbo.BRDCAST_IMPORT
+      WHERE MEDIA_INTERFACE IN ('OT','AM','AP','AB')
+      AND COALESCE(POST_FLAG, 0) IN (0,2)
+      ) > 0 THEN 1 ELSE 0 END
+    </SQL>
+    <Message>You must process or delete any pending media import records before updating.</Message>
+    <ReleaseVersion>6.60.05.04</ReleaseVersion>
+  </StopUpdate>
+  <StopUpdate>
+    <SQL>
+      SELECT CASE WHEN COUNT(*) = 0 THEN 1 ELSE 0 END FROM dbo.AGY_SETTINGS WHERE AGY_SETTINGS_CODE = 'AUW_6700700' AND AGY_SETTINGS_VALUE = 1
+    </SQL>
+    <Message>You must run the Advantage Update Wizard before you can continue.</Message>
+    <ReleaseVersion>6.70.07.00</ReleaseVersion>
+  </StopUpdate>
+</ArrayOfStopUpdate>

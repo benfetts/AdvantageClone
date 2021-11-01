@@ -1,0 +1,24 @@
+<div class="review-profile">
+  <div class="user">
+
+    <ng-container *ngIf="review.imageUrl; then profileImage else emptyImage"></ng-container>
+
+    <ng-template #profileImage>
+      <img [src]="review.imageUrl"/>
+    </ng-template>
+
+    <ng-template #emptyImage>
+      <div class="empty-image"></div>
+    </ng-template>
+
+    <div class="info">
+      <div class="name">{{review.name}}</div>
+      <div class="time">{{review.reviewDate}}</div>
+    </div>
+  </div>
+  <div *ngIf="review.reply" class="reply">
+    <button kendoButton
+            [imageUrl]="'assets/icons/redo.svg'">
+    </button>
+  </div>
+</div>

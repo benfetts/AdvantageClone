@@ -1,0 +1,8 @@
+﻿<template class="wv-job-display">
+    <span>
+        <!--${EstimateComponentNumber + ((EstimateNumber == EstimateComponentNumber) ? '' : ' (' + EstimateNumber + ')')} ${EstimateDescription + ((EstimateDescription == EstimateComponentDescription) ? '' : ' (' + EstimateComponentDescription + ')')}-->
+        ${estimateNumber.toString().padStart(estimatePadding,'0')}${ '/' + estimateComponentNumber.toString().padStart(componentPadding, '0')} - ${estimateDescription + ((estimateDescription == estimateComponentDescription) ? '' : estimateComponentDescription)}
+    </span>
+
+    <span style="display: block;">${(divisionName == clientName && divisionName == productName ? clientName : clientName + (divisionName == clientName ? '' : ' |' +divisionName) + (divisionName == productName ? '' : '|' + productName))}</span>
+</template>

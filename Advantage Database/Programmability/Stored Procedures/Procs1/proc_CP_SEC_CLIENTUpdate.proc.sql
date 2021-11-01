@@ -1,0 +1,37 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_SEC_CLIENTUpdate]
+(
+	@CDP_CONTACT_ID int,
+	@CL_CODE varchar(6),
+	@DIV_CODE varchar(6) = NULL,
+	@PRD_CODE varchar(6) = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [CP_SEC_CLIENT]
+	SET
+		[CL_CODE] = @CL_CODE,
+		[DIV_CODE] = @DIV_CODE,
+		[PRD_CODE] = @PRD_CODE
+	WHERE
+		[CDP_CONTACT_ID] = @CDP_CONTACT_ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+

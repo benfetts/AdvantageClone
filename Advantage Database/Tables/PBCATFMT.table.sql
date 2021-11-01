@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[PBCATFMT] (
+    [PBF_NAME] VARCHAR (30)  NOT NULL,
+    [PBF_FRMT] VARCHAR (254) NULL,
+    [PBF_TYPE] SMALLINT      NULL,
+    [PBF_CNTR] INT           NULL
+);
+

@@ -1,0 +1,68 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+
+    <style>
+        .fieldlist {
+            margin: 0 0 -1em;
+            padding: 1em;
+        }
+
+            .fieldlist li {
+                list-style: none;
+                padding-bottom: 1em;
+            }
+         .k-multiselect .k-multiselect-wrap {
+            width: 260px;
+            margin-left: 10px;
+        }
+        .wv-form-spacing label{
+            margin-left: 10px;
+        }
+    </style>
+
+    <ux-dialog>
+        <ux-dialog-header>
+            Update Account Executive
+        </ux-dialog-header>
+        <ux-dialog-body>
+
+            <ul class="fieldlist">
+                <li repeat.for="Item of updateAll">
+                    <label>
+                        <input type="radio" name="group1"
+                                model.bind="Item.id" checked.bind="AccountExecObj.UpdateSelected">
+                        ${Item.name}
+                    </label>
+                </li>
+            </ul>
+            <label style="margin-left: 10px;">Select Account Executive</label>
+            <wv-search-option label="Select Account Executive">
+                <ak-multiselect k-widget.bind="accountExecutiveMultiSelect"
+                        k-filter="contains"
+                        k-placeholder="Account Executive"
+                        k-data-text-field="Name"
+                        k-data-value-field="Code"
+                        k-on-change.delegate="accountExecutiveMultiSelect_OnChange($event.detail)"
+                        k-data-source.bind="accountExecutiveDataSource"
+                        k-auto-bind.bind="false"
+                        k-max-selected-items.bind="1"
+                        k-value.two-way="AccountExec">
+                </ak-multiselect>
+            </wv-search-option>
+            <div>
+
+            </div>
+            <input class="k-checkbox" type="checkbox" id="setAsDefault" checked.bind="AccountExecObj.IsDefault" change.delegate="setAsDefaultCheckChanged()" style="padding:4px 7px 4px 4px">
+            <label class="k-checkbox-label" for="setAsDefault" style="margin-top: 12px;">
+                Set as Default Account Executive for CDP
+            </label>
+
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <button click.trigger="controller.ok(AccountExecObj)">Ok</button>
+            <button click.trigger="controller.cancel()">Cancel</button>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

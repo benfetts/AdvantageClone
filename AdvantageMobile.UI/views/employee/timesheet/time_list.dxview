@@ -1,0 +1,36 @@
+<div data-options="dxView : { name: 'time_list' } ">
+    <div data-bind="dxCommand: addButton"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="css: submitButtonCSS">
+            <div data-bind="dxButton: submitButton"></div>
+        </div>
+        <div data-bind="dxToolbar: navBar">
+        </div>
+        <div id="entryList" class="card-container" data-bind="dxList: timeEntryList">
+            <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: {view: 'time_entry', settings: {source: 3, employeeTimeId: EmployeeTimeID, employeeTimeDetailId: EmployeeTimeDetailID, timeType: TimeType }}">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-header" data-bind="text: FunctionCategoryDescription"></div>
+                        <div class="card-details">
+                            <div data-bind="text: cdp"></div>
+                            <div style="margin-right:4px;" data-bind="css: jobInfoCSS, text: jobAndComponentDisplay"></div>
+                            <div>
+                                <div style="float:left;margin-right:4px;" data-bind="text: hoursText"></div>
+                                <div style="float:left;" data-bind="text: EmployeeHours"></div>
+                            </div>
+                            <div data-bind="css: commentCSS">
+                                <br />
+                                <div style="float:left;margin-right:4px;" data-bind="text: commentsText"></div>
+                                <div data-bind="text: Comments"></div>
+                            </div>
+                        </div>
+                    </div>
+                  <div class="card-button-container">
+                    <div class="card-action-bar">
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

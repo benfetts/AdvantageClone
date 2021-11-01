@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[SEC_GROUP_SETTING] (
+    [SEC_GROUP_SETTING_ID] INT            IDENTITY (1, 1) NOT NULL,
+    [SEC_GROUP_ID]         INT            NOT NULL,
+    [SETTING_CODE]         VARCHAR (100)  NOT NULL,
+    [STRING_VALUE]         VARCHAR (8000) NULL,
+    [NUMERIC_VALUE]        DECIMAL (9, 4) NULL,
+    [DATE_VALUE]           DATETIME       NULL
+);
+

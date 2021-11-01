@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ETF_HDR] (
+    [ETF_ID]         INT           IDENTITY (1, 1) NOT NULL,
+    [FC_DESCRIPTION] VARCHAR (100) NOT NULL,
+    [PPPERIOD]       VARCHAR (6)   NOT NULL
+);
+

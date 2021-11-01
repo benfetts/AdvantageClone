@@ -1,0 +1,194 @@
+﻿.white-datebox.dx-datebox .dx-texteditor-input
+{
+  font-family: RobotoDraft,'Helvetica Neue',Helvetica,Arial;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.dx-tab .dx-tab-text
+{
+  display: inline-block;
+  color: #FFFFFF;
+}
+
+/*  Tasks   */
+.task-priority-active {
+    background-color:#0097A7;
+}
+.task-priority-pending {
+    background-color:#00BCD4;
+}
+.task-due-overdue {
+    color: #E9360A;
+}
+.task-due-today {
+    color: #EC6400;
+}
+
+/*  Alerts  */
+.alert-priority-highest {
+    background-color:#E53935;
+}
+.alert-priority-high {
+    background-color:#FF9800;
+}
+.alert-priority-normal {
+    background-color:#00BCD4;
+}
+.alert-priority-low {
+    background-color:#1976D2;
+}
+.alert-priority-lowest {
+    background-color:#0D47A1;
+}
+
+/*   Calendar/My Schedule   */
+.calendar-task {
+    background-color:#0097A7;
+}
+.calendar-holiday {
+    background-color:#FF9800;
+}
+.calendar-activity {
+    background-color:#00BCD4;
+}
+.calendar-event {
+    background-color:#512da8;
+}
+.calendar-event-task {
+    background-color:#7e57c2;
+}
+.calendar-assignment {
+    background-color:#1976D2;
+}
+
+/*  Application     */
+.application-type-default {
+    background-color: #00BCD4;
+}
+.default-tabs.dx-tabs {
+    background-color: #00BCD4;
+}
+.default-tabs.dx-tabs .dx-tab {
+    background-color: #00BCD4;
+}
+
+
+
+.application-type-custom {
+    background-color: #00BCD4;
+}
+.custom-tabs.dx-tabs {
+    background-color: #00BCD4;
+}
+.custom-tabs.dx-tabs .dx-tab {
+    background-color: #00BCD4;
+}
+
+.application-type-about {
+    background-color: #03A9F4;
+}
+.about-tabs.dx-tabs {
+    background-color: #03A9F4;
+}
+.about-tabs.dx-tabs .dx-tab {
+    background-color: #03A9F4;
+}
+
+
+.application-type-desktop {
+    background-color: #0097A7;
+}
+.desktop-tabs.dx-tabs {
+    background-color: #0097A7;
+}
+.desktop-tabs.dx-tabs .dx-tab {
+    background-color: #0097A7;
+}
+
+
+
+.application-type-employee {
+    background-color: #9C27B0;
+}
+.employee-tabs.dx-tabs {
+    background-color: #9C27B0;
+}
+.employee-tabs.dx-tabs .dx-tab {
+    background-color: #9C27B0;
+}
+
+
+
+.application-type-project-management {
+    background-color: #009688;
+}
+.project-management-tabs.dx-tabs {
+    background-color: #009688;
+}
+.project-management-tabs.dx-tabs .dx-tab {
+    background-color: #009688;
+}
+
+
+
+.application-type-media {
+    background-color: #CDDC39;
+}
+.media-tabs.dx-tabs {
+    background-color: #CDDC39;
+}
+.media-tabs.dx-tabs .dx-tab {
+    background-color: #CDDC39;
+}
+
+
+
+.application-type-billing {
+    background-color: #4CAF50;
+}
+.billing-tabs.dx-tabs {
+    background-color: #4CAF50;
+}
+.billing-tabs.dx-tabs .dx-tab {
+    background-color: #4CAF50;
+}
+
+
+
+.application-type-finance-and-accounting {
+    background-color: #388E3C;
+}
+.finance-and-accounting-tabs.dx-tabs {
+    background-color: #388E3C;
+}
+.finance-and-accounting-tabs.dx-tabs .dx-tab {
+    background-color: #388E3C;
+}
+
+
+
+.application-type-maintenance {
+    background-color: #9C27B0;
+}
+.maintenance-tabs.dx-tabs {
+    background-color: #9C27B0;
+}
+.maintenance-tabs.dx-tabs .dx-tab {
+    background-color: #9C27B0;
+}
+
+
+
+.application-type-security {
+    background-color: #00BCD4;
+}
+.security-tabs.dx-tabs {
+    background-color: #00BCD4;
+}
+.security-tabs.dx-tabs .dx-tab {
+    background-color: #00BCD4;
+}
+
+
+
+/*  Application Tabs    */

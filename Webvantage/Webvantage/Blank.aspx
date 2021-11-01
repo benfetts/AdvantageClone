@@ -1,0 +1,1 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Blank.aspx.vb" Inherits="Webvantage.Blank" %>

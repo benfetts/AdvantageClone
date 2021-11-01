@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[TEMP_BRDCAST1] (
+    [BRDCAST_TYPE] CHAR (5)        NULL,
+    [ORDER_NBR]    INT             NOT NULL,
+    [IGNORE]       SMALLINT        NULL,
+    [LINE_NET]     DECIMAL (15, 2) NULL,
+    [COMM_AMT]     DECIMAL (15, 2) NULL,
+    [REBATE_AMT]   DECIMAL (15, 2) NULL,
+    [DISCOUNT]     DECIMAL (15, 2) NULL,
+    [VENDOR_TAX]   DECIMAL (15, 2) NULL,
+    [STATE_TAX]    DECIMAL (15, 2) NULL,
+    [COUNTY_TAX]   DECIMAL (15, 2) NULL,
+    [CITY_TAX]     DECIMAL (15, 2) NULL,
+    [NETCHARGES]   DECIMAL (15, 2) NULL,
+    [AR_INV_NBR]   INT             NULL,
+    [BILLING_AMT]  DECIMAL (15, 2) NULL,
+    [BILLED_AMT]   DECIMAL (15, 2) NULL
+);
+

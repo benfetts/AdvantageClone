@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[PRINT_IMPORT_XREF] (
+    [IMPORT_ORDER_NBR]  INT           NULL,
+    [ORDER_NBR]         INT           NULL,
+    [IMPORT_LINE_NBR]   INT           NULL,
+    [LINE_NBR]          SMALLINT      NULL,
+    [MEDIA_TYPE]        VARCHAR (6)   NULL,
+    [IMPORTED_FROM]     VARCHAR (2)   NULL,
+    [LAST_DATE_REVISED] SMALLDATETIME NULL,
+    [LAST_USERID]       VARCHAR (100) NULL,
+    [IMPORT_SEQUENCE]   INT           NULL,
+    [IMPORT_AD_NUMBER]  VARCHAR (25)  NULL,
+    [IMPORT_YEAR]       SMALLINT      NULL,
+    [SALES_CLASS_CODE]  VARCHAR (6)   NULL
+);
+

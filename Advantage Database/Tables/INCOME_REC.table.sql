@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[INCOME_REC] (
+    [AB_ID]             INT             NOT NULL,
+    [SEQ_NBR]           SMALLINT        NOT NULL,
+    [JOB_NUMBER]        INT             NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT        NOT NULL,
+    [AR_INV_NBR]        INT             NULL,
+    [AR_INV_SEQ]        SMALLINT        NULL,
+    [AR_TYPE]           VARCHAR (3)     NULL,
+    [AB_FLAG]           SMALLINT        NULL,
+    [CREATE_DATE]       SMALLDATETIME   NULL,
+    [USER_ID]           VARCHAR (100)   NULL,
+    [BILLING_USER]      VARCHAR (100)   NULL,
+    [GLACODE_SALES]     VARCHAR (30)    NULL,
+    [GLACODE_DEF_SALES] VARCHAR (30)    NULL,
+    [GLEXACT]           INT             NULL,
+    [GLESEQ_SALES]      SMALLINT        NULL,
+    [GLESEQ_DEF_SALES]  SMALLINT        NULL,
+    [POST_PERIOD]       VARCHAR (8)     NULL,
+    [FINAL_FLAG]        SMALLINT        NULL,
+    [METHOD_DESC]       VARCHAR (30)    NULL,
+    [BILL_DATE]         SMALLDATETIME   NULL,
+    [AR_INV_VOID]       SMALLINT        NULL,
+    [REC_AMT]           DECIMAL (14, 2) NULL,
+    [BCC_ID]            INT             NULL
+);
+

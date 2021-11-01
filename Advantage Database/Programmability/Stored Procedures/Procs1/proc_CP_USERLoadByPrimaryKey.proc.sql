@@ -1,0 +1,54 @@
+﻿
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USERLoadByPrimaryKey]
+(
+	@USER_GUID uniqueidentifier
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[USER_GUID],
+		[USER_NAME],
+		[LOWERED_USER_NAME],
+		[FULL_NAME],
+		[PASSWORD_HASH],
+		[LAST_LOGON],
+		[CREATED_BY],
+		[CREATED_TIMESTAMP],
+		[IS_LOCKED],
+		[EMAIL_ADDRESS],
+		[LOGIN_TRY_COUNT],
+		[UNLOCK_TIME],
+		[MUST_CHANGE_PASSORD],
+		[THEME],
+		[CDP_CONTACT_ID],
+		[DESKTOP_TEMPLATE],
+		[WEB_ID],
+		[ADMIN_USER],
+		[CL_CODE],
+		[ALERT_GROUP_CODE],
+		[AGENCY_CONTACT_CODE]
+	FROM [CP_USER]
+	WHERE
+		([USER_GUID] = @USER_GUID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+

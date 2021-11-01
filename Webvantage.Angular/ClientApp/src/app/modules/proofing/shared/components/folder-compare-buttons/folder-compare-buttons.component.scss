@@ -1,0 +1,28 @@
+@import '../../../theme/colors';
+
+.versions-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  .k-button,
+  .k-button:hover {
+    min-width: 30px;
+    height: 30px;
+    background-color: transparent;
+    background-image: none;
+    padding: 0;
+  }
+
+  .k-button {
+    border: none;
+  }
+
+  .k-button:hover {
+    border: 1px solid $border-color;
+  }
+
+  .k-image {
+    width: 20px;
+    height: 16px;
+  }
+}

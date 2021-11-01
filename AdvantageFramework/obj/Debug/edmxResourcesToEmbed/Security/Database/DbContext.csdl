@@ -1,0 +1,2114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdvantageFramework.Security.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdassistUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.AdassistUser, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="EmployeeCode" />
+    </Key>
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" />
+    <Property Name="IsInactive" Type="Int16" />
+    <NavigationProperty Name="Employee" Relationship="Self.AdassistUser_Employee" FromRole="AdassistUser_Employee_Source" ToRole="AdassistUser_Employee_Target" />
+  </EntityType>
+  <EntityType Name="Employee" customannotation:ClrType="AdvantageFramework.Security.Database.Views.Employee, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="WorkspaceTemplateID" Type="Int32" />
+    <Property Name="TerminationDate" Type="DateTime" />
+    <Property Name="OfficeCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="IgnoreCalendarSync" Type="Boolean" Nullable="false" />
+    <Property Name="FunctionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Department" Relationship="Self.Employee_Department" FromRole="Employee_Department_Source" ToRole="Employee_Department_Target" />
+    <NavigationProperty Name="Office" Relationship="Self.Office_Employees" FromRole="Office_Employees_Target" ToRole="Office_Employees_Source" />
+    <NavigationProperty Name="UserEmployeeAccesses" Relationship="Self.UserEmployeeAccess_Employee" FromRole="UserEmployeeAccess_Employee_Target" ToRole="UserEmployeeAccess_Employee_Source" />
+    <NavigationProperty Name="Users" Relationship="Self.User_Employee" FromRole="User_Employee_Target" ToRole="User_Employee_Source" />
+  </EntityType>
+  <EntityType Name="Department" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Department, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="IsInactive" Type="Int16" />
+    <Property Name="DirectHoursPercentGoal" Type="Decimal" Precision="7" Scale="4" />
+    <Property Name="Category" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PurchaseOrderApprovalRuleCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceFeeTypeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="Self.Employee_Department" FromRole="Employee_Department_Target" ToRole="Employee_Department_Source" />
+  </EntityType>
+  <EntityType Name="Office" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Office, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="IsInactive" Type="Int16" />
+    <NavigationProperty Name="Employees" Relationship="Self.Office_Employees" FromRole="Office_Employees_Source" ToRole="Office_Employees_Target" />
+    <NavigationProperty Name="Products" Relationship="Self.Product_Office" FromRole="Product_Office_Target" ToRole="Product_Office_Source" />
+  </EntityType>
+  <EntityType Name="Product" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Product, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ClientCode" />
+      <PropertyRef Name="DivisionCode" />
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="OfficeCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Int16" />
+    <Property Name="CDPSecurityGroupID" Type="Int32" />
+    <NavigationProperty Name="CDPSecurityGroup" Relationship="Self.Product_CDPSecurityGroup" FromRole="Product_CDPSecurityGroup_Source" ToRole="Product_CDPSecurityGroup_Target" />
+    <NavigationProperty Name="Client" Relationship="Self.Client_Products" FromRole="Client_Products_Target" ToRole="Client_Products_Source" />
+    <NavigationProperty Name="Division" Relationship="Self.Division_Products" FromRole="Division_Products_Target" ToRole="Division_Products_Source" />
+    <NavigationProperty Name="Office" Relationship="Self.Product_Office" FromRole="Product_Office_Source" ToRole="Product_Office_Target" />
+    <NavigationProperty Name="UserClientDivisionProductAccesses" Relationship="Self.UserClientDivisionProductAccess_Product" FromRole="UserClientDivisionProductAccess_Product_Target" ToRole="UserClientDivisionProductAccess_Product_Source" />
+  </EntityType>
+  <EntityType Name="CDPSecurityGroup" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CDPSecurityGroup, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CDPSecurityGroupEmployees" Relationship="Self.CDPSecurityGroupEmployee_CDPSecurityGroup" FromRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Target" ToRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Source" />
+  </EntityType>
+  <EntityType Name="CDPSecurityGroupEmployee" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CDPSecurityGroupEmployee, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CDPSecurityGroupID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CDPSecurityGroup" Relationship="Self.CDPSecurityGroupEmployee_CDPSecurityGroup" FromRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Source" ToRole="CDPSecurityGroupEmployee_CDPSecurityGroup_Target" />
+    <NavigationProperty Name="Employee" Relationship="Self.CDPSecurityGroupEmployee_Employee" FromRole="CDPSecurityGroupEmployee_Employee_Source" ToRole="CDPSecurityGroupEmployee_Employee_Target" />
+  </EntityType>
+  <EntityType Name="Client" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Client, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int16" />
+    <Property Name="RequireTimeComment" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ClientContacts" Relationship="Self.ClientContact_Client" FromRole="ClientContact_Client_Target" ToRole="ClientContact_Client_Source" />
+    <NavigationProperty Name="Divisions" Relationship="Self.Division_Client" FromRole="Division_Client_Target" ToRole="Division_Client_Source" />
+    <NavigationProperty Name="Products" Relationship="Self.Client_Products" FromRole="Client_Products_Source" ToRole="Client_Products_Target" />
+  </EntityType>
+  <EntityType Name="ClientContact" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientContact, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContactCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="County" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberExtention" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="FaxNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="FaxNumberExtention" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ScheduleUser" Type="Int16" />
+    <Property Name="DefaultTaskCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="RecievesAlerts" Type="Int16" />
+    <Property Name="IsEmailRecipient" Type="Int16" />
+    <Property Name="IsPrimaryTask" Type="Int16" />
+    <Property Name="IsInactive" Type="Int16" />
+    <Property Name="CellPhoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsClientPortalUser" Type="Int16" />
+    <Property Name="ContactTypeID" Type="Int32" />
+    <Property Name="FullNameLF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FullNameFML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Client" Relationship="Self.ClientContact_Client" FromRole="ClientContact_Client_Source" ToRole="ClientContact_Client_Target" />
+    <NavigationProperty Name="ClientContactDetails" Relationship="Self.ClientContactDetail_ClientContact" FromRole="ClientContactDetail_ClientContact_Target" ToRole="ClientContactDetail_ClientContact_Source" />
+    <NavigationProperty Name="ClientPortalUsers" Relationship="Self.ClientPortalUser_ClientContact" FromRole="ClientPortalUser_ClientContact_Target" ToRole="ClientPortalUser_ClientContact_Source" />
+    <NavigationProperty Name="ClientPortalUserWorkspaces" Relationship="Self.ClientPortalUserWorkspace_ClientContact" FromRole="ClientPortalUserWorkspace_ClientContact_Target" ToRole="ClientPortalUserWorkspace_ClientContact_Source" />
+  </EntityType>
+  <EntityType Name="ClientContactDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientContactDetail, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ContactID" />
+      <PropertyRef Name="SequenceNumber" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" />
+    <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+    <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ClientContact" Relationship="Self.ClientContactDetail_ClientContact" FromRole="ClientContactDetail_ClientContact_Source" ToRole="ClientContactDetail_ClientContact_Target" />
+  </EntityType>
+  <EntityType Name="ClientPortalUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUser, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="44" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastLoginDate" Type="DateTime" />
+    <Property Name="CreatedByUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" />
+    <Property Name="IsLocked" Type="Boolean" />
+    <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LoginsAttempted" Type="Int16" Nullable="false" />
+    <Property Name="UnlockedDate" Type="DateTime" />
+    <Property Name="MustChangePassword" Type="Boolean" Nullable="false" />
+    <Property Name="Theme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientContactID" Type="Int32" Nullable="false" />
+    <Property Name="DesktopTemplate" Type="Int32" />
+    <Property Name="WebID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdminUser" Type="Boolean" Nullable="false" />
+    <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AlertGroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AgencyContactEmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="TimeZoneID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ConceptShareUserID" Type="Int32" />
+    <Property Name="ConceptSharePassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ClientContact" Relationship="Self.ClientPortalUser_ClientContact" FromRole="ClientPortalUser_ClientContact_Source" ToRole="ClientPortalUser_ClientContact_Target" />
+    <NavigationProperty Name="ClientPortalUserApplicationAccesses" Relationship="Self.ClientPortalUserApplicationAccess_ClientPortalUser" FromRole="ClientPortalUserApplicationAccess_ClientPortalUser_Target" ToRole="ClientPortalUserApplicationAccess_ClientPortalUser_Source" />
+    <NavigationProperty Name="ClientPortalUserModuleAccesses" Relationship="Self.ClientPortalUserModuleAccess_ClientPortalUser" FromRole="ClientPortalUserModuleAccess_ClientPortalUser_Target" ToRole="ClientPortalUserModuleAccess_ClientPortalUser_Source" />
+  </EntityType>
+  <EntityType Name="ClientPortalUserApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserApplicationAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientPortalUserID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.Application_ClientPortalUserApplicationAccesses" FromRole="Application_ClientPortalUserApplicationAccesses_Target" ToRole="Application_ClientPortalUserApplicationAccesses_Source" />
+    <NavigationProperty Name="ClientPortalUser" Relationship="Self.ClientPortalUserApplicationAccess_ClientPortalUser" FromRole="ClientPortalUserApplicationAccess_ClientPortalUser_Source" ToRole="ClientPortalUserApplicationAccess_ClientPortalUser_Target" />
+  </EntityType>
+  <EntityType Name="Application" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Application, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ApplicationModules" Relationship="Self.ApplicationModule_Application" FromRole="ApplicationModule_Application_Target" ToRole="ApplicationModule_Application_Source" />
+    <NavigationProperty Name="ClientPortalUserApplicationAccesses" Relationship="Self.Application_ClientPortalUserApplicationAccesses" FromRole="Application_ClientPortalUserApplicationAccesses_Source" ToRole="Application_ClientPortalUserApplicationAccesses_Target" />
+    <NavigationProperty Name="GroupApplicationAccesses" Relationship="Self.GroupApplicationAccess_Application" FromRole="GroupApplicationAccess_Application_Target" ToRole="GroupApplicationAccess_Application_Source" />
+    <NavigationProperty Name="UserApplicationAccesses" Relationship="Self.UserApplicationAccess_Application" FromRole="UserApplicationAccess_Application_Target" ToRole="UserApplicationAccess_Application_Source" />
+  </EntityType>
+  <EntityType Name="ApplicationModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ApplicationModule, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.ApplicationModule_Application" FromRole="ApplicationModule_Application_Source" ToRole="ApplicationModule_Application_Target" />
+    <NavigationProperty Name="Module" Relationship="Self.Module_ApplicationModules" FromRole="Module_ApplicationModules_Target" ToRole="Module_ApplicationModules_Source" />
+  </EntityType>
+  <EntityType Name="Module" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Module, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsInactive" Type="Boolean" Nullable="false" />
+    <Property Name="IsMenuItem" Type="Boolean" Nullable="false" />
+    <Property Name="IsCategory" Type="Boolean" Nullable="false" />
+    <Property Name="IsApplication" Type="Boolean" Nullable="false" />
+    <Property Name="IsReport" Type="Boolean" Nullable="false" />
+    <Property Name="IsDesktopObject" Type="Boolean" Nullable="false" />
+    <Property Name="IsDashQuery" Type="Boolean" Nullable="false" />
+    <Property Name="ModuleInformationID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ApplicationModules" Relationship="Self.Module_ApplicationModules" FromRole="Module_ApplicationModules_Source" ToRole="Module_ApplicationModules_Target" />
+    <NavigationProperty Name="ClientPortalUserModuleAccesses" Relationship="Self.ClientPortalUserModuleAccess_Module" FromRole="ClientPortalUserModuleAccess_Module_Target" ToRole="ClientPortalUserModuleAccess_Module_Source" />
+    <NavigationProperty Name="GroupModuleAccesses" Relationship="Self.GroupModuleAccess_Module" FromRole="GroupModuleAccess_Module_Target" ToRole="GroupModuleAccess_Module_Source" />
+    <NavigationProperty Name="ModuleInformation" Relationship="Self.Module_ModuleInformation" FromRole="Module_ModuleInformation_Source" ToRole="Module_ModuleInformation_Target" />
+    <NavigationProperty Name="ParentSubModules" Relationship="Self.Module_ParentSubModules" FromRole="Module_ParentSubModules_Source" ToRole="Module_ParentSubModules_Target" />
+    <NavigationProperty Name="SubModules" Relationship="Self.Module_SubModules" FromRole="Module_SubModules_Source" ToRole="Module_SubModules_Target" />
+    <NavigationProperty Name="UserMenus" Relationship="Self.UserMenu_Module" FromRole="UserMenu_Module_Target" ToRole="UserMenu_Module_Source" />
+    <NavigationProperty Name="UserModuleAccesses" Relationship="Self.UserModuleAccess_Module" FromRole="UserModuleAccess_Module_Target" ToRole="UserModuleAccess_Module_Source" />
+    <NavigationProperty Name="WorkspaceTemplateItems" Relationship="Self.WorkspaceTemplateItem_Module" FromRole="WorkspaceTemplateItem_Module_Target" ToRole="WorkspaceTemplateItem_Module_Source" />
+  </EntityType>
+  <EntityType Name="ClientPortalUserModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserModuleAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientPortalUserID" Type="Guid" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ClientPortalUser" Relationship="Self.ClientPortalUserModuleAccess_ClientPortalUser" FromRole="ClientPortalUserModuleAccess_ClientPortalUser_Source" ToRole="ClientPortalUserModuleAccess_ClientPortalUser_Target" />
+    <NavigationProperty Name="Module" Relationship="Self.ClientPortalUserModuleAccess_Module" FromRole="ClientPortalUserModuleAccess_Module_Source" ToRole="ClientPortalUserModuleAccess_Module_Target" />
+  </EntityType>
+  <EntityType Name="GroupModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupModuleAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.Group_GroupModuleAccesses" FromRole="Group_GroupModuleAccesses_Target" ToRole="Group_GroupModuleAccesses_Source" />
+    <NavigationProperty Name="Module" Relationship="Self.GroupModuleAccess_Module" FromRole="GroupModuleAccess_Module_Source" ToRole="GroupModuleAccess_Module_Target" />
+  </EntityType>
+  <EntityType Name="Group" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Group, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="GroupApplicationAccesses" Relationship="Self.GroupApplicationAccess_Group" FromRole="GroupApplicationAccess_Group_Target" ToRole="GroupApplicationAccess_Group_Source" />
+    <NavigationProperty Name="GroupModuleAccesses" Relationship="Self.Group_GroupModuleAccesses" FromRole="Group_GroupModuleAccesses_Source" ToRole="Group_GroupModuleAccesses_Target" />
+    <NavigationProperty Name="GroupSettings" Relationship="Self.GroupSetting_Group" FromRole="GroupSetting_Group_Target" ToRole="GroupSetting_Group_Source" />
+    <NavigationProperty Name="GroupUserDefinedReportAccesses" Relationship="Self.GroupUserDefinedReportAccess_Group" FromRole="GroupUserDefinedReportAccess_Group_Target" ToRole="GroupUserDefinedReportAccess_Group_Source" />
+    <NavigationProperty Name="GroupUsers" Relationship="Self.GroupUser_Group" FromRole="GroupUser_Group_Target" ToRole="GroupUser_Group_Source" />
+  </EntityType>
+  <EntityType Name="GroupApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupApplicationAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.GroupApplicationAccess_Application" FromRole="GroupApplicationAccess_Application_Source" ToRole="GroupApplicationAccess_Application_Target" />
+    <NavigationProperty Name="Group" Relationship="Self.GroupApplicationAccess_Group" FromRole="GroupApplicationAccess_Group_Source" ToRole="GroupApplicationAccess_Group_Target" />
+  </EntityType>
+  <EntityType Name="GroupSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupSetting, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="GroupID" />
+      <PropertyRef Name="SettingCode" />
+    </Key>
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="SettingCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StringValue" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+    <Property Name="NumericValue" Type="Decimal" Precision="9" Scale="4" />
+    <Property Name="DateValue" Type="DateTime" />
+    <NavigationProperty Name="Group" Relationship="Self.GroupSetting_Group" FromRole="GroupSetting_Group_Source" ToRole="GroupSetting_Group_Target" />
+  </EntityType>
+  <EntityType Name="GroupUserDefinedReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupUserDefinedReportAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="UserDefinedReportID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.GroupUserDefinedReportAccess_Group" FromRole="GroupUserDefinedReportAccess_Group_Source" ToRole="GroupUserDefinedReportAccess_Group_Target" />
+  </EntityType>
+  <EntityType Name="GroupUser" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.GroupUser, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.GroupUser_Group" FromRole="GroupUser_Group_Source" ToRole="GroupUser_Group_Target" />
+    <NavigationProperty Name="User" Relationship="Self.User_GroupUsers" FromRole="User_GroupUsers_Target" ToRole="User_GroupUsers_Source" />
+  </EntityType>
+  <EntityType Name="User" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.User, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CheckForUserAccess" Type="Boolean" Nullable="false" />
+    <Property Name="TimeHWND" Type="Int32" />
+    <Property Name="MenuHWND" Type="Int32" />
+    <Property Name="WebID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsInactive" Type="Boolean" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.User_Employee" FromRole="User_Employee_Source" ToRole="User_Employee_Target" />
+    <NavigationProperty Name="GroupUsers" Relationship="Self.User_GroupUsers" FromRole="User_GroupUsers_Source" ToRole="User_GroupUsers_Target" />
+    <NavigationProperty Name="UserApplicationAccesses" Relationship="Self.UserApplicationAccess_User" FromRole="UserApplicationAccess_User_Target" ToRole="UserApplicationAccess_User_Source" />
+    <NavigationProperty Name="UserMenus" Relationship="Self.UserMenu_User" FromRole="UserMenu_User_Target" ToRole="UserMenu_User_Source" />
+    <NavigationProperty Name="UserMenuTabs" Relationship="Self.UserMenuTab_User" FromRole="UserMenuTab_User_Target" ToRole="UserMenuTab_User_Source" />
+    <NavigationProperty Name="UserModuleAccesses" Relationship="Self.UserModuleAccess_User" FromRole="UserModuleAccess_User_Target" ToRole="UserModuleAccess_User_Source" />
+    <NavigationProperty Name="UserSettings" Relationship="Self.UserSetting_User" FromRole="UserSetting_User_Target" ToRole="UserSetting_User_Source" />
+    <NavigationProperty Name="UserUserDefinedReportAccesses" Relationship="Self.UserUserDefinedReportAccess_User" FromRole="UserUserDefinedReportAccess_User_Target" ToRole="UserUserDefinedReportAccess_User_Source" />
+    <NavigationProperty Name="WorkspaceTemplates" Relationship="Self.WorkspaceTemplate_User" FromRole="WorkspaceTemplate_User_Target" ToRole="WorkspaceTemplate_User_Source" />
+  </EntityType>
+  <EntityType Name="UserApplicationAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserApplicationAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.UserApplicationAccess_Application" FromRole="UserApplicationAccess_Application_Source" ToRole="UserApplicationAccess_Application_Target" />
+    <NavigationProperty Name="User" Relationship="Self.UserApplicationAccess_User" FromRole="UserApplicationAccess_User_Source" ToRole="UserApplicationAccess_User_Target" />
+  </EntityType>
+  <EntityType Name="UserMenu" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserMenu, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="MenuType" Type="Int32" Nullable="false" />
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="UserMenuTabID" Type="Int32" />
+    <NavigationProperty Name="Module" Relationship="Self.UserMenu_Module" FromRole="UserMenu_Module_Source" ToRole="UserMenu_Module_Target" />
+    <NavigationProperty Name="User" Relationship="Self.UserMenu_User" FromRole="UserMenu_User_Source" ToRole="UserMenu_User_Target" />
+    <NavigationProperty Name="UserMenuTab" Relationship="Self.UserMenuTab_UserMenus" FromRole="UserMenuTab_UserMenus_Target" ToRole="UserMenuTab_UserMenus_Source" />
+  </EntityType>
+  <EntityType Name="UserMenuTab" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserMenuTab, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="HasSmallIcons" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.UserMenuTab_User" FromRole="UserMenuTab_User_Source" ToRole="UserMenuTab_User_Target" />
+    <NavigationProperty Name="UserMenus" Relationship="Self.UserMenuTab_UserMenus" FromRole="UserMenuTab_UserMenus_Source" ToRole="UserMenuTab_UserMenus_Target" />
+  </EntityType>
+  <EntityType Name="UserModuleAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserModuleAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Module" Relationship="Self.UserModuleAccess_Module" FromRole="UserModuleAccess_Module_Source" ToRole="UserModuleAccess_Module_Target" />
+    <NavigationProperty Name="User" Relationship="Self.UserModuleAccess_User" FromRole="UserModuleAccess_User_Source" ToRole="UserModuleAccess_User_Target" />
+  </EntityType>
+  <EntityType Name="UserSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserSetting, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="SettingCode" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="SettingCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StringValue" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+    <Property Name="NumericValue" Type="Decimal" Precision="9" Scale="4" />
+    <Property Name="DateValue" Type="DateTime" />
+    <NavigationProperty Name="User" Relationship="Self.UserSetting_User" FromRole="UserSetting_User_Source" ToRole="UserSetting_User_Target" />
+  </EntityType>
+  <EntityType Name="UserUserDefinedReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserUserDefinedReportAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserDefinedReportID" Type="Int32" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.UserUserDefinedReportAccess_User" FromRole="UserUserDefinedReportAccess_User_Source" ToRole="UserUserDefinedReportAccess_User_Target" />
+  </EntityType>
+  <EntityType Name="WorkspaceTemplate" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplate, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreatedByUserID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" />
+    <Property Name="IsClientPortal" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.WorkspaceTemplate_User" FromRole="WorkspaceTemplate_User_Source" ToRole="WorkspaceTemplate_User_Target" />
+    <NavigationProperty Name="WorkspaceTemplateDetails" Relationship="Self.WorkspaceTemplateDetail_WorkspaceTemplate" FromRole="WorkspaceTemplateDetail_WorkspaceTemplate_Target" ToRole="WorkspaceTemplateDetail_WorkspaceTemplate_Source" />
+  </EntityType>
+  <EntityType Name="WorkspaceTemplateDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplateDetail, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkspaceTemplateID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="IsClientPortal" Type="Int32" />
+    <NavigationProperty Name="WorkspaceTemplate" Relationship="Self.WorkspaceTemplateDetail_WorkspaceTemplate" FromRole="WorkspaceTemplateDetail_WorkspaceTemplate_Source" ToRole="WorkspaceTemplateDetail_WorkspaceTemplate_Target" />
+    <NavigationProperty Name="WorkspaceTemplateItems" Relationship="Self.WorkspaceTemplateItem_WorkspaceTemplateDetail" FromRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Target" ToRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Source" />
+  </EntityType>
+  <EntityType Name="WorkspaceTemplateItem" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceTemplateItem, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkspaceTemplateDetailID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="ZoneID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Height" Type="Int32" />
+    <Property Name="Width" Type="Int32" />
+    <Property Name="TopCoordinate" Type="Int32" />
+    <Property Name="LeftCoordinate" Type="Int32" />
+    <Property Name="SortOrder" Type="Int32" />
+    <NavigationProperty Name="Module" Relationship="Self.WorkspaceTemplateItem_Module" FromRole="WorkspaceTemplateItem_Module_Source" ToRole="WorkspaceTemplateItem_Module_Target" />
+    <NavigationProperty Name="WorkspaceTemplateDetail" Relationship="Self.WorkspaceTemplateItem_WorkspaceTemplateDetail" FromRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Source" ToRole="WorkspaceTemplateItem_WorkspaceTemplateDetail_Target" />
+  </EntityType>
+  <EntityType Name="ModuleInformation" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ModuleInformation, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="HasCustomPermission" Type="Boolean" Nullable="false" />
+    <Property Name="WebvantageURL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WebvantageImagePathActive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WebvantageImagePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MenuName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CommandString" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IconIndex" Type="Int32" Nullable="false" />
+    <Property Name="AllowMultipleInstances" Type="Int32" Nullable="false" />
+    <Property Name="DesktopObjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DesktopObjectSize" Type="Int32" Nullable="false" />
+    <Property Name="ReportURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportImagePathActive" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportPreviewLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportIsLocked" Type="Boolean" Nullable="false" />
+    <Property Name="WebvantageLargeImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportLargeImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ModuleSub" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ModuleSub, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentModuleID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Module" Relationship="Self.ModuleSub_Module" FromRole="ModuleSub_Module_Source" ToRole="ModuleSub_Module_Target" />
+    <NavigationProperty Name="ParentModule" Relationship="Self.ModuleSub_ParentModule" FromRole="ModuleSub_ParentModule_Source" ToRole="ModuleSub_ParentModule_Target" />
+  </EntityType>
+  <EntityType Name="ClientPortalUserWorkspace" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalUserWorkspace, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientContactID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" />
+    <NavigationProperty Name="ClientContact" Relationship="Self.ClientPortalUserWorkspace_ClientContact" FromRole="ClientPortalUserWorkspace_ClientContact_Source" ToRole="ClientPortalUserWorkspace_ClientContact_Target" />
+    <NavigationProperty Name="ClientPortalWorkspaceObjects" Relationship="Self.ClientPortalWorkspaceObject_ClientPortalUserWorkspace" FromRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Target" ToRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Source" />
+  </EntityType>
+  <EntityType Name="ClientPortalWorkspaceObject" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ClientPortalWorkspaceObject, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientPortalUserWorkspaceID" Type="Int32" Nullable="false" />
+    <Property Name="DesktopObjectID" Type="Int32" Nullable="false" />
+    <Property Name="ZoneID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Height" Type="Int32" />
+    <Property Name="Width" Type="Int32" />
+    <Property Name="TopCoordinate" Type="Int32" />
+    <Property Name="LeftCoordinate" Type="Int32" />
+    <Property Name="SortOrder" Type="Int32" />
+    <NavigationProperty Name="ClientPortalUserWorkspace" Relationship="Self.ClientPortalWorkspaceObject_ClientPortalUserWorkspace" FromRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Source" ToRole="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Target" />
+  </EntityType>
+  <EntityType Name="Division" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Division, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ClientCode" />
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int16" />
+    <NavigationProperty Name="Client" Relationship="Self.Division_Client" FromRole="Division_Client_Source" ToRole="Division_Client_Target" />
+    <NavigationProperty Name="Products" Relationship="Self.Division_Products" FromRole="Division_Products_Source" ToRole="Division_Products_Target" />
+  </EntityType>
+  <EntityType Name="UserClientDivisionProductAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserClientDivisionProductAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserCode" />
+      <PropertyRef Name="ClientCode" />
+      <PropertyRef Name="DivisionCode" />
+      <PropertyRef Name="ProductCode" />
+    </Key>
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AllowTimeEntryOnly" Type="Int16" />
+    <NavigationProperty Name="Product" Relationship="Self.UserClientDivisionProductAccess_Product" FromRole="UserClientDivisionProductAccess_Product_Source" ToRole="UserClientDivisionProductAccess_Product_Target" />
+  </EntityType>
+  <EntityType Name="UserEmployeeAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserEmployeeAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserCode" />
+      <PropertyRef Name="EmployeeCode" />
+    </Key>
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.UserEmployeeAccess_Employee" FromRole="UserEmployeeAccess_Employee_Source" ToRole="UserEmployeeAccess_Employee_Target" />
+  </EntityType>
+  <EntityType Name="AdvantageUserLicenseInUse" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.AdvantageUserLicenseInUse, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="Assigned" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ApplicationSetting, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserCode" />
+      <PropertyRef Name="ApplicationSection" />
+      <PropertyRef Name="Group" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationSection" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Group" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderNumber" Type="Int32" />
+    <Property Name="Value" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CPUserFavoriteModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.CPUserFavoriteModule, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="WorkspaceID" />
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="WorkspaceID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="Height" Type="Int32" />
+    <Property Name="Width" Type="Int32" />
+    <Property Name="TopCoord" Type="Int32" />
+    <Property Name="LeftCoord" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DatabaseSQLUser" customannotation:ClrType="AdvantageFramework.Security.Database.Views.DatabaseSQLUser, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TypeDescription" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultSchemaName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" />
+    <Property Name="OwnerID" Type="Int32" />
+    <Property Name="SID" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IsFixedRole" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeSummary" customannotation:ClrType="AdvantageFramework.Security.Database.Views.EmployeeSummary, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CheckForUserAccess" Type="Boolean" Nullable="false" />
+    <Property Name="Employee" Type="String" MaxLength="73" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Group" Type="String" MaxLength="153" FixedLength="false" Unicode="true" />
+    <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GroupPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.GroupPermission, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleIsCategory" Type="Boolean" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="Int32" Nullable="false" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupPermissionsReport" customannotation:ClrType="AdvantageFramework.Security.Database.Views.GroupPermissionsReport, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="ParentModuleID" Type="Int32" />
+    <Property Name="ParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentModuleSortOrder" Type="Int32" />
+    <Property Name="SubParentModuleID" Type="Int32" />
+    <Property Name="SubParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubParentModuleSortOrder" Type="Int32" />
+    <Property Name="SubSubParentModuleID" Type="Int32" />
+    <Property Name="SubSubParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubSubParentModuleSortOrder" Type="Int32" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleIsCategory" Type="Boolean" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleSortOrder" Type="Int32" />
+    <Property Name="ModuleHasCustomPermission" Type="Boolean" />
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ModuleStructure" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ModuleStructure, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="ParentModuleID" Type="Int32" />
+    <Property Name="ParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentModuleSortOrder" Type="Int32" />
+    <Property Name="SubParentModuleID" Type="Int32" />
+    <Property Name="SubParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubParentModuleSortOrder" Type="Int32" />
+    <Property Name="SubSubParentModuleID" Type="Int32" />
+    <Property Name="SubSubParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubSubParentModuleSortOrder" Type="Int32" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleSortOrder" Type="Int32" />
+    <Property Name="ModuleHasCustomPermission" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ModuleView" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ModuleView, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="ApplicationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleInformationID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsInactive" Type="Boolean" Nullable="false" />
+    <Property Name="IsMenuItem" Type="Boolean" Nullable="false" />
+    <Property Name="IsCategory" Type="Boolean" Nullable="false" />
+    <Property Name="IsApplication" Type="Boolean" Nullable="false" />
+    <Property Name="IsReport" Type="Boolean" Nullable="false" />
+    <Property Name="IsDesktopObject" Type="Boolean" Nullable="false" />
+    <Property Name="IsDashQuery" Type="Boolean" Nullable="false" />
+    <Property Name="ParentModuleID" Type="Int32" />
+    <Property Name="ReportIsLocked" Type="Boolean" Nullable="false" />
+    <Property Name="ReportPreviewLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReportDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReportImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReportImagePathActive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReportLargeImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReportURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DesktopObjectSize" Type="Int32" Nullable="false" />
+    <Property Name="DesktopObjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="HasCustomPermission" Type="Boolean" Nullable="false" />
+    <Property Name="WebvantageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WebvantageImagePathActive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WebvantageImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WebvantageLargeImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdvantageApplicationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdvantageMenuName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdvantageApplicationCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdvantageCommandString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdvantageIconIndex" Type="Int32" Nullable="false" />
+    <Property Name="AdvantageAllowMultipleInstances" Type="Int32" Nullable="false" />
+    <Property Name="ParentModuleCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ParentModuleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PasswordHistory" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.PasswordHistory, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PasswordLockout" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.PasswordLockout, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Attempts" Type="Int32" />
+    <Property Name="LockDate" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="ReportAccess" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ReportAccess, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserCode" />
+      <PropertyRef Name="ReportCode" />
+    </Key>
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReportCode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Enabled" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Report" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.Report, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int16" Nullable="false" />
+    <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="Number" Type="Int16" />
+    <Property Name="SubReportNumber" Type="Int32" />
+    <Property Name="Orient" Type="Int16" />
+  </EntityType>
+  <EntityType Name="ServerSQLUser" customannotation:ClrType="AdvantageFramework.Security.Database.Views.ServerSQLUser, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SID" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TypeDescription" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="IsDisabled" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" />
+    <Property Name="DefaultDatabaseName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultLanguageName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CredentialID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ServiceFeeReconciliationReportColumn" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReportColumn, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceFeeReconciliationReportID" Type="Int32" Nullable="false" />
+    <Property Name="FieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HeaderText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsVisible" Type="Boolean" Nullable="false" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <Property Name="SortIndex" Type="Int32" Nullable="false" />
+    <Property Name="GroupIndex" Type="Int32" Nullable="false" />
+    <Property Name="Width" Type="Int32" Nullable="false" />
+    <Property Name="VisibleIndex" Type="Int32" Nullable="false" />
+    <Property Name="GridViewID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceFeeReconciliationReport" Relationship="Self.ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn" FromRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Target" ToRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Source" />
+  </EntityType>
+  <EntityType Name="ServiceFeeReconciliationReport" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReport, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedByUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+    <Property Name="AllowCellMerge" Type="Boolean" Nullable="false" />
+    <Property Name="AutoSizeColumnsWhenPrinting" Type="Boolean" Nullable="false" />
+    <Property Name="PrintHeader" Type="Boolean" Nullable="false" />
+    <Property Name="PrintFooter" Type="Boolean" Nullable="false" />
+    <Property Name="PrintGroupFooter" Type="Boolean" Nullable="false" />
+    <Property Name="PrintSelectedRowsOnly" Type="Boolean" Nullable="false" />
+    <Property Name="PrintFilterInformation" Type="Boolean" Nullable="false" />
+    <Property Name="ShowViewCaption" Type="Boolean" Nullable="false" />
+    <Property Name="ShowGroupByBox" Type="Boolean" Nullable="false" />
+    <Property Name="ShowAutoFilterRow" Type="Boolean" Nullable="false" />
+    <Property Name="UpdatedByUserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" />
+    <Property Name="ActiveFilter" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GroupByOption" Type="Int32" Nullable="false" />
+    <Property Name="SummaryStyle" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceFeeReconciliationReportColumn" Relationship="Self.ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn" FromRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Source" ToRole="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Target" />
+    <NavigationProperty Name="ServiceFeeReconciliationReportSummaryItem" Relationship="Self.ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport" FromRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Target" ToRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Source" />
+  </EntityType>
+  <EntityType Name="ServiceFeeReconciliationReportSummaryItem" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationReportSummaryItem, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceFeeReconciliationReportID" Type="Int32" Nullable="false" />
+    <Property Name="SummaryItemType" Type="Int32" Nullable="false" />
+    <Property Name="FieldName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ColumnName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DisplayFormat" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OnFooter" Type="Boolean" Nullable="false" />
+    <Property Name="GridViewID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceFeeReconciliationReport" Relationship="Self.ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport" FromRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Source" ToRole="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Target" />
+  </EntityType>
+  <EntityType Name="ServiceFeeReconciliationSettingCDP" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSettingCDP, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ClientCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="DivisionCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ServiceFeeReconciliationSettingDetail" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSettingDetail, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserCode" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceFeeReconciliationSetting" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.ServiceFeeReconciliationSetting, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserCode" />
+    </Key>
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IncludeIncomeOnly" Type="Int16" />
+    <Property Name="IncludeProductionCommission" Type="Int16" />
+    <Property Name="IncludeMediaCommission" Type="Int16" />
+    <Property Name="IncomeOnlyJobCompMarkedAsFee" Type="Int16" />
+    <Property Name="IncomeOnlyPostedBasedOnSalesClass" Type="Int16" />
+    <Property Name="IncomeOnlyPostedBasedOnFunction" Type="Int16" />
+    <Property Name="ProductionCommissionPostedBasedOnSalesClass" Type="Int16" />
+    <Property Name="ProductionCommissionPostedBasedOnFunction" Type="Int16" />
+    <Property Name="BroadcastCommission" Type="Int16" />
+    <Property Name="MagazineCommission" Type="Int16" />
+    <Property Name="NewspaperCommission" Type="Int16" />
+    <Property Name="InternetCommission" Type="Int16" />
+    <Property Name="OutOfHomeCommission" Type="Int16" />
+    <Property Name="ClientDivisionProductIncludeOption" Type="Int16" />
+    <Property Name="IncludeUnreconciledOnly" Type="Int16" />
+    <Property Name="IncludeIncomeOnlyFeeTime" Type="Int16" />
+    <Property Name="IncludeProductionCommissionFeeTime" Type="Int16" />
+    <Property Name="IncludeMediaCommissionFeeTime" Type="Int16" />
+    <Property Name="PrimaryDisplayOption" Type="Int16" />
+    <Property Name="DisplayCampaign" Type="Int16" />
+    <Property Name="DisplayJobNumber" Type="Int16" />
+    <Property Name="DisplayJobName" Type="Int16" />
+    <Property Name="DisplayJobComponentNumber" Type="Int16" />
+    <Property Name="DisplayJobComponentName" Type="Int16" />
+    <Property Name="DisplayFunction" Type="Int16" />
+    <Property Name="ServiceFeeTypeSelection" Type="Int32" />
+    <Property Name="GroupByOption" Type="Int32" />
+    <Property Name="SummaryStyle" Type="Int32" />
+    <Property Name="IncludeServiceFeeTypeLevel" Type="Boolean" Nullable="false" />
+    <Property Name="AddFeeDescriptionToGroupBy" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserFavoriteModule" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserFavoriteModule, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="UserCode" />
+      <PropertyRef Name="WorkspaceID" />
+      <PropertyRef Name="ModuleID" />
+    </Key>
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WorkspaceID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserLoginAudit" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserLoginAudit, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IPAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="LoginDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="LogoutDateTime" Type="DateTime" Nullable="false" />
+    <Property Name="Successful" Type="Boolean" Nullable="false" />
+    <Property Name="FailureReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.UserLoginAudit_Application" FromRole="UserLoginAudit_Application_Source" ToRole="UserLoginAudit_Application_Target" />
+  </EntityType>
+  <EntityType Name="UserPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserPermission, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleIsCategory" Type="Boolean" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPermissionsReport" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserPermissionsReport, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ApplicationID" Type="Int32" Nullable="false" />
+    <Property Name="ParentModuleID" Type="Int32" />
+    <Property Name="ParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ParentModuleSortOrder" Type="Int32" />
+    <Property Name="SubParentModuleID" Type="Int32" />
+    <Property Name="SubParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubParentModuleSortOrder" Type="Int32" />
+    <Property Name="SubSubParentModuleID" Type="Int32" />
+    <Property Name="SubSubParentModule" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SubSubParentModuleSortOrder" Type="Int32" />
+    <Property Name="ModuleID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModuleIsCategory" Type="Boolean" Nullable="false" />
+    <Property Name="ModuleInfoID" Type="Int32" Nullable="false" />
+    <Property Name="ModuleSortOrder" Type="Int32" />
+    <Property Name="ModuleHasCustomPermission" Type="Boolean" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="CanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="Custom1" Type="Boolean" Nullable="false" />
+    <Property Name="Custom2" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationIsBlocked" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanPrint" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCanAdd" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom1" Type="Boolean" Nullable="false" />
+    <Property Name="ApplicationCustom2" Type="Boolean" Nullable="false" />
+    <Property Name="Employee" Type="String" MaxLength="73" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserUserDefinedReportPermission" customannotation:ClrType="AdvantageFramework.Security.Database.Views.UserUserDefinedReportPermission, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserDefinedReportID" Type="Int32" Nullable="false" />
+    <Property Name="UserDefinedReportName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserDefinedReportCategoryID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EmployeeCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsBlocked" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserWorkspace" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.UserWorkspace, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="IsClientPortal" Type="Int32" />
+    <NavigationProperty Name="WorkspaceObjects" Relationship="Self.WorkspaceObject_UserWorkspace" FromRole="WorkspaceObject_UserWorkspace_Target" ToRole="WorkspaceObject_UserWorkspace_Source" />
+  </EntityType>
+  <EntityType Name="WorkspaceObject" customannotation:ClrType="AdvantageFramework.Security.Database.Entities.WorkspaceObject, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserWorkspaceID" Type="Int32" Nullable="false" />
+    <Property Name="DesktopObjectID" Type="Int32" Nullable="false" />
+    <Property Name="ZoneID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Height" Type="Int32" />
+    <Property Name="Width" Type="Int32" />
+    <Property Name="TopCoordinate" Type="Int32" />
+    <Property Name="LeftCoordinate" Type="Int32" />
+    <Property Name="SortOrder" Type="Int32" />
+    <NavigationProperty Name="UserWorkspace" Relationship="Self.WorkspaceObject_UserWorkspace" FromRole="WorkspaceObject_UserWorkspace_Source" ToRole="WorkspaceObject_UserWorkspace_Target" />
+  </EntityType>
+  <Association Name="Employee_Department">
+    <End Role="Employee_Department_Source" Type="Self.Employee" Multiplicity="*" />
+    <End Role="Employee_Department_Target" Type="Self.Department" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee_Department_Target">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Employee_Department_Source">
+        <PropertyRef Name="DepartmentCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Office_Employees">
+    <End Role="Office_Employees_Source" Type="Self.Office" Multiplicity="0..1" />
+    <End Role="Office_Employees_Target" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Office_Employees_Source">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Office_Employees_Target">
+        <PropertyRef Name="OfficeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CDPSecurityGroupEmployee_CDPSecurityGroup">
+    <End Role="CDPSecurityGroupEmployee_CDPSecurityGroup_Source" Type="Self.CDPSecurityGroupEmployee" Multiplicity="*" />
+    <End Role="CDPSecurityGroupEmployee_CDPSecurityGroup_Target" Type="Self.CDPSecurityGroup" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="CDPSecurityGroupEmployee_CDPSecurityGroup_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CDPSecurityGroupEmployee_CDPSecurityGroup_Source">
+        <PropertyRef Name="CDPSecurityGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CDPSecurityGroupEmployee_Employee">
+    <End Role="CDPSecurityGroupEmployee_Employee_Source" Type="Self.CDPSecurityGroupEmployee" Multiplicity="*" />
+    <End Role="CDPSecurityGroupEmployee_Employee_Target" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="CDPSecurityGroupEmployee_Employee_Target">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="CDPSecurityGroupEmployee_Employee_Source">
+        <PropertyRef Name="EmployeeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_CDPSecurityGroup">
+    <End Role="Product_CDPSecurityGroup_Source" Type="Self.Product" Multiplicity="*" />
+    <End Role="Product_CDPSecurityGroup_Target" Type="Self.CDPSecurityGroup" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product_CDPSecurityGroup_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product_CDPSecurityGroup_Source">
+        <PropertyRef Name="CDPSecurityGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientContact_Client">
+    <End Role="ClientContact_Client_Source" Type="Self.ClientContact" Multiplicity="*" />
+    <End Role="ClientContact_Client_Target" Type="Self.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientContact_Client_Target">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="ClientContact_Client_Source">
+        <PropertyRef Name="ClientCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientContactDetail_ClientContact">
+    <End Role="ClientContactDetail_ClientContact_Source" Type="Self.ClientContactDetail" Multiplicity="*" />
+    <End Role="ClientContactDetail_ClientContact_Target" Type="Self.ClientContact" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientContactDetail_ClientContact_Target">
+        <PropertyRef Name="ContactID" />
+      </Principal>
+      <Dependent Role="ClientContactDetail_ClientContact_Source">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientPortalUser_ClientContact">
+    <End Role="ClientPortalUser_ClientContact_Source" Type="Self.ClientPortalUser" Multiplicity="*" />
+    <End Role="ClientPortalUser_ClientContact_Target" Type="Self.ClientContact" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientPortalUser_ClientContact_Target">
+        <PropertyRef Name="ContactID" />
+      </Principal>
+      <Dependent Role="ClientPortalUser_ClientContact_Source">
+        <PropertyRef Name="ClientContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationModule_Application">
+    <End Role="ApplicationModule_Application_Source" Type="Self.ApplicationModule" Multiplicity="*" />
+    <End Role="ApplicationModule_Application_Target" Type="Self.Application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ApplicationModule_Application_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ApplicationModule_Application_Source">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Module_ApplicationModules">
+    <End Role="Module_ApplicationModules_Source" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Module_ApplicationModules_Target" Type="Self.ApplicationModule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module_ApplicationModules_Source">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Module_ApplicationModules_Target">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientPortalUserModuleAccess_ClientPortalUser">
+    <End Role="ClientPortalUserModuleAccess_ClientPortalUser_Source" Type="Self.ClientPortalUserModuleAccess" Multiplicity="*" />
+    <End Role="ClientPortalUserModuleAccess_ClientPortalUser_Target" Type="Self.ClientPortalUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientPortalUserModuleAccess_ClientPortalUser_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientPortalUserModuleAccess_ClientPortalUser_Source">
+        <PropertyRef Name="ClientPortalUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientPortalUserModuleAccess_Module">
+    <End Role="ClientPortalUserModuleAccess_Module_Source" Type="Self.ClientPortalUserModuleAccess" Multiplicity="*" />
+    <End Role="ClientPortalUserModuleAccess_Module_Target" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientPortalUserModuleAccess_Module_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientPortalUserModuleAccess_Module_Source">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupApplicationAccess_Application">
+    <End Role="GroupApplicationAccess_Application_Source" Type="Self.GroupApplicationAccess" Multiplicity="*" />
+    <End Role="GroupApplicationAccess_Application_Target" Type="Self.Application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="GroupApplicationAccess_Application_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupApplicationAccess_Application_Source">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupApplicationAccess_Group">
+    <End Role="GroupApplicationAccess_Group_Source" Type="Self.GroupApplicationAccess" Multiplicity="*" />
+    <End Role="GroupApplicationAccess_Group_Target" Type="Self.Group" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="GroupApplicationAccess_Group_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupApplicationAccess_Group_Source">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Group_GroupModuleAccesses">
+    <End Role="Group_GroupModuleAccesses_Source" Type="Self.Group" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Group_GroupModuleAccesses_Target" Type="Self.GroupModuleAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group_GroupModuleAccesses_Source">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Group_GroupModuleAccesses_Target">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupSetting_Group">
+    <End Role="GroupSetting_Group_Source" Type="Self.GroupSetting" Multiplicity="*" />
+    <End Role="GroupSetting_Group_Target" Type="Self.Group" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="GroupSetting_Group_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupSetting_Group_Source">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupUserDefinedReportAccess_Group">
+    <End Role="GroupUserDefinedReportAccess_Group_Source" Type="Self.GroupUserDefinedReportAccess" Multiplicity="*" />
+    <End Role="GroupUserDefinedReportAccess_Group_Target" Type="Self.Group" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="GroupUserDefinedReportAccess_Group_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupUserDefinedReportAccess_Group_Source">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupUser_Group">
+    <End Role="GroupUser_Group_Source" Type="Self.GroupUser" Multiplicity="*" />
+    <End Role="GroupUser_Group_Target" Type="Self.Group" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="GroupUser_Group_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupUser_Group_Source">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_Employee">
+    <End Role="User_Employee_Source" Type="Self.User" Multiplicity="*" />
+    <End Role="User_Employee_Target" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="User_Employee_Target">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="User_Employee_Source">
+        <PropertyRef Name="EmployeeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_GroupUsers">
+    <End Role="User_GroupUsers_Source" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_GroupUsers_Target" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_GroupUsers_Source">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User_GroupUsers_Target">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserApplicationAccess_Application">
+    <End Role="UserApplicationAccess_Application_Source" Type="Self.UserApplicationAccess" Multiplicity="*" />
+    <End Role="UserApplicationAccess_Application_Target" Type="Self.Application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserApplicationAccess_Application_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserApplicationAccess_Application_Source">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserApplicationAccess_User">
+    <End Role="UserApplicationAccess_User_Source" Type="Self.UserApplicationAccess" Multiplicity="*" />
+    <End Role="UserApplicationAccess_User_Target" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserApplicationAccess_User_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserApplicationAccess_User_Source">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMenu_Module">
+    <End Role="UserMenu_Module_Source" Type="Self.UserMenu" Multiplicity="*" />
+    <End Role="UserMenu_Module_Target" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserMenu_Module_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserMenu_Module_Source">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMenu_User">
+    <End Role="UserMenu_User_Source" Type="Self.UserMenu" Multiplicity="*" />
+    <End Role="UserMenu_User_Target" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserMenu_User_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserMenu_User_Source">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMenuTab_User">
+    <End Role="UserMenuTab_User_Source" Type="Self.UserMenuTab" Multiplicity="*" />
+    <End Role="UserMenuTab_User_Target" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserMenuTab_User_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserMenuTab_User_Source">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserMenuTab_UserMenus">
+    <End Role="UserMenuTab_UserMenus_Source" Type="Self.UserMenuTab" Multiplicity="0..1" />
+    <End Role="UserMenuTab_UserMenus_Target" Type="Self.UserMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMenuTab_UserMenus_Source">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserMenuTab_UserMenus_Target">
+        <PropertyRef Name="UserMenuTabID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserModuleAccess_Module">
+    <End Role="UserModuleAccess_Module_Source" Type="Self.UserModuleAccess" Multiplicity="*" />
+    <End Role="UserModuleAccess_Module_Target" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserModuleAccess_Module_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserModuleAccess_Module_Source">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserModuleAccess_User">
+    <End Role="UserModuleAccess_User_Source" Type="Self.UserModuleAccess" Multiplicity="*" />
+    <End Role="UserModuleAccess_User_Target" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserModuleAccess_User_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserModuleAccess_User_Source">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSetting_User">
+    <End Role="UserSetting_User_Source" Type="Self.UserSetting" Multiplicity="*" />
+    <End Role="UserSetting_User_Target" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserSetting_User_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSetting_User_Source">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserUserDefinedReportAccess_User">
+    <End Role="UserUserDefinedReportAccess_User_Source" Type="Self.UserUserDefinedReportAccess" Multiplicity="*" />
+    <End Role="UserUserDefinedReportAccess_User_Target" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserUserDefinedReportAccess_User_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserUserDefinedReportAccess_User_Source">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkspaceTemplate_User">
+    <End Role="WorkspaceTemplate_User_Source" Type="Self.WorkspaceTemplate" Multiplicity="*" />
+    <End Role="WorkspaceTemplate_User_Target" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="WorkspaceTemplate_User_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkspaceTemplate_User_Source">
+        <PropertyRef Name="CreatedByUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkspaceTemplateDetail_WorkspaceTemplate">
+    <End Role="WorkspaceTemplateDetail_WorkspaceTemplate_Source" Type="Self.WorkspaceTemplateDetail" Multiplicity="*" />
+    <End Role="WorkspaceTemplateDetail_WorkspaceTemplate_Target" Type="Self.WorkspaceTemplate" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="WorkspaceTemplateDetail_WorkspaceTemplate_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkspaceTemplateDetail_WorkspaceTemplate_Source">
+        <PropertyRef Name="WorkspaceTemplateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkspaceTemplateItem_Module">
+    <End Role="WorkspaceTemplateItem_Module_Source" Type="Self.WorkspaceTemplateItem" Multiplicity="*" />
+    <End Role="WorkspaceTemplateItem_Module_Target" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="WorkspaceTemplateItem_Module_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkspaceTemplateItem_Module_Source">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkspaceTemplateItem_WorkspaceTemplateDetail">
+    <End Role="WorkspaceTemplateItem_WorkspaceTemplateDetail_Source" Type="Self.WorkspaceTemplateItem" Multiplicity="*" />
+    <End Role="WorkspaceTemplateItem_WorkspaceTemplateDetail_Target" Type="Self.WorkspaceTemplateDetail" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="WorkspaceTemplateItem_WorkspaceTemplateDetail_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkspaceTemplateItem_WorkspaceTemplateDetail_Source">
+        <PropertyRef Name="WorkspaceTemplateDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupModuleAccess_Module">
+    <End Role="GroupModuleAccess_Module_Source" Type="Self.GroupModuleAccess" Multiplicity="*" />
+    <End Role="GroupModuleAccess_Module_Target" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="GroupModuleAccess_Module_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GroupModuleAccess_Module_Source">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Module_ModuleInformation">
+    <End Role="Module_ModuleInformation_Source" Type="Self.Module" Multiplicity="*" />
+    <End Role="Module_ModuleInformation_Target" Type="Self.ModuleInformation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Module_ModuleInformation_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Module_ModuleInformation_Source">
+        <PropertyRef Name="ModuleInformationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModuleSub_Module">
+    <End Role="ModuleSub_Module_Source" Type="Self.ModuleSub" Multiplicity="*" />
+    <End Role="ModuleSub_Module_Target" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ModuleSub_Module_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ModuleSub_Module_Source">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModuleSub_ParentModule">
+    <End Role="ModuleSub_ParentModule_Source" Type="Self.ModuleSub" Multiplicity="*" />
+    <End Role="ModuleSub_ParentModule_Target" Type="Self.Module" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ModuleSub_ParentModule_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ModuleSub_ParentModule_Source">
+        <PropertyRef Name="ParentModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Module_ParentSubModules">
+    <End Role="Module_ParentSubModules_Source" Type="Self.Module" Multiplicity="0..1" />
+    <End Role="Module_ParentSubModules_Target" Type="Self.ModuleSub" Multiplicity="*" />
+  </Association>
+  <Association Name="Module_SubModules">
+    <End Role="Module_SubModules_Source" Type="Self.Module" Multiplicity="0..1" />
+    <End Role="Module_SubModules_Target" Type="Self.ModuleSub" Multiplicity="*" />
+  </Association>
+  <Association Name="Application_ClientPortalUserApplicationAccesses">
+    <End Role="Application_ClientPortalUserApplicationAccesses_Source" Type="Self.Application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Application_ClientPortalUserApplicationAccesses_Target" Type="Self.ClientPortalUserApplicationAccess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application_ClientPortalUserApplicationAccesses_Source">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application_ClientPortalUserApplicationAccesses_Target">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientPortalUserApplicationAccess_ClientPortalUser">
+    <End Role="ClientPortalUserApplicationAccess_ClientPortalUser_Source" Type="Self.ClientPortalUserApplicationAccess" Multiplicity="*" />
+    <End Role="ClientPortalUserApplicationAccess_ClientPortalUser_Target" Type="Self.ClientPortalUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientPortalUserApplicationAccess_ClientPortalUser_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientPortalUserApplicationAccess_ClientPortalUser_Source">
+        <PropertyRef Name="ClientPortalUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientPortalUserWorkspace_ClientContact">
+    <End Role="ClientPortalUserWorkspace_ClientContact_Source" Type="Self.ClientPortalUserWorkspace" Multiplicity="*" />
+    <End Role="ClientPortalUserWorkspace_ClientContact_Target" Type="Self.ClientContact" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientPortalUserWorkspace_ClientContact_Target">
+        <PropertyRef Name="ContactID" />
+      </Principal>
+      <Dependent Role="ClientPortalUserWorkspace_ClientContact_Source">
+        <PropertyRef Name="ClientContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientPortalWorkspaceObject_ClientPortalUserWorkspace">
+    <End Role="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Source" Type="Self.ClientPortalWorkspaceObject" Multiplicity="*" />
+    <End Role="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Target" Type="Self.ClientPortalUserWorkspace" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Source">
+        <PropertyRef Name="ClientPortalUserWorkspaceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Division_Client">
+    <End Role="Division_Client_Source" Type="Self.Division" Multiplicity="*" />
+    <End Role="Division_Client_Target" Type="Self.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Division_Client_Target">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Division_Client_Source">
+        <PropertyRef Name="ClientCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Division_Products">
+    <End Role="Division_Products_Source" Type="Self.Division" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Division_Products_Target" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division_Products_Source">
+        <PropertyRef Name="ClientCode" />
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Division_Products_Target">
+        <PropertyRef Name="ClientCode" />
+        <PropertyRef Name="DivisionCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Client_Products">
+    <End Role="Client_Products_Source" Type="Self.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Client_Products_Target" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client_Products_Source">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Client_Products_Target">
+        <PropertyRef Name="ClientCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_Office">
+    <End Role="Product_Office_Source" Type="Self.Product" Multiplicity="*" />
+    <End Role="Product_Office_Target" Type="Self.Office" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Product_Office_Target">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Product_Office_Source">
+        <PropertyRef Name="OfficeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserClientDivisionProductAccess_Product">
+    <End Role="UserClientDivisionProductAccess_Product_Source" Type="Self.UserClientDivisionProductAccess" Multiplicity="*" />
+    <End Role="UserClientDivisionProductAccess_Product_Target" Type="Self.Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserClientDivisionProductAccess_Product_Target">
+        <PropertyRef Name="ClientCode" />
+        <PropertyRef Name="DivisionCode" />
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="UserClientDivisionProductAccess_Product_Source">
+        <PropertyRef Name="ClientCode" />
+        <PropertyRef Name="DivisionCode" />
+        <PropertyRef Name="ProductCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserEmployeeAccess_Employee">
+    <End Role="UserEmployeeAccess_Employee_Source" Type="Self.UserEmployeeAccess" Multiplicity="*" />
+    <End Role="UserEmployeeAccess_Employee_Target" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserEmployeeAccess_Employee_Target">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="UserEmployeeAccess_Employee_Source">
+        <PropertyRef Name="EmployeeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AdassistUser_Employee">
+    <End Role="AdassistUser_Employee_Source" Type="Self.AdassistUser" Multiplicity="*" />
+    <End Role="AdassistUser_Employee_Target" Type="Self.Employee" Multiplicity="0..1" />
+  </Association>
+  <Association Name="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn">
+    <End Role="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Source" Type="Self.ServiceFeeReconciliationReport" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Target" Type="Self.ServiceFeeReconciliationReportColumn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Source">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Target">
+        <PropertyRef Name="ServiceFeeReconciliationReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport">
+    <End Role="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Source" Type="Self.ServiceFeeReconciliationReportSummaryItem" Multiplicity="*" />
+    <End Role="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Target" Type="Self.ServiceFeeReconciliationReport" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Source">
+        <PropertyRef Name="ServiceFeeReconciliationReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserLoginAudit_Application">
+    <End Role="UserLoginAudit_Application_Source" Type="Self.UserLoginAudit" Multiplicity="*" />
+    <End Role="UserLoginAudit_Application_Target" Type="Self.Application" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="UserLoginAudit_Application_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserLoginAudit_Application_Source">
+        <PropertyRef Name="ApplicationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkspaceObject_UserWorkspace">
+    <End Role="WorkspaceObject_UserWorkspace_Source" Type="Self.WorkspaceObject" Multiplicity="*" />
+    <End Role="WorkspaceObject_UserWorkspace_Target" Type="Self.UserWorkspace" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="WorkspaceObject_UserWorkspace_Target">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkspaceObject_UserWorkspace_Source">
+        <PropertyRef Name="UserWorkspaceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbContext" customannotation:UseClrTypes="true">
+    <EntitySet Name="AdassistUsers" EntityType="Self.AdassistUser" />
+    <EntitySet Name="SecurityEmployees" EntityType="Self.Employee" />
+    <EntitySet Name="SecurityDepartments" EntityType="Self.Department" />
+    <EntitySet Name="SecurityOffices" EntityType="Self.Office" />
+    <EntitySet Name="SecurityProducts" EntityType="Self.Product" />
+    <EntitySet Name="CDPSecurityGroups" EntityType="Self.CDPSecurityGroup" />
+    <EntitySet Name="CDPSecurityGroupEmployees" EntityType="Self.CDPSecurityGroupEmployee" />
+    <EntitySet Name="SecurityClients" EntityType="Self.Client" />
+    <EntitySet Name="SecurityClientContacts" EntityType="Self.ClientContact" />
+    <EntitySet Name="SecurityClientContactDetails" EntityType="Self.ClientContactDetail" />
+    <EntitySet Name="ClientPortalUsers" EntityType="Self.ClientPortalUser" />
+    <EntitySet Name="ClientPortalUserApplicationAccesses" EntityType="Self.ClientPortalUserApplicationAccess" />
+    <EntitySet Name="Applications" EntityType="Self.Application" />
+    <EntitySet Name="ApplicationModules" EntityType="Self.ApplicationModule" />
+    <EntitySet Name="Modules" EntityType="Self.Module" />
+    <EntitySet Name="ClientPortalUserModuleAccesses" EntityType="Self.ClientPortalUserModuleAccess" />
+    <EntitySet Name="GroupModuleAccesses" EntityType="Self.GroupModuleAccess" />
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="GroupApplicationAccesses" EntityType="Self.GroupApplicationAccess" />
+    <EntitySet Name="GroupSettings" EntityType="Self.GroupSetting" />
+    <EntitySet Name="GroupUserDefinedReportAccesses" EntityType="Self.GroupUserDefinedReportAccess" />
+    <EntitySet Name="GroupUsers" EntityType="Self.GroupUser" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserApplicationAccesses" EntityType="Self.UserApplicationAccess" />
+    <EntitySet Name="UserMenus" EntityType="Self.UserMenu" />
+    <EntitySet Name="UserMenuTabs" EntityType="Self.UserMenuTab" />
+    <EntitySet Name="UserModuleAccesses" EntityType="Self.UserModuleAccess" />
+    <EntitySet Name="UserSettings" EntityType="Self.UserSetting" />
+    <EntitySet Name="UserUserDefinedReportAccesses" EntityType="Self.UserUserDefinedReportAccess" />
+    <EntitySet Name="WorkspaceTemplates" EntityType="Self.WorkspaceTemplate" />
+    <EntitySet Name="WorkspaceTemplateDetails" EntityType="Self.WorkspaceTemplateDetail" />
+    <EntitySet Name="WorkspaceTemplateItems" EntityType="Self.WorkspaceTemplateItem" />
+    <EntitySet Name="ModuleInformations" EntityType="Self.ModuleInformation" />
+    <EntitySet Name="ModuleSubs" EntityType="Self.ModuleSub" />
+    <EntitySet Name="ClientPortalUserWorkspaces" EntityType="Self.ClientPortalUserWorkspace" />
+    <EntitySet Name="ClientPortalWorkspaceObjects" EntityType="Self.ClientPortalWorkspaceObject" />
+    <EntitySet Name="SecurityDivisions" EntityType="Self.Division" />
+    <EntitySet Name="UserClientDivisionProductAccesses" EntityType="Self.UserClientDivisionProductAccess" />
+    <EntitySet Name="UserEmployeeAccesses" EntityType="Self.UserEmployeeAccess" />
+    <EntitySet Name="AdvantageUserLicenseInUses" EntityType="Self.AdvantageUserLicenseInUse" />
+    <EntitySet Name="ApplicationSettings" EntityType="Self.ApplicationSetting" />
+    <EntitySet Name="CPUserFavoriteModules" EntityType="Self.CPUserFavoriteModule" />
+    <EntitySet Name="DatabaseSQLUsers" EntityType="Self.DatabaseSQLUser" />
+    <EntitySet Name="EmployeeSummaries" EntityType="Self.EmployeeSummary" />
+    <EntitySet Name="GroupPermissions" EntityType="Self.GroupPermission" />
+    <EntitySet Name="GroupPermissionsReports" EntityType="Self.GroupPermissionsReport" />
+    <EntitySet Name="ModuleStructures" EntityType="Self.ModuleStructure" />
+    <EntitySet Name="ModuleViews" EntityType="Self.ModuleView" />
+    <EntitySet Name="PasswordHistories" EntityType="Self.PasswordHistory" />
+    <EntitySet Name="PasswordLockouts" EntityType="Self.PasswordLockout" />
+    <EntitySet Name="ReportAccesses" EntityType="Self.ReportAccess" />
+    <EntitySet Name="Reports" EntityType="Self.Report" />
+    <EntitySet Name="ServerSQLUsers" EntityType="Self.ServerSQLUser" />
+    <EntitySet Name="ServiceFeeReconciliationReportColumns" EntityType="Self.ServiceFeeReconciliationReportColumn" />
+    <EntitySet Name="ServiceFeeReconciliationReports" EntityType="Self.ServiceFeeReconciliationReport" />
+    <EntitySet Name="ServiceFeeReconciliationReportSummaryItems" EntityType="Self.ServiceFeeReconciliationReportSummaryItem" />
+    <EntitySet Name="ServiceFeeReconciliationSettingCDPs" EntityType="Self.ServiceFeeReconciliationSettingCDP" />
+    <EntitySet Name="ServiceFeeReconciliationSettingDetails" EntityType="Self.ServiceFeeReconciliationSettingDetail" />
+    <EntitySet Name="ServiceFeeReconciliationSettings" EntityType="Self.ServiceFeeReconciliationSetting" />
+    <EntitySet Name="UserFavoriteModules" EntityType="Self.UserFavoriteModule" />
+    <EntitySet Name="UserLoginAudits" EntityType="Self.UserLoginAudit" />
+    <EntitySet Name="UserPermissions" EntityType="Self.UserPermission" />
+    <EntitySet Name="UserPermissionsReports" EntityType="Self.UserPermissionsReport" />
+    <EntitySet Name="UserUserDefinedReportPermissions" EntityType="Self.UserUserDefinedReportPermission" />
+    <EntitySet Name="UserWorkspaces" EntityType="Self.UserWorkspace" />
+    <EntitySet Name="WorkspaceObjects" EntityType="Self.WorkspaceObject" />
+    <AssociationSet Name="Employee_Department" Association="Self.Employee_Department">
+      <End Role="Employee_Department_Source" EntitySet="SecurityEmployees" />
+      <End Role="Employee_Department_Target" EntitySet="SecurityDepartments" />
+    </AssociationSet>
+    <AssociationSet Name="Office_Employees" Association="Self.Office_Employees">
+      <End Role="Office_Employees_Source" EntitySet="SecurityOffices" />
+      <End Role="Office_Employees_Target" EntitySet="SecurityEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="CDPSecurityGroupEmployee_CDPSecurityGroup" Association="Self.CDPSecurityGroupEmployee_CDPSecurityGroup">
+      <End Role="CDPSecurityGroupEmployee_CDPSecurityGroup_Source" EntitySet="CDPSecurityGroupEmployees" />
+      <End Role="CDPSecurityGroupEmployee_CDPSecurityGroup_Target" EntitySet="CDPSecurityGroups" />
+    </AssociationSet>
+    <AssociationSet Name="CDPSecurityGroupEmployee_Employee" Association="Self.CDPSecurityGroupEmployee_Employee">
+      <End Role="CDPSecurityGroupEmployee_Employee_Source" EntitySet="CDPSecurityGroupEmployees" />
+      <End Role="CDPSecurityGroupEmployee_Employee_Target" EntitySet="SecurityEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="Product_CDPSecurityGroup" Association="Self.Product_CDPSecurityGroup">
+      <End Role="Product_CDPSecurityGroup_Source" EntitySet="SecurityProducts" />
+      <End Role="Product_CDPSecurityGroup_Target" EntitySet="CDPSecurityGroups" />
+    </AssociationSet>
+    <AssociationSet Name="ClientContact_Client" Association="Self.ClientContact_Client">
+      <End Role="ClientContact_Client_Source" EntitySet="SecurityClientContacts" />
+      <End Role="ClientContact_Client_Target" EntitySet="SecurityClients" />
+    </AssociationSet>
+    <AssociationSet Name="ClientContactDetail_ClientContact" Association="Self.ClientContactDetail_ClientContact">
+      <End Role="ClientContactDetail_ClientContact_Source" EntitySet="SecurityClientContactDetails" />
+      <End Role="ClientContactDetail_ClientContact_Target" EntitySet="SecurityClientContacts" />
+    </AssociationSet>
+    <AssociationSet Name="ClientPortalUser_ClientContact" Association="Self.ClientPortalUser_ClientContact">
+      <End Role="ClientPortalUser_ClientContact_Source" EntitySet="ClientPortalUsers" />
+      <End Role="ClientPortalUser_ClientContact_Target" EntitySet="SecurityClientContacts" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationModule_Application" Association="Self.ApplicationModule_Application">
+      <End Role="ApplicationModule_Application_Source" EntitySet="ApplicationModules" />
+      <End Role="ApplicationModule_Application_Target" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="Module_ApplicationModules" Association="Self.Module_ApplicationModules">
+      <End Role="Module_ApplicationModules_Source" EntitySet="Modules" />
+      <End Role="Module_ApplicationModules_Target" EntitySet="ApplicationModules" />
+    </AssociationSet>
+    <AssociationSet Name="ClientPortalUserModuleAccess_ClientPortalUser" Association="Self.ClientPortalUserModuleAccess_ClientPortalUser">
+      <End Role="ClientPortalUserModuleAccess_ClientPortalUser_Source" EntitySet="ClientPortalUserModuleAccesses" />
+      <End Role="ClientPortalUserModuleAccess_ClientPortalUser_Target" EntitySet="ClientPortalUsers" />
+    </AssociationSet>
+    <AssociationSet Name="ClientPortalUserModuleAccess_Module" Association="Self.ClientPortalUserModuleAccess_Module">
+      <End Role="ClientPortalUserModuleAccess_Module_Source" EntitySet="ClientPortalUserModuleAccesses" />
+      <End Role="ClientPortalUserModuleAccess_Module_Target" EntitySet="Modules" />
+    </AssociationSet>
+    <AssociationSet Name="GroupApplicationAccess_Application" Association="Self.GroupApplicationAccess_Application">
+      <End Role="GroupApplicationAccess_Application_Source" EntitySet="GroupApplicationAccesses" />
+      <End Role="GroupApplicationAccess_Application_Target" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="GroupApplicationAccess_Group" Association="Self.GroupApplicationAccess_Group">
+      <End Role="GroupApplicationAccess_Group_Source" EntitySet="GroupApplicationAccesses" />
+      <End Role="GroupApplicationAccess_Group_Target" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="Group_GroupModuleAccesses" Association="Self.Group_GroupModuleAccesses">
+      <End Role="Group_GroupModuleAccesses_Source" EntitySet="Groups" />
+      <End Role="Group_GroupModuleAccesses_Target" EntitySet="GroupModuleAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="GroupSetting_Group" Association="Self.GroupSetting_Group">
+      <End Role="GroupSetting_Group_Source" EntitySet="GroupSettings" />
+      <End Role="GroupSetting_Group_Target" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="GroupUserDefinedReportAccess_Group" Association="Self.GroupUserDefinedReportAccess_Group">
+      <End Role="GroupUserDefinedReportAccess_Group_Source" EntitySet="GroupUserDefinedReportAccesses" />
+      <End Role="GroupUserDefinedReportAccess_Group_Target" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="GroupUser_Group" Association="Self.GroupUser_Group">
+      <End Role="GroupUser_Group_Source" EntitySet="GroupUsers" />
+      <End Role="GroupUser_Group_Target" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="User_Employee" Association="Self.User_Employee">
+      <End Role="User_Employee_Source" EntitySet="Users" />
+      <End Role="User_Employee_Target" EntitySet="SecurityEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="User_GroupUsers" Association="Self.User_GroupUsers">
+      <End Role="User_GroupUsers_Source" EntitySet="Users" />
+      <End Role="User_GroupUsers_Target" EntitySet="GroupUsers" />
+    </AssociationSet>
+    <AssociationSet Name="UserApplicationAccess_Application" Association="Self.UserApplicationAccess_Application">
+      <End Role="UserApplicationAccess_Application_Source" EntitySet="UserApplicationAccesses" />
+      <End Role="UserApplicationAccess_Application_Target" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="UserApplicationAccess_User" Association="Self.UserApplicationAccess_User">
+      <End Role="UserApplicationAccess_User_Source" EntitySet="UserApplicationAccesses" />
+      <End Role="UserApplicationAccess_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserMenu_Module" Association="Self.UserMenu_Module">
+      <End Role="UserMenu_Module_Source" EntitySet="UserMenus" />
+      <End Role="UserMenu_Module_Target" EntitySet="Modules" />
+    </AssociationSet>
+    <AssociationSet Name="UserMenu_User" Association="Self.UserMenu_User">
+      <End Role="UserMenu_User_Source" EntitySet="UserMenus" />
+      <End Role="UserMenu_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserMenuTab_User" Association="Self.UserMenuTab_User">
+      <End Role="UserMenuTab_User_Source" EntitySet="UserMenuTabs" />
+      <End Role="UserMenuTab_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserMenuTab_UserMenus" Association="Self.UserMenuTab_UserMenus">
+      <End Role="UserMenuTab_UserMenus_Source" EntitySet="UserMenuTabs" />
+      <End Role="UserMenuTab_UserMenus_Target" EntitySet="UserMenus" />
+    </AssociationSet>
+    <AssociationSet Name="UserModuleAccess_Module" Association="Self.UserModuleAccess_Module">
+      <End Role="UserModuleAccess_Module_Source" EntitySet="UserModuleAccesses" />
+      <End Role="UserModuleAccess_Module_Target" EntitySet="Modules" />
+    </AssociationSet>
+    <AssociationSet Name="UserModuleAccess_User" Association="Self.UserModuleAccess_User">
+      <End Role="UserModuleAccess_User_Source" EntitySet="UserModuleAccesses" />
+      <End Role="UserModuleAccess_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserSetting_User" Association="Self.UserSetting_User">
+      <End Role="UserSetting_User_Source" EntitySet="UserSettings" />
+      <End Role="UserSetting_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserUserDefinedReportAccess_User" Association="Self.UserUserDefinedReportAccess_User">
+      <End Role="UserUserDefinedReportAccess_User_Source" EntitySet="UserUserDefinedReportAccesses" />
+      <End Role="UserUserDefinedReportAccess_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="WorkspaceTemplate_User" Association="Self.WorkspaceTemplate_User">
+      <End Role="WorkspaceTemplate_User_Source" EntitySet="WorkspaceTemplates" />
+      <End Role="WorkspaceTemplate_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="WorkspaceTemplateDetail_WorkspaceTemplate" Association="Self.WorkspaceTemplateDetail_WorkspaceTemplate">
+      <End Role="WorkspaceTemplateDetail_WorkspaceTemplate_Source" EntitySet="WorkspaceTemplateDetails" />
+      <End Role="WorkspaceTemplateDetail_WorkspaceTemplate_Target" EntitySet="WorkspaceTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="WorkspaceTemplateItem_Module" Association="Self.WorkspaceTemplateItem_Module">
+      <End Role="WorkspaceTemplateItem_Module_Source" EntitySet="WorkspaceTemplateItems" />
+      <End Role="WorkspaceTemplateItem_Module_Target" EntitySet="Modules" />
+    </AssociationSet>
+    <AssociationSet Name="WorkspaceTemplateItem_WorkspaceTemplateDetail" Association="Self.WorkspaceTemplateItem_WorkspaceTemplateDetail">
+      <End Role="WorkspaceTemplateItem_WorkspaceTemplateDetail_Source" EntitySet="WorkspaceTemplateItems" />
+      <End Role="WorkspaceTemplateItem_WorkspaceTemplateDetail_Target" EntitySet="WorkspaceTemplateDetails" />
+    </AssociationSet>
+    <AssociationSet Name="GroupModuleAccess_Module" Association="Self.GroupModuleAccess_Module">
+      <End Role="GroupModuleAccess_Module_Source" EntitySet="GroupModuleAccesses" />
+      <End Role="GroupModuleAccess_Module_Target" EntitySet="Modules" />
+    </AssociationSet>
+    <AssociationSet Name="Module_ModuleInformation" Association="Self.Module_ModuleInformation">
+      <End Role="Module_ModuleInformation_Source" EntitySet="Modules" />
+      <End Role="Module_ModuleInformation_Target" EntitySet="ModuleInformations" />
+    </AssociationSet>
+    <AssociationSet Name="ModuleSub_Module" Association="Self.ModuleSub_Module">
+      <End Role="ModuleSub_Module_Source" EntitySet="ModuleSubs" />
+      <End Role="ModuleSub_Module_Target" EntitySet="Modules" />
+    </AssociationSet>
+    <AssociationSet Name="ModuleSub_ParentModule" Association="Self.ModuleSub_ParentModule">
+      <End Role="ModuleSub_ParentModule_Source" EntitySet="ModuleSubs" />
+      <End Role="ModuleSub_ParentModule_Target" EntitySet="Modules" />
+    </AssociationSet>
+    <AssociationSet Name="Module_ParentSubModules" Association="Self.Module_ParentSubModules">
+      <End Role="Module_ParentSubModules_Source" EntitySet="Modules" />
+      <End Role="Module_ParentSubModules_Target" EntitySet="ModuleSubs" />
+    </AssociationSet>
+    <AssociationSet Name="Module_SubModules" Association="Self.Module_SubModules">
+      <End Role="Module_SubModules_Source" EntitySet="Modules" />
+      <End Role="Module_SubModules_Target" EntitySet="ModuleSubs" />
+    </AssociationSet>
+    <AssociationSet Name="Application_ClientPortalUserApplicationAccesses" Association="Self.Application_ClientPortalUserApplicationAccesses">
+      <End Role="Application_ClientPortalUserApplicationAccesses_Source" EntitySet="Applications" />
+      <End Role="Application_ClientPortalUserApplicationAccesses_Target" EntitySet="ClientPortalUserApplicationAccesses" />
+    </AssociationSet>
+    <AssociationSet Name="ClientPortalUserApplicationAccess_ClientPortalUser" Association="Self.ClientPortalUserApplicationAccess_ClientPortalUser">
+      <End Role="ClientPortalUserApplicationAccess_ClientPortalUser_Source" EntitySet="ClientPortalUserApplicationAccesses" />
+      <End Role="ClientPortalUserApplicationAccess_ClientPortalUser_Target" EntitySet="ClientPortalUsers" />
+    </AssociationSet>
+    <AssociationSet Name="ClientPortalUserWorkspace_ClientContact" Association="Self.ClientPortalUserWorkspace_ClientContact">
+      <End Role="ClientPortalUserWorkspace_ClientContact_Source" EntitySet="ClientPortalUserWorkspaces" />
+      <End Role="ClientPortalUserWorkspace_ClientContact_Target" EntitySet="SecurityClientContacts" />
+    </AssociationSet>
+    <AssociationSet Name="ClientPortalWorkspaceObject_ClientPortalUserWorkspace" Association="Self.ClientPortalWorkspaceObject_ClientPortalUserWorkspace">
+      <End Role="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Source" EntitySet="ClientPortalWorkspaceObjects" />
+      <End Role="ClientPortalWorkspaceObject_ClientPortalUserWorkspace_Target" EntitySet="ClientPortalUserWorkspaces" />
+    </AssociationSet>
+    <AssociationSet Name="Division_Client" Association="Self.Division_Client">
+      <End Role="Division_Client_Source" EntitySet="SecurityDivisions" />
+      <End Role="Division_Client_Target" EntitySet="SecurityClients" />
+    </AssociationSet>
+    <AssociationSet Name="Division_Products" Association="Self.Division_Products">
+      <End Role="Division_Products_Source" EntitySet="SecurityDivisions" />
+      <End Role="Division_Products_Target" EntitySet="SecurityProducts" />
+    </AssociationSet>
+    <AssociationSet Name="Client_Products" Association="Self.Client_Products">
+      <End Role="Client_Products_Source" EntitySet="SecurityClients" />
+      <End Role="Client_Products_Target" EntitySet="SecurityProducts" />
+    </AssociationSet>
+    <AssociationSet Name="Product_Office" Association="Self.Product_Office">
+      <End Role="Product_Office_Source" EntitySet="SecurityProducts" />
+      <End Role="Product_Office_Target" EntitySet="SecurityOffices" />
+    </AssociationSet>
+    <AssociationSet Name="UserClientDivisionProductAccess_Product" Association="Self.UserClientDivisionProductAccess_Product">
+      <End Role="UserClientDivisionProductAccess_Product_Source" EntitySet="UserClientDivisionProductAccesses" />
+      <End Role="UserClientDivisionProductAccess_Product_Target" EntitySet="SecurityProducts" />
+    </AssociationSet>
+    <AssociationSet Name="UserEmployeeAccess_Employee" Association="Self.UserEmployeeAccess_Employee">
+      <End Role="UserEmployeeAccess_Employee_Source" EntitySet="UserEmployeeAccesses" />
+      <End Role="UserEmployeeAccess_Employee_Target" EntitySet="SecurityEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="AdassistUser_Employee" Association="Self.AdassistUser_Employee">
+      <End Role="AdassistUser_Employee_Source" EntitySet="AdassistUsers" />
+      <End Role="AdassistUser_Employee_Target" EntitySet="SecurityEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn" Association="Self.ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn">
+      <End Role="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Source" EntitySet="ServiceFeeReconciliationReports" />
+      <End Role="ServiceFeeReconciliationReport_ServiceFeeReconciliationReportColumn_Target" EntitySet="ServiceFeeReconciliationReportColumns" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport" Association="Self.ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport">
+      <End Role="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Source" EntitySet="ServiceFeeReconciliationReportSummaryItems" />
+      <End Role="ServiceFeeReconciliationReportSummaryItem_ServiceFeeReconciliationReport_Target" EntitySet="ServiceFeeReconciliationReports" />
+    </AssociationSet>
+    <AssociationSet Name="UserLoginAudit_Application" Association="Self.UserLoginAudit_Application">
+      <End Role="UserLoginAudit_Application_Source" EntitySet="UserLoginAudits" />
+      <End Role="UserLoginAudit_Application_Target" EntitySet="Applications" />
+    </AssociationSet>
+    <AssociationSet Name="WorkspaceObject_UserWorkspace" Association="Self.WorkspaceObject_UserWorkspace">
+      <End Role="WorkspaceObject_UserWorkspace_Source" EntitySet="WorkspaceObjects" />
+      <End Role="WorkspaceObject_UserWorkspace_Target" EntitySet="UserWorkspaces" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

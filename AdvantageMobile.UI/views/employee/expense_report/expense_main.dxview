@@ -1,0 +1,5 @@
+<div data-options="dxView : { name: 'expense_main', title: 'Expenses' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+
+    </div>
+</div>

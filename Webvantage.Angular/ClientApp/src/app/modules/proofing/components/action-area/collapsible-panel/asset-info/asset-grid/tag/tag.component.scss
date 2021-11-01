@@ -1,0 +1,33 @@
+@import '../../../../../../theme/colors';
+@import '../../../../../../theme/mixins/font';
+
+.tag {
+  min-width: 50px;
+  height: 25px;
+  border-radius: 3px;
+  background-color: $light-grey;
+  border: 1px solid $border-color;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2.5px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  display: inline-flex;
+
+  img {
+    min-width: 12px;
+    min-height: 12px;
+
+    &:hover {
+      -webkit-filter: grayscale(10%) brightness(85%);
+      filter: grayscale(10%) brightness(85%);
+    }
+  }
+}
+
+span {
+  @include font-base(14px, normal, 20px, 600);
+  color: $feedback-light-text;
+  margin: 0 3% 0 0;
+  padding: 0;
+}

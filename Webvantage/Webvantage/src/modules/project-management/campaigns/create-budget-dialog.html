@@ -1,0 +1,37 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <ux-dialog>
+        <ux-dialog-header>
+            Create Budget
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <div class="wv-widget-col wv-form">
+                <div class="wv-form-group">
+                    <label style="white-space:nowrap; width:113px">Max Periods:</label>
+                    <input type="number" ak-numerictextbox="k-value.two-way: Periods.MaxPeriods; k-decimals.bind: null; k-format.bind: 'n0'; k-spinners.bind: true; k-restrict-decimals.bind: true; k-max.bind: 9999; k-min.bind: 1;" />
+                </div>
+                <div class="wv-form-group">
+                    <label style="white-space:nowrap; width:auto;">Begin Post Period:</label>
+                    <ak-drop-down-list style="width: 350px;"
+                                       k-widget.two-way="postPeriodDropDownList"
+                                       k-option-label="[Please Select]"
+                                       k-data-text-field="Name"
+                                       k-data-value-field="Code"
+                                       k-value.two-way="Periods.PostPeriodCode"
+                                       k-auto-width.bind="true"
+                                       k-auto-bind.bind="false"
+                                       k-filter="contains"
+                                       k-ignore-case.bind="true"
+                                       k-data-source.bind="postPeriodDataSource">
+                    </ak-drop-down-list>
+                </div>
+            </div>
+
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <button click.trigger="controller.ok(Periods)">Create</button>
+            <button click.trigger="controller.cancel()">Cancel</button>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

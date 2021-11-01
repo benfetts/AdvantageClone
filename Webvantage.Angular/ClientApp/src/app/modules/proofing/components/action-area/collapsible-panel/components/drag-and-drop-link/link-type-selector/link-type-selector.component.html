@@ -1,0 +1,6 @@
+<ng-container *ngIf="(linkTypes | async) as linkTypes">
+  <kendo-dropdownlist [data]="listItems"
+                      [value]="linkTypes"
+                      (valueChange)="onValueChange($event)">
+  </kendo-dropdownlist>
+</ng-container>

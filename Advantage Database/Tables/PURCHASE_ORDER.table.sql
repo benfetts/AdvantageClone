@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[PURCHASE_ORDER] (
+    [PO_NUMBER]         INT           NOT NULL,
+    [PO_CREATE_DATE]    SMALLDATETIME DEFAULT (getdate()) NULL,
+    [USER_ID]           VARCHAR (100) NULL,
+    [VN_CODE]           VARCHAR (6)   NULL,
+    [EMP_CODE]          VARCHAR (6)   NULL,
+    [PO_DATE]           SMALLDATETIME NULL,
+    [PO_DUE_DATE]       SMALLDATETIME NULL,
+    [PO_DESCRIPTION]    VARCHAR (40)  NULL,
+    [PO_MAIN_INSTRUCT]  TEXT          NULL,
+    [PO_COMPLETE]       SMALLINT      NULL,
+    [DEL_INSTRUCT]      TEXT          NULL,
+    [VOID_FLAG]         SMALLINT      NULL,
+    [VOIDED_BY]         VARCHAR (100) NULL,
+    [VOID_DATE]         SMALLDATETIME NULL,
+    [PO_REVISION]       SMALLINT      NULL,
+    [PO_WORK_COMPLETE]  SMALLINT      NULL,
+    [ARCHIVE_FLAG]      SMALLINT      NULL,
+    [VN_CONT_CODE]      VARCHAR (4)   NULL,
+    [PO_FOOTER]         TEXT          NULL,
+    [WV_FLAG]           SMALLINT      DEFAULT (0) NOT NULL,
+    [PO_APPROVAL_FLAG]  AS            ([dbo].[advfn_po_appr_status]([PO_NUMBER])),
+    [PO_PRINTED]        SMALLINT      NULL,
+    [PO_APPR_RULE_CODE] VARCHAR (6)   NULL,
+    [EXCEED]            SMALLINT      NULL,
+    [LOCK_USER]         VARCHAR (100) NULL
+);
+

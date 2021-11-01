@@ -1,0 +1,10 @@
+<div data-options="dxView : { name: 'licensing', title: 'licensing' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <div style="margin:15px;">
+            <div data-bind="dxScrollView: { }">
+                <div data-bind="dxTextArea: { }"></div>
+                <div style="width:100%;" data-bind="dxButton: { text: 'Save' }"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[advsp_agile_load_board_jobs]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE [dbo].[advsp_agile_load_board_jobs]
+GO
+CREATE PROCEDURE [dbo].[advsp_agile_load_board_jobs] 
+@BOARD_ID INT,
+@USER_CODE VARCHAR(100)
+AS
+BEGIN
+/*=========== QUERY ===========*/
+    DECLARE @JOBS TABLE (JobNumber INT, JobComponentNumber SMALLINT, [Key] VARCHAR(MAX), [Description] VARCHAR(MAX), ClientCode VARCHAR(10), DivisionCode VARCHAR(10), ProductCode VARCHAR(10), OfficeCode VARCHAR(10), Client VARCHAR(1000), SalesClassCode VARCHAR(6), SalesClassDescription VARCHAR(30), ManagerCode VARCHAR(6), ManagerName VARCHAR(70), AccountExecutiveCode VARCHAR(6), AccountExecutiveName VARCHAR(70), JobTypeCode VARCHAR(10), JobTypeDescription VARCHAR(30), IsOnBoard BIT)
+	DECLARE @ManagerColumn VARCHAR(10)
+
+	SELECT @ManagerColumn = CONVERT(VARCHAR(10), AGY_SETTINGS_VALUE) FROM dbo.AGY_SETTINGS WHERE AGY_SETTINGS_CODE = 'TRAFFIC_MGR_COL'
+	
+    IF @BOARD_ID IS NULL OR @BOARD_ID < 0
+    BEGIN
+	   INSERT INTO @JOBS (JobNumber, JobComponentNumber, [Key], [Description], ClientCode, DivisionCode, ProductCode, OfficeCode, Client, SalesClassCode, SalesClassDescription, ManagerCode, AccountExecutiveCode, AccountExecutiveName, JobTypeCode, JobTypeDescription, IsOnBoard)
+	   SELECT DISTINCT
+		  JC.JOB_NUMBER AS JobNumber,
+		  JC.JOB_COMPONENT_NBR AS JobComponentNumber,
+		  CAST(JC.JOB_NUMBER AS VARCHAR(1000)) + ',' + CAST(JC.JOB_COMPONENT_NBR AS VARCHAR(1000)) AS [Key],
+		  REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + JC.JOB_COMP_DESC AS [Description],
+		  JL.CL_CODE AS ClientCode,
+		  JL.DIV_CODE AS DivisionCode,
+		  JL.PRD_CODE AS ProductCode,
+		  JL.OFFICE_CODE,
+		  CL.CL_NAME Client,
+		  JL.SC_CODE AS SalesClassCode,
+		  SC.SC_DESCRIPTION,
+		  [ManagerCode] = CASE @ManagerColumn
+								WHEN 'TR_TITLE1' THEN TRF.ASSIGN_1
+								WHEN 'TR_TITLE2' THEN TRF.ASSIGN_2
+								WHEN 'TR_TITLE3' THEN TRF.ASSIGN_3
+								WHEN 'TR_TITLE4' THEN TRF.ASSIGN_4
+								WHEN 'TR_TITLE5' THEN TRF.ASSIGN_5
+							END,
+		  JC.EMP_CODE,
+		  E.EMP_FNAME + ISNULL(' ' + E.EMP_MI + '. ', ' ') + E.EMP_LNAME,
+		  JC.JT_CODE,
+		  JT.JT_DESC,
+		  CAST(0 AS BIT) AS IsOnBoard
+	   FROM            
+		  JOB_LOG JL
+		  INNER JOIN JOB_COMPONENT AS JC ON JL.JOB_NUMBER = JC.JOB_NUMBER 
+		  INNER JOIN CLIENT CL ON JL.CL_CODE = CL.CL_CODE 
+		  LEFT OUTER JOIN BOARD AS B 
+		  INNER JOIN BOARD_JOB AS BJ ON B.ID = BJ.BOARD_ID ON JC.JOB_NUMBER = BJ.JOB_NUMBER AND JC.JOB_COMPONENT_NBR = BJ.JOB_COMPONENT_NBR
+		  LEFT OUTER JOIN SALES_CLASS SC ON JL.SC_CODE = SC.SC_CODE
+		  LEFT OUTER JOIN JOB_TRAFFIC TRF ON JC.JOB_NUMBER = TRF.JOB_NUMBER AND
+											JC.JOB_COMPONENT_NBR = TRF.JOB_COMPONENT_NBR
+		  INNER JOIN EMPLOYEE E ON JC.EMP_CODE = E.EMP_CODE 
+		  LEFT OUTER JOIN JOB_TYPE JT ON JC.JT_CODE = JT.JT_CODE
+	   WHERE        
+		  (JC.JOB_PROCESS_CONTRL NOT IN (6, 12))
+	   ORDER BY 
+		  JobNumber DESC, JobComponentNumber
+	END
+    ELSE
+    BEGIN
+	   INSERT INTO @JOBS (JobNumber, JobComponentNumber, [Key], [Description], ClientCode, DivisionCode, ProductCode, OfficeCode, Client, SalesClassCode, SalesClassDescription, ManagerCode, AccountExecutiveCode, AccountExecutiveName, JobTypeCode, JobTypeDescription, IsOnBoard)
+	   SELECT DISTINCT
+		  JC.JOB_NUMBER AS JobNumber,
+		  JC.JOB_COMPONENT_NBR AS JobComponentNumber,
+		  CAST(JC.JOB_NUMBER AS VARCHAR(1000)) + ',' + CAST(JC.JOB_COMPONENT_NBR AS VARCHAR(1000)) AS [Key],
+		  REPLACE(STR(JC.JOB_NUMBER, 6), SPACE(1), '0') + '/' + REPLACE(STR(JC.JOB_COMPONENT_NBR, 3), SPACE(1), '0') + ' - ' + JC.JOB_COMP_DESC AS [Description],
+		  JL.CL_CODE AS ClientCode,
+		  JL.DIV_CODE AS DivisionCode,
+		  JL.PRD_CODE AS ProductCode,
+		  JL.OFFICE_CODE,
+		  CL.CL_NAME Client,
+		  JL.SC_CODE AS SalesClassCode,
+		  SC.SC_DESCRIPTION,
+		  [ManagerCode] = CASE @ManagerColumn
+								WHEN 'TR_TITLE1' THEN TRF.ASSIGN_1
+								WHEN 'TR_TITLE2' THEN TRF.ASSIGN_2
+								WHEN 'TR_TITLE3' THEN TRF.ASSIGN_3
+								WHEN 'TR_TITLE4' THEN TRF.ASSIGN_4
+								WHEN 'TR_TITLE5' THEN TRF.ASSIGN_5
+							END,
+		  JC.EMP_CODE,
+		  E.EMP_FNAME + ISNULL(' ' + E.EMP_MI + '. ', ' ') + E.EMP_LNAME,
+		  JC.JT_CODE,
+		  JT.JT_DESC,
+		  CASE
+			 WHEN BJ.ID IS NULL THEN CAST(0 AS BIT)
+			 WHEN BJ.BOARD_ID = @BOARD_ID THEN CAST(1 AS BIT)
+			 ELSE CAST(0 AS BIT)
+		  END
+		  AS IsOnBoard
+	   FROM            
+		  JOB_LOG JL
+		  INNER JOIN JOB_COMPONENT AS JC ON JL.JOB_NUMBER = JC.JOB_NUMBER 
+		  INNER JOIN CLIENT CL ON JL.CL_CODE = CL.CL_CODE 
+		  LEFT OUTER JOIN BOARD AS B 
+		  INNER JOIN BOARD_JOB AS BJ ON B.ID = BJ.BOARD_ID ON JC.JOB_NUMBER = BJ.JOB_NUMBER AND JC.JOB_COMPONENT_NBR = BJ.JOB_COMPONENT_NBR
+		  LEFT OUTER JOIN SALES_CLASS SC ON JL.SC_CODE = SC.SC_CODE
+		  LEFT OUTER JOIN JOB_TRAFFIC TRF ON JC.JOB_NUMBER = TRF.JOB_NUMBER AND
+											JC.JOB_COMPONENT_NBR = TRF.JOB_COMPONENT_NBR
+		  INNER JOIN EMPLOYEE E ON JC.EMP_CODE = E.EMP_CODE
+		  LEFT OUTER JOIN JOB_TYPE JT ON JC.JT_CODE = JT.JT_CODE
+	   WHERE        
+		  (JC.JOB_PROCESS_CONTRL NOT IN (6, 12))
+	   ORDER BY 
+		  JobNumber DESC, JobComponentNumber
+    END
+
+    DECLARE
+	   @EMP_CODE VARCHAR(6),
+	   @OFFICE_COUNT INT,
+	   @CLIENT_COUNT INT
+
+    SET @EMP_CODE = (SELECT TOP 1 EMP_CODE FROM SEC_USER WHERE UPPER(USER_CODE) = UPPER(@USER_CODE));
+
+    SELECT @OFFICE_COUNT = COUNT(1) FROM EMP_OFFICE WHERE EMP_CODE = @EMP_CODE;
+    SELECT @CLIENT_COUNT = COUNT(1) FROM SEC_CLIENT WHERE UPPER([USER_ID]) = UPPER(@USER_CODE); 
+
+    IF @OFFICE_COUNT > 0
+    BEGIN
+	   DELETE @JOBS
+	   FROM @JOBS J
+	   WHERE J.OfficeCode NOT IN (SELECT DISTINCT OFFICE_CODE FROM EMP_OFFICE WHERE EMP_CODE = @EMP_CODE) AND J.IsOnBoard = 0
+    END
+	
+	UPDATE
+		J
+	SET
+		ManagerName = E.EMP_FNAME + ISNULL(' ' + E.EMP_MI + '. ', ' ') + E.EMP_LNAME
+	FROM 
+		@JOBS J
+	INNER JOIN
+		dbo.EMPLOYEE E ON J.ManagerCode = E.EMP_CODE
+
+    IF @CLIENT_COUNT = 0
+    BEGIN
+		SELECT 
+			* 
+		FROM 
+			@JOBS 
+		ORDER BY 
+			JobNumber DESC, 
+			JobComponentNumber ASC;
+    END
+    ELSE
+    BEGIN
+	   SELECT *
+	   FROM 
+	   @JOBS J
+	   INNER JOIN SEC_CLIENT SC ON J.ClientCode = SC.CL_CODE AND J.DivisionCode = SC.DIV_CODE AND J.ProductCode = SC.PRD_CODE
+	   WHERE
+		  (UPPER(SC.USER_ID) = UPPER(@USER_CODE)) AND (SC.TIME_ENTRY = 0 OR SC.TIME_ENTRY IS NULL)
+		ORDER BY 
+			JobNumber DESC, 
+			JobComponentNumber ASC;
+    END
+    
+/*=========== QUERY ===========*/
+END

@@ -1,0 +1,24 @@
+<div>
+  <div class="title">
+    <div class="left">
+      <img class="title-burger" src="assets/icons/icon-header-side-panel.svg" />
+      Asset info
+    </div>
+  </div>
+
+  <div>
+    <div class="feedback-block" [ngStyle]="{'height': heightScroll}">
+      <ng-scrollbar [ngClass]="contentMoreThanHeight ? 'scrollbar-asset-info' : 'scrollbar-asset-info-margin'">
+        <div #elementsContainer>
+          <proof-asset-grid [assetInfo]="assetInfo"></proof-asset-grid>
+          <proof-file-grid [assetInfo]="assetInfo"></proof-file-grid>
+          <proof-versions [assetInfo]="assetInfo"></proof-versions>
+          <!--<proof-additional-info [additionalInfoMock]="additionalInfoMock"></proof-additional-info>-->
+        </div>
+
+      </ng-scrollbar>
+    </div>
+  </div>
+
+</div>
+

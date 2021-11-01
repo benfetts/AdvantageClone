@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agency">
+    <Key>
+      <PropertyRef Name="NAME" />
+    </Key>
+    <Property Name="NAME" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="DOC_REPOSITORY_PATH" Type="varchar" MaxLength="100" Nullable="true" />
+    <Property Name="DOC_REPOSITORY_USER_DOMAIN" Type="varchar" MaxLength="30" Nullable="true" />
+    <Property Name="DOC_REPOSITORY_USER_NAME" Type="varchar" MaxLength="50" Nullable="true" />
+    <Property Name="DOC_REPOSITORY_USER_PASSWORD" Type="varchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityContainer Name="CodeFirstDatabase">
+    <EntitySet Name="Agency" EntityType="Self.Agency" Schema="dbo" Table="AGENCY" />
+  </EntityContainer>
+</Schema>

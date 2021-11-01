@@ -1,0 +1,12 @@
+<div data-options="dxView : { name: 'select_recipients', title: 'Select Recipients' } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div class="search-wrapper" data-bind="dxTextBox: { placeholder: 'Search', mode: 'search', value: recipientList.searchQuery, valueChangeEvent: 'change' } "></div>
+        <div data-bind="dxList: recipientList">
+            <div data-options="dxTemplate : { name: 'item' } ">
+                <div data-bind="text: FullName">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

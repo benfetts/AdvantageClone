@@ -1,0 +1,27 @@
+<div data-options="dxView : { name: 'upload_file', title: 'Upload' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxFileUploader: {
+                                            buttonText: 'Select file',
+                                            labelText: 'Drop file here',
+                                            multiple: true,
+                                            accept: '*.*',
+                                            values: values
+                                        }">
+        </div>
+        <div data-bind="visible: showUploadedFiles">
+            <h4>Selected Files</h4>
+        </div>
+        <div data-bind="foreach: values">
+            <div class="file">
+                Name:
+                <span data-bind="text: name"></span><br />
+                Size:
+                <span data-bind="text: size"></span>bytes<br />
+                Type:
+                <span data-bind="text: type"></span><br />
+                Last Modified Date:
+                <span data-bind="text: lastModifiedDate"></span>
+            </div>
+        </div>
+    </div>
+</div>

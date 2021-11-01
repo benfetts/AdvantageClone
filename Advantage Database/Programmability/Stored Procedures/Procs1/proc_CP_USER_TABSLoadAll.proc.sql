@@ -1,0 +1,29 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_TABSLoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[NAME],
+		[STATE]
+	FROM [CP_USER_TABS]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

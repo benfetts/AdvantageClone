@@ -1,0 +1,35 @@
+@import '../../../../theme/colors';
+@import '../../../../theme/mixins/font';
+@import '../../../../components/action-area/action-area.component';
+
+.drop-down-review-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  border-bottom: 1px solid $border-color;
+
+  .k-dropdown {
+    width: calc(#{$actionAreaOpenedWidth} - 65px);
+    @include font-base(14px);
+  }
+
+  .k-dropdown .k-dropdown-wrap .k-input {
+    color: $black;
+  }
+
+  .k-dropdown .k-dropdown-wrap,
+  .k-dropdown .k-dropdown-wrap.k-state-focused,
+  .k-dropdown .k-dropdown-wrap:hover {
+    background: $white;
+    border: 1px solid $border-color;
+  }
+}
+
+.title .left {
+  @include font-base(15px, 600, 20px);
+  padding: 8px;
+  color: black !important;
+  display: flex;
+  align-items: center;
+}

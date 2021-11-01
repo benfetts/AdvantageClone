@@ -1,0 +1,7 @@
+<div data-options="dxView : { name: 'maintenance', title: 'Maintenance' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <p style="padding: 5px">
+            Maint landing page
+        </p>
+    </div>
+</div>

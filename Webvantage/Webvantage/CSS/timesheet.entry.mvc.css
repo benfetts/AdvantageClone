@@ -1,0 +1,100 @@
+﻿html, body {
+    /*overflow: hidden !important;*/
+}
+.hours-textbox {
+    position: relative;
+    width: 55px;
+    height: 30px;
+    text-align: right;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 10px;
+}
+.hours-textbox:hover {
+    border: 1px solid #AEAEAE;
+    background-color: #EBEBEB !important;
+}
+.comments-textarea {
+    width: 99% !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    height: 125px;
+    vertical-align: middle;
+    border: 1px solid #CCC;
+    border-radius: 2px;
+}
+.comments-textarea:hover {
+    border: 1px solid #AEAEAE;
+    /*background-color: #EBEBEB !important;*/
+}
+.k-i-calendar {
+    height: 40px !important;
+}
+.k-picker-wrap .k-input {
+    height: 2.667em !important;
+    line-height: 2.667em !important;
+    min-height: 2.667em !important;
+}
+.k-picker-wrap {
+    height: 2.667em !important;
+}
+.k-picker-wrap .k-select {
+    height: 2.667em !important;
+    min-height: 2.667em !important;
+    line-height: 2.667em !important;
+}
+.k-dropdown-wrap {
+    line-height: 2.5em !important;
+    min-height: 2.5em !important;
+}
+.selected-value {
+}
+.ddl-footer-template {
+    text-align: right;
+    width: 100%;
+    font-style: italic;
+    font-size: 12px;
+}
+div.first-child.border-bottom {
+    border-bottom: 1pt solid #ddd !important;
+}
+div.border-bottom {
+    border-bottom: 1pt solid #ddd !important;
+}
+#clientComboBox-list ul li:nth-of-type(even) {
+    background: #F5F5F5;
+    background-color: #F5F5F5;
+}
+#jobsComboBox-list ul li:nth-of-type(even) {
+    background: #F5F5F5;
+    background-color: #F5F5F5;
+}
+#jobAssignmentsList-list ul li:nth-of-type(even) {
+    background: #F5F5F5;
+    background-color: #F5F5F5;
+}
+#functionCategoryComboBox-list ul li:nth-of-type(even) {
+    background: #F5F5F5;
+    background-color: #F5F5F5;
+}
+#client-division-product-container {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 15px;
+    width: 99%;
+}
+#job-assignment-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+/*.k-virtual-content {
+    overflow-y: auto;
+}
+.wv-search .k-multiselect .k-multiselect-wrap ul > li.k-button span:first-child {
+    max-width: 208px;
+}*/

@@ -1,0 +1,11 @@
+@import '../../../../../../theme/colors';
+@import '../../../../../../theme/mixins/font';
+
+.link {
+  @include font-base(14px);
+  color: $link;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}

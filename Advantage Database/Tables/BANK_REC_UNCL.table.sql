@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[BANK_REC_UNCL] (
+    [BKU_REC_ID]     INT             NOT NULL,
+    [BKU_CODE]       VARCHAR (4)     NOT NULL,
+    [BKU_STMT_DT]    SMALLDATETIME   NOT NULL,
+    [BKU_CLEARED]    SMALLINT        NULL,
+    [BKU_TYPE]       VARCHAR (10)    NOT NULL,
+    [BKU_CHECK_NBR]  INT             NULL,
+    [BKU_CHECK_DATE] SMALLDATETIME   NULL,
+    [BKU_CHECK_AMT]  DECIMAL (15, 2) NULL,
+    [BKU_VOID_FLAG]  SMALLINT        NULL,
+    [BKU_PAYEE]      VARCHAR (40)    NULL,
+    [GL_ENT_EXACT]   INT             NULL,
+    [GL_ENT_SEQ]     SMALLINT        NULL
+);
+

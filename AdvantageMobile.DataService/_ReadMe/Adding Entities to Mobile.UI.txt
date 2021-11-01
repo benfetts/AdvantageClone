@@ -1,0 +1,11 @@
+In AdvantageMobile.DataService project:
+
+1.  Add Entity to DataModel.edmx
+2.  Run _ViewModelTemplate.tt if it doesn't run automatically.
+3.  Copy the generated "entity_name_view_model.js" file from the JavascriptViewModels folder to the view_models folder in the AdvantageMobile.UI project.
+
+In AdvantageMobile.UI project:
+
+4.  Add a reference to the new "entity_name_view_model.js" to "index.html" file.
+5.  Add the entity set name and key info to the "entities" array in "shared.config.js" file.
+

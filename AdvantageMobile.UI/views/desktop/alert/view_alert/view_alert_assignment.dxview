@@ -1,0 +1,38 @@
+<div data-options="dxView : { name: 'view_alert_assignment', title: 'Assignment' } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <!--<div data-bind="dxLoadPanel: loadPanel"></div>-->
+        <div data-bind="dxScrollView: { }">
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div>Workflow Template</div>
+                    <div data-bind="dxSelectBox: templatesSelectBox"></div>
+                </div>
+                <div class="dx-field">
+                    <div>State</div>
+                    <div data-bind="dxSelectBox: statesSelectBox"></div>
+                </div>
+                <div class="dx-field">
+                    <div>Assign To</div>
+                    <div data-bind="{css:hideShowSingle}">
+                        <div data-bind="dxSelectBox: employeesSelectBox"></div>
+                        <div data-bind="dxCheckBox: showAllEmployeesCheckBox"></div>&nbsp;&nbsp;Show All Employees
+                    </div>
+                    <div data-bind="{css:hideShowMulti}">
+                        <div data-bind="dxList: assignedToList">
+                            <div data-options="dxTemplate : { name: 'item' } ">
+                                <div data-bind="text: EmployeeFullName">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    Comments
+                    <div data-bind="dxTextArea: commentsTextArea"></div>
+                </div>
+            </div>
+            <div style="height:500px;"></div>
+        </div>
+    </div>
+</div>

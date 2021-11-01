@@ -1,0 +1,15 @@
+<div data-options="dxView : { name: 'rich_editor', title: '' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <!--
+        <input data-bind="kendoComboBox: { data: choices, value: selectedChoice }" />
+        <hr />
+        <div data-bind="kendoProgressBar: 60" style="width:50%"> </div>
+        <hr />
+        <textarea rows="10" cols="20" data-bind="kendoEditor: content"> </textarea>
+        <hr />
+        <div data-bind="text: content"> </div>
+-->
+        <textarea name="richEditor" id="richEditor" data-bind="text: richText"></textarea>
+
+    </div>
+</div>

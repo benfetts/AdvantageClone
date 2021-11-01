@@ -1,0 +1,123 @@
+﻿CREATE FUNCTION [dbo].[advtf_nielsen_intab_get_avg](
+	@NIELSEN_TV_BOOK_ID int,
+	@START_DATE smalldatetime,
+	@END_DATE smalldatetime,
+	@SUN bit, @MON bit, @TUE bit, @WED bit, @THU bit, @FRI bit, @SAT bit,
+	@ADJUST_MINUTES smallint
+)
+RETURNS
+@RETURN_TABLE TABLE (
+	[nielsen_demo_code] varchar(6) NOT NULL,
+	[avg_intab] decimal(21,2) NOT NULL
+)
+WITH SCHEMABINDING
+AS
+BEGIN
+	DECLARE @tt TABLE (
+		[hh] decimal(21,2) NOT NULL,
+		[c2-5] decimal(21,2) NOT NULL,
+		[c6-11] decimal(21,2) NOT NULL,
+		[m12-14] decimal(21,2) NOT NULL,
+		[m15-17] decimal(21,2) NOT NULL,
+		[m18-20] decimal(21,2) NOT NULL,
+		[m21-24] decimal(21,2) NOT NULL,
+		[m25-34] decimal(21,2) NOT NULL,
+		[m35-49] decimal(21,2) NOT NULL,
+		[m50-54] decimal(21,2) NOT NULL,
+		[m55-64] decimal(21,2) NOT NULL,
+		[m65P] decimal(21,2) NOT NULL,
+		[f12-14] decimal(21,2) NOT NULL,
+		[f15-17] decimal(21,2) NOT NULL,
+		[f18-20] decimal(21,2) NOT NULL,
+		[f21-24] decimal(21,2) NOT NULL,
+		[f25-34] decimal(21,2) NOT NULL,
+		[f35-49] decimal(21,2) NOT NULL,
+		[f50-54] decimal(21,2) NOT NULL,
+		[f55-64] decimal(21,2) NOT NULL,
+		[f65P] decimal(21,2) NOT NULL,
+		[ww] decimal(21,2) NOT NULL
+	)
+
+	INSERT INTO @tt
+	SELECT
+		[hh] = AVG(a.HOUSEHOLD_INTAB),
+		[c2-5] = AVG(a.CHILDREN_2TO5_INTAB),
+		[c6-11] = AVG(a.CHILDREN_6TO11_INTAB),
+		[m12-14] = AVG(a.MALES_12TO14_INTAB),
+		[m15-17] = AVG(a.MALES_15TO17_INTAB),
+		[m18-20] = AVG(a.MALES_18TO20_INTAB),
+		[m21-24] = AVG(a.MALES_21TO24_INTAB),
+		[m25-34] = AVG(a.MALES_25TO34_INTAB),
+		[m35-49] = AVG(a.MALES_35TO49_INTAB),
+		[m50-54] = AVG(a.MALES_50TO54_INTAB ),
+		[m55-64] = AVG(a.MALES_55TO64_INTAB),
+		[m65P] = AVG(a.MALES_65PLUS_INTAB),
+		[f12-14] = AVG(a.FEMALES_12TO14_INTAB),
+		[f15-17] = AVG(a.FEMALES_15TO17_INTAB),
+		[f18-20] = AVG(a.FEMALES_18TO20_INTAB),
+		[f21-24] = AVG(a.FEMALES_21TO24_INTAB),
+		[f25-34] = AVG(a.FEMALES_25TO34_INTAB),
+		[f35-49] = AVG(a.FEMALES_35TO49_INTAB),
+		[f50-54] = AVG(a.FEMALES_50TO54_INTAB),
+		[f55-64] = AVG(a.FEMALES_55TO64_INTAB),
+		[f65P] = AVG(a.FEMALES_65PLUS_INTAB),
+		[ww] = AVG(a.WORKING_WOMEN_INTAB)
+	FROM
+		(SELECT 
+			HOUSEHOLD_INTAB = CAST(HOUSEHOLD_INTAB as decimal(21,2)),
+			CHILDREN_2TO5_INTAB = CAST(CHILDREN_2TO5_INTAB as decimal(21,2)),
+			CHILDREN_6TO11_INTAB = CAST(CHILDREN_6TO11_INTAB as decimal(21,2)),
+			MALES_12TO14_INTAB = CAST(MALES_12TO14_INTAB as decimal(21,2)),
+			MALES_15TO17_INTAB = CAST(MALES_15TO17_INTAB as decimal(21,2)),
+			MALES_18TO20_INTAB = CAST(MALES_18TO20_INTAB as decimal(21,2)),
+			MALES_21TO24_INTAB = CAST(MALES_21TO24_INTAB as decimal(21,2)),
+			MALES_25TO34_INTAB = CAST(MALES_25TO34_INTAB as decimal(21,2)),
+			MALES_35TO49_INTAB = CAST(MALES_35TO49_INTAB as decimal(21,2)),
+			MALES_50TO54_INTAB = CAST(MALES_50TO54_INTAB as decimal(21,2)),
+			MALES_55TO64_INTAB = CAST(MALES_55TO64_INTAB as decimal(21,2)),
+			MALES_65PLUS_INTAB = CAST(MALES_65PLUS_INTAB as decimal(21,2)),
+			FEMALES_12TO14_INTAB = CAST(FEMALES_12TO14_INTAB as decimal(21,2)),
+			FEMALES_15TO17_INTAB = CAST(FEMALES_15TO17_INTAB as decimal(21,2)),
+			FEMALES_18TO20_INTAB = CAST(FEMALES_18TO20_INTAB as decimal(21,2)),
+			FEMALES_21TO24_INTAB = CAST(FEMALES_21TO24_INTAB as decimal(21,2)),
+			FEMALES_25TO34_INTAB = CAST(FEMALES_25TO34_INTAB as decimal(21,2)),
+			FEMALES_35TO49_INTAB = CAST(FEMALES_35TO49_INTAB as decimal(21,2)),
+			FEMALES_50TO54_INTAB = CAST(FEMALES_50TO54_INTAB as decimal(21,2)),
+			FEMALES_55TO64_INTAB = CAST(FEMALES_55TO64_INTAB as decimal(21,2)),
+			FEMALES_65PLUS_INTAB = CAST(FEMALES_65PLUS_INTAB as decimal(21,2)),
+			WORKING_WOMEN_INTAB = CAST(WORKING_WOMEN_INTAB as decimal(21,2)),
+			INTAB_DATE
+		FROM dbo.NIELSEN_TV_INTAB a
+		WHERE a.NIELSEN_TV_BOOK_ID = @NIELSEN_TV_BOOK_ID
+		) a
+		WHERE
+			INTAB_DATE BETWEEN CAST(convert(char(10), @START_DATE, 101) as datetime)
+								AND CAST(convert(char(10), @END_DATE, 101) as datetime)
+		AND (
+			(@SUN = 1 AND DATEPART(dw, INTAB_DATE) = 1)
+		OR	(@MON = 1 AND DATEPART(dw, INTAB_DATE) = 2)
+		OR	(@TUE = 1 AND DATEPART(dw, INTAB_DATE) = 3)
+		OR	(@WED = 1 AND DATEPART(dw, INTAB_DATE) = 4)
+		OR	(@THU = 1 AND DATEPART(dw, INTAB_DATE) = 5)
+		OR	(@FRI = 1 AND DATEPART(dw, INTAB_DATE) = 6)
+		OR	(@SAT = 1 AND DATEPART(dw, INTAB_DATE) = 7)
+			)
+	HAVING AVG(a.HOUSEHOLD_INTAB) IS NOT NULL
+
+	INSERT INTO @RETURN_TABLE
+	SELECT
+			u.nielsen_demo_code, u.avg_intab
+	FROM @tt
+	UNPIVOT
+	(
+		avg_intab
+		for nielsen_demo_code in ([hh], [c2-5],	[c6-11], [m12-14], [m15-17], [m18-20], [m21-24], [m25-34], [m35-49], [m50-54], [m55-64], [m65P],
+								[f12-14], [f15-17], [f18-20], [f21-24], [f25-34], [f35-49], [f50-54], [f55-64],	[f65P],	[ww])
+	) u
+
+	RETURN
+END
+GO
+
+GRANT SELECT ON [advtf_nielsen_intab_get_avg] TO PUBLIC
+GO

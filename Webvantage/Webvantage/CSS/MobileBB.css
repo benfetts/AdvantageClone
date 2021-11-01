@@ -1,0 +1,640 @@
+﻿html, body
+{
+    width: 300px;
+    font-size: 11px;
+}
+Body, th, td
+{
+    Font-family: Arial;
+    font-size: 11px;
+}
+.fieldlabel 
+{
+    font-weight:bold;
+}
+.fieldlabellink 
+{
+    font-weight:bold;
+    text-decoration:underline;
+    cursor: hand;
+    cursor:pointer;
+}
+.labellink
+{
+    text-decoration:underline;
+    cursor: hand;
+    cursor:pointer;
+}
+
+.RUSH 
+{
+    color:Red;
+    font-size:X-Large;
+    font-weight:bold;
+}
+div.scroll {
+/*height: 200px;*/
+width: 100%;
+overflow: auto;
+}
+ 
+.TableBorderDarkBlue {
+    border-top: #6666ff 1px solid; 
+    border-right: #6666ff 1px solid; 
+    border-left: #6666ff 1px solid; 
+    border-bottom: #6666ff 1px solid;
+    background-color:#FFFFFF;
+}
+.TableBorderOrange {
+    border-top: #666666 1px solid; 
+    border-right: #666666 1px solid; 
+    border-left: #666666 1px solid; 
+    border-bottom: #666666 1px solid;
+    background-color:#FFFFFF; 
+}
+.TableBorderGray {
+    border-top: #666666 1px solid; 
+    border-right: #666666 1px solid; 
+    border-left: #666666 1px solid; 
+    border-bottom: #666666 1px solid;
+    background-color:#FFFFFF;
+}
+.TableBorderMenuGray {
+    border-top: #666666 1px solid; 
+    border-right: #666666 1px solid; 
+    border-left: 0px; 
+    border-bottom: #666666 1px solid;
+    background-color:#FFFFFF;
+}
+.TableBorderGrayTopAndSides {
+    border-top: #666666 1px solid; 
+    border-right: #666666 1px solid; 
+    border-left: #666666 1px solid; 
+}
+.TableBorderGrayTopAndBottom {
+    border-top: #666666 1px solid; 
+    border-bottom: #666666 1px solid;
+}
+.TableBorderGrayTop {
+    border-top: #666666 1px solid; 
+}
+.TableBorderGrayLeft {
+    border-left: #666666 1px solid; 
+}
+.TableBorderGrayRight{
+    border-right: #666666 1px solid; 
+}
+.TableBorderGraySidesAndBottom {
+    border-right: #666666 1px solid; 
+    border-left: #666666 1px solid; 
+    border-bottom: #666666 1px solid;
+    background-color:#FFFFFF;
+}
+.cssmenubox {
+    z-index:777;
+}
+
+.CssListBox { 
+    border-top: #666666 1px solid; 
+    border-right: #666666 1px solid; 
+    border-left: #666666 1px solid; 
+    border-bottom: #666666 1px solid;
+    font-size: 11px;        
+    font-family: Verdana;
+}   
+.CssTextBox { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+    font-size: 11px;        
+    font-family: Verdana;
+}   
+.CssTextBoxSuperSmall { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+    font-size: 9px;        
+    font-family: Verdana;
+}   
+.CssDropDownListSuperSmall
+{
+    font-size: 9px;
+    font-family: Verdana;
+}
+
+.TextBox10 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 10px; 
+    font-family: Verdana;
+}
+.TextBox25 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 25px; 
+    font-family: Verdana;
+}
+.TextBox30 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 25px; 
+    font-family: Verdana;
+}
+
+.TextBox40{	
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 40px; 
+    font-family: Verdana;
+}
+.TextBox50{	
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 50px; 
+    font-family: Verdana;
+}    
+.TextBox50Right{	
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 50px; 
+    font-family: Verdana;
+    text-align: right;
+}   
+.TextBox75 { 
+    /* background-color:#F5F5F5; */
+    border-color: #666666;
+    border-width: 1px;
+    border-style: Solid;
+     font-size: 11px;        
+    width: 75px; 
+    font-family: Verdana;
+}
+.TextBox100 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 100px; 
+    font-family: Verdana;
+}
+.TextBox100Right{	
+    /* background-color:#F5F5F5; */
+    border-color: #666666;
+    border-width: 1px;
+    border-style: Solid;
+     font-size: 11px;        
+    width: 100px; 
+    font-family: Verdana;
+    text-align: right;
+} 
+.TextBox150 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 150px; 
+    font-family: Verdana;
+}
+.TextBox200 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 200px; 
+    font-family: Verdana;
+}
+
+.TextBox250 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 250px; 
+    font-family: Verdana;
+}
+.TextBox325 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 325px; 
+    font-family: Verdana;
+}
+.TextBox395 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 395px; 
+    font-family: Verdana;
+}
+.TextBox397 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 397px; 
+    font-family: Verdana;
+}
+.TextBox400 {
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 400px;
+    font-family: Verdana;
+}
+.TextBox406 {
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 406px;
+    font-family: Verdana;
+}
+.TextBox480 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 480px; 
+    font-family: Verdana;
+}
+.TextBox450 { 
+    /* background-color:#F5F5F5; */
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+     font-size: 11px;        
+    width: 450px; 
+    height: 250px;
+    font-family: Verdana;
+}
+.required {
+    color:Red;
+    font-weight:Bold;
+}
+.warning {
+    color:Red;
+}
+.CssRequired
+{
+	color:Red;
+	font-weight:Bold;
+}
+.WhiteText 
+{
+	color:White;
+}
+.HideIt
+{
+    display:none;
+}
+.navtext {
+width:200px;
+font-size:10px;
+border-width:1px;
+border-style:solid;
+border-color:#000000;
+/*layer-background-color:#FFFFDF;*/
+background-color:#FFFFDF;
+color:black;
+}
+a.ToolTipLink:link {
+    font-size: 11px;
+    /*text-decoration: none;*/
+      text-decoration: underline;
+  color: #000000;
+    font-weight:bold;
+}
+a.ToolTipLink:visited {
+    font-size: 11px;
+    /*text-decoration: none;*/
+     text-decoration: underline;
+   color: #000000;
+    font-weight:bold;
+}
+a.ToolTipLink:hover {
+    font-size: 11px;
+    /*text-decoration: none;*/
+     text-decoration: underline;
+   color: #000000;
+    cursor: pointer;
+    font-weight:bold;
+}
+a.ToolTipLink:active {
+    font-size: 11px;
+    /*text-decoration: none;*/
+     text-decoration: underline;
+   color: #000000;
+    font-weight:bold;
+} 
+
+
+a.AlertPopUpLink:link {
+    font-size: 11px;
+    text-decoration: underline;
+    color: #000000;
+}
+a.AlertPopUpLink:visited {
+    font-size: 11px;
+    text-decoration: underline;
+    color: #000000;
+}
+a.AlertPopUpLink:hover {
+    font-size: 11px;
+    text-decoration: underline;
+    color: #000000;
+    cursor: pointer;
+}
+a.AlertPopUpLink:active {
+    font-size: 11px;
+    text-decoration: underline;
+    color: #000000;
+} 
+
+
+a.TemplateLabel:link {
+    font-size: 11px;
+    font-weight:bold;
+    text-decoration: none;
+    color: #000000;
+}
+a.TemplateLabel:visited {
+    font-size: 11px;
+     font-weight:bold;
+   text-decoration: none;
+    color: #000000;
+}
+a.TemplateLabel:hover {
+    font-size: 11px;
+     font-weight:bold;
+   text-decoration: none;
+    color: #000000;
+    cursor: pointer;
+}
+a.TemplateLabel:active {
+    font-size: 11px;
+    font-weight:bold;
+    text-decoration: none;
+    color: #000000;
+} 
+.TalkToTheHand 
+{
+    cursor: hand;
+    cursor:pointer;
+}
+.Shadow
+{
+    	/*filter: progid:DXImageTransform.Microsoft.Shadow(direction=140,color=#404040,strength=3); */
+}
+.standard-red
+{
+    background-color:#E9360A !important;
+}
+.standard-yellow /*it's really a tan*/
+{
+    background-color:#F8C732 !important;
+}
+.standard-green
+{
+    background-color:#76CA04 !important;
+}
+.standard-light-blue
+{
+    background-color:#DFEFFB !important;
+}
+.standard-orange
+{
+    background-color:#EC6400 !important;
+}
+.standard-light-grey
+{
+    background-color:#DFDFDF !important;
+}
+
+
+.calBorder {
+	border-top: #000000 1px solid;
+	border-right: #000000 1px solid;
+	border-left: #000000 1px solid;
+	/*border-bottom: #000000 1px solid;*/
+}
+.calHeaderSubBorder {
+	border-left: #000000 1px solid;
+	border-bottom: #000000 1px solid;
+	background-color:#ECE9D8;
+}
+.calHeaderSubBorderBottom {
+	border-bottom: #000000 1px solid;
+	background-color:#ECE9D8;
+}
+.calRowBorderBottom {
+	border-bottom: #000000 1px solid;
+}
+.calBorderNoData {
+	border-right: #000000 0px solid;
+	border-left: #000000 0px solid;
+	border-bottom: #000000 1px solid;
+	background-color:#FFFFFF;
+}
+
+.NoBorderTextBox { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 11px;        
+    font-family: Verdana;
+    background-color: transparent; 
+    height:20px;
+    vertical-align: middle;
+    padding-top : 8px;
+}   
+.NoBorderTextBox:hover { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 11px;        
+    font-family: Verdana;
+    background-color: #CBCBCB;
+    height:20px;
+    vertical-align: middle;
+    padding-top : 8px;
+}   
+.NoBorderTextBoxSuperSmall { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 9px;        
+    font-family: Verdana;
+    background-color: transparent; 
+    height:20px;
+    vertical-align: middle;
+    padding-top : 8px;
+}   
+.NoBorderTextBoxSuperSmall:hover { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 9px;        
+    font-family: Verdana;
+    background-color: #CBCBCB;
+    height:20px;
+    vertical-align: middle;
+    padding-top : 8px;
+}   
+
+/* timsheet height */
+.TSNoBorderTextBox { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 11px;        
+    font-family: Verdana;
+    background-color: transparent; 
+    height:30px;
+    vertical-align: middle;
+    padding-top : 16px;
+}   
+.TSNoBorderTextBox:hover { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 11px;        
+    font-family: Verdana;
+    background-color: #CBCBCB;
+    height:30px;
+    vertical-align: middle;
+    padding-top : 16px;
+}   
+.TSNoBorderTextBoxSuperSmall { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 9px;        
+    font-family: Verdana;
+    background-color: transparent; 
+    height:30px;
+    vertical-align: middle;
+    padding-top : 16px;
+}   
+.TSNoBorderTextBoxSuperSmall:hover { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 9px;        
+    font-family: Verdana;
+    background-color: #CBCBCB;
+    height:30px;
+    vertical-align: middle;
+    padding-top : 16px;
+}   
+
+
+
+
+/* no height */
+.NoBorderNoHeightTextBox { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 11px;        
+    font-family: Verdana;
+    background-color: transparent; 
+    vertical-align: middle;
+}   
+.NoBorderNoHeightTextBox:hover { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 11px;        
+    font-family: Verdana;
+    background-color: #CBCBCB;
+    vertical-align: middle;
+}   
+.NoBorderNoHeightTextBoxSuperSmall { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 9px;        
+    font-family: Verdana;
+    background-color: transparent; 
+    vertical-align: middle;
+}   
+.NoBorderNoHeightTextBoxSuperSmall:hover { 
+    border-width:0px;
+    border-style:Solid;
+    font-size: 9px;        
+    font-family: Verdana;
+    background-color: #CBCBCB;
+    vertical-align: middle;
+}   
+
+
+
+.mediacalBorder {
+	border-top: #000000 1px solid;
+	border-right: #000000 1px solid;
+	border-left: #000000 1px solid;
+	/*border-bottom: #000000 1px solid;*/
+}
+.mediacalHeaderSubBorderLeftMostCell {
+	border-top: #000000 1px solid;
+	border-bottom: #000000 1px solid;
+	background-color:#ECE9D8;
+}
+.mediacalHeaderSubBorder {
+	border-bottom: #000000 1px solid;
+	border-top: #000000 1px solid;
+	border-left: #000000 1px solid;
+	background-color:#ECE9D8;
+}
+.mediacalHeaderSubBorderBottom {
+	border-bottom: #000000 1px solid;
+	background-color:#ECE9D8;
+}
+
+.mediacalRowBorderBottomLeftMostCell {
+	border-bottom: #000000 1px solid;
+}
+.mediacalRowBorderBottom {
+	border-bottom: #000000 1px solid;
+}
+.mediacalBorderNoData {
+	border-right: #000000 0px solid;
+	border-left: #000000 0px solid;
+	border-bottom: #000000 1px solid;
+	background-color:#FFFFFF;
+}
+
+
+/*This one actually doesn't work */
+.NoBorderDropDownListSuperSmall
+{
+	border-width:0px;
+	font-size: 9px;
+    font-family: Verdana;
+}
+table
+{
+	table-layout: fixed;
+}

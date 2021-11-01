@@ -1,0 +1,128 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <ux-dialog>
+        <ux-dialog-header>
+            Card Options
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <table id="card-options-grid" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th align="center">Assignments</th>
+                        <th align="center">Alerts</th>
+                        <th align="center">Proofs</th>
+                        <!--<th>Bookmarks</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Client Name</td>
+                        <td align="center"><input type="checkbox" id="cbAssignmentsClientName" class="k-checkbox" checked.bind="data.ShowClientNameAssignment"><label class="k-checkbox-label" for="cbAssignmentsClientName"></label></td>
+                        <td align="center"><input type="checkbox" id="cbAlertsClientName" class="k-checkbox" checked.bind="data.ShowClientNameAlert"><label class="k-checkbox-label" for="cbAlertsClientName"></label></td>
+                        <td align="center"><input type="checkbox" id="cbReviewsClientName" class="k-checkbox" checked.bind="data.ShowClientNameReview"><label class="k-checkbox-label" for="cbReviewsClientName"></label></td>
+                        <!--<td><input type="checkbox" id="cbBookmarksClientName" class="k-checkbox" checked="checked"><label class="k-checkbox-label" for="cbBookmarksClientName"></label></td>-->
+
+                    </tr>
+                    <tr>
+                        <td>Job Number</td>
+                        <td align="center"><input type="checkbox" id="cbAssignmentsJobNumber" class="k-checkbox" checked.bind="data.ShowJobNumberAssignment"><label class="k-checkbox-label" for="cbAssignmentsJobNumber"></label></td>
+                        <td align="center"><input type="checkbox" id="cbAlertsJobNumber" class="k-checkbox" checked.bind="data.ShowJobNumberAlert"><label class="k-checkbox-label" for="cbAlertsJobNumber"></label></td>
+                        <td align="center"><input type="checkbox" id="cbReviewsJobNumber" class="k-checkbox" checked.bind="data.ShowJobNumberReview"><label class="k-checkbox-label" for="cbReviewsJobNumber"></label></td>
+                        <!--<td><input type="checkbox" id="cbBookmarksJobNumber" class="k-checkbox" checked="checked"><label class="k-checkbox-label" for="cbBookmarksJobNumber"></label></td>-->
+
+                    </tr>
+                    <tr>
+                        <td>Job Description</td>
+                        <td align="center"><input type="checkbox" id="cbAssignmentsJobDescription" class="k-checkbox" checked.bind="data.ShowJobDescriptionAssignment"><label class="k-checkbox-label" for="cbAssignmentsJobDescription"></label></td>
+                        <td align="center"><input type="checkbox" id="cbAlertsJobDescription" class="k-checkbox" checked.bind="data.ShowJobDescriptionAlert"><label class="k-checkbox-label" for="cbAlertsJobDescription"></label></td>
+                        <td align="center"><input type="checkbox" id="cbReviewsJobDescription" class="k-checkbox" checked.bind="data.ShowJobDescriptionReview"><label class="k-checkbox-label" for="cbReviewsJobDescription"></label></td>
+                        <!--<td><input type="checkbox" id="cbBookmarksJobDescription" class="k-checkbox" checked="checked"><label class="k-checkbox-label" for="cbTasksBookmarksDescription"></label></td>-->
+
+                    </tr>
+                    <tr>
+                        <td>Job Component Number</td>
+                        <td align="center"><input type="checkbox" id="cbAssignmentsJobComponentNumber" class="k-checkbox" checked.bind="data.ShowJobComponentNumberAssignment"><label class="k-checkbox-label" for="cbAssignmentsJobComponentNumber"></label></td>
+                        <td align="center"><input type="checkbox" id="cbAlertsJobComponentNumber" class="k-checkbox" checked.bind="data.ShowJobComponentNumberAlert"><label class="k-checkbox-label" for="cbAlertsJobComponentNumber"></label></td>
+                        <td align="center"><input type="checkbox" id="cbReviewsJobComponentNumber" class="k-checkbox" checked.bind="data.ShowJobComponentNumberReview"><label class="k-checkbox-label" for="cbReviewsJobComponentNumber"></label></td>
+                        <!--<td><input type="checkbox" id="cbBookmarksJobComponentNumber" class="k-checkbox" checked="checked"><label class="k-checkbox-label" for="cbBookmarksJobComponentNumber"></label></td>-->
+
+                    </tr>
+                    <tr>
+                        <td>Job Component Description</td>
+                        <td align="center"><input type="checkbox" id="cbAssignmentsJobComponentDescription" class="k-checkbox" checked.bind="data.ShowJobComponentDescriptionAssignment"><label class="k-checkbox-label" for="cbAssignmentsJobComponentDescription"></label></td>
+                        <td align="center"><input type="checkbox" id="cbAlertsJobComponentDescription" class="k-checkbox" checked.bind="data.ShowJobComponentDescriptionAlert"><label class="k-checkbox-label" for="cbAlertsJobComponentDescription"></label></td>
+                        <td align="center"><input type="checkbox" id="cbReviewsJobComponentDescription" class="k-checkbox" checked.bind="data.ShowJobComponentDescriptionReview"><label class="k-checkbox-label" for="cbReviewsJobComponentDescription"></label></td>
+                        <!--<td><input type="checkbox" id="cbBookmarksJobComponentDescription" class="k-checkbox" checked="checked"><label class="k-checkbox-label" for="cbBookmarksJobComponentDescription"></label></td>-->
+
+                    </tr>
+                    <tr>
+                        <td>Task Comment</td>
+                        <td align="center"><input type="checkbox" id="cbTaskComment" class="k-checkbox" checked.bind="data.ShowTaskCommentAssignment"><label class="k-checkbox-label" for="cbTaskComment"></label></td>
+                        <td align="center"><input type="checkbox" id="cbAlertsTaskComment" class="k-checkbox" checked.bind="data.ShowTaskCommentAlert"><label class="k-checkbox-label" for="cbAlertsTaskComment"></label></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td align="center"><input type="checkbox" id="cbState" class="k-checkbox" checked.bind="data.ShowStateAssignment"><label class="k-checkbox-label" for="cbState"></label></td>
+                        <td align="center"><input type="checkbox" id="cbAlertsState" class="k-checkbox" checked.bind="data.ShowStateAlert"><label class="k-checkbox-label" for="cbAlertsState"></label></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="k-block">
+                <div class="k-header" style="line-height: 18px;">Include</div>
+                <div class="wv-form">
+                    <!--<div class="wv-form-group">
+                        <ak-drop-down-list k-on-change.delegate="saveCardSettings(1,'Tasks',$event.detail)"
+                                           k-value.two-way="Tasks"
+                                           k-widget.two-way="tasksDropDownList">
+                            <select style="width: 250px;">
+                                <option value="Today">Start Date as of Today</option>
+                                <option value="All">All</option>
+                            </select>
+                        </ak-drop-down-list>
+                    </div>-->
+                    <div class="wv-form-group">
+                        <label>&nbsp;</label>
+                        <div class="wv-cb-wrapper">
+                            <input type="checkbox" id="cbStartDateasofToday" class="k-checkbox" checked.bind="data.StartDateasofToday">
+                            <label class="k-checkbox-label" for="cbStartDateasofToday">Start Date as of Today</label>
+                        </div>
+                    </div>
+                    <div class="wv-form-group">
+                        <label>&nbsp;</label>
+                        <div class="wv-cb-wrapper">
+                            <input type="checkbox" id="cbTasksOnlyWithStartAndDueDates" class="k-checkbox" checked.bind="data.TasksOnlyWithStartAndDueDates">
+                            <label class="k-checkbox-label" for="cbTasksOnlyWithStartAndDueDates">Only include if both Start and Due Date exist</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="k-block">
+                <div class="k-header" style="line-height: 18px;">Task Options</div>
+                <div class="wv-form">
+                    <div class="wv-form-group">
+                        <label>Task Status:</label>
+                        <ak-drop-down-list k-value.two-way="data.TaskStatus"
+                                           k-widget.two-way="taskstatusDropDownList">
+                            <select>
+                                <option value="A">All</option>
+                                <option value="Projected">Projected</option>
+                                <option value="Active">Active</option>
+                            </select>
+                        </ak-drop-down-list>
+                    </div>
+                </div>
+            </div>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <button click.trigger="okPressed()">Ok</button>
+            <button click.trigger="controller.cancel()">Cancel</button>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

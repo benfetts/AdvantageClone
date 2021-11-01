@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="DbContext">
+    <EntitySetMapping Name="Agencies">
+      <EntityTypeMapping TypeName="AdvantageDocumentRepositorySettings.Database.Agency">
+        <MappingFragment StoreEntitySet="Agency">
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="FileSystemDirectory" ColumnName="DOC_REPOSITORY_PATH" />
+          <ScalarProperty Name="FileSystemDomain" ColumnName="DOC_REPOSITORY_USER_DOMAIN" />
+          <ScalarProperty Name="FileSystemUserName" ColumnName="DOC_REPOSITORY_USER_NAME" />
+          <ScalarProperty Name="FileSystemPassword" ColumnName="DOC_REPOSITORY_USER_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1 @@
+﻿  	CREATE PROCEDURE dbo.sp_delete_employee	( @EMP_CODE VARCHAR(6) )  	AS  	BEGIN    		SET NOCOUNT OFF  		DECLARE @Err int    		DELETE FROM dbo.EMPLOYEE_CLOAK  		      WHERE EMP_CODE = @EMP_CODE    		SET @Err = @@Error    		RETURN @Err  	END

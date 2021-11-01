@@ -1,0 +1,16 @@
+<kendo-grid [data]="assetInfo.versions" class="versions-container" scrollable="none">
+  <kendo-grid-column-group title="Versions">
+    <kendo-grid-column class="column" [width]="leftColumnWidth">
+      <ng-template kendoGridCellTemplate let-version let-rowIndex="rowIndex">
+        Versions {{version.version}}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column class="column" [width]="rightColumnWidth">
+      <ng-template kendoGridCellTemplate let-version let-rowIndex="rowIndex">
+        <div class="version">
+          {{version.uploadDate|date: 'EEEE, MMMM d, y, h:mm:ss a'}} <!--<proof-folder-compare-buttons></proof-folder-compare-buttons>-->
+        </div>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid-column-group>
+</kendo-grid>

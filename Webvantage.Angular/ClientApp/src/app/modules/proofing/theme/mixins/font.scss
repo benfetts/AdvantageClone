@@ -1,0 +1,15 @@
+
+$font-family-base: Calibri, Tahoma, Verdana, Arial;
+$font-size-base: 14px;
+$line-height-base: 16px;
+
+@mixin font-base( $size: $font-size-base, $font-weight: 400, $height: $line-height-base, $font-style: normal, $font-family: $font-family-base ) {
+/*  @if $size <= 8 {
+    $size: 12px
+  }
+  @if $size > 8 && $size < 14 {
+    $size: 12px
+  }
+*/  font: $font-weight $font-style #{$size}/#{$height $font-family};
+  /*font: normal normal 14px/16px Calibri, Tahoma, Verdana, Arial;*/
+}

@@ -1,0 +1,103 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid-toolbar"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+
+    <div class="container-fluid">
+        <div class="row" style="background: #f5f5f5;border:1px solid #ccc; padding: 5px;">
+
+            <div class="col-md-3">
+                <span> Employee:&nbsp;</span>
+                <ak-drop-down-list k-widget.bind="ddlemployee"
+                                   k-data-text-field="Name"
+                                   k-data-value-field="Code"
+                                   k-data-source.bind="employees"
+                                   k-on-open.delegate="adjustDropDownWidth($event.detail)"
+                                   k-min-length.bind="1"
+                                   k-option-label="[Please Select]"
+                                   k-filter="contains"
+                                   k-value-primitive.bind="true"
+                                   k-value.two-way="employeeCode"
+                                   style="width: 200px;">
+                </ak-drop-down-list>
+                <a value="searchEmployee" title="Search/Find" role="button" class="wv-toolbar-button k-button" id="searchEmployee" href="javascript:void(0)" click.delegate="search()" style="margin-left:3px;">
+                    <span class="wvi wvi-binocular"></span>
+                    <!-- Search By Employee-->
+                </a>
+            </div>
+            <div class="col-md-5">
+                <span>Month/Year:&nbsp;</span>
+                <input id="monthpicker" ak-datepicker="k-widget.bind: monthPicker; k-value.two-way: selectedDate; k-start.bind:'year'; k-depth.bind: 'year';k-format.bind:'MMMM yyyy';" k-on-change.delegate="monthPickerOnChange()"  />
+                 &nbsp;
+                <a value="searchEmployee" title="Refresh" role="button" class="wv-icon-button k-button" id="searchEmployee" href="javascript:void(0)" click.delegate="search()">
+                    <span class="wvi wvi-refresh"></span>
+                    <!-- Search By Employee-->
+                </a>&nbsp;
+                <a value="new" title="New Expense Report" role="button" class="wv-icon-button k-button wv-add-new" id="newExpenseReport" href="javascript:void(0)" click.delegate="newExpenseReport()">
+                    <span class="wvi wvi-navigate-plus"></span>
+                    <!-- Add New Expense Report-->
+                </a>&nbsp;
+                <a value="bookmark" title="Bookmark" role="button" class="wv-icon-button k-button" id="bookmark" href="javascript:void(0)" click.delegate="addBookmark()">
+                    <span class="wvi wvi-book-bookmark"></span>
+                    <!-- Bookmark -->
+                </a>&nbsp;
+            </div>
+        </div>
+
+        <div class='row'>
+            <ak-grid k-widget.bind="grid"
+                     k-data-source.bind="datasource"
+                     k-pageable.bind="{ pageSizes: true, buttonCount: 10 }"
+                     k-navigatable.bind="true"
+                     k-editable.bind="false"
+                     k-selectable.bind="false"
+                     k-filterable.bind="false">
+                <ak-grid-toolbar>
+                    <ak-template>
+
+                        <div class="row">
+                            <div style="width:100%; text-align: center;">
+                                <span id="employeeName">${employeeName}</span>
+                            </div>
+                        </div>
+                    </ak-template>
+                </ak-grid-toolbar>
+                <ak-col k-width="75px">
+                    <ak-template>
+                        <div style="text-align: center;">
+                            <a route-href="route: edit; params.bind: {id:InvoiceNumber}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </div>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-title="Invoice Number" k-field="InvoiceNumber" k-width="125px"></ak-col>
+                <ak-col k-title="Report Date" k-field="ReportDate" k-format="{0:d}" k-width="125px" k-align="center"></ak-col>
+                <ak-col k-title="Created Date" k-field="CreatedDate" k-format="{0:d}" k-width="125px" k-align="center"></ak-col>
+                <ak-col k-title="Description" k-field="Description" k-width="250px" k-align="center"></ak-col>
+                <ak-col k-title="Status" k-field="StatusCode" k-width="175px" k-align="center"></ak-col>
+                <ak-col k-title="Total Non Billable" k-field="TotalNonBillable" k-format="{0:c}" k-width="175px" k-align="center"></ak-col>
+                <ak-col k-title="Total Billable" k-field="TotalBillable" k-format="{0:c}" k-width="175px" k-align="center"></ak-col>
+                <ak-col k-title="Total Expenses" k-field="TotalAmount" k-format="{0:c}" k-width="175px" k-align="center"></ak-col>
+                <ak-col k-title="Paid" k-width="80px" k-align="center" role="checkbox">
+                    <ak-template>
+                        <div style="text-align: center;">
+                            <input type="checkbox" class="k-checkbox" id="cb_paid_${InvoiceNumber}" k-data-type="boolean" name="Paid" checked.bind='Paid' /><label class="k-checkbox-label" for="cb_paid_${Invoice}">&nbsp;</label>
+                        </div>
+                    </ak-template>
+                </ak-col>
+
+                <ak-col></ak-col>
+            </ak-grid>
+
+        </div>
+    </div>
+</template>

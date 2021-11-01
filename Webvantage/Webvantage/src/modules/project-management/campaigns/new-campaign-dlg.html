@@ -1,0 +1,174 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+
+    <ux-dialog class="add-new-dlg">
+        <ux-dialog-header>
+            New Campaign
+        </ux-dialog-header>
+        <ux-dialog-body>
+
+
+            <form class="form-horizontal" submit.delegate="submit($event)" ak-validator="k-widget.two-way: validator">
+                <!-- Office-->
+                <div class="wv-form-spacing">
+                    <label>Office</label>
+                    <ak-multiselect k-widget.bind="officeMultiSelect"
+                                    k-filter="contains"
+                                    k-placeholder="Office"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="officeDataSource"
+                                    k-on-change.delegate="officeMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="officeCode">
+                    </ak-multiselect>
+                </div>
+
+                <div class="wv-form-spacing">
+                    <label>Client</label>
+                    <ak-multiselect ID="ClientMultiSelect_nc"
+                                    k-filter="contains"
+                                    k-widget.bind="clientMultiSelect"
+                                    k-placeholder="Client"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-data-source.bind="clientDataSource"
+                                    k-auto-bind.bind="false"
+                                    k-on-change.delegate="clientMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="clientCode"
+                                    k-virtual.bind="virtualClient"
+                                    k-on-ready.delegate="onClientReady($event.detail)">
+                    </ak-multiselect>
+                </div>
+                <div class="wv-form-spacing">
+                    <label>Division</label>
+                    <ak-multiselect ID="DivisionMultiSelect_nc"
+                                    k-filter="contains"
+                                    k-widget.bind="divisionMultiSelect"
+                                    k-placeholder="Division"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="ID"
+                                    k-data-source.bind="divisionDataSource"
+                                    k-auto-bind.bind="false"
+                                    k-on-change.delegate="divisionMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="divisionID"
+                                    k-virtual.bind="virtualDivision"
+                                    k-on-ready.delegate="onDivisionReady($event.detail)">
+                    </ak-multiselect>
+                </div>
+                <div class="wv-form-spacing">
+                    <label>Product</label>
+                    <ak-multiselect ID="ProductMultiSelect_nc"
+                                    k-filter="contains"
+                                    k-widget.bind="productMultiSelect"
+                                    k-placeholder="Product"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="ID"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="productDataSource"
+                                    k-on-change.delegate="productMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="productID"
+                                    k-virtual.bind="virtualProduct"
+                                    k-on-ready.delegate="onProductReady($event.detail)">
+                    </ak-multiselect>
+                </div>
+
+                <!-- Client-->
+                <!--<div class="wv-form-spacing">
+                    <label>Client</label>
+                    <ak-multiselect k-widget.bind="clientMultiSelect"
+                                    k-filter="contains"
+                                    k-placeholder="Client"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="clientDataSource"
+                                    k-on-change.delegate="clientMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="clientCode">
+                    </ak-multiselect>
+                </div>-->
+
+                <!-- Division-->
+                <!--<div class="wv-form-spacing">
+                    <label>Division</label>
+                    <ak-multiselect k-placeholder="Division"
+                                    k-filter="contains"
+                                    k-widget.bind="divisionMultiSelect"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="divisionDataSource"
+                                    k-on-change.delegate="divisionMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="divisionCode">
+                    </ak-multiselect>
+                </div>-->
+                <!-- Product -->
+                <!--<div class="wv-form-spacing">
+                    <label>Product</label>
+                    <ak-multiselect k-widget.bind="productMultiSelect"
+                                    k-filter="contains"
+                                    k-placeholder="Product"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="productDataSource"
+                                    k-on-change.delegate="productMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="productCode">
+                    </ak-multiselect>
+                </div>-->
+                <!-- Campaign-->
+                <div class="form-inline wv-form-spacing">
+                    <label for="campaignCode" id="campaignNameLabel">Campaign Name</label>
+                    <input type="text" class="form-control" id="campaignCode" value.two-way="campaignCode" placeholder="Code" maxlength="6">
+                    <input type="text" class="form-control" id="campaignName" value.two-way="campaignName" placeholder="Campaign Name">
+
+                </div>
+
+                <div class="wv-form-spacing">
+                    <label>Alert Group</label>
+                    <ak-multiselect k-widget.bind="alertGroupMultiSelect"
+                                    k-filter="contains"
+                                    k-placeholder="Alert Group"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="alertGroupDataSource"
+                                    k-on-change.delegate="alertGroupMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="alertGroupCode">
+                    </ak-multiselect>
+                </div>
+                <div class="wv-form-spacing">
+                    <label class="campaign-type">
+                        Campaign Type:
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="CampaignType" model.bind="2" checked.bind="campaignType"> Assigned to Jobs and Orders
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="CampaignType" model.bind="1" checked.bind="campaignType"> Overall
+                    </label>
+                </div>
+            </form>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <ul class="list-inline">
+                <li>
+                    <button class="k-default k-button" click.trigger="controller.cancel()">Cancel</button>
+                </li>
+                <li>
+                    <button class="k-button k-primary" click.trigger="Create()">Create Campaign</button>
+                </li>
+            </ul>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

@@ -1,0 +1,35 @@
+<div data-options="dxView : { name: 'favorites_list', title: 'Favorites' } " >
+  <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+
+    <!--
+    <div class="search-wrapper" data-bind="dxTextBox: { placeholder: 'Search', mode: 'search', value: projectList.searchQuery, valueChangeEvent: 'change' } "></div>
+    -->
+
+    <div class="card-container" data-bind="dxList: { }">
+      <div class="card" data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: {}">
+
+        <div class="card-indicator">
+        </div>
+
+        <div class="card-content">
+
+          <h1 data-bind="text: name "></h1>
+
+          <div class="card-details">
+
+            <div style="float:left;" data-bind="text: description"></div>
+
+          </div>
+
+
+        </div>
+        <div class="card-button-container">
+          <div class="card-action-bar">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

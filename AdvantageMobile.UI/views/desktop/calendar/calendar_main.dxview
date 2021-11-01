@@ -1,0 +1,5 @@
+<div data-options="dxView : { name: 'calendar_main', title: 'Calendar' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        Calendar
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<ng-container *ngIf="(centerPanelButtons | async) as centerPanelButtons">
+  <div [ngClass]="setClassOnBlock(!centerPanelButtons.bottomNavigation, false)">
+    <ng-container *ngFor="let document of documents; let i = index; trackBy: trackAssets">
+      <proof-item [thumbnail]="centerPanelButtons.bottomNavigation.selected"
+                  [itemType]="image"
+                  [selected]="document.selected"
+                  (click)="setSelectedPage(i, centerPanelButtons.compare.selected)"
+                  [fileName]="document.filename"
+                  [imageThumbnail]="document.thumbnail"
+                  [extension]="document.extension"
+                  [mimeType]="document.mimeType"
+                  [documentId]="document.documentId"></proof-item>
+    </ng-container>
+  </div>
+</ng-container>

@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[ACCESS_FORMAT] (
+    [REPORT_NAME] VARCHAR (50)  NOT NULL,
+    [DESCRIPTION] VARCHAR (100) NULL,
+    [MODULE]      VARCHAR (2)   NULL,
+    [CUSTOM]      SMALLINT      NULL,
+    [RPT_CODE]    INT           NULL,
+    [USE]         SMALLINT      NULL
+);
+

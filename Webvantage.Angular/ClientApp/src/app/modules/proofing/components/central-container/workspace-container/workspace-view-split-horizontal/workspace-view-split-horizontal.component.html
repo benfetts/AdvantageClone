@@ -1,0 +1,120 @@
+<ng-container *ngIf="(selectedFileType | async) as selectedFileTypeService">
+  <div [ngClass]="setClassOnBlock('workspace-view')">
+    <div class="toolbar-container">
+      <div class="workspace-view-footer">
+        <div class="workspace-view-footer-left-side">
+          <button class="page-viewer-buttton"
+                  kendoButton
+                  *ngIf="selectedFileTypeService === isDocument"
+                  [toggleable]="true"
+                  [imageUrl]="'assets/icons/window_split_hor.svg'"
+                  (click)="togglePageViewer('first')"
+          ></button>
+          <div class="current-file">
+            <fool-file-name showDeleteButton="true"
+                            showVersions="true"
+                            isFrameContainer="true"
+                            fileName="File_na..."
+                            [componentType]="componentType">
+            </fool-file-name>
+          </div>
+        </div>
+        <div *ngIf="selectedFileTypeService === isDocument"
+             class="workspace-view-footer-right-side">
+          <proof-workspace-pager [pages]="leftSide.pages"
+                                 (currentPage)="setSelectedStatus($event, 'first')"></proof-workspace-pager>
+          <button kendoButton
+                  class="move-block"
+                  [imageUrl]="'assets/icons/burger.svg'"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <div class="image-view-container">
+      <div (click)="handleFocusOnSide('first')"
+           [ngClass]="{
+            'left-side-smaller': leftSide.showPageViewer,
+            'left-side': !leftSide.showPageViewer,
+            'top-selected': leftSide.selected
+           }"
+      >
+        <proof-workspace-page-preview *ngIf="pageViewerStatus(selectedFileTypeService, 'first')"
+                                      class="pager-horizontal-first"
+                                      [viewType]="viewType"
+                                      [pages]="leftSide.pages">
+        </proof-workspace-page-preview>
+        <div class="image-area image-area-top"
+             [class.image-area-split-horizontal-top-page-viewer]="pageViewerStatus(selectedFileTypeService, 'first')"
+             [style.width]="leftSide.kendoCardWidth">
+          <ng-scrollbar class="scrollbar-main">
+            <web-viewer [mainView]="true" [Width]="'100%'"></web-viewer>
+            <!--<kendo-card [width]="'auto'" [ngClass]="setClassOnBlock('image-area-card')">
+              <img [width]="widthImg"
+                   [height]="heigthImg"
+                   kendoCardMedia
+                   [src]="leftSide.currentPage?.imageUrl" />
+            </kendo-card>-->
+          </ng-scrollbar>
+        </div>
+      </div>
+      <div (click)="handleFocusOnSide('second')"
+           [ngClass]="{
+            'right-side-smaller': rightSide.showPageViewer,
+            'right-side': !rightSide.showPageViewer,
+            'bottom-selected': rightSide.selected
+           }"
+      >
+        <proof-workspace-page-preview *ngIf="pageViewerStatus(selectedFileTypeService, 'second')"
+                                      class="pager-horizontal-second"
+                                      [viewType]="viewType"
+                                      [pages]="rightSide.pages">
+        </proof-workspace-page-preview>
+        <div class="image-area image-area-bottom"
+             [class.image-area-split-horizontal-bottom-page-viewer]="pageViewerStatus(selectedFileTypeService, 'second')"
+             [style.width]="rightSide.kendoCardWidth">
+          <ng-scrollbar class="scrollbar-main">
+
+            <web-viewer [mainView]="false"  [Width]="'100%'"></web-viewer>
+
+            <!--<kendo-card [width]="'auto'" [ngClass]="setClassOnBlock('image-area-card')">
+              <img [width]="widthImg"
+                   [height]="heigthImg"
+                   kendoCardMedia
+                   [src]="rightSide.currentPage?.imageUrl" />
+            </kendo-card>-->
+          </ng-scrollbar>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar-container">
+      <div class="workspace-view-footer">
+        <div class="workspace-view-footer-left-side">
+          <button class="page-viewer-buttton"
+                  kendoButton
+                  [toggleable]="true"
+                  *ngIf="selectedFileTypeService === isDocument"
+                  [imageUrl]="'assets/icons/window_split_hor.svg'"
+                  (click)="togglePageViewer('second')"
+          ></button>
+          <div class="current-file">
+            <fool-file-name showDeleteButton="true"
+                            showVersions="true"
+                            isFrameContainer="true"
+                            fileName="File_na..."
+                            [componentType]="componentType">
+            </fool-file-name>
+          </div>
+        </div>
+        <div *ngIf="selectedFileTypeService === isDocument"
+             class="workspace-view-footer-right-side">
+          <proof-workspace-pager [pages]="rightSide.pages"
+                                 (currentPage)="setSelectedStatus($event, 'second')"></proof-workspace-pager>
+          <button kendoButton
+                  class="move-block"
+                  [imageUrl]="'assets/icons/burger.svg'"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

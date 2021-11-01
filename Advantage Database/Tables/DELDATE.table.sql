@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[DELDATE] (
+    [DDID]     INT           NOT NULL,
+    [DDCOLUMN] VARCHAR (18)  NOT NULL,
+    [DDDATE]   SMALLDATETIME NULL
+);
+

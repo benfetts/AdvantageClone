@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION dbo.advfn_bcc_order_count ( @bcc_id_in integer )  		  	RETURNS integer   	AS   	BEGIN  		RETURN (   			SELECT COUNT( * )   			  FROM dbo.BCC_ORDER_LINE   			 WHERE BCC_ID = @bcc_id_in )  	END 

@@ -1,0 +1,86 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_ALERT_ATTACHMENTUpdate]
+(
+	@ATTACHMENT_ID int,
+	@ALERT_ID int,
+	@USER_CODE varchar(100),
+	@GENERATED_DATE smalldatetime,
+	@EMAILSENT bit,
+	@DOCUMENT_ID int,
+	@USER_CODE_CP int = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [ALERT_ATTACHMENT]
+	SET
+		[ALERT_ID] = @ALERT_ID,
+		[USER_CODE] = @USER_CODE,
+		[GENERATED_DATE] = @GENERATED_DATE,
+		[EMAILSENT] = @EMAILSENT,
+		[DOCUMENT_ID] = @DOCUMENT_ID,
+		[USER_CODE_CP] = @USER_CODE_CP
+	WHERE
+		[ATTACHMENT_ID] = @ATTACHMENT_ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

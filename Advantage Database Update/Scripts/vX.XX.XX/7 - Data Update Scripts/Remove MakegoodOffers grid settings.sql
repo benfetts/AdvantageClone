@@ -1,0 +1,2 @@
+delete GRID_ADVANTAGE
+where GRID_TYPE = 24

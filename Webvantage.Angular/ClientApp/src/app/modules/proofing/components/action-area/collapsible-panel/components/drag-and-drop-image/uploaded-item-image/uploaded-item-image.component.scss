@@ -1,0 +1,71 @@
+@import '../../../../../../theme/colors';
+
+.asset-item,
+.asset-item-with-thumbnail {
+  width: 93px;
+  height: 38px;
+  display: inline-block;
+
+  &-switch {
+    height: 21px;
+    position: relative;
+
+    button {
+      position: absolute;
+      top: 11px;
+      right: 10px;
+    }
+
+    .k-button {
+      border: none;
+      background-color: transparent;
+      height: 5px;
+      width: 8px;
+      margin: -1px;
+      background-image: none;
+    }
+  }
+
+  &-thumbnail {
+    height: 64px;
+    max-height: 64px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+
+    img {
+      height: 64px;
+      max-height: 64px;
+      width: 53px;
+      max-width: 53px;
+    }
+  }
+
+  .file-name {
+    display: flex;
+    justify-content: center;
+    padding: 10px 9px;
+  }
+}
+
+.asset-item-with-thumbnail {
+  padding: 0;
+  height: 128px;
+
+  .file-name {
+    padding: 0;
+  }
+}
+
+.selected {
+  background: $very-light-grey;
+}
+
+.asset-item-switch {
+  img {
+    @-moz-document url-prefix() {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

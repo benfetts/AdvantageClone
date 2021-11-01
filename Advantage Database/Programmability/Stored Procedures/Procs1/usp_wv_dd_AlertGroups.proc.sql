@@ -1,0 +1,12 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_dd_AlertGroups] 
+
+AS
+
+SELECT DISTINCT EMAIL_GR_CODE as code, EMAIL_GR_CODE as description
+FROM EMAIL_GROUP 
+WHERE INACTIVE_FLAG = 0 OR INACTIVE_FLAG IS NULL
+
+
+

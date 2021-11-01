@@ -1,0 +1,59 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/progressbar/progressbar"></require>
+    <require from="aurelia-kendoui-bridge/sortable/sortable"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+
+    <div class="container checklist">
+        
+        <div class="eventsProgressBar" style="width: 100%;" show.bind="items.length > 0"
+             ak-progress-bar="k-type: percent;
+                              k-min: 0;
+                              k-max.bind: totalItems;
+                              k-value.bind: checkedItems;
+                              k-widget.bind: progressBar">
+        </div>
+        <div class="nested-sortable" ak-sortable="k-cursor-offset.bind: {top: -10, left: -230}; k-placeholder.call: placeholder($event); k-hint.call: hint($event); k-handler: .handler; k-ignore: input, textarea;">
+            <div class="nested-sortable-item" repeat.for="item of items" style="clear: both;">
+                <span class="handler">
+                    
+                </span>
+                <input id="cb_${item.ID}" type="checkbox" class="k-checkbox" checked.bind="item.IsChecked" change.delegate="itemCheckChanged(item)">
+                <label class="k-checkbox-label" for="cb_${item.ID}">
+                    <span if.bind="!item.edit">
+                        ${item.Description}
+                    </span>
+                    <span if.bind="item.edit">
+                    </span>
+                </label>
+                <span if.bind="item.edit">
+                    <textarea id="cbtbedit"  class="k-textbox" style="" value.bind="item.Description" maxlength="100"></textarea>
+                    <!--<input type="text" id="cbtbedit" class="k-textbox" value.bind="item.description" />-->
+                    <span>
+                        <button class="btn btn-link" click.delegate="editItem(item)">Save Changes...</button>
+                    </span>
+                </span>
+                <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                    <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle title="Menu Options">
+                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-left">
+                        <!--<li><a class="dropdown-item" href="javascript:void(0)" click.delegate="convetToAssignment(item)">Convert to Assignment</a></li>-->
+                        <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="editItem(item)">Edit</a></li>
+                        <li class="divider"></li>
+                        <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="removeItem(item)">Delete</a></li>
+                    </ul>
+                </div>
+
+                <!----
+    <button class="btn btn-link pull-right wv-delete" click.delegate="removeItem(item)" title="Delete"><span class="wvi wvi-delete"></span></button>
+    <button class="btn btn-link pull-right wv-edit" click.delegate="editItem(item)" title="Edit"><span class="wvi wvi-pencil-action-edit"></span></button>-->
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <textarea type="text" class="new-checklist-item form-control" value.bind="newItemDescription" placeholder="Enter New Checklist Item" maxlength="100"></textarea>
+            <button class="btn btn-sm btn-success pull-right" click.delegate="add()"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </div>
+
+</template>

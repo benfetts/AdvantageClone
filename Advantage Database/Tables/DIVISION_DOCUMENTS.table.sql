@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[DIVISION_DOCUMENTS] (
+    [DOCUMENT_ID] INT         NOT NULL,
+    [DIV_CODE]    VARCHAR (6) NOT NULL,
+    [CL_CODE]     VARCHAR (6) NULL
+);
+

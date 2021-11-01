@@ -1,0 +1,70 @@
+@import '../../../../theme/colors';
+@import '../../../../theme/mixins/font';
+@import '../../../../components/action-area/action-area.component';
+
+.add-new-comment {
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-button {
+    @include font-base(14px);
+    color: $white;
+  }
+
+  .k-button {
+    height: 30px;
+    width: calc(#{$actionAreaOpenedWidth} - 65px);
+    background: $blue-dark;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    border-radius: 3px !important;
+
+    &:hover,
+    &:focus {
+      background: $blue-dark;
+      border: 1px solid $border-color;
+      box-shadow: none;
+      color: $white;
+    }
+
+    &:active,
+    &.k-state-active {
+      border: 1px solid $border-color;
+      box-shadow: none;
+      background: $blue-dark;
+      color: $white;
+
+      img {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.feedback-block {
+  height: 400px;
+  overflow: hidden;
+}
+
+.title .left {
+  @include font-base(15px, 600, 20px);
+  display: flex;
+  align-items: center;
+}
+
+.title-icons {
+  width: 15px;
+  height: 15px;
+}
+
+.title-icons:hover {
+  -webkit-filter: grayscale(10%) brightness(80%);
+  filter: grayscale(10%) brightness(80%);
+}
+
+.flag-checked .flag {
+  -webkit-filter: invert(40%) grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(800%) contrast(2);
+  filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(800%) contrast(0.8);
+}

@@ -1,0 +1,31 @@
+C:\TFS_ROOT\Advantage\Production\Output\Resources\AmericanXLG.xlg
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAFF.aff
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAlphabet.txt
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Upgrade Wizard.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Upgrade Wizard.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Upgrade Wizard.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Upgrade Wizard.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.MainForm.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.BaseWizardPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.WebvantageURLPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.ModifyAdvantageServicesConnectionPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.CreateAPIConnectionPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.CreateWebvantageConnectionPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.CreateAdvantageConnectionPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.FinishPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.CreateAdvantageUserPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.ConversionPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.BackupDatabasePage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.PasswordPolicyPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.SignInPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.InstallPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage_Upgrade_Wizard.StartPage.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.exe.licenses
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Upgrade Wizard\obj\Debug\Advantage Upgrade Wizard.pdb

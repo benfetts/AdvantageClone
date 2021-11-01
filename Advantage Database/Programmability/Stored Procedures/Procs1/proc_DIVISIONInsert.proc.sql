@@ -1,0 +1,137 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_DIVISIONInsert]
+(
+	@CL_CODE varchar(6),
+	@DIV_CODE varchar(6),
+	@DIV_NAME varchar(40) = NULL,
+	@DIV_ATTENTION varchar(40) = NULL,
+	@DIV_BADDRESS1 varchar(40) = NULL,
+	@DIV_BADDRESS2 varchar(40) = NULL,
+	@DIV_BCITY varchar(20) = NULL,
+	@DIV_BCOUNTY varchar(20) = NULL,
+	@DIV_BSTATE varchar(10) = NULL,
+	@DIV_BCOUNTRY varchar(20) = NULL,
+	@DIV_BZIP varchar(10) = NULL,
+	@DIV_SADDRESS1 varchar(40) = NULL,
+	@DIV_SADDRESS2 varchar(40) = NULL,
+	@DIV_SCITY varchar(20) = NULL,
+	@DIV_SCOUNTY varchar(20) = NULL,
+	@DIV_SSTATE varchar(10) = NULL,
+	@DIV_SCOUNTRY varchar(20) = NULL,
+	@DIV_SZIP varchar(10) = NULL,
+	@DIV_ALPHA_SORT varchar(20) = NULL,
+	@ACTIVE_FLAG smallint = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [DIVISION]
+	(
+		[CL_CODE],
+		[DIV_CODE],
+		[DIV_NAME],
+		[DIV_ATTENTION],
+		[DIV_BADDRESS1],
+		[DIV_BADDRESS2],
+		[DIV_BCITY],
+		[DIV_BCOUNTY],
+		[DIV_BSTATE],
+		[DIV_BCOUNTRY],
+		[DIV_BZIP],
+		[DIV_SADDRESS1],
+		[DIV_SADDRESS2],
+		[DIV_SCITY],
+		[DIV_SCOUNTY],
+		[DIV_SSTATE],
+		[DIV_SCOUNTRY],
+		[DIV_SZIP],
+		[DIV_ALPHA_SORT],
+		[ACTIVE_FLAG]
+	)
+	VALUES
+	(
+		@CL_CODE,
+		@DIV_CODE,
+		@DIV_NAME,
+		@DIV_ATTENTION,
+		@DIV_BADDRESS1,
+		@DIV_BADDRESS2,
+		@DIV_BCITY,
+		@DIV_BCOUNTY,
+		@DIV_BSTATE,
+		@DIV_BCOUNTRY,
+		@DIV_BZIP,
+		@DIV_SADDRESS1,
+		@DIV_SADDRESS2,
+		@DIV_SCITY,
+		@DIV_SCOUNTY,
+		@DIV_SSTATE,
+		@DIV_SCOUNTRY,
+		@DIV_SZIP,
+		@DIV_ALPHA_SORT,
+		@ACTIVE_FLAG
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

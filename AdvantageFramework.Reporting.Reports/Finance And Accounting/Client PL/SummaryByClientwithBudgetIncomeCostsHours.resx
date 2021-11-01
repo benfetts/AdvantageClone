@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label43.Text" xml:space="preserve">
+    <value>Additional Changes Needed:
+1) Add script for GI % of Total and DSC % of Total - that is CDP GI % of Total GI and CDP DSC % of Total DSC, by Office if Office is included.
+2) Make ClientHeader and ClientFooter Visible = No where CurrentFlag = 0 (added a formatting rule and applied to band but not working - why?)</value>
+  </data>
+  <metadata name="BindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="$this.ScriptsSource" xml:space="preserve">
+    <value>Dim cTotalGrossIncome As System.Decimal = 0
+Dim cDirectServiceCost As System.Decimal = 0
+Dim cTotalCostLessDirectServiceCost As System.Decimal = 0
+Dim cNetProfit As System.Decimal = 0
+Dim cHours As System.Decimal = 0
+Dim pTotalGrossIncome As System.Decimal = 0
+Dim pDirectServiceCost As System.Decimal = 0
+Dim pTotalCostLessDirectServiceCost As System.Decimal = 0
+Dim pNetProfit As System.Decimal = 0
+Dim pHours As System.Decimal = 0
+Dim oTotalGrossIncome As System.Decimal = 0
+Dim oDirectServiceCost As System.Decimal = 0
+Dim oTotalCostLessDirectServiceCost As System.Decimal = 0
+Dim oNetProfit As System.Decimal = 0
+Dim oHours As System.Decimal = 0
+Dim rTotalGrossIncome As System.Decimal = 0
+Dim rDirectServiceCost As System.Decimal = 0
+Dim rTotalCostLessDirectServiceCost As System.Decimal = 0
+Dim rNetProfit As System.Decimal = 0
+Dim rHours As System.Decimal = 0
+
+'Get Client Summary DSC percent of GI
+Private Sub OnSummaryResetcDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	cDirectServiceCost = 0
+	cTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedcDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	cDirectServiceCost += GetCurrentColumnValue("DirectServiceCost")
+	cTotalGrossIncome += GetCurrentColumnValue("TotalGrossIncome")
+End Sub
+
+Private Sub OnSummaryGetResultcDSCPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If cTotalGrossIncome &lt;&gt; 0 Then e.result = cDirectServiceCost / cTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Year Summary DSC percent of GI
+Private Sub OnSummaryResetpDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	pDirectServiceCost = 0
+	pTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedpDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	pDirectServiceCost += GetCurrentColumnValue("DirectServiceCost")
+	pTotalGrossIncome += GetCurrentColumnValue("TotalGrossIncome")
+End Sub
+
+Private Sub OnSummaryGetResultpDSCPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If pTotalGrossIncome &lt;&gt; 0 Then e.result = pDirectServiceCost / pTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Office Summary DSC percent of GI
+Private Sub OnSummaryResetoDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	oDirectServiceCost = 0
+	oTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedoDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	oDirectServiceCost += GetCurrentColumnValue("DirectServiceCost")
+	oTotalGrossIncome += GetCurrentColumnValue("TotalGrossIncome")
+End Sub
+
+Private Sub OnSummaryGetResultoDSCPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If oTotalGrossIncome &lt;&gt; 0 Then e.result = oDirectServiceCost / oTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Report DSC percent of GI
+Private Sub OnSummaryResetrDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	rDirectServiceCost = 0
+	rTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedrDSCPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	rDirectServiceCost += GetCurrentColumnValue("DirectServiceCost")
+	rTotalGrossIncome += GetCurrentColumnValue("TotalGrossIncome")
+End Sub
+
+Private Sub OnSummaryGetResultrDSCPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If rTotalGrossIncome &lt;&gt; 0 Then e.result = rDirectServiceCost / rTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Client Summary Net Profit percent of GI
+Private Sub OnSummaryResetcNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	cNetProfit = 0
+	cTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedcNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	cNetProfit += GetCurrentColumnValue("IncomeLessOverhead")
+	cTotalGrossIncome = cTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultcNPPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If cTotalGrossIncome &lt;&gt; 0 Then e.result = cNetProfit / cTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Year Summary Net Profit percent of GI
+Private Sub OnSummaryResetpNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	pNetProfit = 0
+	pTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedpNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	pNetProfit += GetCurrentColumnValue("IncomeLessOverhead")
+	pTotalGrossIncome = pTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultpNPPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If pTotalGrossIncome &lt;&gt; 0 Then e.result = pNetProfit / pTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Office Summary Net Profit percent of GI
+Private Sub OnSummaryResetoNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	oNetProfit = 0
+	oTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedoNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	oNetProfit += GetCurrentColumnValue("IncomeLessOverhead")
+	oTotalGrossIncome = oTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultoNPPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If oTotalGrossIncome &lt;&gt; 0 Then e.result = oNetProfit / oTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Report Summary Net Profit percent of GI
+Private Sub OnSummaryResetrNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	rNetProfit = 0
+	rTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedrNPPctGI(ByVal sender As Object, ByVal e As System.EventArgs)
+	rNetProfit += GetCurrentColumnValue("IncomeLessOverhead")
+	rTotalGrossIncome = rTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultrNPPctGI(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If rTotalGrossIncome &lt;&gt; 0 Then e.result = rNetProfit / rTotalGrossIncome Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Client Summary GI per Hour
+Private Sub OnSummaryResetcGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours = 0
+	cTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedcGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours += GetCurrentColumnValue("Hours")
+	cTotalGrossIncome = cTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultcGIperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If cHours &lt;&gt; 0 Then e.result = cTotalGrossIncome / cHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Year Summary GI per Hour
+Private Sub OnSummaryResetpGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours = 0
+	pTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedpGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours += GetCurrentColumnValue("Hours")
+	pTotalGrossIncome = pTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultpGIperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If pHours &lt;&gt; 0 Then e.result = pTotalGrossIncome / pHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Office Summary GI per Hour
+Private Sub OnSummaryResetoGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours = 0
+	oTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedoGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours += GetCurrentColumnValue("Hours")
+	oTotalGrossIncome = oTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultoGIperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If oHours &lt;&gt; 0 Then e.result = oTotalGrossIncome / oHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Report Summary GI per Hour
+Private Sub OnSummaryResetrGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours = 0
+	rTotalGrossIncome = 0
+End Sub
+
+Private Sub OnSummaryRowChangedrGIperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours += GetCurrentColumnValue("Hours")
+	rTotalGrossIncome = rTotalGrossIncome
+End Sub
+
+Private Sub OnSummaryGetResultrGIperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If rHours &lt;&gt; 0 Then e.result = rTotalGrossIncome / rHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Client Summary DSC per Hour
+Private Sub OnSummaryResetcDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours = 0
+	cDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedcDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours = cHours
+	cDirectServiceCost = cDirectServiceCost
+End Sub
+
+Private Sub OnSummaryGetResultcDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If cHours &lt;&gt; 0 Then e.result = cDirectServiceCost / cHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Year Summary DSC per Hour
+Private Sub OnSummaryResetpDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours = 0
+	pDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedpDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours = pHours
+	pDirectServiceCost = pDirectServiceCost
+End Sub
+
+Private Sub OnSummaryGetResultpDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If pHours &lt;&gt; 0 Then e.result = pDirectServiceCost / pHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Office Summary DSC per Hour
+Private Sub OnSummaryResetoDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours = 0
+	oDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedoDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours = oHours
+	oDirectServiceCost = oDirectServiceCost
+End Sub
+
+Private Sub OnSummaryGetResultoDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If oHours &lt;&gt; 0 Then e.result = oDirectServiceCost / oHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Report Summary DSC per Hour
+Private Sub OnSummaryResetrDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours = 0
+	rDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedrDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours = rHours
+	rDirectServiceCost = rDirectServiceCost
+End Sub
+
+Private Sub OnSummaryGetResultrDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If rHours &lt;&gt; 0 Then e.result = rDirectServiceCost / rHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Client Summary Cost Less DirectServiceCost (CLDSC) per Hour
+Private Sub OnSummaryResetcCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours = 0
+	cTotalCostLessDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedcCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours = cHours
+	cTotalCostLessDirectServiceCost += GetCurrentColumnValue("TotalCostLessDirectServiceCost")
+End Sub
+
+Private Sub OnSummaryGetResultcCLDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If cHours &lt;&gt; 0 Then e.result = cTotalCostLessDirectServiceCost / cHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Year Summary Cost Less DirectServiceCost (CLDSC) per Hour
+Private Sub OnSummaryResetpCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours = 0
+	pTotalCostLessDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedpCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours = pHours
+	pTotalCostLessDirectServiceCost += GetCurrentColumnValue("TotalCostLessDirectServiceCost")
+End Sub
+
+Private Sub OnSummaryGetResultpCLDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If pHours &lt;&gt; 0 Then e.result = pTotalCostLessDirectServiceCost / pHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Office Summary Cost Less DirectServiceCost (CLDSC) per Hour
+Private Sub OnSummaryResetoCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours = 0
+	oTotalCostLessDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedoCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours = oHours
+	oTotalCostLessDirectServiceCost += GetCurrentColumnValue("TotalCostLessDirectServiceCost")
+End Sub
+
+Private Sub OnSummaryGetResultoCLDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If oHours &lt;&gt; 0 Then e.result = oTotalCostLessDirectServiceCost / oHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Report Summary Cost Less DirectServiceCost (CLDSC) per Hour
+Private Sub OnSummaryResetrCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours = 0
+	rTotalCostLessDirectServiceCost = 0
+End Sub
+
+Private Sub OnSummaryRowChangedrCLDSCperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours = rHours
+	rTotalCostLessDirectServiceCost += GetCurrentColumnValue("TotalCostLessDirectServiceCost")
+End Sub
+
+Private Sub OnSummaryGetResultrCLDSCperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If rHours &lt;&gt; 0 Then e.result = rTotalCostLessDirectServiceCost / rHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Client Summary NP per Hour
+Private Sub OnSummaryResetcNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours = 0
+	cNetProfit = 0
+End Sub
+
+Private Sub OnSummaryRowChangedcNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	cHours = cHours
+	cNetProfit = cNetProfit
+End Sub
+
+Private Sub OnSummaryGetResultcNPperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If cHours &lt;&gt; 0 Then e.result = cNetProfit / cHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Year Summary NP per Hour
+Private Sub OnSummaryResetpNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours = 0
+	pNetProfit = 0
+End Sub
+
+Private Sub OnSummaryRowChangedpNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	pHours = pHours
+	pNetProfit = pNetProfit
+End Sub
+
+Private Sub OnSummaryGetResultpNPperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If pHours &lt;&gt; 0 Then e.result = pNetProfit / pHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Office Summary NP per Hour
+Private Sub OnSummaryResetoNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours = 0
+	oNetProfit = 0
+End Sub
+
+Private Sub OnSummaryRowChangedoNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	oHours = oHours
+	oNetProfit = oNetProfit
+End Sub
+
+Private Sub OnSummaryGetResultoNPperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If oHours &lt;&gt; 0 Then e.result = oNetProfit / oHours Else e.Result = 0
+	e.Handled = True
+End Sub
+
+'Get Report Summary NP per Hour
+Private Sub OnSummaryResetrNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours = 0
+	rNetProfit = 0
+End Sub
+
+Private Sub OnSummaryRowChangedrNPperHour(ByVal sender As Object, ByVal e As System.EventArgs)
+	rHours = rHours
+	rNetProfit = rNetProfit
+End Sub
+
+Private Sub OnSummaryGetResultrNPperHour(ByVal sender As Object, ByVal e As SummaryGetResultEventArgs)
+	If rHours &lt;&gt; 0 Then e.result = rNetProfit / rHours Else e.Result = 0
+	e.Handled = True
+End Sub</value>
+  </data>
+</root>

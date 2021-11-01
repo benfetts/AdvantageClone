@@ -1,0 +1,306 @@
+﻿CREATE PROCEDURE [dbo].[advsp_ar_invoice_select_voided_by_client] @UserCode varchar(100), @ClientCode varchar(6), @DivisionCode varchar(6) = NULL, @ProductCode varchar(6) = NULL,
+															@OfficeCode varchar(4) = NULL, @SalesClassCode varchar(6) = NULL
+
+AS
+BEGIN
+-- 01/22/16 broke out writeoff amount
+SET NOCOUNT ON;
+SET ARITHABORT ON;
+
+DECLARE	@pdays smallint,
+		@mdays smallint
+		
+SELECT	@pdays = COALESCE(CL_P_PAYDAYS,0), @mdays = COALESCE(CL_M_PAYDAYS,0)
+FROM	dbo.CLIENT 
+WHERE CL_CODE = @ClientCode
+
+DECLARE @OFFICES TABLE (
+	OfficeCode varchar(4) NOT NULL
+)
+
+DECLARE @INVOICE_NUMBERS TABLE (
+	AR_INV_NBR int
+)
+
+DECLARE @INVOICES TABLE (
+	InvoiceNumber int NOT NULL,
+	SequenceNumber smallint NOT NULL,
+	[Description] varchar(40) NULL,
+	Category varchar(20) NULL,
+	InvoiceDate smalldatetime NULL,
+	DueDate smalldatetime NULL,
+	Amount decimal(15,2),
+	AmountPaid decimal(15,2),
+	AmountWriteoff decimal(15,2),
+	CollectionNotes varchar(max),
+	IsVoided bit,
+	IsManualInvoice bit,
+	[Type] varchar(3) NOT NULL,
+	ClientCode varchar(6) NOT NULL,
+	DivisionCode varchar(6) NULL,
+	ProductCode varchar(6) NULL,
+	DivisionName varchar(40) NULL,
+	ProductDescription varchar(40) NULL,
+	OfficeCode varchar(4) NULL,
+	OfficeName varchar(30) NULL,
+	SalesClassCode varchar(6) NULL,
+	SalesClassDescription varchar(30) NULL,
+	CustomGroup varchar(200) NULL,
+	HasDocuments bit NOT NULL,
+	RecType varchar(10) NULL,
+	VoidComment varchar(254) NULL,
+    QuickBooks bit NOT NULL
+)
+
+	INSERT @OFFICES 
+	SELECT EO.OFFICE_CODE 
+	FROM dbo.EMP_OFFICE EO
+		INNER JOIN SEC_USER SU ON EO.EMP_CODE = SU.EMP_CODE 
+	WHERE UPPER(SU.USER_CODE) = UPPER(@UserCode)
+	
+	IF (SELECT COUNT(1) FROM @OFFICES) = 0
+		INSERT @OFFICES 
+		SELECT OFFICE_CODE FROM dbo.OFFICE 
+	
+	INSERT @INVOICE_NUMBERS
+	SELECT DISTINCT AR_INV_NBR
+	FROM dbo.ACCT_REC
+	WHERE CL_CODE = @ClientCode
+	AND	(@DivisionCode IS NULL OR DIV_CODE = @DivisionCode)
+	AND	(@ProductCode IS NULL OR PRD_CODE = @ProductCode)
+	AND	(@OfficeCode IS NULL OR OFFICE_CODE = @OfficeCode)
+	AND	(@SalesClassCode IS NULL OR SC_CODE = @SalesClassCode)
+
+	UNION 
+	
+	SELECT AR_INV_NBR
+	FROM dbo.AR_SUMMARY 
+	WHERE CL_CODE = @ClientCode
+	AND	(@DivisionCode IS NULL OR DIV_CODE = @DivisionCode)
+	AND	(@ProductCode IS NULL OR PRD_CODE = @ProductCode)
+	AND	(@OfficeCode IS NULL OR OFFICE_CODE = @OfficeCode)
+	AND	(@SalesClassCode IS NULL OR SC_CODE = @SalesClassCode)
+
+	INSERT @INVOICES 
+	SELECT	InvoiceNumber = AR.AR_INV_NBR,
+			SequenceNumber = AR.AR_INV_SEQ,
+			[Description] = AR.AR_DESCRIPTION,
+			Category = INVOICE_CATEGORY.INV_CAT_DESC,
+			InvoiceDate = AR.AR_INV_DATE,
+			DueDate = CASE WHEN AR.DUE_DATE IS NULL AND AR.REC_TYPE = 'P' THEN DATEADD(DAY, @pdays, AR.AR_INV_DATE) 
+						   WHEN AR.DUE_DATE IS NULL THEN DATEADD(DAY, @mdays, AR.AR_INV_DATE) 
+					  ELSE AR.DUE_DATE END,
+			Amount = COALESCE(AR.AR_INV_AMOUNT,0),
+			AmountPaid = COALESCE(P.Paid,0),
+			AmountWriteoff = COALESCE(P.Writeoff,0),
+			CollectionNotes = N.COLLECT_NOTES,
+			IsVoided = CAST(COALESCE(AR.VOID_FLAG,0) AS BIT),
+			IsManualInvoice = CAST(COALESCE(AR.MANUAL_INV,0) AS BIT),
+			[Type] = AR.AR_TYPE,
+			AR.CL_CODE,
+			AR.DIV_CODE,
+			AR.PRD_CODE,
+			D.DIV_NAME,
+			Prod.PRD_DESCRIPTION,
+			O2.OFFICE_CODE,
+			O2.OFFICE_NAME,
+			SC.SC_CODE,
+			SC.SC_DESCRIPTION,
+			'Division: ' + COALESCE(D.DIV_NAME,'') + ' | Product: ' + COALESCE(Prod.PRD_DESCRIPTION,'') + ' | Office: ' + COALESCE(O2.OFFICE_NAME,''),
+			0,
+			RecType = CASE REC_TYPE
+						WHEN 'P' THEN 'Production' 
+						WHEN 'C' THEN 'Combo' 
+						ELSE 'Media'
+						END,
+			VoidComment = AR.VO_COMMENT,
+            QuickBooks = CASE WHEN AR.QUICKBOOKS_INVOICE_ID IS NOT NULL THEN 1 ELSE 0 END
+	FROM dbo.ACCT_REC AR
+		LEFT OUTER JOIN dbo.INVOICE_CATEGORY ON AR.INV_CAT = INVOICE_CATEGORY.INV_CAT
+		LEFT OUTER JOIN (SELECT	COALESCE ( SUM ( CR_PAY_AMT ) , 0 ) AS Paid, COALESCE ( SUM ( CR_ADJ_AMT ) , 0 ) AS Writeoff, AR_INV_NBR, AR_INV_SEQ 
+						 FROM	dbo.CR_CLIENT_DTL
+						 GROUP BY AR_INV_NBR, AR_INV_SEQ
+						) P ON AR.AR_INV_NBR = P.AR_INV_NBR AND AR.AR_INV_SEQ = P.AR_INV_SEQ 
+		LEFT OUTER JOIN dbo.AR_COLL_NOTES N ON AR.AR_INV_NBR = N.AR_INV_NBR AND AR.AR_INV_SEQ = N.AR_INV_SEQ AND AR.AR_TYPE = N.AR_TYPE 
+		INNER JOIN @OFFICES O ON AR.OFFICE_CODE = O.OfficeCode 
+		INNER JOIN @INVOICE_NUMBERS InvNum ON AR.AR_INV_NBR = InvNum.AR_INV_NBR 
+		LEFT OUTER JOIN dbo.DIVISION D ON AR.CL_CODE = D.CL_CODE AND AR.DIV_CODE = D.DIV_CODE
+		LEFT OUTER JOIN dbo.PRODUCT Prod ON AR.CL_CODE = Prod.CL_CODE AND AR.DIV_CODE = Prod.DIV_CODE AND AR.PRD_CODE = Prod.PRD_CODE
+		LEFT OUTER JOIN dbo.OFFICE O2 ON AR.OFFICE_CODE = O2.OFFICE_CODE 
+		LEFT OUTER JOIN dbo.SALES_CLASS SC ON AR.SC_CODE = SC.SC_CODE 
+	WHERE	AR.AR_TYPE = 'VO'
+			AND	AR.AR_INV_SEQ <> 99
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.AR_SUMMARY ARS ON I.InvoiceNumber = ARS.AR_INV_NBR AND I.SequenceNumber = ARS.AR_INV_SEQ AND I.[Type] = ARS.AR_TYPE 
+		INNER JOIN dbo.AP_PRODUCTION APP ON APP.AR_INV_NBR = ARS.AR_INV_NBR AND APP.AR_INV_SEQ = ARS.AR_INV_SEQ AND APP.AR_TYPE = ARS.AR_TYPE AND APP.JOB_NUMBER = ARS.JOB_NUMBER AND APP.JOB_COMPONENT_NBR = ARS.JOB_COMPONENT_NBR 
+		INNER JOIN dbo.AP_HEADER APH ON APP.AP_ID = APH.AP_ID
+	WHERE	(APP.MODIFY_DELETE IS NULL OR APP.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		APP.EXPDETAILID IS NOT NULL
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.AR_SUMMARY ARS ON I.InvoiceNumber = ARS.AR_INV_NBR AND I.SequenceNumber = ARS.AR_INV_SEQ AND I.[Type] = ARS.AR_TYPE 
+		INNER JOIN dbo.AP_PRODUCTION APP ON APP.AR_INV_NBR = ARS.AR_INV_NBR AND APP.AR_INV_SEQ = ARS.AR_INV_SEQ AND APP.AR_TYPE = ARS.AR_TYPE AND APP.JOB_NUMBER = ARS.JOB_NUMBER AND APP.JOB_COMPONENT_NBR = ARS.JOB_COMPONENT_NBR 
+		INNER JOIN dbo.AP_HEADER APH ON APP.AP_ID = APH.AP_ID
+		INNER JOIN dbo.AP_DOCUMENTS APD ON APH.AP_ID = APD.AP_ID 
+	WHERE	(APP.MODIFY_DELETE IS NULL OR APP.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.ARINV_MEDIA ARM ON I.InvoiceNumber = ARM.AR_INV_NBR AND I.SequenceNumber = ARM.AR_INV_SEQ AND I.[Type] = ARM.AR_TYPE 
+		INNER JOIN dbo.AP_INTERNET AP ON AP.ORDER_NBR = ARM.ORDER_NBR AND AP.ORDER_LINE_NBR = ARM.LINE_NBR AND ARM.ORDER_TYPE = 'I'
+		INNER JOIN dbo.AP_HEADER APH ON AP.AP_ID = APH.AP_ID
+		INNER JOIN dbo.AP_DOCUMENTS APD ON APH.AP_ID = APD.AP_ID 
+	WHERE	(AP.MODIFY_DELETE IS NULL OR AP.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.ARINV_MEDIA ARM ON I.InvoiceNumber = ARM.AR_INV_NBR AND I.SequenceNumber = ARM.AR_INV_SEQ AND I.[Type] = ARM.AR_TYPE 
+		INNER JOIN dbo.AP_MAGAZINE AP ON AP.ORDER_NBR = ARM.ORDER_NBR AND AP.ORDER_LINE_NBR = ARM.LINE_NBR AND ARM.ORDER_TYPE = 'M'
+		INNER JOIN dbo.AP_HEADER APH ON AP.AP_ID = APH.AP_ID
+		INNER JOIN dbo.AP_DOCUMENTS APD ON APH.AP_ID = APD.AP_ID 
+	WHERE	(AP.MODIFY_DELETE IS NULL OR AP.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.ARINV_MEDIA ARM ON I.InvoiceNumber = ARM.AR_INV_NBR AND I.SequenceNumber = ARM.AR_INV_SEQ AND I.[Type] = ARM.AR_TYPE 
+		INNER JOIN dbo.AP_NEWSPAPER AP ON AP.ORDER_NBR = ARM.ORDER_NBR AND AP.ORDER_LINE_NBR = ARM.LINE_NBR AND ARM.ORDER_TYPE = 'N'
+		INNER JOIN dbo.AP_HEADER APH ON AP.AP_ID = APH.AP_ID
+		INNER JOIN dbo.AP_DOCUMENTS APD ON APH.AP_ID = APD.AP_ID 
+	WHERE	(AP.MODIFY_DELETE IS NULL OR AP.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.ARINV_MEDIA ARM ON I.InvoiceNumber = ARM.AR_INV_NBR AND I.SequenceNumber = ARM.AR_INV_SEQ AND I.[Type] = ARM.AR_TYPE 
+		INNER JOIN dbo.AP_OUTDOOR APO ON APO.ORDER_NBR = ARM.ORDER_NBR AND APO.ORDER_LINE_NBR = ARM.LINE_NBR AND ARM.ORDER_TYPE = 'O'
+		INNER JOIN dbo.AP_HEADER APH ON APO.AP_ID = APH.AP_ID
+		INNER JOIN dbo.AP_DOCUMENTS APD ON APH.AP_ID = APD.AP_ID 
+	WHERE	(APO.MODIFY_DELETE IS NULL OR APO.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.ARINV_MEDIA ARM ON I.InvoiceNumber = ARM.AR_INV_NBR AND I.SequenceNumber = ARM.AR_INV_SEQ AND I.[Type] = ARM.AR_TYPE 
+		INNER JOIN dbo.AP_RADIO AP ON AP.ORDER_NBR = ARM.ORDER_NBR AND AP.ORDER_LINE_NBR = ARM.LINE_NBR AND ARM.ORDER_TYPE = 'R'
+		INNER JOIN dbo.AP_HEADER APH ON AP.AP_ID = APH.AP_ID
+		INNER JOIN dbo.AP_DOCUMENTS APD ON APH.AP_ID = APD.AP_ID 
+	WHERE	(AP.MODIFY_DELETE IS NULL OR AP.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+	UPDATE @INVOICES SET HasDocuments = 1
+	FROM @INVOICES I
+		INNER JOIN dbo.ARINV_MEDIA ARM ON I.InvoiceNumber = ARM.AR_INV_NBR AND I.SequenceNumber = ARM.AR_INV_SEQ AND I.[Type] = ARM.AR_TYPE 
+		INNER JOIN dbo.AP_TV AP ON AP.ORDER_NBR = ARM.ORDER_NBR AND AP.ORDER_LINE_NBR = ARM.LINE_NBR AND ARM.ORDER_TYPE = 'T'
+		INNER JOIN dbo.AP_HEADER APH ON AP.AP_ID = APH.AP_ID
+		INNER JOIN dbo.AP_DOCUMENTS APD ON APH.AP_ID = APD.AP_ID 
+	WHERE	(AP.MODIFY_DELETE IS NULL OR AP.MODIFY_DELETE = 0)
+	AND		(APH.MODIFY_FLAG IS NULL OR APH.MODIFY_FLAG = 0)
+	AND		(APH.DELETE_FLAG IS NULL OR APH.DELETE_FLAG = 0)
+	AND		I.HasDocuments = 0
+	OPTION (RECOMPILE)
+
+IF (SELECT COUNT(1) FROM dbo.SEC_CLIENT WHERE UPPER([USER_ID]) = UPPER(@UserCode)) > 0
+	SELECT	I.InvoiceNumber,
+			I.SequenceNumber,
+			[Description],
+			Category,
+			InvoiceDate,
+			DueDate,
+			Amount,
+			AmountPaid,
+			AmountWriteoff,
+			BalanceDue = Amount - AmountPaid - AmountWriteoff,
+			DaysPast = 0,
+			CollectionNotes,
+			IsVoided,
+			IsManualInvoice,
+			I.[Type],
+			ClientCode,
+			DivisionCode,
+			ProductCode,
+			DivisionName,
+			ProductDescription,
+			OfficeCode,
+			OfficeName,
+			SalesClassCode,
+			SalesClassDescription,
+			CustomGroup,
+			HasDocuments,
+			RecType,
+			VoidComment,
+            QuickBooks
+	FROM
+		@INVOICES I
+			INNER JOIN (SELECT DISTINCT InvoiceNumber, SequenceNumber, [Type]
+						FROM @INVOICES I 
+							INNER JOIN dbo.SEC_CLIENT SC ON UPPER(SC.[USER_ID]) = UPPER(@UserCode) AND
+											I.ClientCode = SC.CL_CODE AND 
+											(I.DivisionCode IS NULL OR I.DivisionCode = SC.DIV_CODE) AND
+											(I.ProductCode IS NULL OR I.ProductCode = SC.PRD_CODE)
+						) SEC ON I.InvoiceNumber = SEC.InvoiceNumber AND I.SequenceNumber = SEC.SequenceNumber AND I.[Type] = SEC.[Type]
+	ORDER BY InvoiceDate, I.InvoiceNumber, I.[Type]
+	OPTION (RECOMPILE)
+ELSE
+	SELECT	InvoiceNumber,
+			SequenceNumber,
+			[Description],
+			Category,
+			InvoiceDate,
+			DueDate,
+			Amount,
+			AmountPaid,
+			AmountWriteoff,
+			BalanceDue = Amount - AmountPaid - AmountWriteoff,
+			DaysPast = 0,
+			CollectionNotes,
+			IsVoided,
+			IsManualInvoice,
+			[Type],
+			ClientCode,
+			DivisionCode,
+			ProductCode,
+			DivisionName,
+			ProductDescription,
+			OfficeCode,
+			OfficeName,
+			SalesClassCode,
+			SalesClassDescription,
+			CustomGroup,
+			HasDocuments,
+			RecType,
+			VoidComment,
+            QuickBooks
+	FROM
+		@INVOICES 
+	ORDER BY InvoiceDate, InvoiceNumber, [Type]
+	OPTION (RECOMPILE)
+END
+GO

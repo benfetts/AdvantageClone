@@ -1,0 +1,15 @@
+<ng-container *ngIf="(bottomPanelButtons | async) as bottomPanelButtons">
+  <div [ngClass]="setClassOnBlock(bottomPanelButtons.fileManagerMin.selected, bottomPanelButtons.fileManagerMax.selected)">
+    <ng-container *ngFor="let document of documents; let i = index; trackBy: trackAssets">
+      <proof-item [itemType]="image"
+                  [thumbnail]="!bottomPanelButtons.fileManagerMin.selected"
+                  [selected]="document.selected"
+                  (click)="setSelectedDocument(i)"
+                  [fileName]="document.filename"
+                  [imageThumbnail]="document.thumbnail"
+                  [extension]="document.extension"
+                  [mimeType]="document.mimeType"
+                  [documentId]="document.documentId"></proof-item>
+    </ng-container>
+  </div>
+</ng-container>

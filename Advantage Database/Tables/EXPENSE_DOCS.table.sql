@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[EXPENSE_DOCS] (
+    [DOCUMENT_ID] INT NOT NULL,
+    [INV_NBR]     INT NOT NULL
+);
+

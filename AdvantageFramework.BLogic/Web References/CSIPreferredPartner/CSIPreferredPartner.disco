@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx?wsdl" docRef="https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx" xmlns:q1="http://localhost/AdvantageWebServices/" binding="q1:CSIPreferredPartnerSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx" xmlns:q2="http://localhost/AdvantageWebServices/" binding="q2:CSIPreferredPartnerSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

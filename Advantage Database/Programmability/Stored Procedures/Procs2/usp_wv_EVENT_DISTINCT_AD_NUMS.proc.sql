@@ -1,0 +1,23 @@
+﻿if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_EVENT_DISTINCT_AD_NUMS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[usp_wv_EVENT_DISTINCT_AD_NUMS]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE [dbo].[usp_wv_EVENT_DISTINCT_AD_NUMS] 
+@EVENT_ID_LIST       VARCHAR(8000)
+AS
+/*=========== QUERY ===========*/    
+    EXEC ('SELECT DISTINCT ISNULL([EVENT].AD_NUMBER,''[None]'') AS AD_NUMBER,  ISNULL(AD_NUMBER.AD_NBR + '' - '' +AD_NUMBER.AD_NBR_DESC,''[None]'') AS AD_NBR_DESC 
+	       FROM [EVENT] WITH (NOLOCK) LEFT OUTER JOIN AD_NUMBER  WITH (NOLOCK) ON EVENT.AD_NUMBER = AD_NUMBER.AD_NBR WHERE EVENT.EVENT_ID IN (' + @EVENT_ID_LIST + ') 
+	       ORDER BY AD_NUMBER, AD_NBR_DESC;');
+/*=========== QUERY ===========*/
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+

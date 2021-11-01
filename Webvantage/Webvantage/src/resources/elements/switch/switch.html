@@ -1,0 +1,10 @@
+﻿<template>
+    <div class="switch-cont" if.bind="visible">
+        <span>${label}</span>
+        <label class="switch" data-off="OFF" data-on="ON">
+            <input type="checkbox" checked.bind="checked">
+            <span class="slider round"></span>
+            <!--<span class="switch-indicator">${checked ? checkedLabel : uncheckedLabel}</span>-->
+        </label>
+    </div>
+</template>

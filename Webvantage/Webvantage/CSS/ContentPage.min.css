@@ -1,0 +1,108 @@
+﻿/*
+::-webkit-scrollbar { 
+    display: none;
+} 
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #ffffff !important;
+    -webkit-border-radius: 6px !important;
+    border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 6px !important;
+    background-color: #666 !important;
+    -webkit-border-radius: 6px !important;
+    border-radius: 6px !important;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 6px !important;
+    background-color: #666 !important;
+    -webkit-border-radius: 6px !important;
+    border-radius: 6px !important;
+}
+*/
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    height: 100%;
+    max-height: 100%;
+    background-color: #FFFFFF !important;
+}
+
+.icon1 .rpImage {
+    height: 16px !important;
+    width: 16px !important;
+}
+
+.panel-label {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: -6px;
+    padding-bottom: 3px;
+    cursor: pointer;
+}
+
+.content-left-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 5px;
+}
+
+.content-main-full {
+    position: fixed;
+    top: 0;
+    left: 200px;
+    right: 0px;
+    bottom: 20px;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.content-left-short {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 5px;
+}
+
+.content-main-short {
+    position: fixed;
+    top: 0;
+    left: 50px;
+    right: 0px;
+    bottom: 0;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.short-menu-item {
+    height: 40px;
+}
+
+.short-link-button {
+    font-size: 36px;
+}
+
+.short-link-button-selected {
+    font-size: 48px;
+    font-weight: bold;
+}

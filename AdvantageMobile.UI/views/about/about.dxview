@@ -1,0 +1,47 @@
+<div data-options="dxView : { name: 'about', title: 'About' } ">
+  <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+      <div data-bind="dxScrollView: { }">
+          <div class="card-container" style="margin: 30px 20px 0px 20px">
+
+              <div class="card">
+                  <div class="card-content">
+                      <div style="font-weight: bold; font-size:large;">
+                          General Notice
+                      </div>
+                      <div style="text-align:justify;">
+                          This application is protected by copyright law and international treaties. Unauthorized reproduction or distribution of this program, or portions of it, may result in severe civil and criminal penalties. Violations will be prosecuted to the maximum extent possible under the law.
+                      </div>
+                  </div>
+                  <div class="card-button-container">
+                      <div class="card-action-bar">
+                      </div>
+                  </div>
+              </div>
+
+              <br />
+              <br />
+
+              <div class="card">
+                  <div class="card-content">
+                      <div style="font-weight: bold; font-size:large;">
+                          Current platform:
+                      </div>
+                      <div style="text-align:justify;">
+                          <div data-bind="text: currentPlatform" style="float:left;margin: 0px 0px 0px 4px;"></div>
+                      </div>
+                  </div>
+                  <div class="card-button-container">
+                      <div class="card-action-bar">
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div style="margin: 0px 0px 0px 0px; font-size:x-small; padding:0px 20px 0px 0px; text-align: right;">
+              v0.0.36, The Advantage Software Company, Inc.
+              Copyright©, 2020.
+          </div>
+
+      </div>
+  </div>
+</div>

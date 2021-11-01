@@ -1,0 +1,24 @@
+<div data-options="dxView : { name: 'time_template_list', title: 'Time Templates' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div class="card-container" data-bind="dxList: templateList">
+            <div data-options="dxTemplate : { name: 'item' } " data-bind="dxAction: {view: 'time_entry', settings: {source: 2, employeeTimeTemplateId: ID}}">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-header" data-bind="text: FunctionDescription"></div>
+                        <div class="card-details">
+                            <div data-bind="text: JobAndComponent"></div>
+                            <div>
+                                <div style="float:left;margin-right:4px;" data-bind="text: hoursText"></div>
+                                <div data-bind="text: Hours"></div>
+                            </div>
+                        </div>
+                    </div>
+                  <div class="card-button-container">
+                    <div class="card-action-bar">
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

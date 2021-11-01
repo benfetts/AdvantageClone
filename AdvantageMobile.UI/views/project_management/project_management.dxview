@@ -1,0 +1,15 @@
+<div data-options="dxView : { name: 'project_management', title: 'Project Management' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxTabs: projectManagementNavBar">
+        </div>
+        <div style="padding:30px; width: 100%; text-align:center; height: 100%; vertical-align: middle;">
+            <div data-bind="dxButton: jobsButton" class="landing-page-button"></div>
+            <br />
+            <br />
+            <div data-bind="dxButton: tasksButton" class="landing-page-button"></div>
+            <br />
+            <br />
+            <div data-bind="dxButton: projectsButton" class="landing-page-button"></div>
+        </div>
+    </div>
+</div>

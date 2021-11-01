@@ -1,0 +1,802 @@
+C:\TFS_ROOT\Advantage\Production\Output\Resources\AmericanXLG.xlg
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAFF.aff
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAlphabet.txt
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add and Alter Columns on MEDIA_BROADCAST_WORKSHEET_PRE_POST_REPORT_CRITERIA.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column INCLUDE_GUIDELINES to MEDIA_TRAFFIC_PRINT_DEF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column RESP_FOR_MEDIA_TRAFFIC_INSTRUCTION to CLIENT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column IS_DEFAULT to MEDIA_TRAFFIC_CREATIVE_GROUP.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column INCLUDE_GRP to MEDIA_RFP_PRINT_DEF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column OVERRIDE_POST_IMPRESSIONS to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column BOOK_SECONDARY_AQH to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column BOOK_PRIMARY_AQH to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column BOOK_SECONDARY_IMPRESSIONS to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column BOOK_PRIMARY_IMPRESSIONS to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COMSCORE_TV_STATION_CALL_LETTERS to MEDIA_RFP_AVAILABLE_LINE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column DIV_CODE to AD_NUMBER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column EXCLUDE_DATE_SIGN to PROD_EST_DEF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column TRAFFIC_GUIDELINES to MEDIA_BROADCAST_WORKSHEET_MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column LENGTH to AD_NUMBER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Drop column CREATE_ORDERS_BY_WEEK on MEDIA_BROADCAST_WORKSHEET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MEDIA_TYPE to AD_NUMBER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column PRD_CODE to AD_NUMBER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Run First\Add Column CREATE_ORDERS_BY_WEEK to MEDIA_BROADCAST_WORKSHEET_MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column START_DATE to AD_NUMBER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column PO_RATE on PURCHASE_ORDER_DET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter column DESCRIPTION on MEDIA_TRAFFIC_REVISION.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column SHAREBOOK_NIELSEN_TV_BOOK_ID on MEDIA_BROADCAST_WORKSHEET_PRE_POST_REPORT_CRITERIA.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\TRG_UpdateAlertLastUpdatedOnInsert.trigger.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_comscore_program_trend_get.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_comscore_program_get.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_comscore_program_leadinleadout_get.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_get_media_traffic_document_list.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ROUND_TO_NEAREST_DOLLAR to MEDIA_PLAN_FLOW_CHART_OPTIONS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_service_fee_load_count.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_find_open_time_entry.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_get_email_groups.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\wvfn_ts_can_edit.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_AGILE_CARD_ASSIGNEES.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_DRPT_EMPLOYEES.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_add_assignment_from_task.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_delete_weekly_hours.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_get_sprint_details.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column OVERRIDE_POST_AQH to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_load_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_load_detail_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_sprint_add_employee_records.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alerts_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alerts_with_comments_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alerts_with_recipients_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_assignee_has_current_state_comment.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter column EXPRESSION on DYNAMIC_REPORT_UB_COL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_clear_noncurrent_state.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_complete_assignment.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_delete_assignee.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column PASSWORD on AGY_POP3_AUTOMATED_ASSIGNMENT_ACCOUNT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column PASSWORD on AGY_POP3_ACCOUNT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column POP3_PWD on AGENCY.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column EMAIL_PWD on AGENCY.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_alert_recipient_get.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\udf_get_std_hrs.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\udf_get_std_hrs_wl.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_MEDIA_PLAN.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_load_workitemhours_emp.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_update_workitemhours.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_get.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_get_current_assignees.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_reset_routed_assignment.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_template_states_employees_get.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_update_recipient_hours.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_validate_attachment_download.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_api_load_vendors_hist.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_available_radio_orders.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_available_tv_orders.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_invoice_detail_pmts_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_invoice_with_balance_aging_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_pmt_hist_base.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_process_avatax.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_card_user_sort_alerts.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_import_validate_staging_tables.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_invoice_detail_get_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_invoice_get_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_void_client_invoice.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_billing_worksheet_production_v2.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_billing.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_broadcast_orders_for_vendor_rep.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_broadcast_order_dtl_verification.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_broadcast_order_verification.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_card_user_sort_assignments.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_card_user_sort_tasks.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_cash_management_production.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_tv_leadinleadout.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_tv_purge_cached_books.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_tv_trends.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_tv_worksheet_rating.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_digital_results_rpt.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_timesheet_approval_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_direct_time_cost_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_direct_time_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_time_util.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_time_util_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_time_util_with_indirect_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_estimate_printing_settings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_etf_create_revision.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_detail_by_account_dataset_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_detail_dataset_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_trial_balance_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_indirect_time_cost_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_indirect_time_get_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_indirect_time_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_billing_invoices.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_currentttdinvoicedetails.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_estimatepriorcurrentttdinvoicedetails.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_standardinvoicedetails.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_component_service_fee_contract_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_comp_add_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_comp_copy_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_comp_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_analysis_category_load_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_analysis_load_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_analysis_qva_load_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_project_schedule_summary_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_purchase_order_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_summary_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_versions.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_load_drpt_sales_journal_with_comments.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media1_media_current_status.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media1_order_bcst_detail2_active.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_budget_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_loadreachfreq_details.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_schedule_report_summary_station_system.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheets_with_pending_makegoods.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_market_order_status.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_other_market_schedule_weekly_detail_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_get_by_order_number.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_postbuy_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_prebuy_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_radio_postbuy_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_load_workitemhours.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_sprint_check_employee_records.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_attachments_get.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_get_hours.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_invoice_detail_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_avalara_vat_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_billing_worksheet_production.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_get_production_summary.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bcc_populate_ar_function.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_campaign_add_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_campaign_job_media_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_digital_results_comparison_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_mediainvoicedetail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_component_get_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_fees_oop_by_campaign_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_fees_oop_by_function_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_fees_oop_by_job_component_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_fees_oop_by_job_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_item_account_split_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_item_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_item_writeoff_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_log_get_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_load_drpt_sales_journal.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_makegood_staging_add_makegood.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_makegood_staging_delete_makegood.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_makegood_vendor_status.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_backup_detail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media1_media_current_status1.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media1_media_current_status1_sum.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media1_media_orders.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_comparison_detail_vendor_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_current_status_coop_breakout.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_mediaplan_flowchart_data.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_schedule_report_summary_weekly.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_order_status.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_radio_prebuy_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_search_by_order_number.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_comparison_summary_vendor_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_ad_serving_load_details.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_approve_invoice.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_approve_invoice_orders.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_broadcast_order.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_internet_order_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_print_order.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_results_comparison_by_client_and_type_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_alert_comments.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_detail_documents.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_instructions_criteria.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_instructions_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_instruction_copy_get_worksheet_markets.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_instruction_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_missing_instructions.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_recipients.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_traffic_vendor_statuses.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_wip_detail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_project_schedule_maint_complete_schedules.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_ad_serving.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_copy.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_user_settings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sql_remove_indexes.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_review_details.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_planning_search_by_order_number.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_spec.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_spec_by_destination arw.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_spec_by_destination.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_project_hours_used_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_project_schedule_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_detail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_media_mgr.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_process.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_process_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_process_legacy.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_tasks_get_by_employee.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_task_by_employee_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\GetEstimatedSchedule.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\proc_WV_PO_GetByJobComp.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_project_schedule_copyto_load_jobcomp.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_cp_calendar_GetMediaData.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_Get_Alert_EmailRecipients.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_DISMISS.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_GET_COMMENTS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_NOTIFY_EMPS_GET_AVAILABLE.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_NOTIFY_SAVE.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_UNDISMISS.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AutoCompleteRecipientsLoad.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_calendar_assign_month_rpt.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_calendar_GetMediaData.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_calendar_task_month.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_calendar_task_month_rpt.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_calendar_task_month_rpt2.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Creative_Brief_Approval_Add.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Creative_Brief_Approval_Update.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Dashboard_GetAvgHourlyRateByClient.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Dataset_AR_Aging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_DayPilot_GetMonth.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobComps_Estimates_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobComps_Estimate_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobComps_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobComps_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobComps_PS_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobComps_PS_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobs_Estimates_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobs_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetAllJobs_PS_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetClients_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetClients_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetDivisions_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetDivisions_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetProducts_Index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetProducts_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_JobJacket_Estimates_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_JobJacket_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_JobJacket_PS_Paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_ARForcast.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_ARForcastProduct.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_dashboard_alert.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_Get_Current_Weekly_Time_Total.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_MyServiceFee.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_qva.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_qva_JobComp.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_tasks_new.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_tasks_new_mark_complete.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Estimating_Print_Details_Report003_Combined.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Estimating_Print_Details_Report_Combined.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Estimating_Update_EstimateCommentsQuote.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_GetExpneseReports.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_getQvABillingSummary.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_getQvADetail_campaign.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Get_Alert_EmailGroups.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_get_super_appr_expense_dtl.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_get_super_appr_expense_hdr.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Gross_Income.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Gross_Income_CPL.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Gross_Income_CPL_Detail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Job_Jacket_Search.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_nontask_GetTasks.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_reports_traffic_schedule_byday.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_ACTUALIZATION.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_ASSIGNED_WEEKLY.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_ASSIGNED.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_DATASET.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_SaveTask_EmpListString.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ts_delete.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ts_GetTimeSheet.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ts_GetTimeSheetPrint.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ts_get_settings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ts_SaveTimeSheetDay.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Setting MEDIATRAFFIC_STARTDT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Setting SEC_SHOW_ERR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Document Repository Capacity Warning Service.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Media Traffic to ALERT_CATEGORY.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to MEDIA_TRAFFIC_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Assignment and Recipient Cleanup.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Clean up bad task assignment records..sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Clean up TS settings.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Fix ALERT_LEVEL for Job level assignments.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\FixOpenAssignmentsForCompletedTasks.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert COMSCORE_TV_BOOKs3 2020.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert_REPORTS_cw_fmt_08_legal.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert_REPORTS_cw_fmt_08_signature2.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL set PRIMARY_IMPRESSIONS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update MARKET set NIELSEN_RADIO_CODE Bowling Green.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update AGENCY set MULTI_CRNCY off.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update Agy Settings for CSI FTP.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_BROADCAST_WORKSHEET_MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_TRAFFIC_CREATIVE_GROUP.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_TRAFFIC_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_TRAFFIC_DETAIL_DOCUMENT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_TRAFFIC_REVISION.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_TRAFFIC_VENDOR_CREATIVE_GROUP.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_TRAFFIC_VENDOR_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on PRINT_IMPORT_XREF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on RADIO_ORDER_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on INTERNET_ORDER_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MAGAZINE_ORDER_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on NEWSPAPER_ORDER_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on OUTDOOR_ORDER_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on TV_ORDER_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes Performance Suggestions.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Menu Update.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\MenuUpdate.xml
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\New Application Alert.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Update all database stats.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Update Month End Reports Security.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\WebvantageScript.sql
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Database Update.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Database Update.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Database Update.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Database Update.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage Database Update.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage_Database_Update.AdvantageDatabaseUpdateForm.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage_Database_Update.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage Database Update.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage Database Update.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage Database Update.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage Database Update.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage Database Update.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Database Update\obj\Debug\Advantage Database Update.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Drop MEDIA_RFP_VENDOR_STATION_XREF table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\CDN_UNIVERSE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MARKET_GROUP.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MARKET_GROUP_MARKET.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_SUBMARKET_DEMO.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_RFP_MARKET_XREF.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_RFP_VENDOR_MARKET_XREF.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\MEDIA_BROADCAST_WORKSHEET_MARKET_SUBMARKET.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\VENDOR_MARKET.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column CALL_LETTERS to VENDOR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column CMP_IDENTIFIER to IMP_AP_MEDIA.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COUNTRY_ID to MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COUNTRY_ID to MEDIA_BROADCAST_WORKSHEET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COUNTRY_ID to STATES_LIST.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column US_STATE_ID to MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add columns PLACEMENT_NAME and ADDITIONAL_AD_SIZE_CODES to INTERNET_PACKAGE_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add columns SOURCE_MARKET_NAME and MARKET_CODE to MEDIA_RFP_DEMO.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column CALL_LETTERS on MEDIA_RFP_AVAILABLE_LINE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Drop Column IS_CANADIAN_BROADCASTER to VENDOR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_get_billing_rate.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\wvfn_ts_round_up_time_entry.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_add_task_assignments_for_job.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_time_forecast_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_other_updated_rate_request_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_rfp_markets.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_rfp_stations.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_yaypay_invoices_details_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_yaypay_invoices_transaction_allocations_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_yaypay_invoices_with_payments_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Dataset_AR_Aging_MonthEnd.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_CopyToJobComponents.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to COUNTRY.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to MEDIA_DEMO_SOURCE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update MARKET to US COUNTRY.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update MEDIA_BROADCAST_WORKSHEET to US COUNTRY.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update STATES_LIST fix Quebec.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update STATES_LIST set COUNTRY_ID.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\YayPay Invoice Details Template.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\YayPay Invoice Transaction Allocations Template.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\YayPay Invoice With Payments Template.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on INTERNET_PACKAGE_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_yaypay_invoices_transactions_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\YayPay Invoice Transaction Template.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MEDIA_TITLE_OVERRIDE to MEDIA_PRINT_DEF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_yaypay_customer_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_yaypay_invoices_transactions_onaccount_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_oop_by_function_load_minimized.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_oop_by_job2_load_minimized.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_oop_by_job_load_minimized.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Dataset_AR_Aging_YayPay.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update Agy Settings for AGY_1099_STATE_ID.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\YayPay Invoice Customer Template.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Columns for DoubleClick integration to CLIENT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_doubleclick_get_profileid_for_adsizes.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_doubleclick_validate_profileid.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\VENDOR_DCM_MAPPING.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Convert VENDOR_XREF data to VENDOR_DCM_MAPPING.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COMSCORE_NEW_MARKET_NUMBER to MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_vendor_dcm_mapping_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_get_new_market_number.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_comscore_update_new_market_number.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column FILE_SOURCE to MEDIA_RFP_AVAILABLE_LINE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_yaypay_contact_export.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to COMSCORE_TV_BOOK.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Setting INVPRT_FILE_NAME.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\YayPay Invoice Contact Template.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Drop MEDIA_SPOT_NATIONAL_RESEARCH_PROGRAM_TYPE table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Drop V_RPT_SEC_PERMISSION.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Drop time_sep functions.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Drop REVENUE_RESOURCE_PLAN tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Prepare table BRDCAST_DTL_VERIFICATION_SETTING.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\PROOFING_STATUS.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\DIGITAL_CAMPAIGN_MGR_USER_SETTING.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\EMPLOYEE_ADDL_EMAIL.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\EXPENSE_DOCS_UNASSND.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\ALERT_RCPT_EXT.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\CDP_GROUP.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\CDP_GROUP_EMPLOYEE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\VENDOR_EEOC2_ETHNICITY.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\SEC_USER_LOGIN_AUDIT.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\VENDOR_EEOC_STATUS.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\VENDOR_EEOC2.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\LOCATION_LOGO.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MARKET_BREAK.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_SPOT_NATIONAL_RESEARCH_MEDIA_DEMO.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_SPOT_NATIONAL_RESEARCH_METRIC.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_SPOT_NATIONAL_RESEARCH_NETWORK.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\NATIONAL_UNIVERSE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\PROOFING_ASSET_STATUS.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\PROOFING_DOCUMENT.tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\PROOFING_EXTERNAL.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\PROOFING_MARKUP.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\LOCATION_LOGO_TYPE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\MEDIA_SPOT_NATIONAL_RESEARCH.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\SEC_PWD_HIST.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Create Tables and Data for Logo.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\GLENTHDR_DOCUMENT.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_BROADCAST_WORKSHEET_SPOT_MATCHING_SETTING.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_BROADCAST_WORKSHEET_TIME_SEPARATION_SETTING.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_CHANNEL.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\COUNTRY.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\REVENUE_RESOURCE_PLAN_RESOURCE_DETAIL.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\REVENUE_RESOURCE_PLAN_RESOURCE_DETAIL_DATE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\REVENUE_RESOURCE_PLAN_REVENUE_DETAIL.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\REVENUE_RESOURCE_PLAN_REVENUE_DETAIL_DATE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\REVENUE_RESOURCE_PLAN.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\REVENUE_RESOURCE_PLAN_REVENUE_STATUS.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\REVENUE_RESOURCE_PLAN_REVENUE_TYPE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\REVENUE_RESOURCE_PLAN_STAFF_TYPE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\REVENUE_RESOURCE_PLAN_RESOURCE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\REVENUE_RESOURCE_PLAN_RESOURCE_REVISION.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\REVENUE_RESOURCE_PLAN_REVENUE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\REVENUE_RESOURCE_PLAN_REVENUE_REVISION.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\REVENUE_RESOURCE_PLAN_STAFF.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\REVENUE_RESOURCE_PLAN_STAFF_CLIENT.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\SEC_PWD_LOCK.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column AUTH_KEY to SEC_USER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column CDP_GROUP_ID to PRODUCT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column END_POST_PERIOD to BANK_REC_HDR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ROW_SOURCE to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column EST_COMP_CREATE_DATE to ESTIMATE_COMPONENT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column HIDE_EXCHANGE_RATE_MESSAGE to MEDIA_INV_DEF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column HIDE_EXCHANGE_RATE_MESSAGE to PROD_INV_DEF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ID to GLCONFIG.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column GLEHXACT to GLRJELOG.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COLUMN_WIDTH to GRID_COLUMN_SETTINGS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column SID to SEC_USER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column IS_ACTUALIZED to MEDIA_PLAN_DTL_LEVEL_LINE_DATA.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Columns SHOW_PROGRAM_TYPES and SHOW_AIRINGS to MEDIA_SPOT_NATIONAL_RESEARCH.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column DEFAULT_COLUMN_WIDTH to GRID_COLUMN.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column UNLIMITED_POSTINGS to GLRJEHDR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column NUMBER_OF_POSTINGS to GLRJEHDR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column STARTING_PPPERIOD to GLRJEHDR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add PROOFING_STATUS_ID to Recipient tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter FTP Columns to BANK.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter RATE Columns on BRDCAST_IMPORT & PRINT_ORDER tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Drop Column CURRENCY_CODE on GLACCOUNT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Drop Column GLRHCNTRL to GLENTHDR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COLUMN_ORDER_ID to GRID_COLUMN_SETTINGS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column DEFAULT_ORDER_ID to GRID_COLUMN.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column DOCUMENT_ID to ALERT_COMMENT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column CREATE_DATE to GLENTHDR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column SOURCE_MARKET_NAME on MEDIA_RFP_DEMO.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column SOURCE_MARKET_CODE on MEDIA_RFP_MARKET_XREF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Columns SPOTS on BROADCAST tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter FK References on USER_CODE from SEC_USER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Drop columns on MEDIA_SPOT_NATIONAL_RESEARCH.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column IS_SUBMITTED to MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MAKEGOOD_SPOTS to MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL_DATE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MAKEGOOD_SPOTS to MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MEDIA_CHANNEL_ID to PRINT_ORDER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MEDIA_TACTIC_ID to PRINT_ORDER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Columns MEDIA_CHANNEL_ID and MEDIA_TACTIC_ID to MEDIA_PLAN_DTL_LEVEL_LINE_TAG.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Index IDX_ACTIVE_WORKITEM on ALERT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Foreign Keys for External Reviewers tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Run First\Rename column EMP_SS_NBR to EMP_OTHER_INFO in IMP_EMP_STAGING.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Run First\Rename column EMP_SS_NBR to EMP_OTHER_INFO in EMPLOYEE_CLOAK.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Run First\Add Column LEGACY_ENTRY to GLRJEHDR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_alert_dashboard.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_alert_dashboard_cp.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_alert_dashboard_jobjacket.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_alert_dashboard_jobjacket_cp.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_alert_dashboard_NS_NEW.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_calc_tax.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column EMAIL_PWD on EMPLOYEE_CLOAK.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column TOTAL_SPOTS on BRDCAST_IMPORT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column IS_INACTIVE to REVENUE_RESOURCE_PLAN.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column BREAKUP_BY_JOBCOMPONENT to PROD_INV_DEF.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add columns MEDIA_CHANNEL_ID and MEDIA_TACTIC_ID to INTERNET_DETAIL .sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter table BRDCAST_DTL_VERIFICATION_SETTING.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter table TIME_SEPARATION_SETTING.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_bookend_verify.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_spot_separation_policy.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_alert_dashboard_original.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_get_time_separation_settings.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_location_query.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_med_calc_cost_rate.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_med_import_brdcast_weeks_csv.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_qva_actuals_job_info.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\Run First\advfn_time_sep_verify.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Run Second\EMPLOYEE.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\Run First\V_SEC_PERMISSION.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\VENDOR_INVOICE.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\vLTD_EMPLOYEE.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\WV_AAM_ALERT_RCPT_CC.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_AP_MEDIA_INET.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_AP_MEDIA_MAG.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_AP_MEDIA_NEWS.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_AP_MEDIA_OOH.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\5 - View Scripts\V_RPT_SEC_PERMISSION.view.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_accrued_liability_mo_end.jr.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_acct_payable_dtl.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_acct_payable_mo_end_jr.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_acct_payable_sum.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_acct_rec_amounts.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_get_emp_work_items.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_system_complete_dismiss.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_expense_report_import_items.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_import_update_vendor_to_vendor_pay_to.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_billing_approval_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_digital_campaign_mgr_estimate_detail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_digital_campaign_mgr_open_plan_estimates.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_processing_load_unposted_journal_entry.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_import_employee_from_staging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_import_orders_selected_for_billing.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_analysis_qva_detail_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_load_nonbilled_time.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_location_query.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_makegood_staging_delete_by_order_line.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_accept_order_for_vendor_rep.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_aam_cp.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_order_comments.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_order_ok_to_generate.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_security_user_login_audit_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_rate_update.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_address_table_media.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_adv_bill_reconcile.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_load_agile_boards.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_aam.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_aam.proc_original.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_batch_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_media_reconcile_revise.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_recur_batch_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_address_table_prod.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_dtl_comments_limited.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_invoice_get_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_media_billing_data_arsum.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_media_billing_data_arsum_draft.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_media_inv_def.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_prod_billing_data.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_prod_billing_data_arsum.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_prod_billing_data_arsum_draft.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_prod_billing_data_draft.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_prod_invoice.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_prod_inv_def.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_prod_inv_def_agy_dflt.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_table_seq_nbr.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_mark_media_items.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_campaign_job_media_summary_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_check_register.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_employee_save_signature.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_emp_time_rule_process.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_estimate_add_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_get_content_for_user.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_combo_settings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_cover_sheet.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_functiondetails.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_media_settings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_load_drpt_expense.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_makegood_staging_delete_by_order.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_recurring_journal_entry_post_report_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_recurring_journal_entry_report_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_mananger_writeupdown.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_client_get_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_pwd_is_locked_out.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_pwd_load_users.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_pwd_lock_clear.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_pwd_lock_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_pwd_lock_unlock.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_pwd_log_failure.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_pwd_validate_history.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_timesheet_copy_entry.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_vendor_spend_with_eeoc_minority_status_detail_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_vendor_spend_with_eeoc_minority_status_summary_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_settings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_detail_adv_recon_hist.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_job_import.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_journal_entry_report_load.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_makegood_staging_submit.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media1_order_bcst_detail2.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_vendor_status.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_po_job_ap_detail_dataset.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_production_wip_detail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revenue_resources_load_staff_available_hours.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_broadcast_worksheet.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_sec_seed.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_update_job_process_control.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_void_check.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\proc_WV_PO_LoadAll.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\proc_WV_PO_Search_LoadAll.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_cp_calendar_task_month_rpt.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_cp_calendar_task_month_rpt2.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_cp_dto_dashboard_alert.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMCompleteTempComplete.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMGetColumnSettings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMGetDateDiffAndWeekendStatus.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMGetUserViewSettings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMResetColumnOrderSettings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMResetColumnWidthSettings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMUpdateColumnWidthSettings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMUpdateColumnOrderSettings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMUpdateUserViewSettings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAM_Update_Grid_Records.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_BA_ALERTS_VIEW_LIST.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Dashboard_GetData.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Dashboard_GetRealizationData.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetEmpCodes.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetEmpCodesByRole.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dd_GetTasks.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_dto_assignments_alerts_manager.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_email_getClientRecipients.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Estimating_Update_Quote_Comments.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_GetProjectManager.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_get_arptJobVersions.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_jobspecs_GetJobSpecs_ByJobandComp.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_qva_summary_campaign.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_AVAILABILITY.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_FINDER.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_rpt_MyTaskListByEmps.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_rpt_MyTaskListByRoles.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_AddNew_AddSchedule.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_Add_Task.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_Add_Task_CopyFrom.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_CopyEmployees.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_Gantt_ToExcel.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_GetTasks.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_GetTasks_Report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_GetTasks_V2.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_GetTasks_withClosed.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_JobCopy.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ts_ddTrafficHours.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_UpdatePOCompleteFlag.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_UpdatePOLineItemCompleteFlag.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy POP3 account for Expense Reports.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Australia to MEDIA_DEMO_SOURCE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add default proofing statuses.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to MEDIA_DEMO.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Dark mode off.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Delete Agy Setting CSCORE_USE_NEW_MKT.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert New GRID and GRID_COLUMN data for PaymentCenterModules.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert New GRID and GRID_COLUMNALERT data2.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\insert-priority-column.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\RemoveBookmarksforDashboardsNoLongerInUse.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\RemoveDuplicateAlertsFromSPRINT_DTL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Settings for National DB.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Settings for Webvantage Proofing API.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to MARKET_BREAK.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to MEDIA_METRIC.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to VENDOR_EEOC2_ETHNICITY.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to VENDOR_EEOC_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add_row_to_EXPORT_SYSTEMS (MINI).sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert New GRID and GRID_COLUMNALERT data.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Mark Traffic Setup Item Inactive.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Settings for Media Orders from planning and worksheet.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to REVENUE_RESOURCE_PLAN_REVENUE_STATUS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to REVENUE_RESOURCE_PLAN_REVENUE_TYPE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add rows to REVENUE_RESOURCE_PLAN_STAFF_TYPE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\CreateColumnsForSave_ExpenseReports.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Password Maintenance.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update Agy Settings to make TRF_DEL_TSK_ALRT inactive.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update GLRJEHDR set UNLIMITED_POSTINGS for legacy entries.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE set MAKEGOOD_SPOTS.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL set IS_SUBMITTED.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update NIELSEN_MARKET and MARKET - Wilmington issue.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update NIELSEN_MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_BROADCAST_WORKSHEET_SPOT_MATCHING_SETTING.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Drop Function fn_AdvanUser.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\ACCESS_EMAIL.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_broadcast_orders_for_vendor_rep_by_order_number.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_client_ar_stmt_contact_add_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_client_contact_add_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_client_contact_detail_add_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_client_type_add_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_contact_type_add_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_product_ar_stmt_contact_add_update_api.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\New Default Sign In Background Color.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_invoice_printing_load_location_settings.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Drop MEDIA_PLAN_ESTIMATE_TEMPLATE Tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\1 - Pre Database Update Scripts\Drop MEDIA_PLAN_TEMPLATE Tables.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_PLAN_DTL_GRP_BUDGET.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_PLAN_ESTIMATE_TEMPLATE_DATA.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\MEDIA_PLAN_ESTIMATE_TEMPLATE_DAYPART_PERCENT.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\MEDIA_PLAN_ESTIMATE_TEMPLATE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\MEDIA_PLAN_TEMPLATE_HEADER.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_AD_SIZE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_DAYPART.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_DEMOGRAPHIC.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_MARKET.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_OUTDOOR_TYPE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_PIVOT_FIELD.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_PRODUCT.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_QUARTER.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_RATE_TYPE.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_SPOTLENGTH.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_TACTIC.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_ESTIMATE_TEMPLATE_VENDOR.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_TEMPLATE_DETAIL.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run Second\MEDIA_PLAN_TEMPLATE_PRODUCT.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\Run First\MEDIA_TACTIC.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COUNTRY_ID to MEDIA_PLAN.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MEDIA_DEMO_ID to MEDIA_PLAN_DTL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MEDIA_PLAN_TEMPLATE_HEADER_ID to MEDIA_PLAN.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column MEDIA_PLAN_ESTIMATE_TEMPLATE_ID to MEDIA_PLAN_DTL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column RATINGS_SERVICE_ID to MEDIA_PLAN_DTL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add columns PRODUCTION_MEDIA_BILL_DATE_FROM and PRODUCTION_MEDIA_BILL_DATE_TO to BILLING_CMD_CENTER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Alter Column PERCENTAGE on MEDIA_PLAN_ESTIMATE_TEMPLATE_DAYPART.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column CANADIAN_VENDOR_TYPE to VENDOR.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Drop columns SC_CODE and PERIOD_TYPE to MEDIA_PLAN_ESTIMATE_TEMPLATE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_ad_server_placement_name.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advfn_bcc_is_job_closeable.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\advtf_ar_address_table_prod.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\Run First\advtf_ar_prod_inv_def.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_available_outofhome_orders.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_import_delete_batch.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_media_reconcile.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_comp.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_job.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_lookup_ts_job_component_index.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_lookup_ts_job_component_paging.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_ad_sizes.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_dayparts.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_demographics.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_markets.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_outdoor_types.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_quarters.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_rate_types.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_tactics.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_plan_estimate_template_vendors.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_type_template_data.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_type_template_daypart_percents.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_update_billing_cmd_center_production.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_RESOURCES_EMP_ALLOCATION.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_SaveLocationPicture.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Metro Fairfield County to NIELSEN_MARKET.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add_row_to_EXPORT_SYSTEMS (CHA2).sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update System defined Mix Templates for Internet.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert System defined Mix Templates for Internet.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\DRW Update Post Buy Existing Columns.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_PLAN_ESTIMATE_TEMPLATE.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ATTACHMENT_PATH to ACCESS_EMAIL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\4 - Function Scripts\fn_get_nth_workday.function.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_gl_update_to_summary.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_load_estimate_ordered_lines.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_load_estimate_rows.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_Calculate_Pred.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\2 - Table Scripts\QUICKBOOKS_SETTING.table.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column QUICKBOOKS_BILL_ID to AP_HEADER.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column QUICKBOOKS_INVOICE_ID to ACCT_REC.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_invoice_select_by_client.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_invoice_select_voided_by_client.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_select_client_invoices_for_void.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_acct_exec.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_bill_appr.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_campaign.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_client.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_client_biller.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_cli_div.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_cli_div_prd.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_bill_select_sales_class.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_quickbooks_bill_detail.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMReOpenAssignment.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Settings for Quickbooks.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add RECORD_SOURCE for Quickbooks.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Insert New GRID and GRID_COLUMNALERT AAM data.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ar_payment_history_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_get_sprint_job_components.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_populate_missing_time_table.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_api_load_ar_stmt_product_contacts.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_api_load_media_broadcast_details.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Update Market number for Traverse City.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_other_traffic_flight_summary_report.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_revise_order_brdcast_units_by_order_void.proc.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\7 - Data Update Scripts\Add Agy Setting CSCORE_USE_NEW_URL.sql
+C:\TFS_ROOT\Advantage\Production\Output\Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Estimating_Quote_Info.proc.sql

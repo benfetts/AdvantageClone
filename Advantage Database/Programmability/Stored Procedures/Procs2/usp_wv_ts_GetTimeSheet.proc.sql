@@ -1,0 +1,575 @@
+﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_wv_ts_GetTimeSheet]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE [dbo].[usp_wv_ts_GetTimeSheet]
+GO
+CREATE PROCEDURE [dbo].[usp_wv_ts_GetTimeSheet] 
+@emp_code VARCHAR(6), 
+@StartDate SMALLDATETIME,
+@EndDate SMALLDATETIME,
+@SortColumn VARCHAR(35),
+@USER_CODE VARCHAR(100)
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	DECLARE  @TIME_ROWS TABLE 
+			(
+				ET_ID              INT NOT NULL,
+				ET_DTL_ID          INT NOT NULL,
+				FNC_CAT            VARCHAR(10) NULL,
+				FNC_CAT_DESC VARCHAR(100),
+				EMP_HOURS          DECIMAL(9, 3) NOT NULL,
+				CL_CODE            VARCHAR(6) NULL,
+				DIV_CODE           VARCHAR(6) NULL,
+				PRD_CODE           VARCHAR(6) NULL,
+				JOB_NUMBER         INT NULL,
+				CLIENT_REF         VARCHAR(30) NULL,
+				JOB_COMPONENT_NBR  SMALLINT NULL,
+				DP_TM_CODE         VARCHAR(4) NULL,
+				TIME_TYPE          CHAR(1) NOT NULL,
+				EDIT_FLAG          SMALLINT NOT NULL,
+				MAX_SEQ            SMALLINT NULL,
+				START_TIME         CHAR(4) NULL,
+				END_TIME           CHAR(4) NULL,
+				EMP_DATE           SMALLDATETIME,
+				COMMENTS           TEXT NULL,
+				JOB_DESC			VARCHAR(100),
+				JOB_COMP_DESC			VARCHAR(100),
+				PROD_CAT_CODE      VARCHAR(10) NULL,
+				CL_NAME VARCHAR(100),
+				DIV_NAME VARCHAR(100),
+				PRD_DESCRIPTION VARCHAR(100),
+				JOB_PROCESS_CONTRL INT,
+				NON_EDIT_MESSAGE VARCHAR(100),
+				CANNOT_EDIT_DUE_TO_PROCESS_CONTROL SMALLINT,
+				HAS_STOPWATCH INT,
+				STOPWATCH_ET_ID INT,
+				STOPWATCH_ET_DTL_ID INT,
+				COMMENTS_REQ INT,
+				DAY_IS_DENIED BIT,
+				DAY_IS_APPROVED BIT,
+				DAY_IS_PENDING_APPROVAL BIT,
+				DAY_POST_PERIOD_CLOSED BIT		,
+				CREATE_DATE SMALLDATETIME,
+				CLIENT_COMMENT_REQUIRED BIT,
+				TS_MISSING_COMMENTS BIT,
+				QUOTED				DECIMAL (14,2) NULL,
+				ACTUAL				DECIMAL (14,2) NULL,
+				QUOTED_HRS			DECIMAL(15,2) NULL,
+				ACTUAL_HRS			DECIMAL(15,2) NULL,
+				IS_OVER_THRESHOLD	BIT,
+				TRF_CODE			VARCHAR(10) NULL,
+				ALERT_ID		    INT NULL,
+				ALERT_SUBJECT		VARCHAR(500) NULL
+			);
+
+	IF @SortColumn IS NULL OR @SortColumn = ''
+	BEGIN	--	SELECT WITH NO SORT
+		INSERT INTO @TIME_ROWS
+		SELECT * 
+		FROM [dbo].[fn_my_ts_get_timesheet](@emp_code, @StartDate, @EndDate, @SortColumn, @USER_CODE, 0, 0) AS TR;
+	END
+	ELSE
+	BEGIN	--	SELECT WITH CUSTOM SORT
+		INSERT INTO @TIME_ROWS
+		SELECT * 
+		FROM [dbo].[fn_my_ts_get_timesheet](@emp_code, @StartDate, @EndDate, @SortColumn, @USER_CODE, 0, 0) AS TR
+		ORDER BY
+				CASE 
+					WHEN @SortColumn = 'JOB_NUMBER' THEN RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_NUMBER, '-') AS VARCHAR(6)),
+								6
+							)
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_COMPONENT_NBR, '-') AS VARCHAR(6)),
+								6
+							)
+							+ CAST(ISNULL(TR.DP_TM_CODE, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.FNC_CAT, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.PROD_CAT_CODE, '-') AS VARCHAR(10))
+					WHEN @SortColumn = 'CL_CODE' THEN CAST(ISNULL(TR.CL_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.DIV_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.PRD_CODE, '-') AS VARCHAR(6))
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_NUMBER, '-') AS VARCHAR(6)),
+								6
+							)
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_COMPONENT_NBR, '-') AS VARCHAR(6)),
+								6
+							)
+							+ CAST(ISNULL(TR.DP_TM_CODE, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.FNC_CAT, '-') AS VARCHAR(50)) 
+							+ CAST(ISNULL(TR.PROD_CAT_CODE, '-') AS VARCHAR(10))
+					WHEN @SortColumn = 'DIV_CODE' THEN CAST(ISNULL(TR.DIV_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.PRD_CODE, '-') AS VARCHAR(6))
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_NUMBER, '-') AS VARCHAR(6)),
+								6
+							)
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_COMPONENT_NBR, '-') AS VARCHAR(6)),
+								6
+							)
+							+ CAST(ISNULL(TR.DP_TM_CODE, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.FNC_CAT, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.PROD_CAT_CODE, '-') AS VARCHAR(10))
+					WHEN @SortColumn = 'PRD_CODE' THEN CAST(ISNULL(TR.PRD_CODE, '-') AS VARCHAR(6))
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_NUMBER, '-') AS VARCHAR(6)),
+								6
+							)
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_COMPONENT_NBR, '-') AS VARCHAR(6)),
+								6
+							)
+							+ CAST(ISNULL(TR.DP_TM_CODE, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.FNC_CAT, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.PROD_CAT_CODE, '-') AS VARCHAR(10))
+					WHEN @SortColumn = 'FNC_CAT' THEN CAST(ISNULL(TR.FNC_CAT, '-') AS VARCHAR(20))
+							+ CAST(ISNULL(TR.CL_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.DIV_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.PRD_CODE, '-') AS VARCHAR(6))
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_NUMBER, '-') AS VARCHAR(6)),
+								6
+							)
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_COMPONENT_NBR, '-') AS VARCHAR(6)),
+								6
+							)
+							+ CAST(ISNULL(TR.DP_TM_CODE, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.PROD_CAT_CODE, '-') AS VARCHAR(10))
+					WHEN @SortColumn = 'DP_TM_CODE' THEN CAST(ISNULL(TR.DP_TM_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.CL_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.DIV_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.PRD_CODE, '-') AS VARCHAR(6))
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_NUMBER, '-') AS VARCHAR(6)),
+								6
+							)
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_COMPONENT_NBR, '-') AS VARCHAR(6)),
+								6
+							)
+							+ CAST(ISNULL(TR.FNC_CAT, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.PROD_CAT_CODE, '-') AS VARCHAR(10))
+					WHEN @SortColumn = 'EMP_DATE' THEN CAST(TR.EMP_DATE AS VARCHAR(20))
+							+ CAST(ISNULL(TR.CL_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.DIV_CODE, '-') AS VARCHAR(6))
+							+ CAST(ISNULL(TR.PRD_CODE, '-') AS VARCHAR(6))
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_NUMBER, '-') AS VARCHAR(6)),
+								6
+							)
+							+ RIGHT(
+								REPLICATE('-', 6) + CAST(ISNULL(TR.JOB_COMPONENT_NBR, '-') AS VARCHAR(6)),
+								6
+							)
+							+ CAST(ISNULL(TR.FNC_CAT, '-') AS VARCHAR(50))
+							+ CAST(ISNULL(TR.PROD_CAT_CODE, '-') AS VARCHAR(10))
+				END
+	END;
+
+	DECLARE
+		@IS_TRAFFIC_HOURS BIT,
+		@IS_QVA BIT,
+		@EMPLOYEE_ONLY BIT, 
+		@THRESHOLD INT, 
+		@IS_OVER_THRESHOLD BIT;
+
+	SET @IS_TRAFFIC_HOURS = 0;
+	SET @IS_QVA = 0;
+	SET @EMPLOYEE_ONLY = 0;
+	SET @IS_OVER_THRESHOLD = 0;
+
+	--	QVA PROGRESS BAR
+	DECLARE		
+		@DO_QVA_CALC AS BIT,
+		@PROG_HIDDEN AS BIT,
+		@HRS_HIDDEN AS BIT
+		;
+
+	SET @DO_QVA_CALC = 1;
+	SET @PROG_HIDDEN = 1;
+	SET @HRS_HIDDEN = 1;
+
+	IF EXISTS (SELECT 1 FROM APP_VARS WHERE UPPER(USERID) = UPPER(@USER_CODE) AND [APPLICATION] = 'NewTimesheet' AND VARIABLE_NAME = 'ShowProgressBar' AND VARIABLE_VALUE = 'True') 
+	BEGIN
+		SET @PROG_HIDDEN = 0;
+	END
+	IF EXISTS (SELECT 1 FROM APP_VARS WHERE UPPER(USERID) = UPPER(@USER_CODE) AND [APPLICATION] = 'NewTimesheet' AND VARIABLE_NAME = 'ShowHoursRemaining' AND VARIABLE_VALUE = 'True') 
+	BEGIN
+		SET @HRS_HIDDEN = 0;
+	END	
+	IF @PROG_HIDDEN = 1 AND @HRS_HIDDEN = 1
+	BEGIN
+		SET @DO_QVA_CALC = 0;
+	END
+	IF @DO_QVA_CALC = 1
+	BEGIN
+		--SELECT 
+		--	@DO_QVA_CALC = 1, 
+		--	@EMPLOYEE_ONLY = 0
+		--	GET SETTINGS FROM APP_VARS:
+		IF EXISTS (SELECT 1 FROM APP_VARS WITH(ROWLOCK) WHERE [APPLICATION] = 'TimesheetQVA' AND UPPER(USERID) = UPPER(@USER_CODE) AND  VARIABLE_NAME = 'QVA' AND VARIABLE_VALUE = 'True') SET @IS_QVA = 1;
+		IF EXISTS (SELECT 1 FROM APP_VARS WITH(ROWLOCK) WHERE [APPLICATION] = 'TimesheetQVA' AND UPPER(USERID) = UPPER(@USER_CODE) AND  VARIABLE_NAME = 'TrafficHours' AND VARIABLE_VALUE = 'True') SET @IS_TRAFFIC_HOURS = 1;
+		IF EXISTS (SELECT 1 FROM APP_VARS WITH(ROWLOCK) WHERE [APPLICATION] = 'TimesheetQVA' AND UPPER(USERID) = UPPER(@USER_CODE) AND  VARIABLE_NAME = 'EmpOnly' AND VARIABLE_VALUE = 'True') SET @EMPLOYEE_ONLY = 1;
+
+		--	LOOP TO UPDATE
+		BEGIN
+			DECLARE @TIME_ROWS_FOR_LOOP TABLE (	ID INT IDENTITY NOT NULL,
+												JOB_NUMBER INT,
+												JOB_COMPONENT_NBR SMALLINT,
+												FNC_CAT VARCHAR(10),
+												ALERT_ID INT
+												)
+			DECLARE @QUOTED_FROM_ESTIMATE TABLE (JOB_NUMBER				INT NULL,
+												 JOB_COMPONENT_NBR		SMALLINT NULL,
+												 ESTIMATE_NUMBER		INT NULL,
+												 ESTIMATE_LOG_DESC		VARCHAR (500),
+												 EST_COMPONENT_NBR		SMALLINT,
+												 EST_COMP_DESC			VARCHAR(500),
+												 EST_QUOTE_NBR			SMALLINT,
+												 EST_REV_NBR			INT,
+												 FNC_CODE				VARCHAR(10),
+												 EST_REV_SUP_BY_CODE	VARCHAR(50),
+										  		 SUM_EST_QTY			DECIMAL (14,2),
+												 SUM_EST_AMT			DECIMAL (14,2),
+												 EXT_CONTINGENCY		DECIMAL (14,2)
+												);
+			DECLARE @ACTUAL_TABLE TABLE (JOB_NUMBER INT NULL,
+										 JOB_COMPONENT_NBR SMALLINT NULL,
+										 EMP_CODE VARCHAR(6) NULL,
+										 EMP_DATE SMALLDATETIME NULL,
+										 FNC_CODE VARCHAR (10) NULL,
+										 FNC_DESCRIPTION VARCHAR (100) NULL,
+										 SUM_EMP_HOURS DECIMAL (14,2) NULL,
+										 SUM_AMOUNT DECIMAL (14,2) NULL,
+										 COMMENTS VARCHAR(MAX) NULL,
+										 FULL_NAME VARCHAR(200),
+										 ALERT_ID INT
+										 );
+			DECLARE @ACTUAL_TABLE_2 TABLE (JOB_NUMBER INT NULL,
+										 JOB_COMPONENT_NBR SMALLINT NULL,
+										 EMP_CODE VARCHAR(6) NULL,
+										 EMP_DATE SMALLDATETIME NULL,
+										 FNC_CODE VARCHAR (10) NULL,
+										 FNC_DESCRIPTION VARCHAR (100) NULL,
+										 SUM_EMP_HOURS DECIMAL (14,2) NULL,
+										 SUM_AMOUNT DECIMAL (14,2) NULL,
+										 COMMENTS VARCHAR(MAX) NULL,
+										 FULL_NAME VARCHAR(200),
+										 ALERT_ID INT
+										 );
+			DECLARE @TRAFFIC_HOURS TABLE (JOB_NUMBER INT NULL,
+										  JOB_COMPONENT_NBR SMALLINT NULL,
+										  TASK_FNC_CODE VARCHAR(10) NULL,
+										  EST_FNC_CODE VARCHAR (6) NULL,
+										  EMP_CODE VARCHAR (6) NULL,
+										  SUM_JOB_HOURS DECIMAL (14,2) NULL,
+										  TASK_DESCRIPTION VARCHAR(40) NULL,
+										  FULL_NAME VARCHAR(200)
+										 );
+
+			INSERT INTO @TIME_ROWS_FOR_LOOP (JOB_NUMBER, JOB_COMPONENT_NBR, FNC_CAT, ALERT_ID)
+			SELECT TR.JOB_NUMBER, TR.JOB_COMPONENT_NBR, TR.FNC_CAT, TR.ALERT_ID
+			FROM @TIME_ROWS AS TR
+			GROUP BY 
+				TR.JOB_NUMBER, TR.JOB_COMPONENT_NBR, TR.FNC_CAT, TR.ALERT_ID;
+
+			DECLARE 
+				@ROW_CTR INT,
+				@CURR_ID INT,
+				@J INT, 
+				@JC SMALLINT, 
+				@FNC_CODE VARCHAR(10), 
+				@ALERT_ID INT,
+				@VIEW INT
+			SELECT
+				@ROW_CTR = 0,
+				@CURR_ID = 0;
+			SELECT @ROW_CTR = COUNT(1) FROM @TIME_ROWS_FOR_LOOP;
+			IF @ROW_CTR > 0
+			BEGIN
+				WHILE @CURR_ID < @ROW_CTR
+				BEGIN
+					SELECT 
+						@CURR_ID = @CURR_ID + 1,
+						@J = NULL,
+						@JC = NULL,
+						@FNC_CODE = NULL,
+						@ALERT_ID = NULL,
+						@VIEW = NULL
+					SELECT
+						@J = T.JOB_NUMBER,
+						@JC = T.JOB_COMPONENT_NBR,
+						@FNC_CODE = T.FNC_CAT,
+						@ALERT_ID = T.ALERT_ID
+					FROM
+						@TIME_ROWS_FOR_LOOP T
+					WHERE
+						T.ID = @CURR_ID;
+					IF @J IS NOT NULL AND @JC IS NOT NULL AND @FNC_CODE IS NOT NULL
+					BEGIN					
+						IF @IS_TRAFFIC_HOURS = 1
+						BEGIN	-- HOURS FROM JOB_TRAFFIC_DTL
+							INSERT INTO @TRAFFIC_HOURS
+							EXEC usp_wv_ts_ddTrafficHours @J, @JC, @FNC_CODE, @emp_code, @EMPLOYEE_ONLY, @ALERT_ID;
+						END
+						ELSE
+						BEGIN	--	HOURS FROM ESTIMATE
+							--	GET QUOTED NUMBERS
+							INSERT INTO @QUOTED_FROM_ESTIMATE
+							EXEC usp_wv_ts_ddEstimate @J, @JC, @FNC_CODE, @emp_code, @EMPLOYEE_ONLY;
+						END;
+						--	GET ACTUAL NUMBERS
+						BEGIN
+							IF ISNULL(@ALERT_ID, 0) > 0
+							BEGIN
+								SET @VIEW = 1;
+							END
+							ELSE
+							BEGIN
+								SET @VIEW = 0;
+							END
+							INSERT INTO @ACTUAL_TABLE (JOB_NUMBER, JOB_COMPONENT_NBR, EMP_CODE, EMP_DATE, FNC_CODE, FNC_DESCRIPTION, SUM_EMP_HOURS, SUM_AMOUNT, COMMENTS, FULL_NAME, ALERT_ID)
+							SELECT
+								JOB_NUMBER,
+								JOB_COMPONENT_NBR,
+								EMP_CODE,
+								EMP_DATE,
+								FNC_CODE,
+								FNC_DESCRIPTION,
+								SUM_EMP_TIME_DTL_EMP_HOURS,
+								SUM_AMOUNT,
+								COMMENTS,
+								FULL_NAME,
+								ISNULL(ALERT_ID, 0)
+							FROM
+								[dbo].[advtf_qva_actuals_job_info](@J, @JC, @FNC_CODE, @emp_code, @EMPLOYEE_ONLY, 1, @VIEW);
+
+						END
+					END
+				END
+			END
+		END;
+		IF @IS_TRAFFIC_HOURS = 1
+		BEGIN
+			IF @EMPLOYEE_ONLY = 0
+			BEGIN
+				UPDATE TR
+				SET 
+					TR.QUOTED = JTD.SUM_JOB_AMT, 
+					TR.QUOTED_HRS = JTD.SUM_JOB_HOURS
+				FROM 
+					@TIME_ROWS AS TR INNER JOIN (
+													SELECT 
+														T.JOB_NUMBER, 
+														T.JOB_COMPONENT_NBR, 
+														T.EST_FNC_CODE, 
+														T.TASK_DESCRIPTION, 
+														0  AS SUM_JOB_AMT, 
+														SUM(ISNULL(SUM_JOB_HOURS, 0.00)) AS SUM_JOB_HOURS
+													FROM 
+														@TRAFFIC_HOURS T
+													GROUP BY 
+														T.JOB_NUMBER, 
+														T.JOB_COMPONENT_NBR, 
+														T.EST_FNC_CODE, 
+														T.TASK_DESCRIPTION
+													) AS JTD 
+										ON TR.JOB_NUMBER = JTD.JOB_NUMBER AND TR.JOB_COMPONENT_NBR = JTD.JOB_COMPONENT_NBR AND TR.ALERT_SUBJECT = JTD.TASK_DESCRIPTION
+			END
+			ELSE
+			BEGIN
+				UPDATE TR
+				SET 
+					TR.QUOTED = JTD.SUM_JOB_AMT, 
+					TR.QUOTED_HRS = JTD.SUM_JOB_HOURS
+				FROM 
+					@TIME_ROWS AS TR INNER JOIN (
+													SELECT 
+														T.JOB_NUMBER, T.JOB_COMPONENT_NBR, T.EST_FNC_CODE, T.TASK_DESCRIPTION, 0  AS SUM_JOB_AMT, SUM(ISNULL(SUM_JOB_HOURS, 0.00)) AS SUM_JOB_HOURS
+													FROM 
+														@TRAFFIC_HOURS T
+													WHERE
+														T.EMP_CODE = @emp_code
+													GROUP BY T.JOB_NUMBER, T.JOB_COMPONENT_NBR, T.EST_FNC_CODE, T.TASK_DESCRIPTION
+													) AS JTD 
+										ON TR.JOB_NUMBER = JTD.JOB_NUMBER AND TR.JOB_COMPONENT_NBR = JTD.JOB_COMPONENT_NBR AND TR.ALERT_SUBJECT = JTD.TASK_DESCRIPTION
+			END
+		END
+		ELSE
+		BEGIN	--	QVA
+			--	UPDATE QUOTED VALUES
+			BEGIN
+				UPDATE TR
+				SET 
+					TR.QUOTED = QVA.SUM_EST_AMT, TR.QUOTED_HRS = QVA.SUM_EST_QTY
+				FROM 
+					@TIME_ROWS AS TR INNER JOIN (	
+													SELECT 
+														JOB_NUMBER, 
+														JOB_COMPONENT_NBR, 
+														FNC_CODE, 
+														(SUM(ISNULL(SUM_EST_AMT, 0.00)) + SUM(ISNULL(EXT_CONTINGENCY, 0.00))) AS SUM_EST_AMT, 
+														SUM(ISNULL(SUM_EST_QTY, 0.00)) AS SUM_EST_QTY
+													FROM 
+														@QUOTED_FROM_ESTIMATE
+													GROUP BY 
+														JOB_NUMBER, 
+														JOB_COMPONENT_NBR, 
+														FNC_CODE
+												) AS QVA 
+									 ON TR.JOB_NUMBER = QVA.JOB_NUMBER AND TR.JOB_COMPONENT_NBR = QVA.JOB_COMPONENT_NBR AND TR.FNC_CAT = QVA.FNC_CODE;
+			END;
+		END;
+		--	UPDATE ACTUAL VALUES
+		BEGIN
+			INSERT INTO @ACTUAL_TABLE_2
+			SELECT 
+				DISTINCT * 
+			FROM 
+				@ACTUAL_TABLE;
+			UPDATE @TIME_ROWS SET ALERT_ID = 0 WHERE ALERT_ID IS NULL;
+			UPDATE TR
+			SET 
+				TR.ACTUAL = QVA.SUM_AMOUNT, 
+				TR.ACTUAL_HRS = QVA.SUM_EMP_HOURS
+			FROM 
+				@TIME_ROWS AS TR INNER JOIN (
+												SELECT 
+													JOB_NUMBER, JOB_COMPONENT_NBR, FNC_CODE, ALERT_ID, SUM(ISNULL(SUM_AMOUNT, 0.00)) AS SUM_AMOUNT, SUM(ISNULL(SUM_EMP_HOURS, 0.00)) AS SUM_EMP_HOURS 
+												FROM 
+													@ACTUAL_TABLE_2 
+												GROUP BY 
+													JOB_NUMBER, 
+													JOB_COMPONENT_NBR, 
+													FNC_CODE, 
+													ALERT_ID
+											) AS QVA 
+									ON TR.JOB_NUMBER = QVA.JOB_NUMBER AND TR.JOB_COMPONENT_NBR = QVA.JOB_COMPONENT_NBR AND TR.FNC_CAT = QVA.FNC_CODE AND ISNULL(QVA.ALERT_ID, 0) = ISNULL(TR.ALERT_ID, 0);
+		END;
+		--	UPDATE NP TIME POSTED
+		BEGIN
+			UPDATE TR
+			SET 
+				TR.ACTUAL_HRS = NP.SUM_EMP_HOURS
+			FROM 
+				@TIME_ROWS AS TR INNER JOIN (	SELECT 
+													FNC_CAT, 
+													SUM(ISNULL(EMP_HOURS, 0.00)) AS SUM_EMP_HOURS 
+												FROM 
+													@TIME_ROWS 
+												GROUP BY 
+													FNC_CAT) AS NP 
+								 ON TR.FNC_CAT = NP.FNC_CAT
+			WHERE TR.TIME_TYPE = 'N';
+		END
+		--	SET THRESHOLD INDICATOR
+		BEGIN
+			IF @EMPLOYEE_ONLY = 1 
+			BEGIN
+				SELECT 
+					@THRESHOLD = CAST(VARIABLE_VALUE AS INT) 
+				FROM 
+					APP_VARS WITH(NOLOCK)
+				WHERE 
+					[APPLICATION] = 'MY_QVA_DTO' 
+					AND VARIABLE_NAME = 'Threshold' 
+					AND UPPER(USERID) = UPPER(@USER_CODE);
+			END
+			ELSE
+			BEGIN
+				SELECT 
+					@THRESHOLD = CAST(VARIABLE_VALUE AS INT) 
+				FROM 
+					APP_VARS WITH(NOLOCK)
+				WHERE 
+					[APPLICATION] = 'ALL_QVA_DTO' 
+					AND VARIABLE_NAME = 'Threshold' 
+					AND UPPER(USERID) = UPPER(@USER_CODE);
+			END;
+			SET @THRESHOLD = ISNULL(@THRESHOLD, 100);
+			IF @THRESHOLD > 0
+			BEGIN
+				IF @IS_TRAFFIC_HOURS = 1
+				BEGIN
+					UPDATE TR
+					SET
+						TR.IS_OVER_THRESHOLD = 1
+					FROM
+						@TIME_ROWS TR
+					WHERE 
+						TR.QUOTED_HRS > 0
+						AND TR.ACTUAL_HRS > TR.QUOTED_HRS;
+				END
+				ELSE
+				BEGIN
+					UPDATE TR
+					SET
+						TR.IS_OVER_THRESHOLD = 1
+					FROM
+						@TIME_ROWS TR
+					WHERE 
+						TR.QUOTED_HRS > 0
+						AND ((TR.ACTUAL_HRS / TR.QUOTED_HRS) * 100) > @THRESHOLD;
+				END
+			END;
+		END;
+
+	END;
+
+	SELECT
+		EmployeeTimeID = ET_ID,
+        EmployeeTimeDetailID = ET_DTL_ID,
+        FunctionCategory = FNC_CAT,
+        FunctionCategoryDescription = FNC_CAT_DESC,
+        EmployeeHours = EMP_HOURS,
+        ClientCode = CL_CODE,
+        DivisionCode = DIV_CODE,
+        ProductCode = PRD_CODE,
+        JobNumber = JOB_NUMBER,
+        ClientReference = CLIENT_REF,
+        JobComponentNumber = JOB_COMPONENT_NBR,
+        DepartmentTeamCode = DP_TM_CODE,
+        TimeType = TIME_TYPE,
+        EditFlag = EDIT_FLAG,
+        MaxSequence = MAX_SEQ,
+        StartTime = START_TIME,
+        EndTime = END_TIME,
+        EmployeeDate = EMP_DATE,
+        Comments = COMMENTS,
+        JobDescription = JOB_DESC,
+        JobComponentDescription = JOB_COMP_DESC,
+        ProductCategoryCode = PROD_CAT_CODE,
+        ClientName = CL_NAME,
+        DivisionName = DIV_NAME,
+        ProductDescription = PRD_DESCRIPTION,
+        JobProcessControl = JOB_PROCESS_CONTRL,
+        NonEditMessage = NON_EDIT_MESSAGE,
+        IsLockedByProcessControl = CANNOT_EDIT_DUE_TO_PROCESS_CONTROL,
+        HasStopwatch = HAS_STOPWATCH,
+        StopwatchEmployeeTimeID = STOPWATCH_ET_ID,
+        StopwatchEmployeeTimeDetailID = STOPWATCH_ET_DTL_ID,
+        CommentsRequired = COMMENTS_REQ,
+        DayIsDenied = DAY_IS_DENIED,
+        DayIsApproved = DAY_IS_APPROVED,
+        DayIsPendingApproval = DAY_IS_PENDING_APPROVAL,
+        DayPostPeriodClosed = DAY_POST_PERIOD_CLOSED,
+        CreateDate = CREATE_DATE,
+        ClientCommentRequired = CLIENT_COMMENT_REQUIRED,
+        TimesheetMissingComments = TS_MISSING_COMMENTS,
+        Quoted = QUOTED,
+        Actual = ACTUAL,
+        QuotedHours = QUOTED_HRS,
+        ActualHours = ACTUAL_HRS,
+        IsOverThreshold = IS_OVER_THRESHOLD,
+        ProgressIsShowingTrafficHours = @IS_TRAFFIC_HOURS,
+		Threshold = @THRESHOLD,
+		TaskCode = TRF_CODE,
+		AlertID = ALERT_ID,
+		AlertSubject = ALERT_SUBJECT
+	FROM @TIME_ROWS;
+
+END
+/*=========== QUERY ===========*/

@@ -1,0 +1,41 @@
+-- V_DTL_COMMENT_ET
+-- #00 08/17/12 - initial version
+
+SET QUOTED_IDENTIFIER ON 
+GO
+
+SET ANSI_NULLS ON 
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+IF EXISTS ( SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID( N'[dbo].[V_DTL_COMMENT_ET]' ) AND OBJECTPROPERTY( id, N'IsView' ) = 1 )
+	DROP VIEW [dbo].[V_DTL_COMMENT_ET]
+GO
+
+CREATE VIEW dbo.V_DTL_COMMENT_ET 
+AS
+
+SELECT
+		etd.JOB_NUMBER,
+		etd.JOB_COMPONENT_NBR,
+		etd.FNC_CODE,
+		et.EMP_CODE,
+		et.EMP_DATE,
+		etd.ET_ID,
+		CAST(etdc.EMP_COMMENT AS varchar(max)) AS EMP_COMMENT
+	FROM dbo.EMP_TIME_DTL etd
+	JOIN dbo.EMP_TIME et
+		ON etd.ET_ID = et.ET_ID
+	JOIN dbo.EMP_TIME_DTL_CMTS etdc
+		ON etd.ET_ID = etdc.ET_ID
+		AND etd.ET_DTL_ID = etdc.ET_DTL_ID
+	GROUP BY etd.JOB_NUMBER, etd.JOB_COMPONENT_NBR, etd.FNC_CODE, et.EMP_CODE, et.EMP_DATE, etd.ET_ID, 
+		CAST(etdc.EMP_COMMENT AS varchar(max))
+
+GO
+
+IF ( @@ERROR = 0 )
+	GRANT ALL ON [V_DTL_COMMENT_ET] TO PUBLIC AS dbo
+GO	

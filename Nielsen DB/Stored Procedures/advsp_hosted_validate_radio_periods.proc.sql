@@ -1,0 +1,12 @@
+﻿CREATE PROC [dbo].[advsp_hosted_validate_radio_periods]
+AS
+
+UPDATE h SET h.VALIDATED = 1
+FROM NIELSENHOSTED.dbo.NIELSEN_RADIO_PERIOD h
+	INNER JOIN NIELSENDATASTORE.dbo.NIELSEN_RADIO_PERIOD h2 ON h.NIELSEN_RADIO_PERIOD_ID = h2.NIELSEN_RADIO_PERIOD_ID
+WHERE h.VALIDATED = 0
+AND NIELSENHOSTED.[dbo].[advfn_nielsen_spot_radio_rowcount](h.NIELSEN_RADIO_PERIOD_ID) = NIELSENDATASTORE.[dbo].[advfn_nielsen_spot_radio_rowcount](h.NIELSEN_RADIO_PERIOD_ID)
+GO
+
+GRANT EXEC ON [advsp_hosted_validate_radio_periods] TO PUBLIC
+GO

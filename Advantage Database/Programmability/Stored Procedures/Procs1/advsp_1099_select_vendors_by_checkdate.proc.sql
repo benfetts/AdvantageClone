@@ -1,0 +1,20 @@
+﻿CREATE PROC advsp_1099_select_vendors_by_checkdate @start_date smalldatetime, @end_date smalldatetime
+
+AS
+
+SELECT	[BankCode] = P.BK_CODE,
+		[VendorPayToCode] = C.PAY_TO_CODE,
+		[CheckAmountTotal] = SUM(COALESCE(P.AP_CHK_AMT, 0)),
+		[Vendor1099Category] = COALESCE(V.VN_1099_INC_TYPE,0)
+FROM dbo.AP_PMT_HIST P
+	INNER JOIN dbo.CHECK_REGISTER C ON P.BK_CODE = C.BK_CODE AND P.AP_CHK_NBR = C.CHECK_NBR AND (C.VOID_FLAG IS NULL OR C.VOID_FLAG = 0)
+	INNER JOIN dbo.VENDOR V ON C.PAY_TO_CODE = V.VN_CODE 
+	INNER JOIN (SELECT AP_ID FROM dbo.AP_HEADER
+				WHERE FLAG_1099 = 1
+				AND (DELETE_FLAG IS NULL OR DELETE_FLAG = 0)
+				AND (MODIFY_FLAG IS NULL OR MODIFY_FLAG = 0)
+				) AP ON P.AP_ID = AP.AP_ID 
+WHERE	P.AP_CHK_DATE between @start_date AND @end_date
+GROUP BY P.BK_CODE, C.PAY_TO_CODE, V.VN_1099_INC_TYPE
+
+GO

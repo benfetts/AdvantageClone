@@ -1,0 +1,39 @@
+<div [ngStyle]="{'height': heightScroll}">
+  <ng-scrollbar class="scrollbar-feedback"
+                [ngClass]="contentMoreThanHeight ? 'scrollbar-feedbacks' : 'scrollbar-feedbacks-margin'">
+    <div #elementsContainer>
+      <ng-container *ngFor="let feedback of feedbacks; let i = index">
+        <div class="feedback-container">
+          <div class="feedback">
+
+            <div class="mark">
+              <div [class.mark-icon-draft]="feedback.isDraft" class="mark-icon">
+                <img src="assets/icons/feedback_mark.svg" />{{feedback.mark}}
+              </div>
+              <div *ngIf="feedback.isDraft; then draftBlock else removeBlock"></div>
+
+              <span>{{feedback.comment}}</span>
+              <ng-template #draftBlock>
+                <img class="mark-draft" src="assets/icons/draft.svg" />
+              </ng-template>
+
+              <ng-template #removeBlock>
+                <button kendoButton
+                        imageUrl='assets/icons/garbage_can.svg'></button>
+              </ng-template>
+            </div>
+            <div *ngIf="!feedback.isDraft" class="feedback-reply">
+              <ul style="list-style-type:none;">
+                <ng-container *ngFor="let reply of feedback.replies; let i = index">
+                  <li>
+                    <proof-edit-feedback [FeedBack]="reply"></proof-edit-feedback>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-scrollbar>
+</div>

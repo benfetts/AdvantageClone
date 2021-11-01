@@ -1,0 +1,23 @@
+CREATE PROCEDURE advsp_clientcashreceipt_invoice_payments
+
+	@InvoiceNumber int
+
+AS
+
+BEGIN
+
+	SELECT
+			[CheckNumber] = CR.CR_CHECK_NBR,
+			[CheckDate] = CR.CR_CHECK_DATE,
+			[PaymentAmount] = SUM(COALESCE(CCD.CR_PAY_AMT,0)),
+			[WriteoffAmount] = SUM(COALESCE(CCD.CR_ADJ_AMT,0))
+	FROM dbo.CR_CLIENT CR
+		INNER JOIN dbo.CR_CLIENT_DTL CCD ON CR.REC_ID = CCD.REC_ID AND CR.SEQ_NBR = CCD.SEQ_NBR 
+	WHERE
+			(CR.[STATUS] IS NULL OR CR.[STATUS] <> 'D')
+	AND		CCD.AR_INV_NBR = @InvoiceNumber 
+	GROUP BY CR.CR_CHECK_NBR, CR.CR_CHECK_DATE
+	ORDER BY CR.CR_CHECK_DATE DESC
+
+END
+GO

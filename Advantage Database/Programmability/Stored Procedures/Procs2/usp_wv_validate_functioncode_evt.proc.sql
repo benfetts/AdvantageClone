@@ -1,0 +1,16 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_validate_functioncode_evt]
+@FuncCode VARCHAR(10)
+AS
+
+	IF EXISTS(
+	    SELECT FNC_CODE
+	    FROM FUNCTIONS WITH(NOLOCK)
+	    WHERE FNC_CODE = @FuncCode
+	    AND ((FNC_INACTIVE IS NULL ) OR (FNC_INACTIVE = 0)) AND (FNC_TYPE = 'I')
+	)
+		SELECT 1
+	ELSE
+		SELECT 0
+

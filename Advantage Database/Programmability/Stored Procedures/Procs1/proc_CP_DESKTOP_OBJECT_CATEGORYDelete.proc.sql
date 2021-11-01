@@ -1,0 +1,25 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_DESKTOP_OBJECT_CATEGORYDelete]
+(
+	@ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	DELETE
+	FROM [CP_DESKTOP_OBJECT_CATEGORY]
+	WHERE
+		[ID] = @ID
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+

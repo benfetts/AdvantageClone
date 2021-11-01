@@ -1,0 +1,30 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification-template"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        .full {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+    <div class="full" title="Hang one one sec!" style="cursor: not-allowed !important;">
+        <div style="border-bottom: 1px solid #CCCCCC; padding-bottom: 16px;">
+            <img src="Images/Logos/simplifi_aqua_color.png" title="Aqua:  Powered by Advantage powered by Simpli.fi" />
+        </div>
+        <div style="font-size: 16px; margin-top: 8px;" title="Time to redo the whole security/sign in/prove who you are thing.  Yup.">
+            Redirecting to Sign In
+        </div>
+    </div>
+</template>

@@ -1,0 +1,284 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+    <require from="resources/elements/display-templates/estimate/estimate-display-template"></require>
+    <require from="resources/elements/search-page/search-page"></require>
+    <require from="resources/elements/search-page/search-option"></require>
+
+    <style>
+
+        .search-wrapper.search-wrapper-expanded {
+            width: 500px;
+        }
+
+        .search-wrapper {
+            width: 200px;
+            -webkit-transition: width 1s ease-in-out;
+            -moz-transition: width 1s ease-in-out;
+            transition: width 1s ease-in-out;
+        }
+    </style>
+    <wv-search-page title="" on-search.call="search()">
+        <div slot="searchOptions" show-advanced-filters.bind="false">
+            <wv-search-option label="Office">
+                <ak-multiselect k-placeholder="Office"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="officeMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="officeDataSource"
+                                k-on-change.delegate="officeMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-value.two-way="officeCode">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Client" if.bind="!isClientPortal">
+                <ak-multiselect ID="ClientMultiSelect_es"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="clientMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-placeholder="Client"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-data-source.bind="clientDataSource"
+                                k-auto-bind.bind="false"
+                                k-on-change.delegate="clientMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="clientCode"
+                                k-virtual.bind="virtualClient"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onClientReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Division">
+                <ak-multiselect ID="DivisionMultiSelect_es"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="divisionMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-placeholder="Division"
+                                k-data-text-field="Name"
+                                k-data-value-field="ID"
+                                k-data-source.bind="divisionDataSource"
+                                k-auto-bind.bind="false"
+                                k-on-change.delegate="divisionMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="divisionID"
+                                k-virtual.bind="virtualDivision"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onDivisionReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Product">
+                <ak-multiselect ID="ProductMultiSelect_es"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="productMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-placeholder="Product"
+                                k-data-text-field="Name"
+                                k-data-value-field="ID"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="productDataSource"
+                                k-on-change.delegate="productMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="productID"
+                                k-virtual.bind="virtualProduct"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onProductReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Sales Class">
+                <ak-multiselect k-widget.bind="salesClassMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-placeholder="Sales Class"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="salesClassDataSource"
+                                k-on-change.delegate="salesClassMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-value.two-way="salesClassCode">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Campaign">
+                <ak-multiselect k-placeholder="Campaign"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="campaignMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-data-text-field="Name"
+                                k-data-value-field="ID"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="campaignDataSource"
+                                k-on-change.delegate="campaignMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-value.two-way="campaignID"></ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Estimate Number">
+                <ak-multiselect k-placeholder="Estimate Number"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="estimateNumberMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="estimateNumberDataSource"
+                                k-on-change.delegate="estimateNumberMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-value.two-way="estimateNumber"></ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Estimate Component Number">
+                <ak-multiselect k-placeholder="Estimate Component Number"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-widget.bind="estimateComponentNumberMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="estimateComponentNumberDataSource"
+                                k-on-change.delegate="estimateComponentNumberMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-value.two-way="estimateComponentNumber"></ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Job">
+                <ak-multiselect ID="JobMultiSelect_es"
+                                k-widget.bind="jobMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-placeholder="Job"
+                                k-data-text-field="Name"
+                                k-data-value-field="Code"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="jobDataSource"
+                                k-on-change.delegate="jobMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="jobCode"
+                                k-virtual.bind="virtualJob"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onJobReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+            <wv-search-option label="Job Component">
+                <ak-multiselect ID="ComponentMultiSelect_es"
+                                k-widget.bind="componentMultiSelect"
+                                k-template="<span title='#: Name #'>#: Name #</span>"
+                                k-filter="contains"
+                                k-delay="500"
+                                k-placeholder="Component"
+                                k-data-text-field="Name"
+                                k-data-value-field="ID"
+                                k-auto-bind.bind="false"
+                                k-data-source.bind="componentDataSource"
+                                k-on-change.delegate="componentMultiSelect_OnChange($event.detail)"
+                                k-max-selected-items.bind="1"
+                                k-value.two-way="componentCode"
+                                k-virtual.bind="virtualComponent"
+                                k-tag-template="<span title='#: Name #'>#: Name #</span>"
+                                k-on-ready.delegate="onComponentReady($event.detail)">
+                </ak-multiselect>
+            </wv-search-option>
+        </div>
+        <div slot="advancedSearchOptions">
+            <wv-search-option hide-label.bind="true">
+                <input type="checkbox" class="k-checkbox" id="${theId}" checked.bind="showClosed" change.delegate="showClosedCheckChanged()">
+                <label class="k-checkbox-label" for="${theId}" title="Show Closed/Archived Jobs?">
+                    Show Closed/Archived Jobs?
+                </label>
+            </wv-search-option>
+        </div>
+        <div slot="toolbar">
+            <ul class="list-inline" style="margin-bottom: 0;">
+                <li style="padding-right: 5px !important;">
+                    <button href="#" disabled.bind="!canAdd" click.delegate="OpenRadWindow('New Estimate','Estimating_AddNew.aspx',800,750)" role="button" class="wv-icon-button k-button k-grid-add wv-add-new ${!canAdd ? 'disabled' : ''}"><span title="New" class="wvi wvi-navigate-plus"></span></button>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" click.delegate="search()" title="Search/Find" role="button" class="wv-icon-button k-button k-normal"><span class="wvi wvi-magnifying-glass"></span></a>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" click.delegate="clearSearch()" role="button" title="Clear" class="wv-icon-button k-button k-normal"><span class="wvi wvi-undo"></span></a>
+                </li>
+                <li style="padding-right: 5px !important;">
+                    <a href="#" click.delegate="bookmark()" title="Bookmark" role="button" class="wv-icon-button k-button k-normal"><span class="wvi wvi-book-bookmark"></span></a>
+                </li>
+            </ul>
+        </div>
+        <div slot="content" class="wv-k-grid wv-campaigns">
+            <ak-grid k-widget.bind="grid"
+                     k-class="wv-k-grid"
+                     k-auto-bind.bind="false"
+                     k-data-source.bind="data"
+                     k-pageable.bind="{ pageSizes: [10,15,20,50,100], buttonCount: 10 }"
+                     k-navigatable.bind="true"
+                     k-editable.bind="false"
+                     k-selectable.bind="false"
+                     k-sortable.bind="true"
+                     k-filterable.bind="false"
+                     k-resizable.bind="true"
+                     k-reorderable.bind="true"
+                     k-column-menu.bind="false"
+                     k-on-data-bound.delegate="onDataBound($event)"
+                     k-on-ready.delegate="gridReady($event)">
+                <ak-col k-width="65px">
+                    <ak-template>
+                        <div style="text-align: center;">
+                            <a href="#" click.delegate="openModule('',showDetailView(EstimateNumber,EstimateComponentNumber,JobNumber,JobComponentNumber))" class="wv-icon-button k-button wv-neutral-two"><span title="View Details" class="wvi wvi-magnifying-glass"></span></a>
+                        </div>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-width="350px" k-title="Estimate" k-field="EstimateNumber">
+                    <ak-template>
+                        <wv-estimate-display-template estimate-number="${EstimateNumber}"
+                                                      estimate-component-number="${EstimateComponentNumber}"
+                                                      estimate-component-description="${EstimateComponentDescription}"
+                                                      estimate-dewscription="${EstimateDescription}"
+                                                      client-name="${ClientName}"
+                                                      client-code="${ClientCode}"
+                                                      division-code="${DivisionCode}"
+                                                      division-name="${DivisionName}"
+                                                      product-code="${ProductCode}"
+                                                      product-name="${ProductName}">
+
+                        </wv-estimate-display-template>
+                    </ak-template>
+                </ak-col>
+                <ak-col k-width="350px" k-title="Job or Campaign" k-field="Detail">
+                    <!--<ak-template>
+                        ${JobNumber.toString().padStart(jobPadding, '0')}/${JobComponentNumber.toString().padStart(jobComponentPadding, '0')} ${((JobComponentDescription == JobDescription) ? JobDescription : JobDescription + ' / ' + JobComponentDescription)}
+                            ${JobNumber.toString().padStart(jobPadding, '0')}/${JobComponentNumber.toString().padStart(jobComponentPadding, '0')} - ${((JobComponentDescription == JobDescription) ? JobDescription : JobDescription + '|' + JobComponentDescription)}
+                    </ak-template>-->
+                </ak-col>
+                <ak-col k-width="150px" k-title="Office" k-field="OfficeName">
+                </ak-col>
+                <ak-col k-width="150px" k-title="Sales Class" k-field="SalesClassDescription">
+                </ak-col>
+                <ak-col k-width="150px" k-title="Internally Approved" k-format="{0:d}" k-field="InternallyApproved">
+                </ak-col>
+                <ak-col k-width="150px" k-title="Client Approved" k-format="{0:d}" k-field="ClientApproved">
+                </ak-col>
+                <ak-col k-title="" k-field="" k-width=""></ak-col>
+
+            </ak-grid>
+        </div>
+    </wv-search-page>
+</template>

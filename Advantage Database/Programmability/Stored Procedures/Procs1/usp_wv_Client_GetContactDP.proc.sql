@@ -1,0 +1,25 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Client_GetContactDP]
+(
+	@CDP_ID smallint
+)
+AS
+BEGIN
+	SET NOCOUNT OFF
+	
+	DECLARE 
+	@ERR INT
+
+	SELECT     ISNULL(DIV_CODE, '') AS DIV_CODE, ISNULL(PRD_CODE, '') AS PRD_CODE
+	FROM         CDP_CONTACT_DTL
+	WHERE CDP_CONTACT_ID = @CDP_ID
+	
+	SET @ERR = @@Error
+
+	--RETURN @ERR
+END
+
+
+
+

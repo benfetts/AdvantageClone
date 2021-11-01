@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[DOCUMENT_COMMENT] (
+    [DOCUMENT_COMMENT_ID] INT           IDENTITY (1, 1) NOT NULL,
+    [DOCUMENT_ID]         INT           NOT NULL,
+    [USER_CODE]           VARCHAR (100) NOT NULL,
+    [EMP_CODE]            VARCHAR (6)   NOT NULL,
+    [PAGE_NUMBER]         INT           NOT NULL,
+    [CREATED_DATE]        SMALLDATETIME NOT NULL,
+    [MODIFIED_DATE]       SMALLDATETIME NOT NULL,
+    [COMMENT]             VARCHAR (MAX) NOT NULL
+);
+

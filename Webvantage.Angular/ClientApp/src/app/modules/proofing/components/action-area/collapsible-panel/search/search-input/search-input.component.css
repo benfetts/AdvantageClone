@@ -1,0 +1,19 @@
+button.k-button-icon.k-button {
+  height: 34px !important;
+  width: 34px !important;
+  border-radius: 0px 4px 4px 0px;
+  border: 1px solid;
+  border-color: #CCCCCC !important;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+.wv-input {
+  padding-top: 2px;
+  width: 285px;
+  font-family: "Open Sans", Calibri, Tahoma, Verdana, Arial, sans-serif;
+  border-radius: 4px 0px 0px 4px;
+  margin-bottom: 7px;
+  margin-top: 2px;
+}
+

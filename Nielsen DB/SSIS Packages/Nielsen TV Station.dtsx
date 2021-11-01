@@ -1,0 +1,780 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/4/2017 2:16:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TASC-SQL2014"
+  DTS:CreatorName="ADVANTAGE\mikec"
+  DTS:Description="Nielsen TV Station"
+  DTS:DTSID="{485B1FD8-BEE9-41C4-88C9-54C9FE8772A5}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Nielsen TV Station"
+  DTS:ProtectionLevel="2"
+  DTS:VersionGUID="{07173CA7-62EF-4598-AE50-00DB1F81E4E6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B6921284-226F-4732-8D27-8F4DC595FBF6}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TASC-SQL2014;User ID=SYSADM;Initial Catalog=NIELSENHOSTED;Provider=SQLNCLI11;Auto Translate=false;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="89RG/47Jug=="
+            IV="OSQtl3njafg=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>OSQtl3njafgZ+0r9D+6RtiFqFiSeX3CLK28KNqX3YWJ38ojLOZ6YKtmEhq51kso3GqU6dyno2T4iy6s9x24fVN5najx9h29oJ/1bbu/KJHHQSnuv8lem+1f7mFXgr3wy0Kjw6DfcSjF++GgIlWWJmfbKdN9PmvlFeFsnTDnJqfY=</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2C1BCF92-4616-46F9-AFF7-1270FD50D956}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TASC-SQL2014;User ID=SYSADM;Initial Catalog=NIELSENDATASTORE;Provider=SQLNCLI11;Auto Translate=false;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="KvW9ic2uew=="
+            IV="b188Xwd3GuU=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>b188Xwd3GuVbTTMxSJ7IObyCwJ/kBBJ3rac3wXZCGqQ/s+e6ssJ9hJFtkzwjuw0wgz3iO8CdRG/+RPnQAYzWLQTpFgSALvLchhXiVOr7TUCqDwntPQHLkV2ivDYhJF1DjIqz+qlwIYuGyEW+254jQ7rGkvbWmEUGG/8c0BKzLHc=</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{D3C7ABC9-C2BE-4F38-8FF6-4158A514D769}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - NIELSEN_TV_STATION"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[NIELSEN_TV_STATION]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[NIELSEN_TV_STATION_ID]"
+                      cachedDataType="i4"
+                      cachedName="NIELSEN_TV_STATION_ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[NIELSEN_TV_STATION_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_TV_STATION_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[NIELSEN_MARKET_NUM]"
+                      cachedDataType="i4"
+                      cachedName="NIELSEN_MARKET_NUM"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[NIELSEN_MARKET_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_MARKET_NUM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[STATION_CODE]"
+                      cachedDataType="i4"
+                      cachedName="STATION_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[STATION_CODE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STATION_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[CALL_LETTERS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="CALL_LETTERS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[CALL_LETTERS]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CALL_LETTERS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[SOURCE_TYPE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SOURCE_TYPE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[SOURCE_TYPE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SOURCE_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[PARENT_PLUS_INDICATOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="PARENT_PLUS_INDICATOR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[PARENT_PLUS_INDICATOR]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[PARENT_PLUS_INDICATOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[IS_PARENT]"
+                      cachedDataType="bool"
+                      cachedName="IS_PARENT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[IS_PARENT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[IS_PARENT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[IS_SATELLITE]"
+                      cachedDataType="bool"
+                      cachedName="IS_SATELLITE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[IS_SATELLITE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[IS_SATELLITE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[AFFILIATION]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="AFFILIATION"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[AFFILIATION]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AFFILIATION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[CABLE_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="CABLE_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[CABLE_NAME]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CABLE_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[CHANNEL_NUM]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="CHANNEL_NUM"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[CHANNEL_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHANNEL_NUM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[DISTRIBUTOR_GROUP]"
+                      cachedDataType="i4"
+                      cachedName="DISTRIBUTOR_GROUP"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[DISTRIBUTOR_GROUP]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DISTRIBUTOR_GROUP]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[STATION_TYPE]"
+                      cachedDataType="i2"
+                      cachedName="STATION_TYPE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[STATION_TYPE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STATION_TYPE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[REPORTABILITY_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="REPORTABILITY_STATUS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[REPORTABILITY_STATUS]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[REPORTABILITY_STATUS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].Columns[HOME_MARKET_NUM]"
+                      cachedDataType="i4"
+                      cachedName="HOME_MARKET_NUM"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[HOME_MARKET_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HOME_MARKET_NUM]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[NIELSEN_TV_STATION_ID]"
+                      dataType="i4"
+                      name="NIELSEN_TV_STATION_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[NIELSEN_MARKET_NUM]"
+                      dataType="i4"
+                      name="NIELSEN_MARKET_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[STATION_CODE]"
+                      dataType="i4"
+                      name="STATION_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[CALL_LETTERS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="CALL_LETTERS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[SOURCE_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SOURCE_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[PARENT_PLUS_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="PARENT_PLUS_INDICATOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[IS_PARENT]"
+                      dataType="bool"
+                      name="IS_PARENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[IS_SATELLITE]"
+                      dataType="bool"
+                      name="IS_SATELLITE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[AFFILIATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AFFILIATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[CABLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="CABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[CHANNEL_NUM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="CHANNEL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[DISTRIBUTOR_GROUP]"
+                      dataType="i4"
+                      name="DISTRIBUTOR_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[STATION_TYPE]"
+                      dataType="i2"
+                      name="STATION_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[REPORTABILITY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="REPORTABILITY_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input].ExternalColumns[HOME_MARKET_NUM]"
+                      dataType="i4"
+                      name="HOME_MARKET_NUM" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Query"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @MAXID bigint
+
+SELECT @MAXID = COALESCE(MAX(NIELSEN_TV_STATION_ID), 0)
+FROM NIELSENHOSTED.dbo.NIELSEN_TV_STATION
+
+SELECT *
+FROM dbo.NIELSEN_TV_STATION
+WHERE NIELSEN_TV_STATION_ID &gt; @MAXID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_TV_STATION_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_TV_STATION_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_TV_STATION_ID]"
+                      name="NIELSEN_TV_STATION_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_MARKET_NUM]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_MARKET_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_MARKET_NUM]"
+                      name="NIELSEN_MARKET_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STATION_CODE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[STATION_CODE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STATION_CODE]"
+                      name="STATION_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CALL_LETTERS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CALL_LETTERS]"
+                      length="12"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CALL_LETTERS]"
+                      name="CALL_LETTERS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SOURCE_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_TYPE]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SOURCE_TYPE]"
+                      name="SOURCE_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[PARENT_PLUS_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[PARENT_PLUS_INDICATOR]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[PARENT_PLUS_INDICATOR]"
+                      name="PARENT_PLUS_INDICATOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[IS_PARENT]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[IS_PARENT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[IS_PARENT]"
+                      name="IS_PARENT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[IS_SATELLITE]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[IS_SATELLITE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[IS_SATELLITE]"
+                      name="IS_SATELLITE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AFFILIATION]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AFFILIATION]"
+                      length="7"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AFFILIATION]"
+                      name="AFFILIATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CABLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CABLE_NAME]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CABLE_NAME]"
+                      name="CABLE_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHANNEL_NUM]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CHANNEL_NUM]"
+                      length="7"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[CHANNEL_NUM]"
+                      name="CHANNEL_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DISTRIBUTOR_GROUP]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[DISTRIBUTOR_GROUP]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DISTRIBUTOR_GROUP]"
+                      name="DISTRIBUTOR_GROUP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STATION_TYPE]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[STATION_TYPE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STATION_TYPE]"
+                      name="STATION_TYPE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[REPORTABILITY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[REPORTABILITY_STATUS]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[REPORTABILITY_STATUS]"
+                      name="REPORTABILITY_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HOME_MARKET_NUM]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[HOME_MARKET_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[HOME_MARKET_NUM]"
+                      name="HOME_MARKET_NUM"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_TV_STATION_ID]"
+                      dataType="i4"
+                      name="NIELSEN_TV_STATION_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_MARKET_NUM]"
+                      dataType="i4"
+                      name="NIELSEN_MARKET_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[STATION_CODE]"
+                      dataType="i4"
+                      name="STATION_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CALL_LETTERS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      name="CALL_LETTERS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SOURCE_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[PARENT_PLUS_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="PARENT_PLUS_INDICATOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[IS_PARENT]"
+                      dataType="bool"
+                      name="IS_PARENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[IS_SATELLITE]"
+                      dataType="bool"
+                      name="IS_SATELLITE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AFFILIATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="AFFILIATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CABLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="CABLE_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[CHANNEL_NUM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="CHANNEL_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[DISTRIBUTOR_GROUP]"
+                      dataType="i4"
+                      name="DISTRIBUTOR_GROUP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[STATION_TYPE]"
+                      dataType="i2"
+                      name="STATION_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[REPORTABILITY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="REPORTABILITY_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[HOME_MARKET_NUM]"
+                      dataType="i4"
+                      name="HOME_MARKET_NUM" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_TV_STATION_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_TV_STATION_ID]"
+                      name="NIELSEN_TV_STATION_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_MARKET_NUM]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_MARKET_NUM]"
+                      name="NIELSEN_MARKET_NUM" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[STATION_CODE]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[STATION_CODE]"
+                      name="STATION_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CALL_LETTERS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CALL_LETTERS]"
+                      name="CALL_LETTERS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SOURCE_TYPE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SOURCE_TYPE]"
+                      name="SOURCE_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[PARENT_PLUS_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[PARENT_PLUS_INDICATOR]"
+                      name="PARENT_PLUS_INDICATOR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[IS_PARENT]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[IS_PARENT]"
+                      name="IS_PARENT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[IS_SATELLITE]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[IS_SATELLITE]"
+                      name="IS_SATELLITE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AFFILIATION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AFFILIATION]"
+                      name="AFFILIATION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CABLE_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CABLE_NAME]"
+                      name="CABLE_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CHANNEL_NUM]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[CHANNEL_NUM]"
+                      name="CHANNEL_NUM" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[DISTRIBUTOR_GROUP]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[DISTRIBUTOR_GROUP]"
+                      name="DISTRIBUTOR_GROUP" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[STATION_TYPE]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[STATION_TYPE]"
+                      name="STATION_TYPE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[REPORTABILITY_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[REPORTABILITY_STATUS]"
+                      name="REPORTABILITY_STATUS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[HOME_MARKET_NUM]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[HOME_MARKET_NUM]"
+                      name="HOME_MARKET_NUM" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - NIELSEN_TV_STATION.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

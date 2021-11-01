@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BCCDbContext" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="BCCObjectContextConnection" annotation:LazyLoadingEnabled="false">
+    <FunctionImport Name="LoadProductionSelectionByBillingApprovals" ReturnType="Collection(BCCDbContext.ProductionSelectionByBillingApproval)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ba_batch_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="finished" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionByCampaigns" ReturnType="Collection(BCCDbContext.ProductionSelectionByCampaign)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionByClientDivisions" ReturnType="Collection(BCCDbContext.ProductionSelectionByClientDivision)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionByClientDivisionProducts" ReturnType="Collection(BCCDbContext.ProductionSelectionByClientDivisionProduct)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionByClients" ReturnType="Collection(BCCDbContext.ProductionSelectionByClient)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ba_batch_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionByJobComponents" ReturnType="Collection(BCCDbContext.ProductionSelectionByJobComponent)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ba_batch_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="bill_user_in" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionByJobs" ReturnType="Collection(BCCDbContext.ProductionSelectionByJob)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ba_batch_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadOtherUsersMediaSelections" ReturnType="Collection(BCCDbContext.OtherUsersMediaSelection)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadOtherUsersProductionSelections" ReturnType="Collection(BCCDbContext.OtherUsersProductionSelection)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadBillingStatus" ReturnType="Collection(BCCDbContext.BillingStatus)">
+      <Parameter Name="bill_user_in" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionByAccountExecutives" ReturnType="Collection(BCCDbContext.ProductionSelectionByAccountExecutive)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionJobs" ReturnType="Collection(BCCDbContext.ProductionJob)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="BillingApprovalBatches" EntityType="BCCDbContext.BillingApprovalBatch" />
+    <FunctionImport Name="LoadBillingCommandCenterAgencySettings" ReturnType="Collection(BCCDbContext.BillingCommandCenterAgencySetting)">
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="BillingCommandCenters" EntityType="BCCDbContext.BillingCommandCenter" />
+    <AssociationSet Name="BillingApprovalBatchBillingCommandCenters" Association="BCCDbContext.BillingApprovalBatchBillingCommandCenters">
+      <End Role="BillingApprovalBatch" EntitySet="BillingApprovalBatches" />
+      <End Role="BillingCommandCenters" EntitySet="BillingCommandCenters" />
+    </AssociationSet>
+    <FunctionImport Name="LoadMediaSelectionByCampaigns" ReturnType="Collection(BCCDbContext.MediaSelectionByCampaign)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaSelectionByClientDivisions" ReturnType="Collection(BCCDbContext.MediaSelectionByClientDivision)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaSelectionByClientDivisionProducts" ReturnType="Collection(BCCDbContext.MediaSelectionByClientDivisionProduct)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaSelectionByClients" ReturnType="Collection(BCCDbContext.MediaSelectionByClient)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaSelectionByClientPOs" ReturnType="Collection(BCCDbContext.MediaSelectionByClientPO)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaSelectionByMarkets" ReturnType="Collection(BCCDbContext.MediaSelectionByMarket)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaSelectionByOrders" ReturnType="Collection(BCCDbContext.MediaSelectionByOrder)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaSelectionByOrderLines" ReturnType="Collection(BCCDbContext.MediaSelectionByOrderLine)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadMediaOrders" ReturnType="Collection(BCCDbContext.MediaOrder)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadBillingCommandCenterInvoiceDatePostPeriod" ReturnType="Collection(BCCDbContext.BillingCommandCenterInvoiceDatePostPeriod)">
+      <Parameter Name="billing_user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionReconcileInterimDetails" ReturnType="Collection(BCCDbContext.ProductionReconcileInterimDetail)">
+      <Parameter Name="job_number" Mode="In" Type="Int32" />
+      <Parameter Name="job_component_nbr" Mode="In" Type="Int16" />
+      <Parameter Name="ba_id" Mode="In" Type="Int32" />
+      <Parameter Name="et_cutoff_date" Mode="In" Type="DateTime" />
+      <Parameter Name="io_cutoff_date" Mode="In" Type="DateTime" />
+      <Parameter Name="ap_cutoff_pp" Mode="In" Type="String" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadProductionSelectionBySalesClass" ReturnType="Collection(BCCDbContext.ProductionSelectionBySalesClass)">
+      <Parameter Name="bcc_id_in" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LoadInvoiceAssigned" ReturnType="Collection(BCCDbContext.InvoiceAssigned)">
+      <Parameter Name="bill_user_in" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LoadInvoiceAssignedJournalEntry" ReturnType="Collection(BCCDbContext.InvoiceAssignedJournalEntry)">
+      <Parameter Name="bill_user_in" Mode="In" Type="String" />
+      <Parameter Name="ret_val" Mode="InOut" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="LoadInvoiceAssignedCoop" ReturnType="Collection(BCCDbContext.InvoiceAssignedCoop)">
+      <Parameter Name="billing_user_in" Mode="In" Type="String" />
+      <Parameter Name="job_number" Mode="In" Type="Int32" />
+      <Parameter Name="job_component_nbr" Mode="In" Type="Int16" />
+    </FunctionImport>
+    <FunctionImport Name="LoadInvoiceAssignedCoopJob" ReturnType="Collection(BCCDbContext.InvoiceAssignedCoopJob)">
+      <Parameter Name="BillingUser" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LoadBillingHistory" ReturnType="Collection(BCCDbContext.BillingHistory)">
+      <Parameter Name="JobNumber" Mode="In" Type="Int32" />
+      <Parameter Name="JobComponentNumber" Mode="In" Type="Int16" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="OtherUsersMediaSelection">
+    <Property Type="Int32" Name="BillingCommandCenterID" Nullable="false" />
+    <Property Type="String" Name="BillingUser" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmployeeName" Nullable="true" MaxLength="61" />
+    <Property Type="String" Name="MediaFrom" Nullable="false" MaxLength="8" />
+    <Property Type="Int32" Name="OrderNumber" Nullable="false" />
+    <Property Type="Int16" Name="LineNumber" Nullable="false" />
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DivisionCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="BatchName" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="OtherUsersProductionSelection">
+    <Property Type="Int32" Name="BillingCommandCenterID" Nullable="false" />
+    <Property Type="String" Name="BillingUser" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EmployeeName" Nullable="true" MaxLength="61" />
+    <Property Type="Int32" Name="JobNumber" Nullable="false" />
+    <Property Type="Int16" Name="JobComponentNumber" Nullable="false" />
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DivisionCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="BatchName" Nullable="true" MaxLength="25" />
+  </ComplexType>
+  <ComplexType Name="BillingStatus">
+    <Property Type="Int32" Name="IsAssigned" Nullable="true" />
+    <Property Type="Int32" Name="IsPrinted" Nullable="true" />
+    <Property Type="Boolean" Name="IsProcessed" Nullable="false" />
+    <Property Type="Boolean" Name="IsCoopSaved" Nullable="false" />
+    <Property Type="Boolean" Name="HasCoopJobs" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByBillingApproval">
+    <Property Type="Int32" Name="BillingApprovalID" Nullable="false" />
+    <Property Type="String" Name="BillingApprovalClientName" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="BillingApprovalBatchID" Nullable="true" />
+    <Property Type="Int32" Name="JobNumber" Nullable="false" />
+    <Property Type="String" Name="JobDescription" Nullable="true" MaxLength="60" />
+    <Property Type="Int16" Name="JobComponentNumber" Nullable="false" />
+    <Property Type="String" Name="ComponentDescription" Nullable="false" MaxLength="60" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+    <Property Type="Int32" Name="BillingApprovalHeaderID" Nullable="false" />
+    <Property Type="String" Name="BatchDescription" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByCampaign">
+    <Property Type="String" Name="ClientCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="CampaignID" Nullable="false" />
+    <Property Type="String" Name="CampaignCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="CampaignName" Nullable="true" MaxLength="60" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByClient">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByClientDivision">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByClientDivisionProduct">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByJob">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="JobNumber" Nullable="false" />
+    <Property Type="String" Name="JobDescription" Nullable="true" MaxLength="60" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByJobComponent">
+    <Property Type="Int32" Name="JobNumber" Nullable="false" />
+    <Property Type="String" Name="JobDescription" Nullable="true" MaxLength="60" />
+    <Property Type="Int16" Name="JobComponentNumber" Nullable="false" />
+    <Property Type="String" Name="ComponentDescription" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionByAccountExecutive">
+    <Property Type="String" Name="EmployeeCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="64" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionJob">
+    <Property Type="Int32" Name="JobNumber" Nullable="true" />
+    <Property Type="Int16" Name="JobComponentNumber" Nullable="true" />
+    <Property Type="String" Name="ClientCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="DivisionCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="6" />
+    <Property Type="Int16" Name="AdvanceBillingReconcileStatus" Nullable="true" />
+    <Property Type="Decimal" Name="ReconcilePendingAmount" Nullable="true" Precision="15" Scale="2" />
+  </ComplexType>
+  <EntityType Name="BillingApprovalBatch">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BatchDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+    <Property Name="DateCutoff" Type="DateTime" Precision="0" />
+    <Property Name="CutoffPostPeriodCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="IncludeNoDTL" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeNB" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeFee" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeInternet" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeNewspaper" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeMagazine" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeOutOfHome" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeRadio" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeTV" Type="Boolean" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsFinished" Type="Boolean" Nullable="false" />
+    <Property Name="ApprovalMethod" Type="Byte" Nullable="false" />
+    <Property Name="SelectionOption" Type="Int16" />
+    <Property Name="ManagerType" Type="Int16" />
+    <Property Name="BillingApprovalExists" Type="Boolean" />
+    <Property Name="BillingApprovalBilledAny" Type="Boolean" />
+    <Property Name="BillingApprovalBilledAll" Type="Boolean" />
+    <NavigationProperty Name="BillingCommandCenters" Relationship="BCCDbContext.BillingApprovalBatchBillingCommandCenters" FromRole="BillingApprovalBatch" ToRole="BillingCommandCenters" />
+  </EntityType>
+  <ComplexType Name="BillingCommandCenterAgencySetting">
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Value" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="BillingCommandCenter">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillingUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ProductionSelectBy" Type="Int16" />
+    <Property Name="IsProduction" Type="Boolean" />
+    <Property Name="EmployeeTimeDateCutoff" Type="DateTime" Precision="0" />
+    <Property Name="IncomeOnlyDateCutoff" Type="DateTime" Precision="0" />
+    <Property Name="AdvanceBillingDateCutoff" Type="DateTime" Precision="0" />
+    <Property Name="APPostPeriodCodeCutoff" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="BillingApprovalBatchID" Type="Int32" />
+    <Property Name="IsMedia" Type="Boolean" />
+    <Property Name="MediaSelectBy" Type="Int16" />
+    <Property Name="MediaEndDate" Type="DateTime" Precision="0" />
+    <Property Name="IsNewspaper" Type="Boolean" />
+    <Property Name="IsMagazine" Type="Boolean" />
+    <Property Name="IsRadio" Type="Boolean" />
+    <Property Name="IsTelevision" Type="Boolean" />
+    <Property Name="IsOutOfHome" Type="Boolean" />
+    <Property Name="IsInternet" Type="Boolean" />
+    <Property Name="MediaBroadcastMonthStart" Type="DateTime" Precision="0" />
+    <Property Name="MediaBroadcastMonthEnd" Type="DateTime" Precision="0" />
+    <Property Name="IncludeZeroSpots" Type="Boolean" />
+    <Property Name="MediaStartDate" Type="DateTime" Precision="0" />
+    <Property Name="DateCuttoffToUseFlag" Type="Int16" />
+    <Property Name="IncludeUnbilledOrdersOnly" Type="Int16" />
+    <Property Name="ProductionSelectionOption" Type="Int16" />
+    <Property Name="IsRadioDaily" Type="Boolean" />
+    <Property Name="IsTelevisionDaily" Type="Boolean" />
+    <Property Name="IsRadioMonthly" Type="Boolean" />
+    <Property Name="IsTelevisionMonthly" Type="Boolean" />
+    <NavigationProperty Name="BillingApprovalBatch" Relationship="BCCDbContext.BillingApprovalBatchBillingCommandCenters" FromRole="BillingCommandCenters" ToRole="BillingApprovalBatch" />
+    <Property Name="BatchName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SequenceNumber" Type="Int16" />
+    <Property Name="ProductionJobType" Type="Int16" />
+    <Property Name="IsProductionSelectionLocked" Type="Boolean" Nullable="false" />
+    <Property Name="IncludeLegacy" Type="Boolean" Nullable="false" />
+    <Property Name="JobMediaBillDateFrom" Type="DateTime" Precision="0" />
+    <Property Name="JobMediaBillDateTo" Type="DateTime" Precision="0" />
+  </EntityType>
+  <Association Name="BillingApprovalBatchBillingCommandCenters">
+    <End Type="BCCDbContext.BillingApprovalBatch" Role="BillingApprovalBatch" Multiplicity="0..1" />
+    <End Type="BCCDbContext.BillingCommandCenter" Role="BillingCommandCenters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BillingApprovalBatch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BillingCommandCenters">
+        <PropertyRef Name="BillingApprovalBatchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="MediaSelectionByCampaign">
+    <Property Type="String" Name="ClientCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="CampaignID" Nullable="false" />
+    <Property Type="String" Name="CampaignCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="CampaignName" Nullable="true" MaxLength="60" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaSelectionByClientDivision">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaSelectionByClientDivisionProduct">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ProductDescription" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaSelectionByClient">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaSelectionByClientPO">
+    <Property Type="String" Name="ClientPO" Nullable="false" MaxLength="25" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaSelectionByMarket">
+    <Property Type="String" Name="MarketCode" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="MarketDescription" Nullable="true" MaxLength="40" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaSelectionByOrder">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="OrderNumber" Nullable="false" />
+    <Property Type="String" Name="OrderDescription" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="MediaFrom" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Units" Nullable="true" MaxLength="2" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaSelectionByOrderLine">
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="OrderNumber" Nullable="false" />
+    <Property Type="Int32" Name="LineNumber" Nullable="false" />
+    <Property Type="String" Name="OrderDescription" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="MediaFrom" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Units" Nullable="true" MaxLength="2" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaOrder">
+    <Property Type="Int32" Name="OrderNumber" Nullable="false" />
+    <Property Type="Int32" Name="LineNumber" Nullable="true" />
+    <Property Type="Int16" Name="BroadcastYear" Nullable="true" />
+    <Property Type="Int16" Name="BroadcastMonth" Nullable="true" />
+    <Property Type="String" Name="MediaFrom" Nullable="false" MaxLength="8" />
+    <Property Type="String" Name="ClientCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="DivisionCode" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="ProductCode" Nullable="false" MaxLength="6" />
+  </ComplexType>
+  <ComplexType Name="BillingCommandCenterInvoiceDatePostPeriod">
+    <Property Type="String" Name="PostPeriodCode" Nullable="true" MaxLength="6" />
+    <Property Type="DateTime" Name="InvoiceDate" Nullable="true" Precision="16" />
+  </ComplexType>
+  <ComplexType Name="ProductionReconcileInterimDetail">
+    <Property Type="String" Name="FNC_CODE" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="FNC_TYPE" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="FNC_DESCRIPTION" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="ITEM_ID" Nullable="false" />
+    <Property Type="Int16" Name="LINE_NUMBER" Nullable="true" />
+    <Property Type="Int16" Name="AP_SEQ" Nullable="true" />
+    <Property Type="Decimal" Name="EXT_AMOUNT" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="EXT_MARKUP_AMT" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="EXT_STATE_RESALE" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="EXT_COUNTY_RESALE" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="EXT_CITY_RESALE" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="EXT_NONRESALE_TAX" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="LINE_TOTAL" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Int32" Name="BA_ID" Nullable="true" />
+    <Property Type="Decimal" Name="WIP_AMOUNT" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Decimal" Name="AMOUNT" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Int32" Name="AB_FLAG" Nullable="true" />
+    <Property Type="Int32" Name="AR_INV_NBR" Nullable="true" />
+    <Property Type="String" Name="TAX_CODE" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="GLACODE_STATE" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="GLACODE_CNTY" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="GLACODE_CITY" Nullable="true" MaxLength="30" />
+    <Property Type="Decimal" Name="PREV_REC" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="Int16" Name="REC_FLAG" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductionSelectionBySalesClass">
+    <Property Type="String" Name="SalesClassCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="SalesClassDescription" Nullable="false" MaxLength="30" />
+    <Property Type="Int16" Name="IsSelected" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="InvoiceAssigned">
+    <Property Type="Int32" Name="ARInvoiceNumber" Nullable="false" />
+    <Property Type="Int16" Name="ARInvoiceSequence" Nullable="false" />
+    <Property Type="DateTime" Name="ARInvoiceDate" Nullable="true" Precision="16" />
+    <Property Type="Decimal" Name="ARInvoiceAmount" Nullable="true" Precision="15" Scale="2" />
+    <Property Type="String" Name="RecordType" Nullable="true" MaxLength="11" />
+  </ComplexType>
+  <ComplexType Name="InvoiceAssignedJournalEntry">
+    <Property Type="Int32" Name="GLTransaction" Nullable="false" />
+    <Property Type="Int16" Name="GLSequenceNumber" Nullable="false" />
+    <Property Type="String" Name="GLACode" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="GLDescription" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="PostPeriodCode" Nullable="true" MaxLength="6" />
+    <Property Type="Double" Name="Amount" Nullable="false" />
+    <Property Type="String" Name="Remark" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="ClientCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="DivisionCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="6" />
+  </ComplexType>
+  <ComplexType Name="InvoiceAssignedCoop">
+    <Property Type="Int32" Name="WorkARFunctionID" Nullable="false" />
+    <Property Type="Int32" Name="JobNumber" Nullable="false" />
+    <Property Type="Int16" Name="JobComponentNumber" Nullable="true" />
+    <Property Type="String" Name="JobComponentDescription" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="ClientCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="DivisionCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ProductCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="FunctionCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="FunctionDescription" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="FunctionType" Nullable="false" MaxLength="1" />
+    <Property Type="Decimal" Name="CoopPercent" Nullable="true" Precision="9" Scale="4" />
+    <Property Type="Decimal" Name="CostAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="CCCostAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="IncomeAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="CCIncomeAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="SalesTaxCode" Nullable="true" MaxLength="4" />
+    <Property Type="Boolean" Name="DetailTaxFlag" Nullable="true" />
+    <Property Type="Boolean" Name="InvoiceTaxFlag" Nullable="true" />
+    <Property Type="String" Name="CoopCode" Nullable="true" MaxLength="6" />
+    <Property Type="Decimal" Name="CostPercent" Nullable="true" Precision="9" Scale="4" />
+    <Property Type="Decimal" Name="IncomePercent" Nullable="true" Precision="9" Scale="4" />
+    <Property Type="String" Name="JobDescription" Nullable="true" MaxLength="60" />
+    <Property Type="Byte" Name="JobAdvanceBillingFlag" Nullable="true" />
+    <Property Type="Boolean" Name="IsSummaryFlag" Nullable="true" />
+    <Property Type="Boolean" Name="FromAdv" Nullable="true" />
+    <Property Type="Decimal" Name="EmployeeTimeAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="IncomeOnlyAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AdvanceBillIncomeAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AdvanceBillCostAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="MarkupAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AdvanceBillMarkupAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AdvanceBillSaleAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AdvanceBillNonResaleTaxAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="StateTaxAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="CountyTaxAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="CityTaxAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NonResaleTaxAmount" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TotalBill" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="IsModified" Nullable="true" />
+    <Property Type="Boolean" Name="CCBalancedFlag" Nullable="true" />
+    <Property Type="Boolean" Name="CCAmountModified" Nullable="true" />
+    <Property Type="Decimal" Name="CCVariance" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="CCInterimReconcile" Nullable="true" />
+    <Property Type="Int32" Name="FunctionRowCount" Nullable="true" />
+    <Property Type="Int16" Name="NewspaperCoopSplit" Nullable="true" />
+    <Property Type="Int32" Name="CampaignID" Nullable="true" />
+    <Property Type="Int32" Name="SummaryRowId" Nullable="true" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="CampaignCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="CampaignName" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="InvoiceAssignedCoopJob">
+    <Property Type="Int32" Name="JobNumber" Nullable="true" />
+    <Property Type="Int16" Name="JobComponentNumber" Nullable="true" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="DivisionName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="ProductName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="OfficeName" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="CampaignCode" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="CampaignName" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="BillingHistory">
+    <Property Type="Int32" Name="InvoiceNumber" Nullable="true" />
+    <Property Type="String" Name="InvoiceType" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="InvoiceDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="PostingPeriod" Nullable="true" MaxLength="6" />
+    <Property Type="Decimal" Name="RetainedAdvanceBilling" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="IncomeRecognized" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Boolean" Name="HasDocuments" Nullable="true" />
+    <Property Type="Decimal" Name="Hours" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="QTY" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Actual" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="AdvanceAmount" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="ResaleTax" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="InvoiceTotal" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="String" Name="ReconciledMethod" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="GLTransaction" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="MediaBillingHistory">
+    <Property Type="Int32" Name="InvoiceNumber" Nullable="true" />
+    <Property Type="String" Name="InvoiceType" Nullable="true" MaxLength="2" />
+    <Property Type="DateTime" Name="InvoiceDate" Nullable="true" Precision="16" />
+    <Property Type="String" Name="PostingPeriod" Nullable="true" MaxLength="6" />
+    <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="ResaleTax" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="InvoiceTotal" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Boolean" Name="HasDocuments" Nullable="true" />
+    <Property Type="Int32" Name="GLTransaction" Nullable="true" />
+  </ComplexType>
+</Schema>

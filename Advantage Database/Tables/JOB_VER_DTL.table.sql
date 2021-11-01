@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[JOB_VER_DTL] (
+    [JOB_VER_HDR_ID]  INT         NOT NULL,
+    [JV_TMPLT_DTL_ID] INT         NOT NULL,
+    [JOB_VER_VALUE]   SQL_VARIANT NULL
+);
+

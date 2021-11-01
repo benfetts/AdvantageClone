@@ -1,0 +1,87 @@
+CREATE PROC advsp_cleared_check_media_vcc_load_batch
+	@BatchName VARCHAR(50)
+
+AS
+
+DECLARE @BATCH TABLE (
+	ID int NOT NULL,
+	BankCode varchar(4) NOT NULL,
+	BankReference varchar(50) NOT NULL,
+    OrderLine varchar(50) NOT NULL,
+    CheckNumber int NULL,
+    CheckVoid bit NOT NULL,
+    PreviouslyCleared bit NOT NULL,
+    TotalCheckAmount decimal(18,2) NULL,
+    DetailAmount decimal(18,2) NOT NULL,
+	BankAmount decimal(18,2) NOT NULL,
+	VendorName varchar(40) NULL,
+	MerchantName varchar(30) NULL,
+	ClearedDate datetime NOT NULL,
+	TotalBankAmount decimal(18,2) NOT NULL
+)
+
+INSERT INTO @BATCH
+SELECT
+	[ID] = s.ID,
+	[BankCode] = s.BANK_CODE,
+	[BankReference] = s.BANK_REFERENCE,
+    [OrderLine] = CAST(vcc.ORDER_NBR AS VARCHAR(10)) + '-' + CAST(vcc.LINE_NBR AS VARCHAR(10)),
+    [CheckNumber] = cr.CHECK_NBR,
+    [CheckVoid] = CAST(COALESCE(cr.VOID_FLAG, 0) as bit),
+    [PreviouslyCleared] = CAST(COALESCE(cr.CLEARED, 0) as bit),
+    [TotalCheckAmount] = cr.CHECK_AMT,
+    [DetailAmount] = COALESCE(APDets.DISBURSED_AMT, 0),
+	[BankAmount] = s.BANK_AMT,
+	[VendorName]= v.VN_NAME,
+	[MerchantName] = s.MERCHANT_NAME,
+	[ClearedDate] = s.CLEARED_DATE,
+	[TotalBankAmount] = 0
+FROM dbo.IMP_CLR_CHK_MEDIA_VCC_STAGING s
+	INNER JOIN dbo.VCC_CARD vcc ON s.BANK_REFERENCE = vcc.CARD_CTS 
+	LEFT OUTER JOIN (
+				SELECT DISBURSED_AMT = SUM(COALESCE(NET_AMT,0) + COALESCE(DISCOUNT_AMT,0) + COALESCE(NETCHARGES,0) + COALESCE(VENDOR_TAX,0)), 
+					AP_ID, ORDER_NBR, ORDER_LINE_NBR
+				FROM dbo.AP_INTERNET
+				GROUP BY AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				UNION
+				SELECT DISBURSED_AMT = SUM(DISBURSED_AMT), 
+					AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				FROM dbo.AP_MAGAZINE
+				GROUP BY AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				UNION
+				SELECT DISBURSED_AMT = SUM(DISBURSED_AMT), 
+					AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				FROM dbo.AP_NEWSPAPER 
+				GROUP BY AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				UNION
+				SELECT DISBURSED_AMT = SUM(COALESCE(NET_AMT,0) + COALESCE(DISCOUNT_AMT,0) + COALESCE(NETCHARGES,0) + COALESCE(VENDOR_TAX,0)), 
+					AP_ID, ORDER_NBR, ORDER_LINE_NBR
+				FROM dbo.AP_OUTDOOR
+				GROUP BY AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				UNION 
+				SELECT DISBURSED_AMT = SUM(COALESCE(EXT_NET_AMT,0) + COALESCE(DISC_AMT,0) + COALESCE(NETCHARGES,0) + COALESCE(VENDOR_TAX,0)), 
+					AP_ID, ORDER_NBR, ORDER_LINE_NBR
+				FROM dbo.AP_RADIO
+				GROUP BY AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				UNION 
+				SELECT DISBURSED_AMT = SUM(COALESCE(EXT_NET_AMT,0) + COALESCE(DISC_AMT,0) + COALESCE(NETCHARGES,0) + COALESCE(VENDOR_TAX,0)), 
+					AP_ID, ORDER_NBR, ORDER_LINE_NBR
+				FROM dbo.AP_TV
+				GROUP BY AP_ID, ORDER_NBR, ORDER_LINE_NBR 
+				) APDets ON vcc.ORDER_NBR = APDets.ORDER_NBR AND vcc.LINE_NBR = APDets.ORDER_LINE_NBR 
+	LEFT OUTER JOIN dbo.AP_PMT_HIST aph ON APDets.AP_ID = aph.AP_ID
+	LEFT OUTER JOIN dbo.CHECK_REGISTER cr ON aph.AP_CHK_NBR = cr.CHECK_NBR 
+	LEFT OUTER JOIN dbo.AP_HEADER ah ON ah.AP_ID = aph.AP_ID AND COALESCE(ah.MODIFY_FLAG, 0) = 0
+	LEFT OUTER JOIN dbo.VENDOR v on ah.VN_FRL_EMP_CODE = v.VN_CODE
+WHERE s.BATCH_NAME = @BatchName 
+
+UPDATE @BATCH SET TotalBankAmount = s.SumBankAmount 
+FROM @BATCH b
+	INNER JOIN (
+				SELECT SUM(BankAmount) as SumBankAmount, CheckNumber 
+				FROM @BATCH 
+				GROUP BY CheckNumber 
+				) s ON b.CheckNumber = s.CheckNumber 
+
+SELECT * FROM @BATCH 
+ORDER BY CheckNumber

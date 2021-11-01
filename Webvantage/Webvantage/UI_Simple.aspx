@@ -1,0 +1,1 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="UI_Simple.aspx.vb" Inherits="Webvantage.UI_Simple" Theme="Metro" %>

@@ -1,0 +1,41 @@
+@import '../../../../../../theme/colors';
+@import '../../../../../../theme/mixins/font';
+
+.current-file {
+  width: 75px;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-icon {
+    @include font-base(14px, 600, 14px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-right: 13px;
+
+    &-text {
+      position: absolute;
+    }
+  }
+
+  &-text {
+    @include font-base;
+    display: block;
+
+    .file-name {
+      @include font-base(14px, normal, 20px);
+      color: $black;
+    }
+
+    .file-label {
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 10px;
+      text-overflow: ellipsis;
+      color: $black-light;
+    }
+  }
+}

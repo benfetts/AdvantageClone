@@ -1,0 +1,7 @@
+<div data-options="dxView : { name: 'security', title: 'Security' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <p style="padding: 5px">
+            Security landing page
+        </p>
+    </div>
+</div>

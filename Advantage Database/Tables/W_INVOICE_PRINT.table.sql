@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[W_INVOICE_PRINT] (
+    [W_INVOICE_PRINT_ID] INT           IDENTITY (1, 1) NOT NULL,
+    [PRINT_USER]         VARCHAR (100) NOT NULL,
+    [AR_INV_NBR]         INT           NOT NULL,
+    [CL_CODE]            VARCHAR (6)   NOT NULL,
+    [AR_INV_DATE]        SMALLDATETIME NOT NULL,
+    [PRINT_DATE]         SMALLDATETIME NOT NULL
+);
+

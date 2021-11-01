@@ -1,0 +1,63 @@
+﻿<template>
+    <style>
+    </style>
+    <require from="./mention-item"></require>
+    <div class="${fullScreen ? 'full-screen' : ''} ${replyLevel > 0 ? 'comment-view-level reply-level' : 'comment-view'}">
+        <div class="comment-employee" title="${employeeFullName}" style="margin-right: 5px;">
+            <img if.bind="hasImage == true" src="Utilities/CommentPicture/${employeeCode}" class="comment-image" />
+            <div if.bind="hasImage == false && initials && initials != ''" class="comment-image comment-image-bg">
+                <span class="comment-image-text">${initials}</span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <div>
+                <div style="display: inline-block;">
+                    <small>${employeeFullName}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;${formatCustodyStartAndEnd(custodyStartDate, custodyEndDate)}</small>
+                </div>
+                <div style="display: inline-block;" if.bind="replyLevel == 0">
+                    <small>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" click.delegate="toggleFullscreen()" title="${fullScreen ? 'Exit full screen' : 'Open comment in full screen'}"><span class="glyphicon glyphicon-zoom-${fullScreen ? 'out' : 'in'}"></span></a>&nbsp;&nbsp;<a href="javascript:void(0)" click.delegate="copyCommentToClipboard()" title="Copy comment text to clipboard"><span class="glyphicon glyphicon-copy"></span></a></small>
+                </div>
+                <div style="display: inline-block;" if.bind="replyLevel < 2">
+                    <small>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" click.delegate="showHideReplyTextarea()" title="Reply to this comment"><span class="">Reply</span></a></small>
+                </div>
+            </div>
+            <div innerhtml.bind="comment" ref="commentRef"></div>
+            <div if.bind="documentList && documentList.length > 0" style="margin-top: 10px;">
+                <div repeat.for="doc of documentList">
+                    <a if.bind="doc.ID > 0" href="javascript:void(0)" click.delegate="getDocument(doc)" title="Click to download ${doc.Name}">${doc.Name}</a>
+                    <a if.bind="doc.ID <= 0" href="javascript:void(0)" click.delegate="openLink(doc)" title="Click to go to URL ${doc.Name}">${doc.Title}</a>
+                </div>
+            </div>            
+            <div if.bind="showReplyTextbox == true" style="margin-top: 12px; width:100%;">
+                <input type="text" 
+                       class="e-textbox" 
+                       value.bind="replyText" 
+                       style="width: 100%;" 
+                       title="Reply to this comment here." 
+                       placeholder="  Write a reply here..."
+                       keyup.delegate="saveReplyOnEnter($event)"
+                       focus.bind="focusReplyInput"/>
+            </div>
+        </div>
+        <div class="comment-reply" if.bind="replyList && replyList.length > 0">
+            <div style="padding-left: 30px;">
+                <comment repeat.for="reply of replyList"
+                         alert-id.bind="reply.AlertID"
+                         comment-id.bind="reply.CommentID"
+                         is-truncated.bind="reply.IsTruncated"
+                         short-comment.bind="reply.ShortComment"
+                         comment.bind="reply.Comment"
+                         generated-date.bind="reply.sGeneratedDate"
+                         custody-start-date.bind="reply.sCustodyStartDate"
+                         custody-end-date.bind="reply.sCustodyEndDate"
+                         employee-code.bind="reply.EmployeeCode"
+                         employee-full-name.bind="reply.EmployeeFullName"
+                         open-reply.call="openReply(reply)"
+                         refresh-list.call="refreshList()"
+                         document-list.bind="reply.Documents"
+                         reply-level.bind="reply.ReplyLevel"
+                         reply-list.bind="reply.Replies"></comment>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,19 @@
+<div data-options="dxView : { name: 'expense_receipt', title: 'Capture Receipt' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div id="scrollView" data-bind="dxScrollView: scrollView">
+            <div data-bind="dxLoadPanel: { message: loadPanelMessage, visible: loadPanelVisible, shading: false }"></div>
+            <div class="dx-clearfix" style="margin:20px;">
+                <div style="width:49%;float:left;" data-bind="dxButton: { text: 'Take Picture', onClick: capturePhoto }"></div>
+                <div style="width:49%;float:right;" data-bind="dxButton: { text: 'From Gallery', onClick: photoLibrary }"></div>
+            </div>
+            <div class="dx-clearfix" style="margin:20px;text-align:center !important;">
+                <div id="uploadContainer" style="display:none;">
+                    <img style="width: 250px; height: 250px;" id="uploadImage" src="" />
+                    <div style="margin-top:10px;">
+                        <div style="width:98%;" data-bind="dxButton: { text: 'Upload', onClick: uploadToLastExpense }"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

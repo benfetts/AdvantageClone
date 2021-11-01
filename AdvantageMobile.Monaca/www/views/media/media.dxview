@@ -1,0 +1,7 @@
+<div data-options="dxView : { name: 'media', title: 'Media' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <p style="padding: 5px">
+            Media landing page
+        </p>
+    </div>
+</div>

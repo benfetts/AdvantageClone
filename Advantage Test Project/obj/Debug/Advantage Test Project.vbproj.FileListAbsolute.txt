@@ -1,0 +1,13 @@
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Test.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Test.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Test.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Test.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\Advantage Test Project.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\AdvantageTest.AdvantageTestForm.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\AdvantageTest.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\Advantage Test Project.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\Advantage Test Project.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\Advantage Test Project.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\Advantage Test.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\Advantage Test.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Test Project\obj\Debug\Advantage Test.pdb

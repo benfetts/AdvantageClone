@@ -1,0 +1,244 @@
+@import '../../../../theme/mixins/breakpoints';
+@import '../../../../theme/mixins/font';
+@import '../../../../theme/colors';
+
+.workspace-view,
+.file-manager-hidden,
+.only-one-asset,
+.workspace-view-smaller {
+  @include breakpoint(large) {
+    height: 100%;
+  }
+
+  background: $white;
+ /* border: 1px solid $border-color;*/
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+  padding: 0px 0px 0px 0px;
+
+  .k-image {
+    width: auto;
+  }
+
+  &-smaller {
+    width: 100%;
+  }
+
+  .image-area {
+    overflow: hidden;
+    border: 1px solid $light-grey !important;
+    box-sizing: border-box;
+    border-radius: 3px;
+    max-height: calc(100% - 6px);
+    min-height: calc(100% - 6px);
+    margin-bottom: 10px;
+    overflow-y: auto;
+
+    &-card,
+    &-card-smaller {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100% !important;
+
+      &-smaller {
+        @include breakpoint(large) {
+          width: 764px;
+        }
+
+        width: 317px;
+      }
+    }
+  }
+
+  .workspace-view-footer {
+    display: flex;
+    justify-content: space-between;
+
+    &-left-side,
+    &-right-side {
+      display: flex;
+      align-items: center;
+    }
+
+    .page-viewer-buttton {
+      margin-right: 5px;
+
+      &.k-button {
+        background: $white;
+        border: 1px solid $border-color;
+        box-sizing: border-box;
+        border-radius: 3px !important;
+        width: 32px;
+        height: 32px;
+
+        .k-image {
+          min-width: 20px;
+          min-height: 20px;
+        }
+
+        &:hover {
+          background: $very-light-grey;
+        }
+
+        &.k-state-active {
+          background: $very-light-grey;
+
+          img {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    .current-file {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 60px;
+      height: 30px;
+
+      &-icon {
+        @include font-base(4px, 600, 5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-text {
+          position: absolute;
+        }
+      }
+
+      &-text {
+        @include font-base;
+        display: block;
+
+        .file-name {
+          @include font-base(6px, normal, 8px);
+          color: $black;
+        }
+
+        .file-label {
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 10px;
+          color: $black-light;
+        }
+      }
+    }
+  }
+
+  .image-view-container {
+    display: flex;
+    height: calc(100% + 12px);
+    border: none !important;
+  }
+
+  .k-pager-wrap {
+    line-height: 0;
+  }
+
+  .k-card {
+    border: none;
+
+    &-image, &-media {
+      max-width: unset;
+      overflow: unset;
+    }
+
+    & > .k-card-media:first-child {
+      border-radius: 0;
+      position: absolute;
+    }
+  }
+
+  .move-block {
+    background: $white;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    border-radius: 3px !important;
+    width: 32px;
+    height: 32px;
+
+    &.k-button:hover {
+      background: $very-light-grey;
+    }
+  }
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.k-button:active,
+.k-button:focus,
+.k-button.k-state-active {
+  box-shadow: none;
+}
+
+.file-manager-hidden {
+  height: 488px;
+}
+
+
+.only-one-asset {
+  &.workspace-view {
+    width: 100%;
+    min-width: 899px;
+  }
+
+  &.workspace-view-smaller {
+    width: 100%;
+  }
+}
+
+.scrollbar-main {
+  --scrollbar-size: 15px !important;
+  --scrollbar-thumb-color: #e8e8e8 !important;
+  --scrollbar-hover-size: 15px !important;
+  --scrollbar-track-color: #f8f8f8 !important;
+  --scrollbar-border-radius: 0 !important;
+  height: 100%!important;
+
+  .ng-scroll-content {
+    bottom: 0;
+    left: 0;
+    position: absolute!important;
+    right: 0;
+    top: 0;
+    display: flex!important;
+  }
+}
+
+.ng-scrollbar-wrapper>scrollbar-y.scrollbar-control>.ng-scrollbar-track {
+  height: 100%!important;
+}
+
+.ng-scrollbar-wrapper>scrollbar-y.scrollbar-control {
+  width: 15px!important;
+}
+
+.split-view {
+  .workspace-view-footer {
+    width: 100%!important;
+  }
+}
+
+.cursor {
+  &-cross {
+    cursor: url('../../../../../../../assets/icons/cursors/cursor-cross.svg'), auto;
+  }
+
+  &-brush {
+    cursor: url('../../../../../../../assets/icons/cursors/cursor-brush.svg'), auto;
+  }
+}
+
+.container-selected {
+  border: 1px solid $border-color-blue!important;
+  border-radius: 3px!important;
+}
+

@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION [dbo].[udf_get_fnc_bill_rate] ( @fnc_code varchar(6) )  	RETURNS decimal(15,3) AS  	BEGIN  		DECLARE @fnc_bill_rate decimal(15,3)  		SELECT @fnc_bill_rate = ( SELECT BILLING_RATE  					    FROM dbo.BILLING_RATE   					   WHERE BILL_RATE_PREC_ID = 1  					     AND FNC_CODE = @fnc_code )   	RETURN @fnc_bill_rate  	END

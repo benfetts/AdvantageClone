@@ -1,0 +1,165 @@
+IF EXISTS ( SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[advsp_proofing_check_move_to_next_state]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+    DROP PROCEDURE [dbo].[advsp_proofing_check_move_to_next_state];
+END
+GO
+CREATE PROCEDURE [dbo].[advsp_proofing_check_move_to_next_state] 
+@USER_CODE VARCHAR(100),
+@ALERT_ID INT = NULL,
+@DOCUMENT_ID INT = NULL
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	--	VARS
+	BEGIN
+		DECLARE
+			@ALRT_NOTIFY_HDR_ID INT,
+			@ALERT_STATE_ID INT,
+			@HOURS_ALLOWED DECIMAL (7, 2),
+			@IS_ROUTED BIT,
+			@IS_PROOF BIT,
+			@CAN_DELETE BIT,
+			@RIGHT_NOW SMALLDATETIME,
+			@MOVED BIT
+		;
+		DECLARE
+			@STATES TABLE (ID INT, ALRT_TEMPLATE_HDR_ID INT, ALERT_STATE_ID INT, SORT_ORDER INT, CAN_EDIT_ASSIGNEES BIT, IS_CURRENT_STATE BIT)
+	END
+	--	INIT
+	BEGIN
+		SELECT
+			@IS_ROUTED =	CASE
+								WHEN A.ALRT_NOTIFY_HDR_ID IS NOT NULL AND A.ALERT_STATE_ID IS NOT NULL THEN 1
+								ELSE 0
+							END,
+			@IS_PROOF =	CASE
+							WHEN A.ALERT_CAT_ID = 79 THEN 1
+							ELSE 0
+						END,
+			@ALERT_STATE_ID = A.ALERT_STATE_ID,
+			@HOURS_ALLOWED = A.HRS_ALLOWED,
+			@ALRT_NOTIFY_HDR_ID = COALESCE(@ALRT_NOTIFY_HDR_ID, A.ALRT_NOTIFY_HDR_ID),
+			@MOVED = 0
+		FROM
+			ALERT A WITH(NOLOCK)
+		WHERE
+			A.ALERT_ID = @ALERT_ID;
+		SELECT
+			@RIGHT_NOW = GETDATE()
+		;
+		IF @DOCUMENT_ID IS NULL OR @DOCUMENT_ID = 0 
+		BEGIN
+			SELECT 
+				@DOCUMENT_ID = MAX(DOCUMENT_ID)
+			FROM
+				ALERT_ATTACHMENT AA WITH(NOLOCK)
+			WHERE
+				AA.ALERT_ID = @ALERT_ID
+			;
+		END
+		IF @IS_ROUTED = 0
+		BEGIN
+			SELECT
+				@ALRT_NOTIFY_HDR_ID = NULL,
+				@ALERT_STATE_ID = NULL
+			;
+		END
+	END
+	IF @IS_ROUTED = 1
+	BEGIN
+		--	GET STATES
+		BEGIN
+			INSERT INTO @STATES (ID, ALRT_TEMPLATE_HDR_ID, ALERT_STATE_ID, SORT_ORDER, CAN_EDIT_ASSIGNEES, IS_CURRENT_STATE)
+			SELECT
+				SFN.ID,
+				SFN.AlertTemplateID,
+				SFN.AlertStateID,
+				SFN.SortOrder,
+				SFN.CanEditAssignees,
+				SFN.IsCurrentState
+			FROM
+				[dbo].[advtf_alert_get_states] (@ALERT_ID) AS SFN
+			;		
+			SELECT
+				@CAN_DELETE = S.CAN_EDIT_ASSIGNEES
+			FROM
+				@STATES S
+			WHERE
+				S.ALERT_STATE_ID = @ALERT_STATE_ID
+			;
+		END
+		-- NO REVIEWERS THAT STILL NEED TO REVIEW
+		IF NOT EXISTS	(
+							SELECT
+								1
+							FROM
+								ALERT_RCPT AR WITH(NOLOCK)
+								INNER JOIN ALERT A WITH(NOLOCK) ON AR.ALERT_ID = A.ALERT_ID AND AR.ALRT_NOTIFY_HDR_ID = A.ALRT_NOTIFY_HDR_ID AND AR.ALERT_STATE_ID = A.ALERT_STATE_ID
+							WHERE
+								AR.ALERT_ID = @ALERT_ID
+								AND AR.CURRENT_NOTIFY = 1
+						)
+		BEGIN
+			-- NO REJECTED REVIEWERS
+			IF NOT EXISTS	(
+								SELECT
+									1
+								FROM
+									ALERT_RCPT_DISMISSED ARD WITH(NOLOCK)
+									INNER JOIN ALERT A WITH(NOLOCK) ON ARD.ALERT_ID = A.ALERT_ID AND ARD.ALRT_NOTIFY_HDR_ID = A.ALRT_NOTIFY_HDR_ID AND ARD.ALERT_STATE_ID = A.ALERT_STATE_ID
+								WHERE
+									ARD.ALERT_ID = @ALERT_ID
+									AND ARD.PROOFING_STATUS_ID = 2
+							)
+			BEGIN
+				DECLARE
+					@NEXT_STATE_ID INT,
+					@LAST_STATE_ID INT
+				;
+				SELECT
+					@LAST_STATE_ID =	(
+											SELECT
+												TOP 1 S.ALERT_STATE_ID
+											FROM
+												@STATES S
+											ORDER BY
+												S.ID DESC
+										);
+
+				SELECT
+					@NEXT_STATE_ID = SS.ALERT_STATE_ID
+				FROM
+					@STATES SS
+				WHERE
+					SS.ID =	(
+								SELECT 
+									ID 
+								FROM
+									@STATES S
+								WHERE
+									S.ALERT_STATE_ID = @ALERT_STATE_ID
+							) + 1
+				IF @NEXT_STATE_ID IS NOT NULL AND @NEXT_STATE_ID > 0
+				BEGIN
+					DECLARE @OUTPUT TABLE (MovedToNextState BIT, NextStateName VARCHAR(100), AssigneesProcessed INT)
+					INSERT INTO @OUTPUT
+					EXEC [dbo].[advsp_alert_assignment_move_to_next_state]	@USER_CODE, 
+																			@ALERT_ID, 
+																			@NEXT_STATE_ID, 
+																			@RIGHT_NOW, 
+																			@DOCUMENT_ID
+					;
+					SELECT 
+						@MOVED = O.MovedToNextState
+					FROM
+						@OUTPUT O
+					;
+				END
+			END
+		END
+	END
+	--	RETURN
+	SELECT
+		[MovedToNextState] = ISNULL(@MOVED, 0);
+END
+/*=========== QUERY ===========*/

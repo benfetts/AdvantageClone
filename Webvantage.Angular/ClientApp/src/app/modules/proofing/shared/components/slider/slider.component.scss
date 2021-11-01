@@ -1,0 +1,61 @@
+@import '../../../theme/colors';
+
+.k-slider .k-draghandle:focus, .k-slider .k-draghandle.k-state-focused {
+  box-shadow: none !important;
+}
+
+.k-slider .k-slider-track,
+.k-slider .k-slider-selection {
+  background-color: $border-color;
+}
+
+.k-slider-wrap {
+  height: 2px;
+  width: 90px;
+}
+
+.side-panel-slider {
+  .k-slider {
+    &-wrap {
+      height: 2px;
+      width: 136px;
+    }
+
+    &-horizontal {
+      height: 6px!important;
+    }
+  }
+}
+
+.k-slider-horizontal .k-slider-track, .k-slider-horizontal .k-slider-selection {
+  height: 2px;
+}
+
+.k-slider {
+  align-self: unset !important;
+  align-items: center !important;
+}
+
+.k-slider .k-draghandle,
+.k-slider .k-draghandle:hover,
+.k-slider .k-draghandle.k-pressed {
+  border: 3px solid $black-light;
+  background-color: $white;
+  background-image: none;
+  border-radius: 50%;
+  box-shadow: none !important;
+}
+
+.k-draghandle {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 1px;
+  width: 6px;
+  height: 6px;
+}
+
+.k-slider-transitions .k-slider-selection,
+.k-slider-transitions .k-slider-selection .k-pressed {
+  display: none !important;
+}

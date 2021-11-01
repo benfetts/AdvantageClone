@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6583AEE9-2E00-44E6-8A82-D882436C2097}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvantageAPI</RootNamespace>
+    <AssemblyName>AdvantageAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG=TRUE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <IncludeAppPool>true</IncludeAppPool>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.Edm.5.8.1\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.OData.5.8.1\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.Services.5.8.1\lib\net40\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Data.Services.Client.5.8.1\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Spatial.5.8.1\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="APIClassDiagram.cd" />
+    <Content Include="APIClassDiagramForJobAndEstimate.cd" />
+    <Content Include="APIClassDiagramForJobCopy.cd" />
+    <Content Include="APIClassDiagramLoads.cd" />
+    <Content Include="APITest.aspx" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="APIService.svc">
+      <BrowseToURL>~/APIService</BrowseToURL>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIDbContext\APIDbContext.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>APIDbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="APIDbContext\APIDbContext.vb" />
+    <Compile Include="APIDbContext\APIDbContext.Views.vb" />
+    <Compile Include="APIDbContext\Entities\AccountExecutive.vb" />
+    <Compile Include="APIDbContext\Entities\AdNumber.vb" />
+    <Compile Include="APIDbContext\Entities\AdSize.vb" />
+    <Compile Include="APIDbContext\Entities\AlertGroup.vb" />
+    <Compile Include="Classes\General\ARStmtProductContact.vb" />
+    <Compile Include="APIDbContext\Entities\Bank.vb" />
+    <Compile Include="APIDbContext\Entities\BillingCoop.vb" />
+    <Compile Include="APIDbContext\Entities\Campaign.vb" />
+    <Compile Include="APIDbContext\Entities\ClientDiscount.vb" />
+    <Compile Include="APIDbContext\Entities\Client.vb" />
+    <Compile Include="APIDbContext\Entities\ContactType.vb" />
+    <Compile Include="APIDbContext\Entities\DepartmentTeam.vb" />
+    <Compile Include="APIDbContext\Entities\Division.vb" />
+    <Compile Include="APIDbContext\Entities\Employee.vb" />
+    <Compile Include="APIDbContext\Entities\EmployeeDepartment.vb" />
+    <Compile Include="APIDbContext\Entities\EmployeeTimeComplex.vb" />
+    <Compile Include="APIDbContext\Entities\FiscalPeriod.vb" />
+    <Compile Include="APIDbContext\Entities\Function.vb" />
+    <Compile Include="APIDbContext\Entities\IndirectCategory.vb" />
+    <Compile Include="APIDbContext\Entities\InternetOrder.vb" />
+    <Compile Include="APIDbContext\Entities\InternetOrderDetailComment.vb" />
+    <Compile Include="APIDbContext\Entities\InternetOrderDetail.vb" />
+    <Compile Include="APIDbContext\Entities\MediaBroadcastDetails.vb" />
+    <Compile Include="APIDbContext\Entities\MediaOrderView.vb" />
+    <Compile Include="APIDbContext\Entities\SecClient.vb" />
+    <Compile Include="Classes\General\GeneralLedgerAccount.vb" />
+    <Compile Include="Classes\General\GeneralLedgerAccounts.vb" />
+    <Compile Include="Classes\Job\CampaignWithDates.vb" />
+    <Compile Include="Classes\Job\PurchaseOrder.vb" />
+    <Compile Include="Classes\Job\PurchaseOrderResponse.vb" />
+    <Compile Include="Classes\General\BasicIDNames.vb" />
+    <Compile Include="Classes\Maintenance\APInvoiceDetail.vb" />
+    <Compile Include="Classes\Maintenance\ARStmtProductContactResponse .vb" />
+    <Compile Include="Classes\Maintenance\CampaignAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\CampaignAPIResponseWithDates.vb" />
+    <Compile Include="Classes\Maintenance\ClientAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\ContactDetailResponse.vb" />
+    <Compile Include="Classes\Maintenance\ContactHeaderResponse.vb" />
+    <Compile Include="Classes\Maintenance\ContactStatementResponse.vb" />
+    <Compile Include="Classes\Maintenance\ContactTypeResponse.vb" />
+    <Compile Include="Classes\Maintenance\ContacTypeAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\DivisionAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\IndirectTime.vb" />
+    <Compile Include="Classes\General\BasicIDName.vb" />
+    <Compile Include="Classes\Maintenance\ProductAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\SalesClassAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\SecClientAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\VendorAPIResponse.vb" />
+    <Compile Include="Classes\Maintenance\VendorHist.vb" />
+    <Compile Include="Classes\General\ARStmtProductContactsAPIResponse.vb" />
+    <Compile Include="Classes\Media\BroadcastWorksheetAddResponse.vb" />
+    <Compile Include="Classes\Media\InternetCostType.vb" />
+    <Compile Include="APIDbContext\Entities\InternetType.vb" />
+    <Compile Include="APIDbContext\Entities\Job.vb" />
+    <Compile Include="APIDbContext\Entities\JobComponent.vb" />
+    <Compile Include="APIDbContext\Entities\JobType.vb" />
+    <Compile Include="APIDbContext\Entities\Market.vb" />
+    <Compile Include="APIDbContext\Entities\MediaOrder.vb" />
+    <Compile Include="APIDbContext\Entities\PostPeriod.vb" />
+    <Compile Include="APIDbContext\Entities\Product.vb" />
+    <Compile Include="APIDbContext\Entities\SalesClass.vb" />
+    <Compile Include="APIDbContext\Entities\ScheduleStatus.vb" />
+    <Compile Include="APIDbContext\Entities\Task.vb" />
+    <Compile Include="APIDbContext\Entities\User.vb" />
+    <Compile Include="APIDbContext\Entities\UserSetting.vb" />
+    <Compile Include="APIDbContext\Entities\Vendor.vb" />
+    <Compile Include="APIDbContext\Entities\VendorContact.vb" />
+    <Compile Include="APIDbContext\Entities\VendorRepresentative.vb" />
+    <Compile Include="APIDbContext\Entities\VendorTerm.vb" />
+    <Compile Include="APITest.aspx.designer.vb">
+      <DependentUpon>APITest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="APITest.aspx.vb">
+      <DependentUpon>APITest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CanEditEmployeeTimeReponse.vb" />
+    <Compile Include="Classes\Media\MediaBroadcastDetailsAPIResponse.vb" />
+    <Compile Include="Classes\Media\MediaOrderInternalResponse.vb" />
+    <Compile Include="Classes\Media\MediaOrderResponse.vb" />
+    <Compile Include="Classes\Estimate\AddOrUpdateEstimateResponse.vb" />
+    <Compile Include="Classes\Estimate\EstimateRevisionDetail.vb" />
+    <Compile Include="Classes\General\BasicResponse.vb" />
+    <Compile Include="Classes\Job\AddJobAndComponentResponse.vb" />
+    <Compile Include="Classes\Job\AddCampaign.vb" />
+    <Compile Include="Classes\Maintenance\AddClientDivisionProductResponse.vb" />
+    <Compile Include="Classes\Maintenance\APInvoice.vb" />
+    <Compile Include="Classes\Maintenance\ARInvoice.vb" />
+    <Compile Include="Classes\Maintenance\ClientType.vb" />
+    <Compile Include="Classes\Maintenance\ClientTypeResponse.vb" />
+    <Compile Include="Classes\Maintenance\JobComponents.vb" />
+    <Compile Include="Classes\Maintenance\JobLogUserDefinedValue.vb" />
+    <Compile Include="Classes\Maintenance\Jobs.vb" />
+    <Compile Include="Classes\Maintenance\Office.vb" />
+    <Compile Include="Classes\Maintenance\VendorRepResponse.vb" />
+    <Compile Include="Classes\Media\MatCompDateResponse.vb" />
+    <Compile Include="Classes\Media\MediaPlanAddResponse.vb" />
+    <Compile Include="Classes\Media\MediaPlanMixRateTemplates.vb" />
+    <Compile Include="Classes\Media\MediaPlanMixRateTemplatesResponse.vb" />
+    <Compile Include="Classes\Media\OrderStatusResponse.vb" />
+    <Compile Include="EmployeeTimeRecord.vb" />
+    <Compile Include="Methods.vb" />
+    <Compile Include="CreateJobResponse.vb" />
+    <Compile Include="OutputFilterStream.vb" />
+    <Compile Include="ValidationMessage.vb" />
+    <Compile Include="VendorCategory.vb" />
+    <Compile Include="VCCStatus.vb" />
+    <Compile Include="SaveEmployeeTimeReponse.vb" />
+    <Compile Include="CorsSupport.vb" />
+    <Compile Include="ImageStreamProvider.vb" />
+    <Compile Include="Interfaces\IAPIService.vb" />
+    <Compile Include="Interfaces\IImageSource.vb" />
+    <Compile Include="JSONPSupportBehaviorAttribute.vb" />
+    <Compile Include="JSONPSupportBehavior.vb" />
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="APIReponse.vb" />
+    <Compile Include="LoginReponse.vb" />
+    <Compile Include="Properties\AssemblyInfo.vb" />
+    <Compile Include="APIService.svc.vb">
+      <DependentUpon>APIService.svc</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.ComponentModel.DataAnnotations" />
+    <Import Include="System.ComponentModel.DataAnnotations.Schema" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Runtime.Serialization" />
+    <Import Include="System.ServiceModel" />
+    <Import Include="System.ServiceModel.Web" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.HtmlControls" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj">
+      <Project>{cf80c6a7-30b6-45b8-8ff2-cc3176b95239}</Project>
+      <Name>AdvantageFramework.BLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantageFramework.WinForm\AdvantageFramework.WinForm.vbproj">
+      <Project>{8bbd586b-eb2e-4971-ae41-91a8e68f114e}</Project>
+      <Name>AdvantageFramework.WinForm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdvantageFramework\AdvantageFramework.vbproj">
+      <Project>{a5adbd34-dc5f-45ee-ab6a-8e9122da478d}</Project>
+      <Name>AdvantageFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClassDiagram2.cd" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="JobClassDiagram.cd" />
+    <Content Include="APIforMediaClassDiagram1.cd" />
+    <Content Include="APIforMediaClassDiagram2.cd" />
+    <EntityDeploy Include="APIDbContext\APIDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>APIDbContext.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="APIforMediaVendorClassDiagram.cd" />
+    <Content Include="ClassDiagram3.cd" />
+    <None Include="Properties\PublishProfiles\670 API.pubxml" />
+    <None Include="Properties\PublishProfiles\Dev.pubxml" />
+    <None Include="Properties\PublishProfiles\Production.pubxml" />
+    <Content Include="PublicClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60084</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost/APIProd</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

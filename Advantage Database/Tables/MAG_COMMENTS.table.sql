@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[MAG_COMMENTS] (
+    [ORDER_NBR]     INT      NOT NULL,
+    [LINE_NBR]      SMALLINT NOT NULL,
+    [REV_NBR]       SMALLINT NOT NULL,
+    [SEQ_NBR]       SMALLINT NOT NULL,
+    [POSITION_INFO] TEXT     NULL,
+    [RATE_INFO]     TEXT     NULL,
+    [CLOSE_INFO]    TEXT     NULL,
+    [MISC_INFO]     TEXT     NULL,
+    [ORDER_COMMENT] TEXT     NULL,
+    [HOUSE_COMMENT] TEXT     NULL,
+    [ORDER_COPY]    TEXT     NULL,
+    [MATL_NOTES]    TEXT     NULL
+);
+

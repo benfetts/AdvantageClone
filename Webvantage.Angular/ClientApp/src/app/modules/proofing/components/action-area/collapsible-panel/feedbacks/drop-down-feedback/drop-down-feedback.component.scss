@@ -1,0 +1,75 @@
+@import '../../../../../theme/colors';
+@import '../../../../../theme/mixins/font';
+
+.drop-down-feedback {
+  .k-popup {
+    border-width: 0;
+  }
+
+  .k-list .k-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 19px;
+    border: 1px solid $border-color;
+    border-top: none;
+    padding: 4px 7px;
+
+    &:first-child {
+      border-top: 1px solid $border-color;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+  }
+
+  .k-list {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+
+    li:last-child {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  .k-animation-container > .k-popup {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .tools {
+    .k-list {
+      width: 30px;
+    }
+  }
+
+  .k-image {
+    height: 12px;
+  }
+
+  .k-button-icon {
+    height: 22px;
+    width: 0;
+  }
+
+  .k-button {
+    border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+  }
+}
+
+
+.k-list .k-item.k-state-focused {
+  box-shadow: none;
+}
+
+.k-list .k-item:focus {
+  box-shadow: none;
+}
+
+.k-dropdown-button.k-state-focused > .k-button {
+  box-shadow: none !important;
+}

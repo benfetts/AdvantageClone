@@ -1,0 +1,51 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_dd_GetCampaigns] 
+@ProductCode VarChar(6),
+@UserID VARCHAR(100)
+
+AS
+DECLARE @RESTRICTIONS INT
+SELECT @RESTRICTIONS = COUNT(*)  FROM SEC_CLIENT WHERE UPPER(USER_ID) = UPPER(@UserID)
+
+IF @RESTRICTIONS > 0
+    BEGIN
+        SELECT     
+            CAMPAIGN.CMP_CODE AS Code, CAMPAIGN.CMP_CODE + ' - ' + ISNULL(CAMPAIGN.CMP_NAME, '') AS Description
+        FROM         
+            CAMPAIGN INNER JOIN
+            SEC_CLIENT ON CAMPAIGN.CL_CODE = SEC_CLIENT.CL_CODE AND CAMPAIGN.DIV_CODE = SEC_CLIENT.DIV_CODE AND 
+            CAMPAIGN.PRD_CODE = SEC_CLIENT.PRD_CODE
+        WHERE   
+            (CAMPAIGN.PRD_CODE = @ProductCode) AND UPPER(SEC_CLIENT.USER_ID) = UPPER(@UserID) AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)
+        ORDER BY 
+            CAMPAIGN.CMP_CODE
+    END
+ELSE
+    BEGIN
+        SELECT 
+            CMP_CODE AS Code, CMP_CODE + ' - ' + ISNULL(CMP_NAME,'') AS Description
+        FROM 
+            CAMPAIGN
+        WHERE   
+            (CAMPAIGN.PRD_CODE = @ProductCode)
+        ORDER BY 
+            CMP_CODE
+    END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

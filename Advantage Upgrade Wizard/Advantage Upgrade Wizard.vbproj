@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EA16E1E9-DC49-4297-9CED-8C28E5D0C21D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Advantage_Upgrade_Wizard.Program</StartupObject>
+    <RootNamespace>Advantage_Upgrade_Wizard</RootNamespace>
+    <AssemblyName>Advantage Upgrade Wizard</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DocumentationFile>Advantage Upgrade Wizard.xml</DocumentationFile>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DocumentationFile>Advantage Upgrade Wizard.xml</DocumentationFile>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>false</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AdvantageIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.Data.v20.1" />
+    <Reference Include="DevExpress.Printing.v20.1.Core" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1" />
+    <Reference Include="DevExpress.Utils.v20.1" />
+    <Reference Include="DevExpress.XtraEditors.v20.1" />
+    <Reference Include="DevExpress.XtraBars.v20.1" />
+    <Reference Include="DevExpress.Images.v20.1" />
+    <Reference Include="DevExpress.XtraLayout.v20.1" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IWizardPageViewModel.vb" />
+    <Compile Include="IWizardViewModel.vb" />
+    <Compile Include="MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Program.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="ProgramController.vb" />
+    <Compile Include="ViewModels\ModifyAdvantageServicesConnectionPageViewModel.vb" />
+    <Compile Include="ViewModels\CreateAPIConnectionPageViewModel.vb" />
+    <Compile Include="ViewModels\CreateWebvantageConnectionPageViewModel.vb" />
+    <Compile Include="ViewModels\CreateAdvantageConnectionPageViewModel.vb" />
+    <Compile Include="ViewModels\FinishPageViewModel.vb" />
+    <Compile Include="ViewModels\Old\InstallPageViewModel.vb" />
+    <Compile Include="ViewModels\CreateAdvantageUserPageViewModel.vb" />
+    <Compile Include="ViewModels\ConversionPageViewModel.vb" />
+    <Compile Include="ViewModels\BackupDatabasePageViewModel.vb" />
+    <Compile Include="ViewModels\PasswordPolicyPageViewModel.vb" />
+    <Compile Include="ViewModels\SignInPageViewModel.vb" />
+    <Compile Include="ViewModels\WebvantageURLViewModel.vb" />
+    <Compile Include="ViewModels\StartPageViewModel.vb" />
+    <Compile Include="ViewModels\Wizard\WizardViewModel.vb" />
+    <Compile Include="Views\WebvantageURLPage.Designer.vb">
+      <DependentUpon>WebvantageURLPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WebvantageURLPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ModifyAdvantageServicesConnectionPage.Designer.vb">
+      <DependentUpon>ModifyAdvantageServicesConnectionPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModifyAdvantageServicesConnectionPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CreateAPIConnectionPage.Designer.vb">
+      <DependentUpon>CreateAPIConnectionPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateAPIConnectionPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CreateWebvantageConnectionPage.Designer.vb">
+      <DependentUpon>CreateWebvantageConnectionPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateWebvantageConnectionPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CreateAdvantageConnectionPage.Designer.vb">
+      <DependentUpon>CreateAdvantageConnectionPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateAdvantageConnectionPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FinishPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\FinishPage.Designer.vb">
+      <DependentUpon>FinishPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateAdvantageUserPage.Designer.vb">
+      <DependentUpon>CreateAdvantageUserPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateAdvantageUserPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ConversionPage.Designer.vb">
+      <DependentUpon>ConversionPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConversionPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\BackupDatabasePage.Designer.vb">
+      <DependentUpon>BackupDatabasePage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BackupDatabasePage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\PasswordPolicyPage.Designer.vb">
+      <DependentUpon>PasswordPolicyPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PasswordPolicyPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\SignInPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\SignInPage.Designer.vb">
+      <DependentUpon>SignInPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Old\InstallPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Old\InstallPage.Designer.vb">
+      <DependentUpon>InstallPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\StartPage.Designer.vb">
+      <DependentUpon>StartPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Base Page\BaseWizardPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Base Page\BaseWizardPage.Designer.vb">
+      <DependentUpon>BaseWizardPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WizardInputs.vb" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Base Page\BaseWizardPage.resx">
+      <DependentUpon>BaseWizardPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WebvantageURLPage.resx">
+      <DependentUpon>WebvantageURLPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModifyAdvantageServicesConnectionPage.resx">
+      <DependentUpon>ModifyAdvantageServicesConnectionPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateAPIConnectionPage.resx">
+      <DependentUpon>CreateAPIConnectionPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateWebvantageConnectionPage.resx">
+      <DependentUpon>CreateWebvantageConnectionPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateAdvantageConnectionPage.resx">
+      <DependentUpon>CreateAdvantageConnectionPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FinishPage.resx">
+      <DependentUpon>FinishPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateAdvantageUserPage.resx">
+      <DependentUpon>CreateAdvantageUserPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ConversionPage.resx">
+      <DependentUpon>ConversionPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BackupDatabasePage.resx">
+      <DependentUpon>BackupDatabasePage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PasswordPolicyPage.resx">
+      <DependentUpon>PasswordPolicyPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SignInPage.resx">
+      <DependentUpon>SignInPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Old\InstallPage.resx">
+      <DependentUpon>InstallPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StartPage.resx">
+      <DependentUpon>StartPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvantageFramework\AdvantageFramework.vbproj">
+      <Project>{a5adbd34-dc5f-45ee-ab6a-8e9122da478d}</Project>
+      <Name>AdvantageFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel.DataAnnotations" />
+    <Import Include="System.ComponentModel.DataAnnotations.Schema" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdvantageIcon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

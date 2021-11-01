@@ -1,0 +1,126 @@
+@import '../../theme/mixins/breakpoints';
+@import '../../theme/colors';
+
+$actionAreaOpenedWidth: 405px;
+$actionAreaClosedWidth: 50px;
+
+.action-area {
+  display: flex;
+
+  &-open {
+    width: 356px;
+    background-color: $white;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &-closed {
+    width: 50px;
+  }
+
+  &_buttons {
+    background: $light-grey;
+    border: 1px solid $border-color;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 9px;
+    height: 100%;
+    min-height: 618px;
+    max-height: 929px;
+
+    .k-image {
+      min-width: 20px;
+      min-height: 20px;
+    }
+
+    button {
+      margin-bottom: 9px;
+    }
+
+    &-open {
+      border-radius: 2px;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      border: none;
+      border-left: 1px solid $border-color;
+    }
+  }
+
+  &_buttons,
+  &_buttons-open {
+    .k-button {
+      background-image: none;
+      background: $white;
+      border: 1px solid $border-color;
+
+      &:hover,
+      &:focus {
+        background: $white;
+        border: 1px solid $border-color;
+        box-shadow: none;
+      }
+
+      &:hover {
+        background: $very-light-grey;
+      }
+
+      &:active,
+      &.k-state-active {
+        border: 1px solid $border-color;
+        box-shadow: none;
+        background-color: $very-light-grey;
+      }
+
+      &.k-state-active {
+        img {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.panelbar-wrapper {
+  height: 100%;
+  width: $actionAreaOpenedWidth - $actionAreaClosedWidth;
+}
+
+.k-panelbar {
+  border-width: 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.blue {
+  .k-button {
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: $white;
+      border: 1px solid $border-color;
+      box-shadow: none;
+    }
+
+    &:hover {
+      background: $very-light-grey;
+    }
+
+    &.k-state-active {
+      border: 1px solid $border-color;
+      box-shadow: none;
+      background-color: $pressed-button;
+
+      img {
+        opacity: 1;
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+}
+
+.notification {
+  position: absolute;
+  top: 25%;
+  right: 25%;
+}

@@ -1,0 +1,31 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_TABSDelete]
+(
+	@TAB_ID int,
+	@CDP_CONTACT_ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	DELETE
+	FROM [CP_USER_TABS]
+	WHERE
+		[TAB_ID] = @TAB_ID AND
+		[CDP_CONTACT_ID] = @CDP_CONTACT_ID
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

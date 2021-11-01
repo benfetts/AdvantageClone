@@ -1,0 +1,23 @@
+﻿CREATE TABLE [dbo].[VEN_CONT] (
+    [VN_CODE]          VARCHAR (6)  NOT NULL,
+    [VC_CODE]          VARCHAR (4)  NOT NULL,
+    [VC_FNAME]         VARCHAR (30) NULL,
+    [VC_LNAME]         VARCHAR (30) NULL,
+    [VC_MI]            VARCHAR (1)  NULL,
+    [VC_TITLE]         VARCHAR (40) NULL,
+    [VC_ADDRESS1]      VARCHAR (40) NULL,
+    [VC_ADDRESS2]      VARCHAR (40) NULL,
+    [VC_CITY]          VARCHAR (20) NULL,
+    [VC_COUNTY]        VARCHAR (20) NULL,
+    [VC_STATE]         VARCHAR (10) NULL,
+    [VC_COUNTRY]       VARCHAR (20) NULL,
+    [VC_ZIP]           VARCHAR (10) NULL,
+    [VC_TELEPHONE]     VARCHAR (13) NULL,
+    [VC_EXTENTION]     VARCHAR (4)  NULL,
+    [VC_FAX]           VARCHAR (13) NULL,
+    [VC_FAX_EXTENTION] VARCHAR (4)  NULL,
+    [EMAIL_ADDRESS]    VARCHAR (50) NULL,
+    [VC_INACTIVE_FLAG] SMALLINT     NULL,
+    [VC_PHONE_CELL]    VARCHAR (13) NULL
+);
+

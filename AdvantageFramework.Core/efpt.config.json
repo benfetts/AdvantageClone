@@ -1,0 +1,37 @@
+﻿{
+   "ContextClassName": "DataContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Database",
+   "OutputPath": "Database\/Entities",
+   "ProjectRootNamespace": "AdvantageFramework.Core",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[AGENCY]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DOCUMENTS]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EMPLOYEE_CLOAK]",
+         "ObjectType": 0
+      }
+   ],
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseNodaTime": false,
+   "UseSpatial": false
+}

@@ -1,0 +1,26 @@
+﻿
+
+CREATE PROCEDURE [proc_JOB_TRAFFIC_DET_PREDSLoadByPrimaryKey]
+(
+	@ID int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[ID],
+		[JOB_NUMBER],
+		[JOB_COMPONENT_NBR],
+		[SEQ_NBR],
+		[PREDECESSOR_SEQ_NBR]
+	FROM [JOB_TRAFFIC_DET_PREDS]
+	WHERE
+		([ID] = @ID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+

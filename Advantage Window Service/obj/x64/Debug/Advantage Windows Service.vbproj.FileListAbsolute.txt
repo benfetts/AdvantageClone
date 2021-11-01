@@ -1,0 +1,17 @@
+C:\TFS_ROOT\Advantage\Production\Output\Resources\AmericanXLG.xlg
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAFF.aff
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAlphabet.txt
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Windows Service.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Windows Service.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Windows Service.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Windows Service.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\Advantage Windows Service.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\AdvantageWindowsService.AdvantageWindowsService.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\AdvantageWindowsService.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\AdvantageWindowsService.AdvantageWindowsServiceProjectInstaller.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\Advantage Windows Service.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\Advantage Windows Service.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\Advantage Windows Service.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\Advantage Windows Service.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\Advantage Windows Service.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Window Service\obj\x64\Debug\Advantage Windows Service.pdb

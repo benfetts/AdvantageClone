@@ -1,0 +1,26 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Search - {{searchResults.DisplayName}}</h3>
+</div>
+<div class="modal-body">
+    <div style="margin-bottom: 10px">
+        <input id="searchInput" type="text" placeholder="Search..." class="k-textbox" style="width: 100%;" />
+    </div>
+    <div id="selectorGrid" kendo-grid k-options="gridOptions" k-ng-delay="gridOptions">
+
+    </div>
+    <div style="margin-top: 10px; text-align: right;">
+        <button id="selectButton" class="k-primary" ng-click="confirmSelection()">Select</button>
+        <button id="cancelButton" class="k-primary" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#cancelButton').kendoButton();
+
+            $('#selectButton').kendoButton();
+
+        });
+
+    </script>

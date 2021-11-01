@@ -1,0 +1,6 @@
+<ng-container *ngIf="(reviewTypes | async) as reviewTypes">
+  <kendo-dropdownlist [data]="listItems"
+                      [value]="reviewTypes"
+                      (valueChange)="onValueChange($event)">
+  </kendo-dropdownlist>
+</ng-container>

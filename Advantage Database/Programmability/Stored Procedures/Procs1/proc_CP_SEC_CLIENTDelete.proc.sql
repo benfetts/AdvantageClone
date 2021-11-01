@@ -1,0 +1,29 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_SEC_CLIENTDelete]
+(
+	@CDP_CONTACT_ID int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	DELETE
+	FROM [CP_SEC_CLIENT]
+	WHERE
+		[CDP_CONTACT_ID] = @CDP_CONTACT_ID
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

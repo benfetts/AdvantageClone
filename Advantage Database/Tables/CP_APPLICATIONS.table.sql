@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[CP_APPLICATIONS] (
+    [APPID]     INT          IDENTITY (101, 1) NOT NULL,
+    [CATID]     INT          NOT NULL,
+    [APPNAME]   VARCHAR (50) NOT NULL,
+    [URL]       VARCHAR (50) NOT NULL,
+    [IMAGEPATH] VARCHAR (50) NULL,
+    [ACTIVE]    BIT          NOT NULL,
+    [SORTORDER] VARCHAR (1)  NULL
+);
+

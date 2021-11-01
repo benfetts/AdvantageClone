@@ -1,0 +1,6 @@
+<div data-options="dxView : { name: 'select_calendar', title: 'Calendar View' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <div data-bind="dxScrollView: { }">
+        </div>
+    </div>
+</div>

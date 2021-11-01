@@ -1,0 +1,28 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_DESKTOP_OBJECT_CATEGORYLoadByPrimaryKey]
+(
+	@ID int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[ID],
+		[CATEGORY]
+	FROM [CP_DESKTOP_OBJECT_CATEGORY]
+	WHERE
+		([ID] = @ID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

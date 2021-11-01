@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[ESTIMATE_LOG] (
+    [ESTIMATE_NUMBER] INT            NOT NULL,
+    [CL_CODE]         VARCHAR (6)    NOT NULL,
+    [DIV_CODE]        VARCHAR (6)    NOT NULL,
+    [PRD_CODE]        VARCHAR (6)    NOT NULL,
+    [CMP_CODE]        VARCHAR (6)    NULL,
+    [SC_CODE]         VARCHAR (6)    NULL,
+    [EST_MARKUP_PCT]  DECIMAL (7, 3) NULL,
+    [USER_ID]         VARCHAR (100)  NULL,
+    [EST_CREATE_DATE] SMALLDATETIME  DEFAULT (getdate()) NULL,
+    [EST_LOG_COMMENT] TEXT           NULL,
+    [EST_LOG_DESC]    VARCHAR (60)   NULL,
+    [CMP_IDENTIFIER]  INT            NULL,
+    [CMP_LINE_NBR]    SMALLINT       NULL,
+    [LOCKED_USER]     VARCHAR (100)  NULL,
+    [EST_FTR_COMMENT] TEXT           NULL
+);
+

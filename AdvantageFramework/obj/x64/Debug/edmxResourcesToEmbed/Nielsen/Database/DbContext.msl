@@ -1,0 +1,1054 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="DbContext">
+    <EntitySetMapping Name="NCCTVAIUELogRevisions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVAIUELogRevision">
+        <MappingFragment StoreEntitySet="NCCTVAIUELogRevision">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_AI_UE_LOG_REVISION_ID" />
+          <ScalarProperty Name="OldNCCTVAIUELogID" ColumnName="OLD_NCC_TV_AI_UE_LOG_ID" />
+          <ScalarProperty Name="NewNCCTVAIUELogID" ColumnName="NEW_NCC_TV_AI_UE_LOG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVAIUELogs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVAIUELog">
+        <MappingFragment StoreEntitySet="NCCTVAIUELog">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_AI_UE_LOG_ID" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="Month" ColumnName="MONTH" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVAIUEs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVAIUE">
+        <MappingFragment StoreEntitySet="NCCTVAIUE">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_AI_UE_ID" />
+          <ScalarProperty Name="Syscode" ColumnName="SYSCODE" />
+          <ScalarProperty Name="NCCTVAIUELogID" ColumnName="NCC_TV_AI_UE_LOG_ID" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="SampleType" ColumnName="SAMPLE_TYPE" />
+          <ScalarProperty Name="HHAIUE" ColumnName="HH_AIUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVCablenets">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVCablenet">
+        <MappingFragment StoreEntitySet="NCCTVCablenet">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_CABLENET_ID" />
+          <ScalarProperty Name="NetworkCode" ColumnName="NETWORK_CODE" />
+          <ScalarProperty Name="NetworkName" ColumnName="NETWORK_NAME" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVCarriageUELogRevisions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVCarriageUELogRevision">
+        <MappingFragment StoreEntitySet="NCCTVCarriageUELogRevision">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_CARRIAGE_UE_LOG_REVISION_ID" />
+          <ScalarProperty Name="OldNCCTVCarriageUELogID" ColumnName="OLD_NCC_TV_CARRIAGE_UE_LOG_ID" />
+          <ScalarProperty Name="NewNCCTVCarriageUELogID" ColumnName="NEW_NCC_TV_CARRIAGE_UE_LOG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVCarriageUELogs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVCarriageUELog">
+        <MappingFragment StoreEntitySet="NCCTVCarriageUELog">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_CARRIAGE_UE_LOG_ID" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="Month" ColumnName="MONTH" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVCarriageUEs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVCarriageUE">
+        <MappingFragment StoreEntitySet="NCCTVCarriageUE">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_CARRIAGE_UE_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="NCCTVCarriageUELogID" ColumnName="NCC_TV_CARRIAGE_UE_LOG_ID" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="HHCarriageUE" ColumnName="HH_CARRIAGE_UE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVFusionAudiences">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVFusionAudience">
+        <MappingFragment StoreEntitySet="NCCTVFusionAudience">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_FUSION_AUDIENCE_ID" />
+          <ScalarProperty Name="NCCTVFusionUniverseID" ColumnName="NCC_TV_FUSION_UE_ID" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="AudienceDatetime" ColumnName="AUDIENCE_DATETIME" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD_AUD" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5_AUD" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11_AUD" />
+          <ScalarProperty Name="Males12to17" ColumnName="MALES_12TO17_AUD" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_AUD" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_AUD" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_AUD" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_AUD" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_AUD" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_AUD" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_AUD" />
+          <ScalarProperty Name="Females12to17" ColumnName="FEMALES_12TO17_AUD" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_AUD" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_AUD" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_AUD" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_AUD" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_AUD" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_AUD" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_AUD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVFusionHutputs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVFusionHutput">
+        <MappingFragment StoreEntitySet="NCCTVFusionHutput">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_FUSION_HUTPUT_ID" />
+          <ScalarProperty Name="NCCTVFusionUniverseID" ColumnName="NCC_TV_FUSION_UE_ID" />
+          <ScalarProperty Name="HutputDatetime" ColumnName="HUTPUT_DATETIME" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD_HUT" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5_PUT" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11_PUT" />
+          <ScalarProperty Name="Males12to17" ColumnName="MALES_12TO17_PUT" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_PUT" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_PUT" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_PUT" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_PUT" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_PUT" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_PUT" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_PUT" />
+          <ScalarProperty Name="Females12to17" ColumnName="FEMALES_12TO17_PUT" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_PUT" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_PUT" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_PUT" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_PUT" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_PUT" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_PUT" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_PUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVFusionUniverseRevisions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVFusionUniverseRevision">
+        <MappingFragment StoreEntitySet="NCCTVFusionUniverseRevision">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_FUSION_UE_REVISION_ID" />
+          <ScalarProperty Name="OldNCCTVFusionUniverseID" ColumnName="OLD_NCC_TV_FUSION_UE_ID" />
+          <ScalarProperty Name="NewNCCTVFusionUniverseID" ColumnName="NEW_NCC_TV_FUSION_UE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVFusionUniverses">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVFusionUniverse">
+        <MappingFragment StoreEntitySet="NCCTVFusionUniverse">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_FUSION_UE_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="Month" ColumnName="MONTH" />
+          <ScalarProperty Name="Geo" ColumnName="GEO" />
+          <ScalarProperty Name="Stream" ColumnName="STREAM" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD_UE" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5_UE" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11_UE" />
+          <ScalarProperty Name="Males12to17" ColumnName="MALES_12TO17_UE" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_UE" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_UE" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_UE" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_UE" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_UE" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_UE" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_UE" />
+          <ScalarProperty Name="Females12to17" ColumnName="FEMALES_12TO17_UE" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_UE" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_UE" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_UE" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_UE" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_UE" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_UE" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_UE" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVLPMMarkets">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVLPMMarket">
+        <MappingFragment StoreEntitySet="NCCTVLPMMarket">
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVMVPDs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVMVPD">
+        <MappingFragment StoreEntitySet="NCCTVMVPD">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_MVPD_ID" />
+          <ScalarProperty Name="MVPD" ColumnName="MVPD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCCTVSyscodes">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NCCTVSyscode">
+        <MappingFragment StoreEntitySet="NCCTVSyscode">
+          <ScalarProperty Name="ID" ColumnName="NCC_TV_SYSCODE_ID" />
+          <ScalarProperty Name="Syscode" ColumnName="SYSCODE" />
+          <ScalarProperty Name="NCCTVMVPDID" ColumnName="NCC_TV_MVPD_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="SystemName" ColumnName="SYSTEM_NAME" />
+          <ScalarProperty Name="SystemType" ColumnName="SYSTEM_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenMarkets">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenMarket">
+        <MappingFragment StoreEntitySet="NielsenMarket">
+          <ScalarProperty Name="Code" ColumnName="MARKET_CODE" />
+          <ScalarProperty Name="Description" ColumnName="MARKET_DESC" />
+          <ScalarProperty Name="NielsenTVCode" ColumnName="NIELSEN_TV_CODE" />
+          <ScalarProperty Name="NielsenTVDMACode" ColumnName="NIELSEN_TV_DMA_CODE" />
+          <ScalarProperty Name="NielsenRadioCode" ColumnName="NIELSEN_RADIO_CODE" />
+          <ScalarProperty Name="NielsenBlackRadioCode" ColumnName="NIELSEN_BLACK_RADIO_CODE" />
+          <ScalarProperty Name="NielsenHispanicRadioCode" ColumnName="NIELSEN_HISPANIC_RADIO_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioAudiences">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioAudience">
+        <MappingFragment StoreEntitySet="NielsenRadioAudience">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_AUDIENCE_ID" />
+          <ScalarProperty Name="SegmentParentID" ColumnName="NIELSEN_RADIO_SEGMENT_PARENT_ID" />
+          <ScalarProperty Name="SegmentChildID" ColumnName="NIELSEN_RADIO_SEGMENT_CHILD_ID" />
+          <ScalarProperty Name="Males6to11AQH" ColumnName="MALES_6TO11_AQH" />
+          <ScalarProperty Name="Males12to17AQH" ColumnName="MALES_12TO17_AQH" />
+          <ScalarProperty Name="Males18to20AQH" ColumnName="MALES_18TO20_AQH" />
+          <ScalarProperty Name="Males18to24AQH" ColumnName="MALES_18TO24_AQH" />
+          <ScalarProperty Name="Males21to24AQH" ColumnName="MALES_21TO24_AQH" />
+          <ScalarProperty Name="Males25to34AQH" ColumnName="MALES_25TO34_AQH" />
+          <ScalarProperty Name="Males35to44AQH" ColumnName="MALES_35TO44_AQH" />
+          <ScalarProperty Name="Males35to49AQH" ColumnName="MALES_35TO49_AQH" />
+          <ScalarProperty Name="Males45to49AQH" ColumnName="MALES_45TO49_AQH" />
+          <ScalarProperty Name="Males50to54AQH" ColumnName="MALES_50TO54_AQH" />
+          <ScalarProperty Name="Males55to64AQH" ColumnName="MALES_55TO64_AQH" />
+          <ScalarProperty Name="Males65PlusAQH" ColumnName="MALES_65PLUS_AQH" />
+          <ScalarProperty Name="Females6to11AQH" ColumnName="FEMALES_6TO11_AQH" />
+          <ScalarProperty Name="Females12to17AQH" ColumnName="FEMALES_12TO17_AQH" />
+          <ScalarProperty Name="Females18to20AQH" ColumnName="FEMALES_18TO20_AQH" />
+          <ScalarProperty Name="Females18to24AQH" ColumnName="FEMALES_18TO24_AQH" />
+          <ScalarProperty Name="Females21to24AQH" ColumnName="FEMALES_21TO24_AQH" />
+          <ScalarProperty Name="Females25to34AQH" ColumnName="FEMALES_25TO34_AQH" />
+          <ScalarProperty Name="Females35to44AQH" ColumnName="FEMALES_35TO44_AQH" />
+          <ScalarProperty Name="Females35to49AQH" ColumnName="FEMALES_35TO49_AQH" />
+          <ScalarProperty Name="Females45to49AQH" ColumnName="FEMALES_45TO49_AQH" />
+          <ScalarProperty Name="Females50to54AQH" ColumnName="FEMALES_50TO54_AQH" />
+          <ScalarProperty Name="Females55to64AQH" ColumnName="FEMALES_55TO64_AQH" />
+          <ScalarProperty Name="Females65PlusAQH" ColumnName="FEMALES_65PLUS_AQH" />
+          <ScalarProperty Name="Males6to11CUME" ColumnName="MALES_6TO11_CUME" />
+          <ScalarProperty Name="Males12to17CUME" ColumnName="MALES_12TO17_CUME" />
+          <ScalarProperty Name="Males18to20CUME" ColumnName="MALES_18TO20_CUME" />
+          <ScalarProperty Name="Males18to24CUME" ColumnName="MALES_18TO24_CUME" />
+          <ScalarProperty Name="Males21to24CUME" ColumnName="MALES_21TO24_CUME" />
+          <ScalarProperty Name="Males25to34CUME" ColumnName="MALES_25TO34_CUME" />
+          <ScalarProperty Name="Males35to44CUME" ColumnName="MALES_35TO44_CUME" />
+          <ScalarProperty Name="Males35to49CUME" ColumnName="MALES_35TO49_CUME" />
+          <ScalarProperty Name="Males45to49CUME" ColumnName="MALES_45TO49_CUME" />
+          <ScalarProperty Name="Males50to54CUME" ColumnName="MALES_50TO54_CUME" />
+          <ScalarProperty Name="Males55to64CUME" ColumnName="MALES_55TO64_CUME" />
+          <ScalarProperty Name="Males65PlusCUME" ColumnName="MALES_65PLUS_CUME" />
+          <ScalarProperty Name="Females6to11CUME" ColumnName="FEMALES_6TO11_CUME" />
+          <ScalarProperty Name="Females12to17CUME" ColumnName="FEMALES_12TO17_CUME" />
+          <ScalarProperty Name="Females18to20CUME" ColumnName="FEMALES_18TO20_CUME" />
+          <ScalarProperty Name="Females18to24CUME" ColumnName="FEMALES_18TO24_CUME" />
+          <ScalarProperty Name="Females21to24CUME" ColumnName="FEMALES_21TO24_CUME" />
+          <ScalarProperty Name="Females25to34CUME" ColumnName="FEMALES_25TO34_CUME" />
+          <ScalarProperty Name="Females35to44CUME" ColumnName="FEMALES_35TO44_CUME" />
+          <ScalarProperty Name="Females35to49CUME" ColumnName="FEMALES_35TO49_CUME" />
+          <ScalarProperty Name="Females45to49CUME" ColumnName="FEMALES_45TO49_CUME" />
+          <ScalarProperty Name="Females50to54CUME" ColumnName="FEMALES_50TO54_CUME" />
+          <ScalarProperty Name="Females55to64CUME" ColumnName="FEMALES_55TO64_CUME" />
+          <ScalarProperty Name="Females65PlusCUME" ColumnName="FEMALES_65PLUS_CUME" />
+          <ScalarProperty Name="Males6to11ECUME" ColumnName="MALES_6TO11_ECUME" />
+          <ScalarProperty Name="Males12to17ECUME" ColumnName="MALES_12TO17_ECUME" />
+          <ScalarProperty Name="Males18to20ECUME" ColumnName="MALES_18TO20_ECUME" />
+          <ScalarProperty Name="Males18to24ECUME" ColumnName="MALES_18TO24_ECUME" />
+          <ScalarProperty Name="Males21to24ECUME" ColumnName="MALES_21TO24_ECUME" />
+          <ScalarProperty Name="Males25to34ECUME" ColumnName="MALES_25TO34_ECUME" />
+          <ScalarProperty Name="Males35to44ECUME" ColumnName="MALES_35TO44_ECUME" />
+          <ScalarProperty Name="Males35to49ECUME" ColumnName="MALES_35TO49_ECUME" />
+          <ScalarProperty Name="Males45to49ECUME" ColumnName="MALES_45TO49_ECUME" />
+          <ScalarProperty Name="Males50to54ECUME" ColumnName="MALES_50TO54_ECUME" />
+          <ScalarProperty Name="Males55to64ECUME" ColumnName="MALES_55TO64_ECUME" />
+          <ScalarProperty Name="Males65PlusECUME" ColumnName="MALES_65PLUS_ECUME" />
+          <ScalarProperty Name="Females6to11ECUME" ColumnName="FEMALES_6TO11_ECUME" />
+          <ScalarProperty Name="Females12to17ECUME" ColumnName="FEMALES_12TO17_ECUME" />
+          <ScalarProperty Name="Females18to20ECUME" ColumnName="FEMALES_18TO20_ECUME" />
+          <ScalarProperty Name="Females18to24ECUME" ColumnName="FEMALES_18TO24_ECUME" />
+          <ScalarProperty Name="Females21to24ECUME" ColumnName="FEMALES_21TO24_ECUME" />
+          <ScalarProperty Name="Females25to34ECUME" ColumnName="FEMALES_25TO34_ECUME" />
+          <ScalarProperty Name="Females35to44ECUME" ColumnName="FEMALES_35TO44_ECUME" />
+          <ScalarProperty Name="Females35to49ECUME" ColumnName="FEMALES_35TO49_ECUME" />
+          <ScalarProperty Name="Females45to49ECUME" ColumnName="FEMALES_45TO49_ECUME" />
+          <ScalarProperty Name="Females50to54ECUME" ColumnName="FEMALES_50TO54_ECUME" />
+          <ScalarProperty Name="Females55to64ECUME" ColumnName="FEMALES_55TO64_ECUME" />
+          <ScalarProperty Name="Females65PlusECUME" ColumnName="FEMALES_65PLUS_ECUME" />
+          <ScalarProperty Name="Males6to11TLH" ColumnName="MALES_6TO11_TLH" />
+          <ScalarProperty Name="Males12to17TLH" ColumnName="MALES_12TO17_TLH" />
+          <ScalarProperty Name="Males18to20TLH" ColumnName="MALES_18TO20_TLH" />
+          <ScalarProperty Name="Males18to24TLH" ColumnName="MALES_18TO24_TLH" />
+          <ScalarProperty Name="Males21to24TLH" ColumnName="MALES_21TO24_TLH" />
+          <ScalarProperty Name="Males25to34TLH" ColumnName="MALES_25TO34_TLH" />
+          <ScalarProperty Name="Males35to44TLH" ColumnName="MALES_35TO44_TLH" />
+          <ScalarProperty Name="Males35to49TLH" ColumnName="MALES_35TO49_TLH" />
+          <ScalarProperty Name="Males45to49TLH" ColumnName="MALES_45TO49_TLH" />
+          <ScalarProperty Name="Males50to54TLH" ColumnName="MALES_50TO54_TLH" />
+          <ScalarProperty Name="Males55to64TLH" ColumnName="MALES_55TO64_TLH" />
+          <ScalarProperty Name="Males65PlusTLH" ColumnName="MALES_65PLUS_TLH" />
+          <ScalarProperty Name="Females6to11TLH" ColumnName="FEMALES_6TO11_TLH" />
+          <ScalarProperty Name="Females12to17TLH" ColumnName="FEMALES_12TO17_TLH" />
+          <ScalarProperty Name="Females18to20TLH" ColumnName="FEMALES_18TO20_TLH" />
+          <ScalarProperty Name="Females18to24TLH" ColumnName="FEMALES_18TO24_TLH" />
+          <ScalarProperty Name="Females21to24TLH" ColumnName="FEMALES_21TO24_TLH" />
+          <ScalarProperty Name="Females25to34TLH" ColumnName="FEMALES_25TO34_TLH" />
+          <ScalarProperty Name="Females35to44TLH" ColumnName="FEMALES_35TO44_TLH" />
+          <ScalarProperty Name="Females35to49TLH" ColumnName="FEMALES_35TO49_TLH" />
+          <ScalarProperty Name="Females45to49TLH" ColumnName="FEMALES_45TO49_TLH" />
+          <ScalarProperty Name="Females50to54TLH" ColumnName="FEMALES_50TO54_TLH" />
+          <ScalarProperty Name="Females55to64TLH" ColumnName="FEMALES_55TO64_TLH" />
+          <ScalarProperty Name="Females65PlusTLH" ColumnName="FEMALES_65PLUS_TLH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioCountyAudiences">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioCountyAudience">
+        <MappingFragment StoreEntitySet="NielsenRadioCountyAudience">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_COUNTY_AUDIENCE_ID" />
+          <ScalarProperty Name="NielsenRadioCountyPeriodID" ColumnName="NIELSEN_RADIO_COUNTY_PERIOD_ID" />
+          <ScalarProperty Name="NielsenRadioDaypartID" ColumnName="NIELSEN_RADIO_DAYPART_ID" />
+          <ScalarProperty Name="NielsenRadioCountyStationID" ColumnName="NIELSEN_RADIO_COUNTY_STATION_ID" />
+          <ScalarProperty Name="Persons12PlusAQH" ColumnName="PERSONS_12PLUS_AQH" />
+          <ScalarProperty Name="Persons12to34AQH" ColumnName="PERSONS_12TO34_AQH" />
+          <ScalarProperty Name="Persons18PlusAQH" ColumnName="PERSONS_18PLUS_AQH" />
+          <ScalarProperty Name="Persons18to34AQH" ColumnName="PERSONS_18TO34_AQH" />
+          <ScalarProperty Name="Persons25to54AQH" ColumnName="PERSONS_25TO54_AQH" />
+          <ScalarProperty Name="Persons35PlusAQH" ColumnName="PERSONS_35PLUS_AQH" />
+          <ScalarProperty Name="Persons35to64AQH" ColumnName="PERSONS_35TO64_AQH" />
+          <ScalarProperty Name="Males18PlusAQH" ColumnName="MALES_18PLUS_AQH" />
+          <ScalarProperty Name="Females18PlusAQH" ColumnName="FEMALES_18PLUS_AQH" />
+          <ScalarProperty Name="Persons12PlusRating" ColumnName="PERSONS_12PLUS_RATING" />
+          <ScalarProperty Name="Persons12to34Rating" ColumnName="PERSONS_12TO34_RATING" />
+          <ScalarProperty Name="Persons18PlusRating" ColumnName="PERSONS_18PLUS_RATING" />
+          <ScalarProperty Name="Persons18to34Rating" ColumnName="PERSONS_18TO34_RATING" />
+          <ScalarProperty Name="Persons25to54Rating" ColumnName="PERSONS_25TO54_RATING" />
+          <ScalarProperty Name="Persons35PlusRating" ColumnName="PERSONS_35PLUS_RATING" />
+          <ScalarProperty Name="Persons35to64Rating" ColumnName="PERSONS_35TO64_RATING" />
+          <ScalarProperty Name="Males18PlusRating" ColumnName="MALES_18PLUS_RATING" />
+          <ScalarProperty Name="Females18PlusRating" ColumnName="FEMALES_18PLUS_RATING" />
+          <ScalarProperty Name="Persons12PlusSSOC" ColumnName="PERSONS_12PLUS_SSOC" />
+          <ScalarProperty Name="Persons12to34SSOC" ColumnName="PERSONS_12TO34_SSOC" />
+          <ScalarProperty Name="Persons18PlusSSOC" ColumnName="PERSONS_18PLUS_SSOC" />
+          <ScalarProperty Name="Persons18to34SSOC" ColumnName="PERSONS_18TO34_SSOC" />
+          <ScalarProperty Name="Persons25to54SSOC" ColumnName="PERSONS_25TO54_SSOC" />
+          <ScalarProperty Name="Persons35PlusSSOC" ColumnName="PERSONS_35PLUS_SSOC" />
+          <ScalarProperty Name="Persons35to64SSOC" ColumnName="PERSONS_35TO64_SSOC" />
+          <ScalarProperty Name="Males18PlusSSOC" ColumnName="MALES_18PLUS_SSOC" />
+          <ScalarProperty Name="Females18PlusSSOC" ColumnName="FEMALES_18PLUS_SSOC" />
+          <ScalarProperty Name="Persons12PlusCSOS" ColumnName="PERSONS_12PLUS_CSOS" />
+          <ScalarProperty Name="Persons12to34CSOS" ColumnName="PERSONS_12TO34_CSOS" />
+          <ScalarProperty Name="Persons18PlusCSOS" ColumnName="PERSONS_18PLUS_CSOS" />
+          <ScalarProperty Name="Persons18to34CSOS" ColumnName="PERSONS_18TO34_CSOS" />
+          <ScalarProperty Name="Persons25to54CSOS" ColumnName="PERSONS_25TO54_CSOS" />
+          <ScalarProperty Name="Persons35PlusCSOS" ColumnName="PERSONS_35PLUS_CSOS" />
+          <ScalarProperty Name="Persons35to64CSOS" ColumnName="PERSONS_35TO64_CSOS" />
+          <ScalarProperty Name="Males18PlusCSOS" ColumnName="MALES_18PLUS_CSOS" />
+          <ScalarProperty Name="Females18PlusCSOS" ColumnName="FEMALES_18PLUS_CSOS" />
+          <ScalarProperty Name="Persons12PlusCUME" ColumnName="PERSONS_12PLUS_CUME" />
+          <ScalarProperty Name="Persons12to34CUME" ColumnName="PERSONS_12TO34_CUME" />
+          <ScalarProperty Name="Persons18PlusCUME" ColumnName="PERSONS_18PLUS_CUME" />
+          <ScalarProperty Name="Persons18to34CUME" ColumnName="PERSONS_18TO34_CUME" />
+          <ScalarProperty Name="Persons25to54CUME" ColumnName="PERSONS_25TO54_CUME" />
+          <ScalarProperty Name="Persons35PlusCUME" ColumnName="PERSONS_35PLUS_CUME" />
+          <ScalarProperty Name="Persons35to64CUME" ColumnName="PERSONS_35TO64_CUME" />
+          <ScalarProperty Name="Males18PlusCUME" ColumnName="MALES_18PLUS_CUME" />
+          <ScalarProperty Name="Females18PlusCUME" ColumnName="FEMALES_18PLUS_CUME" />
+          <ScalarProperty Name="Persons12PlusCUMERating" ColumnName="PERSONS_12PLUS_CUME_RATING" />
+          <ScalarProperty Name="Persons12to34CUMERating" ColumnName="PERSONS_12TO34_CUME_RATING" />
+          <ScalarProperty Name="Persons18PlusCUMERating" ColumnName="PERSONS_18PLUS_CUME_RATING" />
+          <ScalarProperty Name="Persons18to34CUMERating" ColumnName="PERSONS_18TO34_CUME_RATING" />
+          <ScalarProperty Name="Persons25to54CUMERating" ColumnName="PERSONS_25TO54_CUME_RATING" />
+          <ScalarProperty Name="Persons35PlusCUMERating" ColumnName="PERSONS_35PLUS_CUME_RATING" />
+          <ScalarProperty Name="Persons35to64CUMERating" ColumnName="PERSONS_35TO64_CUME_RATING" />
+          <ScalarProperty Name="Males18PlusCUMERating" ColumnName="MALES_18PLUS_CUME_RATING" />
+          <ScalarProperty Name="Females18PlusCUMERating" ColumnName="FEMALES_18PLUS_CUME_RATING" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioCountyClusters">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioCountyCluster">
+        <MappingFragment StoreEntitySet="NielsenRadioCountyCluster">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_COUNTY_CLUSTER_ID" />
+          <ScalarProperty Name="NielsenRadioCountyPeriodID" ColumnName="NIELSEN_RADIO_COUNTY_PERIOD_ID" />
+          <ScalarProperty Name="CountyCodeWithinCluster" ColumnName="COUNTY_CODE_WITHIN_CLUSTER" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="Pop12Plus" ColumnName="POP_12PLUS" />
+          <ScalarProperty Name="State" ColumnName="STATE" />
+          <ScalarProperty Name="ClusterMeasurementType" ColumnName="CLUSTER_MEASUREMENT_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioCountyIntabs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioCountyIntab">
+        <MappingFragment StoreEntitySet="NielsenRadioCountyIntab">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_COUNTY_INTAB_ID" />
+          <ScalarProperty Name="NielsenRadioCountyPeriodID" ColumnName="NIELSEN_RADIO_COUNTY_PERIOD_ID" />
+          <ScalarProperty Name="Persons12Plus" ColumnName="PERSONS_12PLUS_INTAB" />
+          <ScalarProperty Name="Persons12to34" ColumnName="PERSONS_12TO34_INTAB" />
+          <ScalarProperty Name="Persons18Plus" ColumnName="PERSONS_18PLUS_INTAB" />
+          <ScalarProperty Name="Persons18to34" ColumnName="PERSONS_18TO34_INTAB" />
+          <ScalarProperty Name="Persons25to54" ColumnName="PERSONS_25TO54_INTAB" />
+          <ScalarProperty Name="Persons35Plus" ColumnName="PERSONS_35PLUS_INTAB" />
+          <ScalarProperty Name="Persons35to64" ColumnName="PERSONS_35TO64_INTAB" />
+          <ScalarProperty Name="Males18Plus" ColumnName="MALES_18PLUS_INTAB" />
+          <ScalarProperty Name="Females18Plus" ColumnName="FEMALES_18PLUS_INTAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioCountyPeriods">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioCountyPeriod">
+        <MappingFragment StoreEntitySet="NielsenRadioCountyPeriod">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_COUNTY_PERIOD_ID" />
+          <ScalarProperty Name="NielsenRadioMarketNumber" ColumnName="NIELSEN_RADIO_MARKET_NUMBER" />
+          <ScalarProperty Name="CountyCode" ColumnName="COUNTY_CODE" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+          <ScalarProperty Name="IsCluster" ColumnName="IS_CLUSTER" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="State" ColumnName="STATE" />
+          <ScalarProperty Name="WeightingFlag" ColumnName="WEIGHTING_FLAG" />
+          <ScalarProperty Name="MeasurementType" ColumnName="MEASUREMENT_TYPE" />
+          <ScalarProperty Name="Copyright" ColumnName="COPYRIGHT" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioCountyStations">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioCountyStation">
+        <MappingFragment StoreEntitySet="NielsenRadioCountyStation">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_COUNTY_STATION_ID" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="CallLetters" ColumnName="CALL_LETTERS" />
+          <ScalarProperty Name="Band" ColumnName="BAND" />
+          <ScalarProperty Name="CityLicense" ColumnName="CITY_LICENSE" />
+          <ScalarProperty Name="CountyLicense" ColumnName="COUNTY_LICENSE" />
+          <ScalarProperty Name="StateLicense" ColumnName="STATE_LICENSE" />
+          <ScalarProperty Name="Affiliation" ColumnName="AFFILIATION" />
+          <ScalarProperty Name="OtherAffiliations" ColumnName="OTHER_AFFILIATIONS" />
+          <ScalarProperty Name="Frequency" ColumnName="FREQUENCY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioCountyUniverses">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioCountyUniverse">
+        <MappingFragment StoreEntitySet="NielsenRadioCountyUniverse">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_COUNTY_UNIVERSE_ID" />
+          <ScalarProperty Name="NielsenRadioCountyPeriodID" ColumnName="NIELSEN_RADIO_COUNTY_PERIOD_ID" />
+          <ScalarProperty Name="Persons12Plus" ColumnName="PERSONS_12PLUS_UE" />
+          <ScalarProperty Name="Persons12to34" ColumnName="PERSONS_12TO34_UE" />
+          <ScalarProperty Name="Persons18Plus" ColumnName="PERSONS_18PLUS_UE" />
+          <ScalarProperty Name="Persons18to34" ColumnName="PERSONS_18TO34_UE" />
+          <ScalarProperty Name="Persons25to54" ColumnName="PERSONS_25TO54_UE" />
+          <ScalarProperty Name="Persons35Plus" ColumnName="PERSONS_35PLUS_UE" />
+          <ScalarProperty Name="Persons35to64" ColumnName="PERSONS_35TO64_UE" />
+          <ScalarProperty Name="Males18Plus" ColumnName="MALES_18PLUS_UE" />
+          <ScalarProperty Name="Females18Plus" ColumnName="FEMALES_18PLUS_UE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioDayparts">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioDaypart">
+        <MappingFragment StoreEntitySet="NielsenRadioDaypart">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_DAYPART_ID" />
+          <ScalarProperty Name="NielsenDaypartID" ColumnName="NIELSEN_DAYPART_ID" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="NumberOfQuarterhours" ColumnName="NUMBER_QUARTER_HOURS" />
+          <ScalarProperty Name="AQH" ColumnName="AQH" />
+          <ScalarProperty Name="Cume" ColumnName="CUME" />
+          <ScalarProperty Name="ExclusiveCume" ColumnName="EXCLUSIVE_CUME" />
+          <ScalarProperty Name="Qualitative" ColumnName="QUALITATIVE" />
+          <ScalarProperty Name="DiaryAtWorkInCar" ColumnName="DIARY_AT_WORK_IN_CAR" />
+          <ScalarProperty Name="PPMinHomeOutofHome" ColumnName="PPM_IN_HOME_OUT_OF_HOME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioDemographics">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioDemographic">
+        <MappingFragment StoreEntitySet="NielsenRadioDemographic">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_DEMOGRAPHIC_ID" />
+          <ScalarProperty Name="Number" ColumnName="NUMBER" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="AgeSexCode" ColumnName="AGESEX_CODE" />
+          <ScalarProperty Name="QualitativeCode" ColumnName="QUALITATIVE_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioFormats">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioFormat">
+        <MappingFragment StoreEntitySet="NielsenRadioFormat">
+          <ScalarProperty Name="Code" ColumnName="CODE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioIntabs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioIntab">
+        <MappingFragment StoreEntitySet="NielsenRadioIntab">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_INTAB_ID" />
+          <ScalarProperty Name="SegmentParentID" ColumnName="NIELSEN_RADIO_SEGMENT_PARENT_ID" />
+          <ScalarProperty Name="Females6to11" ColumnName="FEMALES_6TO11_INTAB" />
+          <ScalarProperty Name="Females12to17" ColumnName="FEMALES_12TO17_INTAB" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_INTAB" />
+          <ScalarProperty Name="Females18to24" ColumnName="FEMALES_18TO24_INTAB" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_INTAB" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_INTAB" />
+          <ScalarProperty Name="Females35to44" ColumnName="FEMALES_35TO44_INTAB" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_INTAB" />
+          <ScalarProperty Name="Females45to49" ColumnName="FEMALES_45TO49_INTAB" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_INTAB" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_INTAB" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_INTAB" />
+          <ScalarProperty Name="Males6to11" ColumnName="MALES_6TO11_INTAB" />
+          <ScalarProperty Name="Males12to17" ColumnName="MALES_12TO17_INTAB" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_INTAB" />
+          <ScalarProperty Name="Males18to24" ColumnName="MALES_18TO24_INTAB" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_INTAB" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_INTAB" />
+          <ScalarProperty Name="Males35to44" ColumnName="MALES_35TO44_INTAB" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_INTAB" />
+          <ScalarProperty Name="Males45to49" ColumnName="MALES_45TO49_INTAB" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_INTAB" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_INTAB" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_INTAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioMarkets">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioMarket">
+        <MappingFragment StoreEntitySet="NielsenRadioMarket">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_MARKET_ID" />
+          <ScalarProperty Name="Number" ColumnName="NUMBER" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="Source" ColumnName="SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioPeriodRevisions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioPeriodRevision">
+        <MappingFragment StoreEntitySet="NielsenRadioPeriodRevision">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_PERIOD_REVISION_ID" />
+          <ScalarProperty Name="OldNielsenRadioPeriodID" ColumnName="OLD_NIELSEN_RADIO_PERIOD_ID" />
+          <ScalarProperty Name="NewNielsenRadioPeriodID" ColumnName="NEW_NIELSEN_RADIO_PERIOD_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioPeriods">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioPeriod">
+        <MappingFragment StoreEntitySet="NielsenRadioPeriod">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_PERIOD_ID" />
+          <ScalarProperty Name="NielsenRadioReportTypeCode" ColumnName="NIELSEN_RADIO_REPORT_TYPE_CODE" />
+          <ScalarProperty Name="NielsenPeriodID" ColumnName="NIELSEN_PERIOD_ID" />
+          <ScalarProperty Name="NielsenRadioMarketNumber" ColumnName="NIELSEN_RADIO_MARKET_NUMBER" />
+          <ScalarProperty Name="ShortName" ColumnName="SHORT_NAME" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="StartDate" ColumnName="START_DATE" />
+          <ScalarProperty Name="EndDate" ColumnName="END_DATE" />
+          <ScalarProperty Name="StandardCondensedIndicator" ColumnName="STANDARD_CONDENSED_INDICATOR" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+          <ScalarProperty Name="Copyright" ColumnName="COPYRIGHT" />
+          <ScalarProperty Name="Source" ColumnName="SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioPurs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioPur">
+        <MappingFragment StoreEntitySet="NielsenRadioPur">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_PUR_ID" />
+          <ScalarProperty Name="SegmentParentID" ColumnName="NIELSEN_RADIO_SEGMENT_PARENT_ID" />
+          <ScalarProperty Name="SegmentChildID" ColumnName="NIELSEN_RADIO_SEGMENT_CHILD_ID" />
+          <ScalarProperty Name="Females6to11" ColumnName="FEMALES_6TO11_PUR" />
+          <ScalarProperty Name="Females12to17" ColumnName="FEMALES_12TO17_PUR" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_PUR" />
+          <ScalarProperty Name="Females18to24" ColumnName="FEMALES_18TO24_PUR" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_PUR" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_PUR" />
+          <ScalarProperty Name="Females35to44" ColumnName="FEMALES_35TO44_PUR" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_PUR" />
+          <ScalarProperty Name="Females45to49" ColumnName="FEMALES_45TO49_PUR" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_PUR" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_PUR" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_PUR" />
+          <ScalarProperty Name="Males6to11" ColumnName="MALES_6TO11_PUR" />
+          <ScalarProperty Name="Males12to17" ColumnName="MALES_12TO17_PUR" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_PUR" />
+          <ScalarProperty Name="Males18to24" ColumnName="MALES_18TO24_PUR" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_PUR" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_PUR" />
+          <ScalarProperty Name="Males35to44" ColumnName="MALES_35TO44_PUR" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_PUR" />
+          <ScalarProperty Name="Males45to49" ColumnName="MALES_45TO49_PUR" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_PUR" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_PUR" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_PUR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioQualitatives">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioQualitative">
+        <MappingFragment StoreEntitySet="NielsenRadioQualitative">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_QUALITATIVE_ID" />
+          <ScalarProperty Name="Code" ColumnName="CODE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioReportTypes">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioReportType">
+        <MappingFragment StoreEntitySet="NielsenRadioReportType">
+          <ScalarProperty Name="Code" ColumnName="CODE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_REPORT_TYPE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioSegmentChilds">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioSegmentChild">
+        <MappingFragment StoreEntitySet="NielsenRadioSegmentChild">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_SEGMENT_CHILD_ID" />
+          <ScalarProperty Name="NielsenRadioDaypartID" ColumnName="NIELSEN_RADIO_DAYPART_ID" />
+          <ScalarProperty Name="ListeningLocation" ColumnName="LISTENING_LOCATION" />
+          <ScalarProperty Name="StationComboType" ColumnName="STATION_COMBO_TYPE" />
+          <ScalarProperty Name="NielsenRadioStationComboID" ColumnName="NIELSEN_RADIO_STATION_COMBO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioSegmentParents">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioSegmentParent">
+        <MappingFragment StoreEntitySet="NielsenRadioSegmentParent">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_SEGMENT_PARENT_ID" />
+          <ScalarProperty Name="NielsenRadioPeriodID" ColumnName="NIELSEN_RADIO_PERIOD_ID" />
+          <ScalarProperty Name="GeoIndicator" ColumnName="GEO_INDICATOR" />
+          <ScalarProperty Name="NielsenRadioQualitativeID" ColumnName="NIELSEN_RADIO_QUALITATIVE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioStationHistorys">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioStationHistory">
+        <MappingFragment StoreEntitySet="NielsenRadioStationHistory">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_STATION_HISTORY_ID" />
+          <ScalarProperty Name="NielsenRadioMarketNumber" ColumnName="NIELSEN_RADIO_MARKET_NUMBER" />
+          <ScalarProperty Name="ComboID" ColumnName="COMBO_ID" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="CallLetters" ColumnName="CALL_LETTERS" />
+          <ScalarProperty Name="Band" ColumnName="BAND" />
+          <ScalarProperty Name="Frequency" ColumnName="FREQUENCY" />
+          <ScalarProperty Name="ComboType" ColumnName="COMBO_TYPE" />
+          <ScalarProperty Name="IsSpillin" ColumnName="IS_SPILLIN" />
+          <ScalarProperty Name="NielsenRadioFormatCode" ColumnName="NIELSEN_RADIO_FORMAT_CODE" />
+          <ScalarProperty Name="Source" ColumnName="SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioStations">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioStation">
+        <MappingFragment StoreEntitySet="NielsenRadioStation">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_STATION_ID" />
+          <ScalarProperty Name="NielsenRadioMarketNumber" ColumnName="NIELSEN_RADIO_MARKET_NUMBER" />
+          <ScalarProperty Name="ComboID" ColumnName="COMBO_ID" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="CallLetters" ColumnName="CALL_LETTERS" />
+          <ScalarProperty Name="Band" ColumnName="BAND" />
+          <ScalarProperty Name="Frequency" ColumnName="FREQUENCY" />
+          <ScalarProperty Name="ComboType" ColumnName="COMBO_TYPE" />
+          <ScalarProperty Name="IsSpillin" ColumnName="IS_SPILLIN" />
+          <ScalarProperty Name="NielsenRadioFormatCode" ColumnName="NIELSEN_RADIO_FORMAT_CODE" />
+          <ScalarProperty Name="Source" ColumnName="SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioUniverses">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioUniverse">
+        <MappingFragment StoreEntitySet="NielsenRadioUniverse">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_UNIVERSE_ID" />
+          <ScalarProperty Name="SegmentParentID" ColumnName="NIELSEN_RADIO_SEGMENT_PARENT_ID" />
+          <ScalarProperty Name="Females6to11" ColumnName="FEMALES_6TO11_UE" />
+          <ScalarProperty Name="Females12to17" ColumnName="FEMALES_12TO17_UE" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_UE" />
+          <ScalarProperty Name="Females18to24" ColumnName="FEMALES_18TO24_UE" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_UE" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_UE" />
+          <ScalarProperty Name="Females35to44" ColumnName="FEMALES_35TO44_UE" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_UE" />
+          <ScalarProperty Name="Females45to49" ColumnName="FEMALES_45TO49_UE" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_UE" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_UE" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_UE" />
+          <ScalarProperty Name="Males6to11" ColumnName="MALES_6TO11_UE" />
+          <ScalarProperty Name="Males12to17" ColumnName="MALES_12TO17_UE" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_UE" />
+          <ScalarProperty Name="Males18to24" ColumnName="MALES_18TO24_UE" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_UE" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_UE" />
+          <ScalarProperty Name="Males35to44" ColumnName="MALES_35TO44_UE" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_UE" />
+          <ScalarProperty Name="Males45to49" ColumnName="MALES_45TO49_UE" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_UE" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_UE" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_UE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenRadioVStagings">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenRadioVStaging">
+        <MappingFragment StoreEntitySet="NielsenRadioVStaging">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_RADIO_V_STAGING_ID" />
+          <ScalarProperty Name="GeoIndicator" ColumnName="GEO_INDICATOR" />
+          <ScalarProperty Name="EstimateType" ColumnName="ESTIMATE_TYPE" />
+          <ScalarProperty Name="Daypart" ColumnName="DAYPART" />
+          <ScalarProperty Name="ListeningLocation" ColumnName="LISTENING_LOCATION" />
+          <ScalarProperty Name="DemoID" ColumnName="DEMO_ID" />
+          <ScalarProperty Name="StationComboType" ColumnName="STATION_COMBO_TYPE" />
+          <ScalarProperty Name="StationComboID" ColumnName="STATION_COMBO_ID" />
+          <ScalarProperty Name="PurAud" ColumnName="PUR_AUD" />
+          <ScalarProperty Name="NielsenRadioSegmentChildID" ColumnName="NIELSEN_RADIO_SEGMENT_CHILD_ID" />
+          <ScalarProperty Name="NielsenRadioDaypartID" ColumnName="NIELSEN_RADIO_DAYPART_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVAudiences">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVAudience">
+        <MappingFragment StoreEntitySet="NielsenTVAudience">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_AUDIENCE_ID" />
+          <ScalarProperty Name="NielsenTVBookID" ColumnName="NIELSEN_TV_BOOK_ID" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="AudienceDatetime" ColumnName="AUDIENCE_DATETIME" />
+          <ScalarProperty Name="IsExcluded" ColumnName="IS_EXCLUDED" />
+          <ScalarProperty Name="MetroAHousehold" ColumnName="METROA_HOUSEHOLD_AUD" />
+          <ScalarProperty Name="MetroBHousehold" ColumnName="METROB_HOUSEHOLD_AUD" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD_AUD" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5_AUD" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11_AUD" />
+          <ScalarProperty Name="Males12to14" ColumnName="MALES_12TO14_AUD" />
+          <ScalarProperty Name="Males15to17" ColumnName="MALES_15TO17_AUD" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_AUD" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_AUD" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_AUD" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_AUD" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_AUD" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_AUD" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_AUD" />
+          <ScalarProperty Name="Females12to14" ColumnName="FEMALES_12TO14_AUD" />
+          <ScalarProperty Name="Females15to17" ColumnName="FEMALES_15TO17_AUD" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_AUD" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_AUD" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_AUD" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_AUD" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_AUD" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_AUD" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_AUD" />
+          <ScalarProperty Name="WorkingWomen" ColumnName="WORKING_WOMEN_AUD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVBookRevisions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVBookRevision">
+        <MappingFragment StoreEntitySet="NielsenTVBookRevision">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_BOOK_REVISION_ID" />
+          <ScalarProperty Name="OldNielsenTVBookID" ColumnName="OLD_NIELSEN_TV_BOOK_ID" />
+          <ScalarProperty Name="NewNielsenTVBookID" ColumnName="NEW_NIELSEN_TV_BOOK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVBooks">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVBook">
+        <MappingFragment StoreEntitySet="NielsenTVBook">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_BOOK_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="Month" ColumnName="MONTH" />
+          <ScalarProperty Name="Stream" ColumnName="STREAM" />
+          <ScalarProperty Name="StartDateTime" ColumnName="START_DATETIME" />
+          <ScalarProperty Name="EndDateTime" ColumnName="END_DATETIME" />
+          <ScalarProperty Name="MarketTimeZone" ColumnName="MARKET_TIME_ZONE" />
+          <ScalarProperty Name="MarketClassCode" ColumnName="MARKET_CLASS_CODE" />
+          <ScalarProperty Name="IsDaylightSavingsMarket" ColumnName="IS_DST_MARKET" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+          <ScalarProperty Name="CollectionMethod" ColumnName="COLLECTION_METHOD" />
+          <ScalarProperty Name="ReportingService" ColumnName="REPORTING_SERVICE" />
+          <ScalarProperty Name="Exclusion" ColumnName="EXCLUSION" />
+          <ScalarProperty Name="Ethnicity" ColumnName="ETHNICITY" />
+          <ScalarProperty Name="DownloadFileID" ColumnName="DOWNLOAD_FILE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVCumeBookRevisions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVCumeBookRevision">
+        <MappingFragment StoreEntitySet="NielsenTVCumeBookRevision">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_CUME_BOOK_REVISION_ID" />
+          <ScalarProperty Name="OldNielsenTVCumeBookID" ColumnName="OLD_NIELSEN_TV_CUME_BOOK_ID" />
+          <ScalarProperty Name="NewNielsenTVCumeBookID" ColumnName="NEW_NIELSEN_TV_CUME_BOOK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVCumeBooks">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVCumeBook">
+        <MappingFragment StoreEntitySet="NielsenTVCumeBook">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_CUME_BOOK_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="Month" ColumnName="MONTH" />
+          <ScalarProperty Name="Stream" ColumnName="STREAM" />
+          <ScalarProperty Name="StartDateTime" ColumnName="START_DATETIME" />
+          <ScalarProperty Name="EndDateTime" ColumnName="END_DATETIME" />
+          <ScalarProperty Name="MarketTimeZone" ColumnName="MARKET_TIME_ZONE" />
+          <ScalarProperty Name="MarketClassCode" ColumnName="MARKET_CLASS_CODE" />
+          <ScalarProperty Name="IsDaylightSavingsMarket" ColumnName="IS_DST_MARKET" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVCumeDaypartImpressions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVCumeDaypartImpression">
+        <MappingFragment StoreEntitySet="NielsenTVCumeDaypartImpression">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_CUME_DAYPART_IMPRESSION_ID" />
+          <ScalarProperty Name="Ethnicity" ColumnName="ETHNICITY" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="NielsenTVCumeBookID" ColumnName="NIELSEN_TV_CUME_BOOK_ID" />
+          <ScalarProperty Name="NielsenTVDaypartID" ColumnName="NIELSEN_TV_DAYPART_ID" />
+          <ScalarProperty Name="MetroAHousehold" ColumnName="METROA_HOUSEHOLD" />
+          <ScalarProperty Name="MetroBHousehold" ColumnName="METROB_HOUSEHOLD" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11" />
+          <ScalarProperty Name="Males12to14" ColumnName="MALES_12TO14" />
+          <ScalarProperty Name="Males15to17" ColumnName="MALES_15TO17" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS" />
+          <ScalarProperty Name="Females12to14" ColumnName="FEMALES_12TO14" />
+          <ScalarProperty Name="Females15to17" ColumnName="FEMALES_15TO17" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS" />
+          <ScalarProperty Name="WorkingWomen" ColumnName="WORKING_WOMEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVDayparts">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVDaypart">
+        <MappingFragment StoreEntitySet="NielsenTVDaypart">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_DAYPART_ID" />
+          <ScalarProperty Name="NielsenDaypartID" ColumnName="NIELSEN_DAYPART_ID" />
+          <ScalarProperty Name="IsHispanic" ColumnName="IS_HISPANIC" />
+          <ScalarProperty Name="TimeZone" ColumnName="TIME_ZONE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="NumberOfQuarterhours" ColumnName="NUMBER_QUARTER_HOURS" />
+          <ScalarProperty Name="MilitaryStartTime" ColumnName="MIL_START_TIME" />
+          <ScalarProperty Name="MilitaryEndTime" ColumnName="MIL_END_TIME" />
+          <ScalarProperty Name="StartMinute" ColumnName="START_MINUTE" />
+          <ScalarProperty Name="EndMinute" ColumnName="END_MINUTE" />
+          <ScalarProperty Name="UseSegment" ColumnName="USE_SEGMENT" />
+          <ScalarProperty Name="Sunday" ColumnName="SUNDAY" />
+          <ScalarProperty Name="Monday" ColumnName="MONDAY" />
+          <ScalarProperty Name="Tuesday" ColumnName="TUESDAY" />
+          <ScalarProperty Name="Wednesday" ColumnName="WEDNESDAY" />
+          <ScalarProperty Name="Thursday" ColumnName="THURSDAY" />
+          <ScalarProperty Name="Friday" ColumnName="FRIDAY" />
+          <ScalarProperty Name="Saturday" ColumnName="SATURDAY" />
+          <ScalarProperty Name="IsInactive" ColumnName="IS_INACTIVE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVHutputs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVHutput">
+        <MappingFragment StoreEntitySet="NielsenTVHutput">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_HUTPUT_ID" />
+          <ScalarProperty Name="NielsenTVBookID" ColumnName="NIELSEN_TV_BOOK_ID" />
+          <ScalarProperty Name="HutputDatetime" ColumnName="HUTPUT_DATETIME" />
+          <ScalarProperty Name="MetroAHousehold" ColumnName="METROA_HOUSEHOLD_HUT" />
+          <ScalarProperty Name="MetroBHousehold" ColumnName="METROB_HOUSEHOLD_HUT" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD_HUT" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5_PUT" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11_PUT" />
+          <ScalarProperty Name="Males12to14" ColumnName="MALES_12TO14_PUT" />
+          <ScalarProperty Name="Males15to17" ColumnName="MALES_15TO17_PUT" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_PUT" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_PUT" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_PUT" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_PUT" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_PUT" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_PUT" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_PUT" />
+          <ScalarProperty Name="Females12to14" ColumnName="FEMALES_12TO14_PUT" />
+          <ScalarProperty Name="Females15to17" ColumnName="FEMALES_15TO17_PUT" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_PUT" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_PUT" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_PUT" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_PUT" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_PUT" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_PUT" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_PUT" />
+          <ScalarProperty Name="WorkingWomen" ColumnName="WORKING_WOMEN_PUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVIntabs">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVIntab">
+        <MappingFragment StoreEntitySet="NielsenTVIntab">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_INTAB_ID" />
+          <ScalarProperty Name="NielsenTVBookID" ColumnName="NIELSEN_TV_BOOK_ID" />
+          <ScalarProperty Name="IntabDate" ColumnName="INTAB_DATE" />
+          <ScalarProperty Name="MetroAHousehold" ColumnName="METROA_HOUSEHOLD_INTAB" />
+          <ScalarProperty Name="MetroBHousehold" ColumnName="METROB_HOUSEHOLD_INTAB" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD_INTAB" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5_INTAB" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11_INTAB" />
+          <ScalarProperty Name="Males12to14" ColumnName="MALES_12TO14_INTAB" />
+          <ScalarProperty Name="Males15to17" ColumnName="MALES_15TO17_INTAB" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_INTAB" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_INTAB" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_INTAB" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_INTAB" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_INTAB" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_INTAB" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_INTAB" />
+          <ScalarProperty Name="Females12to14" ColumnName="FEMALES_12TO14_INTAB" />
+          <ScalarProperty Name="Females15to17" ColumnName="FEMALES_15TO17_INTAB" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_INTAB" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_INTAB" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_INTAB" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_INTAB" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_INTAB" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_INTAB" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_INTAB" />
+          <ScalarProperty Name="WorkingWomen" ColumnName="WORKING_WOMEN_INTAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVProgramBookRevisions">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVProgramBookRevision">
+        <MappingFragment StoreEntitySet="NielsenTVProgramBookRevision">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_PROGRAM_BOOK_REVISION_ID" />
+          <ScalarProperty Name="OldNielsenTVProgramBookID" ColumnName="OLD_NIELSEN_TV_PROGRAM_BOOK_ID" />
+          <ScalarProperty Name="NewNielsenTVProgramBookID" ColumnName="NEW_NIELSEN_TV_PROGRAM_BOOK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVProgramBooks">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVProgramBook">
+        <MappingFragment StoreEntitySet="NielsenTVProgramBook">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_PROGRAM_BOOK_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="Month" ColumnName="MONTH" />
+          <ScalarProperty Name="Validated" ColumnName="VALIDATED" />
+          <ScalarProperty Name="ReportingService" ColumnName="REPORTING_SERVICE" />
+          <ScalarProperty Name="Exclusion" ColumnName="EXCLUSION" />
+          <ScalarProperty Name="Ethnicity" ColumnName="ETHNICITY" />
+          <ScalarProperty Name="DownloadFileID" ColumnName="DOWNLOAD_FILE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVPrograms">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVProgram">
+        <MappingFragment StoreEntitySet="NielsenTVProgram">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_PROGRAM_ID" />
+          <ScalarProperty Name="NielsenTVProgramBookID" ColumnName="NIELSEN_TV_PROGRAM_BOOK_ID" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="QtrHourStartTime" ColumnName="QTR_HOUR_START_DATETIME" />
+          <ScalarProperty Name="QtrHourEndTime" ColumnName="QTR_HOUR_END_DATETIME" />
+          <ScalarProperty Name="ProgramName" ColumnName="PROGRAM_NAME" />
+          <ScalarProperty Name="Subtitle" ColumnName="SUBTITLE" />
+          <ScalarProperty Name="TrackageName" ColumnName="TRACKAGE_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVStationHistorys">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVStationHistory">
+        <MappingFragment StoreEntitySet="NielsenTVStationHistory">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_STATION_HISTORY_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="CallLetters" ColumnName="OLD_CALL_LETTERS" />
+          <ScalarProperty Name="ChangedOn" ColumnName="CHANGED_ON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVStations">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVStation">
+        <MappingFragment StoreEntitySet="NielsenTVStation">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_STATION_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+          <ScalarProperty Name="CallLetters" ColumnName="CALL_LETTERS" />
+          <ScalarProperty Name="SourceType" ColumnName="SOURCE_TYPE" />
+          <ScalarProperty Name="ParentPlusIndicator" ColumnName="PARENT_PLUS_INDICATOR" />
+          <ScalarProperty Name="IsParent" ColumnName="IS_PARENT" />
+          <ScalarProperty Name="IsSatellite" ColumnName="IS_SATELLITE" />
+          <ScalarProperty Name="Affiliation" ColumnName="AFFILIATION" />
+          <ScalarProperty Name="CableName" ColumnName="CABLE_NAME" />
+          <ScalarProperty Name="ChannelNum" ColumnName="CHANNEL_NUM" />
+          <ScalarProperty Name="DistributorGroup" ColumnName="DISTRIBUTOR_GROUP" />
+          <ScalarProperty Name="StationType" ColumnName="STATION_TYPE" />
+          <ScalarProperty Name="ReportabilityStatus" ColumnName="REPORTABILITY_STATUS" />
+          <ScalarProperty Name="HomeMarketNumber" ColumnName="HOME_MARKET_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NielsenTVUniverses">
+      <EntityTypeMapping TypeName="AdvantageFramework.Nielsen.Database.NielsenTVUniverse">
+        <MappingFragment StoreEntitySet="NielsenTVUniverse">
+          <ScalarProperty Name="ID" ColumnName="NIELSEN_TV_UNIVERSE_ID" />
+          <ScalarProperty Name="NielsenMarketNumber" ColumnName="NIELSEN_MARKET_NUM" />
+          <ScalarProperty Name="Year" ColumnName="YEAR" />
+          <ScalarProperty Name="Month" ColumnName="MONTH" />
+          <ScalarProperty Name="IsMeteredMarket" ColumnName="IS_METERED_MARKET" />
+          <ScalarProperty Name="MetroAHousehold" ColumnName="METROA_HOUSEHOLD_UE" />
+          <ScalarProperty Name="MetroBHousehold" ColumnName="METROB_HOUSEHOLD_UE" />
+          <ScalarProperty Name="Household" ColumnName="HOUSEHOLD_UE" />
+          <ScalarProperty Name="Children2to5" ColumnName="CHILDREN_2TO5_UE" />
+          <ScalarProperty Name="Children6to11" ColumnName="CHILDREN_6TO11_UE" />
+          <ScalarProperty Name="Males12to14" ColumnName="MALES_12TO14_UE" />
+          <ScalarProperty Name="Males15to17" ColumnName="MALES_15TO17_UE" />
+          <ScalarProperty Name="Males18to20" ColumnName="MALES_18TO20_UE" />
+          <ScalarProperty Name="Males21to24" ColumnName="MALES_21TO24_UE" />
+          <ScalarProperty Name="Males25to34" ColumnName="MALES_25TO34_UE" />
+          <ScalarProperty Name="Males35to49" ColumnName="MALES_35TO49_UE" />
+          <ScalarProperty Name="Males50to54" ColumnName="MALES_50TO54_UE" />
+          <ScalarProperty Name="Males55to64" ColumnName="MALES_55TO64_UE" />
+          <ScalarProperty Name="Males65Plus" ColumnName="MALES_65PLUS_UE" />
+          <ScalarProperty Name="Females12to14" ColumnName="FEMALES_12TO14_UE" />
+          <ScalarProperty Name="Females15to17" ColumnName="FEMALES_15TO17_UE" />
+          <ScalarProperty Name="Females18to20" ColumnName="FEMALES_18TO20_UE" />
+          <ScalarProperty Name="Females21to24" ColumnName="FEMALES_21TO24_UE" />
+          <ScalarProperty Name="Females25to34" ColumnName="FEMALES_25TO34_UE" />
+          <ScalarProperty Name="Females35to49" ColumnName="FEMALES_35TO49_UE" />
+          <ScalarProperty Name="Females50to54" ColumnName="FEMALES_50TO54_UE" />
+          <ScalarProperty Name="Females55to64" ColumnName="FEMALES_55TO64_UE" />
+          <ScalarProperty Name="Females65Plus" ColumnName="FEMALES_65PLUS_UE" />
+          <ScalarProperty Name="WorkingWomen" ColumnName="WORKING_WOMEN_UE" />
+          <ScalarProperty Name="SurveyStartDate" ColumnName="SURVEY_START_DATE" />
+          <ScalarProperty Name="SurveyEndDate" ColumnName="SURVEY_END_DATE" />
+          <ScalarProperty Name="ReportingService" ColumnName="REPORTING_SERVICE" />
+          <ScalarProperty Name="Exclusion" ColumnName="EXCLUSION" />
+          <ScalarProperty Name="Ethnicity" ColumnName="ETHNICITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

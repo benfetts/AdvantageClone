@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[SOFTWARE_LEVEL] (
+    [LEVEL_ID]          INT IDENTITY (1, 1) NOT NULL,
+    [JOB_NUMBER]        INT NULL,
+    [JOB_COMPONENT_NBR] INT NULL,
+    [PRODUCT_ID]        INT NULL,
+    [VERSION_ID]        INT NULL
+);
+

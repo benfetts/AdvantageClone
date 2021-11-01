@@ -1,0 +1,35 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Dashboard_GetPostPeriods]
+(
+	@CurrentDate varchar(12),
+	@CurrentYear int
+)
+AS
+Declare @Restrictions Int,
+		@sql nvarchar(4000),
+		@paramlist nvarchar(4000), @Year varchar(5)
+
+
+SELECT @Year = PPGLYEAR 
+FROM POSTPERIOD
+WHERE PPSRTDATE <= @CurrentDate AND PPENDDATE >= @CurrentDate
+
+SELECT YEAR(DATEADD(yy, -1, PPGLYEAR)) AS [Year], 1 as [Value]
+FROM POSTPERIOD
+WHERE PPSRTDATE <= @CurrentDate AND PPENDDATE >= @CurrentDate
+UNION
+SELECT PPGLYEAR AS [Year], 2 as [Value]
+FROM POSTPERIOD
+WHERE PPSRTDATE <= @CurrentDate AND PPENDDATE >= @CurrentDate
+
+SELECT PPGLMONTH, SUBSTRING(PPDESC, 1, 3) AS PPDESC, MONTH(PPSRTDATE) AS [MONTH], PPPERIOD
+FROM POSTPERIOD 
+WHERE PPGLYEAR = @CurrentYear AND PPGLMONTH <> 99
+
+SELECT PPPERIOD 
+FROM POSTPERIOD 
+WHERE PPSRTDATE <= GETDATE() AND PPENDDATE >= GETDATE()
+
+
+

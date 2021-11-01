@@ -1,0 +1,7 @@
+export const enum DROP_DOWN_TYPES {
+  VERSIONS = 'Versions',
+  IN_THIS_REVIEW = 'In this review',
+  RELATED_ASSETS = 'Related assets',
+}
+
+export const LIST_OF_ITEMS = [DROP_DOWN_TYPES.VERSIONS, DROP_DOWN_TYPES.IN_THIS_REVIEW, DROP_DOWN_TYPES.RELATED_ASSETS];

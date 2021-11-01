@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[FUNCTIONS_BAK] (
+    [FNC_CODE]         VARCHAR (6)     NOT NULL,
+    [FNC_BILLING_RATE] DECIMAL (11, 2) NULL,
+    [TAX_COMM]         SMALLINT        NULL,
+    [TAX_COMM_ONLY]    SMALLINT        NULL,
+    [FNC_NONBILL_FLAG] SMALLINT        NULL,
+    [FNC_TAX_FLAG]     SMALLINT        NULL,
+    [FNC_COMM_FLAG]    SMALLINT        NULL
+);
+

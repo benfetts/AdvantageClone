@@ -1,0 +1,54 @@
+<div data-options="dxView : { name: 'time_template_detail', title: 'time_template_detail' } ">
+    <div data-bind="dxCommand: { onExecute: '#EmployeeTimeTemplateEdit/{id}', direction: 'none', id: 'edit', title: 'Edit', icon: 'edit' }"></div>
+    <div data-bind="dxCommand: { onExecute: handleDelete, id: 'delete', title: 'Delete', icon: 'remove' }"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+
+        <div data-bind="dxScrollView: { }">
+            <h2 data-bind="text: employeetimetemplate.EmployeeCode"></h2>
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">Employee time template ID</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.EmployeeTimeTemplateID"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Employee code</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.EmployeeCode"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Job number</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.JobNumber"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Job component number</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.JobComponentNumber"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Function code</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.FunctionCode"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Default comment</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.DefaultComment"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Department team code</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.DepartmentTeamCode"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Product category code</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.ProductCategoryCode"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Employee hours</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.EmployeeHours"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Apply to days</div>
+                    <div class="dx-field-value" data-bind="text: employeetimetemplate.ApplyToDays"></div>
+                </div>
+            </div>
+            <div data-options="dxContentPlaceholder : { name: 'view-footer', transition: 'none' } "></div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿body, td, th
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+body
+{
+    
+}
+.CssTextBox
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    
+}
+.CssButton {
+    background-color:Silver;
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+    font-size: 11px;        
+}
+.CssListBox
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+.CssDropDownList {
+   
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+.CssLinkCursor 
+{
+    cursor: pointer;
+    cursor: hand
+}

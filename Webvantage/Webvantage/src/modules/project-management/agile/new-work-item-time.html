@@ -1,0 +1,47 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <div class="wv-form wv-vert-form">
+        <div class="alert alert-warning" role="alert" if.bind="showPostPeriodWarning">
+            <strong>Warning!</strong> Post period for this day is closed.
+        </div>
+        <div style="font-weight: bold;">
+            ${title}
+        </div>
+        <div class="wv-form-group" style="float:left; clear:none; margin-right: 5px;">
+            <label>Date:</label>
+            <div>
+                <input id="entryDateEditor"
+                       ak-datepicker="k-value.two-way: entryDate; k-widget.bind: entryDateEditor;"
+                       k-on-change.delegate="entryDateEditorOnChange()" style="display:inherit;" />
+            </div>
+        </div>
+        <div class="wv-form-group" style="float:left; clear:none; width: 250px;">
+            <label>Function:</label>
+            <ak-drop-down-list style="width:100%"
+                               k-filter="contains"
+                               k-widget.bind="functionDropDownList"
+                               k-data-text-field="Description"
+                               k-data-value-field="Code"
+                               k-data-source.bind="functionDataSource"
+                               k-value.two-way="functionCode">
+            </ak-drop-down-list>
+        </div>
+        <div class="wv-form-group">
+            <label>Hours:</label>
+            <div>
+                <input type="number" maxlength="5" ak-numerictextbox="k-widget.bind: hoursNumericTextBox; k-value.two-way: hours; k-decimals.bind: 2; k-format.bind: 'n2'; k-spinners.bind: false; k-restrict-decimals.bind: true; k-max.bind: 24" style="width: 90px;" />
+            </div>
+        </div>
+        <div class="wv-form-group">
+            <label>Comment:</label>
+            <textarea value.bind="comment" class="k-textbox ${isCommentRequired ? 'RequiredInput' : ''}" style="width: 100%; min-height: 80px; resize: vertical !important;"></textarea>
+        </div>
+    </div>
+    <div id="buttonsForOldPages" class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal" style="float:right; margin-top: 35px;" if.bind="showButtonsForOldPages">
+        <button class="k-button k-primary" click.delegate="addClick()" disabled.bind="!canAdd">Add</button>
+        <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+    </div>
+</template>

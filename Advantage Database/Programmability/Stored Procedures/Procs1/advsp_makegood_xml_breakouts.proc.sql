@@ -1,0 +1,13 @@
+CREATE PROCEDURE [dbo].[advsp_makegood_xml_breakouts]
+	@ORDER_NBR int
+AS
+
+SELECT 
+	Cost = SUM(EXT_GROSS_AMT),
+	Spots = SUM(TOTAL_SPOTS),
+	[Year] = YEAR_NBR,
+	[Month] = MONTH_NBR 
+FROM dbo.TV_DETAIL 
+WHERE ORDER_NBR = @ORDER_NBR
+AND ACTIVE_REV =1
+GROUP BY YEAR_NBR, MONTH_NBR

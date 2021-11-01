@@ -1,0 +1,1941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AdvantageFramework</RootNamespace>
+    <AssemblyName>AdvantageFramework.BLogic</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\Output\</OutputPath>
+    <DocumentationFile>AdvantageFramework.BLogic.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <CodeAnalysisRuleSet />
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DocumentationFile>AdvantageFramework.BLogic.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <CodeAnalysisRuleSet />
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\Output\</OutputPath>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <DocumentationFile>AdvantageFramework.BLogic.xml</DocumentationFile>
+    <CodeAnalysisRuleSet />
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\Output\</OutputPath>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <DocumentationFile>AdvantageFramework.BLogic.xml</DocumentationFile>
+    <CodeAnalysisRuleSet />
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\Output\</OutputPath>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <DocumentationFile>AdvantageFramework.BLogic.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <Optimize>false</Optimize>
+    <DebugType>Full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <CodeAnalysisRuleSet />
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\Output\</OutputPath>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <DocumentationFile>AdvantageFramework.BLogic.xml</DocumentationFile>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet />
+    <DebugType>None</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AdvantageFrameworkBLogicKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\References\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Network">
+      <HintPath>..\References\Aspose.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Pdf, Version=10.9.0.0, Culture=neutral, PublicKeyToken=6947866647e416ec, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v20.1, Version=20.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack.4, Version=1.4.4.1, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\HtmlAgilityPack.4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICalVCard.4, Version=1.0.4.1, Culture=neutral, PublicKeyToken=cd85b70fb26f9fc1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\ICalVCard.4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\References\WVMVC\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="MailBee.NET, Version=12.0.0.615, Culture=neutral, PublicKeyToken=cd85b70fb26f9fc1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\MailBee.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices">
+      <HintPath>..\References\Microsoft.Exchange.WebServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices.Auth">
+      <HintPath>..\References\Microsoft.Exchange.WebServices.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Common, Version=2.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Ftp, Version=4.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Ftp.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Imap, Version=2.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Imap.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Mail, Version=2.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Mail.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Networking, Version=3.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Pop3, Version=2.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Pop3.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Security, Version=1.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Sftp, Version=3.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Sftp.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Smtp, Version=2.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Smtp.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.SshShell, Version=1.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.SshShell.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Telnet, Version=1.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Telnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Terminal, Version=1.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Terminal.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Time, Version=3.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Time.dll</HintPath>
+    </Reference>
+    <Reference Include="Rebex.Zip, Version=2.0.5085.0, Culture=neutral, PublicKeyToken=1c4638788972655d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\Rebex.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharpSigned.105.2.3\lib\net46\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.CodeDom, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.4.5.0\lib\net461\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.FtpClient">
+      <HintPath>..\References\System.Net.FtpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel.DataAnnotations" />
+    <Import Include="System.ComponentModel.DataAnnotations.Schema" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountPayable\Classes\AccountPayableMediaImportAlert.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableAvailableInternetOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableAvailableMagazineOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableAvailableNewspaperOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableAvailableOutOfHomeOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableAvailableProductionJobs.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableAvailableRadioOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableAvailableTVOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableExpenseImportBatchReport.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableBatchReport.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableExpenseReport.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableExpenseReportItem.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableGLDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableGLPurchaseOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableInternetDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableInvoiceFromRecur.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableMagazineDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableMediaApprovalDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableNewspaperDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableOutOfHomeDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableProductionDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableProductionPurchaseOrders.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableRadioDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableRecurGLDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableTVDistributionDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayablePurchaseOrderDetail.vb" />
+    <Compile Include="AccountPayable\Classes\AccountPayableVendorSearchOrders.vb" />
+    <Compile Include="AccountPayable\Classes\ImportAccountPayableJobBillingRate.vb" />
+    <Compile Include="AccountPayable\Classes\IRS1099DetailDisbursementReport.vb" />
+    <Compile Include="AccountPayable\Classes\ImportAccountPayable.vb" />
+    <Compile Include="AccountPayable\Classes\ImportAccountPayableGL.vb" />
+    <Compile Include="AccountPayable\Classes\ImportAccountPayableHeader.vb" />
+    <Compile Include="AccountPayable\Classes\ImportAccountPayableJob.vb" />
+    <Compile Include="AccountPayable\Classes\ImportAccountPayableMedia.vb" />
+    <Compile Include="AccountPayable\Classes\IRS1099AllVendorsSummaryReport.vb" />
+    <Compile Include="AccountPayable\Classes\IRS1099FederalStateCode.vb" />
+    <Compile Include="AccountPayable\Classes\IRS1099Processing.vb" />
+    <Compile Include="AccountPayable\Classes\IRS1099VendorBankCheckAmountTotal.vb" />
+    <Compile Include="AccountPayable\Methods.vb" />
+    <Compile Include="AccountReceivable\Classes\AccountReceivableTransaction.vb" />
+    <Compile Include="AccountReceivable\Classes\ClientInvoiceDetail.vb" />
+    <Compile Include="AccountReceivable\Classes\ClientInvoiceBatchReport.vb" />
+    <Compile Include="AccountReceivable\Classes\ClientInvoiceMediaWithAPDocument.vb" />
+    <Compile Include="AccountReceivable\Classes\ClientInvoicePaymentCheckDetail.vb" />
+    <Compile Include="AccountReceivable\Classes\ClientInvoicePayment.vb" />
+    <Compile Include="AccountReceivable\Classes\ClientInvoice.vb" />
+    <Compile Include="AccountReceivable\Classes\ImportAccountReceivableStaging.vb" />
+    <Compile Include="AccountReceivable\Methods.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerJobDetail.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerCategory.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerUserViewSetting.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerDateItem.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManager.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerFilter.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerGridColumnOrder.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerGridColumnUpdates.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerGridUpdates.vb" />
+    <Compile Include="Alert System\Classes\AlertsAndAssignmentsManagerItem.vb" />
+    <Compile Include="Classes\General Ledger\Journal Entry\RecurringJournalEntryPostReport.vb" />
+    <Compile Include="Classes\General Ledger\Journal Entry\RecurringJournalEntryReport.vb" />
+    <Compile Include="Classes\Media\OrderSubmitted.vb" />
+    <Compile Include="Controller\Desktop\CalendarController.vb" />
+    <Compile Include="Controller\General Ledger\Journal Entries Budgets\RecurringJournalEntryPostController.vb" />
+    <Compile Include="Controller\General Ledger\Journal Entries Budgets\RecurringJournalEntrySetupController.vb" />
+    <Compile Include="Controller\General Ledger\Journal Entries Budgets\RecurringJournalEntryController.vb" />
+    <Compile Include="Controller\General Ledger\Journal Entries Budgets\JournalEntryDetailCopyController.vb" />
+    <Compile Include="Controller\General Ledger\Journal Entries Budgets\JournalEntrySetupController.vb" />
+    <Compile Include="Controller\General Ledger\Processing\UpdateToSummaryController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\VendorMarketsController.vb" />
+    <Compile Include="Controller\General Ledger\Maintenance\GeneralLedgerConfigurationController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\VendorStationsController.vb" />
+    <Compile Include="Controller\Security\Setup\CDPSecurityGroupController.vb" />
+    <Compile Include="Controller\Security\Setup\CDPSecurityGroupSetupController.vb" />
+    <Compile Include="Controller\Maintenance\General\EmailSettingsController.vb" />
+    <Compile Include="Controller\Maintenance\General\LocationsController.vb" />
+    <Compile Include="Controller\Maintenance\Media\CanadaUniverseEditController.vb" />
+    <Compile Include="Controller\Maintenance\Media\CanadaUniverseSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Media\MarketGroupSelectMarketsController.vb" />
+    <Compile Include="Controller\Maintenance\Media\MarketGroupEditController.vb" />
+    <Compile Include="Controller\Maintenance\Media\MarketGroupSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Media\NationalUniverseController.vb" />
+    <Compile Include="Controller\Maintenance\Media\NationalUniverseEditController.vb" />
+    <Compile Include="Controller\Maintenance\Project Maintenance\AdNumberSetupController.vb" />
+    <Compile Include="Controller\Media\DigitalCampaignManagerController.vb" />
+    <Compile Include="Controller\Media\MediaRFPMarketCrossReferenceController.vb" />
+    <Compile Include="Controller\Media\MediaRFPVendorMarketCrossReferenceController.vb" />
+    <Compile Include="Controller\Reporting\MediaTrafficInstructionsCriteriaController.vb" />
+    <Compile Include="DTO\General Ledger\GeneralLedger.vb" />
+    <Compile Include="DTO\General Ledger\GeneralLedgerAccount.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\Cycle.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\Client.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\Division.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\GeneralLedgerAccount.vb" />
+    <Compile Include="Classes\General Ledger\Journal Entry\JournalEntryReport.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\RecurringJournalEntryItem.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\RecurringJournalEntryLog.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\RecurringJournalEntryPost.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\RecurringJournalEntryDetail.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\RecurringJournalEntry.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\JournalEntry.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\JournalEntryDetail.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\PostPeriod.vb" />
+    <Compile Include="DTO\General Ledger\Journal Entry\Product.vb" />
+    <Compile Include="DTO\General Ledger\Maintenance\GeneralLedgerConfiguration.vb" />
+    <Compile Include="DTO\General Ledger\PostPeriod.vb" />
+    <Compile Include="DTO\General Ledger\Processing\UnpostedJournalEntry.vb" />
+    <Compile Include="DTO\General Ledger\Processing\GLSourcePost.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\Vendor\Market.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\Vendor\Vendor.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\Vendor\VendorDCMMapping.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\Vendor\VendorMarket.vb" />
+    <Compile Include="DTO\Security\Setup\CDP Security Group\CDPSecurityGroup.vb" />
+    <Compile Include="DTO\Security\Setup\CDP Security Group\CDPSecurityGroupEmployee.vb" />
+    <Compile Include="DTO\Security\Setup\CDP Security Group\CDP.vb" />
+    <Compile Include="DTO\Security\Setup\CDP Security Group\Employee.vb" />
+    <Compile Include="DTO\Maintenance\Media\Canada Universe\CanadaUniverseDetail.vb" />
+    <Compile Include="DTO\Maintenance\Media\Canada Universe\CanadaUniverse.vb" />
+    <Compile Include="DTO\Maintenance\Media\Canada Universe\Market.vb" />
+    <Compile Include="DTO\Maintenance\Media\Canada Universe\Methods.vb" />
+    <Compile Include="DTO\Maintenance\Media\Market Group\Country.vb" />
+    <Compile Include="DTO\Maintenance\Media\Market Group\Market.vb" />
+    <Compile Include="DTO\Maintenance\Media\Market Group\MarketGroup.vb" />
+    <Compile Include="DTO\Maintenance\Media\Market Group\MarketGroupMarket.vb" />
+    <Compile Include="DTO\Maintenance\Media\National Universe\NationalUniverse.vb" />
+    <Compile Include="DTO\Maintenance\Media\National Universe\NationalUniverseDetail.vb" />
+    <Compile Include="DTO\Media\Digital Campaign Manager\OpenPlanEstimate.vb" />
+    <Compile Include="DTO\Media\Digital Campaign Manager\DigitalEstimateDetail.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\CanadaUniverse.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\CanadaUniverseDetail.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\MediaDemographic.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetailSubmarketDemo.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketSubmarket.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketSubmarketDemo.vb" />
+    <Compile Include="DTO\Media\National\BroadcastYearType.vb" />
+    <Compile Include="DTO\Media\National\Universe.vb" />
+    <Compile Include="DTO\Media\National\Demographic.vb" />
+    <Compile Include="DTO\Media\National\ProgramType.vb" />
+    <Compile Include="DTO\Media\National\Network.vb" />
+    <Compile Include="DTO\Media\National\ResearchCriteria.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPMarket.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPStation.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPMarketCrossReference.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPVendorMarketCrossReference.vb" />
+    <Compile Include="DTO\Media\Traffic\AlertComment.vb" />
+    <Compile Include="DTO\Media\Traffic\DetailDocument.vb" />
+    <Compile Include="DTO\Media\Traffic\VendorStatus.vb" />
+    <Compile Include="DTO\Media\Traffic\Worksheet.vb" />
+    <Compile Include="Exporting\Data Classes\YayPayInvoiceContact.vb" />
+    <Compile Include="Exporting\Data Classes\YayPayInvoiceCustomer.vb" />
+    <Compile Include="Exporting\Data Classes\YayPayInvoiceTransaction.vb" />
+    <Compile Include="Exporting\Data Classes\YayPayInvoiceWithPayments.vb" />
+    <Compile Include="Exporting\Data Classes\YayPayInvoiceTransactionAllocation.vb" />
+    <Compile Include="Exporting\Data Classes\YayPayInvoiceDetail.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceContact.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceCustomer.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceTransactionAlt.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceTransaction.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceWithPaymentsAlt.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceWithPayments.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceTransactionAllocation.vb" />
+    <Compile Include="Exporting\Data Filter Classes\YayPayInvoiceDetail.vb" />
+    <Compile Include="Media Manager\Classes\BroadcastOrderVerification.vb" />
+    <Compile Include="Media Planning\Classes\VendorOrderStatus.vb" />
+    <Compile Include="Alert System\Classes\AlertEmail.vb" />
+    <Compile Include="Alert System\Classes\AutoCompleteRecipients.vb" />
+    <Compile Include="Alert System\Classes\ModuleAlert.vb" />
+    <Compile Include="Alert System\Methods.vb" />
+    <Compile Include="AvaTax\API\Methods.vb" />
+    <Compile Include="AvaTax\API\TaxService.vb" />
+    <Compile Include="AvaTax\Classes\AvalaraProductMapping.vb" />
+    <Compile Include="AvaTax\API\Address.vb" />
+    <Compile Include="AvaTax\API\AddressService.vb" />
+    <Compile Include="AvaTax\Classes\AddressValidationCountry.vb" />
+    <Compile Include="AvaTax\API\CancelTaxRequest.vb" />
+    <Compile Include="AvaTax\API\CancelTaxResonse.vb" />
+    <Compile Include="AvaTax\API\CancelTaxResult.vb" />
+    <Compile Include="AvaTax\API\GeoTaxResult.vb" />
+    <Compile Include="AvaTax\API\GetTaxRequest.vb" />
+    <Compile Include="AvaTax\API\GetTaxResult.vb" />
+    <Compile Include="AvaTax\API\Line.vb" />
+    <Compile Include="AvaTax\API\Message.vb" />
+    <Compile Include="AvaTax\Classes\OfficeCompanyCode.vb" />
+    <Compile Include="AvaTax\API\TaxAddress.vb" />
+    <Compile Include="AvaTax\API\TaxDetail.vb" />
+    <Compile Include="AvaTax\API\TaxLine.vb" />
+    <Compile Include="AvaTax\API\TaxOverrideDef.vb" />
+    <Compile Include="AvaTax\API\ValidateResult.vb" />
+    <Compile Include="AvaTax\Classes\AvaTaxInvoice.vb" />
+    <Compile Include="AvaTax\Methods.vb" />
+    <Compile Include="Billing Command Center\Classes\AdvanceBillRevenueRecognition.vb" />
+    <Compile Include="Billing Command Center\Classes\AdvanceBillPercentToQuote.vb" />
+    <Compile Include="Billing Command Center\Classes\ClientCashReceiptPayment.vb" />
+    <Compile Include="Billing Command Center\Classes\CurrencyRate.vb" />
+    <Compile Include="Billing Command Center\Classes\OpenPOItem.vb" />
+    <Compile Include="Billing Command Center\Classes\MediaBillingHistory.vb" />
+    <Compile Include="Billing Command Center\Classes\MediaSelectionAvailable.vb" />
+    <Compile Include="Billing Command Center\Classes\JournalEntry.vb" />
+    <Compile Include="Billing Command Center\Classes\TransferToJob.vb" />
+    <Compile Include="Billing Command Center\Classes\AccountPayableWriteoff.vb" />
+    <Compile Include="Billing Command Center\Classes\AdvanceBillingItem.vb" />
+    <Compile Include="Billing Command Center\Classes\AssignInvoices.vb" />
+    <Compile Include="Billing Command Center\Classes\BillingSelectionCriteria.vb" />
+    <Compile Include="Billing Command Center\Classes\UserBatch.vb" />
+    <Compile Include="Billing Command Center\Classes\JobDetailJobComponent.vb" />
+    <Compile Include="Billing Command Center\Classes\IncomeOnlyItem.vb" />
+    <Compile Include="Billing Command Center\Classes\JobCoop.vb" />
+    <Compile Include="Billing Command Center\Classes\InvoiceAssignedCoop.vb" />
+    <Compile Include="Billing Command Center\Classes\JobComponentFunctionDetail.vb" />
+    <Compile Include="Billing Command Center\Classes\EmployeeTimeItem.vb" />
+    <Compile Include="Billing Command Center\Classes\MediaSummary.vb" />
+    <Compile Include="Billing Command Center\Classes\ProductionBillHold.vb" />
+    <Compile Include="Billing Command Center\Classes\ProductionProcessControl.vb" />
+    <Compile Include="Billing Command Center\Classes\ProductionSummary.vb" />
+    <Compile Include="Billing Command Center\Classes\AccountPayableProductionItem.vb" />
+    <Compile Include="Billing Command Center\Methods.vb" />
+    <Compile Include="Calendar Import Services\Calendar.vb" />
+    <Compile Include="Calendar Import Services\Data.vb" />
+    <Compile Include="Calendar Import Services\Outlook\Methods.vb" />
+    <Compile Include="Calendar Import Services\Service.vb" />
+    <Compile Include="Calendar\Methods.vb" />
+    <Compile Include="Calendar\GoogleCal\Methods.vb" />
+    <Compile Include="Cash Receipts\Classes\ClientCashReceiptClientSearchInvoices.vb" />
+    <Compile Include="Cash Receipts\Classes\ImportClientCashReceiptPostPeriodBank.vb" />
+    <Compile Include="Cash Receipts\Classes\ClientCashReceiptPaymentDetail.vb" />
+    <Compile Include="Cash Receipts\Classes\ImportClientCashReceiptHeader.vb" />
+    <Compile Include="Cash Receipts\Classes\ImportClientCashReceiptDetail.vb" />
+    <Compile Include="Cash Receipts\Classes\ImportClientCashReceipt.vb" />
+    <Compile Include="Cash Receipts\Classes\OtherCashReceiptBatchReport.vb" />
+    <Compile Include="Cash Receipts\Classes\OtherCashReceiptDetail.vb" />
+    <Compile Include="Cash Receipts\Classes\OtherCashReceipt.vb" />
+    <Compile Include="Cash Receipts\Classes\ClientCashReceiptBatchReport.vb" />
+    <Compile Include="Cash Receipts\Classes\ClientCashReceiptTransactionSubreport.vb" />
+    <Compile Include="Cash Receipts\Classes\ClientInvoiceDetail.vb" />
+    <Compile Include="Cash Receipts\Classes\ClientCashReceipt.vb" />
+    <Compile Include="Cash Receipts\Classes\ClientCashReceiptDetail.vb" />
+    <Compile Include="Cash Receipts\Methods.vb" />
+    <Compile Include="Alert System\Classes\JobComponentInfo.vb" />
+    <Compile Include="Classes\Media\BroadcastCalendarWeek.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\OrderNumberSearchResult.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\OrderLine.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\WorksheetMarketDetailDateOrderStatus.vb" />
+    <Compile Include="Classes\Media\Nielsen\LeadInLeadOutStartEndTime.vb" />
+    <Compile Include="Classes\Media\Nielsen\LeadInLeadOutParameters.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\WorksheetMarketOrderDate.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\WorksheetMarketOrderDateData.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\WorksheetMarketOrderData.vb" />
+    <Compile Include="Classes\Media\Media Broadcast Worksheet\WorksheetMarketOrder.vb" />
+    <Compile Include="Classes\Media\Nielsen\LeadInLeadOutSummary.vb" />
+    <Compile Include="Classes\Media\Nielsen\LeadInLeadOutDetail.vb" />
+    <Compile Include="Classes\Media\Nielsen\RadioWorksheetRatingData.vb" />
+    <Compile Include="Classes\Media\Nielsen\MeasurementTrendDetail.vb" />
+    <Compile Include="Classes\Media\Nielsen\TVWorksheetRatingAndShareData.vb" />
+    <Compile Include="Classes\Media\Nielsen\MediaSpotTVResearchDaytimeType.vb" />
+    <Compile Include="Classes\Media\Nielsen\MediaDemoDetailType.vb" />
+    <Compile Include="Classes\Media\Nielsen\MediaDemoType.vb" />
+    <Compile Include="ComScore\Methods.vb" />
+    <Compile Include="Controller\AlertRecipientController.vb" />
+    <Compile Include="Controller\Employee\ExpenseApprovalController.vb" />
+    <Compile Include="Controller\Employee\ExpenseReportController.vb" />
+    <Compile Include="Controller\Finance And Accounting\ClientLatePaymentFeeController.vb" />
+    <Compile Include="Controller\Finance And Accounting\Exports\VATExportController.vb" />
+    <Compile Include="Controller\Finance And Accounting\RevenueResourcePlanController.vb" />
+    <Compile Include="Controller\Maintenance\General\LogoController.vb" />
+    <Compile Include="Controller\Maintenance\Media\MediaTacticSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Media\MediaChannelSetupController.vb" />
+    <Compile Include="Controller\Media\MakegoodDeliveryController.vb" />
+    <Compile Include="Controller\Media\MediaBroadcastWorksheetManageOrderController.vb" />
+    <Compile Include="Controller\Media\MediaPlanningController.vb" />
+    <Compile Include="Controller\Media\MediaTrafficController.vb" />
+    <Compile Include="Controller\Project Management\EstimateController.vb" />
+    <Compile Include="Controller\Reporting\MediaBroadcastWorksheetOtherCriteriaController.vb" />
+    <Compile Include="Dashboard\Classes\EmployeeTimeForcastDashboard.vb" />
+    <Compile Include="DTO\AdNumber.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanResourceStaff.vb" />
+    <Compile Include="DTO\MediaTactic.vb" />
+    <Compile Include="DTO\MediaChannel.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\JobComponent.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanClientResource.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanResource.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanResourceRevision.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanResourceRevisionDetail.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\Product.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\Division.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\Methods.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\Client.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanRevenueRevisionDetail.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanRevenueRevision.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanClientRevenue.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanRevenue.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanStaffClientAssignmentProduct.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanStaffClientAssignmentDivision.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanStaffClientAssignmentClient.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanStaffClientAssignment.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanStaffAltEmployee.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanStaffEmployee.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\PlanStaff.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\Plan.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\ResourceSetupFormDashboardDataSource.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\RevenueSetupFormDashboardDataSource.vb" />
+    <Compile Include="DTO\Finance And Accounting\Revenue Resource Plan\SetupFormDashboardDataSource.vb" />
+    <Compile Include="DTO\Finance And Accounting\VATExportRow.vb" />
+    <Compile Include="DTO\Finance And Accounting\ClientLateFeeInvoice.vb" />
+    <Compile Include="DTO\Maintenance\Agency\AgencySetting.vb" />
+    <Compile Include="DTO\Media\TimeSeparationSetting.vb" />
+    <Compile Include="DTO\Media\SpotMatchingSetting.vb" />
+    <Compile Include="DTO\Maintenance\Project Management\AdNumber.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketPendingMakegood.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetailDateOrderStatus.vb" />
+    <Compile Include="DTO\Media\OrderAlertComment.vb" />
+    <Compile Include="DTO\Media\BroadcastCalendar.vb" />
+    <Compile Include="DTO\Media\ComscoreLocalTimeView.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\VendorOrderStatus.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetCopyCDP.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetailVendorMakegoodStatus.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetailAutoFill.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketGoalsMediaPlanEstimate.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketVendorWorksheetMarketScheduleCopyTo.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetVendorOrderStatus.vb" />
+    <Compile Include="DTO\Media\MediaPlanCopy.vb" />
+    <Compile Include="DTO\Media\MediaGroupingMetric.vb" />
+    <Compile Include="DTO\Media\InternetPackageDetail.vb" />
+    <Compile Include="DTO\Media\RadioBroadcastXML.vb" />
+    <Compile Include="DTO\Media\RFP\AlertComment.vb" />
+    <Compile Include="DTO\Media\RFP\EmailVendorRepContact.vb" />
+    <Compile Include="DTO\Media\RFP\PrintSetting.vb" />
+    <Compile Include="DTO\Media\RFP\RFPReport.vb" />
+    <Compile Include="DTO\Media\RFP\GenerateRFPVendorRep.vb" />
+    <Compile Include="DTO\Media\RFP\GenerateRFP.vb" />
+    <Compile Include="DTO\Media\Spot Radio County\ResearchResult.vb" />
+    <Compile Include="DTO\Media\Spot Radio County\Year.vb" />
+    <Compile Include="DTO\Media\Spot Radio County\ResearchCriteria.vb" />
+    <Compile Include="DTO\Media\Spot Radio County\County.vb" />
+    <Compile Include="DTO\Media\Spot Radio County\Station.vb" />
+    <Compile Include="DTO\Media\Spot TV\ComScoreCDMA.vb" />
+    <Compile Include="DTO\Media\Traffic\Detail.vb" />
+    <Compile Include="DTO\Media\Traffic\CreativeGroup.vb" />
+    <Compile Include="DTO\Media\Traffic\Generate.vb" />
+    <Compile Include="DTO\Media\Traffic\GenerateVendorRep.vb" />
+    <Compile Include="DTO\Media\Traffic\PrintSetting.vb" />
+    <Compile Include="DTO\Media\Traffic\MissingInstruction.vb" />
+    <Compile Include="DTO\Media\Traffic\Revision.vb" />
+    <Compile Include="DTO\Media\Traffic\VendorCreativeGroup.vb" />
+    <Compile Include="DTO\Media\Traffic\Vendor.vb" />
+    <Compile Include="DTO\Nielsen\ClientNielsenRadioCountyPeriod.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioCountyAudience.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioCountyCluster.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioCountyIntab.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioCountyPeriod.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioCountyStation.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioCountyUniverse.vb" />
+    <Compile Include="DTO\Reporting\Media Broadcast Worksheet PreBuy\MediaBroadcastWorksheetMarketBook.vb" />
+    <Compile Include="DTO\Reporting\WorksheetMarketVendor.vb" />
+    <Compile Include="Employee In Out Board\Methods.vb" />
+    <Compile Include="Employee Time Forecast\Classes\EmployeeTimeDashboard.vb" />
+    <Compile Include="Employee Time Forecast\Classes\EmployeeTimeForecastDetail.vb" />
+    <Compile Include="Employee Time Forecast\Classes\EmployeeTimeForecastSummary.vb" />
+    <Compile Include="Employee Timesheet\Classes\ApprovalEmailAsync.vb" />
+    <Compile Include="Employee Timesheet\Classes\ExcelReport.vb" />
+    <Compile Include="ExpenseApproval\Methods.vb" />
+    <Compile Include="Invoice Printing\Classes\CDPDaysToPay.vb" />
+    <Compile Include="Invoice Printing\Classes\JobFunctionInvoiceDetail.vb" />
+    <Compile Include="Media Manager\Classes\InternetOrderReportAdSize.vb" />
+    <Compile Include="Media Manager\Classes\PrintOrderFlightingSubReport.vb" />
+    <Compile Include="Media Manager\Classes\InternetOrderReport.vb" />
+    <Compile Include="Media Planning\Classes\Estimate.vb" />
+    <Compile Include="Media Planning\Classes\OrderNumberSearchResult.vb" />
+    <Compile Include="Media Planning\Flow Chart\CellBorder.vb" />
+    <Compile Include="Media Planning\Flow Chart\CellData.vb" />
+    <Compile Include="Media Planning\Flow Chart\CellStyle.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChart.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartBuilder.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartEstimateLevelLine.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartEstimateLevel.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartGroupData.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartMarketAndVendor.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartDate.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartEstimate.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartEstimateDate.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartMediaPlanEstimateOptions.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartMediaPlanOptions.vb" />
+    <Compile Include="Media Planning\Flow Chart\MediaPlanFlowChart.vb" />
+    <Compile Include="Media Planning\Flow Chart\MediaPlanFlowChartData.vb" />
+    <Compile Include="Media Planning\Flow Chart\FlowChartDateRange.vb" />
+    <Compile Include="Media Planning\Flow Chart\Methods.vb" />
+    <Compile Include="Media\Classes\SpotTVCableProposal.vb" />
+    <Compile Include="Media\Classes\SpotcableOrder.vb" />
+    <Compile Include="DTO\Media\BroadcastXML.vb" />
+    <Compile Include="Project Management\Classes\JobNumberJobComponent.vb" />
+    <Compile Include="Project Schedule\Classes\TaskDetailGantt.vb" />
+    <Compile Include="Project Schedule\Classes\TaskDetailGanttDependency.vb" />
+    <Compile Include="Proofing\Methods.vb" />
+    <Compile Include="Reporting\Classes\MediaPlanComparisonSummary.vb" />
+    <Compile Include="Reporting\Classes\ReportColumn.vb" />
+    <Compile Include="Services\Com Score\Classes\Api.vb" />
+    <Compile Include="Services\Com Score\Classes\ApiException.vb" />
+    <Compile Include="Services\Com Score\Classes\LocalTimeViewCache.vb" />
+    <Compile Include="Services\Com Score\Classes\Market.vb" />
+    <Compile Include="Services\Com Score\Classes\LocalTimeViews.vb" />
+    <Compile Include="Services\Com Score\Classes\Station.vb" />
+    <Compile Include="Services\Com Score\Classes\Network.vb" />
+    <Compile Include="Services\Com Score\Classes\Demographic.vb" />
+    <Compile Include="Services\Com Score\Classes\Request.vb" />
+    <Compile Include="Services\Com Score\Classes\Response.vb" />
+    <Compile Include="ConceptShare\Classes\APIResponse.vb" />
+    <Compile Include="ConceptShare\Classes\ConceptShareConnection.vb" />
+    <Compile Include="ConceptShare\Classes\RepositoryThumbnail.vb" />
+    <Compile Include="ConceptShare\Classes\ReviewSummary.vb" />
+    <Compile Include="ConceptShare\Classes\FullReview.vb" />
+    <Compile Include="ConceptShare\Classes\JobInfo.vb" />
+    <Compile Include="ConceptShare\Classes\Reviewer.vb" />
+    <Compile Include="ConceptShare\Methods.vb" />
+    <Compile Include="Controller\ApplicationController.vb" />
+    <Compile Include="Controller\Desktop\DashboardController.vb" />
+    <Compile Include="Controller\Desktop\AlertController.vb" />
+    <Compile Include="Controller\Employee\ExpenseReportSetupController.vb" />
+    <Compile Include="Controller\Employee\TimesheetController.vb" />
+    <Compile Include="Controller\General Ledger\Journal Entries Budgets\JournalEntryController.vb" />
+    <Compile Include="Controller\General Ledger\Maintenance\GeneralLedgerMappingExportController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\DepartmentTeamSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\VendorInvoiceCategoryController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\ClientDiscountController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\ClientDiscountSetupController.vb" />
+    <Compile Include="Controller\Maintenance\General\SettingsSetupController.vb" />
+    <Compile Include="Controller\Maintenance\General\TimezoneController.vb" />
+    <Compile Include="Controller\Maintenance\Project Schedule\PhaseSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Project Schedule\StatusSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Accounting\SalesClassSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Project Schedule\TaskSetupController.vb" />
+    <Compile Include="Controller\Media\MediaManagerProcessGeneratePurchaseOrderController.vb" />
+    <Compile Include="Controller\Media\MediaManagerGeneratePurchaseOrderController.vb" />
+    <Compile Include="Controller\Media\POPrintOptionsController.vb" />
+    <Compile Include="Controller\Media\MediaRFPVendorDaypartCrossReferenceController.vb" />
+    <Compile Include="Controller\Maintenance\Media\TimeSeparationSettingsSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Media\InvoiceMatchingSettingsSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Media\ShareHPUTBookController.vb" />
+    <Compile Include="Controller\Maintenance\Media\DemographicController.vb" />
+    <Compile Include="Controller\DaysAndTimeController.vb" />
+    <Compile Include="Controller\Maintenance\Media\CableNetworkSetupController.vb" />
+    <Compile Include="Controller\Media\NielsenRadioController.vb" />
+    <Compile Include="Controller\Media\MediaRequestForProposalController.vb" />
+    <Compile Include="Controller\Media\ResearchCriteriaController.vb" />
+    <Compile Include="Controller\Media\BroadcastResearchController.vb" />
+    <Compile Include="Controller\Media\MediaBroadcastWorksheetController.vb" />
+    <Compile Include="Controller\Media\MediaManagerAdServingController.vb" />
+    <Compile Include="Controller\Maintenance\Media\DemographicSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Media\MediaBuyerSetupController.vb" />
+    <Compile Include="Controller\Maintenance\Project Maintenance\JobTypeSetupController.vb" />
+    <Compile Include="Controller\Project Management\AgileController.vb" />
+    <Compile Include="Controller\Project Management\ProjectBoardController.vb" />
+    <Compile Include="Controller\Project Management\JobTemplateController.vb" />
+    <Compile Include="Controller\Project Management\ProjectScheduleController.vb" />
+    <Compile Include="Controller\Reporting\MediaBroadcastWorksheetCriteriaController.vb" />
+    <Compile Include="CRM Central\Classes\CRMActivity.vb" />
+    <Compile Include="CRM Central\Methods.vb" />
+    <Compile Include="CSI Preferred Partner\Methods.vb" />
+    <Compile Include="Currency\Methods.vb" />
+    <Compile Include="Desktop\Classes\AdvantageServiceReportSchedule.vb" />
+    <Compile Include="Digital Results\Methods.vb" />
+    <Compile Include="Document Manager\Classes\DocumentIcon.vb" />
+    <Compile Include="Document Manager\Classes\InvoiceDocument.vb" />
+    <Compile Include="Document Manager\Classes\Document.vb" />
+    <Compile Include="Document Manager\Methods.vb" />
+    <Compile Include="Document Manager\Classes\UploadLevels.vb" />
+    <Compile Include="DoubleClick\Classes\ReportCriteria.vb" />
+    <Compile Include="DoubleClick\Methods.vb" />
+    <Compile Include="DTO\Application.vb" />
+    <Compile Include="DTO\BaseClass.vb" />
+    <Compile Include="DTO\Employee\ExpenseReportDetail.vb" />
+    <Compile Include="DTO\Function.vb" />
+    <Compile Include="DTO\Project Management\Campaign\Campaign.vb" />
+    <Compile Include="DTO\YearMonth.vb" />
+    <Compile Include="DTO\Media\Media Manager\MediaManagerGeneratePurchaseOrderVendorContact.vb" />
+    <Compile Include="DTO\Media\Media Manager\MediaManagerGeneratePurchaseOrder.vb" />
+    <Compile Include="DTO\PurchaseOrderPrintDefault.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\ClientDiscount.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\ClientDiscountExclusion.vb" />
+    <Compile Include="DTO\DaysAndTime.vb" />
+    <Compile Include="DTO\Desktop\Alert.vb" />
+    <Compile Include="DTO\Desktop\AlertAttachment.vb" />
+    <Compile Include="DTO\Desktop\AlertRecipient.vb" />
+    <Compile Include="DTO\Desktop\AlertComment.vb" />
+    <Compile Include="DTO\Desktop\Dashboard.vb" />
+    <Compile Include="DTO\Desktop\Document.vb" />
+    <Compile Include="DTO\Employee\ExpenseReport.vb" />
+    <Compile Include="DTO\Employee\Timesheet.vb" />
+    <Compile Include="DTO\GridAdvantage.vb" />
+    <Compile Include="DTO\JobComponent.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\DepartmentTeam.vb" />
+    <Compile Include="DTO\Maintenance\Agency\TimesheetSettings.vb" />
+    <Compile Include="DTO\Maintenance\General\Setting.vb" />
+    <Compile Include="DTO\Maintenance\Accounting\SalesClass.vb" />
+    <Compile Include="DTO\Maintenance\Project Management\JobType.vb" />
+    <Compile Include="DTO\Maintenance\Project Schedule\Setting.vb" />
+    <Compile Include="DTO\Maintenance\Project Schedule\Phase.vb" />
+    <Compile Include="DTO\Maintenance\Project Schedule\Status.vb" />
+    <Compile Include="DTO\Maintenance\Project Schedule\Task.vb" />
+    <Compile Include="DTO\Media\CableNetworkStation.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetailDateCopy.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketGoalsCopy.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketVendorOrderComments.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketVendorDateCopy.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketVendorScheduleCopyTo.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetPrintOptions.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\CableNetworkStation.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\NielsenRadioMarket.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\NielsenRadioPeriod.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\NielsenTVBook.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketVendorOrderedLine.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketRevision.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketNielsenRadioPeriod.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketNielsenBookCopyTo.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketNielsenTVBook.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetSecondaryDemo.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetailVendor.vb" />
+    <Compile Include="DTO\Media\NielsenDaypart.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPAvailLine.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPHeaderStatus.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPDemo.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPVendorDaypartCrossReference.vb" />
+    <Compile Include="DTO\Media\RFP\MediaRFPHeader.vb" />
+    <Compile Include="DTO\Media\Spot Radio\AudienceComposition.vb" />
+    <Compile Include="DTO\Media\Spot Radio\ResearchResult.vb" />
+    <Compile Include="DTO\Methods.vb" />
+    <Compile Include="DTO\Nielsen\ClientNielsenRadioPeriod.vb" />
+    <Compile Include="DTO\Nielsen\ClientNielsenTVProgramBook.vb" />
+    <Compile Include="DTO\Nielsen\ClientNielsenTVCumeBook.vb" />
+    <Compile Include="DTO\Nielsen\ClientNielsenTVBook.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVCarriageUELogRevision.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVCarriageUE.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVAIUE.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVCarriageUELog.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVFusionHutput.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVFusionAudience.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVAIUELog.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVAIUERevision.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVFusionUniverseRevision.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVFusionUniverse.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVLPMMarket.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVCablenet.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVSyscode.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioAudience.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioDaypart.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioDemographic.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioFormat.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioIntab.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioMarket.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioPeriodRevision.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioPeriod.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioPur.vb" />
+    <Compile Include="DTO\Nielsen\NCCTVMVPD.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioQualitative.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioReportType.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioSegmentChild.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioSegmentParent.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioStation.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioStationHistory.vb" />
+    <Compile Include="DTO\Nielsen\NielsenRadioUniverse.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVAudience.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVProgramBookRevision.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVProgramBook.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVCumeBookRevision.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVCumeBook.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVBookRevision.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVBook.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVCumeDaypartImpression.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVDaypart.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVHutput.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVIntab.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVProgramName.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVStation.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVStationHistory.vb" />
+    <Compile Include="DTO\Nielsen\NielsenTVUniverse.vb" />
+    <Compile Include="DTO\CableNetworkStation.vb" />
+    <Compile Include="DTO\VendorStation.vb" />
+    <Compile Include="DTO\VendorInvoiceCategory.vb" />
+    <Compile Include="DTO\Vendor.vb" />
+    <Compile Include="DTO\Daypart.vb" />
+    <Compile Include="DTO\Dashboard.vb" />
+    <Compile Include="DTO\Market.vb" />
+    <Compile Include="DTO\Media\BuyerEmployee.vb" />
+    <Compile Include="DTO\ComboBoxItem.vb" />
+    <Compile Include="DTO\Media\NielsenRadioPeriod.vb" />
+    <Compile Include="DTO\Media\Spot Radio\NielsenRadioBook.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\SetupFormDashboardDataSource.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetail.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketDetailDate.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketGoal.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarketGoalDate.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\WorksheetMarket.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\Worksheet.vb" />
+    <Compile Include="DTO\Media\NielsenRadioQualitative.vb" />
+    <Compile Include="DTO\Media\Methods.vb" />
+    <Compile Include="DTO\Media\MediaDemographic.vb" />
+    <Compile Include="DTO\Media\Metric.vb" />
+    <Compile Include="DTO\Media\Spot Radio\ResearchCriteria.vb" />
+    <Compile Include="DTO\Media\Spot Radio\Station.vb" />
+    <Compile Include="DTO\Media\Spot TV\ResearchResult.vb" />
+    <Compile Include="DTO\Media\Spot TV\ResearchCriteria.vb" />
+    <Compile Include="DTO\Media\Spot TV\NielsenTVBook.vb" />
+    <Compile Include="DTO\Media\ShareHPUTBook.vb" />
+    <Compile Include="DTO\Media\Spot TV\Demographic.vb" />
+    <Compile Include="DTO\Media\Spot TV\Station.vb" />
+    <Compile Include="Email\Methods.vb" />
+    <Compile Include="Employee Calendar Time\Classes\EmployeeTimeStaging.vb" />
+    <Compile Include="Employee Calendar Time\Methods.vb" />
+    <Compile Include="Employee Time Forecast\Methods.vb" />
+    <Compile Include="Employee Timesheet\Classes\CanEditEmployeeTimeReponse.vb" />
+    <Compile Include="Employee Timesheet\Classes\CommentView.vb" />
+    <Compile Include="Employee Timesheet\Classes\CommentViewHeader.vb" />
+    <Compile Include="Employee Timesheet\Classes\DayRecord.vb" />
+    <Compile Include="Employee Timesheet\Classes\DayStatus.vb" />
+    <Compile Include="Employee Timesheet\Classes\ProjectTemplate.vb" />
+    <Compile Include="Employee Timesheet\Classes\SaveEmployeeTimeReponse.vb" />
+    <Compile Include="Employee Timesheet\Classes\SaveTimeEntryResult.vb" />
+    <Compile Include="Employee Timesheet\Classes\Timesheet.vb" />
+    <Compile Include="Employee Timesheet\Classes\TimesheetDay.vb" />
+    <Compile Include="Employee Timesheet\Classes\TimesheetEntry.vb" />
+    <Compile Include="Estimate\Methods.vb" />
+    <Compile Include="Estimate\Printing\Classes\CustomEstimateReport.vb" />
+    <Compile Include="Estimate\Printing\Classes\EmailSettings.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimateComment.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimateFunctionComment.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimatePrintDetail301.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimatePrintDetail.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimatePrintDetail002.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimatePrintDetail003.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimatePrintSetting.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimateQuoteList.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimateQuote.vb" />
+    <Compile Include="Estimate\Printing\Classes\EstimatePrintingSetting.vb" />
+    <Compile Include="Estimate\Printing\Classes\PrintSettings.vb" />
+    <Compile Include="Estimate\Printing\Classes\TaxInformation002.vb" />
+    <Compile Include="Estimate\Printing\Classes\TaxInformation.vb" />
+    <Compile Include="Estimate\Printing\Methods.vb" />
+    <Compile Include="Exporting\Classes\AvailableField.vb" />
+    <Compile Include="Exporting\Classes\ExportField.vb" />
+    <Compile Include="Exporting\Classes\ExportInfo.vb" />
+    <Compile Include="Exporting\Data Classes\GeneralLedgerMappingExport.vb" />
+    <Compile Include="Exporting\Data Classes\AccountPayableCustom1.vb" />
+    <Compile Include="Exporting\Data Classes\JobInfoToFTP.vb" />
+    <Compile Include="Exporting\Data Classes\PurchaseOrder.vb" />
+    <Compile Include="Exporting\Data Classes\AccountPayable.vb" />
+    <Compile Include="Exporting\Data Classes\PurchaseOrderCustom1.vb" />
+    <Compile Include="Exporting\Data Classes\AccountPayableAnswersOnDemand.vb" />
+    <Compile Include="Exporting\Data Classes\GeneralLedgerDetail.vb" />
+    <Compile Include="Exporting\Data Classes\MediaPlanningData.vb" />
+    <Compile Include="Exporting\Data Filter Classes\GeneralLedgerMappingExport.vb" />
+    <Compile Include="Exporting\Data Filter Classes\AccountPayableCustom1.vb" />
+    <Compile Include="Exporting\Data Filter Classes\JobInfoToFTP.vb" />
+    <Compile Include="Exporting\Data Filter Classes\PurchaseOrder.vb" />
+    <Compile Include="Exporting\Data Filter Classes\AccountPayable.vb" />
+    <Compile Include="Exporting\Data Filter Classes\PurchaseOrderCustom1.vb" />
+    <Compile Include="Exporting\Data Filter Classes\AccountPayableAnswersOnDemand.vb" />
+    <Compile Include="Exporting\Data Filter Classes\GeneralLedgerDetail.vb" />
+    <Compile Include="Exporting\Data Filter Classes\MediaPlanningData.vb" />
+    <Compile Include="Exporting\Interfaces\IExportData.vb" />
+    <Compile Include="Exporting\Interfaces\IExportDataFilter.vb" />
+    <Compile Include="Exporting\Methods.vb" />
+    <Compile Include="File System\Classes\Proof.vb" />
+    <Compile Include="FTP\Methods.vb" />
+    <Compile Include="General Ledger\Classes\GeneralLedgerImportBatch.vb" />
+    <Compile Include="General Ledger\Classes\ChartOfAccount.vb" />
+    <Compile Include="General Ledger\Classes\GLAOtherCode.vb" />
+    <Compile Include="General Ledger\Classes\ImportJournalEntry.vb" />
+    <Compile Include="General Ledger\Classes\ImportJournalEntryDetail.vb" />
+    <Compile Include="General Ledger\Classes\ImportJournalEntryHeader.vb" />
+    <Compile Include="General Ledger\Journal Entries Budgets\Classes\JournalEntry.vb" />
+    <Compile Include="General Ledger\Journal Entries Budgets\Classes\JournalEntryDetail.vb" />
+    <Compile Include="General Ledger\Methods.vb" />
+    <Compile Include="General Ledger\Report Writer\Classes\GLData.vb" />
+    <Compile Include="General Ledger\Report Writer\Classes\GLReportWriterAccountReport.vb" />
+    <Compile Include="General Ledger\Report Writer\Classes\GLReportWriterGLRowFormat.vb" />
+    <Compile Include="General Ledger\Report Writer\Classes\ReportHeaderData.vb" />
+    <Compile Include="General Ledger\Report Writer\Methods.vb" />
+    <Compile Include="GlobalSuppressions.vb" />
+    <Compile Include="Google Services\Service.vb" />
+    <Compile Include="Help\Classes\ContactSupportMessage.vb" />
+    <Compile Include="Help\Methods.vb" />
+    <Compile Include="Importing\Classes\Broadcast4A.vb" />
+    <Compile Include="Importing\Classes\ComDataAC29File.vb" />
+    <Compile Include="Importing\Classes\ComDataAC29FileDetail.vb" />
+    <Compile Include="Importing\Classes\FixedImportItem.vb" />
+    <Compile Include="Importing\Classes\ImportPTOItem.vb" />
+    <Compile Include="Importing\Classes\MediaRFPOutlet.vb" />
+    <Compile Include="Importing\Classes\StrataBroadcastDetail.vb" />
+    <Compile Include="Importing\Methods.vb" />
+    <Compile Include="Income Only\Classes\IncomeOnly.vb" />
+    <Compile Include="Income Only\Classes\IncomeOnlyBatchReport.vb" />
+    <Compile Include="Income Only\Classes\IncomeOnlyHistory.vb" />
+    <Compile Include="Income Only\Classes\JobComponent.vb" />
+    <Compile Include="Income Only\Classes\JobComponentServiceFeeContract.vb" />
+    <Compile Include="Income Only\Classes\OrderLine.vb" />
+    <Compile Include="Income Only\Methods.vb" />
+    <Compile Include="Invoice Printing\Classes\CoverSheet.vb" />
+    <Compile Include="Invoice Printing\Classes\BillingJobComment.vb" />
+    <Compile Include="Invoice Printing\Classes\BillingJobFunctionComment.vb" />
+    <Compile Include="Invoice Printing\Classes\AutoEmailContact.vb" />
+    <Compile Include="Invoice Printing\Classes\CurrentTTDInvoiceDetail.vb" />
+    <Compile Include="Invoice Printing\Classes\CustomInvoiceReport.vb" />
+    <Compile Include="Invoice Printing\Classes\EstimatePriorCurrentTTDInvoiceDetail.vb" />
+    <Compile Include="Invoice Printing\Classes\InvoiceBillingHistory.vb" />
+    <Compile Include="Invoice Printing\Classes\InvoiceFunctionDetail.vb" />
+    <Compile Include="Invoice Printing\Classes\InvoicePrintingMediaSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\EmailSettings.vb" />
+    <Compile Include="Invoice Printing\Classes\InvoicePrintingComboSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\JobVersion.vb" />
+    <Compile Include="Invoice Printing\Classes\LocationSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\PrintSettings.vb" />
+    <Compile Include="Invoice Printing\Classes\InvoicePrintingSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceDefault.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceDetail.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceDetailFormatted.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceHeaderFooterSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceInternetSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceMagazineSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceNewspaperSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceOutdoorSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoicePrintingSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceRadioSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\CustomInvoiceSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaInvoiceTVSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\ComboInvoiceSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\ProductionInvoiceSetting.vb" />
+    <Compile Include="Invoice Printing\Classes\InvoiceBackupDetail.vb" />
+    <Compile Include="Invoice Printing\Classes\ComboInvoiceDetail.vb" />
+    <Compile Include="Invoice Printing\Classes\StandardInvoiceDetail.vb" />
+    <Compile Include="Invoice Printing\Classes\MediaTaxInformation.vb" />
+    <Compile Include="Invoice Printing\Classes\TaxInformation.vb" />
+    <Compile Include="Invoice Printing\Methods.vb" />
+    <Compile Include="Invoice Printing\Classes\AccountReceivableInvoice.vb" />
+    <Compile Include="Job Forecast\Classes\AllocateJobComponent.vb" />
+    <Compile Include="Job Forecast\Classes\JobForecastActual.vb" />
+    <Compile Include="Job Forecast\Classes\JobForecastEntry.vb" />
+    <Compile Include="Job Forecast\Classes\JobForecastJobSummary.vb" />
+    <Compile Include="Job Forecast\Classes\JobForecastView.vb" />
+    <Compile Include="Job Forecast\Methods.vb" />
+    <Compile Include="Media Manager\Classes\ApproveInvoiceOrder.vb" />
+    <Compile Include="DTO\Media\Media Manager\MediaManagerPODetail.vb" />
+    <Compile Include="Media Manager\Classes\MediaManagerPurchaseOrderStatus.vb" />
+    <Compile Include="Media Manager\Classes\OrderDate.vb" />
+    <Compile Include="Media Manager\Classes\BroadcastOrderYearMonth.vb" />
+    <Compile Include="Media Manager\Classes\ApproveInvoice.vb" />
+    <Compile Include="DTO\Media\Media Broadcast Worksheet\Methods.vb" />
+    <Compile Include="Nielsen Web Service\Classes\PaginationHeader.vb" />
+    <Compile Include="Nielsen Web Service\Methods.vb" />
+    <Compile Include="Project Management\Agile\Classes\Board.vb" />
+    <Compile Include="Project Management\Agile\Classes\BoardDesigner.vb" />
+    <Compile Include="Project Management\Agile\Classes\BoardJob.vb" />
+    <Compile Include="Project Management\Agile\Classes\CardDetail.vb" />
+    <Compile Include="Project Management\Agile\Classes\CardAssignee.vb" />
+    <Compile Include="Project Management\Agile\Classes\EmployeeSimple.vb" />
+    <Compile Include="Project Management\Agile\Classes\ProjectBoard.vb" />
+    <Compile Include="Project Management\Agile\Classes\Sprint.vb" />
+    <Compile Include="Project Management\Agile\Classes\TaskAssignmentCard.vb" />
+    <Compile Include="Project Management\Agile\Classes\WeeklyHours.vb" />
+    <Compile Include="Project Management\Agile\Classes\WorkItemAsync.vb" />
+    <Compile Include="Project Management\Agile\Methods.vb" />
+    <Compile Include="Project Management\Classes\TaskEmployees.vb" />
+    <Compile Include="Project Schedule\Classes\ProjectBoard.vb" />
+    <Compile Include="Reporting\Methods.vb" />
+    <Compile Include="Services\Calendar Time Sheet Import\Methods.vb" />
+    <Compile Include="Services\Com Score\Methods.vb" />
+    <Compile Include="Services\Automated Assignments\Methods.vb" />
+    <Compile Include="Services\Document Repository Capacity Warning\Methods.vb" />
+    <Compile Include="Services\InOut Board\Methods.vb" />
+    <Compile Include="View Models\AlertRecipientViewModel.vb" />
+    <Compile Include="View Models\Desktop\AlertNotificationViewModel.vb" />
+    <Compile Include="View Models\Desktop\AlertsAndAssignmentsManager.vb" />
+    <Compile Include="View Models\Desktop\AlertView.vb" />
+    <Compile Include="View Models\Document\UploadAvailViewModel.vb" />
+    <Compile Include="View Models\Document\UploadViewModel.vb" />
+    <Compile Include="View Models\Employee\ExpenseApproval\ExpenseReportViewModel.vb" />
+    <Compile Include="View Models\Employee\ExpenseReportHeaderDTO.vb" />
+    <Compile Include="View Models\Employee\ExpenseReportSetupViewModel.vb" />
+    <Compile Include="View Models\Employee\ExpenseReport\ExpenseReportOptionsViewModel.vb" />
+    <Compile Include="View Models\Employee\ManagerViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\CopyFromViewModels.vb" />
+    <Compile Include="View Models\Employee\Timesheet\EntryInfoViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\NewEntryViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\RecentViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\RowInfoViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\SupervisorApprovalViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\EmployeeTimeTemplate.vb" />
+    <Compile Include="View Models\Employee\Timesheet\TimesheetDayViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\TimesheetEntryViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\TimesheetLineViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\TimesheetRowGroupViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\TimesheetViewModel.vb" />
+    <Compile Include="View Models\Employee\Timesheet\TimeSummaryViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\ClientLatePaymentFeeViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Exports\VATExportViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\ResourceAddDetailViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\RevenueAddDetailViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\ResourceAddViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\RevenueAddViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\ResourceManageViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\RevenueManageViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\ResourceSetupViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\RevenueSetupViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\StaffAltEmployeeEditViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\StaffAddEmployeesViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\StaffClientAssignmentsAddCDPViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\StaffClientAssignmentsViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\StaffManageViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\EditViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\SetupViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Journal Entries Budgets\JournalEntryDetailCopyViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Journal Entries Budgets\RecurringJournalEntryPostViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Journal Entries Budgets\RecurringJournalEntryViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Journal Entries Budgets\RecurringJournalEntrySetupViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Maintenance\GeneralLedgerConfigurationViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Maintenance\GeneralLedgerMappingExportViewModel.vb" />
+    <Compile Include="View Models\DaysAndTimeViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Processing\UpdateToSummaryViewModel.vb" />
+    <Compile Include="View Models\Job Template\UpdateJobViewModel.vb" />
+    <Compile Include="View Models\Lookup\BaseLookupDisplayViewModel.vb" />
+    <Compile Include="View Models\Lookup\LookupViewModel.vb" />
+    <Compile Include="View Models\Lookup\LookupDisplayViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\SalesClassSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\ClientDiscountViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\ClientDiscountSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\VendorMarketsViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\VendorStationsViewModel.vb" />
+    <Compile Include="View Models\Security\Setup\CDPSecurityGroupSetupViewModel.vb" />
+    <Compile Include="View Models\Security\Setup\CDPSecurityGroupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\General\EmailSettingsViewModel.vb" />
+    <Compile Include="DTO\Maintenance\General\Location\Location.vb" />
+    <Compile Include="DTO\Maintenance\General\Location\LocationLogo.vb" />
+    <Compile Include="DTO\Maintenance\General\Location\LocationLogoDetails.vb" />
+    <Compile Include="View Models\Maintenance\General\State.vb" />
+    <Compile Include="DTO\Maintenance\General\Location\LocationDetails.vb" />
+    <Compile Include="View Models\Maintenance\General\LocationViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\CanadaUniverseEditViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\CanadaUniverseSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\MarketGroupSelectMarketsViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\MarketGroupEditViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\MarketGroupSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\NationalUniverseEditViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\NationalUniverseSetupViewModel.vb" />
+    <Compile Include="View Models\Media\Digital Campaign Manager\DigitalCampaignManagerViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketDetailsMakegoodDetailsViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketSubmarketsAddMarketGroupViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketSubmarketsViewModel.vb" />
+    <Compile Include="View Models\Media\MediaRFPMarketCrossReferenceViewModel.vb" />
+    <Compile Include="View Models\Media\MediaRFPVendorMarketCrossReferenceViewModel.vb" />
+    <Compile Include="View Models\Media\MediaTrafficResponseViewModel.vb" />
+    <Compile Include="View Models\Project Schedule\Schedule.vb" />
+    <Compile Include="View Models\Reporting\MediaTrafficInstructionsCriteriaViewModel.vb" />
+    <Compile Include="View Models\UserAccount\PasswordViewModel.vb" />
+    <Compile Include="View Models\Maintenance\General\LogoViewModel.vb" />
+    <Compile Include="View Models\Maintenance\General\SettingSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\General\TimezoneViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\MediaTacticSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\MediaChannelSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\TimeSeparationSettingViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\InvoiceMatchingSettingViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\VendorInvoiceCategorySetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\CableNetworkSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Project Management\AdNumberSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Project Management\JobTypeSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Project Schedule\PhaseSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Project Schedule\StatusSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Project Schedule\TaskSetupViewModel.vb" />
+    <Compile Include="View Models\Media\MakegoodDeliveryDetailViewModel.vb" />
+    <Compile Include="View Models\Media\MakegoodOutstandingViewModel.vb" />
+    <Compile Include="View Models\Media\MakegoodDeliveryViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetManageOrderViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketGoalsSelectMediaPlanEstimateViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketHiatusSettingsCopyFromAnotherMarketViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketVendorOrderCommentsCopyToAnotherVendorViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketVendorScheduleCopyToAnotherWorksheetMarketScheduleViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetCopyViewModel.vb" />
+    <Compile Include="View Models\Media\MediaManagerProcessGeneratePurchaseOrderViewModel.vb" />
+    <Compile Include="View Models\Media\MediaManagerGeneratePurchaseOrderViewModel.vb" />
+    <Compile Include="View Models\Media\MediaPlanCopyViewModel.vb" />
+    <Compile Include="View Models\Media\MediaPlanningViewModel.vb" />
+    <Compile Include="View Models\Media\MediaBroadcastWorksheetMakegoodResponseViewModel.vb" />
+    <Compile Include="View Models\Media\MediaRequestForProposalResponseViewModel.vb" />
+    <Compile Include="View Models\Media\MediaTrafficInstructionCopyViewModel.vb" />
+    <Compile Include="View Models\Media\MediaTrafficPrintSettingViewModel.vb" />
+    <Compile Include="View Models\Media\MediaRFPPrintSettingViewModel.vb" />
+    <Compile Include="View Models\Media\MediaTrafficGenerateViewModel.vb" />
+    <Compile Include="View Models\Media\MediaTrafficViewModel.vb" />
+    <Compile Include="View Models\Media\RequestForProposalGenerateViewModel.vb" />
+    <Compile Include="View Models\Media\MediaTrafficProcessGenerateViewModel.vb" />
+    <Compile Include="View Models\Media\RequestForProposalProcessGenerateViewModel.vb" />
+    <Compile Include="View Models\Media\POPrintOptionsViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketCreateOrdersViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketDetailsMakegoodViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketDetailsAllocateViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketVendorOrderCommentsViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketGoalsCopyFromViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketGoalsCopyToViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketVendorScheduleCopyToAnotherMarketViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketDetailsCopyDateViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketVendorScheduleCopyToAnotherVendorViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketNielsenRadioPeriodsCopyToViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketNielsenTVBooksCopyToViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketNielsenRadioPeriodsViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketNielsenTVBooksViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketOrderDataViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketRevisionsViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketDetailsViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketManageVendorsViewModel.vb" />
+    <Compile Include="View Models\Media\MediaRequestForProposalViewModel.vb" />
+    <Compile Include="View Models\Media\MediaRFPVendorDaypartCrossReferenceViewModel.vb" />
+    <Compile Include="View Models\Media\ShareHPUTBookViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketGoalsViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketEditViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetEditViewModel.vb" />
+    <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetSetupViewModel.vb" />
+    <Compile Include="View Models\Media\MediaManagerAdServingDetailViewModel.vb" />
+    <Compile Include="Media Manager\Classes\ReminderContact.vb" />
+    <Compile Include="Media Manager\Classes\ImportClearedCheckMediaVCC.vb" />
+    <Compile Include="Media Manager\Classes\OrderProcessControl.vb" />
+    <Compile Include="Media Manager\Classes\VCCDetail.vb" />
+    <Compile Include="Media Manager\Classes\VendorCollectedDetail.vb" />
+    <Compile Include="Media Manager\Classes\BroadcastOrder.vb" />
+    <Compile Include="Media Manager\Classes\GenerateOrderVendorRep.vb" />
+    <Compile Include="Media Manager\Classes\OtherUserSelection.vb" />
+    <Compile Include="Media Manager\Classes\PrintOrder.vb" />
+    <Compile Include="Media Manager\Classes\VCCOrder.vb" />
+    <Compile Include="Media Manager\Classes\MediaManagerAPInvoice.vb" />
+    <Compile Include="Media Manager\Classes\MediaManagerOrderStatus.vb" />
+    <Compile Include="Media Manager\Classes\MediaManagerOrderLineComment.vb" />
+    <Compile Include="Media Manager\Classes\MediaManagerOrderComment.vb" />
+    <Compile Include="Media Manager\Classes\GenerateOrder.vb" />
+    <Compile Include="Media Manager\Classes\VendorRep.vb" />
+    <Compile Include="Media Manager\Methods.vb" />
+    <Compile Include="Media Planning\Attributes\EstimateTypeAttribute.vb" />
+    <Compile Include="Media Planning\Classes\BroadcastCalendarWeek.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlanReadOnly.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlan.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlanDetailLevelLineDataOrderDetail.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlanEstimate.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlanEstimateOrder.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlanMasterPlanDetail.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlanEstimateChangeLog.vb" />
+    <Compile Include="Media Planning\Classes\MediaPlanData.vb" />
+    <Compile Include="Media Planning\Classes\WeekStartAndEndDates.vb" />
+    <Compile Include="Media Planning\Methods.vb" />
+    <Compile Include="Media\Classes\OrderPrintSetting.vb" />
+    <Compile Include="Media\Classes\ImportOrder.vb" />
+    <Compile Include="Media Manager\Classes\MediaManagerReviewDetail.vb" />
+    <Compile Include="Income Only\Classes\Order.vb" />
+    <Compile Include="Media\Classes\MediaOrderLine.vb" />
+    <Compile Include="Media Manager\Classes\MediaManagerSearchResult.vb" />
+    <Compile Include="Media\Classes\WebImportOrder.vb" />
+    <Compile Include="Media\Methods.vb" />
+    <Compile Include="Mobile\Classes\Credential.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Calendar\Outlook\Methods.vb" />
+    <Compile Include="Project Management\Classes\QouteVsActualInvoiceBillingSummary.vb" />
+    <Compile Include="Project Management\Methods.vb" />
+    <Compile Include="Project Schedule\Classes\Schedule.vb" />
+    <Compile Include="Project Schedule\Classes\CustomAppointment.vb" />
+    <Compile Include="Project Schedule\Classes\CustomDependency.vb" />
+    <Compile Include="Project Schedule\Classes\CustomResource.vb" />
+    <Compile Include="Project Schedule\Classes\TaskDetail.vb" />
+    <Compile Include="Project Schedule\Classes\EmployeeAssignment.vb" />
+    <Compile Include="Project Schedule\Classes\EmployeeWorkload.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet1.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet10.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet2.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet5.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet7.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet4.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet8.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet3.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet6.vb" />
+    <Compile Include="Project Schedule\Classes\ResultSet9.vb" />
+    <Compile Include="Project Schedule\Classes\ScheduleAssignment.vb" />
+    <Compile Include="Project Schedule\Classes\ScheduleTask.vb" />
+    <Compile Include="Project Schedule\Classes\TaskEmployee.vb" />
+    <Compile Include="Project Schedule\Methods.vb" />
+    <Compile Include="Proof HQ\Methods.vb" />
+    <Compile Include="Purchase Orders\Classes\PurchaseOrderDetailAPInfo.vb" />
+    <Compile Include="Purchase Orders\Methods.vb" />
+    <Compile Include="Reporting\Classes\CalendarReport.vb" />
+    <Compile Include="Reporting\Classes\CashAnalysisDrillDownParameter.vb" />
+    <Compile Include="Reporting\Interfaces\IDynamicReportDrillDownParameter.vb" />
+    <Compile Include="Security\Classes\DataServiceUser.vb" />
+    <Compile Include="Security\Classes\MenuBuilder.vb" />
+    <Compile Include="Security\Classes\StopUpdate.vb" />
+    <Compile Include="Service References\ConceptShareAPI\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RTMCService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Classes\Schedule.vb" />
+    <Compile Include="Services\Currency Exchange\Methods.vb" />
+    <Compile Include="Services\Exports\Classes\ExportSetting.vb" />
+    <Compile Include="Services\Exports\Classes\ExportTemplate.vb" />
+    <Compile Include="Services\Exports\Methods.vb" />
+    <Compile Include="Services\Imports\Classes\ImportSetting.vb" />
+    <Compile Include="Services\Imports\Classes\ImportTemplate.vb" />
+    <Compile Include="Services\Imports\Methods.vb" />
+    <Compile Include="Services\Contract\Methods.vb" />
+    <Compile Include="Services\Core Media Check Export\Methods.vb" />
+    <Compile Include="Services\CSI Preferred Partner\Classes\CSIVendorFile.vb" />
+    <Compile Include="Services\CSI Preferred Partner\Methods.vb" />
+    <Compile Include="Services\Email Listener\AskBlue\Command.vb" />
+    <Compile Include="Services\Email Listener\AskBlue\Methods.vb" />
+    <Compile Include="Services\Email Listener\AskBlue\Processor.vb" />
+    <Compile Include="Services\Email Listener\Methods.vb" />
+    <Compile Include="Services\Media Export\Methods.vb" />
+    <Compile Include="Services\Calendar\Methods.vb" />
+    <Compile Include="Services\JobComp UDF Import\Methods.vb" />
+    <Compile Include="Services\Media Ocean Import\Methods.vb" />
+    <Compile Include="Services\Methods.vb" />
+    <Compile Include="Services\Missing Time\Classes\MissingTimeLog.vb" />
+    <Compile Include="Services\Missing Time\Methods.vb" />
+    <Compile Include="Services\Nielsen\Methods.vb" />
+    <Compile Include="Services\Paid Time Off Accruals\Methods.vb" />
+    <Compile Include="Services\QvA Alert\Classes\JobDetailAnalysis.vb" />
+    <Compile Include="Services\QvA Alert\Classes\QvAEmployee.vb" />
+    <Compile Include="Services\QvA Alert\Classes\QvAFunction.vb" />
+    <Compile Include="Services\QvA Alert\Classes\QvAJob.vb" />
+    <Compile Include="Services\QvA Alert\Classes\QvASendAlerts.vb" />
+    <Compile Include="Services\QvA Alert\Methods.vb" />
+    <Compile Include="Services\Task\Methods.vb" />
+    <Compile Include="Calendar\SugarCRM\Methods.vb" />
+    <Compile Include="Employee Timesheet\Methods.vb" />
+    <Compile Include="Services\VCC\Methods.vb" />
+    <Compile Include="Services\Vendor Contract\Methods.vb" />
+    <Compile Include="VCC\Classes\CSICardActivity.vb" />
+    <Compile Include="VCC\Methods.vb" />
+    <Compile Include="View Models\General Ledger\Journal Entries Budgets\JournalEntryViewModel.vb" />
+    <Compile Include="View Models\General Ledger\Journal Entries Budgets\JournalEntrySetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Accounting\DepartmentTeamSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\DemographicSetupDetailViewModel.vb" />
+    <Compile Include="View Models\Media\MediaManagerAdServingViewModel.vb" />
+    <Compile Include="View Models\Media\ResearchCriteriaViewModel.vb" />
+    <Compile Include="View Models\Media\BroadcastResearchViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\MediaBuyerSetupDetailViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\DemographicSetupViewModel.vb" />
+    <Compile Include="View Models\Maintenance\Media\MediaBuyerSetupViewModel.vb" />
+    <Compile Include="View Models\ProjectManagement\Agile\AvailableBoardInfo.vb" />
+    <Compile Include="View Models\ProjectManagement\Agile\SprintHeaderViewModel.vb" />
+    <Compile Include="View Models\Project Schedule\CopyToProjectScheduleJobComponentViewModel.vb" />
+    <Compile Include="View Models\Project Schedule\CopyToProjectScheduleViewModel.vb" />
+    <Compile Include="View Models\Project Schedule\ProjectScheduleFindAndReplaceViewModel.vb" />
+    <Compile Include="View Models\ProjectManagement\Agile\AlertTimeEntryViewModel.vb" />
+    <Compile Include="View Models\ProjectManagement\Agile\WorkItemHoursViewModel.vb" />
+    <Compile Include="View Models\ProjectManagement\Agile\BoardMaintenanceViewModel.vb" />
+    <Compile Include="View Models\ProjectManagement\Agile\SelectBoardViewModel.vb" />
+    <Compile Include="View Models\ProjectManagement\Campaign\AttachedMediaDTO.vb" />
+    <Compile Include="View Models\ProjectManagement\Campaign\CampaignDetailDTO.vb" />
+    <Compile Include="View Models\ProjectManagement\Campaign\CampaignDTO.vb" />
+    <Compile Include="View Models\ProjectManagement\Campaign\CampaignSearchDTO.vb" />
+    <Compile Include="View Models\ProjectManagement\Estimate\EstimateSearchViewModel.vb" />
+    <Compile Include="View Models\ProjectManagement\JobJacket\JobJacketSearchDTO.vb" />
+    <Compile Include="View Models\ProjectManagement\JobJacket\JobOrderFormSettingsDTO.vb" />
+    <Compile Include="View Models\ProjectManagement\ProjectSchedule\ProjectScheduleSearchDTO.vb" />
+    <Compile Include="View Models\ProjectManagement\PurchaseOrder\PurchaseOrderSearchDTO.vb" />
+    <Compile Include="View Models\Reporting\MediaBroadcastWorksheetOtherCriteriaViewModel.vb" />
+    <Compile Include="View Models\Reporting\MediaBroadcastWorksheetCriteriaViewModel.vb" />
+    <Compile Include="Web References\CSIPreferredPartner\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ProofHQRef\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SugarCRMRef\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Methods.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AdvantageFrameworkBLogicKey.pfx" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Aspose.Total.lic" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Account.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountAlias.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountModule.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountOption.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountProfile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountResource.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountSamlSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountSetting.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.AccountUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Asset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Callback.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Comment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.CommentReply.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.CommentThread.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.CustomField.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.CustomFieldEntry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.CustomForm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.CustomFormApplication.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Deliverable.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.DeliverableMember.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.EmailHistory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Flag.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.FlagResolution.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Folder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.FolderItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Instance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.InstanceAdmin.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Language.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Localization.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.LocalizationEntry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.LocalizationOverride.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Package.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.PartnerKey.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Project.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ProjectMember.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ProjectTemplate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.QueueItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.RecycleBinItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Reminder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Review.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ReviewCustomForms.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ReviewData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ReviewItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ReviewMember.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ReviewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ReviewRole.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ReviewStatistics.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Role.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.RolePermission.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Status.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.StatusGroup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Team.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.TeamMember.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.TeamProfile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.TimeZone.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.ToDo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.UserLoginHistory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\AdvantageFramework.ConceptShareAPI.Workflow.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConceptShareAPI\APIService1.wsdl" />
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.AddNewBPCustomDDLListItemResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.AddNewDDLListItemResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.AddNewECCustomDDLListItemResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardGroupAddResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardGroupDelResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardGroupInqResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardGroupUpdResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardInqResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardOrderNewResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardOrderReissueActivateResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardOrderReissueResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.CardUpdResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.DeleteDDLListItemResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.DeleteDDLResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.DriverPoolAddResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.DriverPoolDelResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.DriverPoolInqResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.DriverPoolUpdResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.EditBPDDLListItemResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.EditDDLResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.EditECDDLListItemResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.GetAvailableBalanceResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.GetBPDDLListResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.GetCreditInfoResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.GetCustomDDLListResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.GetCustomDDLSResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.GetECDDLListResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.GetPaymentsResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.TransactionDeliveryChargeResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.TransactionDeliveryClearedResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.TransactionDeliveryDetailsResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.TransactionDeliveryMemoResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.TransactionDeliveryRejectResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VehiclePoolAddResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VehiclePoolDelResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VehiclePoolInqResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VehiclePoolUpdResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VirtualCardActivityResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VirtualCardCreateResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VirtualCardInquireCardCTSResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VirtualCardInquireResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\AdvantageFramework.RTMCService.VirtualCardUpdateResponseTransactionEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RTMCService\RTMCServicev2.wsdl" />
+    <None Include="Service References\RTMCService\wsdl.wsdl" />
+    <None Include="Service References\RTMCService\wsdl.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RTMCService\wsdl1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RTMCService\wsdl2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CSIPreferredPartner\AgreementSignedResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CSIPreferredPartner\CSIPreferredPartner.wsdl" />
+    <None Include="Web References\CSIPreferredPartner\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\ProofHQRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\ProofHQRef\soap.wsdl" />
+    <None Include="Web References\ProofHQRef\SOAPAccountObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPAccountPasswordSettingsObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPAccountProofingDefaultsObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPActionObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPCallbackObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPCommentObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPCommentReplyObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPContactAccountObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPContactGroupObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPContactObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPFileActivityObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPFileEmbedCodeObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPFileListViewCollectionObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPFileObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPFileUploadObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPImageObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPLoginObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPMembershipObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPPlanObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPProfileObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPRecipientObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPSatelliteAccountObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPTag.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPUserObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ProofHQRef\SOAPWorkspaceObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\entry_value1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\get_entries_count_result1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\get_entry_list_result_version21.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\get_entry_result_version21.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\get_server_info_result1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SugarCRMRef\item0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SugarCRMRef\last_viewed_entry1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\module_list1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\new_module_fields1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\new_return_document_revision1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\new_return_note_attachment1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\new_set_entries_result1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\new_set_entry_result1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\new_set_relationship_list_result1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\SugarCRMRef\return_search_result1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SugarCRMRef\soap.wsdl" />
+    <None Include="Web References\SugarCRMRef\upcoming_activity_entry1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/ADVSugar/service/v4/soap.php%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SugarCRMRef\</RelPath>
+      <UpdateFromURL>http://localhost/ADVSugar/service/v4/soap.php%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SugarCRMSOAP</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://soap.proofhq.com/%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ProofHQRef\</RelPath>
+      <UpdateFromURL>https://soap.proofhq.com/%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AdvantageFramework_BLogic_ProofHQRef_soapService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CSIPreferredPartner\</RelPath>
+      <UpdateFromURL>https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AdvantageFramework_BLogic_CSIPreferredPartner_CSIPreferredPartner</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvantageFramework\AdvantageFramework.vbproj">
+      <Project>{a5adbd34-dc5f-45ee-ab6a-8e9122da478d}</Project>
+      <Name>AdvantageFramework</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ConceptShareAPI\" />
+    <WCFMetadataStorage Include="Service References\RTMCService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RTMCService\wsdl.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RTMCService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RTMCService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RTMCService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\CSIPreferredPartner\CSIPreferredPartner.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConceptShareAPI\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConceptShareAPI\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConceptShareAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\Billing\" />
+    <Folder Include="Controller\Maintenance\Client\" />
+    <Folder Include="DTO\Maintenance\Client\" />
+    <Folder Include="ExpenseApproval\Classes\" />
+    <Folder Include="View Models\Maintenance\Client\" />
+    <Folder Include="Web\Classes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

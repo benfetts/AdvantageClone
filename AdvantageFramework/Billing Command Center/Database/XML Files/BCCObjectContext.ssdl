@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BCCDbContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="BILL_APPR_BATCH">
+    <Key>
+      <PropertyRef Name="BA_BATCH_ID" />
+    </Key>
+    <Property Name="BA_BATCH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BA_BATCH_DESC" Type="varchar" MaxLength="50" />
+    <Property Name="BATCH_DATE" Type="smalldatetime" />
+    <Property Name="CREATE_USER" Type="varchar" MaxLength="100" />
+    <Property Name="CREATE_DATE" Type="smalldatetime" />
+    <Property Name="MODIFY_USER" Type="varchar" MaxLength="100" />
+    <Property Name="MODIFY_DATE" Type="smalldatetime" />
+    <Property Name="DATE_CUTOFF" Type="smalldatetime" />
+    <Property Name="PERIOD_CUTOFF" Type="varchar" MaxLength="6" />
+    <Property Name="EMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="INCL_NO_DTL" Type="bit" Nullable="false" />
+    <Property Name="INCL_NB" Type="bit" Nullable="false" />
+    <Property Name="INCL_FEE" Type="bit" Nullable="false" />
+    <Property Name="INCL_INT" Type="bit" Nullable="false" />
+    <Property Name="INCL_NP" Type="bit" Nullable="false" />
+    <Property Name="INCL_MAG" Type="bit" Nullable="false" />
+    <Property Name="INCL_OD" Type="bit" Nullable="false" />
+    <Property Name="INCL_RA" Type="bit" Nullable="false" />
+    <Property Name="INCL_TV" Type="bit" Nullable="false" />
+    <Property Name="APPROVED" Type="bit" Nullable="false" />
+    <Property Name="FINISHED" Type="bit" Nullable="false" />
+    <Property Name="APPR_METHOD" Type="tinyint" Nullable="false" />
+    <Property Name="BA_EXISTS" Type="bit" StoreGeneratedPattern="Computed" />
+    <Property Name="BILLED_ANY" Type="bit" StoreGeneratedPattern="Computed" />
+    <Property Name="BILLED_ALL" Type="bit" StoreGeneratedPattern="Computed" />
+    <Property Name="SEL_OPTION" Type="smallint" />
+    <Property Name="MANAGER_TYPE" Type="smallint" />
+  </EntityType>
+  <EntityType Name="BILLING_CMD_CENTER">
+    <Key>
+      <PropertyRef Name="BCC_ID" />
+    </Key>
+    <Property Name="BCC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BILLING_USER" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="smalldatetime" Nullable="false" />
+    <Property Name="P_SELECT_BY" Type="smallint" />
+    <Property Name="PROD_FLAG" Type="bit" />
+    <Property Name="INC_NO_DTL" Type="bit" />
+    <Property Name="AB_JOBS_ONLY" Type="bit" />
+    <Property Name="P_ET_CUTOFF_DATE" Type="smalldatetime" />
+    <Property Name="P_IO_CUTOFF_DATE" Type="smalldatetime" />
+    <Property Name="P_AB_CUTOFF_DATE" Type="smalldatetime" />
+    <Property Name="P_AP_CUTOFF_PPD" Type="varchar" MaxLength="6" />
+    <Property Name="BA_BATCH_ID" Type="int" />
+    <Property Name="MEDIA_FLAG" Type="bit" />
+    <Property Name="M_SELECT_BY" Type="smallint" />
+    <Property Name="M_CUTOFF_DATE" Type="smalldatetime" />
+    <Property Name="NEWSPAPER" Type="bit" />
+    <Property Name="MAGAZINE" Type="bit" />
+    <Property Name="RADIO" Type="bit" />
+    <Property Name="TELEVISION" Type="bit" />
+    <Property Name="OUT_OF_HOME" Type="bit" />
+    <Property Name="INTERNET" Type="bit" />
+    <Property Name="M_BRDCAST_MTH1" Type="smalldatetime" />
+    <Property Name="M_BRDCAST_MTH2" Type="smalldatetime" />
+    <Property Name="INCL_ZERO_SPOTS" Type="bit" />
+    <Property Name="SELECTED_ORDERS" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="M_START_DATE" Type="smalldatetime" />
+    <Property Name="DATE_CUTOFF_TO_USE" Type="smallint" />
+    <Property Name="INCL_UNBILLED_ONLY" Type="smallint" />
+    <Property Name="SEL_OPTION" Type="smallint" />
+    <Property Name="IN_USE" Type="bit" />
+    <Property Name="SELECTED_JOBS" Type="int" StoreGeneratedPattern="Computed" />
+    <Property Name="RADIO_DAILY" Type="bit" />
+    <Property Name="TV_DAILY" Type="bit" />
+    <Property Name="RADIO_MONTHLY" Type="bit" />
+    <Property Name="TV_MONTHLY" Type="bit" />
+    <Property Name="BATCH_NAME" Type="varchar" MaxLength="25" />
+    <Property Name="SEQ_NO" Type="smallint" />
+    <Property Name="PROD_JOB_TYPE" Type="smallint" />
+    <Property Name="PROD_LOCK_SELECTION" Type="bit" Nullable="false" />
+    <Property Name="INCLUDE_LEGACY" Type="bit" Nullable="false" />
+    <Property Name="JOB_MEDIA_BILL_DATE_FROM" Type="smalldatetime" />
+    <Property Name="JOB_MEDIA_BILL_DATE_TO" Type="smalldatetime" />
+  </EntityType>
+  <Association Name="FK_BILL_CMD_CTR_BATCH">
+    <End Role="BILL_APPR_BATCH" Type="Self.BILL_APPR_BATCH" Multiplicity="0..1" />
+    <End Role="BILLING_CMD_CENTER" Type="Self.BILLING_CMD_CENTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BILL_APPR_BATCH">
+        <PropertyRef Name="BA_BATCH_ID" />
+      </Principal>
+      <Dependent Role="BILLING_CMD_CENTER">
+        <PropertyRef Name="BA_BATCH_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="advsp_bcc_get_billing_history" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JobNumber" Type="int" Mode="In" />
+    <Parameter Name="JobComponentNumber" Type="smallint" Mode="In" />
+  </Function>
+  <Function Name="advsp_bcc_get_coop_jobs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BillingUser" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="advsp_bcc_get_inv_assigned" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bill_user_in" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="advsp_bcc_get_journal_entries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bill_user_in" Type="varchar" Mode="In" />
+    <Parameter Name="ret_val" Type="smallint" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bcc_other_user_media" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bcc_other_user_prod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_cmd_ctr_inv_pp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billing_user" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_cmd_ctr_media_order_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_cmd_ctr_prod_job_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_acct_exec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_bill_appr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ba_batch_id_in" Type="int" Mode="In" />
+    <Parameter Name="finished" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_campaign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_cli_div" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_cli_div_prd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_client" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ba_batch_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_comp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ba_batch_id_in" Type="int" Mode="In" />
+    <Parameter Name="bill_user_in" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_job" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ba_batch_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_bill_select_m_campaign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_m_cli_div" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_m_cli_div_prd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_m_client" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_m_client_po" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_m_market" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_m_order" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_m_order_line" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_bill_select_sales_class" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bcc_id_in" Type="int" Mode="In" />
+  </Function>
+  <Function Name="advsp_get_bcc_agy_settings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_get_bcc_coop_dist_prod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="billing_user_in" Type="varchar" Mode="In" />
+    <Parameter Name="job_number" Type="int" Mode="In" />
+    <Parameter Name="job_component_nbr" Type="smallint" Mode="In" />
+  </Function>
+  <Function Name="advsp_get_billing_status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bill_user_in" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="advsp_populate_billing_cmd_center" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bill_user_in" Type="varchar" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="advsp_populate_interim_rec_dtl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="job_number" Type="int" Mode="In" />
+    <Parameter Name="job_component_nbr" Type="smallint" Mode="In" />
+    <Parameter Name="ba_id" Type="int" Mode="In" />
+    <Parameter Name="et_cutoff_date" Type="smalldatetime" Mode="In" />
+    <Parameter Name="io_cutoff_date" Type="smalldatetime" Mode="In" />
+    <Parameter Name="ap_cutoff_pp" Type="varchar" Mode="In" />
+    <Parameter Name="ret_val" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="BCCObjectContextStoreContainer">
+    <EntitySet Name="BILL_APPR_BATCH" EntityType="Self.BILL_APPR_BATCH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BILLING_CMD_CENTER" EntityType="Self.BILLING_CMD_CENTER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BILL_CMD_CTR_BATCH" Association="Self.FK_BILL_CMD_CTR_BATCH">
+      <End Role="BILL_APPR_BATCH" EntitySet="BILL_APPR_BATCH" />
+      <End Role="BILLING_CMD_CENTER" EntitySet="BILLING_CMD_CENTER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

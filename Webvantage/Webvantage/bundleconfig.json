@@ -1,0 +1,482 @@
+[
+  {
+    "outputFileName": "JScripts/ChildPage.js",
+    "inputFiles": [
+      "JScripts/ChildPage.js"
+    ]
+  },
+  {
+    "outputFileName": "CSS/CardLayout.Colors.css",
+    "inputFiles": [
+      "CSS/CardLayout.Colors.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/CardLayout.css",
+    "inputFiles": [
+      "CSS/CardLayout.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/CardLayout.Dark.css",
+    "inputFiles": [
+      "CSS/CardLayout.Dark.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/ContentPage.css",
+    "inputFiles": [
+      "CSS/ContentPage.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/materialize.css",
+    "inputFiles": [
+      "CSS/materialize.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/PopUp.css",
+    "inputFiles": [
+      "CSS/PopUp.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Print.css",
+    "inputFiles": [
+      "CSS/Print.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/RadEditorContentArea.css",
+    "inputFiles": [
+      "CSS/RadEditorContentArea.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/UI_Simple.css",
+    "inputFiles": [
+      "CSS/UI_Simple.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/UI_Simple.Grey.css",
+    "inputFiles": [
+      "CSS/UI_Simple.Grey.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/UI_Simple.NoLeftSideBar.css",
+    "inputFiles": [
+      "CSS/UI_Simple.NoLeftSideBar.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/UI_Simple.White.css",
+    "inputFiles": [
+      "CSS/UI_Simple.White.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/UI_Styles.css",
+    "inputFiles": [
+      "CSS/UI_Styles.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/MobileBB.css",
+    "inputFiles": [
+      "CSS/MobileBB.css"
+    ]
+  },
+  {
+    "outputFileName": "App_Themes/Bootstrap/Bootstrap.css",
+    "inputFiles": [
+      "App_Themes/Bootstrap/Bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/BillingApproval.js",
+    "inputFiles": [
+      "JScripts/BillingApproval.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/calculations.js",
+    "inputFiles": [
+      "JScripts/calculations.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/common.js",
+    "inputFiles": [
+      "JScripts/common.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/EstimatingQuote.js",
+    "inputFiles": [
+      "JScripts/EstimatingQuote.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/FusionCharts.js",
+    "inputFiles": [
+      "JScripts/FusionCharts.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/UIHelper.js",
+    "inputFiles": [
+      "JScripts/UIHelper.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/Timesheet.js",
+    "inputFiles": [
+      "JScripts/Timesheet.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/sortable/jquery.binding.js",
+    "inputFiles": [
+      "Scripts/sortable/jquery.binding.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/sortable/knockout-sortable.js",
+    "inputFiles": [
+      "Scripts/sortable/knockout-sortable.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/sortable/ng-sortable.js",
+    "inputFiles": [
+      "Scripts/sortable/ng-sortable.js"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Cyan.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Cyan.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Amber.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Amber.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Black.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Black.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Blue.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Blue.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.BlueGrey.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.BlueGrey.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Brown.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Brown.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.DeepOrange.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.DeepOrange.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.DeepPurple.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.DeepPurple.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Green.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Green.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Grey.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Grey.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Indigo.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Indigo.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.LightBlue.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.LightBlue.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.LightGreen.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.LightGreen.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Lime.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Lime.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Orange.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Orange.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Pink.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Pink.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Purple.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Purple.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Red.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Red.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Teal.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Teal.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.White.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.White.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Material/Bootstrap.Yellow.css",
+    "inputFiles": [
+      "CSS/Material/Bootstrap.Yellow.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/RadEditorContentAreaNoTools.min.css",
+    "inputFiles": [
+      "CSS/RadEditorContentAreaNoTools.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/timesheet.mvc.min.css",
+    "inputFiles": [
+      "CSS/timesheet.mvc.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/timesheet.mvc.min.js",
+    "inputFiles": [
+      "JScripts/timesheet.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/jquery.hotkeys.min.js",
+    "inputFiles": [
+      "Scripts/jquery.hotkeys.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/timesheet.entry.mvc.min.js",
+    "inputFiles": [
+      "JScripts/timesheet.entry.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "CSS/timesheet.entry.mvc.min.css",
+    "inputFiles": [
+      "CSS/timesheet.entry.mvc.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/HoursGrid.mvc.min.js",
+    "inputFiles": [
+      "JScripts/HoursGrid.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "CSS/expense.approval.mvc.min.css",
+    "inputFiles": [
+      "CSS/expense.approval.mvc.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/expense.approval.invoice.mvc.min.css",
+    "inputFiles": [
+      "CSS/expense.approval.invoice.mvc.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/expense.approval.invoice.mvc.min.js",
+    "inputFiles": [
+      "JScripts/expense.approval.invoice.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/expense.approval.mvc.min.js",
+    "inputFiles": [
+      "JScripts/expense.approval.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/account.password.min.js",
+    "inputFiles": [
+      "JScripts/account.password.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/aam.inbox.filter.mvc.min.js",
+    "inputFiles": [
+      "JScripts/aam.inbox.filter.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/aam.inbox.datagrid.mvc.min.js",
+    "inputFiles": [
+      "JScripts/aam.inbox.datagrid.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/aam.inbox.mvc.min.js",
+    "inputFiles": [
+      "JScripts/aam.inbox.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "App_Themes/Metro/Metro.min.css",
+    "inputFiles": [
+      "App_Themes/Metro/Metro.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/shared.mvc.min.js",
+    "inputFiles": [
+      "JScripts/shared.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/projectmanagement.agile.addjobtoboards.min.js",
+    "inputFiles": [
+      "JScripts/projectmanagement.agile.addjobtoboards.js"
+    ]
+  },
+  {
+    "outputFileName": "CSS/projectmanagement.agile.addjobtoboards.min.css",
+    "inputFiles": [
+      "CSS/projectmanagement.agile.addjobtoboards.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/Common.min.css",
+    "inputFiles": [
+      "CSS/Common.css"
+    ]
+  },
+  {
+    "outputFileName": "CSS/timesheet._grid.mvc.min.css",
+    "inputFiles": [
+      "CSS/timesheet._grid.mvc.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/timesheet._grid.mvc.min.js",
+    "inputFiles": [
+      "JScripts/timesheet._grid.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/account.verify.mvc.min.js",
+    "inputFiles": [
+      "JScripts/account.verify.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/account.password.mvc.min.js",
+    "inputFiles": [
+      "JScripts/account.password.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/account.gm.mvc.min.js",
+    "inputFiles": [
+      "JScripts/account.gm.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/account.gm.actions.mvc.min.js",
+    "inputFiles": [
+      "JScripts/account.gm.actions.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "CSS/dark.min.css",
+    "inputFiles": [
+      "CSS/dark.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/aam.inbox.grid.mvc.min.js",
+    "inputFiles": [
+      "JScripts/aam.inbox.grid.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "CSS/calendar.mvc.min.css",
+    "inputFiles": [
+      "CSS/calendar.mvc.css"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/calendar.mvc.min.js",
+    "inputFiles": [
+      "JScripts/calendar.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/proofing.externalreviewers.mvc.min.js",
+    "inputFiles": [
+      "JScripts/proofing.externalreviewers.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/proofing._externalreviewersgrid.mvc.min.js",
+    "inputFiles": [
+      "JScripts/proofing._externalreviewersgrid.mvc.js"
+    ]
+  },
+  {
+    "outputFileName": "JScripts/proofing._proofsbyjobgrid.mvc.min.js",
+    "inputFiles": [
+      "JScripts/proofing._proofsbyjobgrid.mvc.js"
+    ]
+  }
+]

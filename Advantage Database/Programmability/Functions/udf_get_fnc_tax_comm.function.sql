@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION [dbo].[udf_get_fnc_tax_comm] ( @fnc_code varchar(6) )  	RETURNS smallint AS  	BEGIN  		DECLARE @fnc_tax_comm smallint  		SELECT @fnc_tax_comm = ( SELECT CASE WHEN TAX_COMM_FLAGS >= 1 THEN 1 ELSE 0 END  					   FROM dbo.BILLING_RATE   					  WHERE BILL_RATE_PREC_ID = 1  					    AND FNC_CODE = @fnc_code )   	RETURN @fnc_tax_comm  	END

@@ -1,0 +1,38 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification-template"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification"></require>
+    <require from="aurelia-kendoui-bridge/treeview/treeview"></require>
+    <ux-dialog>
+        <ux-dialog-header>
+            Alert Groups
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <div class="wv-form wv-vert-form" style="margin: 10px 0px 0px 10px; width: 470px;">
+                <div style="margin-top: 10px;">
+                    <div class="wv-widget-row">
+                        <div class="wv-widget-col wv-form">
+                            <div class="wv-form-group">
+                                <ak-treeview k-data-source.bind="emailGroupsDataSource"
+                                             k-data-text-field="text"
+                                             k-widget.bind="emailGroupsTreeView" 
+                                             k-value.two-way="emailGroupCode"
+                                             k-checkboxes.bind="{ checkChildren: true }"
+                                             k-expand.delegate="treeViewExpand($event.detail)"
+                                             k-on-check.delegate="emailGroupsTreeViewOnCheck()">        
+                                </ak-treeview>  
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <div class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal">
+                <button class="k-button k-primary" click.delegate="saveClick()">Select</button>
+                <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

@@ -1,0 +1,37 @@
+CREATE PROCEDURE [dbo].[advsp_job_component_update_tax_option]
+	@MarkAsTaxable AS bit
+AS
+BEGIN
+
+	IF @MarkAsTaxable = 1 BEGIN
+
+		UPDATE 
+			dbo.JOB_COMPONENT
+		SET 
+			TAX_FLAG = 1,
+			TAX_CODE = PRD_PROD_TAX_CODE
+		FROM
+			[dbo].[JOB_COMPONENT] AS JC INNER JOIN 
+			[dbo].[JOB_LOG] AS J ON J.JOB_NUMBER = JC.JOB_NUMBER LEFT OUTER JOIN
+			[dbo].[PRODUCT] AS P ON P.CL_CODE = J.CL_CODE AND
+									P.DIV_CODE = J.DIV_CODE AND
+									P.PRD_CODE = J.PRD_CODE
+
+	END ELSE BEGIN
+
+		UPDATE 
+			dbo.JOB_COMPONENT
+		SET 
+			TAX_FLAG = NULL,
+			TAX_CODE = NULL
+		FROM
+			[dbo].[JOB_COMPONENT] AS JC INNER JOIN 
+			[dbo].[JOB_LOG] AS J ON J.JOB_NUMBER = JC.JOB_NUMBER LEFT OUTER JOIN
+			[dbo].[PRODUCT] AS P ON P.CL_CODE = J.CL_CODE AND
+									P.DIV_CODE = J.DIV_CODE AND
+									P.PRD_CODE = J.PRD_CODE
+
+	END
+
+END
+GO

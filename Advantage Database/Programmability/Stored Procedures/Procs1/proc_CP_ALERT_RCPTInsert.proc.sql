@@ -1,0 +1,54 @@
+﻿
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_ALERT_RCPTInsert]
+(
+	@ALERT_ID int,
+	@ALERT_RCPT_ID int,
+	@CDP_CONTACT_ID int,
+	@EMAIL_ADDRESS varchar(50) = NULL,
+	@PROCESSED smalldatetime = NULL,
+	@NEW_ALERT smallint,
+	@READ_ALERT smallint,
+	@CURRENT_RCPT smallint
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [CP_ALERT_RCPT]
+	(
+		[ALERT_ID],
+		[ALERT_RCPT_ID],
+		[CDP_CONTACT_ID],
+		[EMAIL_ADDRESS],
+		[PROCESSED],
+		[NEW_ALERT],
+		[READ_ALERT],
+		[CURRENT_RCPT]
+	)
+	VALUES
+	(
+		@ALERT_ID,
+		@ALERT_RCPT_ID,
+		@CDP_CONTACT_ID,
+		@EMAIL_ADDRESS,
+		@PROCESSED,
+		@NEW_ALERT,
+		@READ_ALERT,
+		@CURRENT_RCPT
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+

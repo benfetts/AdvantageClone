@@ -1,0 +1,53 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="resources/elements/display-templates/job/job-display-template"></require>
+
+    <div style="margin: 0px 0px 0px 0px;">
+        <input ref="filter" value.bind="filterString" type="text" class="k-textbox" style="margin-bottom: 5px; width: 100%;" placeholder="Search..."/>
+        <ak-grid id="selectJobsGrid"
+                 k-widget.bind="selectJobsGrid"
+                 k-data-source.bind="jobsDataSource"
+                 k-selectable="[row, multiple]"
+                 k-persist-selection.bind="true"
+                 k-on-change.delegate="selectJobsGridOnChange($event.detail)"
+                 k-on-ready.delegate="selectJobsGridOnReady($event.detail)"
+                 k-height="340px">
+            <ak-col k-title="Description" k-field="Description">
+                <ak-template>
+                    <wv-job-display-template
+                        job-and-component="${Description}"
+                        client-name="${Client}"
+                        client-code="${ClientCode}"
+                        division-code="${DivisionCode}"
+                        product-code="${ProductCode}">
+                    </wv-job-display-template>
+                </ak-template>
+            </ak-col>
+            <ak-col k-title="Sales Class<br/>Job Type" k-field="SalesClassDescription" k-width="150px">
+                <ak-template>
+                    <span style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="Sales Class: ${SalesClassDescription}">
+                        ${SalesClassDescription}&nbsp;
+                    </span>
+                    <span style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="Job Type: ${JobTypeDescription}">
+                        ${JobTypeDescription}&nbsp;
+                    </span>
+                </ak-template>
+            </ak-col>
+            <ak-col k-title="A/E<br/>Manager" k-field="AccountExecutiveName" k-width="150px">
+                <ak-template>
+                    <span if.bind="AccountExecutiveName === ManagerName" style="font-weight: 600;" title="${AccountExecutiveName}">
+                        ${AccountExecutiveName}&nbsp;
+                    </span>
+                    <span if.bind="AccountExecutiveName !== ManagerName" style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="A/E: ${AccountExecutiveName}">
+                        ${AccountExecutiveName}&nbsp;
+                    </span>
+                    <span if.bind="AccountExecutiveName !== ManagerName" style="white-space: nowrap; display: block; text-overflow: ellipsis; overflow: hidden;" title="Manager: ${ManagerName}">
+                        ${ManagerName}&nbsp;
+                    </span>
+                </ak-template>
+            </ak-col>
+        </ak-grid>
+    </div>
+</template>

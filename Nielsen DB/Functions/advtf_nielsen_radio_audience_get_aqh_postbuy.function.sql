@@ -1,0 +1,192 @@
+CREATE FUNCTION [dbo].[advtf_nielsen_radio_audience_get_aqh_postbuy](
+	@NIELSEN_RADIO_SEGMENT_PARENT_IDs varchar(max),
+	@LISTENING_LOCATION char(1),
+	@STATION_COMBO_TYPE smallint,
+	@SelectedMediaDemographicIDs varchar(max),
+	@MEDIA_DEMO_DETAIL_TYPE [dbo].[MEDIA_DEMO_DETAIL_TYPE] READONLY,
+	@MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE dbo.MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE READONLY
+)
+RETURNS @RETURN_TABLE TABLE (
+	[NIELSEN_DEMO_CODE] varchar(7) NOT NULL,
+	[AQH] bigint NOT NULL,
+	MEDIA_DEMO_ID int NOT NULL,
+	NIELSEN_RADIO_STATION_COMBO_ID int NOT NULL,
+	NIELSEN_RADIO_SEGMENT_PARENT_ID int NOT NULL,
+	[ID] int NOT NULL
+)
+WITH SCHEMABINDING 
+AS
+BEGIN
+
+--set	@NIELSEN_RADIO_SEGMENT_PARENT_IDs = '5783'
+--set	@LISTENING_LOCATION = '1'
+--set	@STATION_COMBO_TYPE = 1 
+--set	@SelectedMediaDemographicIDs = '49'
+
+--insert into @MEDIA_DEMO_DETAIL_TYPE values(49,38)
+--insert into @MEDIA_DEMO_DETAIL_TYPE values(49,30)
+--insert into @MEDIA_DEMO_DETAIL_TYPE values(49,39)
+--insert into @MEDIA_DEMO_DETAIL_TYPE values(49,31)
+--insert into @MEDIA_DEMO_DETAIL_TYPE values(49,40)
+--insert into @MEDIA_DEMO_DETAIL_TYPE values(49,32)
+
+--insert into @MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE values(1035,0,1,0,0,0,0,0,N'12:19',N'12:19',1219,1219,N'Tu','2018-04-17 12:19:00')
+
+	DECLARE @LOCAL_MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE dbo.MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE
+	
+	INSERT INTO @LOCAL_MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE (ID, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, StartTime, EndTime, StartHour, EndHour, [Days])
+	SELECT ID, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, StartTime, EndTime, StartHour, EndHour, [Days]
+	FROM @MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE
+	
+	UPDATE @LOCAL_MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE SET EndHour = EndHour + 1
+	WHERE StartHour = EndHour
+
+--select * from @LOCAL_MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE
+
+	DECLARE @tt TABLE (
+		[251] int NOT NULL,
+		[42] int NOT NULL,
+		[1] int NOT NULL,
+		[264] int NOT NULL,
+		[8] int NOT NULL,
+		[254] int NOT NULL,
+		[255] int NOT NULL,
+		[3] int NOT NULL,
+		[4] int NOT NULL,
+		[5] int NOT NULL,
+		[6] int NOT NULL,
+		[82] int NOT NULL,
+		[7] int NOT NULL,
+		[267] int NOT NULL,
+		[268] int NOT NULL,
+		[10] int NOT NULL,
+		[11] int NOT NULL,
+		[12] int NOT NULL,
+		[13] int NOT NULL,
+		[14] int NOT NULL,
+		[15] int NOT NULL,
+		NIELSEN_RADIO_STATION_COMBO_ID int NOT NULL,
+		NIELSEN_RADIO_SEGMENT_PARENT_ID int NOT NULL,
+		ID int NOT NULL
+	)
+	
+	INSERT INTO @tt
+	SELECT
+			[251] = a.[MALES_6TO11_AQH],
+			[42] = MALES_12TO17_AQH + MALES_18TO20_AQH + MALES_18TO24_AQH + MALES_21TO24_AQH + MALES_25TO34_AQH + MALES_35TO44_AQH + MALES_35TO49_AQH + MALES_45TO49_AQH + MALES_50TO54_AQH + MALES_55TO64_AQH + MALES_65PLUS_AQH + 
+					FEMALES_12TO17_AQH + FEMALES_18TO20_AQH + FEMALES_18TO24_AQH + FEMALES_21TO24_AQH + FEMALES_25TO34_AQH + FEMALES_35TO44_AQH + FEMALES_35TO49_AQH + FEMALES_45TO49_AQH + FEMALES_50TO54_AQH + FEMALES_55TO64_AQH + FEMALES_65PLUS_AQH,
+			[1] = a.[MALES_12TO17_AQH],
+			[264] = a.[FEMALES_6TO11_AQH],
+			[8] = a.[FEMALES_12TO17_AQH],
+			[254] = a.[MALES_18TO20_AQH],
+			[255] = a.[MALES_21TO24_AQH],
+			[3] = a.[MALES_25TO34_AQH],
+			[4] = a.[MALES_35TO44_AQH],
+			[5] = a.[MALES_45TO49_AQH],
+			[6] = a.[MALES_50TO54_AQH],
+			[82] = a.[MALES_55TO64_AQH],
+			[7] = a.[MALES_65PLUS_AQH],
+			[267] = a.[FEMALES_18TO20_AQH],
+			[268] = a.[FEMALES_21TO24_AQH],
+			[10] = a.[FEMALES_25TO34_AQH],
+			[11] = a.[FEMALES_35TO44_AQH],
+			[12] = a.[FEMALES_45TO49_AQH],
+			[13] = a.[FEMALES_50TO54_AQH],
+			[14] = a.[FEMALES_55TO64_AQH],
+			[15] = a.[FEMALES_65PLUS_AQH],
+			c.NIELSEN_RADIO_STATION_COMBO_ID,
+			a.NIELSEN_RADIO_SEGMENT_PARENT_ID,
+			dt.ID
+		FROM dbo.NIELSEN_RADIO_AUDIENCE a
+			INNER JOIN dbo.NIELSEN_RADIO_SEGMENT_CHILD c ON a.NIELSEN_RADIO_SEGMENT_CHILD_ID = c.NIELSEN_RADIO_SEGMENT_CHILD_ID
+														AND c.LISTENING_LOCATION = @LISTENING_LOCATION
+														AND c.STATION_COMBO_TYPE = @STATION_COMBO_TYPE
+			INNER JOIN dbo.NIELSEN_RADIO_DAYPART dp ON c.NIELSEN_RADIO_DAYPART_ID = dp.NIELSEN_RADIO_DAYPART_ID AND dp.NIELSEN_DAYPART_ID between 1 and 63
+
+			INNER JOIN @LOCAL_MEDIA_SPOT_TV_RESEARCH_DAYTIME_TYPE dt ON dt.StartHour BETWEEN dp.MIL_START_TIME AND (dp.MIL_END_TIME - 1)
+		WHERE NIELSEN_RADIO_SEGMENT_PARENT_ID IN (SELECT items FROM dbo.udf_split_list(@NIELSEN_RADIO_SEGMENT_PARENT_IDs, ','))
+		AND 1 = CASE 
+					WHEN dt.Tuesday = 1 AND dp.TUESDAY = 1 THEN 1 
+					WHEN dt.Wednesday = 1 AND dp.WEDNESDAY = 1 THEN 1 
+					WHEN dt.Thursday = 1 AND dp.THURSDAY = 1 THEN 1 
+					WHEN dt.Friday = 1 AND dp.FRIDAY = 1 THEN 1 
+					WHEN dt.Saturday = 1 AND dp.SATURDAY = 1 THEN 1 
+					WHEN dt.Sunday = 1 AND dp.SUNDAY = 1 THEN 1 
+					WHEN dt.Monday = 1 AND dp.MONDAY = 1 THEN 1 
+				ELSE 0 
+				END
+
+
+	INSERT INTO @RETURN_TABLE
+	SELECT
+		u.NIELSEN_DEMO_CODE, u.AQH, mdd.MediaDemographicID, NIELSEN_RADIO_STATION_COMBO_ID, NIELSEN_RADIO_SEGMENT_PARENT_ID, [ID]
+	FROM (
+		SELECT 
+			[251] = SUM([251]),
+			[42] = SUM([42]),
+			[1] = SUM([1]),
+			[264] = SUM([264]),
+			[8] = SUM([8]),
+			[254] = SUM([254]),
+			[255] = SUM([255]),
+			[3] = SUM([3]),
+			[4] = SUM([4]),
+			[5] = SUM([5]),
+			[6] = SUM([6]),
+			[82] = SUM([82]),
+			[7] = SUM([7]),
+			[267] = SUM([267]),
+			[268] = SUM([268]),
+			[10] = SUM([10]),
+			[11] = SUM([11]),
+			[12] = SUM([12]),
+			[13] = SUM([13]),
+			[14] = SUM([14]),
+			[15] = SUM([15]),
+			NIELSEN_RADIO_STATION_COMBO_ID,
+			NIELSEN_RADIO_SEGMENT_PARENT_ID,
+			[ID]
+		FROM 
+		(
+			SELECT 
+					[251],
+					[42],
+					[1],
+					[264],
+					[8],
+					[254],
+					[255],
+					[3],
+					[4],
+					[5],
+					[6],
+					[82],
+					[7],
+					[267],
+					[268],
+					[10],
+					[11],
+					[12],
+					[13],
+					[14],
+					[15],
+					NIELSEN_RADIO_STATION_COMBO_ID,
+					NIELSEN_RADIO_SEGMENT_PARENT_ID,
+					ID
+				FROM
+					@tt
+		) rawdata
+		GROUP BY NIELSEN_RADIO_STATION_COMBO_ID, NIELSEN_RADIO_SEGMENT_PARENT_ID, ID
+	) AUDDATA
+	UNPIVOT
+	(
+		AQH
+		FOR NIELSEN_DEMO_CODE in ([251], [42], [1], [264], [8], [254], [255], [3], [4], [5], [6], [82], [7], [267], [268], [10], [11], [12], [13], [14], [15]) 
+	) u
+		INNER JOIN dbo.NIELSEN_DEMO nd ON u.NIELSEN_DEMO_CODE = nd.CODE
+		INNER JOIN @MEDIA_DEMO_DETAIL_TYPE mdd ON nd.NIELSEN_DEMO_ID = mdd.NielsenDemographicID  
+	WHERE mdd.MediaDemographicID IN (SELECT items FROM dbo.udf_split_list(@SelectedMediaDemographicIDs, ','))
+
+	RETURN
+END
+GO

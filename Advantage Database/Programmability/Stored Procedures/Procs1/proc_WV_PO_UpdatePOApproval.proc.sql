@@ -1,0 +1,68 @@
+﻿
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_WV_PO_UpdatePOApproval]
+	@PO_NUMBER int,
+	@PO_APPR_RULE_CODE varchar(6),
+	@SEQ_NBR smallint, 
+	@PO_APPR_RULE_ID int, 
+	@PO_APPROVAL_FLAG bit,
+	@PO_APPROVAL_USER varchar(100),
+	@PO_APPROVAL_DATE smalldatetime,
+	@PO_APPROVAL_NOTES text
+AS
+
+	BEGIN
+
+		SET NOCOUNT OFF
+		DECLARE @Err2 int
+	 
+	UPDATE [PO_APPROVAL]
+	SET			   
+			   [PO_APPROVAL_FLAG] = @PO_APPROVAL_FLAG,
+			   [PO_APPROVAL_USER] = @PO_APPROVAL_USER,
+			   [PO_APPROVAL_DATE] = @PO_APPROVAL_DATE,
+			   [PO_APPROVAL_NOTES] = @PO_APPROVAL_NOTES
+		 
+		WHERE
+			   [PO_NUMBER] = @PO_NUMBER AND
+			   [PO_APPR_RULE_ID] = @PO_APPR_RULE_ID
+
+		--SET @Err2 = @@Error
+
+		
+		--RETURN @Err2
+	END
+	
+	if @PO_APPROVAL_FLAG = 0
+		Begin
+			UPDATE [PURCHASE_ORDER] SET [VOID_FLAG] = 1, [VOIDED_BY] = @PO_APPROVAL_USER, [VOID_DATE] =(SELECT GETDATE()) WHERE [PO_NUMBER] = @PO_NUMBER
+		End
+    Else
+        Begin
+            UPDATE [PURCHASE_ORDER] SET [VOID_FLAG] = NULL, [VOIDED_BY] = NULL, [VOID_DATE] = NULL WHERE [PO_NUMBER] = @PO_NUMBER
+        End
+	
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

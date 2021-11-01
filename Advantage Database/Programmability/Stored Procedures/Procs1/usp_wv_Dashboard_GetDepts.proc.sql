@@ -1,0 +1,76 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_Dashboard_GetDepts]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[usp_wv_Dashboard_GetDepts]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+CREATE PROCEDURE [dbo].[usp_wv_Dashboard_GetDepts]
+(
+	@OfficeCode varchar(4000),
+	@UserID varchar(100)
+)
+AS
+Declare @RestrictionsOffice Int, @EmpCode varchar(6)
+Select @EmpCode = EMP_CODE
+FROM SEC_USER
+WHERE UPPER(USER_CODE) = UPPER(@UserID)
+
+Select @RestrictionsOffice = Count(*) 
+FROM EMP_OFFICE
+Where EMP_CODE = @EmpCode
+
+if @RestrictionsOffice > 0
+Begin
+	if @OfficeCode <> '' AND @OfficeCode <> 'All'
+	Begin
+		SELECT DISTINCT DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC
+		FROM DEPT_TEAM INNER JOIN
+		EMPLOYEE ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+		INNER JOIN EMP_OFFICE ON EMPLOYEE.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE
+		INNER JOIN charlist_to_table(@OfficeCode, DEFAULT) c ON EMPLOYEE.OFFICE_CODE = c.vstr collate database_default
+		WHERE EMP_OFFICE.EMP_CODE = @EmpCode
+		ORDER BY DEPT_TEAM.DP_TM_DESC
+	End
+	Else
+	Begin
+		SELECT DISTINCT DEPT_TEAM.DP_TM_CODE, DP_TM_DESC
+		FROM DEPT_TEAM  INNER JOIN
+		EMPLOYEE ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+		INNER JOIN EMP_OFFICE ON EMPLOYEE.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE
+		WHERE ((INACTIVE_FLAG IS NULL) OR (INACTIVE_FLAG = 0)) AND EMP_OFFICE.EMP_CODE = @EmpCode
+		ORDER BY DEPT_TEAM.DP_TM_DESC
+	End
+End
+Else
+Begin
+	if @OfficeCode <> '' AND @OfficeCode <> 'All'
+	Begin
+		SELECT DISTINCT DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC
+		FROM DEPT_TEAM INNER JOIN
+		EMPLOYEE ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+		INNER JOIN charlist_to_table(@OfficeCode, DEFAULT) c ON EMPLOYEE.OFFICE_CODE = c.vstr collate database_default
+		ORDER BY DEPT_TEAM.DP_TM_DESC
+	End
+	Else
+	Begin
+		SELECT DP_TM_CODE, DP_TM_DESC
+		FROM DEPT_TEAM 
+		WHERE (INACTIVE_FLAG IS NULL) OR (INACTIVE_FLAG = 0)
+		ORDER BY DP_TM_DESC
+	End
+End
+
+
+
+
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+

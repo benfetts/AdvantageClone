@@ -1,0 +1,675 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2018 1:40:20 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TASC-SQL2014"
+  DTS:CreatorName="ADVANTAGE\mikec"
+  DTS:DTSID="{CBA41389-83AC-4B5B-82D6-5CDCC84979CC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Nielsen Radio Period"
+  DTS:ProtectionLevel="2"
+  DTS:VersionGUID="{DE52CF9B-AFC4-4D82-941D-EDE35CAA4A91}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BCDD2D18-C5BC-47DC-A288-833E7DDF2AEB}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TASC-SQL2014;User ID=SYSADM;Initial Catalog=NIELSENHOSTED;Provider=SQLNCLI11;Auto Translate=false;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="mNIewOyfYg=="
+            IV="4Q3dxhxAgCY=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>4Q3dxhxAgCZ5o7rZ94bNjl1MTqA4nJVi9Pc1ZU04Fg1/qCLQjyH1071plgcjxmAQdaXUadbroZDO9yxszVPFeBWKlK1zY1hNY+U97anUNZSnXzPrdudV9int+fIZIWtg13reE946qmbNISlpax0oas7fCFOyZCIQ5OXDI+3nhsw=</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{10DDBF9B-B1F0-42B6-8EF5-C75E355EB4A6}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=TASC-SQL2014;User ID=SYSADM;Initial Catalog=NIELSENDATASTORE;Provider=SQLNCLI11;Auto Translate=false;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="2hf3i4T7dQ=="
+            IV="Y2ddZpVVl9U=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>Y2ddZpVVl9XK7i3AsWegxxtCByvShRlSAEjqHhUyarkvOobz2g2qoadpsGzAL9vbY5MsFSrFw+5ByXFWepIWj03h9QRkZc6fiCUF/bj3od5WHqkegRbzatAG95tUzU+1gVdHhEgES6E4FDwGEsFwbgH0PNsYibwKXCfkQVcWl9M=</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{083D82FA-A1DB-48F4-9218-F25729C4CC9F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - NIELSEN_RADIO_PERIOD"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[NIELSEN_RADIO_PERIOD]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[NIELSEN_RADIO_PERIOD_ID]"
+                      cachedDataType="i4"
+                      cachedName="NIELSEN_RADIO_PERIOD_ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_RADIO_PERIOD_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_PERIOD_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="NIELSEN_RADIO_REPORT_TYPE_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_REPORT_TYPE_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[NIELSEN_PERIOD_ID]"
+                      cachedDataType="i4"
+                      cachedName="NIELSEN_PERIOD_ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_PERIOD_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_PERIOD_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      cachedDataType="i4"
+                      cachedName="NIELSEN_RADIO_MARKET_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_MARKET_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[SHORT_NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="SHORT_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[SHORT_NAME]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SHORT_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[NAME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="36"
+                      cachedName="NAME"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NAME]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[START_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="START_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[START_DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[START_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[END_DATE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="END_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[END_DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[END_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[STANDARD_CONDENSED_INDICATOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="STANDARD_CONDENSED_INDICATOR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[STANDARD_CONDENSED_INDICATOR]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STANDARD_CONDENSED_INDICATOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[VALIDATED]"
+                      cachedDataType="bool"
+                      cachedName="VALIDATED"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[VALIDATED]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[VALIDATED]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[COPYRIGHT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="36"
+                      cachedName="COPYRIGHT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[COPYRIGHT]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[COPYRIGHT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].Columns[SOURCE]"
+                      cachedDataType="i2"
+                      cachedName="SOURCE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[SOURCE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SOURCE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_RADIO_PERIOD_ID]"
+                      dataType="i4"
+                      name="NIELSEN_RADIO_PERIOD_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="NIELSEN_RADIO_REPORT_TYPE_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_PERIOD_ID]"
+                      dataType="i4"
+                      name="NIELSEN_PERIOD_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      dataType="i4"
+                      name="NIELSEN_RADIO_MARKET_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[SHORT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="SHORT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[START_DATE]"
+                      dataType="dbTimeStamp"
+                      name="START_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[END_DATE]"
+                      dataType="dbTimeStamp"
+                      name="END_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[STANDARD_CONDENSED_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="STANDARD_CONDENSED_INDICATOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[VALIDATED]"
+                      dataType="bool"
+                      name="VALIDATED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[COPYRIGHT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      name="COPYRIGHT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input].ExternalColumns[SOURCE]"
+                      dataType="i2"
+                      name="SOURCE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Query"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">DECLARE @MAXID bigint
+
+SELECT @MAXID = COALESCE(MAX(NIELSEN_RADIO_PERIOD_ID), 0)
+FROM NIELSENHOSTED.dbo.NIELSEN_RADIO_PERIOD
+
+SELECT *
+FROM dbo.NIELSEN_RADIO_PERIOD
+WHERE NIELSEN_RADIO_PERIOD_ID &gt; @MAXID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_PERIOD_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_RADIO_PERIOD_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_PERIOD_ID]"
+                      name="NIELSEN_RADIO_PERIOD_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      length="2"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      name="NIELSEN_RADIO_REPORT_TYPE_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_PERIOD_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_PERIOD_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_PERIOD_ID]"
+                      name="NIELSEN_PERIOD_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      name="NIELSEN_RADIO_MARKET_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SHORT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SHORT_NAME]"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SHORT_NAME]"
+                      name="SHORT_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NAME]"
+                      length="36"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[NAME]"
+                      name="NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[START_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[START_DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[START_DATE]"
+                      name="START_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[END_DATE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[END_DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[END_DATE]"
+                      name="END_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STANDARD_CONDENSED_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[STANDARD_CONDENSED_INDICATOR]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[STANDARD_CONDENSED_INDICATOR]"
+                      name="STANDARD_CONDENSED_INDICATOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[VALIDATED]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[VALIDATED]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[VALIDATED]"
+                      name="VALIDATED"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[COPYRIGHT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[COPYRIGHT]"
+                      length="36"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[COPYRIGHT]"
+                      name="COPYRIGHT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SOURCE]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SOURCE]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SOURCE]"
+                      name="SOURCE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_RADIO_PERIOD_ID]"
+                      dataType="i4"
+                      name="NIELSEN_RADIO_PERIOD_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="NIELSEN_RADIO_REPORT_TYPE_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_PERIOD_ID]"
+                      dataType="i4"
+                      name="NIELSEN_PERIOD_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      dataType="i4"
+                      name="NIELSEN_RADIO_MARKET_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SHORT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="SHORT_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[START_DATE]"
+                      dataType="dbTimeStamp"
+                      name="START_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[END_DATE]"
+                      dataType="dbTimeStamp"
+                      name="END_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[STANDARD_CONDENSED_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="STANDARD_CONDENSED_INDICATOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[VALIDATED]"
+                      dataType="bool"
+                      name="VALIDATED" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[COPYRIGHT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      name="COPYRIGHT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SOURCE]"
+                      dataType="i2"
+                      name="SOURCE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_RADIO_PERIOD_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_RADIO_PERIOD_ID]"
+                      name="NIELSEN_RADIO_PERIOD_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_RADIO_REPORT_TYPE_CODE]"
+                      name="NIELSEN_RADIO_REPORT_TYPE_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_PERIOD_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_PERIOD_ID]"
+                      name="NIELSEN_PERIOD_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NIELSEN_RADIO_MARKET_NUMBER]"
+                      name="NIELSEN_RADIO_MARKET_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SHORT_NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SHORT_NAME]"
+                      name="SHORT_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NAME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[NAME]"
+                      name="NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[START_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[START_DATE]"
+                      name="START_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[END_DATE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[END_DATE]"
+                      name="END_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[STANDARD_CONDENSED_INDICATOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[STANDARD_CONDENSED_INDICATOR]"
+                      name="STANDARD_CONDENSED_INDICATOR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[VALIDATED]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[VALIDATED]"
+                      name="VALIDATED" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[COPYRIGHT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="36"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[COPYRIGHT]"
+                      name="COPYRIGHT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SOURCE]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SOURCE]"
+                      name="SOURCE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - NIELSEN_RADIO_PERIOD.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

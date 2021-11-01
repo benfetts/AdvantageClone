@@ -1,0 +1,25 @@
+CREATE PROC advsp_maintenance_clientpo_select
+
+AS
+
+BEGIN
+	
+	SELECT
+		[ID] = CP.CLIENT_PO_ID,
+		[ClientCode] = CP.CL_CODE,
+		[ClientName] = C.CL_NAME,
+		[DivisionCode] = CP.DIV_CODE,
+		[DivisionName] = D.DIV_NAME,
+		[ProductCode] = CP.PRD_CODE,
+		[ProductDescription] = P.PRD_DESCRIPTION,
+		[ClientPONumber] = CP.CLIENT_PO_NUMBER,
+		[ClientPODescription] = CP.CLIENT_PO_DESCRIPTION,
+		[CreateDate] = CP.CREATE_DATE,
+		[IsInactive] = CP.IS_INACTIVE
+	FROM dbo.CLIENT_PO CP
+		LEFT OUTER JOIN dbo.CLIENT C ON CP.CL_CODE = C.CL_CODE 
+		LEFT OUTER JOIN dbo.DIVISION D ON CP.CL_CODE = D.CL_CODE AND CP.DIV_CODE = D.DIV_CODE 
+		LEFT OUTER JOIN dbo.PRODUCT P ON CP.CL_CODE = P.CL_CODE AND CP.DIV_CODE = P.DIV_CODE AND CP.PRD_CODE = P.PRD_CODE
+
+END
+GO

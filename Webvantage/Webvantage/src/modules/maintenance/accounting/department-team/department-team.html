@@ -1,0 +1,59 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid-toolbar"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    
+    <div class="container-fluid" style="padding-top: 15px;">
+
+        <ak-grid k-widget.bind="grid"
+                 k-editable.bind="true"
+                 k-data-source.bind="dataSource"
+                 k-navigatable.bind="true"
+                 k-selectable="row"
+                 k-on-edit.delegate="gridOnEdit($event.detail)">
+            <ak-grid-toolbar>
+                <ak-template>
+                    <a class="wv-toolbar-button" ak-button="k-image-url: Images/Icons/Grey/256/navigate_plus.png" title="Add New Record" click.delegate="addClick()"></a>
+                    <a class="wv-toolbar-button" ak-button="k-image-url: Images/Icons/Grey/256/floppy_disk.png" title="Save" click.delegate="saveClick()"></a>
+                    <a class="wv-toolbar-button" ak-button="k-image-url: Images/Icons/Grey/256/sign_forbidden.png" title="Cancel Changes" click.delegate="cancelClick()"></a>
+                    <a class="wv-toolbar-button" ak-button="k-image-url: Images/Icons/Grey/256/printer.png" title="Export to Excel" click.delegate="exportClick()"></a>
+                </ak-template>
+            </ak-grid-toolbar>
+            <ak-col k-title="Code" k-field="Code" k-width="75px"></ak-col>
+            <ak-col k-title="Description" k-field="Description" k-width="175px"></ak-col>
+            <ak-col k-title="Is Inactive" k-width="80px">
+                <ak-template>
+                    <div style="text-align: center">
+                        <input type="checkbox" class="k-checkbox" id="Inactive_${Code}" checked.bind='IsInactive' change.delegate="inactiveClick(uid)"   />
+                        <label class="k-checkbox-label" for="Inactive_${Code}">&nbsp;</label>
+                    </div>
+                </ak-template>
+            </ak-col>
+            <ak-col k-title="Direct Hours<br/>Percent Goal" k-field="DirectHoursPercentGoal" k-width="100px"></ak-col>
+            <ak-col k-title="Category" k-field="Category" k-width="380px"></ak-col>
+            <ak-col k-title="PO Approval<br/>Rule" k-field="PurchaseOrderApprovalRuleCode" k-width="150px" k-editor.bind="poApprovalRuleEditor">
+                <ak-template>
+                    ${PurchaseOrderApprovalRuleCode}
+                </ak-template>
+            </ak-col>
+            <ak-col k-title="Service Fee<br/>Type Code" k-field="ServiceFeeTypeCode" k-width="150px" k-editor.bind="serviceFeeTypeEditor">
+                <ak-template>
+                    ${ServiceFeeTypeCode}
+                </ak-template>
+            </ak-col>
+            <ak-col></ak-col>
+        </ak-grid>
+        
+    </div>
+
+</template>

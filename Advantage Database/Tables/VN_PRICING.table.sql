@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[VN_PRICING] (
+    [VN_PRICING_ID]    INT             NOT NULL,
+    [VN_CODE]          VARCHAR (6)     NOT NULL,
+    [JT_CODE]          VARCHAR (10)    NULL,
+    [VN_PRICING_DESC]  VARCHAR (60)    NULL,
+    [VN_PRICING_RATE]  DECIMAL (15, 3) NULL,
+    [VN_PRICING_NOTES] VARCHAR (254)   NULL,
+    [CREATE_USER]      VARCHAR (100)   NULL,
+    [CREATE_DATE]      SMALLDATETIME   NULL
+);
+

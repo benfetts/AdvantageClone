@@ -1,0 +1,7 @@
+@mixin breakpoint($breakOn) {
+  @if $breakOn == large {
+    @media only screen and (min-width: 1920px) {
+      @content;
+    }
+  }
+}

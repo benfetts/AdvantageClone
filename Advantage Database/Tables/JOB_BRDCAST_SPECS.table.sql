@@ -1,0 +1,19 @@
+﻿CREATE TABLE [dbo].[JOB_BRDCAST_SPECS] (
+    [JOB_NUMBER]         INT          NOT NULL,
+    [JOB_COMPONENT_NBR]  SMALLINT     NOT NULL,
+    [JOB_BRDCAST_TYPE]   VARCHAR (1)  NOT NULL,
+    [JOB_BRD_#_STATIONS] INT          NULL,
+    [JOB_BRD_10_SEC]     SMALLINT     NULL,
+    [JOB_BRD_15_SEC]     SMALLINT     NULL,
+    [JOB_BRD_30_SEC]     SMALLINT     NULL,
+    [JOB_BRD_60_SEC]     SMALLINT     NULL,
+    [JOB_BRD_EXPL]       VARCHAR (30) NULL,
+    [JOB_BRD_NBR_SPOTS]  INT          NULL,
+    [JOB_BRD_OTHER]      SMALLINT     NULL,
+    [JOB_BRD_STORY_COMP] SMALLINT     NULL,
+    [JOB_BRD_STORY_ROUG] SMALLINT     NULL,
+    [JOB_BRD_TAG]        SMALLINT     NULL,
+    [BRD_COMMENTS]       TEXT         NULL,
+    [ROWID]              INT          IDENTITY (1, 1) NOT NULL
+);
+

@@ -1,0 +1,18 @@
+CREATE PROCEDURE [dbo].[advsp_media_planning_search_by_order_number]
+	@OrderNumber AS int
+AS
+BEGIN
+
+	SELECT 
+		DISTINCT
+		PlanID = MPDLLD.MEDIA_PLAN_ID,
+		EstimateID = MPDLLD.MEDIA_PLAN_DTL_ID,
+		OrderNumber = MPDLLD.ORDER_NBR
+	FROM 
+		dbo.MEDIA_PLAN_DTL_LEVEL_LINE_DATA MPDLLD
+	WHERE 
+		MPDLLD.ORDER_NBR IS NOT NULL 
+		AND MPDLLD.ORDER_NBR = @OrderNumber
+
+END
+GO

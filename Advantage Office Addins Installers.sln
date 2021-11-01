@@ -1,0 +1,162 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Advantage Outlook Addin", "Advantage Outlook Addin\Advantage Outlook Addin.vbproj", "{6FB77B16-572C-4240-8908-582A563C67DC}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework", "AdvantageFramework\AdvantageFramework.vbproj", "{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.WinForm", "AdvantageFramework.WinForm\AdvantageFramework.WinForm.vbproj", "{8BBD586B-EB2E-4971-AE41-91A8E68F114E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.Reporting.Reports", "AdvantageFramework.Reporting.Reports\AdvantageFramework.Reporting.Reports.vbproj", "{6115EB46-3E3D-4413-903A-618177C655AF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Advantage Outlook Addin Setup - Office 2007 - 32", "Setups\Advantage Outlook Addin Setup - Office 2007 - 32\Advantage Outlook Addin Setup - Office 2007 - 32.vdproj", "{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Advantage Outlook Addin Setup - Office 2007 - 64", "Setups\Advantage Outlook Addin Setup - Office 2007 - 64\Advantage Outlook Addin Setup - Office 2007 - 64.vdproj", "{312B8927-97C9-411F-88C5-6BDD8E13B37E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Advantage Outlook Addin Setup - Office 2010 - 32", "Setups\Advantage Outlook Addin Setup - Office 2010 - 32\Advantage Outlook Addin Setup - Office 2010 - 32.vdproj", "{A66098C9-A8C1-4404-9500-83520B8036C6}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Advantage Outlook Addin Setup - Office 2010 - 64", "Setups\Advantage Outlook Addin Setup - Office 2010 - 64\Advantage Outlook Addin Setup - Office 2010 - 64.vdproj", "{9970EA5F-8CEF-4522-AD51-9B47D5F02300}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.BLogic", "AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj", "{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FB77B16-572C-4240-8908-582A563C67DC}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB77B16-572C-4240-8908-582A563C67DC}.Debug|x64.ActiveCfg = Debug|x64
+		{6FB77B16-572C-4240-8908-582A563C67DC}.Debug|x86.ActiveCfg = Debug|x86
+		{6FB77B16-572C-4240-8908-582A563C67DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB77B16-572C-4240-8908-582A563C67DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB77B16-572C-4240-8908-582A563C67DC}.Release|x64.ActiveCfg = Release|x64
+		{6FB77B16-572C-4240-8908-582A563C67DC}.Release|x86.ActiveCfg = Release|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.ActiveCfg = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.ActiveCfg = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.ActiveCfg = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.ActiveCfg = Release|x86
+		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Debug|x64.ActiveCfg = Debug|x64
+		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Debug|x86.ActiveCfg = Debug|x86
+		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Release|x64.ActiveCfg = Release|x64
+		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Release|x86.ActiveCfg = Release|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x64.ActiveCfg = Debug|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x86.ActiveCfg = Debug|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x64.ActiveCfg = Release|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x86.ActiveCfg = Release|x86
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Debug|Any CPU.ActiveCfg = Release
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Debug|Any CPU.Build.0 = Release
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Debug|x64.ActiveCfg = Debug
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Debug|x64.Build.0 = Debug
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Debug|x86.ActiveCfg = Debug
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Debug|x86.Build.0 = Debug
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Release|Any CPU.ActiveCfg = Release
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Release|Any CPU.Build.0 = Release
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Release|x64.ActiveCfg = Release
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Release|x64.Build.0 = Release
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Release|x86.ActiveCfg = Release
+		{8135BC67-E41E-49AE-BFE0-B493E6A12E4F}.Release|x86.Build.0 = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Debug|Any CPU.ActiveCfg = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Debug|Any CPU.Build.0 = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Debug|x64.ActiveCfg = Debug
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Debug|x64.Build.0 = Debug
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Debug|x86.ActiveCfg = Debug
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Debug|x86.Build.0 = Debug
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Release|Any CPU.ActiveCfg = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Release|Any CPU.Build.0 = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Release|x64.ActiveCfg = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Release|x64.Build.0 = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Release|x86.ActiveCfg = Release
+		{312B8927-97C9-411F-88C5-6BDD8E13B37E}.Release|x86.Build.0 = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Debug|Any CPU.ActiveCfg = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Debug|Any CPU.Build.0 = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Debug|x64.ActiveCfg = Debug
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Debug|x64.Build.0 = Debug
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Debug|x86.ActiveCfg = Debug
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Debug|x86.Build.0 = Debug
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Release|Any CPU.ActiveCfg = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Release|Any CPU.Build.0 = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Release|x64.ActiveCfg = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Release|x64.Build.0 = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Release|x86.ActiveCfg = Release
+		{A66098C9-A8C1-4404-9500-83520B8036C6}.Release|x86.Build.0 = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Debug|Any CPU.ActiveCfg = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Debug|Any CPU.Build.0 = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Debug|x64.ActiveCfg = Debug
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Debug|x64.Build.0 = Debug
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Debug|x86.ActiveCfg = Debug
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Debug|x86.Build.0 = Debug
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Release|Any CPU.ActiveCfg = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Release|Any CPU.Build.0 = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Release|x64.ActiveCfg = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Release|x64.Build.0 = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Release|x86.ActiveCfg = Release
+		{9970EA5F-8CEF-4522-AD51-9B47D5F02300}.Release|x86.Build.0 = Release
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.ActiveCfg = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.Build.0 = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.ActiveCfg = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.Build.0 = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.ActiveCfg = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.Build.0 = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.ActiveCfg = Release|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6C29C88-C645-4DCE-ACCC-20316DCB723B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Advantage\u0020Outlook\u0020Addin\\Advantage\u0020Outlook\u0020Addin.vbproj
+		SccProjectName1 = Advantage\u0020Outlook\u0020Addin
+		SccLocalPath1 = Advantage\u0020Outlook\u0020Addin
+		SccProjectUniqueName2 = AdvantageFramework\\AdvantageFramework.vbproj
+		SccProjectName2 = AdvantageFramework
+		SccLocalPath2 = AdvantageFramework
+		SccProjectUniqueName3 = AdvantageFramework.WinForm\\AdvantageFramework.WinForm.vbproj
+		SccProjectName3 = AdvantageFramework.WinForm
+		SccLocalPath3 = AdvantageFramework.WinForm
+		SccProjectUniqueName4 = AdvantageFramework.Reporting.Reports\\AdvantageFramework.Reporting.Reports.vbproj
+		SccProjectName4 = AdvantageFramework.Reporting.Reports
+		SccLocalPath4 = AdvantageFramework.Reporting.Reports
+		SccProjectUniqueName5 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202007\u0020-\u002032\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202007\u0020-\u002032.vdproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202007\u0020-\u002032\\
+		SccProjectUniqueName6 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202007\u0020-\u002064\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202007\u0020-\u002064.vdproj
+		SccLocalPath6 = .
+		SccProjectFilePathRelativizedFromConnection6 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202007\u0020-\u002064\\
+		SccProjectUniqueName7 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202010\u0020-\u002032\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202010\u0020-\u002032.vdproj
+		SccLocalPath7 = .
+		SccProjectFilePathRelativizedFromConnection7 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202010\u0020-\u002032\\
+		SccProjectUniqueName8 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202010\u0020-\u002064\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202010\u0020-\u002064.vdproj
+		SccLocalPath8 = .
+		SccProjectFilePathRelativizedFromConnection8 = Setups\\Advantage\u0020Outlook\u0020Addin\u0020Setup\u0020-\u0020Office\u00202010\u0020-\u002064\\
+		SccProjectUniqueName9 = AdvantageFramework.BLogic\\AdvantageFramework.BLogic.vbproj
+		SccProjectName9 = AdvantageFramework.BLogic
+		SccLocalPath9 = AdvantageFramework.BLogic
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,690 @@
+﻿<template>
+    <require from="resources/elements/card/card"></require>
+    <require from="aurelia-kendoui-bridge/sortable/sortable"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/tabstrip/tabstrip"></require>
+    <require from="aurelia-kendoui-bridge/scheduler/scheduler"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/chart/chart"></require>
+    <style>
+        .search-wrapper.search-wrapper-expanded {
+            width: 500px;
+        }
+        .search-wrapper {
+            width: 200px;
+            -webkit-transition: width .3s ease-in-out;
+            -moz-transition: width .3s ease-in-out;
+            transition: width .3s ease-in-out;
+        }
+        .dropdown-submenu {
+            position: relative;
+        }
+        .dropdown-submenu > .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+        .dropdown-submenu > a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+        .dropdown-submenu:hover > a:after {
+            border-left-color: #fff;
+        }
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+        .dropdown-item {
+            line-height: 16px;
+        }
+    </style>
+    <div class="col-xs-12 wv-dashboard">
+        <div class="col-xs-12">
+            <div id="dashboard-tabs" ak-tabstrip="k-animation.bind: { open: { effects: 'none' } }; k-widget.bind='navTabStrip' k-widget.two-way: navTabStrip"  k-on-select.delegate="tabStripSelect($event.detail)">
+                <ul class="dashboard-widgets">
+                    <li class="k-state-active">
+                        <dl>
+                            <dt>
+                                <span class="wvi wvi-users-relation22"></span>
+                            </dt>
+                            <dd>
+                                ${assignmentCount} Assignments
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>
+                                <span class="wvi wvi-alert"></span>
+                            </dt>
+                            <dd>
+                                ${alertCount} Alerts
+                            </dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt>
+                                <span class="wvi wvi-calendar-7"></span>
+                            </dt>
+                            <dd>
+                                Appointments
+                            </dd>
+                        </dl>
+                    </li>
+                    <li if.bind="!isClientPortal && isTimesheetActive == true" >
+                        <dl title="Hours worked this week">
+                            <!-- Temp -->
+                            <dt>
+                                <span class="wvi wvi-clock2"></span>
+                            </dt>
+                            <dd>
+                                ${hoursThisWeek} Hours worked
+                                <a class="wv-danger-tooltip" data-toggle="tooltip" title="${timeMessage}" if.bind="showTimeWarning" click.delegate="openMissingTime()">
+                                    <span class="wvi wvi-alert"></span>
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li if.bind="!isClientPortal">
+                        <dl>
+                            <dt>
+                                <span class="wvi wvi-book-bookmark"></span>
+                            </dt>
+                            <dd>
+                                Bookmarks
+                            </dd>
+                        </dl>
+                    </li>
+                    <li if.bind="showProofsIcon == true">
+                        <dl>
+                            <dt>
+                                <span class="wvi wvi-file-regular"></span>
+                            </dt>
+                            <dd>
+                                ${reviewCount} ${reviewItemText}
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+                <!-- Assignment-->
+                <div>
+                    <div class="col-xs-12">
+                        <div style="padding: 5px 0px 0px 5px; height:44px;" class="dashboard-toolbar">
+                            <ak-drop-down-list k-data-text-field="Text"
+                                               k-data-value-field="Value"
+                                               k-data-source.bind="GroupByOptions"
+                                               k-value.two-way="GroupBy"
+                                               k-on-change.delegate="sortChanged($event.detail)" 
+                                               style="margin-right:5px;"
+                                               title="Group Assignments">
+                            </ak-drop-down-list>
+                            <ul class="wv-navbar-nav">
+                                <li repeat.for="brd of Dashboards"><a href="javascript:void(0)" click.delegate="switchDashboard(brd)">${brd.ItemCount} ${brd.Name}</a></li>
+                            </ul>
+                            <button if.bind="!isClientPortal" href="#" click.delegate="newAssignment()" role="button" class=" wv-icon-button k-button k-grid-add wv-add-new" title="New Assignment">
+                                <span class="wvi wvi-navigate-plus"></span>
+                            </button>
+                            <button if.bind="!isClientPortal" type="button" class="btn btn-link" click.delegate="cardSettingsClick(1)"><span class="glyphicon glyphicon-cog" title="Card Settings"></span></button>
+                            <button type="button" class="btn btn-link" click.delegate="refreshAssignmentsClick()"><span class="wvi wvi-refresh" title="Refresh Assignments"></span></button>
+                            <div class="input-group search-wrapper pull-right" style="margin-top: 13px; margin-bottom: 13px;">
+                                <input type="text" 
+                                       class="form-control au-target" 
+                                       placeholder="Search Assignment" 
+                                       value.two-way="searchassignment" 
+                                       au-target-id="213"
+                                       title="Enter search criteria and click ENTER or click the icon to search Assignments"
+                                       keypress.delegate="searchOnEnter($event, 1)">
+                                <div class="input-group-addon" style="cursor: pointer !important;" title="Click to search">
+                                    <span class="glyphicon glyphicon-search" click.delegate="searchdashboard(1)"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="assignments-cardgroup" class="card-container-height">
+                            <div repeat.for="cardGroup of cardGroups">
+                                <div>
+                                    <h5 if.bind="cardGroup.Key" style="font-weight: bold; margin-bottom: 16px;">${cardGroup.Key}</h5>
+                                    <div if.bind="allowSort" style="" id="dashboard-container-${$index}" ak-sortable="k-cursor: move; k-container.bind: '#dashboard-container-' + $index;" k-on-change.delegate="changeAssignmentOrder($event.detail)">
+                                        <wv-card repeat.for="card of cardGroup.Cards"
+                                                 title="${card.Title}"
+                                                 details.bind="card.Data"
+                                                 priority="${card.Priority}"
+                                                 jobNumber="${card.JobNumber}"
+                                                 clientname="${card.ClientName}"
+                                                 startdate="${card.StartDate}"
+                                                 duedate="${card.DueDate}"
+                                                 startdatestring="${card.StartDateString}"
+                                                 duedatestring="${card.DueDateString}"
+                                                 timedue="${card.TimeDue}"
+                                                 jobdescription="${card.JobDescription}"
+                                                 jobcomponentnumber="${card.JobComponentNumber}"
+                                                 jobcomponentdescription="${card.JobComponentDescription}"
+                                                 alerttype="${card.AlertType}"
+                                                 alerttypedescription="${card.AlertTypeDescription}"
+                                                 alertcategoryid="${card.AlertCategoryID}"
+                                                 alertcategorydescription="${card.AlertCategoryDescription}"
+                                                 indicator="${card.Indicator}"
+                                                 alertid="${card.AlertID}"
+                                                 sprintid="${card.SprintID}"
+                                                 isalertassignment="${card.IsAlertAssignment}"
+                                                 tasksequencenumber="${card.TaskSequenceNumber}"
+                                                 isworkitem="${card.IsWorkItem}"
+                                                 checklisttotal="${card.CheckListTotal}"
+                                                 checklistcomplete="${card.CheckListCompleted}"
+                                                 showchecklistsoncards="${card.ShowChecklistsOnCards}"
+                                                 tempcompletestring="${card.TempCompleteString}"
+                                                 ismytasktempcomplete="${card.IsMyTaskTempComplete}"
+                                                 estimatenumber="${card.EstimateNumber}"
+                                                 estimatecomponentnumber="${card.EstimateComponentNumber}"
+                                                 isread="${card.IsRead}"   
+                                                 alertstatename="${card.AlertStateName}" 
+                                                 showstate="${card.ShowState}"  
+                                                 taskstatus="${card.TaskStatus}"  
+                                                 taskstatusdescription="${card.TaskStatusDescription}"  
+                                                 isautoroute="${card.IsAutoRoute}"
+                                                 loadtype="${1}">
+                                        </wv-card>
+                                    </div>
+                                    <div if.bind="!allowSort">
+                                        <wv-card repeat.for="card of cardGroup.Cards" title="${card.Title}" details.bind="card.Data" priority="${card.Priority}" jobNumber="${card.JobNumber}"
+                                                 clientname="${card.ClientName}"
+                                                 startdate="${card.StartDate}"
+                                                 duedate="${card.DueDate}"
+                                                 startdatestring="${card.StartDateString}"
+                                                 duedatestring="${card.DueDateString}"
+                                                 timedue="${card.TimeDue}"
+                                                 jobdescription="${card.JobDescription}"
+                                                 jobcomponentnumber="${card.JobComponentNumber}"
+                                                 jobcomponentdescription="${card.JobComponentDescription}"
+                                                 taskfunctiondescription="${card.TaskFunctionDescription}"
+                                                 alerttype="${card.AlertType}"
+                                                 alerttypedescription="${card.AlertTypeDescription}"
+                                                 alertcategoryid="${card.AlertCategoryID}"
+                                                 alertcategorydescription="${card.AlertCategoryDescription}"
+                                                 indicator="${card.Indicator}"
+                                                 alertid="${card.AlertID}"
+                                                 sprintid="${card.SprintID}"
+                                                 isalertassignment="${card.IsAlertAssignment}"
+                                                 tasksequencenumber="${card.TaskSequenceNumber}"
+                                                 isworkitem="${card.IsWorkItem}"
+                                                 checklisttotal="${card.CheckListTotal}"
+                                                 checklistcomplete="${card.CheckListCompleted}"
+                                                 showchecklistsoncards="${card.ShowChecklistsOnCards}"
+                                                 tempcompletestring="${card.TempCompleteString}"
+                                                 ismytasktempcomplete="${card.IsMyTaskTempComplete}"
+                                                 estimatenumber="${card.EstimateNumber}"
+                                                 estimatecomponentnumber="${card.EstimateComponentNumber}"
+                                                 isread="${card.IsRead}"      
+                                                 alertstatename="${card.AlertStateName}"
+                                                 showstate="${card.ShowState}"
+                                                 taskstatus="${card.TaskStatus}"  
+                                                 taskstatusdescription="${card.TaskStatusDescription}"  
+                                                 isautoroute="${card.IsAutoRoute}"
+                                                 loadtype="${1}">
+                                        </wv-card>
+                                        <wv-card repeat.for="card of cardGroup.Cards" title="${card.DueDate}" details.bind="card.Data" dueDate="${card.DueDate}">
+                                        </wv-card>
+                                    </div>
+                                </div>
+                            </div>
+                            <div if.bind="maxPage > 0">
+                                <button href="#" click.delegate="first()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="First">
+                                    <span class="wvi wvi-navigate-left2" style="color: #747474;"></span>
+                                </button>
+                                <button href="#" click.delegate="previous()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="Previous">
+                                    <span class="wvi wvi-navigate-left" style="color: #747474;"></span>
+                                </button>
+                                <span style="margin: 0px 9px 0px 5px;">${pagerDisplay}</span>
+                                <button href="#" click.delegate="next()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="Next">
+                                    <span class="wvi wvi-navigate-right" style="color: #747474;"></span>
+                                </button>
+                                <button href="#" click.delegate="last()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="Last">
+                                    <span class="wvi wvi-navigate-right2" style="color: #747474;"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Alerts-->
+                <div>
+                    <div class="col-xs-12">
+                        <div style="padding: 5px 0px 0px 5px; height:44px;" class="dashboard-toolbar">
+                            <ak-drop-down-list k-data-text-field="Text"
+                                               k-data-value-field="Value"
+                                               k-data-source.bind="GroupByOptions"
+                                               k-value.two-way="GroupBy"
+                                               k-on-change.delegate="sortChanged($event.detail)" 
+                                               style="margin-right:5px;"
+                                               title="Group Alerts">
+                            </ak-drop-down-list>
+                            <ul class="wv-navbar-nav">
+                                <li repeat.for="brd of Dashboards"><a href="javascript:void(0)" click.delegate="switchDashboard(brd)">${brd.ItemCount} ${brd.Name}</a></li>
+                            </ul>
+                            <button href="#" click.delegate="newAlert()" role="button" class=" wv-icon-button k-button k-grid-add wv-add-new" title="New Alert">
+                                <span class="wvi wvi-navigate-plus"></span>
+                            </button>
+                            <button if.bind="!isClientPortal" type="button" class="btn btn-link" click.delegate="cardSettingsClick()"><span class="glyphicon glyphicon-cog" title="Card Settings"></span></button>
+                            <button type="button" class="btn btn-link" click.delegate="refreshAlertsClick()"><span class="wvi wvi-refresh" title="Refresh Alerts"></span></button>
+                            <div class="input-group search-wrapper pull-right" style="margin-top: 13px; margin-bottom: 13px;">
+                                <input type="text" 
+                                       class="form-control au-target" 
+                                       placeholder="Search Alert" 
+                                       value.two-way="searchalert" 
+                                       au-target-id="213"
+                                       title="Enter search criteria and click ENTER or click the icon to search Alerts"
+                                       keypress.delegate="searchOnEnter($event, 0)">
+                                <div class="input-group-addon" style="cursor: pointer !important;" title="Click to search">
+                                    <span class="glyphicon glyphicon-search" click.delegate="searchdashboard(0)"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="alerts-cardgroup" class="card-container-height">
+                            <div repeat.for="cardGroup of cardGroups">
+                                <div>
+                                    <h5 if.bind="cardGroup.Key && cardGroup.Key !== ''" style="font-weight: bold;">${cardGroup.Key}</h5>
+                                    <div if.bind="allowSort" style="" id="dashboard-container-${$index}" ak-sortable="k-cursor: move; k-container.bind: '#dashboard-container-' + $index;" k-on-change.delegate="changeAlertOrder($event.detail)">
+                                        <wv-card repeat.for="card of cardGroup.Cards"
+                                                 title="${card.Title}"
+                                                 details.bind="card.Data"
+                                                 priority="${card.Priority}"
+                                                 clientname="${card.ClientName}"
+                                                 jobNumber="${card.JobNumber}"
+                                                 startdate="${card.StartDate}"
+                                                 duedate="${card.DueDate}"
+                                                 startdatestring="${card.StartDateString}"
+                                                 duedatestring="${card.DueDateString}"
+                                                 timedue="${card.TimeDue}"
+                                                 jobdescription="${card.JobDescription}"
+                                                 jobcomponentnumber="${card.JobComponentNumber}"
+                                                 jobcomponentdescription="${card.JobComponentDescription}"
+                                                 alerttype="${card.AlertType}"
+                                                 alerttypedescription="${card.AlertTypeDescription}"
+                                                 alertcategoryid="${card.AlertCategoryID}"
+                                                 alertcategorydescription="${card.AlertCategoryDescription}"
+                                                 indicator="${card.Indicator}"
+                                                 alertid="${card.AlertID}"
+                                                 sprintid="${card.SprintID}"
+                                                 isalertassignment="${card.IsAlertAssignment}"
+                                                 tasksequencenumber="${card.TaskSequenceNumber}"
+                                                 isworkitem="${card.IsWorkItem}"
+                                                 tempcompletestring="${card.TempCompleteString}"
+                                                 ismytasktempcomplete="${card.IsMyTaskTempComplete}"
+                                                 isread="${card.IsRead}"  
+                                                 checklisttotal="${card.CheckListTotal}"
+                                                 checklistcomplete="${card.CheckListCompleted}"
+                                                 showchecklistsoncards="${card.ShowChecklistsOnCards}"    
+                                                 alertstatename="${card.AlertStateName}"
+                                                 showstate="${card.ShowState}"
+                                                 taskstatus="${card.TaskStatus}"  
+                                                 taskstatusdescription="${card.TaskStatusDescription}"  
+                                                 isautoroute="${false}"
+                                                 loadtype="${0}">
+                                        </wv-card>
+                                    </div>
+                                    <div if.bind="!allowSort">
+                                        <wv-card repeat.for="card of cardGroup.Cards" title="${card.Title}" details.bind="card.Data" priority="${card.Priority}" jobNumber="${card.JobNumber}"
+                                                 startdate="${card.StartDate}"
+                                                 duedate="${card.DueDate}"
+                                                 clientname="${card.ClientName}"
+                                                 startdatestring="${card.StartDateString}"
+                                                 duedatestring="${card.DueDateString}"
+                                                 timedue="${card.TimeDue}"
+                                                 jobdescription="${card.JobDescription}"
+                                                 jobcomponentnumber="${card.JobComponentNumber}"
+                                                 jobcomponentdescription="${card.JobComponentDescription}"
+                                                 taskfunctiondescription="${card.TaskFunctionDescription}"
+                                                 alerttype="${card.AlertType}"
+                                                 alerttypedescription="${card.AlertTypeDescription}"
+                                                 alertcategoryid="${card.AlertCategoryID}"
+                                                 alertcategorydescription="${card.AlertCategoryDescription}"
+                                                 indicator="${card.Indicator}"
+                                                 alertid="${card.AlertID}"
+                                                 sprintid="${card.SprintID}"
+                                                 isalertassignment="${card.IsAlertAssignment}"
+                                                 tasksequencenumber="${card.TaskSequenceNumber}"
+                                                 tempcompletestring="${card.TempCompleteString}"
+                                                 ismytasktempcomplete="${card.IsMyTaskTempComplete}"
+                                                 isworkitem="${card.IsWorkItem}"
+                                                 isread="${card.IsRead}"   
+                                                 checklisttotal="${card.CheckListTotal}"
+                                                 checklistcomplete="${card.CheckListCompleted}"
+                                                 showchecklistsoncards="${card.ShowChecklistsOnCards}"   
+                                                 alertstatename="${card.AlertStateName}"   
+                                                 showstate="${card.ShowState}"
+                                                 taskstatus="${card.TaskStatus}"  
+                                                 taskstatusdescription="${card.TaskStatusDescription}"  
+                                                 isautoroute="${false}"
+                                                 loadtype="${0}">
+                                        </wv-card>
+                                        <wv-card repeat.for="card of cardGroup.Cards" title="${card.DueDate}" details.bind="card.Data" dueDate="${card.DueDate}">
+                                        </wv-card>
+                                    </div>
+                                </div>
+                            </div>
+                            <div if.bind="maxPage > 0">
+                                <button href="#" click.delegate="first()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="First">
+                                    <span class="wvi wvi-navigate-left2"></span>
+                                </button>
+                                <button href="#" click.delegate="previous()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="Previous">
+                                    <span class="wvi wvi-navigate-left"></span>
+                                </button>
+                                <span style="margin: 0px 9px 0px 5px;">${pagerDisplay}</span>
+                                <button href="#" click.delegate="next()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="Next">
+                                    <span class="wvi wvi-navigate-right"></span>
+                                </button>
+                                <button href="#" click.delegate="last()" role="button" class=" wv-icon-button k-button k-grid-add wv-neutral" title="Last">
+                                    <span class="wvi wvi-navigate-right2"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Appointments-->
+                <div class="col-xs-12">
+                    <div style="padding: 5px 0px 0px 5px; height:44px;" class="dashboard-toolbar">
+                        <ul class="list-inline">
+                            <li if.bind="!isClientPortal">
+                                <button click.delegate="newAppointment()" role="button" class=" wv-icon-button k-button k-grid-add wv-add-new" title="New Calendar Activity">
+                                    <span class="wvi wvi-navigate-plus"></span>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="btn k-primary" click.delegate="openModule('Calendar', 'Calendar_MonthView.aspx')" title="Go to Calendar"><span class="wvi wvi-calendar-7"></span>Calendar</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="height: 100vh">
+                        <iframe id="CalendarMonthView" load.trigger="frameloaded( $event)" style="height: 100%; width: 100%; border: 0px; overflow: hidden;"></iframe>
+                    </div>
+                </div>
+                <!-- Hours-->
+                <div if.bind="!isClientPortal && isTimesheetActive == true" style="width: 90%; margin: 0px 30px 0px 30px;">
+                    <style>
+                        .donut-wrapper {
+                            position: relative;
+                            width: 250px;
+                            height: 250px;
+                            display: inline-block;
+                        }
+                        .donut-chart {
+                            width: 200px;
+                            height: 200px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        .donut-inner-content {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 20px;
+                            line-height: 200px;
+                            vertical-align: middle;
+                            text-align: center;
+                        }
+                        .donut-center-text {
+                            font-size: 18px;
+                            font-weight: bold;
+                            text-align: center;
+                        }
+                        .donut-label-text {
+                            color: #747474;
+                            font-size: 14px;
+                            font-weight: 500;
+                        }
+                    </style>
+                    <div style="padding: 5px 0px 0px 5px; height:44px;" class="dashboard-toolbar">
+                        <button href="#" click.delegate="newTimeEntry()" role="button" class=" wv-icon-button k-button k-grid-add wv-add-new" title="Add Time">
+                            <span class="wvi wvi-navigate-plus"></span>
+                        </button>
+                        <button type="button" class="btn btn-link" click.delegate="findTime()"><span class="wvi wvi-magnifying-glass" title="Find Time"></span></button>
+                        <button type="button" class="btn btn-link" click.delegate="refreshTimeClick()"><span class="wvi wvi-refresh" title="Refresh Time"></span></button>
+                    </div>
+                    <div style="text-align: center; width: 100%; border:solid 1px #E8E8E8; border-radius: 8px; background: #FFF; padding-bottom: 25px;">
+                        <table style="width: 100%;">
+                            <tr>
+                                <td class="donut-center-text" style="width: 25%; vertical-align: middle; text-align: center; cursor: pointer;" 
+                                    click.delegate="openTodayTimesheet()" title="">
+                                    <div class="donut-wrapper">
+                                        <ak-chart id="RequiredPostedTodayChart" class="donut-chart">
+                                        </ak-chart>
+                                        <div class="donut-inner-content donut-center-text">${hoursTodayString}</div>
+                                        <div class="text-center" title="Click to open Timesheet">
+                                            <span class="donut-label-text">Hours Today</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="donut-center-text" style="width: 25%; vertical-align: middle; text-align: center; cursor: pointer;" click.delegate="openModule('Timesheet', 'Employee/Timesheet')" title="">
+                                    <div class="donut-wrapper">
+                                        <ak-chart id="RequiredPostedWeekChart" class="donut-chart">
+                                        </ak-chart>
+                                        <div class="donut-inner-content donut-center-text">${hoursThisWeekString}</div>
+                                        <div class="text-center" title="Click to open Timesheet">
+                                            <span class="donut-label-text">Hours This Week</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width: 25%; vertical-align: middle; text-align: center; cursor: pointer;" click.delegate="openModule('Timesheet', 'Employee/Timesheet')" title="">
+                                    <div class="donut-wrapper">
+                                        <ak-chart id="directHoursToGoalChart" class="donut-chart">
+                                        </ak-chart>
+                                        <div class="donut-inner-content donut-center-text">${timesheetDashboard.DirectHoursToGoalThisWeekPercent.toFixed(2)}%</div>
+                                        <div class="text-center" title="Click to open Timesheet">
+                                            <span class="donut-label-text">Direct Hours to Goal</span>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width: 25%; vertical-align: middle; text-align: center; cursor: pointer;" click.delegate="openModule('Timesheet', 'Employee/Timesheet')" title="">
+                                    <div class="donut-wrapper">
+                                        <ak-chart id="hoursByTypeChart" class="donut-chart">
+                                        </ak-chart>
+                                        <div class="donut-inner-content donut-center-text">${hoursThisWeekString}</div>
+                                        <div class="text-center" title="Click to open Timesheet">
+                                            <span class="donut-label-text">Hours by Type</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                       
+                    </div>
+                </div>
+                <!-- Bookmarks-->
+                <div if.bind="!isClientPortal" class="col-xs-12">
+                    <div style="padding: 5px 0px 0px 5px; height:44px;" class="dashboard-toolbar">
+                        <ul class="wv-navbar-nav">
+                            <li repeat.for="brd of Dashboards"><a href="javascript:void(0)" click.delegate="switchDashboard(brd)">${brd.ItemCount} ${brd.Name}</a></li>
+                        </ul>
+                        <button type="button" class="btn btn-link" click.delegate="refreshBookmarksClick()" title="Refresh Bookmarks"><span class="wvi wvi-refresh"></span></button>
+                        <div class="input-group search-wrapper pull-right" style="margin-top: 13px; margin-bottom: 13px;">
+                            <input type="text" 
+                                   class="form-control au-target" 
+                                   placeholder="Search Bookmark" 
+                                   value.two-way="searchbookmark" 
+                                   au-target-id="213"
+                                   title="Enter search criteria and click ENTER or click the icon to search Bookmarks"
+                                   keypress.delegate="searchOnEnter($event, 5)">
+                            <div class="input-group-addon" style="cursor: pointer !important;" title="Click to search">
+                                <span class="glyphicon glyphicon-search" click.delegate="searchdashboard(5)"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container-height">
+                        <ul class='' style="margin-top: 0px;">
+                            <li class="wv-card" repeat.for="bookmark of bookmarks">
+                                <div class="content">
+                                    <div class="title" style="cursor: pointer;" click.delegate="openbookmark(bookmark)">
+                                        <span class='bookmark-title' title="${bookmark.Name}">${bookmark.Name}</span>
+                                    </div>
+                                    <div>
+                                        <span class='bookmark-desc' title="${bookmark.Description}">${bookmark.Description}</span>
+                                    </div>
+                                </div>
+                                <div class="wv-footer">
+                                    <span class="wv-badge" title="${bookmark.IndicatorText}">${bookmark.IndicatorAbbreviation} </span>
+                                    <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true">
+                                        <button class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle>
+                                            <span class="wvi wvi-vertical-ellipsis"></span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="editbookmark(bookmark)">Edit</a></li>
+                                            <li if.bind="!bookmark.OpenByDefault"><a class="dropdown-item" href="javascript:void(0)" click.delegate="updatebookmark(bookmark,1)">Open by Default</a></li>
+                                            <li if.bind="bookmark.OpenByDefault"><a class="dropdown-item" href="javascript:void(0)" click.delegate="updatebookmark(bookmark,0)">Do not Open by Default</a></li>
+                                            <li class="divider"></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="deletebookmark(bookmark)">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                    <div if.bind="bookmark.OpenByDefault" class="pull-right">
+                                        <span class="wvi wvi-star star" title="Set to open by default"></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Proofs-->
+                <div if.bind="showProofsIcon == true">
+                    <div class="col-xs-12">
+                        <div style="padding: 5px 0px 0px 5px; height:44px;" class="dashboard-toolbar">
+                            <ak-drop-down-list k-data-text-field="Text"
+                                               k-data-value-field="Value"
+                                               k-data-source.bind="GroupByOptions"
+                                               k-value.two-way="GroupBy"
+                                               k-on-change.delegate="sortChanged($event.detail)" style="margin-right:5px;">
+                            </ak-drop-down-list>
+                            <button if.bind="isProofingActive == true && isClientPortal == false" href="#" click.delegate="newReview()" role="button" class=" wv-icon-button k-button k-grid-add wv-add-new" title="New ${reviewItemTextSingular}">
+                                <span class="wvi wvi-navigate-plus"></span>
+                            </button>
+                            <ul class="wv-navbar-nav">
+                                <li repeat.for="brd of Dashboards"><a href="javascript:void(0)" click.delegate="switchDashboard(brd)">${brd.ItemCount} ${brd.Name}</a></li>
+                            </ul>
+                            <button type="button" class="btn btn-link" click.delegate="cardSettingsClick()"><span class="glyphicon glyphicon-cog" title="Card Settings"></span></button>
+                            <button type="button" class="btn btn-link" click.delegate="refreshReviewsClick()"><span class="wvi wvi-refresh" title="Refresh ${reviewItemText}"></span></button>
+                            <div class="input-group search-wrapper pull-right" style="margin-top: 13px; margin-bottom: 13px; cursor: pointer !important;">
+                                <input type="text" 
+                                       class="form-control au-target" 
+                                       placeholder="Search Proofs" 
+                                       value.two-way="searchreview" 
+                                       au-target-id="213"
+                                       title="Enter search criteria and click ENTER or click the icon to search ${reviewItemText}"
+                                       keypress.delegate="searchOnEnter($event, 3)">
+                                <div class="input-group-addon" style="cursor: pointer !important;" title="Click to search">
+                                    <span class="glyphicon glyphicon-search" click.delegate="searchdashboard(3)"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-container-height">
+                            <div repeat.for="cardGroup of cardGroups">
+                                <div>
+                                    <h5 if.bind="cardGroup.Key && cardGroup.Key !== ''" style="font-weight: bold;">${cardGroup.Key}</h5>
+                                    <div if.bind="allowSort" style="" id="dashboard-container-${$index}" ak-sortable="k-cursor: move; k-container.bind: '#dashboard-container-' + $index;">
+                                        <wv-card repeat.for="card of cardGroup.Cards"
+                                                 title="${card.Title}"
+                                                 details.bind="card.Data"
+                                                 priority="${card.Priority}"
+                                                 jobNumber="${card.JobNumber}"
+                                                 clientname="${card.ClientName}"
+                                                 startdate="${card.StartDate}"
+                                                 duedate="${card.DueDate}"
+                                                 startdatestring="${card.StartDateString}"
+                                                 duedatestring="${card.DueDateString}"
+                                                 timedue="${card.TimeDue}"
+                                                 jobdescription="${card.JobDescription}"
+                                                 jobcomponentnumber="${card.JobComponentNumber}"
+                                                 jobcomponentdescription="${card.JobComponentDescription}"
+                                                 alerttype="${card.AlertType}"
+                                                 alerttypedescription="${card.AlertTypeDescription}"
+                                                 alertcategoryid="${card.AlertCategoryID}"
+                                                 alertcategorydescription="${card.AlertCategoryDescription}"
+                                                 indicator="${card.Indicator}"
+                                                 alertid="${card.AlertID}"
+                                                 sprintid="${card.SprintID}"
+                                                 isalertassignment="${card.IsAlertAssignment}"
+                                                 tasksequencenumber="${card.TaskSequenceNumber}"
+                                                 isworkitem="${card.IsWorkItem}"
+                                                 checklisttotal="${card.CheckListTotal}"
+                                                 checklistcomplete="${card.CheckListCompleted}"
+                                                 showchecklistsoncards="${card.ShowChecklistsOnCards}"
+                                                 projectid="${card.CSProjectID}"
+                                                 reviewid="${card.CSReviewID}"
+                                                 isread="${card.IsRead}"   
+                                                 taskstatus="${card.TaskStatus}"  
+                                                 taskstatusdescription="${card.TaskStatusDescription}"  
+                                                 isautoroute="${false}"
+                                                 loadtype="${3}">
+                                        </wv-card>
+                                    </div>
+                                    <div if.bind="!allowSort">
+                                        <wv-card repeat.for="card of cardGroup.Cards" title="${card.Title}" details.bind="card.Data" priority="${card.Priority}" jobNumber="${card.JobNumber}"
+                                                 startdate="${card.StartDate}"
+                                                 duedate="${card.DueDate}"
+                                                 startdatestring="${card.StartDateString}"
+                                                 duedatestring="${card.DueDateString}"
+                                                 timedue="${card.TimeDue}"
+                                                 jobdescription="${card.JobDescription}"
+                                                 jobcomponentnumber="${card.JobComponentNumber}"
+                                                 clientname="${card.ClientName}"
+                                                 jobcomponentdescription="${card.JobComponentDescription}"
+                                                 taskfunctiondescription="${card.TaskFunctionDescription}"
+                                                 alerttype="${card.AlertType}"
+                                                 alerttypedescription="${card.AlertTypeDescription}"
+                                                 alertcategoryid="${card.AlertCategoryID}"
+                                                 alertcategorydescription="${card.AlertCategoryDescription}"
+                                                 indicator="${card.Indicator}"
+                                                 alertid="${card.AlertID}"
+                                                 sprintid="${card.SprintID}"
+                                                 isalertassignment="${card.IsAlertAssignment}"
+                                                 tasksequencenumber="${card.TaskSequenceNumber}"
+                                                 isworkitem="${card.IsWorkItem}"
+                                                 projectid="${card.CSProjectID}"
+                                                 reviewid="${card.CSReviewID}"
+                                                 isread="${card.IsRead}"   
+                                                 taskstatus="${card.TaskStatus}"  
+                                                 taskstatusdescription="${card.TaskStatusDescription}"  
+                                                 isautoroute="${false}"
+                                                 loadtype="${3}">
+                                        </wv-card>
+                                        <wv-card repeat.for="card of cardGroup.Cards" title="${card.DueDate}" details.bind="card.Data" dueDate="${card.DueDate}">
+                                        </wv-card>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 7 tabstrip-->
+                <div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>

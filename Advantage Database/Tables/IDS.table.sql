@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[IDS] (
+    [IDSTABLE] VARCHAR (18) NOT NULL,
+    [IDSXACT]  INT          DEFAULT (0) NOT NULL,
+    [ROWID]    INT          IDENTITY (1, 1) NOT NULL
+);
+

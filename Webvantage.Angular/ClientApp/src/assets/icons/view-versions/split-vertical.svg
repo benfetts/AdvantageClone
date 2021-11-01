@@ -1,0 +1,19 @@
+<svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <clipPath id="clip0">
+   <rect id="svg_1" fill="white" height="20" width="15"/>
+  </clipPath>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="17" width="17" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_2" clip-path="url(#clip0)">
+   <path id="svg_3" fill="#252525" d="m9.38041,16.1377l-4.02398,0c-0.15614,0 -0.25206,0.1709 -0.1707,0.3042l2.01199,3.2955c0.07797,0.1277 0.26343,0.1277 0.3414,0l2.01199,-3.2955c0.08137,-0.1333 -0.01455,-0.3042 -0.1707,-0.3042z"/>
+   <path id="svg_4" fill="#252525" d="m7.03125,4.67285l0.9375,0l0,7.52925l-0.9375,0l0,-7.52925z" clip-rule="evenodd" fill-rule="evenodd"/>
+   <path id="svg_5" fill="#252525" d="m1.875,1.875l11.25,0c0.5156,0 0.9375,0.42188 0.9375,0.9375l0,9.8437c0,0.2579 -0.2109,0.4688 -0.4687,0.4688l-12.18755,0c-0.25781,0 -0.46875,-0.2109 -0.46875,-0.4688l0,-9.8437c0,-0.51709 0.42188,-0.9375 0.9375,-0.9375zm0,2.8125l11.25,0l0,7.5l-11.25,0l0,-7.5z" clip-rule="evenodd" fill-rule="evenodd"/>
+  </g>
+ </g>
+</svg>

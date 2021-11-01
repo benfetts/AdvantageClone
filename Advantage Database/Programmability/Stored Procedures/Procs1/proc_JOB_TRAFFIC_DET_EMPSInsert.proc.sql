@@ -1,0 +1,42 @@
+﻿
+
+CREATE PROCEDURE [proc_JOB_TRAFFIC_DET_EMPSInsert]
+(
+	@ID int = NULL output,
+	@JOB_NUMBER int,
+	@JOB_COMPONENT_NBR int,
+	@SEQ_NBR smallint,
+	@EMP_CODE varchar(6),
+	@HOURS_ALLOWED decimal(8,2) = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [JOB_TRAFFIC_DET_EMPS]
+	(
+		[JOB_NUMBER],
+		[JOB_COMPONENT_NBR],
+		[SEQ_NBR],
+		[EMP_CODE],
+		[HOURS_ALLOWED]
+	)
+	VALUES
+	(
+		@JOB_NUMBER,
+		@JOB_COMPONENT_NBR,
+		@SEQ_NBR,
+		@EMP_CODE,
+		@HOURS_ALLOWED
+	)
+
+	SET @Err = @@Error
+
+	SELECT @ID = SCOPE_IDENTITY()
+
+	RETURN @Err
+END
+

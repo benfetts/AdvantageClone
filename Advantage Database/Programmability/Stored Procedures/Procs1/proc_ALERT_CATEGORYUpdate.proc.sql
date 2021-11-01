@@ -1,0 +1,86 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_ALERT_CATEGORYUpdate]
+(
+	@ALERT_CAT_ID int,
+	@ALERT_TYPE_ID int,
+	@ALERT_DESC varchar(40),
+	@PROMPT smallint = NULL,
+	@GROUP_LVL_SECURITY smallint = NULL,
+	@PDF_ATTACHMENT smallint = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [ALERT_CATEGORY]
+	SET
+		[ALERT_TYPE_ID] = @ALERT_TYPE_ID,
+		[ALERT_DESC] = @ALERT_DESC,
+		[PROMPT] = @PROMPT,
+		[GROUP_LVL_SECURITY] = @GROUP_LVL_SECURITY,
+		[PDF_ATTACHMENT] = @PDF_ATTACHMENT
+	WHERE
+		[ALERT_CAT_ID] = @ALERT_CAT_ID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

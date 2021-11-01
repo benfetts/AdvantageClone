@@ -1,0 +1,39 @@
+<div data-options="dxView : { name: 'time_entry', title: 'Time Entry' } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-bind="dxCommand: addNonBillableCommand"></div>
+    <div data-bind="dxCommand: addBillableCommand"></div>
+    <div data-bind="dxCommand: copyCommand"></div>
+    <div data-bind="dxCommand: clearCommand"></div>
+    <div data-bind="dxCommand: deleteCommand"></div>
+    <div data-bind="dxCommand: cancelCommand"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxLoadPanel: { message: loadPanelMessage, visible: loadPanelVisible, shading: false }"></div>
+        <div data-bind="css: warningBlockCSS">
+            <div class="message-block-text" data-bind="text: headerMessage"></div>
+        </div>
+        <div class="message-block" style="margin: -2px 0px 0px 0px;">
+            <div style="padding: 0px 0px 0px 10px;" data-bind="css: AdvantageMobile_UI.whiteDateBoxCss, dxDateBox: entryDateBox"></div>
+        </div>
+        <div data-bind="dxScrollView: { }">
+          <div class="dx-fieldset">
+                <div data-bind="dxLookup: clientsSelectBox"></div>
+                <div data-bind="dxLookup: divisionsSelectBox"></div>
+                <div data-bind="dxLookup: productsSelectBox"></div>
+                <div data-bind="dxLookup: jobsSelectBox"></div>
+                <div data-bind="dxLookup: jobComponentsSelectBox"></div>
+                <div data-bind="dxLookup: functionsSelectBox"></div>
+                <div data-bind="dxLookup: categoriesSelectBox"></div>
+              <!--  <div data-bind="dxSelectBox: departmentsSelectBox"></div>  -->
+                <div style="margin-top:6px;">
+                    Hours:
+                    <div data-bind="dxNumberBox: hoursNumberBox"></div>
+                </div>
+                <div>
+                    Comments:
+                    <div data-bind="dxTextArea: commentsTextArea"></div>
+                </div>
+            </div>
+            <div style="height:500px;"></div>
+        </div>
+    </div>
+</div>

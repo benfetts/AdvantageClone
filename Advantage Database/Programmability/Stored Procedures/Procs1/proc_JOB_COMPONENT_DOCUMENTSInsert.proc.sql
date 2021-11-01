@@ -1,0 +1,86 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_JOB_COMPONENT_DOCUMENTSInsert]
+(
+	@DOCUMENT_ID int,
+	@JOB_COMPONENT_NUMBER int,
+	@JOB_NUMBER int
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [JOB_COMPONENT_DOCUMENTS]
+	(
+		[DOCUMENT_ID],
+		[JOB_COMPONENT_NUMBER],
+		[JOB_NUMBER]
+	)
+	VALUES
+	(
+		@DOCUMENT_ID,
+		@JOB_COMPONENT_NUMBER,
+		@JOB_NUMBER
+	)
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+@import '../../../theme/mixins/font';
+@import '../../../theme/colors';
+@import '../../../theme/colors';
+@import '../../../components/action-area/action-area.component';
+
+/*textarea.k-textarea {
+  @include font-base(14px);
+  width: calc(#{$actionAreaOpenedWidth} - 70px);
+  padding: 0;
+  color: $black-light;
+  height: 110px;
+}
+
+kendo-editor.k-textarea {
+  @include font-base(14px);
+  width: calc(#{$actionAreaOpenedWidth} - 70px);
+  padding: 0;
+  color: $black-light;
+  height: 110px;
+}*/
+
+/*.k-editable-area,
+.k-editable-area:focus,
+.k-editable-area:focus-within {
+  box-shadow: none;
+}*/
+
+/*.textarea-component {
+  resize: none !important;
+}*/
+
+proof-textarea > div > table > tbody > tr > td.k-editable-area,
+proof-textarea > div > table > tbody > tr > td.k-editable-area:focus,
+proof-textarea > div > table > tbody > tr > td.k-editable-area:focus-within {
+      height: 100px !important;
+      box-shadow: none;
+}
+
+.overlay {
+  position: absolute;
+  background-color: black;
+  opacity: 0.1;
+}
+
+.editor {
+  position: absolute;
+}

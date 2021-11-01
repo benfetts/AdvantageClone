@@ -1,0 +1,14 @@
+﻿CREATE TABLE [dbo].[CMP_SLS_TEAM] (
+    [CL_CODE]           VARCHAR (6)     NOT NULL,
+    [DIV_CODE]          VARCHAR (6)     NOT NULL,
+    [PRD_CODE]          VARCHAR (6)     NOT NULL,
+    [CMP_CODE]          VARCHAR (6)     NOT NULL,
+    [SLS_TEAM_CODE]     VARCHAR (6)     NOT NULL,
+    [SC_CODE]           VARCHAR (6)     NOT NULL,
+    [SLS_TEAM_BUDGET]   DECIMAL (14, 2) NULL,
+    [CMP_ME_BUDGET_AMT] DECIMAL (14, 2) NULL,
+    [CMP_ME_BUDGET_PCT] DECIMAL (7, 3)  NULL,
+    [CMP_PE_BUDGET_AMT] DECIMAL (14, 2) NULL,
+    [CMP_PE_BUDGET_PCT] DECIMAL (7, 3)  NULL
+);
+

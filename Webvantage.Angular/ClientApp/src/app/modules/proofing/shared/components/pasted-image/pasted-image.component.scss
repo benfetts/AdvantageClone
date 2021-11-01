@@ -1,0 +1,8 @@
+@import '../../../theme/colors';
+
+.pasted-image {
+  .image {
+    outline: 2px dashed $red-border;
+    outline-offset: -1px;
+  }
+}

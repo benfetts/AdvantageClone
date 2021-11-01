@@ -1,0 +1,12 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Job_Template_GetTemplatesAll] AS
+
+SET NOCOUNT ON
+
+SELECT     
+	DISTINCT JOB_TMPLT_CODE as Code, ISNULL(JOB_TMPLT_DESC, JOB_TMPLT_CODE) as Description
+FROM
+	JOB_TMPLT_HDR
+
+

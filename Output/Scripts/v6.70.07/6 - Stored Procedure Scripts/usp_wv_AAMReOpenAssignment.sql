@@ -1,0 +1,35 @@
+﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_wv_AAMReOpenAssignment]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[usp_wv_AAMReOpenAssignment]
+GO
+
+/****** Object:  StoredProcedure [dbo].[usp_wv_AAMReOpenAssignment]    Script Date: 7/21/2020 4:21:43 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_wv_AAMReOpenAssignment] 
+
+@ALERT_ID as INT
+
+AS
+
+BEGIN	
+
+	UPDATE ALERT 
+		SET ASSIGN_COMPLETED = 0
+	WHERE ALERT_ID = @ALERT_ID
+
+END
+
+BEGIN
+
+	UPDATE JTD
+		SET JOB_COMPLETED_DATE = NULL, 
+		TASK_STATUS = 'P'
+			--TEMP_COMP_DATE = NULL  ([dbo].[udf_get_temp_comp_date]([JOB_NUMBER], [JOB_COMPONENT_NBR], [SEQ_NBR]))
+	FROM JOB_TRAFFIC_DET JTD
+		INNER JOIN ALERT A ON A.JOB_NUMBER = JTD.JOB_NUMBER AND A.JOB_COMPONENT_NBR = JTD.JOB_COMPONENT_NBR AND A.TASK_SEQ_NBR = JTD.SEQ_NBR
+	WHERE ALERT_ID = @ALERT_ID	
+
+END

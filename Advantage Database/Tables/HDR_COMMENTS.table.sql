@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[HDR_COMMENTS] (
+    [INV_NBR]     INT  NOT NULL,
+    [HDR_COMMENT] TEXT NULL
+);
+

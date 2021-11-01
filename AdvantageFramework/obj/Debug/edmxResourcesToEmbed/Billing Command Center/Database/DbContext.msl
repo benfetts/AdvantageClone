@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CodeFirstDatabase" CdmEntityContainer="DbContext">
+    <EntitySetMapping Name="BillingApprovalBatches">
+      <EntityTypeMapping TypeName="AdvantageFramework.BillingCommandCenter.Database.BillingApprovalBatch">
+        <MappingFragment StoreEntitySet="BillingApprovalBatch">
+          <ScalarProperty Name="ID" ColumnName="BA_BATCH_ID" />
+          <ScalarProperty Name="Description" ColumnName="BA_BATCH_DESC" />
+          <ScalarProperty Name="BatchDate" ColumnName="BATCH_DATE" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CREATE_USER" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="MODIFY_USER" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="MODIFY_DATE" />
+          <ScalarProperty Name="DateCutoff" ColumnName="DATE_CUTOFF" />
+          <ScalarProperty Name="CutoffPostPeriodCode" ColumnName="PERIOD_CUTOFF" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EMP_CODE" />
+          <ScalarProperty Name="IncludeNoDTL" ColumnName="INCL_NO_DTL" />
+          <ScalarProperty Name="IncludeNB" ColumnName="INCL_NB" />
+          <ScalarProperty Name="IncludeFee" ColumnName="INCL_FEE" />
+          <ScalarProperty Name="IncludeInternet" ColumnName="INCL_INT" />
+          <ScalarProperty Name="IncludeNewspaper" ColumnName="INCL_NP" />
+          <ScalarProperty Name="IncludeMagazine" ColumnName="INCL_MAG" />
+          <ScalarProperty Name="IncludeOutOfHome" ColumnName="INCL_OD" />
+          <ScalarProperty Name="IncludeRadio" ColumnName="INCL_RA" />
+          <ScalarProperty Name="IncludeTV" ColumnName="INCL_TV" />
+          <ScalarProperty Name="IsApproved" ColumnName="APPROVED" />
+          <ScalarProperty Name="IsFinished" ColumnName="FINISHED" />
+          <ScalarProperty Name="ApprovalMethod" ColumnName="APPR_METHOD" />
+          <ScalarProperty Name="SelectionOption" ColumnName="SEL_OPTION" />
+          <ScalarProperty Name="ManagerType" ColumnName="MANAGER_TYPE" />
+          <ScalarProperty Name="BillingApprovalExists" ColumnName="BA_EXISTS" />
+          <ScalarProperty Name="BillingApprovalBilledAny" ColumnName="BILLED_ANY" />
+          <ScalarProperty Name="BillingApprovalBilledAll" ColumnName="BILLED_ALL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillingCommandCenters">
+      <EntityTypeMapping TypeName="AdvantageFramework.BillingCommandCenter.Database.BillingCommandCenter">
+        <MappingFragment StoreEntitySet="BillingCommandCenter">
+          <ScalarProperty Name="ID" ColumnName="BCC_ID" />
+          <ScalarProperty Name="BillingUser" ColumnName="BILLING_USER" />
+          <ScalarProperty Name="CreateDate" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="ProductionSelectBy" ColumnName="P_SELECT_BY" />
+          <ScalarProperty Name="IsProduction" ColumnName="PROD_FLAG" />
+          <ScalarProperty Name="EmployeeTimeDateCutoff" ColumnName="P_ET_CUTOFF_DATE" />
+          <ScalarProperty Name="IncomeOnlyDateCutoff" ColumnName="P_IO_CUTOFF_DATE" />
+          <ScalarProperty Name="AdvanceBillingDateCutoff" ColumnName="P_AB_CUTOFF_DATE" />
+          <ScalarProperty Name="APPostPeriodCodeCutoff" ColumnName="P_AP_CUTOFF_PPD" />
+          <ScalarProperty Name="BillingApprovalBatchID" ColumnName="BA_BATCH_ID" />
+          <ScalarProperty Name="IsMedia" ColumnName="MEDIA_FLAG" />
+          <ScalarProperty Name="MediaSelectBy" ColumnName="M_SELECT_BY" />
+          <ScalarProperty Name="MediaEndDate" ColumnName="M_CUTOFF_DATE" />
+          <ScalarProperty Name="IsNewspaper" ColumnName="NEWSPAPER" />
+          <ScalarProperty Name="IsMagazine" ColumnName="MAGAZINE" />
+          <ScalarProperty Name="IsRadio" ColumnName="RADIO" />
+          <ScalarProperty Name="IsTelevision" ColumnName="TELEVISION" />
+          <ScalarProperty Name="IsOutOfHome" ColumnName="OUT_OF_HOME" />
+          <ScalarProperty Name="IsInternet" ColumnName="INTERNET" />
+          <ScalarProperty Name="MediaBroadcastMonthStart" ColumnName="M_BRDCAST_MTH1" />
+          <ScalarProperty Name="MediaBroadcastMonthEnd" ColumnName="M_BRDCAST_MTH2" />
+          <ScalarProperty Name="IncludeZeroSpots" ColumnName="INCL_ZERO_SPOTS" />
+          <ScalarProperty Name="MediaStartDate" ColumnName="M_START_DATE" />
+          <ScalarProperty Name="DateCuttoffToUseFlag" ColumnName="DATE_CUTOFF_TO_USE" />
+          <ScalarProperty Name="IncludeUnbilledOrdersOnly" ColumnName="INCL_UNBILLED_ONLY" />
+          <ScalarProperty Name="ProductionSelectionOption" ColumnName="SEL_OPTION" />
+          <ScalarProperty Name="IsRadioDaily" ColumnName="RADIO_DAILY" />
+          <ScalarProperty Name="IsTelevisionDaily" ColumnName="TV_DAILY" />
+          <ScalarProperty Name="IsRadioMonthly" ColumnName="RADIO_MONTHLY" />
+          <ScalarProperty Name="IsTelevisionMonthly" ColumnName="TV_MONTHLY" />
+          <ScalarProperty Name="BatchName" ColumnName="BATCH_NAME" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SEQ_NO" />
+          <ScalarProperty Name="ProductionJobType" ColumnName="PROD_JOB_TYPE" />
+          <ScalarProperty Name="IsProductionSelectionLocked" ColumnName="PROD_LOCK_SELECTION" />
+          <ScalarProperty Name="IncludeLegacy" ColumnName="INCLUDE_LEGACY" />
+          <ScalarProperty Name="JobMediaBillDateFrom" ColumnName="JOB_MEDIA_BILL_DATE_FROM" />
+          <ScalarProperty Name="JobMediaBillDateTo" ColumnName="JOB_MEDIA_BILL_DATE_TO" />
+          <ScalarProperty Name="ProductionIncludeJobMediaBillDates" ColumnName="PRODUCTION_INCLUDE_MEDIA_BILL_DATES" />
+          <ScalarProperty Name="ProductionJobMediaBillDateFrom" ColumnName="PRODUCTION_MEDIA_BILL_DATE_FROM" />
+          <ScalarProperty Name="ProductionJobMediaBillDateTo" ColumnName="PRODUCTION_MEDIA_BILL_DATE_TO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,524 @@
+﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_wv_dto_tasks_new]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE [dbo].[usp_wv_dto_tasks_new]
+GO
+
+
+/*****************************************************************
+Webvantage Desktop 
+Modification Description / Date / Developer
+=============================================
+This Stored Procedure gets Tasks   / 08-22-07 / JTG
+Modified To handle new tables with multiple employees for tasks /05-21-08/ ATC
+Modified to handle new Job Manager filter /05-21-08/ JTG
+Added Office_code 8/18/08 JTG
+Added Event Tasks 09/29/2009 SAM
+Added Documents 04/20/2015 TAP
+Added Account Exec Filter 06/29/2015
+Re-arranged joins by which tables pull most data first, remove loop to update comments and put comments as part of the main query, remove scalar function that gets employee name; changed to join to EMPLOYEE.  03/19/2018 SAM
+Updated to accommodate multiple Employees and Roles for the new AAM		10/19/2020	NAS
+******************************************************************/
+CREATE PROCEDURE [dbo].[usp_wv_dto_tasks_new] 
+@UserID		Varchar(100),
+@EmpCode	Varchar(140),
+@Role		Varchar(140),
+@StartDate	Datetime,
+@DueDate	Datetime,
+@ManagerCode Varchar(6),
+@Office		varchar(4),
+@TaskStatus Varchar(10),
+@Search as Varchar(500),
+@AcctExec Varchar(6) = ''
+AS
+/*=========== QUERY ===========*/
+BEGIN
+    DECLARE @Restrictions INT , @SqlStmt NVARCHAR(MAX);
+    DECLARE @RestrictionsEmp INT;
+    DECLARE @NumberRecords INT , @RowCount INT , @JobNo INT , @JobComp INT , @SeqNo INT , @TaskID INT , @Emp VARCHAR(6) , @OfficeCount INT;
+
+    CREATE TABLE #MY_DATA --MASTER TABLE TO RETURN
+    (
+			  [RowID]            INT IDENTITY(1 , 1) ,
+			  [CDP]              VARCHAR(50) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [JobData]          VARCHAR(4000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [Task]             VARCHAR(1000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [TaskComment]      TEXT ,
+			  [StartDate]        SMALLDATETIME ,
+			  [DueDate]          SMALLDATETIME ,
+			  [DueTime]          VARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [JobNo]            INT NULL ,
+			  [JobComp]          SMALLINT NULL ,
+			  [HoursAllowed]     DECIMAL(18 , 2) NULL ,
+			  [SeqNo]            INT NULL ,
+			  [TempCompleteDate] SMALLDATETIME NULL ,
+			  [Employee]         VARCHAR(100) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [EmpCode]          VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [OFFICE_CODE]      VARCHAR(4) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [IS_EVENT]         SMALLINT NULL ,
+			  [EVENT_TASK_ID]    INT NULL ,
+			  [TASK_STATUS]      VARCHAR(1) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [JOB_DESC]         VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [JOB_COMP_DESC]    VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [JOB_COMP]         VARCHAR(4000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL ,
+			  [HAS_DOCUMENTS]    BIT ,
+			  [HAS_CHILDREN]     BIT ,
+			  CARD_SEQ_NBR       INT NULL,
+			  ALERT_ID			 INT NULL,
+			  SPRINT_ID			 INT NULL,
+			  [PRIORITY]		 INT NULL
+    );
+
+	
+	CREATE TABLE #EMPLOYEES (	EMP_CODE VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS	);	
+	CREATE TABLE #ROLES (	ROLE_CODE VARCHAR(6)	);
+
+	BEGIN
+		INSERT INTO #EMPLOYEES
+		SELECT LTRIM(RTRIM(items)) AS EMP_CODE 
+		FROM [dbo].udf_split_list(@EmpCode, ',');
+	END
+
+	BEGIN
+		INSERT INTO #ROLES
+		SELECT LTRIM(RTRIM(items)) AS ROLE_CODE 
+		FROM [dbo].udf_split_list(@Role, ',');
+	END
+	
+
+    SELECT @Restrictions = COUNT(1)
+    FROM SEC_CLIENT WITH (NOLOCK)
+    WHERE UPPER(USER_ID) = UPPER(@UserID);
+
+    SELECT @RestrictionsEmp = COUNT(1)
+    FROM SEC_EMP WITH (NOLOCK)
+    WHERE UPPER(USER_ID) = UPPER(@UserID);
+
+    DECLARE @EMP_CDE AS VARCHAR(6);
+
+    SELECT @EMP_CDE = EMP_CODE
+    FROM SEC_USER
+    WHERE UPPER(USER_CODE) = UPPER(@UserID);
+
+    SELECT @OfficeCount = COUNT(1)
+    FROM EMP_OFFICE
+    WHERE EMP_CODE = @EMP_CDE;
+
+    IF @AcctExec = NULL OR @AcctExec = ''
+    BEGIN
+	   SET @AcctExec = 'All'
+    END;
+
+    IF RTRIM(LTRIM(@TaskStatus)) = '' --ALL
+	  OR LEFT(RTRIM(LTRIM(@TaskStatus)) , 1) = 'P'
+	  OR LEFT(RTRIM(LTRIM(@TaskStatus)) , 1) = 'A'
+	  OR LEFT(RTRIM(LTRIM(@TaskStatus)) , 1) = 'H'
+	  OR LEFT(RTRIM(LTRIM(@TaskStatus)) , 1) = 'L'
+	   BEGIN
+		  SET @SqlStmt = '';
+		  SET @SqlStmt = @SqlStmt+N'INSERT INTO #MY_DATA ';
+		  SET @SqlStmt = @SqlStmt+N'SELECT  
+								    A.CDP,
+								    A.JobData,
+								    A.Task, 
+								    A.FNC_COMMENTS,
+								    A.StartDate,
+								    A.DueDate,
+								    A.DueTime,
+								    A.JobNo,
+								    A.JobComp,
+								    A.HoursAllowed,
+								    A.SeqNo,
+								    A.TempCompleteDate,
+								    A.Employee,
+								    A.EmpCode,
+								    A.OFFICE_CODE,
+								    A.IS_EVENT,
+								    A.EVENT_TASK_ID,
+								    A.TASK_STATUS,
+								    A.JOB_DESC,
+								    A.JOB_COMP_DESC,
+								    A.JOB_COMP,
+								    A.HAS_DOCUMENTS,
+								    A.HAS_CHILDREN, 
+								    A.CARD_SEQ_NBR,
+									A.ALERT_ID,
+									A.SPRINT_HDR_ID, 
+									A.PRIORITY
+							  FROM(';
+		  IF @Restrictions > 0
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N'
+							 SELECT 
+								DISTINCT JOB_LOG.CL_CODE + ''/'' + JOB_LOG.DIV_CODE + ''/'' + JOB_LOG.PRD_CODE as CDP,  
+								( RIGHT(REPLICATE(''0'', 6) + CONVERT(VARCHAR(20), JOB_LOG.JOB_NUMBER),6) + ''/'' + RIGHT(REPLICATE(''0'', 3) + CONVERT(VARCHAR(20), JOB_COMPONENT.JOB_COMPONENT_NBR),3) + '' - '' + JOB_COMPONENT.JOB_COMP_DESC ) as JobData, 
+								isnull(V_JOB_TRAFFIC_DET.TASK_DESCRIPTION, '''') as Task,
+								CAST(V_JOB_TRAFFIC_DET.FNC_COMMENTS AS VARCHAR(MAX)) AS FNC_COMMENTS,
+								 V_JOB_TRAFFIC_DET.TASK_START_DATE as StartDate, 			
+								V_JOB_TRAFFIC_DET.JOB_REVISED_DATE as DueDate, 
+								isnull(V_JOB_TRAFFIC_DET.REVISED_DUE_TIME, '''') as DueTime, 
+								V_JOB_TRAFFIC_DET.JOB_NUMBER as JobNo, 
+								V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR as JobComp, 			
+								V_JOB_TRAFFIC_DET.JOB_HRS as HoursAllowed, 
+								V_JOB_TRAFFIC_DET.SEQ_NBR as SeqNo,
+								V_JOB_TRAFFIC_DET.TEMP_COMP_DATE as TempCompleteDate,
+								ISNULL(EMPLOYEE.EMP_FNAME + '' '', '''') + ISNULL(EMPLOYEE.EMP_MI + ''. '', '''') + ISNULL(EMPLOYEE.EMP_LNAME, '''') AS Employee, 
+								ISNULL(V_JOB_TRAFFIC_DET.EMP_CODE,'''') as EmpCode,
+								JOB_LOG.OFFICE_CODE,
+								0 AS IS_EVENT, 
+								-1 AS EVENT_TASK_ID, 
+								ISNULL(V_JOB_TRAFFIC_DET.TASK_STATUS,''P'') AS TASK_STATUS, 
+								JOB_LOG.JOB_DESC, 
+								JOB_COMPONENT.JOB_COMP_DESC, 
+								(RIGHT(REPLICATE(''0'', 6) + CONVERT(VARCHAR(20), JOB_LOG.JOB_NUMBER),6) + ''/'' + RIGHT(REPLICATE(''0'', 3) + CONVERT(VARCHAR(20), JOB_COMPONENT.JOB_COMPONENT_NBR),3)) as JOB_COMP,
+								[HAS_DOCUMENTS] = CONVERT(BIT, CASE WHEN DOCS.JOB_NUMBER IS NOT NULL THEN 1 ELSE 0 END),
+								[HAS_CHILDREN] = CONVERT(BIT, CASE WHEN PARENT_TASKS.JOB_NUMBER IS NOT NULL THEN 1 ELSE 0 END),
+								V_JOB_TRAFFIC_DET.CARD_SEQ_NBR,
+								0 AS ALERT_ID,
+								0 AS SPRINT_HDR_ID,
+								ISNULL(A.[PRIORITY],3) AS PRIORITY
+							FROM
+								 V_JOB_TRAFFIC_DET    
+								 INNER JOIN JOB_TRAFFIC ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+								 INNER JOIN JOB_COMPONENT   ON JOB_COMPONENT.JOB_NUMBER = V_JOB_TRAFFIC_DET.JOB_NUMBER AND  JOB_COMPONENT.JOB_COMPONENT_NBR = V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR 					    
+								 INNER JOIN JOB_LOG ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_LOG.JOB_NUMBER
+								 INNER JOIN CLIENT ON CLIENT.CL_CODE = JOB_LOG.CL_CODE 
+								 INNER JOIN DIVISION ON DIVISION.DIV_CODE = JOB_LOG.DIV_CODE AND DIVISION.CL_CODE = JOB_LOG.CL_CODE 
+								 INNER JOIN PRODUCT ON PRODUCT.CL_CODE = JOB_LOG.CL_CODE AND PRODUCT.DIV_CODE = JOB_LOG.DIV_CODE AND PRODUCT.PRD_CODE = JOB_LOG.PRD_CODE 				    
+								 INNER JOIN SEC_CLIENT ON JOB_LOG.CL_CODE = SEC_CLIENT.CL_CODE AND 
+														     JOB_LOG.DIV_CODE = SEC_CLIENT.DIV_CODE AND 
+														     JOB_LOG.PRD_CODE = SEC_CLIENT.PRD_CODE
+								 LEFT OUTER JOIN ALERT A ON V_JOB_TRAFFIC_DET.JOB_NUMBER = A.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = A.JOB_COMPONENT_NBR AND V_JOB_TRAFFIC_DET.SEQ_NBR = A.TASK_SEQ_NBR
+								 LEFT OUTER JOIN SPRINT_DTL SD ON SD.ALERT_ID = A.ALERT_ID
+								 LEFT OUTER JOIN TASK_TRAFFIC_ROLE ON V_JOB_TRAFFIC_DET.FNC_CODE = TASK_TRAFFIC_ROLE.TRF_CODE 
+								 LEFT OUTER JOIN EMP_TRAFFIC_ROLE  ON V_JOB_TRAFFIC_DET.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE 
+								 LEFT OUTER JOIN EMPLOYEE ON V_JOB_TRAFFIC_DET.EMP_CODE = EMPLOYEE.EMP_CODE
+								 LEFT OUTER JOIN (SELECT JOB_NUMBER, JOB_COMPONENT_NBR, SEQ_NBR 
+											   FROM dbo.JOB_TRAFFIC_DET_DOCS 
+											   GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR, SEQ_NBR) DOCS ON V_JOB_TRAFFIC_DET.JOB_NUMBER = DOCS.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = DOCS.JOB_COMPONENT_NBR AND V_JOB_TRAFFIC_DET.SEQ_NBR = DOCS.SEQ_NBR
+								 LEFT OUTER JOIN (SELECT DISTINCT
+													 JOB_TRAFFIC_DET.JOB_NUMBER,
+													 JOB_TRAFFIC_DET.JOB_COMPONENT_NBR,
+													 [SEQ_NBR] = JOB_TRAFFIC_DET.PARENT_TASK_SEQ
+												 FROM
+													 dbo.JOB_TRAFFIC_DET JOIN
+													 dbo.JOB_TRAFFIC ON JOB_TRAFFIC_DET.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND
+																	    JOB_TRAFFIC.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+												 WHERE
+													 JOB_TRAFFIC.SCHEDULE_CALC = 1 AND
+													 PARENT_TASK_SEQ IS NOT NULL) PARENT_TASKS ON V_JOB_TRAFFIC_DET.JOB_NUMBER = PARENT_TASKS.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = PARENT_TASKS.JOB_COMPONENT_NBR AND V_JOB_TRAFFIC_DET.SEQ_NBR = PARENT_TASKS.SEQ_NBR
+						    ';
+				IF @RestrictionsEmp > 0
+				    BEGIN
+					   SELECT @SqlStmt = @SqlStmt+' INNER JOIN [dbo].[advtf_sec_emp] ('''+@UserID+''') AS SEC_EMP ON V_JOB_TRAFFIC_DET.EMP_CODE = SEC_EMP.EMP_CODE OR V_JOB_TRAFFIC_DET.EMP_CODE IS NULL';
+				    END;
+				IF @OfficeCount > 0
+				    BEGIN
+					   SET @SqlStmt = @SqlStmt+' INNER JOIN EMP_OFFICE ON JOB_LOG.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE AND EMP_OFFICE.EMP_CODE = '''+@EMP_CDE+'''';
+				    END;
+				SELECT @SqlStmt = @SqlStmt+' 
+									   WHERE 
+										  (NOT (JOB_COMPONENT.JOB_PROCESS_CONTRL IN (6, 12)))
+										  AND (UPPER(SEC_CLIENT.USER_ID) = UPPER('''+@UserID+''')) AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)
+										  AND V_JOB_TRAFFIC_DET.JOB_REVISED_DATE BETWEEN '''+CONVERT(VARCHAR(8) , @StartDate , 1)+''' AND '''+CONVERT(VARCHAR(8) , @DueDate , 1)+'''
+	 									  AND JOB_TRAFFIC.COMPLETED_DATE IS NULL  
+	 									  AND V_JOB_TRAFFIC_DET.JOB_COMPLETED_DATE IS NULL
+										  AND JOB_TRAFFIC.JOB_NUMBER = V_JOB_TRAFFIC_DET.JOB_NUMBER
+										  AND JOB_TRAFFIC.JOB_COMPONENT_NBR = V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR 
+									    ';
+			 END;
+		  ELSE --NOT RESTRICTED
+		  BEGIN
+			 SET @SqlStmt = @SqlStmt+N'
+				SELECT DISTINCT 
+					   JOB_LOG.CL_CODE + ''/'' + JOB_LOG.DIV_CODE + ''/'' + JOB_LOG.PRD_CODE as CDP,  
+					   ( RIGHT(REPLICATE(''0'', 6) + CONVERT(VARCHAR(20), JOB_LOG.JOB_NUMBER),6) + ''/'' + RIGHT(REPLICATE(''0'', 3) + CONVERT(VARCHAR(20), JOB_COMPONENT.JOB_COMPONENT_NBR),3) + '' - '' + JOB_COMPONENT.JOB_COMP_DESC ) as JobData, 
+					   isnull(V_JOB_TRAFFIC_DET.TASK_DESCRIPTION, '''') as Task,
+					   CAST(V_JOB_TRAFFIC_DET.FNC_COMMENTS AS VARCHAR(MAX)) AS FNC_COMMENTS,
+					   V_JOB_TRAFFIC_DET.TASK_START_DATE as StartDate, 			
+					   V_JOB_TRAFFIC_DET.JOB_REVISED_DATE as DueDate, 
+					   isnull(V_JOB_TRAFFIC_DET.REVISED_DUE_TIME, '''') as DueTime, 
+					   V_JOB_TRAFFIC_DET.JOB_NUMBER as JobNo, 
+					   V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR as JobComp, 			
+					   V_JOB_TRAFFIC_DET.JOB_HRS as HoursAllowed, 
+					   V_JOB_TRAFFIC_DET.SEQ_NBR as SeqNo,
+					   V_JOB_TRAFFIC_DET.TEMP_COMP_DATE as TempCompleteDate,
+					   ISNULL(EMPLOYEE.EMP_FNAME + '' '', '''') + ISNULL(EMPLOYEE.EMP_MI + ''. '', '''') + ISNULL(EMPLOYEE.EMP_LNAME, '''') AS Employee, 
+					   ISNULL(V_JOB_TRAFFIC_DET.EMP_CODE,'''') as EmpCode,
+					   JOB_LOG.OFFICE_CODE,
+					   0 AS IS_EVENT, 
+					   -1 AS EVENT_TASK_ID, 
+					   ISNULL(V_JOB_TRAFFIC_DET.TASK_STATUS,''P'') AS TASK_STATUS, 
+					   JOB_LOG.JOB_DESC, 
+					   JOB_COMPONENT.JOB_COMP_DESC, 
+					   (RIGHT(REPLICATE(''0'', 6) + CONVERT(VARCHAR(20), JOB_LOG.JOB_NUMBER),6) + ''/'' + RIGHT(REPLICATE(''0'', 3) + CONVERT(VARCHAR(20), JOB_COMPONENT.JOB_COMPONENT_NBR),3)) as JOB_COMP,
+					   [HAS_DOCUMENTS] = CONVERT(BIT, CASE WHEN DOCS.JOB_NUMBER IS NOT NULL THEN 1 ELSE 0 END),
+					   [HAS_CHILDREN] = CONVERT(BIT, CASE WHEN PARENT_TASKS.JOB_NUMBER IS NOT NULL THEN 1 ELSE 0 END),
+					   V_JOB_TRAFFIC_DET.CARD_SEQ_NBR,
+						0 AS ALERT_ID,
+						0 AS SPRINT_HDR_ID,
+						ISNULL(A.[PRIORITY],3) AS PRIORITY
+				FROM
+					   V_JOB_TRAFFIC_DET    
+					   INNER JOIN JOB_TRAFFIC ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+					   INNER JOIN JOB_COMPONENT   ON JOB_COMPONENT.JOB_NUMBER = V_JOB_TRAFFIC_DET.JOB_NUMBER AND  JOB_COMPONENT.JOB_COMPONENT_NBR = V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR 					    
+					   INNER JOIN JOB_LOG ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_LOG.JOB_NUMBER
+					   INNER JOIN CLIENT ON CLIENT.CL_CODE = JOB_LOG.CL_CODE 
+					   INNER JOIN DIVISION ON DIVISION.DIV_CODE = JOB_LOG.DIV_CODE AND DIVISION.CL_CODE = JOB_LOG.CL_CODE 
+					   INNER JOIN PRODUCT ON PRODUCT.CL_CODE = JOB_LOG.CL_CODE AND PRODUCT.DIV_CODE = JOB_LOG.DIV_CODE AND PRODUCT.PRD_CODE = JOB_LOG.PRD_CODE 
+						LEFT OUTER JOIN ALERT A ON V_JOB_TRAFFIC_DET.JOB_NUMBER = A.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = A.JOB_COMPONENT_NBR AND V_JOB_TRAFFIC_DET.SEQ_NBR = A.TASK_SEQ_NBR
+						LEFT OUTER JOIN SPRINT_DTL SD ON SD.ALERT_ID = A.ALERT_ID
+					   LEFT OUTER JOIN TASK_TRAFFIC_ROLE ON V_JOB_TRAFFIC_DET.FNC_CODE = TASK_TRAFFIC_ROLE.TRF_CODE 
+					   LEFT OUTER JOIN EMP_TRAFFIC_ROLE  ON V_JOB_TRAFFIC_DET.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE 
+					   LEFT OUTER JOIN EMPLOYEE ON V_JOB_TRAFFIC_DET.EMP_CODE = EMPLOYEE.EMP_CODE
+					   LEFT OUTER JOIN (SELECT JOB_NUMBER, JOB_COMPONENT_NBR, SEQ_NBR 
+								    FROM dbo.JOB_TRAFFIC_DET_DOCS 
+								    GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR, SEQ_NBR) DOCS ON V_JOB_TRAFFIC_DET.JOB_NUMBER = DOCS.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = DOCS.JOB_COMPONENT_NBR AND V_JOB_TRAFFIC_DET.SEQ_NBR = DOCS.SEQ_NBR
+					   LEFT OUTER JOIN (SELECT DISTINCT
+										  JOB_TRAFFIC_DET.JOB_NUMBER,
+										  JOB_TRAFFIC_DET.JOB_COMPONENT_NBR,
+										  [SEQ_NBR] = JOB_TRAFFIC_DET.PARENT_TASK_SEQ
+									   FROM
+										  dbo.JOB_TRAFFIC_DET JOIN
+										  dbo.JOB_TRAFFIC ON JOB_TRAFFIC_DET.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND
+															 JOB_TRAFFIC.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+									   WHERE
+										  JOB_TRAFFIC.SCHEDULE_CALC = 1 AND
+										  PARENT_TASK_SEQ IS NOT NULL) PARENT_TASKS ON V_JOB_TRAFFIC_DET.JOB_NUMBER = PARENT_TASKS.JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = PARENT_TASKS.JOB_COMPONENT_NBR AND V_JOB_TRAFFIC_DET.SEQ_NBR = PARENT_TASKS.SEQ_NBR
+			  ';
+			 IF @RestrictionsEmp > 0
+				BEGIN
+				    SELECT @SqlStmt = @SqlStmt+' INNER JOIN [dbo].[advtf_sec_emp] ('''+@UserID+''') AS SEC_EMP ON V_JOB_TRAFFIC_DET.EMP_CODE = SEC_EMP.EMP_CODE OR V_JOB_TRAFFIC_DET.EMP_CODE IS NULL';
+				END;
+			 IF @OfficeCount > 0
+				BEGIN
+				    SET @SqlStmt = @SqlStmt+' INNER JOIN EMP_OFFICE ON JOB_LOG.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE AND EMP_OFFICE.EMP_CODE = '''+@EMP_CDE+'''';
+				END;
+			 SELECT @SqlStmt = @SqlStmt+' 
+	 			    WHERE 
+					   (NOT (JOB_COMPONENT.JOB_PROCESS_CONTRL IN (6, 12)))  
+	 				   AND V_JOB_TRAFFIC_DET.JOB_REVISED_DATE BETWEEN '''+CONVERT(VARCHAR(8) , @StartDate , 1)+''' AND '''+CONVERT(VARCHAR(8) , @DueDate , 1)+'''
+	 				   AND JOB_TRAFFIC.COMPLETED_DATE IS NULL 
+	 				   AND V_JOB_TRAFFIC_DET.JOB_COMPLETED_DATE IS NULL
+					   AND JOB_TRAFFIC.JOB_NUMBER = V_JOB_TRAFFIC_DET.JOB_NUMBER
+					   AND JOB_TRAFFIC.JOB_COMPONENT_NBR = V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR 
+				    ';
+		  END;
+
+		  -- SHARED B/T RESTRICTED AND NOT
+		  BEGIN
+			 IF LEFT(@EmpCode , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (V_JOB_TRAFFIC_DET.EMP_CODE IN (SELECT EMP_CODE FROM #EMPLOYEES)) '
+			 END;
+			 IF LEFT(@Role , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND ((TASK_TRAFFIC_ROLE.ROLE_CODE IN (SELECT ROLE_CODE FROM #ROLES)) OR (EMP_TRAFFIC_ROLE.ROLE_CODE IN (SELECT ROLE_CODE FROM #ROLES))) '
+			 END;
+			 IF LEFT(@ManagerCode , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (JOB_TRAFFIC.MGR_EMP_CODE = '''+@ManagerCode+''') '
+			 END;
+			 IF LEFT(@Office , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (JOB_LOG.OFFICE_CODE = '''+@Office+''') '
+			 END;
+			 IF LEFT(@AcctExec , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (JOB_COMPONENT.EMP_CODE = '''+@AcctExec+''') '
+			 END;
+			 IF LEFT(@TaskStatus , 1) = 'P'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (V_JOB_TRAFFIC_DET.TASK_STATUS IN ( ''P'', '''' ) OR V_JOB_TRAFFIC_DET.TASK_STATUS IS NULL) ';
+			 END;
+			 ELSE
+			 BEGIN
+				IF LEFT(@TaskStatus , 1) = 'A'
+				BEGIN
+				    SET @SqlStmt = @SqlStmt+N' AND V_JOB_TRAFFIC_DET.TASK_STATUS = ''A'' ';
+				END;
+				ELSE
+				BEGIN
+				    IF LEFT(@TaskStatus , 1) = 'H'
+				    BEGIN
+					   SET @SqlStmt = @SqlStmt+N' AND V_JOB_TRAFFIC_DET.TASK_STATUS = ''H'' ';
+				    END;
+				    ELSE
+				    BEGIN
+					   IF LEFT(@TaskStatus , 1) = 'L'
+					   BEGIN
+						  SET @SqlStmt = @SqlStmt+N' AND V_JOB_TRAFFIC_DET.TASK_STATUS = ''L'' ';
+					   END;
+				    END;
+				END;
+			 END;
+		  END
+		  SET @SqlStmt = @SqlStmt+N' ) AS A ';
+
+		  -- RUN DYNAMIC SQL
+		  BEGIN
+			 --PRINT @SqlStmt;
+			 EXEC sp_executesql @SqlStmt;
+		  END
+
+	   END;
+
+    -- EVENT TASKS
+    BEGIN
+    IF RTRIM(LTRIM(@TaskStatus)) = '' --ALL
+	  OR
+	  LEFT(RTRIM(LTRIM(@TaskStatus)) , 1) = 'E' --EVENTS
+	   BEGIN
+		  --ADD IN EVENT TASKS
+		  --  add a day because events include time and going to the next day 12am will include the last day
+		  SET @DueDate = DATEADD(dd , 1 , @DueDate);
+		  SET @SqlStmt = '';
+		  SET @SqlStmt = @SqlStmt+N'INSERT INTO #MY_DATA ';
+		  SET @SqlStmt = @SqlStmt+N'
+								SELECT  
+									A.CDP,
+									A.JobData,
+									A.Task, 
+									A.ET_CMNT,
+									A.StartDate,	    
+									A.DueDate,
+									A.DueTime,
+									A.JobNo,
+									A.JobComp,
+									A.HoursAllowed,
+									A.SeqNo,
+									A.TempCompleteDate,
+									A.Employee,
+									A.EmpCode,
+									A.OFFICE_CODE,
+									A.IS_EVENT,
+									A.EVENT_TASK_ID,
+									'''',
+									A.JOB_DESC,
+									A.JOB_COMP_DESC,
+									A.JOB_COMP,
+									A.HAS_DOCUMENTS,
+									A.HAS_CHILDREN, 
+									A.CARD_SEQ_NBR,
+									0,
+									0,
+									0
+								FROM
+								(
+									SELECT DISTINCT  
+										EVENT_TASK.EVENT_TASK_ID, 
+										JOB_LOG.CL_CODE + ''/'' + JOB_LOG.DIV_CODE + ''/'' + JOB_LOG.PRD_CODE AS CDP, 
+										( RIGHT(REPLICATE(''0'', 6) + CONVERT(VARCHAR(20), JOB_LOG.JOB_NUMBER),6) + ''/'' + RIGHT(REPLICATE(''0'', 3) + CONVERT(VARCHAR(20), JOB_COMPONENT.JOB_COMPONENT_NBR),3) + '' - '' + JOB_COMPONENT.JOB_COMP_DESC ) + ISNULL('' / '' + EVENT.EVENT_LABEL, '''') + ISNULL('' / '' + EVENT.AD_NUMBER, '''') AS JobData, 
+										TRAFFIC_FNC.TRF_DESC AS Task, 
+										EVENT_TASK.START_TIME AS StartDate, 
+										EVENT_TASK.END_TIME AS DueDate, 
+										LTRIM(SUBSTRING(CONVERT(VARCHAR(20), EVENT_TASK.START_TIME, 22), 10, 5) + RIGHT(CONVERT(VARCHAR(20), EVENT_TASK.START_TIME, 22), 3)) + '' - '' + LTRIM(SUBSTRING(CONVERT(VARCHAR(20), EVENT_TASK.END_TIME, 22), 10, 5) + RIGHT(CONVERT(VARCHAR(20), EVENT_TASK.END_TIME, 22), 3)) AS DueTime, 
+										JOB_LOG.JOB_NUMBER AS JobNo, 
+										JOB_COMPONENT.JOB_COMPONENT_NBR AS JobComp, 
+										EVENT_TASK.HOURS_ALLOWED AS HoursAllowed, 
+										- 1 AS SeqNo, 
+										EVENT_TASK.TEMP_COMP_DATE AS TempCompleteDate, 
+										ISNULL(EMPLOYEE.EMP_FNAME + '' '', '''') + ISNULL(EMPLOYEE.EMP_MI + ''. '', '''') + ISNULL(EMPLOYEE.EMP_LNAME, '''') AS Employee, 
+										EVENT_TASK.EMP_CODE AS EmpCode, 
+										JOB_LOG.OFFICE_CODE, 1 AS IS_EVENT, 
+										JOB_LOG.JOB_DESC, 
+										JOB_COMPONENT.JOB_COMP_DESC, 
+										(RIGHT(REPLICATE(''0'', 6) + CONVERT(VARCHAR(20), JOB_LOG.JOB_NUMBER),6) + ''/'' + RIGHT(REPLICATE(''0'', 3) + CONVERT(VARCHAR(20), JOB_COMPONENT.JOB_COMPONENT_NBR),3)) as JOB_COMP,
+										[HAS_DOCUMENTS] = CONVERT(BIT, 0), 
+										[HAS_CHILDREN] = CONVERT(BIT, 0),
+										EVENT_TASK.CARD_SEQ_NBR,
+										CAST(EVENT_TASK.COMMENTS AS VARCHAR(MAX)) AS ET_CMNT
+									FROM         
+										EVENT_TASK WITH (NOLOCK) INNER JOIN
+										EVENT WITH (NOLOCK) ON EVENT_TASK.EVENT_ID = EVENT.EVENT_ID INNER JOIN
+										JOB_COMPONENT WITH (NOLOCK) ON EVENT.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+										EVENT.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+										JOB_LOG WITH (NOLOCK) ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER INNER JOIN
+										TRAFFIC_FNC WITH (NOLOCK) ON EVENT_TASK.TASK_CODE = TRAFFIC_FNC.TRF_CODE INNER JOIN
+										EMPLOYEE WITH (NOLOCK) ON EVENT_TASK.EMP_CODE = EMPLOYEE.EMP_CODE ';
+		  IF @RestrictionsEmp > 0
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' INNER JOIN [dbo].[advtf_sec_emp] ('''+@UserID+''') AS SEC_EMP ON EVENT_TASK.EMP_CODE = SEC_EMP.EMP_CODE ';
+			 END;
+		  IF @Restrictions > 0
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' INNER JOIN SEC_CLIENT ON JOB_LOG.CL_CODE = SEC_CLIENT.CL_CODE ';
+			 END;
+		  IF @OfficeCount > 0
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+' INNER JOIN EMP_OFFICE ON JOB_LOG.OFFICE_CODE = EMP_OFFICE.OFFICE_CODE AND EMP_OFFICE.EMP_CODE = '''+@EMP_CDE+'''';
+			 END;
+		  SET @SqlStmt = @SqlStmt+N' 
+			   LEFT OUTER JOIN TASK_TRAFFIC_ROLE ON TRAFFIC_FNC.TRF_CODE = TASK_TRAFFIC_ROLE.TRF_CODE 
+			   LEFT OUTER JOIN EMP_TRAFFIC_ROLE ON EVENT_TASK.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE		
+		   WHERE (NOT (JOB_COMPONENT.JOB_PROCESS_CONTRL IN (6, 12))) 
+				AND (EVENT_TASK.END_TIME BETWEEN '''+CONVERT(VARCHAR(8) , @StartDate , 1)+''' AND '''+CONVERT(VARCHAR(8) , @DueDate , 1)+''') ';
+		  IF LEFT(@EmpCode , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (EVENT_TASK.EMP_CODE  IN (SELECT EMP_CODE FROM #EMPLOYEES)) ';
+			 END;
+		  IF LEFT(@ManagerCode , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (EVENT_TASK.EMP_CODE = '''+@ManagerCode+''') ';
+			 END;
+		  IF LEFT(@Role , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND ((TASK_TRAFFIC_ROLE.ROLE_CODE IN (SELECT ROLE_CODE FROM #ROLES)) OR (EMP_TRAFFIC_ROLE.ROLE_CODE IN (SELECT ROLE_CODE FROM #ROLES))) ';
+			 END;
+		  IF LEFT(@Office , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (JOB_LOG.OFFICE_CODE = '''+@Office+''') ';
+			 END;
+		  IF LEFT(@AcctExec , 3) <> 'All'
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (JOB_COMPONENT.EMP_CODE = '''+@AcctExec+''') ';
+			 END;
+		  IF @Restrictions > 0
+			 BEGIN
+				SET @SqlStmt = @SqlStmt+N' AND (UPPER(SEC_CLIENT.[USER_ID]) = '''+UPPER(@UserID)+''') AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL) ';
+			 END;
+		  SET @SqlStmt = @SqlStmt+N' ) AS A ';
+		  EXEC sp_executesql @SqlStmt;
+	   END;
+    END
+
+    --PRINT @SqlStmt
+    --SELECT * FROM #MY_COM
+    --SELECT * FROM #MY_DATA ORDER BY Employee,DueDate
+	UPDATE #MY_DATA SET ALERT_ID = 0 WHERE ALERT_ID IS NULL;
+	UPDATE #MY_DATA SET SPRINT_ID = 0 WHERE SPRINT_ID IS NULL;
+
+    -- RETURN STATEMENT
+    BEGIN
+	   IF @Search <> ''
+		  BEGIN
+			 SELECT M.CDP , M.JobData , M.Task , M.TaskComment , M.StartDate , M.DueDate , M.DueTime , M.JobNo , M.JobComp , M.HoursAllowed , M.SeqNo , M.TempCompleteDate , M.Employee , M.EmpCode , M.OFFICE_CODE , M.IS_EVENT , M.EVENT_TASK_ID , M.TASK_STATUS , M.JOB_DESC , M.JOB_COMP_DESC , M.JOB_COMP , M.HAS_DOCUMENTS , M.HAS_CHILDREN, M.ALERT_ID, M.SPRINT_ID, M.[PRIORITY]
+			 FROM #MY_DATA AS M
+			 WHERE 
+				LOWER(M.JobData) LIKE '%'+LOWER(@Search)+'%'
+				OR LOWER(M.CDP) LIKE '%'+LOWER(@Search)+'%'
+				OR LOWER(M.Task) LIKE '%'+LOWER(@Search)+'%'
+				OR LOWER(CAST(M.TaskComment AS VARCHAR)) LIKE '%'+LOWER(@Search)+'%'
+			 ORDER BY 
+				M.Employee , 
+				M.CARD_SEQ_NBR , 
+				M.DueDate;
+		  END;
+	   ELSE
+		  BEGIN
+			 SELECT M.CDP , M.JobData , M.Task , M.TaskComment , M.StartDate , M.DueDate , M.DueTime , M.JobNo , M.JobComp , M.HoursAllowed , M.SeqNo , M.TempCompleteDate , M.Employee , M.EmpCode , M.OFFICE_CODE , M.IS_EVENT , M.EVENT_TASK_ID , M.TASK_STATUS , M.JOB_DESC , M.JOB_COMP_DESC , M.JOB_COMP , M.HAS_DOCUMENTS , M.HAS_CHILDREN, M.ALERT_ID, M.SPRINT_ID, M.[PRIORITY]
+			 FROM #MY_DATA AS M
+			 ORDER BY 
+				M.Employee , 
+				M.CARD_SEQ_NBR , 
+				M.DueDate;
+		  END;
+    END
+
+    DROP TABLE #MY_DATA;
+
+	BEGIN	
+		DROP TABLE #ROLES;
+		DROP TABLE #EMPLOYEES;
+	END
+END
+/*=========== QUERY ===========*/
+

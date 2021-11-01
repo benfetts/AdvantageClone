@@ -1,0 +1,430 @@
+﻿<template>
+    <require from="resources/elements/drawer/drawer"></require>
+    <require from="aurelia-kendoui-bridge/menu/menu"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/window/window"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification"></require>
+    <require from="aurelia-kendoui-bridge/notification/notification-template"></require>
+    <style>
+        .notification-list .noti-icon-badge {
+            display: inline-block;
+            position: absolute;
+            top: 16px;
+            right: 5px;
+        }
+
+        .badge-danger {
+            color: #fff;
+            background-color: #d9534f;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: .25em .4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: .25rem;
+        }
+
+        *, ::after, ::before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .navbar-custom .topbar-right-menu .nav-link {
+            padding: 0;
+            color: #6c757d;
+            min-width: 32px;
+            display: block;
+            line-height: 68px;
+            border-radius: 50%;
+            text-align: center;
+            margin: 0 8px;
+        }
+
+        /* Alert Notification */
+        div.k-animation-container{
+            padding-bottom: 8px; 
+        }
+        .k-notification {
+            border: 0 !important;
+        }
+        .k-notification-info.k-group {
+            border: 0 !important;
+        }
+        .new-mail {
+            width: 280px;
+            height: 40px;
+            padding: 5px 0px 5px 10px;
+            border-radius: 4px;
+            margin: 0px 0px 0px 0px;
+            cursor: pointer;
+        }
+        .notif-priority-1 {
+            background: #D63251;
+            color: white;
+        }
+        .notif-priority-2 {
+            background: #DC3545;
+            color: white;
+        }
+        .notif-priority-3 {
+            background: #808080;
+            color: white;
+        }
+        .notif-priority-4 {
+            background: #4D82B8;
+            color: white;
+        }
+        .notif-priority-5 {
+            background: #B2C9E0;
+            color: #1a1a1a;
+        }
+    </style>
+    <div class="new-app-nav">
+        <nav class="navbar navbar-fixed-top" style="height: 56px;">
+            <ul class="nav navbar-nav">
+                <li>
+                    <div class='menu-hamburger' click.delegate="openLeftDrawer()">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </li>
+            </ul>
+            <a class="pull-left" href="javascript:void(0)" style='margin-top: 9px;'><img src="images/logos/simplifi_aqua.png" style='max-height: 40px'></a>
+            <div class='container-fluid'>
+                <ul id="advantage-bar" class="nav navbar-nav navbar-right" style="margin-bottom: -1px;">
+                    <li>
+                        <div style="margin-top: 13px; margin-bottom: 12px; margin-right: 8px;" id="divStopwatch">
+                            <button class="k-button" ak-button="k-enabled.two-way: stopwatch, k-widget.bind: openstopwatchbutton" show.bind="stopwatch" click.delegate="openStopWatchDialog()">Open Stopwatch</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div style="margin-top: 13px; margin-bottom: 12px; margin-right: 15px;" id="divStopwatch">
+                            <button class="k-button" ak-button="k-enabled.two-way: stopwatch, k-widget.bind: stopwatchbutton" show.bind="stopwatch" click.delegate="stopStopWatch()">Stop Stopwatch</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div style="margin-top: 17px; margin-bottom: 15px; margin-right: 15px; color: white; font-size: small" id="divDatabaseName" show.bind="showdb">
+                            <span>${DatabaseName}</span>
+                        </div>
+                        <!--<div class="input-group search-wrapper" style="margin-top: 13px; margin-bottom: 12px; margin-right: 8px;">
+                            <input type="text" class="form-control au-target" placeholder="System Search" focus.trigger="expandSearch()" blur.trigger="collapseSearch()" au-target-id="213">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </div>
+                        </div>-->
+                    </li>
+                    <li style="display: none !important;">
+                        <div style="background-color: #FFFFFF; border-radius: 4px;height: 35px; width: 250px; margin-top: 11px;padding:8px 4px 0px 4px; text-align: right;">
+                            <div style="display:inline-block; margin-right: 4px;">   
+                                <span>Stopwatch:</span>
+                            </div>
+                            <div style="display:inline-block;">   
+                                <span>${stopwatchRunningTime}</span>
+                            </div>
+                            <div style="display:inline-block;margin-left: 8px; margin-right: 8px; cursor: pointer;" title="Stop stopwatch.">   
+                                <span class="wvi wvi-stopwatch" style="height: 28px !important; width: 28px !important; color: #d9534f;"></span>
+                            </div>
+                            <div style="display:inline-block; cursor:pointer;" title="View stopwatch details.">   
+                                <span class="wvi wvi-magnifying-glass" style="height: 28px; width: 28px;"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a id="help" href='javascript:void(0)' click.delegate="helpClick()" title="Help">
+                            <span class='glyphicon glyphicon-question-sign'></span>
+                        </a>
+                    </li>
+                    <li if.bind="!isClientPortal">
+                        <a id="notifications" href='javascript:void(0)' title="${notificationCount == 0 ? 'No notifications' : (notificationCount == 1 ? 'One notification' : notificationCount + ' notifications')}">
+                            <span click.delegate="alertNotificationIconClick()" class='glyphicon glyphicon-bell'></span>
+                            <span click.delegate="alertNotificationIconClick()" if.bind="notificationCount > 0" class="badge badge-danger noti-icon-badge" style="position: absolute; top: 3px; right: 3px;">${notificationCount}</span>
+                            <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true" style="position: absolute; top: 18px; left: 32px;" if.bind="notificationCount > 0">
+                                <div title="Notification actions" class="btn btn-link pull-right dropdown-toggle" click.delegate="toggleActions()" aubs-dropdown-toggle>
+                                    <span class="caret"></span>
+                                </div>
+                                <ul if.bind="showActions" class="dropdown-menu dropdown-menu-left dashboard-quicklinks">
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="alertNotificationMarkAllAsReadClick()" title="Mark all as read"><span class="wvi wvi-mail-open"></span></a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="alertNotificationDismissAllAlertsClick()" title="Dismiss all alerts (does not complete assignments)"><span class="wvi wvi-garbage"></span></a></li>
+                                </ul>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="margin-top: -6px !important; padding-top: 0 !important;">
+                        <a href='javascript:void(0)' click.delegate="assignments()" title="Desktop" style="">
+                            <span class="wvi wvi-dashboard" style=""></span>
+                            <div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true" style="position: absolute; top: 18px; left: 32px;">
+                                <div class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle>
+                                    <span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu dropdown-menu-left dashboard-quicklinks">
+                                    <li><a class="dropdown-item" href="javascript:void(0)" if.bind="!isClientPortal" click.delegate="assignments()" title="Open Assignments"><span class="wvi wvi-users-relation22"></span></a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="alerts()" title="Open Alerts Tab"><span class="wvi wvi-alert"></span></a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="calendar()" title="Open Calendar Tab"><span class="wvi wvi-calendar-7"></span></a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" if.bind="!isClientPortal" click.delegate="timesheet()" title="Open Timesheet Tab"><span class="wvi wvi-clock2"></span></a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" if.bind="!isClientPortal" click.delegate="openBookmarks()" title="Open Bookmarks Tab"><span class="wvi wvi-book-bookmark"></span></a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" if.bind="isProofingActive" click.delegate="reviews()" title="Open Proofs Tab"><span class="wvi wvi-file-regular"></span></a></li>
+                                </ul>
+                            </div>
+                        </a>
+                    </li>
+                    <li if.bind="!isClientPortal">
+                        <a href="javascript:void(0)" click.delegate="openSettings()" title="Settings">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            <!--<div class="btn-group dropdown pull-right wv-edit" aubs-dropdown="auto-close.bind: true" style="position: absolute; top: 18px; left: 32px;">
+                                <div class="btn btn-link pull-right dropdown-toggle" aubs-dropdown-toggle>
+                                    <span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu dropdown-menu-left dashboard-quicklinks">
+                                    <li><a class="dropdown-item" href="javascript:void(0)" if.bind="ChangePassword" click.delegate="changepassword()" title="Change Password"><span class="wvi wvi-users-relation22"></span></a></li>
+                                </ul>
+                            </div>-->
+                        </a>
+                    </li>
+                    <li>
+                        <a href='javascript:void(0)' click.delegate="signOut()" title='Sign Out'><span class='glyphicon glyphicon-off'></span></a>
+                    </li>
+                    <li style="float: right;" click.delegate="openDashBoard()">
+                        <span href='javascript:void(0)' style="display: inline-block;">
+                            <img src='data:image/png;base64,${employee.Picture}' onerror="this.src='Images/Icons/White/256/user.png'" class="wv-employee-img-thumbnail-hdr" style='margin:12px 5px 0px 0px;float:right;'>
+                        </span>
+                    </li>
+
+
+                    <!-- <li class="active"><a href="javascript:void(0)">Home</a></li>
+    <li repeat.for="i of 3"><a href="javascript:void(0)">Page ${i + 1}</a></li>
+    <li><a href='javascript:void(0)'><div class='wv-nav-count'><div>1</div><div>Alert</div></div></a></li> -->
+                    <!--  -->
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id='open-apps' if.bind="OpenSecurityModules.length > 0">
+        <div class="open-app ${app.Active ? 'active' : ''}"  draggable="true" dragstart.trigger="dragStart($event,$index)" dragover.trigger="dragOver($event)" dragleave.trigger="dragLeave($event)" drop.trigger="dragDrop($event,$index)" repeat.for="app of OpenSecurityModules">
+            <a href="javascript:void(0)" class="tab-title" click.delegate="selectModule(app)" title="${app.DocumentTitle ? app.DocumentTitle : app.Text}">${app.DocumentTitle ? app.DocumentTitle : app.Text}</a>
+            <a href="javascript:void(0)" class="tab-close" click.delegate="closeModuleClick(app)"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+    </div>
+    <div id='content-area' class="${OpenSecurityModules.length > 0 ? 'tabbed' : ''}">
+        <div repeat.for="app of OpenSecurityModules" class="wv-tab-content ${app.Active ? 'active' : ''}">
+            <compose if.bind='app.Url.startsWith("modules/")' view-model="${app.Url}" model.bind="app" ></compose>
+            <iframe class="aqua-body" if.bind='!app.Url.startsWith("modules/")' src="${app.Url}" load.trigger="frameloaded(app, $event)"></iframe>
+        </div>
+    </div>
+    <wv-drawer view-model.ref="leftDrawer">
+        <div id='nav-feature' class="background-color-sidebar">
+            <!--<div class='nav-feature-button'>
+            <a href='javascript:void(0)' click.delegate="openSettings()" title="Settings"><span class='glyphicon glyphicon-cog'></span></a>
+        </div>-->
+            <div id='nav-feature-user' click.delegate="openSettings()" title="Settings">
+                <img src='data:image/png;base64,${employee.Picture}' onerror="this.src='Images/Icons/White/256/user.png'">
+            </div>
+            <!--<div class='nav-feature-button'>
+            <a id="notifications" href='javascript:void(0)' click.delegate="notificationsClick()" title="Notifications">
+                <span class='glyphicon glyphicon-bell' style="line-height: 31px;"></span>
+                <span class="badge badge-danger noti-icon-badge" style="position: absolute; top: -16px; right: -12px;">4</span>
+
+            </a>
+        </div>-->
+
+        </div>
+        <div id='nav-menu-content-wrap'>
+            <div class='emp-info'>
+                <span class='emp-name'>${employee.Name}</span>
+                <span class='emp-title'>${employee.Title}</span>
+            </div>
+            <!--<div class="row text-center alerts-container">
+            <ul class="list-inline">
+                <li>
+                    <dl>
+                        <dt>
+                            Assignments
+                        </dt>
+                        <dd>
+                            ${assignmentCount}
+                        </dd>
+                    </dl>
+                </li>
+
+                <li>
+                    <dl>
+                        <dt>
+                            Alerts
+                        </dt>
+                        <dd>
+                            ${alertCount}
+                        </dd>
+                    </dl>
+                </li>
+
+                <li>
+                    <dl>
+                        <dt>
+                            Appointments
+                        </dt>
+                        <dd>
+                            ${appointmentCount}
+                        </dd>
+                    </dl>
+                </li>
+
+            </ul>
+
+
+        </div>-->
+            <div class='nav-menu-content'>
+                <div class='nav-menu-title'>${selectedSideMenu === '' || selectedSideMenu === 'Modules' ? 'Main Menu' : selectedSideMenu}</div>
+                <div style="display: ${!selectedSideMenu || selectedSideMenu === 'Modules' ? 'initial' : 'none'}">
+                    <!--<div class='nav-menu-title'>${selectedSideMenu ? selectedSideMenu : 'Main Menu'}-->
+                    <ul class='wv-tree-nav'>
+                        <li repeat.for="mainMenuItem of mainMenuItems" class="${mainMenuItem.Expanded ? 'wv-nav-expanded' : ''}">
+                            <a href="javascript:void(0)" click.delegate="menuItemClick(mainMenuItem)" class="${mainMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                ${mainMenuItem.Text}
+                            </a>
+                            <ul>
+                                <li repeat.for="childMenuItem of mainMenuItem.MenuItems" class="${childMenuItem.Expanded ? 'wv-nav-expanded' : ''}">
+                                    <a href="javascript:void(0)" click.delegate="menuItemClick(childMenuItem)" class="${childMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                        ${childMenuItem.Text}
+                                    </a>
+                                    <ul>
+                                        <li repeat.for="grandChildMenuItem of childMenuItem.MenuItems">
+                                            <a href="javascript:void(0)" click.delegate="menuItemClick(grandChildMenuItem)">
+                                                ${grandChildMenuItem.Text}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--<li>
+                        <a href="javascript:void(0)" click.delegate="OpenChatWindow(chatURL)">Chat</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" click.delegate="openHelp()">Help & Support</a>
+                    </li>-->
+                    </ul>
+                </div>
+
+                <div style="display: ${selectedSideMenu === 'New' ? 'initial' : 'none'}">
+                    <ul class='wv-tree-nav'>
+                        <li repeat.for="quickAccessMenuItem of quickAccessMenuItems" class="${quickAccessMenuItem.Expanded ? 'wv-nav-expanded' : ''}">
+                            <a href="javascript:void(0)" click.delegate="menuItemClick(quickAccessMenuItem)" class="${quickAccessMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                ${quickAccessMenuItem.Text}
+                            </a>
+                            <ul>
+                                <li repeat.for="childQuickAccessMenuItem of quickAccessMenuItem.MenuItems" class="${childQuickAccessMenuItem.Expanded ? 'wv-nav-expanded' : ''}">
+                                    <a href="javascript:void(0)" click.delegate="menuItemClick(childQuickAccessMenuItem)" class="${childQuickAccessMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                        ${childQuickAccessMenuItem.Text}
+                                    </a>
+                                    <ul>
+                                        <li repeat.for="grandChildQuickAccessMenuItem of childQuickAccessMenuItem.MenuItems">
+                                            <a href="javascript:void(0)" click.delegate="menuItemClick(grandChildQuickAccessMenuItem)">
+                                                ${grandChildQuickAccessMenuItem.Text}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="display: ${selectedSideMenu === 'Productivity' ? 'initial' : 'none'}">
+                    <ul class='wv-tree-nav'>
+                        <li repeat.for="productivityMenuItem of productivityMenuItems" class="${productivityMenuItem.Expanded ? 'wv-nav-expanded' : ''}">
+                            <a href="javascript:void(0)" click.delegate="menuItemClick(productivityMenuItem)" class="${productivityMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                ${productivityMenuItem.Text}
+                            </a>
+                            <ul>
+                                <li repeat.for="childProductivityMenuItem of productivityMenuItem.MenuItems" class="${childProductivityMenuItem.Expanded ? 'wv-nav-expanded' : ''}">
+                                    <a href="javascript:void(0)" click.delegate="menuItemClick(childProductivityMenuItem)" class="${childProductivityMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                        ${childProductivityMenuItem.Text}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="display: ${selectedSideMenu === 'Search' ? 'initial' : 'none'}">
+                    <ul class='wv-tree-nav'>
+                        <li repeat.for="searchMenuItem of searchMenuItems" class="${searchMenuItem.Expanded ? 'wv-nav-expanded' : 'wv-nav-expanded'}">
+                            <a href="javascript:void(0)" click.delegate="menuItemClick(searchMenuItem)" class="${searchMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                <span class="">${searchMenuItem.Text}</span>
+                            </a>
+                            <ul>
+                                <li repeat.for="childSearchMenuItem of searchMenuItem.MenuItems" class="${childSearchMenuItem.Expanded ? 'wv-nav-expanded' : ''}">
+                                    <a href="javascript:void(0)" click.delegate="menuItemClick(childSearchMenuItem)" class="${childSearchMenuItem.MenuItems ? 'wv-nav-parent' : ''}">
+                                        ${childSearchMenuItem.Text}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- <a href='javascript:void(0)' class='pull-right' style='display:block; padding: 3px;'><span class='glyphicon glyphicon-refresh'></span></a> -->
+                    <!--<ul class='wv-bookmark-list'>
+                    <li repeat.for="bookmark of bookmarks">
+                        <span class='bookmark-edit glyphicon glyphicon-pencil' title='Edit Bookmark' click.delegate="editBookmarkClick()"></span>
+                        <a href='javascript:void(0)' click.delegate="openBookmarkClick(bookmark)">
+                            <span class='bookmark-title'>${bookmark.Name}</span>
+                            <span class='bookmark-desc'>${bookmark.Description}</span>
+                        </a>
+                    </li>
+                </ul>-->
+                </div>
+            </div>
+        </div>
+        <!--<div slot='footer' style="text-align: right">
+            <span class='emp-title'>${DatabaseName}</span>
+        </div>-->
+        <div slot='footer'>
+            <ul class='menu-footer-options'>
+                <li>
+                    <a href='javascript:void(0)' class="${!selectedSideMenu || selectedSideMenu === 'Modules' ? 'selected' : ''}" click.delegate="selectSideMenu('Modules')" title='Main Menu'><span class='glyphicon glyphicon-list'></span></a>
+                </li>
+
+                <li>
+                    <a href='javascript:void(0)' class="${selectedSideMenu === 'New' ? 'selected' : ''}" click.delegate="selectSideMenu('New')" title='New'><span class='wvi wvi-navigate-plus'></span></a>
+                </li>
+                <li>
+                    <a href='javascript:void(0)' class="${selectedSideMenu === 'Search' ? 'selected' : ''}" click.delegate="selectSideMenu('Search')" title='Search'><span class='wvi wvi-magnifying-glass'></span></a>
+                </li>
+                <li>
+                    <a href='javascript:void(0)' click.delegate="openDashBoard()" title='Desktop'><span class='wvi wvi-dashboard'></span></a>
+                </li>
+                <li>
+                    <a href='javascript:void(0)' click.delegate="signOut()" title='Sign Out'><span class='glyphicon glyphicon-off'></span></a>
+                </li>
+            </ul>
+        </div>
+    </wv-drawer>
+    <div id="dialog"
+         ak-dialog="k-widget.bind: alertsDialog;
+                    k-width: 600px;
+                    k-title: My Alerts;
+                    k-closable.bind: true;
+                    k-modal.bind: true;
+                    k-visible.bind: false;
+                    k-actions.bind: []">
+    </div>
+    <ak-notification id="notification"
+                     k-widget.bind="notification"
+                     k-position.bind="{pinned: true, bottom: 8, right: 7}"
+                     k-auto-hide-after.bind="0"
+                     k-stacking="up"
+                     k-on-show.delegate="alertNotificationOnShow($event.detail)">
+      <ak-notification-template type="info">
+        <div class="new-mail notif-priority-${priority}">
+            <input id="notif" type="hidden" value="${notif}" />
+            <div style="width: 270px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${subject}">${subject}</div>
+            <span style="margin: 0px 0px 0px 0px !important;font-size: 10px !important;font-style: italic !important;" title="Updated:  ${lastUpdatedFullName}, ${lastUpdated}">Updated:  ${lastUpdated}</span>
+        </div>
+      </ak-notification-template>
+    </ak-notification>
+    <iframe id="signalRWorkaround" style="display: none !important; height: 1px; width: 1px;" src="NotificationHub.aspx" ></iframe>
+</template>

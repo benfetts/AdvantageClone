@@ -1,0 +1,33 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_USER_QUICK_LAUNCH_REPORTSLoadByPrimaryKey]
+(
+	@REPORT_ID int,
+	@TAB_ID int,
+	@CDP_CONTACT_ID int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[CDP_CONTACT_ID],
+		[TAB_ID],
+		[REPORT_ID]
+	FROM [CP_USER_QUICK_LAUNCH_REPORTS]
+	WHERE
+		([REPORT_ID] = @REPORT_ID) AND
+		([TAB_ID] = @TAB_ID) AND
+		([CDP_CONTACT_ID] = @CDP_CONTACT_ID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

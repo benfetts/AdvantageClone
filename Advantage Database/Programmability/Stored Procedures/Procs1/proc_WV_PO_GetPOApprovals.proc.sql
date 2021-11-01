@@ -1,0 +1,37 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_WV_PO_GetPOApprovals] 
+@PONumber int
+AS
+
+SELECT     PO_NUMBER, PO_APPR_RULE_CODE, SEQ_NBR, PO_APPR_RULE_ID, PO_APPROVAL_FLAG, PO_APPROVAL_USER, PO_APPROVAL_DATE, PO_APPROVAL_NOTES
+FROM         PO_APPROVAL
+WHERE     (PO_NUMBER = @PONumber)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

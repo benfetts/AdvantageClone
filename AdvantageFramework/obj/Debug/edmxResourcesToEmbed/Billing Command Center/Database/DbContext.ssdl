@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BillingApprovalBatch">
+    <Key>
+      <PropertyRef Name="BA_BATCH_ID" />
+    </Key>
+    <Property Name="BA_BATCH_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BA_BATCH_DESC" Type="varchar" MaxLength="50" Nullable="true" />
+    <Property Name="BATCH_DATE" Type="datetime" Nullable="true" />
+    <Property Name="CREATE_USER" Type="varchar" MaxLength="100" Nullable="true" />
+    <Property Name="CREATE_DATE" Type="datetime" Nullable="true" />
+    <Property Name="MODIFY_USER" Type="varchar" MaxLength="100" Nullable="true" />
+    <Property Name="MODIFY_DATE" Type="datetime" Nullable="true" />
+    <Property Name="DATE_CUTOFF" Type="datetime" Nullable="true" />
+    <Property Name="PERIOD_CUTOFF" Type="varchar" MaxLength="6" Nullable="true" />
+    <Property Name="EMP_CODE" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="INCL_NO_DTL" Type="bit" Nullable="false" />
+    <Property Name="INCL_NB" Type="bit" Nullable="false" />
+    <Property Name="INCL_FEE" Type="bit" Nullable="false" />
+    <Property Name="INCL_INT" Type="bit" Nullable="false" />
+    <Property Name="INCL_NP" Type="bit" Nullable="false" />
+    <Property Name="INCL_MAG" Type="bit" Nullable="false" />
+    <Property Name="INCL_OD" Type="bit" Nullable="false" />
+    <Property Name="INCL_RA" Type="bit" Nullable="false" />
+    <Property Name="INCL_TV" Type="bit" Nullable="false" />
+    <Property Name="APPROVED" Type="bit" Nullable="false" />
+    <Property Name="FINISHED" Type="bit" Nullable="false" />
+    <Property Name="APPR_METHOD" Type="tinyint" Nullable="false" />
+    <Property Name="SEL_OPTION" Type="smallint" Nullable="true" />
+    <Property Name="MANAGER_TYPE" Type="smallint" Nullable="true" />
+    <Property Name="BA_EXISTS" Type="bit" Nullable="true" />
+    <Property Name="BILLED_ANY" Type="bit" Nullable="true" />
+    <Property Name="BILLED_ALL" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BillingCommandCenter">
+    <Key>
+      <PropertyRef Name="BCC_ID" />
+    </Key>
+    <Property Name="BCC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BILLING_USER" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+    <Property Name="P_SELECT_BY" Type="smallint" Nullable="true" />
+    <Property Name="PROD_FLAG" Type="bit" Nullable="true" />
+    <Property Name="P_ET_CUTOFF_DATE" Type="datetime" Nullable="true" />
+    <Property Name="P_IO_CUTOFF_DATE" Type="datetime" Nullable="true" />
+    <Property Name="P_AB_CUTOFF_DATE" Type="datetime" Nullable="true" />
+    <Property Name="P_AP_CUTOFF_PPD" Type="varchar" MaxLength="6" Nullable="true" />
+    <Property Name="BA_BATCH_ID" Type="int" Nullable="true" />
+    <Property Name="MEDIA_FLAG" Type="bit" Nullable="true" />
+    <Property Name="M_SELECT_BY" Type="smallint" Nullable="true" />
+    <Property Name="M_CUTOFF_DATE" Type="datetime" Nullable="true" />
+    <Property Name="NEWSPAPER" Type="bit" Nullable="true" />
+    <Property Name="MAGAZINE" Type="bit" Nullable="true" />
+    <Property Name="RADIO" Type="bit" Nullable="true" />
+    <Property Name="TELEVISION" Type="bit" Nullable="true" />
+    <Property Name="OUT_OF_HOME" Type="bit" Nullable="true" />
+    <Property Name="INTERNET" Type="bit" Nullable="true" />
+    <Property Name="M_BRDCAST_MTH1" Type="datetime" Nullable="true" />
+    <Property Name="M_BRDCAST_MTH2" Type="datetime" Nullable="true" />
+    <Property Name="INCL_ZERO_SPOTS" Type="bit" Nullable="true" />
+    <Property Name="M_START_DATE" Type="datetime" Nullable="true" />
+    <Property Name="DATE_CUTOFF_TO_USE" Type="smallint" Nullable="true" />
+    <Property Name="INCL_UNBILLED_ONLY" Type="smallint" Nullable="true" />
+    <Property Name="SEL_OPTION" Type="smallint" Nullable="true" />
+    <Property Name="RADIO_DAILY" Type="bit" Nullable="true" />
+    <Property Name="TV_DAILY" Type="bit" Nullable="true" />
+    <Property Name="RADIO_MONTHLY" Type="bit" Nullable="true" />
+    <Property Name="TV_MONTHLY" Type="bit" Nullable="true" />
+    <Property Name="BATCH_NAME" Type="varchar" MaxLength="25" Nullable="true" />
+    <Property Name="SEQ_NO" Type="smallint" Nullable="true" />
+    <Property Name="PROD_JOB_TYPE" Type="smallint" Nullable="true" />
+    <Property Name="PROD_LOCK_SELECTION" Type="bit" Nullable="false" />
+    <Property Name="INCLUDE_LEGACY" Type="bit" Nullable="false" />
+    <Property Name="JOB_MEDIA_BILL_DATE_FROM" Type="datetime" Nullable="true" />
+    <Property Name="JOB_MEDIA_BILL_DATE_TO" Type="datetime" Nullable="true" />
+    <Property Name="PRODUCTION_INCLUDE_MEDIA_BILL_DATES" Type="bit" Nullable="false" />
+    <Property Name="PRODUCTION_MEDIA_BILL_DATE_FROM" Type="datetime" Nullable="true" />
+    <Property Name="PRODUCTION_MEDIA_BILL_DATE_TO" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityContainer Name="CodeFirstDatabase">
+    <EntitySet Name="BillingApprovalBatch" EntityType="Self.BillingApprovalBatch" Schema="dbo" Table="BILL_APPR_BATCH" />
+    <EntitySet Name="BillingCommandCenter" EntityType="Self.BillingCommandCenter" Schema="dbo" Table="BILLING_CMD_CENTER" />
+  </EntityContainer>
+</Schema>

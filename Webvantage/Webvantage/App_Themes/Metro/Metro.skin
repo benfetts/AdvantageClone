@@ -1,0 +1,291 @@
+﻿<ew:CollapsablePanel 
+    runat="server"
+    AllowSliding="false"
+    AllowTitleExpandCollapse="true" 
+    AllowTitleRowExpandCollapse="true"
+    Collapsable="true"
+    CollapseText=""
+    ExpandText=""
+    ShowLinkOrImage="false"
+    TabIndex = -1
+    TitleStyleContainerMode="normal"
+    ScrollBars="None"
+    Width="99%" 
+
+    CssClass="ew-css"
+    CollapsedTitleStyle-CssClass="ew-title ew-title-color"
+    TitleLinkStyle-CssClass="ew-title-link"
+    TitleStyle-CssClass="ew-title ew-title-color"
+/>
+
+<ew:CollapsablePanel 
+    runat="server"
+    SkinID="CollapsablePanelDesktopObjectFilter"
+    AllowSliding="false"
+    AllowTitleExpandCollapse="true" 
+    AllowTitleRowExpandCollapse="true"
+    Collapsable="true"
+    CollapseText=""
+    ExpandText=""
+    ShowLinkOrImage="false"
+    TabIndex = -1
+    TitleStyleContainerMode="normal"
+    ScrollBars="None"
+    Width="100%" 
+
+    CssClass="ew-css"
+    CollapsedTitleStyle-CssClass=""
+    TitleLinkStyle-CssClass=""
+    TitleStyle-CssClass=""
+
+
+/>
+
+<telerik:RadColorPicker 
+    runat="server" 
+    KeepInScreenBounds="true" 
+    Preset="None" 
+    PreviewColor="true" 
+    ShowIcon="true" 
+    PaletteModes="WebPalette"
+    ShowEmptyColor="False"
+/>
+
+<asp:TextBox runat="server" SkinID="TextBoxStandard"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeSmall" Width="75px"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeMedium" Width="90px"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeLarge" Width="110px"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeExtraLarge" Width="480px"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeSingleLineDescription" Width="325px" ></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeValueOnly" Width="405px"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeMultiLineDescription" Height="50" Width="326px"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxCodeMultiLine" Height="50" Width="405px"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxShortDate" Style="text-align: right; min-width: 68px; width: 68px;" Width="68px"></asp:TextBox>
+
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxCodeSmall" Width="75px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxCodeMedium" Width="90px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxCodeLarge" Width="110px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxCodeSingleLineDescription" Width="325px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxCodeValueOnly" Width="405px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxCodeMultiLine" Height="50" Width="405px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxMultilineInGrid" Height="50" Width="150px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxShortDate" Style="text-align: right; min-width: 68px; width: 68px;" Width="68px"></telerik:RadTextBox>
+<telerik:RadTextBox runat="server" SkinID="RadTextBoxJVMultiline" Style="font-size: 14px; "></telerik:RadTextBox>
+
+
+<asp:Label runat="server" SkinID="LabelShortDate" Style="text-align: right; min-width: 68px; width: 68px;" Width="68px"></asp:Label>
+<asp:Panel runat="server" SkinID="PanelShortDate" Width="74px"></asp:Panel>
+<asp:Label runat="server" SkinID="LabelSmall" Font-Size="11"></asp:Label>
+
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxMonth" Width="65"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxMonthDisplayName" Width="100"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxYear" Width="80"></telerik:RadComboBox>
+<telerik:RadDatePicker runat="server" SkinID="RadDatePickerStandard" MinDate="1950-01-01" DatePopupButton-ToolTip="Show calendar" MaxDate="2050-01-01" Width="130px" DateInput-DateFormat="d" DateInput-IncrementSettings-InterceptArrowKeys="true" DateInput-IncrementSettings-InterceptMouseWheel="true"></telerik:RadDatePicker>
+<telerik:RadDatePicker runat="server" SkinID="RadDatePickerStandardOld" MinDate="1950-01-01" DatePopupButton-ToolTip="Show calendar" MaxDate="2050-01-01" Height="32px" Width="225px" DateInput-DateFormat="d" DateInput-IncrementSettings-InterceptArrowKeys="true" DateInput-IncrementSettings-InterceptMouseWheel="true" Font-Size="13px"></telerik:RadDatePicker>
+<telerik:RadToolTip runat="server" SkinID="RadToolTipToolbarContentArea" ContentScrolling="None" ManualClose="false" Modal="true" AutoCloseDelay="0" HideEvent="LeaveToolTip"
+                    ShowCallout="false" MouseTrailing="false" IsClientID="true" CssClass="RadToolTipToolbarContentArea"></telerik:RadToolTip>
+<telerik:RadToolTipManager runat="server" SkinID="RadToolTipManagerBase" AutoTooltipify="true" ManualClose="false" RenderMode="Classic" ShowCallout="false" 
+                    HideEvent="LeaveToolTip" ShowEvent="OnMouseOver" CssClass="radtooltip-style" MouseTrailing="false" IsClientID="true"></telerik:RadToolTipManager>
+<telerik:RadToolTip runat="server" SkinID="RadToolTipToolbarContentAreaCT" ContentScrolling="None" ManualClose="True" Modal="true" AutoCloseDelay="0" HideEvent="ManualClose"
+                    ShowCallout="false" MouseTrailing="false" IsClientID="true" CssClass="RadToolTipToolbarContentArea"></telerik:RadToolTip>
+
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxPostPeriod" Width="150"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxPostPeriodCodeOnly" Width="80"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxVendor" Width="300"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxEmployee" Width="300"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxOffice" Width="210"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxStandard"></telerik:RadComboBox>
+
+<telerik:RadNumericTextBox runat="server" SkinID="RadNumericTextBoxAmount" EnabledStyle-HorizontalAlign="Right" Width="95"></telerik:RadNumericTextBox>
+
+<%-- combobox width based on DisplayText MaxLength --%>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxText5" Width="60"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxText10" Width="90"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxText15" Width="120"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxText20" Width="150"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxText25" Width="180"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxText30" Width="210"></telerik:RadComboBox>
+<telerik:RadComboBox runat="server" SkinID="RadComboBoxText40" Width="270"></telerik:RadComboBox>
+
+
+<asp:TextBox runat="server" SkinID="TextBoxDate" Width="75"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxText3" Width="35"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxText5" Width="60"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxText10" Width="120"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxText20" Width="180"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxText30" Width="240"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxText40" Width="275"></asp:TextBox>
+<asp:TextBox runat="server" SkinID="TextBoxText50" Width="310"></asp:TextBox>
+
+
+<%-- Icons --%>
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonAlerts" ImageUrl="~/Images/Icons/Grey/256/bell.png" Text="" Tooltip="Alerts" />
+<asp:ImageButton runat="server" SkinID="ImageButtonAlerts" ImageUrl="~/Images/Icons/Grey/256/bell.png" CssClass="icon-image" Tooltip="Alerts" />
+<asp:ImageButton runat="server" SkinID="ImageButtonAlertsWhite" ImageUrl="~/Images/Icons/White/256/bell.png" CssClass="icon-image" Tooltip="Alerts" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonAdd" ImageUrl="~/Images/Icons/Grey/256/add.png" Text="" ToolTip="Add" />
+<asp:ImageButton runat="server" SkinID="ImageButtonAdd" ImageUrl="~/Images/Icons/Grey/256/add.png" CssClass="icon-image" ToolTip="Add" />
+<asp:ImageButton runat="server" SkinID="ImageButtonAddWhite" ImageUrl="~/Images/Icons/White/256/add.png" CssClass="icon-image" ToolTip="Add" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonAlarm" ImageUrl="~/Images/Icons/Grey/256/alarmclock.png" Text="" ToolTip="Alert" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonBookmark" ImageUrl="~/Images/Icons/Grey/256/book_bookmark.png" Text="" ToolTip="Bookmark" />
+<asp:Image runat="server" SkinID="MaterialImageBookmark" ImageUrl="~/Images/Icons/White/256/book_bookmark.png" CssClass="icon-image-mfb" ToolTip="Bookmark" />
+<asp:ImageButton runat="server" SkinID="ImageButtonBookmark" ImageUrl="~/Images/Icons/Grey/256/book_bookmark.png" CssClass="icon-image" ToolTip="Bookmark" />
+<asp:ImageButton runat="server" SkinID="ImageButtonBookmarkWhite" ImageUrl="~/Images/Icons/White/256/book_bookmark.png" CssClass="icon-image" ToolTip="Bookmark" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonCancel" ImageUrl="~/Images/Icons/Grey/256/sign_forbidden.png" Text="" ToolTip="Cancel/Close" />
+<asp:ImageButton runat="server" SkinID="ImageButtonCancel" ImageUrl="~/Images/Icons/Grey/256/sign_forbidden.png" CssClass="icon-image" ToolTip="Cancel/Close" />
+<asp:ImageButton runat="server" SkinID="ImageButtonCancelWhite" ImageUrl="~/Images/Icons/White/256/sign_forbidden.png" CssClass="icon-image" ToolTip="Cancel/Close" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonChat" ImageUrl="~/Images/Icons/Grey/256/chat.png" Text="" ToolTip="Chat" />
+<asp:ImageButton runat="server" SkinID="ImageButtonChat" ImageUrl="~/Images/Icons/Grey/256/chat.png" CssClass="icon-image" ToolTip="Chat" />
+<asp:ImageButton runat="server" SkinID="ImageButtonChatWhite" ImageUrl="~/Images/Icons/White/256/chat.png" CssClass="icon-image" ToolTip="Chat" />
+<asp:Image runat="server" SkinID="MaterialImageChat" ImageUrl="~/Images/Icons/White/256/chat.png" CssClass="icon-image-mfb" Tooltip="Chat" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonClear" ImageUrl="~/Images/Icons/Grey/256/undo.png" Text="" TooTip="Clear" />
+<asp:ImageButton runat="server" SkinID="ImageButtonClear" ImageUrl="~/Images/Icons/Grey/256/undo.png" CssClass="icon-image" TooTip="Clear" />
+<asp:ImageButton runat="server" SkinID="ImageButtonClearWhite" ImageUrl="~/Images/Icons/White/256/undo.png" CssClass="icon-image" TooTip="Clear" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonComment" ImageUrl="~/Images/Icons/Grey/256/messages.png" Text="" ToolTip="Comments" />
+<asp:ImageButton runat="server" SkinID="ImageButtonComment" ImageUrl="~/Images/Icons/Grey/256/messages.png" CssClass="icon-image" ToolTip="Comments" />
+<asp:ImageButton runat="server" SkinID="ImageButtonCommentWhite" ImageUrl="~/Images/Icons/White/256/messages.png" CssClass="icon-image" ToolTip="Comments" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonCopy" ImageUrl="~/Images/Icons/Grey/256/copy.png" Text="" ToolTip="Copy" />
+<asp:ImageButton runat="server" SkinID="ImageButtonCopy" ImageUrl="~/Images/Icons/Grey/256/copy.png" CssClass="icon-image" ToolTip="Copy" />
+<asp:ImageButton runat="server" SkinID="ImageButtonCopyWhite" ImageUrl="~/Images/Icons/White/256/copy.png" CssClass="icon-image" ToolTip="Copy" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonClientContact" ImageUrl="~/Images/Icons/Grey/256/user_telephone.png" Text="" ToolTip="Client Contacts" />
+<asp:ImageButton runat="server" SkinID="ImageButtonClientContact" ImageUrl="~/Images/Icons/Grey/256/user_telephone.png" CssClass="icon-image" ToolTip="Client Contacts" />
+<asp:ImageButton runat="server" SkinID="ImageButtonClientContactWhite" ImageUrl="~/Images/Icons/White/256/user_telephone.png" CssClass="icon-image" ToolTip="Client Contacts" />
+<asp:ImageButton runat="server" SkinID="ImageButtonClientAddress" ImageUrl="~/Images/Icons/Grey/256/user_telephone.png" CssClass="icon-image" ToolTip="Client Address Information" />
+<asp:ImageButton runat="server" SkinID="ImageButtonClientAddressWhite" ImageUrl="~/Images/Icons/White/256/user_telephone.png" CssClass="icon-image" ToolTip="Client Address Information" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonDelete" ImageUrl="~/Images/Icons/Grey/256/delete.png" Text="" ToolTip="Delete" />
+<asp:ImageButton runat="server" SkinID="ImageButtonDelete" ImageUrl="~/Images/Icons/Grey/256/delete.png" CssClass="icon-image" ToolTip="Delete" />
+<asp:ImageButton runat="server" SkinID="ImageButtonDeleteWhite" ImageUrl="~/Images/Icons/White/256/delete.png" CssClass="icon-image" ToolTip="Delete" />
+
+<asp:ImageButton runat="server" SkinID="ImageButtonDeleteDocumentWhite" ImageUrl="~/Images/Icons/White/256/documents_delete.png" CssClass="icon-image" ToolTip="Delete Document" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonDownload" ImageUrl="~/Images/Icons/Grey/256/arrow_down.png" Text="" ToolTip="Download" />
+<asp:ImageButton runat="server" SkinID="ImageButtonDownload" ImageUrl="~/Images/Icons/Grey/256/arrow_down.png" CssClass="icon-image" ToolTip="Download" />
+<asp:ImageButton runat="server" SkinID="ImageButtonDownloadWhite" ImageUrl="~/Images/Icons/White/256/arrow_down.png" CssClass="icon-image" ToolTip="Download" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonEdit" ImageUrl="~/Images/Icons/Grey/256/edit.png" Text="" ToolTip="Edit" />
+<asp:ImageButton runat="server" SkinID="ImageButtonEdit" ImageUrl="~/Images/Icons/Grey/256/edit.png" CssClass="icon-image" ToolTip="Edit" />
+<asp:ImageButton runat="server" SkinID="ImageButtonEditWhite" ImageUrl="~/Images/Icons/White/256/edit.png" CssClass="icon-image" ToolTip="Edit" />
+<asp:Image runat="server" SkinID="MaterialImageEdit" ImageUrl="~/Images/Icons/White/256/edit.png" CssClass="icon-image-mfb" ToolTip="Edit" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonEmail" ImageUrl="~/Images/Icons/Grey/256/mail.png" Text="" ToolTip="Email" />
+<asp:ImageButton runat="server" SkinID="ImageButtonEmail" ImageUrl="~/Images/Icons/Grey/256/mail.png" CssClass="icon-image" ToolTip="Email" />
+<asp:Image runat="server" SkinID="MaterialImageEmail" ImageUrl="~/Images/Icons/White/256/mail.png" CssClass="icon-image-mfb" ToolTip="Email" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonExport" ImageUrl="~/Images/Icons/Grey/256/download.png" Text="" ToolTip="Export" />
+<asp:ImageButton runat="server" SkinID="ImageButtonExport" ImageUrl="~/Images/Icons/Grey/256/download.png" CssClass="icon-image" ToolTip="Export" />
+<asp:ImageButton runat="server" SkinID="ImageButtonExportWhite" ImageUrl="~/Images/Icons/White/256/download.png" CssClass="icon-image" ToolTip="Export" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonExportExcel" ImageUrl="~/Images/Icons/Grey/256/spreadsheet_sum.png" Text="" ToolTip="Export to Excel" />
+<asp:ImageButton runat="server" SkinID="ImageButtonExportExcel" ImageUrl="~/Images/Icons/Grey/256/spreadsheet_sum.png" CssClass="icon-image" ToolTip="Export to Excel" />
+<asp:ImageButton runat="server" SkinID="ImageButtonExportExcelWhite" ImageUrl="~/Images/Icons/White/256/spreadsheet_sum.png" CssClass="icon-image" ToolTip="Export to Excel" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonFilter" ImageUrl="~/Images/Icons/Grey/256/funnel.png" Text="" ToolTip="Filter" />
+<asp:ImageButton runat="server" SkinID="ImageButtonFilter" ImageUrl="~/Images/Icons/Grey/256/funnel.png" CssClass="icon-image" ToolTip="Filter" />
+<asp:ImageButton runat="server" SkinID="ImageButtonFilterWhite" ImageUrl="~/Images/Icons/White/256/funnel.png" CssClass="icon-image" ToolTip="Filter" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonFind" ImageUrl="~/Images/Icons/Grey/256/find.png" Text="" ToolTip="Search/Find" />
+<asp:ImageButton runat="server" SkinID="ImageButtonFind" ImageUrl="~/Images/Icons/Grey/256/find.png" CssClass="icon-image" ToolTip="Search/Find" />
+<asp:ImageButton runat="server" SkinID="ImageButtonFindWhite" ImageUrl="~/Images/Icons/White/256/find.png" CssClass="icon-image" ToolTip="Search/Find" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonInsert" ImageUrl="~/Images/Icons/Grey/256/arrow_into.png" Text="" />
+<asp:ImageButton runat="server" SkinID="ImageButtonInsert" ImageUrl="~/Images/Icons/Grey/256/arrow_into.png" CssClass="icon-image" />
+<asp:ImageButton runat="server" SkinID="ImageButtonInsertWhite" ImageUrl="~/Images/Icons/White/256/arrow_into.png.png" CssClass="icon-image" ToolTip="" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonMoreInformation" ImageUrl="~/Images/Icons/Grey/256/information.png" Text="" />
+<asp:ImageButton runat="server" SkinID="ImageButtonMoreInformation" ImageUrl="~/Images/Icons/Grey/256/information.png" CssClass="icon-image" />
+<asp:ImageButton runat="server" SkinID="ImageButtonMoreInformationWhite" ImageUrl="~/Images/Icons/White/256/information.png" CssClass="icon-image" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonNewTime" ImageUrl="~/Images/Icons/Grey/256/clock.png" Text="" ToolTip="Add Time" />
+<asp:ImageButton runat="server" SkinID="ImageButtonNewTime" ImageUrl="~/Images/Icons/Grey/256/clock.png" CssClass="icon-image" ToolTip="Add Time"  />
+<asp:ImageButton runat="server" SkinID="ImageButtonNewTimeWhite" ImageUrl="~/Images/Icons/White/256/clock.png" CssClass="icon-image" ToolTip="Add Time"  />
+<asp:Image runat="server" SkinID="ImageNewTime" ImageUrl="~/Images/Icons/Grey/256/clock.png" CssClass="icon-image" ToolTip="Add Time"  />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonNew" ImageUrl="~/Images/Icons/Grey/256/add.png" Text="" ToolTip="New" />
+<asp:ImageButton runat="server" SkinID="ImageButtonNew" ImageUrl="~/Images/Icons/Grey/256/add.png" CssClass="icon-image" ToolTip="New"  />
+<asp:ImageButton runat="server" SkinID="ImageButtonNewWhite" ImageUrl="~/Images/Icons/White/256/add.png" CssClass="icon-image" ToolTip="New"  />
+<asp:Image runat="server" SkinID="ImageNew" ImageUrl="~/Images/Icons/Grey/256/add.png" CssClass="icon-image" ToolTip="New"  />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonNewAlert" ImageUrl="~/Images/Icons/Grey/256/user_message.png" Text="" Tooltip="New Alert" />
+<asp:ImageButton runat="server" SkinID="ImageButtonNewAlert" ImageUrl="~/Images/Icons/Grey/256/user_message.png" CssClass="icon-image" Tooltip="New Alert" />
+<asp:Image runat="server" SkinID="MaterialImageNewAlert" ImageUrl="~/Images/Icons/White/256/user_message.png" CssClass="icon-image-mfb" Tooltip="New Alert" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonNewAssignment" ImageUrl="~/Images/Icons/Grey/256/users_relation2.png" Text=""  Tooltip="New Assignment"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonNewAssignment" ImageUrl="~/Images/Icons/Grey/256/users_relation2.png" CssClass="icon-image" Tooltip="New Assignment" />
+<asp:Image runat="server" SkinID="MaterialImageNewAssignment" ImageUrl="~/Images/Icons/White/256/users_relation2.png" CssClass="icon-image-mfb" Tooltip="New Assignment" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonNext" ImageUrl="~/Images/Icons/Grey/256/navigate_right.png" Text="" ToolTip="Next" />
+<asp:ImageButton runat="server" SkinID="ImageButtonNext" ImageUrl="~/Images/Icons/Grey/256/navigate_right.png" CssClass="icon-image" ToolTip="Next"/>
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonPrevious" ImageUrl="~/Images/Icons/Grey/256/navigate_left.png" Text="" ToolTip="Previous"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonPrevious" ImageUrl="~/Images/Icons/Grey/256/navigate_left.png" CssClass="icon-image" ToolTip="Previous"/>
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonPrint" ImageUrl="~/Images/Icons/Grey/256/printer.png" Text="" ToolTip="Print"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonPrint" ImageUrl="~/Images/Icons/Grey/256/printer.png" CssClass="icon-image" ToolTip="Print"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonPrintWhite" ImageUrl="~/Images/Icons/White/256/printer.png" CssClass="icon-image" ToolTip="Print"/>
+<asp:Image runat="server" SkinID="ImagePrint" ImageUrl="~/Images/Icons/Grey/256/printer.png" CssClass="icon-image" ToolTip="Print" />
+<asp:Image runat="server" SkinID="MaterialImagePrint" ImageUrl="~/Images/Icons/White/256/printer.png" CssClass="icon-image-mfb" ToolTip="Print" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonQuestion" ImageUrl="~/Images/Icons/Grey/256/question.png" ToolTip="Help" Text=""  />
+<asp:ImageButton runat="server" SkinID="ImageButtonQuestion" ImageUrl="~/Images/Icons/Grey/256/question.png" CssClass="icon-image" ToolTip="Help" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonRefresh" ImageUrl="~/Images/Icons/Grey/256/refresh.png" ToolTip="Refresh" Text=""  />
+<asp:ImageButton runat="server" SkinID="ImageButtonRefresh" ImageUrl="~/Images/Icons/Grey/256/refresh.png" CssClass="icon-image"  ToolTip="Refresh"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonRefreshWhite" ImageUrl="~/Images/Icons/White/256/refresh.png" CssClass="icon-image" ToolTip="Refresh"/>
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonRemove" ImageUrl="~/Images/Icons/Grey/256/remove.png" Text="" />
+<asp:ImageButton runat="server" SkinID="ImageButtonRemove" ImageUrl="~/Images/Icons/Grey/256/remove.png" CssClass="icon-image" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonSave" ImageUrl="~/Images/Icons/Grey/256/floppy_disk.png" Text="" ToolTip="Save"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonSave" ImageUrl="~/Images/Icons/Grey/256/floppy_disk.png" CssClass="icon-image"  ToolTip="Save"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonSaveWhite" ImageUrl="~/Images/Icons/White/256/floppy_disk.png" CssClass="icon-image"  ToolTip="Save"/>
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonSaveAll" ImageUrl="~/Images/Icons/Grey/256/floppy_disks.png" Text="" ToolTip="Save All"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonSaveAll" ImageUrl="~/Images/Icons/Grey/256/floppy_disks.png" CssClass="icon-image" ToolTip="Save All"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonSaveAllWhite" ImageUrl="~/Images/Icons/White/256/floppy_disks.png" CssClass="icon-image" ToolTip="Save All"/>
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonSend" ImageUrl="~/Images/Icons/Grey/256/mail_forward.png" Text="" ToolTip="Send" />
+<asp:ImageButton runat="server" SkinID="ImageButtonSend" ImageUrl="~/Images/Icons/Grey/256/mail_forward.png" CssClass="icon-image" ToolTip="Send" />
+<asp:Image runat="server" SkinID="MaterialImageSend" ImageUrl="~/Images/Icons/White/256/mail_forward.png" CssClass="icon-image-mfb" ToolTip="Send" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonSettings" ImageUrl="~/Images/Icons/Grey/256/gearwheel.png" Text="" ToolTip="Settings/Options" />
+<asp:ImageButton runat="server" SkinID="ImageButtonSettings" ImageUrl="~/Images/Icons/Grey/256/gearwheel.png" CssClass="icon-image" ToolTip="Settings/Options" />
+<asp:ImageButton runat="server" SkinID="ImageButtonSettingsWhite" ImageUrl="~/Images/Icons/White/256/gearwheel.png" CssClass="icon-image" ToolTip="Settings/Options" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonStopwatchStart" ImageUrl="~/Images/Icons/Grey/256/stopwatch.png" Text="" ToolTip="Start Stopwatch" />
+<asp:ImageButton runat="server" SkinID="ImageButtonStopwatchStart" ImageUrl="~/Images/Icons/Grey/256/stopwatch.png" CssClass="icon-image" ToolTip="Start Stopwatch" />
+<asp:ImageButton runat="server" SkinID="ImageButtonStopwatchStartWhite" ImageUrl="~/Images/Icons/White/256/stopwatch.png" CssClass="icon-image" ToolTip="Start Stopwatch" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonStopwatchStop" ImageUrl="~/Images/Icons/Grey/256/stopwatch2.png" Text="" ToolTip="Stop Stopwatch" />
+<asp:ImageButton runat="server" SkinID="ImageButtonStopwatchStop" ImageUrl="~/Images/Icons/Grey/256/stopwatch2.png" CssClass="icon-image" ToolTip="Stop Stopwatch" />
+<asp:ImageButton runat="server" SkinID="ImageButtonStopwatchStopWhite" ImageUrl="~/Images/Icons/White/256/stopwatch2.png" CssClass="icon-image" ToolTip="Stop Stopwatch" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonThumbnails" ImageUrl="~/Images/Icons/Grey/256/photos.png" Text="" ToolTip="Show/hide thumbnails for image files" />
+<asp:ImageButton runat="server" SkinID="ImageButtonThumbnails" ImageUrl="~/Images/Icons/Grey/256/photos.png" CssClass="icon-image" ToolTip="Show/hide thumbnails for image files" />
+<asp:ImageButton runat="server" SkinID="ImageButtonThumbnailsWhite" ImageUrl="~/Images/Icons/White/256/photos.png" CssClass="icon-image" ToolTip="Show/hide thumbnails for image files" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonUpload" ImageUrl="~/Images/Icons/Grey/256/arrow_up.png" Text="" ToolTip="Upload" />
+<asp:ImageButton runat="server" SkinID="ImageButtonUpload" ImageUrl="~/Images/Icons/Grey/256/arrow_up.png" CssClass="icon-image" ToolTip="Upload" />
+<asp:ImageButton runat="server" SkinID="ImageButtonUploadWhite" ImageUrl="~/Images/Icons/White/256/arrow_up.png" CssClass="icon-image" ToolTip="Upload" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonView" ImageUrl="~/Images/Icons/Grey/256/magnifying_glass.png" Text="" ToolTip="View Details" />
+<asp:ImageButton runat="server" SkinID="ImageButtonView" ImageUrl="~/Images/Icons/Grey/256/magnifying_glass.png" CssClass="icon-image"  ToolTip="View Details"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonViewWhite" ImageUrl="~/Images/Icons/White/256/magnifying_glass.png" CssClass="icon-image"  ToolTip="View Details"/>
+<asp:Image runat="server" SkinID="ImageView" ImageUrl="~/Images/Icons/Grey/256/magnifying_glass.png" CssClass="icon-image" ToolTip="View Details" />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonWarning" ImageUrl="~/Images/Icons/Grey/256/sign_warning.png" Text="" ToolTip="Warning!" />
+<asp:ImageButton runat="server" SkinID="ImageButtonWarning" ImageUrl="~/Images/Icons/Grey/256/sign_warning.png" CssClass="icon-image"  ToolTip="Warning!"/>
+<asp:ImageButton runat="server" SkinID="ImageButtonWarningWhite" ImageUrl="~/Images/Icons/White/256/sign_warning.png" CssClass="icon-image"  ToolTip="Warning!"/>
+<asp:Image runat="server" SkinID="ImageWarning" ImageUrl="~/Images/Icons/Grey/256/sign_warning.png" CssClass="icon-image" ToolTip="Warning!" />
+<asp:Image runat="server" SkinID="ImageWarningPostPeriodClosed" ImageUrl="~/Images/Icons/Grey/256/sign_warning.png" CssClass="icon-image" ToolTip="Posting period closed for this day." />
+<asp:Image runat="server" SkinID="ImageWarningProcessControl" ImageUrl="~/Images/Icons/Grey/256/sign_warning.png" CssClass="icon-image" ToolTip="Process Control does not allow editing." />
+
+<telerik:RadToolBarButton runat="server" SkinID="RadToolBarButtonClearFilters" ImageUrl="~/Images/Icons/Grey/256/undo.png" Text="" ToolTip="Clear Filters" />

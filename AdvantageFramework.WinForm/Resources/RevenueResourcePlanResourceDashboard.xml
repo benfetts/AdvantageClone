@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source 1" ComponentName="dashboardObjectDataSource1">
+      <DataSource Type="System.Collections.Generic.List`1[[AdvantageFramework.DTO.FinanceAndAccounting.RevenueResourcePlan.ResourceSetupFormDashboardDataSource, AdvantageFramework.BLogic, Version=6.70.8.0, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Employee Hours By Date" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="Employee" DefaultId="DataItem0" />
+        <Measure DataMember="Hours" DefaultId="DataItem1" />
+        <Dimension DataMember="Date" DefaultId="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="chartDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

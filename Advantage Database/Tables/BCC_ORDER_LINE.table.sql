@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[BCC_ORDER_LINE] (
+    [ORDER_NBR] INT      NOT NULL,
+    [LINE_NBR]  SMALLINT NOT NULL,
+    [BCC_ID]    INT      NULL
+);
+

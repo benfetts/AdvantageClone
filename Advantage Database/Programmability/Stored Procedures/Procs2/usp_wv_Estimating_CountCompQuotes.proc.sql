@@ -1,0 +1,24 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_Estimating_CountCompQuotes] 
+	@EST_NUMBER INT,
+	@EST_COMPONENT_NBR INT
+AS
+DECLARE
+	@THE_COUNT SMALLINT
+	
+        SELECT @THE_COUNT = ISNULL( COUNT(1),0) FROM ESTIMATE_QUOTE WITH(NOLOCK) WHERE  ESTIMATE_QUOTE.ESTIMATE_NUMBER = @EST_NUMBER AND ESTIMATE_QUOTE.EST_COMPONENT_NBR = @EST_COMPONENT_NBR
+                IF @THE_COUNT = 1
+	                BEGIN
+		                SELECT EST_QUOTE_NBR FROM ESTIMATE_QUOTE WITH(NOLOCK) WHERE ESTIMATE_NUMBER = @EST_NUMBER AND EST_COMPONENT_NBR = @EST_COMPONENT_NBR	
+	                END
+                IF @THE_COUNT = 0
+	                BEGIN
+		                SELECT 0 AS EST_QUOTE_NBR
+	                END
+                IF @THE_COUNT > 1
+	                BEGIN
+		                SELECT -1 AS EST_QUOTE_NBR
+	                END
+    
+	
+

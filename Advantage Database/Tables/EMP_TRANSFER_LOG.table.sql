@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[EMP_TRANSFER_LOG] (
+    [EMP_TL_ID]    INT      NOT NULL,
+    [ET_ID]        INT      NOT NULL,
+    [SEQ_NBR_FROM] SMALLINT NOT NULL,
+    [SEQ_NBR_TO]   SMALLINT NOT NULL
+);
+

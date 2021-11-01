@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[FILTER] (
+    [FLTRTYPE]  VARCHAR (10)  NOT NULL,
+    [FLTRNUM]   REAL          NOT NULL,
+    [FLTRNAME]  VARCHAR (40)  NULL,
+    [FLTRSORT]  TEXT          NULL,
+    [FLTRTITLE] VARCHAR (60)  NULL,
+    [FLTRWHERE] TEXT          NULL,
+    [FLTRORDER] TEXT          NULL,
+    [FLTROPT]   TEXT          NULL,
+    [FLTRUSER]  VARCHAR (100) NULL,
+    [FLTRDATA]  TEXT          NULL
+);
+

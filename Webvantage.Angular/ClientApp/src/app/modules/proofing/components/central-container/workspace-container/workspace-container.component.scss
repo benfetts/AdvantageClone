@@ -1,0 +1,64 @@
+@import '../../../theme/mixins/breakpoints';
+@import '../../../theme/mixins/font';
+@import '../../../theme/colors';
+
+.workspace-area,
+.workspace-area-large {
+  background: transparent;
+  box-sizing: border-box;
+  border-radius: 3px;
+  min-height: 343px;
+  height: 100%;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.fileManagerMin {
+  @include breakpoint(large){
+    height: 745px;
+  }
+  height: 433px;
+}
+
+.select-to-compare,
+.select-to-compare-smaller {
+  background: transparent;
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: 49.5%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  span {
+    @include font-base(14px);
+    text-align: center;
+    position: absolute;
+    top: 120%;
+    width: 120px;
+  }
+
+  img {
+    min-width: 20px;
+  }
+}
+
+.only-one-view {
+  width: 100%;
+}
+
+.split-view {
+  width: 49.5%;
+}

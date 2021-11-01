@@ -1,0 +1,20 @@
+﻿CREATE TABLE [dbo].[CR_OTHER] (
+    [REC_ID]        INT             NOT NULL,
+    [SEQ_NBR]       SMALLINT        NOT NULL,
+    [CR_CHECK_NBR]  VARCHAR (15)    NOT NULL,
+    [CR_CHECK_DATE] SMALLDATETIME   NOT NULL,
+    [CR_CHECK_AMT]  DECIMAL (14, 2) NOT NULL,
+    [CR_DEP_DATE]   SMALLDATETIME   NULL,
+    [CR_DESC]       VARCHAR (40)    NULL,
+    [POST_PERIOD]   VARCHAR (6)     NOT NULL,
+    [OFFICE_CODE]   VARCHAR (4)     NOT NULL,
+    [BK_CODE]       VARCHAR (4)     NOT NULL,
+    [GLACODE]       VARCHAR (30)    NOT NULL,
+    [GLEXACT]       INT             NOT NULL,
+    [GLESEQ]        SMALLINT        NOT NULL,
+    [STATUS]        VARCHAR (1)     NULL,
+    [CLEARED]       SMALLINT        NULL,
+    [REC_STMT_DATE] SMALLDATETIME   NULL,
+    [RECON_FLAG]    SMALLINT        NULL
+);
+

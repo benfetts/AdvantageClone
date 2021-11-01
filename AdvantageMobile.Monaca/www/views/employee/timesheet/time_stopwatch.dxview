@@ -1,0 +1,12 @@
+<div data-options="dxView : { name: 'time_stopwatch', title: 'Stopwatch' } " >
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+
+        <div>
+
+        </div>
+        <div id="stopwatch-div">
+
+        </div>
+
+    </div>
+</div>

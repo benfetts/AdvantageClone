@@ -1,0 +1,153 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Webvantage", "Webvantage\Webvantage\Webvantage.vbproj", "{CE8A2210-DC00-4858-9936-91F0D42AB486}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D} = {A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}
+		{6115EB46-3E3D-4413-903A-618177C655AF} = {6115EB46-3E3D-4413-903A-618177C655AF}
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435} = {6737C74B-2B68-4280-A1F8-3BB04CD37435}
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B} = {AB88A898-E70A-4A0A-879A-6C91168F7B4B}
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6} = {2854ABA2-CE90-406B-8041-C9B84D2F97B6}
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239} = {CF80C6A7-30B6-45B8-8FF2-CC3176B95239}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ActiveReportsAssembly", "Webvantage\ActiveReportsAssembly\ActiveReportsAssembly.vbproj", "{6737C74B-2B68-4280-A1F8-3BB04CD37435}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework", "AdvantageFramework\AdvantageFramework.vbproj", "{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.BLogic", "AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj", "{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.Reporting.Reports", "AdvantageFramework.Reporting.Reports\AdvantageFramework.Reporting.Reports.vbproj", "{6115EB46-3E3D-4413-903A-618177C655AF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.Web", "AdvantageFramework.Web\AdvantageFramework.Web.vbproj", "{2854ABA2-CE90-406B-8041-C9B84D2F97B6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.GoogleServices", "AdvantageFramework.GoogleServices\AdvantageFramework.GoogleServices.vbproj", "{AB88A898-E70A-4A0A-879A-6C91168F7B4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Debug|x64.ActiveCfg = Debug|x64
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Debug|x64.Build.0 = Debug|x64
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Debug|x86.ActiveCfg = Debug|x86
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Debug|x86.Build.0 = Debug|x86
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Release|x64.ActiveCfg = Release|x64
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Release|x64.Build.0 = Release|x64
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Release|x86.ActiveCfg = Release|x86
+		{CE8A2210-DC00-4858-9936-91F0D42AB486}.Release|x86.Build.0 = Release|x86
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Debug|x64.ActiveCfg = Debug|x64
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Debug|x64.Build.0 = Debug|x64
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Debug|x86.ActiveCfg = Debug|x86
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Debug|x86.Build.0 = Debug|x86
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Release|x64.ActiveCfg = Release|x64
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Release|x64.Build.0 = Release|x64
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Release|x86.ActiveCfg = Release|x86
+		{6737C74B-2B68-4280-A1F8-3BB04CD37435}.Release|x86.Build.0 = Release|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.ActiveCfg = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.Build.0 = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.ActiveCfg = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.ActiveCfg = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.Build.0 = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.ActiveCfg = Release|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.Build.0 = Release|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.ActiveCfg = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.Build.0 = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.ActiveCfg = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.Build.0 = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.ActiveCfg = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.Build.0 = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.ActiveCfg = Release|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.Build.0 = Release|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x64.ActiveCfg = Debug|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x64.Build.0 = Debug|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x86.ActiveCfg = Debug|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x86.Build.0 = Debug|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x64.ActiveCfg = Release|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x64.Build.0 = Release|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x86.ActiveCfg = Release|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x86.Build.0 = Release|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x64.ActiveCfg = Debug|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x64.Build.0 = Debug|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x86.ActiveCfg = Debug|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x86.Build.0 = Debug|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x64.ActiveCfg = Release|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x64.Build.0 = Release|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x86.ActiveCfg = Release|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x86.Build.0 = Release|x86
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Debug|x86.ActiveCfg = Debug|x86
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Debug|x86.Build.0 = Debug|x86
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Release|x64.ActiveCfg = Release|Any CPU
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Release|x86.ActiveCfg = Release|x86
+		{AB88A898-E70A-4A0A-879A-6C91168F7B4B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05732737-856E-441A-922F-679EDB706417}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Webvantage\\Webvantage\\Webvantage.vbproj
+		SccProjectName1 = Webvantage/Webvantage
+		SccLocalPath1 = Webvantage\\Webvantage
+		SccProjectUniqueName2 = Webvantage\\ActiveReportsAssembly\\ActiveReportsAssembly.vbproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = Webvantage\\ActiveReportsAssembly\\
+		SccProjectUniqueName3 = AdvantageFramework\\AdvantageFramework.vbproj
+		SccProjectName3 = AdvantageFramework
+		SccLocalPath3 = AdvantageFramework
+		SccProjectUniqueName4 = AdvantageFramework.BLogic\\AdvantageFramework.BLogic.vbproj
+		SccProjectName4 = AdvantageFramework.BLogic
+		SccLocalPath4 = AdvantageFramework.BLogic
+		SccProjectUniqueName5 = AdvantageFramework.Reporting.Reports\\AdvantageFramework.Reporting.Reports.vbproj
+		SccProjectName5 = AdvantageFramework.Reporting.Reports
+		SccLocalPath5 = AdvantageFramework.Reporting.Reports
+		SccProjectUniqueName6 = AdvantageFramework.Web\\AdvantageFramework.Web.vbproj
+		SccProjectName6 = AdvantageFramework.Web
+		SccLocalPath6 = AdvantageFramework.Web
+		SccProjectUniqueName7 = AdvantageFramework.GoogleServices\\AdvantageFramework.GoogleServices.vbproj
+		SccProjectName7 = AdvantageFramework.GoogleServices
+		SccLocalPath7 = AdvantageFramework.GoogleServices
+	EndGlobalSection
+EndGlobal

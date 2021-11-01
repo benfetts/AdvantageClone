@@ -1,0 +1,196 @@
+﻿/*
+
+    Card Template:
+    =======================================================================
+        <div class="card-container">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-details">
+                    </div>
+                </div>
+                <div class="card-action-bar">
+                </div>
+            </div>
+        </div>
+    =======================================================================
+
+*/
+.landing-page-button {
+    background-color: #0097A7 !important;
+    width: 90% !important;
+    color: #FFFFFF !important;
+    border-radius: 4px !important;
+    height: 60px !important;
+    font-size: 28px !important;
+}
+.dx-button {
+    background-color: #FFFFFF;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.menu-icon
+{
+  width: 128px !important;
+  height: 128px !important;
+}
+.card-container {
+    color: #FFFFFF !important;
+    padding: 0px 0px 60px 0px !important;
+}
+.card {
+    overflow: hidden;
+    border: 1px solid #cfcfcf !important; 
+    width: 100%;
+    position: relative;
+    background-color: #FFFFFF;
+    padding: 0px !important;
+    margin-top:-16px !important;
+    margin-bottom:-2px !important;
+    box-shadow: 1px 1px 1px #cecece;
+    border-radius: 2px;
+}
+.card-spacer {
+    margin: 0px 0px 16px 0px !important;
+}
+.card h1 {
+    font-weight: bold; 
+    font-size: 18px;
+    margin: 0px;
+    cursor: pointer;
+    color: #808080 !important;
+}
+.card h2 {
+    font-weight: bold; 
+    font-size: 16px;
+    margin: 0px;
+    cursor: pointer;
+    color: #808080 !important;
+}
+.card h2:hover {
+
+}
+.card-indicator {
+    /*
+    float:left;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width:10px;
+    border-right: 1px solid #cfcfcf; 
+    background-color: #cfcfcf;
+    border-radius: 2px 0px 0px 2px;*/
+}
+.card-header {
+    /*font-weight: bold;*/
+    font-size: 17px;
+    margin: 0px;
+    cursor: pointer;
+    color: #808080 !important;
+}
+.card-content {
+    overflow:hidden;
+    margin: 4px 8px 4px 8px;
+    white-space:normal !important;
+    color: #808080 !important;
+    /*
+    margin-top: 8px;
+    margin-bottom: 8px;
+    */
+    min-height: 60px;
+}
+.card-details {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+.card-title {
+    overflow:hidden;
+    font-weight: bold; 
+    font-size: 28px;
+    margin-bottom: 14px; 
+    height: 20px;
+}
+.card-button-container {
+    float: right;
+    position: relative;
+    text-align: right;
+    width: 100%;
+}
+.card-action-bar {
+    float:right;
+    position:relative;
+    height:4px;
+    /*margin-top:4px;*/
+    margin-bottom: 0px;
+    margin-right: 0px;
+    text-align:right;
+    bottom: 0px !important;
+    right: 0px;
+    padding: 0;
+    width: 100%;
+    border-radius: 0px 0px 2px 2px;
+    background-color: #808080;
+    /*background-color: #00BCD4;*/ 
+    /*border-bottom: 4px solid #cccccc;
+    vertical-align: middle;*/
+    /* 
+    padding-right: 7px;
+    padding-bottom: 3px;
+    margin-top:10px;
+    border-top: 1px solid #cfcfcf; 
+    border-left: 1px solid #cfcfcf; 
+    border: 1px solid red;
+    overflow: hidden;
+    background-color: #bdbdbd; 
+    padding-right: 12px;
+    */
+}
+.card-action-bar-text {
+    text-align: left !important;
+    vertical-align: middle !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+    padding: 6px 0px 0px 20px !important;
+}
+.card-action-icon {
+    padding:6px;
+    height:24px;
+    width:24px;
+}
+.card-action-icon:hover {
+    /*border: 1px solid #E9360A; */
+    background-color: #e8e8e8;
+}
+.hide {
+    display: none !important;
+}
+.floatLeft {
+    float: left;
+}
+.message-block {
+    text-align:center !important;
+    color:#FFFFFF;
+    background-color:#00BCD4;
+    width:100%;
+    min-height:55px;
+    vertical-align:middle;
+}
+.warning-block {
+    text-align:center !important;
+    color:#FFFFFF;
+    background-color:#E91E63;
+    width:100%;
+    height:55px;
+    vertical-align:middle;
+}
+.message-block-text {
+    font-size:18px;
+    padding-top:15px;
+    text-transform: uppercase;
+}

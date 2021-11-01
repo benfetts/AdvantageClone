@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[RESOURCE_TASKS] (
+    [RESOURCE_TASKS_ID] INT            IDENTITY (1, 1) NOT NULL,
+    [RESOURCE_CODE]     VARCHAR (6)    NOT NULL,
+    [TASK_CODE]         VARCHAR (10)   NULL,
+    [HOURS_ALLOWED]     DECIMAL (8, 2) NULL,
+    [SET_HOURS]         DECIMAL (8, 2) NULL,
+    [BEFORE_AFTER]      SMALLINT       NULL,
+    [CONDITION]         SMALLINT       NULL
+);
+

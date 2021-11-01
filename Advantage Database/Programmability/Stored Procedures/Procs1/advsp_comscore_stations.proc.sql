@@ -1,0 +1,25 @@
+CREATE PROCEDURE [dbo].[advsp_comscore_stations] 
+	@PRIMARY_MARKET_NUMBER integer,
+	@STATION_IDs varchar(max)
+AS
+SELECT
+	ID = CTS.COMSCORE_TV_STATION_ID,
+	Station = CTS.[NAME],
+	[Type] = CASE
+				WHEN CN.[TYPE] = 'Cable' THEN 'Cbl'
+				WHEN CN.[TYPE] = 'Broadcast' THEN 'Bcst'
+				ELSE CN.[TYPE]
+			 END,
+	Affiliation = CN.[NAME],
+	Channel = NULL,
+	IsSelected = CAST(CASE WHEN IDs.items IS NULL THEN 0 ELSE 1 END as bit),
+	StationCode = 0,
+	CallLetters = CTS.CALL_LETTERS,
+	ComscorePrimaryMarketNumber = CTS.PRIMARY_MARKET_NUMBER
+FROM dbo.COMSCORE_TV_STATION CTS
+	LEFT OUTER JOIN dbo.COMSCORE_NETWORK CN ON CTS.NETWORK_NUMBER = CN.NUMBER 
+	LEFT OUTER JOIN (SELECT items FROM dbo.udf_split_list(@STATION_IDs, ',')) IDs ON CTS.COMSCORE_TV_STATION_ID = IDs.items
+WHERE PRIMARY_MARKET_NUMBER = @PRIMARY_MARKET_NUMBER
+OR PRIMARY_MARKET_NUMBER IS NULL
+ORDER BY 3, 2
+GO

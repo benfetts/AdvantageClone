@@ -1,0 +1,28 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Estimating_Update_JobEstimate]
+(
+	@JOB_NUMBER INT,
+	@JOB_COMPONENT_NBR INT,
+	@EST_NBR INT,
+	@EST_COMPONENT_NBR INT
+)
+AS
+BEGIN
+	SET NOCOUNT OFF
+	    
+			UPDATE [JOB_COMPONENT] WITH(ROWLOCK)
+	            SET
+		            [ESTIMATE_NUMBER] = @EST_NBR,
+		            [EST_COMPONENT_NBR] = @EST_COMPONENT_NBR
+	            WHERE
+		            [JOB_NUMBER] = @JOB_NUMBER AND 
+		            [JOB_COMPONENT_NBR] = @JOB_COMPONENT_NBR
+
+	
+END
+
+
+
+
+

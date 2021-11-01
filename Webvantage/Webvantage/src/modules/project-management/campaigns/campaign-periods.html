@@ -1,0 +1,160 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid-toolbar"></require>
+
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+    <require from="aurelia-kendoui-bridge/listbox/listbox"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+
+    <style>
+        #Grid .k-grid-header {
+            padding: 0 !important;
+        }
+
+        #Grid .k-grid-content {
+            overflow-y: visible;
+        }
+
+        .campaign-periods-container h5 {
+            margin: 15px 0;
+            font-size: 13px;
+        }
+    </style>
+
+    <div class="" style="margin-top: 5px;">
+        <div class="campaign-periods-container">
+            <div class="panel panel-default" style="margin-top: 7px;">
+                <div class="panel-heading">${title}</div>
+                <div class="panel-body">
+                    <!--<div class="panel-body form-inline">
+                        <div class="form-group">
+                        </div>
+                        <div class="form-group" style="margin-left: 15px;">
+                        </div>
+                    </div>-->
+                    <div class="pull-left billing-col" style="margin-left: 15px;">
+                        <div class="form-group">
+                            <label for="billing">Total Billing:</label>
+                            <input id="totalBilling" type="number" ak-numerictextbox="k-value.two-way: campaignDetailModel.BillingBudgetAmount; k-decimals.bind: null; k-format.bind: 'n2'; k-spinners.bind: true; k-restrict-decimals.bind: true; k-min.bind: 0;" k-focus.trigger="onFocus" style=" margin-left: 8px;" k-on-change.delegate="Budget_OnChange($event.detail)" />
+                            <!--<input type="number" class="form-control" id="billing" value.bind="campaignDetailModel.BillingBudgetAmount" style=" margin-left: 8px; ">-->
+                        </div>
+                        <h5>Billing Amount Totals</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <label>Media Budget:</label> ${formatCurrency(campaignDetailModel.BillingMediaBudgetAmount)}
+                            </li>
+                            <li>
+                                <label>Production Budget:</label> ${formatCurrency(campaignDetailModel.BillingProductionBudgetAmount)}
+                            </li>
+                            <li>
+                                <label>Combined Budget:</label> ${formatCurrency(campaignDetailModel.BillingCombinedBudgetAmount)}
+                            </li>
+                            <li>
+                                <label>Total Allocated:</label> ${formatCurrency(campaignDetailModel.BillingTotalAllocatedAmount)}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="pull-left billing-col">
+                        <div class="form-group">
+                            <label for="income">Total Income:</label>
+                            <input id="totalIncome" type="number" ak-numerictextbox="k-value.two-way: campaignDetailModel.IncomeBudgetAmount; k-decimals.bind: null; k-format.bind: 'n2'; k-spinners.bind: true; k-restrict-decimals.bind: true; k-min.bind: 0;" style=" margin-left: 8px; " k-on-change.delegate="Budget_OnChange($event.detail)" />
+                            <!--<input type="number" class="form-control" id="income" value.bind="campaignDetailModel.IncomeBudgetAmount" style=" margin-left: 8px; ">-->
+                        </div>
+                        <h5>Income Amount Totals</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <label>Media Budget:</label> ${formatCurrency(campaignDetailModel.IncomeMediaBudgetAmount)}
+                            </li>
+                            <li>
+                                <label>Production Budget:</label> ${formatCurrency(campaignDetailModel.IncomeProductionBudgetAmount)}
+                            </li>
+                            <li>
+                                <label>Combined Budget:</label> ${formatCurrency(campaignDetailModel.IncomeCombinedBudgetAmount)}
+                            </li>
+                            <li>
+                                <label>Total Allocated:</label> ${formatCurrency(campaignDetailModel.IncomeTotalAllocatedAmount)}
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--<ak-grid id="Grid"
+                 view-model.ref="gridVM"
+                 k-widget.bind="grid"
+                 k-class="wv-k-grid"
+                 k-data-source.bind="data"
+                 k-auto-bind.bind="true"
+                 k-toolbar.bind="['new','create','reallocate','excel']"
+                 k-pageable.bind="{ pageSizes: ['All',10,15,20,50,100], buttonCount: 10 }"
+                 k-selectable="multiple"
+                 k-navigatable.bind="true"
+                 k-editable="true"
+                 k-editmode="incell"
+                 k-on-data-bound.delegate="onDataBound($event)">
+            <ak-grid-toolbar>-->
+            <ak-grid view-model.ref="gridVM"
+                     k-auto-bind.bind="false"
+                     k-widget.bind="grid"
+                     k-data-source.bind="data"
+                     k-pageable.bind="{ pageSizes: true, buttonCount: 10 }"
+                     k-navigatable.bind="true"
+                     k-editable.bind="true"
+                     k-selectable.bind="false"
+                     k-filterable.bind="true"
+                     k-sortable.bind="true"
+                     k-editmode="incell"
+                     k-on-data-bound.delegate="onDataBound($event)">
+                <ak-grid-toolbar>
+                    <ak-template>
+                        <a href="#" role="button" class="wv-icon-button k-button k-grid-add wv-add-new" title="New">
+                            <span class="wvi wvi-navigate-plus"></span>
+                        </a>
+                        <a href="#" role="button" class=" wv-icon-button wv-save k-button ${hasChanges === true ? '' : 'k-state-disabled'}" click.delegate="save()" title="Save">
+                            <span class="wvi wvi-floppy-disk"></span>
+                        </a>
+                        <!--<a class="wv-icon-button k-button wv-cancel ${hasChanges === true ? '' : 'k-state-disabled'}" href="javascript:void(0);" click.delegate="cancel()" title="Cancel">
+                            <span class="wvi wvi-sign-forbidden"></span>
+                        </a>-->
+                        <a href="#" role="button" title="Create Budget" class="k-button k-normal" click.delegate="CreateBudget()">Create</a>
+                        <a href="#" role="button" title="Re-Allocate  Budget" class="k-button k-normal" click.delegate="ReAllocateBudget()">Re-Allocate Budget</a>
+                        <!--<a href="#" role="button" class="wv-icon-button k-button wv-neutral" click.delegate="Export()" title="Export to Excel">
+                            <span class="wvi wvi-excel-logo"></span>
+                        </a>-->
+                    </ak-template>
+                </ak-grid-toolbar>
+                <ak-col k-title="Sales Class" k-field="SalesClassCode" k-editor.bind="salesClassDropDownEditor" k-template.bind="SalesClassTemplate"></ak-col>
+                <ak-col k-title="Post Period" k-field="PostPeriodCode" k-editor.bind="postPeriodDropDownEditor" k-template.bind="PostPeriodTemplate"></ak-col>
+                <ak-col k-title="Campaign Detail Type" k-field="CampaignDetailTypeCode" k-editor.bind="campaignDetailTypeDropDownEditor" k-template.bind="CampaignDetailTypeTemplate"></ak-col>
+                <ak-col k-title="Department Team" k-field="DepartmentTeamCode" k-editor.bind="departmentTeamDropDownEditor" k-template.bind="DepartmentTeamTemplate"></ak-col>
+                <ak-col k-title="Billing Budget Amount" k-field="BillingBudgetAmount" k-format="{0:c2}" k-editor.bind="billingAmountEditor"></ak-col>
+                <ak-col k-title="Income Budget Amount" k-field="IncomeBudgetAmount" k-format="{0:c2}" k-editor.bind="billingAmountEditor"></ak-col>
+                <ak-col k-title="Function" k-field="FunctionCode" k-editor.bind="functionDropDownEditor" k-template.bind="FunctionTemplate"></ak-col>
+                <!--<ak-col k-command.bind="['edit', 'destroy']" k-title="&nbsp;" k-width="250px"></ak-col>-->
+                <ak-col k-width="160px">
+                    <ak-template>
+                        <div style="text-align: left;">
+                            <a if.bind="!isNew()" role="button" class="wv-icon-button k-button wv-cancel" title="Delete Row" href="javascript:void(0)" data-toggle="tooltip" data-placement="left" click.delegate="delete(uid)">
+                                <span class="wvi wvi-delete"></span>
+                            </a>
+                            <a role="button" class="wv-icon-button k-button wv-cancel" title="Cancel Changes" css="visibility: ${dirty || Code == '' ? 'visible' : 'hidden'}" href="javascript:void(0)" data-toggle="tooltip" data-placement="left" click.delegate="cancelRowChanges(uid)">
+                                <span class="wvi wvi-sign-forbidden"></span>
+                            </a>
+                        </div>
+                    </ak-template>
+                </ak-col>
+            </ak-grid>
+        </div>
+    </div>
+</template>

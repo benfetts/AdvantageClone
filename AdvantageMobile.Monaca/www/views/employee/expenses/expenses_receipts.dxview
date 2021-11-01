@@ -1,0 +1,77 @@
+<div data-options="dxView : { name: 'expenses_report', title: 'ADVANTAGE' } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: 'Save', icon: 'save' } "></div>
+    <div data-bind="dxCommand: copyButton"></div>
+    <div data-bind="dxCommand: clearButton"></div>
+    <div data-bind="dxCommand: deleteButton"></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " class="dx-content-background">
+        <div data-bind="dxScrollView:{}">
+            <div style="text-align:left;background-color:#8BC34A;height:40px;">
+                <div style="font-size: 18px;padding: 12px 0px 0px 10px;color:#FFFFFF;">Report Information</div>
+            </div>
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">Report Date</div>
+                    <div class="dx-field-value" style="padding: 0px 0px 0px 10px;" data-bind="dxDateBox: receiptDateBox, dxValidator: reportDateValidator"></div>
+                </div>
+                <div data-bind="dxLookup: reportsSelectBox"></div>
+                <div>
+                    <div>Description</div>
+                    <div data-bind="dxTextBox: {value: strDescription, placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator: descriptionValidator"></div>
+                </div>
+                <div>
+                    Details:
+                    <div data-bind="dxTextArea: strDetails"></div>
+                </div>
+            </div>
+            <div class="dx-fieldset">
+                <div data-bind="dxLookup: clientsSelectBox"></div>
+                <div data-bind="dxLookup: divisionsSelectBox"></div>
+                <div data-bind="dxLookup: productsSelectBox"></div>
+                <div data-bind="dxLookup: jobsSelectBox"></div>
+                <div data-bind="dxLookup: jobComponentsSelectBox"></div>
+                <div data-bind="dxLookup: functionsSelectBox"></div>
+            </div>
+
+            <div style="text-align:left;background-color:#8BC34A;height:40px;">
+                <div style="font-size: 18px;padding: 12px 0px 0px 10px;color:#FFFFFF;">Expense Details</div>
+            </div>
+
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">Expense Date</div>
+                    <div class="dx-field-value" style="padding: 0px 0px 0px 10px;" data-bind="dxDateBox: expDateBox, dxValidator: expDateValidator"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Description</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: {value: strExpenseDescription, placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator:expDescriptionValidator"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Amount</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: {value: ExpAmount, placeholder: 'Please Enter', valueChangeEvent: 'change' }, dxValidator:  amountValidator"></div>
+                </div>
+            </div>
+            <div style="text-align:center;" align="center">
+                <input type="checkbox" checked="checked" data-bind="checked: ccFlag" name="chargeToCompanyAccount" />
+                <label for="chargeToCompanyAccount">Charged to company account?</label>
+            </div>
+            <div style="text-align:left;background-color:#8BC34A;height:40px;">
+                <div style="font-size: 18px;padding: 12px 0px 0px 10px;color:#FFFFFF;">Receipts</div>
+            </div>
+
+            <div>
+                <img style="padding-left: 10%; height: 51px;" src="../../Resources/Asset 15.png" />
+            </div>
+            <div data-bind="dxFileUploader: { labelText: labelText,
+                                              multiple: multiple,
+                                              values: values,
+                                              accept: accept,
+                                              uploadMode: uploadMode,
+                                              uploadUrl: uploadUrl,
+                                              onValueChanged: onValueChanged,
+                                              onContentReady: onContentReady }"></div>
+            <p id="b64"></p>
+            <img id="img" height="150">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿
+CREATE PROCEDURE [dbo].[usp_wv_Restricted_GetOffices]
+@UserID VARCHAR(100)	
+
+AS
+
+DECLARE @Restricted INT
+
+SELECT @Restricted = Count(*) FROM SEC_CLIENT WHERE UPPER(USER_ID) = UPPER(@UserID)
+IF @Restricted > 0
+    BEGIN
+		SELECT     
+			DISTINCT OFFICE.OFFICE_CODE + ' - ' + ISNULL(OFFICE.OFFICE_NAME, '') AS Text, 
+			OFFICE.OFFICE_CODE AS Value, 'OF' AS LEVEL, 
+			'Office:  '+OFFICE.OFFICE_CODE + ' - ' + ISNULL(OFFICE.OFFICE_NAME, '') AS Crumb,
+			OFFICE.OFFICE_CODE AS FK,
+			OFFICE.OFFICE_CODE + ' - ' + ISNULL(OFFICE.OFFICE_NAME, '') AS ToolTip,
+			'Images/office.png' AS ImageURL,
+			'Images/office.png' AS ImageExpandedUrl
+		FROM         
+			SEC_CLIENT INNER JOIN
+			PRODUCT ON SEC_CLIENT.CL_CODE = PRODUCT.CL_CODE AND SEC_CLIENT.DIV_CODE = PRODUCT.DIV_CODE AND 
+			SEC_CLIENT.PRD_CODE = PRODUCT.PRD_CODE INNER JOIN
+			OFFICE ON PRODUCT.OFFICE_CODE = OFFICE.OFFICE_CODE
+		WHERE
+			UPPER(SEC_CLIENT.USER_ID) = UPPER(@UserID) AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)       
+    END
+ELSE
+    BEGIN
+		SELECT     
+			DISTINCT OFFICE_CODE + ' - ' + ISNULL(OFFICE_NAME, '') AS Text, 
+			OFFICE_CODE AS Value, 
+			'OF' AS Level, 
+			'Office:  '+OFFICE_CODE + ' - ' + ISNULL(OFFICE_NAME, '') AS Crumb,
+			OFFICE_CODE AS FK,
+			OFFICE_CODE + ' - ' + ISNULL(OFFICE_NAME, '') AS ToolTip,
+			'Images/office.png' AS ImageURL,
+			'Images/office.png' AS ImageExpandedUrl
+		FROM         
+			OFFICE        
+	END
+
+

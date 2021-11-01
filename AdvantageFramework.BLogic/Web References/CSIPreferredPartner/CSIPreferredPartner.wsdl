@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/AdvantageWebServices/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/AdvantageWebServices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/AdvantageWebServices/">
+      <s:element name="SignAgreement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignAgreementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SignAgreementResult" type="tns:AgreementSignedResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AgreementSignedResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClientCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Signed" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SignAgreementSoapIn">
+    <wsdl:part name="parameters" element="tns:SignAgreement" />
+  </wsdl:message>
+  <wsdl:message name="SignAgreementSoapOut">
+    <wsdl:part name="parameters" element="tns:SignAgreementResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CSIPreferredPartnerSoap">
+    <wsdl:operation name="SignAgreement">
+      <wsdl:input message="tns:SignAgreementSoapIn" />
+      <wsdl:output message="tns:SignAgreementSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CSIPreferredPartnerSoap" type="tns:CSIPreferredPartnerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SignAgreement">
+      <soap:operation soapAction="http://localhost/AdvantageWebServices/SignAgreement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CSIPreferredPartnerSoap12" type="tns:CSIPreferredPartnerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SignAgreement">
+      <soap12:operation soapAction="http://localhost/AdvantageWebServices/SignAgreement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CSIPreferredPartner">
+    <wsdl:port name="CSIPreferredPartnerSoap" binding="tns:CSIPreferredPartnerSoap">
+      <soap:address location="https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CSIPreferredPartnerSoap12" binding="tns:CSIPreferredPartnerSoap12">
+      <soap12:address location="https://tascwebservice.gotoadvantage.com/advantagewebservices/ServiceReferences/CSIPreferredPartner.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

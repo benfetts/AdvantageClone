@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[SEC_EMP] (
+    [USER_ID]  VARCHAR (100) NOT NULL,
+    [EMP_CODE] VARCHAR (6)   NOT NULL
+);
+

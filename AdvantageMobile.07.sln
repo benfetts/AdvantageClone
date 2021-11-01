@@ -1,0 +1,173 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework", "AdvantageFramework\AdvantageFramework.vbproj", "{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.BLogic", "AdvantageFramework.BLogic\AdvantageFramework.BLogic.vbproj", "{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.Web", "AdvantageFramework.Web\AdvantageFramework.Web.vbproj", "{2854ABA2-CE90-406B-8041-C9B84D2F97B6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageMobile.DataService", "AdvantageMobile.DataService\AdvantageMobile.DataService.vbproj", "{668CD63D-D595-43FC-A15B-70AEA1438FCD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageMobile.Configurator", "AdvantageMobile.Configurator\AdvantageMobile.Configurator.vbproj", "{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.Reporting.Reports", "AdvantageFramework.Reporting.Reports\AdvantageFramework.Reporting.Reports.vbproj", "{6115EB46-3E3D-4413-903A-618177C655AF}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "www", "AdvantageMobile.Monaca\www", "{EC547D62-B120-4DF6-B159-415E13F2F19A}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50937"
+		Debug.AspNetCompiler.PhysicalPath = "AdvantageMobile.Monaca\www\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50937\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50937"
+		Release.AspNetCompiler.PhysicalPath = "AdvantageMobile.Monaca\www\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50937\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50937"
+		SlnRelativePath = "AdvantageMobile.Monaca\www\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.ActiveCfg = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x64.Build.0 = Debug|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.ActiveCfg = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Debug|x86.Build.0 = Debug|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.ActiveCfg = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x64.Build.0 = Release|x64
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.ActiveCfg = Release|x86
+		{A5ADBD34-DC5F-45EE-AB6A-8E9122DA478D}.Release|x86.Build.0 = Release|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.ActiveCfg = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x64.Build.0 = Debug|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.ActiveCfg = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Debug|x86.Build.0 = Debug|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.ActiveCfg = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x64.Build.0 = Release|x64
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.ActiveCfg = Release|x86
+		{CF80C6A7-30B6-45B8-8FF2-CC3176B95239}.Release|x86.Build.0 = Release|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x64.ActiveCfg = Debug|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x64.Build.0 = Debug|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x86.ActiveCfg = Debug|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Debug|x86.Build.0 = Debug|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x64.ActiveCfg = Release|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x64.Build.0 = Release|x64
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x86.ActiveCfg = Release|x86
+		{2854ABA2-CE90-406B-8041-C9B84D2F97B6}.Release|x86.Build.0 = Release|x86
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Debug|x64.Build.0 = Debug|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Debug|x86.Build.0 = Debug|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Release|x64.ActiveCfg = Release|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Release|x64.Build.0 = Release|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Release|x86.ActiveCfg = Release|Any CPU
+		{668CD63D-D595-43FC-A15B-70AEA1438FCD}.Release|x86.Build.0 = Release|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Debug|x64.Build.0 = Debug|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Debug|x86.Build.0 = Debug|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Release|x64.ActiveCfg = Release|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Release|x64.Build.0 = Release|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Release|x86.ActiveCfg = Release|Any CPU
+		{95FDC98D-DACB-468D-80A8-9AD3657E2EF3}.Release|x86.Build.0 = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x64.ActiveCfg = Debug|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x64.Build.0 = Debug|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x86.ActiveCfg = Debug|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x86.Build.0 = Debug|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x64.ActiveCfg = Release|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x64.Build.0 = Release|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x86.ActiveCfg = Release|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x86.Build.0 = Release|x86
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Debug|x64.Build.0 = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Debug|x86.Build.0 = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Release|x64.ActiveCfg = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Release|x64.Build.0 = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Release|x86.ActiveCfg = Debug|Any CPU
+		{EC547D62-B120-4DF6-B159-415E13F2F19A}.Release|x86.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F78E7722-8631-4420-A2A3-51207026C1F2}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AdvantageFramework\\AdvantageFramework.vbproj
+		SccProjectName1 = AdvantageFramework
+		SccLocalPath1 = AdvantageFramework
+		SccProjectUniqueName2 = AdvantageFramework.BLogic\\AdvantageFramework.BLogic.vbproj
+		SccProjectName2 = AdvantageFramework.BLogic
+		SccLocalPath2 = AdvantageFramework.BLogic
+		SccProjectUniqueName3 = AdvantageFramework.Web\\AdvantageFramework.Web.vbproj
+		SccProjectName3 = AdvantageFramework.Web
+		SccLocalPath3 = AdvantageFramework.Web
+		SccProjectUniqueName4 = AdvantageMobile.DataService\\AdvantageMobile.DataService.vbproj
+		SccProjectName4 = AdvantageMobile.DataService
+		SccLocalPath4 = AdvantageMobile.DataService
+		SccProjectUniqueName5 = AdvantageMobile.Configurator\\AdvantageMobile.Configurator.vbproj
+		SccProjectName5 = AdvantageMobile.Configurator
+		SccLocalPath5 = AdvantageMobile.Configurator
+		SccProjectUniqueName6 = AdvantageFramework.Reporting.Reports\\AdvantageFramework.Reporting.Reports.vbproj
+		SccProjectName6 = AdvantageFramework.Reporting.Reports
+		SccLocalPath6 = AdvantageFramework.Reporting.Reports
+		SccWebProject7 = true
+		SccProjectUniqueName7 = AdvantageMobile.Monaca\\www
+		SccProjectName7 = AdvantageMobile.Monaca/www
+		SccLocalPath7 = AdvantageMobile.Monaca\\www
+		SccProjectEnlistmentChoice7 = 2
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,50 @@
+﻿<!--<div class="modal-header">
+    <h3 class="modal-title">Search - {{searchResults.DisplayName}}</h3>
+</div>-->
+<div class="modal-body">
+    <div style="margin-bottom: 10px">
+        <input id="searchInput" type="text" placeholder="Search..." class="k-textbox" style="width: 100%;" />
+    </div>
+    <div id="selectorGrid" kendo-grid k-options="gridOptions" k-ng-delay="gridOptions">
+
+    </div>
+    <div style="padding: 5px; padding-right: 20px; text-align: right; border-bottom: 1px solid #ccc; ">
+        1 - {{ resultCount }} of {{ resultCount }} Items
+    </div>
+    <div id="optionsPanel" ng-show="searchCriteria.SearchOptions">
+        <div ng-repeat="SearchOption in searchCriteria.SearchOptions">
+            <input ng-model="optionsPanel[SearchOption.ID]" type="{{SearchOption.Type}}" id="{{SearchOption.ID}}" name="{{SearchOption.Name}}" ng-change="{{SearchOption.NgChange}}" />&nbsp;&nbsp;{{ SearchOption.Text }}
+        </div>            
+    </div>
+    <div style="margin-top: 10px; text-align: right;">
+        <button type="button" id="selectButton" kendo-button class="k-primary" ng-click="confirmSelection()">Select</button>
+        <button type="button" id="cancelButton" kendo-button class="k-primary" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
+
+<span id="calc-width"></span>
+
+<style type="text/css">
+    .k-grid td{
+        white-space: nowrap;
+    }
+
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        setTimeout(function () {
+            var maxWidth = 0;
+            $('td[role=gridcell] span').each(function () {
+                var width = $(this).width();
+                if (width > maxWidth)
+                    maxWidth = width;
+            });
+            //alert(maxWidth);
+        }, 3000);
+
+        $('#searchInput').focus();
+    });
+
+</script>

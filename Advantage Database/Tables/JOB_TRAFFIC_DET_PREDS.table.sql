@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[JOB_TRAFFIC_DET_PREDS] (
+    [ID]                  INT      IDENTITY (1, 1) NOT NULL,
+    [JOB_NUMBER]          INT      NOT NULL,
+    [JOB_COMPONENT_NBR]   SMALLINT NOT NULL,
+    [SEQ_NBR]             SMALLINT NOT NULL,
+    [PREDECESSOR_SEQ_NBR] SMALLINT NOT NULL
+);
+

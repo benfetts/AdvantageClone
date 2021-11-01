@@ -1,0 +1,173 @@
+CREATE PROC [advsp_ap_vendor_invoice_detail]
+	@CRITERIA		smallint, --0:PO, 1:Job Number, 2:Expense Account, 3:Approval Status, 4:Order Number
+	@STRING_VALUE	varchar(30),
+	@INT_VALUE		int
+AS
+/*
+declare @CRITERIA	smallint,
+		@VALUE		varchar(30)
+
+set @CRITERIA = 4
+set @VALUE = 162
+*/
+SELECT 
+	[ID] = A.AP_ID,
+	[SequenceNumber] = A.AP_SEQ,
+	[VendorCode] = A.VN_FRL_EMP_CODE,
+	[VendorName] = V.VN_NAME,
+	[VendorCategory] = V.VN_CATEGORY,
+	[OfficeCode] = A.OFFICE_CODE,
+	[OfficeName] = O.OFFICE_NAME,
+	[MarketCode] = V.MARKET_CODE,
+	[MarketDescription] = V.MARKET_DESC,
+	[InvoiceNumber] = A.AP_INV_VCHR,
+	[InvoiceDate] = A.AP_INV_DATE,
+	[EntryDate] = A.CREATE_DATE,
+	[InvoiceDescription] = A.AP_DESC,
+	[InvoiceAmount] = A.AP_INV_AMT + COALESCE(A.AP_SHIPPING, 0) + COALESCE(A.AP_SALES_TAX, 0),
+	[PaymentHold] = A.PAYMENT_HOLD,
+	[Is1099Invoice] = A.FLAG_1099,
+	[VendorOfficeCode] = V.OFFICE_CODE
+FROM [dbo].AP_HEADER A
+	INNER JOIN 
+		(
+		SELECT VN_CODE, VN_NAME, VN_CATEGORY, M.MARKET_CODE, M.MARKET_DESC, OFFICE_CODE
+		FROM [dbo].VENDOR 
+			LEFT OUTER JOIN [dbo].MARKET M ON VENDOR.MARKET_CODE=M.MARKET_CODE
+		) AS V ON A.VN_FRL_EMP_CODE = V.VN_CODE 
+	LEFT OUTER JOIN [dbo].OFFICE O ON A.OFFICE_CODE=O.OFFICE_CODE
+	LEFT OUTER JOIN
+		(
+		SELECT DISTINCT ORDER_NBR, AP_ID 
+		FROM [dbo].AP_INTERNET
+		WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+		UNION
+
+		SELECT ORDER_NBR, AP_ID 
+		FROM [dbo].AP_MAGAZINE 
+		WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+		UNION
+		
+		SELECT ORDER_NBR, AP_ID 
+		FROM [dbo].AP_NEWSPAPER 
+		WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+		UNION
+		
+		SELECT ORDER_NBR, AP_ID 
+		FROM [dbo].AP_OUTDOOR 
+		WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+		UNION
+		
+		SELECT ORDER_NBR, AP_ID 
+		FROM [dbo].AP_RADIO
+		WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+		UNION
+		
+		SELECT ORDER_NBR, AP_ID 
+		FROM [dbo].AP_TV
+		WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+		) AS ORDERS ON A.AP_ID = ORDERS.AP_ID
+WHERE
+	(A.ARCHIVE_FLAG IS NULL OR A.ARCHIVE_FLAG = 0)
+AND A.MODIFY_FLAG IS NULL
+AND A.DELETE_FLAG IS NULL
+AND (
+		(@CRITERIA = 0 AND A.AP_ID IN 
+								(
+								SELECT AP_ID 
+								FROM
+									(
+									SELECT DISTINCT AP_ID, PO_NUMBER
+									FROM [dbo].AP_PRODUCTION
+									WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+									AND PO_NUMBER IS NOT NULL
+
+									UNION
+
+									SELECT AP_ID, PO_NUMBER
+									FROM [dbo].AP_GL_DIST
+									WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+									AND PO_NUMBER IS NOT NULL
+									) POs
+								WHERE POs.PO_NUMBER = @INT_VALUE
+								)
+		)
+	OR
+		(@CRITERIA = 1 AND A.AP_ID IN (
+								     SELECT DISTINCT AP_ID
+									 FROM [dbo].AP_PRODUCTION
+									 WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+									 AND JOB_NUMBER = @INT_VALUE
+									)
+		)
+	OR
+		(@CRITERIA = 2 AND A.AP_ID IN (
+									SELECT AP_ID
+									FROM
+										(
+										SELECT DISTINCT GLACODE, AP_ID
+										FROM [dbo].AP_GL_DIST 
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+										UNION
+
+										SELECT GLACODE, AP_ID
+										FROM [dbo].AP_PRODUCTION
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+										UNION
+
+										SELECT GLACODE, AP_ID
+										FROM [dbo].AP_INTERNET
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+										UNION
+
+										SELECT GLACODE, AP_ID
+										FROM [dbo].AP_MAGAZINE 
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+										UNION
+
+										SELECT GLACODE, AP_ID
+										FROM [dbo].AP_NEWSPAPER 
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+										UNION
+
+										SELECT GLACODE, AP_ID
+										FROM [dbo].AP_OUTDOOR 
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+										UNION 
+
+										SELECT GLACODE, AP_ID
+										FROM [dbo].AP_RADIO 
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0)
+
+										UNION
+
+										SELECT GLACODE, AP_ID
+										FROM [dbo].AP_TV 
+										WHERE (MODIFY_DELETE IS NULL OR MODIFY_DELETE = 0) 
+										) GLAs
+									WHERE GLAs.GLACODE = @STRING_VALUE 
+									)
+		)
+	OR
+		(@CRITERIA = 3 AND A.AP_ID IN (
+								     SELECT AP_ID
+									 FROM [dbo].AP_MEDIA_APPROVAL
+									 WHERE ACTIVE_REV = 1
+									 AND [STATUS] = @INT_VALUE
+									 AND ORDER_NBR = ORDERS.ORDER_NBR 
+									)
+		)
+	OR
+		(@CRITERIA = 4 AND ORDERS.AP_ID IS NOT NULL AND ORDERS.ORDER_NBR = @INT_VALUE)
+	)

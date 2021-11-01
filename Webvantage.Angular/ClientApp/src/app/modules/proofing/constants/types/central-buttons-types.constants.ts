@@ -1,0 +1,22 @@
+export const enum CENTRAL_BUTTONS_TYPES {
+  HAND_SPREAD = 'handSpread',
+  BRUSH = 'brush',
+  SHAPES = 'shapes',
+  TEXT = 'text',
+  SELECTION = 'selection',
+  PASTE_IMAGE = 'pasteImage',
+  LINK = 'link',
+  ARROW_FROM = 'arrowFrom',
+  MAGNIFYING_GLASS = 'magnifyingGlass',
+  GARBAGE_CAN = 'garbageCan',
+  VERSION = 'version',
+  PAGE_NAVIGATION = 'pageNavigation',
+  BOTTOM_NAVIGATION = 'bottomNavigation',
+  RETICLE = 'reticle',
+  ROTATE_LEFT = 'rotateLeft',
+  TEXT_AREA = 'textArea',
+  COMPARE = 'compare',
+  MARKER_TOOL = 'markerTool',
+  OVERLAY = 'overlay',
+  ARROW = 'arrow'
+}

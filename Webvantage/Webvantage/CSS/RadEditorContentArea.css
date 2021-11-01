@@ -1,0 +1,13 @@
+﻿body 
+{
+   color: #000000 !important;
+   background-color: #FFFFFF !important;
+   font-family: Calibri,Tahoma, Verdana, Arial !important;
+   word-wrap: normal !important;
+    overflow: auto !important;
+}
+table {
+    border-collapse:collapse !important;
+    border:0px !important;
+    overflow: auto !important;
+}

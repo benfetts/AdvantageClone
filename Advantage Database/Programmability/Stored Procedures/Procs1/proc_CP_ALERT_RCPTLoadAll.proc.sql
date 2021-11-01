@@ -1,0 +1,32 @@
+﻿
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_CP_ALERT_RCPTLoadAll]
+AS
+BEGIN
+
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[ALERT_ID],
+		[ALERT_RCPT_ID],
+		[CDP_CONTACT_ID],
+		[EMAIL_ADDRESS],
+		[PROCESSED],
+		[NEW_ALERT],
+		[READ_ALERT],
+		[CURRENT_RCPT]
+	FROM [CP_ALERT_RCPT]
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+

@@ -1,0 +1,103 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_job_update]
+	@JOB_NUMBER int,
+	@OFFICE_CODE varchar(4),
+	@CL_CODE varchar(6),
+	@DIV_CODE varchar(6),
+	@PRD_CODE varchar(6),
+	@CMP_CODE varchar(6),
+	@SC_CODE varchar(6),
+	@USER_ID varchar(100),
+	@CREATE_DATE smalldatetime,
+	@JOB_DESC varchar(60),
+	@JOB_DATE_OPENED smalldatetime,
+	@JOB_RUSH_CHARGES smallint,
+	@JOB_ESTIMATE_REQ smallint,
+	@JOB_COMMENTS text,
+	@JOB_CLI_REF varchar(30),
+	@BILL_COOP_CODE varchar(6),
+	@FORMAT_SC_CODE varchar(6),
+	@FORMAT_CODE varchar(8),
+	@COMPLEX_CODE varchar(8),
+	@PROMO_CODE varchar(8),
+	@CMP_IDENTIFIER int,
+	@CMP_LINE_NBR smallint,
+	@JOB_BILL_COMMENT varchar(254),
+	@FEE_JOB smallint, 
+	@UDF1 VarChar(10), 
+	@UDF2 VarChar(10), 
+	@UDF3 VarChar(10), 
+	@UDF4 VarChar(10), 
+	@UDF5 VarChar(10) 
+AS
+
+UPDATE [dbo].[JOB_LOG] SET
+	[OFFICE_CODE] = @OFFICE_CODE,
+	[CL_CODE] = @CL_CODE,
+	[DIV_CODE] = @DIV_CODE,
+	[PRD_CODE] = @PRD_CODE,
+	[CMP_CODE] = @CMP_CODE,
+	[SC_CODE] = @SC_CODE,
+	[USER_ID] = @USER_ID,
+	[CREATE_DATE] = @CREATE_DATE,
+	[JOB_DESC] = @JOB_DESC,
+	[JOB_DATE_OPENED] = @JOB_DATE_OPENED,
+	[JOB_RUSH_CHARGES] = @JOB_RUSH_CHARGES,
+	[JOB_ESTIMATE_REQ] = @JOB_ESTIMATE_REQ,
+	[JOB_COMMENTS] = @JOB_COMMENTS,
+	[JOB_CLI_REF] = @JOB_CLI_REF,
+	[BILL_COOP_CODE] = @BILL_COOP_CODE,
+	[FORMAT_SC_CODE] = @FORMAT_SC_CODE,
+	[FORMAT_CODE] = @FORMAT_CODE,
+	[COMPLEX_CODE] = @COMPLEX_CODE,
+	[PROMO_CODE] = @PROMO_CODE,
+	[CMP_IDENTIFIER] = @CMP_IDENTIFIER,
+	[CMP_LINE_NBR] = @CMP_LINE_NBR,
+	[JOB_BILL_COMMENT] = @JOB_BILL_COMMENT,
+	[FEE_JOB] = @FEE_JOB, 
+	[UDV1_CODE] = @UDF1, 
+	[UDV2_CODE] = @UDF2, 
+	[UDV3_CODE] = @UDF3, 
+	[UDV4_CODE] = @UDF4, 
+	[UDV5_CODE] = @UDF5 
+WHERE
+	[JOB_NUMBER] = @JOB_NUMBER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

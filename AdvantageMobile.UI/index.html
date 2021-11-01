@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/dx.spa.css" />
+    <link rel="stylesheet" type="text/css" href="css/dx.common.css" />
+    <link rel="dx-theme" data-theme="android5.light" href="css/dx.android5.light.css" data-active="false" />
+    <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />-->
+    <link rel="dx-theme" data-theme="ios7.default" href="css/dx.ios7.default.css" data-active="true" />
+    <!-- <link rel="dx-theme" data-theme="win8.black" href="css/dx.win8.black.css" data-active="true" /> -->
+    <link rel="dx-theme" data-theme="win10.black" href="css/dx.win10.black.css" data-active="true" />
+    <!-- <link rel="dx-theme" data-theme="win8.white" href="css/dx.win8.white.css" data-active="true" /> -->
+    <link rel="dx-theme" data-theme="win10.white" href="css/dx.win10.white.css" data-active="true" />
+    <link rel="dx-theme" data-theme="generic.light" href="css/dx.light.css" data-active="true" />
+    <link rel="dx-theme" data-theme="generic.contrast" href="css/dx.contrast.css" />
+    <link rel="dx-theme" data-theme="generic.contrast.compact" href="css/dx.contrast.compact.css" />
+    <link rel="dx-theme" data-theme="generic.dark.compact" href="css/dx.dark.compact.css" />
+    <link rel="dx-theme" data-theme="generic.light.compact" href="css/dx.light.compact.css" />
+    <link rel="dx-theme" data-theme="android5.dark" href="css/adv.android5.dark.css" data-active="false" />
+    <link rel="dx-theme" data-theme="advgeneric.light" href="css/adv.advgeneric.light.css" data-active="true" />
+    <link rel="dx-theme" data-theme="advgeneric.dark" href="css/adv.advgeneric.dark.css" data-active="false" />
+    <link rel="dx-theme" data-theme="aqua.light" href="css/adv.aqua.light.css" data-active="true" />
+    <title>Aqua</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/sjcl.js"></script>
+    <!---->
+    <link rel="dx-theme" data-theme="generic.dark" href="css/dx.dark.css" data-active="false" />
+    <link rel="stylesheet" type="text/css" href="css/custom.icons.color.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.icons.white.css" />
+    <link rel="stylesheet" type="text/css" href="css/card_layout/cards.css" />
+    <link rel="stylesheet" type="text/css" href="css/card_layout/colors.css" />
+    <link href="views/employee/employee.css" rel="stylesheet" type="text/css" />
+    <!-- Framework -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <!--<![endif]-->
+    <script type="text/javascript" src="js/knockout-3.4.0.js"></script>
+    <!-- Read the Localization section of the migration guide for more details http://dxpr.es/1TXqrVS -->
+    <script type="text/javascript" src="js/cldr.min.js"></script>
+    <script type="text/javascript" src="js/cldr/event.min.js"></script>
+    <script type="text/javascript" src="js/cldr/supplemental.min.js"></script>
+    <script type="text/javascript" src="js/globalize.min.js"></script>
+    <script type="text/javascript" src="js/globalize/number.min.js"></script>
+    <script type="text/javascript" src="js/globalize/date.min.js"></script>
+    <script type="text/javascript" src="js/globalize/message.min.js"></script>
+    <script type="text/javascript" src="js/globalize/currency.min.js"></script>
+    <script type="text/javascript" src="js/dx.all.js"></script>
+    <!--
+    <script type="text/javascript" src="js/dx.all.debug.js"></script>
+    <script type="text/javascript" src="js/dx.phonejs.js"></script>
+    <script type="text/javascript" src="js/dx.all.debug.js"></script>
+    -->
+    <!-- Third Party -->
+    <script type="text/javascript" src="js/kendoui/kendo.all.min.js"></script>
+    <!--<script type="text/javascript" src="js/kendoui/kendo.mobile.min.js"></script>-->
+    <link rel="stylesheet" href="css/kendoui/kendo.common.min.css" />
+    <link rel="stylesheet" href="css/kendoui/kendo.bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="css/kendoui/kendo.bootstrap.mobile.min.css" />-->
+
+
+    <!--<link rel="stylesheet" href="css/kendoui/kendo.default.min.css" />
+    <link rel="stylesheet" href="css/kendoui/kendo.default.mobile.min.css" />-->
+    <!--<link rel="stylesheet" href="css/kendoui/kendo.mobile.all.min.css" />
+    <link rel="stylesheet" href="css/kendoui/kendo.mobile.android.light.min.css" />-->
+   <!-- Application CSS -->
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <!--
+        <link rel="stylesheet" type="text/css" href="index.small.css" media="screen and (max-width: 700px) and (orientation:portrait), screen and (max-height: 700px) and (orientation:landscape)" />
+        <link rel="stylesheet" type="text/css" href="index.medium.css" media="screen and (min-width: 701px) and (orientation:portrait), screen and (min-height: 701px) and (orientation:landscape)" />
+    -->
+    <!-- Application -->
+    <script type="text/javascript" src="js/type-prototypes.js"></script>
+    <script type="text/javascript" src="shared.config.js"></script>
+    <script type="text/javascript" src="app.config.js"></script>
+    <script type="text/javascript" src="view_models/mobile_user_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_summary_view_model.js"></script>
+    <script type="text/javascript" src="js/controls.buttons.js"></script>
+    <script type="text/javascript" src="data/User.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="js/messages.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="data/db.js"></script>
+    <!-- Layouts -->
+    <link rel="stylesheet" type="text/css" href="layouts/Desktop/DesktopLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Desktop/DesktopLayout.html" />
+    <link rel="stylesheet" type="text/css" href="layouts/Empty/EmptyLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Empty/EmptyLayout.html" />
+    <script type="text/javascript" src="layouts/Empty/EmptyLayout.js"></script>
+    <link rel="stylesheet" type="text/css" href="layouts/Navbar/NavbarLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Navbar/NavbarLayout.html" />
+    <script type="text/javascript" src="layouts/Navbar/NavbarLayout.js"></script>
+    <script type="text/javascript" src="layouts/Pivot/PivotLayout.js"></script>
+    <link rel="stylesheet" type="text/css" href="layouts/Pivot/PivotLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Pivot/PivotLayout.html" />
+    <link rel="stylesheet" type="text/css" href="layouts/Simple/SimpleLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Simple/SimpleLayout.html" />
+    <script type="text/javascript" src="layouts/Simple/SimpleLayout.js"></script>
+    <link rel="stylesheet" type="text/css" href="layouts/SlideOut/SlideOutLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/SlideOut/SlideOutLayout.html" />
+    <script type="text/javascript" src="layouts/SlideOut/SlideOutLayout.js"></script>
+    <link rel="stylesheet" type="text/css" href="layouts/Split/SplitLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Split/SplitLayout.html" />
+    <script type="text/javascript" src="layouts/Split/SplitLayout.js"></script>
+    <!-- View Models -->
+    <script type="text/javascript" src="view_models/alert_assignment_email_groups_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_assignment_states_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_assignment_template_department_teams_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_assignment_template_employees_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_assignment_template_roles_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_assignment_template_states_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_assignment_templates_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_comments_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_groups_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_recipients_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alert_types_view_model.js"></script>
+    <script type="text/javascript" src="view_models/alerts_view_model.js"></script>
+    <script type="text/javascript" src="view_models/clients_view_model.js"></script>
+    <script type="text/javascript" src="view_models/department_teams_view_model.js"></script>
+    <script type="text/javascript" src="view_models/dismissed_alert_recipients_view_model.js"></script>
+    <script type="text/javascript" src="view_models/divisions_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_department_teams_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_pictures_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_time_comments_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_time_details_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_time_indirects_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_time_templates_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employee_times_view_model.js"></script>
+    <script type="text/javascript" src="view_models/employees_view_model.js"></script>
+    <script type="text/javascript" src="view_models/error_messages_view_model.js"></script>
+    <script type="text/javascript" src="view_models/expense_details_view_model.js"></script>
+    <script type="text/javascript" src="view_models/expenses_view_model.js"></script>
+    <script type="text/javascript" src="view_models/functions_view_model.js"></script>
+    <script type="text/javascript" src="view_models/job_components_view_model.js"></script>
+    <script type="text/javascript" src="view_models/job_logs_view_model.js"></script>
+    <script type="text/javascript" src="view_models/job_traffic_detail_employees_view_model.js"></script>
+    <script type="text/javascript" src="view_models/job_traffic_details_view_model.js"></script>
+    <script type="text/javascript" src="view_models/job_traffics_view_model.js"></script>
+    <script type="text/javascript" src="view_models/my_tasks_view_model.js"></script>
+    <script type="text/javascript" src="view_models/offices_view_model.js"></script>
+    <script type="text/javascript" src="view_models/products_view_model.js"></script>
+    <script type="text/javascript" src="view_models/security_clients_view_model.js"></script>
+    <script type="text/javascript" src="view_models/security_group_permissions_view_model.js"></script>
+    <script type="text/javascript" src="view_models/security_permissions_view_model.js"></script>
+    <script type="text/javascript" src="view_models/security_users_view_model.js"></script>
+    <script type="text/javascript" src="view_models/time_category_types_view_model.js"></script>
+    <script type="text/javascript" src="view_models/time_categorys_view_model.js"></script>
+    <script type="text/javascript" src="view_models/time_entries_view_model.js"></script>
+    <script type="text/javascript" src="view_models/time_entry_result_view_model.js"></script>
+    <script type="text/javascript" src="view_models/time_templates_view_model.js"></script>
+    <script type="text/javascript" src="view_models/expense_report_submit_options_view_model.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <!-- Test Views -->
+    <script type="text/javascript" src="views/testing/client/clients.js"></script>
+    <link rel="dx-template" type="text/html" href="views/testing/client/clients.dxview" />
+    <script type="text/javascript" src="views/testing/client/client-details.js"></script>
+    <link rel="dx-template" type="text/html" href="views/testing/client/client-details.dxview" />
+    <script type="text/javascript" src="views/testing/client/client-edit.js"></script>
+    <link rel="dx-template" type="text/html" href="views/testing/client/client-edit.dxview" />
+    <!-- Views -->
+    <link rel="dx-template" type="text/html" href="views/home/home.dxview" />
+    <link rel="stylesheet" type="text/css" href="views/home/home.css" />
+    <script type="text/javascript" src="views/home/home.js"></script>
+    <script type="text/javascript" src="views/desktop/desktop.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/desktop.dxview" />
+    <script type="text/javascript" src="views/employee/employee.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/employee.dxview" />
+    <script type="text/javascript" src="views/project_management/project_management.js"></script>
+    <link rel="dx-template" type="text/html" href="views/project_management/project_management.dxview" />
+    <script type="text/javascript" src="views/media/media.js"></script>
+    <link rel="dx-template" type="text/html" href="views/media/media.dxview" />
+    <script type="text/javascript" src="views/finance_accounting/finance_accounting.js"></script>
+    <link rel="dx-template" type="text/html" href="views/finance_accounting/finance_accounting.dxview" />
+    <script type="text/javascript" src="views/maintenance/maintenance.js"></script>
+    <link rel="dx-template" type="text/html" href="views/maintenance/maintenance.dxview" />
+    <script type="text/javascript" src="views/security/security.js"></script>
+    <link rel="dx-template" type="text/html" href="views/security/security.dxview" />
+    <script type="text/javascript" src="views/about/about.js"></script>
+    <link rel="dx-template" type="text/html" href="views/about/about.dxview" />
+    <script type="text/javascript" src="views/security/sign_in.js"></script>
+    <link rel="dx-template" type="text/html" href="views/security/sign_in.dxview" />
+    <script type="text/javascript" src="views/settings/my_settings.js"></script>
+    <link rel="dx-template" type="text/html" href="views/settings/my_settings.dxview" />
+    <script type="text/javascript" src="views/testing/TestView.js"></script>
+    <link rel="dx-template" type="text/html" href="views/testing/TestView.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/alert_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/alert_list.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/alert_main.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/alert_main.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/new_alert/new_alert.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/new_alert/new_alert.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/view_alert/view_alert.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/view_alert/view_alert.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/view_alert/view_alert_assignment.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/view_alert/view_alert_assignment.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/view_alert/view_alert_comments.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/view_alert/view_alert_comments.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/view_alert/view_alert_attachments.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/view_alert/view_alert_attachments.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/view_alert/view_alert_recipients.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/view_alert/view_alert_recipients.dxview" />
+    <script type="text/javascript" src="views/desktop/alert/select_recipients.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/alert/select_recipients.dxview" />
+    <script type="text/javascript" src="views/employee/expense_report/expense_entry.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expense_report/expense_entry.dxview" />
+    <script type="text/javascript" src="views/employee/expense_report/expense_main.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expense_report/expense_main.dxview" />
+    <script type="text/javascript" src="views/employee/expense_report/expense_report.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expense_report/expense_report.dxview" />
+    <script type="text/javascript" src="views/employee/expense_report/expense_reports_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expense_report/expense_reports_list.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/select_calendar.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/select_calendar.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_entry.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_entry.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_list.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_list_month.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_list_month.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_list_week.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_list_week.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_main.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_main.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_template_detail.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_template_detail.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_template_edit.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_template_edit.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_template_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_template_list.dxview" />
+    <script type="text/javascript" src="views/project_management/project_schedule/task_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/project_management/project_schedule/task_list.dxview" />
+    <script type="text/javascript" src="views/project_management/project_schedule/project_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/project_management/project_schedule/project_list.dxview" />
+    <script type="text/javascript" src="views/security/licensing.js"></script>
+    <link rel="dx-template" type="text/html" href="views/security/licensing.dxview" />
+    <script type="text/javascript" src="views/employee/timesheet/time_stopwatch.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/timesheet/time_stopwatch.dxview" />
+    <script type="text/javascript" src="views/employee/expense_report/expense_receipt.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expense_report/expense_receipt.dxview" />
+    <script type="text/javascript" src="views/employee/favorites/favorites_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/favorites/favorites_list.dxview" />
+    <script type="text/javascript" src="views/desktop/calendar/calendar_main.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/calendar/calendar_main.dxview" />
+    <script type="text/javascript" src="views/desktop/calendar/schedule_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/desktop/calendar/schedule_list.dxview" />
+    <script type="text/javascript" src="views/utilities/select_date.js"></script>
+    <link rel="dx-template" type="text/html" href="views/utilities/select_date.dxview" />
+    <script type="text/javascript" src="views/utilities/upload_file.js"></script>
+    <link rel="dx-template" type="text/html" href="views/utilities/upload_file.dxview" />
+    <script type="text/javascript" src="views/project_management/job_jacket/job_list.js"></script>
+    <link rel="dx-template" type="text/html" href="views/project_management/job_jacket/job_list.dxview" />
+    <script type="text/javascript" src="views/utilities/rich_editor.js"></script>
+    <link rel="dx-template" type="text/html" href="views/utilities/rich_editor.dxview" />
+    <script type="text/javascript" src="views/employee/expenses/expenses_summary.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expenses/expenses_summary.dxview" />
+    <script type="text/javascript" src="views/employee/expenses/expenses_report.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expenses/expenses_report.dxview" />
+    <script type="text/javascript" src="views/employee/expenses/expense_header_edit.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expenses/expense_header_edit.dxview" />
+    <script type="text/javascript" src="views/employee/expenses/expenses_detail.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expenses/expenses_detail.dxview" />
+    <script type="text/javascript" src="views/employee/expenses/expense_documents.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expenses/expense_documents.dxview" />
+    <script type="text/javascript" src="views/employee/expenses/submit_options.js"></script>
+    <link rel="dx-template" type="text/html" href="views/employee/expenses/submit_options.dxview" />
+</head>
+<body>
+    <div class="dx-viewport" id="viewPort">
+    </div>
+</body>
+</html>

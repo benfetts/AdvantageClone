@@ -1,0 +1,125 @@
+﻿<template>
+    <style>
+        .k-virtual-content {
+            overflow-y: auto;
+        }
+
+        .wv-search .k-multiselect .k-multiselect-wrap ul > li.k-button span:first-child {
+            max-width: 250px;
+        }
+    </style>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="resources/elements/singleselect/singleselect"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/combobox/combobox"></require>
+
+    <div class="wv-widget-col wv-form wv-search">
+        <div class="wv-form-group">
+            <label>Office:</label>
+            <div style="width:350px" class="wv-search">
+                <ak-combobox id="officeComboBox"
+                            style="width: 350px;"
+                            k-filter="contains"
+                            k-auto-bind.bind="false"
+                            k-option-label="Office"
+                            k-data-text-field="Name"
+                            k-data-value-field="Code"
+                            k-data-source.bind="officeDataSource"
+                            k-on-change.delegate="officeMultiSelect_OnChange($event.detail)"
+                            k-value.two-way="officeCode"
+                            k-on-ready.delegate="onOfficeReady($event.detail)"
+                            k-widget.bind="officeMultiSelect">
+                </ak-combobox>
+            </div>
+        </div>
+        <div class="wv-form-group">
+            <label>Client:</label>
+            <div style="width:350px" class="wv-search">
+                <ak-combobox style="width: 100%;"
+                            k-filter="contains"
+                            k-auto-bind.bind="false"
+                            k-option-label="Client"
+                            k-data-text-field="Name"
+                            k-data-value-field="Code"
+                            k-data-source.bind="clientDataSource"
+                            k-on-change.delegate="clientMultiSelect_OnChange($event.detail)"
+                            k-value.two-way="clientCode"
+                            k-virtual.bind="virtualClient"
+                            k-widget.bind="clientMultiSelect">
+                </ak-combobox>
+            </div>
+        </div>
+        <div class="wv-form-group wv-search">
+            <label>Division:</label>
+            <div style="width:350px" class="wv-search">
+                <ak-combobox style="width: 100%"
+                            k-filter="contains"
+                            k-auto-bind.bind="false"
+                            k-option-label="Division"
+                            k-data-text-field="Name"
+                            k-data-value-field="ID"
+                            k-data-source.bind="divisionDataSource"
+                            k-on-change.delegate="divisionMultiSelect_OnChange($event.detail)"
+                            k-value.two-way="divisionId"
+                            k-virtual.bind="virtualDivision"
+                            k-widget.bind="divisionMultiSelect">
+                </ak-combobox>
+            </div>
+        </div>
+        <div class="wv-form-group">
+            <label>Product:</label>
+            <div style="width:350px" class="wv-search">
+                <ak-combobox style="width: 100%;"
+                            k-filter="contains"
+                            k-auto-bind.bind="false"
+                            k-option-label="Product"
+                            k-data-text-field="Name"
+                            k-data-value-field="ID"
+                            k-data-source.bind="productDataSource"
+                            k-on-change.delegate="productMultiSelect_OnChange($event.detail)"
+                            k-value.two-way="productId"
+                            k-virtual.bind="virtualProduct"
+                            k-widget.bind="productMultiSelect">
+                </ak-combobox>
+            </div>
+        </div>
+    </div>
+    <div class="wv-widget-col wv-form">
+        <div class="wv-form-group">
+            <label>Job:</label>
+            <div style="width:450px" class="wv-search">
+                <ak-combobox style="width: 100%;"
+                            k-filter="contains"
+                            k-auto-bind.bind="false"
+                            k-option-label="Job"
+                            k-data-text-field="Name"
+                            k-data-value-field="Code"
+                            k-data-source.bind="jobDataSource"
+                            k-on-change.delegate="jobMultiSelect_OnChange($event.detail)"
+                            k-value.two-way="jobNumber"
+                            k-virtual.bind="virtualJob"
+                            k-widget.bind="jobMultiSelect">
+                </ak-combobox>
+            </div>
+        </div>
+        <div class="wv-form-group">
+            <label>Component:</label>
+            <div style="width:450px; float: left" class="wv-search">
+                <ak-combobox style="width:100%"
+                            k-filter="contains"
+                            k-min-length.bind="1"
+                            k-auto-bind.bind="false"
+                            k-option-label="Component"
+                            k-data-text-field="Name"
+                            k-data-value-field="ID"
+                            k-data-source.bind="componentDataSource"
+                            k-on-change.delegate="componentMultiSelect_OnChange($event.detail)"
+                            k-value.two-way="componentCode"
+                            k-virtual.bind="virtualComponent"
+                            k-widget.bind="componentMultiSelect">
+                </ak-combobox>
+            </div>
+            <button href="#" title="New" disabled.bind="componentCode != 0" click.delegate="contactsClick()" role="button" class="wv-icon-button k-button" style="margin-left: 8px;"><span class="wvi wvi-user-telephone"></span></button>
+        </div>
+    </div>
+</template>

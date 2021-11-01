@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[RATE_CARD_COLORCHG] (
+    [RATE_CARD_ID] INT             NOT NULL,
+    [COLOR_ID]     INT             NOT NULL,
+    [COLOR_CHARGE] DECIMAL (15, 4) NULL,
+    [COLOR_DESC]   VARCHAR (30)    NULL
+);
+

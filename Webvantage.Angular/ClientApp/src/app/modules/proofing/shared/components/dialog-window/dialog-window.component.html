@@ -1,0 +1,10 @@
+<kendo-dialog class="dialog-window" title="Please confirm" (close)="closeDialog()" width="270" height="178">
+  <div class="alert-block">
+    <img src="assets/icons/alert.svg"/>
+    <p>{{dialogWindowText}}</p>
+  </div>
+  <kendo-dialog-actions>
+    <button *ngIf="!showOneButton" kendoButton (click)="closeDialog()">Cancel</button>
+    <button kendoButton (click)="closeDialog()" primary="true">{{closeButtonText}}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

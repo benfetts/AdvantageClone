@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[ADVAN_DTYPE] (
+    [ADVAN_DTYPE_ID] SMALLINT     NOT NULL,
+    [ADVAN_DTYPE]    VARCHAR (20) NOT NULL,
+    [USES_PREC]      BIT          NULL,
+    [USES_SCALE]     BIT          NULL
+);
+

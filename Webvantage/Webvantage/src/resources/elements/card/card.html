@@ -1,0 +1,197 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/menu/menu"></require>
+    <style>
+    </style>
+    <div class="wv-card priority-${priority}" title="${title}">
+        <div class="content">
+            <div class="title ${isread == 'false' ? ' not-is-read' : ''}" title="${title}" style="cursor: pointer;" click.delegate="openassignment()">
+                ${title}
+            </div>
+            <div style="vertical-align: top !important;">
+                <div style="display: none !important; position: relative; vertical-align: top; padding-right: 4px;">
+                    <img src.bind="reviewimage" style="height: 48px; width: 48px;"/>
+                </div>
+                <div style="display: inline-block; position: relative; vertical-align: top;">
+                    <div if.bind="showstate == 'true' && alertstatename != 'None'" style="font-style: italic;">${alertstatename}</div>
+                    <div repeat.for="detail of details" title="${detail}" style.bind="tempcompletestring">${detail}</div>
+                    <div>
+                        <div style.bind="styleObject" if.bind="startdate" style="float:left">Start:&nbsp;${startdatestring}</div>
+                        <div style="display: inline-block; float:left" if.bind="startdate && duedate">,&nbsp;&nbsp;</div>
+                        <div style.bind="styleObject" if.bind="duedate" title="${dueDateTitle}">Due:&nbsp;<span class="${dueDateCssName}">${duedatestring}</span></div>
+                        <div if.bind="showchecklistsoncards == 'true' && checklisttotal > 0"><span id="checklist-icon" class="wvi wvi-clipboard-checks"></span><span class="checklist-items">${checklistcomplete}/${checklisttotal}</span></div>
+                    </div>
+                    <div if.bind="timedue != ''">Time Due: ${timedue}</div>
+                </div>
+            </div>
+        </div>
+        <div class="wv-footer">
+            <span class="wv-badge" title="${alertcategorydescription}">${indicator}</span>
+            <span class="wv-badge ${taskstatus == 'A' ? ' active' : ' projected'}" if.bind="taskstatus != ''" title="${taskstatusdescription}">${taskstatus}</span>
+            <!--<span class="wv-badge" title="Auto Routed Assignment"><span class="wvi wvi-arrow-u-turn"></span></span>-->
+            <ul class="pull-left list-inline" if.bind="isautoroute == 'true'">
+                <li>
+                    <button class="btn btn-link" title="Auto Routed Assignment" style="cursor:default !important;"><span class="wvi wvi-arrow-u-turn"></span></button>
+                </li>
+            </ul>
+            <ul class="pull-right list-inline">
+                <li if.bind="loadtype == '3'">
+                    <button class="btn btn-link" click.delegate="feedbackSummary()" title="Download feedback summary for ${reviewItemTextSingular}"><span class="wvi wvi-document-pulse"></span></button>
+                </li>
+                <li if.bind="loadtype == '1' && ismytasktempcomplete == 'false' && !isClientPortal">
+                    <button class="btn btn-link" click.delegate="deleteAssignmentClick(0)" title="Complete"><span class="wvi wvi-checkbox"></span></button>
+                </li>
+                <li if.bind="loadtype == '1' && ismytasktempcomplete == 'true' && !isClientPortal">
+                    <button class="btn btn-link" click.delegate="deleteAssignmentClick(1)" title="Not Complete"><span class="wvi wvi-undo"></span></button>
+                </li>
+
+                <li if.bind="loadtype == '0'">
+                    <button class="btn btn-link" click.delegate="deleteAssignmentClick()" title="Dismiss"><span class="wvi wvi-garbage"></span></button>
+                </li>
+                <li if.bind="loadtype == '3'">
+                    <button class="btn btn-link" click.delegate="deleteAssignmentClick()" title="Refresh ${reviewItemTextSingular}"><span class="wvi wvi-refresh"></span></button>
+                </li>
+
+                <li if.bind="(isalertassignment != 'false' || alertcategorydescription == 'Task') && !isClientPortal && loadtype !=3">
+                    <button class="btn btn-link" click.delegate="assignmentClick()"  title="Re-assign"><span class="wvi wvi-users-relation2"></span></button>
+                </li>
+                <li>
+                    <button class="btn btn-link" click.delegate="commentsClick()" title="Comments"><span class="wvi wvi-messages"></span></button>
+                </li>
+                <li if.bind="((jobnumber > 0 && jobcomponentnumber > 0) || (clientname == null || clientname == '')) && !isClientPortal  && isTimesheetActive == true ">
+                    <button class="btn btn-link" click.delegate="addTimeClick()" title="Add Time"><span class="wvi wvi-clock"></span></button>
+                </li>
+                <li if.bind="jobnumber > 0 && jobcomponentnumber > 0 && !isClientPortal && isTimesheetActive == true">
+                    <button class="btn btn-link" click.delegate="stopwatchClick()" title="Start Stopwatch"><span class="wvi wvi-stopwatch"></span></button>
+                </li>
+                <li>
+                    <div class="dropdown btn-group">
+                        <button class="wv-icon-link btn-link dropdown-toggle" style="font-size:16px;line-height:24px;" type="button" data-toggle="dropdown" title="Options">
+                            <span class="wvi wvi-vertical-ellipsis"></span>
+
+                        </button>
+                        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li class="dropdown-submenu" if.bind="!isClientPortal">
+                                <a tabindex="-1" href="#">Change Priority</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="updatecardpriority(1)">
+                                            <span class="circle priority-1"></span> Highest
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="updatecardpriority(2)">
+                                            <span class="circle priority-2"></span> High
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="updatecardpriority(3)">
+                                            <span class="circle priority-3"></span> Normal
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="updatecardpriority(4)">
+                                            <span class="circle priority-4"></span> Low
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="updatecardpriority(5)">
+                                            <span class="circle priority-5"></span> Lowest
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="divider" if.bind="!isClientPortal"></li>
+                            <li><a href="#" click.delegate="openNew(0)" title="New Alert">New Alert</a></li>
+                            <li if.bind="!isClientPortal"><a href="#" click.delegate="openNew(1)" title="New Assignment">New Assignment</a></li>
+                            <li if.bind="!isClientPortal && isProofingActive == true"><a href="#" click.delegate="openNew(2)" title="New Proof">New Proof</a></li>
+                            <li class="divider"></li>
+                            <li if.bind="jobnumber > 0 && !isClientPortal && canAddJob && hasAccessJob"><a tabindex="-1" href="#" click.delegate="openNew(3)" title="New Job">New Job</a></li>
+                            <li class="dropdown-submenu" if.bind="jobnumber > 0">
+                                <a tabindex="-1" href="#">Job Jacket</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" title="Job Jacket" click.delegate="openNew(4)">
+                                            Job Jacket
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" title="Alerts" click.delegate="openNew(12)">
+                                            Alerts
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" title="Documents" click.delegate="openNew(13)">
+                                            Documents
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(14)" title="Creative Brief">
+                                            Creative Brief
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(15)" title="Specifications">
+                                            Specifications
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(16)" title="Forms">
+                                            Forms
+                                        </a>
+                                    </li>
+                                    <li if.bind="!isClientPortal">
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(17)" title="Estimates">
+                                            Estimates
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(18)" title="Schedule">
+                                            Schedule
+                                        </a>
+                                    </li>
+                                    <li if.bind="!isClientPortal">
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(19)" title="Boards">
+                                            Boards
+                                        </a>
+                                    </li>
+                                    <li if.bind="!isClientPortal">
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(20)" title="QvA">
+                                            QvA
+                                        </a>
+                                    </li>
+                                    <li if.bind="!isClientPortal">
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(21)" title="Purchase Orders">
+                                            Purchase Orders
+                                        </a>
+                                    </li>
+                                    <li if.bind="(isProofingActive || isConceptShareActive) && !isClientPortal">
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(23)" title="${reviewItemText}">
+                                            ${reviewItemText}
+                                        </a>
+                                    </li>
+                                    <li if.bind="!isClientPortal">
+                                        <a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(22)" title="Snapshot">
+                                            Snapshot
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li if.bind="((jobnumber > 0 && jobcomponentnumber > 0) || (clientname == null || clientname == '')) && !isClientPortal && isTimesheetActive == true"><a class="dropdown-item" href="javascript:void(0)" click.delegate="addTimeClick()" title="Add Time">Add Time</a></li>
+                            <li if.bind="jobnumber > 0 && jobcomponentnumber > 0 && !isClientPortal && isTimesheetActive == true"><a class="dropdown-item" href="javascript:void(0)" click.delegate="stopwatchClick()" title="Stopwatch">Stopwatch</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(7)" title="Print">Print</a></li>
+                            <li if.bind="jobnumber > 0"><a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(8)" title="Send Alert">Send Alert</a></li>
+                            <li if.bind="jobnumber > 0 && jobcomponentnumber > 0 && !isClientPortal"><a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(9)" title="Send Assignment">Send Assignment</a></li>
+                            <li if.bind="jobnumber > 0"><a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(10)" title="Send Email">Send Email</a></li>
+                            <li if.bind="jobnumber > 0"><a class="dropdown-item" href="javascript:void(0)" click.delegate="openNew(11)" title="Print/Send options">Print/Send options</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+                
+</template>

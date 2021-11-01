@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+
+    <script src="Simulator/jquery-1.11.2.min.js"></script>
+    <script src="Simulator/Simulator.js"></script>
+    <link rel="stylesheet" href="Simulator/Simulator.css" />
+    <link href="Advantage.css" rel="stylesheet" />
+    <title></title>
+
+    <script type="text/javascript">
+        var SIMULATOR_APPLICATION_HASH = 'dxapp-hash';
+        var LOCAL_WEB_APP_URL = 'http://localhost/MobileApp/index.html';
+
+        $(function() {
+            var DEVICE_KEY = "dx-simulator-device-name",
+                OS_VERSION_NUMBER_KEY = "dx-simulator-os-version-number",
+                ANDROID_VERSION_NUMBER_KEY = "dx-simulator-android-version-number",
+                ORIENTATION_KEY = "dx-simulator-orientation",
+                SIZE_KEY = "dx-simulator-size",
+                defaultDevice = "iPhone",
+                defaultOrientation = "p",
+                defaultVersionNumber = "7",
+                defaultAndroidVersionNumber = "5",
+                $androidVersionChooser = $('.android-version-chooser');
+                $osVersionChooser = $('.os-version-chooser');
+
+            // use cookies?
+            var fromStorage = function(key, defaultValue) {
+                var value = window.sessionStorage && sessionStorage.getItem(key);
+                if(value === null)
+                    return defaultValue;
+                return value;
+            };
+
+            var toStorage = function(key, value) {
+                if(window.sessionStorage)
+                    sessionStorage.setItem(key, value);
+            };
+
+            var persistOptions = function () {
+                toStorage(DEVICE_KEY, simulator.options("device"));
+                if(isAppleDevice(simulator.options("device"))) {
+                    toStorage(OS_VERSION_NUMBER_KEY, simulator.options("osVersionNumber"));
+                }
+                if(isAndroidDevice(simulator.options("device"))) {
+                    toStorage(ANDROID_VERSION_NUMBER_KEY, simulator.options("osVersionNumber"));
+                }
+                toStorage(ORIENTATION_KEY, simulator.options("orientation"));
+                toStorage(SIZE_KEY, simulator.options("scale"));
+            };
+
+            var getSizeByDevice = function(device) {
+                return fromStorage(SIZE_KEY, (device === "iPhone" || device === "androidPhone" || device === "win8Phone" || device === "tizen" || device === "iPhone5" || device === "iPhone6" || device === "iPhone6plus") ? 1 : 0.5);
+            };
+
+            var getOsVersionNumberByDevice = function(device) {
+                return isAppleDevice(device) ? fromStorage(OS_VERSION_NUMBER_KEY, defaultVersionNumber) : undefined;
+            };
+
+            var getAndroidVersionNumberByDevice = function (device) {
+                return isAndroidDevice(device) ? fromStorage(ANDROID_VERSION_NUMBER_KEY, defaultAndroidVersionNumber) : undefined;
+            };
+
+            var isAppleDevice = function(device) {
+                return device === "iPhone" || device === "iPhone5" || device === "iPhone6" || device === "iPhone6plus" || device === "iPad" || device === "iPadMini";
+            };
+
+            var isAndroidDevice = function (device) {
+                return device === "androidPhone" || device === "androidTablet" || device === "nexus7";
+            };
+
+            var queryStringToObject = function(queryString) {
+                var result = {};
+
+                if(queryString.charAt(0) === "?")
+                    queryString = queryString.substring(1);
+
+                var chunks = queryString.split("&");
+
+                $.each(chunks, function() {
+                    var keyValue = this.split("="),
+                        key = decodeURIComponent(keyValue[0]),
+                        value = decodeURIComponent(keyValue[1]);
+                    result[key] = value;
+                });
+
+                return result;
+            };
+
+            var query = queryStringToObject(window.location.search),
+                appPage = query["appPage"] || "app.html",
+                device = fromStorage(DEVICE_KEY, query["device"] || defaultDevice);
+
+            simulator = $("#simulatorFrame").dxSimulator({
+                returnInstance: true,
+                //url: appPage + "#" + fromStorage(SIMULATOR_APPLICATION_HASH, ""),
+                url: LOCAL_WEB_APP_URL,
+                device: device,
+                osVersionNumber: getOsVersionNumberByDevice(device),
+                orientation: fromStorage(ORIENTATION_KEY, query["orientation"] || defaultOrientation),
+                scale: getSizeByDevice(device),
+                wrapFrame: true,
+                displayExceptions: "false" //query["displayExceptions"] !== "false"
+            });
+
+            // device chooser
+            var deviceChooser = $('.device-chooser'),
+                setDevice = function(device) {
+                    simulator.options({
+                        "device": device,
+                        "osVersionNumber": isAppleDevice(device) ? getOsVersionNumberByDevice(device) : getAndroidVersionNumberByDevice(device)
+                    });
+                    $(".toolbar").toggleClass("ios", isAppleDevice(device));
+                    $(".toolbar").toggleClass("android", isAndroidDevice(device));
+                    activateElement(deviceChooser, 'data-device', device);
+                    activateElement($osVersionChooser, 'data-version', getOsVersionNumberByDevice(device));
+                    activateElement($androidVersionChooser, 'data-version', getAndroidVersionNumberByDevice(device));
+                    setSize(getSizeByDevice(device));
+                };
+
+            var deviceChooserHandler = function ($item) {
+                var attr = $item.attr("data-device");
+                if(attr !== undefined && attr !== false) {
+                    setDevice(attr);
+                    persistOptions();
+                    changeParentMenuOptions($item);
+                    return false;
+                }
+            };
+
+            deviceChooser.on('click', 'a', function () {
+                return deviceChooserHandler($(this));
+            });
+
+            var changeParentMenuOptions = function ($item) {
+                $item.closest("ul.sub-menu").parent().children("a").first().attr("data-device", $item.attr("data-device"));
+            }
+
+            var timeoutCounter = 0;
+            var mouseleave;
+            deviceChooser.on('mouseenter', 'li', function () {
+                mouseleave = false;
+                timeoutCounter++;;
+                window['_this'] = this;
+                window.setTimeout(function () {
+                    timeoutCounter--;
+                    if(timeoutCounter == 0 && !mouseleave) {
+                        $(window['_this']).parent().find(".sub-menu").css("display", "none");
+                        $(window['_this']).parent().find("a").removeClass('selected');
+
+                        $(window['_this']).find(".sub-menu").css({ "display": "block", "color": "black" });
+                        $(window['_this']).find(".sub-menu").prev().addClass('selected');
+                    }
+                }, 300);
+            });
+            deviceChooser.on('mouseleave', '', function () {
+                mouseleave = true;
+                $(this).find(".sub-menu").css({ "display": "none" });
+                $(this).find("a").removeClass('selected');
+            });
+            deviceChooser.on('click', '.sub-menu li a', function () {
+                return deviceChooserHandler($(this));
+            });
+
+            // orientation chooser
+            var orientationChooser = $('.orientation-chooser'),
+                setOrientation = function(orientation) {
+                    simulator.options("orientation", orientation);
+                    activateElement(orientationChooser, 'data-orientation', orientation);
+                };
+            orientationChooser.on('click', 'a', function() {
+                setOrientation($(this).attr("data-orientation"));
+                persistOptions();
+                return false;
+            });
+
+            // size chooser 
+            var $sizeChooser = $('.size-chooser'),
+                setSize = function(scale) {
+                    simulator.options("scale", scale);
+                    activateElement($sizeChooser, 'data-scale', scale);
+                };
+            $sizeChooser.on('click', 'a', function() {
+                setSize($(this).attr("data-scale"));
+                persistOptions();
+                return false;
+            });
+
+            var setOsVersion = function(osVersionNumber) {
+                simulator.options("osVersionNumber", osVersionNumber);
+                activateElement($osVersionChooser, 'data-version', osVersionNumber);
+            }
+
+            var setAndroidVersion = function (osVersionNumber) {
+                simulator.options("osVersionNumber", osVersionNumber);
+                activateElement($androidVersionChooser, 'data-version', osVersionNumber);
+            }
+
+            $osVersionChooser.on('click', 'a', function() {
+                setOsVersion($(this).attr("data-version"));
+                persistOptions();
+                return false;
+            });
+
+            $androidVersionChooser.on('click', 'a', function () {
+                setAndroidVersion($(this).attr("data-version"));
+                persistOptions();
+                return false;
+            });
+
+            var activateElement = function($chooser, dataAttrName, value) {
+                $chooser.find('a').each(function() {
+                    $(this).toggleClass('active', false);
+                    //$(this).toggleClass('active', $(this).attr(dataAttrName) == value);
+                    if($(this).attr(dataAttrName) == value) {
+                        $(this).toggleClass('active', true);
+                        var parent = $(this).parents("ul.sub-menu");
+                        parent.prev().toggleClass('active', true);
+                    }
+                });
+            }
+
+            setDevice(simulator.options("device"));
+            setOrientation(simulator.options("orientation"));
+            persistOptions();
+
+            $("#simulatorFrame").load(function() {
+                var proxyUrl = queryStringToObject(window.location.search)["proxyUrl"] || this.contentWindow.location;
+                $("#qr").attr("src", "https://chart.googleapis.com/chart?chs=141x141&cht=qr&chl=" + encodeURIComponent(proxyUrl));
+                $("#qr-link").attr("href", proxyUrl);
+            });
+
+            var $sidebar = $(".sidebar");
+            var $main = $(".main");
+            $(window).on("resize scroll", function () {
+                var sidebarHeight = $sidebar.height(),
+                    mainHeight = $main.outerHeight(false),
+                    windowHeight = $(window).height(),
+                    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (sidebarHeight > mainHeight) {
+                    $sidebar.css({ 'position': 'absolute' });
+
+                    mainHeight = $main.outerHeight(true) - parseInt($main.css('margin-top'));
+                    var marginTop = (mainHeight < windowHeight) ? scrollTop : 0;
+                    if(marginTop + mainHeight > sidebarHeight)
+                        marginTop = sidebarHeight - mainHeight;
+                    $main.css({ 'margin-top': marginTop });
+                }
+                else {
+                    $main.css({ 'margin-top': 0 });
+
+                    if(sidebarHeight <= windowHeight + scrollTop) {
+                        $sidebar.css({
+                            'position': 'fixed',
+                            'top': windowHeight - sidebarHeight
+                        });
+                    } else {
+                        $sidebar.css({
+                            'position': 'absolute',
+                            'top': 0
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="sidebar">
+
+            <header style="padding:0px 10px 0px 0px;font-size:25px;font-weight:700;text-align:right;margin:20px 0px 40px 0px;color:#FFFFFF !important;">
+                Advantage
+                <div style="font-size:35px;font-style:italic;">Mobile</div>
+                Device Simulator
+            </header>
+
+            <nav class="menu">
+                <ul class="device-chooser">
+                    <li>
+                        <a data-device="iPhone">iPhone</a>
+                        <ul class="sub-menu">
+                            <li><a data-device="iPhone">iPhone 4</a></li>
+                            <li><a data-device="iPhone5">iPhone 5</a></li>
+                            <li><a data-device="iPhone6">iPhone 6</a></li>
+                            <li><a data-device="iPhone6plus">iPhone 6 Plus</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-device="iPad">iPad</a>
+                        <ul class="sub-menu">
+                            <li><a data-device="iPad">iPad</a></li>
+                            <li><a data-device="iPadMini">iPadMini</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-device="androidPhone" href="#">Android</a>
+                    </li>
+                    <li>
+                        <a data-device="androidTablet" href="#">Android Tab</a>
+                    </li>
+                    <li>
+                        <a data-device="win8Phone" href="#">Windows Phone 8</a>
+                    </li>
+                    <li>
+                        <a data-device="tizen" href="#">Tizen</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+        <div class="main">
+
+            <div class="toolbar ios android">
+                <ul class="clearfix android-version-chooser">
+                    <li>
+                        <a href="#" data-version="5" class="android">v. 5</a>
+                    </li>
+                    <li>
+                        <a href="#" data-version="4" class="android">v. 4</a>
+                    </li>
+                </ul>
+                <div class="separator"></div>
+                <ul class="clearfix os-version-chooser">
+                    <li>
+                        <a href="#" data-version="7" class="ios-7">iOS 7/8</a>
+                    </li>
+                    <li>
+                        <a href="#" data-version="6" class="ios-6">iOS 6</a>
+                    </li>
+                </ul>
+                <div class="separator"></div>
+                <ul class="clearfix orientation-chooser">
+                    <li>
+                        <a href="#" data-orientation="p" class="orientation-p"></a>
+                    </li>
+                    <li>
+                        <a href="#" data-orientation="l" class="orientation-l"></a>
+                    </li>
+                </ul>
+                <div class="separator"></div>
+                <ul class="size-chooser clearfix">
+                    <li>
+                        <a href="#" data-scale="0.5" class="size-half"></a>
+                    </li>
+                    <li>
+                        <a href="#" data-scale="1" class="size-one"></a>
+                    </li>
+                </ul>
+            </div>
+            
+            <iframe id="simulatorFrame" scrolling="no" border="0" frameborder="0"></iframe>
+            
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>National_Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1658f765-ee9b-4513-a7d1-3eab51649add}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>National_Database</RootNamespace>
+    <AssemblyName>National_Database</AssemblyName>
+    <ModelCollation>1033,CS</ModelCollation>
+    <DefaultFileStructure>BySchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Latin1_General_CS_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables\" />
+    <Folder Include="Functions" />
+    <Folder Include="Stored Procedures" />
+    <Folder Include="User Defined Types" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\MARKET_BREAK.sql" />
+    <Build Include="Tables\DOWNLOAD_FILE.sql" />
+    <Build Include="Tables\NATIONAL_DATA.sql" />
+    <Build Include="Tables\NATIONAL_AUDIENCE.sql" />
+    <Build Include="Tables\NATIONAL_HUTPUT.sql" />
+    <Build Include="Tables\NATIONAL_NETWORK.sql" />
+    <Build Include="Tables\NATIONAL_UNIVERSE.sql" />
+    <Build Include="Tables\NATIONAL_YEAR.sql" />
+    <Build Include="Tables\PROGRAM_TYPE.sql" />
+    <Build Include="Tables\CLIENT.sql" />
+    <Build Include="Tables\CLIENT_ORDER.sql" />
+    <Build Include="Tables\CLIENT_ORDER_DETAIL.sql" />
+    <Build Include="Tables\EVENT_LOG.sql" />
+    <Build Include="Tables\SERVICE_SETTING.sql" />
+    <Build Include="Tables\SERVICE_STATUS.sql" />
+    <Build Include="Functions\udf_split_list.function.sql" />
+    <Build Include="User Defined Types\NATIONAL_NETWORK_TYPE.sql" />
+    <Build Include="Functions\udf_split_list_int.function.sql" />
+    <Build Include="User Defined Types\MEDIA_DEMO_DETAIL_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_DEMO_TYPE.sql" />
+    <Build Include="User Defined Types\NATIONAL_UNIVERSE_TYPE.sql" />
+    <Build Include="Tables\NIELSEN_DEMO.sql" />
+    <Build Include="User Defined Types\MEDIA_SPOT_NATIONAL_RESEARCH_DEMO_TYPE.sql" />
+    <Build Include="Tables\NATIONAL_AUDIENCE_CORRECTION.sql" />
+    <Build Include="Tables\NATIONAL_HUTPUT_CORRECTION.sql" />
+    <Build Include="Stored Procedures\advsp_update_national_audience_with_corrections.proc.sql" />
+    <Build Include="Stored Procedures\advsp_national_research_network_ranker.proc.sql" />
+    <Build Include="Stored Procedures\advsp_national_research_program_ranker.proc.sql" />
+    <Build Include="Stored Procedures\advsp_national_research_program_flowchart.proc.sql" />
+    <Build Include="Stored Procedures\advsp_national_research_network_flowchart.proc.sql" />
+    <Build Include="User Defined Types\BROADCAST_DATE_TYPE.sql" />
+    <Build Include="User Defined Types\MEDIA_METRIC_TYPE.sql" />
+    <Build Include="Stored Procedures\advsp_update_national_hutput_with_corrections.proc.sql" />
+    <Build Include="Functions\advtf_national_data_ordered.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="National Database.refactorlog" />
+  </ItemGroup>
+</Project>

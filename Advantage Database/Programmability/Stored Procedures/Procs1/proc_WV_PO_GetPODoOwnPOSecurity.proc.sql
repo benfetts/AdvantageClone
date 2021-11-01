@@ -1,0 +1,54 @@
+﻿
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_WV_PO_GetPODoOwnPOSecurity] 
+@UserCode varchar(100)
+AS
+
+	DECLARE @SETTING_VALUE char(1)
+	DECLARE @SEC_USER_ID int
+
+	SELECT 
+		@SEC_USER_ID = SEC_USER_ID
+	FROM 
+		[dbo].[SEC_USER]
+	WHERE 
+		UPPER(USER_CODE) = UPPER(@UserCode)
+
+	IF EXISTS(SELECT * FROM [dbo].[SEC_USER_SETTING] WHERE SEC_USER_ID = @SEC_USER_ID AND SETTING_CODE = 'PR_PO_DO_OWN' AND STRING_VALUE = 'Y') BEGIN
+
+		SET @SETTING_VALUE = 'Y'
+
+	END ELSE BEGIN
+
+		SET @SETTING_VALUE = 'N'
+
+	END
+
+	SELECT
+		[PR_PO_DO_OWN] = @SETTING_VALUE 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

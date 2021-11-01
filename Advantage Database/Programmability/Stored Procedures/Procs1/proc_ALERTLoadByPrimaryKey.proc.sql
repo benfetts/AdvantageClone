@@ -1,0 +1,114 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[proc_ALERTLoadByPrimaryKey]
+(
+	@ALERT_ID int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @Err int
+
+	SELECT
+		[ALERT_ID],
+		[ALERT_TYPE_ID],
+		[ALERT_CAT_ID],
+		[SUBJECT],
+		[BODY],
+		[GENERATED],
+		[PRIORITY],
+		[CL_CODE],
+		[DIV_CODE],
+		[PRD_CODE],
+		[CMP_CODE],
+		[JOB_NUMBER],
+		[JOB_COMPONENT_NBR],
+		[ESTIMATE_NUMBER],
+		[EST_COMPONENT_NBR],
+		[EST_QUOTE_NBR],
+		[ESTIMATE_REV_NBR],
+		[VN_CODE],
+		[EMP_CODE],
+		[PO_NUMBER],
+		[PO_REVISION],
+		[ORDER_NBR],
+		[REV_NBR],
+		[ALERT_USER],
+		[TEMP_PDF_PATH],
+		[ALERT_LEVEL],
+		[CMP_IDENTIFIER],
+		[OFFICE_CODE],
+		[BODY_HTML],
+		[CP_ALERT],
+		[BA_BATCH_ID],
+		[TASK_SEQ_NBR],
+		[DUE_DATE],
+		[TIME_DUE],
+		[ALERT_STATE_ID],
+		[ALRT_NOTIFY_HDR_ID],
+		[VER],
+		[BUILD],
+		[ALERT_SEQ_NBR],
+		[SENT],
+		[ALERT_USER_CP]
+	FROM [ALERT] WITH(NOLOCK)
+	WHERE
+		([ALERT_ID] = @ALERT_ID)
+
+	SET @Err = @@Error
+
+	RETURN @Err
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+<div data-options="dxView : { name: 'finance_accounting', title: 'Finance And Accounting' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <p style="padding: 5px">
+            Finance and Accounting landing page
+        </p>
+    </div>
+</div>

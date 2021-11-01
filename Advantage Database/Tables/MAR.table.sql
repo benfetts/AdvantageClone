@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[MAR] (
+    [MAR_NUMBER]        INT           NOT NULL,
+    [REV_NBR]           SMALLINT      NOT NULL,
+    [MAR_DESC]          VARCHAR (40)  NOT NULL,
+    [MAR_DATE]          SMALLDATETIME NULL,
+    [JOB_NUMBER]        INT           NOT NULL,
+    [JOB_COMPONENT_NBR] SMALLINT      NOT NULL,
+    [VN_CODE]           VARCHAR (6)   NOT NULL,
+    [VN_CONT_CODE]      VARCHAR (4)   NOT NULL,
+    [MAR_CREATE_DATE]   SMALLDATETIME NULL,
+    [USER_ID]           VARCHAR (100) NULL,
+    [VOID_FLAG]         SMALLINT      NULL,
+    [VOIDED_BY]         VARCHAR (100) NULL,
+    [VOID_DATE]         SMALLDATETIME NULL,
+    [MODIFIED_DATE]     SMALLDATETIME NULL,
+    [MAR_COMMENT]       TEXT          NULL
+);
+

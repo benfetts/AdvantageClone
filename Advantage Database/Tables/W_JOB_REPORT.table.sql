@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[W_JOB_REPORT] (
+    [W_JOB_REPORT_ID]   INT           NOT NULL,
+    [USER_ID]           VARCHAR (100) NOT NULL,
+    [TIME_STAMP]        SMALLDATETIME NOT NULL,
+    [JOB_NUMBER]        INT           NULL,
+    [JOB_COMPONENT_NBR] SMALLINT      NULL,
+    [PRINT_JOF]         SMALLINT      NULL,
+    [PRINT_CRTV_BRF]    SMALLINT      NULL,
+    [PRINT_SPECS]       SMALLINT      NULL,
+    [PRINT_QVA]         SMALLINT      NULL,
+    [PRINT_ESTIMATE]    SMALLINT      NULL
+);
+

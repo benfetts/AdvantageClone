@@ -1,0 +1,5 @@
+﻿IF EXISTS ( SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[usp_wv_ALERT_NOTIFY_DISMISS]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+    DROP PROCEDURE [dbo].[usp_wv_ALERT_NOTIFY_DISMISS];
+END
+GO

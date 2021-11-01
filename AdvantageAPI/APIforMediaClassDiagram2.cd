@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="AdvantageAPI.MediaOrder">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>rNQTVFc0NL+ogwzMBkAZAGprMiKgKgFwzZwAENU+5AA=</HashCode>
+      <FileName>MediaOrder.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Market">
+    <Position X="3.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Market.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.Campaign">
+    <Position X="3.75" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAAEAAgAAQAAAAAAEAAAIAAAAAAIAA=</HashCode>
+      <FileName>Campaign.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdvantageAPI.VCCStatus">
+    <Position X="3.75" Y="5" Width="2.25" />
+    <Members>
+      <Method Name="New" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VCCStatus.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,8 @@
+﻿CREATE FUNCTION [dbo].[fn_LZ] (@CharTot INT, @CharVal VARCHAR(255))
+	RETURNS VARCHAR(255)
+AS
+    BEGIN
+    	DECLARE @RET VARCHAR(255)
+    	SET @RET = CASE WHEN LEN(@CharVal) < @CharTot THEN REPLICATE('0',@CharTot-LEN(RTRIM(LTRIM(@CharVal)))) + @CharVal ELSE RTRIM(LTRIM(@CharVal)) END
+    	RETURN @RET
+END

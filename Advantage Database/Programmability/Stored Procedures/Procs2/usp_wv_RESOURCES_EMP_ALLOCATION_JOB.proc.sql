@@ -1,0 +1,2802 @@
+﻿if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_RESOURCES_EMP_ALLOCATION_JOB]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure [dbo].[usp_wv_RESOURCES_EMP_ALLOCATION_JOB]
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE [dbo].[usp_wv_RESOURCES_EMP_ALLOCATION_JOB] 
+    @EMP_CODE       VARCHAR(6),
+    @ROLES		    VARCHAR(4000),
+    @START_DATE     SMALLDATETIME,
+    @END_DATE       SMALLDATETIME,
+    -- 0 = NONE, 1 = DAY, 2 = WEEK, 3 = MONTH, 4 = YEAR, 5 = SPECIAL MODE FOR CHILD GRID ON EMP FINDER
+    -- 6 = VIEW FOR TASK ASSIGNMENTS
+    @SUMMARY_LEVEL  SMALLINT, 
+    @DEPTS	        VARCHAR(4000),
+    @EMP_LIST	    VARCHAR(8000),
+	@UserID			VARCHAR(100),
+	@OfficeCode	varchar(4),
+	@ClientCode Varchar(6),
+	@DivisionCode Varchar(6),
+	@ProductCode Varchar(6),
+	@JobNum Varchar(6),
+	@JobComp Varchar(6),
+	@TaskStatus Varchar(1),
+	@ExcludeTempComplete Char(1),
+	@Manager varchar(6),
+	@QUERY_TYPE VARCHAR(10),
+	@PSWL_JOB_NUMBER INT,
+	@PSWL_JOB_COMPONENT_NBR SMALLINT,
+	@JC_LIST VARCHAR(8000),
+	@OVERRIDE_EMP_SEC AS SMALLINT
+
+AS
+
+
+    SET ANSI_NULLS ON
+    SET ANSI_WARNINGS OFF
+    SET ARITHABORT OFF
+    SET ARITHIGNORE ON
+
+		If @OfficeCode IS NULL 
+			set @OfficeCode = ''
+			
+		If @ClientCode IS NULL 
+			set @ClientCode = ''	
+
+		If	@DivisionCode IS NULL 
+			set @DivisionCode = '' 	
+			
+		If	@ProductCode  IS NULL 
+			set @ProductCode = ''
+				
+		If	@JobNum  IS NULL 
+			set @JobNum = ''	
+			
+		If	@JobComp  IS NULL 
+			set @JobComp = ''	
+			
+		If	@ROLES  IS NULL 
+			set @ROLES = ''	
+				
+		If	@TaskStatus  IS NULL 
+			set @TaskStatus = ''	
+			
+		If	@ExcludeTempComplete  IS NULL 
+			set @ExcludeTempComplete = ''
+
+				
+		If	@Manager  IS NULL 
+			set @Manager = ''	
+
+        IF @DEPTS IS NULL
+        BEGIN
+            SET @DEPTS = ''
+        END
+
+		DECLARE @RestrictionsEmp    INT,
+	        @sql 				VARCHAR(8000),
+	        @sql_from 			VARCHAR(8000),
+	        @sql_where 			VARCHAR(8000), @totaljobsdue 	Int, @START_DATE_MIN SMALLDATETIME, @END_DATE_MAX SMALLDATETIME, @FTE decimal(12,3)
+
+
+		SELECT @FTE = ISNULL(CAST(AGY_SETTINGS_VALUE AS DECIMAL(12,3)),0)
+		FROM AGY_SETTINGS
+		WHERE AGY_SETTINGS_CODE = 'FTE_BASIS'
+
+/*
+* The column HRS_ASSIGNED_TASK now also includes the event hours!!!!
+* need to fix: if it is a holiday with hours on it, it is getting removed...
+* so does the HRS_BALANCE_AVAIL column!!!!
+* BOTH COLUMNS ALSO FACTOR IN EMP_NON_TASK WHERE TIME_CATEGORY.VAC_SICK_FLAG IS NULL OR NOT 1,2,3...
+*/
+                
+        IF @EMP_CODE = '%' OR (@EMP_CODE IS NULL) 
+        BEGIN
+           SET @EMP_CODE = '';
+        END
+        IF @ROLES IS NULL
+        BEGIN
+        	SET @ROLES = '';
+        END
+        IF @DEPTS IS NULL
+        BEGIN
+        	SET @DEPTS = '';
+        END
+        IF @EMP_LIST IS NULL
+        BEGIN
+        	SET @EMP_LIST = '';
+        END
+
+		IF @QUERY_TYPE = 'PSWL'
+		    BEGIN
+			    --GENERATE LIST OF DISTINCT EMPS:
+			    SET @EMP_LIST = NULL;
+			    SELECT @EMP_LIST = COALESCE(@EMP_LIST + ''',', '') + A.EMP_CODE
+			    FROM   (
+						    SELECT     
+							    DISTINCT  '''' + JOB_TRAFFIC_DET_EMPS.EMP_CODE AS EMP_CODE
+						    FROM         
+								JOB_TRAFFIC_DET_EMPS WITH (NOLOCK) INNER JOIN
+								JOB_COMPONENT ON JOB_TRAFFIC_DET_EMPS.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER INNER JOIN
+								JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+								JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+						    WHERE     
+							    JOB_TRAFFIC_DET_EMPS.JOB_NUMBER = @PSWL_JOB_NUMBER AND JOB_TRAFFIC_DET_EMPS.JOB_COMPONENT_NBR = @PSWL_JOB_COMPONENT_NBR
+							    AND JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6,12) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL) 
+				       ) AS A;
+               SET @EMP_LIST = @EMP_LIST + ''''
+               --SELECT @EMP_LIST
+		    END    
+        ELSE IF  @QUERY_TYPE = 'PSWL2'
+		    BEGIN
+	    	    SET @EMP_LIST = @EMP_LIST
+	    	    
+	    		IF @JC_LIST <> ''
+	    		BEGIN
+					CREATE TABLE #TASK_RANGE 
+					(
+					START_DATE						SMALLDATETIME,
+					END_DATE	SMALLDATETIME
+					)
+
+					SET @sql = ''
+					   SELECT @sql = @sql + '
+									INSERT INTO #TASK_RANGE
+									SELECT     MIN(JOB_TRAFFIC_DET.TASK_START_DATE), MAX(JOB_TRAFFIC_DET.JOB_REVISED_DATE) 
+									FROM         
+									JOB_TRAFFIC_DET INNER JOIN
+									JOB_TRAFFIC_DET_EMPS ON JOB_TRAFFIC_DET.JOB_NUMBER = JOB_TRAFFIC_DET_EMPS.JOB_NUMBER AND 
+									JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_TRAFFIC_DET_EMPS.JOB_COMPONENT_NBR AND 
+									JOB_TRAFFIC_DET.SEQ_NBR = JOB_TRAFFIC_DET_EMPS.SEQ_NBR INNER JOIN
+									JOB_COMPONENT ON JOB_TRAFFIC_DET.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+									JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+									JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+									JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+									WHERE 1 = 1  AND (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)'
+						SELECT @sql = @sql + @JC_LIST
+							EXEC(@sql)
+					IF EXISTS (SELECT COUNT(1) FROM #TASK_RANGE WHERE NOT START_DATE IS NULL AND NOT END_DATE IS NULL)
+					BEGIN
+						SELECT @START_DATE = START_DATE, @END_DATE = END_DATE, @START_DATE_MIN = START_DATE, @END_DATE_MAX = END_DATE FROM #TASK_RANGE
+						
+					END		
+						
+					DROP TABLE #TASK_RANGE		
+					--        PRINT (@sql)
+	    		END    
+		    END
+	    ELSE	
+    	    BEGIN
+	    	    SET @EMP_LIST = @EMP_LIST
+	    	    IF @EMP_LIST IS NULL
+	    	    BEGIN
+	    	    	SET @EMP_LIST = ''
+	    	    END
+    	    END	
+
+
+		SET @START_DATE = CONVERT(
+				       DATETIME,
+				       CONVERT(CHAR(10), DATEPART(yyyy, @START_DATE), 101) 
+				       +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(mm, @START_DATE), 101) +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(dd, @START_DATE), 101) +
+				       ' 00:00:00' 
+				       );
+				       
+ 	    SET @END_DATE = CONVERT(
+				       DATETIME,
+				       CONVERT(CHAR(10), DATEPART(yyyy, @END_DATE), 101) 
+				       +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(mm, @END_DATE), 101) +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(dd, @END_DATE), 101) +
+				       ' 23:59:00' 
+				       );
+
+        
+       CREATE TABLE #EMP_AVAILABILITY --MASTER TABLE TO RETURN
+        (
+	        [ROW_ID] [int] IDENTITY(1,1) NOT NULL,
+	        [EMP_CODE]           VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	        [EMP_START_TIME]     SMALLDATETIME,
+	        [EMP_END_TIME]     SMALLDATETIME,
+
+	        [EMP_DIRECT_HRS_GOAL_PERC] DECIMAL(18,6),
+	        [DATE]               SMALLDATETIME,
+	        [DAY_OF_WEEK]			 INT,
+	        [DAY_OF_YEAR]          INT,
+	        [WEEK_OF_YEAR]         SMALLDATETIME,
+	        [MONTH_OF_YEAR]        INT,
+	        [YEAR]               INT,
+	        [STD_HRS_AVAIL]      DECIMAL(18,6),
+	        [HRS_USED_NON_TASK]  DECIMAL(18,6),
+	        [HRS_AVAIL]          DECIMAL(18,6),
+	        [HRS_ASSIGNED_TASK]  DECIMAL(18,6),
+	        [HRS_ASSIGNED_EVENT]  DECIMAL(18,6),
+	        [HRS_BALANCE_AVAIL]  DECIMAL(18,6),
+	        [NOTE]               VARCHAR(100),
+	        [IS_FULL_DAY_OFF]    SMALLINT,
+	        [HRS_APPTS]			 DECIMAL(18,6),
+	        [PERC_WORKED]		 DECIMAL(18,6)
+        );
+	   CREATE TABLE #JOB_AVAILABILITY 
+        (
+	        [ROW_ID] [int] IDENTITY(1,1) NOT NULL,
+			[JOB_NUMBER]         INT,
+			[JOB_COMPONENT_NBR]  SMALLINT,
+	        [EMP_CODE]           VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	        [EMP_START_TIME]     SMALLDATETIME,
+	        [EMP_END_TIME]     SMALLDATETIME,
+
+	        [EMP_DIRECT_HRS_GOAL_PERC] DECIMAL(18,6),
+	        [JOB_START_DATE]               SMALLDATETIME,
+	        [JOB_DUE_DATE]               SMALLDATETIME,
+	        [DATE]               SMALLDATETIME,
+	        [DAY_OF_WEEK]			 INT,
+	        [DAY_OF_YEAR]          INT,
+	        [WEEK_OF_YEAR]         SMALLDATETIME,
+	        [MONTH_OF_YEAR]        INT,
+	        [YEAR]               INT,
+	        [STD_HRS_AVAIL]      DECIMAL(18,6),
+	        [HRS_USED_NON_TASK]  DECIMAL(18,6),
+	        [HRS_AVAIL]          DECIMAL(18,6),
+	        [HRS_ASSIGNED_TASK]  DECIMAL(18,6),
+	        [HRS_ASSIGNED_EVENT]  DECIMAL(18,6),
+	        [HRS_BALANCE_AVAIL]  DECIMAL(18,6),
+	        [NOTE]               VARCHAR(100),
+	        [IS_FULL_DAY_OFF]    SMALLINT,
+	        [HRS_APPTS]			 DECIMAL(18,6),
+	        [PERC_WORKED]		 DECIMAL(18,6)
+        );
+       CREATE TABLE #DEPT_AVAILABILITY 
+        (
+	        [ROW_ID] [int] IDENTITY(1,1) NOT NULL,
+	        [DP_TM_CODE]           VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+			[DP_TM_DESC]		 VARCHAR(30),
+	        [DATE]               SMALLDATETIME,
+	        [DAY_OF_WEEK]			 INT,
+	        [DAY_OF_YEAR]          INT,
+	        [WEEK_OF_YEAR]         SMALLDATETIME,
+	        [MONTH_OF_YEAR]        INT,
+	        [YEAR]               INT,
+	        [STD_HRS_AVAIL]      DECIMAL(18,6),
+	        [HRS_USED_NON_TASK]  DECIMAL(18,6),
+	        [HRS_AVAIL]          DECIMAL(18,6),
+	        [HRS_ASSIGNED_TASK]  DECIMAL(18,6),
+	        [HRS_ASSIGNED_EVENT]  DECIMAL(18,6),
+	        [HRS_BALANCE_AVAIL]  DECIMAL(18,6),
+	        [NOTE]               VARCHAR(100),
+	        [IS_FULL_DAY_OFF]    SMALLINT,
+	        [HRS_APPTS]			 DECIMAL(18,6),
+	        [PERC_WORKED]		 DECIMAL(18,6)
+        );
+
+        CREATE TABLE #JOBS 
+        (
+	        [ROW_ID] [int] IDENTITY(1,1) NOT NULL,
+	        [OFFICE_CODE]		VARCHAR(4) COLLATE SQL_Latin1_General_CP1_CS_AS,
+			[CL_CODE]			VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+			[DIV_CODE]		VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+			[PRD_CODE]		VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	        [JOB_NUMBER] INT,
+	        [JOB_COMPONENT_NBR] INT,
+	        [SEQ_NBR] INT,
+	        [EMP_CODE]           VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	        [TASK_START_DATE]    SMALLDATETIME,
+	        [JOB_REVISED_DATE]   SMALLDATETIME,
+	        [FNC_CODE]			 VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	        [JOB_HRS]          DECIMAL(18,6),
+	        [WORKDAY_COUNT]         INT,
+	        [HRS_PER_DAY]	DECIMAL(18,6),
+	        [WORKDAY_COUNT_IN_RANGE] INT,	        
+	        [TRF_DESCRIPTION]		VARCHAR(30) COLLATE SQL_Latin1_General_CP1_CS_AS,
+			[JOB_DESC]		VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+			[JOB_COMP_DESC]	VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS,
+			[JOB_FIRST_USE_DATE]	SMALLDATETIME,
+	        [HRS_PER_DAY_WITH_ASSN]	DECIMAL(18,6),
+			[WORKDAY_COUNT_IN_RANGE_WITH_ASSN] INT
+        );
+        
+        CREATE TABLE #MY_DATA 
+        (
+    	    ROW_ID						INT IDENTITY(1,1) NOT NULL,
+	        JOB_NUMBER					INT NULL,
+	        JOB_COMPONENT_NBR			SMALLINT NULL,
+	        FNC_CODE					VARCHAR(10) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        TASK_DESCRIPTION			VARCHAR(40) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        JOB_COMP_DESC				VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        TASK_START_DATE				SMALLDATETIME NULL,
+	        JOB_REVISED_DATE			SMALLDATETIME NULL,
+	        JOB_FIRST_USE_DATE			SMALLDATETIME NULL,
+	        EMP_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        JOB_DESC					VARCHAR(60) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        OFFICE_CODE					VARCHAR(4) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        CL_CODE						VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        DIV_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        PRD_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        SORT						SMALLDATETIME NULL,
+	        JOB_HRS						DECIMAL(18,6) NULL,
+	        SEQ_NBR						SMALLINT NULL,
+	        EMP_FML_NAME				VARCHAR(2000) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        REC_TYPE					VARCHAR(5),
+			NON_TASK_ID					SMALLINT NULL,
+    	    TRF_DESCRIPTION		        VARCHAR(30) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+			DP_TM_CODE					VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
+	        ADJ_JOB_HRS					DECIMAL(18,6) NULL,
+	        IS_EVENT_TASK				SMALLINT NULL,
+	        TASK_TOTAL_WORKING_DAYS				INT NULL,
+	        HOURS_PER_DAY				DECIMAL(18,6) NULL,
+	        WORKING_DAYS_IN_TASK_RANGE	INT NULL,
+    	    
+	        HRS_USED_NON_TASK			DECIMAL(18,6) NULL,
+	        HRS_AVAIL					DECIMAL(18,6) NULL,
+	        HRS_ASSIGNED_TASK			DECIMAL(18,6) NULL,
+	        HRS_ASSIGNED_EVENT			DECIMAL(18,6) NULL,
+	        HRS_BALANCE_AVAIL			DECIMAL(18,6) NULL,
+	        STD_HRS_AVAIL				DECIMAL(18,6) NULL,
+			RED_FLAG					INT,
+	        HRS_PER_DAY_WITH_ASSN		DECIMAL(18,6),
+			ADJ_JOB_HRS_WITH_ASSN		DECIMAL(18,6) NULL
+        )
+        
+        CREATE TABLE #WORK_DAY --Table of employee workdays
+        (
+	        [ROW_ID] [int] IDENTITY(1,1) NOT NULL,
+	        [EMP_CODE]           VARCHAR(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+	        [WORK_DATE]               SMALLDATETIME,
+	        [STD_HRS]  DECIMAL(18,6),
+        );
+        
+        
+        
+        CREATE TABLE #DAY_RANGE --RANGE OF DAYS
+        (
+	        [DATE] SMALLDATETIME,
+        );
+        CREATE TABLE #EMP_LIST --LIST OF EMPS
+        (
+	        [EMP_CODE] VARCHAR(6),
+	        [EMP_DIRECT_HRS_GOAL_PERC] DECIMAL(18,6),
+	        [EMP_START_TIME]     SMALLDATETIME,
+	        [EMP_END_TIME]     SMALLDATETIME
+        );
+
+        --1. GET DAYS (LOOP)
+        --=================================================================================================
+        DECLARE @DAY_COUNT      AS INTEGER,
+                @DAY_INCREMENT  AS INTEGER, @Restrictions INT
+	         
+		
+		Select @Restrictions = Count(*) 
+		FROM SEC_CLIENT
+		WHERE UPPER(USER_ID) = UPPER(@UserID)
+
+		Select @RestrictionsEmp = Count(*) 
+		FROM SEC_EMP
+		WHERE UPPER(USER_ID) = UPPER(@UserID)
+		        
+        SET @DAY_INCREMENT = -1;
+        SELECT @DAY_COUNT = DATEDIFF(dd, @START_DATE, @END_DATE) + 1;
+        
+--        --TEST:
+--        SELECT @DAY_COUNT AS DAY_COUNT;
+        
+        WHILE @DAY_COUNT > 0
+        BEGIN
+            INSERT INTO #DAY_RANGE
+              (
+                [DATE]
+              )
+            VALUES
+              (
+                DATEADD(dd, @DAY_INCREMENT + 1, @START_DATE)
+              );
+            SET @DAY_INCREMENT = @DAY_INCREMENT + 1;
+            SET @DAY_COUNT = @DAY_COUNT - 1;
+        END
+		UPDATE #DAY_RANGE SET [DATE] = @END_DATE WHERE [DATE] = (SELECT MAX([DATE]) FROM #DAY_RANGE)
+--        --TEST:
+--        SELECT * FROM #DAY_RANGE;
+
+
+        --2. GET EMPS (SELECT)
+        --=================================================================================================
+        DECLARE @DYNA_SQL AS NVARCHAR(4000);
+        SET @DYNA_SQL = '';
+        --INITIALIZE THE DYNAMIC SQL:
+        SET @DYNA_SQL = 'INSERT INTO #EMP_LIST(EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,EMP_START_TIME,EMP_END_TIME)'
+        SET @DYNA_SQL = @DYNA_SQL + 'SELECT DISTINCT EMPLOYEE.EMP_CODE, EMPLOYEE.DIRECT_HRS_PER, EMPLOYEE.EMP_START_TIME, EMPLOYEE.EMP_END_TIME
+                FROM EMPLOYEE WITH (NOLOCK) '
+        IF (@ROLES <> '') 
+	        BEGIN
+				SET @DYNA_SQL = @DYNA_SQL + ' INNER JOIN EMP_TRAFFIC_ROLE WITH (NOLOCK) ON EMPLOYEE.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE'
+	        END
+
+  
+        --- START THE WHERE CLAUSE
+        SET @DYNA_SQL = @DYNA_SQL + ' WHERE (EMPLOYEE.EMP_TERM_DATE IS NULL) AND 1 = 1 '
+        --FILTER BY EMP CODE       
+		IF (@EMP_CODE <> '') 
+			BEGIN
+				SET @DYNA_SQL = @DYNA_SQL + 'AND EMPLOYEE.EMP_CODE = ''' + @EMP_CODE + ''''
+			END
+		--FILTER BY EMP CODE LIST:	
+		IF (@EMP_LIST <> '') 
+			BEGIN
+				SET @DYNA_SQL = @DYNA_SQL + 'AND (EMPLOYEE.EMP_CODE IN ('+ @EMP_LIST +'))'
+			END
+        --FILTER BY ROLE                            
+        IF (@ROLES <> '') 
+	        BEGIN
+				SET @DYNA_SQL = @DYNA_SQL + 'AND (EMP_TRAFFIC_ROLE.ROLE_CODE IN ('+ @ROLES +')) '
+	        END
+        --FILTER BY DEPT                            
+        IF (@DEPTS <> '') 
+	        BEGIN
+				SET @DYNA_SQL = @DYNA_SQL + 'AND (EMPLOYEE.DP_TM_CODE IN ('+ @DEPTS +')) '
+	        END
+
+
+       --END THE DYNAMIC SQL:                            
+        SET @DYNA_SQL = @DYNA_SQL + ' ORDER BY EMPLOYEE.EMP_CODE;'
+        
+        --PRINT @DYNA_SQL;
+  		EXEC sp_executesql @DYNA_SQL;
+      
+--        --TEST:
+--        SELECT * FROM #EMP_LIST;
+
+
+
+        --3. PUT BOTH INTO LIST
+        DECLARE @CURR_EMP_CODE AS VARCHAR(6),
+	        @CURR_EMP_DIRECT_HRS_GOAL_PERC DECIMAL(18,6),
+			@CURR_EMP_START_TIME     SMALLDATETIME,
+	        @CURR_EMP_END_TIME     SMALLDATETIME,
+	        @EMPS VARCHAR(4000);
+	    SET @EMPS = ''    
+	   -- SELECT @EMP_CODE 
+	   -- SELECT @DEPTS  
+        DECLARE MY_ROWS                         CURSOR  
+        FOR
+	        SELECT EMP_CODE
+	        FROM   #EMP_LIST
+        ;
+        OPEN MY_ROWS;
+        FETCH NEXT FROM MY_ROWS INTO @CURR_EMP_CODE;
+        WHILE @@FETCH_STATUS = 0
+        BEGIN
+	        SELECT @CURR_EMP_DIRECT_HRS_GOAL_PERC = ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.00), @CURR_EMP_START_TIME = EMP_START_TIME, @CURR_EMP_END_TIME = EMP_END_TIME FROM #EMP_LIST WHERE EMP_CODE = @CURR_EMP_CODE;
+	        INSERT INTO #EMP_AVAILABILITY(EMP_CODE,[DATE],EMP_DIRECT_HRS_GOAL_PERC,EMP_START_TIME,EMP_END_TIME)
+	        SELECT @CURR_EMP_CODE,[DATE],@CURR_EMP_DIRECT_HRS_GOAL_PERC,@CURR_EMP_START_TIME,@CURR_EMP_END_TIME FROM #DAY_RANGE;      
+	        
+	        if @EMP_CODE <> '' OR @DEPTS <> '' OR @ROLES <> ''
+	        BEGIN
+				SELECT @EMPS = @EMPS + @CURR_EMP_CODE + ','
+	        END	        
+	        
+	        --GO TO NEXT EVENT
+	        FETCH NEXT FROM MY_ROWS INTO @CURR_EMP_CODE;
+        END
+        CLOSE MY_ROWS;
+        DEALLOCATE MY_ROWS;
+--        --TEST:
+        --SELECT * FROM #EMP_LIST;
+--        --TEST:
+--        SELECT * FROM #EMP_AVAILABILITY;
+        
+        --SET DATE COUNTERS:
+        UPDATE #EMP_AVAILABILITY SET
+	        DAY_OF_WEEK = DATEPART(weekday,[DATE]),
+	        DAY_OF_YEAR= DATEPART(dayofyear,[DATE]) ,
+	        WEEK_OF_YEAR= DATEADD(wk, DATEDIFF(wk, 6, convert( datetime , '1.1.' + convert( varchar , DATEPART(yy,[DATE])) , 104 ) ) + (DATEPART(wk,[DATE])-1), 6),--DATEPART(wk,[DATE]) ,
+	        MONTH_OF_YEAR= DATEPART(mm,[DATE]),
+	        [YEAR] = DATEPART(yy,[DATE]) 
+	              
+	     BEGIN
+	    	    SELECT @START_DATE_MIN = MIN(TASK_START_DATE), @END_DATE_MAX = MAX(JOB_REVISED_DATE)
+				FROM         
+					V_JOB_TRAFFIC_DET WITH(NOLOCK) INNER JOIN
+					JOB_COMPONENT WITH(NOLOCK) ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+					V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+					JOB_TRAFFIC WITH(NOLOCK) ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+					JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+					WHERE (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)
+							AND (V_JOB_TRAFFIC_DET.JOB_COMPLETED_DATE IS NULL AND V_JOB_TRAFFIC_DET.TEMP_COMP_DATE IS NULL)
+							AND ((TASK_START_DATE >= @START_DATE) AND (TASK_START_DATE <= @END_DATE) OR
+								(JOB_REVISED_DATE >= @START_DATE) AND (JOB_REVISED_DATE <= @END_DATE) OR
+								(@START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE))	
+								
+				IF @START_DATE < @START_DATE_MIN
+				BEGIN
+					SET @START_DATE_MIN = @START_DATE
+				END	
+				IF @END_DATE > @END_DATE_MAX
+				BEGIN
+					SET @END_DATE_MAX = @END_DATE
+				END	
+										  		
+    	    END	    
+	    
+		--SELECT @EMPS
+
+
+		
+		
+		INSERT INTO #WORK_DAY (EMP_CODE, WORK_DATE, STD_HRS)
+				SELECT fn.emp_code, fn.workday, fn.std_hours
+				FROM [dbo].[udf_get_std_hrs_wl] ( @START_DATE_MIN, @END_DATE_MAX, @EMPS) fn
+	 			WHERE (fn.std_hours <> 0.00 )	
+		
+		--SELECT * FROM #WORK_DAY --WHERE WORK_DATE BETWEEN @START_DATE AND @END_DATE
+
+		IF @QUERY_TYPE = 'PSWL'
+		    BEGIN
+			    INSERT INTO #JOBS
+				SELECT JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE,V_JOB_TRAFFIC_DET.JOB_NUMBER, V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR,
+				 V_JOB_TRAFFIC_DET.SEQ_NBR,
+					 V_JOB_TRAFFIC_DET.EMP_CODE, TASK_START_DATE,
+					 CONVERT(
+				       DATETIME,
+				       CONVERT(CHAR(10), DATEPART(yyyy, JOB_REVISED_DATE), 101) 
+				       +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(mm, JOB_REVISED_DATE), 101) +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(dd, JOB_REVISED_DATE), 101) +
+				       ' 23:59:00' 
+				       ) AS JOB_REVISED_DATE,
+					 V_JOB_TRAFFIC_DET.FNC_CODE, V_JOB_TRAFFIC_DET.JOB_HRS, (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))),
+					 CASE WHEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))) <> 0
+						 THEN (V_JOB_TRAFFIC_DET.JOB_HRS/(SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))) ELSE 0 END,
+					CASE WHEN @START_DATE >= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= @END_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= @END_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))) ELSE 0 END,NULL,NULL,NULL,NULL,
+					 CASE WHEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 ) <> 0
+						 THEN (V_JOB_TRAFFIC_DET.JOB_HRS/(SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 )) ELSE 0 END,
+					CASE WHEN @START_DATE >= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 )
+						 WHEN @START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= @END_DATE
+															)
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 )
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= @END_DATE
+															 ) ELSE 0 END						
+					FROM         
+						V_JOB_TRAFFIC_DET WITH(NOLOCK) INNER JOIN
+						JOB_COMPONENT WITH(NOLOCK) ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+						V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+						JOB_TRAFFIC WITH(NOLOCK) ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+						JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+						INNER JOIN JOB_LOG ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER 
+						INNER JOIN TRAFFIC ON JOB_TRAFFIC.TRF_CODE = TRAFFIC.TRF_CODE						
+					--WHERE V_JOB_TRAFFIC_DET.JOB_NUMBER = @PSWL_JOB_NUMBER AND V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = @PSWL_JOB_COMPONENT_NBR 				  		
+			END    
+        ELSE IF  @QUERY_TYPE = 'PSWL2'
+		    BEGIN
+	    	   SET @sql = ''
+					   SELECT @sql = @sql + 'INSERT INTO #JOBS
+				SELECT JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE,V_JOB_TRAFFIC_DET.JOB_NUMBER, V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR,
+				 V_JOB_TRAFFIC_DET.SEQ_NBR,
+					 V_JOB_TRAFFIC_DET.EMP_CODE, TASK_START_DATE, JOB_REVISED_DATE,
+					 V_JOB_TRAFFIC_DET.FNC_CODE, V_JOB_TRAFFIC_DET.JOB_HRS, (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = ''A'' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))),
+					 CASE WHEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = ''A'' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))) <> 0
+						 THEN (V_JOB_TRAFFIC_DET.JOB_HRS/(SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = ''A'' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))) ELSE 0 END,
+					CASE WHEN @START_DATE >= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = ''A'' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= @END_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = ''A'' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = ''A'' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= @END_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = ''A'' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))) ELSE 0 END,NULL,NULL,NULL,NULL
+					FROM         
+						V_JOB_TRAFFIC_DET WITH(NOLOCK) INNER JOIN
+						JOB_COMPONENT WITH(NOLOCK) ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+						V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+						JOB_TRAFFIC WITH(NOLOCK) ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+						JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+						INNER JOIN JOB_LOG ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER 
+						INNER JOIN TRAFFIC ON JOB_TRAFFIC.TRF_CODE = TRAFFIC.TRF_CODE
+						WHERE 1 = 1'
+				IF @JC_LIST <> ''
+				BEGIN
+					SET @JC_LIST = REPLACE(@JC_LIST,'JOB_TRAFFIC_DET_EMPS','V_JOB_TRAFFIC_DET')
+					SELECT @sql = @sql + @JC_LIST
+				END			
+				
+				EXEC(@sql)			
+					
+		    END
+	    ELSE	
+    	    BEGIN
+	    	    INSERT INTO #JOBS
+				SELECT JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE,V_JOB_TRAFFIC_DET.JOB_NUMBER, V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR,
+				 V_JOB_TRAFFIC_DET.SEQ_NBR,
+					 V_JOB_TRAFFIC_DET.EMP_CODE, TASK_START_DATE,
+					 CONVERT(
+				       DATETIME,
+				       CONVERT(CHAR(10), DATEPART(yyyy, JOB_REVISED_DATE), 101) 
+				       +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(mm, JOB_REVISED_DATE), 101) +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(dd, JOB_REVISED_DATE), 101) +
+				       ' 23:59:00' 
+				       ) AS JOB_REVISED_DATE,
+					 V_JOB_TRAFFIC_DET.FNC_CODE, V_JOB_TRAFFIC_DET.JOB_HRS, (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))),
+					 CASE WHEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))) <> 0
+						 THEN (V_JOB_TRAFFIC_DET.JOB_HRS/(SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))) ELSE 0 END,
+					CASE WHEN @START_DATE >= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= @END_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															)))
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= @END_DATE
+															 AND (NOT EXISTS (SELECT ent.NON_TASK_ID 
+															   FROM dbo.EMP_NON_TASKS ent INNER JOIN
+																TIME_CATEGORY ON ent.CATEGORY = TIME_CATEGORY.CATEGORY
+															  WHERE ent.[TYPE] = 'A' AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) 
+																AND ent.ALL_DAY = 1 
+																AND (WORK_DATE BETWEEN ent.[START_DATE] AND ent.[END_DATE] )
+																AND (ent.EMP_CODE = #WORK_DAY.EMP_CODE)
+															))) ELSE 0 END,TRAFFIC.TRF_DESCRIPTION, JOB_LOG.JOB_DESC,
+															 JOB_COMPONENT.JOB_COMP_DESC, JOB_COMPONENT.JOB_FIRST_USE_DATE,
+					 CASE WHEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 ) <> 0
+						 THEN (V_JOB_TRAFFIC_DET.JOB_HRS/(SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 )) ELSE 0 END,
+					CASE WHEN @START_DATE >= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 )
+						 WHEN @START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= @START_DATE 
+															 AND WORK_DATE <= @END_DATE
+															)
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= V_JOB_TRAFFIC_DET.JOB_REVISED_DATE
+															 )
+						 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT COUNT(*) FROM #WORK_DAY
+															WHERE EMP_CODE = V_JOB_TRAFFIC_DET.EMP_CODE
+															 AND WORK_DATE >= V_JOB_TRAFFIC_DET.TASK_START_DATE  
+															 AND WORK_DATE <= @END_DATE
+															 ) ELSE 0 END						
+					FROM         
+						V_JOB_TRAFFIC_DET WITH(NOLOCK) INNER JOIN
+						JOB_COMPONENT WITH(NOLOCK) ON V_JOB_TRAFFIC_DET.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+						V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+						JOB_TRAFFIC WITH(NOLOCK) ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+						JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+						INNER JOIN JOB_LOG ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER 
+						INNER JOIN TRAFFIC ON JOB_TRAFFIC.TRF_CODE = TRAFFIC.TRF_CODE
+						WHERE (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)
+								AND (V_JOB_TRAFFIC_DET.JOB_COMPLETED_DATE IS NULL AND V_JOB_TRAFFIC_DET.TEMP_COMP_DATE IS NULL)
+								AND ((TASK_START_DATE >= @START_DATE AND TASK_START_DATE <= @END_DATE) OR
+									(JOB_REVISED_DATE >= @START_DATE AND JOB_REVISED_DATE <= @END_DATE) OR
+									(@START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE))		
+									
+									
+									  		
+    	    END	    
+							
+						 
+		--SELECT * FROM #JOBS ORDER BY JOB_NUMBER, JOB_COMPONENT_NBR
+
+		 -- PUT JOB AND EMP INTO LIST
+        DECLARE @CURR_EMP_CODE_JOB AS VARCHAR(6), @JN AS INT, @JCN AS SMALLINT,
+	        @CURR_EMP_DIRECT_HRS_GOAL_PERC_JOB DECIMAL(18,6),
+			@CURR_EMP_START_TIME_JOB     SMALLDATETIME,
+	        @CURR_EMP_END_TIME_JOB     SMALLDATETIME
+	   -- SET @EMPS = ''    
+	   -- SELECT @EMP_CODE 
+	   -- SELECT @DEPTS  
+	    if @EMP_CODE = ''
+		BEGIN
+			DECLARE MY_ROWS_JOB                         CURSOR  
+			FOR
+				SELECT DISTINCT JOB_NUMBER, JOB_COMPONENT_NBR, EMP_CODE
+				FROM   #JOBS		
+			;
+		END
+		ELSE
+		BEGIN
+			DECLARE MY_ROWS_JOB                         CURSOR  
+			FOR
+				SELECT DISTINCT JOB_NUMBER, JOB_COMPONENT_NBR, EMP_CODE
+				FROM   #JOBS	
+				WHERE EMP_CODE = @EMP_CODE	
+			;
+		END
+        
+        OPEN MY_ROWS_JOB;
+        FETCH NEXT FROM MY_ROWS_JOB INTO @JN,@JCN,@CURR_EMP_CODE_JOB;
+        WHILE @@FETCH_STATUS = 0
+        BEGIN
+	        SELECT @CURR_EMP_DIRECT_HRS_GOAL_PERC_JOB = ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.00), @CURR_EMP_START_TIME_JOB = EMP_START_TIME, @CURR_EMP_END_TIME_JOB = EMP_END_TIME FROM #EMP_LIST WHERE EMP_CODE = @CURR_EMP_CODE_JOB;
+	        INSERT INTO #JOB_AVAILABILITY(JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE,[DATE],EMP_DIRECT_HRS_GOAL_PERC,EMP_START_TIME,EMP_END_TIME)
+	        SELECT @JN, @JCN,@CURR_EMP_CODE_JOB,[DATE],@CURR_EMP_DIRECT_HRS_GOAL_PERC_JOB,@CURR_EMP_START_TIME_JOB,@CURR_EMP_END_TIME_JOB FROM #DAY_RANGE;      
+	        
+	   --     if @EMP_CODE <> '' OR @DEPTS <> '' OR @ROLES <> ''
+	   --     BEGIN
+				--SELECT @EMPS = @EMPS + @CURR_EMP_CODE + ','
+	   --     END	        
+	        
+	        --GO TO NEXT EVENT
+	        FETCH NEXT FROM MY_ROWS_JOB INTO @JN,@JCN,@CURR_EMP_CODE_JOB;
+        END
+        CLOSE MY_ROWS_JOB;
+        DEALLOCATE MY_ROWS_JOB;
+
+
+		 --SET DATE COUNTERS:
+        UPDATE #JOB_AVAILABILITY SET
+	        DAY_OF_WEEK = DATEPART(weekday,[DATE]),
+	        DAY_OF_YEAR= DATEPART(dayofyear,[DATE]) ,
+	        WEEK_OF_YEAR= DATEADD(wk, DATEDIFF(wk, 6, convert( datetime , '1.1.' + convert( varchar , DATEPART(yy,[DATE])) , 104 ) ) + (DATEPART(wk,[DATE])-1), 6),--DATEPART(wk,[DATE]) ,
+	        MONTH_OF_YEAR= DATEPART(mm,[DATE]),
+	        [YEAR] = DATEPART(yy,[DATE]) 
+
+		UPDATE #JOB_AVAILABILITY SET JOB_START_DATE = (SELECT [START_DATE] FROM JOB_COMPONENT 
+													   WHERE JOB_COMPONENT.JOB_NUMBER = #JOB_AVAILABILITY.JOB_NUMBER AND JOB_COMPONENT.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR)
+
+		UPDATE #JOB_AVAILABILITY SET JOB_DUE_DATE = (SELECT JOB_FIRST_USE_DATE FROM JOB_COMPONENT 
+													   WHERE JOB_COMPONENT.JOB_NUMBER = #JOB_AVAILABILITY.JOB_NUMBER AND JOB_COMPONENT.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR)
+
+--        --TEST:
+       --SELECT * FROM #JOB_AVAILABILITY;
+
+		 
+-- GET JOBS LIST FOR DRILL DOWN	
+SELECT @sql = ' INSERT INTO #MY_DATA
+        SELECT *, 
+        00.000000, 0 ,0,0,0,00.000000,00.000000,00.000000,00.000000,00.000000,00.000000,0,00.000000,00.000000
+        FROM
+        (SELECT V_JOB_TRAFFIC_DET.JOB_NUMBER, V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR, V_JOB_TRAFFIC_DET.FNC_CODE, V_JOB_TRAFFIC_DET.TASK_DESCRIPTION, JOB_COMPONENT.JOB_COMP_DESC,
+	        V_JOB_TRAFFIC_DET.TASK_START_DATE, V_JOB_TRAFFIC_DET.JOB_REVISED_DATE, JOB_COMPONENT.JOB_FIRST_USE_DATE, V_JOB_TRAFFIC_DET.EMP_CODE,
+	        JOB_LOG.JOB_DESC, JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE, CASE WHEN V_JOB_TRAFFIC_DET.TASK_START_DATE IS NULL THEN V_JOB_TRAFFIC_DET.JOB_REVISED_DATE ELSE V_JOB_TRAFFIC_DET.TASK_START_DATE END AS SORT,
+	        SUM(V_JOB_TRAFFIC_DET.JOB_HRS) AS JOB_HRS, V_JOB_TRAFFIC_DET.SEQ_NBR, ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,'''') AS EMP_FML_NAME, ''T'' AS REC_TYPE, -1 AS NON_TASK_ID, TRAFFIC.TRF_DESCRIPTION, EMPLOYEE.DP_TM_CODE'
+
+        SELECT @sql_from = ' FROM JOB_COMPONENT 
+        INNER JOIN JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+        INNER JOIN V_JOB_TRAFFIC_DET ON JOB_COMPONENT.JOB_NUMBER = V_JOB_TRAFFIC_DET.JOB_NUMBER AND JOB_COMPONENT.JOB_COMPONENT_NBR = V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR 
+        INNER JOIN JOB_LOG ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER  INNER JOIN
+            EMPLOYEE ON V_JOB_TRAFFIC_DET.EMP_CODE = EMPLOYEE.EMP_CODE INNER JOIN TRAFFIC ON JOB_TRAFFIC.TRF_CODE = TRAFFIC.TRF_CODE'
+
+        SELECT @sql_where = ' WHERE 1 = 1 AND (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)  AND (V_JOB_TRAFFIC_DET.JOB_COMPLETED_DATE IS NULL AND V_JOB_TRAFFIC_DET.TEMP_COMP_DATE IS NULL) '
+
+        If @Restrictions > 0	
+	        Begin
+	          SELECT @sql_from = @sql_from + ' INNER JOIN SEC_CLIENT ON JOB_LOG.CL_CODE = SEC_CLIENT.CL_CODE AND JOB_LOG.DIV_CODE = SEC_CLIENT.DIV_CODE AND JOB_LOG.PRD_CODE = SEC_CLIENT.PRD_CODE '
+
+	          SELECT @sql_where = @sql_where + ' AND UPPER(SEC_CLIENT.USER_ID) = UPPER(''' + @UserID + ''') AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)'
+	        End
+
+        If @RestrictionsEmp > 0 
+	        Begin
+	          SELECT @sql_from = @sql_from + ' INNER JOIN SEC_EMP ON V_JOB_TRAFFIC_DET.EMP_CODE = SEC_EMP.EMP_CODE '
+	          SELECT @sql_where = @sql_where + ' AND UPPER(SEC_EMP.USER_ID) = UPPER(''' + @UserID + ''')'
+	        End
+
+        If @ROLES <> ''
+	        Begin
+			  SELECT @sql_from = @sql_from + '
+				   LEFT OUTER JOIN EMP_TRAFFIC_ROLE  ON V_JOB_TRAFFIC_DET.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE '
+			  SELECT @sql_where = @sql_where + ' AND (EMP_TRAFFIC_ROLE.ROLE_CODE IN ('+ @ROLES +')) ' 	
+	        End
+
+       
+        If @EMP_CODE  <> '' AND @EMP_CODE <> '%'
+	        SELECT @sql_where = @sql_where + ' AND V_JOB_TRAFFIC_DET.EMP_CODE = '''+ @EMP_CODE + ''''
+        IF @EMP_LIST  <> '' AND (@EMP_CODE = '%' OR @EMP_CODE = '')
+		    BEGIN
+			    SELECT @sql_where = @sql_where + ' AND V_JOB_TRAFFIC_DET.EMP_CODE IN ('+ @EMP_LIST + ') '
+		    END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql_where = @sql_where + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+	    IF @QUERY_TYPE = 'PSWL2' AND @JC_LIST <> ''
+	    BEGIN
+		    SET @JC_LIST = REPLACE(@JC_LIST,'JOB_TRAFFIC_DET_EMPS','JOB_COMPONENT')
+		    SELECT @sql_where = @sql_where + @JC_LIST
+	    END
+   
+
+        SELECT @sql = @sql + @sql_from + @sql_where
+        SELECT @sql = @sql + ' GROUP BY V_JOB_TRAFFIC_DET.JOB_NUMBER, V_JOB_TRAFFIC_DET.JOB_COMPONENT_NBR, V_JOB_TRAFFIC_DET.SEQ_NBR,
+        V_JOB_TRAFFIC_DET.FNC_CODE, V_JOB_TRAFFIC_DET.TASK_DESCRIPTION, JOB_COMPONENT.JOB_COMP_DESC,
+        V_JOB_TRAFFIC_DET.TASK_START_DATE, V_JOB_TRAFFIC_DET.JOB_REVISED_DATE, JOB_COMPONENT.JOB_FIRST_USE_DATE, V_JOB_TRAFFIC_DET.EMP_CODE,
+        JOB_LOG.JOB_DESC, JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, 
+                              EMPLOYEE.EMP_LNAME, TRAFFIC.TRF_DESCRIPTION, EMPLOYEE.DP_TM_CODE '
+        SELECT @sql = @sql + ' UNION ALL
+	        SELECT JOB_NUMBER, JOB_COMPONENT_NBR,  FNC_CODE, NON_TASK_DESC AS TASK_DESCRIPTION, '''' AS JOB_COMP_DESC, 
+	    	        CASE WHEN ALL_DAY = 1 THEN START_DATE ELSE (STR(DATEPART(month, START_DATE)) + ''/'' + STR(DATEPART(day, START_DATE)) + ''/'' + STR(DATEPART(year, START_DATE)) + '' '' + STR(DATEPART(hour, START_TIME)) + '':'' + STR(DATEPART(minute, START_TIME)) + '':'' + STR(DATEPART(second, START_TIME))) END AS TASK_START_DATE,
+		        CASE WHEN ALL_DAY = 1 THEN END_DATE ELSE (STR(DATEPART(month, END_DATE)) + ''/'' + STR(DATEPART(day, END_DATE)) + ''/'' + STR(DATEPART(year, END_DATE)) + '' '' + STR(DATEPART(hour, END_TIME)) + '':'' + STR(DATEPART(minute, END_TIME)) + '':'' + STR(DATEPART(second, END_TIME))) END AS JOB_REVISED_DATE, NULL, 
+		        EMP_NON_TASKS.EMP_CODE, '''' AS JOB_DESC, 
+		        '''' AS OFFICE_CODE, '''' AS CL_CODE, '''' AS DIV_CODE, '''' AS PRD_CODE,
+		        CASE WHEN ALL_DAY = 1 THEN START_DATE ELSE (STR(DATEPART(month, START_DATE)) + ''/'' + STR(DATEPART(day, START_DATE)) + ''/'' + STR(DATEPART(year, START_DATE)) + '' '' + STR(DATEPART(hour, START_TIME)) + '':'' + STR(DATEPART(minute, START_TIME)) + '':'' + STR(DATEPART(second, START_TIME))) END AS SORT,
+		        HOURS AS JOB_HRS, -1 AS SEQ_NBR, ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,'''') AS EMP_FML_NAME, ''H'' AS REC_TYPE, NON_TASK_ID,NULL, NULL
+	        FROM   EMP_NON_TASKS	 LEFT OUTER JOIN
+                              EMPLOYEE ON EMP_NON_TASKS.EMP_CODE = EMPLOYEE.EMP_CODE '
+       SELECT @sql = @sql + ' WHERE (START_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + '''' 
+        SELECT @sql = @sql + ' OR END_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + ''')' 
+	    SELECT @sql = @sql + '    AND TYPE = ''H''			
+        UNION ALL
+        SELECT EMP_NON_TASKS.JOB_NUMBER, EMP_NON_TASKS.JOB_COMPONENT_NBR, EMP_NON_TASKS.FNC_CODE, EMP_NON_TASKS.NON_TASK_DESC AS TASK_DESCRIPTION, '''' AS JOB_COMP_DESC, 
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 THEN EMP_NON_TASKS.START_DATE ELSE (STR(DATEPART(month, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(day, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(year, EMP_NON_TASKS.START_DATE)) + '' '' + STR(DATEPART(hour, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(minute, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(second, EMP_NON_TASKS.START_TIME))) END AS TASK_START_DATE,
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 THEN EMP_NON_TASKS.END_DATE ELSE (STR(DATEPART(month, EMP_NON_TASKS.END_DATE)) + ''/'' + STR(DATEPART(day, EMP_NON_TASKS.END_DATE)) + ''/'' + STR(DATEPART(year, EMP_NON_TASKS.END_DATE)) + '' '' + STR(DATEPART(hour, EMP_NON_TASKS.END_TIME)) + '':'' + STR(DATEPART(minute, EMP_NON_TASKS.END_TIME)) + '':'' + STR(DATEPART(second, EMP_NON_TASKS.END_TIME))) END AS JOB_REVISED_DATE, NULL,
+	        EMP_NON_TASKS.EMP_CODE, '''' AS JOB_DESC, 
+	        '''' AS OFFICE_CODE, '''' AS CL_CODE, '''' AS DIV_CODE, '''' AS PRD_CODE,
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 THEN EMP_NON_TASKS.START_DATE ELSE (STR(DATEPART(month, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(day, EMP_NON_TASKS.START_DATE)) + ''/'' + STR(DATEPART(year, EMP_NON_TASKS.START_DATE)) + '' '' + STR(DATEPART(hour, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(minute, EMP_NON_TASKS.START_TIME)) + '':'' + STR(DATEPART(second, EMP_NON_TASKS.START_TIME))) END AS SORT,
+	        EMP_NON_TASKS.HOURS AS JOB_HRS, -1 AS SEQ_NBR, ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,'''') AS EMP_FML_NAME,
+	        CASE WHEN EMP_NON_TASKS.ALL_DAY = 1 AND ISNULL(TIME_CATEGORY.VAC_SICK_FLAG,0) = 0 THEN ''ADA''
+			     WHEN EMP_NON_TASKS.ALL_DAY = 1 AND ISNULL(TIME_CATEGORY.VAC_SICK_FLAG,0) > 0 THEN ''ADHO'' 
+				 WHEN ISNULL(TIME_CATEGORY.VAC_SICK_FLAG,0) > 0 THEN ''AHO'' ELSE ''A'' END AS REC_TYPE, EMP_NON_TASKS.NON_TASK_ID,NULL, NULL
+        FROM  EMP_NON_TASKS LEFT OUTER JOIN EMP_NON_TASKS_EMPS ON EMP_NON_TASKS.NON_TASK_ID = EMP_NON_TASKS_EMPS.NON_TASK_ID INNER JOIN
+              EMPLOYEE ON EMP_NON_TASKS_EMPS.EMP_CODE = EMPLOYEE.EMP_CODE LEFT OUTER JOIN
+			  TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY' 
+        If @RestrictionsEmp > 0 
+              SELECT @sql = @sql + ' INNER JOIN SEC_EMP ON EMP_NON_TASKS_EMPS.EMP_CODE = SEC_EMP.EMP_CODE '
+        SELECT @sql = @sql + ' WHERE '
+        SELECT @sql = @sql + ' (EMP_NON_TASKS.START_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + '''' 
+        SELECT @sql = @sql + ' OR EMP_NON_TASKS.END_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + ''')' 
+        SELECT @sql = @sql + ' AND (EMP_NON_TASKS.TYPE = ''A'' OR EMP_NON_TASKS.TYPE = ''M'' OR EMP_NON_TASKS.TYPE = ''C''OR EMP_NON_TASKS.TYPE = ''TD'' OR EMP_NON_TASKS.TYPE = ''EL'') AND EMPLOYEE.EMP_TERM_DATE IS NULL' 
+        If @EMP_CODE  <> '' AND @EMP_CODE <> '%'
+	        SELECT @sql = @sql + ' AND EMP_NON_TASKS_EMPS.EMP_CODE = ''' + @EMP_CODE + '''' 
+
+        IF @EMP_LIST  <> '' AND (@EMP_CODE = '%' OR @EMP_CODE = '')
+		    BEGIN
+			    SELECT @sql = @sql + ' AND EMP_NON_TASKS_EMPS.EMP_CODE IN ('+ @EMP_LIST + ') '
+		    END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql = @sql + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+        If @RestrictionsEmp > 0 
+          SELECT @sql = @sql + ' AND UPPER(SEC_EMP.USER_ID) = UPPER(''' + @UserID + ''')'
+        SELECT @sql = @sql + ' ) AS A'	
+
+        --SELECT @sql = @sql + ' ORDER BY SORT '	
+
+        PRINT (@sql)
+        EXEC(@sql)
+        
+        --SELECT * FROM #MY_DATA;
+        --ADD IN EVENT TASKS:
+        SET @sql = ''
+
+        SET @sql = '
+        INSERT INTO #MY_DATA
+        SELECT     
+	        EVENT.JOB_NUMBER, EVENT.JOB_COMPONENT_NBR, TRAFFIC_FNC.TRF_CODE AS FNC_CODE, TRAFFIC_FNC.TRF_DESC AS TASK_DESCRIPTION, 
+	        JOB_COMPONENT.JOB_COMP_DESC, EVENT_TASK.START_TIME, EVENT_TASK.END_TIME, NULL, EVENT_TASK.EMP_CODE, JOB_LOG.JOB_DESC, 
+	        JOB_LOG.OFFICE_CODE, JOB_LOG.CL_CODE, JOB_LOG.DIV_CODE, JOB_LOG.PRD_CODE, EVENT_TASK.START_TIME AS SORT, 
+	        EVENT_TASK.HOURS_ALLOWED AS JOB_HRS, - 1 AS SEQ_NBR, 
+	        ISNULL(ISNULL(EMPLOYEE.EMP_FNAME+'' '','''')+ISNULL(EMPLOYEE.EMP_MI+''. '','''')+ISNULL(EMPLOYEE.EMP_LNAME,''''),'''') AS EMP_FML_NAME, ''ET'' AS REC_TYPE, EVENT_TASK_ID AS NON_TASK_ID,NULL,NULL,
+	        00.000000 AS ADJ_JOB_HRS, 1 AS IS_EVENT_TASK, 0,0,0,00.000000,00.000000,00.000000,00.000000,00.000000,00.000000,0,00.000000,00.000000
+				FROM         EVENT_TASK WITH (NOLOCK) INNER JOIN
+                      EVENT WITH (NOLOCK) ON EVENT_TASK.EVENT_ID = EVENT.EVENT_ID INNER JOIN
+                      JOB_COMPONENT WITH (NOLOCK) ON EVENT.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+                      EVENT.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+                      JOB_LOG WITH (NOLOCK) ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER INNER JOIN
+                      TRAFFIC_FNC WITH (NOLOCK) ON EVENT_TASK.TASK_CODE = TRAFFIC_FNC.TRF_CODE LEFT OUTER JOIN
+                      JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+                      JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR LEFT OUTER JOIN
+                      EMPLOYEE WITH (NOLOCK) ON EVENT_TASK.EMP_CODE = EMPLOYEE.EMP_CODE'
+        IF @Restrictions > 0
+        BEGIN
+	        SET @sql = @sql +  ' INNER JOIN SEC_CLIENT ON JOB_LOG.CL_CODE = SEC_CLIENT.CL_CODE AND JOB_LOG.DIV_CODE = SEC_CLIENT.DIV_CODE AND JOB_LOG.PRD_CODE = SEC_CLIENT.PRD_CODE '
+        END	
+        IF @RestrictionsEmp > 0 
+        BEGIN
+	        SET @sql = @sql + ' INNER JOIN SEC_EMP ON EVENT_TASK.EMP_CODE = SEC_EMP.EMP_CODE '
+        END
+        IF @ROLES <> ''
+        BEGIN
+	        SET @sql = @sql + ' 
+	        LEFT OUTER JOIN EMP_TRAFFIC_ROLE ON EVENT_TASK.EMP_CODE = EMP_TRAFFIC_ROLE.EMP_CODE
+		        '
+        END	
+        --BEGIN THE WHERE CLAUSE
+        SET @sql = @sql+'	
+        WHERE (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL) AND EVENT_TASK.END_TIME BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + '''' 
+        IF @Restrictions > 0
+        BEGIN
+	        SET @sql = @sql + ' AND UPPER(SEC_CLIENT.USER_ID) = UPPER(''' + @UserID + ''') AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL)'
+        END	
+        IF @RestrictionsEmp > 0 
+        BEGIN
+	        SET @sql = @sql + ' AND UPPER(SEC_EMP.USER_ID) = UPPER(''' + @UserID + ''')'
+        END
+        IF @ROLES <> ''
+        BEGIN
+	        SET @sql = @sql +  ' AND ((EMP_TRAFFIC_ROLE.ROLE_CODE IN ('+ @ROLES +'))) ' 	
+        END
+        
+        SET @sql = @sql + ' AND (NOT (EVENT_TASK.EMP_CODE IS NULL)) '
+	        
+        IF @EMP_CODE  <> '' AND @EMP_CODE <> '%'
+        BEGIN
+	        SET @sql = @sql + ' AND EVENT_TASK.EMP_CODE = '''+ @EMP_CODE + ''''
+        END
+        IF @EMP_LIST  <> '' AND (@EMP_CODE = '%' OR @EMP_CODE = '')
+        BEGIN
+		    SET @sql = @sql + ' AND EVENT_TASK.EMP_CODE IN ('+ @EMP_LIST + ') '
+        END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql = @sql + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+        EXEC(@sql)
+        
+        --SELECT * FROM #MY_DATA
+        UPDATE #MY_DATA SET TASK_TOTAL_WORKING_DAYS = 
+			CASE WHEN (SELECT COUNT(WORKDAY_COUNT) FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) > 1 
+		THEN (SELECT DISTINCT TOP 1 WORKDAY_COUNT FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) 
+		ELSE (SELECT DISTINCT WORKDAY_COUNT FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) END
+        
+        UPDATE #MY_DATA SET HOURS_PER_DAY = 
+			CASE WHEN (SELECT COUNT(HRS_PER_DAY) FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) > 1
+		THEN (SELECT DISTINCT TOP 1 HRS_PER_DAY FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) 
+		ELSE (SELECT DISTINCT HRS_PER_DAY FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) END
+
+		UPDATE #MY_DATA SET HRS_PER_DAY_WITH_ASSN =  
+			CASE WHEN (SELECT COUNT(HRS_PER_DAY_WITH_ASSN) FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) > 1
+		 THEN (SELECT DISTINCT TOP 1 HRS_PER_DAY_WITH_ASSN FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) 
+		 ELSE (SELECT DISTINCT HRS_PER_DAY_WITH_ASSN FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) END
+        
+        UPDATE #MY_DATA SET ADJ_JOB_HRS =  
+			CASE WHEN (SELECT COUNT((HRS_PER_DAY * WORKDAY_COUNT_IN_RANGE))
+        FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) > 1 
+		THEN (SELECT DISTINCT TOP 1 (HRS_PER_DAY * WORKDAY_COUNT_IN_RANGE)
+        FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) 
+		ELSE (SELECT DISTINCT (HRS_PER_DAY * WORKDAY_COUNT_IN_RANGE)
+        FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) END
+
+		UPDATE #MY_DATA SET ADJ_JOB_HRS_WITH_ASSN =  
+			CASE WHEN (SELECT DISTINCT COUNT((HRS_PER_DAY_WITH_ASSN * WORKDAY_COUNT_IN_RANGE_WITH_ASSN))
+        FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) > 1
+		 THEN (SELECT DISTINCT TOP 1 (HRS_PER_DAY_WITH_ASSN * WORKDAY_COUNT_IN_RANGE_WITH_ASSN)
+        FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE)
+		  ELSE (SELECT DISTINCT (HRS_PER_DAY_WITH_ASSN * WORKDAY_COUNT_IN_RANGE_WITH_ASSN)
+        FROM #JOBS WHERE #MY_DATA.JOB_NUMBER = #JOBS.JOB_NUMBER AND
+        #MY_DATA.JOB_COMPONENT_NBR = #JOBS.JOB_COMPONENT_NBR AND #MY_DATA.SEQ_NBR = #JOBS.SEQ_NBR AND #MY_DATA.EMP_CODE = #JOBS.EMP_CODE) END
+
+		UPDATE #MY_DATA SET STD_HRS_AVAIL = (SELECT SUM(STD_HRS)
+        FROM #WORK_DAY WHERE #WORK_DAY.EMP_CODE = #MY_DATA.EMP_CODE
+		AND WORK_DATE >= #MY_DATA.TASK_START_DATE  
+		AND WORK_DATE <= #MY_DATA.JOB_REVISED_DATE)
+
+		UPDATE #MY_DATA SET RED_FLAG = 1
+		WHERE REC_TYPE = 'T' AND @START_DATE <= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE 
+		AND HOURS_PER_DAY = 0 AND STD_HRS_AVAIL > 0 AND HRS_PER_DAY_WITH_ASSN > 0
+
+		UPDATE #EMP_AVAILABILITY SET HRS_ASSIGNED_TASK = (SELECT SUM(HRS_PER_DAY_WITH_ASSN) FROM #MY_DATA
+		WHERE #EMP_AVAILABILITY.[DATE] BETWEEN #MY_DATA.TASK_START_DATE AND  CONVERT(
+				       DATETIME,
+				       CONVERT(CHAR(10), DATEPART(yyyy, #MY_DATA.JOB_REVISED_DATE), 101) 
+				       +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(mm, #MY_DATA.JOB_REVISED_DATE), 101) +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(dd, #MY_DATA.JOB_REVISED_DATE), 101) +
+				       ' 23:59:00' 
+				       ) AND #MY_DATA.RED_FLAG = 1 AND #MY_DATA.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE)
+
+		UPDATE #JOB_AVAILABILITY SET HRS_ASSIGNED_TASK = (SELECT SUM(HRS_PER_DAY_WITH_ASSN) FROM #MY_DATA
+		WHERE #JOB_AVAILABILITY.[DATE] BETWEEN #MY_DATA.TASK_START_DATE AND  CONVERT(
+				       DATETIME,
+				       CONVERT(CHAR(10), DATEPART(yyyy, #MY_DATA.JOB_REVISED_DATE), 101) 
+				       +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(mm, #MY_DATA.JOB_REVISED_DATE), 101) +
+				       '-' +
+				       CONVERT(CHAR(10), DATEPART(dd, #MY_DATA.JOB_REVISED_DATE), 101) +
+				       ' 23:59:00' 
+				       ) AND #MY_DATA.RED_FLAG = 1 AND #MY_DATA.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE AND #MY_DATA.JOB_NUMBER = #JOB_AVAILABILITY.JOB_COMPONENT_NBR AND #MY_DATA.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR)
+        
+        UPDATE #MY_DATA SET JOB_HRS = (SELECT CASE WHEN @START_DATE >= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN
+										 (SELECT SUM(STD_HRS) FROM #WORK_DAY
+													WHERE #WORK_DAY.EMP_CODE = #MY_DATA.EMP_CODE
+													 AND WORK_DATE >= @START_DATE 
+													 AND WORK_DATE <= #MY_DATA.JOB_REVISED_DATE
+													 )
+				 WHEN @START_DATE >= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT SUM(STD_HRS) FROM #WORK_DAY
+													WHERE #WORK_DAY.EMP_CODE = #MY_DATA.EMP_CODE
+													 AND WORK_DATE >= @START_DATE 
+													 AND WORK_DATE <= @END_DATE
+													 )
+				 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE >= JOB_REVISED_DATE THEN (SELECT SUM(STD_HRS) FROM #WORK_DAY
+													WHERE #WORK_DAY.EMP_CODE = #MY_DATA.EMP_CODE
+													 AND WORK_DATE >= #MY_DATA.TASK_START_DATE  
+													 AND WORK_DATE <= #MY_DATA.JOB_REVISED_DATE
+													 )
+				 WHEN @START_DATE <= TASK_START_DATE AND @END_DATE <= JOB_REVISED_DATE THEN (SELECT SUM(STD_HRS) FROM #WORK_DAY
+													WHERE #WORK_DAY.EMP_CODE = #MY_DATA.EMP_CODE
+													 AND WORK_DATE >= #MY_DATA.TASK_START_DATE  
+													 AND WORK_DATE <= @END_DATE
+													 ) ELSE JOB_HRS END)
+			WHERE REC_TYPE = 'ADHO' OR REC_TYPE = 'ADA'	
+	
+	
+	   
+	--SELECT * FROM #EMP_AVAILABILITY 
+--	#EMP_AVAILABILITY 	
+		--Update #EMP_AVAILABILITY table 
+		UPDATE #EMP_AVAILABILITY SET STD_HRS_AVAIL = 
+		(SELECT STD_HRS FROM #WORK_DAY
+		WHERE CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) = #WORK_DAY.WORK_DATE 
+		AND #EMP_AVAILABILITY.EMP_CODE = #WORK_DAY.EMP_CODE) --AND UPPER(USERID) = UPPER(@UserID))
+		
+		--Holidays
+		 UPDATE #EMP_AVAILABILITY SET STD_HRS_AVAIL = 0, 
+					#EMP_AVAILABILITY.NOTE = EMP_NON_TASKS.NON_TASK_DESC, #EMP_AVAILABILITY.IS_FULL_DAY_OFF = 1
+		FROM #EMP_AVAILABILITY INNER JOIN EMP_NON_TASKS WITH(NOLOCK) 
+			ON CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) = EMP_NON_TASKS.START_DATE
+		WHERE TYPE = 'H'
+		AND ALL_DAY = 1
+		AND 
+		(
+			[START_DATE] = CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) 
+			OR [END_DATE] = CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) 
+		)
+
+		UPDATE #EMP_AVAILABILITY 
+		SET #EMP_AVAILABILITY.STD_HRS_AVAIL = ISNULL(#EMP_AVAILABILITY.STD_HRS_AVAIL,0.00) - ISNULL(EMP_NON_TASKS.HOURS,0.00),
+		#EMP_AVAILABILITY.NOTE = EMP_NON_TASKS.NON_TASK_DESC
+		FROM #EMP_AVAILABILITY INNER JOIN EMP_NON_TASKS WITH(NOLOCK) ON 
+		CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) = EMP_NON_TASKS.START_DATE
+		WHERE TYPE = 'H' AND ALL_DAY = 0
+
+		--Appointments
+		UPDATE #EMP_AVAILABILITY SET HRS_USED_NON_TASK = 		
+		( SELECT
+		ISNULL(SUM(EMP_NON_TASKS.HOURS),0.000000) AS SUM_HRS
+		FROM         EMP_NON_TASKS WITH(NOLOCK) INNER JOIN
+								TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY INNER JOIN
+								EMPLOYEE WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = EMPLOYEE.EMP_CODE
+		WHERE     (EMP_NON_TASKS.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE) AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) AND ((ALL_DAY IS NULL) OR ALL_DAY = 0)
+		AND
+		(
+			[START_DATE] = CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) 
+			OR [END_DATE] = CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) 
+		)), #EMP_AVAILABILITY.NOTE = 'Appointment'		
+						
+		--ZERO OUT ALL-DAY (AND ALL DAY MULTI-DAY) APPOINTMENTS:
+		UPDATE #EMP_AVAILABILITY SET HRS_USED_NON_TASK = STD_HRS_AVAIL, #EMP_AVAILABILITY.IS_FULL_DAY_OFF = 2
+		FROM EMP_NON_TASKS WITH(NOLOCK) INNER JOIN
+								TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY INNER JOIN
+								#EMP_AVAILABILITY WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE
+		WHERE (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) AND EMP_NON_TASKS.ALL_DAY = 1
+		AND 
+		(
+			(
+				DATEPART(dayofyear,#EMP_AVAILABILITY.DATE) <= DATEPART(dayofyear,END_TIME)
+				AND DATEPART(yy,#EMP_AVAILABILITY.DATE) <= DATEPART(yy,END_TIME)
+			) 
+			AND 
+			(
+				DATEPART(dayofyear,#EMP_AVAILABILITY.DATE) >= DATEPART(dayofyear,START_TIME)
+				AND DATEPART(yy,#EMP_AVAILABILITY.DATE) >= DATEPART(yy,START_TIME)
+			)
+
+		)
+		;
+		UPDATE #EMP_AVAILABILITY SET HRS_APPTS = 		
+		( 
+			SELECT     ISNULL(SUM(EMP_NON_TASKS.HOURS),0.000000) AS SUM_HRS
+			FROM         EMP_NON_TASKS WITH(NOLOCK) LEFT OUTER JOIN
+									TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY
+			WHERE     (EMP_NON_TASKS.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE) 
+			AND 
+			(
+				[START_DATE] = CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) 
+				OR [END_DATE] = CONVERT(DATETIME, convert (varchar, #EMP_AVAILABILITY.DATE,101),101) 
+			)
+			AND ((TIME_CATEGORY.VAC_SICK_FLAG NOT IN (1, 2, 3) OR TIME_CATEGORY.VAC_SICK_FLAG IS NULL )) AND ((ALL_DAY IS NULL) OR ALL_DAY = 0)
+		)
+
+		--ZERO OUT ALL-DAY (AND ALL DAY MULTI-DAY) APPOINTMENTS:
+		UPDATE #EMP_AVAILABILITY SET HRS_APPTS = STD_HRS_AVAIL, #EMP_AVAILABILITY.IS_FULL_DAY_OFF = 2
+		FROM EMP_NON_TASKS WITH(NOLOCK) INNER JOIN
+								TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY INNER JOIN
+								#EMP_AVAILABILITY WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE
+		WHERE (TIME_CATEGORY.VAC_SICK_FLAG NOT IN (1, 2, 3)) AND EMP_NON_TASKS.ALL_DAY = 1
+		AND 
+		(
+			(
+				DATEPART(dayofyear,#EMP_AVAILABILITY.DATE) <= DATEPART(dayofyear,END_TIME)
+				AND DATEPART(yy,#EMP_AVAILABILITY.DATE) <= DATEPART(yy,END_TIME)
+			) 
+			AND 
+			(
+				DATEPART(dayofyear,#EMP_AVAILABILITY.DATE) >= DATEPART(dayofyear,START_TIME)
+				AND DATEPART(yy,#EMP_AVAILABILITY.DATE) >= DATEPART(yy,START_TIME)
+			)
+		)
+		;  
+
+		--Events
+		UPDATE #EMP_AVAILABILITY
+		SET #EMP_AVAILABILITY.HRS_ASSIGNED_EVENT = 
+		(
+			SELECT     
+				ISNULL(SUM(EVENT_TASK.HOURS_ALLOWED),0.000000) --AS SUM_EVENT_HOURS_ALLOWED, EVENT_TASK.EMP_CODE, 
+				--CONVERT(SMALLDATETIME,CONVERT(VARCHAR(10),EVENT_TASK.START_TIME,101)) AS EVENT_DATE
+			FROM         
+				EVENT_TASK WITH (NOLOCK) INNER JOIN
+				EMPLOYEE WITH (NOLOCK) ON EVENT_TASK.EMP_CODE  COLLATE SQL_Latin1_General_CP1_CS_AS = EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS  INNER JOIN
+				EVENT ON EVENT_TASK.EVENT_ID = EVENT.EVENT_ID INNER JOIN
+				JOB_COMPONENT ON EVENT.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+				EVENT.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+				JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+				JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+			WHERE
+				(JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)
+				AND DATEPART(dayofyear,EVENT_TASK.START_TIME) = DATEPART(dayofyear,#EMP_AVAILABILITY.DATE) 
+				AND DATEPART(yy,EVENT_TASK.START_TIME) = DATEPART(yy,#EMP_AVAILABILITY.DATE)
+				AND #EMP_AVAILABILITY.EMP_CODE = EVENT_TASK.EMP_CODE
+			GROUP BY 
+				EVENT_TASK.EMP_CODE, CONVERT(SMALLDATETIME,CONVERT(VARCHAR(10),EVENT_TASK.START_TIME,101))
+		)
+		;
+		
+		--Update Assigned Task Hours
+		UPDATE #EMP_AVAILABILITY SET HRS_ASSIGNED_TASK = ISNULL(HRS_ASSIGNED_TASK,0.000000)
+		         + (SELECT SUM(HRS_PER_DAY) FROM #JOBS 
+					WHERE #EMP_AVAILABILITY.EMP_CODE = #JOBS.EMP_CODE AND 
+					#EMP_AVAILABILITY.DATE BETWEEN TASK_START_DATE AND JOB_REVISED_DATE					
+						)
+		WHERE STD_HRS_AVAIL IS NOT NULL AND #EMP_AVAILABILITY.IS_FULL_DAY_OFF IS NULL 		
+ 	
+			
+		--CLEAN UP:
+        UPDATE #EMP_AVAILABILITY SET STD_HRS_AVAIL = 0.000000 WHERE STD_HRS_AVAIL IS NULL;
+        UPDATE #EMP_AVAILABILITY SET HRS_USED_NON_TASK = 0.000000 WHERE HRS_USED_NON_TASK IS NULL;
+        UPDATE #EMP_AVAILABILITY SET HRS_AVAIL = ISNULL(STD_HRS_AVAIL,0.000000) - ISNULL(HRS_USED_NON_TASK,0.000000) - ISNULL(HRS_APPTS,0.000000);
+        UPDATE #EMP_AVAILABILITY SET HRS_ASSIGNED_TASK = 0.000000 WHERE HRS_ASSIGNED_TASK IS NULL;
+        UPDATE #EMP_AVAILABILITY SET HRS_BALANCE_AVAIL = ISNULL(HRS_AVAIL,0.000000) - ISNULL(HRS_ASSIGNED_TASK,0.000000);
+		UPDATE #EMP_AVAILABILITY SET HRS_APPTS = 0.000000 WHERE HRS_APPTS IS NULL;
+
+	   --TEST:
+       --SELECT * FROM #EMP_AVAILABILITY;
+
+
+--#JOB_AVAILABILITY
+		
+		--Update #JOB_AVAILABILITY table 
+		UPDATE #JOB_AVAILABILITY SET STD_HRS_AVAIL = 
+		(SELECT STD_HRS FROM #WORK_DAY
+		WHERE CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) = #WORK_DAY.WORK_DATE 
+		AND #JOB_AVAILABILITY.EMP_CODE = #WORK_DAY.EMP_CODE) --AND UPPER(USERID) = UPPER(@UserID))
+		
+		--Holidays
+		 UPDATE #JOB_AVAILABILITY SET STD_HRS_AVAIL = 0, 
+					#JOB_AVAILABILITY.NOTE = EMP_NON_TASKS.NON_TASK_DESC, #JOB_AVAILABILITY.IS_FULL_DAY_OFF = 1
+		FROM #JOB_AVAILABILITY INNER JOIN EMP_NON_TASKS WITH(NOLOCK) 
+			ON CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) = EMP_NON_TASKS.START_DATE
+		WHERE TYPE = 'H'
+		AND ALL_DAY = 1
+		AND 
+		(
+			[START_DATE] = CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) 
+			OR [END_DATE] = CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) 
+		)
+
+		UPDATE #JOB_AVAILABILITY 
+		SET #JOB_AVAILABILITY.STD_HRS_AVAIL = ISNULL(#JOB_AVAILABILITY.STD_HRS_AVAIL,0.00) - ISNULL(EMP_NON_TASKS.HOURS,0.00),
+		#JOB_AVAILABILITY.NOTE = EMP_NON_TASKS.NON_TASK_DESC
+		FROM #JOB_AVAILABILITY INNER JOIN EMP_NON_TASKS WITH(NOLOCK) ON 
+		CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) = EMP_NON_TASKS.START_DATE
+		WHERE TYPE = 'H' AND ALL_DAY = 0
+
+		--Appointments
+		UPDATE #JOB_AVAILABILITY SET HRS_USED_NON_TASK = 		
+		( SELECT
+		ISNULL(SUM(EMP_NON_TASKS.HOURS),0.000000) AS SUM_HRS
+		FROM         EMP_NON_TASKS WITH(NOLOCK) INNER JOIN
+								TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY INNER JOIN
+								EMPLOYEE WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = EMPLOYEE.EMP_CODE
+		WHERE     (EMP_NON_TASKS.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE) AND (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) AND ((ALL_DAY IS NULL) OR ALL_DAY = 0)
+		AND
+		(
+			[START_DATE] = CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) 
+			OR [END_DATE] = CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) 
+		)), #JOB_AVAILABILITY.NOTE = 'Appointment'		
+						
+		--ZERO OUT ALL-DAY (AND ALL DAY MULTI-DAY) APPOINTMENTS:
+		UPDATE #JOB_AVAILABILITY SET HRS_USED_NON_TASK = STD_HRS_AVAIL, #JOB_AVAILABILITY.IS_FULL_DAY_OFF = 2
+		FROM EMP_NON_TASKS WITH(NOLOCK) INNER JOIN
+								TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY INNER JOIN
+								#JOB_AVAILABILITY WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE
+		WHERE (TIME_CATEGORY.VAC_SICK_FLAG IN (1, 2, 3)) AND EMP_NON_TASKS.ALL_DAY = 1
+		AND 
+		(
+			(
+				DATEPART(dayofyear,#JOB_AVAILABILITY.DATE) <= DATEPART(dayofyear,END_TIME)
+				AND DATEPART(yy,#JOB_AVAILABILITY.DATE) <= DATEPART(yy,END_TIME)
+			) 
+			AND 
+			(
+				DATEPART(dayofyear,#JOB_AVAILABILITY.DATE) >= DATEPART(dayofyear,START_TIME)
+				AND DATEPART(yy,#JOB_AVAILABILITY.DATE) >= DATEPART(yy,START_TIME)
+			)
+
+		)
+		;
+		UPDATE #JOB_AVAILABILITY SET HRS_APPTS = 		
+		( 
+			SELECT     ISNULL(SUM(EMP_NON_TASKS.HOURS),0.000000) AS SUM_HRS
+			FROM         EMP_NON_TASKS WITH(NOLOCK) LEFT OUTER JOIN
+									TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY
+			WHERE     (EMP_NON_TASKS.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE) 
+			AND 
+			(
+				[START_DATE] = CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) 
+				OR [END_DATE] = CONVERT(DATETIME, convert (varchar, #JOB_AVAILABILITY.DATE,101),101) 
+			)
+			AND ((TIME_CATEGORY.VAC_SICK_FLAG NOT IN (1, 2, 3) OR TIME_CATEGORY.VAC_SICK_FLAG IS NULL )) AND ((ALL_DAY IS NULL) OR ALL_DAY = 0)
+		)
+
+		--ZERO OUT ALL-DAY (AND ALL DAY MULTI-DAY) APPOINTMENTS:
+		UPDATE #JOB_AVAILABILITY SET HRS_APPTS = STD_HRS_AVAIL, #JOB_AVAILABILITY.IS_FULL_DAY_OFF = 2
+		FROM EMP_NON_TASKS WITH(NOLOCK) INNER JOIN
+								TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY INNER JOIN
+								#JOB_AVAILABILITY WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE
+		WHERE (TIME_CATEGORY.VAC_SICK_FLAG NOT IN (1, 2, 3)) AND EMP_NON_TASKS.ALL_DAY = 1
+		AND 
+		(
+			(
+				DATEPART(dayofyear,#JOB_AVAILABILITY.DATE) <= DATEPART(dayofyear,END_TIME)
+				AND DATEPART(yy,#JOB_AVAILABILITY.DATE) <= DATEPART(yy,END_TIME)
+			) 
+			AND 
+			(
+				DATEPART(dayofyear,#JOB_AVAILABILITY.DATE) >= DATEPART(dayofyear,START_TIME)
+				AND DATEPART(yy,#JOB_AVAILABILITY.DATE) >= DATEPART(yy,START_TIME)
+			)
+		)
+		;  
+
+		--Events
+		UPDATE #JOB_AVAILABILITY
+		SET #JOB_AVAILABILITY.HRS_ASSIGNED_EVENT = 
+		(
+			SELECT     
+				ISNULL(SUM(EVENT_TASK.HOURS_ALLOWED),0.000000) --AS SUM_EVENT_HOURS_ALLOWED, EVENT_TASK.EMP_CODE, 
+				--CONVERT(SMALLDATETIME,CONVERT(VARCHAR(10),EVENT_TASK.START_TIME,101)) AS EVENT_DATE
+			FROM         
+				EVENT_TASK WITH (NOLOCK) INNER JOIN
+				EMPLOYEE WITH (NOLOCK) ON EVENT_TASK.EMP_CODE  COLLATE SQL_Latin1_General_CP1_CS_AS = EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS  INNER JOIN
+				EVENT ON EVENT_TASK.EVENT_ID = EVENT.EVENT_ID INNER JOIN
+				JOB_COMPONENT ON EVENT.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER AND 
+				EVENT.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR INNER JOIN
+				JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER AND 
+				JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR
+			WHERE
+				(JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)
+				AND DATEPART(dayofyear,EVENT_TASK.START_TIME) = DATEPART(dayofyear,#JOB_AVAILABILITY.DATE) 
+				AND DATEPART(yy,EVENT_TASK.START_TIME) = DATEPART(yy,#JOB_AVAILABILITY.DATE)
+				AND #JOB_AVAILABILITY.EMP_CODE = EVENT_TASK.EMP_CODE
+			GROUP BY 
+				EVENT_TASK.EMP_CODE, CONVERT(SMALLDATETIME,CONVERT(VARCHAR(10),EVENT_TASK.START_TIME,101))
+		)
+		;
+		
+		--Update Assigned Task Hours
+		UPDATE #JOB_AVAILABILITY SET HRS_ASSIGNED_TASK = ISNULL(HRS_ASSIGNED_TASK,0.000000)
+		         + (SELECT SUM(HRS_PER_DAY) FROM #JOBS 
+					WHERE #JOB_AVAILABILITY.EMP_CODE = #JOBS.EMP_CODE AND #JOBS.JOB_NUMBER = #JOB_AVAILABILITY.JOB_NUMBER AND #JOBS.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR AND
+					#JOB_AVAILABILITY.DATE BETWEEN TASK_START_DATE AND JOB_REVISED_DATE					
+						)
+		WHERE STD_HRS_AVAIL IS NOT NULL AND #JOB_AVAILABILITY.IS_FULL_DAY_OFF IS NULL 		
+ 	
+			
+		--CLEAN UP:
+        UPDATE #JOB_AVAILABILITY SET STD_HRS_AVAIL = 0.000000 WHERE STD_HRS_AVAIL IS NULL;
+        UPDATE #JOB_AVAILABILITY SET HRS_USED_NON_TASK = 0.000000 WHERE HRS_USED_NON_TASK IS NULL;
+        UPDATE #JOB_AVAILABILITY SET HRS_AVAIL = ISNULL(STD_HRS_AVAIL,0.000000) - ISNULL(HRS_USED_NON_TASK,0.000000) - ISNULL(HRS_APPTS,0.000000);
+        UPDATE #JOB_AVAILABILITY SET HRS_ASSIGNED_TASK = 0.000000 WHERE HRS_ASSIGNED_TASK IS NULL;
+        UPDATE #JOB_AVAILABILITY SET HRS_BALANCE_AVAIL = ISNULL(HRS_AVAIL,0.000000) - ISNULL(HRS_ASSIGNED_TASK,0.000000);
+		UPDATE #JOB_AVAILABILITY SET HRS_APPTS = 0.000000 WHERE HRS_APPTS IS NULL;
+		
+		--SELECT * FROM #JOB_AVAILABILITY;
+				
+        DECLARE
+	        @NUM_DAYS INT,
+	        @NUM_WEEKS INT,
+	        @NUM_MONTHS INT,
+	        @NUM_YEARS INT,
+	        @NUM_EMPS INT,
+	        @CALCULATED_START_DATE SMALLDATETIME, --SINCE WE FILTER OUT DAYS EMPS DON'T WORK, THE START/END PASSED IN ISN'T NECESSARILY THE START/END THAT GETS OUTPUT
+	        @CALCULATED_END_DATE SMALLDATETIME
+	        
+--		--TEST:
+--		SELECT * FROM #EMP_AVAILABILITY
+
+	    IF @SUMMARY_LEVEL BETWEEN 1 AND 5
+	    BEGIN
+			SELECT  
+				@CALCULATED_START_DATE = MIN([DATE]),
+				@CALCULATED_END_DATE = MAX([DATE]),
+				@NUM_DAYS = COUNT(DISTINCT DAY_OF_YEAR),
+				--@NUM_WEEKS = COUNT(DISTINCT WEEK_OF_YEAR), 
+				@NUM_MONTHS = COUNT(DISTINCT MONTH_OF_YEAR),
+				@NUM_YEARS = COUNT(DISTINCT [YEAR]),
+				@NUM_EMPS = COUNT(DISTINCT EMP_CODE)
+			FROM 
+				#EMP_AVAILABILITY;
+	    	
+			SELECT 
+				@START_DATE  AS ENTERED_START_DATE, 
+				@END_DATE AS ENTERED_END_DATE, 
+				@CALCULATED_START_DATE  AS CALCULATED_START_DATE, 
+				@CALCULATED_END_DATE AS CALCULATED_END_DATE, 
+				ISNULL(@NUM_DAYS,0) AS NUM_DAYS, 
+				ISNULL(@NUM_WEEKS,0) AS NUM_WEEKS, 
+				ISNULL(@NUM_MONTHS,0) AS NUM_MONTHS, 
+				ISNULL(@NUM_YEARS,0) AS NUM_YEARS, 
+				ISNULL(@NUM_EMPS,0) AS NUM_EMPS;
+	    END    
+     
+     
+--		--TEST:
+--		SELECT * FROM #EMP_AVAILABILITY
+
+		--FINAL CLEANUP:
+		-- recalc available time and subtract event task time from final balance
+		-- add event task time to hrs_assigned_task too
+		UPDATE #EMP_AVAILABILITY
+		SET 
+		#EMP_AVAILABILITY.HRS_BALANCE_AVAIL = ISNULL(#EMP_AVAILABILITY.HRS_BALANCE_AVAIL,0.000000) - ISNULL(#EMP_AVAILABILITY.HRS_ASSIGNED_EVENT,0.000000),
+		#EMP_AVAILABILITY.HRS_ASSIGNED_TASK = ISNULL(#EMP_AVAILABILITY.HRS_ASSIGNED_TASK,0.000000) + ISNULL(#EMP_AVAILABILITY.HRS_ASSIGNED_EVENT,0.000000);
+		UPDATE #JOB_AVAILABILITY
+		SET 
+		#JOB_AVAILABILITY.HRS_BALANCE_AVAIL = ISNULL(#JOB_AVAILABILITY.HRS_BALANCE_AVAIL,0.000000) - ISNULL(#JOB_AVAILABILITY.HRS_ASSIGNED_EVENT,0.000000),
+		#JOB_AVAILABILITY.HRS_ASSIGNED_TASK = ISNULL(#JOB_AVAILABILITY.HRS_ASSIGNED_TASK,0.000000) + ISNULL(#JOB_AVAILABILITY.HRS_ASSIGNED_EVENT,0.000000);
+
+		--? REMOVE WHAT SHOULD BE ALL DAY HOLIDAYS....
+		DELETE FROM #EMP_AVAILABILITY WHERE HRS_USED_NON_TASK = 0.000000 AND HRS_AVAIL = 0.000000 AND HRS_ASSIGNED_TASK = 0.000000 AND HRS_ASSIGNED_EVENT = 0.000000 AND HRS_BALANCE_AVAIL = 0.000000 AND IS_FULL_DAY_OFF = 1;
+		DELETE FROM #JOB_AVAILABILITY WHERE HRS_USED_NON_TASK = 0.000000 AND HRS_AVAIL = 0.000000 AND HRS_ASSIGNED_TASK = 0.000000 AND HRS_ASSIGNED_EVENT = 0.000000 AND HRS_BALANCE_AVAIL = 0.000000 AND IS_FULL_DAY_OFF = 1;
+
+		--TEST:
+--		SELECT * FROM #EMP_AVAILABILITY
+
+		
+     
+        -- @SUMMARY_LEVEL SMALLINT ==> 0 = NONE, 1 = DAY, 2 = WEEK, 3 = MONTH, 4 = YEAR
+        IF @SUMMARY_LEVEL IS NULL OR @SUMMARY_LEVEL = 0 --NO SUMMARY
+        BEGIN
+	        SELECT 
+		        ROW_ID,
+		        EMP_CODE,
+		        CASE DATEPART(dw,[DATE])
+					WHEN 1 THEN 'Sun'
+					WHEN 2 THEN 'Mon'
+					WHEN 3 THEN 'Tue'
+					WHEN 4 THEN 'Wed'
+					WHEN 5 THEN 'Thu'
+					WHEN 6 THEN 'Fri'
+					WHEN 7 THEN 'Sat'
+				END AS S_DAY_OF_WEEK,       
+		        EMP_START_TIME,
+		        EMP_END_TIME,
+		        --EMP_START_TIME_SUN,
+		        --EMP_END_TIME_SUN,
+		        --EMP_START_TIME_MON,
+		        --EMP_END_TIME_MON,
+		        --EMP_START_TIME_TUE,
+		        --EMP_END_TIME_TUE,
+		        --EMP_START_TIME_WED,
+		        --EMP_END_TIME_WED,
+		        --EMP_START_TIME_THU,
+		        --EMP_END_TIME_THU,
+		        --EMP_START_TIME_FRI,
+		        --EMP_END_TIME_FRI,
+		        --EMP_START_TIME_SAT,
+		        --EMP_END_TIME_SAT,
+		        EMP_DIRECT_HRS_GOAL_PERC,
+		        [DATE],
+		        DAY_OF_WEEK,
+		        DAY_OF_YEAR,
+		        WEEK_OF_YEAR,
+		        MONTH_OF_YEAR,
+		        [YEAR],
+		        STD_HRS_AVAIL,
+		        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * ISNULL(HRS_AVAIL,0.000000) AS EMP_DIRECT_HRS_GOAL_HOURS,
+		        HRS_USED_NON_TASK,
+		        HRS_AVAIL,
+		        HRS_ASSIGNED_TASK,
+				HRS_APPTS,
+		        HRS_ASSIGNED_EVENT,
+		        HRS_BALANCE_AVAIL,
+		        NOTE,
+		        IS_FULL_DAY_OFF,
+		        0 AS IS_FIRST_CHOICE
+	        FROM #EMP_AVAILABILITY;
+        END	
+        IF @SUMMARY_LEVEL = 1 --SUM BY DAY
+        BEGIN
+			--#EMP_AVAILABILITY
+        	SELECT 
+        		A.EMP_CODE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/(@FTE/365)) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(A.STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+                      EMPLOYEE.EMP_START_TIME,EMPLOYEE.EMP_END_TIME,
+		        0 AS IS_FIRST_CHOICE,
+		        ISNULL(EMPLOYEE.SENIORITY,9999) AS EMP_SENIORITY
+        	FROM	
+        	    (
+		        SELECT 
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        DAY_OF_YEAR,
+			        ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        ISNULL(SUM(HRS_USED_NON_TASK),0.000000) AS HRS_USED_NON_TASK, 
+			        ISNULL(SUM(HRS_AVAIL),0.000000) AS HRS_AVAIL,ISNULL(SUM(HRS_ASSIGNED_TASK),0.000000) AS HRS_ASSIGNED_TASK, 
+			        ISNULL(SUM(HRS_APPTS),0.000000) AS HRS_APPTS, 
+			        ISNULL(SUM(HRS_BALANCE_AVAIL),0.000000) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,DAY_OF_YEAR
+		        ) AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+        		GROUP BY 
+        			A.EMP_CODE, A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+					  DEPT_TEAM.DP_TM_DESC,EMPLOYEE.EMP_START_TIME,EMPLOYEE.EMP_END_TIME, EMPLOYEE.SENIORITY;
+					  
+        	SELECT DISTINCT DAY_OF_YEAR AS CTR, [YEAR] FROM #EMP_AVAILABILITY ORDER BY [YEAR], DAY_OF_YEAR;
+        	
+	        SELECT 
+		        EMP_CODE,
+		        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+		        DAY_OF_YEAR,
+		        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+		        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.01) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+		        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+		        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+		        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+		        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		        0 AS IS_FIRST_CHOICE,
+				ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE
+				 AND #EMP_AVAILABILITY.DAY_OF_YEAR BETWEEN DATEPART(dayofyear,#MY_DATA.TASK_START_DATE) AND DATEPART(dayofyear,#MY_DATA.JOB_REVISED_DATE)
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/(@FTE/365)) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+	        FROM #EMP_AVAILABILITY
+	        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,DAY_OF_YEAR
+       
+			--#JOB_AVAILABILITY
+			SELECT 
+				A.JOB_NUMBER,
+				A.JOB_COMPONENT_NBR,
+        		A.EMP_CODE,
+				A.JOB_START_DATE,
+				A.JOB_DUE_DATE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/(@FTE/365) AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+		        0 AS IS_FIRST_CHOICE
+        	FROM	
+        	    (		
+		        SELECT 
+					JOB_NUMBER,
+					JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        DAY_OF_YEAR,
+					JOB_START_DATE,
+					JOB_DUE_DATE,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER,JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,DAY_OF_YEAR,JOB_START_DATE,JOB_DUE_DATE
+        	    ) AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+				GROUP BY A.JOB_NUMBER,A.JOB_COMPONENT_NBR,A.EMP_CODE,A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+						  DEPT_TEAM.DP_TM_DESC,A.JOB_START_DATE,A.JOB_DUE_DATE;
+
+			SELECT JOB_NUMBER, JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        DAY_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+			        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		            0 AS IS_FIRST_CHOICE,
+					ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE AND #MY_DATA.JOB_NUMBER = #JOB_AVAILABILITY.JOB_NUMBER AND #MY_DATA.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR 
+				 AND #JOB_AVAILABILITY.WEEK_OF_YEAR BETWEEN DATEPART(dayofyear,#MY_DATA.TASK_START_DATE) AND DATEPART(dayofyear,#MY_DATA.JOB_REVISED_DATE)
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(SUM(HRS_ASSIGNED_TASK)/(@FTE/365) AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL(SUM(HRS_ASSIGNED_TASK),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,DAY_OF_YEAR
+
+			--#DEPT_AVAILABILITY
+          	SELECT 
+        		DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC,        		
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+        	FROM	
+        	    (		
+		        SELECT 
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        DAY_OF_YEAR,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,DAY_OF_YEAR
+        	    ) AS A INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+				GROUP BY DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC;        	
+	        	       	
+        		SELECT 
+			        DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,
+			        DAY_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 			       
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+                CASE
+					WHEN @FTE > 0 THEN CAST((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #EMP_AVAILABILITY INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = #EMP_AVAILABILITY.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+		        GROUP BY DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,DAY_OF_YEAR
+        	
+        END
+        IF @SUMMARY_LEVEL = 2 --SUM BY WEEK
+        BEGIN
+			--#EMP_AVAILABILITY
+          	SELECT 
+        		A.EMP_CODE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/(@FTE/52)) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+		        0 AS IS_FIRST_CHOICE
+        	FROM	
+        	    (		
+		        SELECT 
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        WEEK_OF_YEAR,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,WEEK_OF_YEAR
+        	    ) AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+				GROUP BY A.EMP_CODE,   A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+						  DEPT_TEAM.DP_TM_DESC;
+        	
+	        	--SELECT DISTINCT WEEK_OF_YEAR AS CTR, [YEAR] FROM #EMP_AVAILABILITY ORDER BY [YEAR], WEEK_OF_YEAR;
+        		DECLARE @WEEK_VIEW_MIN_YEAR AS INT, @WEEK_VIEW_MAX_YEAR AS INT, @WEEK_VIEW_YEAR_COUNT AS INT, @LAST_WEEK_OF_YEAR AS INT
+        		
+        		SELECT @WEEK_VIEW_MIN_YEAR = MIN([YEAR]), @WEEK_VIEW_MAX_YEAR = MAX([YEAR]) FROM #EMP_AVAILABILITY;
+        		--SELECT @LAST_WEEK_OF_YEAR = MAX(WEEK_OF_YEAR) FROM #EMP_AVAILABILITY WHERE [YEAR] = @WEEK_VIEW_MIN_YEAR;
+        		
+        		SET @WEEK_VIEW_YEAR_COUNT = ISNULL(@WEEK_VIEW_MAX_YEAR,0) - ISNULL(@WEEK_VIEW_MIN_YEAR,0)
+         		--SELECT @WEEK_VIEW_MIN_YEAR AS WVMINYEAR, @WEEK_VIEW_MAX_YEAR AS WVMAXYEAR, @WEEK_VIEW_YEAR_COUNT AS WVYEAR_COUNT, @LAST_WEEK_OF_YEAR AS LWOY
+       		
+        		--HANDLE WHEN RESULTS SPAN MORE THAN A YEAR (GOING FROM DECEMBER OF ONE YEAR TO JANUARY OF NEXT)
+        		IF @WEEK_VIEW_YEAR_COUNT = 0 
+        			BEGIN
+	        			SELECT DISTINCT WEEK_OF_YEAR AS CTR, [YEAR], WEEK_OF_YEAR FROM #EMP_AVAILABILITY ORDER BY [YEAR], WEEK_OF_YEAR;
+        			END
+        		ELSE
+        			BEGIN
+	        			--SELECT DISTINCT WEEK_OF_YEAR AS CTR, [YEAR] FROM #EMP_AVAILABILITY ORDER BY [YEAR], WEEK_OF_YEAR;
+	        			SELECT DISTINCT A.CTR, A.[YEAR], A.WEEK_OF_YEAR
+	        			FROM
+	        			(
+	        			SELECT 
+	        				0 AS CTR, 
+	        			@WEEK_VIEW_MIN_YEAR AS [YEAR], WEEK_OF_YEAR
+	        			FROM #EMP_AVAILABILITY	
+	        			)AS A ORDER BY A.WEEK_OF_YEAR
+        			END
+        	
+        		SELECT 
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        WEEK_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+			        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		            0 AS IS_FIRST_CHOICE,
+					ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE
+				 AND #EMP_AVAILABILITY.WEEK_OF_YEAR BETWEEN #MY_DATA.TASK_START_DATE AND #MY_DATA.JOB_REVISED_DATE
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/(@FTE/52)) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,WEEK_OF_YEAR
+
+			--#JOB_AVAILABILITY
+			SELECT 
+				A.JOB_NUMBER,
+				A.JOB_COMPONENT_NBR,
+        		A.EMP_CODE,
+				A.JOB_START_DATE,
+				A.JOB_DUE_DATE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+		        0 AS IS_FIRST_CHOICE
+        	FROM	
+        	    (		
+		        SELECT 
+					JOB_NUMBER,
+					JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        WEEK_OF_YEAR,
+					JOB_START_DATE,
+					JOB_DUE_DATE,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER,JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,WEEK_OF_YEAR,JOB_START_DATE,JOB_DUE_DATE
+        	    ) AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+				GROUP BY A.JOB_NUMBER,A.JOB_COMPONENT_NBR,A.EMP_CODE,A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+						  DEPT_TEAM.DP_TM_DESC,A.JOB_START_DATE,A.JOB_DUE_DATE;
+
+			SELECT JOB_NUMBER, JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        WEEK_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+			        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		            0 AS IS_FIRST_CHOICE,
+					ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE AND #MY_DATA.JOB_NUMBER = #JOB_AVAILABILITY.JOB_NUMBER AND #MY_DATA.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR 
+				 AND #JOB_AVAILABILITY.WEEK_OF_YEAR BETWEEN #MY_DATA.TASK_START_DATE AND #MY_DATA.JOB_REVISED_DATE
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(SUM(HRS_ASSIGNED_TASK)/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL(SUM(HRS_ASSIGNED_TASK),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,WEEK_OF_YEAR
+
+			--#DEPT_AVAILABILITY
+          	SELECT 
+        		DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC,        		
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+        	FROM	
+        	    (		
+		        SELECT 
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        WEEK_OF_YEAR,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,WEEK_OF_YEAR
+        	    ) AS A INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+				GROUP BY DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC;        	
+	        	       	
+        		SELECT 
+			        DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,
+			        WEEK_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 			       
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+                CASE
+					WHEN @FTE > 0 THEN CAST((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #EMP_AVAILABILITY INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = #EMP_AVAILABILITY.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+		        GROUP BY DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,WEEK_OF_YEAR
+
+
+        END
+        IF @SUMMARY_LEVEL = 3 --SUM BY MONTH
+        BEGIN
+        	
+			--#EMP_AVAILABILITY
+          	SELECT 
+        		A.EMP_CODE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/(@FTE/12)) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+		        0 AS IS_FIRST_CHOICE
+        	FROM	
+        	    (		
+		        SELECT 
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        MONTH_OF_YEAR,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.01) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK, 
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,MONTH_OF_YEAR
+        	    ) AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+           	GROUP BY A.EMP_CODE,   A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+						  DEPT_TEAM.DP_TM_DESC;
+						  
+						  
+	        	SELECT DISTINCT MONTH_OF_YEAR AS CTR, [YEAR] FROM #EMP_AVAILABILITY ORDER BY [YEAR], MONTH_OF_YEAR;
+		  
+		        SELECT 
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        MONTH_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+			        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,  
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		            0 AS IS_FIRST_CHOICE,
+					ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE
+				 AND #EMP_AVAILABILITY.MONTH_OF_YEAR BETWEEN DATEPART(mm,#MY_DATA.TASK_START_DATE) AND DATEPART(mm,#MY_DATA.JOB_REVISED_DATE)
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/(@FTE/12)) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,MONTH_OF_YEAR
+		        ORDER BY MONTH_OF_YEAR;
+
+			--#JOB_AVAILABILITY
+			SELECT 
+				A.JOB_NUMBER,
+				A.JOB_COMPONENT_NBR,
+        		A.EMP_CODE,
+				A.JOB_START_DATE,
+				A.JOB_DUE_DATE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/(@FTE/12) AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+		        0 AS IS_FIRST_CHOICE
+        	FROM	
+        	    (		
+		        SELECT 
+					JOB_NUMBER,
+					JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        MONTH_OF_YEAR,
+					JOB_START_DATE,
+					JOB_DUE_DATE,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER,JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,MONTH_OF_YEAR,JOB_START_DATE,JOB_DUE_DATE
+        	    ) AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+				GROUP BY A.JOB_NUMBER,A.JOB_COMPONENT_NBR,A.EMP_CODE,A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+						  DEPT_TEAM.DP_TM_DESC,A.JOB_START_DATE,A.JOB_DUE_DATE;
+
+			SELECT JOB_NUMBER, JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        MONTH_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+			        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		            0 AS IS_FIRST_CHOICE,
+					ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE AND #MY_DATA.JOB_NUMBER = #JOB_AVAILABILITY.JOB_NUMBER AND #MY_DATA.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR 
+				 AND #JOB_AVAILABILITY.MONTH_OF_YEAR BETWEEN DATEPART(mm,#MY_DATA.TASK_START_DATE) AND DATEPART(mm,#MY_DATA.JOB_REVISED_DATE)
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(SUM(HRS_ASSIGNED_TASK)/(@FTE/12) AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL(SUM(HRS_ASSIGNED_TASK),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,MONTH_OF_YEAR
+
+			--#DEPT_AVAILABILITY
+          	SELECT 
+        		DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC,        		
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+        	FROM	
+        	    (		
+		        SELECT 
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        MONTH_OF_YEAR,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,MONTH_OF_YEAR
+        	    ) AS A INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+				GROUP BY DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC;        	
+	        	       	
+        		SELECT 
+			        DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,
+			        MONTH_OF_YEAR,
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 			       
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+                CASE
+					WHEN @FTE > 0 THEN CAST((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #EMP_AVAILABILITY INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = #EMP_AVAILABILITY.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+		        GROUP BY DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,MONTH_OF_YEAR
+		        
+        END
+        IF @SUMMARY_LEVEL = 4 --SUM BY YEAR
+        BEGIN
+        	--#EMP_AVAILABILITY
+          	SELECT 
+        		A.EMP_CODE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/@FTE) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+		        0 AS IS_FIRST_CHOICE
+        	FROM	
+        	    (		
+		        SELECT 
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        [YEAR],
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK, 
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,[YEAR]
+        	    )AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+        	    
+               	GROUP BY A.EMP_CODE,   A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+						  DEPT_TEAM.DP_TM_DESC;
+
+        	
+	        	SELECT DISTINCT [YEAR] AS CTR, [YEAR] FROM #EMP_AVAILABILITY ORDER BY [YEAR];
+        	
+		        SELECT 
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        [YEAR],
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+			        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.00) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK, 
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		        0 AS IS_FIRST_CHOICE,
+				ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #EMP_AVAILABILITY.EMP_CODE
+				 AND #EMP_AVAILABILITY.[YEAR] BETWEEN DATEPART(yy,#MY_DATA.TASK_START_DATE) AND DATEPART(yy,#MY_DATA.JOB_REVISED_DATE)
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/@FTE) * 100 AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,[YEAR]
+		        ORDER BY [YEAR];
+
+			--#JOB_AVAILABILITY
+			SELECT 
+				A.JOB_NUMBER,
+				A.JOB_COMPONENT_NBR,
+        		A.EMP_CODE,
+				A.JOB_START_DATE,
+				A.JOB_DUE_DATE,
+        		CAST(A.EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/@FTE AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST(SUM(A.HRS_ASSIGNED_TASK)/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED,
+        		 OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+                      DEPT_TEAM.DP_TM_DESC,
+                      EMPLOYEE.EMP_FNAME + ' ' +ISNULL(EMPLOYEE.EMP_MI+'. ','')+ EMPLOYEE.EMP_LNAME AS EMP_FML_NAME,
+		        0 AS IS_FIRST_CHOICE
+        	FROM	
+        	    (		
+		        SELECT 
+					JOB_NUMBER,
+					JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        [YEAR],
+					JOB_START_DATE,
+					JOB_DUE_DATE,
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER,JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,[YEAR],JOB_START_DATE,JOB_DUE_DATE
+        	    ) AS A    INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE LEFT OUTER JOIN
+                      OFFICE ON EMPLOYEE.OFFICE_CODE = OFFICE.OFFICE_CODE
+				GROUP BY A.JOB_NUMBER,A.JOB_COMPONENT_NBR,A.EMP_CODE,A.EMP_DIRECT_HRS_GOAL_PERC,OFFICE.OFFICE_CODE, OFFICE.OFFICE_NAME, EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_MI, EMPLOYEE.EMP_LNAME, DEPT_TEAM.DP_TM_CODE, 
+						  DEPT_TEAM.DP_TM_DESC,A.JOB_START_DATE,A.JOB_DUE_DATE;
+
+			SELECT JOB_NUMBER, JOB_COMPONENT_NBR,
+			        EMP_CODE,
+			        CAST(EMP_DIRECT_HRS_GOAL_PERC AS DECIMAL(18,6)) AS EMP_DIRECT_HRS_GOAL_PERC,
+			        [YEAR],
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 
+			        CAST((ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+		            0 AS IS_FIRST_CHOICE,
+					ISNULL((SELECT CASE WHEN COUNT(RED_FLAG) > 0 THEN 1 ELSE 0 END FROM #MY_DATA WHERE #MY_DATA.EMP_CODE = #JOB_AVAILABILITY.EMP_CODE AND #MY_DATA.JOB_NUMBER = #JOB_AVAILABILITY.JOB_NUMBER AND #MY_DATA.JOB_COMPONENT_NBR = #JOB_AVAILABILITY.JOB_COMPONENT_NBR 
+				 AND #JOB_AVAILABILITY.[YEAR] BETWEEN DATEPART(yy,#MY_DATA.TASK_START_DATE) AND DATEPART(yy,#MY_DATA.JOB_REVISED_DATE)
+				 AND RED_FLAG = 1 AND REC_TYPE = 'T'
+					GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE),0) AS OVER_BOOKED,
+                CASE
+					WHEN @FTE > 0 THEN CAST(SUM(HRS_ASSIGNED_TASK)/@FTE AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL(SUM(HRS_ASSIGNED_TASK),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #JOB_AVAILABILITY
+		        GROUP BY JOB_NUMBER, JOB_COMPONENT_NBR,EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,[YEAR]
+
+			--#DEPT_AVAILABILITY
+          	SELECT 
+        		DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC,        		
+        		CAST(SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL,
+        		CAST(SUM(A.EMP_DIRECT_HRS_GOAL_HOURS) AS DECIMAL(18,6))  AS EMP_DIRECT_HRS_GOAL_HOURS,
+        		CAST(SUM(A.HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        		CAST(SUM(A.HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS,
+        		CAST(SUM(A.HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK,
+        		CAST(SUM(A.HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+ 			    CAST(SUM(A.HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+ 			    CASE
+					WHEN @FTE > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(A.STD_HRS_AVAIL) > 0 THEN CAST((SUM(A.HRS_ASSIGNED_TASK) + SUM(A.HRS_APPTS) + SUM(A.HRS_USED_NON_TASK))/SUM(A.STD_HRS_AVAIL) AS DECIMAL(18,6)) 
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+        	FROM	
+        	    (		
+		        SELECT 
+			        EMP_CODE,
+			        EMP_DIRECT_HRS_GOAL_PERC,
+			        [YEAR],
+			        SUM(STD_HRS_AVAIL) AS STD_HRS_AVAIL, 
+			        (ISNULL(EMP_DIRECT_HRS_GOAL_PERC,0.000000) * 0.010000) * (ISNULL(SUM(STD_HRS_AVAIL),0.000000) - ISNULL(SUM(HRS_USED_NON_TASK),0.000000)) AS EMP_DIRECT_HRS_GOAL_HOURS,
+			        SUM(HRS_USED_NON_TASK) AS HRS_USED_NON_TASK, 
+			        SUM(HRS_AVAIL) AS HRS_AVAIL,
+			        SUM(HRS_ASSIGNED_TASK) AS HRS_ASSIGNED_TASK,
+			        SUM(HRS_APPTS) AS HRS_APPTS,  
+			        SUM(HRS_BALANCE_AVAIL) AS HRS_BALANCE_AVAIL
+		        FROM #EMP_AVAILABILITY
+		        GROUP BY EMP_CODE,EMP_DIRECT_HRS_GOAL_PERC,[YEAR]
+        	    ) AS A INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = A.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+				GROUP BY DEPT_TEAM.DP_TM_CODE, DEPT_TEAM.DP_TM_DESC;        	
+	        	       	
+        		SELECT 
+			        DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,
+			        [YEAR],
+			        CAST(SUM(STD_HRS_AVAIL) AS DECIMAL(18,6))  AS STD_HRS_AVAIL, 			       
+			        CAST(SUM(HRS_USED_NON_TASK) AS DECIMAL(18,6))  AS HRS_USED_NON_TASK, 
+			        CAST(SUM(HRS_AVAIL) AS DECIMAL(18,6))  AS HRS_AVAIL,
+			        CAST(SUM(HRS_ASSIGNED_TASK) AS DECIMAL(18,6))  AS HRS_ASSIGNED_TASK,
+        			CAST(SUM(HRS_APPTS) AS DECIMAL(18,6))  AS HRS_APPTS, 
+			        CAST(SUM(HRS_BALANCE_AVAIL) AS DECIMAL(18,6))  AS HRS_BALANCE_AVAIL,
+                CASE
+					WHEN @FTE > 0 THEN CAST((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK))/(@FTE/52) AS DECIMAL(18,6))
+ 					WHEN SUM(STD_HRS_AVAIL) > 0.000000 THEN CAST(ISNULL((SUM(HRS_ASSIGNED_TASK) + SUM(HRS_APPTS) + SUM(HRS_USED_NON_TASK)),0.000000)/ISNULL(SUM(STD_HRS_AVAIL),0.000000) AS DECIMAL(18,6)) * 100
+        			ELSE 0.000000
+        		END AS PERC_WORKED
+		        FROM #EMP_AVAILABILITY INNER JOIN
+                      EMPLOYEE ON EMPLOYEE.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS = #EMP_AVAILABILITY.EMP_CODE COLLATE SQL_Latin1_General_CP1_CS_AS LEFT OUTER JOIN
+                      DEPT_TEAM ON EMPLOYEE.DP_TM_CODE = DEPT_TEAM.DP_TM_CODE
+		        GROUP BY DEPT_TEAM.DP_TM_CODE,DEPT_TEAM.DP_TM_DESC,[YEAR]
+
+        END
+        
+                
+        IF @SUMMARY_LEVEL = 6 --SPECIAL MODE FOR JOINING TO TASK ASSIGNMENTS
+        BEGIN
+	        SELECT 
+		        EMP_CODE,
+		        SUM(ISNULL(HRS_USED_NON_TASK,0.000000)) AS HRS_USED_NON_TASK,
+		        SUM(ISNULL(HRS_AVAIL,0.000000)) AS HRS_AVAIL,
+		        SUM(ISNULL(HRS_ASSIGNED_TASK,0.000000)) AS HRS_ASSIGNED_TASK,
+			    SUM(ISNULL(HRS_APPTS,0.000000)) AS HRS_APPTS,  
+		        SUM(ISNULL(HRS_ASSIGNED_EVENT,0.000000)) AS HRS_ASSIGNED_EVENT,
+		        SUM(ISNULL(HRS_BALANCE_AVAIL,0.000000)) AS HRS_BALANCE_AVAIL
+	        FROM #EMP_AVAILABILITY
+	        GROUP BY EMP_CODE
+        END	
+        
+        						
+													 
+ IF @SUMMARY_LEVEL <> 0     
+ BEGIN
+	        --SELECT * FROM #JOBS WHERE EMP_CODE = 'BIVONS'
+        SELECT
+		    ROW_ID,
+		    JOB_NUMBER,
+		    JOB_COMPONENT_NBR,
+		    FNC_CODE,
+		    TASK_DESCRIPTION,
+		    JOB_COMP_DESC,
+		    TASK_START_DATE,
+		    JOB_REVISED_DATE,
+		    EMP_CODE,
+		    JOB_DESC,
+		    OFFICE_CODE,
+			DP_TM_CODE,
+		    CL_CODE,
+		    DIV_CODE,
+		    PRD_CODE,
+		    SORT,
+		    JOB_HRS,
+		    SEQ_NBR,
+		    EMP_FML_NAME,
+		    IS_EVENT_TASK,
+		    TASK_TOTAL_WORKING_DAYS,
+			ISNULL(HOURS_PER_DAY,0.00) AS HOURS_PER_DAY,
+			ISNULL(ADJ_JOB_HRS,0.00) AS ADJ_JOB_HRS,
+		    REC_TYPE,
+			NON_TASK_ID,
+		    ISNULL(HRS_USED_NON_TASK,0.00) AS HRS_USED_NON_TASK,
+		    ISNULL(HRS_AVAIL,0.00) AS HRS_AVAIL,
+		    ISNULL(HRS_ASSIGNED_TASK,0.00) AS HRS_ASSIGNED_TASK,
+		    ISNULL(HRS_ASSIGNED_EVENT,0.00) AS HRS_ASSIGNED_EVENT,
+		    ISNULL(HRS_ASSIGNED_TASK,0.00) + ISNULL(HRS_ASSIGNED_EVENT,0.00) AS TOTAL_HRS_ASSIGNED,
+		    ISNULL(HRS_BALANCE_AVAIL,0.00) AS HRS_BALANCE_AVAIL,
+		    ISNULL(HRS_AVAIL,0.00) - ISNULL(HRS_USED_NON_TASK,0.00) - (ISNULL(HRS_ASSIGNED_TASK,0.00) + ISNULL(HRS_ASSIGNED_EVENT,0.00)) AS VARIANCE,
+		    STD_HRS_AVAIL, RED_FLAG, HRS_PER_DAY_WITH_ASSN,	ADJ_JOB_HRS_WITH_ASSN
+		 FROM #MY_DATA
+         WHERE
+	        (REC_TYPE <> 'H' AND ((JOB_REVISED_DATE BETWEEN @START_DATE AND @END_DATE) OR (TASK_START_DATE BETWEEN @START_DATE AND @END_DATE)
+			 OR (@START_DATE BETWEEN TASK_START_DATE AND JOB_REVISED_DATE) OR (@END_DATE BETWEEN TASK_START_DATE AND JOB_REVISED_DATE)))
+			 OR REC_TYPE = 'ADA' OR REC_TYPE = 'ADHO'
+	    ORDER BY 
+		    EMP_CODE,SORT;
+		    
+--Total Jobs Due (0)--
+CREATE TABLE #TMP( CT decimal(15,2) NULL)
+SET @sql = '' 
+SELECT @sql = 'INSERT INTO #TMP '
+SELECT @sql = @sql + ' SELECT COUNT(JOB_COMPONENT.JOB_COMPONENT_NBR) '
+
+SELECT @sql_from = ' FROM JOB_COMPONENT 
+		INNER JOIN JOB_LOG ON JOB_COMPONENT.JOB_NUMBER = JOB_LOG.JOB_NUMBER 
+		LEFT OUTER JOIN JOB_TRAFFIC ON JOB_COMPONENT.JOB_NUMBER = JOB_TRAFFIC.JOB_NUMBER
+		                      AND JOB_COMPONENT.JOB_COMPONENT_NBR = JOB_TRAFFIC.JOB_COMPONENT_NBR '
+
+SELECT @sql_where = ' WHERE (JOB_COMPONENT.JOB_PROCESS_CONTRL NOT IN (6, 12)) AND (JOB_TRAFFIC.COMPLETED_DATE IS NULL)
+			AND  JOB_COMPONENT.JOB_FIRST_USE_DATE between ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND ''' + CAST(@END_DATE AS VARCHAR(12)) + '''
+			AND JOB_TRAFFIC.TRF_CODE IS NOT NULL '
+
+if @Restrictions > 0	
+	Begin
+	  SELECT @sql_from = @sql_from + ' INNER JOIN SEC_CLIENT ON JOB_LOG.CL_CODE = SEC_CLIENT.CL_CODE 
+	  		AND JOB_LOG.DIV_CODE = SEC_CLIENT.DIV_CODE 
+	  		AND JOB_LOG.PRD_CODE = SEC_CLIENT.PRD_CODE '
+
+	  SELECT @sql_where = @sql_where + ' AND UPPER(SEC_CLIENT.USER_ID) = UPPER(''' + @UserID + ''') AND (SEC_CLIENT.TIME_ENTRY = 0 OR SEC_CLIENT.TIME_ENTRY IS NULL) '
+	End
+
+if @RestrictionsEmp > 0	
+	Begin
+	  SELECT @sql_from = @sql_from + ' INNER JOIN SEC_EMP ON JOB_COMPONENT.EMP_CODE = SEC_EMP.EMP_CODE '
+
+	  SELECT @sql_where = @sql_where + ' AND UPPER(SEC_EMP.USER_ID) = UPPER(''' + @UserID + ''')'
+	End
+
+If @OfficeCode  <> ''
+	SELECT @sql_where = @sql_where + ' AND JOB_LOG.OFFICE_CODE = ''' + @OfficeCode + ''''
+
+If @ClientCode  <> ''
+	SELECT @sql_where = @sql_where + ' AND JOB_LOG.CL_CODE = ''' + @ClientCode + ''''
+
+If @DivisionCode <> ''
+	SELECT @sql_where = @sql_where + ' AND JOB_LOG.DIV_CODE = ''' + @DivisionCode + ''''
+
+If @ProductCode  <> ''
+	SELECT @sql_where = @sql_where + ' AND JOB_LOG.PRD_CODE = ''' + @ProductCode + ''''
+
+If @JobNum <> '' 
+	SELECT @sql_where = @sql_where + ' AND JOB_LOG.JOB_NUMBER = ''' + @JobNum + ''''
+
+If @JobComp  <> '' 
+	SELECT @sql_where = @sql_where + ' AND JOB_COMPONENT.JOB_COMPONENT_NBR = ''' + @JobComp + ''''
+	
+If @Manager <> ''
+	  SELECT @sql_where = @sql_where + ' AND JOB_TRAFFIC.MGR_EMP_CODE = ''' + @Manager + ''' '
+
+	
+--If @EmpCode <> ''  DO NOT apply employee filter in summary
+--	SELECT @sql_where = @sql_where + ' AND JOB_COMPONENT.EMP_CODE = ''' + @EmpCode + ''''
+
+ 
+SELECT @sql = @sql + @sql_from + @sql_where
+
+EXEC(@sql)
+
+SELECT @totaljobsdue = CT FROM #TMP
+
+
+--Addtional sql
+DECLARE @TOTAL_WORKING_HOURS AS DECIMAL(18,6), @EMP_COUNT AS INTEGER
+    SET @TOTAL_WORKING_HOURS = 0.00
+CREATE TABLE #ONE_VAR 
+(
+VAL						DECIMAL(18,6) NULL
+)
+
+	SET @sql = ''
+	SELECT @sql = @sql + '
+        INSERT INTO #ONE_VAR
+         SELECT SUM(HOURS)        FROM  EMP_NON_TASKS WITH(NOLOCK)  INNER JOIN
+                              EMPLOYEE WITH(NOLOCK) ON EMP_NON_TASKS.EMP_CODE = EMPLOYEE.EMP_CODE INNER JOIN
+												  TIME_CATEGORY WITH(NOLOCK) ON EMP_NON_TASKS.CATEGORY = TIME_CATEGORY.CATEGORY' 
+        If @RestrictionsEmp > 0 
+              SELECT @sql = @sql + ' INNER JOIN SEC_EMP ON EMP_NON_TASKS.EMP_CODE = SEC_EMP.EMP_CODE '
+        SELECT @sql = @sql + ' WHERE '
+        SELECT @sql = @sql + ' (EMP_NON_TASKS.START_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + '''' 
+        SELECT @sql = @sql + ' OR EMP_NON_TASKS.END_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + ''')' 
+		SELECT @sql = @sql + ' AND ((TIME_CATEGORY.VAC_SICK_FLAG NOT IN (1, 2, 3) OR TIME_CATEGORY.VAC_SICK_FLAG IS NULL ))'
+        SELECT @sql = @sql + ' AND EMP_NON_TASKS.ALL_DAY = 1 AND EMP_NON_TASKS.TYPE = ''A'''  
+
+
+        If @EMP_CODE  <> '' AND @EMP_CODE <> '%'
+	        SELECT @sql = @sql + ' AND EMP_NON_TASKS.EMP_CODE = ''' + @EMP_CODE + '''' 
+
+        IF @EMP_LIST  <> '' AND (@EMP_CODE = '%' OR @EMP_CODE = '')
+		    BEGIN
+			    SELECT @sql = @sql + ' AND EMP_NON_TASKS.EMP_CODE IN ('+ @EMP_LIST + ') '
+		    END
+		IF @DEPTS <> ''
+		BEGIN
+			SELECT @sql = @sql + ' AND (EMPLOYEE.DP_TM_CODE IN('+ @DEPTS +')) '
+		END
+    		
+
+        If @RestrictionsEmp > 0 
+          SELECT @sql = @sql + ' AND UPPER(SEC_EMP.USER_ID) = UPPER(''' + @UserID + ''')'
+
+        EXEC(@sql)
+SELECT @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS + ISNULL(VAL,0.000000) FROM #ONE_VAR;
+
+
+DELETE FROM #ONE_VAR;
+SET @sql = '';
+IF @EMP_CODE  <> '' AND @EMP_CODE <> '%'
+BEGIN
+	SET @EMP_COUNT = 1;
+END
+IF @EMP_LIST  <> '' AND (@EMP_CODE = '%' OR @EMP_CODE = '')
+BEGIN
+	SET @sql = 'INSERT INTO #ONE_VAR SELECT COUNT(1) FROM EMPLOYEE WHERE EMP_CODE IN (' + @EMP_LIST + ');'
+	EXEC(@sql)
+	SELECT @EMP_COUNT = ISNULL(VAL,0.000000) FROM #ONE_VAR;
+END
+IF @DEPTS <> ''
+BEGIN
+	SET @sql = 'INSERT INTO #ONE_VAR SELECT COUNT(1) FROM EMPLOYEE WHERE EMPLOYEE.DP_TM_CODE IN (' + @DEPTS + ');'
+	EXEC(@sql)
+	SELECT @EMP_COUNT = ISNULL(VAL,0.000000) FROM #ONE_VAR;
+	
+END
+
+DELETE FROM #ONE_VAR;
+SET @sql = '';
+SELECT @sql = @sql + '
+    INSERT INTO #ONE_VAR
+     SELECT SUM(HOURS) FROM EMP_NON_TASKS WITH(NOLOCK)' 
+    SELECT @sql = @sql + ' WHERE '
+    SELECT @sql = @sql + ' (EMP_NON_TASKS.START_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + '''' 
+    SELECT @sql = @sql + ' OR EMP_NON_TASKS.END_DATE BETWEEN ''' + CAST(@START_DATE AS VARCHAR(12)) + ''' AND  ''' + CAST(@END_DATE AS VARCHAR(12)) + ''')' 
+    SELECT @sql = @sql + ' AND EMP_NON_TASKS.ALL_DAY = 0 AND EMP_NON_TASKS.TYPE = ''H'''  
+EXEC(@sql)
+--multiply part day holidays by number of emps for search:
+IF ISNULL(@EMP_COUNT,0) > 0
+	BEGIN
+		SELECT @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS - (ISNULL(VAL,0.000000) * @EMP_COUNT) FROM #ONE_VAR;
+	END
+ELSE
+	BEGIN
+		SELECT @TOTAL_WORKING_HOURS = @TOTAL_WORKING_HOURS - ISNULL(VAL,0.000000) FROM #ONE_VAR;
+	END
+
+
+
+DROP TABLE #ONE_VAR;    
+
+DECLARE @SHOW_UNASSIGNED SMALLINT
+		IF @EMP_CODE <> ''
+			SET @SHOW_UNASSIGNED = 0
+		ELSE
+			SET @SHOW_UNASSIGNED = 1
+		    
+		
+		SELECT @totaljobsdue AS TOTAL_JOB_DUE, SUM(STD_HRS_AVAIL) + @TOTAL_WORKING_HOURS AS STD_HRS_AVAIL,
+		 (SELECT SUM(JOB_HRS) FROM #MY_DATA WHERE REC_TYPE = 'A' OR REC_TYPE = 'ADA') AS APPT_HRS,
+		 (SELECT SUM(JOB_HRS) FROM #MY_DATA WHERE REC_TYPE = 'ADHO' OR REC_TYPE = 'AHO') AS HRS_OFF,
+		 (SELECT SUM(ADJ_JOB_HRS) FROM #MY_DATA) AS HRS_ASSIGNED_TASK, @SHOW_UNASSIGNED AS SHOW_UNASSIGNED FROM #EMP_AVAILABILITY    
+		    
+		SELECT 
+			#EMP_AVAILABILITY.EMP_CODE, 
+			ISNULL(EMPLOYEE.EMP_FNAME+' ','')+ISNULL(EMPLOYEE.EMP_MI+'. ','')+ISNULL(EMPLOYEE.EMP_LNAME,'') AS EMP_FML_NAME,
+			NULL AS MIN_DATE, 
+			NULL AS MAX_DATE,
+			ISNULL(SUM(STD_HRS_AVAIL),00.000000) AS STD_HRS_AVAIL,
+			ISNULL((SELECT SUM(JOB_HRS) FROM #MY_DATA WHERE (REC_TYPE = 'ADHO' OR REC_TYPE = 'AHO') AND #EMP_AVAILABILITY.EMP_CODE = #MY_DATA.EMP_CODE),00.000000) AS HRS_OFF,
+			ISNULL((SELECT SUM(JOB_HRS) FROM #MY_DATA WHERE (REC_TYPE = 'A' OR REC_TYPE = 'ADA') AND #EMP_AVAILABILITY.EMP_CODE = #MY_DATA.EMP_CODE),00.000000) AS APPT_HRS,
+			ISNULL((SELECT CASE WHEN COUNT(#MY_DATA.RED_FLAG) > 0 THEN SUM(ADJ_JOB_HRS_WITH_ASSN) ELSE SUM(ADJ_JOB_HRS) END FROM #MY_DATA WHERE #EMP_AVAILABILITY.EMP_CODE = #MY_DATA.EMP_CODE AND #MY_DATA.JOB_NUMBER = @PSWL_JOB_NUMBER AND
+								#MY_DATA.JOB_COMPONENT_NBR = @PSWL_JOB_COMPONENT_NBR),00.000000) AS ADJ_HRS_ASSIGNED_TASK,
+			ISNULL((SELECT SUM(ADJ_JOB_HRS) FROM #MY_DATA WHERE #EMP_AVAILABILITY.EMP_CODE = #MY_DATA.EMP_CODE AND (#MY_DATA.JOB_NUMBER <> @PSWL_JOB_NUMBER)),00.000000) AS ADJ_HRS_ASSIGNED_TASK_OTHER,
+			((ISNULL(SUM(STD_HRS_AVAIL),00.000000) + ISNULL((SELECT SUM(JOB_HRS) FROM #MY_DATA WHERE (REC_TYPE = 'ADHO' OR REC_TYPE = 'AHO') AND #EMP_AVAILABILITY.EMP_CODE = #MY_DATA.EMP_CODE),00.000000)  + 
+					ISNULL((SELECT SUM(JOB_HRS) FROM #MY_DATA WHERE (REC_TYPE = 'A' OR REC_TYPE = 'ADA') AND #EMP_AVAILABILITY.EMP_CODE = #MY_DATA.EMP_CODE),00.000000))  - 
+					ISNULL((SELECT CASE WHEN COUNT(#MY_DATA.RED_FLAG) > 0 THEN SUM(ADJ_JOB_HRS_WITH_ASSN) ELSE SUM(ADJ_JOB_HRS) END FROM #MY_DATA WHERE #EMP_AVAILABILITY.EMP_CODE = #MY_DATA.EMP_CODE),00.000000)) AS VARIANCE
+	    FROM #EMP_AVAILABILITY INNER JOIN EMPLOYEE ON #EMP_AVAILABILITY.EMP_CODE = EMPLOYEE.EMP_CODE
+		GROUP BY #EMP_AVAILABILITY.EMP_CODE,ISNULL(EMPLOYEE.EMP_FNAME+' ','')+ISNULL(EMPLOYEE.EMP_MI+'. ','')+ISNULL(EMPLOYEE.EMP_LNAME,'')
+		ORDER BY #EMP_AVAILABILITY.EMP_CODE	
+
+		SELECT EMP_CODE, COUNT(RED_FLAG) AS OVER_BOOKED FROM #MY_DATA
+		WHERE RED_FLAG = 1 AND REC_TYPE = 'T'
+		GROUP BY EMP_CODE
+		
+        DROP TABLE #TMP
+
+ END  
+
+		
+        DROP TABLE #EMP_AVAILABILITY;
+		DROP TABLE #JOB_AVAILABILITY;
+        DROP TABLE #DAY_RANGE;
+        DROP TABLE #EMP_LIST;
+        DROP TABLE #WORK_DAY;
+        DROP TABLE #JOBS;
+        DROP TABLE #MY_DATA;
+                
+
+
+
+
+        
+
+
+
+
+                
+                
+                
+                
+      
+
+
+
+GO
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+

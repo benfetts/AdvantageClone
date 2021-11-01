@@ -1,0 +1,15 @@
+C:\TFS_ROOT\Advantage\Production\Output\Resources\AmericanXLG.xlg
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAFF.aff
+C:\TFS_ROOT\Advantage\Production\Output\Resources\EnglishAlphabet.txt
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Email.exe.config
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Email.exe
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Email.pdb
+C:\TFS_ROOT\Advantage\Production\Output\Advantage Access Email.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\Advantage Access Email.vbprojAssemblyReference.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\AdvantageAccessEmail.Resources.resources
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\Advantage Access Email.vbproj.GenerateResource.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\Advantage Access Email.vbproj.CoreCompileInputs.cache
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\Advantage Access Email.vbproj.CopyComplete
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\Advantage Access Email.exe
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\Advantage Access Email.xml
+C:\TFS_ROOT\Advantage\Production\Advantage Access Email\obj\Debug\Advantage Access Email.pdb

@@ -1,0 +1,31 @@
+﻿
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_wv_nontasks_GetCategories]
+	
+AS
+
+SELECT CATEGORY,DESCRIPTION 
+FROM TIME_CATEGORY
+WHERE INACTIVE_FLAG = 0 Or INACTIVE_FLAG IS NULL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+﻿CREATE PROCEDURE [dbo].[advsp_get_bcc_agy_settings]
+AS
+
+SET NOCOUNT ON
+
+SELECT
+	[Code] = AGY_SETTINGS_CODE, 
+	[Value] = CAST( AGY_SETTINGS_VALUE AS varchar(50))
+  FROM dbo.AGY_SETTINGS
+ WHERE AGY_SETTINGS_APP = 3
+   AND AGY_SETTINGS_TAB = 2
+
+GO

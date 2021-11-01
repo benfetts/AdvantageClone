@@ -1,0 +1,1 @@
+﻿  	CREATE FUNCTION [dbo].[udf_get_agy_setting] ( @agy_settings_code varchar(20) )  		  	RETURNS sql_variant AS  	BEGIN  		DECLARE @agy_settings_value sql_variant  		SELECT @agy_settings_value = ( SELECT AGY_SETTINGS_VALUE    						 FROM dbo.AGY_SETTINGS  					        WHERE AGY_SETTINGS_CODE = @agy_settings_code )  	RETURN @agy_settings_value  	END

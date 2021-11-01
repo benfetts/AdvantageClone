@@ -1,0 +1,27 @@
+CREATE VIEW [dbo].[V_ETF_OFFDTLJC_AE]
+
+AS
+
+	SELECT 
+		[EmployeeTimeForecastID] = OFFDTLJC_AE.ETF_ID,
+		[EmployeeTimeForecastOfficeDetailID] = OFFDTLJC_AE.ETF_OFFDTL_ID,
+		[EmployeeTimeForecastOfficeDetailJobComponentID] = OFFDTLJC_AE.ETF_OFFDTLJC_ID,
+		[EmployeeTimeForecastOfficeDetailJobComponentAlternateEmployeeID] = OFFDTLJC_AE.ETF_OFFDTLJC_AE_ID,
+		[EmployeeTimeForecastOfficeDetailAlternateEmployeeID] = OFFDTLJC_AE.ETF_OFFDTLAE_ID,
+		[AlternateEmployeeDescription] = OFFDTLAE.[DESCRIPTION],
+		[AlternateEmployeeTitleID] = OFFDTLAE.EMPLOYEE_TITLE_ID,
+		[AlternateEmployeeTitle] = ET.EMPLOYEE_TITLE,
+		[AlternateEmployeeOfficeCode] = OFFDTLAE.OFFICE_CODE,
+		[AlternateEmployeeOfficeDescription] = O.OFFICE_NAME,
+		[Hours] = OFFDTLJC_AE.[HOURS],
+		[BillRate] = OFFDTLAE.BILL_RATE,
+		[CostRate] = OFFDTLAE.COST_RATE
+	FROM 
+		dbo.ETF_OFFDTLJC_AE OFFDTLJC_AE INNER JOIN 
+		dbo.ETF_OFFDTLAE OFFDTLAE ON OFFDTLAE.ETF_ID = OFFDTLJC_AE.ETF_ID AND
+									 OFFDTLAE.ETF_OFFDTL_ID = OFFDTLJC_AE.ETF_OFFDTL_ID AND 
+									 OFFDTLAE.ETF_OFFDTLAE_ID = OFFDTLJC_AE.ETF_OFFDTLAE_ID INNER JOIN
+		dbo.OFFICE O ON O.OFFICE_CODE = OFFDTLAE.OFFICE_CODE INNER JOIN
+		dbo.EMPLOYEE_TITLE ET ON ET.EMPLOYEE_TITLE_ID = OFFDTLAE.EMPLOYEE_TITLE_ID
+
+GO

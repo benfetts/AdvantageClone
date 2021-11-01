@@ -1,0 +1,59 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+
+    <div class="wv-form" style="height: 200px;">
+        <div class="wv-form wv-form-group-inline">
+            <!--<label>Job/Function</label>-->
+            <ak-drop-down-list style="width:100%"
+                               k-filter="contains"
+                               k-widget.bind="jobsDropDownList"
+                               k-data-text-field="Description"
+                               k-data-value-field="Code"
+                               k-data-source.bind="jobsDataSource">
+            </ak-drop-down-list>
+        </div>
+        <div class="wv-form wv-form-group-inline">
+            <div style="padding: 5px 3px 0px 0px; float:left;">
+                <label>Date:</label>
+                <div>
+                    <input id="entryDateEditor" ak-datepicker="" k-on-change.delegate="" />
+                </div>
+            </div>
+            <div style="padding: 5px 0px 0px 2px; float: right; width: 300px;">
+                <label>Function:</label>
+                <ak-drop-down-list style="width:100%"
+                                   k-filter="contains"
+                                   k-widget.bind="functionDropDownList"
+                                   k-data-text-field="Description"
+                                   k-data-value-field="Code"
+                                   k-data-source.bind="functionDataSource"
+                                   k-value.two-way="functionCode">
+                </ak-drop-down-list>
+            </div>
+        </div>
+        <div class="wv-form wv-form-group-inline" style="margin-top: 5px; vertical-align:top;">
+            <div style="padding: 5px 3px 0px 0px; float:left;">
+                <div>
+                    <label>Comments:</label>
+                </div>
+                <div>
+                    <textarea class="k-textbox" style="width: 385px; height: 75px;"></textarea>
+                </div>
+            </div>
+            <div style="padding: 5px 0px 0px 6px; float:left;">
+                <div>
+                    <label>Hours:</label>
+                </div>
+                <div>
+                    <input class="k-textbox" type="text" style="width: 50px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

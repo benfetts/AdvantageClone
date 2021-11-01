@@ -1,0 +1,58 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/panelbar/panelbar"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/scheduler/scheduler"></require>
+
+
+    <style>
+        .k-toolbar {
+            background: #e5e5e5;
+        }
+    </style>
+
+    <div id="wv-calendar" class="">
+        <div class="wv-bar k-toolbar k-widget k-toolbar-resizable">
+            <ul class="list-inline" style="margin: 0;">
+                <li style="padding-right:0">
+                    <a href="#" data-target="#add-new-meeting" data-toggle="modal" role="button" class="wv-icon-button k-button k-grid-add wv-add-new"><span class="wvi wvi-navigate-plus"></span></a>
+                </li>
+                <li style="padding-right:0">
+                    <a href="#" role="button" class="k-button k-normal" title="Folder View">View Employees</a>
+                </li>
+                <li style="padding-right:0" class="pull-right">
+                    <a href="#" role="button" class="k-button k-normal" title="Filter">Filter</a>
+                </li>
+            </ul>
+        </div>
+
+        <ak-scheduler k-data-source.bind="datasource"
+                      k-date.bind="date"
+                      k-start-time.bind="startTime"
+                      k-views.bind="[
+                     'day',
+                     { type: 'workWeek', selected: true },
+                     'week',
+                     'month',
+                     { type: 'timeline', eventHeight: 50}
+                   ]"
+                      k-height.bind="600"
+                      k-timezone="Etc/UTC"
+                      k-resources.bind="[{
+                     field: 'ownerId',
+                     title: 'Owner',
+                     dataSource: [
+                       { text: 'Alan Able', value: 1, color: '#f8a398' },
+                       { text: 'Jason L', value: 2, color: '#51a0ed' },
+                       { text: 'Ellen C', value: 3, color: '#56ca85' }
+                     ]
+                   }]">
+        </ak-scheduler>
+    </div>
+</template>

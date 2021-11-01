@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[U_SEC_RIGHTS] (
+    [USER_ID]        VARCHAR (100) NOT NULL,
+    [APPLICATION_ID] VARCHAR (10)  NOT NULL,
+    [SEC_VIEW]       VARCHAR (1)   NULL,
+    [SEC_EDIT]       VARCHAR (1)   NULL,
+    [SEC_INSERT]     VARCHAR (1)   NULL,
+    [CUSTOM_1]       VARCHAR (1)   NULL,
+    [CUSTOM_2]       VARCHAR (1)   NULL
+);
+

@@ -1,0 +1,37 @@
+CREATE PROCEDURE [dbo].[advsp_hosted_spotradio_nielsen_get_counties]
+	@CLIENT_CODE varchar(6)
+AS
+BEGIN
+	SELECT DISTINCT 
+		[CountyCode] = nrcp.COUNTY_CODE,
+		[Name] = nrcp.[NAME],
+		[State] = nrcp.[STATE],
+		[MarketNumber] = nrcp.NIELSEN_RADIO_MARKET_NUMBER,
+		[MarketName] = nrm.[NAME] 
+	FROM dbo.CLIENT c
+		INNER JOIN dbo.CLIENT_ORDER co ON c.CLIENT_ID = co.CLIENT_ID AND co.IS_SUSPENDED = 0 AND co.ALL_STATES = 0
+		INNER JOIN dbo.CLIENT_ORDER_STATE com ON co.CLIENT_ORDER_ID = com.CLIENT_ORDER_ID
+		INNER JOIN dbo.NIELSEN_RADIO_COUNTY_PERIOD nrcp ON nrcp.[STATE] = com.[STATE] AND co.END_YEAR = nrcp.[YEAR] 
+		INNER JOIN dbo.NIELSEN_RADIO_MARKET nrm ON nrcp.NIELSEN_RADIO_MARKET_NUMBER = nrm.NUMBER AND nrm.[SOURCE] = 2
+	WHERE co.ORDER_TYPE = 'C'
+	AND c.CODE = @CLIENT_CODE
+	
+	UNION
+
+	SELECT
+		[CountyCode] = nrcp.COUNTY_CODE,
+		[Name] = nrcp.[NAME],
+		[State] = nrcp.[STATE],
+		[MarketNumber] = nrcp.NIELSEN_RADIO_MARKET_NUMBER,
+		[MarketName] = nrm.[NAME] 
+	FROM dbo.NIELSEN_RADIO_MARKET nrm
+		INNER JOIN dbo.NIELSEN_RADIO_COUNTY_PERIOD nrcp ON nrcp.NIELSEN_RADIO_MARKET_NUMBER = nrm.NUMBER AND nrm.[SOURCE] = 2
+	AND EXISTS (
+		SELECT 1
+		FROM dbo.CLIENT c
+			INNER JOIN dbo.CLIENT_ORDER co ON c.CLIENT_ID = co.CLIENT_ID AND co.IS_SUSPENDED = 0 AND co.ALL_STATES = 1
+			INNER JOIN dbo.NIELSEN_RADIO_COUNTY_PERIOD nrcp ON co.END_YEAR = nrcp.[YEAR] 
+		WHERE co.ORDER_TYPE = 'C'
+		AND c.CODE = @CLIENT_CODE)
+END
+GO

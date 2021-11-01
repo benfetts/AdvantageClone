@@ -1,0 +1,271 @@
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[advsp_revise_order_brdcast_units]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[advsp_revise_order_brdcast_units]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[advsp_revise_order_brdcast_units] (
+	@user_id varchar(100),
+	@batch_id varchar(36) = NULL,
+	@error_msg_w varchar(1024) OUTPUT
+)
+
+AS
+
+DECLARE @xref TABLE (
+	[IMPORT_ORDER_NBR] [int] NOT NULL,
+	[ORDER_NBR] [int] NOT NULL,
+	[IMPORT_LINE_NBR] [int] NOT NULL,
+	[LINE_NBR] [smallint] NOT NULL,
+	[MEDIA_TYPE] [varchar](6) NOT NULL,
+	[IMPORTED_FROM] [varchar](2) NOT NULL
+	UNIQUE ([IMPORT_ORDER_NBR],
+		[ORDER_NBR],
+		[IMPORT_LINE_NBR],
+		[LINE_NBR],
+		[MEDIA_TYPE],
+		[IMPORTED_FROM])
+	)
+
+DECLARE @tv_detail_units TABLE (
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ORDER_NBR] [int] NOT NULL,
+	[LINE_NBR] [smallint] NOT NULL,
+	[REV_NBR] [smallint] NOT NULL,
+	[SEQ_NBR] [smallint] NOT NULL,
+	[UNIT_NBR] [smallint] NOT NULL,
+	[PRD_CODE] [varchar](6) NOT NULL,
+	[UNIT_DATE] [smalldatetime] NOT NULL,
+	[LINK_ID] [int] NULL,
+	[LINK_UNITID] [int] NULL,
+	[UNITS] [int] NOT NULL, 
+	UNIQUE 
+	(	[ORDER_NBR] ASC,
+		[LINE_NBR] ASC,
+		[REV_NBR] ASC,
+		[SEQ_NBR] ASC,
+		[UNIT_NBR] ASC
+	)
+)
+
+DECLARE @detail_rows TABLE (
+	[ORDER_NBR] [int] NOT NULL,
+	[LINE_NBR] [smallint] NOT NULL,
+	[REV_NBR] [smallint] NOT NULL,
+	[SEQ_NBR] [smallint] NOT NULL,
+--	[MEDIA_TYPE] [varchar](6) NOT NULL,
+	[UNIT_REV_NBR] [smallint] NULL,
+	[UNIT_SEQ_NBR] [smallint] NULL,
+	[PRD_CODE] [varchar](6) NULL,
+	[EXISTS_IN_UNIT_DETAIL] [bit] NULL
+	UNIQUE 
+	(	[ORDER_NBR],
+		[LINE_NBR],
+		[REV_NBR]
+	)
+)
+
+DECLARE @unit_rows TABLE (
+	[ORDER_NBR] [int] NOT NULL,
+	[LINE_NBR] [smallint] NOT NULL,
+	[REV_NBR] [smallint] NOT NULL,
+--	[MEDIA_TYPE] [varchar](6) NOT NULL,
+	[PRD_CODE] [varchar](6) NULL,
+	--[UNIT_DATE] [smalldatetime] NOT NULL,
+	--[LINK_ID] [int] NULL,
+	--[LINK_UNITID] [int] NULL,
+	--[UNITS] [int] NULL,
+	UNIQUE 
+	(	[ORDER_NBR],
+		[LINE_NBR],
+		[REV_NBR],
+		[PRD_CODE]
+	)
+)
+
+DECLARE @ErMessage nvarchar(2048), @ErSeverity int, @ErState int
+
+BEGIN TRY
+
+BEGIN
+	INSERT INTO @xref
+	SELECT IMPORT_ORDER_NBR, XR.ORDER_NBR, IMPORT_LINE_NBR, XR.LINE_NBR, XR.MEDIA_TYPE, XR.IMPORTED_FROM
+	FROM BRD_IMPORT_XREF AS XR 
+	JOIN BRDCAST_IMPORT AS U1
+		ON XR.IMPORT_ORDER_NBR = U1.LINK_ID AND XR.IMPORT_LINE_NBR = U1.LINE_NBR 
+		WHERE U1.USER_ID = @user_id AND U1.[BATCH_ID ] = @batch_id
+
+	IF @@ROWCOUNT = 0 BEGIN
+		SET @error_msg_w = 'No matching unit rows.'
+		RETURN
+	END
+
+	/* TV_DETAIL - Get max revision per line - if exists */
+	INSERT INTO @detail_rows
+	SELECT RD.ORDER_NBR, RD.LINE_NBR, MAX(RD.REV_NBR), 0, NULL, NULL, NULL, 1
+	FROM TV_DETAIL RD
+			INNER JOIN (SELECT IMPORT_ORDER_NBR, ORDER_NBR, IMPORT_LINE_NBR, XR.LINE_NBR
+								FROM @xref AS XR 
+								JOIN BRDCAST_IMPORT_UNITS AS U1
+									ON XR.IMPORT_ORDER_NBR = U1.LINK_ID AND XR.IMPORT_LINE_NBR = U1.LINE_NBR ) UD 
+					ON UD.ORDER_NBR = RD.ORDER_NBR AND UD.LINE_NBR = RD.LINE_NBR
+	GROUP BY RD.ORDER_NBR, RD.LINE_NBR
+
+	/* Current TV_DETAIL REV_NBR */
+	UPDATE TD
+	SET SEQ_NBR = (UD.SEQ_NBR)
+	FROM @detail_rows TD
+	INNER JOIN (SELECT (ORDER_NBR) ORDER_NBR, (LINE_NBR) LINE_NBR, (REV_NBR) REV_NBR, MAX(SEQ_NBR) SEQ_NBR FROM TV_DETAIL GROUP BY ORDER_NBR, LINE_NBR, REV_NBR) UD 
+				ON TD.ORDER_NBR = UD.ORDER_NBR AND TD.LINE_NBR = UD.LINE_NBR AND TD.REV_NBR = UD.REV_NBR
+END
+
+BEGIN
+	/* TV_DETAIL_UNITS - Get max revision per line */
+	INSERT INTO @unit_rows
+	SELECT UD.ORDER_NBR, UD.LINE_NBR, MAX(UD.REV_NBR), UD.PRD_CODE--, NULL, NULL, NUll, NULL
+	FROM TV_DETAIL_UNITS UD
+		INNER JOIN @detail_rows RD ON UD.ORDER_NBR = RD.ORDER_NBR AND UD.LINE_NBR = RD.LINE_NBR
+	GROUP BY UD.ORDER_NBR, UD.LINE_NBR, UD.PRD_CODE
+
+	IF @@ERROR <> 0 BEGIN
+		SET @error_msg_w =  'Problem selecting revisions to reverse in TV_DETAIL_UNITS'		
+		RETURN
+	END	
+
+
+
+	--SELECT '@detail_rows' '@detail_rows', * FROM @detail_rows
+	--SELECT '@unit_rows' '@unit_rows', * FROM @unit_rows
+
+
+
+	/* Delete the ones that exisit in both */
+	DELETE TD
+	FROM @detail_rows TD
+	INNER JOIN @unit_rows UD ON TD.ORDER_NBR = UD.ORDER_NBR AND TD.LINE_NBR = UD.LINE_NBR AND TD.REV_NBR = UD.REV_NBR
+
+	/* Delete the ones that don't exist in unit detail */
+	--DELETE TD
+	UPDATE TD
+	SET TD.EXISTS_IN_UNIT_DETAIL = 0
+	FROM @detail_rows TD
+	LEFT JOIN @unit_rows UD ON TD.ORDER_NBR = UD.ORDER_NBR AND TD.LINE_NBR = UD.LINE_NBR 
+	WHERE UD.LINE_NBR IS NULL
+
+	/* Get the max revision for the associated unit rows */
+	UPDATE TD
+	SET UNIT_REV_NBR = UD.REV_NBR
+	FROM @detail_rows TD
+	INNER JOIN (SELECT ORDER_NBR, LINE_NBR, MAX(REV_NBR) REV_NBR 
+				FROM @unit_rows GROUP BY ORDER_NBR, LINE_NBR) UD ON TD.ORDER_NBR = UD.ORDER_NBR AND TD.LINE_NBR = UD.LINE_NBR
+	
+
+	/* Use previous REV_NBR to get Max Seq */
+	UPDATE TD
+	SET UNIT_SEQ_NBR = (UD.SEQ_NBR)
+	FROM @detail_rows TD
+	INNER JOIN (SELECT (ORDER_NBR) ORDER_NBR, (LINE_NBR) LINE_NBR, (REV_NBR) REV_NBR, MAX(SEQ_NBR) SEQ_NBR FROM TV_DETAIL GROUP BY ORDER_NBR, LINE_NBR, REV_NBR) UD 
+				ON TD.ORDER_NBR = UD.ORDER_NBR AND TD.LINE_NBR = UD.LINE_NBR AND TD.UNIT_REV_NBR = UD.REV_NBR
+
+
+
+	--SELECT '@detail_rows' '@detail_rows', * FROM @detail_rows
+	--SELECT '@unit_rows' '@unit_rows', * FROM @unit_rows
+
+
+
+END
+	
+--/* Combine reversal and new rows */
+
+INSERT INTO @tv_detail_units
+SELECT ORDER_NBR, LINE_NBR, REV_NBR, SEQ_NBR, UNIT_NBR, PRD_CODE, UNIT_DATE, LINK_ID, LINK_UNITID, UNITS
+FROM (
+SELECT UD.ORDER_NBR		ORDER_NBR
+    ,UD.LINE_NBR		LINE_NBR
+    ,UD.REV_NBR			REV_NBR
+    ,TD.UNIT_SEQ_NBR	SEQ_NBR
+    ,UNIT_NBR			UNIT_NBR
+    ,UD.PRD_CODE		PRD_CODE
+    ,UNIT_DATE			UNIT_DATE
+	,H.LINK_ID			LINK_ID
+    ,LINK_UNITID		LINK_UNITID
+    ,UD.UNITS * -1			UNITS
+	,1					'REVERSAL_ROW'	--Yes
+FROM TV_DETAIL_UNITS UD
+JOIN TV_HDR H ON UD.ORDER_NBR = H.ORDER_NBR
+JOIN @detail_rows TD ON TD.ORDER_NBR = UD.ORDER_NBR AND TD.LINE_NBR = UD.LINE_NBR AND UD.REV_NBR = TD.UNIT_REV_NBR AND UD.PRD_CODE IS NOT NULL--= TD.PRD_CODE
+UNION
+/* Insert copy of current REV to TV_DETAIL Max(REV_NBR) */
+SELECT UD.ORDER_NBR
+    ,UD.LINE_NBR
+    ,TD.REV_NBR /* TV_DETAIL Max(REV_NBR) */
+    ,TD.SEQ_NBR
+    ,UNIT_NBR
+    ,UD.PRD_CODE
+    ,UNIT_DATE
+	,H.LINK_ID			LINK_ID
+    ,LINK_UNITID
+    ,UD.UNITS
+	,0					'REVERSAL_ROW'  --No
+FROM (SELECT IMPORT_ORDER_NBR, ORDER_NBR, IMPORT_LINE_NBR, XR.LINE_NBR, ROW_NUMBER() OVER(PARTITION BY ORDER_NBR, XR.LINE_NBR ORDER BY ORDER_NBR, XR.LINE_NBR ASC) UNIT_NBR, PRD_CODE, UNIT_DATE, LINK_UNITID, UNITS
+				FROM @xref AS XR 
+				JOIN BRDCAST_IMPORT_UNITS AS U1
+					ON XR.IMPORT_ORDER_NBR = U1.LINK_ID AND XR.IMPORT_LINE_NBR = U1.LINE_NBR ) UD
+JOIN TV_HDR H ON UD.ORDER_NBR = H.ORDER_NBR
+JOIN @detail_rows TD ON TD.ORDER_NBR = UD.ORDER_NBR AND TD.LINE_NBR = UD.LINE_NBR --AND UD.REV_NBR = TD.UNIT_REV_NBR
+) A
+
+--WHERE UI.LINE_NBR IS NULL
+
+--SELECT ORDER_NBR, LINE_NBR, REV_NBR, SEQ_NBR, UNIT_NBR, PRD_CODE, UNIT_DATE, LINK_UNITID, UNITS --LINK_ID
+--FROM @tv_detail_units
+
+INSERT INTO TV_DETAIL_UNITS 
+SELECT ORDER_NBR, LINE_NBR, REV_NBR, SEQ_NBR, UNIT_NBR, PRD_CODE, UNIT_DATE, LINK_UNITID, UNITS --LINK_ID
+FROM @tv_detail_units
+
+--/* Update POST_FLAG in units import table */
+UPDATE UD
+SET UD.POST_FLAG = 1
+FROM BRDCAST_IMPORT_UNITS UD
+INNER JOIN @tv_detail_units TD ON TD.LINK_ID = UD.LINK_ID AND TD.LINK_UNITID = UD.LINK_UNITID
+
+GOTO ENDIT
+  
+           
+/**************************** ERROR PROCESSING ************************************************************************/	
+	ERROR_MSG:
+		BEGIN
+		
+			RAISERROR (@error_msg_w,
+			 16,
+			 1 )    
+			
+		END
+
+	ENDIT: --Do Nothing
+	
+END TRY
+
+BEGIN CATCH
+	   
+	SELECT 	@ErMessage = ERROR_MESSAGE(),
+					@ErSeverity = ERROR_SEVERITY(),
+					@ErState = ERROR_STATE();
+
+	IF @ErMessage IS NOT NULL BEGIN
+		--SET @ret_val = 1
+		SET @error_msg_w = @ErMessage
+	END
+
+END CATCH
+	
+GO
+
+GRANT EXECUTE ON [advsp_revise_order_brdcast_units] TO PUBLIC
+GO

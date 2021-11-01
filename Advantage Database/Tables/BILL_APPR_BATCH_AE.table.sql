@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[BILL_APPR_BATCH_AE] (
+    [BA_BATCH_ID] INT         NOT NULL,
+    [AE_EMP_CODE] VARCHAR (6) NOT NULL
+);
+

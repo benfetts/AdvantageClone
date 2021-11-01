@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[PARTNER_ALLOC_DTL] (
+    [ORDER_NBR]    INT            NOT NULL,
+    [PARTNER_CODE] VARCHAR (6)    NOT NULL,
+    [PCT_ALLOC]    DECIMAL (7, 3) NOT NULL
+);
+

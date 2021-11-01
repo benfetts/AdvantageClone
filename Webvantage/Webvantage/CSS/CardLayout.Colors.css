@@ -1,0 +1,364 @@
+﻿/*  Boards  */
+/* === To Do/Backlog === */
+.eCustom-1 {
+    /*background: #FFF8E1 !important;
+    border-color: #FFB300 !important;*/
+}
+
+.eCustomHeader-1 {
+    /*color: #FFA000 !important;*/
+}
+/* === Done === */
+.eCustom-2 {
+    /*background: #FCE4EC !important;
+    border-color: #E91E63 !important;*/
+}
+
+.eCustomHeader-2 {
+    /*color: #E91E63 !important;*/
+}
+/* === Available States === */
+.eCustom-3 {
+    background: #FFFFFF !important;
+    border-color: #757575 !important;
+}
+
+.eCustomHeader-3 {
+    color: #757575 !important;
+}
+/* === Card edges === */
+.card-edge-task-priority-active {
+    border-bottom: 4px solid #5CB85C !important;
+}
+
+.card-edge-task-priority-pending {
+    border-bottom: 4px solid #666666 !important;
+}
+
+.card-edge-task-due-overdue {
+    border-bottom: 4px solid #E9360A !important;
+}
+
+.card-edge-task-due-today {
+    border-bottom: 4px solid #EC6400 !important;
+}
+.card-edge-alert-priority-highest {
+    border-bottom: 4px solid #D63251 !important;
+}
+
+.card-edge-alert-priority-high {
+    border-bottom: 4px solid #DC3545 !important;
+}
+
+.card-edge-alert-priority-normal {
+    border-bottom: 4px solid #808080 !important;
+}
+
+.card-edge-alert-priority-low {
+    border-bottom: 4px solid #4D82B8 !important;
+}
+
+.card-edge-alert-priority-lowest {
+    border-bottom: 4px solid #B2C9E0 !important;
+}
+.card-edge-calendar-task {
+    border-bottom: 4px solid #5CB85C !important;
+}
+
+.card-edge-calendar-task-active {
+    border-bottom: 4px solid #5CB85C !important;
+}
+
+.card-edge-calendar-task-pending {
+    border-bottom: 4px solid #808080 !important;
+}
+
+.card-edge-calendar-task-pending-calendar {
+}
+
+.card-edge-calendar-holiday {
+    border-bottom: 4px solid #FF9800 !important;
+}
+
+.card-edge-calendar-activity {
+    border-bottom: 4px solid #009688 !important;
+}
+
+.card-edge-calendar-activity-a {
+    border-bottom: 4px solid #9C27B0 !important;
+}
+
+.card-edge-calendar-activity-c {
+    border-bottom: 4px solid #3F51B5 !important;
+}
+
+.card-edge-calendar-activity-m {
+    border-bottom: 4px solid #FF5722 !important;
+}
+
+.card-edge-calendar-activity-td {
+    border-bottom: 4px solid #9E9E9E !important;
+}
+
+.card-edge-calendar-activity-el {
+    border-bottom: 4px solid #F2D9A8 !important;
+}
+
+.card-edge-calendar-event {
+    border-bottom: 4px solid #512da8 !important;
+}
+
+.card-edge-calendar-event-task {
+    border-bottom: 4px solid #7e57c2 !important;
+}
+
+.card-edge-calendar-assignment {
+    border-bottom: 4px solid #1976D2 !important;
+}
+
+
+/*  Tasks   */
+.task-priority-active {
+    background-color: #5CB85C !important;
+}
+.task-priority-pending {
+    background-color: #808080 !important;
+}
+.task-due-overdue {
+    color: #D63251 !important;
+}
+.task-due-today {
+    color: #EC6400 !important;
+}
+
+/*  Alerts  */
+.alert-priority-highest {
+    background-color: #D63251 !important;
+}
+.alert-priority-high {
+    background-color: #EEACB9 !important;
+}
+.alert-priority-normal {
+    background-color:#808080 !important;
+}
+.alert-priority-low {
+    background-color: #4D82B8 !important;
+}
+.alert-priority-lowest {
+    background-color: #B2C9E0 !important;
+}
+
+/*   Calendar/My Schedule   */
+.calendar-task {
+    background-color: #5CB85C !important;
+    border: 0px solid #5CB85C !important;
+    color: #ffffff !important;
+}
+.calendar-task-active {
+    background-color: #5CB85C !important;
+    border: 0px solid #5CB85C !important;
+    color: #ffffff !important;
+}
+.calendar-task-pending {
+    background-color: #808080 !important;
+    border: 0px solid #808080 !important;
+    color: #ffffff !important;
+}
+.calendar-task-pending-calendar {
+    /*background-color:#00BCD4 !important;
+    border: 0px solid #00BCD4 !important;
+    color: #ffffff !important;*/
+    text-decoration: line-through;
+}
+.calendar-holiday {
+    background-color: #FFC107 !important;
+    border: 0px solid #E2A62E !important;
+    color: #ffffff !important;
+}
+
+.calendar-activity {
+    background-color: #009688 !important;
+    border: 0px solid #009688 !important;
+    color: #ffffff !important;
+}
+.calendar-activity-a {
+    background-color: #203850 !important;
+    border: 0px solid #203850 !important;
+    color: #ffffff !important;
+}
+.calendar-activity-c {
+    background-color: #3A6692 !important;
+    border: 0px solid #3A6692 !important;
+    color: #ffffff !important;
+}
+.calendar-activity-m {
+    background-color: #C96615 !important;
+    border: 0px solid #C96615 !important;
+    color: #ffffff !important;
+}
+.calendar-activity-td {
+    background-color: #808080 !important;
+    border: 0px solid #808080 !important;
+    color: #252525 !important;
+}
+
+.calendar-event {
+    background-color: #5C4732 !important;
+    border: 0px solid #5C4732 !important;
+    color: #ffffff !important;
+}
+.calendar-event-task {
+    background-color: #B89A7C !important;
+    border: 0px solid #B89A7C !important;
+    color: #ffffff !important;
+}
+.calendar-assignment {
+    background-color: #4D82B8 !important;
+    border: 0px solid #4D82B8 !important;
+    color: #ffffff !important;
+}
+
+
+
+
+/*  Application     */
+.application-type-default {
+    background-color: #666666 !important;
+}
+.default-tabs.dx-tabs {
+    background-color: #666666 !important;
+}
+.default-tabs.dx-tabs .dx-tab {
+    background-color: #00BCD4 !important;
+}
+
+
+
+.application-type-custom {
+    background-color: #666666 !important;
+}
+.custom-tabs.dx-tabs {
+    background-color: #666666 !important;
+}
+    .custom-tabs.dx-tabs .dx-tab {
+        background-color: #666666 !important;
+    }
+
+.application-type-about {
+    background-color: #03A9F4 !important;
+}
+.about-tabs.dx-tabs {
+    background-color: #03A9F4 !important;
+}
+.about-tabs.dx-tabs .dx-tab {
+    background-color: #03A9F4 !important;
+}
+
+
+.application-type-desktop {
+    background-color: #FF9800 !important;
+}
+.desktop-tabs.dx-tabs {
+    background-color: #FF9800 !important;
+}
+.desktop-tabs.dx-tabs .dx-tab {
+    background-color: #FF9800 !important;
+}
+
+
+
+.application-type-employee {
+    background-color: #9C27B0 !important;
+}
+.employee-tabs.dx-tabs {
+    background-color: #9C27B0 !important;
+}
+.employee-tabs.dx-tabs .dx-tab {
+    background-color: #9C27B0 !important;
+}
+
+
+
+.application-type-project-management {
+    background-color: #009688 !important;
+}
+.project-management-tabs.dx-tabs {
+    background-color: #009688 !important;
+}
+.project-management-tabs.dx-tabs .dx-tab {
+    background-color: #009688 !important;
+}
+
+
+
+.application-type-media {
+    background-color: #673AB7 !important;
+}
+.media-tabs.dx-tabs {
+    background-color: #673AB7 !important;
+}
+.media-tabs.dx-tabs .dx-tab {
+    background-color: #673AB7 !important;
+}
+
+
+
+.application-type-billing {
+    background-color: #4B7D70 !important;
+}
+.billing-tabs.dx-tabs {
+    background-color: #4B7D70 !important;
+}
+    .billing-tabs.dx-tabs .dx-tab {
+        background-color: #4B7D70 !important;
+    }
+
+
+
+.application-type-finance-and-accounting {
+    background-color: #388E3C !important;
+}
+.finance-and-accounting-tabs.dx-tabs {
+    background-color: #388E3C !important;
+}
+.finance-and-accounting-tabs.dx-tabs .dx-tab {
+    background-color: #388E3C !important;
+}
+
+
+
+.application-type-maintenance {
+    background-color: #3F51B5 !important;
+}
+.maintenance-tabs.dx-tabs {
+    background-color: #3F51B5 !important;
+}
+.maintenance-tabs.dx-tabs .dx-tab {
+    background-color: #3F51B5 !important;
+}
+
+
+
+.application-type-security {
+    background-color: #F44336 !important;
+}
+.security-tabs.dx-tabs {
+    background-color: #F44336 !important;
+}
+.security-tabs.dx-tabs .dx-tab {
+    background-color: #F44336 !important;
+}
+
+
+.floaty-blue {
+    background-color: #03A9F4 !important;
+}
+.floaty-green {
+    background-color: #4CAF50 !important;
+}
+.floaty-orange {
+    background-color: #FF9800 !important;
+}
+.floaty-black {
+    background-color: #000000 !important;
+}

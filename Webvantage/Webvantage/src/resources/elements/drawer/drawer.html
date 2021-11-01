@@ -1,0 +1,17 @@
+﻿<template>
+    <div class="wv-drawer ${isOpen ? 'wv-drawer-open' : ''}">
+        <a href="javascript:void(0)" click.delegate="close()" class='close-btn' title="${closeTitle}" >
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+        <div class="wv-drawer-content">
+            <div>
+                <slot></slot>
+            </div>
+        </div>
+        <div class='wv-drawer-footer'>
+            <div>
+                <slot name='footer'></slot>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[ACCT_NUMBER] (
+    [ACCT_NBR]      VARCHAR (30) NOT NULL,
+    [ACCT_NBR_DESC] VARCHAR (40) NOT NULL,
+    [ACTIVE]        SMALLINT     NULL,
+    [CLASS]         VARCHAR (10) NULL
+);
+

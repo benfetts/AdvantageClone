@@ -1,0 +1,13 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_Dashboard_GetYearDescriptions]
+AS
+
+
+SELECT * 
+FROM GEN_DESC
+WHERE (FIELD_NAME = 'YEAR_1' OR FIELD_NAME = 'YEAR_2') AND FIELD_DESCRIPTION <> ''
+
+
+
+

@@ -1,0 +1,285 @@
+﻿UserID, EmpCode, EmpName, Date, Day, StdHrs, HrsWorked, Diff, WkStdHrs, WkHrsWorked, WkDiff
+ALI, ali, Amanda L. Isom, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+ALI, ali, Amanda L. Isom, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+ALI, ali, Amanda L. Isom, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+ALI, ali, Amanda L. Isom, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+ALI, ali, Amanda L. Isom, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+ALI, ali, Amanda L. Isom, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+ALI, ali, Amanda L. Isom, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+ALI, ali, Amanda L. Isom, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+ALI, ali, Amanda L. Isom, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/5/2020, Saturday, 0.00, 0.00, 0.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/6/2020, Sunday, 0.00, 0.00, 0.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/7/2020, Monday, 0.00, 0.00, 0.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/11/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/12/2020, Saturday, 0.00, 0.00, 0.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/13/2020, Sunday, 0.00, 0.00, 0.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/14/2020, Monday, 0.00, 0.00, 0.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/18/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/19/2020, Saturday, 0.00, 0.00, 0.00, 32.00, 0.00, 32.00
+AMA, ama, Alan M. Able, 12/20/2020, Sunday, 0.00, 0.00, 0.00, 32.00, 4.00, 28.00
+AMA, ama, Alan M. Able, 12/21/2020, Monday, 0.00, 0.00, 0.00, 32.00, 4.00, 28.00
+AMA, ama, Alan M. Able, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 4.00, 28.00
+AMA, ama, Alan M. Able, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 4.00, 28.00
+AMA, ama, Alan M. Able, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 4.00, 28.00
+AMA, ama, Alan M. Able, 12/25/2020, Friday, 8.00, 0.00, 8.00, 32.00, 4.00, 28.00
+AMA, ama, Alan M. Able, 12/26/2020, Saturday, 0.00, 4.00, -4.00, 32.00, 4.00, 28.00
+AMA, ama, Alan M. Able, 12/27/2020, Sunday, 0.00, 4.00, -4.00, 24.00, 4.00, 20.00
+AMA, ama, Alan M. Able, 12/28/2020, Monday, 0.00, 0.00, 0.00, 24.00, 4.00, 20.00
+AMA, ama, Alan M. Able, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 24.00, 4.00, 20.00
+AMA, ama, Alan M. Able, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 24.00, 4.00, 20.00
+AMA, ama, Alan M. Able, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 24.00, 4.00, 20.00
+JH, jh, Jim Hale, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JH, jh, Jim Hale, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JH, jh, Jim Hale, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JH, jh, Jim Hale, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JH, jh, Jim Hale, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JH, jh, Jim Hale, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JH, jh, Jim Hale, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JH, jh, Jim Hale, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JH, jh, Jim Hale, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+JTG, jtg, Jessie T. Gibbons, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+JTG, jtg, Jessie T. Gibbons, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+, lar, Larry A. Roan, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+, lar, Larry A. Roan, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+LMN, lmn, Lisa M. Nichols, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+LMN, lmn, Lisa M. Nichols, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MER, mer, Marge E. Roony, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MER, mer, Marge E. Roony, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MIKE, mike, Mike Byrnes, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MIKE, mike, Mike Byrnes, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+MTG, mtg, Mike T. Gonzales, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+MTG, mtg, Mike T. Gonzales, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+RCS, rcs, Rick C. Smith, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+RCS, rcs, Rick C. Smith, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+SAM, sam, Sam A. McDonald, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+SAM, sam, Sam A. McDonald, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/1/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/2/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/3/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/4/2020, Friday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/7/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/8/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/9/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/10/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/11/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/14/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/15/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/16/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/17/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/18/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/21/2020, Monday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/22/2020, Tuesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/23/2020, Wednesday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/24/2020, Thursday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/25/2020, Friday, 8.00, 0.00, 8.00, 40.00, 0.00, 40.00
+WAB, wab, Wilbur A. Boyd, 12/28/2020, Monday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/29/2020, Tuesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/30/2020, Wednesday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00
+WAB, wab, Wilbur A. Boyd, 12/31/2020, Thursday, 8.00, 0.00, 8.00, 32.00, 0.00, 32.00

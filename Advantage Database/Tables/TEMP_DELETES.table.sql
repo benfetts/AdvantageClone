@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[TEMP_DELETES] (
+    [BRDCAST_TYPE]  CHAR (5)  NULL,
+    [STATUS]        CHAR (30) NULL,
+    [SELECTED]      SMALLINT  NULL,
+    [ORDER_NBR]     INT       NULL,
+    [INVALID_ORDER] SMALLINT  NULL
+);
+

@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[DB_UPDATE] (
+    [VERSION_ID]    VARCHAR (15)  NOT NULL,
+    [PATCH]         VARCHAR (254) NOT NULL,
+    [DESCRIPTION]   TEXT          NULL,
+    [DATE_APPLIED]  SMALLDATETIME DEFAULT (getdate()) NULL,
+    [FUNCTION_NAME] VARCHAR (100) NULL,
+    [DB_ERROR]      INT           NULL
+);
+

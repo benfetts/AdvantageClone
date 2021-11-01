@@ -1,0 +1,35 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_DESKTOP_OBJECT_CATEGORYInsert]
+(
+	@ID int = NULL output,
+	@CATEGORY varchar(50)
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	INSERT
+	INTO [CP_DESKTOP_OBJECT_CATEGORY]
+	(
+		[CATEGORY]
+	)
+	VALUES
+	(
+		@CATEGORY
+	)
+
+	SET @Err = @@Error
+
+	SELECT @ID = SCOPE_IDENTITY()
+
+	RETURN @Err
+END
+
+
+
+
+

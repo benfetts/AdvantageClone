@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[CAMPAIGN_DETAIL] (
+    [CMP_IDENTIFIER]  INT             NOT NULL,
+    [LINE_NBR]        SMALLINT        NOT NULL,
+    [SC_CODE]         VARCHAR (6)     NULL,
+    [POST_PERIOD]     VARCHAR (6)     NULL,
+    [DTL_CMP_TYPE]    VARCHAR (10)    NULL,
+    [DP_TM_CODE]      VARCHAR (4)     NULL,
+    [CMP_BILL_BUDGET] DECIMAL (18, 2) NULL,
+    [CMP_INC_BUDGET]  DECIMAL (18, 2) NULL,
+    [LAST_REV_DATE]   SMALLDATETIME   NULL,
+    [USER_ID]         VARCHAR (100)   NULL
+);
+

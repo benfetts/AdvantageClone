@@ -1,0 +1,169 @@
+﻿-- DROP PROCEDURE [dbo].[usp_wv_Job_Template_NewJob]
+CREATE PROCEDURE [dbo].[usp_wv_Job_Template_NewJob]
+--   Job 
+@CL_CODE VARCHAR(6),
+@DIV_CODE VARCHAR(6),
+@PRD_CODE VARCHAR(6),
+@SC_CODE VARCHAR(6),
+@USER_ID VARCHAR(100),
+@JOB_DESC VARCHAR(60),
+-- Job Component
+@EMP_CODE VARCHAR(6),
+@JOB_COMP_DESC VARCHAR(60),
+@TMPLT_CODE VARCHAR(6),
+@USR_OFFICE_CODE VARCHAR(6),
+@CAMPAIGN_ID INT,
+@CAMPAIGN_CODE VARCHAR(6),
+@JT_CODE VARCHAR(10),
+@CREATE_DATE SMALLDATETIME
+AS
+SET NOCOUNT ON
+/*=========== QUERY ===========*/
+	BEGIN TRANSACTION
+
+		DECLARE @NewJobNumber INT
+		DECLARE @OfficeCode VARCHAR(4)
+		DECLARE @ProductOfficeCode VARCHAR(4)
+		DECLARE @ProdMarkup DECIMAL(11,3)
+		DECLARE @EmailGroup VARCHAR(50)
+		DECLARE @JobReqEst SMALLINT
+		DECLARE @OfficeEdit SMALLINT
+
+		IF @CAMPAIGN_ID IS NOT NULL AND @CAMPAIGN_ID = 0 BEGIN
+
+			SET @CAMPAIGN_ID = NULL;
+
+		END
+		
+		IF @CAMPAIGN_CODE IS NOT NULL AND RTRIM(LTRIM(@CAMPAIGN_CODE)) = '' BEGIN
+
+			SET @CAMPAIGN_CODE = NULL;
+
+		END
+
+		--GET SOME INFO FROM PRODUCT TABLE
+		SELECT 
+			@ProductOfficeCode = OFFICE_CODE,
+			@EmailGroup = EMAIL_GR_CODE, 
+			@JobReqEst = ISNULL(PRD_PROD_ESTIMATE,0),
+			@ProdMarkup = PRD_PROD_MARKUP 
+		FROM 
+			PRODUCT WITH(NOLOCK)
+		WHERE 
+			CL_CODE = @CL_CODE AND 
+			DIV_CODE = @DIV_CODE AND
+			PRD_CODE = @PRD_CODE;
+
+		SELECT @OfficeEdit = ISNULL(EDIT_OFFICE, 0) FROM AGENCY WITH(NOLOCK);
+		IF (@OfficeEdit = 0 OR  @OfficeEdit IS NULL)
+		BEGIN
+			SET @OfficeCode = @ProductOfficeCode;
+		END
+	  
+		--Allow the user to override the setting
+		IF (@USR_OFFICE_CODE <> '' )
+		BEGIN
+			SET @OfficeCode = @USR_OFFICE_CODE;
+		END	  
+
+		IF @JobReqEst = 0
+		BEGIN
+			SELECT @JobReqEst = ISNULL(APPR_EST_REQ, 0)
+			FROM AGENCY WITH(NOLOCK);
+		END	
+		
+		SELECT 
+			@NewJobNumber = ISNULL(MAX(JOB_NUMBER), 0) + 1 
+		FROM 
+			dbo.JOB_LOG
+
+		INSERT INTO [dbo].[JOB_LOG] (
+			[JOB_NUMBER],
+			[CL_CODE],
+			[DIV_CODE],
+			[PRD_CODE],
+			[SC_CODE],
+			[USER_ID],
+			[JOB_DESC], 
+			[OFFICE_CODE],
+			[CREATE_DATE],
+			[JOB_DATE_OPENED], 
+			[JOB_ESTIMATE_REQ],
+			[CMP_IDENTIFIER],
+			[CMP_CODE],
+			[MODIFY_DATE],
+			[MODIFIED_BY]
+		) 
+		VALUES (
+			@NewJobNumber,
+			@CL_CODE,
+			@DIV_CODE,
+			@PRD_CODE,
+			@SC_CODE,
+			@USER_ID,
+			@JOB_DESC,
+			@OfficeCode,
+			@CREATE_DATE,
+			CONVERT(VARCHAR(10), @CREATE_DATE, 101), 
+			@JobReqEst,
+			@CAMPAIGN_ID,
+			@CAMPAIGN_CODE,
+			@CREATE_DATE,
+			@USER_ID
+		);
+
+	IF @@Error > 0 Goto Error
+	
+		---Get Number
+		SELECT    @NewJobNumber = MAX(JOB_NUMBER) 
+		FROM      JOB_LOG WITH(NOLOCK);
+
+		INSERT INTO [dbo].[JOB_COMPONENT] (
+			[JOB_NUMBER],
+			[JOB_COMPONENT_NBR],
+			[EMP_CODE],
+			[JOB_COMP_DESC],
+			[JOB_SPEC_TYPE], 
+			[JOB_PROCESS_CONTRL],
+			[JOB_COMP_DATE],
+			[JOB_MARKUP_PCT],
+			[JOB_TMPLT_CODE],
+			[AB_FLAG],
+			[EMAIL_GR_CODE],
+			[NOBILL_FLAG],
+			[JT_CODE],
+			[MODIFY_DATE],
+			[MODIFIED_BY]
+		) 
+		VALUES (
+			@NewJobNumber,
+			1,
+			@EMP_CODE,
+			@JOB_COMP_DESC,
+			0,1,
+			CONVERT(VARCHAR(10) , @CREATE_DATE, 101), 
+			@ProdMarkup,
+			@TMPLT_CODE,
+			0,
+			@EmailGroup,
+			0,
+			@JT_CODE,
+			@CREATE_DATE,
+			@USER_ID
+		);
+
+	IF @@Error > 0 GOTO Error
+	
+		UPDATE ASSIGN_NBR WITH(ROWLOCK) 
+		SET LAST_NBR = @NewJobNumber
+		WHERE (COLUMNNAME = 'JOB_NUMBER');
+
+	IF @@Error > 0 GOTO Error
+
+	COMMIT TRANSACTION
+
+		SELECT @NewJobNumber;
+
+	Error:
+	ROLLBACK TRANSACTION
+/*=========== QUERY ===========*/

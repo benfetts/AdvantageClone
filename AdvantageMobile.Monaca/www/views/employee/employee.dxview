@@ -1,0 +1,11 @@
+<div data-options="dxView : { name: 'employee', title: 'Employee' } ">
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxTabs: { items: navbar.items , onItemClick: navbar.onItemClick, selectedIndex: navbar.selectedIndex, visible: false }"></div>
+        <div style="padding:30px; width: 100%; text-align:center; height: 100%; vertical-align: middle;">
+            <div data-bind="dxButton: expensesButton" class="landing-page-button"></div>
+            <br />
+            <br />
+            <div data-bind="dxButton: timeButton" class="landing-page-button"></div>
+        </div>
+    </div>
+</div>

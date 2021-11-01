@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[ALERT_DOCUMENT_KEYWORD] (
+    [KEYWORD_ID]   INT           IDENTITY (1, 1) NOT NULL,
+    [ADVANTAGE_ID] INT           NOT NULL,
+    [ALERT_ID]     INT           NOT NULL,
+    [KEYWORD]      VARCHAR (100) NULL
+);
+

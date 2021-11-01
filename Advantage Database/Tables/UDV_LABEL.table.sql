@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[UDV_LABEL] (
+    [UDV_TABLE_NAME]  VARCHAR (19)  NOT NULL,
+    [USER_LABEL]      VARCHAR (20)  NULL,
+    [EDITABLE]        BIT           NULL,
+    [VALIDATION_RULE] VARCHAR (254) NULL
+);
+

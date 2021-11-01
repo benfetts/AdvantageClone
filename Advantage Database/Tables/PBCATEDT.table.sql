@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[PBCATEDT] (
+    [PBE_NAME] VARCHAR (30)  NOT NULL,
+    [PBE_EDIT] VARCHAR (254) NULL,
+    [PBE_TYPE] SMALLINT      NULL,
+    [PBE_CNTR] INT           NULL,
+    [PBE_SEQN] SMALLINT      NOT NULL,
+    [PBE_FLAG] INT           NULL,
+    [PBE_WORK] VARCHAR (32)  NULL
+);
+

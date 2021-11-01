@@ -1,0 +1,17 @@
+﻿CREATE PROCEDURE [dbo].[usp_wv_dd_job_comp_job_type_jh] 
+@SC_CODE VARCHAR(6)
+AS
+IF @SC_CODE = ''
+	BEGIN
+		SELECT DISTINCT JT_CODE as code, JT_CODE + ' - ' + JT_DESC as description
+		FROM JOB_TYPE
+		WHERE (INACTIVE_FLAG IS NULL OR INACTIVE_FLAG = 0)
+	END
+ELSE
+	BEGIN
+		SELECT DISTINCT JT_CODE as code, JT_CODE + ' - ' + JT_DESC as description
+		FROM JOB_TYPE
+		WHERE (INACTIVE_FLAG IS NULL OR INACTIVE_FLAG = 0)
+	END
+
+

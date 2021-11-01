@@ -1,0 +1,33 @@
+CREATE FUNCTION [dbo].[advfn_get_schedule_percent] ( 
+	@StartDate DATETIME, @EndDate DATETIME
+)
+RETURNS DECIMAL(15,2)
+WITH SCHEMABINDING
+AS
+BEGIN
+	DECLARE @today DATETIME,
+			@TOTAL_DAYS DECIMAL(15,5),
+			@WORKING_DAYS DECIMAL(15,2),
+			@PERC_COMPLETE DECIMAL(15,2)
+	
+	SET @today = GETDATE()
+	SET @TOTAL_DAYS = DATEDIFF(DAY, @StartDate, @EndDate) 
+
+	IF @StartDate <= GETDATE() AND @EndDate >= GETDATE() BEGIN
+		SELECT
+			@WORKING_DAYS =
+			   (DATEDIFF(dd, @StartDate, @today))-- do not count today + 1)
+			  -(DATEDIFF(wk, @StartDate, @today) * 2)
+			  -(CASE WHEN DATENAME(dw, @StartDate) = 'Sunday' THEN 1 ELSE 0 END)
+			  -(CASE WHEN DATENAME(dw, @today) = 'Saturday' THEN 1 ELSE 0 END)
+			  -(SELECT COUNT(1) FROM dbo.EMP_NON_TASKS WHERE [TYPE] = 'H' AND [START_DATE] BETWEEN @StartDate AND @today AND ALL_DAY = 1)
+		SELECT @PERC_COMPLETE = (@WORKING_DAYS/ @TOTAL_DAYS) * 100
+
+	END ELSE IF @StartDate > GETDATE()
+		SELECT @PERC_COMPLETE = 0
+	ELSE
+		SELECT @PERC_COMPLETE = 100
+
+	RETURN @PERC_COMPLETE 
+END
+GO

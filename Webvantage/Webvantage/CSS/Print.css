@@ -1,0 +1,136 @@
+﻿body,td,th {
+	font-family: Arial;
+	font-size: 11px;
+	color: #000000;
+}
+body {
+	background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.TableBorder{
+    border-top: #000000 1px solid; 
+    border-right: #000000 1px solid; 
+    border-left: #000000 1px solid; 
+    border-bottom: #000000 1px solid;
+    background-color:#FFFFFF;
+    color:#000000;
+}
+.TableBorderBottom {
+	border-bottom: 1px solid #000000;	
+}
+.TableBorderTop{
+    border-top: #000000 1px solid; 
+    background-color:#FFFFFF;
+    color:#000000;
+}
+.TableBorderLeft{
+    border-left: #000000 1px solid; 
+    background-color:#FFFFFF;
+    color:#000000;
+}
+.Reverse_BigHeaderStyle {
+	height:35px;
+	vertical-align: middle;	
+	background-color:#000000;
+}
+.Reverse_HeaderStyle {
+	height:25px;
+	vertical-align: middle;	
+	background-color:#000000;
+}
+.WhiteText14
+{
+    color:#FFFFFF;
+	font-size: 14px;
+	font-weight:bold;
+}
+.WhiteText12
+{
+    color:#FFFFFF;
+	font-size: 12px;
+	font-weight:bold;
+}
+.HeaderStyle {
+	font-size: 12px;
+	font-weight:bold;
+	height:25px;
+	border-bottom: 1px solid #000000;	
+	vertical-align: middle;	
+}
+.HeaderStyle2 {
+	font-size: 14px;
+	font-weight:bold;
+	height:25px;
+	border-bottom: 2px solid #000000;	
+	vertical-align: middle;	
+}
+.HeaderStyle3 {
+	font-size: 18px !important;
+	font-weight:bold;
+	height:25px;
+	border-bottom: 2px solid #000000;	
+	vertical-align: middle;	
+}
+.Header2 {
+	font-size: 12px;
+	font-weight:bold;
+}
+.HeaderPageBreak {
+	font-size: 12px;
+	font-weight:bold;
+	page-break-before: always;
+}
+@media all
+{
+    .page-break {
+	    display:none;
+    }
+    .no-print{display:block;}
+    .print-button{
+    background-color:Silver;
+    border-color:#666666;
+    border-width:1px;
+    border-style:Solid;
+    font-size: 14px;        
+    cursor: pointer;
+    cursor: hand
+    }
+}
+@media print
+{
+    .page-break {
+        display:block;
+	    page-break-before: always;
+    }
+   .no-print{display:none;}
+    .print-button{
+    display:none;
+    }
+}
+
+
+.SubHeaderStyle {
+	font-size: 10px;
+	height:20px;
+	font-weight:bold;
+	border-bottom: 1px solid #000000;		
+	vertical-align: bottom;	
+}
+.DesktopObjectAlternatingRow {
+	border-bottom: 1px dotted #000000;		
+	vertical-align: top;	
+}
+.DesktopObjectRow {
+	border-bottom: 1px dotted #000000;		
+	vertical-align: top;	
+}
+.SubHeaderStyle {
+	font-size: 10px;
+	height:20px;
+	font-weight:bold;
+	border-bottom: 1px solid #000000;		
+	border-top: 1px solid #000000;		
+}

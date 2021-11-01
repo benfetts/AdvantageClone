@@ -1,0 +1,231 @@
+<div data-options="dxView : { name: 'view_alert', title: '@details' } ">
+    <div data-bind="dxCommand: { onExecute: handleSave, id: 'save', title: '@save', icon: 'save' } "></div>
+    <div data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div data-bind="dxLoadPanel: loadingPanel"></div>
+        <div data-bind="dxScrollView: { }">
+            <div class="message-block">
+                <div style="width:90%;" data-bind="dxButton: dismissCompleteButton"></div>
+            </div>
+            <div data-bind="dxTabs: alertDetailsTab">
+            </div>
+            <div class="dx-fieldset">
+                <div class="dx-field" data-bind="css: clientDisplayCSS">
+                    <div class="dx-field-label">@client:</div>
+                    <div class="dx-field-value" data-bind="text: clientDisplay"></div>
+                </div>
+               <div class="dx-field" data-bind="css: jobAndComponentCSS">
+                    <div class="dx-field-label">@job/@component:</div>
+                    <div class="dx-field-value" data-bind="text: jobAndComponentText"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">@subject:</div>
+                    <div class="dx-field-value" data-bind="dxTextArea: { value: thisAlert.Subject, height: '105px' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">@description: </div>
+                    <div style="" class="dx-field-value" data-bind="dxTextArea: { value: thisAlert.Body, height: '135px' }"></div>
+                    <div style="display:none !important;" class="dx-field-value" data-bind="html: thisAlert.BodyHtml, event: { dxclick: descriptionClicked }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">@priority:</div>
+                    <div data-bind="dxSelectBox: prioritySelectBox"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">@dueDate:</div>
+                    <div class="dx-field-value" data-bind="dxDateBox: { value: thisAlert.DueDate, format: 'date' }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">@timeDue:</div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.TimeDue }"></div>
+                </div>
+                <!--
+                <div class="dx-field">
+                    <div class="dx-field-label">ID: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: idDisplay, readOnly: true }"></div>
+                </div>
+                <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.Priority }"></div>
+                <div class="dx-field">
+                    <div class="dx-field-label">AlertAssignmentStateID: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.AlertAssignmentStateID }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">AlertAssignmentTemplateID: </div>
+                    <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.AlertAssignmentTemplateID }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Version: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.Version }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Build: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.Build }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Version2: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.Version2 }"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Build2: </div>
+                    <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.Build2 }"></div>
+                </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">AlertLevel: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.AlertLevel, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">AlertTypeID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.AlertTypeID, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">AlertCategoryID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.AlertCategoryID, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">BodyHtml: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.BodyHtml }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">GeneratedDate: </div>
+                        <div class="dx-field-value" data-bind="dxDateBox: { value: thisAlert.GeneratedDate, format: 'date', readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">ClientCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.ClientCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">DivisionCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.DivisionCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">ProductCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.ProductCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">CampaignCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.CampaignCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">JobNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.JobNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">JobComponentNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.JobComponentNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">EstimateNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.EstimateNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">EstimateComponentNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.EstimateComponentNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">EstimateQuoteNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.EstimateQuoteNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">EstimateRevisionNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.EstimateRevisionNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">VendorCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.VendorCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">EmployeeCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.EmployeeCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">PurchaseOrderNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.PurchaseOrderNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">PurchaseOrderRevisionNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.PurchaseOrderRevisionNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">OrderNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.OrderNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">RevisionNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.RevisionNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">UserCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.UserCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">TempPdfPath: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.TempPdfPath, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">CampaignID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.CampaignID, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">OfficeCode: </div>
+                        <div class="dx-field-value" data-bind="dxTextBox: { value: thisAlert.OfficeCode, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">IsClientPortal: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.IsClientPortal, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">BillingApprovalBatchID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.BA_BATCH_ID, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">TaskSequenceNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.TASK_SEQ_NBR, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">SequenceNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.SequenceNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">SentDate: </div>
+                        <div class="dx-field-value" data-bind="dxDateBox: { value: thisAlert.SentDate, format: 'date', readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">LastUpdatedDate: </div>
+                        <div class="dx-field-value" data-bind="dxDateBox: { value: thisAlert.LastUpdatedDate, format: 'date', readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">ClientPortalUserID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.ClientPortalUserID, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">NonTaskID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.NonTaskID, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">AccountsPayableID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.AccountsPayableID, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">AccountsPayableSequenceNumber: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.AccountsPayableSequenceNumber, readOnly: true }"></div>
+                    </div>
+                    <div class="dx-field">
+                        <div class="dx-field-label">AtbRevisionID: </div>
+                        <div class="dx-field-value" data-bind="dxNumberBox: { value: thisAlert.AtbRevisionID, readOnly: true }"></div>
+                    </div>
+                -->
+            </div>
+            <div style="height:500px;"></div>
+        </div>
+        <!--
+        <div data-bind="dxPopup: descriptionPopup">
+            <div data-options="dxTemplate : { name: 'content' } ">
+                <textarea name="richEditor" id="richEditor"></textarea>
+                <div style="width:100%;text-align:center;margin-top:20px;">
+                    <div style="width:40%" data-bind="dxButton: saveDescriptionButton"></div>
+                    <div style="width:40%" data-bind="dxButton: cancelSaveDescriptionButton"></div>
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+</div>

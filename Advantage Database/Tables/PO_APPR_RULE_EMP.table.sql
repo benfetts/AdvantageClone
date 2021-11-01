@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[PO_APPR_RULE_EMP] (
+    [PO_APPR_RULE_ID]   INT         IDENTITY (1, 1) NOT NULL,
+    [PO_APPR_RULE_CODE] VARCHAR (6) NOT NULL,
+    [SEQ_NBR]           SMALLINT    NOT NULL,
+    [EMP_CODE]          VARCHAR (6) NOT NULL,
+    [APPR_ORDER]        SMALLINT    NULL,
+    [INACTIVE_FLAG]     SMALLINT    NULL
+);
+

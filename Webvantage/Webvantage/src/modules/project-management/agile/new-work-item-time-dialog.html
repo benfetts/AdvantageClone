@@ -1,0 +1,19 @@
+﻿<template>
+    <require from="./new-work-item-time"></require>
+
+    <ux-dialog style="width:534px;">
+        <ux-dialog-header show-close-button.bind="true">
+            Add Time
+        </ux-dialog-header>
+        <ux-dialog-body>
+            <new-work-item-time view-model.ref="newWorkItemTime" alert-id.bind="alertID"></new-work-item-time>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <div class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal">
+                <button class="k-button k-primary" click.delegate="addClick()" disabled.bind="!newWorkItemTime.canAdd">Add</button>
+                <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+
+</template>

@@ -1,0 +1,286 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/buttongroup/buttongroup"></require>
+    <require from="resources/elements/display-templates/job/job-display-template"></require>
+
+
+    <div class="wv-search-container row">
+        <!--<h3>
+            Expenses
+            <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">New Expense</button>
+        </h3>-->
+        <style>
+
+            .search-wrapper.search-wrapper-expanded {
+                width: 500px;
+            }
+
+            .search-wrapper {
+                width: 200px;
+                -webkit-transition: width 1s ease-in-out;
+                -moz-transition: width 1s ease-in-out;
+                transition: width 1s ease-in-out;
+            }
+
+            .full-width-edit .wv-grid > .section {
+                left: 5px;
+                right: 5px;
+                max-width: 100%;
+                padding-left: 20px;
+                padding-right: 15px;
+                width: 100%;
+            }
+
+            .full-width-edit .wv-grid > .wv-bar {
+                left: 5px;
+                right: 5px;
+            }
+        </style>
+        <div class="full-width-edit">
+            <div class="wv-grid">
+                <div data-role="toolbar" class="wv-bar k-toolbar k-widget k-toolbar-resizable">
+                    <ul class="list-inline" style="margin-bottom: 0;">
+                        <li style="padding: 0;">
+                            <a href="#" role="button" title="Search" class="wv-icon-button k-button k-normal" click.delegate="searchredirect()"><span class="wvi wvi-magnifying-glass"></span></a>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" role="button" title="Save" class=" wv-icon-button wv-save k-button ${hasChanges === true ? '' : 'k-state-disabled'}" click.delegate="save()"><span class="wvi wvi-floppy-disk"></span></a>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" role="button" title="Refresh" class="wv-icon-button k-button k-normal" click.delegate="search()"><span class="wvi wvi-refresh"></span></a>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" role="button" title="Print" class="wv-icon-button k-button k-normal" click.delegate="print()"><span class="wvi wvi-printer"></span></a>
+                        </li>
+                        <!--<li style="padding: 0;">
+                            <a href="#" role="button" title="Bookmark" class="wv-icon-button k-button k-normal" click.delegate="bookmark()"><span class="wvi wvi-book-bookmark"></span></a>
+                        </li>-->
+                        <li style="padding: 0;">
+                            <a href="#" role="button" title="Settings" class="wv-icon-button k-button k-normal" click.delegate="settingsOptions()"><span class="wvi wvi-gearwheel"></span></a>
+                        </li>
+                        <li style="padding: 0;" class="k-separator">&nbsp;</li>
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="updateStatus()">Update Status</a>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="calculate()">Calculate</a>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="applyteam()">Team</a>
+                        </li>
+                        <li>
+                            <!----<div class="btn-group text-center">
+                                <a class="btn btn-default" aubs-btn-checkbox="state.bind: checkboxValues.function">Function</a>
+                                <a class="btn btn-default" aubs-btn-checkbox="state.bind: checkboxValues.rolee;">Role</a>
+                            </div>-->
+                            <ul ak-buttongroup k-on-select.delegate="onSelect($event.detail)" style="margin: 0 auto;">
+                                <li>
+                                    Function
+                                </li>
+                                <li>
+                                    Role
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="tempcomplete()">Temp Complete</a>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="replace()">Replace</a>
+                        </li>
+                        <li style="padding: 0;" class="k-separator">&nbsp;</li>
+                        <!--<li style="padding: 0;">
+                            <a href="#" class="k-button disabled">Multi</a>
+                        </li>-->
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="gantt()">Gantt</a>
+                        </li>
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="calendar()">Calendar</a>
+                        </li>
+                        <li style="padding: 0;" class="k-separator">&nbsp;</li>
+                        <li style="padding: 0;">
+                            <a href="#" class="k-button" click.delegate="riskanalysis()">Risk Analysis</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <div class="">
+                        <div class="wv-k-grid">
+                            <ak-grid k-widget.bind="grid"
+                                     k-class="wv-k-grid"
+                                     k-auto-bind.bind="false"
+                                     k-data-source.bind="data"
+                                     k-pageable.bind="{ pageSizes: [10,15,20,50,100], buttonCount: 10}"
+                                     k-sortable.bind="true"
+                                     k-scrollable.bind="false"
+                                     k-navigatable.bind="true"
+                                     k-width="100%"
+                                     k-editable.bind="true"
+                                     k-filterable.bind="false"
+                                     k-selectable="[row,multiple]"
+                                     k-on-data-bound.delegate="onDataBound($event)">
+                                <ak-col k-width="75px">
+                                    <ak-template>
+                                        <div style="text-align: center;">
+                                            <a href="javascript:void(0)" class="wv-icon-button k-button wv-neutral-two" title="Go to Schedule"><span class="wvi wvi-pencil-action-edit" click.delegate="showDetailView(JobNumber,JobComponentNumber)"></span></a>
+                                        </div>
+                                    </ak-template>
+                                </ak-col>
+                                <ak-col k-title="Job" k-field="JobNumber" k-width="350px">
+                                    <ak-template>
+                                        <wv-job-display-template job-number="${JobNumber}"
+                                                                 job-component-number="${JobComponentNumber}"
+                                                                 job-component-description="${JobComponentDescription}"
+                                                                 client-name="${ClientName}"
+                                                                 client-code="${ClientCode}"
+                                                                 division-code="${DivisionCode}"
+                                                                 product-code="${ProductCode}">
+                                        </wv-job-display-template>
+                                    </ak-template>
+                                </ak-col>
+                                <ak-col k-title="Account Executive" k-field="AccountExecutiveName" k-width="200px" k-align="center"></ak-col>
+                                <!--<ak-col k-field="Status" k-title="Status" k-width="180px" k-editor.bind="categoryDropDownEditor" k-template.bind="categoryTemplate"></ak-col>-->
+                                <ak-col k-title="Status" k-field="Status" k-width="180px" k-align="center" k-editor.bind="statusDropDownEditor">
+                                    <ak-template>
+                                        <!--<ak-drop-down-list k-data-text-field="Description"
+                                                           k-data-value-field="Code"
+                                                           k-data-source.bind="statusDataSource"
+                                                           k-value.two-way="StatusCode"
+                                                           k-on-change.delegate="statusOption()"
+                                                           style="width: 100%;"
+                                                           k-enabled.bind="(UserCustom1 == 1 && !IsTemplate) || UserCustom1 == 0">
+                                        </ak-drop-down-list>-->
+                                    </ak-template>
+                                </ak-col>
+                                <ak-col k-title="Start Date" k-format="{0:d}" k-width="150px" k-align="center" k-field="StartDate" k-editor.bind="dateEditor">
+                                    <!--<ak-template k-class="text-center">
+                                        <input id="startdatepicker" disabled.bind="UserCustom1 == 1 && IsTemplate" ak-datepicker="k-value.two-way:StartDate; k-widget.two-way: startdatepicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="startdatepicker" data-type="date" />
+                                    </ak-template>-->
+                                </ak-col>
+                                <ak-col k-title="Due Date" k-format="{0:d}" k-width="150px" k-align="center" k-field="DueDate" k-editor.bind="dateEditor">
+                                    <ak-template k-class="text-center">
+                                        <!--<input id="duedatepicker" disabled.bind="UserCustom1 == 1 && IsTemplate" ak-datepicker="k-value.two-way:DueDate; k-widget.two-way: duedatepicker; k-format.bind: 'MM/dd/yyyy'; k-parse-formats.bind:['MM-dd-yyyy','MM-dd-yy', 'MM/dd/yyyy','MM/dd/yy','MMddyyyy','MMddyy']" style="width: 100%" name="duedatepicker" data-type="date" />
+                                    </ak-template>-->
+                                </ak-col>
+                                <ak-col k-title="Completed Date" k-format="{0:d}" k-width="150px" k-align="center" k-field="CompletedDate" k-editor.bind="dateEditor">
+                                    <!--<ak-template k-class="text-center">
+                                        <input id="completeddatepicker" disabled.bind="UserCustom1 == 1 && IsTemplate" ak-datepicker="k-value.two-way:CompletedDate; k-widget.bind: completeddatepicker;" />
+                                    </ak-template>-->
+                                </ak-col>
+                                <ak-col k-title="Gut %" k-format="{0:n}" k-width="75px" k-align="center" k-field="GutPercent">
+                                    <!--<ak-template k-class="text-center">
+                                        <input type="text" disabled.bind="UserCustom1 == 1 && IsTemplate" class="k-textbox form-control" k-field="GutPercent" value.bind="GutPercent" />
+                                    </ak-template>-->
+                                </ak-col>
+                                <ak-col k-title="Comments" k-width="300px" k-Field="Comments" k-editor.bind="commentEditor">
+                                    <!--<ak-template k-class="text-center">
+                                        <textarea disabled.bind="UserCustom1 == 1 && IsTemplate" class="form-control" k-field="Comments" value.bind="Comments"></textarea>
+                                    </ak-template>-->
+                                </ak-col>
+                            </ak-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <!--<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">Print Project Schedule</h3>
+                </div>
+                <div class="modal-body">
+                    <h3>Output Format</h3>
+                    <hr />
+                    <ak-multiselect k-value.two-way="required">
+                        <select multiple="multiple" data-placeholder="Select Location">
+                            <option>001 - Schedule Detail by Job with Start Date and Due Date</option>
+                            <option>002 - Schedule Detail by Job with Hours Allowed</option>
+                            <option>003 - Schedule Detail by Job with Due Date Only</option>
+                            <option>004 - Gantt Report - Multiple Jobs</option>
+                            <option>005 - Gantt Report - Multiple Jobs</option>
+                            <option>006 - Schedule Detail by Job with Dates and Resources</option>
+                            <option>007 - Gantt Report - Multiple Jobs By Day</option>
+                            <option>008 - Schedule Detail by Job with Assignments</option>
+                            <option>009 - Schedule Detail by Job with Days</option>
+
+                        </select>
+                    </ak-multiselect>
+                    <h4>Location</h4>
+                    <hr />
+                    <ak-multiselect k-value.two-way="required">
+                        <select multiple="multiple" data-placeholder="Select Location">
+                            <option>Asheville</option>
+                            <option>Charlotte</option>
+                            <option>Denver</option>
+                        </select>
+                    </ak-multiselect>
+                    <h4>Print Options</h4>
+                    <hr />
+                    <ul class="list-unstyled">
+                        <li>
+                            <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                            <label class="k-checkbox-label" for="showClosedCB">
+                                Include Completed Tasks
+                            </label>
+                        </li>
+                        <li>
+                            <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                            <label class="k-checkbox-label" for="showClosedCB">
+                                Milestones Only
+                            </label>
+                        </li>
+
+                        <li>
+                            <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                            <label class="k-checkbox-label" for="showClosedCB">
+                                Exclude Task Comment
+                            </label>
+                        </li>
+
+                        <li>
+                            <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                            <label class="k-checkbox-label" for="showClosedCB">
+                                Exclude Phases
+                            </label>
+                        </li>
+
+                        <li>
+                            <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                            <label class="k-checkbox-label" for="showClosedCB">
+                                Exclude Resources
+                            </label>
+                        </li>
+                        <li>
+                            <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                            <label class="k-checkbox-label" for="showClosedCB">
+                                Exclude Milestone
+                            </label>
+                        </li>
+                        <li>
+                            <input class="k-checkbox" type="checkbox" id="showClosedCB">
+                            <label class="k-checkbox-label" for="showClosedCB">
+                                Exclude Time Due
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Print Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</template>

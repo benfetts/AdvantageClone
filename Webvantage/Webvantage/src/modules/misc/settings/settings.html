@@ -1,0 +1,307 @@
+﻿<template>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/toolbar/toolbar-item-button"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid"></require>
+    <require from="aurelia-kendoui-bridge/grid/col"></require>
+    <require from="aurelia-kendoui-bridge/common/template"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/autocomplete/autocomplete"></require>
+    <require from="resources/binding-behaviors/push-update-binding-behavior"></require>
+    <require from="aurelia-kendoui-bridge/grid/grid-toolbar"></require>
+    <require from="aurelia-kendoui-bridge/button/button"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/colorpalette/colorpalette"></require>
+    <require from="aurelia-kendoui-bridge/colorpicker/colorpicker"></require>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/multiselect/multiselect"></require>
+    <require from="aurelia-kendoui-bridge/upload/upload"></require>
+
+    <style>
+        .k-dropzone {
+            min-height: 50px !important;
+            line-height: 50px !important;
+        }
+
+        #settings-container {
+            /* width: 1455px;
+            margin: 5px auto 5px auto;*/
+            /*width: 1455px;
+        margin: 5px auto 5px auto;        */
+            width: calc(80vw - 50px) !important;
+            margin: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            min-width: 760px;
+        }
+
+        #main-toolbar {
+            /*width: 1442px;
+            margin-left: auto;
+            margin-right: auto;*/
+            width: calc(80vw - 62px) !important;
+            margin: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            min-width: 750px;
+        }
+
+        .col-md-3{
+            min-width:322px;
+        }
+    </style>
+    
+    <div class="container" style="padding-top: 5px;">
+        <div id="main-toolbar" class="wv-bar k-toolbar k-widget k-toolbar-resizable">
+            <ul class="list-inline" style="margin-bottom: 0;">
+                <li style="padding-right: 0;">
+                    <a href="#" click.delegate="saveSettings()" role="button" class="wv-icon-button wv-save k-button ${hasChanges === true ? '' : 'k-state-disabled'}"><span class="wvi wvi-floppy-disk"></span></a>
+                </li>
+                <li style="padding: 0;">
+                    <a href="#" click.delegate="cancelChange()" role="button" class="wv-icon-button k-button wv-cancel ${hasChanges === true ? '' : 'k-state-disabled'}"><span class="wvi wvi-sign-forbidden"></span></a>
+
+                </li>
+                <li style="padding: 0;">
+                    <a href="#" click.delegate="openModule('','Maintenance_ProfileAdministration.aspx')" role="button" class="wv-button k-button">Profile Administration</a>
+                </li>
+                <li style="padding: 0;" if.bind="AgencySettings">
+                    <a href="#" click.delegate="openModule('Agency Settings', 'modules/misc/agency-settings/agency-settings')" role="button" class="wv-button k-button">Agency Settings</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="settings-container" class="row">
+            <div class="col-md-9">
+
+                <div class="settings-section" style="margin-top: 12px; margin-left: auto; margin-right: auto;">
+                    <h5>
+                        <span class=" glyphicon glyphicon-tint"></span> Color Themes
+                    </h5>
+                    <div class="col-xs-12 col-md-6" hidden="hidden">
+
+                        <div class="col-xs-12 col-md-8">
+                            <label class=" control-label text-right">Accent Color</label>
+                            <input ak-color-picker="k-widget.bind: backgroundColorPicker"
+                                   k-on-select.delegate="background = $event.detail.value" k.value.bind="background"
+                                   k-value.two-way="background"
+                                   k-palette.bind="primaryColor"
+                                   k-on-change.delegate="checkForChanges()"
+                                   k-on-close.delegate="closebackgroundColorPicker()" />
+                        </div>
+                        <div class="col-xs-12 col-md-4 pull-left">
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-md-6" hidden="hidden">
+                        <div class="col-md-11 col-xs-12">
+                            <label class="text-right control-label">Login Page Color</label>
+                            <input ak-color-picker="ak-buttons.bind: false; k-widget.bind: customColorPicker"
+                                   k-on-select.delegate="textColor = $event.detail.value"
+                                   k-palette.bind="primaryColor"
+                                   k-value.two-way="textColor"
+                                   k-on-change.delegate="checkForChanges()"
+                                   k-on-close.delegate="closecustomColorPicker()" />
+                        </div>
+                        <div class="col-md-1 col-xs-12 pull-left">
+
+
+                        </div>
+                    </div>
+                    <!--<h6 if.bind="showAdvancedFilters">
+        Advantage Themes
+        <button class="btn btn-link" type="button" aubs-btn-checkbox="state.bind: collapsed">
+            <span class="k-icon k-i-arrow-60-down"></span>
+        </button>
+    </h6>-->
+                    <div class="advanced-search wv-form-spacing">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="">
+                                    <label class="control-label text-right">Accent Color</label>
+                                    <ak-color-palette k-columns.bind="10"
+                                                      k-palette.bind="primaryColor"
+                                                      k-on-change.delegate="checkForChangesBG($event.detail.value)"
+                                                      k-tile-size.bind="{ width: 34, height: 19 }"></ak-color-palette>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="pull-left">
+                                    <label class="control-label">Login Page Color</label>
+                                    <ak-color-palette k-columns.bind="10"
+                                                      k-palette.bind="secondaryColor"
+                                                      k-on-change.delegate="checkForChangesTC($event.detail.value)"
+                                                      k-tile-size.bind="{ width: 34, height: 19 }"></ak-color-palette>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="display: none !important;">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="wv-cb-wrapper">
+                                    <input type="checkbox" class="k-checkbox" id="isDarkModeCheckBox" checked.bind="isDarkMode" change.delegate="darkModeChanged($event)" />
+                                    <label class="k-checkbox-label" for="isDarkModeCheckBox">Dark Mode</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="settings-section">
+                    <h5><span class="k-icon wvi wvi-clock"></span> My Time Zone</h5>
+                    <ak-multiselect k-widget.bind="officeMultiSelect"
+                                    k-filter="contains"
+                                    k-placeholder="Select Timezone"
+                                    k-data-text-field="Name"
+                                    k-data-value-field="Code"
+                                    k-auto-bind.bind="false"
+                                    k-data-source.bind="officeDataSource"
+                                    k-on-change.delegate="officeMultiSelect_OnChange($event.detail)"
+                                    k-max-selected-items.bind="1"
+                                    k-value.two-way="timezone">
+                    </ak-multiselect>
+
+                </div>
+                <!--k-async.bind="{
+        saveUrl: 'Utilities/Settings/UploadProfilePicture',
+        autoUpload: false
+        }"-->
+                <div class="settings-section" style="">
+                    <h5><span class="wvi wvi-user"></span>Profile Settings</h5>
+                    <label for="fullname" class="control-label">Your Nickname</label>
+                    <input type="text" id="nickname" name="nickname" class="k-textbox" change.delegate="nicknameChanged($event.target.value)" value.bind="nickname" />
+                    <div class="form-group">
+                        <label class="control-label">Profile Picture</label>
+                        <table width="100%">
+                            <tr>
+                                <td style="width:60%; text-align:left; align-content:center;">
+                                    <div class="upload-container">
+                                        <div class="upload-control-container">
+                                            <ak-upload id="profilePic" k-widget.bind="attachmentUpload"
+                                                       k-async.bind="{
+                                                                        saveUrl: 'Utilities/Settings/UploadProfilePicture',
+                                                                        autoUpload: true
+                                                                        }"
+                                                       k-multiple.bind="false"
+                                                       k-on-success.delegate="attachmentUploadSuccess($event.detail)"
+                                                       k-on-error.delegate="attachmentUploadError($event.detail)">
+                                                <input id="ProfilePicFile" name="ProfilePicFile" type="file" accept=".gif,.jpg,.jpeg,.png,.bmp" />
+                                            </ak-upload>
+                                        </div>
+                                        <div class="upload-text-container">
+                                            <span class="upload-text">*Drag files into the dotted area above to upload.</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:40%; text-align:center; align-content:center;">
+                                    <div show.bind="showEmpPicRemove">
+                                        <img src.bind="emppic" k-value.two-way="emppic" onerror="this.src='Images/Icons/White/256/sign_warning.png'" class="wv-employee-img-thumbnail-xxlg">
+                                        <a href="#" click.delegate="removeProfilePicture()" style="color:black;"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                        <p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    * Maximum size: 200 KB
+                                </li>
+                                <li>
+                                    ** Allowed file types: .jpg, .jpeg, .gif, .png, .bmp
+                                </li>
+                                <li>
+                                    *** For best results the height and width of the object must be the same
+                                </li>
+                            </ul>
+                        </p>
+
+                        <label class="control-label">Signature</label>
+                        <table width="100%">
+                            <tr>
+                                <td style="width:60%; text-align:left; align-content:center;">
+                                    <div class="upload-container">
+                                        <div class="upload-control-container">
+                                                <ak-upload id="signature" k-widget.bind="signatureUpload"
+                                                           k-async.bind="{
+                                            saveUrl: 'Utilities/Settings/UploadSignature',
+                                            autoUpload: true
+                                            }"
+                                                           k-multiple.bind="false"
+                                                           k-on-success.delegate="signatureUploadSuccess($event.detail)"
+                                                           k-on-error.delegate="signatureUploadError($event.detail)">
+                                                    <input id="SignatureFile" name="SignatureFile" type="file" accept=".gif,.jpg,.jpeg,.png,.bmp" />
+                                                </ak-upload>
+                                        </div>
+                                        <div class="upload-text-container">
+                                            <span class="upload-text">*Drag files into the dotted area above to upload.</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="width:40%; text-align:center; align-content:center;">
+                                    <div show.bind="showSignaturePicRemove" id="currPic">
+                                        <img src.bind="signature" k-value.two-way="signature" onerror="this.src='Images/Icons/White/256/user.png'">
+                                        <a href="#" click.delegate="removeSignature()" style="color:black;"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <p style="position:relative;">
+                            <ul class="list-unstyled">
+                                <li>
+                                    * Maximum size: 32.7 KB
+                                </li>
+                                <li>
+                                    ** Allowed file types: .jpg, .jpeg, .gif, .png, .bmp
+                                </li>
+                                <li>
+                                    *** Image Dimensions: 2.75" x .75" (264px x 72px)
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="settings-section" style="">
+                    <h5><span class="wvi wvi-user"></span>Other Settings</h5>
+                    <input class="k-checkbox" type="checkbox" id="setdbName" checked.bind="showdbname" change.delegate="itemCheckChanged(item)">
+                    <label class="k-checkbox-label" for="setdbName">Show Database Name</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="profile-preview">
+                    <div id='nav-feature' css="background-color: ${ background }">
+                        <div class='nav-feature-button'>
+                            <a href='javascript:void(0)' click.delegate="uploadBackgroundClick()" title="Settings"><span class='glyphicon glyphicon-cog'></span></a>
+                        </div>
+                        <div id='nav-feature-user' click.delegate="uploadPictureClick()" title="Settings">
+                            <img src.bind="emppic" k-value.two-way="emppic" onerror="this.src='Images/Icons/White/256/user.png'">
+                        </div>
+                        <div class='nav-feature-button'>
+                            <a id="notifications" href='javascript:void(0)' click.delegate="notificationsClick()" title="Notifications">
+                                <span class='glyphicon glyphicon-bell' style="line-height: 31px;"></span>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div id='nav-menu-content-wrap'>
+                        <div class='emp-info'>
+                            <span class='emp-name'>${employee.Name}</span>
+                            <span class='emp-title'>${employee.Title}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div title="Some Title" style="display: none !important;">
+                <img src.bind="emppic" click.delegate="OpenFileInput()" k-value.two-way="emppic" onerror="this.src='Images/Icons/White/256/user.png'" style="width: 200px !important; margin-left: auto; margin-right: auto;">
+                <input id="FileInput" type="file" accept="image/*" change.delegate="fileSelected($event)" style="display:none">
+            </div>
+        </div>
+    </div>
+</template>

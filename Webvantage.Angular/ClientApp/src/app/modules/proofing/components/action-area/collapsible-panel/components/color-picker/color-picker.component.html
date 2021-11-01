@@ -1,0 +1,17 @@
+<div class="colors-picker-header">
+  <kendo-colorpalette
+    (valueChange)="palleteChange($event)"
+    [palette]="palette"
+    [tileSize]="18"
+    [disabled]="disabled"
+  ></kendo-colorpalette>
+</div>
+<div class="colors-picker">
+  <kendo-colorpalette
+    (valueChange)="NewColor($event)"
+    [palette]="paletteLarge"
+    [columns]="7"
+    [tileSize]="16"
+    [disabled]="disabled"
+  ></kendo-colorpalette>
+</div>

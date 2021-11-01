@@ -1,0 +1,20 @@
+﻿
+
+CREATE PROCEDURE [dbo].[usp_wv_GetAgencyImageSettings]
+	@BINARY_IMAGE_CODE varchar(20)
+AS
+
+if @BINARY_IMAGE_CODE <> ''
+Begin
+	 SELECT *
+	 FROM   AGY_BINARY_IMAGES WITH(NOLOCK)
+	 WHERE  BINARY_IMAGE_CODE = @BINARY_IMAGE_CODE
+End
+Else
+Begin
+	 SELECT *
+	 FROM   AGY_BINARY_IMAGES WITH(NOLOCK)
+End
+ 
+ 
+

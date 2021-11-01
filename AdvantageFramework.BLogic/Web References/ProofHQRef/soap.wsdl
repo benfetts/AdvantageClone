@@ -1,0 +1,2646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://soap.proofhq.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="soap" targetNamespace="https://soap.proofhq.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="https://soap.proofhq.com/">
+      <xsd:complexType name="SOAPLoginObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="session" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="user_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="user_name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="user_email" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="organisation_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="organisation_name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="limit_storage" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="limit_proofs" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="max_file_size" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_subject" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_message" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_email_notifications" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_authorized_only" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_enable_subscriptions" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_validate_subscriptions" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_auto_lock" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_lock_after_first_decision" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_enable_download" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_enable_team_url" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_enable_embed_player" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_dashboard_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_workspace_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_details_page_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_versions_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_help_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_help_quick_start_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_help_user_guide_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_help_welcome_screen_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_help_forum_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_show_help_blog_link" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPLoginObjectElement" type="tns:SOAPLoginObject" />
+      <xsd:complexType name="SOAPFileUploadObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="filehash" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="filename" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="md5" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="errorcode" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="errorstring" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileUploadObjectElement" type="tns:SOAPFileUploadObject" />
+      <xsd:complexType name="SOAPFileUploadObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPFileUploadObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileUploadObjectArrayElement" type="tns:SOAPFileUploadObjectArray" />
+      <xsd:complexType name="SOAPFileSettingsObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_email_notifications" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_role" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="authorized_only" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="enable_subscriptions" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="validate_subscriptions" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="auto_lock" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="lock_after_first_decision" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="enable_download" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="enable_team_url" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="enable_embed_player" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_dashboard_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_workspace_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_details_page_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_versions_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_help_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_help_quick_start_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_help_user_guide_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_help_welcome_screen_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_help_forum_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_help_blog_link" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="show_dashboard_functions" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="primary_decision_maker" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileSettingsObjectElement" type="tns:SOAPFileSettingsObject" />
+      <xsd:complexType name="StringArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="StringArrayElement" type="tns:StringArray" />
+      <xsd:complexType name="SOAPFileLinkObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="menu" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="text" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="allowed_reviewer_roles" type="tns:StringArray" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileLinkObjectElement" type="tns:SOAPFileLinkObject" />
+      <xsd:complexType name="SOAPFileLinkObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPFileLinkObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileLinkObjectArrayElement" type="tns:SOAPFileLinkObjectArray" />
+      <xsd:complexType name="SOAPRecipientDecisionReasonObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="file_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="reason_name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="reviewer_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="text" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPRecipientDecisionReasonObjectElement" type="tns:SOAPRecipientDecisionReasonObject" />
+      <xsd:complexType name="SOAPRecipientDecisionReasonObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPRecipientDecisionReasonObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPRecipientDecisionReasonObjectArrayElement" type="tns:SOAPRecipientDecisionReasonObjectArray" />
+      <xsd:complexType name="SOAPFileObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="file_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="filename" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="filesize" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="version" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="versions" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="upload_time" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="uploader" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="owner" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="deadline" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="workspace_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="workspace_name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="status" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="decision" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="team_url" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="settings" type="tns:SOAPFileSettingsObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="custom_link_url" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="custom_link_label" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="menus_links" type="tns:SOAPFileLinkObjectArray" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="swf" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="decision_reasons" type="tns:SOAPRecipientDecisionReasonObjectArray" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileObjectElement" type="tns:SOAPFileObject" />
+      <xsd:complexType name="SOAPRecipientObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="position" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="role" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proof_url" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="dowload_url" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="decision" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="deadline" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email_notifications" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="replies_count" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="comments_count" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="primary_decision_maker" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="decision_reasons" type="tns:SOAPRecipientDecisionReasonObjectArray" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPRecipientObjectElement" type="tns:SOAPRecipientObject" />
+      <xsd:complexType name="SOAPFileActivityObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="file_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="filename" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="created_at" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="action" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="details" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileActivityObjectElement" type="tns:SOAPFileActivityObject" />
+      <xsd:complexType name="SOAPFileActivityObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPFileActivityObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileActivityObjectArrayElement" type="tns:SOAPFileActivityObjectArray" />
+      <xsd:complexType name="SOAPProfileObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPProfileObjectElement" type="tns:SOAPProfileObject" />
+      <xsd:complexType name="SOAPProfileObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPProfileObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPProfileObjectArrayElement" type="tns:SOAPProfileObjectArray" />
+      <xsd:complexType name="SOAPContactProofingDefaultsObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_proof_role" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPContactProofingDefaultsObjectElement" type="tns:SOAPContactProofingDefaultsObject" />
+      <xsd:complexType name="SOAPContactObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="company" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="position" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="telephone" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="mobile" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fax" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proofing_defaults" type="tns:SOAPContactProofingDefaultsObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPContactObjectElement" type="tns:SOAPContactObject" />
+      <xsd:complexType name="SOAPContactObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPContactObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPContactObjectArrayElement" type="tns:SOAPContactObjectArray" />
+      <xsd:complexType name="SOAPContactGroupObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="people" type="tns:SOAPContactObjectArray" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPContactGroupObjectElement" type="tns:SOAPContactGroupObject" />
+      <xsd:complexType name="SOAPContactGroupObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPContactGroupObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPContactGroupObjectArrayElement" type="tns:SOAPContactGroupObjectArray" />
+      <xsd:complexType name="SOAPContactAccountObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="people" type="tns:SOAPContactObjectArray" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPContactAccountObjectElement" type="tns:SOAPContactAccountObject" />
+      <xsd:complexType name="SOAPContactAccountObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPContactAccountObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPContactAccountObjectArrayElement" type="tns:SOAPContactAccountObjectArray" />
+      <xsd:complexType name="SOAPWorkspaceObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="root_level" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="description" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="client" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="project" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="personal" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPWorkspaceObjectElement" type="tns:SOAPWorkspaceObject" />
+      <xsd:complexType name="SOAPWorkspaceObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPWorkspaceObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPWorkspaceObjectArrayElement" type="tns:SOAPWorkspaceObjectArray" />
+      <xsd:complexType name="SOAPFileObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPFileObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileObjectArrayElement" type="tns:SOAPFileObjectArray" />
+      <xsd:complexType name="AnyTypeArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="xsd:anyType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AnyTypeArrayElement" type="tns:AnyTypeArray" />
+      <xsd:complexType name="SOAPFileListViewObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="file_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="token" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="code" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="mediaType" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="filename" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="version" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="versions" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="pages" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="thumbnail" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileListViewObjectElement" type="tns:SOAPFileListViewObject" />
+      <xsd:complexType name="SOAPFileListViewObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPFileListViewObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileListViewObjectArrayElement" type="tns:SOAPFileListViewObjectArray" />
+      <xsd:complexType name="SOAPFileListViewCollectionObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="total" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="results" type="tns:SOAPFileListViewObjectArray" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileListViewCollectionObjectElement" type="tns:SOAPFileListViewCollectionObject" />
+      <xsd:complexType name="SOAPRecipientObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPRecipientObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPRecipientObjectArrayElement" type="tns:SOAPRecipientObjectArray" />
+      <xsd:complexType name="SOAPCommentReplyObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="comment_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="reviewer_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="author" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="comment" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="created_at" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPCommentReplyObjectElement" type="tns:SOAPCommentReplyObject" />
+      <xsd:complexType name="SOAPCommentReplyObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPCommentReplyObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPCommentReplyObjectArrayElement" type="tns:SOAPCommentReplyObjectArray" />
+      <xsd:complexType name="SOAPCommentObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="reviewer_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="author" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="comment" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="created_at" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="replies_count" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="replies" type="tns:SOAPCommentReplyObjectArray" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="drawing_xml" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="location" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPCommentObjectElement" type="tns:SOAPCommentObject" />
+      <xsd:complexType name="SOAPCommentObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPCommentObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPCommentObjectArrayElement" type="tns:SOAPCommentObjectArray" />
+      <xsd:complexType name="SOAPFileEmbedCodeObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="file_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="reviewer_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="code" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileEmbedCodeObjectElement" type="tns:SOAPFileEmbedCodeObject" />
+      <xsd:complexType name="SOAPFileEmbedCodeObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPFileEmbedCodeObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileEmbedCodeObjectArrayElement" type="tns:SOAPFileEmbedCodeObjectArray" />
+      <xsd:complexType name="SOAPImageObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="data" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="encoding" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="content" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPImageObjectElement" type="tns:SOAPImageObject" />
+      <xsd:complexType name="SOAPPlanObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="price" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPPlanObjectElement" type="tns:SOAPPlanObject" />
+      <xsd:complexType name="SOAPMembershipObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="plan" type="tns:SOAPPlanObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="start_at" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="finish_at" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="storage_usage" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proofs_usage" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="users_usage" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="storage_limit" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proofs_limit" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="users_limit" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPMembershipObjectElement" type="tns:SOAPMembershipObject" />
+      <xsd:complexType name="SOAPPermissionsObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPPermissionsObjectElement" type="tns:SOAPPermissionsObject" />
+      <xsd:complexType name="SOAPUserProofingDefaultsObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="subject" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="message" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="subscriptions" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="default_role" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="validate_subscriptions" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email_notifications" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="login_required" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="autoclose" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="one_decision" type="xsd:boolean" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="block_download" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPUserProofingDefaultsObjectElement" type="tns:SOAPUserProofingDefaultsObject" />
+      <xsd:complexType name="SOAPUserEmailObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="email" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="status" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPUserEmailObjectElement" type="tns:SOAPUserEmailObject" />
+      <xsd:complexType name="SOAPUserEmailObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPUserEmailObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPUserEmailObjectArrayElement" type="tns:SOAPUserEmailObjectArray" />
+      <xsd:complexType name="SOAPUserObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="openid" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="first_name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="last_name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="position" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="status" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="permissions" type="tns:SOAPPermissionsObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="street" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="city" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="state" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="postcode" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="country" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="telephone" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="mobile" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fax" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="date_timezone" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="date_format" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="language" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proofing_defaults" type="tns:SOAPUserProofingDefaultsObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email_aliases" type="tns:SOAPUserEmailObjectArray" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPUserObjectElement" type="tns:SOAPUserObject" />
+      <xsd:complexType name="SOAPUserObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPUserObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPUserObjectArrayElement" type="tns:SOAPUserObjectArray" />
+      <xsd:complexType name="SOAPAccountPasswordSettingsObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="password_length" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="lcase_characters" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ucase_characters" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="numeric_characters" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="symbol_characters" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="characters_repetition" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="password_lifetime" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="password_repetition" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="bruteforce_attempts" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="bruteforce_lock_time" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPAccountPasswordSettingsObjectElement" type="tns:SOAPAccountPasswordSettingsObject" />
+      <xsd:complexType name="SOAPAccountProofingDefaultsObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="on_load_message" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="on_decision_message" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="confirm_button" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="cancel_button" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPAccountProofingDefaultsObjectElement" type="tns:SOAPAccountProofingDefaultsObject" />
+      <xsd:complexType name="SOAPAccountObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="membership" type="tns:SOAPMembershipObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="users" type="tns:SOAPUserObjectArray" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="street" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="city" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="state" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="postcode" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="country" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="telephone" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="mobile" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fax" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="domain" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="password_settings" type="tns:SOAPAccountPasswordSettingsObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proofing_defaults" type="tns:SOAPAccountProofingDefaultsObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPAccountObjectElement" type="tns:SOAPAccountObject" />
+      <xsd:complexType name="SOAPSatelliteAccountObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="parent_account_id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="membership" type="tns:SOAPMembershipObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="users" type="tns:SOAPUserObjectArray" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="street" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="city" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="state" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="postcode" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="country" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="telephone" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="mobile" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fax" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="domain" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="password_settings" type="tns:SOAPAccountPasswordSettingsObject" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proofing_defaults" type="tns:SOAPAccountProofingDefaultsObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPSatelliteAccountObjectElement" type="tns:SOAPSatelliteAccountObject" />
+      <xsd:complexType name="SOAPCallbackObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="url" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="interval" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="proof_name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPCallbackObjectElement" type="tns:SOAPCallbackObject" />
+      <xsd:complexType name="SOAPCallbackObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPCallbackObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPCallbackObjectArrayElement" type="tns:SOAPCallbackObjectArray" />
+      <xsd:complexType name="SOAPSatelliteAccountObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPSatelliteAccountObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPSatelliteAccountObjectArrayElement" type="tns:SOAPSatelliteAccountObjectArray" />
+      <xsd:complexType name="SOAPFileRecipientObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="email" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="role" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="notifications" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="deadline" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="position" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="primary_decision_maker" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileRecipientObjectElement" type="tns:SOAPFileRecipientObject" />
+      <xsd:complexType name="SOAPFileRecipientObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPFileRecipientObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPFileRecipientObjectArrayElement" type="tns:SOAPFileRecipientObjectArray" />
+      <xsd:complexType name="SOAPTag">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="id" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPTagElement" type="tns:SOAPTag" />
+      <xsd:complexType name="SOAPTagArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPTag" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPTagArrayElement" type="tns:SOAPTagArray" />
+      <xsd:complexType name="IntArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="IntArrayElement" type="tns:IntArray" />
+      <xsd:complexType name="SOAPActionObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="actionID" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="action" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="enabled" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPActionObjectElement" type="tns:SOAPActionObject" />
+      <xsd:complexType name="SOAPActionObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPActionObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPActionObjectArrayElement" type="tns:SOAPActionObjectArray" />
+      <xsd:complexType name="SOAPPlanObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPPlanObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPPlanObjectArrayElement" type="tns:SOAPPlanObjectArray" />
+      <xsd:complexType name="SOAPMembershipObjectArray">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:SOAPMembershipObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SOAPMembershipObjectArrayElement" type="tns:SOAPMembershipObjectArray" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="doLoginRequest">
+    <wsdl:part name="Login" type="xsd:string" />
+    <wsdl:part name="Password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="doLoginResponse">
+    <wsdl:part name="result" type="tns:SOAPLoginObject" />
+  </wsdl:message>
+  <wsdl:message name="doUploadRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="doUploadResponse">
+    <wsdl:part name="result" type="tns:SOAPFileUploadObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="createBatchRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createBatchResponse">
+    <wsdl:part name="result" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="finishBatchRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="BatchID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="finishBatchResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="createFileRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="OwnerID" type="xsd:int" />
+    <wsdl:part name="Hash" type="xsd:string" />
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="SourceName" type="xsd:string" />
+    <wsdl:part name="Subject" type="xsd:string" />
+    <wsdl:part name="Message" type="xsd:string" />
+    <wsdl:part name="Deadline" type="xsd:string" />
+    <wsdl:part name="Recipients" type="xsd:string" />
+    <wsdl:part name="WorkspaceId" type="xsd:int" />
+    <wsdl:part name="BatchID" type="xsd:int" />
+    <wsdl:part name="SWF" type="xsd:string" />
+    <wsdl:part name="SuppressNewFileNotification" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="createFileResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObject" />
+  </wsdl:message>
+  <wsdl:message name="createProofRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="OwnerID" type="xsd:int" />
+    <wsdl:part name="Hash" type="xsd:string" />
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="SourceName" type="xsd:string" />
+    <wsdl:part name="Subject" type="xsd:string" />
+    <wsdl:part name="Message" type="xsd:string" />
+    <wsdl:part name="Deadline" type="xsd:string" />
+    <wsdl:part name="Recipients" type="xsd:string" />
+    <wsdl:part name="WorkspaceId" type="xsd:int" />
+    <wsdl:part name="BatchID" type="xsd:int" />
+    <wsdl:part name="EnableSubscriptions" type="xsd:boolean" />
+    <wsdl:part name="EnableSubscriptionsValidation" type="xsd:boolean" />
+    <wsdl:part name="DefaultEmailNotifications" type="xsd:string" />
+    <wsdl:part name="DefaultRole" type="xsd:string" />
+    <wsdl:part name="AuthorizedOnly" type="xsd:boolean" />
+    <wsdl:part name="EnableAutoLock" type="xsd:boolean" />
+    <wsdl:part name="LockAfterFirstDecision" type="xsd:boolean" />
+    <wsdl:part name="EnableDownload" type="xsd:boolean" />
+    <wsdl:part name="EnableTeamURL" type="xsd:boolean" />
+    <wsdl:part name="EnableEmbedPlayer" type="xsd:boolean" />
+    <wsdl:part name="ShowDashboardLink" type="xsd:boolean" />
+    <wsdl:part name="ShowWorkspaceLink" type="xsd:boolean" />
+    <wsdl:part name="ShowDetailsPageLink" type="xsd:boolean" />
+    <wsdl:part name="ShowVersionsLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpQuickStartLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpUserGuideLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpWelcomeScreenLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpForumLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpBlogLink" type="xsd:boolean" />
+    <wsdl:part name="CustomLinkUrl" type="xsd:string" />
+    <wsdl:part name="CustomLinkLabel" type="xsd:string" />
+    <wsdl:part name="SuppressNewProofNotification" type="xsd:boolean" />
+    <wsdl:part name="SWF" type="xsd:string" />
+    <wsdl:part name="ShowDashboardFunctions" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="createProofResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObject" />
+  </wsdl:message>
+  <wsdl:message name="createProofVersionRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="ParentFileID" type="xsd:string" />
+    <wsdl:part name="OwnerID" type="xsd:int" />
+    <wsdl:part name="Hash" type="xsd:string" />
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="SourceName" type="xsd:string" />
+    <wsdl:part name="Subject" type="xsd:string" />
+    <wsdl:part name="Message" type="xsd:string" />
+    <wsdl:part name="Deadline" type="xsd:string" />
+    <wsdl:part name="Recipients" type="xsd:string" />
+    <wsdl:part name="WorkspaceId" type="xsd:int" />
+    <wsdl:part name="BatchID" type="xsd:int" />
+    <wsdl:part name="EnableSubscriptions" type="xsd:boolean" />
+    <wsdl:part name="EnableSubscriptionsValidation" type="xsd:boolean" />
+    <wsdl:part name="DefaultEmailNotifications" type="xsd:string" />
+    <wsdl:part name="DefaultRole" type="xsd:string" />
+    <wsdl:part name="AuthorizedOnly" type="xsd:boolean" />
+    <wsdl:part name="EnableAutoLock" type="xsd:boolean" />
+    <wsdl:part name="LockAfterFirstDecision" type="xsd:boolean" />
+    <wsdl:part name="EnableDownload" type="xsd:boolean" />
+    <wsdl:part name="EnableTeamURL" type="xsd:boolean" />
+    <wsdl:part name="EnableEmbedPlayer" type="xsd:boolean" />
+    <wsdl:part name="ShowDashboardLink" type="xsd:boolean" />
+    <wsdl:part name="ShowWorkspaceLink" type="xsd:boolean" />
+    <wsdl:part name="ShowDetailsPageLink" type="xsd:boolean" />
+    <wsdl:part name="ShowVersionsLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpQuickStartLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpUserGuideLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpWelcomeScreenLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpForumLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpBlogLink" type="xsd:boolean" />
+    <wsdl:part name="CustomLinkUrl" type="xsd:string" />
+    <wsdl:part name="CustomLinkLabel" type="xsd:string" />
+    <wsdl:part name="SuppressNewProofNotification" type="xsd:boolean" />
+    <wsdl:part name="SWF" type="xsd:string" />
+    <wsdl:part name="ShowDashboardFunctions" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="createProofVersionResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObject" />
+  </wsdl:message>
+  <wsdl:message name="updateProofRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="OwnerID" type="xsd:int" />
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="Subject" type="xsd:string" />
+    <wsdl:part name="Message" type="xsd:string" />
+    <wsdl:part name="WorkspaceId" type="xsd:int" />
+    <wsdl:part name="EnableSubscriptions" type="xsd:boolean" />
+    <wsdl:part name="EnableSubscriptionsValidation" type="xsd:boolean" />
+    <wsdl:part name="DefaultEmailNotifications" type="xsd:string" />
+    <wsdl:part name="DefaultRole" type="xsd:string" />
+    <wsdl:part name="AuthorizedOnly" type="xsd:boolean" />
+    <wsdl:part name="EnableAutoclose" type="xsd:boolean" />
+    <wsdl:part name="EnableOneDecision" type="xsd:boolean" />
+    <wsdl:part name="EnableDownload" type="xsd:boolean" />
+    <wsdl:part name="EnableTeamURL" type="xsd:boolean" />
+    <wsdl:part name="EnableEmbedPlayer" type="xsd:boolean" />
+    <wsdl:part name="ShowDashboardLink" type="xsd:boolean" />
+    <wsdl:part name="ShowWorkspaceLink" type="xsd:boolean" />
+    <wsdl:part name="ShowDetailsPageLink" type="xsd:boolean" />
+    <wsdl:part name="ShowVersionsLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpQuickStartLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpUserGuideLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpWelcomeScreenLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpForumLink" type="xsd:boolean" />
+    <wsdl:part name="ShowHelpBlogLink" type="xsd:boolean" />
+    <wsdl:part name="CustomLinkUrl" type="xsd:string" />
+    <wsdl:part name="CustomLinkLabel" type="xsd:string" />
+    <wsdl:part name="SWF" type="xsd:string" />
+    <wsdl:part name="ShowDashboardFunctions" type="xsd:boolean" />
+    <wsdl:part name="PrimaryDecisionMakerReviewerID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateProofResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObject" />
+  </wsdl:message>
+  <wsdl:message name="deleteProofRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteProofResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="lockProofRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="lockProofResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="unlockProofRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="unlockProofResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="deleteProofReviewerRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="ReviewerID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteProofReviewerResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="addProofReviewerRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:string" />
+    <wsdl:part name="RecipientEmail" type="xsd:string" />
+    <wsdl:part name="RecipientName" type="xsd:string" />
+    <wsdl:part name="RecipientPosition" type="xsd:string" />
+    <wsdl:part name="RecipientDeadline" type="xsd:string" />
+    <wsdl:part name="RecipientRole" type="xsd:string" />
+    <wsdl:part name="RecipientEmailNotifications" type="xsd:string" />
+    <wsdl:part name="SuppressNewProofNotification" type="xsd:boolean" />
+    <wsdl:part name="PrimaryDecisionMaker" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="addProofReviewerResponse">
+    <wsdl:part name="result" type="tns:SOAPRecipientObject" />
+  </wsdl:message>
+  <wsdl:message name="updateProofReviewerRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="RecipientID" type="xsd:string" />
+    <wsdl:part name="RecipientDecision" type="xsd:string" />
+    <wsdl:part name="RecipientDeadline" type="xsd:string" />
+    <wsdl:part name="RecipientName" type="xsd:string" />
+    <wsdl:part name="RecipientPosition" type="xsd:string" />
+    <wsdl:part name="RecipientRole" type="xsd:string" />
+    <wsdl:part name="RecipientEmailNotifications" type="xsd:string" />
+    <wsdl:part name="PrimaryDecisionMaker" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateProofReviewerResponse">
+    <wsdl:part name="result" type="tns:SOAPRecipientObject" />
+  </wsdl:message>
+  <wsdl:message name="getActivityRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="Offset" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getActivityResponse">
+    <wsdl:part name="result" type="tns:SOAPFileActivityObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getOwnersRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getOwnersResponse">
+    <wsdl:part name="result" type="tns:SOAPProfileObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getPeopleRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="Offset" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getPeopleResponse">
+    <wsdl:part name="result" type="tns:SOAPContactObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getPeopleGroupsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getPeopleGroupsResponse">
+    <wsdl:part name="result" type="tns:SOAPContactGroupObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getPeopleAccountsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getPeopleAccountsResponse">
+    <wsdl:part name="result" type="tns:SOAPContactAccountObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getWorkspacesRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getWorkspacesResponse">
+    <wsdl:part name="result" type="tns:SOAPWorkspaceObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="createWorkspaceRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="ParentWorkspaceID" type="xsd:int" />
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="Description" type="xsd:string" />
+    <wsdl:part name="Client" type="xsd:string" />
+    <wsdl:part name="Project" type="xsd:string" />
+    <wsdl:part name="Personal" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="createWorkspaceResponse">
+    <wsdl:part name="result" type="tns:SOAPWorkspaceObject" />
+  </wsdl:message>
+  <wsdl:message name="updateWorkspaceRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="WorkspaceID" type="xsd:int" />
+    <wsdl:part name="ParentWorkspaceID" type="xsd:int" />
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="Description" type="xsd:string" />
+    <wsdl:part name="Client" type="xsd:string" />
+    <wsdl:part name="Project" type="xsd:string" />
+    <wsdl:part name="Personal" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updateWorkspaceResponse">
+    <wsdl:part name="result" type="tns:SOAPWorkspaceObject" />
+  </wsdl:message>
+  <wsdl:message name="deleteWorkspaceRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="WorkspaceID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="deleteWorkspaceResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getAllProofsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="StartFrom" type="xsd:int" />
+    <wsdl:part name="SearchQuery" type="xsd:string" />
+    <wsdl:part name="ItemsPerPage" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getAllProofsResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getProofsByListViewRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="ListViewID" type="xsd:string" />
+    <wsdl:part name="StartFrom" type="xsd:int" />
+    <wsdl:part name="ItemsPerPage" type="xsd:int" />
+    <wsdl:part name="ExcludedMediaTypes" type="tns:AnyTypeArray" />
+    <wsdl:part name="SendArchivedProofs" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getProofsByListViewResponse">
+    <wsdl:part name="result" type="tns:SOAPFileListViewCollectionObject" />
+  </wsdl:message>
+  <wsdl:message name="getClosedProofsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="StartFrom" type="xsd:int" />
+    <wsdl:part name="SearchQuery" type="xsd:string" />
+    <wsdl:part name="ItemsPerPage" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getClosedProofsResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getLateProofsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="StartFrom" type="xsd:int" />
+    <wsdl:part name="SearchQuery" type="xsd:string" />
+    <wsdl:part name="ItemsPerPage" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getLateProofsResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getOpenProofsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="StartFrom" type="xsd:int" />
+    <wsdl:part name="SearchQuery" type="xsd:string" />
+    <wsdl:part name="ItemsPerPage" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getOpenProofsResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getProofsByOwnershipRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofsByOwnershipResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getProofReviewersRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getProofReviewersResponse">
+    <wsdl:part name="result" type="tns:SOAPRecipientObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getProofCommentsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofCommentsResponse">
+    <wsdl:part name="result" type="tns:SOAPCommentObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getProofCommentRepliesRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="CommentID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofCommentRepliesResponse">
+    <wsdl:part name="result" type="tns:SOAPCommentReplyObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getProofDetailsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofDetailsResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObject" />
+  </wsdl:message>
+  <wsdl:message name="getProofEmbedCodeRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofEmbedCodeResponse">
+    <wsdl:part name="result" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getPersonalProofEmbedCodeRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getPersonalProofEmbedCodeResponse">
+    <wsdl:part name="result" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getProofReviewerEmbedCodeRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="ReviewerID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getProofReviewerEmbedCodeResponse">
+    <wsdl:part name="result" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getProofEmbedCodesRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofEmbedCodesResponse">
+    <wsdl:part name="result" type="tns:SOAPFileEmbedCodeObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getProofStatusRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofStatusResponse">
+    <wsdl:part name="result" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getProofThumbnailRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="Type" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofThumbnailResponse">
+    <wsdl:part name="result" type="tns:SOAPImageObject" />
+  </wsdl:message>
+  <wsdl:message name="getProofURLRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofURLResponse">
+    <wsdl:part name="result" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getProofVersionsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofVersionsResponse">
+    <wsdl:part name="result" type="tns:SOAPFileObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="deleteProofLinkRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteProofLinkResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="addProofLinksRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="addProofLinksResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getProofLinksRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getProofLinksResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="setProofMenusRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="setProofMenusResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="createAccountRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="Timezone" type="xsd:string" />
+    <wsdl:part name="OrganisationName" type="xsd:string" />
+    <wsdl:part name="EmailAddress" type="xsd:string" />
+    <wsdl:part name="FirstName" type="xsd:string" />
+    <wsdl:part name="LastName" type="xsd:string" />
+    <wsdl:part name="Password" type="xsd:string" />
+    <wsdl:part name="ConfirmPassword" type="xsd:string" />
+    <wsdl:part name="SendConfirmationEmail" type="xsd:boolean" />
+    <wsdl:part name="OpenID" type="xsd:string" />
+    <wsdl:part name="Promocode" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createAccountResponse">
+    <wsdl:part name="result" type="tns:SOAPAccountObject" />
+  </wsdl:message>
+  <wsdl:message name="updateAccountRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="OrganisationName" type="xsd:string" />
+    <wsdl:part name="Street" type="xsd:string" />
+    <wsdl:part name="City" type="xsd:string" />
+    <wsdl:part name="State" type="xsd:string" />
+    <wsdl:part name="Postcode" type="xsd:string" />
+    <wsdl:part name="Country" type="xsd:string" />
+    <wsdl:part name="Telephone" type="xsd:string" />
+    <wsdl:part name="Mobile" type="xsd:string" />
+    <wsdl:part name="Fax" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateAccountResponse">
+    <wsdl:part name="result" type="tns:SOAPAccountObject" />
+  </wsdl:message>
+  <wsdl:message name="createSatelliteAccountRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="Timezone" type="xsd:string" />
+    <wsdl:part name="Promocode" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createSatelliteAccountResponse">
+    <wsdl:part name="result" type="tns:SOAPSatelliteAccountObject" />
+  </wsdl:message>
+  <wsdl:message name="setAccountPasswordSettingsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="PasswordLength" type="xsd:int" />
+    <wsdl:part name="LowercaseCharacters" type="xsd:int" />
+    <wsdl:part name="UppercaseCharacters" type="xsd:int" />
+    <wsdl:part name="NumericCharacters" type="xsd:int" />
+    <wsdl:part name="SymbolCharacters" type="xsd:int" />
+    <wsdl:part name="CharactersRepetition" type="xsd:int" />
+    <wsdl:part name="PasswordLifetime" type="xsd:int" />
+    <wsdl:part name="BruteforceAttempts" type="xsd:int" />
+    <wsdl:part name="BruteforceLockTime" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="setAccountPasswordSettingsResponse">
+    <wsdl:part name="result" type="tns:SOAPAccountPasswordSettingsObject" />
+  </wsdl:message>
+  <wsdl:message name="setAccountProofingDefaultsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="OnLoadMessage" type="xsd:string" />
+    <wsdl:part name="OnDecisionMessage" type="xsd:string" />
+    <wsdl:part name="ConfirmButton" type="xsd:string" />
+    <wsdl:part name="CancelButton" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="setAccountProofingDefaultsResponse">
+    <wsdl:part name="result" type="tns:SOAPAccountProofingDefaultsObject" />
+  </wsdl:message>
+  <wsdl:message name="getAccountDetailsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="AccountID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getAccountDetailsResponse">
+    <wsdl:part name="result" type="tns:SOAPAccountObject" />
+  </wsdl:message>
+  <wsdl:message name="addUserRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="AccountID" type="xsd:int" />
+    <wsdl:part name="EmailAddress" type="xsd:string" />
+    <wsdl:part name="FirstName" type="xsd:string" />
+    <wsdl:part name="LastName" type="xsd:string" />
+    <wsdl:part name="Position" type="xsd:string" />
+    <wsdl:part name="PermissionsID" type="xsd:int" />
+    <wsdl:part name="Password" type="xsd:string" />
+    <wsdl:part name="ConfirmPassword" type="xsd:string" />
+    <wsdl:part name="SendConfirmationEmail" type="xsd:boolean" />
+    <wsdl:part name="OpenID" type="xsd:string" />
+    <wsdl:part name="Timezone" type="xsd:string" />
+    <wsdl:part name="ProductMarketingEmails" type="xsd:boolean" />
+    <wsdl:part name="APIOnly" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="addUserResponse">
+    <wsdl:part name="result" type="tns:SOAPUserObject" />
+  </wsdl:message>
+  <wsdl:message name="updateUserRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:int" />
+    <wsdl:part name="FirstName" type="xsd:string" />
+    <wsdl:part name="LastName" type="xsd:string" />
+    <wsdl:part name="Position" type="xsd:string" />
+    <wsdl:part name="PermissionsID" type="xsd:int" />
+    <wsdl:part name="Street" type="xsd:string" />
+    <wsdl:part name="City" type="xsd:string" />
+    <wsdl:part name="State" type="xsd:string" />
+    <wsdl:part name="Postcode" type="xsd:string" />
+    <wsdl:part name="Country" type="xsd:string" />
+    <wsdl:part name="Telephone" type="xsd:string" />
+    <wsdl:part name="Mobile" type="xsd:string" />
+    <wsdl:part name="Fax" type="xsd:string" />
+    <wsdl:part name="Language" type="xsd:string" />
+    <wsdl:part name="Timezone" type="xsd:string" />
+    <wsdl:part name="DateFormat" type="xsd:string" />
+    <wsdl:part name="OpenID" type="xsd:string" />
+    <wsdl:part name="ProductMarketingEmails" type="xsd:boolean" />
+    <wsdl:part name="APIOnly" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updateUserResponse">
+    <wsdl:part name="result" type="tns:SOAPUserObject" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getUserDetailsResponse">
+    <wsdl:part name="result" type="tns:SOAPUserObject" />
+  </wsdl:message>
+  <wsdl:message name="activateUserRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="activateUserResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="deactivateUserRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="deactivateUserResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updateUserPasswordRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:int" />
+    <wsdl:part name="Password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateUserPasswordResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="deleteUserRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:int" />
+    <wsdl:part name="NewOwnerID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="deleteUserResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getUsersRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="AccountID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getUsersResponse">
+    <wsdl:part name="result" type="tns:SOAPUserObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getAccountCallbacksRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getAccountCallbacksResponse">
+    <wsdl:part name="result" type="tns:SOAPCallbackObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getSatelliteAccountsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getSatelliteAccountsResponse">
+    <wsdl:part name="result" type="tns:SOAPSatelliteAccountObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="setAccountCallbackRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="Type" type="xsd:string" />
+    <wsdl:part name="Url" type="xsd:string" />
+    <wsdl:part name="RetryInterval" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="setAccountCallbackResponse">
+    <wsdl:part name="result" type="tns:SOAPCallbackObject" />
+  </wsdl:message>
+  <wsdl:message name="getProofCallbacksRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofCallbacksResponse">
+    <wsdl:part name="result" type="tns:SOAPCallbackObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="setProofCallbackRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="Type" type="xsd:string" />
+    <wsdl:part name="Url" type="xsd:string" />
+    <wsdl:part name="RetryInterval" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="setProofCallbackResponse">
+    <wsdl:part name="result" type="tns:SOAPCallbackObject" />
+  </wsdl:message>
+  <wsdl:message name="orderSampleProofRequest">
+    <wsdl:part name="Email" type="xsd:string" />
+    <wsdl:part name="FirstName" type="xsd:string" />
+    <wsdl:part name="LastName" type="xsd:string" />
+    <wsdl:part name="OrganisationName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="orderSampleProofResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="addProofReviewersRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="Recipients" type="tns:SOAPFileRecipientObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="addProofReviewersResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="addBatchProofReviewersRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="BatchID" type="xsd:string" />
+    <wsdl:part name="Recipients" type="tns:SOAPFileRecipientObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="addBatchProofReviewersResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getTagsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getTagsResponse">
+    <wsdl:part name="result" type="tns:SOAPTagArray" />
+  </wsdl:message>
+  <wsdl:message name="addTagRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="TagName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="addTagResponse">
+    <wsdl:part name="result" type="tns:SOAPTag" />
+  </wsdl:message>
+  <wsdl:message name="updateTagRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="TagID" type="xsd:int" />
+    <wsdl:part name="TagName" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateTagResponse">
+    <wsdl:part name="result" type="tns:SOAPTag" />
+  </wsdl:message>
+  <wsdl:message name="deleteTagRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="TagID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="deleteTagResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getProofTagsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofTagsResponse">
+    <wsdl:part name="result" type="tns:SOAPTagArray" />
+  </wsdl:message>
+  <wsdl:message name="removeProofTagsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="TagID" type="tns:IntArray" />
+  </wsdl:message>
+  <wsdl:message name="removeProofTagsResponse">
+    <wsdl:part name="result" type="tns:SOAPTagArray" />
+  </wsdl:message>
+  <wsdl:message name="addProofTagsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="TagID" type="tns:IntArray" />
+  </wsdl:message>
+  <wsdl:message name="addProofTagsResponse">
+    <wsdl:part name="result" type="tns:SOAPTagArray" />
+  </wsdl:message>
+  <wsdl:message name="findUsersByEmailRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="EmailPhrase" type="xsd:string" />
+    <wsdl:part name="AccountID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="findUsersByEmailResponse">
+    <wsdl:part name="result" type="tns:SOAPUserObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="updateContactEmailRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="OldEmail" type="xsd:string" />
+    <wsdl:part name="NewEmail" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateContactEmailResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updateUserEmailRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="UserID" type="xsd:string" />
+    <wsdl:part name="NewEmail" type="xsd:string" />
+    <wsdl:part name="Confirm" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updateUserEmailResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getSessionIdRequest">
+    <wsdl:part name="EmailAddress" type="xsd:string" />
+    <wsdl:part name="AuthToken" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getSessionIdResponse">
+    <wsdl:part name="result" type="tns:SOAPLoginObject" />
+  </wsdl:message>
+  <wsdl:message name="checkSessionRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="checkSessionResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="doLogoutRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="doLogoutResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getProofDownloadURLRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getProofDownloadURLResponse">
+    <wsdl:part name="result" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getActionsRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="AccountID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getActionsResponse">
+    <wsdl:part name="result" type="tns:SOAPActionObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="getCommentActionRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="CommentID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getCommentActionResponse">
+    <wsdl:part name="result" type="tns:SOAPActionObject" />
+  </wsdl:message>
+  <wsdl:message name="setCommentActionRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="CommentID" type="xsd:int" />
+    <wsdl:part name="ActionID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="setCommentActionResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getFileDownloadLinkRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getFileDownloadLinkResponse">
+    <wsdl:part name="result" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="addCommentReplyRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="FileID" type="xsd:int" />
+    <wsdl:part name="ReviewerID" type="xsd:int" />
+    <wsdl:part name="CommentID" type="xsd:int" />
+    <wsdl:part name="Reply" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="addCommentReplyResponse">
+    <wsdl:part name="result" type="tns:SOAPCommentReplyObject" />
+  </wsdl:message>
+  <wsdl:message name="getCommentThumbnailRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="CommentID" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getCommentThumbnailResponse">
+    <wsdl:part name="result" type="tns:SOAPImageObject" />
+  </wsdl:message>
+  <wsdl:message name="decodeProofIDRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="EncodedProofID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="decodeProofIDResponse">
+    <wsdl:part name="result" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="getBillingPlansRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getBillingPlansResponse">
+    <wsdl:part name="result" type="tns:SOAPPlanObjectArray" />
+  </wsdl:message>
+  <wsdl:message name="updateBillingPlanRequest">
+    <wsdl:part name="SessionID" type="xsd:string" />
+    <wsdl:part name="PlanID" type="xsd:string" />
+    <wsdl:part name="AccountID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="updateBillingPlanResponse">
+    <wsdl:part name="result" type="tns:SOAPMembershipObject" />
+  </wsdl:message>
+  <wsdl:portType name="soapPortType">
+    <wsdl:operation name="doLogin" parameterOrder="Login Password">
+      <wsdl:input message="tns:doLoginRequest" />
+      <wsdl:output message="tns:doLoginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="doUpload" parameterOrder="SessionID">
+      <wsdl:input message="tns:doUploadRequest" />
+      <wsdl:output message="tns:doUploadResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createBatch" parameterOrder="SessionID">
+      <wsdl:input message="tns:createBatchRequest" />
+      <wsdl:output message="tns:createBatchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="finishBatch" parameterOrder="SessionID BatchID">
+      <wsdl:input message="tns:finishBatchRequest" />
+      <wsdl:output message="tns:finishBatchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createFile" parameterOrder="SessionID OwnerID Hash Name SourceName Subject Message Deadline Recipients WorkspaceId BatchID SWF SuppressNewFileNotification">
+      <wsdl:input message="tns:createFileRequest" />
+      <wsdl:output message="tns:createFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createProof" parameterOrder="SessionID OwnerID Hash Name SourceName Subject Message Deadline Recipients WorkspaceId BatchID EnableSubscriptions EnableSubscriptionsValidation DefaultEmailNotifications DefaultRole AuthorizedOnly EnableAutoLock LockAfterFirstDecision EnableDownload EnableTeamURL EnableEmbedPlayer ShowDashboardLink ShowWorkspaceLink ShowDetailsPageLink ShowVersionsLink ShowHelpLink ShowHelpQuickStartLink ShowHelpUserGuideLink ShowHelpWelcomeScreenLink ShowHelpForumLink ShowHelpBlogLink CustomLinkUrl CustomLinkLabel SuppressNewProofNotification SWF ShowDashboardFunctions">
+      <wsdl:input message="tns:createProofRequest" />
+      <wsdl:output message="tns:createProofResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createProofVersion" parameterOrder="SessionID ParentFileID OwnerID Hash Name SourceName Subject Message Deadline Recipients WorkspaceId BatchID EnableSubscriptions EnableSubscriptionsValidation DefaultEmailNotifications DefaultRole AuthorizedOnly EnableAutoLock LockAfterFirstDecision EnableDownload EnableTeamURL EnableEmbedPlayer ShowDashboardLink ShowWorkspaceLink ShowDetailsPageLink ShowVersionsLink ShowHelpLink ShowHelpQuickStartLink ShowHelpUserGuideLink ShowHelpWelcomeScreenLink ShowHelpForumLink ShowHelpBlogLink CustomLinkUrl CustomLinkLabel SuppressNewProofNotification SWF ShowDashboardFunctions">
+      <wsdl:input message="tns:createProofVersionRequest" />
+      <wsdl:output message="tns:createProofVersionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProof" parameterOrder="SessionID FileID OwnerID Name Subject Message WorkspaceId EnableSubscriptions EnableSubscriptionsValidation DefaultEmailNotifications DefaultRole AuthorizedOnly EnableAutoclose EnableOneDecision EnableDownload EnableTeamURL EnableEmbedPlayer ShowDashboardLink ShowWorkspaceLink ShowDetailsPageLink ShowVersionsLink ShowHelpLink ShowHelpQuickStartLink ShowHelpUserGuideLink ShowHelpWelcomeScreenLink ShowHelpForumLink ShowHelpBlogLink CustomLinkUrl CustomLinkLabel SWF ShowDashboardFunctions PrimaryDecisionMakerReviewerID">
+      <wsdl:input message="tns:updateProofRequest" />
+      <wsdl:output message="tns:updateProofResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProof" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:deleteProofRequest" />
+      <wsdl:output message="tns:deleteProofResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="lockProof" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:lockProofRequest" />
+      <wsdl:output message="tns:lockProofResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="unlockProof" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:unlockProofRequest" />
+      <wsdl:output message="tns:unlockProofResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProofReviewer" parameterOrder="SessionID ReviewerID">
+      <wsdl:input message="tns:deleteProofReviewerRequest" />
+      <wsdl:output message="tns:deleteProofReviewerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addProofReviewer" parameterOrder="SessionID FileID RecipientEmail RecipientName RecipientPosition RecipientDeadline RecipientRole RecipientEmailNotifications SuppressNewProofNotification PrimaryDecisionMaker">
+      <wsdl:input message="tns:addProofReviewerRequest" />
+      <wsdl:output message="tns:addProofReviewerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateProofReviewer" parameterOrder="SessionID RecipientID RecipientDecision RecipientDeadline RecipientName RecipientPosition RecipientRole RecipientEmailNotifications PrimaryDecisionMaker">
+      <wsdl:input message="tns:updateProofReviewerRequest" />
+      <wsdl:output message="tns:updateProofReviewerResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getActivity" parameterOrder="SessionID FileID Offset">
+      <wsdl:input message="tns:getActivityRequest" />
+      <wsdl:output message="tns:getActivityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOwners" parameterOrder="SessionID">
+      <wsdl:input message="tns:getOwnersRequest" />
+      <wsdl:output message="tns:getOwnersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeople" parameterOrder="SessionID Offset">
+      <wsdl:input message="tns:getPeopleRequest" />
+      <wsdl:output message="tns:getPeopleResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeopleGroups" parameterOrder="SessionID">
+      <wsdl:input message="tns:getPeopleGroupsRequest" />
+      <wsdl:output message="tns:getPeopleGroupsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeopleAccounts" parameterOrder="SessionID">
+      <wsdl:input message="tns:getPeopleAccountsRequest" />
+      <wsdl:output message="tns:getPeopleAccountsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getWorkspaces" parameterOrder="SessionID">
+      <wsdl:input message="tns:getWorkspacesRequest" />
+      <wsdl:output message="tns:getWorkspacesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createWorkspace" parameterOrder="SessionID ParentWorkspaceID Name Description Client Project Personal">
+      <wsdl:input message="tns:createWorkspaceRequest" />
+      <wsdl:output message="tns:createWorkspaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateWorkspace" parameterOrder="SessionID WorkspaceID ParentWorkspaceID Name Description Client Project Personal">
+      <wsdl:input message="tns:updateWorkspaceRequest" />
+      <wsdl:output message="tns:updateWorkspaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteWorkspace" parameterOrder="SessionID WorkspaceID">
+      <wsdl:input message="tns:deleteWorkspaceRequest" />
+      <wsdl:output message="tns:deleteWorkspaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllProofs" parameterOrder="SessionID StartFrom SearchQuery ItemsPerPage">
+      <wsdl:input message="tns:getAllProofsRequest" />
+      <wsdl:output message="tns:getAllProofsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofsByListView" parameterOrder="SessionID ListViewID StartFrom ItemsPerPage ExcludedMediaTypes SendArchivedProofs">
+      <wsdl:input message="tns:getProofsByListViewRequest" />
+      <wsdl:output message="tns:getProofsByListViewResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getClosedProofs" parameterOrder="SessionID StartFrom SearchQuery ItemsPerPage">
+      <wsdl:input message="tns:getClosedProofsRequest" />
+      <wsdl:output message="tns:getClosedProofsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getLateProofs" parameterOrder="SessionID StartFrom SearchQuery ItemsPerPage">
+      <wsdl:input message="tns:getLateProofsRequest" />
+      <wsdl:output message="tns:getLateProofsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOpenProofs" parameterOrder="SessionID StartFrom SearchQuery ItemsPerPage">
+      <wsdl:input message="tns:getOpenProofsRequest" />
+      <wsdl:output message="tns:getOpenProofsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofsByOwnership" parameterOrder="SessionID UserID">
+      <wsdl:input message="tns:getProofsByOwnershipRequest" />
+      <wsdl:output message="tns:getProofsByOwnershipResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofReviewers" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofReviewersRequest" />
+      <wsdl:output message="tns:getProofReviewersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofComments" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofCommentsRequest" />
+      <wsdl:output message="tns:getProofCommentsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofCommentReplies" parameterOrder="SessionID FileID CommentID">
+      <wsdl:input message="tns:getProofCommentRepliesRequest" />
+      <wsdl:output message="tns:getProofCommentRepliesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofDetails" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofDetailsRequest" />
+      <wsdl:output message="tns:getProofDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofEmbedCode" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofEmbedCodeRequest" />
+      <wsdl:output message="tns:getProofEmbedCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalProofEmbedCode" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getPersonalProofEmbedCodeRequest" />
+      <wsdl:output message="tns:getPersonalProofEmbedCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofReviewerEmbedCode" parameterOrder="SessionID FileID ReviewerID">
+      <wsdl:input message="tns:getProofReviewerEmbedCodeRequest" />
+      <wsdl:output message="tns:getProofReviewerEmbedCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofEmbedCodes" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofEmbedCodesRequest" />
+      <wsdl:output message="tns:getProofEmbedCodesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofStatus" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofStatusRequest" />
+      <wsdl:output message="tns:getProofStatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofThumbnail" parameterOrder="SessionID FileID Type">
+      <wsdl:input message="tns:getProofThumbnailRequest" />
+      <wsdl:output message="tns:getProofThumbnailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofURL" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofURLRequest" />
+      <wsdl:output message="tns:getProofURLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofVersions" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofVersionsRequest" />
+      <wsdl:output message="tns:getProofVersionsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteProofLink" parameterOrder="SessionID">
+      <wsdl:input message="tns:deleteProofLinkRequest" />
+      <wsdl:output message="tns:deleteProofLinkResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addProofLinks" parameterOrder="SessionID">
+      <wsdl:input message="tns:addProofLinksRequest" />
+      <wsdl:output message="tns:addProofLinksResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofLinks" parameterOrder="SessionID">
+      <wsdl:input message="tns:getProofLinksRequest" />
+      <wsdl:output message="tns:getProofLinksResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setProofMenus" parameterOrder="SessionID">
+      <wsdl:input message="tns:setProofMenusRequest" />
+      <wsdl:output message="tns:setProofMenusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createAccount" parameterOrder="SessionID Timezone OrganisationName EmailAddress FirstName LastName Password ConfirmPassword SendConfirmationEmail OpenID Promocode">
+      <wsdl:input message="tns:createAccountRequest" />
+      <wsdl:output message="tns:createAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateAccount" parameterOrder="SessionID OrganisationName Street City State Postcode Country Telephone Mobile Fax">
+      <wsdl:input message="tns:updateAccountRequest" />
+      <wsdl:output message="tns:updateAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createSatelliteAccount" parameterOrder="SessionID Name Timezone Promocode">
+      <wsdl:input message="tns:createSatelliteAccountRequest" />
+      <wsdl:output message="tns:createSatelliteAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setAccountPasswordSettings" parameterOrder="SessionID PasswordLength LowercaseCharacters UppercaseCharacters NumericCharacters SymbolCharacters CharactersRepetition PasswordLifetime BruteforceAttempts BruteforceLockTime">
+      <wsdl:input message="tns:setAccountPasswordSettingsRequest" />
+      <wsdl:output message="tns:setAccountPasswordSettingsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setAccountProofingDefaults" parameterOrder="SessionID OnLoadMessage OnDecisionMessage ConfirmButton CancelButton">
+      <wsdl:input message="tns:setAccountProofingDefaultsRequest" />
+      <wsdl:output message="tns:setAccountProofingDefaultsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccountDetails" parameterOrder="SessionID AccountID">
+      <wsdl:input message="tns:getAccountDetailsRequest" />
+      <wsdl:output message="tns:getAccountDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addUser" parameterOrder="SessionID AccountID EmailAddress FirstName LastName Position PermissionsID Password ConfirmPassword SendConfirmationEmail OpenID Timezone ProductMarketingEmails APIOnly">
+      <wsdl:input message="tns:addUserRequest" />
+      <wsdl:output message="tns:addUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUser" parameterOrder="SessionID UserID FirstName LastName Position PermissionsID Street City State Postcode Country Telephone Mobile Fax Language Timezone DateFormat OpenID ProductMarketingEmails APIOnly">
+      <wsdl:input message="tns:updateUserRequest" />
+      <wsdl:output message="tns:updateUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails" parameterOrder="SessionID UserID">
+      <wsdl:input message="tns:getUserDetailsRequest" />
+      <wsdl:output message="tns:getUserDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="activateUser" parameterOrder="SessionID UserID">
+      <wsdl:input message="tns:activateUserRequest" />
+      <wsdl:output message="tns:activateUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deactivateUser" parameterOrder="SessionID UserID">
+      <wsdl:input message="tns:deactivateUserRequest" />
+      <wsdl:output message="tns:deactivateUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUserPassword" parameterOrder="SessionID UserID Password">
+      <wsdl:input message="tns:updateUserPasswordRequest" />
+      <wsdl:output message="tns:updateUserPasswordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser" parameterOrder="SessionID UserID NewOwnerID">
+      <wsdl:input message="tns:deleteUserRequest" />
+      <wsdl:output message="tns:deleteUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsers" parameterOrder="SessionID AccountID">
+      <wsdl:input message="tns:getUsersRequest" />
+      <wsdl:output message="tns:getUsersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccountCallbacks" parameterOrder="SessionID">
+      <wsdl:input message="tns:getAccountCallbacksRequest" />
+      <wsdl:output message="tns:getAccountCallbacksResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getSatelliteAccounts" parameterOrder="SessionID">
+      <wsdl:input message="tns:getSatelliteAccountsRequest" />
+      <wsdl:output message="tns:getSatelliteAccountsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setAccountCallback" parameterOrder="SessionID Type Url RetryInterval">
+      <wsdl:input message="tns:setAccountCallbackRequest" />
+      <wsdl:output message="tns:setAccountCallbackResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofCallbacks" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofCallbacksRequest" />
+      <wsdl:output message="tns:getProofCallbacksResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setProofCallback" parameterOrder="SessionID FileID Type Url RetryInterval">
+      <wsdl:input message="tns:setProofCallbackRequest" />
+      <wsdl:output message="tns:setProofCallbackResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="orderSampleProof" parameterOrder="Email FirstName LastName OrganisationName">
+      <wsdl:input message="tns:orderSampleProofRequest" />
+      <wsdl:output message="tns:orderSampleProofResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addProofReviewers" parameterOrder="SessionID FileID Recipients">
+      <wsdl:input message="tns:addProofReviewersRequest" />
+      <wsdl:output message="tns:addProofReviewersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addBatchProofReviewers" parameterOrder="SessionID BatchID Recipients">
+      <wsdl:input message="tns:addBatchProofReviewersRequest" />
+      <wsdl:output message="tns:addBatchProofReviewersResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTags" parameterOrder="SessionID">
+      <wsdl:input message="tns:getTagsRequest" />
+      <wsdl:output message="tns:getTagsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addTag" parameterOrder="SessionID TagName">
+      <wsdl:input message="tns:addTagRequest" />
+      <wsdl:output message="tns:addTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTag" parameterOrder="SessionID TagID TagName">
+      <wsdl:input message="tns:updateTagRequest" />
+      <wsdl:output message="tns:updateTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTag" parameterOrder="SessionID TagID">
+      <wsdl:input message="tns:deleteTagRequest" />
+      <wsdl:output message="tns:deleteTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofTags" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofTagsRequest" />
+      <wsdl:output message="tns:getProofTagsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="removeProofTags" parameterOrder="SessionID FileID TagID">
+      <wsdl:input message="tns:removeProofTagsRequest" />
+      <wsdl:output message="tns:removeProofTagsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addProofTags" parameterOrder="SessionID FileID TagID">
+      <wsdl:input message="tns:addProofTagsRequest" />
+      <wsdl:output message="tns:addProofTagsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findUsersByEmail" parameterOrder="SessionID EmailPhrase AccountID">
+      <wsdl:input message="tns:findUsersByEmailRequest" />
+      <wsdl:output message="tns:findUsersByEmailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateContactEmail" parameterOrder="SessionID OldEmail NewEmail">
+      <wsdl:input message="tns:updateContactEmailRequest" />
+      <wsdl:output message="tns:updateContactEmailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUserEmail" parameterOrder="SessionID UserID NewEmail Confirm">
+      <wsdl:input message="tns:updateUserEmailRequest" />
+      <wsdl:output message="tns:updateUserEmailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getSessionId" parameterOrder="EmailAddress AuthToken">
+      <wsdl:input message="tns:getSessionIdRequest" />
+      <wsdl:output message="tns:getSessionIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkSession" parameterOrder="SessionID">
+      <wsdl:input message="tns:checkSessionRequest" />
+      <wsdl:output message="tns:checkSessionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="doLogout" parameterOrder="SessionID">
+      <wsdl:input message="tns:doLogoutRequest" />
+      <wsdl:output message="tns:doLogoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProofDownloadURL" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getProofDownloadURLRequest" />
+      <wsdl:output message="tns:getProofDownloadURLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getActions" parameterOrder="SessionID AccountID">
+      <wsdl:input message="tns:getActionsRequest" />
+      <wsdl:output message="tns:getActionsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCommentAction" parameterOrder="SessionID CommentID">
+      <wsdl:input message="tns:getCommentActionRequest" />
+      <wsdl:output message="tns:getCommentActionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setCommentAction" parameterOrder="SessionID CommentID ActionID">
+      <wsdl:input message="tns:setCommentActionRequest" />
+      <wsdl:output message="tns:setCommentActionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFileDownloadLink" parameterOrder="SessionID FileID">
+      <wsdl:input message="tns:getFileDownloadLinkRequest" />
+      <wsdl:output message="tns:getFileDownloadLinkResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addCommentReply" parameterOrder="SessionID FileID ReviewerID CommentID Reply">
+      <wsdl:input message="tns:addCommentReplyRequest" />
+      <wsdl:output message="tns:addCommentReplyResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCommentThumbnail" parameterOrder="SessionID CommentID">
+      <wsdl:input message="tns:getCommentThumbnailRequest" />
+      <wsdl:output message="tns:getCommentThumbnailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="decodeProofID" parameterOrder="SessionID EncodedProofID">
+      <wsdl:input message="tns:decodeProofIDRequest" />
+      <wsdl:output message="tns:decodeProofIDResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getBillingPlans" parameterOrder="SessionID">
+      <wsdl:input message="tns:getBillingPlansRequest" />
+      <wsdl:output message="tns:getBillingPlansResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateBillingPlan" parameterOrder="SessionID PlanID AccountID">
+      <wsdl:input message="tns:updateBillingPlanRequest" />
+      <wsdl:output message="tns:updateBillingPlanResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="soapBinding" type="tns:soapPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="doLogin">
+      <soap:operation soapAction="https://soap.proofhq.com/doLogin" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="Login Password" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doUpload">
+      <soap:operation soapAction="https://soap.proofhq.com/doUpload" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBatch">
+      <soap:operation soapAction="https://soap.proofhq.com/createBatch" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="finishBatch">
+      <soap:operation soapAction="https://soap.proofhq.com/finishBatch" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID BatchID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFile">
+      <soap:operation soapAction="https://soap.proofhq.com/createFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID OwnerID Hash Name SourceName Subject Message Deadline Recipients WorkspaceId BatchID SWF SuppressNewFileNotification" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createProof">
+      <soap:operation soapAction="https://soap.proofhq.com/createProof" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID OwnerID Hash Name SourceName Subject Message Deadline Recipients WorkspaceId BatchID EnableSubscriptions EnableSubscriptionsValidation DefaultEmailNotifications DefaultRole AuthorizedOnly EnableAutoLock LockAfterFirstDecision EnableDownload EnableTeamURL EnableEmbedPlayer ShowDashboardLink ShowWorkspaceLink ShowDetailsPageLink ShowVersionsLink ShowHelpLink ShowHelpQuickStartLink ShowHelpUserGuideLink ShowHelpWelcomeScreenLink ShowHelpForumLink ShowHelpBlogLink CustomLinkUrl CustomLinkLabel SuppressNewProofNotification SWF ShowDashboardFunctions" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createProofVersion">
+      <soap:operation soapAction="https://soap.proofhq.com/createProofVersion" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID ParentFileID OwnerID Hash Name SourceName Subject Message Deadline Recipients WorkspaceId BatchID EnableSubscriptions EnableSubscriptionsValidation DefaultEmailNotifications DefaultRole AuthorizedOnly EnableAutoLock LockAfterFirstDecision EnableDownload EnableTeamURL EnableEmbedPlayer ShowDashboardLink ShowWorkspaceLink ShowDetailsPageLink ShowVersionsLink ShowHelpLink ShowHelpQuickStartLink ShowHelpUserGuideLink ShowHelpWelcomeScreenLink ShowHelpForumLink ShowHelpBlogLink CustomLinkUrl CustomLinkLabel SuppressNewProofNotification SWF ShowDashboardFunctions" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProof">
+      <soap:operation soapAction="https://soap.proofhq.com/updateProof" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID OwnerID Name Subject Message WorkspaceId EnableSubscriptions EnableSubscriptionsValidation DefaultEmailNotifications DefaultRole AuthorizedOnly EnableAutoclose EnableOneDecision EnableDownload EnableTeamURL EnableEmbedPlayer ShowDashboardLink ShowWorkspaceLink ShowDetailsPageLink ShowVersionsLink ShowHelpLink ShowHelpQuickStartLink ShowHelpUserGuideLink ShowHelpWelcomeScreenLink ShowHelpForumLink ShowHelpBlogLink CustomLinkUrl CustomLinkLabel SWF ShowDashboardFunctions PrimaryDecisionMakerReviewerID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProof">
+      <soap:operation soapAction="https://soap.proofhq.com/deleteProof" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lockProof">
+      <soap:operation soapAction="https://soap.proofhq.com/lockProof" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unlockProof">
+      <soap:operation soapAction="https://soap.proofhq.com/unlockProof" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProofReviewer">
+      <soap:operation soapAction="https://soap.proofhq.com/deleteProofReviewer" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID ReviewerID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProofReviewer">
+      <soap:operation soapAction="https://soap.proofhq.com/addProofReviewer" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID RecipientEmail RecipientName RecipientPosition RecipientDeadline RecipientRole RecipientEmailNotifications SuppressNewProofNotification PrimaryDecisionMaker" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProofReviewer">
+      <soap:operation soapAction="https://soap.proofhq.com/updateProofReviewer" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID RecipientID RecipientDecision RecipientDeadline RecipientName RecipientPosition RecipientRole RecipientEmailNotifications PrimaryDecisionMaker" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActivity">
+      <soap:operation soapAction="https://soap.proofhq.com/getActivity" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID Offset" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOwners">
+      <soap:operation soapAction="https://soap.proofhq.com/getOwners" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeople">
+      <soap:operation soapAction="https://soap.proofhq.com/getPeople" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID Offset" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeopleGroups">
+      <soap:operation soapAction="https://soap.proofhq.com/getPeopleGroups" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeopleAccounts">
+      <soap:operation soapAction="https://soap.proofhq.com/getPeopleAccounts" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWorkspaces">
+      <soap:operation soapAction="https://soap.proofhq.com/getWorkspaces" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createWorkspace">
+      <soap:operation soapAction="https://soap.proofhq.com/createWorkspace" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID ParentWorkspaceID Name Description Client Project Personal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateWorkspace">
+      <soap:operation soapAction="https://soap.proofhq.com/updateWorkspace" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID WorkspaceID ParentWorkspaceID Name Description Client Project Personal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteWorkspace">
+      <soap:operation soapAction="https://soap.proofhq.com/deleteWorkspace" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID WorkspaceID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllProofs">
+      <soap:operation soapAction="https://soap.proofhq.com/getAllProofs" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID StartFrom SearchQuery ItemsPerPage" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofsByListView">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofsByListView" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID ListViewID StartFrom ItemsPerPage ExcludedMediaTypes SendArchivedProofs" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getClosedProofs">
+      <soap:operation soapAction="https://soap.proofhq.com/getClosedProofs" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID StartFrom SearchQuery ItemsPerPage" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLateProofs">
+      <soap:operation soapAction="https://soap.proofhq.com/getLateProofs" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID StartFrom SearchQuery ItemsPerPage" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOpenProofs">
+      <soap:operation soapAction="https://soap.proofhq.com/getOpenProofs" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID StartFrom SearchQuery ItemsPerPage" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofsByOwnership">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofsByOwnership" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofReviewers">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofReviewers" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofComments">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofComments" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofCommentReplies">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofCommentReplies" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID CommentID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofDetails">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofDetails" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofEmbedCode">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofEmbedCode" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonalProofEmbedCode">
+      <soap:operation soapAction="https://soap.proofhq.com/getPersonalProofEmbedCode" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofReviewerEmbedCode">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofReviewerEmbedCode" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID ReviewerID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofEmbedCodes">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofEmbedCodes" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofStatus">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofStatus" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofThumbnail">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofThumbnail" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID Type" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofURL">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofURL" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofVersions">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofVersions" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteProofLink">
+      <soap:operation soapAction="https://soap.proofhq.com/deleteProofLink" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProofLinks">
+      <soap:operation soapAction="https://soap.proofhq.com/addProofLinks" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofLinks">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofLinks" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setProofMenus">
+      <soap:operation soapAction="https://soap.proofhq.com/setProofMenus" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <soap:operation soapAction="https://soap.proofhq.com/createAccount" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID Timezone OrganisationName EmailAddress FirstName LastName Password ConfirmPassword SendConfirmationEmail OpenID Promocode" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateAccount">
+      <soap:operation soapAction="https://soap.proofhq.com/updateAccount" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID OrganisationName Street City State Postcode Country Telephone Mobile Fax" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSatelliteAccount">
+      <soap:operation soapAction="https://soap.proofhq.com/createSatelliteAccount" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID Name Timezone Promocode" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAccountPasswordSettings">
+      <soap:operation soapAction="https://soap.proofhq.com/setAccountPasswordSettings" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID PasswordLength LowercaseCharacters UppercaseCharacters NumericCharacters SymbolCharacters CharactersRepetition PasswordLifetime BruteforceAttempts BruteforceLockTime" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAccountProofingDefaults">
+      <soap:operation soapAction="https://soap.proofhq.com/setAccountProofingDefaults" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID OnLoadMessage OnDecisionMessage ConfirmButton CancelButton" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountDetails">
+      <soap:operation soapAction="https://soap.proofhq.com/getAccountDetails" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID AccountID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addUser">
+      <soap:operation soapAction="https://soap.proofhq.com/addUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID AccountID EmailAddress FirstName LastName Position PermissionsID Password ConfirmPassword SendConfirmationEmail OpenID Timezone ProductMarketingEmails APIOnly" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <soap:operation soapAction="https://soap.proofhq.com/updateUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID FirstName LastName Position PermissionsID Street City State Postcode Country Telephone Mobile Fax Language Timezone DateFormat OpenID ProductMarketingEmails APIOnly" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <soap:operation soapAction="https://soap.proofhq.com/getUserDetails" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="activateUser">
+      <soap:operation soapAction="https://soap.proofhq.com/activateUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deactivateUser">
+      <soap:operation soapAction="https://soap.proofhq.com/deactivateUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUserPassword">
+      <soap:operation soapAction="https://soap.proofhq.com/updateUserPassword" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID Password" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUser">
+      <soap:operation soapAction="https://soap.proofhq.com/deleteUser" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID NewOwnerID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsers">
+      <soap:operation soapAction="https://soap.proofhq.com/getUsers" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID AccountID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountCallbacks">
+      <soap:operation soapAction="https://soap.proofhq.com/getAccountCallbacks" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSatelliteAccounts">
+      <soap:operation soapAction="https://soap.proofhq.com/getSatelliteAccounts" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAccountCallback">
+      <soap:operation soapAction="https://soap.proofhq.com/setAccountCallback" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID Type Url RetryInterval" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofCallbacks">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofCallbacks" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setProofCallback">
+      <soap:operation soapAction="https://soap.proofhq.com/setProofCallback" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID Type Url RetryInterval" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderSampleProof">
+      <soap:operation soapAction="https://soap.proofhq.com/orderSampleProof" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="Email FirstName LastName OrganisationName" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProofReviewers">
+      <soap:operation soapAction="https://soap.proofhq.com/addProofReviewers" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID Recipients" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBatchProofReviewers">
+      <soap:operation soapAction="https://soap.proofhq.com/addBatchProofReviewers" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID BatchID Recipients" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTags">
+      <soap:operation soapAction="https://soap.proofhq.com/getTags" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTag">
+      <soap:operation soapAction="https://soap.proofhq.com/addTag" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID TagName" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTag">
+      <soap:operation soapAction="https://soap.proofhq.com/updateTag" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID TagID TagName" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTag">
+      <soap:operation soapAction="https://soap.proofhq.com/deleteTag" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID TagID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofTags">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofTags" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeProofTags">
+      <soap:operation soapAction="https://soap.proofhq.com/removeProofTags" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID TagID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProofTags">
+      <soap:operation soapAction="https://soap.proofhq.com/addProofTags" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID TagID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findUsersByEmail">
+      <soap:operation soapAction="https://soap.proofhq.com/findUsersByEmail" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID EmailPhrase AccountID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateContactEmail">
+      <soap:operation soapAction="https://soap.proofhq.com/updateContactEmail" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID OldEmail NewEmail" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUserEmail">
+      <soap:operation soapAction="https://soap.proofhq.com/updateUserEmail" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID UserID NewEmail Confirm" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSessionId">
+      <soap:operation soapAction="https://soap.proofhq.com/getSessionId" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="EmailAddress AuthToken" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkSession">
+      <soap:operation soapAction="https://soap.proofhq.com/checkSession" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doLogout">
+      <soap:operation soapAction="https://soap.proofhq.com/doLogout" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProofDownloadURL">
+      <soap:operation soapAction="https://soap.proofhq.com/getProofDownloadURL" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActions">
+      <soap:operation soapAction="https://soap.proofhq.com/getActions" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID AccountID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCommentAction">
+      <soap:operation soapAction="https://soap.proofhq.com/getCommentAction" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID CommentID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCommentAction">
+      <soap:operation soapAction="https://soap.proofhq.com/setCommentAction" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID CommentID ActionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFileDownloadLink">
+      <soap:operation soapAction="https://soap.proofhq.com/getFileDownloadLink" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCommentReply">
+      <soap:operation soapAction="https://soap.proofhq.com/addCommentReply" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID FileID ReviewerID CommentID Reply" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCommentThumbnail">
+      <soap:operation soapAction="https://soap.proofhq.com/getCommentThumbnail" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID CommentID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="decodeProofID">
+      <soap:operation soapAction="https://soap.proofhq.com/decodeProofID" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID EncodedProofID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBillingPlans">
+      <soap:operation soapAction="https://soap.proofhq.com/getBillingPlans" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateBillingPlan">
+      <soap:operation soapAction="https://soap.proofhq.com/updateBillingPlan" style="rpc" />
+      <wsdl:input>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="SessionID PlanID AccountID" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" namespace="https://soap.proofhq.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" parts="result" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="soapService">
+    <wsdl:port name="soapPort" binding="tns:soapBinding">
+      <soap:address location="https://soap.proofhq.com/soap.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,41 @@
+IF EXISTS ( SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[dbo].[advsp_alert_assignment_template_create_custom]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+BEGIN
+    DROP PROCEDURE [dbo].[advsp_alert_assignment_template_create_custom];
+END
+GO
+CREATE PROCEDURE [dbo].[advsp_alert_assignment_template_create_custom] 
+@ALERT_ID INT
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	DECLARE
+		@ALRT_NOTIFY_HDR_ID INT
+	SELECT
+		@ALRT_NOTIFY_HDR_ID = 0
+	FROM
+		ALERT A WITH(NOLOCK)
+	WHERE
+		A.ALERT_ID = @ALERT_ID
+	;
+	IF @ALRT_NOTIFY_HDR_ID IS NOT NULL
+	BEGIN
+		IF NOT EXISTS (SELECT 1 FROM ALERT_NOTIFY_EMPS_ASSIGNMENT A WITH(NOLOCK) WHERE A.ALERT_ID = @ALERT_ID)
+		BEGIN
+				INSERT INTO ALERT_NOTIFY_EMPS_ASSIGNMENT WITH(ROWLOCK) (ALERT_STATE_ID, ALRT_NOTIFY_HDR_ID, EMP_CODE, IS_DEFAULT, ALERT_ID)
+				SELECT 
+					A.ALERT_STATE_ID,
+					A.ALRT_NOTIFY_HDR_ID,
+					A.EMP_CODE,
+					CAST(ISNULL(A.IS_DFLT, 0) AS BIT),
+					@ALERT_ID
+				FROM
+					ALERT_NOTIFY_EMPS A WITH(NOLOCK)
+                    INNER JOIN EMPLOYEE_CLOAK E WITH(NOLOCK) ON A.EMP_CODE = E.EMP_CODE
+				WHERE
+					A.ALRT_NOTIFY_HDR_ID = @ALRT_NOTIFY_HDR_ID
+                    AND E.EMP_TERM_DATE IS NULL
+				;	
+		END	
+	END
+END
+/*=========== QUERY ===========*/

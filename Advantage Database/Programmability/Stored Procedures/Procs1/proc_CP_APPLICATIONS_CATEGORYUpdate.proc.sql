@@ -1,0 +1,34 @@
+﻿
+
+
+CREATE PROCEDURE [dbo].[proc_CP_APPLICATIONS_CATEGORYUpdate]
+(
+	@CATID int,
+	@CATEGORY varchar(50),
+	@ICONPATH varchar(100) = NULL,
+	@SORT_ORDER int = NULL
+)
+AS
+BEGIN
+
+	SET NOCOUNT OFF
+	DECLARE @Err int
+
+	UPDATE [CP_APPLICATIONS_CATEGORY]
+	SET
+		[CATEGORY] = @CATEGORY,
+		[ICONPATH] = @ICONPATH,
+		[SORT_ORDER] = @SORT_ORDER
+	WHERE
+		[CATID] = @CATID
+
+
+	SET @Err = @@Error
+
+
+	RETURN @Err
+END
+
+
+
+

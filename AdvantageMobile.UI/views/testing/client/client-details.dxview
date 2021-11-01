@@ -1,0 +1,341 @@
+
+<div data-options="dxView : { name: 'ClientDetails', title: 'Client' } " >
+    <div data-bind="dxCommand: { onExecute: '#ClientEdit/{id}', direction: 'none', id: 'edit', title: 'Edit', icon: 'edit' }"></div>
+    <div data-bind="dxCommand: { onExecute: handleDelete, id: 'delete', title: 'Delete', icon: 'remove' }"></div>
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <div data-bind="dxScrollView: { }">
+            <h2 data-bind="text: client.Name"></h2>
+            <div class="dx-fieldset">
+                <div class="dx-field">
+                    <div class="dx-field-label">Code</div>
+                    <div class="dx-field-value" data-bind="text: client.Code"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Name</div>
+                    <div class="dx-field-value" data-bind="text: client.Name"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Address 1</div>
+                    <div class="dx-field-value" data-bind="text: client.Address1"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Address 2</div>
+                    <div class="dx-field-value" data-bind="text: client.Address2"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">City</div>
+                    <div class="dx-field-value" data-bind="text: client.City"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">County</div>
+                    <div class="dx-field-value" data-bind="text: client.County"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">State</div>
+                    <div class="dx-field-value" data-bind="text: client.State"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Country</div>
+                    <div class="dx-field-value" data-bind="text: client.Country"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Zip</div>
+                    <div class="dx-field-value" data-bind="text: client.Zip"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_ATTENTION</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_ATTENTION"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BADDRESS1</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_BADDRESS1"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BADDRESS2</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_BADDRESS2"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BCITY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_BCITY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BCOUNTY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_BCOUNTY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BSTATE</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_BSTATE"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BCOUNTRY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_BCOUNTRY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_BZIP</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_BZIP"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SADDRESS1</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_SADDRESS1"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SADDRESS2</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_SADDRESS2"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SCITY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_SCITY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SCOUNTY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_SCOUNTY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SSTATE</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_SSTATE"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SCOUNTRY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_SCOUNTRY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_SZIP</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_SZIP"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_FOOTER</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_FOOTER"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_ALPHA_SORT</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_ALPHA_SORT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_FISCAL_START</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_FISCAL_START"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_CREDIT_LIMIT</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_CREDIT_LIMIT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_HIGH_BALANCE</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_HIGH_BALANCE"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_INV_BY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_INV_BY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">INV_FORMAT</div>
+                    <div class="dx-field-value" data-bind="text: client.INV_FORMAT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_MATTENTION</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_MATTENTION"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PINV_FORMAT</div>
+                    <div class="dx-field-value" data-bind="text: client.PINV_FORMAT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BINV_FORMAT</div>
+                    <div class="dx-field-value" data-bind="text: client.BINV_FORMAT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_MINV_BY</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_MINV_BY"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_MFOOTER</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_MFOOTER"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Is active</div>
+                    <div class="dx-field-value" data-bind="text: client.IsActive"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">NEW_BUSINESS</div>
+                    <div class="dx-field-value" data-bind="text: client.NEW_BUSINESS"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CMP_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.CMP_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">ACCT_NBR_R</div>
+                    <div class="dx-field-value" data-bind="text: client.ACCT_NBR_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JT_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JT_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PROMO_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.PROMO_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">REQ_FLDS</div>
+                    <div class="dx-field-value" data-bind="text: client.REQ_FLDS"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_FIRST_USE_DT_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_FIRST_USE_DT_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">COMPLEX_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.COMPLEX_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">FORMAT_SC_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.FORMAT_SC_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">DP_TM_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.DP_TM_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">MARKET_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.MARKET_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">EMAIL_GR_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.EMAIL_GR_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BILL_COOP_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.BILL_COOP_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">AD_NBR_R</div>
+                    <div class="dx-field-value" data-bind="text: client.AD_NBR_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CLI_REF_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_CLI_REF_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_DATE_OPENED_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_DATE_OPENED_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_AD_SIZE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_AD_SIZE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PROD_CONT_CODE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.PROD_CONT_CODE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_COMP_BUDGET_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_COMP_BUDGET_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">OINV_FORMAT</div>
+                    <div class="dx-field-value" data-bind="text: client.OINV_FORMAT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">IINV_FORMAT</div>
+                    <div class="dx-field-value" data-bind="text: client.IINV_FORMAT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">START_DATE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.START_DATE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV1_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_LOG_UDV1_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV2_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_LOG_UDV2_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV3_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_LOG_UDV3_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV4_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_LOG_UDV4_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_LOG_UDV5_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_LOG_UDV5_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV1_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_CMP_UDV1_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV2_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_CMP_UDV2_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV3_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_CMP_UDV3_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV4_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_CMP_UDV4_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">JOB_CMP_UDV5_R</div>
+                    <div class="dx-field-value" data-bind="text: client.JOB_CMP_UDV5_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">PINV_FORMAT2</div>
+                    <div class="dx-field-value" data-bind="text: client.PINV_FORMAT2"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_AR_COMMENT</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_AR_COMMENT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">REQ_PROD_CAT</div>
+                    <div class="dx-field-value" data-bind="text: client.REQ_PROD_CAT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">TAX_FLAG_R</div>
+                    <div class="dx-field-value" data-bind="text: client.TAX_FLAG_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">FISCAL_PD_R</div>
+                    <div class="dx-field-value" data-bind="text: client.FISCAL_PD_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BLACKPLATE_VER_R</div>
+                    <div class="dx-field-value" data-bind="text: client.BLACKPLATE_VER_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BLACKPLATE_VER2_R</div>
+                    <div class="dx-field-value" data-bind="text: client.BLACKPLATE_VER2_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_P_PAYDAYS</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_P_PAYDAYS"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CL_M_PAYDAYS</div>
+                    <div class="dx-field-value" data-bind="text: client.CL_M_PAYDAYS"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">SERVICE_FEE_TYPE_R</div>
+                    <div class="dx-field-value" data-bind="text: client.SERVICE_FEE_TYPE_R"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">REQ_TIME_COMMENT</div>
+                    <div class="dx-field-value" data-bind="text: client.REQ_TIME_COMMENT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">CONTRACT_EXP_DT</div>
+                    <div class="dx-field-value" data-bind="text: client.CONTRACT_EXP_DT"></div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">BATCH_NAME</div>
+                    <div class="dx-field-value" data-bind="text: client.BATCH_NAME"></div>
+                </div>
+			</div>
+            <div data-options="dxContentPlaceholder : { name: 'view-footer', transition: 'none' } " ></div>
+        </div>
+    </div>
+</div>

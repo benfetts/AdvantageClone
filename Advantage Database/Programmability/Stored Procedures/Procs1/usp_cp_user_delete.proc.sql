@@ -1,0 +1,50 @@
+﻿
+
+
+
+
+CREATE PROCEDURE [dbo].[usp_cp_user_delete]
+	@CDPCode int
+
+AS
+
+DELETE FROM [dbo].[CP_USER] 
+	WHERE
+[CDP_CONTACT_ID] = @CDPCode
+
+DELETE FROM [dbo].[CP_USER_TABS]
+WHERE
+[CDP_CONTACT_ID] = @CDPCode
+
+DELETE FROM [dbo].[CP_USER_TAB_DESKTOP_OBJECT]
+WHERE
+[CDP_CONTACT_ID] = @CDPCode
+
+DELETE FROM [dbo].[CP_SEC_CLIENT] 
+	WHERE
+	[CDP_CONTACT_ID] = @CDPCode
+
+DELETE FROM [dbo].[CP_USER_SEC_APP]
+	WHERE
+	[CDP_CONTACT_ID] = @CDPCode
+	
+DELETE FROM [dbo].[CP_USER_QUICK_LAUNCH_APPS]
+	WHERE
+	[CDP_CONTACT_ID] = @CDPCode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

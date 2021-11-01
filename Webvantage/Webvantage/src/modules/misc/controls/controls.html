@@ -1,0 +1,55 @@
+﻿<template>
+    
+  <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/combobox/combobox"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+
+    <style>
+        table tr td {
+            padding: 2px;
+        }
+    </style>
+
+    <div>
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Control</th>
+                    <th>SyncFusion</th>
+                    <th>Kendo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Combobox</td>
+                    <td>DNE in current verion</td>
+                    <td><ak-combobox
+                            k-data-text-field="text"
+                  			k-data-value-field="value"
+                  			k-data-source.bind="data">
+                        </ak-combobox></td>
+                </tr>
+                <tr>
+                    <td>Dropdownlist</td>
+                    <td><input type="text" id="dropdown1" ej-drop-down-list="e-data-source.bind:data;"/></td>
+                    <td><ak-drop-down-list 
+                            k-data-text-field="text"
+                  			k-data-value-field="value"
+                  			k-data-source.bind="data">
+                        </ak-drop-down-list></td>
+                </tr>
+                <tr>
+                    <td>Datepicker</td>
+                    <td><input ej-date-picker /></td>
+                    <td><input ak-datepicker /></td>
+                </tr>
+                <tr>
+                    <td>Textbox</td>
+                    <td><input class="e-textbox" /></td>
+                    <td><input class="k-textbox" /></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</template>

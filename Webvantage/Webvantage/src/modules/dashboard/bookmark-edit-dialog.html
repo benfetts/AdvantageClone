@@ -1,0 +1,32 @@
+﻿
+<template>
+    <require from="aurelia-kendoui-bridge/dialog/dialog"></require>
+    <require from="aurelia-kendoui-bridge/dropdownlist/dropdownlist"></require>
+    <require from="aurelia-kendoui-bridge/numerictextbox/numerictextbox"></require>
+    <require from="aurelia-kendoui-bridge/datepicker/datepicker"></require>
+    <ux-dialog>
+        <ux-dialog-header show-close-button.bind="true">
+            Edit Bookmark
+        </ux-dialog-header>
+        <ux-dialog-body>
+                <div class="wv-form wv-vert-form">
+                    <div class="wv-form-group" style="float:left; clear:none; margin-right: 5px;">
+                        <label>Name:</label>
+                        <div>
+                            <input id="name" type="text" value.two-way="name"/>
+                        </div>
+                    </div>
+                    <div class="wv-form-group" style="float:left; clear:none; width: 250px;">
+                        <label>Description:</label>
+                        <textarea value.bind="description" style="width: 100%; min-height: 80px; resize: vertical !important;"></textarea>
+                    </div>
+                </div>
+        </ux-dialog-body>
+        <ux-dialog-footer>
+            <div class="k-button-group k-dialog-buttongroup k-dialog-button-layout-normal">
+                <button class="k-button k-primary" click.delegate="addClick()">Save</button>
+                <button class="k-button" click.delegate="cancelClick()">Cancel</button>
+            </div>
+        </ux-dialog-footer>
+    </ux-dialog>
+</template>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource ComponentName="DashboardObjectDataSource1">
+      <Name>Object Data Source 1</Name>
+      <DataSource Type="System.Collections.Generic.List`1[[AdvantageFramework.DTO.Media.SpotRadio.ResearchResult, AdvantageFramework.BLogic, Version=6.70.8.0, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="ChartDashboardItem1" Name="Radio Research" DataSource="DashboardObjectDataSource1">
+      <ColoringOptions UseGlobalColors="false" />
+      <DataItems>
+        <Dimension DataMember="StationName" DefaultId="DataItem0" />
+        <Measure DataMember="AQHRating" Name="AQHRating" DefaultId="DataItem1">
+          <NumericFormat FormatType="Number" />
+        </Measure>
+        <Dimension DataMember="Daypart" DefaultId="DataItem2" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY Title="AQH Rating" AlwaysShowZeroLevel="false" />
+          <Series>
+            <Simple SeriesType="Line">
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <ChartLegend IsInsidePosition="true" InsidePosition="TopCenterHorizontal" OutsidePosition="TopLeftHorizontal" />
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="ChartDashboardItem1" Weight="100" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

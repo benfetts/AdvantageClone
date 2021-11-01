@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source 1" ComponentName="dashboardObjectDataSource1">
+      <DataSource Type="System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Pivot ComponentName="pivotDashboardItem1" Name="Pivot 1" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="Employee" DefaultId="DataItem0" />
+        <Dimension DataMember="JobDescription" DefaultId="DataItem1" />
+        <Dimension DataMember="Date" DateTimeGroupInterval="DayMonthYear" DefaultId="DataItem2" />
+        <Measure DataMember="Hours" DefaultId="DataItem3">
+          <NumericFormat FormatType="Number" />
+        </Measure>
+      </DataItems>
+      <Columns>
+        <Column DefaultId="DataItem2" />
+      </Columns>
+      <Rows>
+        <Row DefaultId="DataItem0" />
+        <Row DefaultId="DataItem1" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem3" />
+      </Values>
+      <AutoExpandRowGroups>true</AutoExpandRowGroups>
+    </Pivot>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="pivotDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

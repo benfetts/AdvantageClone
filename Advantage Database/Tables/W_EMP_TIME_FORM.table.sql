@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[W_EMP_TIME_FORM] (
+    [W_EMP_TIME_FORM_ID] INT           NOT NULL,
+    [USER_ID]            VARCHAR (100) NOT NULL,
+    [TIME_STAMP]         SMALLDATETIME NULL,
+    [EMP_CODE]           VARCHAR (6)   NULL,
+    [START_DATE]         SMALLDATETIME NULL,
+    [END_DATE]           SMALLDATETIME NULL
+);
+

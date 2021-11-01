@@ -1,0 +1,7 @@
+﻿class logoMaintenance {
+
+    constructor() {
+
+    }
+
+}

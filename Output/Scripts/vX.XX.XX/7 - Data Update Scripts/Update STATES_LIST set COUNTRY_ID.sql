@@ -1,4 +1,0 @@
-UPDATE [dbo].[STATES_LIST] SET COUNTRY_ID = 2 WHERE COUNTRY = 'CAN'
-
-exec advsp_sql_column_prepare 'STATES_LIST', 'COUNTRY_ID'
-GO

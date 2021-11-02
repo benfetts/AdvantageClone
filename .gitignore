@@ -9416,3 +9416,9 @@ Webvantage/Webvantage/Web.config.bak
 Webvantage/Webvantage/Webvantage.vbproj.bak
 Webvantage/Webvantage/Webvantage.vbproj.user
 Webvantage/Webvantage/Webvantage.vbproj.vspscc
+*.force
+*.ide-shm
+*.ide-wal
+*.dll
+*.lock
+*.ide

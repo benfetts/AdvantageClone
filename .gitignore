@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/AdvantageFramework.WinForm/obj/x64
+/AdvantageFramework.Reporting.Reports/obj/x64/Release
+/AdvantageFramework.Reporting.Reports/obj/x64/Debug
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/Output/Google.Apis.Dfareporting.v3_5.xml
+/Output/Google.Apis.Dfareporting.v3_5.pdb
+/Output/Google.Apis.Dfareporting.v3_5.dll
+/Setups/Output/Setup Files/Advantage Services/Advantage Services Setup.msi

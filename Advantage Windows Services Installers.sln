@@ -146,34 +146,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9915B43D-08F6-42A3-BB69-29F690027DB0}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Advantage\u0020Window\u0020Service\\Advantage\u0020Windows\u0020Service.vbproj
-		SccProjectName1 = Advantage\u0020Window\u0020Service
-		SccLocalPath1 = Advantage\u0020Window\u0020Service
-		SccProjectUniqueName2 = AdvantageFramework\\AdvantageFramework.vbproj
-		SccProjectName2 = AdvantageFramework
-		SccLocalPath2 = AdvantageFramework
-		SccProjectUniqueName3 = Advantage\u0020Services\\Advantage\u0020Services.vbproj
-		SccProjectName3 = Advantage\u0020Services
-		SccLocalPath3 = Advantage\u0020Services
-		SccProjectUniqueName4 = AdvantageFramework.WinForm\\AdvantageFramework.WinForm.vbproj
-		SccProjectName4 = AdvantageFramework.WinForm
-		SccLocalPath4 = AdvantageFramework.WinForm
-		SccProjectUniqueName5 = AdvantageFramework.Reporting.Reports\\AdvantageFramework.Reporting.Reports.vbproj
-		SccProjectName5 = AdvantageFramework.Reporting.Reports
-		SccLocalPath5 = AdvantageFramework.Reporting.Reports
-		SccProjectUniqueName6 = Setups\\Advantage\u0020Services\u0020Setup\u002032\\Advantage\u0020Services\u0020Setup\u002032.vdproj
-		SccLocalPath6 = .
-		SccProjectFilePathRelativizedFromConnection6 = Setups\\Advantage\u0020Services\u0020Setup\u002032\\
-		SccProjectUniqueName7 = AdvantageFramework.BLogic\\AdvantageFramework.BLogic.vbproj
-		SccProjectName7 = AdvantageFramework.BLogic
-		SccLocalPath7 = AdvantageFramework.BLogic
-		SccProjectUniqueName8 = AdvantageFramework.GoogleServices\\AdvantageFramework.GoogleServices.vbproj
-		SccProjectName8 = AdvantageFramework.GoogleServices
-		SccLocalPath8 = AdvantageFramework.GoogleServices
-	EndGlobalSection
 EndGlobal

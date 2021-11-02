@@ -2133,3 +2133,28 @@ Output/Telerik.WinControls.dll
 Output/Telerik.WinControls.Themes.Windows7.dll
 Output/Telerik.WinControls.UI.dll
 Output/TelerikCommon.dll
+UpgradeLog2.htm
+AdvantageFramework/obj/x64/Release/DesignTimeResolveAssemblyReferencesInput.cache
+AdvantageFramework/obj/x64/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework/obj/x64/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+AdvantageFramework/obj/x64/Debug/AdvantageFramework.vbproj.AssemblyReference.cache
+AdvantageFramework/obj/x64/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework.GoogleServices/obj/x64/Release/DesignTimeResolveAssemblyReferencesInput.cache
+AdvantageFramework.GoogleServices/obj/x64/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework.GoogleServices/obj/x64/Debug/AdvantageFramework.GoogleServices.vbproj.AssemblyReference.cache
+AdvantageFramework.GoogleServices/obj/x64/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework.BLogic/obj/x64/Release/DesignTimeResolveAssemblyReferencesInput.cache
+AdvantageFramework.BLogic/obj/x64/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework.BLogic/obj/x64/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+AdvantageFramework.BLogic/obj/x64/Debug/AdvantageFramework.BLogic.vbproj.AssemblyReference.cache
+AdvantageFramework.BLogic/obj/x64/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+Advantage Window Service/obj/x64/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+Advantage Window Service/obj/x64/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Advantage Window Service/obj/x64/Debug/Advantage Windows Service.vbproj.AssemblyReference.cache
+Advantage Window Service/obj/x64/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+Advantage Services/obj/x64/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+Advantage Services/obj/x64/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Advantage Services/obj/x64/Debug/Advantage Services.vbproj.AssemblyReference.cache
+Advantage Services/obj/x64/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+.vs/Advantage Windows Services Installers/v16/.suo
+UpgradeLog3.htm

@@ -928,6 +928,9 @@
     <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Add_row_to_EXPORT_SYSTEMS %28WTB%29.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Insert COMSCORE_TV_BOOKS 2022.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Remove MakegoodOffers grid settings.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

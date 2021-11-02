@@ -16,6 +16,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTrademark("We work the way you work.")>
 
 <Assembly: ComVisible(False)>
+<Assembly: AssemblyCulture("")>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
 <Assembly: Guid("619e51ed-6e8d-4b5b-b656-5ca0c3edaee1")>

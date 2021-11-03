@@ -196,6 +196,7 @@ Namespace MediaWIP.AccountsReceivable
             Me.AgingOption = New DevExpress.XtraReports.Parameters.Parameter()
             Me.IncludeDetails = New DevExpress.XtraReports.Parameters.Parameter()
             Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+            Me.ARGLAccountClientCode = New DevExpress.XtraReports.UI.CalculatedField()
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             '
@@ -1908,10 +1909,16 @@ Namespace MediaWIP.AccountsReceivable
             '
             Me.BindingSource.DataSource = GetType(AdvantageFramework.Reporting.Database.Classes.AROpenAgedMonthEnd)
             '
+            'ARGLAccountClientCode
+            '
+            Me.ARGLAccountClientCode.Expression = "Concat([ARGLAccount],[ClientCode])"
+            Me.ARGLAccountClientCode.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
+            Me.ARGLAccountClientCode.Name = "ARGLAccountClientCode"
+            '
             'AccountsReceivableAgedwithDisbursementDetail
             '
             Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.ARGLAccountHeader, Me.ClientHeader, Me.ARGLAccountFooter, Me.PageHeader, Me.PageFooter, Me.ReportFooter, Me.ClientDivPrdCodeHeader, Me.ClientDivPrdCodeFooter, Me.ClientCodeFooter})
-            Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.AgingOptionDescription, Me.ARGLAccountCurrent, Me.ARGLAccountAging30Days, Me.ARGLAccountAging60Days, Me.ARGLAccountAging90Days, Me.ARGLAccountAging120PlusDays, Me.ARGLAccountOnAccountBalance, Me.ARGLAccountInvoiceBalanceWithOA, Me.ClientDivPrdCode, Me.ARGLAccountClientDivPrdCode, Me.ARGLAccountClientDivPrdCodeCurrent, Me.ARGLAccountClientDivPrdCodeAging30Days, Me.ARGLAccountClientDivPrdCodeAging60Days, Me.ARGLAccountClientDivPrdCodeAging90Days, Me.ARGLAccountClientDivPrdCodeAging120PlusDays, Me.ARGLAccountClientDivPrdCodeOnAccountBalance, Me.ARGLAccountClientDivPrdCodeInvoiceBalanceWithOA, Me.ARGLAccountClientCodeCurrent, Me.ARGLAccountClientCodeAging30Days, Me.ARGLAccountClientCodeAging60Days, Me.ARGLAccountClientCodeAging90Days, Me.ARGLAccountClientCodeAging120PlusDays, Me.ARGLAccountClientCodeOnAccountBalance, Me.ARGLAccountClientCodeInvoiceBalanceWithOA, Me.InvoiceNumberWithSequence, Me.JobOrderNumber, Me.JobOrderDescription})
+            Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.AgingOptionDescription, Me.ARGLAccountCurrent, Me.ARGLAccountAging30Days, Me.ARGLAccountAging60Days, Me.ARGLAccountAging90Days, Me.ARGLAccountAging120PlusDays, Me.ARGLAccountOnAccountBalance, Me.ARGLAccountInvoiceBalanceWithOA, Me.ClientDivPrdCode, Me.ARGLAccountClientDivPrdCode, Me.ARGLAccountClientDivPrdCodeCurrent, Me.ARGLAccountClientDivPrdCodeAging30Days, Me.ARGLAccountClientDivPrdCodeAging60Days, Me.ARGLAccountClientDivPrdCodeAging90Days, Me.ARGLAccountClientDivPrdCodeAging120PlusDays, Me.ARGLAccountClientDivPrdCodeOnAccountBalance, Me.ARGLAccountClientDivPrdCodeInvoiceBalanceWithOA, Me.ARGLAccountClientCodeCurrent, Me.ARGLAccountClientCodeAging30Days, Me.ARGLAccountClientCodeAging60Days, Me.ARGLAccountClientCodeAging90Days, Me.ARGLAccountClientCodeAging120PlusDays, Me.ARGLAccountClientCodeOnAccountBalance, Me.ARGLAccountClientCodeInvoiceBalanceWithOA, Me.InvoiceNumberWithSequence, Me.JobOrderNumber, Me.JobOrderDescription, Me.ARGLAccountClientCode})
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.DisplayName = "Accounts Receivable Aged with Disbursement Detail"
@@ -1923,7 +1930,7 @@ Namespace MediaWIP.AccountsReceivable
             Me.PageWidth = 1100
             Me.Parameters.AddRange(New DevExpress.XtraReports.Parameters.Parameter() {Me.UserID, Me.PeriodCutoff, Me.AgingDate, Me.AgingOption, Me.IncludeDetails})
             Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
-            Me.Version = "18.1"
+            Me.Version = "20.1"
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
@@ -2092,6 +2099,7 @@ Namespace MediaWIP.AccountsReceivable
         Friend WithEvents AgingOption As DevExpress.XtraReports.Parameters.Parameter
         Friend WithEvents IncludeDetails As DevExpress.XtraReports.Parameters.Parameter
         Friend WithEvents BindingSource As System.Windows.Forms.BindingSource
+        Friend WithEvents ARGLAccountClientCode As DevExpress.XtraReports.UI.CalculatedField
     End Class
 
 End Namespace

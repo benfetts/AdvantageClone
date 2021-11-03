@@ -9399,3 +9399,21 @@ Webvantage/Webvantage/Webvantage.vbproj.vspscc
 Setups/Advantage Services Setup 32/mssccprj.scc
 Setups/Output/Setup Files/Advantage Services/Advantage Services Setup.msi
 Setups/Advantage Services Setup 32/Advantage Services Setup 32.vdproj.vspscc
+.vs/WebvantageProduction/project-colors.json
+.vs/WebvantageProduction/v17/.suo
+.vs/WebvantageProduction/v17/fileList.bin
+*.pfx
+*.cache
+packages/Microsoft.TypeScript.MSBuild.4.3.2/tools/tsc/node_modules/@microsoft/typescript-etw/index.js
+packages/Microsoft.TypeScript.MSBuild.4.3.2/tools/tsc/node_modules/source-map-support.js
+AdvantageFramework.Web/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework.GoogleServices/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework.BLogic/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework.Reporting.Reports/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+AdvantageFramework/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+packages/Microsoft.TypeScript.MSBuild.4.3.2/tools/tsc/node_modules/@microsoft/typescript-etw/bin/ia32/typescript-etw.node
+packages/Microsoft.TypeScript.MSBuild.4.3.2/tools/tsc/node_modules/@microsoft/typescript-etw/package.json
+Webvantage/ActiveReportsAssembly/bin/Debug/EnvDTE.xml
+Webvantage/ActiveReportsAssembly/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+Webvantage/Webvantage/bin/EnvDTE.xml
+Webvantage/Webvantage/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb

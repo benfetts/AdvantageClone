@@ -10,7 +10,6 @@
 /Output/Google.Apis.Dfareporting.v3_5.xml
 /Output/Google.Apis.Dfareporting.v3_5.pdb
 /Output/Google.Apis.Dfareporting.v3_5.dll
-/Setups/Output/Setup Files/Advantage Services/Advantage Services Setup.msi
 .vs/Advantage Windows Services Installers/v15/sqlite3/storage.ide
 .vs/Advantage Windows Services Installers/v15/sqlite3/storage.ide-wal
 Output/.vs/Advantage MSAccess/v15/.suo
@@ -8748,32 +8747,6 @@ packages/Zlib.Portable.Signed.1.11.0/.signature.p7s
 packages/Zlib.Portable.Signed.1.11.0/lib/portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid/Zlib.Portable.dll
 packages/Zlib.Portable.Signed.1.11.0/lib/portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid/Zlib.Portable.xml
 packages/Zlib.Portable.Signed.1.11.0/Zlib.Portable.Signed.1.11.0.nupkg
-Setups/Advantage Outlook Addin Setup - Office 2007 - 32/Advantage Outlook Addin Setup - Office 2007 - 32.vdproj
-Setups/Advantage Outlook Addin Setup - Office 2007 - 32/Advantage Outlook Addin Setup - Office 2007 - 32.vdproj.vspscc
-Setups/Advantage Outlook Addin Setup - Office 2007 - 32/mssccprj.scc
-Setups/Advantage Outlook Addin Setup - Office 2007 - 64/Advantage Outlook Addin Setup - Office 2007 - 64.vdproj
-Setups/Advantage Outlook Addin Setup - Office 2007 - 64/Advantage Outlook Addin Setup - Office 2007 - 64.vdproj.vspscc
-Setups/Advantage Outlook Addin Setup - Office 2007 - 64/mssccprj.scc
-Setups/Advantage Outlook Addin Setup - Office 2010 - 32/Advantage Outlook Addin Setup - Office 2010 - 32.vdproj
-Setups/Advantage Outlook Addin Setup - Office 2010 - 32/Advantage Outlook Addin Setup - Office 2010 - 32.vdproj.vspscc
-Setups/Advantage Outlook Addin Setup - Office 2010 - 32/mssccprj.scc
-Setups/Advantage Outlook Addin Setup - Office 2010 - 64/Advantage Outlook Addin Setup - Office 2010 - 64.vdproj
-Setups/Advantage Outlook Addin Setup - Office 2010 - 64/Advantage Outlook Addin Setup - Office 2010 - 64.vdproj.vspscc
-Setups/Advantage Outlook Addin Setup - Office 2010 - 64/mssccprj.scc
-Setups/Advantage Outlook Addin Setup/Advantage Outlook Addin Setup.vdproj
-Setups/Advantage Outlook Addin Setup/mssccprj.scc
-Setups/Advantage Services Setup 32/Advantage Services Setup 32.vdproj
-Setups/Advantage Services Setup 32/Advantage Services Setup 32.vdproj.vspscc
-Setups/Advantage Services Setup 32/mssccprj.scc
-Setups/Advantage Services Setup 32/Setup.bmp
-Setups/Advantage Services Setup 64/Advantage Services Setup 64.vdproj
-Setups/Advantage Services Setup 64/mssccprj.scc
-Setups/Advantage Services Setup 64/Setup.bmp
-Setups/Advantage Services Setup/Advantage Services Setup.vdproj
-Setups/Advantage Services Setup/mssccprj.scc
-Setups/Advantage Services Setup/Setup.bmp
-Setups/Nielsen Services Setup/Nielsen Services Setup.vdproj
-Setups/Nielsen Services Setup/Setup.bmp
 Webvantage Configurator/mssccprj.scc
 Webvantage Configurator/Web.config.bak
 Webvantage/ActiveReportsAssembly/ActiveReportsAssembly.vbproj.vspscc
@@ -9423,3 +9396,6 @@ Webvantage/Webvantage/Webvantage.vbproj.vspscc
 *.lock
 *.ide
 *.dbmdl
+Setups/Advantage Services Setup 32/mssccprj.scc
+Setups/Output/Setup Files/Advantage Services/Advantage Services Setup.msi
+Setups/Advantage Services Setup 32/Advantage Services Setup 32.vdproj.vspscc

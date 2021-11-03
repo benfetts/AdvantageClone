@@ -409,6 +409,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_import_delete_batch.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_invoice_detail_pmts_report.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_ap_media_reconcile.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

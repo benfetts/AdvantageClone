@@ -4567,17 +4567,36 @@
 
             Dim AccountsPayableInvoiceDetailPaymentsReport As Generic.List(Of AdvantageFramework.Database.Classes.AccountsPayableInvoiceDetailPaymentsReport) = Nothing
 
+            Dim SelectedVendors As Generic.List(Of String) = Nothing
+
             Dim SqlParameterStartDate As System.Data.SqlClient.SqlParameter = Nothing
             Dim SqlParameterEndDate As System.Data.SqlClient.SqlParameter = Nothing
+            Dim SqlParameterVendorist As System.Data.SqlClient.SqlParameter = Nothing
 
             Try
-
                 SqlParameterStartDate = New System.Data.SqlClient.SqlParameter("@payment_date_from", SqlDbType.VarChar) With {.Value = ParameterDictionary("StartingDate")}
                 SqlParameterEndDate = New System.Data.SqlClient.SqlParameter("@payment_date_to", SqlDbType.VarChar) With {.Value = ParameterDictionary("EndingDate")}
+                SqlParameterVendorist = New System.Data.SqlClient.SqlParameter("@VENDOR_LIST", SqlDbType.VarChar)
+
+                SelectedVendors = ParameterDictionary("SelectedVendors")
+
+                If SelectedVendors Is Nothing Then
+
+                    SqlParameterVendorist.Value = System.DBNull.Value
+
+                ElseIf SelectedVendors.Count = 0 Then
+
+                    SqlParameterVendorist.Value = System.DBNull.Value
+
+                Else
+
+                    SqlParameterVendorist.Value = Join(SelectedVendors.ToArray, ",")
+
+                End If
 
                 AccountsPayableInvoiceDetailPaymentsReport = DbContext.Database.SqlQuery(Of AdvantageFramework.Database.Classes.AccountsPayableInvoiceDetailPaymentsReport) _
-                    ("exec advsp_ap_invoice_detail_pmts_report @payment_date_from, @payment_date_to",
-                     SqlParameterStartDate, SqlParameterEndDate).ToList
+                    ("exec advsp_ap_invoice_detail_pmts_report @payment_date_from, @payment_date_to, @VENDOR_LIST",
+                     SqlParameterStartDate, SqlParameterEndDate, SqlParameterVendorist).ToList
 
             Catch ex As Exception
                 AccountsPayableInvoiceDetailPaymentsReport = Nothing

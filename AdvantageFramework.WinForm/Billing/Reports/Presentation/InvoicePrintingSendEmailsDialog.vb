@@ -33,14 +33,14 @@
         Protected _CcRecipients As Generic.List(Of AdvantageFramework.Email.Classes.RecipientEmailAddress) = Nothing
         Protected _BccRecipients As Generic.List(Of AdvantageFramework.Email.Classes.RecipientEmailAddress) = Nothing
         Protected _SendToDocumentManager As Boolean = False
-		Private _EmailSettings As AdvantageFramework.InvoicePrinting.Classes.EmailSettings = Nothing
-		Protected _ToFileOption As AdvantageFramework.InvoicePrinting.ToFileOptions = InvoicePrinting.Methods.ToFileOptions.PDF
+        Private _EmailSettings As AdvantageFramework.InvoicePrinting.Classes.EmailSettings = Nothing
+        Protected _ToFileOption As AdvantageFramework.InvoicePrinting.ToFileOptions = InvoicePrinting.Methods.ToFileOptions.PDF
 
 #End Region
 
 #Region " Properties "
 
-		Public ReadOnly Property ToRecipients As Generic.List(Of AdvantageFramework.Email.Classes.RecipientEmailAddress)
+        Public ReadOnly Property ToRecipients As Generic.List(Of AdvantageFramework.Email.Classes.RecipientEmailAddress)
             Get
                 ToRecipients = _ToRecipients
             End Get
@@ -70,16 +70,16 @@
 
 #Region " Methods "
 
-		Protected Sub New(ToFileOption As AdvantageFramework.InvoicePrinting.ToFileOptions)
+        Protected Sub New(ToFileOption As AdvantageFramework.InvoicePrinting.ToFileOptions)
 
-			' This call is required by the Windows Form Designer.
-			InitializeComponent()
+            ' This call is required by the Windows Form Designer.
+            InitializeComponent()
 
-			' Add any initialization after the InitializeComponent() call.
-			_ToFileOption = ToFileOption
+            ' Add any initialization after the InitializeComponent() call.
+            _ToFileOption = ToFileOption
 
-		End Sub
-		Protected Sub AddRecipientsToGrid(ByVal DataGridView As AdvantageFramework.WinForm.Presentation.Controls.DataGridView)
+        End Sub
+        Protected Sub AddRecipientsToGrid(ByVal DataGridView As AdvantageFramework.WinForm.Presentation.Controls.DataGridView)
 
             Dim Contacts As IEnumerable(Of Object) = Nothing
             Dim RecipientSource As InvoicePrintingSendEmailsDialog.RecipientSource = Nothing
@@ -263,28 +263,28 @@
 
 #Region "  Show Form Methods "
 
-		Public Shared Function ShowFormDialog(ByRef EmailSettings As AdvantageFramework.InvoicePrinting.Classes.EmailSettings, ToFileOption As AdvantageFramework.InvoicePrinting.ToFileOptions) As System.Windows.Forms.DialogResult
+        Public Shared Function ShowFormDialog(ByRef EmailSettings As AdvantageFramework.InvoicePrinting.Classes.EmailSettings, ToFileOption As AdvantageFramework.InvoicePrinting.ToFileOptions) As System.Windows.Forms.DialogResult
 
-			'objects
-			Dim InvoicePrintingSendEmailsDialog As InvoicePrintingSendEmailsDialog = Nothing
+            'objects
+            Dim InvoicePrintingSendEmailsDialog As InvoicePrintingSendEmailsDialog = Nothing
 
-			InvoicePrintingSendEmailsDialog = New InvoicePrintingSendEmailsDialog(ToFileOption)
+            InvoicePrintingSendEmailsDialog = New InvoicePrintingSendEmailsDialog(ToFileOption)
 
-			ShowFormDialog = InvoicePrintingSendEmailsDialog.ShowDialog()
+            ShowFormDialog = InvoicePrintingSendEmailsDialog.ShowDialog()
 
-			If ShowFormDialog = Windows.Forms.DialogResult.OK Then
+            If ShowFormDialog = Windows.Forms.DialogResult.OK Then
 
-				EmailSettings = InvoicePrintingSendEmailsDialog.EmailSettings
+                EmailSettings = InvoicePrintingSendEmailsDialog.EmailSettings
 
-			End If
+            End If
 
-		End Function
+        End Function
 
 #End Region
 
 #Region "  Form Event Handlers "
 
-		Protected Sub InvoicePrintingSendEmailsDialog_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        Protected Sub InvoicePrintingSendEmailsDialog_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
             'objects
             Dim PackageType As AdvantageFramework.InvoicePrinting.PackageTypes = AdvantageFramework.InvoicePrinting.PackageTypes.None
@@ -315,19 +315,19 @@
                     ButtonItemPackageOptions_OneZipPerInvoice.Checked = False
                     ButtonItemPackageOptions_SinglePDF.Checked = AdvantageFramework.InvoicePrinting.LoadDefaultSinglePDF(DataContext)
 
-				ElseIf PackageType = InvoicePrinting.Methods.PackageTypes.OneZipPerInvoice Then
+                ElseIf PackageType = InvoicePrinting.Methods.PackageTypes.OneZipPerInvoice Then
 
                     ButtonItemPackageOptions_OneZip.Checked = False
                     ButtonItemPackageOptions_OneZipPerInvoice.Checked = True
                     ButtonItemPackageOptions_SinglePDF.Checked = False
 
-				ElseIf PackageType = InvoicePrinting.Methods.PackageTypes.None Then
+                ElseIf PackageType = InvoicePrinting.Methods.PackageTypes.None Then
 
                     ButtonItemPackageOptions_OneZip.Checked = False
                     ButtonItemPackageOptions_OneZipPerInvoice.Checked = False
                     ButtonItemPackageOptions_SinglePDF.Checked = AdvantageFramework.InvoicePrinting.LoadDefaultSinglePDF(DataContext)
 
-				End If
+                End If
 
                 If ButtonItemPackageOptions_SinglePDF.Checked Then
 
@@ -342,17 +342,17 @@
 
             End Using
 
-			If _ToFileOption = InvoicePrinting.Methods.ToFileOptions.PDF Then
+            If _ToFileOption = InvoicePrinting.Methods.ToFileOptions.PDF Then
 
-				ButtonItemPackageOptions_SinglePDF.Visible = True
+                ButtonItemPackageOptions_SinglePDF.Visible = True
 
-			Else
+            Else
 
-				ButtonItemPackageOptions_SinglePDF.Visible = False
+                ButtonItemPackageOptions_SinglePDF.Visible = False
 
-			End If
+            End If
 
-			Me.ShowUnsavedChangesOnFormClosing = False
+            Me.ShowUnsavedChangesOnFormClosing = False
             Me.ByPassUserEntryChanged = True
 
             _ToRecipients = New Generic.List(Of AdvantageFramework.Email.Classes.RecipientEmailAddress)
@@ -415,23 +415,23 @@
                                     AdvantageFramework.InvoicePrinting.SaveDefaultUploadDocumentManager(DataContext, ButtonItemOptions_SendToDocumentManager.Checked)
                                     AdvantageFramework.InvoicePrinting.SaveDefaultIncludeCoverSheet(DataContext, ButtonItemOptions_IncludeCoverSheet.Checked)
 
-									If ButtonItemPackageOptions_OneZip.Checked Then
+                                    If ButtonItemPackageOptions_OneZip.Checked Then
 
-										AdvantageFramework.InvoicePrinting.SaveDefaultPackageType(DataContext, InvoicePrinting.PackageTypes.OneZip)
+                                        AdvantageFramework.InvoicePrinting.SaveDefaultPackageType(DataContext, InvoicePrinting.PackageTypes.OneZip)
 
-									ElseIf ButtonItemPackageOptions_OneZipPerInvoice.Checked Then
+                                    ElseIf ButtonItemPackageOptions_OneZipPerInvoice.Checked Then
 
-										AdvantageFramework.InvoicePrinting.SaveDefaultPackageType(DataContext, InvoicePrinting.PackageTypes.OneZipPerInvoice)
+                                        AdvantageFramework.InvoicePrinting.SaveDefaultPackageType(DataContext, InvoicePrinting.PackageTypes.OneZipPerInvoice)
 
-									Else
+                                    Else
 
-										AdvantageFramework.InvoicePrinting.SaveDefaultPackageType(DataContext, InvoicePrinting.PackageTypes.None)
+                                        AdvantageFramework.InvoicePrinting.SaveDefaultPackageType(DataContext, InvoicePrinting.PackageTypes.None)
 
-									End If
+                                    End If
 
-									AdvantageFramework.InvoicePrinting.SaveDefaultSinglePDF(DataContext, ButtonItemPackageOptions_SinglePDF.Checked)
+                                    AdvantageFramework.InvoicePrinting.SaveDefaultSinglePDF(DataContext, ButtonItemPackageOptions_SinglePDF.Checked)
 
-								End Using
+                                End Using
 
                             End If
 
@@ -447,23 +447,31 @@
                         _EmailSettings.IncludeAPDocuments = CheckBoxItemInclude_APDocuments.Checked
                         _EmailSettings.IncludeExpenseReportReceipts = CheckBoxItemInclude_ExpenseDocuments.Checked
 
-						If ButtonItemPackageOptions_OneZip.Checked Then
+                        If ButtonItemPackageOptions_OneZip.Checked Then
 
-							_EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZip
+                            _EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZip
 
-						ElseIf ButtonItemPackageOptions_OneZipPerInvoice.Checked Then
+                        ElseIf ButtonItemPackageOptions_OneZipPerInvoice.Checked Then
 
-							_EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZipPerInvoice
+                            _EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZipPerInvoice
 
-						Else
+                        Else
 
-							_EmailSettings.PackageType = InvoicePrinting.PackageTypes.None
+                            _EmailSettings.PackageType = InvoicePrinting.PackageTypes.None
 
-						End If
+                        End If
 
-						_EmailSettings.SinglePDF = ButtonItemPackageOptions_SinglePDF.Checked
+                        _EmailSettings.SinglePDF = ButtonItemPackageOptions_SinglePDF.Checked
 
-						_EmailSettings.Subject = TextBoxForm_Subject.Text
+                        Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                            _EmailSettings.SenderName = AdvantageFramework.InvoicePrinting.LoadDefaultSenderName(DataContext)
+                            _EmailSettings.FromEmail = AdvantageFramework.InvoicePrinting.LoadDefaultFromEmail(DataContext)
+                            _EmailSettings.ReplyTo = AdvantageFramework.InvoicePrinting.LoadDefaultReplyTo(DataContext)
+
+                        End Using
+
+                        _EmailSettings.Subject = TextBoxForm_Subject.Text
                         _EmailSettings.Body = TextBoxForm_Body.Text
 
                         Me.DialogResult = Windows.Forms.DialogResult.OK
@@ -628,9 +636,9 @@
 
                 End If
 
-				AdvantageFramework.InvoicePrinting.SaveDefaultSinglePDF(DataContext, ButtonItemPackageOptions_SinglePDF.Checked)
+                AdvantageFramework.InvoicePrinting.SaveDefaultSinglePDF(DataContext, ButtonItemPackageOptions_SinglePDF.Checked)
 
-			End Using
+            End Using
 
             ButtonItemDefaultEmailSettings_Save.Enabled = False
 
@@ -639,36 +647,36 @@
 
             If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.FormActions.None Then
 
-				If ButtonItemPackageOptions_OneZip.Checked Then
+                If ButtonItemPackageOptions_OneZip.Checked Then
 
                     ButtonItemPackageOptions_OneZipPerInvoice.Checked = False
 
                 End If
 
-				ButtonItemDefaultEmailSettings_Save.Enabled = True
+                ButtonItemDefaultEmailSettings_Save.Enabled = True
 
             End If
 
         End Sub
-		Private Sub ButtonItemPackageOptions_OneZipPerInvoice_CheckedChanged(sender As Object, e As EventArgs) Handles ButtonItemPackageOptions_OneZipPerInvoice.CheckedChanged
+        Private Sub ButtonItemPackageOptions_OneZipPerInvoice_CheckedChanged(sender As Object, e As EventArgs) Handles ButtonItemPackageOptions_OneZipPerInvoice.CheckedChanged
 
-			If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.FormActions.None Then
+            If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.FormActions.None Then
 
-				If ButtonItemPackageOptions_OneZipPerInvoice.Checked Then
+                If ButtonItemPackageOptions_OneZipPerInvoice.Checked Then
 
                     ButtonItemPackageOptions_OneZip.Checked = False
                     ButtonItemPackageOptions_SinglePDF.Checked = False
 
                 End If
 
-				ButtonItemDefaultEmailSettings_Save.Enabled = True
+                ButtonItemDefaultEmailSettings_Save.Enabled = True
 
-			End If
+            End If
 
-		End Sub
-		Private Sub ButtonItemPackageOptions_SinglePDF_CheckedChanged(sender As Object, e As EventArgs) Handles ButtonItemPackageOptions_SinglePDF.CheckedChanged
+        End Sub
+        Private Sub ButtonItemPackageOptions_SinglePDF_CheckedChanged(sender As Object, e As EventArgs) Handles ButtonItemPackageOptions_SinglePDF.CheckedChanged
 
-			If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.FormActions.None Then
+            If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.FormActions.None Then
 
                 If ButtonItemPackageOptions_SinglePDF.Checked Then
 
@@ -684,14 +692,14 @@
 
                 ButtonItemDefaultEmailSettings_Save.Enabled = True
 
-			End If
+            End If
 
-		End Sub
-
-#End Region
+        End Sub
 
 #End Region
 
-	End Class
+#End Region
+
+    End Class
 
 End Namespace

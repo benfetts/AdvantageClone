@@ -63,155 +63,161 @@
 			End Try
 
 		End Function
-		Private Function SendEmail(SMTP As MailBee.SmtpMail.Smtp, [To] As String, [CC] As String, Subject As String, Body As String, Priority As Integer,
-								  Attachments As Generic.List(Of AdvantageFramework.Email.Classes.Attachment), ByRef SendingEmailStatus As AdvantageFramework.Email.SendingEmailStatus,
-								  Agency As AdvantageFramework.Database.Entities.Agency, SenderName As String, [From] As String, ByRef ReplyTo As String, MaxEmailSize As Long) As Boolean
+        Private Function SendEmail(SMTP As MailBee.SmtpMail.Smtp, [To] As String, [CC] As String, [Bcc] As String, Subject As String, Body As String, Priority As Integer,
+                                  Attachments As Generic.List(Of AdvantageFramework.Email.Classes.Attachment), ByRef SendingEmailStatus As AdvantageFramework.Email.SendingEmailStatus,
+                                  Agency As AdvantageFramework.Database.Entities.Agency, SenderName As String, [From] As String, ByRef ReplyTo As String, MaxEmailSize As Long) As Boolean
 
-			'objects
-			Dim EmailSent As Boolean = False
-			Dim AttachmentsAdded As Boolean = True
-			Dim HasAttachment As Boolean = False
-			Dim Impersonating As Boolean = False
-			Dim DecrpytedPassword As String = ""
+            'objects
+            Dim EmailSent As Boolean = False
+            Dim AttachmentsAdded As Boolean = True
+            Dim HasAttachment As Boolean = False
+            Dim Impersonating As Boolean = False
+            Dim DecrpytedPassword As String = ""
 
-			Try
+            Try
 
-				SMTP.ResetMessage()
+                SMTP.ResetMessage()
 
-				SMTP.Message.From.AsString = From
+                SMTP.Message.From.AsString = From
 
-				If String.IsNullOrWhiteSpace(SenderName) = False Then
+                If String.IsNullOrWhiteSpace(SenderName) = False Then
 
-					SMTP.Message.From.DisplayName = SenderName
+                    SMTP.Message.From.DisplayName = SenderName
 
-				End If
+                End If
 
-				SMTP.Message.ReplyTo.AsString = ReplyTo
+                SMTP.Message.ReplyTo.AsString = ReplyTo
 
-				SMTP.Message.To.AsString = [To]
+                SMTP.Message.To.AsString = [To]
 
-				If String.IsNullOrWhiteSpace([CC]) = False AndAlso [CC].Length > 0 Then
+                If String.IsNullOrWhiteSpace([CC]) = False AndAlso [CC].Length > 0 Then
 
-					SMTP.Message.Cc.AsString = [CC]
+                    SMTP.Message.Cc.AsString = [CC]
 
-				End If
+                End If
 
-				SMTP.Message.Subject = Subject
+                If String.IsNullOrWhiteSpace([Bcc]) = False AndAlso [Bcc].Length > 0 Then
 
-				SMTP.Message.BodyPlainText = Body
+                    SMTP.Message.Bcc.AsString = [Bcc]
 
-				AdvantageFramework.Email.SetPriority(SMTP, Priority)
+                End If
 
-				If Attachments IsNot Nothing AndAlso Attachments.Any Then
+                SMTP.Message.Subject = Subject
 
-					HasAttachment = True
+                SMTP.Message.BodyPlainText = Body
+
+                AdvantageFramework.Email.SetPriority(SMTP, Priority)
+
+                If Attachments IsNot Nothing AndAlso Attachments.Any Then
+
+                    HasAttachment = True
 
                     DecrpytedPassword = AdvantageFramework.Security.Encryption.Decrypt(Agency.FileSystemPassword)
 
                     If Agency.FileSystemUserName <> "" AndAlso Agency.FileSystemDomain <> "" AndAlso DecrpytedPassword <> "" Then
 
-						AdvantageFramework.Security.Impersonate.BeginImpersonation(Agency.FileSystemUserName, Agency.FileSystemDomain, DecrpytedPassword)
-						Impersonating = True
+                        AdvantageFramework.Security.Impersonate.BeginImpersonation(Agency.FileSystemUserName, Agency.FileSystemDomain, DecrpytedPassword)
+                        Impersonating = True
 
-					End If
+                    End If
 
-					For Each Attachment In Attachments
+                    For Each Attachment In Attachments
 
-						If String.IsNullOrEmpty(Attachment.File) = False Then
+                        If String.IsNullOrEmpty(Attachment.File) = False Then
 
-							Try
+                            Try
 
-								If String.IsNullOrWhiteSpace(Attachment.AttachmentName) = False Then
+                                If String.IsNullOrWhiteSpace(Attachment.AttachmentName) = False Then
 
-									If SMTP.Message.Attachments.Add(Attachment.File, Attachment.AttachmentName, Nothing) = False Then
+                                    If SMTP.Message.Attachments.Add(Attachment.File, Attachment.AttachmentName, Nothing) = False Then
 
-										AttachmentsAdded = False
+                                        AttachmentsAdded = False
 
-									End If
+                                    End If
 
-								Else
+                                Else
 
-									If SMTP.AddAttachment(Attachment.File) = False Then
+                                    If SMTP.AddAttachment(Attachment.File) = False Then
 
-										AttachmentsAdded = False
+                                        AttachmentsAdded = False
 
-									End If
+                                    End If
 
-								End If
+                                End If
 
-							Catch ex As Exception
-								AttachmentsAdded = False
-							End Try
+                            Catch ex As Exception
+                                AttachmentsAdded = False
+                            End Try
 
-						ElseIf Attachment.FileBytes IsNot Nothing Then
+                        ElseIf Attachment.FileBytes IsNot Nothing Then
 
-							Try
+                            Try
 
-								SMTP.Message.Attachments.Add(Attachment.FileBytes,
-																Attachment.AttachmentName,
-																Nothing, Nothing, Nothing, MailBee.Mime.NewAttachmentOptions.ReplaceIfExists, MailBee.Mime.MailTransferEncoding.Base64)
+                                SMTP.Message.Attachments.Add(Attachment.FileBytes,
+                                                                Attachment.AttachmentName,
+                                                                Nothing, Nothing, Nothing, MailBee.Mime.NewAttachmentOptions.ReplaceIfExists, MailBee.Mime.MailTransferEncoding.Base64)
 
-							Catch ex As Exception
-								AttachmentsAdded = False
-							End Try
+                            Catch ex As Exception
+                                AttachmentsAdded = False
+                            End Try
 
-						Else
+                        Else
 
-							AttachmentsAdded = False
+                            AttachmentsAdded = False
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-					AdvantageFramework.Email.CheckEmailSize(SMTP, MaxEmailSize, AttachmentsAdded)
+                    AdvantageFramework.Email.CheckEmailSize(SMTP, MaxEmailSize, AttachmentsAdded)
 
-					If Impersonating = True Then
+                    If Impersonating = True Then
 
-						AdvantageFramework.Security.Impersonate.EndImpersonation()
+                        AdvantageFramework.Security.Impersonate.EndImpersonation()
 
-					End If
+                    End If
 
-				Else
+                Else
 
-					AttachmentsAdded = False
+                    AttachmentsAdded = False
 
-				End If
+                End If
 
-				If SMTP.Send() Then
+                If SMTP.Send() Then
 
-					If HasAttachment Then
+                    If HasAttachment Then
 
-						If AttachmentsAdded Then
+                        If AttachmentsAdded Then
 
-							SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.EmailSent
+                            SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.EmailSent
 
-						Else
+                        Else
 
-							SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.EmailSentWithoutAttachment
+                            SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.EmailSentWithoutAttachment
 
-						End If
+                        End If
 
-					Else
+                    Else
 
-						SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.EmailSent
+                        SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.EmailSent
 
-					End If
+                    End If
 
-					EmailSent = True
+                    EmailSent = True
 
-				Else
+                Else
 
-					SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.FailedToSend
+                    SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.FailedToSend
 
-				End If
+                End If
 
-			Catch ex As Exception
-				EmailSent = False
-			End Try
+            Catch ex As Exception
+                EmailSent = False
+            End Try
 
-			SendEmail = EmailSent
+            SendEmail = EmailSent
 
-		End Function
+        End Function
         Public Sub PrintInvoices(ParentForm As System.Windows.Forms.Form, Session As AdvantageFramework.Security.Session, AccountReceivableInvoices As Generic.List(Of AdvantageFramework.InvoicePrinting.Classes.AccountReceivableInvoice),
                                  InvoiceFormatType As AdvantageFramework.InvoicePrinting.InvoiceFormatTypes, IsDraft As Boolean, UserLookAndFeel As DevExpress.LookAndFeel.UserLookAndFeel,
                                  InvoicePrintingPageSetting As AdvantageFramework.Billing.Reports.Presentation.Classes.InvoicePrintingPageSetting)
@@ -970,6 +976,10 @@
 			Dim DocumentIndex As Integer = 0
             Dim CoversheetLayout As AdvantageFramework.InvoicePrinting.CoversheetLayouts = AdvantageFramework.InvoicePrinting.CoversheetLayouts.Default
             Dim OverrideInvoiceFilename As AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename = AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default
+            Dim SMTP As MailBee.SmtpMail.Smtp = Nothing
+            Dim [From] As String = ""
+            Dim ReplyTo As String = ""
+            Dim MaxEmailSize As Long = 0
 
             If InvoicePrintingSendEmailsDialog.ShowFormDialog(EmailSettings, ToFileOption) = Windows.Forms.DialogResult.OK AndAlso EmailSettings IsNot Nothing Then
 
@@ -995,612 +1005,381 @@
 
 					End If
 
-					Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+                    Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-						If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext) Then
+                        Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-							AgencyImportPath = AdvantageFramework.Database.Procedures.Agency.LoadImportPath(DbContext)
+                            If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext) Then
 
-							AgencyImportPath = AdvantageFramework.StringUtilities.AppendTrailingCharacter(AgencyImportPath.Trim, "\")
+                                AgencyImportPath = AdvantageFramework.Database.Procedures.Agency.LoadImportPath(DbContext)
 
-							If My.Computer.FileSystem.DirectoryExists(AgencyImportPath & "Reports\") = False Then
+                                AgencyImportPath = AdvantageFramework.StringUtilities.AppendTrailingCharacter(AgencyImportPath.Trim, "\")
 
-								My.Computer.FileSystem.CreateDirectory(AgencyImportPath & "Reports\")
-								AgencyImportPath = AgencyImportPath & "Reports\"
+                                If My.Computer.FileSystem.DirectoryExists(AgencyImportPath & "Reports\") = False Then
 
-							End If
+                                    My.Computer.FileSystem.CreateDirectory(AgencyImportPath & "Reports\")
+                                    AgencyImportPath = AgencyImportPath & "Reports\"
 
-						Else
+                                End If
 
-							Try
-
-								ReportExportPath = AdvantageFramework.Agency.LoadMachineAccessSettings(AdvantageFramework.Agency.LocalMachineAccess.AccessTmpPath)
-
-							Catch ex As Exception
-								ReportExportPath = ""
-							End Try
-
-							If String.IsNullOrWhiteSpace(ReportExportPath) Then
-
-								ReportExportPath = AdvantageFramework.Database.Procedures.Agency.LoadReportTempPath(DbContext)
-
-							End If
-
-							If My.Computer.FileSystem.DirectoryExists(ReportExportPath) Then
-
-								AgencyImportPath = ReportExportPath
-
-							End If
-
-						End If
-
-						If My.Computer.FileSystem.DirectoryExists(AgencyImportPath) Then
-
-							InvoicePrintingSettings = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingSettings(DbContext, InvoiceFormatType).ToList
-							InvoicePrintingMediaSettings = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingMediaSettings(DbContext, InvoiceFormatType).ToList
-
-							AgencyInvoicePrintingMediaSetting = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingMediaSettings(DbContext, InvoicePrinting.InvoiceFormatTypes.Agency).FirstOrDefault
-							OneTimeInvoicePrintingMediaSetting = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingMediaSettings(DbContext, InvoicePrinting.InvoiceFormatTypes.OneTime).FirstOrDefault
-
-							InvoicePrintingComboSettings = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingComboSettings(DbContext, InvoiceFormatType).ToList
-
-                            Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+                            Else
 
                                 Try
 
-                                    CoversheetLayout = AdvantageFramework.InvoicePrinting.LoadCoversheetLayout(DataContext)
+                                    ReportExportPath = AdvantageFramework.Agency.LoadMachineAccessSettings(AdvantageFramework.Agency.LocalMachineAccess.AccessTmpPath)
 
                                 Catch ex As Exception
-                                    CoversheetLayout = AdvantageFramework.InvoicePrinting.CoversheetLayouts.Default
+                                    ReportExportPath = ""
                                 End Try
+
+                                If String.IsNullOrWhiteSpace(ReportExportPath) Then
+
+                                    ReportExportPath = AdvantageFramework.Database.Procedures.Agency.LoadReportTempPath(DbContext)
+
+                                End If
+
+                                If My.Computer.FileSystem.DirectoryExists(ReportExportPath) Then
+
+                                    AgencyImportPath = ReportExportPath
+
+                                End If
+
+                            End If
+
+                            If My.Computer.FileSystem.DirectoryExists(AgencyImportPath) Then
+
+                                Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+
+                                SMTP = CreateSMTP(DbContext, SecurityDbContext, Agency, From, ReplyTo)
+
+                                If String.IsNullOrWhiteSpace(EmailSettings.FromEmail) = False Then
+
+                                    From = EmailSettings.FromEmail
+
+                                End If
+
+                                If String.IsNullOrWhiteSpace(EmailSettings.ReplyTo) = False Then
+
+                                    ReplyTo = EmailSettings.ReplyTo
+
+                                End If
+
+                                MaxEmailSize = AdvantageFramework.Email.LoadMaxEmailSize(DbContext)
+
+                                InvoicePrintingSettings = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingSettings(DbContext, InvoiceFormatType).ToList
+                                InvoicePrintingMediaSettings = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingMediaSettings(DbContext, InvoiceFormatType).ToList
+
+                                AgencyInvoicePrintingMediaSetting = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingMediaSettings(DbContext, InvoicePrinting.InvoiceFormatTypes.Agency).FirstOrDefault
+                                OneTimeInvoicePrintingMediaSetting = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingMediaSettings(DbContext, InvoicePrinting.InvoiceFormatTypes.OneTime).FirstOrDefault
+
+                                InvoicePrintingComboSettings = AdvantageFramework.InvoicePrinting.LoadInvoicePrintingComboSettings(DbContext, InvoiceFormatType).ToList
+
+                                Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                                    Try
+
+                                        CoversheetLayout = AdvantageFramework.InvoicePrinting.LoadCoversheetLayout(DataContext)
+
+                                    Catch ex As Exception
+                                        CoversheetLayout = AdvantageFramework.InvoicePrinting.CoversheetLayouts.Default
+                                    End Try
+
+                                    Try
+
+                                        OverrideInvoiceFilename = AdvantageFramework.InvoicePrinting.LoadOverrideInvoiceFilename(DataContext)
+
+                                    Catch ex As Exception
+                                        OverrideInvoiceFilename = AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default
+                                    End Try
+
+                                End Using
 
                                 Try
 
-                                    OverrideInvoiceFilename = AdvantageFramework.InvoicePrinting.LoadOverrideInvoiceFilename(DataContext)
+                                    ClientCodes = AccountReceivableInvoices.Select(Function(ARI) ARI.ClientCode).Distinct.ToArray
 
                                 Catch ex As Exception
-                                    OverrideInvoiceFilename = AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default
+                                    ClientCodes = Nothing
                                 End Try
 
-                            End Using
+                                If ClientCodes IsNot Nothing AndAlso ClientCodes.Count > 0 Then
 
-                            Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+                                    Attachments = New Generic.List(Of AdvantageFramework.Email.Classes.Attachment)
 
-							Try
+                                    For Each ClientCode In ClientCodes
 
-								ClientCodes = AccountReceivableInvoices.Select(Function(ARI) ARI.ClientCode).Distinct.ToArray
+                                        ClientAccountReceivableInvoices = AccountReceivableInvoices.Where(Function(Entity) Entity.ClientCode = ClientCode).ToList
 
-							Catch ex As Exception
-								ClientCodes = Nothing
-							End Try
+                                        If EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZip Then
 
-							If ClientCodes IsNot Nothing AndAlso ClientCodes.Count > 0 Then
+                                            ZipFile = New Ionic.Zip.ZipFile
 
-								Attachments = New Generic.List(Of AdvantageFramework.Email.Classes.Attachment)
+                                            If EmailSettings.SinglePDF Then
 
-								For Each ClientCode In ClientCodes
+                                                DocumentList = Nothing
+                                                InvoicePrintingMediaSetting = Nothing
+                                                InvoicePrintingSetting = Nothing
+                                                InvoicePrintingComboSetting = Nothing
+                                                Report = Nothing
+                                                BackupReport = Nothing
+                                                DefaultFileName = ""
+                                                DefaultBackupFileName = ""
+                                                ZipFileName = ""
+                                                IsCustomReport = False
+                                                MediaReport = Nothing
+                                                MediaDocumentList = Nothing
 
-									ClientAccountReceivableInvoices = AccountReceivableInvoices.Where(Function(Entity) Entity.ClientCode = ClientCode).ToList
+                                                If EmailSettings.IncludeCoverSheet Then
 
-									If EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZip Then
+                                                    CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings, InvoicePrintingMediaSettings,
+                                                                                                                             InvoicePrintingComboSettings, InvoiceFormatType, IsDraft, CoversheetLayout)
 
-										ZipFile = New Ionic.Zip.ZipFile
+                                                    If CoverSheetReport IsNot Nothing Then
 
-										If EmailSettings.SinglePDF Then
-
-											DocumentList = Nothing
-											InvoicePrintingMediaSetting = Nothing
-											InvoicePrintingSetting = Nothing
-											InvoicePrintingComboSetting = Nothing
-											Report = Nothing
-											BackupReport = Nothing
-											DefaultFileName = ""
-											DefaultBackupFileName = ""
-											ZipFileName = ""
-											IsCustomReport = False
-											MediaReport = Nothing
-											MediaDocumentList = Nothing
-
-											If EmailSettings.IncludeCoverSheet Then
-
-                                                CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings, InvoicePrintingMediaSettings,
-                                                                                                                         InvoicePrintingComboSettings, InvoiceFormatType, IsDraft, CoversheetLayout)
-
-                                                If CoverSheetReport IsNot Nothing Then
-
-                                                    AddToZipFile(Agency, ToFileOption, "", Nothing, "", Nothing, "!" & ClientCode & " CoverSheet", CoverSheetReport, Nothing, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
-
-                                                End If
-
-											End If
-
-											If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
-
-												InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
-												InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
-												InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
-
-											Else
-
-												InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
-												InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
-												InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
-
-											End If
-
-											PackageToSingleFile(Session, DbContext, ToFileOption, EmailSettings, ClientAccountReceivableInvoices,
-																InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting,
-																OneTimeInvoicePrintingMediaSetting, InvoicePrintingComboSetting, Report, BackupReport,
-																DocumentList, MediaReport, MediaDocumentList, IsDraft)
-
-											If Report IsNot Nothing Then
-
-												DefaultFileName = CreateSingleFileName(ClientCode, False, False)
-
-												If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
-
-													For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
-
-                                                        ExportReport(Session, Report, CreateSingleFileName(ClientCode, False, False),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager,
-                                                                     False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
-
-                                                    Next
-
-												End If
-
-											End If
-
-											If BackupReport IsNot Nothing Then
-
-												DefaultBackupFileName = CreateSingleFileName(ClientCode, True, False)
-
-												If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
-
-													For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
-
-                                                        ExportReport(Session, BackupReport, CreateSingleFileName(ClientCode, True, False),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True,
-                                                                     InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
-
-                                                    Next
-
-												End If
-
-											End If
-
-                                            AddToZipFile(Agency, ToFileOption, DefaultFileName, Report, DefaultBackupFileName, BackupReport, "", Nothing, DocumentList, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
-
-                                            If MediaReport IsNot Nothing Then
-
-												DefaultFileName = CreateSingleFileName(ClientCode, False, True)
-
-                                                AddToZipFile(Agency, ToFileOption, DefaultFileName, MediaReport, "", Nothing, "", Nothing, MediaDocumentList, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
-
-                                            End If
-
-										Else
-
-											If EmailSettings.IncludeCoverSheet Then
-
-                                                CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings,
-                                                                                                                         InvoicePrintingMediaSettings, InvoicePrintingComboSettings,
-                                                                                                                         InvoiceFormatType, IsDraft, CoversheetLayout)
-
-                                                If CoverSheetReport IsNot Nothing Then
-
-                                                    AddToZipFile(Agency, ToFileOption, "", Nothing, "", Nothing, "!" & ClientCode & " CoverSheet", CoverSheetReport, Nothing, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
-
-                                                End If
-
-											End If
-
-											For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
-
-												DocumentList = Nothing
-												InvoicePrintingMediaSetting = Nothing
-												InvoicePrintingSetting = Nothing
-												InvoicePrintingComboSetting = Nothing
-												Report = Nothing
-												BackupReport = Nothing
-												DefaultFileName = ""
-												DefaultBackupFileName = ""
-												ZipFileName = ""
-												IsCustomReport = False
-
-												If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
-
-													If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
-
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-
-													ElseIf AccountReceivableInvoice.RecordType = "P" Then
-
-														InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-
-													ElseIf AccountReceivableInvoice.RecordType = "C" Then
-
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-														InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-														InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-
-													End If
-
-												Else
-
-													If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
-
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
-
-													ElseIf AccountReceivableInvoice.RecordType = "P" Then
-
-														InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
-
-													ElseIf AccountReceivableInvoice.RecordType = "C" Then
-
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
-														InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
-														InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
-
-													End If
-
-												End If
-
-												If InvoicePrintingComboSetting IsNot Nothing Then
-
-													'If String.IsNullOrWhiteSpace(InvoicePrintingComboSetting.CustomFormatName) = False Then
-
-													'    IsCustomReport = True
-
-													'End If
-
-												ElseIf InvoicePrintingSetting IsNot Nothing Then
-
-													If String.IsNullOrWhiteSpace(InvoicePrintingSetting.CustomFormatName) = False Then
-
-														IsCustomReport = True
-
-													End If
-
-												ElseIf InvoicePrintingMediaSetting IsNot Nothing Then
-
-													If (AccountReceivableInvoice.RecordType = "M" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.MagazineCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "N" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.NewspaperCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "I" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.InternetCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "O" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.OutdoorCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "R" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.RadioCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "T" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.TVCustomFormatName) = False) Then
-
-														IsCustomReport = True
-
-													End If
-
-												End If
-
-												If IsCustomReport = False Then
-
-													Package(Session, DbContext, ToFileOption, EmailSettings.IncludeAPDocuments, EmailSettings.IncludeExpenseReportReceipts, AccountReceivableInvoice,
-														InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting, OneTimeInvoicePrintingMediaSetting,
-														InvoicePrintingComboSetting, Report, BackupReport, DocumentList, IsDraft)
-
-													If Report IsNot Nothing Then
-
-														DefaultFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, False)
-
-														If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
-
-                                                            ExportReport(Session, Report, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, False),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
-
-                                                        End If
-
-													End If
-
-													If BackupReport IsNot Nothing Then
-
-														DefaultBackupFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, True)
-
-														If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
-
-                                                            ExportReport(Session, BackupReport, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, True),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
-
-                                                        End If
-
-													End If
-
-                                                    AddToZipFile(Agency, ToFileOption, DefaultFileName, Report, DefaultBackupFileName, BackupReport, "", Nothing, DocumentList, ZipFile, AccountReceivableInvoice, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
-
-                                                End If
-
-											Next
-
-										End If
-
-										If ZipFile.Entries.Count > 0 Then
-
-											ZipFileName = ClientCode & " - Invoices"
-
-											Do While New System.IO.FileInfo(ZipFileName & ".zip").Exists
-
-												ZipFileName = ClientCode & " - Invoices(" & Counter & ")"
-
-												Counter = Counter + 1
-
-											Loop
-
-											ZipFileName = ZipFileName & ".zip"
-
-											ZipFile.Save(ZipFileName)
-
-											Try
-
-												ZipFile.Dispose()
-
-												ZipFile = Nothing
-
-											Catch ex As Exception
-
-											End Try
-
-											Attachments.Add(New AdvantageFramework.Email.Classes.Attachment(ZipFileName))
-
-										End If
-
-									ElseIf EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZipPerInvoice Then
-
-										ZipFileName = ""
-
-										If EmailSettings.IncludeCoverSheet Then
-
-                                            CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings,
-                                                                                                                     InvoicePrintingMediaSettings, InvoicePrintingComboSettings,
-                                                                                                                     InvoiceFormatType, IsDraft, CoversheetLayout)
-
-                                            If CoverSheetReport IsNot Nothing Then
-
-                                                AddToAttachments(ToFileOption, ClientCode & " !CoverSheet", CoverSheetReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), InvoicePrinting.OverrideInvoiceFilename.Default)
-
-                                            End If
-
-										End If
-
-										For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
-
-											DocumentList = Nothing
-											InvoicePrintingMediaSetting = Nothing
-											InvoicePrintingSetting = Nothing
-											InvoicePrintingComboSetting = Nothing
-											Report = Nothing
-											BackupReport = Nothing
-											DefaultFileName = ""
-											DefaultBackupFileName = ""
-											ZipFileName = ""
-											IsCustomReport = False
-
-											If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
-
-												If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
-
-													InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-
-												ElseIf AccountReceivableInvoice.RecordType = "P" Then
-
-													InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-
-												ElseIf AccountReceivableInvoice.RecordType = "C" Then
-
-													InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-													InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-													InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-
-												End If
-
-											Else
-
-												If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
-
-													InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
-
-												ElseIf AccountReceivableInvoice.RecordType = "P" Then
-
-													InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
-
-												ElseIf AccountReceivableInvoice.RecordType = "C" Then
-
-													InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
-													InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
-													InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
-
-												End If
-
-											End If
-
-											If InvoicePrintingComboSetting IsNot Nothing Then
-
-												'If String.IsNullOrWhiteSpace(InvoicePrintingComboSetting.CustomFormatName) = False Then
-
-												'    IsCustomReport = True
-
-												'End If
-
-											ElseIf InvoicePrintingSetting IsNot Nothing Then
-
-												If String.IsNullOrWhiteSpace(InvoicePrintingSetting.CustomFormatName) = False Then
-
-													IsCustomReport = True
-
-												End If
-
-											ElseIf InvoicePrintingMediaSetting IsNot Nothing Then
-
-												If (AccountReceivableInvoice.RecordType = "M" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.MagazineCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "N" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.NewspaperCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "I" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.InternetCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "O" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.OutdoorCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "R" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.RadioCustomFormatName) = False) OrElse
-															(AccountReceivableInvoice.RecordType = "T" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.TVCustomFormatName) = False) Then
-
-													IsCustomReport = True
-
-												End If
-
-											End If
-
-											If IsCustomReport = False Then
-
-												Package(Session, DbContext, ToFileOption, EmailSettings.IncludeAPDocuments, EmailSettings.IncludeExpenseReportReceipts, AccountReceivableInvoice,
-														InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting, OneTimeInvoicePrintingMediaSetting,
-														InvoicePrintingComboSetting, Report, BackupReport, DocumentList, IsDraft)
-
-												If Report IsNot Nothing Then
-
-													DefaultFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, False)
-
-													If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
-
-                                                        ExportReport(Session, Report, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, False),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+                                                        AddToZipFile(Agency, ToFileOption, "", Nothing, "", Nothing, "!" & ClientCode & " CoverSheet", CoverSheetReport, Nothing, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
 
                                                     End If
 
-												End If
+                                                End If
 
-												If BackupReport IsNot Nothing Then
+                                                If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
 
-													DefaultBackupFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, True)
+                                                    InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
+                                                    InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
+                                                    InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
 
-													If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+                                                Else
 
-                                                        ExportReport(Session, BackupReport, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, True),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+                                                    InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+                                                    InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+                                                    InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
+
+                                                End If
+
+                                                PackageToSingleFile(Session, DbContext, ToFileOption, EmailSettings, ClientAccountReceivableInvoices,
+                                                                    InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting,
+                                                                    OneTimeInvoicePrintingMediaSetting, InvoicePrintingComboSetting, Report, BackupReport,
+                                                                    DocumentList, MediaReport, MediaDocumentList, IsDraft)
+
+                                                If Report IsNot Nothing Then
+
+                                                    DefaultFileName = CreateSingleFileName(ClientCode, False, False)
+
+                                                    If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+
+                                                        For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
+
+                                                            ExportReport(Session, Report, CreateSingleFileName(ClientCode, False, False),
+                                                                         AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager,
+                                                                         False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                        Next
 
                                                     End If
 
-												End If
+                                                End If
 
-                                                CreateInvoiceZipFileForPrintToMultipleFiles(Agency, ToFileOption, AgencyImportPath, DefaultFileName, Report, DefaultBackupFileName, BackupReport, "", Nothing, DocumentList, ZipFileName, AccountReceivableInvoice, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
+                                                If BackupReport IsNot Nothing Then
+
+                                                    DefaultBackupFileName = CreateSingleFileName(ClientCode, True, False)
+
+                                                    If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+
+                                                        For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
+
+                                                            ExportReport(Session, BackupReport, CreateSingleFileName(ClientCode, True, False),
+                                                                         AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True,
+                                                                         InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                        Next
+
+                                                    End If
+
+                                                End If
+
+                                                AddToZipFile(Agency, ToFileOption, DefaultFileName, Report, DefaultBackupFileName, BackupReport, "", Nothing, DocumentList, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
+
+                                                If MediaReport IsNot Nothing Then
+
+                                                    DefaultFileName = CreateSingleFileName(ClientCode, False, True)
+
+                                                    AddToZipFile(Agency, ToFileOption, DefaultFileName, MediaReport, "", Nothing, "", Nothing, MediaDocumentList, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
+
+                                                End If
+
+                                            Else
+
+                                                If EmailSettings.IncludeCoverSheet Then
+
+                                                    CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings,
+                                                                                                                             InvoicePrintingMediaSettings, InvoicePrintingComboSettings,
+                                                                                                                             InvoiceFormatType, IsDraft, CoversheetLayout)
+
+                                                    If CoverSheetReport IsNot Nothing Then
+
+                                                        AddToZipFile(Agency, ToFileOption, "", Nothing, "", Nothing, "!" & ClientCode & " CoverSheet", CoverSheetReport, Nothing, ZipFile, Nothing, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
+
+                                                    End If
+
+                                                End If
+
+                                                For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
+
+                                                    DocumentList = Nothing
+                                                    InvoicePrintingMediaSetting = Nothing
+                                                    InvoicePrintingSetting = Nothing
+                                                    InvoicePrintingComboSetting = Nothing
+                                                    Report = Nothing
+                                                    BackupReport = Nothing
+                                                    DefaultFileName = ""
+                                                    DefaultBackupFileName = ""
+                                                    ZipFileName = ""
+                                                    IsCustomReport = False
+
+                                                    If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
+
+                                                        If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "P" Then
+
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                            InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+
+                                                        End If
+
+                                                    Else
+
+                                                        If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "P" Then
+
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+                                                            InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
+
+                                                        End If
+
+                                                    End If
+
+                                                    If InvoicePrintingComboSetting IsNot Nothing Then
+
+                                                        'If String.IsNullOrWhiteSpace(InvoicePrintingComboSetting.CustomFormatName) = False Then
+
+                                                        '    IsCustomReport = True
+
+                                                        'End If
+
+                                                    ElseIf InvoicePrintingSetting IsNot Nothing Then
+
+                                                        If String.IsNullOrWhiteSpace(InvoicePrintingSetting.CustomFormatName) = False Then
+
+                                                            IsCustomReport = True
+
+                                                        End If
+
+                                                    ElseIf InvoicePrintingMediaSetting IsNot Nothing Then
+
+                                                        If (AccountReceivableInvoice.RecordType = "M" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.MagazineCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "N" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.NewspaperCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "I" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.InternetCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "O" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.OutdoorCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "R" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.RadioCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "T" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.TVCustomFormatName) = False) Then
+
+                                                            IsCustomReport = True
+
+                                                        End If
+
+                                                    End If
+
+                                                    If IsCustomReport = False Then
+
+                                                        Package(Session, DbContext, ToFileOption, EmailSettings.IncludeAPDocuments, EmailSettings.IncludeExpenseReportReceipts, AccountReceivableInvoice,
+                                                            InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting, OneTimeInvoicePrintingMediaSetting,
+                                                            InvoicePrintingComboSetting, Report, BackupReport, DocumentList, IsDraft)
+
+                                                        If Report IsNot Nothing Then
+
+                                                            DefaultFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, False)
+
+                                                            If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+
+                                                                ExportReport(Session, Report, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, False),
+                                                                         AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                            End If
+
+                                                        End If
+
+                                                        If BackupReport IsNot Nothing Then
+
+                                                            DefaultBackupFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, True)
+
+                                                            If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+
+                                                                ExportReport(Session, BackupReport, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, True),
+                                                                         AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                            End If
+
+                                                        End If
+
+                                                        AddToZipFile(Agency, ToFileOption, DefaultFileName, Report, DefaultBackupFileName, BackupReport, "", Nothing, DocumentList, ZipFile, AccountReceivableInvoice, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                            If ZipFile.Entries.Count > 0 Then
+
+                                                ZipFileName = ClientCode & " - Invoices"
+
+                                                Do While New System.IO.FileInfo(ZipFileName & ".zip").Exists
+
+                                                    ZipFileName = ClientCode & " - Invoices(" & Counter & ")"
+
+                                                    Counter = Counter + 1
+
+                                                Loop
+
+                                                ZipFileName = ZipFileName & ".zip"
+
+                                                ZipFile.Save(ZipFileName)
+
+                                                Try
+
+                                                    ZipFile.Dispose()
+
+                                                    ZipFile = Nothing
+
+                                                Catch ex As Exception
+
+                                                End Try
 
                                                 Attachments.Add(New AdvantageFramework.Email.Classes.Attachment(ZipFileName))
 
-											End If
-
-										Next
-
-									Else
-
-										ZipFileName = ""
-
-										If EmailSettings.SinglePDF Then
-
-											DocumentList = Nothing
-											InvoicePrintingMediaSetting = Nothing
-											InvoicePrintingSetting = Nothing
-											InvoicePrintingComboSetting = Nothing
-											Report = Nothing
-											BackupReport = Nothing
-											DefaultFileName = ""
-											DefaultBackupFileName = ""
-											ZipFileName = ""
-											IsCustomReport = False
-											MediaReport = Nothing
-											MediaDocumentList = Nothing
-
-											If EmailSettings.IncludeCoverSheet Then
-
-                                                CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings, InvoicePrintingMediaSettings,
-                                                                                                                         InvoicePrintingComboSettings, InvoiceFormatType, IsDraft, CoversheetLayout)
-
-                                                If CoverSheetReport IsNot Nothing Then
-
-                                                    AddToAttachments(ToFileOption, ClientCode & " !CoverSheet", CoverSheetReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), InvoicePrinting.OverrideInvoiceFilename.Default)
-
-                                                End If
-
-											End If
-
-											If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
-
-												InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
-												InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
-												InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
-
-											Else
-
-												InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
-												InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
-												InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
-
-											End If
-
-											PackageToSingleFile(Session, DbContext, ToFileOption, EmailSettings, ClientAccountReceivableInvoices,
-																InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting,
-																OneTimeInvoicePrintingMediaSetting, InvoicePrintingComboSetting, Report, BackupReport,
-																DocumentList, MediaReport, MediaDocumentList, IsDraft)
-
-											If Report IsNot Nothing Then
-
-												DefaultFileName = CreateSingleFileName(ClientCode, False, False)
-
-                                                AddToAttachments(ToFileOption, DefaultFileName, Report, Attachments, Nothing, ClientAccountReceivableInvoices(0), OverrideInvoiceFilename)
-
-                                                If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
-
-													For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
-
-                                                        ExportReport(Session, Report, CreateSingleFileName(ClientCode, False, False),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager,
-                                                                     False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
-
-                                                    Next
-
-												End If
-
-											End If
-
-											If BackupReport IsNot Nothing Then
-
-												DefaultBackupFileName = CreateSingleFileName(ClientCode, True, False)
-
-                                                AddToAttachments(ToFileOption, DefaultBackupFileName, BackupReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), OverrideInvoiceFilename)
-
-                                                If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
-
-													For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
-
-                                                        ExportReport(Session, BackupReport, CreateSingleFileName(ClientCode, True, False),
-                                                                     AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True,
-                                                                     InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
-
-                                                    Next
-
-												End If
-
-											End If
-
-											If DocumentList IsNot Nothing AndAlso DocumentList.Count > 0 Then
-
-												AddToDocumentsToAttachments(Agency, DocumentList.Select(Function(Document) Document.GetDocumentEntity).ToList, Attachments)
-
-											End If
-
-											If MediaReport IsNot Nothing Then
-
-												DefaultFileName = CreateSingleFileName(ClientCode, False, True)
-
-                                                AddToAttachments(ToFileOption, DefaultFileName, MediaReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), OverrideInvoiceFilename)
-
                                             End If
 
-											If MediaDocumentList IsNot Nothing AndAlso MediaDocumentList.Count > 0 Then
+                                        ElseIf EmailSettings.PackageType = InvoicePrinting.PackageTypes.OneZipPerInvoice Then
 
-												AddToDocumentsToAttachments(Agency, MediaDocumentList.Select(Function(Document) Document.GetDocumentEntity).ToList, Attachments)
+                                            ZipFileName = ""
 
-											End If
-
-										Else
-
-											If EmailSettings.IncludeCoverSheet Then
+                                            If EmailSettings.IncludeCoverSheet Then
 
                                                 CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings,
                                                                                                                          InvoicePrintingMediaSettings, InvoicePrintingComboSettings,
@@ -1612,166 +1391,418 @@
 
                                                 End If
 
-											End If
+                                            End If
 
-											For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
+                                            For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
 
-												DocumentList = Nothing
-												InvoicePrintingMediaSetting = Nothing
-												InvoicePrintingSetting = Nothing
-												InvoicePrintingComboSetting = Nothing
-												Report = Nothing
-												BackupReport = Nothing
-												DefaultFileName = ""
-												DefaultBackupFileName = ""
-												ZipFileName = ""
-												IsCustomReport = False
+                                                DocumentList = Nothing
+                                                InvoicePrintingMediaSetting = Nothing
+                                                InvoicePrintingSetting = Nothing
+                                                InvoicePrintingComboSetting = Nothing
+                                                Report = Nothing
+                                                BackupReport = Nothing
+                                                DefaultFileName = ""
+                                                DefaultBackupFileName = ""
+                                                ZipFileName = ""
+                                                IsCustomReport = False
 
-												If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
+                                                If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
 
-													If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
+                                                    If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
 
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                        InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
 
-													ElseIf AccountReceivableInvoice.RecordType = "P" Then
+                                                    ElseIf AccountReceivableInvoice.RecordType = "P" Then
 
-														InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                        InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
 
-													ElseIf AccountReceivableInvoice.RecordType = "C" Then
+                                                    ElseIf AccountReceivableInvoice.RecordType = "C" Then
 
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-														InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
-														InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                        InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                        InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                        InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
 
-													End If
+                                                    End If
 
-												Else
+                                                Else
 
-													If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
+                                                    If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
 
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+                                                        InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
 
-													ElseIf AccountReceivableInvoice.RecordType = "P" Then
+                                                    ElseIf AccountReceivableInvoice.RecordType = "P" Then
 
-														InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+                                                        InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
 
-													ElseIf AccountReceivableInvoice.RecordType = "C" Then
+                                                    ElseIf AccountReceivableInvoice.RecordType = "C" Then
 
-														InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
-														InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
-														InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
+                                                        InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+                                                        InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+                                                        InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
 
-													End If
+                                                    End If
 
-												End If
+                                                End If
 
-												If InvoicePrintingComboSetting IsNot Nothing Then
+                                                If InvoicePrintingComboSetting IsNot Nothing Then
 
-													'If String.IsNullOrWhiteSpace(InvoicePrintingComboSetting.CustomFormatName) = False Then
+                                                    'If String.IsNullOrWhiteSpace(InvoicePrintingComboSetting.CustomFormatName) = False Then
 
-													'    IsCustomReport = True
+                                                    '    IsCustomReport = True
 
-													'End If
+                                                    'End If
 
-												ElseIf InvoicePrintingSetting IsNot Nothing Then
+                                                ElseIf InvoicePrintingSetting IsNot Nothing Then
 
-													If String.IsNullOrWhiteSpace(InvoicePrintingSetting.CustomFormatName) = False Then
+                                                    If String.IsNullOrWhiteSpace(InvoicePrintingSetting.CustomFormatName) = False Then
 
-														IsCustomReport = True
+                                                        IsCustomReport = True
 
-													End If
+                                                    End If
 
-												ElseIf InvoicePrintingMediaSetting IsNot Nothing Then
+                                                ElseIf InvoicePrintingMediaSetting IsNot Nothing Then
 
-													If (AccountReceivableInvoice.RecordType = "M" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.MagazineCustomFormatName) = False) OrElse
-																(AccountReceivableInvoice.RecordType = "N" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.NewspaperCustomFormatName) = False) OrElse
-																(AccountReceivableInvoice.RecordType = "I" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.InternetCustomFormatName) = False) OrElse
-																(AccountReceivableInvoice.RecordType = "O" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.OutdoorCustomFormatName) = False) OrElse
-																(AccountReceivableInvoice.RecordType = "R" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.RadioCustomFormatName) = False) OrElse
-																(AccountReceivableInvoice.RecordType = "T" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.TVCustomFormatName) = False) Then
+                                                    If (AccountReceivableInvoice.RecordType = "M" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.MagazineCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "N" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.NewspaperCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "I" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.InternetCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "O" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.OutdoorCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "R" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.RadioCustomFormatName) = False) OrElse
+                                                                (AccountReceivableInvoice.RecordType = "T" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.TVCustomFormatName) = False) Then
 
-														IsCustomReport = True
+                                                        IsCustomReport = True
 
-													End If
+                                                    End If
 
-												End If
+                                                End If
 
-												If IsCustomReport = False Then
+                                                If IsCustomReport = False Then
 
-													Package(Session, DbContext, ToFileOption, EmailSettings.IncludeAPDocuments, EmailSettings.IncludeExpenseReportReceipts, AccountReceivableInvoice,
-															InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting, OneTimeInvoicePrintingMediaSetting,
-															InvoicePrintingComboSetting, Report, BackupReport, DocumentList, IsDraft)
+                                                    Package(Session, DbContext, ToFileOption, EmailSettings.IncludeAPDocuments, EmailSettings.IncludeExpenseReportReceipts, AccountReceivableInvoice,
+                                                            InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting, OneTimeInvoicePrintingMediaSetting,
+                                                            InvoicePrintingComboSetting, Report, BackupReport, DocumentList, IsDraft)
 
-													If Report IsNot Nothing Then
+                                                    If Report IsNot Nothing Then
 
-														If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+                                                        DefaultFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, False)
+
+                                                        If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
 
                                                             ExportReport(Session, Report, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, False),
                                                                          AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
 
                                                         End If
 
-													End If
+                                                    End If
 
-													If BackupReport IsNot Nothing Then
+                                                    If BackupReport IsNot Nothing Then
 
-														If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+                                                        DefaultBackupFileName = CreateFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.ClientCode, True)
+
+                                                        If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
 
                                                             ExportReport(Session, BackupReport, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, True),
                                                                          AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
 
                                                         End If
 
-													End If
+                                                    End If
 
-                                                    AddToAttachments(Agency, ToFileOption, Report, BackupReport, DocumentList, AccountReceivableInvoice, Attachments, InvoicePrintingPageSetting, OverrideInvoiceFilename)
+                                                    CreateInvoiceZipFileForPrintToMultipleFiles(Agency, ToFileOption, AgencyImportPath, DefaultFileName, Report, DefaultBackupFileName, BackupReport, "", Nothing, DocumentList, ZipFileName, AccountReceivableInvoice, Nothing, AdvantageFramework.InvoicePrinting.OverrideInvoiceFilename.Default)
+
+                                                    Attachments.Add(New AdvantageFramework.Email.Classes.Attachment(ZipFileName))
 
                                                 End If
 
-											Next
+                                            Next
 
-										End If
+                                        Else
 
-									End If
+                                            ZipFileName = ""
 
-								Next
+                                            If EmailSettings.SinglePDF Then
 
-							End If
+                                                DocumentList = Nothing
+                                                InvoicePrintingMediaSetting = Nothing
+                                                InvoicePrintingSetting = Nothing
+                                                InvoicePrintingComboSetting = Nothing
+                                                Report = Nothing
+                                                BackupReport = Nothing
+                                                DefaultFileName = ""
+                                                DefaultBackupFileName = ""
+                                                ZipFileName = ""
+                                                IsCustomReport = False
+                                                MediaReport = Nothing
+                                                MediaDocumentList = Nothing
 
-							AdvantageFramework.WinForm.Presentation.ShowWaitForm("Sending...", ParentForm)
+                                                If EmailSettings.IncludeCoverSheet Then
 
-							If Attachments.Count > 0 Then
+                                                    CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings, InvoicePrintingMediaSettings,
+                                                                                                                             InvoicePrintingComboSettings, InvoiceFormatType, IsDraft, CoversheetLayout)
 
-								EmailSent = AdvantageFramework.Email.Send(DbContext, [To], [Cc], [Bcc], EmailSettings.Subject, EmailSettings.Body, 3, Attachments, SendingEmailStatus, ErrorMessage, False)
+                                                    If CoverSheetReport IsNot Nothing Then
 
-								Try
+                                                        AddToAttachments(ToFileOption, ClientCode & " !CoverSheet", CoverSheetReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), InvoicePrinting.OverrideInvoiceFilename.Default)
 
-									For Each Attachment In Attachments
+                                                    End If
 
-										If String.IsNullOrWhiteSpace(Attachment.File) = False Then
+                                                End If
 
-											My.Computer.FileSystem.DeleteFile(Attachment.File)
+                                                If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
 
-										End If
+                                                    InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
+                                                    InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
+                                                    InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode)
 
-									Next
+                                                Else
 
-								Catch ex As Exception
+                                                    InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+                                                    InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+                                                    InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
 
-								End Try
+                                                End If
 
-							End If
+                                                PackageToSingleFile(Session, DbContext, ToFileOption, EmailSettings, ClientAccountReceivableInvoices,
+                                                                    InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting,
+                                                                    OneTimeInvoicePrintingMediaSetting, InvoicePrintingComboSetting, Report, BackupReport,
+                                                                    DocumentList, MediaReport, MediaDocumentList, IsDraft)
 
-							AdvantageFramework.WinForm.Presentation.ShowWaitForm("Print Custom Legacy Formats...", ParentForm)
+                                                If Report IsNot Nothing Then
 
-							AdvantageFramework.Reporting.Reports.CreateCustomInvoice(Session, AccountReceivableInvoices, InvoicePrintingSettings, InvoicePrintingMediaSettings, IsDraft,
-																					 AdvantageFramework.InvoicePrinting.InvoicePrintingTypes.SMTP, EmailSettings)
+                                                    DefaultFileName = CreateSingleFileName(ClientCode, False, False)
 
-						End If
+                                                    AddToAttachments(ToFileOption, DefaultFileName, Report, Attachments, Nothing, ClientAccountReceivableInvoices(0), OverrideInvoiceFilename)
 
-					End Using
+                                                    If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
 
-				Catch ex As Exception
+                                                        For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
+
+                                                            ExportReport(Session, Report, CreateSingleFileName(ClientCode, False, False),
+                                                                         AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager,
+                                                                         False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                        Next
+
+                                                    End If
+
+                                                End If
+
+                                                If BackupReport IsNot Nothing Then
+
+                                                    DefaultBackupFileName = CreateSingleFileName(ClientCode, True, False)
+
+                                                    AddToAttachments(ToFileOption, DefaultBackupFileName, BackupReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), OverrideInvoiceFilename)
+
+                                                    If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+
+                                                        For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
+
+                                                            ExportReport(Session, BackupReport, CreateSingleFileName(ClientCode, True, False),
+                                                                         AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True,
+                                                                         InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                        Next
+
+                                                    End If
+
+                                                End If
+
+                                                If DocumentList IsNot Nothing AndAlso DocumentList.Count > 0 Then
+
+                                                    AddToDocumentsToAttachments(Agency, DocumentList.Select(Function(Document) Document.GetDocumentEntity).ToList, Attachments)
+
+                                                End If
+
+                                                If MediaReport IsNot Nothing Then
+
+                                                    DefaultFileName = CreateSingleFileName(ClientCode, False, True)
+
+                                                    AddToAttachments(ToFileOption, DefaultFileName, MediaReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), OverrideInvoiceFilename)
+
+                                                End If
+
+                                                If MediaDocumentList IsNot Nothing AndAlso MediaDocumentList.Count > 0 Then
+
+                                                    AddToDocumentsToAttachments(Agency, MediaDocumentList.Select(Function(Document) Document.GetDocumentEntity).ToList, Attachments)
+
+                                                End If
+
+                                            Else
+
+                                                If EmailSettings.IncludeCoverSheet Then
+
+                                                    CoverSheetReport = AdvantageFramework.Reporting.Reports.CreateCoverSheet(Session, ClientAccountReceivableInvoices, InvoicePrintingSettings,
+                                                                                                                             InvoicePrintingMediaSettings, InvoicePrintingComboSettings,
+                                                                                                                             InvoiceFormatType, IsDraft, CoversheetLayout)
+
+                                                    If CoverSheetReport IsNot Nothing Then
+
+                                                        AddToAttachments(ToFileOption, ClientCode & " !CoverSheet", CoverSheetReport, Attachments, Nothing, ClientAccountReceivableInvoices(0), InvoicePrinting.OverrideInvoiceFilename.Default)
+
+                                                    End If
+
+                                                End If
+
+                                                For Each AccountReceivableInvoice In ClientAccountReceivableInvoices
+
+                                                    DocumentList = Nothing
+                                                    InvoicePrintingMediaSetting = Nothing
+                                                    InvoicePrintingSetting = Nothing
+                                                    InvoicePrintingComboSetting = Nothing
+                                                    Report = Nothing
+                                                    BackupReport = Nothing
+                                                    DefaultFileName = ""
+                                                    DefaultBackupFileName = ""
+                                                    ZipFileName = ""
+                                                    IsCustomReport = False
+
+                                                    If InvoiceFormatType = InvoicePrinting.Methods.InvoiceFormatTypes.ClientDefault Then
+
+                                                        If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "P" Then
+
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+                                                            InvoicePrintingComboSetting = InvoicePrintingComboSettings.SingleOrDefault(Function(Entity) Entity.ClientCode = AccountReceivableInvoice.ClientCode)
+
+                                                        End If
+
+                                                    Else
+
+                                                        If AccountReceivableInvoice.RecordType <> "P" AndAlso AccountReceivableInvoice.RecordType <> "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "P" Then
+
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+
+                                                        ElseIf AccountReceivableInvoice.RecordType = "C" Then
+
+                                                            InvoicePrintingMediaSetting = InvoicePrintingMediaSettings.FirstOrDefault
+                                                            InvoicePrintingSetting = InvoicePrintingSettings.FirstOrDefault
+                                                            InvoicePrintingComboSetting = InvoicePrintingComboSettings.FirstOrDefault
+
+                                                        End If
+
+                                                    End If
+
+                                                    If InvoicePrintingComboSetting IsNot Nothing Then
+
+                                                        'If String.IsNullOrWhiteSpace(InvoicePrintingComboSetting.CustomFormatName) = False Then
+
+                                                        '    IsCustomReport = True
+
+                                                        'End If
+
+                                                    ElseIf InvoicePrintingSetting IsNot Nothing Then
+
+                                                        If String.IsNullOrWhiteSpace(InvoicePrintingSetting.CustomFormatName) = False Then
+
+                                                            IsCustomReport = True
+
+                                                        End If
+
+                                                    ElseIf InvoicePrintingMediaSetting IsNot Nothing Then
+
+                                                        If (AccountReceivableInvoice.RecordType = "M" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.MagazineCustomFormatName) = False) OrElse
+                                                                    (AccountReceivableInvoice.RecordType = "N" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.NewspaperCustomFormatName) = False) OrElse
+                                                                    (AccountReceivableInvoice.RecordType = "I" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.InternetCustomFormatName) = False) OrElse
+                                                                    (AccountReceivableInvoice.RecordType = "O" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.OutdoorCustomFormatName) = False) OrElse
+                                                                    (AccountReceivableInvoice.RecordType = "R" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.RadioCustomFormatName) = False) OrElse
+                                                                    (AccountReceivableInvoice.RecordType = "T" AndAlso String.IsNullOrWhiteSpace(InvoicePrintingMediaSetting.TVCustomFormatName) = False) Then
+
+                                                            IsCustomReport = True
+
+                                                        End If
+
+                                                    End If
+
+                                                    If IsCustomReport = False Then
+
+                                                        Package(Session, DbContext, ToFileOption, EmailSettings.IncludeAPDocuments, EmailSettings.IncludeExpenseReportReceipts, AccountReceivableInvoice,
+                                                                InvoicePrintingSetting, InvoicePrintingMediaSetting, AgencyInvoicePrintingMediaSetting, OneTimeInvoicePrintingMediaSetting,
+                                                                InvoicePrintingComboSetting, Report, BackupReport, DocumentList, IsDraft)
+
+                                                        If Report IsNot Nothing Then
+
+                                                            If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+
+                                                                ExportReport(Session, Report, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, False),
+                                                                             AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, False, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                            End If
+
+                                                        End If
+
+                                                        If BackupReport IsNot Nothing Then
+
+                                                            If EmailSettings.SendToDocumentManager OrElse (EmailSettings.IncludeAPDocuments OrElse EmailSettings.IncludeExpenseReportReceipts) Then
+
+                                                                ExportReport(Session, BackupReport, CreateARDocumentManagerFileName(AccountReceivableInvoice.InvoiceNumber, AccountReceivableInvoice.InvoiceSequenceNumber, AccountReceivableInvoice.RecordType, AccountReceivableInvoice.ClientCode, True),
+                                                                             AdvantageFramework.InvoicePrinting.ToFileOptions.DocumentManager, True, InvoicePrintingPageSetting, OverrideInvoiceFilename, AccountReceivableInvoice)
+
+                                                            End If
+
+                                                        End If
+
+                                                        AddToAttachments(Agency, ToFileOption, Report, BackupReport, DocumentList, AccountReceivableInvoice, Attachments, InvoicePrintingPageSetting, OverrideInvoiceFilename)
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                        End If
+
+                                    Next
+
+                                End If
+
+                                AdvantageFramework.WinForm.Presentation.ShowWaitForm("Sending...", ParentForm)
+
+                                If Attachments.Count > 0 Then
+
+                                    EmailSent = SendEmail(SMTP, [To], [Cc], [Bcc], EmailSettings.Subject, EmailSettings.Body, CInt(AlertSystem.PriorityLevels.Normal),
+                                                          Attachments, SendingEmailStatus, Agency, EmailSettings.SenderName, From, ReplyTo, MaxEmailSize)
+
+                                    Try
+
+                                        For Each Attachment In Attachments
+
+                                            If String.IsNullOrWhiteSpace(Attachment.File) = False Then
+
+                                                My.Computer.FileSystem.DeleteFile(Attachment.File)
+
+                                            End If
+
+                                        Next
+
+                                    Catch ex As Exception
+
+                                    End Try
+
+                                End If
+
+                                AdvantageFramework.WinForm.Presentation.ShowWaitForm("Print Custom Legacy Formats...", ParentForm)
+
+                                AdvantageFramework.Reporting.Reports.CreateCustomInvoice(Session, AccountReceivableInvoices, InvoicePrintingSettings, InvoicePrintingMediaSettings, IsDraft,
+                                                                                         AdvantageFramework.InvoicePrinting.InvoicePrintingTypes.SMTP, EmailSettings)
+
+                            End If
+
+                        End Using
+
+                    End Using
+
+                Catch ex As Exception
 
 				End Try
 
@@ -5194,13 +5225,13 @@
                     If EmailSetting.CCToSender Then
 
                         'EmailSent = AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal), Attachments, SendingEmailStatus, ErrorMessage)
-                        EmailSent = SendEmail(SMTP, EmailAddresses, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
+                        EmailSent = SendEmail(SMTP, EmailAddresses, Employee.Email, "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
                                               Attachments, SendingEmailStatus, Agency, EmailSetting.SenderName, From, ReplyTo, MaxEmailSize)
 
                     Else
 
                         'EmailSent = AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal), Attachments, SendingEmailStatus, ErrorMessage)
-                        EmailSent = SendEmail(SMTP, EmailAddresses, "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
+                        EmailSent = SendEmail(SMTP, EmailAddresses, "", "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
                                               Attachments, SendingEmailStatus, Agency, EmailSetting.SenderName, From, ReplyTo, MaxEmailSize)
 
                     End If
@@ -5529,13 +5560,13 @@
                     If EmailSetting.CCToSender Then
 
                         'EmailSent = AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal), Attachments, SendingEmailStatus, ErrorMessage)
-                        EmailSent = SendEmail(SMTP, EmailAddresses, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
+                        EmailSent = SendEmail(SMTP, EmailAddresses, Employee.Email, "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
                                               Attachments, SendingEmailStatus, Agency, EmailSetting.SenderName, From, ReplyTo, MaxEmailSize)
 
                     Else
 
                         'EmailSent = AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal), Attachments, SendingEmailStatus, ErrorMessage)
-                        EmailSent = SendEmail(SMTP, EmailAddresses, "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
+                        EmailSent = SendEmail(SMTP, EmailAddresses, "", "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
                                               Attachments, SendingEmailStatus, Agency, EmailSetting.SenderName, From, ReplyTo, MaxEmailSize)
 
                     End If
@@ -6075,13 +6106,13 @@
                     If EmailSetting.CCToSender Then
 
                         'EmailSent = AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal), Attachments, SendingEmailStatus, ErrorMessage)
-                        EmailSent = SendEmail(SMTP, EmailAddresses, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
+                        EmailSent = SendEmail(SMTP, EmailAddresses, Employee.Email, "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
                                               Attachments, SendingEmailStatus, Agency, EmailSetting.SenderName, From, ReplyTo, MaxEmailSize)
 
                     Else
 
                         'EmailSent = AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee.Email, EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal), Attachments, SendingEmailStatus, ErrorMessage)
-                        EmailSent = SendEmail(SMTP, EmailAddresses, "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
+                        EmailSent = SendEmail(SMTP, EmailAddresses, "", "", EmailSetting.Subject, EmailSetting.Body, CInt(AlertSystem.PriorityLevels.Normal),
                                               Attachments, SendingEmailStatus, Agency, EmailSetting.SenderName, From, ReplyTo, MaxEmailSize)
 
                     End If

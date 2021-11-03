@@ -16754,7 +16754,7 @@
         <ParentModuleCode>Media</ParentModuleCode>
         <SubModules />
       </MenuBuilder>
-      <!--<MenuBuilder>
+      <MenuBuilder>
         <Applications>
           <Application>Advantage</Application>
         </Applications>
@@ -16790,7 +16790,7 @@
         <ReportLargeImagePath />
         <ParentModuleCode>Media</ParentModuleCode>
         <SubModules />
-      </MenuBuilder>-->
+      </MenuBuilder>
       <MenuBuilder>
         <Applications>
           <Application>Advantage</Application>

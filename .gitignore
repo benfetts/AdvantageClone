@@ -9417,3 +9417,8 @@ Webvantage/ActiveReportsAssembly/bin/Debug/EnvDTE.xml
 Webvantage/ActiveReportsAssembly/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
 Webvantage/Webvantage/bin/EnvDTE.xml
 Webvantage/Webvantage/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.vb
+.vs/*
+**/obj/*
+packages/*
+**/bin/*
+**/sql/debug/*

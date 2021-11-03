@@ -2248,7 +2248,44 @@
                 <ReportLargeImagePath />
                 <ParentModuleCode>Desktop_ReportWriter_AdvancedReportWriterDataSets</ParentModuleCode>
                 <SubModules />
-              </MenuBuilder>                            
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                </Applications>
+                <Code>Desktop_ReportWriter_AdvancedReportWriterDataSets_CheckRegisterWithInvoiceDetailsARWRPT</Code>
+                <Description>Check Register with Invoice Detail</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_AdvancedReportWriterDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
               <MenuBuilder>
                 <Applications>
                   <Application>Advantage</Application>
@@ -7823,7 +7860,45 @@
                 <ReportLargeImagePath />
                 <ParentModuleCode>Desktop_ReportWriter_DynamicReportDataSets</ParentModuleCode>
                 <SubModules />
-              </MenuBuilder>     
+              </MenuBuilder>
+              <MenuBuilder>
+                <Applications>
+                  <Application>Advantage</Application>
+                  <Application>Webvantage</Application>
+                </Applications>
+                <Code>Desktop_ReportWriter_DynamicReportDataSets_CheckRegisterWithInvoiceDetailsDRPT</Code>
+                <Description>Check Register with Invoice Details</Description>
+                <IsInactive>false</IsInactive>
+                <IsMenuItem>false</IsMenuItem>
+                <IsCategory>false</IsCategory>
+                <IsApplication>false</IsApplication>
+                <IsReport>true</IsReport>
+                <IsDesktopObject>false</IsDesktopObject>
+                <IsDashQuery>false</IsDashQuery>
+                <ImageName />
+                <HasCustomPermission>false</HasCustomPermission>
+                <WebvantageURL />
+                <WebvantageImagePathActive />
+                <WebvantageImagePath />
+                <ApplicationName />
+                <MenuName />
+                <ApplicationCode />
+                <CommandString />
+                <IconIndex>0</IconIndex>
+                <AllowMultipleInstances>0</AllowMultipleInstances>
+                <DesktopObjectName />
+                <DesktopObjectSize>0</DesktopObjectSize>
+                <ReportURL />
+                <ReportImagePathActive />
+                <ReportImagePath />
+                <ReportDescription />
+                <ReportPreviewLocation />
+                <ReportIsLocked>false</ReportIsLocked>
+                <WebvantageLargeImagePath />
+                <ReportLargeImagePath />
+                <ParentModuleCode>Desktop_ReportWriter_DynamicReportDataSets</ParentModuleCode>
+                <SubModules />
+              </MenuBuilder>
               <MenuBuilder>
                 <Applications>
                   <Application>Advantage</Application>

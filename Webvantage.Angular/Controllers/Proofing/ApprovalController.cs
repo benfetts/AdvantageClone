@@ -135,7 +135,7 @@ namespace Webvantage.Angular.Controllers.Proofing
                     qs.ProofingStatusExternalReviewerID, value.DocumentId == null ? qs.DocumentID : (int)value.DocumentId, _value);
             }
 
-            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, false, qs.DocumentID);
+            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, false, qs.DocumentID, true);
 
             return rv;
         }

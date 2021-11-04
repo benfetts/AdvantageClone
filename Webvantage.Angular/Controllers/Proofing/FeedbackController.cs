@@ -81,7 +81,7 @@ namespace Webvantage.Angular.Controllers.Proofing
                     _controller.AddAlertMentions(qs, qs.AlertID, value.Mentions, comment.CommentId);
                 }
 
-                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID);
+                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, false);
 
 
             }

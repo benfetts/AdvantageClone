@@ -22,16 +22,6 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             Me.components = New System.ComponentModel.Container()
-            Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-            Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-            Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CashTransactionInitialLoadingDialog))
             Me.ButtonForm_OK = New AdvantageFramework.WinForm.Presentation.Controls.Button()
             Me.ButtonForm_Cancel = New AdvantageFramework.WinForm.Presentation.Controls.Button()
@@ -39,13 +29,14 @@
             Me.LabelTopSection_Report = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.ComboBoxTopSection_Report = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
             Me.TabControlForm_JDA = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelSelectBanksTab_SelectBanks = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewSelectBanks_Banks = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
+            Me.RadioButtonSelectBanks_AllBanks = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonSelectBanks_ChooseBanks = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.TabItemJDA_SelectBanksTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions = New DevComponents.DotNetBar.TabControlPanel()
-            Me.NumericInputMonthly_ToYear = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
             Me.ComboBoxMonthly_ToMonth = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.NumericInputMonthly_FromYear = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
             Me.ComboBoxMonthly_FromMonth = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.LabelMonthlyBroadcast_Year = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelMonthlyBroadcast_Month = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.DateTimePicker_StatementCutoff = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
             Me.Label1 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.PanelOptions_Include = New System.Windows.Forms.Panel()
@@ -59,24 +50,17 @@
             Me.CheckBoxIncludeDisbursements = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             Me.CheckBoxGLEntries = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             Me.TabItemJDA_VersionAndOptionsTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelSelectBanksTab_SelectBanks = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewSelectBanks_Banks = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.RadioButtonSelectBanks_AllBanks = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonSelectBanks_ChooseBanks = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.TabItemJDA_SelectBanksTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.Panel1 = New System.Windows.Forms.Panel()
             Me.PanelForm_Bottom = New System.Windows.Forms.Panel()
             Me.PanelForm_TopSection.SuspendLayout()
             CType(Me.TabControlForm_JDA, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlForm_JDA.SuspendLayout()
+            Me.TabControlPanelSelectBanksTab_SelectBanks.SuspendLayout()
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.SuspendLayout()
-            CType(Me.NumericInputMonthly_ToYear.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.NumericInputMonthly_FromYear.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.DateTimePicker_StatementCutoff, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelOptions_Include.SuspendLayout()
             CType(Me.GroupBoxControl_Cutoffs, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.GroupBoxControl_Cutoffs.SuspendLayout()
-            Me.TabControlPanelSelectBanksTab_SelectBanks.SuspendLayout()
             Me.Panel1.SuspendLayout()
             Me.PanelForm_Bottom.SuspendLayout()
             Me.SuspendLayout()
@@ -175,8 +159,8 @@
             Me.TabControlForm_JDA.CanReorderTabs = False
             Me.TabControlForm_JDA.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlForm_JDA.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlForm_JDA.Controls.Add(Me.TabControlPanelSelectBanksTab_SelectBanks)
             Me.TabControlForm_JDA.Controls.Add(Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions)
+            Me.TabControlForm_JDA.Controls.Add(Me.TabControlPanelSelectBanksTab_SelectBanks)
             Me.TabControlForm_JDA.Location = New System.Drawing.Point(12, 3)
             Me.TabControlForm_JDA.Name = "TabControlForm_JDA"
             Me.TabControlForm_JDA.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
@@ -188,14 +172,105 @@
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_VersionAndOptionsTab)
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_SelectBanksTab)
             '
+            'TabControlPanelSelectBanksTab_SelectBanks
+            '
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Controls.Add(Me.DataGridViewSelectBanks_Banks)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Controls.Add(Me.RadioButtonSelectBanks_AllBanks)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Controls.Add(Me.RadioButtonSelectBanks_ChooseBanks)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Name = "TabControlPanelSelectBanksTab_SelectBanks"
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Size = New System.Drawing.Size(817, 295)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.GradientAngle = 90
+            Me.TabControlPanelSelectBanksTab_SelectBanks.TabIndex = 0
+            Me.TabControlPanelSelectBanksTab_SelectBanks.TabItem = Me.TabItemJDA_SelectBanksTab
+            '
+            'DataGridViewSelectBanks_Banks
+            '
+            Me.DataGridViewSelectBanks_Banks.AddFixedColumnCheckItemsToGridMenu = False
+            Me.DataGridViewSelectBanks_Banks.AllowDragAndDrop = False
+            Me.DataGridViewSelectBanks_Banks.AllowExtraItemsInGridLookupEdits = True
+            Me.DataGridViewSelectBanks_Banks.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSelectBanks_Banks.AlwaysForceShowRowSelectionOnUserInput = True
+            Me.DataGridViewSelectBanks_Banks.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSelectBanks_Banks.AutoFilterLookupColumns = False
+            Me.DataGridViewSelectBanks_Banks.AutoloadRepositoryDatasource = True
+            Me.DataGridViewSelectBanks_Banks.AutoUpdateViewCaption = True
+            Me.DataGridViewSelectBanks_Banks.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
+            Me.DataGridViewSelectBanks_Banks.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
+            Me.DataGridViewSelectBanks_Banks.Enabled = False
+            Me.DataGridViewSelectBanks_Banks.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSelectBanks_Banks.ItemDescription = "Bank(s)"
+            Me.DataGridViewSelectBanks_Banks.Location = New System.Drawing.Point(3, 30)
+            Me.DataGridViewSelectBanks_Banks.MultiSelect = True
+            Me.DataGridViewSelectBanks_Banks.Name = "DataGridViewSelectBanks_Banks"
+            Me.DataGridViewSelectBanks_Banks.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSelectBanks_Banks.RunStandardValidation = True
+            Me.DataGridViewSelectBanks_Banks.ShowColumnMenuOnRightClick = False
+            Me.DataGridViewSelectBanks_Banks.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSelectBanks_Banks.Size = New System.Drawing.Size(809, 261)
+            Me.DataGridViewSelectBanks_Banks.TabIndex = 2
+            Me.DataGridViewSelectBanks_Banks.UseEmbeddedNavigator = False
+            Me.DataGridViewSelectBanks_Banks.ViewCaptionHeight = -1
+            '
+            'RadioButtonSelectBanks_AllBanks
+            '
+            Me.RadioButtonSelectBanks_AllBanks.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonSelectBanks_AllBanks.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonSelectBanks_AllBanks.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonSelectBanks_AllBanks.Checked = True
+            Me.RadioButtonSelectBanks_AllBanks.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.RadioButtonSelectBanks_AllBanks.CheckValue = "Y"
+            Me.RadioButtonSelectBanks_AllBanks.Location = New System.Drawing.Point(4, 4)
+            Me.RadioButtonSelectBanks_AllBanks.Name = "RadioButtonSelectBanks_AllBanks"
+            Me.RadioButtonSelectBanks_AllBanks.SecurityEnabled = True
+            Me.RadioButtonSelectBanks_AllBanks.Size = New System.Drawing.Size(77, 20)
+            Me.RadioButtonSelectBanks_AllBanks.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonSelectBanks_AllBanks.TabIndex = 0
+            Me.RadioButtonSelectBanks_AllBanks.TabOnEnter = True
+            Me.RadioButtonSelectBanks_AllBanks.Text = "All Banks"
+            '
+            'RadioButtonSelectBanks_ChooseBanks
+            '
+            Me.RadioButtonSelectBanks_ChooseBanks.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonSelectBanks_ChooseBanks.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonSelectBanks_ChooseBanks.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonSelectBanks_ChooseBanks.Location = New System.Drawing.Point(87, 4)
+            Me.RadioButtonSelectBanks_ChooseBanks.Name = "RadioButtonSelectBanks_ChooseBanks"
+            Me.RadioButtonSelectBanks_ChooseBanks.SecurityEnabled = True
+            Me.RadioButtonSelectBanks_ChooseBanks.Size = New System.Drawing.Size(138, 20)
+            Me.RadioButtonSelectBanks_ChooseBanks.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonSelectBanks_ChooseBanks.TabIndex = 1
+            Me.RadioButtonSelectBanks_ChooseBanks.TabOnEnter = True
+            Me.RadioButtonSelectBanks_ChooseBanks.TabStop = False
+            Me.RadioButtonSelectBanks_ChooseBanks.Text = "Choose Banks"
+            '
+            'TabItemJDA_SelectBanksTab
+            '
+            Me.TabItemJDA_SelectBanksTab.AttachedControl = Me.TabControlPanelSelectBanksTab_SelectBanks
+            Me.TabItemJDA_SelectBanksTab.Name = "TabItemJDA_SelectBanksTab"
+            Me.TabItemJDA_SelectBanksTab.Text = "Select Banks"
+            '
             'TabControlPanelVersionAndOptionsTab_VersionAndOptions
             '
-            Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.NumericInputMonthly_ToYear)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.ComboBoxMonthly_ToMonth)
-            Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.NumericInputMonthly_FromYear)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.ComboBoxMonthly_FromMonth)
-            Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.LabelMonthlyBroadcast_Year)
-            Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.LabelMonthlyBroadcast_Month)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.DateTimePicker_StatementCutoff)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.Label1)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.Controls.Add(Me.PanelOptions_Include)
@@ -219,29 +294,6 @@
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.TabIndex = 0
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.TabItem = Me.TabItemJDA_VersionAndOptionsTab
             '
-            'NumericInputMonthly_ToYear
-            '
-            Me.NumericInputMonthly_ToYear.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputMonthly_ToYear.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
-            Me.NumericInputMonthly_ToYear.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputMonthly_ToYear.EnterMoveNextControl = True
-            Me.NumericInputMonthly_ToYear.Location = New System.Drawing.Point(280, 56)
-            Me.NumericInputMonthly_ToYear.Name = "NumericInputMonthly_ToYear"
-            Me.NumericInputMonthly_ToYear.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-            Me.NumericInputMonthly_ToYear.Properties.DisplayFormat.FormatString = "d4"
-            Me.NumericInputMonthly_ToYear.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputMonthly_ToYear.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputMonthly_ToYear.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputMonthly_ToYear.Properties.IsFloatValue = False
-            Me.NumericInputMonthly_ToYear.Properties.Mask.EditMask = "d4"
-            Me.NumericInputMonthly_ToYear.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputMonthly_ToYear.Properties.MaxLength = 11
-            Me.NumericInputMonthly_ToYear.Properties.MaxValue = New Decimal(New Integer() {9999, 0, 0, 0})
-            Me.NumericInputMonthly_ToYear.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputMonthly_ToYear.SecurityEnabled = True
-            Me.NumericInputMonthly_ToYear.Size = New System.Drawing.Size(40, 20)
-            Me.NumericInputMonthly_ToYear.TabIndex = 76
-            '
             'ComboBoxMonthly_ToMonth
             '
             Me.ComboBoxMonthly_ToMonth.AddInactiveItemsOnSelectedValue = False
@@ -253,7 +305,7 @@
             Me.ComboBoxMonthly_ToMonth.ClientCode = ""
             Me.ComboBoxMonthly_ToMonth.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.Month
             Me.ComboBoxMonthly_ToMonth.DisableMouseWheel = False
-            Me.ComboBoxMonthly_ToMonth.DisplayMember = "Value"
+            Me.ComboBoxMonthly_ToMonth.DisplayMember = "Description"
             Me.ComboBoxMonthly_ToMonth.DisplayName = ""
             Me.ComboBoxMonthly_ToMonth.DivisionCode = ""
             Me.ComboBoxMonthly_ToMonth.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
@@ -263,7 +315,7 @@
             Me.ComboBoxMonthly_ToMonth.FocusHighlightEnabled = True
             Me.ComboBoxMonthly_ToMonth.FormattingEnabled = True
             Me.ComboBoxMonthly_ToMonth.ItemHeight = 14
-            Me.ComboBoxMonthly_ToMonth.Location = New System.Drawing.Point(119, 56)
+            Me.ComboBoxMonthly_ToMonth.Location = New System.Drawing.Point(121, 39)
             Me.ComboBoxMonthly_ToMonth.Name = "ComboBoxMonthly_ToMonth"
             Me.ComboBoxMonthly_ToMonth.ReadOnly = False
             Me.ComboBoxMonthly_ToMonth.SecurityEnabled = True
@@ -271,31 +323,8 @@
             Me.ComboBoxMonthly_ToMonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxMonthly_ToMonth.TabIndex = 75
             Me.ComboBoxMonthly_ToMonth.TabOnEnter = True
-            Me.ComboBoxMonthly_ToMonth.ValueMember = "Key"
+            Me.ComboBoxMonthly_ToMonth.ValueMember = "Code"
             Me.ComboBoxMonthly_ToMonth.WatermarkText = "Select Month"
-            '
-            'NumericInputMonthly_FromYear
-            '
-            Me.NumericInputMonthly_FromYear.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputMonthly_FromYear.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
-            Me.NumericInputMonthly_FromYear.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputMonthly_FromYear.EnterMoveNextControl = True
-            Me.NumericInputMonthly_FromYear.Location = New System.Drawing.Point(280, 30)
-            Me.NumericInputMonthly_FromYear.Name = "NumericInputMonthly_FromYear"
-            Me.NumericInputMonthly_FromYear.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-            Me.NumericInputMonthly_FromYear.Properties.DisplayFormat.FormatString = "d4"
-            Me.NumericInputMonthly_FromYear.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputMonthly_FromYear.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputMonthly_FromYear.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputMonthly_FromYear.Properties.IsFloatValue = False
-            Me.NumericInputMonthly_FromYear.Properties.Mask.EditMask = "d4"
-            Me.NumericInputMonthly_FromYear.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputMonthly_FromYear.Properties.MaxLength = 11
-            Me.NumericInputMonthly_FromYear.Properties.MaxValue = New Decimal(New Integer() {9999, 0, 0, 0})
-            Me.NumericInputMonthly_FromYear.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputMonthly_FromYear.SecurityEnabled = True
-            Me.NumericInputMonthly_FromYear.Size = New System.Drawing.Size(40, 20)
-            Me.NumericInputMonthly_FromYear.TabIndex = 74
             '
             'ComboBoxMonthly_FromMonth
             '
@@ -308,7 +337,7 @@
             Me.ComboBoxMonthly_FromMonth.ClientCode = ""
             Me.ComboBoxMonthly_FromMonth.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.Month
             Me.ComboBoxMonthly_FromMonth.DisableMouseWheel = False
-            Me.ComboBoxMonthly_FromMonth.DisplayMember = "Value"
+            Me.ComboBoxMonthly_FromMonth.DisplayMember = "Description"
             Me.ComboBoxMonthly_FromMonth.DisplayName = ""
             Me.ComboBoxMonthly_FromMonth.DivisionCode = ""
             Me.ComboBoxMonthly_FromMonth.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
@@ -318,7 +347,7 @@
             Me.ComboBoxMonthly_FromMonth.FocusHighlightEnabled = True
             Me.ComboBoxMonthly_FromMonth.FormattingEnabled = True
             Me.ComboBoxMonthly_FromMonth.ItemHeight = 14
-            Me.ComboBoxMonthly_FromMonth.Location = New System.Drawing.Point(119, 30)
+            Me.ComboBoxMonthly_FromMonth.Location = New System.Drawing.Point(121, 13)
             Me.ComboBoxMonthly_FromMonth.Name = "ComboBoxMonthly_FromMonth"
             Me.ComboBoxMonthly_FromMonth.ReadOnly = False
             Me.ComboBoxMonthly_FromMonth.SecurityEnabled = True
@@ -326,38 +355,8 @@
             Me.ComboBoxMonthly_FromMonth.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxMonthly_FromMonth.TabIndex = 73
             Me.ComboBoxMonthly_FromMonth.TabOnEnter = True
-            Me.ComboBoxMonthly_FromMonth.ValueMember = "Key"
+            Me.ComboBoxMonthly_FromMonth.ValueMember = "Code"
             Me.ComboBoxMonthly_FromMonth.WatermarkText = "Select Month"
-            '
-            'LabelMonthlyBroadcast_Year
-            '
-            Me.LabelMonthlyBroadcast_Year.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMonthlyBroadcast_Year.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMonthlyBroadcast_Year.Location = New System.Drawing.Point(280, 4)
-            Me.LabelMonthlyBroadcast_Year.Name = "LabelMonthlyBroadcast_Year"
-            Me.LabelMonthlyBroadcast_Year.Size = New System.Drawing.Size(40, 20)
-            Me.LabelMonthlyBroadcast_Year.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMonthlyBroadcast_Year.TabIndex = 72
-            Me.LabelMonthlyBroadcast_Year.Text = "Year"
-            Me.LabelMonthlyBroadcast_Year.TextAlignment = System.Drawing.StringAlignment.Center
-            '
-            'LabelMonthlyBroadcast_Month
-            '
-            Me.LabelMonthlyBroadcast_Month.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMonthlyBroadcast_Month.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMonthlyBroadcast_Month.Location = New System.Drawing.Point(119, 4)
-            Me.LabelMonthlyBroadcast_Month.Name = "LabelMonthlyBroadcast_Month"
-            Me.LabelMonthlyBroadcast_Month.Size = New System.Drawing.Size(155, 20)
-            Me.LabelMonthlyBroadcast_Month.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMonthlyBroadcast_Month.TabIndex = 71
-            Me.LabelMonthlyBroadcast_Month.Text = "Month"
-            Me.LabelMonthlyBroadcast_Month.TextAlignment = System.Drawing.StringAlignment.Center
             '
             'DateTimePicker_StatementCutoff
             '
@@ -425,7 +424,7 @@
             '
             '
             Me.Label1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label1.Location = New System.Drawing.Point(165, 190)
+            Me.Label1.Location = New System.Drawing.Point(167, 173)
             Me.Label1.Name = "Label1"
             Me.Label1.Size = New System.Drawing.Size(106, 20)
             Me.Label1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -437,7 +436,7 @@
             Me.PanelOptions_Include.BackColor = System.Drawing.Color.White
             Me.PanelOptions_Include.Controls.Add(Me.RadioButtonInclude_ClearedandUncleared)
             Me.PanelOptions_Include.Controls.Add(Me.RadioButtonInclude_UnclearedOnly)
-            Me.PanelOptions_Include.Location = New System.Drawing.Point(11, 216)
+            Me.PanelOptions_Include.Location = New System.Drawing.Point(13, 199)
             Me.PanelOptions_Include.Name = "PanelOptions_Include"
             Me.PanelOptions_Include.Size = New System.Drawing.Size(152, 65)
             Me.PanelOptions_Include.TabIndex = 62
@@ -493,7 +492,7 @@
             Me.LabelOptions_Include.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
             Me.LabelOptions_Include.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
             Me.LabelOptions_Include.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelOptions_Include.Location = New System.Drawing.Point(11, 190)
+            Me.LabelOptions_Include.Location = New System.Drawing.Point(13, 173)
             Me.LabelOptions_Include.Name = "LabelOptions_Include"
             Me.LabelOptions_Include.Size = New System.Drawing.Size(148, 20)
             Me.LabelOptions_Include.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -507,7 +506,7 @@
             '
             '
             Me.LabelForm_StartingPeriod.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelForm_StartingPeriod.Location = New System.Drawing.Point(11, 30)
+            Me.LabelForm_StartingPeriod.Location = New System.Drawing.Point(13, 13)
             Me.LabelForm_StartingPeriod.Name = "LabelForm_StartingPeriod"
             Me.LabelForm_StartingPeriod.Size = New System.Drawing.Size(102, 20)
             Me.LabelForm_StartingPeriod.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -521,7 +520,7 @@
             '
             '
             Me.LabelForm_EndingPeriod.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelForm_EndingPeriod.Location = New System.Drawing.Point(11, 56)
+            Me.LabelForm_EndingPeriod.Location = New System.Drawing.Point(13, 39)
             Me.LabelForm_EndingPeriod.Name = "LabelForm_EndingPeriod"
             Me.LabelForm_EndingPeriod.Size = New System.Drawing.Size(102, 20)
             Me.LabelForm_EndingPeriod.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -535,7 +534,7 @@
             Me.GroupBoxControl_Cutoffs.Controls.Add(Me.CheckBoxIncludeReceipts)
             Me.GroupBoxControl_Cutoffs.Controls.Add(Me.CheckBoxIncludeDisbursements)
             Me.GroupBoxControl_Cutoffs.Controls.Add(Me.CheckBoxGLEntries)
-            Me.GroupBoxControl_Cutoffs.Location = New System.Drawing.Point(11, 82)
+            Me.GroupBoxControl_Cutoffs.Location = New System.Drawing.Point(13, 65)
             Me.GroupBoxControl_Cutoffs.Name = "GroupBoxControl_Cutoffs"
             Me.GroupBoxControl_Cutoffs.Size = New System.Drawing.Size(365, 102)
             Me.GroupBoxControl_Cutoffs.TabIndex = 50
@@ -622,102 +621,6 @@
             Me.TabItemJDA_VersionAndOptionsTab.Name = "TabItemJDA_VersionAndOptionsTab"
             Me.TabItemJDA_VersionAndOptionsTab.Text = "Report Options"
             '
-            'TabControlPanelSelectBanksTab_SelectBanks
-            '
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Controls.Add(Me.DataGridViewSelectBanks_Banks)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Controls.Add(Me.RadioButtonSelectBanks_AllBanks)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Controls.Add(Me.RadioButtonSelectBanks_ChooseBanks)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Name = "TabControlPanelSelectBanksTab_SelectBanks"
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Size = New System.Drawing.Size(817, 295)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.Style.GradientAngle = 90
-            Me.TabControlPanelSelectBanksTab_SelectBanks.TabIndex = 0
-            Me.TabControlPanelSelectBanksTab_SelectBanks.TabItem = Me.TabItemJDA_SelectBanksTab
-            '
-            'DataGridViewSelectBanks_Banks
-            '
-            Me.DataGridViewSelectBanks_Banks.AddFixedColumnCheckItemsToGridMenu = False
-            Me.DataGridViewSelectBanks_Banks.AllowDragAndDrop = False
-            Me.DataGridViewSelectBanks_Banks.AllowExtraItemsInGridLookupEdits = True
-            Me.DataGridViewSelectBanks_Banks.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSelectBanks_Banks.AlwaysForceShowRowSelectionOnUserInput = True
-            Me.DataGridViewSelectBanks_Banks.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSelectBanks_Banks.AutoFilterLookupColumns = False
-            Me.DataGridViewSelectBanks_Banks.AutoloadRepositoryDatasource = True
-            Me.DataGridViewSelectBanks_Banks.AutoUpdateViewCaption = True
-            Me.DataGridViewSelectBanks_Banks.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewSelectBanks_Banks.DataSource = Nothing
-            Me.DataGridViewSelectBanks_Banks.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
-            Me.DataGridViewSelectBanks_Banks.Enabled = False
-            Me.DataGridViewSelectBanks_Banks.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSelectBanks_Banks.ItemDescription = "Bank(s)"
-            Me.DataGridViewSelectBanks_Banks.Location = New System.Drawing.Point(3, 30)
-            Me.DataGridViewSelectBanks_Banks.MultiSelect = True
-            Me.DataGridViewSelectBanks_Banks.Name = "DataGridViewSelectBanks_Banks"
-            Me.DataGridViewSelectBanks_Banks.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSelectBanks_Banks.RunStandardValidation = True
-            Me.DataGridViewSelectBanks_Banks.ShowColumnMenuOnRightClick = False
-            Me.DataGridViewSelectBanks_Banks.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSelectBanks_Banks.Size = New System.Drawing.Size(809, 261)
-            Me.DataGridViewSelectBanks_Banks.TabIndex = 2
-            Me.DataGridViewSelectBanks_Banks.UseEmbeddedNavigator = False
-            Me.DataGridViewSelectBanks_Banks.ViewCaptionHeight = -1
-            '
-            'RadioButtonSelectBanks_AllBanks
-            '
-            Me.RadioButtonSelectBanks_AllBanks.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonSelectBanks_AllBanks.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonSelectBanks_AllBanks.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonSelectBanks_AllBanks.Checked = True
-            Me.RadioButtonSelectBanks_AllBanks.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.RadioButtonSelectBanks_AllBanks.CheckValue = "Y"
-            Me.RadioButtonSelectBanks_AllBanks.Location = New System.Drawing.Point(4, 4)
-            Me.RadioButtonSelectBanks_AllBanks.Name = "RadioButtonSelectBanks_AllBanks"
-            Me.RadioButtonSelectBanks_AllBanks.SecurityEnabled = True
-            Me.RadioButtonSelectBanks_AllBanks.Size = New System.Drawing.Size(77, 20)
-            Me.RadioButtonSelectBanks_AllBanks.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonSelectBanks_AllBanks.TabIndex = 0
-            Me.RadioButtonSelectBanks_AllBanks.TabOnEnter = True
-            Me.RadioButtonSelectBanks_AllBanks.Text = "All Banks"
-            '
-            'RadioButtonSelectBanks_ChooseBanks
-            '
-            Me.RadioButtonSelectBanks_ChooseBanks.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonSelectBanks_ChooseBanks.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonSelectBanks_ChooseBanks.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonSelectBanks_ChooseBanks.Location = New System.Drawing.Point(87, 4)
-            Me.RadioButtonSelectBanks_ChooseBanks.Name = "RadioButtonSelectBanks_ChooseBanks"
-            Me.RadioButtonSelectBanks_ChooseBanks.SecurityEnabled = True
-            Me.RadioButtonSelectBanks_ChooseBanks.Size = New System.Drawing.Size(138, 20)
-            Me.RadioButtonSelectBanks_ChooseBanks.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonSelectBanks_ChooseBanks.TabIndex = 1
-            Me.RadioButtonSelectBanks_ChooseBanks.TabOnEnter = True
-            Me.RadioButtonSelectBanks_ChooseBanks.TabStop = False
-            Me.RadioButtonSelectBanks_ChooseBanks.Text = "Choose Banks"
-            '
-            'TabItemJDA_SelectBanksTab
-            '
-            Me.TabItemJDA_SelectBanksTab.AttachedControl = Me.TabControlPanelSelectBanksTab_SelectBanks
-            Me.TabItemJDA_SelectBanksTab.Name = "TabItemJDA_SelectBanksTab"
-            Me.TabItemJDA_SelectBanksTab.Text = "Select Banks"
-            '
             'Panel1
             '
             Me.Panel1.Controls.Add(Me.TabControlForm_JDA)
@@ -751,14 +654,12 @@
             Me.PanelForm_TopSection.ResumeLayout(False)
             CType(Me.TabControlForm_JDA, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlForm_JDA.ResumeLayout(False)
+            Me.TabControlPanelSelectBanksTab_SelectBanks.ResumeLayout(False)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.ResumeLayout(False)
-            CType(Me.NumericInputMonthly_ToYear.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.NumericInputMonthly_FromYear.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.DateTimePicker_StatementCutoff, System.ComponentModel.ISupportInitialize).EndInit()
             Me.PanelOptions_Include.ResumeLayout(False)
             CType(Me.GroupBoxControl_Cutoffs, System.ComponentModel.ISupportInitialize).EndInit()
             Me.GroupBoxControl_Cutoffs.ResumeLayout(False)
-            Me.TabControlPanelSelectBanksTab_SelectBanks.ResumeLayout(False)
             Me.Panel1.ResumeLayout(False)
             Me.PanelForm_Bottom.ResumeLayout(False)
             Me.ResumeLayout(False)
@@ -791,12 +692,8 @@
         Friend WithEvents LabelOptions_Include As WinForm.Presentation.Controls.Label
         Friend WithEvents Label1 As WinForm.Presentation.Controls.Label
         Friend WithEvents DateTimePicker_StatementCutoff As WinForm.Presentation.Controls.DateTimePicker
-        Friend WithEvents NumericInputMonthly_ToYear As WinForm.Presentation.Controls.NumericInput
         Friend WithEvents ComboBoxMonthly_ToMonth As WinForm.Presentation.Controls.ComboBox
-        Friend WithEvents NumericInputMonthly_FromYear As WinForm.Presentation.Controls.NumericInput
         Friend WithEvents ComboBoxMonthly_FromMonth As WinForm.Presentation.Controls.ComboBox
-        Friend WithEvents LabelMonthlyBroadcast_Year As WinForm.Presentation.Controls.Label
-        Friend WithEvents LabelMonthlyBroadcast_Month As WinForm.Presentation.Controls.Label
     End Class
 
 End Namespace

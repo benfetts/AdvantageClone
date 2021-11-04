@@ -57,7 +57,13 @@ namespace Webvantage.Angular.Controllers.Shared
         #region Methods
 
 
-        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString, AdvantageFramework.Core.Database.DbContext DbContext, AdvantageFramework.Core.Database.Entities.Alert Alert, bool IncludeOriginator, bool IsNew, int DocumentID)
+        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString,
+            AdvantageFramework.Core.Database.DbContext DbContext,
+            AdvantageFramework.Core.Database.Entities.Alert Alert,
+            bool IncludeOriginator,
+            bool IsNew,
+            int DocumentID,
+            bool SendEmail)
         {
 
             // objects
@@ -85,7 +91,8 @@ namespace Webvantage.Angular.Controllers.Shared
                 if (string.IsNullOrWhiteSpace(ProofingURL) == false && DocumentID > 0)
                 {
                     ProofingURL = ProofingURL + AdvantageFramework.Core.BLogic.Proofing.Methods.GetProofingURL(queryString, Alert.AlertId, DocumentID, ref err);
-                } else
+                }
+                else
                 {
                     ProofingURL = "";
                 }
@@ -101,57 +108,62 @@ namespace Webvantage.Angular.Controllers.Shared
 
                 ResetAssignedToEmployeeCodeReadFlag = true;
 
-                EmailSessionObject = new AppCode.EmailSessionObject(queryString, null, WebvantageURL, ClientPortalURL, ProofingURL);
-                if (IsNew)
+                if (SendEmail == true)
                 {
-                    SubjectList.Add("New");
+                    EmailSessionObject = new AppCode.EmailSessionObject(queryString, null, WebvantageURL, ClientPortalURL, ProofingURL);
+                    if (IsNew)
+                    {
+                        SubjectList.Add("New");
+                    }
+                    if (Alert.IsWorkItem.GetValueOrDefault(false) == true)
+                    {
+                        SubjectList.Add("Assignment");
+                    }
+                    else
+                    {
+                        SubjectList.Add("Alert");
+                    }
+                    if (!IsNew)
+                    {
+                        SubjectList.Add("Updated");
+                    }
+                    Subject = "[" + string.Join(" ", SubjectList) + "]";
+                    if (EmployeeCodes is null)
+                        EmployeeCodes = new List<string>();
+                    EmailSessionObject.AlertId = Alert.AlertId;
+                    EmailSessionObject.Subject = Subject;
+                    EmailSessionObject.EmployeeCodesToSendEmailTo = string.Join(", ", EmployeeCodes);
+                    EmailSessionObject.ClientPortalEmailAddressessToSendTo = "";
+                    EmailSessionObject.IsClientPortal = false;
+                    EmailSessionObject.IncludeOriginator = true;
+                    //EmailSessionObject.SessionID = HttpContext.Session.SessionID.ToString();
+                    //EmailSessionObject.PhysicalApplicationPath = HttpContext.Request.PhysicalApplicationPath;
+                    EmailSessionObject.ResetAssignedToEmployeeCodeReadFlag = ResetAssignedToEmployeeCodeReadFlag;
+                    EmailSessionObject.Send();
                 }
-                if (Alert.IsWorkItem.GetValueOrDefault(false) == true)
-                {
-                    SubjectList.Add("Assignment");
-                }
-                else
-                {
-                    SubjectList.Add("Alert");
-                }
-
-                if (!IsNew)
-                {
-                    SubjectList.Add("Updated");
-                }
-
-                Subject = "[" + string.Join(" ", SubjectList) + "]";
-                if (EmployeeCodes is null)
-                    EmployeeCodes = new List<string>();
-                EmailSessionObject.AlertId = Alert.AlertId;
-                EmailSessionObject.Subject = Subject;
-                EmailSessionObject.EmployeeCodesToSendEmailTo = string.Join(", ", EmployeeCodes);
-                EmailSessionObject.ClientPortalEmailAddressessToSendTo = "";
-                EmailSessionObject.IsClientPortal = false;
-                EmailSessionObject.IncludeOriginator = true;
-                //EmailSessionObject.SessionID = HttpContext.Session.SessionID.ToString();
-                //EmailSessionObject.PhysicalApplicationPath = HttpContext.Request.PhysicalApplicationPath;
-                EmailSessionObject.ResetAssignedToEmployeeCodeReadFlag = ResetAssignedToEmployeeCodeReadFlag;
-                EmailSessionObject.Send();
             }
-
-
             // End If
-
             catch (Exception ex)
             {
                 Notified = false;
             }
-
             if (Notified == true)
             {
-                RefreshWebvantage(queryString,WebvantageURL, Alert.AlertId);
+                RefreshWebvantage(queryString, WebvantageURL, Alert.AlertId);
             }
-
             return Notified;
         }
 
-        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString, int AlertID, bool Notify, bool IncludeOriginator, bool IsNew, bool UpdateSprint, int? SprintID, bool OnlyCommentAdded, int DocumentID)
+        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString,
+            int AlertID,
+            bool Notify,
+            bool IncludeOriginator,
+            bool IsNew,
+            bool UpdateSprint,
+            int? SprintID,
+            bool OnlyCommentAdded,
+            int DocumentID,
+            bool SendEmail)
         {
             bool NotifyAlertRecipientsRet = default;
 
@@ -165,9 +177,8 @@ namespace Webvantage.Angular.Controllers.Shared
                 {
                     if (Notify == true)
                     {
-                        Sent = NotifyAlertRecipients(queryString, DbContext, Alert, IncludeOriginator, IsNew, DocumentID);
+                        Sent = NotifyAlertRecipients(queryString, DbContext, Alert, IncludeOriginator, IsNew, DocumentID, SendEmail);
                     }
-
                     if (OnlyCommentAdded == false)
                     {
                         if (SprintID is null)
@@ -175,14 +186,12 @@ namespace Webvantage.Angular.Controllers.Shared
                             SprintID = 0;
                         }
                     }
-
                     if (UpdateSprint == true)
                     {
                         PushSprintRefreshAndNotifyByAlertID(DbContext, AlertID, SprintID);
                     }
                 }
             }
-
             NotifyAlertRecipientsRet = Sent;
             return NotifyAlertRecipientsRet;
         }

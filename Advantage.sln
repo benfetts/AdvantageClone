@@ -483,8 +483,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		LessCompiler = ce8a2210-dc00-4858-9936-91f0d42ab486
 		SolutionGuid = {9377B2E8-FD79-45A4-B5AA-93860009762A}
+		LessCompiler = ce8a2210-dc00-4858-9936-91f0d42ab486
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 32

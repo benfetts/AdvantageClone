@@ -1839,6 +1839,7 @@ Namespace Controllers.ProjectManagement
             Dim HoursAllowed As Decimal = 0.0
             Dim HoursAllocated As Decimal = 0.0
             Dim HoursChanged As Boolean = False
+            Dim HoursSum As Decimal = 0.0
             Dim TaskHoursOver As Decimal = 0.0
 
             Try
@@ -1851,13 +1852,13 @@ Namespace Controllers.ProjectManagement
 
                     If SprintEmployee IsNot Nothing Then
 
-                        Try
+                        'Try
 
-                            TaskHoursOver = DbContext.Database.SqlQuery(Of Decimal)(String.Format("EXEC [dbo].[advsp_agile_check_over_task_hours] {0}, {1};", SprintEmployee.ID, Hours)).SingleOrDefault
+                        '    TaskHoursOver = DbContext.Database.SqlQuery(Of Decimal)(String.Format("EXEC [dbo].[advsp_agile_check_over_task_hours] {0}, {1};", SprintEmployee.ID, Hours)).SingleOrDefault
 
-                        Catch ex As Exception
-                            TaskHoursOver = 0.0
-                        End Try
+                        'Catch ex As Exception
+                        '    TaskHoursOver = 0.0
+                        'End Try
 
                         If TaskHoursOver = 0 Then
 
@@ -1873,47 +1874,69 @@ Namespace Controllers.ProjectManagement
 
                             'End If
 
-                            If Success = True Then
+                            Dim Alert As AdvantageFramework.Database.Entities.Alert = Nothing
 
-                                Try
+                            Alert = AdvantageFramework.Database.Procedures.Alert.LoadByAlertID(DbContext, SprintEmployee.AlertID)
 
-                                    DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_agile_update_workitemhours] {0};", SprintEmployee.AlertID))
+                            If Alert.AlertCategoryID = 71 Then
 
-                                Catch ex As Exception
-                                End Try
-                                Try
+                                HoursSum = DbContext.Database.SqlQuery(Of Decimal)(String.Format("SELECT SUM(HOURS) FROM SPRINT_EMPLOYEE WHERE ALERT_ID = '{0}' AND EMP_CODE = '{1}';", SprintEmployee.AlertID, SprintEmployee.EmployeeCode)).FirstOrDefault
 
-                                    Dim AlertHours As AdvantageFramework.Controller.Desktop.AlertController.AlertHours = Nothing
+                                Dim SQL As String = String.Format("UPDATE JOB_TRAFFIC_DET_EMPS SET HOURS_ALLOWED = {0} where ID in (
+                                                    			select ID from JOB_TRAFFIC_DET_EMPS jtd
+					                                                JOIN ALERT A ON A.JOB_NUMBER = jtd.JOB_NUMBER 
+					                                                AND A.JOB_COMPONENT_NBR = jtd.JOB_COMPONENT_NBR 
+					                                                AND A.TASK_SEQ_NBR = jtd.SEQ_NBR 
+					                                                AND A.ALERT_ID = {1}
+					                                                WHERE jtd.EMP_CODE = '{2}')", HoursSum, SprintEmployee.AlertID, SprintEmployee.EmployeeCode)
 
-                                    Try
+                                DbContext.Database.ExecuteSqlCommand(SQL)
 
-                                        AlertHours = DbContext.Database.SqlQuery(Of AdvantageFramework.Controller.Desktop.AlertController.AlertHours) _
-                                                                            (String.Format("EXEC [dbo].[advsp_alert_get_hours] {0};", SprintEmployee.AlertID)).SingleOrDefault
-
-                                    Catch ex As Exception
-                                        AlertHours = Nothing
-                                    End Try
-                                    If AlertHours IsNot Nothing Then
-
-                                        HoursAllowed = AlertHours.HoursAllowed
-                                        HoursAllocated = AlertHours.HoursAllocated
-
-                                    End If
-
-                                Catch ex As Exception
-                                End Try
-
-                                If HoursChanged = True Then
-
-                                    Webvantage.SignalR.Classes.NotificationHub.RefreshAlertHours(DbContext, SprintEmployee.AlertID, Me.SecuritySession.UserCode, True)
-
-                                End If
+                                Success = True
 
                             End If
 
-                        Else
+                            If Success = True Then
 
-                            Success = False
+                                    Try
+
+                                        DbContext.Database.ExecuteSqlCommand(String.Format("EXEC [dbo].[advsp_agile_update_workitemhours] {0};", SprintEmployee.AlertID))
+
+                                    Catch ex As Exception
+                                    End Try
+                                    Try
+
+                                        Dim AlertHours As AdvantageFramework.Controller.Desktop.AlertController.AlertHours = Nothing
+
+                                        Try
+
+                                            AlertHours = DbContext.Database.SqlQuery(Of AdvantageFramework.Controller.Desktop.AlertController.AlertHours) _
+                                                                            (String.Format("EXEC [dbo].[advsp_alert_get_hours] {0};", SprintEmployee.AlertID)).SingleOrDefault
+
+                                        Catch ex As Exception
+                                            AlertHours = Nothing
+                                        End Try
+                                        If AlertHours IsNot Nothing Then
+
+                                            HoursAllowed = AlertHours.HoursAllowed
+                                            HoursAllocated = AlertHours.HoursAllocated
+
+                                        End If
+
+                                    Catch ex As Exception
+                                    End Try
+
+                                    If HoursChanged = True Then
+
+                                        Webvantage.SignalR.Classes.NotificationHub.RefreshAlertHours(DbContext, SprintEmployee.AlertID, Me.SecuritySession.UserCode, True)
+
+                                    End If
+
+                                End If
+
+                            Else
+
+                                Success = False
 
                             Select Case TaskHoursOver
                                 Case 1

@@ -386,3 +386,796 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+Output/Advantage Access Email.exe
+Output/Advantage Access Email.exe.config
+Output/Advantage Access Email.xml
+Output/Advantage Access Login.exe
+Output/Advantage Access Login.exe.config
+Output/Advantage Access Login.xml
+Output/Advantage Com Registry.exe
+Output/Advantage Com Registry.exe.config
+Output/Advantage Connection Configurator.exe
+Output/Advantage Connection Configurator.exe.config
+Output/Advantage Connection Configurator.xml
+Output/Advantage Custom Report Import.exe
+Output/Advantage Custom Report Import.exe.config
+Output/Advantage Custom Report Import.xml
+Output/Advantage Database Update.exe
+Output/Advantage Database Update.exe.config
+Output/Advantage Database Update.xml
+Output/Advantage License Key Import.exe
+Output/Advantage License Key Import.exe.config
+Output/Advantage License Key Import.xml
+Output/Advantage MSAccess.exe
+Output/Advantage MSAccess.exe.config
+Output/Advantage MSAccess.xml
+Output/Advantage National Database Update.exe
+Output/Advantage National Database Update.exe.config
+Output/Advantage National Database Update.xml
+Output/Advantage Nielsen Database Update.exe
+Output/Advantage Nielsen Database Update.exe.config
+Output/Advantage Nielsen Database Update.xml
+Output/Advantage Payment Manager Export FTP.exe
+Output/Advantage Payment Manager Export FTP.exe.config
+Output/Advantage Payment Manager Export FTP.xml
+Output/Advantage Security Setup Assistant.exe
+Output/Advantage Security Setup Assistant.exe.config
+Output/Advantage Security Setup Assistant.xml
+Output/Advantage Upgrade Wizard.exe
+Output/Advantage Upgrade Wizard.exe.config
+Output/Advantage Upgrade Wizard.xml
+Output/Advantage.exe
+Output/Advantage.exe.config
+Output/Advantage.xml
+Output/AdvantageFramework.BLogic.dll
+Output/AdvantageFramework.BLogic.dll.config
+Output/AdvantageFramework.BLogic.xml
+Output/AdvantageFramework.BLogic.XmlSerializers.dll
+Output/AdvantageFramework.Com.dll
+Output/AdvantageFramework.Com.dll.config
+Output/AdvantageFramework.Com.xml
+Output/AdvantageFramework.dll
+Output/AdvantageFramework.dll.config
+Output/AdvantageFramework.GoogleServices.dll
+Output/AdvantageFramework.GoogleServices.dll.config
+Output/AdvantageFramework.GoogleServices.xml
+Output/AdvantageFramework.Reporting.Reports.dll
+Output/AdvantageFramework.Reporting.Reports.dll.config
+Output/AdvantageFramework.Reporting.Reports.xml
+Output/AdvantageFramework.Security.Adassist.dll
+Output/AdvantageFramework.Security.Adassist.dll.config
+Output/AdvantageFramework.Security.Adassist.xml
+Output/AdvantageFramework.WinForm.dll
+Output/AdvantageFramework.WinForm.dll.config
+Output/AdvantageFramework.WinForm.xml
+Output/AdvantageFramework.xml
+Output/Aspose.Cells.dll
+Output/Aspose.Network.dll
+Output/Aspose.Pdf.dll
+Output/Aspose.Words.dll
+Output/AxSHDocVw.dll
+Output/de/DevExpress.Dashboard.v20.1.Core.resources.dll
+Output/de/DevExpress.Dashboard.v20.1.Win.resources.dll
+Output/de/DevExpress.Data.v20.1.resources.dll
+Output/de/DevExpress.DataAccess.v20.1.resources.dll
+Output/de/DevExpress.DataAccess.v20.1.UI.resources.dll
+Output/de/DevExpress.Diagram.v20.1.Core.resources.dll
+Output/de/DevExpress.Dialogs.v20.1.Core.resources.dll
+Output/de/DevExpress.Map.v20.1.Core.resources.dll
+Output/de/DevExpress.Office.v20.1.Core.resources.dll
+Output/de/DevExpress.Pdf.v20.1.Core.resources.dll
+Output/de/DevExpress.PivotGrid.v20.1.Core.resources.dll
+Output/de/DevExpress.Printing.v20.1.Core.resources.dll
+Output/de/DevExpress.RichEdit.v20.1.Core.resources.dll
+Output/de/DevExpress.Snap.v20.1.Core.resources.dll
+Output/de/DevExpress.Snap.v20.1.Extensions.resources.dll
+Output/de/DevExpress.Snap.v20.1.resources.dll
+Output/de/DevExpress.Sparkline.v20.1.Core.resources.dll
+Output/de/DevExpress.Spreadsheet.v20.1.Core.resources.dll
+Output/de/DevExpress.Utils.v20.1.resources.dll
+Output/de/DevExpress.Utils.v20.1.UI.resources.dll
+Output/de/DevExpress.Xpf.Core.v20.1.resources.dll
+Output/de/DevExpress.Xpf.Docking.v20.1.resources.dll
+Output/de/DevExpress.Xpf.DocumentViewer.v20.1.Core.resources.dll
+Output/de/DevExpress.Xpf.Grid.v20.1.Core.resources.dll
+Output/de/DevExpress.Xpf.LayoutControl.v20.1.resources.dll
+Output/de/DevExpress.Xpf.Printing.v20.1.resources.dll
+Output/de/DevExpress.Xpf.Ribbon.v20.1.resources.dll
+Output/de/DevExpress.Xpf.RichEdit.v20.1.resources.dll
+Output/de/DevExpress.Xpo.v20.1.resources.dll
+Output/de/DevExpress.XtraBars.v20.1.resources.dll
+Output/de/DevExpress.XtraCharts.v20.1.resources.dll
+Output/de/DevExpress.XtraCharts.v20.1.Wizard.resources.dll
+Output/de/DevExpress.XtraEditors.v20.1.resources.dll
+Output/de/DevExpress.XtraGauges.v20.1.Core.resources.dll
+Output/de/DevExpress.XtraGauges.v20.1.Presets.resources.dll
+Output/de/DevExpress.XtraGrid.v20.1.resources.dll
+Output/de/DevExpress.XtraLayout.v20.1.resources.dll
+Output/de/DevExpress.XtraNavBar.v20.1.resources.dll
+Output/de/DevExpress.XtraPdfViewer.v20.1.resources.dll
+Output/de/DevExpress.XtraPivotGrid.v20.1.resources.dll
+Output/de/DevExpress.XtraPrinting.v20.1.resources.dll
+Output/de/DevExpress.XtraReports.v20.1.Extensions.resources.dll
+Output/de/DevExpress.XtraReports.v20.1.resources.dll
+Output/de/DevExpress.XtraRichEdit.v20.1.resources.dll
+Output/de/DevExpress.XtraScheduler.v20.1.Core.resources.dll
+Output/de/DevExpress.XtraScheduler.v20.1.Extensions.resources.dll
+Output/de/DevExpress.XtraScheduler.v20.1.Reporting.resources.dll
+Output/de/DevExpress.XtraScheduler.v20.1.resources.dll
+Output/de/DevExpress.XtraSpellChecker.v20.1.resources.dll
+Output/de/DevExpress.XtraSpreadsheet.v20.1.resources.dll
+Output/de/DevExpress.XtraTreeList.v20.1.resources.dll
+Output/de/DevExpress.XtraVerticalGrid.v20.1.resources.dll
+Output/de/DevExpress.XtraWizard.v20.1.resources.dll
+Output/DevComponents.DotNetBar2.dll
+Output/DevExpress.BonusSkins.v20.1.dll
+Output/DevExpress.Charts.v20.1.Core.dll
+Output/DevExpress.CodeParser.v20.1.dll
+Output/DevExpress.Dashboard.v20.1.Core.dll
+Output/DevExpress.Dashboard.v20.1.Core.xml
+Output/DevExpress.Dashboard.v20.1.Win.dll
+Output/DevExpress.Dashboard.v20.1.Win.xml
+Output/DevExpress.Data.Desktop.v20.1.dll
+Output/DevExpress.Data.Desktop.v20.1.xml
+Output/DevExpress.Data.v20.1.dll
+Output/DevExpress.Data.v20.1.xml
+Output/DevExpress.DataAccess.v20.1.dll
+Output/DevExpress.DataAccess.v20.1.UI.dll
+Output/DevExpress.DataAccess.v20.1.UI.xml
+Output/DevExpress.DataAccess.v20.1.xml
+Output/DevExpress.Diagram.v20.1.Core.dll
+Output/DevExpress.Diagram.v20.1.Core.xml
+Output/DevExpress.Dialogs.v20.1.Core.dll
+Output/DevExpress.Images.v20.1.dll
+Output/DevExpress.Map.v20.1.Core.dll
+Output/DevExpress.Map.v20.1.Core.xml
+Output/DevExpress.Mvvm.v20.1.dll
+Output/DevExpress.Mvvm.v20.1.xml
+Output/DevExpress.Office.v20.1.Core.dll
+Output/DevExpress.Office.v20.1.Core.xml
+Output/DevExpress.Pdf.v20.1.Core.dll
+Output/DevExpress.Pdf.v20.1.Core.xml
+Output/DevExpress.Pdf.v20.1.Drawing.dll
+Output/DevExpress.Pdf.v20.1.Drawing.xml
+Output/DevExpress.PivotGrid.v20.1.Core.dll
+Output/DevExpress.PivotGrid.v20.1.Core.xml
+Output/DevExpress.Printing.v20.1.Core.dll
+Output/DevExpress.Printing.v20.1.Core.xml
+Output/DevExpress.RichEdit.v20.1.Core.dll
+Output/DevExpress.RichEdit.v20.1.Core.xml
+Output/DevExpress.RichEdit.v20.1.Export.dll
+Output/DevExpress.Snap.v20.1.Core.dll
+Output/DevExpress.Snap.v20.1.Core.xml
+Output/DevExpress.Snap.v20.1.dll
+Output/DevExpress.Snap.v20.1.Extensions.dll
+Output/DevExpress.Snap.v20.1.Extensions.xml
+Output/DevExpress.Snap.v20.1.xml
+Output/DevExpress.Sparkline.v20.1.Core.dll
+Output/DevExpress.Sparkline.v20.1.Core.xml
+Output/DevExpress.SpellChecker.v20.1.Core.dll
+Output/DevExpress.SpellChecker.v20.1.Core.xml
+Output/DevExpress.Spreadsheet.v20.1.Core.dll
+Output/DevExpress.Spreadsheet.v20.1.Core.xml
+Output/DevExpress.TreeMap.v20.1.Core.dll
+Output/DevExpress.TreeMap.v20.1.Core.xml
+Output/DevExpress.Utils.v20.1.dll
+Output/DevExpress.Utils.v20.1.UI.dll
+Output/DevExpress.Utils.v20.1.UI.xml
+Output/DevExpress.Utils.v20.1.xml
+Output/DevExpress.Xpf.Core.v20.1.dll
+Output/DevExpress.Xpf.Core.v20.1.xml
+Output/DevExpress.Xpf.Docking.v20.1.dll
+Output/DevExpress.Xpf.Docking.v20.1.xml
+Output/DevExpress.Xpf.DocumentViewer.v20.1.Core.dll
+Output/DevExpress.Xpf.DocumentViewer.v20.1.Core.xml
+Output/DevExpress.Xpf.Grid.v20.1.Core.dll
+Output/DevExpress.Xpf.Grid.v20.1.Core.xml
+Output/DevExpress.Xpf.Grid.v20.1.dll
+Output/DevExpress.Xpf.Grid.v20.1.xml
+Output/DevExpress.Xpf.Layout.v20.1.Core.dll
+Output/DevExpress.Xpf.Layout.v20.1.Core.xml
+Output/DevExpress.Xpf.LayoutControl.v20.1.dll
+Output/DevExpress.Xpf.LayoutControl.v20.1.xml
+Output/DevExpress.Xpf.Office.v20.1.dll
+Output/DevExpress.Xpf.Printing.v20.1.dll
+Output/DevExpress.Xpf.Printing.v20.1.xml
+Output/DevExpress.Xpf.Ribbon.v20.1.dll
+Output/DevExpress.Xpf.Ribbon.v20.1.xml
+Output/DevExpress.Xpf.RichEdit.v20.1.dll
+Output/DevExpress.Xpf.RichEdit.v20.1.xml
+Output/DevExpress.Xpo.v20.1.dll
+Output/DevExpress.Xpo.v20.1.Extensions.dll
+Output/DevExpress.Xpo.v20.1.Extensions.xml
+Output/DevExpress.Xpo.v20.1.xml
+Output/DevExpress.XtraBars.v20.1.dll
+Output/DevExpress.XtraBars.v20.1.xml
+Output/DevExpress.XtraCharts.v20.1.dll
+Output/DevExpress.XtraCharts.v20.1.Extensions.dll
+Output/DevExpress.XtraCharts.v20.1.UI.dll
+Output/DevExpress.XtraCharts.v20.1.UI.xml
+Output/DevExpress.XtraCharts.v20.1.Wizard.dll
+Output/DevExpress.XtraCharts.v20.1.Wizard.xml
+Output/DevExpress.XtraCharts.v20.1.xml
+Output/DevExpress.XtraDiagram.v20.1.dll
+Output/DevExpress.XtraDiagram.v20.1.xml
+Output/DevExpress.XtraDialogs.v20.1.dll
+Output/DevExpress.XtraDialogs.v20.1.xml
+Output/DevExpress.XtraEditors.v20.1.dll
+Output/DevExpress.XtraEditors.v20.1.xml
+Output/DevExpress.XtraGauges.v20.1.Core.dll
+Output/DevExpress.XtraGauges.v20.1.Core.xml
+Output/DevExpress.XtraGauges.v20.1.Presets.dll
+Output/DevExpress.XtraGauges.v20.1.Presets.xml
+Output/DevExpress.XtraGauges.v20.1.Win.dll
+Output/DevExpress.XtraGauges.v20.1.Win.xml
+Output/DevExpress.XtraGrid.v20.1.dll
+Output/DevExpress.XtraGrid.v20.1.xml
+Output/DevExpress.XtraLayout.v20.1.dll
+Output/DevExpress.XtraLayout.v20.1.xml
+Output/DevExpress.XtraMap.v20.1.dll
+Output/DevExpress.XtraMap.v20.1.xml
+Output/DevExpress.XtraNavBar.v20.1.dll
+Output/DevExpress.XtraNavBar.v20.1.xml
+Output/DevExpress.XtraPdfViewer.v20.1.dll
+Output/DevExpress.XtraPdfViewer.v20.1.xml
+Output/DevExpress.XtraPivotGrid.v20.1.dll
+Output/DevExpress.XtraPivotGrid.v20.1.xml
+Output/DevExpress.XtraPrinting.v20.1.dll
+Output/DevExpress.XtraPrinting.v20.1.xml
+Output/DevExpress.XtraReports.v20.1.dll
+Output/DevExpress.XtraReports.v20.1.Extensions.dll
+Output/DevExpress.XtraReports.v20.1.Extensions.xml
+Output/DevExpress.XtraReports.v20.1.Service.dll
+Output/DevExpress.XtraReports.v20.1.Service.xml
+Output/DevExpress.XtraReports.v20.1.xml
+Output/DevExpress.XtraRichEdit.v20.1.dll
+Output/DevExpress.XtraRichEdit.v20.1.xml
+Output/DevExpress.XtraScheduler.v20.1.Core.dll
+Output/DevExpress.XtraScheduler.v20.1.Core.xml
+Output/DevExpress.XtraScheduler.v20.1.dll
+Output/DevExpress.XtraScheduler.v20.1.Extensions.dll
+Output/DevExpress.XtraScheduler.v20.1.Extensions.xml
+Output/DevExpress.XtraScheduler.v20.1.Reporting.dll
+Output/DevExpress.XtraScheduler.v20.1.Reporting.Extensions.dll
+Output/DevExpress.XtraScheduler.v20.1.Reporting.Extensions.xml
+Output/DevExpress.XtraScheduler.v20.1.Reporting.xml
+Output/DevExpress.XtraScheduler.v20.1.xml
+Output/DevExpress.XtraSpellChecker.v20.1.dll
+Output/DevExpress.XtraSpellChecker.v20.1.xml
+Output/DevExpress.XtraSpreadsheet.v20.1.dll
+Output/DevExpress.XtraSpreadsheet.v20.1.xml
+Output/DevExpress.XtraTreeList.v20.1.dll
+Output/DevExpress.XtraTreeList.v20.1.xml
+Output/DevExpress.XtraTreeMap.v20.1.dll
+Output/DevExpress.XtraTreeMap.v20.1.xml
+Output/DevExpress.XtraVerticalGrid.v20.1.dll
+Output/DevExpress.XtraVerticalGrid.v20.1.xml
+Output/DevExpress.XtraWizard.v20.1.dll
+Output/DevExpress.XtraWizard.v20.1.xml
+Output/EntityFramework.dll
+Output/EntityFramework.SqlServer.dll
+Output/EntityFramework.SqlServer.xml
+Output/EntityFramework.xml
+Output/es/DevExpress.Dashboard.v20.1.Core.resources.dll
+Output/es/DevExpress.Dashboard.v20.1.Win.resources.dll
+Output/es/DevExpress.Data.v20.1.resources.dll
+Output/es/DevExpress.DataAccess.v20.1.resources.dll
+Output/es/DevExpress.DataAccess.v20.1.UI.resources.dll
+Output/es/DevExpress.Diagram.v20.1.Core.resources.dll
+Output/es/DevExpress.Dialogs.v20.1.Core.resources.dll
+Output/es/DevExpress.Map.v20.1.Core.resources.dll
+Output/es/DevExpress.Office.v20.1.Core.resources.dll
+Output/es/DevExpress.Pdf.v20.1.Core.resources.dll
+Output/es/DevExpress.PivotGrid.v20.1.Core.resources.dll
+Output/es/DevExpress.Printing.v20.1.Core.resources.dll
+Output/es/DevExpress.RichEdit.v20.1.Core.resources.dll
+Output/es/DevExpress.Snap.v20.1.Core.resources.dll
+Output/es/DevExpress.Snap.v20.1.Extensions.resources.dll
+Output/es/DevExpress.Snap.v20.1.resources.dll
+Output/es/DevExpress.Sparkline.v20.1.Core.resources.dll
+Output/es/DevExpress.Spreadsheet.v20.1.Core.resources.dll
+Output/es/DevExpress.Utils.v20.1.resources.dll
+Output/es/DevExpress.Utils.v20.1.UI.resources.dll
+Output/es/DevExpress.Xpf.Core.v20.1.resources.dll
+Output/es/DevExpress.Xpf.Docking.v20.1.resources.dll
+Output/es/DevExpress.Xpf.DocumentViewer.v20.1.Core.resources.dll
+Output/es/DevExpress.Xpf.Grid.v20.1.Core.resources.dll
+Output/es/DevExpress.Xpf.LayoutControl.v20.1.resources.dll
+Output/es/DevExpress.Xpf.Printing.v20.1.resources.dll
+Output/es/DevExpress.Xpf.Ribbon.v20.1.resources.dll
+Output/es/DevExpress.Xpf.RichEdit.v20.1.resources.dll
+Output/es/DevExpress.Xpo.v20.1.resources.dll
+Output/es/DevExpress.XtraBars.v20.1.resources.dll
+Output/es/DevExpress.XtraCharts.v20.1.resources.dll
+Output/es/DevExpress.XtraCharts.v20.1.Wizard.resources.dll
+Output/es/DevExpress.XtraEditors.v20.1.resources.dll
+Output/es/DevExpress.XtraGauges.v20.1.Core.resources.dll
+Output/es/DevExpress.XtraGauges.v20.1.Presets.resources.dll
+Output/es/DevExpress.XtraGrid.v20.1.resources.dll
+Output/es/DevExpress.XtraLayout.v20.1.resources.dll
+Output/es/DevExpress.XtraNavBar.v20.1.resources.dll
+Output/es/DevExpress.XtraPdfViewer.v20.1.resources.dll
+Output/es/DevExpress.XtraPivotGrid.v20.1.resources.dll
+Output/es/DevExpress.XtraPrinting.v20.1.resources.dll
+Output/es/DevExpress.XtraReports.v20.1.Extensions.resources.dll
+Output/es/DevExpress.XtraReports.v20.1.resources.dll
+Output/es/DevExpress.XtraRichEdit.v20.1.resources.dll
+Output/es/DevExpress.XtraScheduler.v20.1.Core.resources.dll
+Output/es/DevExpress.XtraScheduler.v20.1.Extensions.resources.dll
+Output/es/DevExpress.XtraScheduler.v20.1.Reporting.resources.dll
+Output/es/DevExpress.XtraScheduler.v20.1.resources.dll
+Output/es/DevExpress.XtraSpellChecker.v20.1.resources.dll
+Output/es/DevExpress.XtraSpreadsheet.v20.1.resources.dll
+Output/es/DevExpress.XtraTreeList.v20.1.resources.dll
+Output/es/DevExpress.XtraVerticalGrid.v20.1.resources.dll
+Output/es/DevExpress.XtraWizard.v20.1.resources.dll
+Output/Google.Apis.Auth.dll
+Output/Google.Apis.Auth.PlatformServices.dll
+Output/Google.Apis.Auth.xml
+Output/Google.Apis.Calendar.v3.dll
+Output/Google.Apis.Calendar.v3.xml
+Output/Google.Apis.Core.dll
+Output/Google.Apis.Core.xml
+Output/Google.Apis.Dfareporting.v3_5.dll
+Output/Google.Apis.Dfareporting.v3_5.xml
+Output/Google.Apis.dll
+Output/Google.Apis.PlatformServices.dll
+Output/Google.Apis.xml
+Output/HtmlAgilityPack.4.dll
+Output/ICalVCard.4.dll
+Output/Intuit.Ipp.Core.dll
+Output/Intuit.Ipp.Data.dll
+Output/Intuit.Ipp.DataService.dll
+Output/Intuit.Ipp.Diagnostics.dll
+Output/Intuit.Ipp.EntitlementService.dll
+Output/Intuit.Ipp.Exception.dll
+Output/Intuit.Ipp.GlobalTaxService.dll
+Output/Intuit.Ipp.OAuth2PlatformClient.dll
+Output/Intuit.Ipp.QueryFilter.dll
+Output/Intuit.Ipp.ReportService.dll
+Output/Intuit.Ipp.Retry.dll
+Output/Intuit.Ipp.Security.dll
+Output/Intuit.Ipp.Utility.dll
+Output/Intuit.Ipp.WebHooksService.dll
+Output/Ionic.Zip.dll
+Output/ja/DevExpress.Dashboard.v20.1.Core.resources.dll
+Output/ja/DevExpress.Dashboard.v20.1.Win.resources.dll
+Output/ja/DevExpress.Data.v20.1.resources.dll
+Output/ja/DevExpress.DataAccess.v20.1.resources.dll
+Output/ja/DevExpress.DataAccess.v20.1.UI.resources.dll
+Output/ja/DevExpress.Diagram.v20.1.Core.resources.dll
+Output/ja/DevExpress.Dialogs.v20.1.Core.resources.dll
+Output/ja/DevExpress.Map.v20.1.Core.resources.dll
+Output/ja/DevExpress.Office.v20.1.Core.resources.dll
+Output/ja/DevExpress.Pdf.v20.1.Core.resources.dll
+Output/ja/DevExpress.PivotGrid.v20.1.Core.resources.dll
+Output/ja/DevExpress.Printing.v20.1.Core.resources.dll
+Output/ja/DevExpress.RichEdit.v20.1.Core.resources.dll
+Output/ja/DevExpress.Snap.v20.1.Core.resources.dll
+Output/ja/DevExpress.Snap.v20.1.Extensions.resources.dll
+Output/ja/DevExpress.Snap.v20.1.resources.dll
+Output/ja/DevExpress.Sparkline.v20.1.Core.resources.dll
+Output/ja/DevExpress.Spreadsheet.v20.1.Core.resources.dll
+Output/ja/DevExpress.Utils.v20.1.resources.dll
+Output/ja/DevExpress.Utils.v20.1.UI.resources.dll
+Output/ja/DevExpress.Xpf.Core.v20.1.resources.dll
+Output/ja/DevExpress.Xpf.Docking.v20.1.resources.dll
+Output/ja/DevExpress.Xpf.DocumentViewer.v20.1.Core.resources.dll
+Output/ja/DevExpress.Xpf.Grid.v20.1.Core.resources.dll
+Output/ja/DevExpress.Xpf.LayoutControl.v20.1.resources.dll
+Output/ja/DevExpress.Xpf.Printing.v20.1.resources.dll
+Output/ja/DevExpress.Xpf.Ribbon.v20.1.resources.dll
+Output/ja/DevExpress.Xpf.RichEdit.v20.1.resources.dll
+Output/ja/DevExpress.Xpo.v20.1.resources.dll
+Output/ja/DevExpress.XtraBars.v20.1.resources.dll
+Output/ja/DevExpress.XtraCharts.v20.1.resources.dll
+Output/ja/DevExpress.XtraCharts.v20.1.Wizard.resources.dll
+Output/ja/DevExpress.XtraEditors.v20.1.resources.dll
+Output/ja/DevExpress.XtraGauges.v20.1.Core.resources.dll
+Output/ja/DevExpress.XtraGauges.v20.1.Presets.resources.dll
+Output/ja/DevExpress.XtraGrid.v20.1.resources.dll
+Output/ja/DevExpress.XtraLayout.v20.1.resources.dll
+Output/ja/DevExpress.XtraNavBar.v20.1.resources.dll
+Output/ja/DevExpress.XtraPdfViewer.v20.1.resources.dll
+Output/ja/DevExpress.XtraPivotGrid.v20.1.resources.dll
+Output/ja/DevExpress.XtraPrinting.v20.1.resources.dll
+Output/ja/DevExpress.XtraReports.v20.1.Extensions.resources.dll
+Output/ja/DevExpress.XtraReports.v20.1.resources.dll
+Output/ja/DevExpress.XtraRichEdit.v20.1.resources.dll
+Output/ja/DevExpress.XtraScheduler.v20.1.Core.resources.dll
+Output/ja/DevExpress.XtraScheduler.v20.1.Extensions.resources.dll
+Output/ja/DevExpress.XtraScheduler.v20.1.Reporting.resources.dll
+Output/ja/DevExpress.XtraScheduler.v20.1.resources.dll
+Output/ja/DevExpress.XtraSpellChecker.v20.1.resources.dll
+Output/ja/DevExpress.XtraSpreadsheet.v20.1.resources.dll
+Output/ja/DevExpress.XtraTreeList.v20.1.resources.dll
+Output/ja/DevExpress.XtraVerticalGrid.v20.1.resources.dll
+Output/ja/DevExpress.XtraWizard.v20.1.resources.dll
+Output/Kendo.Mvc.dll
+Output/MailBee.NET.dll
+Output/Microsoft.Exchange.WebServices.Auth.dll
+Output/Microsoft.Exchange.WebServices.dll
+Output/Microsoft.Extensions.Configuration.Binder.dll
+Output/Microsoft.Extensions.Configuration.FileExtensions.dll
+Output/Microsoft.Extensions.Configuration.Json.dll
+Output/Microsoft.Extensions.Configuration.Xml.dll
+Output/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+Output/Microsoft.Extensions.DependencyModel.dll
+Output/Microsoft.Extensions.FileProviders.Abstractions.dll
+Output/Microsoft.Extensions.FileProviders.Physical.dll
+Output/Microsoft.Extensions.FileSystemGlobbing.dll
+Output/Microsoft.Extensions.Logging.Abstractions.dll
+Output/Microsoft.Extensions.Logging.dll
+Output/Microsoft.Extensions.Options.ConfigurationExtensions.dll
+Output/Microsoft.Extensions.Options.dll
+Output/Microsoft.IdentityModel.Extensions.dll
+Output/Microsoft.Web.Infrastructure.dll
+Output/Newtonsoft.Json.dll
+Output/Newtonsoft.Json.xml
+Output/Nielsen Scripts/vX.XX.XX/4 - Function Scripts/advfn_nielsen_spot_tv_rowcount.function.sql
+Output/Nielsen Scripts/vX.XX.XX/4 - Function Scripts/advtf_nielsen_radio_audience_get_aqh.function.sql
+Output/Nielsen Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_neilsen_tv_book_delete.proc.sql
+Output/Nielsen Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_radio_worksheet_rating.proc.sql
+Output/Rebex.Common.dll
+Output/Rebex.Ftp.dll
+Output/Rebex.Imap.dll
+Output/Rebex.Mail.dll
+Output/Rebex.Networking.dll
+Output/Rebex.Pop3.dll
+Output/Rebex.Security.dll
+Output/Rebex.Sftp.dll
+Output/Rebex.Smtp.dll
+Output/Rebex.SshShell.dll
+Output/Rebex.Telnet.dll
+Output/Rebex.Terminal.dll
+Output/Rebex.Time.dll
+Output/Rebex.Zip.dll
+Output/RegAsm.exe
+Output/Resources/AmericanXLG.xlg
+Output/Resources/EnglishAFF.aff
+Output/Resources/EnglishAlphabet.txt
+Output/RestSharp.dll
+Output/RestSharp.xml
+Output/ru/DevExpress.Dashboard.v20.1.Core.resources.dll
+Output/ru/DevExpress.Dashboard.v20.1.Win.resources.dll
+Output/ru/DevExpress.Data.v20.1.resources.dll
+Output/ru/DevExpress.DataAccess.v20.1.resources.dll
+Output/ru/DevExpress.DataAccess.v20.1.UI.resources.dll
+Output/ru/DevExpress.Diagram.v20.1.Core.resources.dll
+Output/ru/DevExpress.Dialogs.v20.1.Core.resources.dll
+Output/ru/DevExpress.Map.v20.1.Core.resources.dll
+Output/ru/DevExpress.Office.v20.1.Core.resources.dll
+Output/ru/DevExpress.Pdf.v20.1.Core.resources.dll
+Output/ru/DevExpress.PivotGrid.v20.1.Core.resources.dll
+Output/ru/DevExpress.Printing.v20.1.Core.resources.dll
+Output/ru/DevExpress.RichEdit.v20.1.Core.resources.dll
+Output/ru/DevExpress.Snap.v20.1.Core.resources.dll
+Output/ru/DevExpress.Snap.v20.1.Extensions.resources.dll
+Output/ru/DevExpress.Snap.v20.1.resources.dll
+Output/ru/DevExpress.Sparkline.v20.1.Core.resources.dll
+Output/ru/DevExpress.Spreadsheet.v20.1.Core.resources.dll
+Output/ru/DevExpress.Utils.v20.1.resources.dll
+Output/ru/DevExpress.Utils.v20.1.UI.resources.dll
+Output/ru/DevExpress.Xpf.Core.v20.1.resources.dll
+Output/ru/DevExpress.Xpf.Docking.v20.1.resources.dll
+Output/ru/DevExpress.Xpf.DocumentViewer.v20.1.Core.resources.dll
+Output/ru/DevExpress.Xpf.Grid.v20.1.Core.resources.dll
+Output/ru/DevExpress.Xpf.LayoutControl.v20.1.resources.dll
+Output/ru/DevExpress.Xpf.Printing.v20.1.resources.dll
+Output/ru/DevExpress.Xpf.Ribbon.v20.1.resources.dll
+Output/ru/DevExpress.Xpf.RichEdit.v20.1.resources.dll
+Output/ru/DevExpress.Xpo.v20.1.resources.dll
+Output/ru/DevExpress.XtraBars.v20.1.resources.dll
+Output/ru/DevExpress.XtraCharts.v20.1.resources.dll
+Output/ru/DevExpress.XtraCharts.v20.1.Wizard.resources.dll
+Output/ru/DevExpress.XtraEditors.v20.1.resources.dll
+Output/ru/DevExpress.XtraGauges.v20.1.Core.resources.dll
+Output/ru/DevExpress.XtraGauges.v20.1.Presets.resources.dll
+Output/ru/DevExpress.XtraGrid.v20.1.resources.dll
+Output/ru/DevExpress.XtraLayout.v20.1.resources.dll
+Output/ru/DevExpress.XtraNavBar.v20.1.resources.dll
+Output/ru/DevExpress.XtraPdfViewer.v20.1.resources.dll
+Output/ru/DevExpress.XtraPivotGrid.v20.1.resources.dll
+Output/ru/DevExpress.XtraPrinting.v20.1.resources.dll
+Output/ru/DevExpress.XtraReports.v20.1.Extensions.resources.dll
+Output/ru/DevExpress.XtraReports.v20.1.resources.dll
+Output/ru/DevExpress.XtraRichEdit.v20.1.resources.dll
+Output/ru/DevExpress.XtraScheduler.v20.1.Core.resources.dll
+Output/ru/DevExpress.XtraScheduler.v20.1.Extensions.resources.dll
+Output/ru/DevExpress.XtraScheduler.v20.1.Reporting.resources.dll
+Output/ru/DevExpress.XtraScheduler.v20.1.resources.dll
+Output/ru/DevExpress.XtraSpellChecker.v20.1.resources.dll
+Output/ru/DevExpress.XtraSpreadsheet.v20.1.resources.dll
+Output/ru/DevExpress.XtraTreeList.v20.1.resources.dll
+Output/ru/DevExpress.XtraVerticalGrid.v20.1.resources.dll
+Output/ru/DevExpress.XtraWizard.v20.1.resources.dll
+Output/Scripts/vX.XX.XX/1 - Pre Database Update Scripts/Clean up old external reviewer tables.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/ACCESS_EMAIL.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/ALERT_MENTION.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/ALERT_NOTIFY_EMPS_ASSIGNMENT.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/LEGACY_APP_CTRL.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/MEDIA_PLAN_DOCUMENT.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/QUICKBOOKS_SETTING.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/Run First/PROOFING_X_REVIEWER.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/Run Second/ALERT_RCPT_X_REVIEWER.table.sql
+Output/Scripts/vX.XX.XX/2 - Table Scripts/Run Second/ALERT_RCPT_X_REVIEWER_DISMISSED.table.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column ATTACHMENT_PATH to ACCESS_EMAIL.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column BILL_PRODUCTION_ACCOUNT to QUICKBOOKS_SETTING.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column CANADIAN_VENDOR_TYPE to VENDOR.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column COUNTRY_ID to MEDIA_PLAN.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column IS_ACTUALIZED to MEDIA_PLAN_DTL_LEVEL_LINE_DATA.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column MEDIA_DEMO_ID to MEDIA_PLAN_DTL.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column PROOFING_URL to AGENCY.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column PROOFING_X_REVIEWER_ID to ALERT_COMMENT.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column PROOFING_X_REVIEWER_ID to PROOFING_MARKUP.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column QUICKBOOKS_BILL_ID to AP_HEADER.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column QUICKBOOKS_INVOICE_ID to ACCT_REC.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column RATINGS_SERVICE_ID to MEDIA_PLAN_DTL.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column THUMBNAIL to ALERT_ATTACHMENT.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Column VERSION_NUMBER to DOCUMENTS.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add columns PRODUCTION_MEDIA_BILL_DATE_FROM and PRODUCTION_MEDIA_BILL_DATE_TO to BILLING_CMD_CENTER.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add Columns to PO_PRINT_DEF.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Add PROOFING_STATUS_ID to ALERT_COMMENT.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/add SEQ_NBR to PROOFING_MARKUP.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Alter Column DEFAULT_RATE on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Alter Column DEFAULT_RATE on MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Alter Column RATE on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Alter Column RATE on MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL_DATE.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Alter Columns CPP on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL.sql
+Output/Scripts/vX.XX.XX/3 - Table Update Scripts/Alter Columns CPP on MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advfn_ad_server_placement_name.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advfn_bcc_is_job_closeable.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advfn_get_gl_account_desc.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advfn_get_vn_name.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advfn_get_vn_pay_to_code.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_alert_dashboard.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_alert_dashboard_cp.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_alert_dashboard_jobjacket.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_alert_get_states.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_ar_address_table_prod.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_proofing_get_approvals_list.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_proofing_get_documents_details.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/advtf_traffic_schedule_GetHierarchyDates.function.sql
+Output/Scripts/vX.XX.XX/4 - Function Scripts/fn_get_nth_workday.function.sql
+Output/Scripts/vX.XX.XX/5 - View Scripts/V_BRDCAST_ORDER_DTL.view.sql
+Output/Scripts/vX.XX.XX/5 - View Scripts/VENDOR_INVOICE.view.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_agile_get_sprint_job_components.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_aam.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_aam_cp.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_assignment_check_for_template.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_assignment_move_to_next_state.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_assignment_template_add_employee_to_state.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_assignment_template_add_employee_to_template.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_assignment_template_create_custom.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_assignment_template_delete_employee_from_state.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_attachments_get.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_complete_assignment.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_get.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_get_current_assignees.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_load_assignment_template.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_load_comments.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_reset_routed_assignment.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_save_template_to_assignment.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alert_template_states_employees_get.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alerts_dataset.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alerts_with_comments_dataset.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_alerts_with_recipients_dataset.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ap_available_internet_orders.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ap_available_outofhome_orders.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ap_expense_report_import_items.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ap_import_delete_batch.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ap_import_validate_staging_tables.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ap_media_reconcile.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ap_media_reconcile_revise.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_api_load_ar_stmt_product_contacts.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_api_load_media_broadcast_details.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_address_table_prod.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_invoice_get_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_invoice_select_by_client.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_invoice_select_summary_detail.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_invoice_select_voided_by_client.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_media_billing_data_arsum.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_payment_history_report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_select_client_invoices_for_void.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_ar_void_client_invoice.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bcc_billing_worksheet_production.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bcc_get_production_summary.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bcc_job_details_get_employee_time.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bcc_populate_ar_function.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_acct_exec.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_bill_appr.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_campaign.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_cli_div.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_cli_div_prd.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_client.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_client_biller.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_comp.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_job.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_bill_select_sales_class.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_billing_approval_report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_broadcast_audit_export_buy.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_broadcast_audit_export_invoice.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_broadcast_invoice_summary_report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_broadcast_order_dtl_verification.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_broadcast_order_verification.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_broadcast_orders_for_vendor_rep_by_order_number.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_cash_management_production.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_cash_transactions.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_check_register.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_check_register_with_invoice_details.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_client_ar_stmt_contact_add_update_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_client_contact_add_update_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_client_contact_detail_add_update_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_client_type_add_update_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_contact_type_add_update_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_digital_campaign_mgr_estimate_detail.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_employee_time_analysis.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_get_content_for_user.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_get_spot_matching_adjacency_settings.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_gl_detail_by_account_dataset_load.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_gl_processing_load_unposted_journal_entry.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_gl_update_to_summary.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_invoice_printing_load.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_invoice_printing_load_estimatepriorcurrentttdinvoicedetails.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_invoice_printing_load_location_settings.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_job_comp_update_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_job_component_get_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_job_detail_item_load.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_job_log_get_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_job_purchase_order_load.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_job_versions.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_journal_entry_report_load.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_load_nonbilled_time.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_lookup_ts_job_component_index.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_lookup_ts_job_component_paging.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media1_media_current_status1.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media1_media_current_status1_sum.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_broadcast_worksheet_load_estimate_ordered_lines.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_broadcast_worksheet_load_estimate_rows.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_broadcast_worksheet_market_replace_buyer.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_broadcast_worksheet_other_traffic_flight_summary_report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_broadcast_worksheet_postbuy_report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_broadcast_worksheet_radio_postbuy_report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_manager_load_broadcast_order.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_manager_load_review_details.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_mananger_writeupdown.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_ad_sizes.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_dayparts.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_demographics.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_markets.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_outdoor_types.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_quarters.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_rate_types.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_tactics.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_plan_estimate_template_vendors.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_type_template_data.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_media_type_template_daypart_percents.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_po_job_ap_detail_dataset.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_populate_missing_time_table.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_product_ar_stmt_contact_add_update_api.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_production_wip_detail.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_add_external_reviewer_to_assignment.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_add_upload_comment.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_can_complete.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_can_delete_document.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_can_markup.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_can_set_status.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_check_move_to_next_state.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_cleanup_assignees.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_complete.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_external_reviewer_can_markup.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_external_reviewer_can_set_status.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_external_reviewer_set_status.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_get_approvals_list.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_get_asset_info.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_get_external_reviewers_for_assignment.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_get_latest_document_id.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_get_list.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_has_assignee.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_load_external_reviewers.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_load_latest_versions.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_remove_external_reviewer_from_assignment.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_proofing_reset_approval.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_quickbooks_bill_detail.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_revise_order_brdcast_units_by_order_void.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_revise_order_process.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_traffic_schedule_FindAndReplace_Dates.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_update_billing_cmd_center_production.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_utilities_get_job_info.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_yaypay_contact_export.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_yaypay_invoices_transaction_allocations_export.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_yaypay_invoices_transactions_export.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_yaypay_invoices_transactions_onaccount_export.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/advsp_yaypay_invoices_with_payments_export.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_cp_calendar_GetMediaData.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_Get_Alert_EmailRecipients.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_AAMGetUserViewSettings.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_AAMReOpenAssignment.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_AAMUpdateUserViewSettings.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_ALERT_ADD_MENTION.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_ALERT_GET.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_ALERT_GET_COMMENTS.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_ALERT_GET_MENTIONS.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_ALERT_NOTIFY_EMPS_GET_AVAILABLE.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_ALERT_NOTIFY_SAVE.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_ALERT_REMOVE_MENTION.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Dataset_AR_Aging_YayPay.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_dd_GetAllJobs_Estimates_Index.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_dd_GetAllJobs_Index.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_dd_GetAllJobs_PS_Index.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_dd_GetTasks.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Estimating_Print_Details_FH_Report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Estimating_Print_Details_Report.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Estimating_Print_Details_Report003.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Estimating_Print_Details_Report003_Combined.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Estimating_Print_Details_Report_Combined.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Estimating_Quote_Info.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_getQvADetail.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_getQvADetail_campaign.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_getQvADetail_job.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Job_Jacket_Search.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Job_Template_AddNewComponent.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Job_Template_Copy_AddJob.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Job_Template_Copy_AddJobComponent.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Job_Template_NewJob.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_RESOURCES_EMP_ACTUALIZATION.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_RESOURCES_EMP_ALLOCATION.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_RESOURCES_EMP_DATASET.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_SaveLocationPicture.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Traffic_Schedule_Calculate_Pred.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Traffic_Schedule_GetTasks_V2.proc.sql
+Output/Scripts/vX.XX.XX/6 - Stored Procedure Scripts/usp_wv_Traffic_Schedule_GetTasks_withClosed.proc.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add Agy Setting CSCORE_USE_NEW_URL.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add Agy Setting INVPRT_FILE_NAME.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add Agy Settings for Quickbooks.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add Metro Fairfield County to NIELSEN_MARKET.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add Proof to ALERT_CATEGORY.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add RECORD_SOURCE for Quickbooks.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add_row_to_EXPORT_SYSTEMS (CHA2).sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add_row_to_EXPORT_SYSTEMS (EXAP).sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Add_row_to_EXPORT_SYSTEMS (WTB).sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Clean up ATTACHMENT_ID being saved to DOCUMENT_ID in ALERT_COMMENT.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/DRW Update Post Buy Existing Columns.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Fix Non Routed Approval Comments.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Insert COMSCORE_TV_BOOKS 2022.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Insert New GRID and GRID_COLUMNALERT AAM data.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/New Default Sign In Background Color.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Remove MakegoodOffers grid settings.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Resequence Documents Version Numbers.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Update AGENCY set MULTI_CRNCY off.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Update CONTENT_ITEM change Reviews to Proof.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Update Market number for Lima.sql
+Output/Scripts/vX.XX.XX/7 - Data Update Scripts/Update Market number for Traverse City.sql
+Output/Scripts/vX.XX.XX/8 - Post Database Update Scripts/Add-Drop indexes on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE.sql
+Output/Scripts/vX.XX.XX/8 - Post Database Update Scripts/MenuUpdate.xml
+Output/Scripts/vX.XX.XX/8 - Post Database Update Scripts/New Application Alert.sql
+Output/Scripts/vX.XX.XX/8 - Post Database Update Scripts/Update all database stats.sql
+Output/Scripts/vX.XX.XX/8 - Post Database Update Scripts/WebvantageScript.sql
+Output/Serilog.dll
+Output/Serilog.Enrichers.Environment.dll
+Output/Serilog.Enrichers.Thread.dll
+Output/Serilog.Extensions.Logging.dll
+Output/Serilog.Settings.Configuration.dll
+Output/Serilog.Sinks.Console.dll
+Output/Serilog.Sinks.Debug.dll
+Output/Serilog.Sinks.File.dll
+Output/Serilog.Sinks.Trace.dll
+Output/SerilogTraceListener.dll
+Output/SHDocVw.dll
+Output/System.Buffers.dll
+Output/System.CodeDom.dll
+Output/System.Configuration.ConfigurationManager.dll
+Output/System.Memory.dll
+Output/System.Net.FtpClient.dll
+Output/System.Numerics.Vectors.dll
+Output/System.Security.AccessControl.dll
+Output/System.Security.Cryptography.Xml.dll
+Output/System.Security.Permissions.dll
+Output/System.Security.Principal.Windows.dll
+Output/System.Web.Razor.dll
+Output/System.Web.WebPages.Deployment.dll
+Output/System.Web.WebPages.dll
+Output/Telerik.WinControls.dll
+Output/Telerik.WinControls.Themes.Windows7.dll
+Output/Telerik.WinControls.UI.dll
+Output/TelerikCommon.dll

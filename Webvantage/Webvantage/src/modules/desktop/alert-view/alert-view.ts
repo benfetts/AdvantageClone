@@ -339,6 +339,9 @@ export class AlertView extends ModuleBase {
             window.setTimeout(() => {
                 me.canCompleteProofCheck();
             }, 30);
+            window.setTimeout(() => {
+                me.setupProofingButtons()
+            }, 40);
         }
     }
     hoursChanged() {
@@ -615,6 +618,60 @@ export class AlertView extends ModuleBase {
     //    console.log("emailExternalReviewer", this.Alert.ID, proofingExternalReviewerID);
     //    this.showSuccessNotification("Email sent!");
     }
+    setupProofingButtons() {
+        window.setTimeout(() => {
+            if (this.toolBar) {
+                if (this.isProof == true) {
+                    if (this.openProofingToolButton) {
+                        this.toolBar.show(this.openProofingToolButton.element);
+                    }
+                    if (this.feedbackSummaryButton) {
+                        this.toolBar.show(this.feedbackSummaryButton.element);
+                    }
+                    if (this.dismissButton) {
+                        this.toolBar.hide(this.dismissButton.element);
+                    }
+                    if (this.unDismissButton) {
+                        this.toolBar.hide(this.unDismissButton.element);
+                    }
+                    if (this.tempCompleteButton) {
+                        this.toolBar.hide(this.tempCompleteButton.element);
+                    }
+                    if (this.unTempCompleteButton) {
+                        this.toolBar.hide(this.unTempCompleteButton.element);
+                    }
+                    if (this.isClientPortal == true) {
+                        if (this.hoursButton) {
+                            this.toolBar.hide(this.hoursButton.element);
+                        }
+                        if (this.openProofingToolButton) {
+                            this.toolBar.hide(this.openProofingToolButton.element);
+                        }
+                        if (this.feedbackSummaryButton) {
+                            this.toolBar.hide(this.feedbackSummaryButton.element);
+                        }
+                    }
+                //    if (this.isProofingActive == false) {
+                //        console.log(653, "isProofingActive");
+                //        if (this.openProofingToolButton) {
+                //            this.toolBar.hide(this.openProofingToolButton.element);
+                //        }
+                //        if (this.feedbackSummaryButton) {
+                //            this.toolBar.hide(this.feedbackSummaryButton.element);
+                //        }
+                //    }
+                } else {
+                    if (this.openProofingToolButton) {
+                        this.toolBar.hide(this.openProofingToolButton.element);
+                    }
+                    if (this.feedbackSummaryButton) {
+                        this.toolBar.hide(this.feedbackSummaryButton.element);
+                    }
+                }
+            }
+        }, 0);
+
+    }
     setupToolbar() {
         window.setTimeout(() => {
             if (this.toolBar) {
@@ -796,90 +853,7 @@ export class AlertView extends ModuleBase {
                         this.toolBar.hide(this.startStopwatchButton.element);
                     }
                 }
-                if (this.openProofingToolButton) {
-                    this.toolBar.hide(this.openProofingToolButton.element);
-                }
-                if (this.feedbackSummaryButton) {
-                    this.toolBar.hide(this.feedbackSummaryButton.element);
-                }
-                if (this.isProof == true) {
-                    if (this.openProofingToolButton) {
-                        this.toolBar.show(this.openProofingToolButton.element);
-                    }
-                    if (this.feedbackSummaryButton) {
-                        this.toolBar.show(this.feedbackSummaryButton.element);
-                    }
-                    //if (this.sendButton) {
-                    //    this.toolBar.hide(this.sendButton.element);
-                    //}
-                    if (this.dismissButton) {
-                        this.toolBar.hide(this.dismissButton.element);
-                    }
-                    if (this.unDismissButton) {
-                        this.toolBar.hide(this.unDismissButton.element);
-                    }
-                    if (this.tempCompleteButton) {
-                        this.toolBar.hide(this.tempCompleteButton.element);
-                    }
-                    if (this.unTempCompleteButton) {
-                        this.toolBar.hide(this.unTempCompleteButton.element);
-                    }
-                    if (this.isClientPortal == true) {
-                        if (this.hoursButton) {
-                            this.toolBar.hide(this.hoursButton.element);
-                        }
-                        if (this.openProofingToolButton) {
-                            this.toolBar.hide(this.openProofingToolButton.element);
-                        }
-                        if (this.feedbackSummaryButton) {
-                            this.toolBar.hide(this.feedbackSummaryButton.element);
-                        }
-                    }
-                    if (this.isProofingActive == false) {
-                        if (this.openProofingToolButton) {
-                            this.toolBar.hide(this.openProofingToolButton.element);
-                        }
-                        if (this.feedbackSummaryButton) {
-                            this.toolBar.hide(this.feedbackSummaryButton.element);
-                        }
-                    }
-                    //if (this.canCompleteProof == true) {
-                    //    if (this.completeButton) {
-                    //        this.toolBar.show(this.completeButton.element);
-                    //    }
-                    //    if (this.reopenButton) {
-                    //        this.toolBar.hide(this.reopenButton.element);
-                    //    }
-                    //} else {
-                    //    if (this.completeButton) {
-                    //        this.toolBar.hide(this.completeButton.element);
-                    //    }
-                    //    if (this.reopenButton) {
-                    //        this.toolBar.hide(this.reopenButton.element);
-                    //    }
-                    //}
-
-                    //console.log("hello?", this.canCompleteProof);
-                    //if (this.unDismissButton) {
-                    //    this.toolBar.hide(this.unDismissButton.element);
-                    //}
-                    //if (this.unDismissButton) {
-                    //    this.toolBar.hide(this.unDismissButton.element);
-                    //}
-                    //if (this.unDismissButton) {
-                    //    this.toolBar.hide(this.unDismissButton.element);
-                    //}
-                    //if (this.unDismissButton) {
-                    //    this.toolBar.hide(this.unDismissButton.element);
-                    //}
-                } else {
-               //     if (this.openProofingToolButton) {
-               //         this.toolBar.hide(this.openProofingToolButton.element);
-               //     }
-               //     if (this.feedbackSummaryButton) {
-               //         this.toolBar.hide(this.feedbackSummaryButton.element);
-               //     }
-               }
+                this.setupProofingButtons();
             }
         }, 150);
     }
@@ -956,7 +930,7 @@ export class AlertView extends ModuleBase {
                 if (val2) {
                     var date: any = this.parseShortDate(val2);
                     if (date && date.isValid) {
-                        window.setTimeout(function () {
+                        window.setTimeout(() => {
                             me.Alert.CompletedDate = date.value;
                         }, 0);
                     }
@@ -975,7 +949,7 @@ export class AlertView extends ModuleBase {
                         if (date && date.isValid) {
                             //timeout gives bindings time to finish
                             let me = this;
-                            window.setTimeout(function () {
+                            window.setTimeout(() => {
                                 me.Alert.DueDate = date.value;
                                 me.setupDueDate();
                             }, 0);
@@ -1002,7 +976,7 @@ export class AlertView extends ModuleBase {
                         if (date && date.isValid) {
                             //timeout gives bindings time to finish
                             let me = this;
-                            window.setTimeout(function () {
+                            window.setTimeout(() => {
                                 me.Alert.StartDate = date.value;
                                 me.setupStartDate();
                             }, 0);
@@ -1230,13 +1204,16 @@ export class AlertView extends ModuleBase {
             if (me.isRouted == true) {
                 me.currentAlertStateID = me.Alert.AlertStateID;
             }
-            window.setTimeout(function () {
+            window.setTimeout(() => {
                 if (me.isProof == true) {
                     me.editorHeight = me.editorHeightProofing;
                 }
             }, 0);
             this.showProgress(false);
         }).then(() => {
+            window.setTimeout(() => {
+                me.setupToolbar();
+            }, 10);
             me.getAlertBody();
             if (me.Alert.AlertCategoryID == 71) {
                 me.getTaskDescription();
@@ -1323,7 +1300,7 @@ export class AlertView extends ModuleBase {
         return this.service.getAlertBody(me.Alert.ID).then(response => {
             this.showProgress(false);
             if (response.content) {
-                window.setTimeout(function () {
+                window.setTimeout(() => {
                     me.Alert.EmailBody = response.content;
                     if (me.descriptionEditor) {                        
                         me.descriptionEditor.value(me.Alert.EmailBody);
@@ -1354,7 +1331,7 @@ export class AlertView extends ModuleBase {
         return this.service.getAlertHours(me.Alert.ID).then(response => {
             this.showProgress(false);
             if (response.content) {
-                window.setTimeout(function () {
+                window.setTimeout(() => {
                     //console.log("getAlertHours", response.content)
                     me.Alert.HoursAllowed = response.content.HoursAllowed;
                     me.Alert.HoursPosted = response.content.HoursPosted;
@@ -1374,7 +1351,7 @@ export class AlertView extends ModuleBase {
         let me = this;
         return this.service.getTaskDescription(me.Alert.JobNumber, me.Alert.JobComponentNumber, me.Alert.TaskSequenceNumber).then(response => {
             if (response.content) {
-                window.setTimeout(function () {
+                window.setTimeout(() => {
                     me.Alert.TaskFunctionComment = response.content;
                 }, 0);
             }
@@ -1651,7 +1628,9 @@ export class AlertView extends ModuleBase {
                 this.hasBoard = response.content;
             }
         }).then(() => {
-            this.setupToolbar();
+            window.setTimeout(() => {
+                me.setupToolbar();
+            }, 0);
         });
     }
     getClientPortal() {
@@ -1669,7 +1648,15 @@ export class AlertView extends ModuleBase {
         try {
             this.service.isProofingActive().then(response => {
                 if (response) {
-                   this.isProofingActive = response.content;
+                    this.isProofingActive = response.content;
+                    if (this.isProofingActive == false) {
+                        if (this.openProofingToolButton) {
+                            this.toolBar.hide(this.openProofingToolButton.element);
+                        }
+                        if (this.feedbackSummaryButton) {
+                            this.toolBar.hide(this.feedbackSummaryButton.element);
+                        }
+                    }
                 }
             });
         } catch (e) {
@@ -1730,7 +1717,7 @@ export class AlertView extends ModuleBase {
                         me.routedAssigneesDataSource.add(me.dbItemsNotInList[i]);
                     }
                 }
-                window.setTimeout(function () {
+                window.setTimeout(() => {
                     me.Alert.AlertStateID = me.dbAlertStateID;
                     me.tempCompleteRcpts = me.dbTempCompleteRcpts;
                     me.Alert.Assignees = me.dbAlertAssignees;
@@ -1996,7 +1983,7 @@ export class AlertView extends ModuleBase {
                                                             //console.log("multiSelectDataItem:", multiSelectDataItem.CanDelete);
                                                         }
                                                     }
-                                                    window.setTimeout(function () {
+                                                    window.setTimeout(() => {
                                                         if (gridRowMultiSelect) {
                                                             for (var i = 0; i < gridRowMultiSelect.tagList.find('.proofing-status-icon').length; i++) {
                                                                 var li = $(gridRowMultiSelect.tagList.find('.proofing-status-icon')[i]).closest('li');
@@ -2006,7 +1993,7 @@ export class AlertView extends ModuleBase {
                                                             }
                                                         }
                                                     }, 0);
-                                                    window.setTimeout(function () {
+                                                    window.setTimeout(() => {
                                                         if (gridRowMultiSelect) {
                                                             for (var i = 0; i < gridRowMultiSelect.tagList.find('.delete-placeholder').length; i++) {
                                                                 var li = $(gridRowMultiSelect.tagList.find('.delete-placeholder')[i]).closest('li');
@@ -2388,7 +2375,7 @@ export class AlertView extends ModuleBase {
                 }
             }
         }
-        window.setTimeout(function () {
+        window.setTimeout(() => {
             for (var i = 0; i < e.sender.tagList.find('.proofing-status-icon').length; i++) {
                 var li = $(e.sender.tagList.find('.proofing-status-icon')[i]).closest('li');
                 if (li) {
@@ -2396,7 +2383,7 @@ export class AlertView extends ModuleBase {
                 }
             }
         }, 0);
-        window.setTimeout(function () {
+        window.setTimeout(() => {
             for (var i = 0; i < e.sender.tagList.find('.delete-placeholder').length; i++) {
                 var li = $(e.sender.tagList.find('.delete-placeholder')[i]).closest('li');
                 if (li) {
@@ -2476,6 +2463,9 @@ export class AlertView extends ModuleBase {
     checkIsProof() {
         let me = this;
         me.isProof = me.Alert.AlertCategoryID === 79 ? true : false;
+        window.setTimeout(() => {
+            me.setupProofingButtons();
+        }, 0);
         //if (me.isProof == true) {
         //    me.isRouted = true;
         //}
@@ -2644,7 +2634,7 @@ export class AlertView extends ModuleBase {
     setassignToNotRoutedAndTasksMultiSelectIconAndDeleteStatus(multiselect: kendo.ui.MultiSelect) {
         let me = this;
         if (multiselect) {
-            window.setTimeout(function () {
+            window.setTimeout(() => {
                 if (me.isProof == false) {
                     for (var i = 0; i < multiselect.tagList.find('.wv-assignee-complete').length; i++) {
                         var li = $(multiselect.tagList.find('.wv-assignee-complete')[i]).closest('li');
@@ -2683,7 +2673,7 @@ export class AlertView extends ModuleBase {
                         item.IsTempComplete = false;
                     }
                 }
-                window.setTimeout(function () {
+                window.setTimeout(() => {
                     for (var i = 0; i < multiselect.tagList.find('.wv-assignee-complete').length; i++) {
                         var li = $(multiselect.tagList.find('.wv-assignee-complete')[i]).closest('li');
                         if (li) {
@@ -2825,7 +2815,7 @@ export class AlertView extends ModuleBase {
                                     this.getAlertRecipients(false, true);
                                 }
                             } catch (e) { }
-                            window.setTimeout(function () {
+                            window.setTimeout(() => {
                                 me.setupToolbar();
                             }, 250);
                            //try {
@@ -3572,7 +3562,7 @@ export class AlertView extends ModuleBase {
     sortableEnd(e) {
         let item = $(e.item);
         let me = this;
-        window.setTimeout(function () {
+        window.setTimeout(() => {
             me.refreshSortablePanel(item);
             me.saveWidgets();
         }, 0);
@@ -4062,8 +4052,6 @@ export class AlertView extends ModuleBase {
                     if (!me.Alert.ID || me.Alert.ID == 0 || me.isProof == false) {
                         e.sender.data([]);
                         e.preventDefault();
-                    } else {
-                        //console.log("not cancelled")
                     }
                 }
             },
@@ -4076,7 +4064,6 @@ export class AlertView extends ModuleBase {
                     var dataModel = new Array<AlertStateModel>();
                     Object.assign(dataModel, items);
                     me.assigneeGridData = dataModel;
-                //    console.log("me.assigneeGridData", me.assigneeGridData);
                 }
 
             }
@@ -4147,7 +4134,7 @@ export class AlertView extends ModuleBase {
                     }
                 } else {
                     if (items && me.showingAllEmployees == false) {
-                        window.setTimeout(function () {
+                        window.setTimeout(() => {
                             me.dbItemsNotInList = new Array<any>();
                             for (var i = 0; i < me.dbAssigneesAsItems.length; i++) {
                                 let item: any = null;
@@ -4161,7 +4148,7 @@ export class AlertView extends ModuleBase {
                                     }
                                 }
                             }
-                            window.setTimeout(function () {
+                            window.setTimeout(() => {
                                 if (me.dbItemsNotInList && me.dbItemsNotInList.length > 0) {
                                     let itemAdded: boolean = false;
                                     for (var i = 0; i < me.dbItemsNotInList.length; i++) {

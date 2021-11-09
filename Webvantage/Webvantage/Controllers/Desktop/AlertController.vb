@@ -2765,7 +2765,12 @@ Namespace Controllers.Desktop
 
                         Sent = True
 
-                        'NotifyAlertRecipients(Alert.ID, SendEmail, True, False, True, Alert.SprintID, False, Alert.SelectedDocumentID)
+                        If StateChanged = True AndAlso Alert.AlertCategoryID = 79 Then
+
+                            SendEmail = True
+
+                        End If
+
                         NotifyAlertRecipients(Alert.ID, SendEmail, True, False, True, Alert.SprintID, False, 0)
 
                         Try

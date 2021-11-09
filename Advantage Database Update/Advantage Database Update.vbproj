@@ -370,6 +370,12 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_get_sprint_job_components.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_move_orphans_to_sprint.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_agile_sprint_check_task_employees.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_aam_cp.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -135,6 +135,7 @@
             BankCode
             BankDescription
             IsCleared
+            IsVoided
         End Enum
 
 #End Region
@@ -415,6 +416,7 @@
         Public Property BankCode As String
         Public Property BankDescription As String
         Public Property IsCleared As Boolean
+        Public Property IsVoided As Boolean
 
 #End Region
 

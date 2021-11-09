@@ -139,7 +139,8 @@ BEGIN
 		ProductContact varchar(40) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
 		BankCode varchar(4) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
 		BankDescription varchar(30) COLLATE SQL_Latin1_General_CP1_CS_AS NULL,
-		IsCleared bit NOT NULL
+		IsCleared bit NOT NULL,
+        IsVoided bit NOT NULL
 	)
 	
 	--Manual Invoices
@@ -267,7 +268,8 @@ BEGIN
 		ProductContact,
 		BankCode,
 		BankDescription,
-		IsCleared
+		IsCleared,
+        IsVoided
 	FROM 
 		(
 		SELECT
@@ -400,7 +402,8 @@ BEGIN
 			ProductContact = P.PRD_ATTENTION,
 			BankCode = NULL,
 			BankDescription = NULL,
-			IsCleared = 0
+			IsCleared = 0,
+            IsVoided = CAST(COALESCE(AR.VOID_FLAG,0) AS BIT)
 		FROM dbo.ACCT_REC AR
 			LEFT OUTER JOIN dbo.AR_COLL_NOTES N ON AR.AR_INV_NBR = N.AR_INV_NBR AND AR.AR_INV_SEQ = N.AR_INV_SEQ AND AR.AR_TYPE = N.AR_TYPE 
 			LEFT OUTER JOIN dbo.INVOICE_CATEGORY AS IC ON AR.INV_CAT = IC.INV_CAT	
@@ -514,7 +517,8 @@ BEGIN
 		ProductContact,
 		BankCode,
 		BankDescription,
-		IsCleared
+		IsCleared,
+        IsVoided
 	INSERT INTO #RPT_DATA
 	SELECT 
 		[OfficeCode],
@@ -639,7 +643,8 @@ BEGIN
 		ProductContact,
 		BankCode,
 		BankDescription,
-		IsCleared
+		IsCleared,
+        IsVoided
 	FROM 
 		(
 		SELECT
@@ -778,7 +783,8 @@ BEGIN
 			ProductContact = P.PRD_ATTENTION,
 			BankCode = NULL,
 			BankDescription = NULL,
-			IsCleared = 0
+			IsCleared = 0,
+            IsVoided =  CAST(COALESCE(AR.VOID_FLAG,0) AS BIT)
 		FROM dbo.AR_SUMMARY ARS
 			INNER JOIN dbo.ACCT_REC AR ON ARS.AR_INV_NBR = AR.AR_INV_NBR AND ARS.AR_INV_SEQ = AR.AR_INV_SEQ AND ARS.AR_TYPE = AR.AR_TYPE
 			LEFT OUTER JOIN dbo.AR_COLL_NOTES N ON ARS.AR_INV_NBR = N.AR_INV_NBR AND ARS.AR_INV_SEQ = N.AR_INV_SEQ AND ARS.AR_TYPE = N.AR_TYPE 
@@ -904,7 +910,8 @@ BEGIN
 		ProductContact,
 		BankCode,
 		BankDescription,
-		IsCleared
+		IsCleared,
+        IsVoided
 
 	
 	--Payments
@@ -955,7 +962,8 @@ BEGIN
 				ProductStatementZip,
 				ProductStatementCounty,
 				ProductStatementCountry,
-				ProductContact)
+				ProductContact,
+                IsVoided)
 	SELECT
 			ARInvoiceNumber = CCD.AR_INV_NBR,
 			ARInvoiceSequence = CCD.AR_INV_SEQ,
@@ -1029,7 +1037,8 @@ BEGIN
 			ProductStatementZip = P.PRD_STATE_ZIP,
 			ProductStatementCounty = P.PRD_STATE_COUNTY,
 			ProductStatementCountry = P.PRD_STATE_COUNTRY,
-			ProductContact = P.PRD_ATTENTION
+			ProductContact = P.PRD_ATTENTION,
+            CAST(0 AS BIT)
 		
 		FROM dbo.CR_CLIENT_DTL CCD
 			INNER JOIN dbo.CR_CLIENT CC ON CCD.REC_ID = CC.REC_ID AND CCD.SEQ_NBR = CC.SEQ_NBR 
@@ -1156,7 +1165,8 @@ BEGIN
 		[ARCityTaxAmount] = 0,
 		[ARCountyTaxAmount] = 0,
 		[ARStateTaxAmount] = 0,
-		[ARInvoiceAmount] = 0--,		
+		[ARInvoiceAmount] = 0,
+        [IsVoided] = CAST(ISNULL((SELECT CAST(COALESCE(AR.VOID_FLAG,0) AS BIT) FROM ACCT_REC AR WHERE #RPT_DATA.ARInvoiceNumber = AR.AR_INV_NBR AND #RPT_DATA.ARInvoiceSequence = AR.AR_INV_SEQ AND #RPT_DATA.ARInvoiceType = AR.AR_TYPE),0) as BIT)
 		--[Paid] = CASE WHEN (SELECT SUM(BalanceAmount) FROM #RPT_DATA R WHERE #RPT_DATA.ARInvoiceNumber = R.ARInvoiceNumber AND #RPT_DATA.ARInvoiceSequence = R.ARInvoiceSequence AND #RPT_DATA.ARInvoiceType = R.ARInvoiceType) <= 0 THEN 'Y' ELSE 'N' END
 		
   
@@ -1502,7 +1512,8 @@ BEGIN
 		ProductContact = P.PRD_ATTENTION,
 		Onaccount.BankCode,
 		Onaccount.BankDescription,
-		Onaccount.IsCleared
+		Onaccount.IsCleared,
+        CAST(0 AS BIT)
 	FROM
 		(
 		SELECT

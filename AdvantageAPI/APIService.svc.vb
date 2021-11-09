@@ -17,6 +17,9 @@ Public Class APIService
 #Region " Variables "
 
     Dim _AdvSession As AdvantageFramework.Security.Session = Nothing
+    'Dim _ErrorMessage As String = Nothing
+    'Dim _NewMediaPlanID As Integer = 0
+    Dim _MediaPlanAddResponse As MediaPlanAddResponse = Nothing
 
 #End Region
 
@@ -5981,7 +5984,7 @@ Public Class APIService
 
         Dim sql As String
 
-        Dim Campaign As Campaign
+        'Dim Campaign As Campaign
 
         Campaigns = New Generic.List(Of Campaign)
 
@@ -11082,12 +11085,43 @@ Public Class APIService
 
     End Function
 
+    'Public Function CopyMediaPlan(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+    '                        MediaPlanID As Integer,
+    '                        ClientCode As String, DivisionCode As String, ProductCode As String,
+    '                        Optional ByVal Description As String = "",
+    '                        Optional ByVal StartDate As String = "01-01-1900", Optional ByVal EndDate As String = "01-01-1900",
+    '                        Optional ByVal GrossBudgetAmount As Decimal = -1, Optional ByVal Comment As String = "") As MediaPlanAddResponse Implements IAPIService.CopyMediaPlan
+
+    '    'objects
+
+    '    Dim CampaignID As Integer
+    '    Dim CountryID As Integer
+
+    '    Call CopyMediaPlan2(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password,
+    '                        MediaPlanID,
+    '                        ClientCode, DivisionCode, ProductCode,
+    '                        CampaignID,
+    '                        CountryID,
+    '                        Description,
+    '                        StartDate, EndDate,
+    '                        GrossBudgetAmount, Comment)
+
+    '    Dim MediaPlanAddResponse As MediaPlanAddResponse = Nothing
+
+    '    MediaPlanAddResponse = _MediaPlanAddResponse
+
+    '    CopyMediaPlan = MediaPlanAddResponse
+
+    'End Function
+
     Public Function CopyMediaPlan(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
                             MediaPlanID As Integer,
                             ClientCode As String, DivisionCode As String, ProductCode As String,
                             Optional ByVal Description As String = "",
                             Optional ByVal StartDate As String = "01-01-1900", Optional ByVal EndDate As String = "01-01-1900",
-                            Optional ByVal GrossBudgetAmount As Decimal = -1, Optional ByVal Comment As String = "") As MediaPlanAddResponse Implements IAPIService.CopyMediaPlan
+                            Optional ByVal GrossBudgetAmount As Decimal = -1, Optional ByVal Comment As String = "",
+                            Optional ByVal CampaignID As Integer = 0,
+                            Optional ByVal CountryID As Integer = 0) As MediaPlanAddResponse Implements IAPIService.CopyMediaPlan
 
         'objects
 
@@ -11100,6 +11134,12 @@ Public Class APIService
         Dim Clients As New Generic.List(Of Client)
         Dim Divisions As New Generic.List(Of Division)
         Dim Products As New Generic.List(Of Product)
+        Dim CampaignID_ As Nullable(Of Integer)
+        Dim CountryID_ As Nullable(Of Integer)
+        Dim Campaign As AdvantageFramework.Database.Entities.Campaign
+
+        'Dim CampaignsWithDates As New Generic.List(Of CampaignWithDates)
+        'Dim CampaignWithDates As CampaignWithDates = Nothing
 
         If String.IsNullOrWhiteSpace(StartDate) = True Then StartDate = "01/01/1900"
         If String.IsNullOrWhiteSpace(EndDate) = True Then EndDate = "01/01/1900"
@@ -11219,7 +11259,101 @@ Public Class APIService
 
                         End If
 
+                        '---------------------
+
+                        If CampaignID > 0 Then
+
+                            Using AFDbContext = New AdvantageFramework.Database.DbContext(APISession.ConnectionString, APISession.UserCode)
+
+                                Campaign = AdvantageFramework.Database.Procedures.Campaign.LoadByCampaignID(AFDbContext, CampaignID)
+
+                                If Campaign IsNot Nothing Then
+
+                                    If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        (Campaign.ClientCode = ClientCode) AndAlso
+                                        (Campaign.DivisionCode = DivisionCode) AndAlso
+                                        (Campaign.ProductCode = ProductCode) AndAlso
+                                        (Campaign.IsClosed = 0) Then
+
+                                        'Do Nothing
+
+                                    Else
+                                        If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        (Campaign.ClientCode = ClientCode) AndAlso
+                                        (Campaign.DivisionCode = DivisionCode) AndAlso
+                                        (Campaign.ProductCode Is Nothing) AndAlso
+                                        (Campaign.IsClosed = 0) Then
+
+                                            'Do Nothing
+
+                                        Else
+
+                                            If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                            (Campaign.ClientCode = ClientCode) AndAlso
+                                            (Campaign.DivisionCode Is Nothing) AndAlso
+                                            (Campaign.ProductCode Is Nothing) AndAlso
+                                            (Campaign.IsClosed = 0) Then
+
+                                                'Do Nothing
+
+                                            Else
+
+                                                If (ErrorMessage > "") Then
+                                                    ErrorMessage = ErrorMessage + ", "
+                                                End If
+
+                                                ErrorMessage = ErrorMessage + "Invalid Campaign ID."
+
+                                            End If
+
+                                        End If
+
+                                    End If
+
+                                Else
+
+                                    If (ErrorMessage > "") Then
+                                        ErrorMessage = ErrorMessage + ", "
+                                    End If
+
+                                    ErrorMessage = ErrorMessage + "Invalid Campaign ID."
+
+                                End If
+
+                            End Using
+
+                        End If
+
+                        If CountryID = 0 Then CountryID = 1 'USA
+
+                        If CountryID > 0 Then
+
+                            Dim SqlParameterCOUNTRY_ID As System.Data.SqlClient.SqlParameter = Nothing
+
+                            SqlParameterCOUNTRY_ID = New System.Data.SqlClient.SqlParameter("@country_id", SqlDbType.Int)
+                            SqlParameterCOUNTRY_ID.Value = CountryID
+
+                            RecordCount = DbContext.Database.SqlQuery(Of Int32)("SELECT COUNT(*) FROM dbo.COUNTRY WHERE COUNTRY_ID = @country_id", SqlParameterCOUNTRY_ID).FirstOrDefault
+
+                            If RecordCount = 0 Then
+
+                                If (ErrorMessage > "") Then
+                                    ErrorMessage = ErrorMessage + ", "
+                                End If
+
+                                ErrorMessage = ErrorMessage + "Invalid Country ID."
+
+                            Else
+
+                                CountryID_ = CountryID
+
+                            End If
+
+                        End If
+
                     End Using
+
+                    '---------------------
 
                     If GrossBudgetAmount > 1000000000.0 Then
 
@@ -11293,8 +11427,20 @@ Public Class APIService
                                 MediaPlan_.Comment = Comment
                             End If
 
-                            If MediaPlanOrig_.CampaignID > 0 Then
-                                MediaPlan_.CampaignID = MediaPlanOrig_.CampaignID
+                            If CampaignID_ > 0 Then
+                                MediaPlan_.CampaignID = CampaignID_
+                            Else
+                                If MediaPlanOrig_.CampaignID > 0 Then
+                                    MediaPlan_.CampaignID = MediaPlanOrig_.CampaignID
+                                End If
+                            End If
+
+                            If CountryID_ > 0 Then
+                                MediaPlan_.CountryID = CountryID_
+                            Else
+                                If MediaPlanOrig_.CountryID > 0 Then
+                                    MediaPlan_.CountryID = MediaPlanOrig_.CountryID
+                                End If
                             End If
 
                             If (StartDate_) > "01/01/1900" AndAlso (EndDate_) > "01/01/1900" Then
@@ -11305,6 +11451,32 @@ Public Class APIService
                                 MediaPlan_.EndDate = CDate(MediaPlan_.EndDate.ToShortDateString)
 
                             End If
+
+                            'If MediaPlan_.CampaignID > 0 Then
+
+                            '    Dim SqlParameterCampaignID As System.Data.SqlClient.SqlParameter = Nothing
+                            '    Dim SqlParameterMediaPlanStartDate As System.Data.SqlClient.SqlParameter = Nothing
+                            '    Dim SqlParameterMediaPlanEndDate As System.Data.SqlClient.SqlParameter = Nothing
+
+                            '    SqlParameterCampaignID = New System.Data.SqlClient.SqlParameter("@campaign_id", SqlDbType.Int)
+                            '    SqlParameterMediaPlanStartDate = New System.Data.SqlClient.SqlParameter("@start_date", SqlDbType.VarChar)
+                            '    SqlParameterMediaPlanEndDate = New System.Data.SqlClient.SqlParameter("@end_date", SqlDbType.VarChar)
+
+                            '    SqlParameterCampaignID.Value = MediaPlan_.CampaignID
+                            '    SqlParameterMediaPlanStartDate.Value = CStr(MediaPlan_.StartDate)
+                            '    SqlParameterMediaPlanEndDate.Value = CStr(MediaPlan_.EndDate)
+
+                            '    RecordCount = DbContext.Database.SqlQuery(Of Int32)("SELECT COUNT(*) FROM dbo.CAMPAIGN WHERE CMP_IDENTIFIER = @campaign_id AND CMP_BEG_DATE <= @end_date OR CMP_END_DATE >= @start_date", SqlParameterCampaignID, SqlParameterMediaPlanEndDate, SqlParameterMediaPlanStartDate).FirstOrDefault
+
+                            '    If RecordCount = 0 Then
+                            '        MediaPlan_.CampaignID = Nothing
+                            '    End If
+
+                            'Else
+
+                            '    MediaPlan_.CampaignID = Nothing
+
+                            'End If
 
                             AdvantageFramework.Database.Procedures.MediaPlan.Update(DbContext, MediaPlan_)
 
@@ -11429,6 +11601,8 @@ Public Class APIService
             MediaPlanAddResponse.IsSuccessful = True
             MediaPlanAddResponse.Message = "INSERT_SUCCESS"
         End If
+
+        _MediaPlanAddResponse = MediaPlanAddResponse 'For CopyMediaPlan calls
 
         CopyMediaPlan = MediaPlanAddResponse
 
@@ -11595,7 +11769,10 @@ Public Class APIService
         Dim Clients As New Generic.List(Of Client)
         Dim Divisions As New Generic.List(Of Division)
         Dim Products As New Generic.List(Of Product)
-        Dim Campaign As Campaign
+        Dim Campaign As AdvantageFramework.Database.Entities.Campaign
+
+        'Dim CampaignsWithDates As New Generic.List(Of CampaignWithDates)
+        'Dim CampaignWithDates As CampaignWithDates = Nothing
 
         Dim RecordCount As Nullable(Of Integer)
 
@@ -11666,31 +11843,104 @@ Public Class APIService
 
                     If CampaignID > 0 Then
 
-                        'PJH 05/16/19 - Allow campaign from any level or Client only and is not closed
-                        Campaign = DbContext.Campaigns.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
-                                                 Entity.ProductCode = ProductCode AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0)
+                        Using AFDbContext = New AdvantageFramework.Database.DbContext(APISession.ConnectionString, APISession.UserCode)
 
-                        If Campaign Is Nothing Then
-                            Campaign = DbContext.Campaigns.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
-                                                         Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0)
-                        End If
+                            Campaign = AdvantageFramework.Database.Procedures.Campaign.LoadByCampaignID(AFDbContext, CampaignID)
 
-                        If Campaign Is Nothing Then
-                            Campaign = DbContext.Campaigns.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode Is Nothing AndAlso
-                                                         Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0)
-                        End If
+                            If Campaign IsNot Nothing Then
 
-                        If Campaign Is Nothing Then
+                                If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        (Campaign.ClientCode = ClientCode) AndAlso
+                                        (Campaign.DivisionCode = DivisionCode) AndAlso
+                                        (Campaign.ProductCode = ProductCode) AndAlso
+                                        (Campaign.IsClosed = 0) Then
 
-                            If (ErrorMessage > "") Then
-                                ErrorMessage = ErrorMessage + ", "
+                                    'Do Nothing
+
+                                Else
+                                    If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        (Campaign.ClientCode = ClientCode) AndAlso
+                                        (Campaign.DivisionCode = DivisionCode) AndAlso
+                                        (Campaign.ProductCode Is Nothing) AndAlso
+                                        (Campaign.IsClosed = 0) Then
+
+                                        'Do Nothing
+
+                                    Else
+
+                                        If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                            (Campaign.ClientCode = ClientCode) AndAlso
+                                            (Campaign.DivisionCode Is Nothing) AndAlso
+                                            (Campaign.ProductCode Is Nothing) AndAlso
+                                            (Campaign.IsClosed = 0) Then
+
+                                            'Do Nothing
+
+                                        Else
+
+                                            If (ErrorMessage > "") Then
+                                                ErrorMessage = ErrorMessage + ", "
+                                            End If
+
+                                            ErrorMessage = ErrorMessage + "Invalid Campaign ID."
+
+                                        End If
+
+                                    End If
+
+                                End If
+
+                            Else
+
+                                If (ErrorMessage > "") Then
+                                    ErrorMessage = ErrorMessage + ", "
+                                End If
+
+                                ErrorMessage = ErrorMessage + "Invalid Campaign ID."
+
                             End If
 
-                            ErrorMessage = ErrorMessage + "Invalid Campaign ID."
-
-                        End If
+                        End Using
 
                     End If
+
+                    'If CampaignID > 0 Then
+
+                    '    'Allow campaign from any level or Client only and is not closed
+                    '    CampaignsWithDates = LoadCampaignsWithDates(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, 1).ToList
+
+                    '    CampaignWithDates = CampaignsWithDates.ToList.Where(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
+                    '                             Entity.ProductCode = ProductCode AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0 AndAlso
+                    '                             ((Entity.BeginDate <= StartDate_) And (Entity.EndDate >= EndDate_))).FirstOrDefault
+
+
+                    '    If CampaignWithDates Is Nothing Then
+                    '        CampaignWithDates = CampaignsWithDates.ToList.Where(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
+                    '                                     Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0 AndAlso
+                    '                                     ((Entity.BeginDate <= StartDate_) And (Entity.EndDate >= EndDate_))).FirstOrDefault
+                    '    End If
+
+                    '    If CampaignWithDates Is Nothing Then
+                    '        CampaignWithDates = CampaignsWithDates.ToList.Where(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode Is Nothing AndAlso
+                    '                                     Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0 AndAlso
+                    '                                     ((Entity.BeginDate <= StartDate_) And (Entity.EndDate >= EndDate_))).FirstOrDefault
+                    '    End If
+
+                    '    If CampaignWithDates Is Nothing Then
+
+                    '        If (ErrorMessage > "") Then
+                    '            ErrorMessage = ErrorMessage + ", "
+                    '        End If
+
+                    '        ErrorMessage = ErrorMessage + "Invalid Campaign ID."
+
+                    '    Else
+
+                    '        CampaignID_ = CampaignWithDates.ID
+
+                    '    End If
+
+                    'End If
 
                     If CountryID = 0 Then CountryID = 1 'USA
 
@@ -12143,7 +12393,6 @@ Public Class APIService
                             Optional Comment As String = Nothing
         ) As BroadcastWorksheetAddResponse Implements IAPIService.AddBroadcastWorksheetHeader
 
-
         'objects
 
         Dim APISession As AdvantageFramework.Security.APISession = Nothing
@@ -12169,9 +12418,10 @@ Public Class APIService
         Dim Clients As New Generic.List(Of Client)
         Dim Divisions As New Generic.List(Of Division)
         Dim Products As New Generic.List(Of Product)
-        'Dim SalesClasses As New Generic.List(Of SalesClass)
+        Dim Campaign As AdvantageFramework.Database.Entities.Campaign
 
-        Dim Campaign As Campaign
+        'Dim CampaignsWithDates As New Generic.List(Of CampaignWithDates)
+        'Dim CampaignWithDates As CampaignWithDates = Nothing
 
         Dim RecordCount As Nullable(Of Integer)
         Dim SqlParameterID As System.Data.SqlClient.SqlParameter = Nothing
@@ -12265,32 +12515,66 @@ Public Class APIService
 
                     If CampaignID > 0 Then
 
-                        'PJH 05/16/19 - Allow campaign from any level or Client only and is not closed
-                        Campaign = DbContext.Campaigns.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
-                                                 Entity.ProductCode = ProductCode AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0) 'AndAlso Entity.IsActive = 1
+                        Using AFDbContext = New AdvantageFramework.Database.DbContext(APISession.ConnectionString, APISession.UserCode)
 
-                        If Campaign Is Nothing Then
-                            Campaign = DbContext.Campaigns.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
-                                                         Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0)
-                        End If
+                            Campaign = AdvantageFramework.Database.Procedures.Campaign.LoadByCampaignID(AFDbContext, CampaignID)
 
-                        If Campaign Is Nothing Then
-                            Campaign = DbContext.Campaigns.SingleOrDefault(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode Is Nothing AndAlso
-                                                         Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0)
-                        End If
+                            If Campaign IsNot Nothing Then
 
-                        If Campaign Is Nothing Then
+                                If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        (Campaign.ClientCode = ClientCode) AndAlso
+                                        (Campaign.DivisionCode = DivisionCode) AndAlso
+                                        (Campaign.ProductCode = ProductCode) AndAlso
+                                        (Campaign.IsClosed = 0) Then
 
-                            If (ErrorMessage > "") Then
-                                ErrorMessage = ErrorMessage + ", "
+                                    'Do Nothing
+
+                                Else
+                                    If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        (Campaign.ClientCode = ClientCode) AndAlso
+                                        (Campaign.DivisionCode = DivisionCode) AndAlso
+                                        (Campaign.ProductCode Is Nothing) AndAlso
+                                        (Campaign.IsClosed = 0) Then
+
+                                        'Do Nothing
+
+                                    Else
+
+                                        If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                            (Campaign.ClientCode = ClientCode) AndAlso
+                                            (Campaign.DivisionCode Is Nothing) AndAlso
+                                            (Campaign.ProductCode Is Nothing) AndAlso
+                                            (Campaign.IsClosed = 0) Then
+
+                                            'Do Nothing
+
+                                        Else
+
+                                            If (ErrorMessage > "") Then
+                                                ErrorMessage = ErrorMessage + ", "
+                                            End If
+
+                                            ErrorMessage = ErrorMessage + "Invalid Campaign ID."
+
+                                        End If
+
+                                    End If
+
+                                End If
+
+                            Else
+
+                                If (ErrorMessage > "") Then
+                                    ErrorMessage = ErrorMessage + ", "
+                                End If
+
+                                ErrorMessage = ErrorMessage + "Invalid Campaign ID."
+
                             End If
 
-                            ErrorMessage = ErrorMessage + "Invalid Campaign ID."
-
-                        End If
+                        End Using
 
                     End If
-
 
                     If (MediaTypeCode = "T" Or MediaTypeCode = "R") Then
                         'Do Nothing
@@ -12312,7 +12596,7 @@ Public Class APIService
                         SqlParameterCODE = New System.Data.SqlClient.SqlParameter("@media_type_code", SqlDbType.VarChar)
                         SqlParameterCODE.Value = MediaTypeCode
 
-                        RecordCount = DbContext.Database.SqlQuery(Of Int32)("SELECT COUNT(*) FROM dbo.SALES_CLASS WHERE SC_CODE = @sales_class_code AND SC_TYPE = @media_type_code AND ISNULL(INACTIVE_FLAG, 0) = 0", SqlParameterID, SqlParameterCODE).FirstOrDefault
+                        RecordCount = DbContext.Database.SqlQuery(Of Int32)("SELECT COUNT(*) FROM dbo.SALES_CLASS WHERE SC_CODE = @sales_class_code AND (SC_TYPE = @media_type_code OR SC_TYPE IS NULL) AND ISNULL(INACTIVE_FLAG, 0) = 0", SqlParameterID, SqlParameterCODE).FirstOrDefault
 
                         If RecordCount = 0 Then
 

@@ -406,6 +406,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_reset_routed_assignment.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_alert_transfer.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_api_load_ar_stmt_product_contacts.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

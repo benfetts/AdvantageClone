@@ -1501,6 +1501,9 @@ Partial Public Class DocumentsPage
     End Sub
 
     Private Sub DeleteFiles()
+
+        Dim CurrentGridRow As Telerik.Web.UI.GridDataItem = Nothing
+
         Select Case Me.RadGridDocuments.SelectedItems.Count
             Case 0
                 Me.ShowMessage("No file selected")
@@ -1516,61 +1519,67 @@ Partial Public Class DocumentsPage
                     Dim DocPath As String = String.Empty
                     Dim DocRepositoryID As String = String.Empty
 
+                    CurrentGridRow = CType(Me.RadGridDocuments.SelectedItems(i), Telerik.Web.UI.GridDataItem)
+
                     Document.Where.DOCUMENT_ID.Value = DocumentID
                     If Document.Query.Load() Then
-                        If Document.USER_CODE <> Session("UserCode") And Session("Admin") = False Then
-                            ResultsText += "Only Webvantage user " & Document.USER_CODE & " may delete " & Document.FILENAME
-                        Else
-                            Select Case Me.DocLevelDropDownList.SelectedValue
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Office.Abbreviation
-                                    Dim office As New OfficeDocuments(Session("ConnString"))
-                                    office.Where.DOCUMENT_ID.Value = DocumentID
-                                    If office.Query.Load() Then
-                                        office.MarkAsDeleted()
-                                        office.Save()
-                                    End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Client.Abbreviation
-                                    Dim client As New ClientDocuments(Session("ConnString"))
-                                    client.Where.DOCUMENT_ID.Value = DocumentID
-                                    If client.Query.Load() Then
-                                        client.MarkAsDeleted()
-                                        client.Save()
-                                    End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Division.Abbreviation
-                                    Dim division As New DivisionDocuments(Session("ConnString"))
-                                    division.Where.DOCUMENT_ID.Value = DocumentID
-                                    If division.Query.Load() Then
-                                        division.MarkAsDeleted()
-                                        division.Save()
-                                    End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Product.Abbreviation
-                                    Dim product As New ProductDocuments(Session("ConnString"))
-                                    product.Where.DOCUMENT_ID.Value = DocumentID
-                                    If product.Query.Load() Then
-                                        product.MarkAsDeleted()
-                                        product.Save()
-                                    End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Campaign.Abbreviation
-                                    Dim campaign As New CampaignDocument(Session("ConnString"))
-                                    campaign.Where.DOCUMENT_ID.Value = DocumentID
-                                    If campaign.Query.Load() Then
-                                        campaign.MarkAsDeleted()
-                                        campaign.Save()
-                                    End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Job.Abbreviation
-                                    Dim job As New JobDocument(Session("ConnString"))
-                                    job.Where.DOCUMENT_ID.Value = DocumentID
-                                    If job.Query.Load() Then
-                                        job.MarkAsDeleted()
-                                        job.Save()
-                                    End If
-                                    Dim alert As New AlertAttachment(Session("ConnString"))
-                                    alert.Where.DOCUMENT_ID.Value = DocumentID
-                                    If alert.Query.Load() Then
-                                        alert.MarkAsDeleted()
-                                        alert.Save()
-                                    End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.JobComponent.Abbreviation
+                        'If Document.USER_CODE <> Session("UserCode") And Session("Admin") = False Then
+                        '    ResultsText += "Only Webvantage user " & Document.USER_CODE & " may delete " & Document.FILENAME
+                        'Else
+                        Select Case Me.DocLevelDropDownList.SelectedValue
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Office.Abbreviation
+                                Dim office As New OfficeDocuments(Session("ConnString"))
+                                office.Where.DOCUMENT_ID.Value = DocumentID
+                                If office.Query.Load() Then
+                                    office.MarkAsDeleted()
+                                    office.Save()
+                                End If
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Client.Abbreviation
+                                Dim client As New ClientDocuments(Session("ConnString"))
+                                client.Where.DOCUMENT_ID.Value = DocumentID
+                                If client.Query.Load() Then
+                                    client.MarkAsDeleted()
+                                    client.Save()
+                                End If
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Division.Abbreviation
+                                Dim division As New DivisionDocuments(Session("ConnString"))
+                                division.Where.DOCUMENT_ID.Value = DocumentID
+                                If division.Query.Load() Then
+                                    division.MarkAsDeleted()
+                                    division.Save()
+                                End If
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Product.Abbreviation
+                                Dim product As New ProductDocuments(Session("ConnString"))
+                                product.Where.DOCUMENT_ID.Value = DocumentID
+                                If product.Query.Load() Then
+                                    product.MarkAsDeleted()
+                                    product.Save()
+                                End If
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Campaign.Abbreviation
+                                Dim campaign As New CampaignDocument(Session("ConnString"))
+                                campaign.Where.DOCUMENT_ID.Value = DocumentID
+                                If campaign.Query.Load() Then
+                                    campaign.MarkAsDeleted()
+                                    campaign.Save()
+                                End If
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Job.Abbreviation
+                                Dim job As New JobDocument(Session("ConnString"))
+                                job.Where.DOCUMENT_ID.Value = DocumentID
+                                If job.Query.Load() Then
+                                    job.MarkAsDeleted()
+                                    job.Save()
+                                End If
+                                Dim alert As New AlertAttachment(Session("ConnString"))
+                                alert.Where.DOCUMENT_ID.Value = DocumentID
+                                If alert.Query.Load() Then
+                                    alert.MarkAsDeleted()
+                                    alert.Save()
+                                End If
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.JobComponent.Abbreviation
+
+                                If CurrentGridRow("GridBoundColumnLevel").Text = "Task" OrElse
+                                        CurrentGridRow("GridBoundColumnLevel").Text = "Job Component" Then
+
                                     Dim jobcomp As New JobComponentDocuments(Session("ConnString"))
                                     jobcomp.Where.DOCUMENT_ID.Value = DocumentID
                                     If jobcomp.Query.Load() Then
@@ -1583,106 +1592,125 @@ Partial Public Class DocumentsPage
                                         alert.MarkAsDeleted()
                                         alert.Save()
                                     End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.AccountsPayableInvoice.Abbreviation
-                                    Dim vendor As New APDocument(Session("ConnString"))
-                                    vendor.Where.DOCUMENT_ID.Value = DocumentID
-                                    If vendor.Query.Load() Then
-                                        vendor.MarkAsDeleted()
-                                        vendor.Save()
-                                    End If
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Vendor.Abbreviation,
-                                    AdvantageFramework.DocumentManager.Classes.UploadLevels.Employee.Abbreviation,
-                                    AdvantageFramework.DocumentManager.Classes.UploadLevels.AccountsReceivableInvoice.Abbreviation
-                                    Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
-                                        Dim documentRepo As Interfaces.IDocumentRepository = New Repositories.DocumentRepository(DataContext)
-                                        documentRepo.DeleteDocumentByLevel(DocLevelDropDownList.SelectedValue, DocumentID)
+                                    Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+
+                                        Try
+
+                                            DbContext.Database.ExecuteSqlCommand(String.Format("DELETE FROM [dbo].[JOB_TRAFFIC_DET_DOCS] WHERE [DOCUMENT_ID] = {0}", DocumentID))
+
+                                        Catch ex As Exception
+
+                                        End Try
+
                                     End Using
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.DesktopObject.Abbreviation
-                                    Select Case Me.ddlDesktopObject.SelectedValue
-                                        Case AdvantageFramework.DocumentManager.Classes.UploadLevels.AgencyDesktop.Abbreviation
-                                            Dim agency As New AgencyDesktopDocument(Session("ConnString"))
-                                            agency.Where.DOCUMENT_ID.Value = DocumentID
-                                            If agency.Query.Load() Then
-                                                agency.MarkAsDeleted()
-                                                agency.Save()
-                                            End If
-                                        Case AdvantageFramework.DocumentManager.Classes.UploadLevels.ExecutiveDesktop.Abbreviation
-                                            Dim executive As New ExecutiveDesktopDocument(Session("ConnString"))
-                                            executive.Where.DOCUMENT_ID.Value = DocumentID
-                                            If executive.Query.Load() Then
-                                                executive.MarkAsDeleted()
-                                                executive.Save()
-                                            End If
-                                    End Select
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.AdNumber.Abbreviation
-                                    Dim ad As New Document(Session("ConnString"))
-                                    Dim save As Boolean = ad.AddAdNumberDocument(Session("DocFilterValue"), 0)
 
-                                Case AdvantageFramework.DocumentManager.Classes.UploadLevels.ExpenseReceipt.Abbreviation
-                                    Dim ad As New Document(Session("ConnString"))
-                                    Dim Invoice As String = String.Empty
-                                    Dim ar() As String
-                                    ar = Session("DocFilterValue").ToString().Split("|")
-                                    Dim deleted As Boolean = ad.DeleteExpenseDocument(DocumentID, ar(1))
-                                    If i = 0 Then
-                                        Me.ApplyFilter(True)
-                                    End If
-
-                                Case Else
-                                    ClientScript.RegisterStartupScript(Me.GetType, "alert_nothandled", "ShowMessage('" + Me.DocLevelDropDownList.SelectedValue + " file deletion not implemented!');", True)
-                                    Exit Sub
-                            End Select
-                            Dim DocumentName As String = Document.FILENAME
-                            DocRepositoryID = Document.REPOSITORY_FILENAME
-                            'DocPath = Document.REPOSITORY_FILENAME
-
-                            'Check for multiple references to same document for job and job comp levels.
-                            Dim JobRelatedDocuments As Integer = 0
-                            Dim JobCompRelatedDocuments As Integer = 0
-
-                            If Document.MIME_TYPE = "URL" Then
-                                Document.MarkAsDeleted()
-                                Document.Save()
-                                ResultsText += "Deleted:  " & DocumentName & "\n"
-                            Else
-                                If Me.DocLevelDropDownList.SelectedValue = AdvantageFramework.DocumentManager.Classes.UploadLevels.Job.Abbreviation Then
-                                    Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
-                                        JobRelatedDocuments = AdvantageFramework.Database.Procedures.JobDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
-                                    End Using
-                                    If JobRelatedDocuments = 0 Then
-                                        files &= DocRepositoryID & ","
-                                    End If
-                                ElseIf Me.DocLevelDropDownList.SelectedValue = AdvantageFramework.DocumentManager.Classes.UploadLevels.JobComponent.Abbreviation Then
-                                    Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
-                                        JobCompRelatedDocuments = AdvantageFramework.Database.Procedures.JobComponentDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
-                                    End Using
-                                    If JobCompRelatedDocuments = 0 Then
-                                        files &= DocRepositoryID & ","
-                                    End If
                                 Else
-                                    files &= DocRepositoryID & ","
+
+                                    Continue For
+
                                 End If
 
-                                Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
-
-                                    AdvantageFramework.DocumentManager.DeleteAttachmentRecordsForDocument(DbContext, Document.DOCUMENT_ID)
-
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.AccountsPayableInvoice.Abbreviation
+                                Dim vendor As New APDocument(Session("ConnString"))
+                                vendor.Where.DOCUMENT_ID.Value = DocumentID
+                                If vendor.Query.Load() Then
+                                    vendor.MarkAsDeleted()
+                                    vendor.Save()
+                                End If
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.Vendor.Abbreviation,
+                                    AdvantageFramework.DocumentManager.Classes.UploadLevels.Employee.Abbreviation,
+                                    AdvantageFramework.DocumentManager.Classes.UploadLevels.AccountsReceivableInvoice.Abbreviation
+                                Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
+                                    Dim documentRepo As Interfaces.IDocumentRepository = New Repositories.DocumentRepository(DataContext)
+                                    documentRepo.DeleteDocumentByLevel(DocLevelDropDownList.SelectedValue, DocumentID)
                                 End Using
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.DesktopObject.Abbreviation
+                                Select Case Me.ddlDesktopObject.SelectedValue
+                                    Case AdvantageFramework.DocumentManager.Classes.UploadLevels.AgencyDesktop.Abbreviation
+                                        Dim agency As New AgencyDesktopDocument(Session("ConnString"))
+                                        agency.Where.DOCUMENT_ID.Value = DocumentID
+                                        If agency.Query.Load() Then
+                                            agency.MarkAsDeleted()
+                                            agency.Save()
+                                        End If
+                                    Case AdvantageFramework.DocumentManager.Classes.UploadLevels.ExecutiveDesktop.Abbreviation
+                                        Dim executive As New ExecutiveDesktopDocument(Session("ConnString"))
+                                        executive.Where.DOCUMENT_ID.Value = DocumentID
+                                        If executive.Query.Load() Then
+                                            executive.MarkAsDeleted()
+                                            executive.Save()
+                                        End If
+                                End Select
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.AdNumber.Abbreviation
+                                Dim ad As New Document(Session("ConnString"))
+                                Dim save As Boolean = ad.AddAdNumberDocument(Session("DocFilterValue"), 0)
 
-                                Document.MarkAsDeleted()
-                                Document.Save()
-                                Dim documentRepository As New DocumentRepository(Me.ConnectionString)
-                                DocPath = documentRepository.Path
+                            Case AdvantageFramework.DocumentManager.Classes.UploadLevels.ExpenseReceipt.Abbreviation
+                                Dim ad As New Document(Session("ConnString"))
+                                Dim Invoice As String = String.Empty
+                                Dim ar() As String
+                                ar = Session("DocFilterValue").ToString().Split("|")
+                                Dim deleted As Boolean = ad.DeleteExpenseDocument(DocumentID, ar(1))
+                                If i = 0 Then
+                                    Me.ApplyFilter(True)
+                                End If
 
-                                'If documentRepositiory.DeleteDocument(DocumentID) Then
-                                '    Document.Save()
-                                'End If
+                            Case Else
+                                ClientScript.RegisterStartupScript(Me.GetType, "alert_nothandled", "ShowMessage('" + Me.DocLevelDropDownList.SelectedValue + " file deletion not implemented!');", True)
+                                Exit Sub
+                        End Select
 
-                                ResultsText += "Deleted:  " & DocumentName & "\n"
+                        Dim DocumentName As String = Document.FILENAME
+                        DocRepositoryID = Document.REPOSITORY_FILENAME
+                        'DocPath = Document.REPOSITORY_FILENAME
+
+                        'Check for multiple references to same document for job and job comp levels.
+                        Dim JobRelatedDocuments As Integer = 0
+                        Dim JobCompRelatedDocuments As Integer = 0
+
+                        If Document.MIME_TYPE = "URL" Then
+                            Document.MarkAsDeleted()
+                            Document.Save()
+                            ResultsText += "Deleted:  " & DocumentName & "\n"
+                        Else
+                            If Me.DocLevelDropDownList.SelectedValue = AdvantageFramework.DocumentManager.Classes.UploadLevels.Job.Abbreviation Then
+                                Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
+                                    JobRelatedDocuments = AdvantageFramework.Database.Procedures.JobDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
+                                End Using
+                                If JobRelatedDocuments = 0 Then
+                                    files &= DocRepositoryID & ","
+                                End If
+                            ElseIf Me.DocLevelDropDownList.SelectedValue = AdvantageFramework.DocumentManager.Classes.UploadLevels.JobComponent.Abbreviation Then
+                                Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
+                                    JobCompRelatedDocuments = AdvantageFramework.Database.Procedures.JobComponentDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
+                                End Using
+                                If JobCompRelatedDocuments = 0 Then
+                                    files &= DocRepositoryID & ","
+                                End If
+                            Else
+                                files &= DocRepositoryID & ","
                             End If
 
-                            'DeleteXMLFile(DocPath & "\" & DocRepositoryID)                                    
+                            Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+
+                                AdvantageFramework.DocumentManager.DeleteAttachmentRecordsForDocument(DbContext, Document.DOCUMENT_ID)
+
+                            End Using
+
+                            Document.MarkAsDeleted()
+                            Document.Save()
+                            Dim documentRepository As New DocumentRepository(Me.ConnectionString)
+                            DocPath = documentRepository.Path
+
+                            'If documentRepositiory.DeleteDocument(DocumentID) Then
+                            '    Document.Save()
+                            'End If
+
+                            ResultsText += "Deleted:  " & DocumentName & "\n"
                         End If
+
+                        'DeleteXMLFile(DocPath & "\" & DocRepositoryID)                                    
+                        'End If
                     End If
 
                 Next
@@ -1708,14 +1736,52 @@ Partial Public Class DocumentsPage
 
     End Sub
     Protected Sub ToggleRowSelection(ByVal sender As Object, ByVal e As EventArgs)
-        CType(CType(sender, CheckBox).Parent.Parent, Telerik.Web.UI.GridItem).Selected = CType(sender, CheckBox).Checked
+
+        Dim CurrentGridRow As Telerik.Web.UI.GridDataItem = Nothing
+
+        CurrentGridRow = CType(CType(sender, CheckBox).Parent.Parent, Telerik.Web.UI.GridDataItem)
+
+        CurrentGridRow.Selected = CType(sender, CheckBox).Checked
         'Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = Me.RadGridDocuments.SelectedItems.Count > 0
         access = Me.CheckUserGroupSetting(AdvantageFramework.Security.GroupSettings.DocumentManager_CanUpload)
-        If Me.access = 0 Then
-            Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = False
+
+        If DocLevelDropDownList.SelectedValue = AdvantageFramework.DocumentManager.Classes.UploadLevels.JobComponent.Abbreviation Then
+
+            For Counter = Me.RadGridDocuments.SelectedItems.Count - 1 To 0 Step -1
+
+                CurrentGridRow = CType(Me.RadGridDocuments.SelectedItems(Counter), Telerik.Web.UI.GridDataItem)
+
+                If CurrentGridRow("GridBoundColumnLevel").Text = "Task" OrElse
+                        CurrentGridRow("GridBoundColumnLevel").Text = "Job Component" Then
+
+                    Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = ((access <> 0) AndAlso Me.RadGridDocuments.SelectedItems.Count > 0)
+
+                    If Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = False Then
+
+                        Exit For
+
+                    End If
+
+                Else
+
+                    Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = False
+                    Exit For
+
+                End If
+
+            Next
+
         Else
-            Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = Me.RadGridDocuments.SelectedItems.Count > 0
+
+            Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = ((access <> 0) AndAlso Me.RadGridDocuments.SelectedItems.Count > 0)
+
         End If
+
+        'If Me.access = 0 Then
+        '    Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = False
+        'Else
+        '    Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = Me.RadGridDocuments.SelectedItems.Count > 0
+        'End If
 
 
         If RadGridDocuments.SelectedItems.Count = 0 Then

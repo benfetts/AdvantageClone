@@ -2366,7 +2366,23 @@
         End Function
         Public Function DeleteJobComponentDocument(ByVal DataContext As AdvantageFramework.Database.DataContext, ByVal DocumentID As Integer) As Boolean
 
-            DeleteJobComponentDocument = AdvantageFramework.Database.Procedures.JobComponentDocument.Delete(DataContext, DocumentID)
+            Try
+
+                AdvantageFramework.Database.Procedures.JobComponentDocument.Delete(DataContext, DocumentID)
+
+                Try
+
+                    DataContext.ExecuteCommand(String.Format("DELETE FROM [dbo].[JOB_TRAFFIC_DET_DOCS] WHERE [DOCUMENT_ID] = {0}", DocumentID))
+
+                Catch ex As Exception
+
+                End Try
+
+                DeleteJobComponentDocument = True
+
+            Catch ex As Exception
+                DeleteJobComponentDocument = True
+            End Try
 
         End Function
 

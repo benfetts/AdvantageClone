@@ -11310,6 +11310,8 @@ Public Class APIService
 
                                     End If
 
+                                    CampaignID_ = CampaignID
+
                                 Else
 
                                     If (ErrorMessage > "") Then
@@ -11889,6 +11891,8 @@ Public Class APIService
                                     End If
 
                                 End If
+
+                                CampaignID_ = CampaignID
 
                             Else
 
@@ -12561,6 +12565,8 @@ Public Class APIService
                                     End If
 
                                 End If
+
+                                CampaignID_ = CampaignID
 
                             Else
 

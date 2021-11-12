@@ -3726,6 +3726,30 @@ Public Module Methods
         CreateClientInvoiceReport = XtraReport
 
     End Function
+    Private Function CreatePaymentManagerReport(Session As AdvantageFramework.Security.Session,
+                                                ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.FinanceAndAccounting.PaymentManagerReport = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.FinanceAndAccounting.PaymentManagerReport
+
+        Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.AgencyName = AdvantageFramework.Database.Procedures.Agency.LoadName(DbContext)
+
+        End Using
+
+        XtraReport.Session = Session
+
+        XtraReport.BankCode = ParameterDictionary("BankCode")
+        XtraReport.CheckRunID = ParameterDictionary("CheckRunID")
+
+        XtraReport.DisplayName = "Payment Manager Report"
+
+        CreatePaymentManagerReport = XtraReport
+
+    End Function
     Private Function CreateAccountPayableImportExpenseReport(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
 
@@ -6641,6 +6665,10 @@ Public Module Methods
                 ElseIf Report = AdvantageFramework.Reporting.ReportTypes.ProofingFeedbackSummary Then
 
                     XtraReport = CreateProofingFeedbackSummary(Session, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.PaymentManagerReport Then
+
+                    XtraReport = CreatePaymentManagerReport(Session, ParameterDictionary)
 
                 End If
 

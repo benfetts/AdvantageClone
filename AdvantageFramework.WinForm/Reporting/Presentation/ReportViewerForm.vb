@@ -74,6 +74,16 @@
 
 
         End Function
+        Public Shared Sub ShowForm(Session As AdvantageFramework.Security.Session, Report As AdvantageFramework.Reporting.ReportTypes, ParameterDictionary As Generic.Dictionary(Of String, Object), Criteria As Integer, FilterString As String, [From] As Date, [To] As Date)
+
+            'objects
+            Dim ReportViewerForm As ReportViewerForm = Nothing
+
+            ReportViewerForm = New ReportViewerForm(Session, Report, ParameterDictionary, Criteria, FilterString, [From], [To])
+
+            ReportViewerForm.Show()
+
+        End Sub
 
 #End Region
 

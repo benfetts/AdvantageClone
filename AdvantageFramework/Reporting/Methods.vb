@@ -505,6 +505,7 @@
             Standard1099NECForm = 191
             TrafficFlightSummaryReport = 192
             ProofingFeedbackSummary = 193
+            PaymentManagerReport = 194
         End Enum
 
         Public Enum ClientPLReportTypes

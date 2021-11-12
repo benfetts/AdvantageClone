@@ -686,6 +686,12 @@
     <Compile Include="Finance And Accounting\Presentation\ClientCashReceiptClientSearchDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Finance And Accounting\Presentation\PaymentManagerDialog.Designer.vb">
+      <DependentUpon>PaymentManagerDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Finance And Accounting\Presentation\PaymentManagerDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Finance And Accounting\Presentation\ClientLatePaymentFeeForm.Designer.vb">
       <DependentUpon>ClientLatePaymentFeeForm.vb</DependentUpon>
     </Compile>
@@ -5671,6 +5677,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Finance And Accounting\Presentation\ClientCashReceiptClientSearchDialog.resx">
       <DependentUpon>ClientCashReceiptClientSearchDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance And Accounting\Presentation\PaymentManagerDialog.resx">
+      <DependentUpon>PaymentManagerDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Finance And Accounting\Presentation\ClientLatePaymentFeeForm.resx">
       <DependentUpon>ClientLatePaymentFeeForm.vb</DependentUpon>

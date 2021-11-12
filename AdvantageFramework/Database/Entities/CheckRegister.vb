@@ -31,11 +31,11 @@
 			EFileDate
 			GLTransaction
 			CheckClearedDate
+            CheckRunID
 			PostPeriod
 			VoidPostPeriod
 			Bank
 			AccountPayablePayments
-
 		End Enum
 
 #End Region
@@ -115,6 +115,10 @@
 		<Column("CHECK_CLEARED_DATE")>
 		<AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
 		Public Property CheckClearedDate() As Nullable(Of Date)
+        <MaxLength(50)>
+        <Column("CHECK_RUN_ID", TypeName:="varchar")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property CheckRunID() As String
 
         <ForeignKey("PostPeriodCode")>
         Public Overridable Property PostPeriod As Database.Entities.PostPeriod

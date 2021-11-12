@@ -97,6 +97,7 @@
             MediaPlanEstimateTemplate
             MediaDemographic
             QuickbookCustomer
+            CheckRegister
         End Enum
 
 #End Region

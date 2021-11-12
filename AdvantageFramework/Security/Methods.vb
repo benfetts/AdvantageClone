@@ -495,6 +495,7 @@
             FinanceAccounting_JobProcessCtrl
             FinanceAccounting_MediaDatetoBill
             FinanceAccounting_PaymentManager
+            FinanceAccounting_PaymentManagerEnhanced
             FinanceAccounting_PostRecurringAP
             FinanceAccounting_Reports
             FinanceAccounting_Reports_AccountsPayableRTP

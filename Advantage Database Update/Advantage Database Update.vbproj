@@ -658,6 +658,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAMUpdateUserViewSettings.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_AAM_Update_Grid_Records.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_GET_MENTIONS.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

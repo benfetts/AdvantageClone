@@ -1190,6 +1190,29 @@
                     Me.Properties.ValueMember = "ID"
                     Me.Properties.NullText = "Select Customer"
 
+<<<<<<< HEAD
+=======
+                Case SearchableComboBox.Type.Network
+
+                    Me.Properties.DisplayMember = "Name"
+                    Me.Properties.ValueMember = "ID"
+                    Me.Properties.NullText = "Select Network"
+
+                Case SearchableComboBox.Type.NielsenTVPuertoRicoStation
+
+                    Me.HideValueMemberColumn = True
+                    Me.Properties.DisplayMember = "Name"
+                    Me.Properties.ValueMember = "ID"
+                    Me.Properties.NullText = "Select Puerto Rico TV Station"
+                    _HideValueMemberColumn = True
+
+                Case SearchableComboBox.Type.CheckRegister
+
+                    Me.Properties.DisplayMember = "CheckRunID"
+                    Me.Properties.ValueMember = "CheckRunID"
+                    Me.Properties.NullText = "Select Check Run ID"
+
+>>>>>>> 114af89e (** MERGE DN **)
             End Select
 
         End Sub

@@ -18619,6 +18619,43 @@
         <Applications>
           <Application>Advantage</Application>
         </Applications>
+        <Code>FinanceAccounting_PaymentManagerEnhanced</Code>
+        <Description>Payment Manager (Enhanced)</Description>
+        <IsInactive>false</IsInactive>
+        <IsMenuItem>true</IsMenuItem>
+        <IsCategory>false</IsCategory>
+        <IsApplication>true</IsApplication>
+        <IsReport>false</IsReport>
+        <IsDesktopObject>false</IsDesktopObject>
+        <IsDashQuery>false</IsDashQuery>
+        <ImageName>MediaDateToBillImage.gif</ImageName>
+        <HasCustomPermission>false</HasCustomPermission>
+        <WebvantageURL />
+        <WebvantageImagePathActive />
+        <WebvantageImagePath />
+        <ApplicationName />
+        <MenuName />
+        <ApplicationCode />
+        <CommandString />
+        <IconIndex>0</IconIndex>
+        <AllowMultipleInstances>0</AllowMultipleInstances>
+        <DesktopObjectName />
+        <DesktopObjectSize>0</DesktopObjectSize>
+        <ReportURL />
+        <ReportImagePathActive />
+        <ReportImagePath />
+        <ReportDescription />
+        <ReportPreviewLocation />
+        <ReportIsLocked>false</ReportIsLocked>
+        <WebvantageLargeImagePath />
+        <ReportLargeImagePath />
+        <ParentModuleCode>FinanceAccounting</ParentModuleCode>
+        <SubModules />
+      </MenuBuilder>
+      <MenuBuilder>
+        <Applications>
+          <Application>Advantage</Application>
+        </Applications>
         <Code>FinanceAccounting_PostRecurringAP</Code>
         <Description>Post Recurring A/P</Description>
         <IsInactive>false</IsInactive>

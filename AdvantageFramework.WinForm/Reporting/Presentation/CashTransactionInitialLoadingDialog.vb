@@ -95,96 +95,58 @@
             Me.ByPassUserEntryChanged = True
             Me.ShowUnsavedChangesOnFormClosing = False
 
-
-            NumericInputMonthly_FromYear.SetRequired(True)
-            NumericInputMonthly_ToYear.SetRequired(True)
             DateTimePicker_StatementCutoff.SetRequired(True)
-            NumericInputMonthly_FromYear.SetRequired(True)
-            NumericInputMonthly_ToYear.SetRequired(True)
 
-            NumericInputMonthly_FromYear.Properties.MinValue = 1900
-            NumericInputMonthly_ToYear.Properties.MinValue = 1900
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
-            ComboBoxMonthly_FromMonth.DataSource = AdvantageFramework.EnumUtilities.GetEnumDictionary(GetType(AdvantageFramework.DateUtilities.Months))
-            ComboBoxMonthly_ToMonth.DataSource = AdvantageFramework.EnumUtilities.GetEnumDictionary(GetType(AdvantageFramework.DateUtilities.Months))
+                ComboBoxMonthly_FromMonth.DataSource = AdvantageFramework.Database.Procedures.PostPeriod.LoadAllNonYearEndPostPeriods(DbContext).OrderByDescending(Function(Entity) Entity.Code).ToList
+                ComboBoxMonthly_ToMonth.DataSource = AdvantageFramework.Database.Procedures.PostPeriod.LoadAllNonYearEndPostPeriods(DbContext).OrderByDescending(Function(Entity) Entity.Code).ToList
 
-            If _ParameterDictionary IsNot Nothing Then
-                Try
+                If _ParameterDictionary IsNot Nothing Then
 
-                    ComboBoxMonthly_FromMonth.SelectedValue = CLng(_ParameterDictionary(AdvantageFramework.Reporting.MediaCurrentStatusSummaryParameters.StartMonth.ToString))
+                    Try
+                        DateTimePicker_StatementCutoff.Value = _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.StatementCutoff.ToString)
+                    Catch ex As Exception
+                        DateTimePicker_StatementCutoff.Value = Now
+                    End Try
 
-                Catch ex As Exception
-                    ComboBoxMonthly_FromMonth.SelectedValue = CLng(Now.Month)
-                End Try
+                    CheckBoxIncludeReceipts.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeReceipts.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeReceipts.ToString) = 1, True, False)
+                    CheckBoxIncludeDisbursements.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeDisbursements.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeDisbursements.ToString) = 1, True, False)
+                    CheckBoxGLEntries.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeGLEntries.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeGLEntries.ToString) = 1, True, False)
+                    RadioButtonInclude_ClearedandUncleared.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.ClearedOption.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.ClearedOption.ToString) = 1, True, False)
+                    RadioButtonInclude_UnclearedOnly.Checked = Not RadioButtonInclude_ClearedandUncleared.Checked
 
-                Try
 
-                    NumericInputMonthly_FromYear.EditValue = _ParameterDictionary(AdvantageFramework.Reporting.MediaCurrentStatusSummaryParameters.StartYear.ToString)
+                Else
+                    ComboBoxMonthly_FromMonth.SelectedValue = AdvantageFramework.Database.Procedures.PostPeriod.LoadCurrentPostPeriod(DbContext).Code
+                    ComboBoxMonthly_ToMonth.SelectedValue = AdvantageFramework.Database.Procedures.PostPeriod.LoadCurrentPostPeriod(DbContext).Code
 
-                Catch ex As Exception
-                    NumericInputMonthly_FromYear.EditValue = Now.Year
-                End Try
-
-                Try
-
-                    ComboBoxMonthly_ToMonth.SelectedValue = CLng(_ParameterDictionary(AdvantageFramework.Reporting.MediaCurrentStatusSummaryParameters.EndMonth.ToString))
-
-                Catch ex As Exception
-                    ComboBoxMonthly_ToMonth.SelectedValue = CLng(Now.Month)
-                End Try
-
-                Try
-
-                    NumericInputMonthly_ToYear.EditValue = _ParameterDictionary(AdvantageFramework.Reporting.MediaCurrentStatusSummaryParameters.EndYear.ToString)
-
-                Catch ex As Exception
-                    NumericInputMonthly_ToYear.EditValue = Now.Year
-                End Try
-
-                Try
-                    DateTimePicker_StatementCutoff.Value = _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.StatementCutoff.ToString)
-                Catch ex As Exception
+                    RadioButtonInclude_ClearedandUncleared.Checked = True
+                    RadioButtonInclude_UnclearedOnly.Checked = False
+                    CheckBoxIncludeReceipts.Checked = True
+                    CheckBoxIncludeDisbursements.Checked = True
+                    CheckBoxGLEntries.Checked = True
                     DateTimePicker_StatementCutoff.Value = Now
-                End Try
+                End If
 
-                CheckBoxIncludeReceipts.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeReceipts.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeReceipts.ToString) = 1, True, False)
-                CheckBoxIncludeDisbursements.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeDisbursements.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeDisbursements.ToString) = 1, True, False)
-                CheckBoxGLEntries.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeGLEntries.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeGLEntries.ToString) = 1, True, False)
-                RadioButtonInclude_ClearedandUncleared.Checked = If(IsNothing(_ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.ClearedOption.ToString)) OrElse _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.ClearedOption.ToString) = 1, True, False)
-                RadioButtonInclude_UnclearedOnly.Checked = Not RadioButtonInclude_ClearedandUncleared.Checked
+                PanelForm_TopSection.Visible = _ShowReportOption
 
+                Me.CheckBoxIncludeReceipts.Checked = True
+                Me.CheckBoxIncludeDisbursements.Checked = True
+                Me.CheckBoxGLEntries.Checked = True
 
-            Else
-                ComboBoxMonthly_FromMonth.SelectedValue = CLng(Now.Month)
-                ComboBoxMonthly_ToMonth.SelectedValue = CLng(Now.Month)
+                If RadioButtonInclude_ClearedandUncleared.Checked = True Then
+                    Me.DateTimePicker_StatementCutoff.Enabled = False
+                End If
 
-                NumericInputMonthly_FromYear.EditValue = Now.Year
-                NumericInputMonthly_ToYear.EditValue = Now.Year
+                If _ShowReportOption Then
 
-                RadioButtonInclude_ClearedandUncleared.Checked = True
-                RadioButtonInclude_UnclearedOnly.Checked = False
-                CheckBoxIncludeReceipts.Checked = True
-                CheckBoxIncludeDisbursements.Checked = True
-                CheckBoxGLEntries.Checked = True
-                DateTimePicker_StatementCutoff.Value = Now
-            End If
+                    ComboBoxTopSection_Report.SetRequired(True)
+                    ComboBoxTopSection_Report.DisplayName = "Report"
 
-            PanelForm_TopSection.Visible = _ShowReportOption
+                End If
 
-            Me.CheckBoxIncludeReceipts.Checked = True
-            Me.CheckBoxIncludeDisbursements.Checked = True
-            Me.CheckBoxGLEntries.Checked = True
-
-            If RadioButtonInclude_ClearedandUncleared.Checked = True Then
-                Me.DateTimePicker_StatementCutoff.Enabled = False
-            End If
-
-            If _ShowReportOption Then
-
-                ComboBoxTopSection_Report.SetRequired(True)
-                ComboBoxTopSection_Report.DisplayName = "Report"
-
-            End If
+            End Using
 
         End Sub
 
@@ -211,8 +173,8 @@
 
                 End If
 
-                _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.StartPeriod.ToString) = NumericInputMonthly_FromYear.EditValue.ToString & ComboBoxMonthly_FromMonth.SelectedValue.ToString().PadLeft(2, "0")
-                _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.EndPeriod.ToString) = NumericInputMonthly_ToYear.EditValue.ToString & ComboBoxMonthly_ToMonth.SelectedValue.ToString().PadLeft(2, "0")
+                _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.StartPeriod.ToString) = ComboBoxMonthly_FromMonth.SelectedValue
+                _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.EndPeriod.ToString) = ComboBoxMonthly_ToMonth.SelectedValue
                 _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.StatementCutoff.ToString) = DateTimePicker_StatementCutoff.Value
 
                 _ParameterDictionary(AdvantageFramework.Reporting.CashTransactionParameters.IncludeReceipts.ToString) = CheckBoxIncludeReceipts.CheckValue

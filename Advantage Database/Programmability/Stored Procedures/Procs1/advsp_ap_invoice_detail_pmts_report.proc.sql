@@ -2,7 +2,8 @@ if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[advsp_ap_i
 drop procedure [dbo].[advsp_ap_invoice_detail_pmts_report]
 GO
 
-CREATE PROCEDURE [advsp_ap_invoice_detail_pmts_report] @payment_date_from varchar(30), @payment_date_to varchar(30)
+CREATE PROCEDURE [advsp_ap_invoice_detail_pmts_report] @payment_date_from varchar(30), @payment_date_to varchar(30),
+	@VENDOR_LIST varchar(MAX) = NULL
 
 AS
 
@@ -324,6 +325,7 @@ FROM #dataset A
         A.[BankOfficeCode] = B.OFFICE_CODE
 
 SELECT * FROM #dataset
+WHERE (VendorPayToCode IN (SELECT * FROM dbo.udf_split_list(@VENDOR_LIST, ',')) OR @VENDOR_LIST IS NULL)
 
 
 GO

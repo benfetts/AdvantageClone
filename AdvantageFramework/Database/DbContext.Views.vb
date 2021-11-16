@@ -17,7 +17,7 @@ Imports System.Data.Entity.Infrastructure.MappingViews
 
 <Assembly: DbMappingViewCacheTypeAttribute(
     GetType(AdvantageFramework.Database.DbContext),
-    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets5d49fa0f0cd70e657d6a1be524b2ff466d3078e29255ad222a49f0fe9b9906b6))>
+    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets31ab3a19e9739658f1ed3d4528c499645c93d92d4525175dd2c92352bd828d12))>
 
 Namespace Edm_EntityMappingGeneratedViews
 
@@ -25,7 +25,7 @@ Namespace Edm_EntityMappingGeneratedViews
     ''' Implements a mapping view cache.
     ''' </summary>
     <GeneratedCode("Entity Framework 6 Power Tools", "0.9.5.0")>
-    Friend NotInheritable Class ViewsForBaseEntitySets5d49fa0f0cd70e657d6a1be524b2ff466d3078e29255ad222a49f0fe9b9906b6
+    Friend NotInheritable Class ViewsForBaseEntitySets31ab3a19e9739658f1ed3d4528c499645c93d92d4525175dd2c92352bd828d12
         Inherits DbMappingViewCache
 
         ''' <summary>
@@ -33,7 +33,7 @@ Namespace Edm_EntityMappingGeneratedViews
         ''' </summary>
         Public Overrides ReadOnly Property MappingHashValue As String
             Get
-                Return "5d49fa0f0cd70e657d6a1be524b2ff466d3078e29255ad222a49f0fe9b9906b6"
+                Return "31ab3a19e9739658f1ed3d4528c499645c93d92d4525175dd2c92352bd828d12"
             End Get
         End Property
 
@@ -11755,7 +11755,7 @@ Namespace Edm_EntityMappingGeneratedViews
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing CheckRegister" & vbCrLf &
-                "        [CodeFirstDatabaseSchema.CheckRegister](T1.[CheckRegister.BK_CODE], T1.[CheckRegister.CHECK_NBR], T1.[CheckRegister.CHK_SEQ], T1.[CheckRegister.CHECK_DATE], T1.[CheckRegister.CHECK_AMT], T1.[CheckRegister.PAY_TO], T1.[CheckRegister.VOID_FLAG], T1.CheckRegister_CLEARED, T1.[CheckRegister.POST_PERIOD], T1.[CheckRegister.VOIDED_BY], T1.[CheckRegister.VOID_DATE], T1.[CheckRegister.VOID_POST_PERIOD], T1.[CheckRegister.PAY_TO_CODE], T1.[CheckRegister.EMAIL_DATE], T1.[CheckRegister.EXPORT_DATE], T1.[CheckRegister.EFILE_DATE], T1.CheckRegister_GLEXACT, T1.[CheckRegister.CHECK_CLEARED_DATE])" & vbCrLf &
+                "        [CodeFirstDatabaseSchema.CheckRegister](T1.[CheckRegister.BK_CODE], T1.[CheckRegister.CHECK_NBR], T1.[CheckRegister.CHK_SEQ], T1.[CheckRegister.CHECK_DATE], T1.[CheckRegister.CHECK_AMT], T1.[CheckRegister.PAY_TO], T1.[CheckRegister.VOID_FLAG], T1.CheckRegister_CLEARED, T1.[CheckRegister.POST_PERIOD], T1.[CheckRegister.VOIDED_BY], T1.[CheckRegister.VOID_DATE], T1.[CheckRegister.VOID_POST_PERIOD], T1.[CheckRegister.PAY_TO_CODE], T1.[CheckRegister.EMAIL_DATE], T1.[CheckRegister.EXPORT_DATE], T1.[CheckRegister.EFILE_DATE], T1.CheckRegister_GLEXACT, T1.[CheckRegister.CHECK_CLEARED_DATE], T1.[CheckRegister.CHECK_RUN_ID])" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.BankCode AS [CheckRegister.BK_CODE], " & vbCrLf &
@@ -11776,6 +11776,7 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.EFileDate AS [CheckRegister.EFILE_DATE], " & vbCrLf &
                 "            T.GLTransaction AS CheckRegister_GLEXACT, " & vbCrLf &
                 "            T.CheckClearedDate AS [CheckRegister.CHECK_CLEARED_DATE], " & vbCrLf &
+                "            T.CheckRunID AS [CheckRegister.CHECK_RUN_ID], " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
                 "        FROM DbContext.CheckRegisters AS T" & vbCrLf &
                 "    ) AS T1")
@@ -23821,7 +23822,7 @@ Namespace Edm_EntityMappingGeneratedViews
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing CheckRegisters" & vbCrLf &
-                "        [AdvantageFramework.Database.CheckRegister](T1.CheckRegister_BankCode, T1.CheckRegister_CheckNumber, T1.CheckRegister_CheckSequenceNumber, T1.CheckRegister_CheckDate, T1.CheckRegister_CheckAmount, T1.CheckRegister_PayToVender, T1.CheckRegister_IsVoid, T1.CheckRegister_IsCleared, T1.CheckRegister_PostPeriodCode, T1.CheckRegister_VoidedByUserCode, T1.CheckRegister_VoidDate, T1.CheckRegister_VoidPostPeriodCode, T1.CheckRegister_PayToVenderCode, T1.CheckRegister_EmailDate, T1.CheckRegister_ExportDate, T1.CheckRegister_EFileDate, T1.CheckRegister_GLTransaction, T1.CheckRegister_CheckClearedDate)" & vbCrLf &
+                "        [AdvantageFramework.Database.CheckRegister](T1.CheckRegister_BankCode, T1.CheckRegister_CheckNumber, T1.CheckRegister_CheckSequenceNumber, T1.CheckRegister_CheckDate, T1.CheckRegister_CheckAmount, T1.CheckRegister_PayToVender, T1.CheckRegister_IsVoid, T1.CheckRegister_IsCleared, T1.CheckRegister_PostPeriodCode, T1.CheckRegister_VoidedByUserCode, T1.CheckRegister_VoidDate, T1.CheckRegister_VoidPostPeriodCode, T1.CheckRegister_PayToVenderCode, T1.CheckRegister_EmailDate, T1.CheckRegister_ExportDate, T1.CheckRegister_EFileDate, T1.CheckRegister_GLTransaction, T1.CheckRegister_CheckClearedDate, T1.CheckRegister_CheckRunID)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.BK_CODE AS CheckRegister_BankCode, " & vbCrLf &
@@ -23842,6 +23843,7 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.EFILE_DATE AS CheckRegister_EFileDate, " & vbCrLf &
                 "            T.GLEXACT AS CheckRegister_GLTransaction, " & vbCrLf &
                 "            T.CHECK_CLEARED_DATE AS CheckRegister_CheckClearedDate, " & vbCrLf &
+                "            T.CHECK_RUN_ID AS CheckRegister_CheckRunID, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
                 "        FROM CodeFirstDatabase.CheckRegister AS T" & vbCrLf &
                 "    ) AS T1")

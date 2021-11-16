@@ -1575,6 +1575,12 @@
     <Compile Include="Finance And Accounting\Client PL\GrossIncomeSummaryByClientDivisionProduct.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Finance And Accounting\PaymentManagerReport.Designer.vb">
+      <DependentUpon>PaymentManagerReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Finance And Accounting\PaymentManagerReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Finance And Accounting\IncomeOnlyBatchSummaryReport.Designer.vb">
       <DependentUpon>IncomeOnlyBatchSummaryReport.vb</DependentUpon>
     </Compile>

@@ -41,7 +41,7 @@ Partial Public Class Documents_JobComponent
     Private _DocumentIDs() As Long
     Private _AllLabelsNeeded As New Generic.List(Of AdvantageFramework.Database.Entities.Label)
     Private _DocumentLabels As New Generic.List(Of AdvantageFramework.Database.Entities.LabelDocument)
-    Private _HasDeletable As Boolean = False
+    Private _HasDeletable As Boolean = True
     Private _ShowThumbnailsRadToolBarButton As RadToolBarButton
 
 #End Region
@@ -58,13 +58,15 @@ Partial Public Class Documents_JobComponent
 
     Private Sub RadGridJobComponentDocuments_ItemCommand(ByVal source As Object, ByVal e As Telerik.Web.UI.GridCommandEventArgs) Handles RadGridJobComponentDocuments.ItemCommand
 
+        'objects
+        Dim Document As AdvantageFramework.Database.Entities.Document = Nothing
+        Dim CurrentGridRow As Telerik.Web.UI.GridDataItem = Nothing
+
         If e.Item Is Nothing Then Exit Sub
 
         If e.Item.ItemType = GridItemType.Item Or e.Item.ItemType = GridItemType.AlternatingItem Then
 
-            Dim CurrentGridRow As Telerik.Web.UI.GridDataItem = e.Item
-            'objects
-            Dim Document As AdvantageFramework.Database.Entities.Document = Nothing
+            CurrentGridRow = e.Item
 
             Select Case e.CommandName
                 Case "Download"
@@ -160,16 +162,41 @@ Partial Public Class Documents_JobComponent
 
                                 End If
 
+                                Dim alert As New AlertAttachment(Session("ConnString"))
+                                alert.Where.DOCUMENT_ID.Value = DocumentID
+                                If alert.Query.Load() Then
+                                    alert.MarkAsDeleted()
+                                    alert.Save()
+                                End If
+
                             Case "JC"
 
-                                Dim jobcomp As New JobComponentDocuments(Session("ConnString"))
+                                If CurrentGridRow("GridBoundColumnLevel").Text = "Task" OrElse
+                                        CurrentGridRow("GridBoundColumnLevel").Text = "Job Component" Then
 
-                                jobcomp.Where.DOCUMENT_ID.Value = DocumentID
+                                    Dim jobcomp As New JobComponentDocuments(Session("ConnString"))
+                                    jobcomp.Where.DOCUMENT_ID.Value = DocumentID
+                                    If jobcomp.Query.Load() Then
+                                        jobcomp.MarkAsDeleted()
+                                        jobcomp.Save()
+                                    End If
+                                    Dim alert As New AlertAttachment(Session("ConnString"))
+                                    alert.Where.DOCUMENT_ID.Value = DocumentID
+                                    If alert.Query.Load() Then
+                                        alert.MarkAsDeleted()
+                                        alert.Save()
+                                    End If
+                                    Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
 
-                                If jobcomp.Query.Load() Then
+                                        Try
 
-                                    jobcomp.MarkAsDeleted()
-                                    jobcomp.Save()
+                                            DbContext.Database.ExecuteSqlCommand(String.Format("DELETE FROM [dbo].[JOB_TRAFFIC_DET_DOCS] WHERE [DOCUMENT_ID] = {0}", DocumentID))
+
+                                        Catch ex As Exception
+
+                                        End Try
+
+                                    End Using
 
                                 End If
 
@@ -233,6 +260,10 @@ Partial Public Class Documents_JobComponent
     Private _DbContext As AdvantageFramework.Database.DbContext
     Private _Agency As AdvantageFramework.Database.Entities.Agency
     Private Sub RadGridJobComponentDocuments_ItemDataBound(ByVal sender As Object, ByVal e As Telerik.Web.UI.GridItemEventArgs) Handles RadGridJobComponentDocuments.ItemDataBound
+
+        Dim access As Integer = 0
+        Dim DeleteImageButton As ImageButton = Nothing
+        Dim DeleteDiv As HtmlControls.HtmlControl = Nothing
 
         Select Case e.Item.ItemType
             Case Telerik.Web.UI.GridItemType.Header
@@ -315,21 +346,112 @@ Partial Public Class Documents_JobComponent
                     End Try
                     Try
 
-                        If (IsDBNull(e.Item.DataItem("USER_CODE")) = False AndAlso e.Item.DataItem("USER_CODE").ToString() = HttpContext.Current.Session("UserCode").ToString()) OrElse
-                        Session("Admin") = True Then
+                        access = Me.CheckUserGroupSetting(AdvantageFramework.Security.GroupSettings.DocumentManager_CanUpload)
 
-                            If _HasDeletable = False Then _HasDeletable = True
+                        If RadComboBoxDocLevel.SelectedValue = AdvantageFramework.DocumentManager.Classes.UploadLevels.JobComponent.Abbreviation Then
 
-                            Dim DeleteImageButton As ImageButton = e.Item.FindControl("ImageButtonDelete")
-                            If DeleteImageButton IsNot Nothing Then DeleteImageButton.Attributes.Add("onclick", "return confirm('Are you sure you want to delete?');")
+                            If e.Item.DataItem("LEVEL") = "Task" OrElse
+                                    e.Item.DataItem("LEVEL") = "Job Component" Then
+
+                                If (access <> 0) Then
+
+                                    DeleteImageButton = e.Item.FindControl("ImageButtonDelete")
+
+                                    If DeleteImageButton IsNot Nothing Then
+
+                                        DeleteImageButton.Attributes.Add("onclick", "return confirm('Are you sure you want to delete?');")
+
+                                    End If
+
+                                Else
+
+                                    DeleteImageButton = e.Item.FindControl("ImageButtonDelete")
+
+                                    If DeleteImageButton IsNot Nothing Then
+
+                                        DeleteImageButton.Visible = False
+
+                                    End If
+
+                                    DeleteDiv = e.Item.FindControl("DivDelete")
+
+                                    If DeleteDiv IsNot Nothing Then
+
+                                        AdvantageFramework.Web.Presentation.Controls.DivHide(DeleteDiv)
+
+                                    End If
+
+                                End If
+
+                            Else
+
+                                DeleteImageButton = e.Item.FindControl("ImageButtonDelete")
+
+                                If DeleteImageButton IsNot Nothing Then
+
+                                    DeleteImageButton.Visible = False
+
+                                End If
+
+                                DeleteDiv = e.Item.FindControl("DivDelete")
+
+                                If DeleteDiv IsNot Nothing Then
+
+                                    AdvantageFramework.Web.Presentation.Controls.DivHide(DeleteDiv)
+
+                                End If
+
+                            End If
 
                         Else
 
-                            Dim DeleteDiv As HtmlControls.HtmlControl = e.Item.FindControl("DivDelete")
+                            If (access <> 0) Then
 
-                            If DeleteDiv IsNot Nothing Then AdvantageFramework.Web.Presentation.Controls.DivHide(DeleteDiv)
+                                DeleteImageButton = e.Item.FindControl("ImageButtonDelete")
+
+                                If DeleteImageButton IsNot Nothing Then
+
+                                    DeleteImageButton.Attributes.Add("onclick", "return confirm('Are you sure you want to delete?');")
+
+                                End If
+
+                            Else
+
+                                DeleteImageButton = e.Item.FindControl("ImageButtonDelete")
+
+                                If DeleteImageButton IsNot Nothing Then
+
+                                    DeleteImageButton.Visible = False
+
+                                End If
+
+                                DeleteDiv = e.Item.FindControl("DivDelete")
+
+                                If DeleteDiv IsNot Nothing Then
+
+                                    AdvantageFramework.Web.Presentation.Controls.DivHide(DeleteDiv)
+
+                                End If
+
+                            End If
 
                         End If
+
+                        'If (IsDBNull(e.Item.DataItem("USER_CODE")) = False AndAlso e.Item.DataItem("USER_CODE").ToString() = HttpContext.Current.Session("UserCode").ToString()) OrElse
+                        'Session("Admin") = True Then
+
+                        '    If _HasDeletable = False Then _HasDeletable = True
+
+                        '    Dim DeleteImageButton As ImageButton = e.Item.FindControl("ImageButtonDelete")
+                        '    If DeleteImageButton IsNot Nothing Then DeleteImageButton.Attributes.Add("onclick", "return confirm('Are you sure you want to delete?');")
+
+                        'Else
+
+                        '    Dim DeleteDiv As HtmlControls.HtmlControl = e.Item.FindControl("DivDelete")
+
+                        '    If DeleteDiv IsNot Nothing Then AdvantageFramework.Web.Presentation.Controls.DivHide(DeleteDiv)
+
+                        'End If
 
                     Catch ex As Exception
 
@@ -532,8 +654,10 @@ Partial Public Class Documents_JobComponent
 
     Private Sub FilesRadToolbar_ButtonClick(ByVal sender As Object, ByVal e As Telerik.Web.UI.RadToolBarEventArgs) Handles FilesRadToolbar.ButtonClick
 
+        Dim CurrentGridRow As Telerik.Web.UI.GridDataItem = Nothing
         Dim URL As String = ""
         Dim dl As Telerik.Web.UI.RadComboBox
+
         Select Case e.Item.Value
             Case "LabelView"
 
@@ -727,90 +851,121 @@ Partial Public Class Documents_JobComponent
                             Dim DocPath As String = String.Empty
                             Dim DocRepositoryID As String = String.Empty
 
+                            CurrentGridRow = CType(Me.RadGridJobComponentDocuments.SelectedItems(i), Telerik.Web.UI.GridDataItem)
+
                             Document.Where.DOCUMENT_ID.Value = DocumentID
 
                             If Document.Query.Load() Then
 
-                                If Document.USER_CODE <> Session("UserCode") And Session("Admin") = False Then
+                                'If Document.USER_CODE <> Session("UserCode") And Session("Admin") = False Then
 
-                                    ResultsText += "Only Webvantage user " & Document.USER_CODE & " may delete " & Document.FILENAME & "\n"
+                                '    ResultsText += "Only Webvantage user " & Document.USER_CODE & " may delete " & Document.FILENAME & "\n"
 
-                                Else
+                                'Else
 
-                                    Select Case Me.RadComboBoxDocLevel.SelectedValue
+                                Select Case Me.RadComboBoxDocLevel.SelectedValue
 
-                                        Case "JO"
+                                    Case "JO"
 
-                                            Dim job As New JobDocument(Session("ConnString"))
+                                        Dim job As New JobDocument(Session("ConnString"))
 
-                                            job.Where.DOCUMENT_ID.Value = DocumentID
+                                        job.Where.DOCUMENT_ID.Value = DocumentID
 
-                                            If job.Query.Load() Then
+                                        If job.Query.Load() Then
 
-                                                job.MarkAsDeleted()
-                                                job.Save()
+                                            job.MarkAsDeleted()
+                                            job.Save()
 
-                                            End If
+                                        End If
 
-                                        Case "JC"
+                                        Dim alert As New AlertAttachment(Session("ConnString"))
+                                        alert.Where.DOCUMENT_ID.Value = DocumentID
+                                        If alert.Query.Load() Then
+                                            alert.MarkAsDeleted()
+                                            alert.Save()
+                                        End If
+
+                                    Case "JC"
+
+                                        If CurrentGridRow("GridBoundColumnLevel").Text = "Task" OrElse
+                                                CurrentGridRow("GridBoundColumnLevel").Text = "Job Component" Then
 
                                             Dim jobcomp As New JobComponentDocuments(Session("ConnString"))
-
                                             jobcomp.Where.DOCUMENT_ID.Value = DocumentID
-
                                             If jobcomp.Query.Load() Then
-
                                                 jobcomp.MarkAsDeleted()
                                                 jobcomp.Save()
-
                                             End If
+                                            Dim alert As New AlertAttachment(Session("ConnString"))
+                                            alert.Where.DOCUMENT_ID.Value = DocumentID
+                                            If alert.Query.Load() Then
+                                                alert.MarkAsDeleted()
+                                                alert.Save()
+                                            End If
+                                            Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
 
-                                    End Select
+                                                Try
 
-                                    Dim DocumentName As String = Document.FILENAME
-                                    DocRepositoryID = Document.REPOSITORY_FILENAME
+                                                    DbContext.Database.ExecuteSqlCommand(String.Format("DELETE FROM [dbo].[JOB_TRAFFIC_DET_DOCS] WHERE [DOCUMENT_ID] = {0}", DocumentID))
 
-                                    'Check for multiple references to same document for job and job comp levels.
-                                    Dim JobRelatedDocuments As Integer = 0
-                                    Dim JobCompRelatedDocuments As Integer = 0
+                                                Catch ex As Exception
 
-                                    If Document.MIME_TYPE = "URL" Then
+                                                End Try
 
-                                        Document.MarkAsDeleted()
-                                        Document.Save()
-                                        ResultsText += "Deleted:  " & DocumentName & "\n"
-
-                                    Else
-                                        If Me.RadComboBoxDocLevel.SelectedValue = "JO" Then
-                                            Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
-                                                JobRelatedDocuments = AdvantageFramework.Database.Procedures.JobDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
                                             End Using
-                                            If JobRelatedDocuments = 0 Then
-                                                files &= DocRepositoryID & ","
-                                            End If
-                                        ElseIf Me.RadComboBoxDocLevel.SelectedValue = "JC" Then
-                                            Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
-                                                JobCompRelatedDocuments = AdvantageFramework.Database.Procedures.JobComponentDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
-                                            End Using
-                                            If JobCompRelatedDocuments = 0 Then
-                                                files &= DocRepositoryID & ","
-                                            End If
+
                                         Else
+
+                                            Continue For
+
+                                        End If
+
+                                End Select
+
+                                Dim DocumentName As String = Document.FILENAME
+                                DocRepositoryID = Document.REPOSITORY_FILENAME
+
+                                'Check for multiple references to same document for job and job comp levels.
+                                Dim JobRelatedDocuments As Integer = 0
+                                Dim JobCompRelatedDocuments As Integer = 0
+
+                                If Document.MIME_TYPE = "URL" Then
+
+                                    Document.MarkAsDeleted()
+                                    Document.Save()
+                                    ResultsText += "Deleted:  " & DocumentName & "\n"
+
+                                Else
+                                    If Me.RadComboBoxDocLevel.SelectedValue = "JO" Then
+                                        Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
+                                            JobRelatedDocuments = AdvantageFramework.Database.Procedures.JobDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
+                                        End Using
+                                        If JobRelatedDocuments = 0 Then
                                             files &= DocRepositoryID & ","
                                         End If
-                                        Document.MarkAsDeleted()
-                                        Document.Save()
-
-                                        Dim documentRepository As New DocumentRepository(Me.ConnectionString)
-                                        DocPath = documentRepository.Path
-
-                                        ResultsText += "Deleted:  " & DocumentName & "\n"
-
+                                    ElseIf Me.RadComboBoxDocLevel.SelectedValue = "JC" Then
+                                        Using DataContext = New AdvantageFramework.Database.DataContext(_Session.ConnectionString, _Session.UserCode)
+                                            JobCompRelatedDocuments = AdvantageFramework.Database.Procedures.JobComponentDocument.LoadRelatedbyRepositoryFilename(DataContext, Document.REPOSITORY_FILENAME)
+                                        End Using
+                                        If JobCompRelatedDocuments = 0 Then
+                                            files &= DocRepositoryID & ","
+                                        End If
+                                    Else
+                                        files &= DocRepositoryID & ","
                                     End If
+                                    Document.MarkAsDeleted()
+                                    Document.Save()
+
+                                    Dim documentRepository As New DocumentRepository(Me.ConnectionString)
+                                    DocPath = documentRepository.Path
+
+                                    ResultsText += "Deleted:  " & DocumentName & "\n"
 
                                 End If
 
                             End If
+
+                            'End If
 
                         Next
 
@@ -832,6 +987,7 @@ Partial Public Class Documents_JobComponent
                         If ResultsText.Trim() <> "" Then Me.ShowMessage(ResultsText)
 
                 End Select
+
             Case "ClearSearch"
 
                 Dim SearchCriteriaTextBox As System.Web.UI.WebControls.TextBox = Me.SearchArea.FindControl("SearchCriteriaTextBox")
@@ -1493,23 +1649,60 @@ Partial Public Class Documents_JobComponent
         End Select
     End Function
     Protected Sub ToggleRowSelection(ByVal sender As Object, ByVal e As EventArgs)
-        '
-        CType(CType(sender, CheckBox).Parent.Parent, Telerik.Web.UI.GridItem).Selected = CType(sender, CheckBox).Checked
+        ''
+        'CType(CType(sender, CheckBox).Parent.Parent, Telerik.Web.UI.GridItem).Selected = CType(sender, CheckBox).Checked
+        Dim access As Integer = 0
+        Dim CurrentGridRow As Telerik.Web.UI.GridDataItem = Nothing
+
+        CurrentGridRow = CType(CType(sender, CheckBox).Parent.Parent, Telerik.Web.UI.GridDataItem)
+
+        CurrentGridRow.Selected = CType(sender, CheckBox).Checked
+        'Me.RadToolbarDocumentManager.FindItemByValue("Delete").Enabled = Me.RadGridDocuments.SelectedItems.Count > 0
+        access = Me.CheckUserGroupSetting(AdvantageFramework.Security.GroupSettings.DocumentManager_CanUpload)
+
+        If RadComboBoxDocLevel.SelectedValue = AdvantageFramework.DocumentManager.Classes.UploadLevels.JobComponent.Abbreviation Then
+
+            For Counter = Me.RadGridJobComponentDocuments.SelectedItems.Count - 1 To 0 Step -1
+
+                CurrentGridRow = CType(Me.RadGridJobComponentDocuments.SelectedItems(Counter), Telerik.Web.UI.GridDataItem)
+
+                If CurrentGridRow("GridBoundColumnLevel").Text = "Task" OrElse
+                        CurrentGridRow("GridBoundColumnLevel").Text = "Job Component" Then
+
+                    Me.FilesRadToolbar.FindItemByValue("Delete").Enabled = ((access <> 0) AndAlso Me.RadGridJobComponentDocuments.SelectedItems.Count > 0)
+
+                    If Me.FilesRadToolbar.FindItemByValue("Delete").Enabled = False Then
+
+                        Exit For
+
+                    End If
+
+                Else
+
+                    Me.FilesRadToolbar.FindItemByValue("Delete").Enabled = False
+                    Exit For
+
+                End If
+
+            Next
+
+        Else
+
+            Me.FilesRadToolbar.FindItemByValue("Delete").Enabled = ((access <> 0) AndAlso Me.RadGridJobComponentDocuments.SelectedItems.Count > 0)
+
+        End If
 
         If RadGridJobComponentDocuments.SelectedItems.Count = 0 Then
 
             Me.FilesRadToolbar.FindItemByValue("ProofHQUpload").Enabled = False
-            Me.FilesRadToolbar.FindItemByValue("Delete").Enabled = False
 
         ElseIf RadGridJobComponentDocuments.SelectedItems.Count > 1 Then
 
             Me.FilesRadToolbar.FindItemByValue("ProofHQUpload").Enabled = False
-            Me.FilesRadToolbar.FindItemByValue("Delete").Enabled = True
 
         ElseIf RadGridJobComponentDocuments.SelectedItems.Count = 1 And Me._Agency.AllowProofHQ = True Then
 
             Me.FilesRadToolbar.FindItemByValue("ProofHQUpload").Enabled = True
-            Me.FilesRadToolbar.FindItemByValue("Delete").Enabled = True
 
         End If
 

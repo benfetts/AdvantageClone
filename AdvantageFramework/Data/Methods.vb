@@ -149,6 +149,26 @@
                 Yield source.Current
             Loop While System.Threading.Interlocked.Increment(i) < size AndAlso source.MoveNext()
         End Function
+        <System.Runtime.CompilerServices.Extension()>
+        Public Iterator Function FromHierarchy(Of TSource)(Source As TSource, NextItem As Func(Of TSource, TSource), CanContinue As Func(Of TSource, Boolean)) As IEnumerable(Of TSource)
+
+            Dim Current As TSource = Source
+
+            While CanContinue(Current)
+
+                Yield Current
+                Current = NextItem(Current)
+
+            End While
+
+        End Function
+        <System.Runtime.CompilerServices.Extension()>
+        Public Function FromHierarchy(Of TSource As Class)(Source As TSource, NextItem As Func(Of TSource, TSource)) As IEnumerable(Of TSource)
+
+            FromHierarchy = FromHierarchy(Source, NextItem, Function(Collection) Collection IsNot Nothing)
+
+        End Function
+
 #End Region
 
     End Module

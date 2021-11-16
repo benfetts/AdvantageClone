@@ -97,6 +97,7 @@
             MediaPlanEstimateTemplate
             MediaDemographic
             QuickbookCustomer
+            CheckRegister
         End Enum
 
 #End Region
@@ -1188,6 +1189,12 @@
                     Me.Properties.DisplayMember = "DisplayName"
                     Me.Properties.ValueMember = "ID"
                     Me.Properties.NullText = "Select Customer"
+
+                Case SearchableComboBox.Type.CheckRegister
+
+                    Me.Properties.DisplayMember = "CheckRunID"
+                    Me.Properties.ValueMember = "CheckRunID"
+                    Me.Properties.NullText = "Select Check Run ID"
 
             End Select
 

@@ -447,7 +447,7 @@
             SSHFTPValidation = Validated
 
         End Function
-        Public Function SSHFTPValidation(Host As String, Port As Integer, UserName As String, PrivateKey As Byte(), PrivateKeyPassphrase As String, Optional ErrorMessage As String = "") As Boolean
+        Public Function SSHFTPValidation(Host As String, Port As Integer, UserName As String, PrivateKey As Byte(), PrivateKeyPassphrase As String, Optional ByRef ErrorMessage As String = "") As Boolean
 
             'objects
             Dim SFTP As Rebex.Net.Sftp = Nothing
@@ -488,7 +488,11 @@
 
                 If ex.InnerException IsNot Nothing Then
 
-                    ErrorMessage &= System.Environment.NewLine & ex.InnerException.Message
+                    If ErrorMessage <> ex.InnerException.Message Then
+
+                        ErrorMessage &= System.Environment.NewLine & ex.InnerException.Message
+
+                    End If
 
                 End If
 

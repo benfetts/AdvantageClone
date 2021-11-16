@@ -2199,7 +2199,7 @@ function initClientsMultiSelect() {
     window.setTimeout(function () {
         try {
             var clientsMultiSelect = $("#clientsMultiSelect").data("kendoMultiSelect");
-            clientsMultiSelect.list.width(450);
+            clientsMultiSelect.list.width(658);
         } catch (e) {
         }
         checkMultiSelectsEnableClient();
@@ -2396,7 +2396,7 @@ function initDivisionsMultiSelect() {
     window.setTimeout(function () {
         try {
             var divisionsMultiSelect = $("#divisionsMultiSelect").data("kendoMultiSelect");
-            divisionsMultiSelect.list.width(450);
+            divisionsMultiSelect.list.width(658);
         } catch (e) {
         }
     }, 10);
@@ -2609,7 +2609,7 @@ function initProductsMultiSelect() {
     window.setTimeout(function () {
         try {
             var productsMultiSelect = $("#productsMultiSelect").data("kendoMultiSelect");
-            productsMultiSelect.list.width(450);
+            productsMultiSelect.list.width(658);
         } catch (e) {
         }
     }, 10);
@@ -2872,7 +2872,7 @@ function initJobsMultiSelect() {
     window.setTimeout(function () {
         try {
             var jobsMultiSelect = $("#jobsMultiSelect").data("kendoMultiSelect");
-            jobsMultiSelect.list.width(450);
+            jobsMultiSelect.list.width(666);
         } catch (e) {
         }
     }, 10);

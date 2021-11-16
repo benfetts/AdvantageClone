@@ -2357,7 +2357,8 @@ Namespace Controller.Desktop
 
                                 Else
 
-                                    AdvantageFramework.AlertSystem.ProcessAssignees(DbContext, Alert, Alert.Assignees.ToList, True, True, Message)
+                                    Dim StateChanged As Boolean = False
+                                    AdvantageFramework.AlertSystem.ProcessAssignees(DbContext, Alert, Alert.Assignees.ToList, True, True, StateChanged, Message)
 
                                 End If
 
@@ -3871,12 +3872,12 @@ Namespace Controller.Desktop
 
                                 If Alert.Assignees IsNot Nothing Then
 
-                                    Sent = AdvantageFramework.AlertSystem.ProcessAssignees(DbContext, Alert, Alert.Assignees.ToList, AddUpdatedComment, False, ErrorMessage)
+                                    Sent = AdvantageFramework.AlertSystem.ProcessAssignees(DbContext, Alert, Alert.Assignees.ToList, AddUpdatedComment, False, StateChanged, ErrorMessage)
 
                                 Else
 
                                     Dim EmptyList As New List(Of String)
-                                    Sent = AdvantageFramework.AlertSystem.ProcessAssignees(DbContext, Alert, EmptyList, AddUpdatedComment, False, ErrorMessage)
+                                    Sent = AdvantageFramework.AlertSystem.ProcessAssignees(DbContext, Alert, EmptyList, AddUpdatedComment, False, StateChanged, ErrorMessage)
 
                                 End If
 

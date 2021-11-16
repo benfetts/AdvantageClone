@@ -13,6 +13,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageAPI.Documentation"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.WinForm", "..\AdvantageFramework.WinForm\AdvantageFramework.WinForm.vbproj", "{8BBD586B-EB2E-4971-AE41-91A8E68F114E}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdvantageFramework.Reporting.Reports", "..\AdvantageFramework.Reporting.Reports\AdvantageFramework.Reporting.Reports.vbproj", "{6115EB46-3E3D-4413-903A-618177C655AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,31 +81,23 @@ Global
 		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Release|x64.Build.0 = Release|x64
 		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Release|x86.ActiveCfg = Release|x86
 		{8BBD586B-EB2E-4971-AE41-91A8E68F114E}.Release|x86.Build.0 = Release|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x64.ActiveCfg = Debug|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x64.Build.0 = Debug|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x86.ActiveCfg = Debug|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Debug|x86.Build.0 = Debug|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x64.ActiveCfg = Release|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x64.Build.0 = Release|x64
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x86.ActiveCfg = Release|x86
+		{6115EB46-3E3D-4413-903A-618177C655AF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD4CD0FA-21CA-4BEA-91EE-A92FEB433924}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = ..\\AdvantageFramework\\AdvantageFramework.vbproj
-		SccProjectName1 = ../AdvantageFramework
-		SccLocalPath1 = ..\\AdvantageFramework
-		SccProjectUniqueName2 = ..\\AdvantageFramework.BLogic\\AdvantageFramework.BLogic.vbproj
-		SccProjectName2 = ../AdvantageFramework.BLogic
-		SccLocalPath2 = ..\\AdvantageFramework.BLogic
-		SccProjectUniqueName3 = AdvantageAPI.vbproj
-		SccLocalPath3 = .
-		SccProjectUniqueName4 = ..\\API\u0020Documentation\\AdvantageAPI.Documentation.vbproj
-		SccProjectName4 = ../API\u0020Documentation
-		SccLocalPath4 = ..\\API\u0020Documentation
-		SccProjectUniqueName5 = ..\\AdvantageFramework.WinForm\\AdvantageFramework.WinForm.vbproj
-		SccProjectName5 = ../AdvantageFramework.WinForm
-		SccLocalPath5 = ..\\AdvantageFramework.WinForm
 	EndGlobalSection
 EndGlobal

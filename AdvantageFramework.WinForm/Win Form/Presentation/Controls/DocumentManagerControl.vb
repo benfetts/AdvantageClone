@@ -76,7 +76,26 @@
         End Property
         Public ReadOnly Property CanDelete As Boolean
             Get
-                CanDelete = DataGridViewForm_Documents.HasOnlyOneSelectedRow AndAlso (_DocumentLevel = DataGridViewForm_Documents.CurrentView.GetRowCellValue(DataGridViewForm_Documents.CurrentView.FocusedRowHandle, AdvantageFramework.DocumentManager.Classes.Document.Properties.DocumentLevel.ToString))
+
+                If _DocumentLevel = Database.Entities.DocumentLevel.JobComponent Then
+
+                    If DataGridViewForm_Documents.CurrentView.GetRowCellValue(DataGridViewForm_Documents.CurrentView.FocusedRowHandle, AdvantageFramework.DocumentManager.Classes.Document.Properties.DocumentLevel.ToString) = Database.Entities.DocumentLevel.JobComponent OrElse
+                            DataGridViewForm_Documents.CurrentView.GetRowCellValue(DataGridViewForm_Documents.CurrentView.FocusedRowHandle, AdvantageFramework.DocumentManager.Classes.Document.Properties.DocumentLevel.ToString) = Database.Entities.DocumentLevel.Task Then
+
+                        CanDelete = (Me.CanUpload AndAlso DataGridViewForm_Documents.HasOnlyOneSelectedRow)
+
+                    Else
+
+                        CanDelete = False
+
+                    End If
+
+                Else
+
+                    CanDelete = Me.CanUpload AndAlso DataGridViewForm_Documents.HasOnlyOneSelectedRow AndAlso (_DocumentLevel = DataGridViewForm_Documents.CurrentView.GetRowCellValue(DataGridViewForm_Documents.CurrentView.FocusedRowHandle, AdvantageFramework.DocumentManager.Classes.Document.Properties.DocumentLevel.ToString))
+
+                End If
+
             End Get
         End Property
 

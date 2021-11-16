@@ -4060,6 +4060,13 @@
                                                            .DisplayName = Vendor.DisplayName}).ToList
 
         End Function
+        Private Function LoadGridViewDataSourceView(ByVal CheckRegisters As IEnumerable(Of AdvantageFramework.Database.Entities.CheckRegister)) As Object
+
+            LoadGridViewDataSourceView = (From CheckRegister In CheckRegisters
+                                          Select New With {.CheckRunID = CheckRegister.CheckRunID,
+                                                           .ExportDate = CheckRegister.ExportDate}).ToList
+
+        End Function
         Public Function LoadGridViewDataSourceView(ByVal Value As Object) As Object
 
             'objects
@@ -4706,6 +4713,10 @@
                 ElseIf TypeOf Value Is IEnumerable(Of AdvantageFramework.Quickbooks.Classes.Vendor) Then
 
                     View = LoadGridViewDataSourceView(DirectCast(Value, IEnumerable(Of AdvantageFramework.Quickbooks.Classes.Vendor)))
+
+                ElseIf TypeOf Value Is IEnumerable(Of AdvantageFramework.Database.Entities.CheckRegister) Then
+
+                    View = LoadGridViewDataSourceView(DirectCast(Value, IEnumerable(Of AdvantageFramework.Database.Entities.CheckRegister)))
 
                 Else
 

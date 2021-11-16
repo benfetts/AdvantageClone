@@ -499,9 +499,11 @@
     <Compile Include="AccountReceivable\Classes\ClientInvoice.vb" />
     <Compile Include="AccountReceivable\Classes\ImportAccountReceivableStaging.vb" />
     <Compile Include="AccountReceivable\Methods.vb" />
+    <Compile Include="Controller\Finance And Accounting\PaymentManagerController.vb" />
     <Compile Include="Controller\Media\Exports\BroadcastBuyInvoiceExportController.vb" />
     <Compile Include="Controller\Project Management\ProofingController.vb" />
     <Compile Include="DTO\BroadcastCalendar.vb" />
+    <Compile Include="DTO\Finance And Accounting\PaymentManagerReport.vb" />
     <Compile Include="DTO\Media\PlanEstimateGRPBudgetAllocateSpotLengthPercent.vb" />
     <Compile Include="DTO\Media\Invoice.vb" />
     <Compile Include="DTO\Media\Buy.vb" />
@@ -1313,6 +1315,7 @@
     <Compile Include="View Models\Employee\Timesheet\TimeSummaryViewModel.vb" />
     <Compile Include="View Models\Finance And Accounting\ClientLatePaymentFeeViewModel.vb" />
     <Compile Include="View Models\Finance And Accounting\Exports\VATExportViewModel.vb" />
+    <Compile Include="View Models\Finance And Accounting\PaymentManagerViewModel.vb" />
     <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\ResourceAddDetailViewModel.vb" />
     <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\RevenueAddDetailViewModel.vb" />
     <Compile Include="View Models\Finance And Accounting\Revenue Resource Plan\ResourceAddViewModel.vb" />

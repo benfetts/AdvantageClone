@@ -30,7 +30,7 @@ BEGIN
 
     IF NOT @ALERT_ID IS NULL AND NOT @SPRINT_HDR_ID IS NULL
     BEGIN
-	   EXEC [dbo].[advsp_agile_sprint_check_employee_records] @SPRINT_HDR_ID, @ALERT_ID;
+	   EXEC [dbo].[advsp_agile_sprint_check_employee_records] @ALERT_ID, NULL, 0;
     END
 
 END

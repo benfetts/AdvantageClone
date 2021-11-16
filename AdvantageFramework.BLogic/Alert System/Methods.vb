@@ -2097,12 +2097,13 @@ Namespace AlertSystem
                                          ByRef Message As String) As Boolean
 
             Dim AlertView As AdvantageFramework.DTO.Desktop.Alert = Nothing
+            Dim StateChanged As Boolean = False
 
             AlertView = LoadAlertView(DbContext, EmployeeCode, AlertEntity.ID, 0, 0, 0, False)
 
             If AlertView IsNot Nothing Then
 
-                ProcessAssignees(DbContext, AlertView, AssigneesEmpCodes, False, IsCreatingNewAssignment, Message)
+                ProcessAssignees(DbContext, AlertView, AssigneesEmpCodes, False, IsCreatingNewAssignment, StateChanged, Message)
 
             End If
 
@@ -2114,6 +2115,7 @@ Namespace AlertSystem
                                          ByVal AssigneesEmpCodes As Generic.List(Of String),
                                          ByVal AddUpdatedComment As Boolean,
                                          ByVal IsCreatingNewAssignment As Boolean,
+                                         ByRef StateChanged As Boolean,
                                          ByRef Message As String) As Boolean
 
             Dim Saved As Boolean = True
@@ -2123,7 +2125,6 @@ Namespace AlertSystem
             Dim EmployeeNames As New Generic.List(Of String)
             Dim CurrentAssigneesEmpCodes As Generic.List(Of String) = Nothing
             Dim StateName As String = String.Empty
-            Dim StateChanged As Boolean = False
             Dim RightNow As DateTime = Now
             Dim IsRouted As Boolean = True
             Dim AlertEntityTemplateID As Integer = 0
@@ -2450,7 +2451,12 @@ Namespace AlertSystem
 
                                     If AdvantageFramework.AlertSystem.IsUnassigned(DbContext, AlertEntity.ID) = False Then
 
-                                        AdvantageFramework.Proofing.MoveToNextState(DbContext, AlertEntity.ID)
+                                        If AdvantageFramework.Proofing.MoveToNextState(DbContext, AlertEntity.ID) = True Then
+
+                                            If StateChanged = False Then StateChanged = True
+
+                                        End If
+
                                         Saved = True
 
                                     End If

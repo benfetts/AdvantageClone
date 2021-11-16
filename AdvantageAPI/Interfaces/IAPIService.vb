@@ -590,7 +590,18 @@ Public Interface IAPIService
                             ClientCode As String, DivisionCode As String, ProductCode As String,
                             Optional ByVal Description As String = "",
                             Optional ByVal StartDate As String = "01-01-1900", Optional ByVal EndDate As String = "01-01-1900",
-                            Optional ByVal GrossBudgetAmount As Decimal = -1, Optional ByVal Comment As String = "") As MediaPlanAddResponse
+                            Optional ByVal GrossBudgetAmount As Decimal = -1, Optional ByVal Comment As String = "",
+                            Optional ByVal CampaignID As Integer = 0,
+                            Optional ByVal CountryID As Integer = 0) As MediaPlanAddResponse
+
+    '<WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    '<OperationContract()>
+    'Function CopyMediaPlan(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String,
+    '                        MediaPlanID As Integer,
+    '                        ClientCode As String, DivisionCode As String, ProductCode As String,
+    '                        Optional ByVal Description As String = "",
+    '                        Optional ByVal StartDate As String = "01-01-1900", Optional ByVal EndDate As String = "01-01-1900",
+    '                        Optional ByVal GrossBudgetAmount As Decimal = -1, Optional ByVal Comment As String = "") As MediaPlanAddResponse
 
     <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
     <OperationContract()>

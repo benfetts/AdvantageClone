@@ -349,6 +349,10 @@
 
             Select Case [Module].ModuleCode
 
+                Case AdvantageFramework.Security.Modules.FinanceAccounting_PaymentManagerEnhanced.ToString
+
+                    ModuleFormType = GetType(AdvantageFramework.FinanceAndAccounting.Presentation.PaymentManagerDialog)
+
                 Case AdvantageFramework.Security.Modules.GeneralLedger_Processing_UpdateToSummary.ToString
 
                     ModuleFormType = GetType(AdvantageFramework.GeneralLedger.Processing.Presentation.UpdateToSummaryForm)
@@ -1232,6 +1236,10 @@
             Dim ParameterDictionary As Generic.Dictionary(Of String, Object) = Nothing
 
             Select Case [Module].ModuleCode
+
+                Case AdvantageFramework.Security.Modules.FinanceAccounting_PaymentManagerEnhanced.ToString
+
+                    AdvantageFramework.FinanceAndAccounting.Presentation.PaymentManagerDialog.ShowFormDialog()
 
                 Case AdvantageFramework.Security.Modules.GeneralLedger_Processing_UpdateToSummary.ToString
 

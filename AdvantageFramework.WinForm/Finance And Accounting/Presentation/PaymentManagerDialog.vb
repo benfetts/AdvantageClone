@@ -53,16 +53,20 @@
 
                     If CheckBoxForm_IncludeExported.Checked Then
 
-                        SearchableComboBoxForm_CheckRunID.DataSource = AdvantageFramework.Database.Procedures.CheckRegister.Load(DbContext).Where(Function(Entity) Entity.BankCode = BankCode AndAlso
-                                                                                                                                                                   Entity.CheckRunID IsNot Nothing AndAlso
-                                                                                                                                                                   (Entity.IsVoid = 0 OrElse Entity.IsVoid Is Nothing)).OrderByDescending(Function(Entity) Entity.CheckRunID).ToList
+                        SearchableComboBoxForm_CheckRunID.DataSource = (From Entity In AdvantageFramework.Database.Procedures.CheckRegister.Load(DbContext)
+                                                                        Where Entity.BankCode = BankCode AndAlso
+                                                                        Entity.CheckRunID IsNot Nothing AndAlso
+                                                                        (Entity.IsVoid = 0 OrElse Entity.IsVoid Is Nothing)
+                                                                        Select Entity.CheckRunID, Entity.ExportDate).Distinct.OrderByDescending(Function(Entity) Entity.CheckRunID).ToList
 
                     Else
 
-                        SearchableComboBoxForm_CheckRunID.DataSource = AdvantageFramework.Database.Procedures.CheckRegister.Load(DbContext).Where(Function(Entity) Entity.BankCode = BankCode AndAlso
-                                                                                                                                                                   Entity.CheckRunID IsNot Nothing AndAlso
-                                                                                                                                                                   (Entity.IsVoid = 0 OrElse Entity.IsVoid Is Nothing) AndAlso
-                                                                                                                                                                   Entity.ExportDate Is Nothing).OrderByDescending(Function(Entity) Entity.CheckRunID).ToList
+                        SearchableComboBoxForm_CheckRunID.DataSource = (From Entity In AdvantageFramework.Database.Procedures.CheckRegister.Load(DbContext)
+                                                                        Where Entity.BankCode = BankCode AndAlso
+                                                                        Entity.CheckRunID IsNot Nothing AndAlso
+                                                                        (Entity.IsVoid = 0 OrElse Entity.IsVoid Is Nothing) AndAlso
+                                                                        Entity.ExportDate Is Nothing
+                                                                        Select Entity.CheckRunID, Entity.ExportDate).Distinct.OrderByDescending(Function(Entity) Entity.CheckRunID).ToList
 
                     End If
 

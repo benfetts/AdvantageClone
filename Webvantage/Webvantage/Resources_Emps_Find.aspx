@@ -89,8 +89,8 @@
             <telerik:RadToolBarButton IsSeparator="true" />
             <telerik:RadToolBarButton SkinID="RadToolBarButtonSave" Text="" Value="Save"
                 ToolTip="Save tasks" />
-            <telerik:RadToolBarButton SkinID="RadToolBarButtonDelete" Value="DeleteEventTasks"
-                ToolTip="Delete selected tasks" />
+<%--            <telerik:RadToolBarButton SkinID="RadToolBarButtonDelete" Value="DeleteEventTasks"
+                ToolTip="Delete selected tasks" />--%>
             <telerik:RadToolBarButton IsSeparator="true" />
             <telerik:RadToolBarButton SkinID="RadToolBarButtonPrint" Text="Print" Value="Print"
                 ToolTip="Print" />
@@ -129,11 +129,11 @@
                         Width="100%" HierarchyLoadMode="ServerOnDemand" HierarchyDefaultExpanded="False"
                         DataKeyNames="EVENT_TASK_ID,SEQ_NBR">
                         <Columns>
-                            <telerik:GridClientSelectColumn UniqueName="ColumnClientSelect">
+<%--                            <telerik:GridClientSelectColumn UniqueName="ColumnClientSelect">
                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Bottom" Width="10px" />
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="10px" />
                                 <FooterStyle HorizontalAlign="Center" VerticalAlign="Top" Width="10px" />
-                            </telerik:GridClientSelectColumn>
+                            </telerik:GridClientSelectColumn>--%>
                             <telerik:GridBoundColumn DataField="EVENT_ID" HeaderText="Event ID" UniqueName="ColEVENT_ID"
                                 Visible="True">
                                 <HeaderStyle HorizontalAlign="Left" VerticalAlign="Bottom" Width="20px" />

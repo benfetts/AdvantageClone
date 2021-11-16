@@ -11269,7 +11269,7 @@ Public Class APIService
 
                                 If Campaign IsNot Nothing Then
 
-                                    If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                    If ((Campaign.StartDate <= StartDate_ OrElse Campaign.StartDate Is Nothing) OrElse (Campaign.EndDate >= EndDate_ OrElse Campaign.EndDate Is Nothing)) AndAlso
                                         (Campaign.ClientCode = ClientCode) AndAlso
                                         (Campaign.DivisionCode = DivisionCode) AndAlso
                                         (Campaign.ProductCode = ProductCode) AndAlso
@@ -11278,7 +11278,7 @@ Public Class APIService
                                         'Do Nothing
 
                                     Else
-                                        If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        If ((Campaign.StartDate <= StartDate_ OrElse Campaign.StartDate Is Nothing) OrElse (Campaign.EndDate >= EndDate_ OrElse Campaign.EndDate Is Nothing)) AndAlso
                                         (Campaign.ClientCode = ClientCode) AndAlso
                                         (Campaign.DivisionCode = DivisionCode) AndAlso
                                         (Campaign.ProductCode Is Nothing) AndAlso
@@ -11288,7 +11288,7 @@ Public Class APIService
 
                                         Else
 
-                                            If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                            If ((Campaign.StartDate <= StartDate_ OrElse Campaign.StartDate Is Nothing) OrElse (Campaign.EndDate >= EndDate_ OrElse Campaign.EndDate Is Nothing)) AndAlso
                                             (Campaign.ClientCode = ClientCode) AndAlso
                                             (Campaign.DivisionCode Is Nothing) AndAlso
                                             (Campaign.ProductCode Is Nothing) AndAlso
@@ -11851,7 +11851,7 @@ Public Class APIService
 
                             If Campaign IsNot Nothing Then
 
-                                If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                If ((Campaign.StartDate <= StartDate_ Or Campaign.StartDate Is Nothing) Or (Campaign.EndDate >= EndDate_ Or Campaign.EndDate Is Nothing)) AndAlso
                                         (Campaign.ClientCode = ClientCode) AndAlso
                                         (Campaign.DivisionCode = DivisionCode) AndAlso
                                         (Campaign.ProductCode = ProductCode) AndAlso
@@ -11860,7 +11860,7 @@ Public Class APIService
                                     'Do Nothing
 
                                 Else
-                                    If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                    If ((Campaign.StartDate <= StartDate_ Or Campaign.StartDate Is Nothing) Or (Campaign.EndDate >= EndDate_ Or Campaign.EndDate Is Nothing)) AndAlso
                                         (Campaign.ClientCode = ClientCode) AndAlso
                                         (Campaign.DivisionCode = DivisionCode) AndAlso
                                         (Campaign.ProductCode Is Nothing) AndAlso
@@ -11870,7 +11870,7 @@ Public Class APIService
 
                                     Else
 
-                                        If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        If ((Campaign.StartDate <= StartDate_ Or Campaign.StartDate Is Nothing) Or (Campaign.EndDate >= EndDate_ Or Campaign.EndDate Is Nothing)) AndAlso
                                             (Campaign.ClientCode = ClientCode) AndAlso
                                             (Campaign.DivisionCode Is Nothing) AndAlso
                                             (Campaign.ProductCode Is Nothing) AndAlso
@@ -11907,44 +11907,6 @@ Public Class APIService
                         End Using
 
                     End If
-
-                    'If CampaignID > 0 Then
-
-                    '    'Allow campaign from any level or Client only and is not closed
-                    '    CampaignsWithDates = LoadCampaignsWithDates(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, 1).ToList
-
-                    '    CampaignWithDates = CampaignsWithDates.ToList.Where(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
-                    '                             Entity.ProductCode = ProductCode AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0 AndAlso
-                    '                             ((Entity.BeginDate <= StartDate_) And (Entity.EndDate >= EndDate_))).FirstOrDefault
-
-
-                    '    If CampaignWithDates Is Nothing Then
-                    '        CampaignWithDates = CampaignsWithDates.ToList.Where(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode = DivisionCode AndAlso
-                    '                                     Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0 AndAlso
-                    '                                     ((Entity.BeginDate <= StartDate_) And (Entity.EndDate >= EndDate_))).FirstOrDefault
-                    '    End If
-
-                    '    If CampaignWithDates Is Nothing Then
-                    '        CampaignWithDates = CampaignsWithDates.ToList.Where(Function(Entity) Entity.ClientCode = ClientCode AndAlso Entity.DivisionCode Is Nothing AndAlso
-                    '                                     Entity.ProductCode Is Nothing AndAlso Entity.ID = CampaignID AndAlso Entity.IsClosed = 0 AndAlso
-                    '                                     ((Entity.BeginDate <= StartDate_) And (Entity.EndDate >= EndDate_))).FirstOrDefault
-                    '    End If
-
-                    '    If CampaignWithDates Is Nothing Then
-
-                    '        If (ErrorMessage > "") Then
-                    '            ErrorMessage = ErrorMessage + ", "
-                    '        End If
-
-                    '        ErrorMessage = ErrorMessage + "Invalid Campaign ID."
-
-                    '    Else
-
-                    '        CampaignID_ = CampaignWithDates.ID
-
-                    '    End If
-
-                    'End If
 
                     If CountryID = 0 Then CountryID = 1 'USA
 
@@ -12525,7 +12487,7 @@ Public Class APIService
 
                             If Campaign IsNot Nothing Then
 
-                                If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                If ((Campaign.StartDate <= StartDate_ OrElse Campaign.StartDate Is Nothing) OrElse (Campaign.EndDate >= EndDate_ OrElse Campaign.EndDate Is Nothing)) AndAlso
                                         (Campaign.ClientCode = ClientCode) AndAlso
                                         (Campaign.DivisionCode = DivisionCode) AndAlso
                                         (Campaign.ProductCode = ProductCode) AndAlso
@@ -12534,7 +12496,7 @@ Public Class APIService
                                     'Do Nothing
 
                                 Else
-                                    If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                    If ((Campaign.StartDate <= StartDate_ OrElse Campaign.StartDate Is Nothing) OrElse (Campaign.EndDate >= EndDate_ OrElse Campaign.EndDate Is Nothing)) AndAlso
                                         (Campaign.ClientCode = ClientCode) AndAlso
                                         (Campaign.DivisionCode = DivisionCode) AndAlso
                                         (Campaign.ProductCode Is Nothing) AndAlso
@@ -12544,7 +12506,7 @@ Public Class APIService
 
                                     Else
 
-                                        If (Campaign.StartDate <= StartDate_ Or Campaign.EndDate >= EndDate_) AndAlso
+                                        If ((Campaign.StartDate <= StartDate_ OrElse Campaign.StartDate Is Nothing) OrElse (Campaign.EndDate >= EndDate_ OrElse Campaign.EndDate Is Nothing)) AndAlso
                                             (Campaign.ClientCode = ClientCode) AndAlso
                                             (Campaign.DivisionCode Is Nothing) AndAlso
                                             (Campaign.ProductCode Is Nothing) AndAlso
@@ -12582,7 +12544,7 @@ Public Class APIService
 
                     End If
 
-                    If (MediaTypeCode = "T" Or MediaTypeCode = "R") Then
+                    If (MediaTypeCode = "T" OrElse MediaTypeCode = "R") Then
                         'Do Nothing
                     Else
 
@@ -13045,7 +13007,7 @@ Public Class APIService
 
                 Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
 
-                    If (MediaTypeCode = "T" Or MediaTypeCode = "R") Then
+                    If (MediaTypeCode = "T" OrElse MediaTypeCode = "R") Then
                         'Do Nothing
                     Else
 
@@ -13088,7 +13050,7 @@ Public Class APIService
 
                     Controller_ = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(_AdvSession)
 
-                    MediaBroadcastWorksheetEditViewModel_.Worksheet =  ViewModel_.Worksheet
+                    MediaBroadcastWorksheetEditViewModel_.Worksheet = ViewModel_.Worksheet
 
                     Controller_.Edit_LoadDemoSource(MediaBroadcastWorksheetEditViewModel_)
 

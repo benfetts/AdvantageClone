@@ -229,12 +229,12 @@ Namespace GeneralLedger.Reports.Presentation
 
                     DataGridViewOtherLeftSection_Other.DataSource = (From Item In AvailableGeneralLedgerAccounts
                                                                      Where _SelectedOtherCodes.Contains(Item.OtherCode) = False
-                                                                     Select [Code] = Item.BaseCode,
+                                                                     Select [Code] = Item.OtherCode,
                                                                             [IsInactive] = CBool(If(Item.Active = "A", False, True))).OrderBy(Function(oc) oc.Code).ToList
 
                     DataGridViewOtherRightSection_Other.DataSource = (From Item In AvailableGeneralLedgerAccounts
                                                                       Where _SelectedOtherCodes.Contains(Item.OtherCode) = True
-                                                                      Select [Code] = Item.BaseCode,
+                                                                      Select [Code] = Item.OtherCode,
                                                                              [IsInactive] = CBool(If(Item.Active = "A", False, True))).OrderBy(Function(oc) oc.Code).ToList
 
                 End If

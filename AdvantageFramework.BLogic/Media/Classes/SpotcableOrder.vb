@@ -1990,9 +1990,9 @@ Namespace Media.Classes
      System.Xml.Serialization.XmlRootAttribute([Namespace]:="", IsNullable:=False)>
     Partial Public Class detailLine
 
-        Private startTimeField As Date
+        Private startTimeField As String ' Date
 
-        Private endTimeField As Date
+        Private endTimeField As String ' Date
 
         Private startDayField As detailLineStartDay
 
@@ -2018,9 +2018,8 @@ Namespace Media.Classes
 
         Private detailLineIDField As Integer
 
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(DataType:="time")>
-        Public Property startTime() As Date
+        '<System.Xml.Serialization.XmlElementAttribute(DataType:="time")>
+        Public Property startTime() As String
             Get
                 Return Me.startTimeField
             End Get
@@ -2029,9 +2028,8 @@ Namespace Media.Classes
             End Set
         End Property
 
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(DataType:="time")>
-        Public Property endTime() As Date
+        '<System.Xml.Serialization.XmlElementAttribute(DataType:="time")>
+        Public Property endTime() As String
             Get
                 Return Me.endTimeField
             End Get

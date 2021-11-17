@@ -20,6 +20,7 @@
         Protected _Controller As AdvantageFramework.Controller.FinanceAndAccounting.PaymentManagerController = Nothing
         Protected _Printed As Boolean = False
         Protected _Processed As Boolean = False
+        Protected _PaymentManagerType As String
 
 #End Region
 
@@ -253,9 +254,25 @@
 
                     _ViewModel = _Controller.Load(SearchableComboBoxForm_Bank.GetSelectedValue, SearchableComboBoxForm_CheckRunID.GetSelectedValue)
 
-                    StepProgressBarForm_Progress.Visible = True
+                    _PaymentManagerType = _ViewModel.Bank.PaymentManagerType
 
-                    StepProgressBarForm_Progress.SelectNext()
+                    Select Case _PaymentManagerType
+
+                        Case "ANCH", "FAST"
+
+                        Case Else
+
+                            ErrorMessage = "The Export Type selected in Bank Maintenance is not supported in Payment Manager (Enhanced)."
+
+                    End Select
+
+                    If String.IsNullOrWhiteSpace(ErrorMessage) Then
+
+                        StepProgressBarForm_Progress.Visible = True
+
+                        StepProgressBarForm_Progress.SelectNext()
+
+                    End If
 
                 Catch ex As Exception
                     AdvantageFramework.WinForm.MessageBox.Show(ex.Message)
@@ -263,7 +280,15 @@
 
                 Me.CloseWaitForm()
 
-                EnableDisableActions()
+                If String.IsNullOrWhiteSpace(ErrorMessage) Then
+
+                    EnableDisableActions()
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                End If
 
             Else
 

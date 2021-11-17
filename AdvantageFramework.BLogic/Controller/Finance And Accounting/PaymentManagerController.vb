@@ -144,6 +144,7 @@
 
             Dim ProcessedExportFile As Boolean = False
             Dim PaymentManagerReports As Generic.List(Of AdvantageFramework.DTO.FinanceAndAccounting.PaymentManagerReport) = Nothing
+            Dim ValidPaymentManagerType As Boolean = False
 
             Try
 
@@ -178,6 +179,7 @@
                     Case "AMEX"
                     Case "ANCH", "FAST"
 
+                        ValidPaymentManagerType = True
                         ProcessedExportFile = ProcessFASTExportFile(ViewModel, PaymentManagerReports, ErrorMessage)
 
                     Case "AOC"
@@ -226,6 +228,14 @@
                         ProcessedExportFile = False
 
                 End Select
+
+                If ValidPaymentManagerType = False Then
+
+                    ErrorMessage = "The Export Type selected in Bank Maintenance is not supported in Payment Manager (Enhanced)."
+
+                    ProcessedExportFile = False
+
+                End If
 
             Catch ex As Exception
 

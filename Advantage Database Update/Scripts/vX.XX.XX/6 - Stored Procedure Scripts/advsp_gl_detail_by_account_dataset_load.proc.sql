@@ -494,6 +494,7 @@ BEGIN
 	ORDER BY
 		GLDTL.AccountCode,
 		GLDTL.PostPeriodCode,
+		GLDTL.TransactionID,
 		GLDTL.RowOrder
 
 END

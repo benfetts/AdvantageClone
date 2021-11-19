@@ -812,7 +812,7 @@ SELECT
 	[Current]					= ISNULL(CASE
 									WHEN m.PPPERIOD >= @end_period AND d.WIP_CODE = 'C' THEN d.AP_TOTAL 
 									WHEN m.PPPERIOD >= @end_period AND d.WIP_CODE = 'D' THEN d.AP_TOTAL
-									WHEN g.PPPERIOD >= @end_period AND d.WIP_CODE = 'E' THEN d.HOURS_TOTAL_BILL
+									WHEN g.PPPERIOD >= @end_period AND d.WIP_CODE = 'E' THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
 									ELSE 0
 									END,0),								
 	[ThirtyDays]				= ISNULL(CASE

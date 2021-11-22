@@ -172,6 +172,8 @@
     Public Property OrderModifiedDate As Nullable(Of Date)
     Public Property LineModifiedDate As Nullable(Of Date)
     Public Property LineInstructions As String
+    Public Property PlanComment As String
+    Public Property PlanID As Nullable(Of Integer)
 
 #End Region
 

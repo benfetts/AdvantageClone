@@ -269,6 +269,12 @@
         <Column("MasterPlanName", TypeName:="varchar")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property MasterPlanName As String
+        <Column("PlanComment", TypeName:="varchar")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property PlanComment As String
+        <Column("EstimateComment", TypeName:="varchar")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property EstimateComment As String
 
 #End Region
 

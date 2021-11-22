@@ -11751,12 +11751,6 @@ Public Class APIService
                             Optional ByVal ClientContactID As Integer = 0, Optional ByVal CampaignID As Integer = 0,
                             Optional ByVal CountryID As Integer = 1, Optional ByVal MixAndRateTemplateID As Integer = 0) As MediaPlanAddResponse Implements IAPIService.AddMediaPlanHeader
 
-        'SyncDetailSettings As Boolean, SyncFieldWidths As Boolean, IsTemplate As Boolean,
-
-        'Private Sub ButtonForm_Add_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonForm_Add.Click
-
-        'Description, ClientCode, DivisionCode, ProductCode, ClientContactID, CampaignID, StartDate, EndDate, GrossBudgetAmount, Comment, 
-        'SyncDetailSettings, SyncFieldWidths, IsTemplate, CountryID, MediaPlanTemplateHeaderID
 
         'objects
         Dim MediaPlan As AdvantageFramework.Database.Entities.MediaPlan = Nothing
@@ -11772,9 +11766,6 @@ Public Class APIService
         Dim Divisions As New Generic.List(Of Division)
         Dim Products As New Generic.List(Of Product)
         Dim Campaign As AdvantageFramework.Database.Entities.Campaign
-
-        'Dim CampaignsWithDates As New Generic.List(Of CampaignWithDates)
-        'Dim CampaignWithDates As CampaignWithDates = Nothing
 
         Dim RecordCount As Nullable(Of Integer)
 
@@ -12119,7 +12110,6 @@ Public Class APIService
                                        ByRef ErrorMessage As String)
 
         'objects
-        'Dim _MediaPlan As AdvantageFramework.MediaPlanning.Classes.MediaPlan
         Dim MediaPlanClass As AdvantageFramework.MediaPlanning.Classes.MediaPlan = Nothing
         Dim MediaPlanTemplateHeaderID As Integer = 0
         Dim MediaPlanTemplateDetails As Generic.List(Of AdvantageFramework.Database.Entities.MediaPlanTemplateDetail) = Nothing
@@ -12134,7 +12124,6 @@ Public Class APIService
         _AddedFromMediaPlanTemplate = True
 
         Using DbContext = New AdvantageFramework.Database.DbContext(APISession.ConnectionString, APISession.UserCode)
-            'Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
 
             MediaPlanClass = New AdvantageFramework.MediaPlanning.Classes.MediaPlan(APISession.ConnectionString, APISession.UserCode, MediaPlan.ID)
 
@@ -12163,7 +12152,7 @@ Public Class APIService
                     MediaPlanDetail.MediaPlanDetailPackageDetails = New HashSet(Of AdvantageFramework.Database.Entities.MediaPlanDetailPackageDetail)
                     MediaPlanDetail.MediaPlanDetailPackagePlacementNames = New HashSet(Of AdvantageFramework.Database.Entities.MediaPlanDetailPackagePlacementName)
 
-                    MediaPlanDetail.DbContext = DbContext ' _MediaPlan.DbContext
+                    MediaPlanDetail.DbContext = DbContext
 
                     MediaPlanDetail.SalesClassType = MediaPlanEstimateTemplate.Type
                     MediaPlanDetail.SalesClassCode = MediaPlanTemplateDetail.SalesClassCode
@@ -12250,6 +12239,8 @@ Public Class APIService
                     Catch ex As Exception
                         MediaPlanDetail.IsCalendarMonth = True
                     End Try
+
+                    MediaPlanDetail.CampaignID = MediaPlan.CampaignID '4894-1-4389 - campaign carries down to the estimates on that plan
 
                     MediaPlanDetail.MediaPlanEstimateTemplateID = MediaPlanEstimateTemplate.ID
 
@@ -12385,9 +12376,6 @@ Public Class APIService
         Dim Divisions As New Generic.List(Of Division)
         Dim Products As New Generic.List(Of Product)
         Dim Campaign As AdvantageFramework.Database.Entities.Campaign
-
-        'Dim CampaignsWithDates As New Generic.List(Of CampaignWithDates)
-        'Dim CampaignWithDates As CampaignWithDates = Nothing
 
         Dim RecordCount As Nullable(Of Integer)
         Dim SqlParameterID As System.Data.SqlClient.SqlParameter = Nothing

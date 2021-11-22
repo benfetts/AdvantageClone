@@ -44,6 +44,7 @@
             Me.ButtonItemActions_SearchByOrderNumber = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItemActions_ShowMissingTrafficInstructions = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.ButtonItemActions_FilterPendingMakegoods = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
+            Me.ButtonItemActions_ReplaceBuyer = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItemActions_Refresh = New DevComponents.DotNetBar.ButtonItem()
             Me.RibbonBarMergeContainerForm_Printing = New DevComponents.DotNetBar.RibbonBarMergeContainer()
             Me.RibbonBarPrinting_Reports = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
@@ -68,7 +69,7 @@
             Me.DataGridViewRightSection_Markets = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
             Me.DashboardViewerDashboard_Dashboard = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
             Me.ToolTipController = New DevExpress.Utils.ToolTipController(Me.components)
-            Me.ButtonItemActions_ReplaceBuyer = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItemReports_ETAMExport = New DevComponents.DotNetBar.ButtonItem()
             Me.RibbonBarMergeContainerForm_Options.SuspendLayout()
             Me.RibbonBarMergeContainerForm_Printing.SuspendLayout()
             CType(Me.PanelForm_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -352,6 +353,15 @@
             Me.ButtonItemActions_FilterPendingMakegoods.Text = "Pending" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Makegoods"
             Me.ButtonItemActions_FilterPendingMakegoods.Tooltip = "Filter for Pending Makegoods"
             '
+            'ButtonItemActions_ReplaceBuyer
+            '
+            Me.ButtonItemActions_ReplaceBuyer.BeginGroup = True
+            Me.ButtonItemActions_ReplaceBuyer.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItemActions_ReplaceBuyer.Name = "ButtonItemActions_ReplaceBuyer"
+            Me.ButtonItemActions_ReplaceBuyer.RibbonWordWrap = False
+            Me.ButtonItemActions_ReplaceBuyer.SubItemsExpandWidth = 14
+            Me.ButtonItemActions_ReplaceBuyer.Text = "Replace Buyer"
+            '
             'ButtonItemActions_Refresh
             '
             Me.ButtonItemActions_Refresh.BeginGroup = True
@@ -401,13 +411,13 @@
             Me.RibbonBarPrinting_Reports.Dock = System.Windows.Forms.DockStyle.Left
             Me.RibbonBarPrinting_Reports.DragDropSupport = True
             Me.RibbonBarPrinting_Reports.HorizontalItemAlignment = DevComponents.DotNetBar.eHorizontalItemsAlignment.Center
-            Me.RibbonBarPrinting_Reports.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemReports_PreBuy, Me.ButtonItemReports_BroadcastSchedule, Me.ButtonItemReports_PostBuy, Me.ButtonItemReports_Other})
+            Me.RibbonBarPrinting_Reports.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemReports_PreBuy, Me.ButtonItemReports_BroadcastSchedule, Me.ButtonItemReports_PostBuy, Me.ButtonItemReports_Other, Me.ButtonItemReports_ETAMExport})
             Me.RibbonBarPrinting_Reports.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
             Me.RibbonBarPrinting_Reports.Location = New System.Drawing.Point(156, 0)
             Me.RibbonBarPrinting_Reports.MinimumSize = New System.Drawing.Size(65, 0)
             Me.RibbonBarPrinting_Reports.Name = "RibbonBarPrinting_Reports"
             Me.RibbonBarPrinting_Reports.SecurityEnabled = True
-            Me.RibbonBarPrinting_Reports.Size = New System.Drawing.Size(236, 98)
+            Me.RibbonBarPrinting_Reports.Size = New System.Drawing.Size(267, 98)
             Me.RibbonBarPrinting_Reports.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.RibbonBarPrinting_Reports.TabIndex = 6
             Me.RibbonBarPrinting_Reports.Text = "Reports"
@@ -655,14 +665,13 @@
             'ToolTipController
             '
             '
-            'ButtonItemActions_ReplaceBuyer
+            'ButtonItemReports_ETAMExport
             '
-            Me.ButtonItemActions_ReplaceBuyer.BeginGroup = True
-            Me.ButtonItemActions_ReplaceBuyer.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-            Me.ButtonItemActions_ReplaceBuyer.Name = "ButtonItemActions_ReplaceBuyer"
-            Me.ButtonItemActions_ReplaceBuyer.RibbonWordWrap = False
-            Me.ButtonItemActions_ReplaceBuyer.SubItemsExpandWidth = 14
-            Me.ButtonItemActions_ReplaceBuyer.Text = "Replace Buyer"
+            Me.ButtonItemReports_ETAMExport.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
+            Me.ButtonItemReports_ETAMExport.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+            Me.ButtonItemReports_ETAMExport.Name = "ButtonItemReports_ETAMExport"
+            Me.ButtonItemReports_ETAMExport.SubItemsExpandWidth = 14
+            Me.ButtonItemReports_ETAMExport.Text = "eTAM" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Export"
             '
             'MediaBroadcastWorksheetSetupForm
             '
@@ -731,6 +740,7 @@
         Friend WithEvents ButtonItemActions_ShowMissingTrafficInstructions As WinForm.Presentation.Controls.ButtonItem
         Friend WithEvents ButtonItemActions_FilterPendingMakegoods As WinForm.Presentation.Controls.ButtonItem
         Friend WithEvents ButtonItemActions_ReplaceBuyer As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents ButtonItemReports_ETAMExport As DevComponents.DotNetBar.ButtonItem
     End Class
 
 End Namespace

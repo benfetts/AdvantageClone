@@ -42,6 +42,8 @@
 
             _ViewModel = _Controller.Setup_Load()
 
+            Me.ButtonItemReports_ETAMExport.Visible = _ViewModel.IsNielsenPuertoRicoSetup
+
         End Sub
         Private Sub LoadGrid()
 
@@ -250,6 +252,8 @@
 
             ButtonItemReports_BroadcastSchedule.Enabled = (_ViewModel.HasASelectedWorksheet)
             ButtonItemReports_Other.Enabled = (_ViewModel.HasASelectedWorksheet AndAlso _ViewModel.IsCanadianWorksheet = False) 'AndAlso _ViewModel.SelectedWorksheet.MediaType = DTO.Media.MediaBroadcastWorksheet.Methods.MediaTypes.SpotTV
+
+            ButtonItemReports_ETAMExport.Enabled = (_ViewModel.HasASelectedWorksheet AndAlso _ViewModel.SelectedWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico)
 
         End Sub
         Private Sub FormatGrid_WorksheetMarkets()
@@ -881,6 +885,7 @@
             ButtonItemReports_PostBuy.Image = AdvantageFramework.My.Resources.ReportImage
             ButtonItemReports_BroadcastSchedule.Image = AdvantageFramework.My.Resources.ReportImage
             ButtonItemReports_Other.Image = AdvantageFramework.My.Resources.ReportImage
+            ButtonItemReports_ETAMExport.Image = AdvantageFramework.My.Resources.ReportImage
 
             ButtonItemDashboard_Edit.Image = AdvantageFramework.My.Resources.EditImage
 
@@ -1857,6 +1862,11 @@
                 ButtonItemActions_Refresh.RaiseClick()
 
             End If
+
+        End Sub
+        Private Sub ButtonItemReports_ETAMExport_Click(sender As Object, e As EventArgs) Handles ButtonItemReports_ETAMExport.Click
+
+            AdvantageFramework.Media.Presentation.MediaBroadcastWorksheetETAMExportDialog.ShowFormDialog(_ViewModel.SelectedWorksheet.ID)
 
         End Sub
 

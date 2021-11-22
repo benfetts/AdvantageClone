@@ -1044,6 +1044,12 @@
     <Compile Include="Media\Exports\BroadcastBuyInvoiceExportForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Media\Presentation\MediaBroadcastWorksheetETAMExportDialog.Designer.vb">
+      <DependentUpon>MediaBroadcastWorksheetETAMExportDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media\Presentation\MediaBroadcastWorksheetETAMExportDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Media\Presentation\MediaBroadcastWorksheetMarketReplaceBuyerDialog.Designer.vb">
       <DependentUpon>MediaBroadcastWorksheetMarketReplaceBuyerDialog.vb</DependentUpon>
     </Compile>
@@ -5857,6 +5863,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Media\Exports\BroadcastBuyInvoiceExportForm.resx">
       <DependentUpon>BroadcastBuyInvoiceExportForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media\Presentation\MediaBroadcastWorksheetETAMExportDialog.resx">
+      <DependentUpon>MediaBroadcastWorksheetETAMExportDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Media\Presentation\MediaBroadcastWorksheetMarketReplaceBuyerDialog.resx">
       <DependentUpon>MediaBroadcastWorksheetMarketReplaceBuyerDialog.vb</DependentUpon>

@@ -128,6 +128,8 @@
         Public Property WorksheetMarketPendingMakegoods As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarketPendingMakegood)
         Public Property FilterBeforeShowingPendingMakegoods As String
 
+        Public Property IsNielsenPuertoRicoSetup As Boolean
+
 #End Region
 
 #Region " Methods "
@@ -164,6 +166,8 @@
             Me.ShowPendingMakegoods = False
             Me.WorksheetMarketPendingMakegoods = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarketPendingMakegood)
             Me.FilterBeforeShowingPendingMakegoods = String.Empty
+
+            Me.IsNielsenPuertoRicoSetup = False
 
         End Sub
 

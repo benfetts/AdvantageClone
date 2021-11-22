@@ -301,6 +301,9 @@
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column COUNTRY_ID to MEDIA_PLAN.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ETAM_XREF to NPR_STATION.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column IS_PUERTO_RICO to MARKET.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -686,6 +689,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_journal_entry_report_load.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_etam_export_get_station_ordernumbers.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_broadcast_worksheet_market_replace_buyer.proc.sql">
@@ -1232,6 +1238,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_GET_COMMENTS.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Update NPR_STATION set ETAM_XREF.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\8 - Post Database Update Scripts\Add-Drop indexes on MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_DATE.sql">

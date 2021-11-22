@@ -2282,6 +2282,7 @@
                 DbContext.Database.Connection.Open()
 
                 MediaBroadcastWorksheetSetupViewModel.IsNielsenSetup = Me.Session.IsNielsenSetup
+                MediaBroadcastWorksheetSetupViewModel.IsNielsenPuertoRicoSetup = Me.Session.IsNielsenPuertoRicoSetup
 
                 Dashboard = AdvantageFramework.Database.Procedures.Dashboard.LoadByDashboardType(DbContext, AdvantageFramework.Database.Entities.DashboardTypes.MediaBroadcastWorksheetSetup)
 
@@ -38077,6 +38078,160 @@
             End Try
 
             Buyer_Replace = Replaced
+
+        End Function
+
+#End Region
+
+#Region "  eTAM Export "
+
+        Public Function ETAMExport_Load(MediaBroadcastWorksheetID As Integer) As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheetETAMExportViewModel
+
+            'objects
+            Dim ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheetETAMExportViewModel = Nothing
+            Dim MediaBroadcastWorksheet As AdvantageFramework.Database.Entities.MediaBroadcastWorksheet = Nothing
+            Dim UserSetting As AdvantageFramework.Security.Database.Entities.UserSetting = Nothing
+
+            ViewModel = New ViewModels.Media.MediaBroadcastWorksheetETAMExportViewModel()
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+                ViewModel.StationOrderNumbers = DbContext.Database.SqlQuery(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.StationOrderNumber)(String.Format("exec advsp_media_broadcast_worksheet_etam_export_get_station_ordernumbers {0}", MediaBroadcastWorksheetID)).ToList
+
+                If ViewModel.StationOrderNumbers.Count = 0 Then
+
+                    ViewModel.HasExportableDetail = False
+
+                Else
+
+                    ViewModel.HasExportableDetail = True
+
+                    MediaBroadcastWorksheet = AdvantageFramework.Database.Procedures.MediaBroadcastWorksheet.LoadByMediaBroadcastWorksheetID(DbContext, MediaBroadcastWorksheetID)
+
+                    If MediaBroadcastWorksheet IsNot Nothing Then
+
+                        ViewModel.StartDate = MediaBroadcastWorksheet.StartDate
+                        ViewModel.EndDate = MediaBroadcastWorksheet.EndDate
+                        ViewModel.Filename = MediaBroadcastWorksheet.Name
+
+                        For Each [Char] In System.IO.Path.GetInvalidFileNameChars
+
+                            ViewModel.Filename = ViewModel.Filename.Replace([Char].ToString, "")
+
+                        Next
+
+                        ViewModel.Stations.AddRange((From NPRStation In DbContext.GetQuery(Of Database.Entities.NPRStation).ToList
+                                                     Where NPRStation.ETAMCrossReference IsNot Nothing AndAlso
+                                                           ViewModel.StationOrderNumbers.Select(Function(S) S.NPRStationID).Contains(NPRStation.ID)
+                                                     Select New AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station(NPRStation)).ToList)
+
+                    End If
+
+                    Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                        UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.PuertoRicoETAMfolder.ToString)
+
+                        If UserSetting IsNot Nothing AndAlso String.IsNullOrWhiteSpace(UserSetting.StringValue) = False Then
+
+                            ViewModel.OutputFolder = UserSetting.StringValue
+
+                        End If
+
+                    End Using
+
+                End If
+
+            End Using
+
+            ETAMExport_Load = ViewModel
+
+        End Function
+        Public Function ETAMExport_Export(ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheetETAMExportViewModel, ByRef OutputFilename As String) As Boolean
+
+            Dim Exported As Boolean = False
+            Dim UserSetting As AdvantageFramework.Security.Database.Entities.UserSetting = Nothing
+            Dim StreamWriter As IO.StreamWriter = Nothing
+            Dim Header As String = Nothing
+            Dim Data As String = Nothing
+
+            Try
+
+                Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                    UserSetting = AdvantageFramework.Security.Database.Procedures.UserSetting.LoadByUserIDAndSettingCode(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.PuertoRicoETAMfolder.ToString)
+
+                    If UserSetting IsNot Nothing Then
+
+                        UserSetting.StringValue = ViewModel.OutputFolder
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Update(SecurityDbContext, UserSetting)
+
+                    ElseIf UserSetting Is Nothing Then
+
+                        AdvantageFramework.Security.Database.Procedures.UserSetting.Insert(SecurityDbContext, Me.Session.User.ID, AdvantageFramework.Security.UserSettings.PuertoRicoETAMfolder.ToString, ViewModel.OutputFolder, Nothing, Nothing, UserSetting)
+
+                    End If
+
+                End Using
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+                    Header = "# Station" & vbTab & "Date" & vbTab & "Start time" & vbTab & "Duration" & vbTab & "Cost" & vbTab & "Description"
+
+                    If ViewModel.Filename.ToUpper.EndsWith(".TSV") = False Then
+
+                        ViewModel.Filename += ".tsv"
+
+                    End If
+
+                    OutputFilename = System.IO.Path.Combine(ViewModel.OutputFolder, ViewModel.Filename)
+
+                    StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(System.IO.Path.Combine(ViewModel.OutputFolder, ViewModel.Filename), False)
+                    StreamWriter.WriteLine(Header)
+
+                    For Each Station In ViewModel.SelectedStations
+
+                        For Each OrderNbr In (From Entity In ViewModel.StationOrderNumbers
+                                              Where Entity.NPRStationID = Station.ID
+                                              Select Entity.OrderNumber).ToList
+
+                            For Each AccountPayableTVBroadcastDetail In (From Entity In AdvantageFramework.Database.Procedures.AccountPayableTVBroadcastDetail.Load(DbContext)
+                                                                         Where Entity.OrderNumber = OrderNbr
+                                                                         Select Entity).ToList
+
+                                If AccountPayableTVBroadcastDetail.TimeOfDay.Hours = 0 OrElse AccountPayableTVBroadcastDetail.TimeOfDay.Hours = 1 Then
+
+                                    Data = Station.ID.ToString & vbTab & AccountPayableTVBroadcastDetail.RunDate.ToString("yyyyMMdd") & vbTab &
+                                        (AccountPayableTVBroadcastDetail.TimeOfDay.Hours + 24).ToString & AccountPayableTVBroadcastDetail.TimeOfDay.Minutes.ToString.PadLeft(2, "0") & "00" & vbTab &
+                                        AccountPayableTVBroadcastDetail.Length.ToString & vbTab & CInt(AccountPayableTVBroadcastDetail.GrossRate) & vbTab & " "
+
+                                Else
+
+                                    Data = Station.ID.ToString & vbTab & AccountPayableTVBroadcastDetail.RunDate.ToString("yyyyMMdd") & vbTab &
+                                        AccountPayableTVBroadcastDetail.TimeOfDay.Hours.ToString.PadLeft(2, "0") & AccountPayableTVBroadcastDetail.TimeOfDay.Minutes.ToString.PadLeft(2, "0") & "00" & vbTab &
+                                        AccountPayableTVBroadcastDetail.Length.ToString & vbTab & CInt(AccountPayableTVBroadcastDetail.GrossRate) & vbTab & " "
+
+                                End If
+
+                                StreamWriter.WriteLine(Data)
+
+                            Next
+
+                        Next
+
+                    Next
+
+                    StreamWriter.Close()
+
+                End Using
+
+                Exported = True
+
+            Catch ex As Exception
+
+            End Try
+
+            ETAMExport_Export = Exported
 
         End Function
 

@@ -159,6 +159,8 @@
             MediaBroadcastWorksheet_HideHiatusDates
             <AdvantageFramework.Security.Attributes.SecuritySetting(SettingsValueType.StringValue, SettingsParseValueType.String_Boolean_YN, "N")>
             CRMAddEditViewNewBusinessClientsOnly
+            <AdvantageFramework.Security.Attributes.SecuritySetting(SettingsValueType.StringValue, SettingsParseValueType.Default, "")>
+            PuertoRicoETAMfolder
         End Enum
 
         Public Enum SettingsValueType

@@ -15,6 +15,7 @@
         Public Enum Properties
             ID
             Name
+            ETAMCrossReference
         End Enum
 
 #End Region
@@ -38,6 +39,9 @@
         <Column("NAME")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property Name() As String
+        <Column("ETAM_XREF")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property ETAMCrossReference() As Nullable(Of Integer)
 
 #End Region
 

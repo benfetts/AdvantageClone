@@ -542,6 +542,7 @@
     <Compile Include="DTO\Media\Spot TV Puerto Rico\ResearchCriteria.vb" />
     <Compile Include="DTO\Media\Spot TV Puerto Rico\ResearchResult.vb" />
     <Compile Include="DTO\Media\Spot TV Puerto Rico\Station.vb" />
+    <Compile Include="DTO\Media\Spot TV Puerto Rico\StationOrderNumber.vb" />
     <Compile Include="PaymentCenter\Classes\GridColumnUpdates.vb" />
     <Compile Include="PaymentCenter\Classes\PaymentCenterInvoiceInUse.vb" />
     <Compile Include="Proofing\Classes\CurrentProofers.vb" />
@@ -1393,6 +1394,7 @@
     <Compile Include="View Models\Maintenance\Media\PlanEstimateTemplateViewModel.vb" />
     <Compile Include="View Models\Media\Exports\BroadcastBuyInvoiceExportViewModel.vb" />
     <Compile Include="View Models\Media\Media Broadcast Worksheet\MediaBroadcastWorksheetMarketBuyerViewModel.vb" />
+    <Compile Include="View Models\Media\MediaBroadcastWorksheetETAMExportViewModel.vb" />
     <Compile Include="View Models\Media\MediaPlanEstimateGRPBudgetViewModel.vb" />
     <Compile Include="View Models\ProjectManagement\Proofing\ProofingExternalReviewer.vb" />
     <Compile Include="View Models\ProjectManagement\Proofing\ProofingSummary.vb" />

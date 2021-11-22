@@ -15,6 +15,7 @@
             ID
             Station
             IsSelected
+            ETAMCrossReference
         End Enum
 
 #End Region
@@ -36,6 +37,9 @@
         <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
         Public Property IsSelected() As Boolean
 
+        <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
+        Public Property ETAMCrossReference() As Nullable(Of Integer)
+
 #End Region
 
 #Region " Methods "
@@ -44,6 +48,7 @@
 
             Me.ID = NPRStation.ID
             Me.Station = NPRStation.Name
+            Me.ETAMCrossReference = NPRStation.ETAMCrossReference
 
         End Sub
         Public Overrides Function ToString() As String

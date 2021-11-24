@@ -506,6 +506,8 @@
             TrafficFlightSummaryReport = 192
             ProofingFeedbackSummary = 193
             PaymentManagerReport = 194
+            ProductionWIPSummaryByJobDeferredSalesCosIncluded = 195
+            ProductionWIPSummaryByJobHoursDeferredSalesCos = 196
         End Enum
 
         Public Enum ClientPLReportTypes
@@ -1739,6 +1741,10 @@
             ProductionWIPAgedSummaryByJobWithEstimate = 180
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("181", "407 - Production WIP Aged Summary by Job - Vendor Only")>
             ProductionWIPAgedSummaryByJobVendorOnly = 181
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("195", "408 - Production WIP Summary by Job with Deferred Sales, Cost, and Income")>
+            ProductionWIPSummaryByJobDeferredSalesCosIncluded = 195
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("196", "409 - Production WIP Summary by Job with Hours and Deferred Sales/Cost")>
+            ProductionWIPSummaryByJobHoursDeferredSalesCos = 196
         End Enum
 
         Public Enum MonthEndAccruedLiabilityReportTypes

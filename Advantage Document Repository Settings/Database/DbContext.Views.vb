@@ -24,7 +24,7 @@ Namespace Edm_EntityMappingGeneratedViews
     ''' <summary>
     ''' Implements a mapping view cache.
     ''' </summary>
-    <GeneratedCode("Entity Framework 6 Power Tools", "0.9.2.0")>
+    <GeneratedCode("Entity Framework 6 Power Tools", "0.9.5.0")>
     Friend NotInheritable Class ViewsForBaseEntitySetsb7f2865fb43f743c3231931120a0a7137ef661296462064c7ac46758919c5e6a
         Inherits DbMappingViewCache
 

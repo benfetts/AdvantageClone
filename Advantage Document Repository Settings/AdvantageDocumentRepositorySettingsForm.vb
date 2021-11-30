@@ -171,7 +171,7 @@
 
                 Try
 
-                    TotalRepositorySizeLimit = DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.AGY_SETTINGS SET AGY_SETTINGS_VALUE = {0} WHERE AGY_SETTINGS_CODE = 'REPOSITORY_LIMIT'", TotalRepositorySizeLimit))
+                    TotalRepositorySizeLimit = DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.AGY_SETTINGS SET AGY_SETTINGS_VALUE = '{0}' WHERE AGY_SETTINGS_CODE = 'REPOSITORY_LIMIT'", TotalRepositorySizeLimit))
 
                 Catch ex As Exception
                     TotalRepositorySizeLimit = 0

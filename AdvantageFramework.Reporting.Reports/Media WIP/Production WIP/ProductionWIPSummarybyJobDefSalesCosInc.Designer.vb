@@ -982,7 +982,6 @@
             Me.ClientFooter.HeightF = 0!
             Me.ClientFooter.Level = 2
             Me.ClientFooter.Name = "ClientFooter"
-            Me.ClientFooter.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBand
             Me.ClientFooter.Visible = False
             '
             'ProductHeader
@@ -1041,6 +1040,7 @@
             Me.ProductFooter.HeightF = 32.29167!
             Me.ProductFooter.Level = 1
             Me.ProductFooter.Name = "ProductFooter"
+            Me.ProductFooter.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBand
             '
             'label33
             '

@@ -667,6 +667,17 @@ Public Interface IAPIService
     <OperationContract()>
     Function LoadCampaigns2WithDates(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, LoadClosed As Boolean) As CampaignAPIResponseWithDates
 
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadDirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectTimeAPIResponse
+
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadDirectIndirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectIndirectTimeAPIResponse
+
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadGeneralLedgerDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, IncludeInactiveAccounts As Boolean) As GeneralLedgerDetailAPIResponse
 
 #End Region
 End Interface

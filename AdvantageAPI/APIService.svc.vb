@@ -13422,7 +13422,11 @@ Public Class APIService
 
     Public Function LoadDirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectTimeAPIResponse Implements IAPIService.LoadDirectTime
 
-        'Dim DynamicReportObjects As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeReport) = Nothing
+        Dim DirectTimeAPIResponse As DirectTimeAPIResponse
+        Dim DirectTimeReport As New Generic.List(Of DirectTimeAPIReport)
+
+        DirectTimeAPIResponse = New DirectTimeAPIResponse
+
         Dim ErrorMessage As String = String.Empty
         Dim APISession As AdvantageFramework.Security.APISession = Nothing
 
@@ -13441,11 +13445,6 @@ Public Class APIService
         Dim EstimateRevisionNumber As Integer = 0
         Dim ReturnValue As Integer = 0
         Dim ReturnValueMessage As String = String.Empty
-
-        Dim DirectTimeAPIResponse As DirectTimeAPIResponse
-        Dim DirectTimeReport As New Generic.List(Of DirectTimeAPIReport)
-
-        DirectTimeAPIResponse = New DirectTimeAPIResponse
 
         Dim DateType_ As Nullable(Of Integer)
 
@@ -13570,11 +13569,9 @@ Public Class APIService
 
     Function LoadDirectIndirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectIndirectTimeAPIResponse Implements IAPIService.LoadDirectIndirectTime
 
-        'objects
-        Dim DirectIndirectTimeReport As Generic.List(Of DirectIndirectTimeAPIReport) = Nothing
-        'Dim ObjectQuery As IQueryable = Nothing
-
         Dim DirectIndirectTimeAPIResponse As DirectIndirectTimeAPIResponse
+        Dim DirectIndirectTimeReport As Generic.List(Of DirectIndirectTimeAPIReport) = Nothing
+
         DirectIndirectTimeAPIResponse = New DirectIndirectTimeAPIResponse
 
         Dim ErrorMessage As String = String.Empty
@@ -13654,10 +13651,9 @@ Public Class APIService
 
     Function LoadGeneralLedgerDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, IncludeInactiveAccounts As Boolean) As GeneralLedgerDetailAPIResponse Implements IAPIService.LoadGeneralLedgerDetail
 
-        'objects
-        Dim DirectIndirectTimeReport As Generic.List(Of DirectIndirectTimeAPIReport) = Nothing
-
         Dim GeneralLedgerDetailAPIResponse As GeneralLedgerDetailAPIResponse
+        Dim GeneralLedgerDetailReports As Generic.List(Of GeneralLedgerDetailAPIReport) = Nothing
+
         GeneralLedgerDetailAPIResponse = New GeneralLedgerDetailAPIResponse
 
         Dim ErrorMessage As String = String.Empty
@@ -13678,8 +13674,6 @@ Public Class APIService
                 ErrorMessage = "Please provide a PostPeriodStart on or before the PostPeriodEnd."
             End If
         End If
-
-        Dim GeneralLedgerDetailReports As Generic.List(Of GeneralLedgerDetailAPIReport) = Nothing
 
         If String.IsNullOrWhiteSpace(ErrorMessage) = True Then
 

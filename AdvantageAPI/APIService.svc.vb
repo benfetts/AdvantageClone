@@ -3421,7 +3421,7 @@ Public Class APIService
                        JobDescription As String, JobComment As String, AccountExecutive As String, JobComponentDescription As String, CampaignId As Integer,
                        DueDate As String, JobTypeCode As String, ClientDiscountCode As String, BillingCoopCode As String, NonBillFlag As Integer,
                        MediaDateToBill As String, JobProcessContrl As Integer, JobComponentComment As String, JobComponentBudget As Decimal,
-                       JobTaxFlag As Integer, ClientPO As String) As AddJobAndComponentResponse Implements IAPIService.AddJobAndComponent
+                       JobTaxFlag As Integer, ClientPO As String, Optional ByVal ServiceFeeFlag As String = Nothing) As AddJobAndComponentResponse Implements IAPIService.AddJobAndComponent
 
         'objects
         Dim AddJobAndComponentResponse As AddJobAndComponentResponse = Nothing
@@ -3458,6 +3458,8 @@ Public Class APIService
         Dim SqlParameterJobTaxFlag As System.Data.SqlClient.SqlParameter = Nothing
 
         Dim SqlParameterClientPO As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterServiceFeeFlag As System.Data.SqlClient.SqlParameter = Nothing
 
         Dim SqlParameterReturnValue As System.Data.SqlClient.SqlParameter = Nothing
         Dim SqlParameterReturnValueMessage As System.Data.SqlClient.SqlParameter = Nothing
@@ -3562,6 +3564,13 @@ Public Class APIService
                     SqlParameterClientPO = New System.Data.SqlClient.SqlParameter("@client_po", SqlDbType.VarChar)
                     SqlParameterClientPO.Value = ClientPO
 
+                    SqlParameterServiceFeeFlag = New System.Data.SqlClient.SqlParameter("@service_fee_flag", SqlDbType.VarChar)
+                    If ServiceFeeFlag = Nothing Then
+                        SqlParameterServiceFeeFlag.Value = DBNull.Value
+                    Else
+                        SqlParameterServiceFeeFlag.Value = ServiceFeeFlag
+                    End If
+
                     SqlParameterJobNumber = New System.Data.SqlClient.SqlParameter("@job_number", SqlDbType.Int)
                     SqlParameterJobNumber.Direction = ParameterDirection.Output
                     SqlParameterJobNumber.Value = Nothing
@@ -3580,15 +3589,17 @@ Public Class APIService
                     SqlParameterReturnValueMessage.Value = ReturnValueMessage
 
                     DbContext.Database.ExecuteSqlCommand(Entity.TransactionalBehavior.DoNotEnsureTransaction,
-                                                         "EXEC advsp_job_comp_add_api @user_id,@action,@job_cli_ref,@job_number_in,@cl_code,@div_code,@prd_code," &
-                                                         "@sales_class,@job_desc,@job_comment,@acct_exec,@job_comp_desc," &
-                                                         "@cmp_id,@due_date,@job_type,@client_discount_code,@billing_coop_code,@non_bill_flag,
+                                                         "EXEC advsp_job_comp_add_api @user_id,@action,@job_cli_ref,@job_number_in,@cl_code,@div_code,@prd_code,
+                                                         @sales_class,@job_desc,@job_comment,@acct_exec,@job_comp_desc,
+                                                         @cmp_id,@due_date,@job_type,@client_discount_code,@billing_coop_code,@non_bill_flag,
                                                          @media_bill_date,@job_process_contrl,@job_comp_comment,@job_comp_budget_am, @job_tax_flag, @client_po,
+                                                         @service_fee_flag,
                                                          @job_number OUTPUT,@job_component_nbr OUTPUT,@ret_val OUTPUT,@ret_val_s OUTPUT",
                                                          SqlParameterUserID, SqlParameterAction, SqlParameterJobClientReference, SqlParameterJobNumberIn, SqlParameterClientCode, SqlParameterDivisionCode, SqlParameterProductCode,
                                                          SqlParameterSalesClassCode, SqlParameterJobDescription, SqlParameterJobComment, SqlParameterAccountExecutive, SqlParameterJobComponentDescription,
                                                          SqlParameterCampaignId, SqlParameterDueDate, SqlParameterJobTypeCode, SqlParameterClientDiscountCode, SqlParameterBillingCoopCode, SqlParameterNonBillFlag,
                                                          SqlParameterMediaDateToBill, SqlParameterJobProcessControl, SqlParameterJobComponentComment, SqlParameterJobComponentBudget, SqlParameterJobTaxFlag, SqlParameterClientPO,
+                                                         SqlParameterServiceFeeFlag,
                                                          SqlParameterJobNumber, SqlParameterJobComponentNumber, SqlParameterReturnValue, SqlParameterReturnValueMessage)
 
                 End Using
@@ -3632,7 +3643,8 @@ Public Class APIService
                             JobNumber As Integer, JobComponentNumber As Short,
                             JobDescription As String, JobComments As String, JobComponentDescription As String, JobComponentComments As String,
                             JobClientReference As String, JobProcessControl As Integer, JobType As String, NonBillFlag As Integer, MediaDateToBill As String,
-                            JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer) As AddJobAndComponentResponse Implements IAPIService.UpdateJobAndComponent
+                            JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer, Optional ByVal ServiceFeeFlag As String = Nothing
+                            ) As AddJobAndComponentResponse Implements IAPIService.UpdateJobAndComponent
 
         'objects
         Dim AddJobAndComponentResponse As AddJobAndComponentResponse = Nothing
@@ -3659,6 +3671,8 @@ Public Class APIService
 
         Dim SqlParameterClientPO As System.Data.SqlClient.SqlParameter = Nothing
         Dim SqlParameterCampaignId As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterServiceFeeFlag As System.Data.SqlClient.SqlParameter = Nothing
 
         Dim SqlParameterJobNumberOut As System.Data.SqlClient.SqlParameter = Nothing
         Dim SqlParameterJobComponentNumberOut As System.Data.SqlClient.SqlParameter = Nothing
@@ -3738,6 +3752,13 @@ Public Class APIService
                     SqlParameterCampaignId = New System.Data.SqlClient.SqlParameter("@cmp_id", SqlDbType.Int)
                     SqlParameterCampaignId.Value = CampaignId
 
+                    SqlParameterServiceFeeFlag = New System.Data.SqlClient.SqlParameter("@service_fee_flag", SqlDbType.VarChar)
+                    If ServiceFeeFlag = Nothing Then
+                        SqlParameterServiceFeeFlag.Value = DBNull.Value
+                    Else
+                        SqlParameterServiceFeeFlag.Value = ServiceFeeFlag
+                    End If
+
                     SqlParameterJobNumberOut = New System.Data.SqlClient.SqlParameter("@job_number_out", SqlDbType.Int)
                     SqlParameterJobNumberOut.Direction = ParameterDirection.Output
                     SqlParameterJobNumberOut.Value = Nothing
@@ -3759,12 +3780,12 @@ Public Class APIService
                                                          "EXEC advsp_job_comp_update_api @user_id,@action,@job_number,@job_component_nbr," &
                                                          "@job_desc,@job_comments,@job_comp_desc,@job_comp_comments," &
                                                          "@job_cli_ref,@job_process_contrl,@job_type,@non_bill_flag,@media_bill_date," &
-                                                         "@job_comp_budget_am, @job_tax_flag, @client_po, @cmp_id," &
+                                                         "@job_comp_budget_am, @job_tax_flag, @client_po, @cmp_id, @service_fee_flag," &
                                                          "@ret_val OUTPUT,@ret_val_s OUTPUT",
                                                          SqlParameterUserID, SqlParameterAction, SqlParameterJobNumber, SqlParameterJobComponentNumber,
                                                          SqlParameterJobDescription, SqlParameterJobComments, SqlParameterJobComponentDescription, SqlParameterJobComponentComments,
                                                          SqlParameterJobClientReference, SqlParameterJobProcessControl, SqlParameterJobType, SqlParameterNonBillFlag, SqlParameterMediaDateToBill,
-                                                         SqlParameterJobComponentBudget, SqlParameterJobTaxFlag, SqlParameterClientPO, SqlParameterCampaignId,
+                                                         SqlParameterJobComponentBudget, SqlParameterJobTaxFlag, SqlParameterClientPO, SqlParameterCampaignId, SqlParameterServiceFeeFlag,
                                                          SqlParameterReturnValue, SqlParameterReturnValueMessage)
 
                 End Using

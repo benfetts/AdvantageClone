@@ -112,7 +112,7 @@ Public Interface IAPIService
                                 JobComponentDescription As String, CampaignId As Integer, DueDate As String, JobTypeCode As String,
                                 ClientDiscountCode As String, BillingCoopCode As String, NonBillFlag As Integer,
                                 MediaDateToBill As String, JobProcessContrl As Integer, JobComponentComment As String, JobComponentBudget As Decimal,
-                                JobTaxFlag As Integer, ClientPO As String) As AddJobAndComponentResponse
+                                JobTaxFlag As Integer, ClientPO As String, Optional ByVal ServiceFeeFlag As String = Nothing) As AddJobAndComponentResponse
 
     <WebInvoke(UriTemplate:="AddOrUpdateEstimate?ServerName={SERVERNAME}&DatabaseName={DATABASENAME}&UseWindowsAuthentication={USEWINDOWSAUTHENTICATION}&UserName={USERNAME}&Password={PASSWORD}&JobNumber={JOBNUMBER}&JobComponentNumber={JOBCOMPONENTNUMBER}&CreateRevision={CREATEREVISION}&AutoApprove={AUTOAPPROVE}",
                Method:="POST", BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
@@ -197,7 +197,8 @@ Public Interface IAPIService
                                 JobNumber As Integer, JobComponentNumber As Short,
                                 JobDescription As String, JobComments As String, JobComponentDescription As String, JobComponentComments As String,
                                 JobClientReference As String, JobProcessControl As Integer, JobType As String, NonBillFlag As Integer, MediaDateToBill As String,
-                                JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer) As AddJobAndComponentResponse
+                                JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer, Optional ByVal ServiceFeeFlag As String = Nothing
+                                ) As AddJobAndComponentResponse
 
     <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
     <OperationContract()>

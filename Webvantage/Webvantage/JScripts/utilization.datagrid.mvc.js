@@ -717,7 +717,7 @@ function DirectTemplate(dataItem) {
             DirectPercent = 'n/a';
             return DirectPercent;
         } else {
-            return kendo.toString(dataItem.DirectPercent, 'n');
+            return kendo.toString(dataItem.PercentDirect, 'n');
         }
     }
 
@@ -731,7 +731,7 @@ function IndirectTemplate(dataItem) {
             IndirectPercent = 'n/a';
             return IndirectPercent;
         } else {
-            return kendo.toString(dataItem.IndirectPercent, 'n');
+            return kendo.toString(dataItem.PercentNonDirect, 'n');
         }
     }
 
@@ -768,8 +768,8 @@ function BillableHoursGoalPercentTemplate(dataItem) {
 
     let BillableHoursGoalPercent = '';
 
-    if (dataItem.DirectHoursGoal !== undefined) {
-        if (dataItem.DirectHoursGoal === 0) {
+    if (dataItem.BillableHoursGoal !== undefined) {
+        if (dataItem.BillableHoursGoal === 0) {
             BillableHoursGoalPercent = 'n/a';
             return BillableHoursGoalPercent;
         } else {
@@ -975,7 +975,8 @@ function groupFooterNonBillableHoursPercentTemplate(dataItem) {
 
     if (dataItem.RequiredHours !== undefined) {
         if (dataItem.RequiredHours.sum === 0) {
-            NonBillableHoursPercent = 0.00;
+            NonBillableHoursPercent = 'n/a';
+            return NonBillableHoursPercent;
         } else {
             NonBillableHoursPercent = (dataItem.NonBillableHours.sum / dataItem.RequiredHours.sum) * 100;
         }
@@ -989,7 +990,8 @@ function groupFooterNewBusinessPercentTemplate(dataItem) {
 
     if (dataItem.RequiredHours !== undefined) {
         if (dataItem.RequiredHours.sum === 0) {
-            NewBusinessPercent = 0.00;
+            NewBusinessPercent = 'n/a';
+            return NewBusinessPercent;
         } else {
             NewBusinessPercent = (dataItem.NewBusinessHours.sum / dataItem.RequiredHours.sum) * 100;
         }
@@ -1003,7 +1005,8 @@ function groupFooterOOOPercentTemplate(dataItem) {
 
     if (dataItem.RequiredHours !== undefined) {
         if (dataItem.RequiredHours.sum === 0) {
-            OOOPercent = 0.00;
+            OOOPercent = 'n/a';
+            return OOOPercent;
         } else {
             OOOPercent = (dataItem.OOOHours.sum / dataItem.RequiredHours.sum) * 100;
         }
@@ -1017,7 +1020,8 @@ function groupFooterDirectPercentTemplate(dataItem) {
 
     if (dataItem.RequiredHours !== undefined) {
         if (dataItem.RequiredHours.sum === 0) {
-            DirectPercent = 0.00;
+            DirectPercent = 'n/a';
+            return DirectPercent;
         } else {
             DirectPercent = (dataItem.TotalDirectHours.sum / dataItem.RequiredHours.sum) * 100;
         }
@@ -1031,7 +1035,8 @@ function groupFooterNonDirectPercentTemplate(dataItem) {
 
     if (dataItem.RequiredHours !== undefined) {
         if (dataItem.RequiredHours.sum === 0) {
-            NonDirectPercent = 0.00;
+            NonDirectPercent = 'n/a';
+            return NonDirectPercent;
         } else {
             NonDirectPercent = (dataItem.NonDirectHours.sum / dataItem.RequiredHours.sum) * 100;
         }
@@ -1045,7 +1050,8 @@ function groupFooterDirectHoursGoalPercentTemplate(dataItem) {
 
     if (dataItem.DirectHoursGoal !== undefined) {
         if (dataItem.DirectHoursGoal.sum === 0) {
-            DirectHoursGoalPercent = 0.00;
+            DirectHoursGoalPercent = 'n/a';
+            return DirectHoursGoalPercent;
         } else {
             DirectHoursGoalPercent = (dataItem.TotalDirectHours.sum / dataItem.DirectHoursGoal.sum) * 100;
         }
@@ -1059,7 +1065,8 @@ function groupFooterBillableHoursGoalPercentTemplate(dataItem) {
 
     if (dataItem.BillableHoursGoal !== undefined) {
         if (dataItem.BillableHoursGoal.sum === 0) {
-            BillableHoursGoalPercent = 0.00;
+            BillableHoursGoalPercent = 'n/a';
+            return BillableHoursGoalPercent;
         } else {
             BillableHoursGoalPercent = (dataItem.BillableHours.sum / dataItem.BillableHoursGoal.sum) * 100;
         }
@@ -1080,7 +1087,8 @@ function groupFooterTotalUtilizationTemplate(dataItem) {
 
     if (dataItem.RequiredHours !== undefined) {
         if (dataItem.RequiredHours.sum === 0) {
-            TotalUtilization = 0.00;
+            TotalUtilization = 'n/a';
+            return TotalUtilization;
         } else {
             TotalUtilization = (dataItem.TotalHours.sum / dataItem.RequiredHours.sum) * 100;
         }

@@ -10,7 +10,7 @@
 
 #Region " Enum "
 
-        
+
 
 #End Region
 
@@ -209,6 +209,12 @@
                 LoadComboBox()
 
             End If
+
+        End Sub
+        Private Sub SearchableComboBoxForm_Criteria_Popup(sender As Object, e As EventArgs) Handles SearchableComboBoxForm_Criteria.Popup
+
+            DirectCast(sender, DevExpress.XtraEditors.SearchLookUpEdit).Properties.View.Columns(AdvantageFramework.AccountPayable.Classes.AccountPayableVendorSearchOrders.Properties.CampaignCode.ToString).Visible = Me.RadioButtonForm_MediaOrder.Checked
+            DirectCast(sender, DevExpress.XtraEditors.SearchLookUpEdit).Properties.View.Columns(AdvantageFramework.AccountPayable.Classes.AccountPayableVendorSearchOrders.Properties.CampaignName.ToString).Visible = Me.RadioButtonForm_MediaOrder.Checked
 
         End Sub
 

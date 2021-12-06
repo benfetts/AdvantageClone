@@ -467,7 +467,8 @@
         End Sub
         Private Sub LabelGroupHeaderStation_DaypartLabel_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelGroupHeaderStation_DaypartLabel.BeforePrint
 
-            If String.IsNullOrWhiteSpace(_DemographicDescription) Then
+            If String.IsNullOrWhiteSpace(_DemographicDescription) OrElse
+                    Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPostBuyReport.Properties.RatingsServiceID.ToString) = Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico Then
 
                 LabelGroupHeaderStation_DaypartLabel.Text = Space(7) & vbCrLf & "Daypart"
 

@@ -800,6 +800,54 @@
 
                             End If
 
+                        ElseIf DaysAndTime.BroadcastType = AdvantageFramework.DTO.DaysAndTime.BroadcastTypes.TVPuertoRico Then
+
+                            If DaysAndTime.IsUsing3rdPartyData Then
+
+                                If CDate(PropertyValue).Hour < 2 AndAlso CDate(DaysAndTime.EndTime).Hour >= 2 Then
+
+                                    IsValid = False
+
+                                    ErrorText = "Time cannot cross Nielsen’s 2AM start of day"
+
+                                Else
+
+                                    If CDate(PropertyValue).Hour < 2 AndAlso CDate(PropertyValue).Hour >= 0 Then
+
+                                        StartTimeValue = 2400 + (100 * CDate(PropertyValue).Hour)
+
+                                    Else
+
+                                        StartTimeValue = 100 * CDate(PropertyValue).Hour
+
+                                    End If
+
+                                    StartTimeValue += CDate(PropertyValue).Minute
+
+                                    If CDate(DaysAndTime.EndTime).Hour < 2 AndAlso CDate(DaysAndTime.EndTime).Hour >= 0 Then
+
+                                        EndTimeValue = 2400 + (100 * CDate(DaysAndTime.EndTime).Hour)
+
+                                    Else
+
+                                        EndTimeValue = 100 * CDate(DaysAndTime.EndTime).Hour
+
+                                    End If
+
+                                    EndTimeValue += CDate(DaysAndTime.EndTime).Minute
+
+                                    If StartTimeValue > EndTimeValue Then
+
+                                        IsValid = False
+
+                                        ErrorText = "Start time must be before end time"
+
+                                    End If
+
+                                End If
+
+                            End If
+
                         End If
 
 					End If

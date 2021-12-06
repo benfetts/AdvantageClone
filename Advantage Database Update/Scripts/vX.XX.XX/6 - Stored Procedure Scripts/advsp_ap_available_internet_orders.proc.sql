@@ -51,7 +51,9 @@ BEGIN
 		[VendorCode] varchar(6) NULL,
 		[OfficeCode] varchar(4) NULL,
 		[EndDate] smalldatetime NULL,
-        [Type] varchar(6) NULL
+        [Type] varchar(6) NULL,
+        [CampaignCode] varchar(6) NULL,
+        [CampaignName] varchar(128) NULL
 	)
 	
 	INSERT @ORDERS 
@@ -69,12 +71,15 @@ BEGIN
 		[VendorCode] = A.VN_CODE,
 		[OfficeCode] = D.OFFICE_CODE,
 		[EndDate] = O.END_DATE,
-        [Type] = O.INTERNET_TYPE
+        [Type] = O.INTERNET_TYPE,
+        [CampaignCode] = C.CMP_CODE,
+        [CampaignName] = C.CMP_NAME
 	FROM
 		[dbo].INTERNET_HEADER A 
 		INNER JOIN [dbo].VENDOR B ON A.VN_CODE = B.VN_CODE
 		INNER JOIN [dbo].INTERNET_DETAIL O ON A.ORDER_NBR = O.ORDER_NBR 
 		INNER JOIN [dbo].PRODUCT D ON A.CL_CODE = D.CL_CODE AND A.DIV_CODE = D.DIV_CODE AND A.PRD_CODE = D.PRD_CODE
+        LEFT OUTER JOIN [dbo].CAMPAIGN C ON A.CMP_IDENTIFIER = C.CMP_IDENTIFIER
 	WHERE	
 				A.MEDIA_TYPE IS NOT NULL
 		AND		COALESCE(A.[STATUS], 0) = 0 -- 20160118 MJC do not allow QUOTEs to be selected

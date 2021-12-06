@@ -1,6 +1,6 @@
 ﻿Namespace Media.Presentation
 
-	Public Class MediaBroadcastWorksheetMarketDetailTotalsDialog
+    Public Class MediaBroadcastWorksheetMarketDetailTotalsDialog
 
 #Region " Constants "
 
@@ -10,17 +10,17 @@
 
 #Region " Enum "
 
-		Public Enum UnboundColumns
-			Totals
-		End Enum
+        Public Enum UnboundColumns
+            Totals
+        End Enum
 
 #End Region
 
 #Region " Variables "
 
-		Protected _ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel = Nothing
-		Protected _Controller As AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController = Nothing
-		Protected _DetailsForm As Media.Presentation.MediaBroadcastWorksheetMarketDetailForm = Nothing
+        Protected _ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel = Nothing
+        Protected _Controller As AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController = Nothing
+        Protected _DetailsForm As Media.Presentation.MediaBroadcastWorksheetMarketDetailForm = Nothing
 
 #End Region
 
@@ -32,19 +32,19 @@
 
 #Region " Methods "
 
-		Public Sub New(ByRef DetailsForm As Media.Presentation.MediaBroadcastWorksheetMarketDetailForm,
-					   ByRef Controller As AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController,
-					   ByRef ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel)
+        Public Sub New(ByRef DetailsForm As Media.Presentation.MediaBroadcastWorksheetMarketDetailForm,
+                       ByRef Controller As AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController,
+                       ByRef ViewModel As AdvantageFramework.ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetMarketDetailsViewModel)
 
-			' This call is required by the designer.
-			InitializeComponent()
+            ' This call is required by the designer.
+            InitializeComponent()
 
-			_DetailsForm = DetailsForm
-			_Controller = Controller
-			_ViewModel = ViewModel
+            _DetailsForm = DetailsForm
+            _Controller = Controller
+            _ViewModel = ViewModel
 
-		End Sub
-		Private Sub LoadGrid()
+        End Sub
+        Private Sub LoadGrid()
 
             DataGridViewForm_Totals.OptionsView.ShowFooter = False
 
@@ -78,6 +78,8 @@
 
                 Me.Text = RadioButtonForm_DaypartSummary.Text
 
+                HideReachFrequencyColumns()
+
             ElseIf RadioButtonForm_DaypartWeeklyDailySpendSummary.Checked Then
 
                 DataGridViewForm_Totals.DataSource = _ViewModel.DaypartWeeklyDailySummaryDataTable
@@ -96,6 +98,8 @@
 
                 Me.Text = RadioButtonForm_StationSummary.Text
 
+                HideReachFrequencyColumns()
+
             ElseIf RadioButtonForm_StationMonthlySummary.Checked Then
 
                 DataGridViewForm_Totals.DataSource = _ViewModel.StationMonthlySummaryDataTable
@@ -113,6 +117,8 @@
                 DataGridViewForm_Totals.DataSource = _ViewModel.DaypartLengthSummaryDataTable
 
                 Me.Text = RadioButtonForm_DaypartLengthSummary.Text
+
+                HideReachFrequencyColumns()
 
             End If
 
@@ -679,6 +685,25 @@
             DataGridViewForm_Totals.CurrentView.EndDataUpdate()
 
         End Sub
+        Private Sub HideReachFrequencyColumns()
+
+            If _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico Then
+
+                If DataGridViewForm_Totals.CurrentView.Columns("Reach") IsNot Nothing Then
+
+                    DataGridViewForm_Totals.CurrentView.Columns("Reach").Visible = False
+
+                End If
+
+                If DataGridViewForm_Totals.CurrentView.Columns("Frequency") IsNot Nothing Then
+
+                    DataGridViewForm_Totals.CurrentView.Columns("Frequency").Visible = False
+
+                End If
+
+            End If
+
+        End Sub
 
 #Region "  Show Form Methods "
 
@@ -1216,60 +1241,60 @@
             End If
 
         End Sub
-		Private Sub DataGridViewForm_Totals_CustomColumnGroupEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles DataGridViewForm_Totals.CustomColumnGroupEvent
+        Private Sub DataGridViewForm_Totals_CustomColumnGroupEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles DataGridViewForm_Totals.CustomColumnGroupEvent
 
-			If e.Value1 = e.Value2 Then
+            If e.Value1 = e.Value2 Then
 
-				e.Result = 0
+                e.Result = 0
 
-			Else
+            Else
 
-				e.Result = 1
+                e.Result = 1
 
-			End If
+            End If
 
-			e.Handled = True
+            e.Handled = True
 
-		End Sub
-		Private Sub DataGridViewForm_Totals_CustomColumnSortEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles DataGridViewForm_Totals.CustomColumnSortEvent
+        End Sub
+        Private Sub DataGridViewForm_Totals_CustomColumnSortEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles DataGridViewForm_Totals.CustomColumnSortEvent
 
-			e.Result = 0
+            e.Result = 0
 
-			e.Handled = True
+            e.Handled = True
 
-		End Sub
-		Private Sub DataGridViewForm_Totals_PopupMenuShowingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles DataGridViewForm_Totals.PopupMenuShowingEvent
+        End Sub
+        Private Sub DataGridViewForm_Totals_PopupMenuShowingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles DataGridViewForm_Totals.PopupMenuShowingEvent
 
-			If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Column Then
+            If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Column Then
 
-				For Each MenuItem As DevExpress.Utils.Menu.DXMenuItem In e.Menu.Items
+                For Each MenuItem As DevExpress.Utils.Menu.DXMenuItem In e.Menu.Items
 
-					Select Case MenuItem.Tag
+                    Select Case MenuItem.Tag
 
-						Case DevExpress.XtraGrid.Localization.GridStringId.MenuColumnBestFit,
-								 DevExpress.XtraGrid.Localization.GridStringId.MenuColumnBestFitAllColumns
+                        Case DevExpress.XtraGrid.Localization.GridStringId.MenuColumnBestFit,
+                                 DevExpress.XtraGrid.Localization.GridStringId.MenuColumnBestFitAllColumns
 
-							MenuItem.Visible = True
+                            MenuItem.Visible = True
 
-						Case Else
+                        Case Else
 
-							MenuItem.Visible = False
+                            MenuItem.Visible = False
 
-					End Select
+                    End Select
 
-				Next
+                Next
 
-			End If
+            End If
 
-		End Sub
-		Private Sub DataGridViewForm_Totals_CustomUnboundColumnDataEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles DataGridViewForm_Totals.CustomUnboundColumnDataEvent
+        End Sub
+        Private Sub DataGridViewForm_Totals_CustomUnboundColumnDataEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles DataGridViewForm_Totals.CustomUnboundColumnDataEvent
 
-			'objects
-			Dim Totals As Decimal = 0
-			Dim TotalDollars As Decimal = 0
-			Dim TotalGoalDollars As Decimal = 0
-			Dim TotalRating As Decimal = 0
-			Dim TotalGoalRating As Decimal = 0
+            'objects
+            Dim Totals As Decimal = 0
+            Dim TotalDollars As Decimal = 0
+            Dim TotalGoalDollars As Decimal = 0
+            Dim TotalRating As Decimal = 0
+            Dim TotalGoalRating As Decimal = 0
 
             If RadioButtonForm_MarketSummary.Checked OrElse RadioButtonForm_MarketMonthlySummary.Checked Then
 
@@ -1322,7 +1347,7 @@
             End If
 
         End Sub
-		Private Sub DataGridViewForm_Totals_RowCellStyleEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles DataGridViewForm_Totals.RowCellStyleEvent
+        Private Sub DataGridViewForm_Totals_RowCellStyleEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles DataGridViewForm_Totals.RowCellStyleEvent
 
             If RadioButtonForm_MarketSummary.Checked OrElse RadioButtonForm_MarketMonthlySummary.Checked OrElse RadioButtonForm_StationMonthlySummary.Checked Then
 
@@ -1338,7 +1363,7 @@
             End If
 
         End Sub
-		Private Sub DataGridViewForm_Totals_CustomDrawColumnHeaderEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventArgs) Handles DataGridViewForm_Totals.CustomDrawColumnHeaderEvent
+        Private Sub DataGridViewForm_Totals_CustomDrawColumnHeaderEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventArgs) Handles DataGridViewForm_Totals.CustomDrawColumnHeaderEvent
 
             If RadioButtonForm_MarketSummary.Checked OrElse RadioButtonForm_DaypartWeeklyDailySpendSummary.Checked OrElse RadioButtonForm_DaypartWeeklyDailyGRPSummary.Checked Then
 
@@ -1760,6 +1785,51 @@
                 End Try
 
                 Me.CloseOverlay()
+
+            End If
+
+        End Sub
+        Private Sub DataGridViewForm_Totals_CustomRowFilterEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowFilterEventArgs) Handles DataGridViewForm_Totals.CustomRowFilterEvent
+
+            'objects
+            Dim BindingSource As System.Windows.Forms.BindingSource = Nothing
+            Dim DataRowView As System.Data.DataRowView = Nothing
+
+            If _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico AndAlso
+                    (RadioButtonForm_MarketSummary.Checked OrElse RadioButtonForm_MarketMonthlySummary.Checked) Then
+
+                Try
+
+                    BindingSource = DataGridViewForm_Totals.DataSource
+
+                Catch ex As Exception
+
+                End Try
+
+                If BindingSource IsNot Nothing Then
+
+                    If BindingSource(e.ListSourceRow) IsNot Nothing Then
+
+                        If TypeOf BindingSource(e.ListSourceRow) Is System.Data.DataRowView Then
+
+                            DataRowView = BindingSource(e.ListSourceRow)
+
+                            If (RadioButtonForm_MarketSummary.Checked OrElse RadioButtonForm_MarketMonthlySummary.Checked) AndAlso DataRowView.Row.Table.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_RowTotalColumns.RowTotalsGroup.ToString) IsNot Nothing AndAlso
+                                    DataRowView.Row.Table.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_RowTotalColumns.RowTotalsDescription.ToString) IsNot Nothing AndAlso
+                                    DataRowView.Row(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_RowTotalColumns.RowTotalsGroup.ToString) = "Worksheet" AndAlso
+                                    (DataRowView.Row(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_RowTotalColumns.RowTotalsDescription.ToString) = "Reach" OrElse
+                                     DataRowView.Row(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetails_RowTotalColumns.RowTotalsDescription.ToString) = "Frequency") Then
+
+                                e.Visible = False
+                                e.Handled = True
+
+                            End If
+
+                        End If
+
+                    End If
+
+                End If
 
             End If
 

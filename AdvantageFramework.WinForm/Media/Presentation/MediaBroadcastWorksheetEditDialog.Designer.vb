@@ -59,6 +59,14 @@
             Me.ComboBoxInformation_MediaType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
             Me.LabelInformation_MediaType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.TabControlForm_WorksheetDetails = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelInformationTab_Information = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelInformation_Country = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.ComboBoxInformation_Country = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
+            Me.RadioButtonInformation_Net = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.RadioButtonInformation_Gross = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
+            Me.NumericInputInformation_Length = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
+            Me.LabelInformation_Length = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.TabItemWorksheetDetails_InformationTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelMatchingTab_Matching = New DevComponents.DotNetBar.TabControlPanel()
             Me.VerticalGridMatching_Settings = New AdvantageFramework.WinForm.MVC.Presentation.Controls.VerticalGrid()
             Me.InvoiceMatchingSettingBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -75,14 +83,6 @@
             Me.rowAdjacencyAfter = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowBookendMaxSeparation = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.TabItemWorksheetDetails_MatchingTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelInformationTab_Information = New DevComponents.DotNetBar.TabControlPanel()
-            Me.LabelInformation_Country = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.ComboBoxInformation_Country = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
-            Me.RadioButtonInformation_Net = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.RadioButtonInformation_Gross = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
-            Me.NumericInputInformation_Length = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
-            Me.LabelInformation_Length = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.TabItemWorksheetDetails_InformationTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelCommentsTab_Comments = New DevComponents.DotNetBar.TabControlPanel()
             Me.LabelComments_MediaPlanComments = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.TextBoxComments_MediaPlanComments = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
@@ -103,6 +103,7 @@
             Me.RibbonBarFilePanel_Matching = New DevComponents.DotNetBar.RibbonBar()
             Me.ButtonItemMatching_Defaults = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.ButtonItemMatching_SeparationSettings = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
             CType(Me.PanelForm_Form, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelForm_Form.SuspendLayout()
             Me.RibbonControlForm_MainRibbon.SuspendLayout()
@@ -114,11 +115,11 @@
             CType(Me.DateEditInformation_StartDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.TabControlForm_WorksheetDetails, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlForm_WorksheetDetails.SuspendLayout()
+            Me.TabControlPanelInformationTab_Information.SuspendLayout()
+            CType(Me.NumericInputInformation_Length.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlPanelMatchingTab_Matching.SuspendLayout()
             CType(Me.VerticalGridMatching_Settings, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.InvoiceMatchingSettingBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelInformationTab_Information.SuspendLayout()
-            CType(Me.NumericInputInformation_Length.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlPanelCommentsTab_Comments.SuspendLayout()
             Me.TabControlPanelDemosTab_Demos.SuspendLayout()
             CType(Me.SearchableComboBoxDemos_PrimaryDemo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -136,7 +137,7 @@
             Me.PanelForm_Form.Controls.Add(Me.TabControlForm_WorksheetDetails)
             Me.PanelForm_Form.LookAndFeel.SkinName = "Office 2013"
             Me.PanelForm_Form.LookAndFeel.UseDefaultLookAndFeel = False
-            Me.PanelForm_Form.Size = New System.Drawing.Size(511, 449)
+            Me.PanelForm_Form.Size = New System.Drawing.Size(551, 449)
             Me.PanelForm_Form.TabIndex = 0
             '
             'RibbonControlForm_MainRibbon
@@ -145,7 +146,7 @@
             '
             '
             Me.RibbonControlForm_MainRibbon.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RibbonControlForm_MainRibbon.Size = New System.Drawing.Size(511, 154)
+            Me.RibbonControlForm_MainRibbon.Size = New System.Drawing.Size(551, 154)
             Me.RibbonControlForm_MainRibbon.SystemText.MaximizeRibbonText = "&Maximize the Ribbon"
             Me.RibbonControlForm_MainRibbon.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon"
             Me.RibbonControlForm_MainRibbon.SystemText.QatAddItemText = "&Add to Quick Access Toolbar"
@@ -169,7 +170,7 @@
             Me.RibbonPanelFile_FilePanel.Controls.Add(Me.RibbonBarFilePanel_Demos)
             Me.RibbonPanelFile_FilePanel.Controls.Add(Me.RibbonBarFilePanel_Actions)
             Me.RibbonPanelFile_FilePanel.Location = New System.Drawing.Point(0, 57)
-            Me.RibbonPanelFile_FilePanel.Size = New System.Drawing.Size(511, 94)
+            Me.RibbonPanelFile_FilePanel.Size = New System.Drawing.Size(551, 94)
             '
             '
             '
@@ -229,7 +230,7 @@
             'BarForm_StatusBar
             '
             Me.BarForm_StatusBar.Location = New System.Drawing.Point(5, 604)
-            Me.BarForm_StatusBar.Size = New System.Drawing.Size(511, 18)
+            Me.BarForm_StatusBar.Size = New System.Drawing.Size(551, 18)
             '
             'CheckBoxInformation_ArePiggybacksOK
             '
@@ -244,7 +245,7 @@
             Me.CheckBoxInformation_ArePiggybacksOK.CheckValueUnchecked = 0
             Me.CheckBoxInformation_ArePiggybacksOK.ChildControls = Nothing
             Me.CheckBoxInformation_ArePiggybacksOK.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxInformation_ArePiggybacksOK.Location = New System.Drawing.Point(236, 370)
+            Me.CheckBoxInformation_ArePiggybacksOK.Location = New System.Drawing.Point(255, 370)
             Me.CheckBoxInformation_ArePiggybacksOK.Name = "CheckBoxInformation_ArePiggybacksOK"
             Me.CheckBoxInformation_ArePiggybacksOK.OldestSibling = Nothing
             Me.CheckBoxInformation_ArePiggybacksOK.SecurityEnabled = True
@@ -269,7 +270,7 @@
             Me.CheckBoxInformation_DefaultToLatestSharebook.CheckValueUnchecked = 0
             Me.CheckBoxInformation_DefaultToLatestSharebook.ChildControls = Nothing
             Me.CheckBoxInformation_DefaultToLatestSharebook.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxInformation_DefaultToLatestSharebook.Location = New System.Drawing.Point(236, 318)
+            Me.CheckBoxInformation_DefaultToLatestSharebook.Location = New System.Drawing.Point(255, 318)
             Me.CheckBoxInformation_DefaultToLatestSharebook.Name = "CheckBoxInformation_DefaultToLatestSharebook"
             Me.CheckBoxInformation_DefaultToLatestSharebook.OldestSibling = Nothing
             Me.CheckBoxInformation_DefaultToLatestSharebook.SecurityEnabled = True
@@ -300,11 +301,11 @@
             Me.ComboBoxInformation_DateType.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_DateType.FormattingEnabled = True
             Me.ComboBoxInformation_DateType.ItemHeight = 16
-            Me.ComboBoxInformation_DateType.Location = New System.Drawing.Point(78, 210)
+            Me.ComboBoxInformation_DateType.Location = New System.Drawing.Point(97, 210)
             Me.ComboBoxInformation_DateType.Name = "ComboBoxInformation_DateType"
             Me.ComboBoxInformation_DateType.ReadOnly = False
             Me.ComboBoxInformation_DateType.SecurityEnabled = True
-            Me.ComboBoxInformation_DateType.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_DateType.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_DateType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_DateType.TabIndex = 17
             Me.ComboBoxInformation_DateType.TabOnEnter = True
@@ -319,7 +320,7 @@
             Me.LabelInformation_DateType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_DateType.Location = New System.Drawing.Point(4, 210)
             Me.LabelInformation_DateType.Name = "LabelInformation_DateType"
-            Me.LabelInformation_DateType.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_DateType.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_DateType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_DateType.TabIndex = 16
             Me.LabelInformation_DateType.Text = "Date Type:"
@@ -344,11 +345,11 @@
             Me.ComboBoxInformation_MediaPlan.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_MediaPlan.FormattingEnabled = True
             Me.ComboBoxInformation_MediaPlan.ItemHeight = 16
-            Me.ComboBoxInformation_MediaPlan.Location = New System.Drawing.Point(78, 158)
+            Me.ComboBoxInformation_MediaPlan.Location = New System.Drawing.Point(97, 158)
             Me.ComboBoxInformation_MediaPlan.Name = "ComboBoxInformation_MediaPlan"
             Me.ComboBoxInformation_MediaPlan.ReadOnly = False
             Me.ComboBoxInformation_MediaPlan.SecurityEnabled = True
-            Me.ComboBoxInformation_MediaPlan.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_MediaPlan.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_MediaPlan.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_MediaPlan.TabIndex = 13
             Me.ComboBoxInformation_MediaPlan.TabOnEnter = True
@@ -363,7 +364,7 @@
             Me.LabelInformation_MediaPlan.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_MediaPlan.Location = New System.Drawing.Point(4, 158)
             Me.LabelInformation_MediaPlan.Name = "LabelInformation_MediaPlan"
-            Me.LabelInformation_MediaPlan.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_MediaPlan.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_MediaPlan.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_MediaPlan.TabIndex = 12
             Me.LabelInformation_MediaPlan.Text = "Media Plan:"
@@ -388,11 +389,11 @@
             Me.ComboBoxInformation_Campaign.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_Campaign.FormattingEnabled = True
             Me.ComboBoxInformation_Campaign.ItemHeight = 16
-            Me.ComboBoxInformation_Campaign.Location = New System.Drawing.Point(78, 184)
+            Me.ComboBoxInformation_Campaign.Location = New System.Drawing.Point(97, 184)
             Me.ComboBoxInformation_Campaign.Name = "ComboBoxInformation_Campaign"
             Me.ComboBoxInformation_Campaign.ReadOnly = False
             Me.ComboBoxInformation_Campaign.SecurityEnabled = True
-            Me.ComboBoxInformation_Campaign.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_Campaign.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_Campaign.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_Campaign.TabIndex = 15
             Me.ComboBoxInformation_Campaign.TabOnEnter = True
@@ -407,7 +408,7 @@
             Me.LabelInformation_Campaign.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_Campaign.Location = New System.Drawing.Point(4, 184)
             Me.LabelInformation_Campaign.Name = "LabelInformation_Campaign"
-            Me.LabelInformation_Campaign.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_Campaign.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_Campaign.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_Campaign.TabIndex = 14
             Me.LabelInformation_Campaign.Text = "Campaign:"
@@ -417,7 +418,7 @@
             Me.DateEditInformation_EndDate.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
             Me.DateEditInformation_EndDate.DisplayName = ""
             Me.DateEditInformation_EndDate.EditValue = Nothing
-            Me.DateEditInformation_EndDate.Location = New System.Drawing.Point(310, 266)
+            Me.DateEditInformation_EndDate.Location = New System.Drawing.Point(329, 266)
             Me.DateEditInformation_EndDate.Name = "DateEditInformation_EndDate"
             Me.DateEditInformation_EndDate.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.[False]
             Me.DateEditInformation_EndDate.Properties.AllowMouseWheel = False
@@ -446,7 +447,7 @@
             Me.DateEditInformation_StartDate.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
             Me.DateEditInformation_StartDate.DisplayName = ""
             Me.DateEditInformation_StartDate.EditValue = Nothing
-            Me.DateEditInformation_StartDate.Location = New System.Drawing.Point(78, 266)
+            Me.DateEditInformation_StartDate.Location = New System.Drawing.Point(97, 266)
             Me.DateEditInformation_StartDate.Name = "DateEditInformation_StartDate"
             Me.DateEditInformation_StartDate.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.[False]
             Me.DateEditInformation_StartDate.Properties.AllowMouseWheel = False
@@ -483,7 +484,7 @@
             Me.CheckBoxInformation_IsInactive.CheckValueUnchecked = 0
             Me.CheckBoxInformation_IsInactive.ChildControls = Nothing
             Me.CheckBoxInformation_IsInactive.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxInformation_IsInactive.Location = New System.Drawing.Point(78, 344)
+            Me.CheckBoxInformation_IsInactive.Location = New System.Drawing.Point(97, 344)
             Me.CheckBoxInformation_IsInactive.Name = "CheckBoxInformation_IsInactive"
             Me.CheckBoxInformation_IsInactive.OldestSibling = Nothing
             Me.CheckBoxInformation_IsInactive.SecurityEnabled = True
@@ -501,7 +502,7 @@
             '
             '
             Me.LabelInformation_EndDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelInformation_EndDate.Location = New System.Drawing.Point(236, 266)
+            Me.LabelInformation_EndDate.Location = New System.Drawing.Point(255, 266)
             Me.LabelInformation_EndDate.Name = "LabelInformation_EndDate"
             Me.LabelInformation_EndDate.Size = New System.Drawing.Size(68, 20)
             Me.LabelInformation_EndDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -517,7 +518,7 @@
             Me.LabelInformation_StartDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_StartDate.Location = New System.Drawing.Point(4, 266)
             Me.LabelInformation_StartDate.Name = "LabelInformation_StartDate"
-            Me.LabelInformation_StartDate.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_StartDate.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_StartDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_StartDate.TabIndex = 20
             Me.LabelInformation_StartDate.Text = "Start Date:"
@@ -542,11 +543,11 @@
             Me.ComboBoxInformation_Product.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_Product.FormattingEnabled = True
             Me.ComboBoxInformation_Product.ItemHeight = 16
-            Me.ComboBoxInformation_Product.Location = New System.Drawing.Point(78, 106)
+            Me.ComboBoxInformation_Product.Location = New System.Drawing.Point(97, 106)
             Me.ComboBoxInformation_Product.Name = "ComboBoxInformation_Product"
             Me.ComboBoxInformation_Product.ReadOnly = False
             Me.ComboBoxInformation_Product.SecurityEnabled = True
-            Me.ComboBoxInformation_Product.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_Product.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_Product.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_Product.TabIndex = 9
             Me.ComboBoxInformation_Product.TabOnEnter = True
@@ -572,11 +573,11 @@
             Me.ComboBoxInformation_Division.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_Division.FormattingEnabled = True
             Me.ComboBoxInformation_Division.ItemHeight = 16
-            Me.ComboBoxInformation_Division.Location = New System.Drawing.Point(78, 81)
+            Me.ComboBoxInformation_Division.Location = New System.Drawing.Point(97, 81)
             Me.ComboBoxInformation_Division.Name = "ComboBoxInformation_Division"
             Me.ComboBoxInformation_Division.ReadOnly = False
             Me.ComboBoxInformation_Division.SecurityEnabled = True
-            Me.ComboBoxInformation_Division.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_Division.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_Division.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_Division.TabIndex = 7
             Me.ComboBoxInformation_Division.TabOnEnter = True
@@ -602,11 +603,11 @@
             Me.ComboBoxInformation_Client.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_Client.FormattingEnabled = True
             Me.ComboBoxInformation_Client.ItemHeight = 16
-            Me.ComboBoxInformation_Client.Location = New System.Drawing.Point(78, 56)
+            Me.ComboBoxInformation_Client.Location = New System.Drawing.Point(97, 56)
             Me.ComboBoxInformation_Client.Name = "ComboBoxInformation_Client"
             Me.ComboBoxInformation_Client.ReadOnly = False
             Me.ComboBoxInformation_Client.SecurityEnabled = True
-            Me.ComboBoxInformation_Client.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_Client.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_Client.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_Client.TabIndex = 5
             Me.ComboBoxInformation_Client.TabOnEnter = True
@@ -621,7 +622,7 @@
             Me.LabelInformation_Product.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_Product.Location = New System.Drawing.Point(4, 106)
             Me.LabelInformation_Product.Name = "LabelInformation_Product"
-            Me.LabelInformation_Product.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_Product.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_Product.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_Product.TabIndex = 8
             Me.LabelInformation_Product.Text = "Product:"
@@ -635,7 +636,7 @@
             Me.LabelInformation_Division.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_Division.Location = New System.Drawing.Point(4, 81)
             Me.LabelInformation_Division.Name = "LabelInformation_Division"
-            Me.LabelInformation_Division.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_Division.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_Division.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_Division.TabIndex = 6
             Me.LabelInformation_Division.Text = "Division:"
@@ -649,7 +650,7 @@
             Me.LabelInformation_Client.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_Client.Location = New System.Drawing.Point(4, 56)
             Me.LabelInformation_Client.Name = "LabelInformation_Client"
-            Me.LabelInformation_Client.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_Client.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_Client.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_Client.TabIndex = 4
             Me.LabelInformation_Client.Text = "Client:"
@@ -674,11 +675,11 @@
             Me.ComboBoxInformation_SalesClass.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_SalesClass.FormattingEnabled = True
             Me.ComboBoxInformation_SalesClass.ItemHeight = 16
-            Me.ComboBoxInformation_SalesClass.Location = New System.Drawing.Point(78, 132)
+            Me.ComboBoxInformation_SalesClass.Location = New System.Drawing.Point(97, 132)
             Me.ComboBoxInformation_SalesClass.Name = "ComboBoxInformation_SalesClass"
             Me.ComboBoxInformation_SalesClass.ReadOnly = False
             Me.ComboBoxInformation_SalesClass.SecurityEnabled = True
-            Me.ComboBoxInformation_SalesClass.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_SalesClass.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_SalesClass.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_SalesClass.TabIndex = 11
             Me.ComboBoxInformation_SalesClass.TabOnEnter = True
@@ -704,12 +705,12 @@
             Me.TextBoxInformation_Name.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
             Me.TextBoxInformation_Name.FocusHighlightEnabled = True
             Me.TextBoxInformation_Name.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxInformation_Name.Location = New System.Drawing.Point(78, 30)
+            Me.TextBoxInformation_Name.Location = New System.Drawing.Point(97, 30)
             Me.TextBoxInformation_Name.MaxFileSize = CType(0, Long)
             Me.TextBoxInformation_Name.Name = "TextBoxInformation_Name"
             Me.TextBoxInformation_Name.SecurityEnabled = True
             Me.TextBoxInformation_Name.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxInformation_Name.Size = New System.Drawing.Size(405, 21)
+            Me.TextBoxInformation_Name.Size = New System.Drawing.Size(426, 21)
             Me.TextBoxInformation_Name.StartingFolderName = Nothing
             Me.TextBoxInformation_Name.TabIndex = 3
             Me.TextBoxInformation_Name.TabOnEnter = True
@@ -723,7 +724,7 @@
             Me.LabelInformation_Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_Name.Location = New System.Drawing.Point(4, 30)
             Me.LabelInformation_Name.Name = "LabelInformation_Name"
-            Me.LabelInformation_Name.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_Name.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_Name.TabIndex = 2
             Me.LabelInformation_Name.Text = "Name:"
@@ -737,7 +738,7 @@
             Me.LabelInformation_SalesClass.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_SalesClass.Location = New System.Drawing.Point(4, 132)
             Me.LabelInformation_SalesClass.Name = "LabelInformation_SalesClass"
-            Me.LabelInformation_SalesClass.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_SalesClass.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_SalesClass.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_SalesClass.TabIndex = 10
             Me.LabelInformation_SalesClass.Text = "Sales Class:"
@@ -823,11 +824,11 @@
             Me.ComboBoxInformation_Calendar.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_Calendar.FormattingEnabled = True
             Me.ComboBoxInformation_Calendar.ItemHeight = 16
-            Me.ComboBoxInformation_Calendar.Location = New System.Drawing.Point(78, 238)
+            Me.ComboBoxInformation_Calendar.Location = New System.Drawing.Point(97, 238)
             Me.ComboBoxInformation_Calendar.Name = "ComboBoxInformation_Calendar"
             Me.ComboBoxInformation_Calendar.ReadOnly = False
             Me.ComboBoxInformation_Calendar.SecurityEnabled = True
-            Me.ComboBoxInformation_Calendar.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_Calendar.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_Calendar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_Calendar.TabIndex = 19
             Me.ComboBoxInformation_Calendar.TabOnEnter = True
@@ -842,7 +843,7 @@
             Me.LabelInformation_Calendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_Calendar.Location = New System.Drawing.Point(4, 238)
             Me.LabelInformation_Calendar.Name = "LabelInformation_Calendar"
-            Me.LabelInformation_Calendar.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_Calendar.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_Calendar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_Calendar.TabIndex = 18
             Me.LabelInformation_Calendar.Text = "Calendar:"
@@ -860,7 +861,7 @@
             Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.CheckValueUnchecked = 0
             Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.ChildControls = Nothing
             Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.Location = New System.Drawing.Point(236, 344)
+            Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.Location = New System.Drawing.Point(255, 344)
             Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.Name = "CheckBoxInformation_ProrateSecondaryDemosToPrimary"
             Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.OldestSibling = Nothing
             Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary.SecurityEnabled = True
@@ -891,11 +892,11 @@
             Me.ComboBoxInformation_MediaType.ForeColor = System.Drawing.Color.Black
             Me.ComboBoxInformation_MediaType.FormattingEnabled = True
             Me.ComboBoxInformation_MediaType.ItemHeight = 16
-            Me.ComboBoxInformation_MediaType.Location = New System.Drawing.Point(78, 2)
+            Me.ComboBoxInformation_MediaType.Location = New System.Drawing.Point(97, 2)
             Me.ComboBoxInformation_MediaType.Name = "ComboBoxInformation_MediaType"
             Me.ComboBoxInformation_MediaType.ReadOnly = False
             Me.ComboBoxInformation_MediaType.SecurityEnabled = True
-            Me.ComboBoxInformation_MediaType.Size = New System.Drawing.Size(405, 22)
+            Me.ComboBoxInformation_MediaType.Size = New System.Drawing.Size(426, 22)
             Me.ComboBoxInformation_MediaType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxInformation_MediaType.TabIndex = 1
             Me.ComboBoxInformation_MediaType.TabOnEnter = True
@@ -910,7 +911,7 @@
             Me.LabelInformation_MediaType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.LabelInformation_MediaType.Location = New System.Drawing.Point(4, 4)
             Me.LabelInformation_MediaType.Name = "LabelInformation_MediaType"
-            Me.LabelInformation_MediaType.Size = New System.Drawing.Size(68, 20)
+            Me.LabelInformation_MediaType.Size = New System.Drawing.Size(87, 20)
             Me.LabelInformation_MediaType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelInformation_MediaType.TabIndex = 0
             Me.LabelInformation_MediaType.Text = "Media Type:"
@@ -932,7 +933,7 @@
             Me.TabControlForm_WorksheetDetails.Name = "TabControlForm_WorksheetDetails"
             Me.TabControlForm_WorksheetDetails.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
             Me.TabControlForm_WorksheetDetails.SelectedTabIndex = 0
-            Me.TabControlForm_WorksheetDetails.Size = New System.Drawing.Size(487, 437)
+            Me.TabControlForm_WorksheetDetails.Size = New System.Drawing.Size(527, 437)
             Me.TabControlForm_WorksheetDetails.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
             Me.TabControlForm_WorksheetDetails.TabIndex = 28
             Me.TabControlForm_WorksheetDetails.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
@@ -942,6 +943,190 @@
             Me.TabControlForm_WorksheetDetails.Tabs.Add(Me.TabItemWorksheetDetails_MatchingTab)
             Me.TabControlForm_WorksheetDetails.Text = "TabControl1"
             '
+            'TabControlPanelInformationTab_Information
+            '
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Country)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Country)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.RadioButtonInformation_Net)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.RadioButtonInformation_Gross)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.NumericInputInformation_Length)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Length)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_MediaType)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_MediaType)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_SalesClass)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Name)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.TextBoxInformation_Name)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Calendar)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_SalesClass)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Client)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Calendar)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Division)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_ArePiggybacksOK)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Product)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_DefaultToLatestSharebook)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_DateType)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Client)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_DateType)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Division)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_MediaPlan)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Product)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_MediaPlan)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_StartDate)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Campaign)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_EndDate)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_IsInactive)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Campaign)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.DateEditInformation_StartDate)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.DateEditInformation_EndDate)
+            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings)
+            Me.TabControlPanelInformationTab_Information.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelInformationTab_Information.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelInformationTab_Information.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelInformationTab_Information.Name = "TabControlPanelInformationTab_Information"
+            Me.TabControlPanelInformationTab_Information.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelInformationTab_Information.Size = New System.Drawing.Size(527, 410)
+            Me.TabControlPanelInformationTab_Information.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelInformationTab_Information.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelInformationTab_Information.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelInformationTab_Information.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelInformationTab_Information.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelInformationTab_Information.Style.GradientAngle = 90
+            Me.TabControlPanelInformationTab_Information.TabIndex = 0
+            Me.TabControlPanelInformationTab_Information.TabItem = Me.TabItemWorksheetDetails_InformationTab
+            '
+            'LabelInformation_Country
+            '
+            Me.LabelInformation_Country.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelInformation_Country.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelInformation_Country.Location = New System.Drawing.Point(4, 318)
+            Me.LabelInformation_Country.Name = "LabelInformation_Country"
+            Me.LabelInformation_Country.Size = New System.Drawing.Size(87, 20)
+            Me.LabelInformation_Country.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelInformation_Country.TabIndex = 28
+            Me.LabelInformation_Country.Text = "Country/Region:"
+            '
+            'ComboBoxInformation_Country
+            '
+            Me.ComboBoxInformation_Country.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxInformation_Country.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxInformation_Country.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxInformation_Country.AutoFindItemInDataSource = False
+            Me.ComboBoxInformation_Country.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxInformation_Country.BookmarkingEnabled = False
+            Me.ComboBoxInformation_Country.DisableMouseWheel = False
+            Me.ComboBoxInformation_Country.DisplayName = ""
+            Me.ComboBoxInformation_Country.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxInformation_Country.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.ComboBoxInformation_Country.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxInformation_Country.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxInformation_Country.FocusHighlightEnabled = True
+            Me.ComboBoxInformation_Country.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxInformation_Country.FormattingEnabled = True
+            Me.ComboBoxInformation_Country.ItemHeight = 16
+            Me.ComboBoxInformation_Country.Location = New System.Drawing.Point(97, 318)
+            Me.ComboBoxInformation_Country.Name = "ComboBoxInformation_Country"
+            Me.ComboBoxInformation_Country.ReadOnly = False
+            Me.ComboBoxInformation_Country.SecurityEnabled = True
+            Me.ComboBoxInformation_Country.Size = New System.Drawing.Size(152, 22)
+            Me.ComboBoxInformation_Country.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxInformation_Country.TabIndex = 29
+            Me.ComboBoxInformation_Country.TabOnEnter = True
+            Me.ComboBoxInformation_Country.WatermarkText = "Select Country"
+            '
+            'RadioButtonInformation_Net
+            '
+            Me.RadioButtonInformation_Net.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonInformation_Net.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonInformation_Net.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonInformation_Net.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonInformation_Net.Location = New System.Drawing.Point(348, 292)
+            Me.RadioButtonInformation_Net.Name = "RadioButtonInformation_Net"
+            Me.RadioButtonInformation_Net.SecurityEnabled = True
+            Me.RadioButtonInformation_Net.Size = New System.Drawing.Size(154, 20)
+            Me.RadioButtonInformation_Net.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonInformation_Net.TabIndex = 27
+            Me.RadioButtonInformation_Net.TabOnEnter = True
+            Me.RadioButtonInformation_Net.TabStop = False
+            Me.RadioButtonInformation_Net.Tag = "1"
+            Me.RadioButtonInformation_Net.Text = "Net Rates"
+            '
+            'RadioButtonInformation_Gross
+            '
+            Me.RadioButtonInformation_Gross.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.RadioButtonInformation_Gross.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonInformation_Gross.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonInformation_Gross.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonInformation_Gross.Checked = True
+            Me.RadioButtonInformation_Gross.CheckState = System.Windows.Forms.CheckState.Checked
+            Me.RadioButtonInformation_Gross.CheckValue = "Y"
+            Me.RadioButtonInformation_Gross.Location = New System.Drawing.Point(236, 292)
+            Me.RadioButtonInformation_Gross.Name = "RadioButtonInformation_Gross"
+            Me.RadioButtonInformation_Gross.SecurityEnabled = True
+            Me.RadioButtonInformation_Gross.Size = New System.Drawing.Size(146, 20)
+            Me.RadioButtonInformation_Gross.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonInformation_Gross.TabIndex = 26
+            Me.RadioButtonInformation_Gross.TabOnEnter = True
+            Me.RadioButtonInformation_Gross.Tag = "1"
+            Me.RadioButtonInformation_Gross.Text = "Gross Rates"
+            '
+            'NumericInputInformation_Length
+            '
+            Me.NumericInputInformation_Length.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputInformation_Length.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Short]
+            Me.NumericInputInformation_Length.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputInformation_Length.EnterMoveNextControl = True
+            Me.NumericInputInformation_Length.Location = New System.Drawing.Point(97, 292)
+            Me.NumericInputInformation_Length.Name = "NumericInputInformation_Length"
+            Me.NumericInputInformation_Length.Properties.AllowMouseWheel = False
+            Me.NumericInputInformation_Length.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
+            Me.NumericInputInformation_Length.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
+            Me.NumericInputInformation_Length.Properties.Appearance.Options.UseBackColor = True
+            Me.NumericInputInformation_Length.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputInformation_Length.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputInformation_Length.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputInformation_Length.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputInformation_Length.Properties.IsFloatValue = False
+            Me.NumericInputInformation_Length.Properties.Mask.EditMask = "f0"
+            Me.NumericInputInformation_Length.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputInformation_Length.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 0})
+            Me.NumericInputInformation_Length.Properties.MinValue = New Decimal(New Integer() {32768, 0, 0, -2147483648})
+            Me.NumericInputInformation_Length.SecurityEnabled = True
+            Me.NumericInputInformation_Length.Size = New System.Drawing.Size(133, 20)
+            Me.NumericInputInformation_Length.TabIndex = 25
+            '
+            'LabelInformation_Length
+            '
+            Me.LabelInformation_Length.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelInformation_Length.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelInformation_Length.Location = New System.Drawing.Point(4, 292)
+            Me.LabelInformation_Length.Name = "LabelInformation_Length"
+            Me.LabelInformation_Length.Size = New System.Drawing.Size(87, 20)
+            Me.LabelInformation_Length.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelInformation_Length.TabIndex = 24
+            Me.LabelInformation_Length.Text = "Length:"
+            '
+            'TabItemWorksheetDetails_InformationTab
+            '
+            Me.TabItemWorksheetDetails_InformationTab.AttachedControl = Me.TabControlPanelInformationTab_Information
+            Me.TabItemWorksheetDetails_InformationTab.Name = "TabItemWorksheetDetails_InformationTab"
+            Me.TabItemWorksheetDetails_InformationTab.Text = "Information"
+            '
             'TabControlPanelMatchingTab_Matching
             '
             Me.TabControlPanelMatchingTab_Matching.Controls.Add(Me.VerticalGridMatching_Settings)
@@ -950,7 +1135,7 @@
             Me.TabControlPanelMatchingTab_Matching.Location = New System.Drawing.Point(0, 27)
             Me.TabControlPanelMatchingTab_Matching.Name = "TabControlPanelMatchingTab_Matching"
             Me.TabControlPanelMatchingTab_Matching.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelMatchingTab_Matching.Size = New System.Drawing.Size(487, 410)
+            Me.TabControlPanelMatchingTab_Matching.Size = New System.Drawing.Size(527, 410)
             Me.TabControlPanelMatchingTab_Matching.Style.BackColor1.Color = System.Drawing.Color.White
             Me.TabControlPanelMatchingTab_Matching.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
             Me.TabControlPanelMatchingTab_Matching.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
@@ -979,7 +1164,7 @@
             Me.VerticalGridMatching_Settings.RowHeaderWidth = 112
             Me.VerticalGridMatching_Settings.Rows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.categorySpotMatchingSettings})
             Me.VerticalGridMatching_Settings.ShowButtonMode = DevExpress.XtraVerticalGrid.ShowButtonModeEnum.ShowAlways
-            Me.VerticalGridMatching_Settings.Size = New System.Drawing.Size(479, 402)
+            Me.VerticalGridMatching_Settings.Size = New System.Drawing.Size(519, 402)
             Me.VerticalGridMatching_Settings.TabIndex = 3
             Me.VerticalGridMatching_Settings.TreeButtonStyle = DevExpress.XtraVerticalGrid.TreeButtonStyle.TreeView
             '
@@ -1068,189 +1253,6 @@
             Me.TabItemWorksheetDetails_MatchingTab.Name = "TabItemWorksheetDetails_MatchingTab"
             Me.TabItemWorksheetDetails_MatchingTab.Text = "Matching"
             '
-            'TabControlPanelInformationTab_Information
-            '
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Country)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Country)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.RadioButtonInformation_Net)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.RadioButtonInformation_Gross)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.NumericInputInformation_Length)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Length)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_MediaType)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_MediaType)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_SalesClass)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Name)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.TextBoxInformation_Name)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_ProrateSecondaryDemosToPrimary)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Calendar)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_SalesClass)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Client)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Calendar)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Division)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_ArePiggybacksOK)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Product)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_DefaultToLatestSharebook)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_DateType)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Client)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_DateType)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Division)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_MediaPlan)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Product)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_MediaPlan)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_StartDate)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.ComboBoxInformation_Campaign)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_EndDate)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.CheckBoxInformation_IsInactive)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.LabelInformation_Campaign)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.DateEditInformation_StartDate)
-            Me.TabControlPanelInformationTab_Information.Controls.Add(Me.DateEditInformation_EndDate)
-            Me.TabControlPanelInformationTab_Information.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelInformationTab_Information.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelInformationTab_Information.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelInformationTab_Information.Name = "TabControlPanelInformationTab_Information"
-            Me.TabControlPanelInformationTab_Information.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelInformationTab_Information.Size = New System.Drawing.Size(487, 410)
-            Me.TabControlPanelInformationTab_Information.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelInformationTab_Information.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelInformationTab_Information.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelInformationTab_Information.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelInformationTab_Information.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelInformationTab_Information.Style.GradientAngle = 90
-            Me.TabControlPanelInformationTab_Information.TabIndex = 0
-            Me.TabControlPanelInformationTab_Information.TabItem = Me.TabItemWorksheetDetails_InformationTab
-            '
-            'LabelInformation_Country
-            '
-            Me.LabelInformation_Country.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelInformation_Country.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelInformation_Country.Location = New System.Drawing.Point(4, 318)
-            Me.LabelInformation_Country.Name = "LabelInformation_Country"
-            Me.LabelInformation_Country.Size = New System.Drawing.Size(68, 20)
-            Me.LabelInformation_Country.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelInformation_Country.TabIndex = 28
-            Me.LabelInformation_Country.Text = "Country:"
-            '
-            'ComboBoxInformation_Country
-            '
-            Me.ComboBoxInformation_Country.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxInformation_Country.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxInformation_Country.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxInformation_Country.AutoFindItemInDataSource = False
-            Me.ComboBoxInformation_Country.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxInformation_Country.BookmarkingEnabled = False
-            Me.ComboBoxInformation_Country.DisableMouseWheel = False
-            Me.ComboBoxInformation_Country.DisplayName = ""
-            Me.ComboBoxInformation_Country.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxInformation_Country.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.ComboBoxInformation_Country.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxInformation_Country.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxInformation_Country.FocusHighlightEnabled = True
-            Me.ComboBoxInformation_Country.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxInformation_Country.FormattingEnabled = True
-            Me.ComboBoxInformation_Country.ItemHeight = 16
-            Me.ComboBoxInformation_Country.Location = New System.Drawing.Point(78, 318)
-            Me.ComboBoxInformation_Country.Name = "ComboBoxInformation_Country"
-            Me.ComboBoxInformation_Country.ReadOnly = False
-            Me.ComboBoxInformation_Country.SecurityEnabled = True
-            Me.ComboBoxInformation_Country.Size = New System.Drawing.Size(152, 22)
-            Me.ComboBoxInformation_Country.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxInformation_Country.TabIndex = 29
-            Me.ComboBoxInformation_Country.TabOnEnter = True
-            Me.ComboBoxInformation_Country.WatermarkText = "Select Country"
-            '
-            'RadioButtonInformation_Net
-            '
-            Me.RadioButtonInformation_Net.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonInformation_Net.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonInformation_Net.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonInformation_Net.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonInformation_Net.Location = New System.Drawing.Point(348, 292)
-            Me.RadioButtonInformation_Net.Name = "RadioButtonInformation_Net"
-            Me.RadioButtonInformation_Net.SecurityEnabled = True
-            Me.RadioButtonInformation_Net.Size = New System.Drawing.Size(114, 20)
-            Me.RadioButtonInformation_Net.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonInformation_Net.TabIndex = 27
-            Me.RadioButtonInformation_Net.TabOnEnter = True
-            Me.RadioButtonInformation_Net.TabStop = False
-            Me.RadioButtonInformation_Net.Tag = "1"
-            Me.RadioButtonInformation_Net.Text = "Net Rates"
-            '
-            'RadioButtonInformation_Gross
-            '
-            Me.RadioButtonInformation_Gross.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.RadioButtonInformation_Gross.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.RadioButtonInformation_Gross.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.RadioButtonInformation_Gross.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-            Me.RadioButtonInformation_Gross.Checked = True
-            Me.RadioButtonInformation_Gross.CheckState = System.Windows.Forms.CheckState.Checked
-            Me.RadioButtonInformation_Gross.CheckValue = "Y"
-            Me.RadioButtonInformation_Gross.Location = New System.Drawing.Point(236, 292)
-            Me.RadioButtonInformation_Gross.Name = "RadioButtonInformation_Gross"
-            Me.RadioButtonInformation_Gross.SecurityEnabled = True
-            Me.RadioButtonInformation_Gross.Size = New System.Drawing.Size(106, 20)
-            Me.RadioButtonInformation_Gross.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.RadioButtonInformation_Gross.TabIndex = 26
-            Me.RadioButtonInformation_Gross.TabOnEnter = True
-            Me.RadioButtonInformation_Gross.Tag = "1"
-            Me.RadioButtonInformation_Gross.Text = "Gross Rates"
-            '
-            'NumericInputInformation_Length
-            '
-            Me.NumericInputInformation_Length.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputInformation_Length.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Short]
-            Me.NumericInputInformation_Length.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputInformation_Length.EnterMoveNextControl = True
-            Me.NumericInputInformation_Length.Location = New System.Drawing.Point(78, 292)
-            Me.NumericInputInformation_Length.Name = "NumericInputInformation_Length"
-            Me.NumericInputInformation_Length.Properties.AllowMouseWheel = False
-            Me.NumericInputInformation_Length.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-            Me.NumericInputInformation_Length.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
-            Me.NumericInputInformation_Length.Properties.Appearance.Options.UseBackColor = True
-            Me.NumericInputInformation_Length.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputInformation_Length.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputInformation_Length.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputInformation_Length.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputInformation_Length.Properties.IsFloatValue = False
-            Me.NumericInputInformation_Length.Properties.Mask.EditMask = "f0"
-            Me.NumericInputInformation_Length.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputInformation_Length.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 0})
-            Me.NumericInputInformation_Length.Properties.MinValue = New Decimal(New Integer() {32768, 0, 0, -2147483648})
-            Me.NumericInputInformation_Length.SecurityEnabled = True
-            Me.NumericInputInformation_Length.Size = New System.Drawing.Size(152, 20)
-            Me.NumericInputInformation_Length.TabIndex = 25
-            '
-            'LabelInformation_Length
-            '
-            Me.LabelInformation_Length.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelInformation_Length.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelInformation_Length.Location = New System.Drawing.Point(4, 292)
-            Me.LabelInformation_Length.Name = "LabelInformation_Length"
-            Me.LabelInformation_Length.Size = New System.Drawing.Size(68, 20)
-            Me.LabelInformation_Length.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelInformation_Length.TabIndex = 24
-            Me.LabelInformation_Length.Text = "Length:"
-            '
-            'TabItemWorksheetDetails_InformationTab
-            '
-            Me.TabItemWorksheetDetails_InformationTab.AttachedControl = Me.TabControlPanelInformationTab_Information
-            Me.TabItemWorksheetDetails_InformationTab.Name = "TabItemWorksheetDetails_InformationTab"
-            Me.TabItemWorksheetDetails_InformationTab.Text = "Information"
-            '
             'TabControlPanelCommentsTab_Comments
             '
             Me.TabControlPanelCommentsTab_Comments.Controls.Add(Me.LabelComments_MediaPlanComments)
@@ -1262,7 +1264,7 @@
             Me.TabControlPanelCommentsTab_Comments.Location = New System.Drawing.Point(0, 27)
             Me.TabControlPanelCommentsTab_Comments.Name = "TabControlPanelCommentsTab_Comments"
             Me.TabControlPanelCommentsTab_Comments.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCommentsTab_Comments.Size = New System.Drawing.Size(487, 410)
+            Me.TabControlPanelCommentsTab_Comments.Size = New System.Drawing.Size(527, 410)
             Me.TabControlPanelCommentsTab_Comments.Style.BackColor1.Color = System.Drawing.Color.White
             Me.TabControlPanelCommentsTab_Comments.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
             Me.TabControlPanelCommentsTab_Comments.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
@@ -1310,7 +1312,7 @@
             Me.TextBoxComments_MediaPlanComments.Name = "TextBoxComments_MediaPlanComments"
             Me.TextBoxComments_MediaPlanComments.SecurityEnabled = True
             Me.TextBoxComments_MediaPlanComments.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxComments_MediaPlanComments.Size = New System.Drawing.Size(355, 213)
+            Me.TextBoxComments_MediaPlanComments.Size = New System.Drawing.Size(395, 225)
             Me.TextBoxComments_MediaPlanComments.StartingFolderName = Nothing
             Me.TextBoxComments_MediaPlanComments.TabIndex = 25
             Me.TextBoxComments_MediaPlanComments.TabOnEnter = False
@@ -1336,7 +1338,7 @@
             Me.TextBoxComments_Comment.Name = "TextBoxComments_Comment"
             Me.TextBoxComments_Comment.SecurityEnabled = True
             Me.TextBoxComments_Comment.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxComments_Comment.Size = New System.Drawing.Size(355, 193)
+            Me.TextBoxComments_Comment.Size = New System.Drawing.Size(395, 193)
             Me.TextBoxComments_Comment.StartingFolderName = Nothing
             Me.TextBoxComments_Comment.TabIndex = 24
             Me.TextBoxComments_Comment.TabOnEnter = False
@@ -1373,7 +1375,7 @@
             Me.TabControlPanelDemosTab_Demos.Location = New System.Drawing.Point(0, 27)
             Me.TabControlPanelDemosTab_Demos.Name = "TabControlPanelDemosTab_Demos"
             Me.TabControlPanelDemosTab_Demos.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelDemosTab_Demos.Size = New System.Drawing.Size(487, 410)
+            Me.TabControlPanelDemosTab_Demos.Size = New System.Drawing.Size(527, 410)
             Me.TabControlPanelDemosTab_Demos.Style.BackColor1.Color = System.Drawing.Color.White
             Me.TabControlPanelDemosTab_Demos.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
             Me.TabControlPanelDemosTab_Demos.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
@@ -1423,7 +1425,7 @@
             Me.ComboBoxDemos_Source.Name = "ComboBoxDemos_Source"
             Me.ComboBoxDemos_Source.ReadOnly = False
             Me.ComboBoxDemos_Source.SecurityEnabled = True
-            Me.ComboBoxDemos_Source.Size = New System.Drawing.Size(373, 22)
+            Me.ComboBoxDemos_Source.Size = New System.Drawing.Size(413, 22)
             Me.ComboBoxDemos_Source.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.ComboBoxDemos_Source.TabIndex = 1
             Me.ComboBoxDemos_Source.TabOnEnter = True
@@ -1454,7 +1456,7 @@
             Me.SearchableComboBoxDemos_PrimaryDemo.Properties.ValueMember = "ID"
             Me.SearchableComboBoxDemos_PrimaryDemo.SecurityEnabled = True
             Me.SearchableComboBoxDemos_PrimaryDemo.SelectedValue = ""
-            Me.SearchableComboBoxDemos_PrimaryDemo.Size = New System.Drawing.Size(373, 20)
+            Me.SearchableComboBoxDemos_PrimaryDemo.Size = New System.Drawing.Size(413, 20)
             Me.SearchableComboBoxDemos_PrimaryDemo.TabIndex = 3
             '
             'SearchableComboBoxViewDemos_PrimaryDemo
@@ -1534,7 +1536,7 @@
             Me.DataGridViewDemos_SecondaryDemos.SelectRowsWhenSelectDeselectAllButtonClicked = True
             Me.DataGridViewDemos_SecondaryDemos.ShowRowSelectionIfHidden = True
             Me.DataGridViewDemos_SecondaryDemos.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewDemos_SecondaryDemos.Size = New System.Drawing.Size(479, 342)
+            Me.DataGridViewDemos_SecondaryDemos.Size = New System.Drawing.Size(519, 342)
             Me.DataGridViewDemos_SecondaryDemos.TabIndex = 4
             Me.DataGridViewDemos_SecondaryDemos.UseEmbeddedNavigator = False
             Me.DataGridViewDemos_SecondaryDemos.ViewCaptionHeight = -1
@@ -1664,11 +1666,35 @@
             Me.ButtonItemMatching_SeparationSettings.SubItemsExpandWidth = 14
             Me.ButtonItemMatching_SeparationSettings.Text = "Separation Settings"
             '
+            'CheckBoxInformation_DefaultToMostRecentFourWeekRatings
+            '
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.CheckValue = 0
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.CheckValueChecked = 1
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.CheckValueUnchecked = 0
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.ChildControls = Nothing
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Location = New System.Drawing.Point(255, 318)
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Name = "CheckBoxInformation_DefaultToMostRecentFourWeekRatings"
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.OldestSibling = Nothing
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.SecurityEnabled = True
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.SiblingControls = Nothing
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Size = New System.Drawing.Size(226, 20)
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.TabIndex = 30
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.TabOnEnter = True
+            Me.CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Text = "Default to most recent 4-week ratings"
+            '
             'MediaBroadcastWorksheetEditDialog
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-            Me.ClientSize = New System.Drawing.Size(521, 624)
+            Me.ClientSize = New System.Drawing.Size(561, 624)
             Me.CloseButtonVisible = False
             Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
             Me.Name = "MediaBroadcastWorksheetEditDialog"
@@ -1688,11 +1714,11 @@
             CType(Me.DateEditInformation_StartDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.TabControlForm_WorksheetDetails, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlForm_WorksheetDetails.ResumeLayout(False)
+            Me.TabControlPanelInformationTab_Information.ResumeLayout(False)
+            CType(Me.NumericInputInformation_Length.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlPanelMatchingTab_Matching.ResumeLayout(False)
             CType(Me.VerticalGridMatching_Settings, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.InvoiceMatchingSettingBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelInformationTab_Information.ResumeLayout(False)
-            CType(Me.NumericInputInformation_Length.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlPanelCommentsTab_Comments.ResumeLayout(False)
             Me.TabControlPanelDemosTab_Demos.ResumeLayout(False)
             CType(Me.SearchableComboBoxDemos_PrimaryDemo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1778,6 +1804,7 @@
         Friend WithEvents categorySpotMatchingSettings As DevExpress.XtraVerticalGrid.Rows.CategoryRow
         Friend WithEvents LabelInformation_Country As WinForm.MVC.Presentation.Controls.Label
         Friend WithEvents ComboBoxInformation_Country As WinForm.MVC.Presentation.Controls.ComboBox
+        Friend WithEvents CheckBoxInformation_DefaultToMostRecentFourWeekRatings As WinForm.MVC.Presentation.Controls.CheckBox
     End Class
 
 End Namespace

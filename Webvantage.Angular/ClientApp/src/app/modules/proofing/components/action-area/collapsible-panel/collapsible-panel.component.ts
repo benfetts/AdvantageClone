@@ -18,6 +18,7 @@ import { IFeedback } from '../../../interfaces/feedback';
 import { FeedbackService } from '../../../services/feedback.service';
 import { filter, map } from 'rxjs/operators';
 import { RIGHT_PANEL_BUTTONS_TYPES } from '../../../constants/types/right-panel-buttons-types.constants';
+import { SearchService } from '../../../services/search.service';
 
 @Component({
   selector: 'proof-collapsible-panel',
@@ -47,6 +48,7 @@ export class CollapsiblePanelComponent implements OnInit {
     private rightPanelButtonsService: RightPanelButtonsService,
     private annotationService: AnnotationService,
     private textSelectService: TextSelectService,
+    private searchService: SearchService,
     private ref: ChangeDetectorRef) {
 
   }
@@ -66,6 +68,13 @@ export class CollapsiblePanelComponent implements OnInit {
       }
       else if (fubar.selected == true && this.selectedAnnotation != null && this.selectedAnnotation.draft) {
         this.description = this.selectedAnnotation.markup;
+      }
+    });
+
+    this.rightPanelButtonsService.getRightPanelButtons().pipe(map(buttons => buttons.search)).subscribe((search) => {
+      if (search.selected == false) {
+        this.searchService.clearSearch();
+        this.searchService.setSearchOptions(null);
       }
     });
 

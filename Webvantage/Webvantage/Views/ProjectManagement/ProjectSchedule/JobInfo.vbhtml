@@ -470,6 +470,8 @@
             }
         });
 
+        loadProjectManager();
+
         jobInfoChange = false;
 
         setSave();
@@ -491,6 +493,7 @@
                     $("#ProjectManagerName").text(response.EmpFName + ((response.EmpMI == null || response.EmpMI == '') ? ' ' : ' ' + response.EmpMI + '. ') + response.EmpLName);
                 }
                 else {
+                    $("#ProjectManagerName").text('');
                     $("#EmpImage").attr('src', "@Href("~/Images/Icons/White/256/user.png")");
                     $("#EmpImage").attr('title', 'Project Manager');
                 }

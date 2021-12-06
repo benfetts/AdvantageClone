@@ -10518,6 +10518,8 @@
             Dim Books As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook) = Nothing
             Dim Market As AdvantageFramework.Database.Entities.Market = Nothing
             Dim IsAgencyASP As Boolean = False
+            Dim MediaBroadcastWorksheetMarket As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetMarket = Nothing
+            Dim NPRStation As AdvantageFramework.Database.Entities.NPRStation = Nothing
 
             Try
 
@@ -10603,8 +10605,6 @@
 
                     MediaBroadcastWorksheetController = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(Session)
 
-
-
                     For Each MediaBroadcastWorksheetPreBuyReport In MediaBroadcastWorksheetPreBuyReports
 
                         MediaBroadcastWorksheetPreBuyReport.StationName = MediaBroadcastWorksheetPreBuyReport.VendorName
@@ -10650,6 +10650,24 @@
                                     End If
 
                                 End If
+
+                            End If
+
+                        End If
+
+                        If MediaBroadcastWorksheetPreBuyReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico AndAlso Session.IsNielsenPuertoRicoSetup Then
+
+                            MediaBroadcastWorksheetMarket = AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID)
+
+                            If MediaBroadcastWorksheetMarket IsNot Nothing AndAlso MediaBroadcastWorksheetMarket.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarket.PeriodEnd.HasValue Then
+
+                                MediaBroadcastWorksheetPreBuyReport.SchedulePeriod = MediaBroadcastWorksheetMarket.PeriodStart.Value.ToShortDateString & "-" & MediaBroadcastWorksheetMarket.PeriodEnd.Value.ToShortDateString
+
+                            End If
+
+                            If MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarketBook.PeriodEnd.HasValue Then
+
+                                MediaBroadcastWorksheetPreBuyReport.PreBuyPeriod = MediaBroadcastWorksheetMarketBook.PeriodStart.Value.ToShortDateString & "-" & MediaBroadcastWorksheetMarketBook.PeriodEnd.Value.ToShortDateString
 
                             End If
 
@@ -11247,6 +11265,116 @@
 
                     End If
 
+                    If MediaBroadcastWorksheetPreBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPreBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico) AndAlso Session.IsNielsenPuertoRicoSetup Then
+
+                        For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetPreBuyReports.Where(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico).Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
+
+                            MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
+
+                            If MediaBroadcastWorksheetMarketBook.UsePrimaryDemo AndAlso MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.HasValue Then
+
+                                MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.Value)
+
+                            ElseIf MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.HasValue Then
+
+                                MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.Value)
+
+                            End If
+
+                            If MediaDemographic IsNot Nothing Then
+
+                                NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
+
+                                StationCodes = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                      Entity.NielsenTVStationCode.HasValue AndAlso
+                                                      Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+                                                Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
+
+                                For Each StationCode In StationCodes
+
+                                    MediaBroadcastWorksheetPreBuyReport = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                                           Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                 Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                 Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+                                                                           Select Entity).FirstOrDefault
+
+                                    If MediaBroadcastWorksheetPreBuyReport IsNot Nothing Then
+
+                                        NPRStation = (From Entity In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.NPRStation)
+                                                      Where Entity.ID = CInt(StationCode)
+                                                      Select Entity).SingleOrDefault
+
+                                        If NPRStation IsNot Nothing Then
+
+                                            MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                                                      Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                            Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                            Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID
+                                                                                      Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
+
+                                            MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+
+                                            MediaSpotTVResearchDaytimeTypes.AddRange(From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketDetailIDs(DbContext, MediaBroadcastWorksheetMarketDetailIDs).ToList
+                                                                                     Select New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(Entity))
+
+                                            TVWorksheetRatingAndShareDataList = Nothing
+
+                                            If MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarketBook.PeriodEnd.HasValue Then
+
+                                                TVWorksheetRatingAndShareDataList = MediaBroadcastWorksheetController.GetNielsenTVPuertoRicoRatings(MediaBroadcastWorksheetMarketBook.PeriodStart.Value, MediaBroadcastWorksheetMarketBook.PeriodEnd.Value, CInt(StationCode), MediaSpotTVResearchDaytimeTypes, MediaDemographic.ID, Nothing)
+
+                                            Else
+
+                                                MediaBroadcastWorksheetMarket = AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID)
+
+                                                If MediaBroadcastWorksheetMarket IsNot Nothing AndAlso MediaBroadcastWorksheetMarket.PeriodStart.HasValue AndAlso MediaBroadcastWorksheetMarket.PeriodEnd.HasValue Then
+
+                                                    TVWorksheetRatingAndShareDataList = MediaBroadcastWorksheetController.GetNielsenTVPuertoRicoRatings(MediaBroadcastWorksheetMarket.PeriodStart.Value, MediaBroadcastWorksheetMarket.PeriodEnd.Value, CInt(StationCode), MediaSpotTVResearchDaytimeTypes, MediaDemographic.ID, Nothing)
+
+                                                End If
+
+                                            End If
+
+                                            If TVWorksheetRatingAndShareDataList IsNot Nothing AndAlso TVWorksheetRatingAndShareDataList.Count > 0 Then
+
+                                                For Each TVWorksheetRatingAndShareData In TVWorksheetRatingAndShareDataList
+
+                                                    MediaBroadcastWorksheetPreBuyReport = (From Entity In MediaBroadcastWorksheetPreBuyReports
+                                                                                           Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                                 Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                                 Entity.MediaBroadcastWorksheetMarketDetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID).SingleOrDefault
+
+                                                    If MediaBroadcastWorksheetPreBuyReport IsNot Nothing Then
+
+                                                        If MediaBroadcastWorksheetMarketBook.UseImpressions Then
+
+                                                            MediaBroadcastWorksheetPreBuyReport.SpotUpdatedEstimate = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+
+                                                        Else
+
+                                                            MediaBroadcastWorksheetPreBuyReport.SpotUpdatedEstimate = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
+
+                                                        End If
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                        End If
+
+                                    End If
+
+                                Next
+
+                            End If
+
+                        Next
+
+                    End If
+
                 End If
 
             Catch ex As Exception
@@ -11329,6 +11457,8 @@
             Dim ShareHPUTBookController As AdvantageFramework.Controller.Media.ShareHPUTBookController = Nothing
             Dim NielsenTVBooks As Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.NielsenTVBook) = Nothing
             Dim OldComscoreMarketNumber As Integer = 0
+            Dim NPRStation As AdvantageFramework.Database.Entities.NPRStation = Nothing
+            Dim MediaBroadcastWorksheetController As AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController = Nothing
 
             Try
 
@@ -12404,6 +12534,159 @@
 
                     End If
 
+                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico) AndAlso Session.IsNielsenPuertoRicoSetup Then
+
+                        MediaBroadcastWorksheetController = New AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController(Session)
+
+                        For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetPostBuyReports.Where(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico).Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
+
+                            MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
+
+                            If MediaBroadcastWorksheetMarketBook.UsePrimaryDemo Then
+
+                                If MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.HasValue Then
+
+                                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.Value)
+
+                                Else
+
+                                    MediaDemographic = Nothing
+
+                                End If
+
+                            Else
+
+                                If MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.HasValue Then
+
+                                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.Value)
+
+                                Else
+
+                                    MediaDemographic = Nothing
+
+                                End If
+
+                            End If
+
+                            If MediaDemographic IsNot Nothing Then
+
+                                NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
+
+                                StationCodes = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                Where Entity.NielsenTVStationCode.HasValue AndAlso
+                                                      Entity.NielsenMarketNumber = NielsenMarketNumber
+                                                Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
+
+                                For Each StationCode In StationCodes
+
+                                    MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                            Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                  Entity.NielsenTVStationCode = CInt(StationCode)
+                                                                            Select Entity).FirstOrDefault
+
+                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+
+                                        AllMediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+                                        MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+
+                                        DetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                     Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                           Entity.NielsenTVStationCode = CInt(StationCode) AndAlso
+                                                           Entity.DetailID.HasValue
+                                                     Select Entity.DetailID.Value).ToArray
+
+                                        NPRStation = (From Entity In DbContext.GetQuery(Of AdvantageFramework.Database.Entities.NPRStation)
+                                                      Where Entity.ID = CInt(StationCode)
+                                                      Select Entity).SingleOrDefault
+
+                                        If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 AndAlso NPRStation IsNot Nothing Then
+
+                                            AllMediaSpotTVResearchDaytimeTypes.AddRange((From Entity In AdvantageFramework.Database.Procedures.AccountPayableTVBroadcastDetail.Load(DbContext)
+                                                                                         Where DetailIDs.Contains(Entity.ID)
+                                                                                         Select Entity).ToList.Select(Function(E) New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(E, True)))
+
+                                            MediaSpotTVResearchDaytimeTypes = AllMediaSpotTVResearchDaytimeTypes
+
+                                            If RunBySpotBook OrElse MediaSpotTVResearchDaytimeTypes.Count > 0 Then
+
+                                                If TVWorksheetRatingAndShareDataList Is Nothing Then
+
+                                                    TVWorksheetRatingAndShareDataList = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData)
+
+                                                End If
+
+                                                For Each MediaSpotTVResearchDaytimeType In MediaSpotTVResearchDaytimeTypes.Where(Function(Entity) Entity.ExactSpotDate.HasValue).ToList
+
+                                                    TVWorksheetRatingAndShareData = (From Entity In MediaBroadcastWorksheetController.GetNielsenTVPuertoRicoRatings(MediaSpotTVResearchDaytimeType.ExactSpotDate.Value.ToShortDateString, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value.ToShortDateString, CInt(StationCode), MediaSpotTVResearchDaytimeTypes, MediaDemographic.ID, Nothing).ToList
+                                                                                     Where Entity.MediaDemoID = MediaDemographic.ID AndAlso
+                                                                                           Entity.MediaBroadcastWorksheetMarketDetailID = MediaSpotTVResearchDaytimeType.ID
+                                                                                     Select Entity).SingleOrDefault
+
+                                                    'If TVWorksheetRatingAndShareDatas.Count = 1 Then
+                                                    '    TVWorksheetRatingAndShareData = TVWorksheetRatingAndShareDatas.First
+                                                    'Else
+                                                    '    TVWorksheetRatingAndShareData = TVWorksheetRatingAndShareDatas.FirstOrDefault
+                                                    'End If
+
+                                                    If TVWorksheetRatingAndShareData IsNot Nothing Then
+
+                                                        TVWorksheetRatingAndShareDataList.Add(TVWorksheetRatingAndShareData)
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                            If TVWorksheetRatingAndShareDataList IsNot Nothing AndAlso TVWorksheetRatingAndShareDataList.Count > 0 Then
+
+                                                For Each TVWorksheetRatingAndShareData In TVWorksheetRatingAndShareDataList
+
+                                                    MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                                            Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                                  Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                                  Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
+
+                                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailProgram = TVWorksheetRatingAndShareData.ProgramName
+
+                                                    End If
+
+                                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing AndAlso ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePost = False) OrElse
+                                                                                                                   (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) Then
+
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailActualRating = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
+
+                                                        If MediaBroadcastWorksheetMarketBook.UseImpressions Then
+
+                                                            MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+
+                                                        Else
+
+                                                            MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
+
+                                                        End If
+
+                                                    End If
+
+                                                Next
+
+                                            End If
+
+                                        End If
+
+                                    End If
+
+                                Next
+
+                            End If
+
+                        Next
+
+                    End If
+
                     MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
                                                               Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
 
@@ -12615,19 +12898,19 @@
 
                 If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Count > 0 Then
 
-                    Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+                    For Each MediaBroadcastWorksheetPostBuyReport In MediaBroadcastWorksheetPostBuyReports
 
-                        For Each MediaBroadcastWorksheetPostBuyReport In MediaBroadcastWorksheetPostBuyReports
+                        MediaBroadcastWorksheetPostBuyReport.StationName = MediaBroadcastWorksheetPostBuyReport.VendorName
 
-                            MediaBroadcastWorksheetPostBuyReport.StationName = MediaBroadcastWorksheetPostBuyReport.VendorName
+                        MediaBroadcastWorksheetMarketBook = (From Entity In MediaBroadcastWorksheetMarketBookList
+                                                             Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetPostBuyReport.MediaBroadcastWorksheetMarketID
+                                                             Select Entity).FirstOrDefault
 
-                            MediaBroadcastWorksheetMarketBook = (From Entity In MediaBroadcastWorksheetMarketBookList
-                                                                 Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetPostBuyReport.MediaBroadcastWorksheetMarketID
-                                                                 Select Entity).FirstOrDefault
+                        If MediaBroadcastWorksheetMarketBook IsNot Nothing AndAlso MediaBroadcastWorksheetMarketBook.ShareBookID > 0 Then
 
-                            If MediaBroadcastWorksheetMarketBook IsNot Nothing AndAlso MediaBroadcastWorksheetMarketBook.ShareBookID > 0 Then
+                            If MediaBroadcastWorksheetPostBuyReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen AndAlso Session.IsNielsenSetup Then
 
-                                If MediaBroadcastWorksheetPostBuyReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen AndAlso Session.IsNielsenSetup Then
+                                Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
 
                                     NielsenTVBookEntity = AdvantageFramework.Nielsen.Database.Procedures.NielsenTVBook.LoadByID(NielsenDbContext, MediaBroadcastWorksheetMarketBook.ShareBookID)
 
@@ -12643,19 +12926,19 @@
 
                                     End If
 
-                                ElseIf MediaBroadcastWorksheetPostBuyReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore AndAlso Session.IsComscoreSetup Then
+                                End Using
 
-                                    ComscoreTVBook = AdvantageFramework.Database.Procedures.ComscoreTVBook.LoadByID(DbContext, MediaBroadcastWorksheetMarketBook.ShareBookID)
+                            ElseIf MediaBroadcastWorksheetPostBuyReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore AndAlso Session.IsComscoreSetup Then
 
-                                    If ComscoreTVBook IsNot Nothing Then
+                                ComscoreTVBook = AdvantageFramework.Database.Procedures.ComscoreTVBook.LoadByID(DbContext, MediaBroadcastWorksheetMarketBook.ShareBookID)
 
-                                        NielsenTVBook = New AdvantageFramework.DTO.Media.SpotTV.NielsenTVBook(ComscoreTVBook)
+                                If ComscoreTVBook IsNot Nothing Then
 
-                                        If NielsenTVBook IsNot Nothing Then
+                                    NielsenTVBook = New AdvantageFramework.DTO.Media.SpotTV.NielsenTVBook(ComscoreTVBook)
 
-                                            MediaBroadcastWorksheetPostBuyReport.PostBook = NielsenTVBook.Description
+                                    If NielsenTVBook IsNot Nothing Then
 
-                                        End If
+                                        MediaBroadcastWorksheetPostBuyReport.PostBook = NielsenTVBook.Description
 
                                     End If
 
@@ -12663,9 +12946,13 @@
 
                             End If
 
-                        Next
+                        End If
 
-                        If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen) AndAlso Session.IsNielsenSetup Then
+                    Next
+
+                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen) AndAlso Session.IsNielsenSetup Then
+
+                        Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
 
                             For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetPostBuyReports.Where(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen).Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
 
@@ -12764,7 +13051,7 @@
                                         DemographicID = MediaDemographic.ID
 
                                         MediaDemoTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaDemoType) From {New AdvantageFramework.Classes.Media.Nielsen.MediaDemoType With {.ID = MediaDemographic.ID,
-                                                                                                                                                                                                            .Description = MediaDemographic.Description}}
+                                                                                                                                                                                                        .Description = MediaDemographic.Description}}
 
                                     Else
 
@@ -12776,7 +13063,7 @@
 
                                     MediaDemoDetailTypes = (From MediaDemographicDetail In AdvantageFramework.Database.Procedures.MediaDemographicDetail.Load(DbContext).Where(Function(Entity) Entity.MediaDemographicID = DemographicID).ToList
                                                             Select New AdvantageFramework.Classes.Media.Nielsen.MediaDemoDetailType With {.MediaDemographicID = MediaDemographicDetail.MediaDemographicID,
-                                                                                                                                          .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
+                                                                                                                                      .NielsenDemographicID = MediaDemographicDetail.NielsenDemographicID}).ToList
 
                                     NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
 
@@ -12784,15 +13071,15 @@
 
                                     For Each VendorCode In (From Entity In CDMAMediaBroadcastWorksheetPostBuyReports
                                                             Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                  Entity.NielsenTVStationCode.HasValue AndAlso
-                                                                  Entity.NielsenTVStationCode <> 0
+                                                              Entity.NielsenTVStationCode.HasValue AndAlso
+                                                              Entity.NielsenTVStationCode <> 0
                                                             Select CStr(Entity.VendorCode)).Distinct.ToArray
 
                                         StationCodes = (From Entity In CDMAMediaBroadcastWorksheetPostBuyReports
                                                         Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                              Entity.NielsenTVStationCode.HasValue AndAlso
-                                                              Entity.NielsenTVStationCode <> 0 AndAlso
-                                                              Entity.VendorCode = VendorCode
+                                                          Entity.NielsenTVStationCode.HasValue AndAlso
+                                                          Entity.NielsenTVStationCode <> 0 AndAlso
+                                                          Entity.VendorCode = VendorCode
                                                         Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
 
                                         For Each StationCode In StationCodes
@@ -12801,9 +13088,9 @@
 
                                             DetailIDs = (From Entity In CDMAMediaBroadcastWorksheetPostBuyReports
                                                          Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                               Entity.NielsenTVStationCode = StationCode AndAlso
-                                                               Entity.DetailID.HasValue AndAlso
-                                                               Entity.VendorCode = VendorCode
+                                                           Entity.NielsenTVStationCode = StationCode AndAlso
+                                                           Entity.DetailID.HasValue AndAlso
+                                                           Entity.VendorCode = VendorCode
                                                          Select Entity.DetailID.Value).ToArray
 
                                             If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 Then
@@ -12814,8 +13101,8 @@
 
                                                 FoundNCCTVSyscodeID = (From Entity In CDMAMediaBroadcastWorksheetPostBuyReports
                                                                        Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                             Entity.NielsenTVStationCode = StationCode AndAlso
-                                                                             Entity.VendorCode = VendorCode
+                                                                         Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                         Entity.VendorCode = VendorCode
                                                                        Select Entity.NCCTVSyscodeID).FirstOrDefault
 
                                                 If FoundNCCTVSyscodeID.HasValue Then
@@ -12823,8 +13110,8 @@
                                                     If Not RunBySpotBook Then
 
                                                         TVWorksheetRatingAndShareDataList = GetNielsenTVCDMARatingAndShareData(Session, NielsenMarketNumber, BookIDs, HPUTBookIDs,
-                                                                                                                               MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, MediaSpotTVResearchDaytimeTypes,
-                                                                                                                               FoundNCCTVSyscodeID.Value)
+                                                                                                                           MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, MediaSpotTVResearchDaytimeTypes,
+                                                                                                                           FoundNCCTVSyscodeID.Value)
 
                                                     Else
 
@@ -12841,32 +13128,32 @@
                                                                 NielsenTVBooks = ShareHPUTBookController.GetRepositoryNielsenTVBooksForCableCDMA(NielsenMarketNumber)
 
                                                                 If NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                    B.RawStream = UseStream AndAlso
-                                                                                                    B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                    B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                    ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
-                                                                                                     (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).Any Then
+                                                                                                B.RawStream = UseStream AndAlso
+                                                                                                B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
+                                                                                                 (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).Any Then
 
                                                                     SpotBookIDs.Add(MediaSpotTVResearchDaytimeType.ID, NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                    B.RawStream = UseStream AndAlso
-                                                                                                    B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                    B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                    ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
-                                                                                                     (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).First.ID)
+                                                                                                B.RawStream = UseStream AndAlso
+                                                                                                B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
+                                                                                                 (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).First.ID)
 
                                                                 Else
 
                                                                     If NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                        B.RawStream = UseStream AndAlso
-                                                                                                        B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                        ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
-                                                                                                         (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).Any Then
+                                                                                                    B.RawStream = UseStream AndAlso
+                                                                                                    B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                    ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
+                                                                                                     (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).Any Then
 
                                                                         SpotBookIDs.Add(MediaSpotTVResearchDaytimeType.ID, NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                        B.RawStream = UseStream AndAlso
-                                                                                                        B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                        ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
-                                                                                                         (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).First.ID)
+                                                                                                    B.RawStream = UseStream AndAlso
+                                                                                                    B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                    ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
+                                                                                                     (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).First.ID)
 
                                                                     End If
 
@@ -12875,11 +13162,11 @@
                                                             Else
 
                                                                 NielsenTVBookEntity = NielsenDbContext.NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                                                        B.Stream = UseStream AndAlso
-                                                                                                                                        B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                                                        B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                                                        ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
-                                                                                                                                         (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).FirstOrDefault
+                                                                                                                                    B.Stream = UseStream AndAlso
+                                                                                                                                    B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                                                    B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                                                    ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
+                                                                                                                                     (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).FirstOrDefault
 
                                                                 If NielsenTVBookEntity IsNot Nothing Then
 
@@ -12888,10 +13175,10 @@
                                                                 Else 'find previous book
 
                                                                     NielsenTVBookEntity = NielsenDbContext.NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                                                            B.Stream = UseStream AndAlso
-                                                                                                                                            B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                                                            ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
-                                                                                                                                             (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).FirstOrDefault
+                                                                                                                                        B.Stream = UseStream AndAlso
+                                                                                                                                        B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                                                        ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
+                                                                                                                                         (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).FirstOrDefault
 
                                                                     If NielsenTVBookEntity IsNot Nothing Then
 
@@ -12910,7 +13197,7 @@
                                                             SpotMediaSpotTVResearchDaytimeTypes = MediaSpotTVResearchDaytimeTypes.Where(Function(D) SpotBookIDs.Where(Function(V) V.Value = BookID).Select(Function(V) V.Key).Contains(D.ID)).ToList
 
                                                             TVWorksheetRatingAndShareDataList.AddRange(GetNielsenTVCDMARatingAndShareData(Session, NielsenMarketNumber, New String() {BookID.ToString}, New String() {},
-                                                                                                                                            MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, SpotMediaSpotTVResearchDaytimeTypes, FoundNCCTVSyscodeID.Value))
+                                                                                                                                        MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, SpotMediaSpotTVResearchDaytimeTypes, FoundNCCTVSyscodeID.Value))
 
                                                         Next
 
@@ -12920,9 +13207,9 @@
 
                                                         MediaBroadcastWorksheetPostBuyReport = (From Entity In CDMAMediaBroadcastWorksheetPostBuyReports
                                                                                                 Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                      Entity.NielsenTVStationCode = TVWorksheetRatingAndShareData.StationCode AndAlso
-                                                                                                      Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID AndAlso
-                                                                                                      Entity.VendorCode = VendorCode).SingleOrDefault
+                                                                                                  Entity.NielsenTVStationCode = TVWorksheetRatingAndShareData.StationCode AndAlso
+                                                                                                  Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID AndAlso
+                                                                                                  Entity.VendorCode = VendorCode).SingleOrDefault
 
                                                         If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
 
@@ -12939,10 +13226,10 @@
                                                         End If
 
                                                         If MediaBroadcastWorksheetPostBuyReport IsNot Nothing AndAlso ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePost = False) OrElse
-                                                                                                                       (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) Then
+                                                                                                                   (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) Then
 
                                                             If MediaBroadcastWorksheetPostBuyReport.DetailTime = "258a" OrElse MediaBroadcastWorksheetPostBuyReport.DetailTime = "259a" OrElse
-                                                                    MediaBroadcastWorksheetPostBuyReport.DetailTime = "300a" OrElse MediaBroadcastWorksheetPostBuyReport.DetailTime = "301a" Then
+                                                                MediaBroadcastWorksheetPostBuyReport.DetailTime = "300a" OrElse MediaBroadcastWorksheetPostBuyReport.DetailTime = "301a" Then
 
                                                                 MediaSpotTVResearchDaytimeType = MediaSpotTVResearchDaytimeTypes.Where(Function(DT) DT.ID = MediaBroadcastWorksheetPostBuyReport.DetailID).SingleOrDefault
 
@@ -12951,10 +13238,10 @@
                                                                     AddMinutes = If(MediaBroadcastWorksheetPostBuyReport.DetailTime.StartsWith("2"), 2, -2)
 
                                                                     If MediaSpotTVResearchDaytimeTypes.Where(Function(DT) DT.ExactSpotDate.HasValue AndAlso
-                                                                                                                          DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).Any Then
+                                                                                                                      DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).Any Then
 
                                                                         MediaSpotTVResearchDaytimeTypeID = MediaSpotTVResearchDaytimeTypes.Where(Function(DT) DT.ExactSpotDate.HasValue AndAlso
-                                                                                                                                                              DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).First.ID
+                                                                                                                                                          DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).First.ID
 
                                                                         MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(((TVWorksheetRatingAndShareData.Impressions + TVWorksheetRatingAndShareDataList.Where(Function(R) R.MediaBroadcastWorksheetMarketDetailID = MediaSpotTVResearchDaytimeTypeID).First.Impressions) / 2) / 1000, 2)
                                                                         MediaBroadcastWorksheetPostBuyReport.DetailActualRating = FormatNumber((TVWorksheetRatingAndShareData.Rating + TVWorksheetRatingAndShareDataList.Where(Function(R) R.MediaBroadcastWorksheetMarketDetailID = MediaSpotTVResearchDaytimeTypeID).First.Rating) / 2, 2)
@@ -12986,8 +13273,8 @@
                                                                         End If
 
                                                                         TVWorksheetRatingAndShareDataAvg = GetNielsenTVCDMARatingAndShareData(Session, NielsenMarketNumber, BookIDs, HPUTBookIDs,
-                                                                                                                                              MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, MediaSpotTVResearchDaytimeTypeAvg,
-                                                                                                                                              FoundNCCTVSyscodeID.Value)
+                                                                                                                                          MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, MediaSpotTVResearchDaytimeTypeAvg,
+                                                                                                                                          FoundNCCTVSyscodeID.Value)
 
                                                                         If TVWorksheetRatingAndShareDataAvg IsNot Nothing AndAlso TVWorksheetRatingAndShareDataAvg.Count = 1 Then
 
@@ -13043,13 +13330,13 @@
 
                                     For Each VendorCode In (From Entity In DMAMediaBroadcastWorksheetPostBuyReports
                                                             Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                  Entity.NielsenTVStationCode.HasValue AndAlso
-                                                                  Entity.NielsenTVStationCode <> 0
+                                                              Entity.NielsenTVStationCode.HasValue AndAlso
+                                                              Entity.NielsenTVStationCode <> 0
                                                             Select CStr(Entity.VendorCode)).Distinct.ToArray
 
                                         StationCodes = (From Entity In DMAMediaBroadcastWorksheetPostBuyReports
                                                         Where Entity.NielsenTVStationCode.HasValue AndAlso
-                                                              Entity.VendorCode = VendorCode
+                                                          Entity.VendorCode = VendorCode
                                                         Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
 
                                         For Each StationCode In StationCodes
@@ -13058,9 +13345,9 @@
 
                                             DetailIDs = (From Entity In DMAMediaBroadcastWorksheetPostBuyReports
                                                          Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                               Entity.NielsenTVStationCode = StationCode AndAlso
-                                                               Entity.DetailID.HasValue AndAlso
-                                                               Entity.VendorCode = VendorCode
+                                                           Entity.NielsenTVStationCode = StationCode AndAlso
+                                                           Entity.DetailID.HasValue AndAlso
+                                                           Entity.VendorCode = VendorCode
                                                          Select Entity.DetailID.Value).ToArray
 
                                             If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 Then
@@ -13072,7 +13359,7 @@
                                                 If Not RunBySpotBook Then
 
                                                     TVWorksheetRatingAndShareDataList = GetNielsenTVRatingAndShareData(Session, NielsenMarketNumber, BookIDs, HPUTBookIDs,
-                                                                                                                       MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, MediaSpotTVResearchDaytimeTypes)
+                                                                                                                   MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, MediaSpotTVResearchDaytimeTypes)
 
                                                 Else
 
@@ -13083,11 +13370,11 @@
                                                     For Each MediaSpotTVResearchDaytimeType In MediaSpotTVResearchDaytimeTypes
 
                                                         NielsenTVBookEntity = NielsenDbContext.NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                                                B.Stream = UseStream AndAlso
-                                                                                                                                B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                                                B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                                                ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
-                                                                                                                                 (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).FirstOrDefault
+                                                                                                                            B.Stream = UseStream AndAlso
+                                                                                                                            B.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                                            B.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                                            ((IsImpact AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = True) OrElse
+                                                                                                                             (IsImpact = False AndAlso ImpactCollectionMethods.Contains(B.CollectionMethod) = False))).FirstOrDefault
 
                                                         If NielsenTVBookEntity IsNot Nothing Then
 
@@ -13096,9 +13383,9 @@
                                                         Else 'find previous book
 
                                                             NielsenTVBookEntity = NielsenDbContext.NielsenTVBooks.Where(Function(B) B.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                                                    B.Stream = UseStream AndAlso
-                                                                                                                                    B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                                                                                    ImpactCollectionMethods.Contains(B.CollectionMethod) = False).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).FirstOrDefault
+                                                                                                                                B.Stream = UseStream AndAlso
+                                                                                                                                B.EndDateTime < MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                                                                                ImpactCollectionMethods.Contains(B.CollectionMethod) = False).OrderByDescending(Function(B) B.Year).ThenByDescending(Function(B) B.Month).FirstOrDefault
 
                                                             If NielsenTVBookEntity IsNot Nothing Then
 
@@ -13115,7 +13402,7 @@
                                                         SpotMediaSpotTVResearchDaytimeTypes = MediaSpotTVResearchDaytimeTypes.Where(Function(D) SpotBookIDs.Where(Function(V) V.Value = BookID).Select(Function(V) V.Key).Contains(D.ID)).ToList
 
                                                         TVWorksheetRatingAndShareDataList.AddRange(GetNielsenTVRatingAndShareData(Session, NielsenMarketNumber, New String() {BookID.ToString}, New String() {},
-                                                                                                                                  MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, SpotMediaSpotTVResearchDaytimeTypes))
+                                                                                                                              MediaDemoTypes, MediaDemoDetailTypes, New String() {StationCode}, SpotMediaSpotTVResearchDaytimeTypes))
 
                                                     Next
 
@@ -13125,9 +13412,9 @@
 
                                                     MediaBroadcastWorksheetPostBuyReport = (From Entity In DMAMediaBroadcastWorksheetPostBuyReports
                                                                                             Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                  Entity.NielsenTVStationCode = TVWorksheetRatingAndShareData.StationCode AndAlso
-                                                                                                  Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID AndAlso
-                                                                                                  Entity.VendorCode = VendorCode).FirstOrDefault
+                                                                                              Entity.NielsenTVStationCode = TVWorksheetRatingAndShareData.StationCode AndAlso
+                                                                                              Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID AndAlso
+                                                                                              Entity.VendorCode = VendorCode).FirstOrDefault
 
                                                     If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
 
@@ -13146,10 +13433,10 @@
                                                     If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
 
                                                         If ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePost = False) OrElse
-                                                            (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) OrElse MediaBroadcastWorksheetMarketBook.IsFromMediaManager Then
+                                                        (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) OrElse MediaBroadcastWorksheetMarketBook.IsFromMediaManager Then
 
                                                             If MediaBroadcastWorksheetPostBuyReport.DetailTime = "258a" OrElse MediaBroadcastWorksheetPostBuyReport.DetailTime = "259a" OrElse
-                                                                    MediaBroadcastWorksheetPostBuyReport.DetailTime = "300a" OrElse MediaBroadcastWorksheetPostBuyReport.DetailTime = "301a" Then
+                                                                MediaBroadcastWorksheetPostBuyReport.DetailTime = "300a" OrElse MediaBroadcastWorksheetPostBuyReport.DetailTime = "301a" Then
 
                                                                 MediaSpotTVResearchDaytimeType = MediaSpotTVResearchDaytimeTypes.Where(Function(DT) DT.ID = MediaBroadcastWorksheetPostBuyReport.DetailID).SingleOrDefault
 
@@ -13158,10 +13445,10 @@
                                                                     AddMinutes = If(MediaBroadcastWorksheetPostBuyReport.DetailTime.StartsWith("2"), 2, -2)
 
                                                                     If MediaSpotTVResearchDaytimeTypes.Where(Function(DT) DT.ExactSpotDate.HasValue AndAlso
-                                                                                                                      DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).Any Then
+                                                                                                                  DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).Any Then
 
                                                                         MediaSpotTVResearchDaytimeTypeID = MediaSpotTVResearchDaytimeTypes.Where(Function(DT) DT.ExactSpotDate.HasValue AndAlso
-                                                                                                                                                          DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).First.ID
+                                                                                                                                                      DT.ExactSpotDate.Value = DateAdd(DateInterval.Day, If(AddMinutes = 2, 1, -1), DateAdd(DateInterval.Minute, AddMinutes, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value))).First.ID
 
                                                                         If MediaBroadcastWorksheetMarketBook.IsFromMediaManager = False OrElse (MediaBroadcastWorksheetMarketBook.IsFromMediaManager AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False) Then
 
@@ -13257,178 +13544,299 @@
 
                             Next
 
-                        End If
+                        End Using
 
-                        If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore) AndAlso Session.IsComscoreSetup Then
+                    End If
 
-                            ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)
+                    If MediaBroadcastWorksheetPostBuyReports IsNot Nothing AndAlso MediaBroadcastWorksheetPostBuyReports.Any(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore) AndAlso Session.IsComscoreSetup Then
 
-                            For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetPostBuyReports.Where(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore).Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
+                        ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)
 
-                                MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
+                        For Each MediaBroadcastWorksheetMarketID In MediaBroadcastWorksheetPostBuyReports.Where(Function(Entity) Entity.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore).Select(Function(Entity) Entity.MediaBroadcastWorksheetMarketID).Distinct.ToList
 
-                                If MediaBroadcastWorksheetMarketBook.UsePrimaryDemo Then
+                            MediaBroadcastWorksheetMarketBook = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First
 
-                                    If MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.HasValue Then
+                            If MediaBroadcastWorksheetMarketBook.UsePrimaryDemo Then
 
-                                        MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.Value)
+                                If MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.HasValue Then
 
-                                    Else
-
-                                        MediaDemographic = Nothing
-
-                                    End If
+                                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID.Value)
 
                                 Else
 
-                                    If MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.HasValue Then
+                                    MediaDemographic = Nothing
 
-                                        MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.Value)
+                                End If
+
+                            Else
+
+                                If MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.HasValue Then
+
+                                    MediaDemographic = AdvantageFramework.Database.Procedures.MediaDemographic.Load(DbContext).SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID.Value)
+
+                                Else
+
+                                    MediaDemographic = Nothing
+
+                                End If
+
+                            End If
+
+                            Demographics = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic)
+
+                            If MediaDemographic IsNot Nothing Then
+
+                                Demographics.Add(New AdvantageFramework.DTO.Media.SpotTV.Demographic(MediaDemographic))
+
+                            End If
+
+                            NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
+                            OldComscoreMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.OldComscoreMarketNumber
+
+                            StationCodes = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                            Where Entity.NielsenTVStationCode.HasValue AndAlso
+                                                      Entity.NielsenMarketNumber = NielsenMarketNumber
+                                            Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
+
+                            For Each StationCode In StationCodes
+
+                                MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                        Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                  Entity.NielsenTVStationCode = StationCode
+                                                                        Select Entity).FirstOrDefault
+
+                                If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+
+                                    AllMediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+                                    MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
+
+                                    DetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                 Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                       Entity.NielsenTVStationCode = StationCode AndAlso
+                                                       Entity.DetailID.HasValue
+                                                 Select Entity.DetailID.Value).ToArray
+
+                                    If MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.HasValue Then
+
+                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, CInt(StationCode))
 
                                     Else
 
-                                        MediaDemographic = Nothing
+                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByID(DbContext, CInt(StationCode))
 
                                     End If
 
-                                End If
+                                    If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 AndAlso ComscoreTVStation IsNot Nothing Then
 
-                                Demographics = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic)
+                                        AllMediaSpotTVResearchDaytimeTypes.AddRange((From Entity In AdvantageFramework.Database.Procedures.AccountPayableTVBroadcastDetail.Load(DbContext)
+                                                                                     Where DetailIDs.Contains(Entity.ID)
+                                                                                     Select Entity).ToList.Select(Function(E) New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(E)))
 
-                                If MediaDemographic IsNot Nothing Then
+                                        If RunBySpotBook = False Then 'postbook is selected
 
-                                    Demographics.Add(New AdvantageFramework.DTO.Media.SpotTV.Demographic(MediaDemographic))
+                                            ComscoreTVBook = DbContext.ComscoreTVBooks.Find(MediaBroadcastWorksheetMarketBook.ShareBookID.Value)
 
-                                End If
+                                            'MatchedMediaSpotTVResearchDaytimeTypes = (From Entity In AllMediaSpotTVResearchDaytimeTypes
+                                            '                                          Where ComscoreTVBook.StartDateTime <= Entity.ExactSpotDate.Value AndAlso
+                                            '                                                    ComscoreTVBook.EndDateTime >= Entity.ExactSpotDate.Value
+                                            '                                          Select Entity).ToList
 
-                                NielsenMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.NielsenMarketNumber
-                                OldComscoreMarketNumber = MediaBroadcastWorksheetMarketBookList.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID).First.OldComscoreMarketNumber
+                                            'MediaSpotTVResearchDaytimeTypes = (From Entity In AllMediaSpotTVResearchDaytimeTypes
+                                            '                                   Where MatchedMediaSpotTVResearchDaytimeTypes.Select(Function(NonAll) NonAll.ID).ToArray.Contains(Entity.ID) = False
+                                            '                                   Select Entity).ToList
 
-                                StationCodes = (From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                Where Entity.NielsenTVStationCode.HasValue AndAlso
-                                                          Entity.NielsenMarketNumber = NielsenMarketNumber
-                                                Select CStr(Entity.NielsenTVStationCode.Value)).Distinct.ToArray
+                                            MediaSpotTVResearchDaytimeTypes = AllMediaSpotTVResearchDaytimeTypes.ToList
 
-                                For Each StationCode In StationCodes
+                                            ShareHPUTBooks.Clear()
 
-                                    MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                                            Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                      Entity.NielsenTVStationCode = StationCode
-                                                                            Select Entity).FirstOrDefault
+                                            ShareHPUTBook = New AdvantageFramework.DTO.Media.ShareHPUTBook
+                                            ShareHPUTBook.ShareBookID = MediaBroadcastWorksheetMarketBook.ShareBookID
+                                            ShareHPUTBook.HPUTBookID = MediaBroadcastWorksheetMarketBook.HPUTBookID
 
-                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+                                            ShareHPUTBooks.Add(ShareHPUTBook)
 
-                                        AllMediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
-                                        MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
-
-                                        DetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                     Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                           Entity.NielsenTVStationCode = StationCode AndAlso
-                                                           Entity.DetailID.HasValue
-                                                     Select Entity.DetailID.Value).ToArray
-
-                                        If MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.HasValue Then
-
-                                            ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, CInt(StationCode))
+                                            TVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, Demographics, ShareHPUTBooks, MediaSpotTVResearchDaytimeTypes, OldComscoreMarketNumber, True)
 
                                         Else
 
-                                            ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByID(DbContext, CInt(StationCode))
+                                            MediaSpotTVResearchDaytimeTypes = AllMediaSpotTVResearchDaytimeTypes
 
                                         End If
 
-                                        If DetailIDs IsNot Nothing AndAlso DetailIDs.Count > 0 AndAlso ComscoreTVStation IsNot Nothing Then
+                                        If RunBySpotBook OrElse MediaSpotTVResearchDaytimeTypes.Count > 0 Then
 
-                                            AllMediaSpotTVResearchDaytimeTypes.AddRange((From Entity In AdvantageFramework.Database.Procedures.AccountPayableTVBroadcastDetail.Load(DbContext)
-                                                                                         Where DetailIDs.Contains(Entity.ID)
-                                                                                         Select Entity).ToList.Select(Function(E) New AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType(E)))
+                                            Books = New List(Of DTO.Media.ShareHPUTBook)
 
-                                            If RunBySpotBook = False Then 'postbook is selected
+                                            If TVWorksheetRatingAndShareDataList Is Nothing Then
 
-                                                ComscoreTVBook = DbContext.ComscoreTVBooks.Find(MediaBroadcastWorksheetMarketBook.ShareBookID.Value)
-
-                                                'MatchedMediaSpotTVResearchDaytimeTypes = (From Entity In AllMediaSpotTVResearchDaytimeTypes
-                                                '                                          Where ComscoreTVBook.StartDateTime <= Entity.ExactSpotDate.Value AndAlso
-                                                '                                                    ComscoreTVBook.EndDateTime >= Entity.ExactSpotDate.Value
-                                                '                                          Select Entity).ToList
-
-                                                'MediaSpotTVResearchDaytimeTypes = (From Entity In AllMediaSpotTVResearchDaytimeTypes
-                                                '                                   Where MatchedMediaSpotTVResearchDaytimeTypes.Select(Function(NonAll) NonAll.ID).ToArray.Contains(Entity.ID) = False
-                                                '                                   Select Entity).ToList
-
-                                                MediaSpotTVResearchDaytimeTypes = AllMediaSpotTVResearchDaytimeTypes.ToList
-
-                                                ShareHPUTBooks.Clear()
-
-                                                ShareHPUTBook = New AdvantageFramework.DTO.Media.ShareHPUTBook
-                                                ShareHPUTBook.ShareBookID = MediaBroadcastWorksheetMarketBook.ShareBookID
-                                                ShareHPUTBook.HPUTBookID = MediaBroadcastWorksheetMarketBook.HPUTBookID
-
-                                                ShareHPUTBooks.Add(ShareHPUTBook)
-
-                                                TVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, Demographics, ShareHPUTBooks, MediaSpotTVResearchDaytimeTypes, OldComscoreMarketNumber, True)
-
-                                            Else
-
-                                                MediaSpotTVResearchDaytimeTypes = AllMediaSpotTVResearchDaytimeTypes
+                                                TVWorksheetRatingAndShareDataList = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData)
 
                                             End If
 
-                                            If RunBySpotBook OrElse MediaSpotTVResearchDaytimeTypes.Count > 0 Then
+                                            For Each MediaSpotTVResearchDaytimeType In MediaSpotTVResearchDaytimeTypes.Where(Function(Entity) Entity.ExactSpotDate.HasValue).ToList
 
-                                                Books = New List(Of DTO.Media.ShareHPUTBook)
+                                                ComscoreTVBook = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVBook.Load(DbContext)
+                                                                  Where Entity.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
+                                                                        Entity.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
+                                                                  Select Entity).SingleOrDefault
 
-                                                If TVWorksheetRatingAndShareDataList Is Nothing Then
+                                                If ComscoreTVBook IsNot Nothing Then
 
-                                                    TVWorksheetRatingAndShareDataList = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData)
+                                                    Demographics = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic)
+                                                    Demographics.Add(New DTO.Media.SpotTV.Demographic(MediaDemographic))
+
+                                                    Books.Clear()
+                                                    Books.Add(New DTO.Media.ShareHPUTBook(ComscoreTVBook, 0))
+
+                                                    AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, Demographics, Books, {MediaSpotTVResearchDaytimeType}.ToList, OldComscoreMarketNumber, True)
+
+                                                    ComscoreCacheHeader = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
+                                                                           Where Entity.BookID = ComscoreTVBook.ID AndAlso
+                                                                                 Entity.MarketNumber = NielsenMarketNumber AndAlso
+                                                                                 Entity.StationNumber = ComscoreTVStation.Number AndAlso
+                                                                                 Entity.DemoNumber = MediaDemographic.ComscoreDemoNumber.Value
+                                                                           Select Entity).SingleOrDefault
+
+                                                    If ComscoreCacheHeader IsNot Nothing Then
+
+                                                        ComscoreCacheDetail = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheDetail.Load(DbContext)
+                                                                               Where Entity.ComscoreCacheHeaderID = ComscoreCacheHeader.ID AndAlso
+                                                                                     Entity.QuarterHour <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
+                                                                               Select Entity).OrderByDescending(Function(Entity) Entity.QuarterHour).FirstOrDefault
+
+                                                        If ComscoreCacheDetail IsNot Nothing Then
+
+                                                            TVWorksheetRatingAndShareData = New AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData
+
+                                                            TVWorksheetRatingAndShareData.Rating = If(ComscoreCacheDetail.Universe <> 0, ComscoreCacheDetail.AverageAudience * 100 / ComscoreCacheDetail.Universe, 0)
+                                                            TVWorksheetRatingAndShareData.Impressions = ComscoreCacheDetail.AverageAudience
+                                                            TVWorksheetRatingAndShareData.Universe = ComscoreCacheDetail.Universe
+                                                            TVWorksheetRatingAndShareData.Share = ComscoreCacheDetail.Share
+                                                            TVWorksheetRatingAndShareData.HPUT = ComscoreCacheDetail.SIU
+                                                            TVWorksheetRatingAndShareData.ProgramName = ComscoreCacheDetail.SeriesName
+                                                            TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID = MediaSpotTVResearchDaytimeType.ID
+                                                            TVWorksheetRatingAndShareData.BookID = ComscoreTVBook.ID
+
+                                                            TVWorksheetRatingAndShareDataList.Add(TVWorksheetRatingAndShareData)
+
+                                                        End If
+
+                                                    End If
+
+                                                Else
+
+                                                    TVWorksheetRatingAndShareDataList.Add(AdvantageFramework.ComScore.GetLocalTimeViews(DbContext, OldComscoreMarketNumber, ComscoreTVStation.Number, MediaDemographic.ComscoreDemoNumber, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value, MediaSpotTVResearchDaytimeType.ID))
 
                                                 End If
 
-                                                For Each MediaSpotTVResearchDaytimeType In MediaSpotTVResearchDaytimeTypes.Where(Function(Entity) Entity.ExactSpotDate.HasValue).ToList
+                                            Next
 
-                                                    ComscoreTVBook = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVBook.Load(DbContext)
-                                                                      Where Entity.StartDateTime <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value AndAlso
-                                                                            Entity.EndDateTime >= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
-                                                                      Select Entity).SingleOrDefault
+                                        End If
+
+                                        If TVWorksheetRatingAndShareDataList IsNot Nothing AndAlso TVWorksheetRatingAndShareDataList.Count > 0 Then
+
+                                            Books = New List(Of DTO.Media.ShareHPUTBook)
+
+                                            For Each TVWorksheetRatingAndShareData In TVWorksheetRatingAndShareDataList
+
+                                                MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                                        Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
+                                                                                              Entity.NielsenTVStationCode = StationCode AndAlso
+                                                                                              Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
+
+                                                If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+
+                                                    MediaBroadcastWorksheetPostBuyReport.DetailProgram = TVWorksheetRatingAndShareData.ProgramName
+                                                    MediaBroadcastWorksheetPostBuyReport.BookID = TVWorksheetRatingAndShareData.BookID
+
+                                                    ComscoreTVBook = DbContext.ComscoreTVBooks.Find(TVWorksheetRatingAndShareData.BookID)
 
                                                     If ComscoreTVBook IsNot Nothing Then
 
-                                                        Demographics = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic)
-                                                        Demographics.Add(New DTO.Media.SpotTV.Demographic(MediaDemographic))
+                                                        MediaBroadcastWorksheetPostBuyReport.BookName = MonthName(ComscoreTVBook.Month, True) & (ComscoreTVBook.Year - 2000).ToString & "-L"
 
-                                                        Books.Clear()
-                                                        Books.Add(New DTO.Media.ShareHPUTBook(ComscoreTVBook, 0))
+                                                    End If
 
-                                                        AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, Demographics, Books, {MediaSpotTVResearchDaytimeType}.ToList, OldComscoreMarketNumber, True)
+                                                End If
 
-                                                        ComscoreCacheHeader = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
-                                                                               Where Entity.BookID = ComscoreTVBook.ID AndAlso
-                                                                                     Entity.MarketNumber = NielsenMarketNumber AndAlso
-                                                                                     Entity.StationNumber = ComscoreTVStation.Number AndAlso
-                                                                                     Entity.DemoNumber = MediaDemographic.ComscoreDemoNumber.Value
-                                                                               Select Entity).SingleOrDefault
+                                                If MediaBroadcastWorksheetPostBuyReport IsNot Nothing AndAlso ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePost = False) OrElse
+                                                                                                               (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) Then
 
-                                                        If ComscoreCacheHeader IsNot Nothing Then
+                                                    'If RunBySpotBook Then
 
-                                                            ComscoreCacheDetail = (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheDetail.Load(DbContext)
-                                                                                   Where Entity.ComscoreCacheHeaderID = ComscoreCacheHeader.ID AndAlso
-                                                                                         Entity.QuarterHour <= MediaSpotTVResearchDaytimeType.ExactSpotDate.Value
-                                                                                   Select Entity).OrderByDescending(Function(Entity) Entity.QuarterHour).FirstOrDefault
+                                                    Books.Clear()
 
-                                                            If ComscoreCacheDetail IsNot Nothing Then
+                                                    If MediaBroadcastWorksheetPostBuyReport.GeographyName = "CDMA" AndAlso MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.HasValue AndAlso
+                                                                MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.HasValue AndAlso MediaBroadcastWorksheetPostBuyReport.DetailID.HasValue Then
 
-                                                                TVWorksheetRatingAndShareData = New AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData
 
-                                                                TVWorksheetRatingAndShareData.Rating = If(ComscoreCacheDetail.Universe <> 0, ComscoreCacheDetail.AverageAudience * 100 / ComscoreCacheDetail.Universe, 0)
-                                                                TVWorksheetRatingAndShareData.Impressions = ComscoreCacheDetail.AverageAudience
-                                                                TVWorksheetRatingAndShareData.Universe = ComscoreCacheDetail.Universe
-                                                                TVWorksheetRatingAndShareData.Share = ComscoreCacheDetail.Share
-                                                                TVWorksheetRatingAndShareData.HPUT = ComscoreCacheDetail.SIU
-                                                                TVWorksheetRatingAndShareData.ProgramName = ComscoreCacheDetail.SeriesName
-                                                                TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID = MediaSpotTVResearchDaytimeType.ID
-                                                                TVWorksheetRatingAndShareData.BookID = ComscoreTVBook.ID
+                                                        HHUEDemographicList = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic)
+                                                        HHUEDemographicList.Add(New AdvantageFramework.DTO.Media.SpotTV.Demographic() With {.ComscoreDemoNumber = 0})
 
-                                                                TVWorksheetRatingAndShareDataList.Add(TVWorksheetRatingAndShareData)
+                                                        ShareHPUTBooks.Clear()
+
+                                                        ComscoreTVBook = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVBook.Load(DbContext)
+                                                                          Where Entity.ID = MediaBroadcastWorksheetPostBuyReport.BookID
+                                                                          Select Entity).SingleOrDefault
+
+                                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.Value)
+
+                                                        If ComscoreTVBook IsNot Nothing AndAlso ComscoreTVStation IsNot Nothing Then
+
+                                                            Market = (From Entity In AdvantageFramework.Database.Procedures.Market.Load(DbContext)
+                                                                      Where Entity.ComscoreNewMarketNumber = MediaBroadcastWorksheetPostBuyReport.NielsenMarketNumber
+                                                                      Select Entity).SingleOrDefault
+
+                                                            If Market IsNot Nothing AndAlso IsNumeric(Market.NielsenTVCode) Then
+
+                                                                ComScoreCDMAs = AdvantageFramework.ComScore.GetComScoreCDMAData(CInt(Market.NielsenTVCode), ComscoreTVStation.NetworkNumber, MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.Value,
+                                                                                                                                ComscoreTVBook.Year, ComscoreTVBook.Month, Session)
+
+                                                            Else
+
+                                                                ComScoreCDMAs = Nothing
+
+                                                            End If
+
+                                                            Books.Add(New DTO.Media.ShareHPUTBook(ComscoreTVBook, 0))
+
+                                                            Adults18PlusTVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, HHUEDemographicList, Books,
+                                                                                                                                                               MediaSpotTVResearchDaytimeTypes, OldComscoreMarketNumber, True)
+
+                                                            Adults18PlusTVWorksheetRatingAndShareData = Adults18PlusTVWorksheetRatingAndShareDataList.SingleOrDefault(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetPostBuyReport.DetailID.Value)
+
+                                                            If ComScoreCDMAs IsNot Nothing AndAlso ComScoreCDMAs.Count > 0 AndAlso Adults18PlusTVWorksheetRatingAndShareData IsNot Nothing Then
+
+                                                                MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = Math.Round(TVWorksheetRatingAndShareData.Impressions * ComScoreCDMAs.First.UEFactor, 0)
+
+                                                                AdjustmentFactor = 0
+                                                                CDMADemoUE = 0
+
+                                                                If Adults18PlusTVWorksheetRatingAndShareData.Universe > 0 Then
+
+                                                                    AdjustmentFactor = ComScoreCDMAs.First.RatingsAIUE / Adults18PlusTVWorksheetRatingAndShareData.Universe
+
+                                                                End If
+
+                                                                CDMADemoUE = AdjustmentFactor * TVWorksheetRatingAndShareData.Universe
+
+                                                                If CDMADemoUE <> 0 Then
+
+                                                                    MediaBroadcastWorksheetPostBuyReport.DetailActualRating = Math.Round((MediaBroadcastWorksheetPostBuyReport.DetailActualImpression.GetValueOrDefault(0) * 100) / CDMADemoUE, 2)
+
+                                                                End If
+
+                                                                If MediaBroadcastWorksheetMarketBook.UseImpressions Then
+
+                                                                    MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(MediaBroadcastWorksheetPostBuyReport.DetailActualImpression / 1000, 2)
+
+                                                                Else
+
+                                                                    MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(MediaBroadcastWorksheetPostBuyReport.DetailActualRating, 2)
+
+                                                                End If
+
+                                                                MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(MediaBroadcastWorksheetPostBuyReport.DetailActualImpression / 1000, 2)
 
                                                             End If
 
@@ -13436,274 +13844,43 @@
 
                                                     Else
 
-                                                        TVWorksheetRatingAndShareDataList.Add(AdvantageFramework.ComScore.GetLocalTimeViews(DbContext, OldComscoreMarketNumber, ComscoreTVStation.Number, MediaDemographic.ComscoreDemoNumber, MediaSpotTVResearchDaytimeType.ExactSpotDate.Value, MediaSpotTVResearchDaytimeType.ID))
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+                                                        MediaBroadcastWorksheetPostBuyReport.DetailActualRating = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
 
-                                                    End If
+                                                        If MediaBroadcastWorksheetMarketBook.UseImpressions Then
 
-                                                Next
-
-                                            End If
-
-                                            If TVWorksheetRatingAndShareDataList IsNot Nothing AndAlso TVWorksheetRatingAndShareDataList.Count > 0 Then
-
-                                                Books = New List(Of DTO.Media.ShareHPUTBook)
-
-                                                For Each TVWorksheetRatingAndShareData In TVWorksheetRatingAndShareDataList
-
-                                                    MediaBroadcastWorksheetPostBuyReport = (From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                                                            Where Entity.NielsenMarketNumber = NielsenMarketNumber AndAlso
-                                                                                                  Entity.NielsenTVStationCode = StationCode AndAlso
-                                                                                                  Entity.DetailID = TVWorksheetRatingAndShareData.MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
-
-                                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
-
-                                                        MediaBroadcastWorksheetPostBuyReport.DetailProgram = TVWorksheetRatingAndShareData.ProgramName
-                                                        MediaBroadcastWorksheetPostBuyReport.BookID = TVWorksheetRatingAndShareData.BookID
-
-                                                        ComscoreTVBook = DbContext.ComscoreTVBooks.Find(TVWorksheetRatingAndShareData.BookID)
-
-                                                        If ComscoreTVBook IsNot Nothing Then
-
-                                                            MediaBroadcastWorksheetPostBuyReport.BookName = MonthName(ComscoreTVBook.Month, True) & (ComscoreTVBook.Year - 2000).ToString & "-L"
-
-                                                        End If
-
-                                                    End If
-
-                                                    If MediaBroadcastWorksheetPostBuyReport IsNot Nothing AndAlso ((MediaBroadcastWorksheetMarketBook.UseImpressions = False AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePost = False) OrElse
-                                                                                                                   (MediaBroadcastWorksheetMarketBook.UseImpressions AndAlso MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions = False)) Then
-
-                                                        'If RunBySpotBook Then
-
-                                                        Books.Clear()
-
-                                                        If MediaBroadcastWorksheetPostBuyReport.GeographyName = "CDMA" AndAlso MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.HasValue AndAlso
-                                                                    MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.HasValue AndAlso MediaBroadcastWorksheetPostBuyReport.DetailID.HasValue Then
-
-
-                                                            HHUEDemographicList = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic)
-                                                            HHUEDemographicList.Add(New AdvantageFramework.DTO.Media.SpotTV.Demographic() With {.ComscoreDemoNumber = 0})
-
-                                                            ShareHPUTBooks.Clear()
-
-                                                            ComscoreTVBook = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVBook.Load(DbContext)
-                                                                              Where Entity.ID = MediaBroadcastWorksheetPostBuyReport.BookID
-                                                                              Select Entity).SingleOrDefault
-
-                                                            ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.Value)
-
-                                                            If ComscoreTVBook IsNot Nothing AndAlso ComscoreTVStation IsNot Nothing Then
-
-                                                                Market = (From Entity In AdvantageFramework.Database.Procedures.Market.Load(DbContext)
-                                                                          Where Entity.ComscoreNewMarketNumber = MediaBroadcastWorksheetPostBuyReport.NielsenMarketNumber
-                                                                          Select Entity).SingleOrDefault
-
-                                                                If Market IsNot Nothing AndAlso IsNumeric(Market.NielsenTVCode) Then
-
-                                                                    ComScoreCDMAs = AdvantageFramework.ComScore.GetComScoreCDMAData(CInt(Market.NielsenTVCode), ComscoreTVStation.NetworkNumber, MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.Value,
-                                                                                                                                    ComscoreTVBook.Year, ComscoreTVBook.Month, Session)
-
-                                                                Else
-
-                                                                    ComScoreCDMAs = Nothing
-
-                                                                End If
-
-                                                                Books.Add(New DTO.Media.ShareHPUTBook(ComscoreTVBook, 0))
-
-                                                                Adults18PlusTVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, HHUEDemographicList, Books,
-                                                                                                                                                                   MediaSpotTVResearchDaytimeTypes, OldComscoreMarketNumber, True)
-
-                                                                Adults18PlusTVWorksheetRatingAndShareData = Adults18PlusTVWorksheetRatingAndShareDataList.SingleOrDefault(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetPostBuyReport.DetailID.Value)
-
-                                                                If ComScoreCDMAs IsNot Nothing AndAlso ComScoreCDMAs.Count > 0 AndAlso Adults18PlusTVWorksheetRatingAndShareData IsNot Nothing Then
-
-                                                                    MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = Math.Round(TVWorksheetRatingAndShareData.Impressions * ComScoreCDMAs.First.UEFactor, 0)
-
-                                                                    AdjustmentFactor = 0
-                                                                    CDMADemoUE = 0
-
-                                                                    If Adults18PlusTVWorksheetRatingAndShareData.Universe > 0 Then
-
-                                                                        AdjustmentFactor = ComScoreCDMAs.First.RatingsAIUE / Adults18PlusTVWorksheetRatingAndShareData.Universe
-
-                                                                    End If
-
-                                                                    CDMADemoUE = AdjustmentFactor * TVWorksheetRatingAndShareData.Universe
-
-                                                                    If CDMADemoUE <> 0 Then
-
-                                                                        MediaBroadcastWorksheetPostBuyReport.DetailActualRating = Math.Round((MediaBroadcastWorksheetPostBuyReport.DetailActualImpression.GetValueOrDefault(0) * 100) / CDMADemoUE, 2)
-
-                                                                    End If
-
-                                                                    If MediaBroadcastWorksheetMarketBook.UseImpressions Then
-
-                                                                        MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(MediaBroadcastWorksheetPostBuyReport.DetailActualImpression / 1000, 2)
-
-                                                                    Else
-
-                                                                        MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(MediaBroadcastWorksheetPostBuyReport.DetailActualRating, 2)
-
-                                                                    End If
-
-                                                                    MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(MediaBroadcastWorksheetPostBuyReport.DetailActualImpression / 1000, 2)
-
-                                                                End If
-
-                                                            End If
+                                                            MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
 
                                                         Else
 
-                                                            MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
-                                                            MediaBroadcastWorksheetPostBuyReport.DetailActualRating = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
-
-                                                            If MediaBroadcastWorksheetMarketBook.UseImpressions Then
-
-                                                                MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
-
-                                                            Else
-
-                                                                MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
-
-                                                            End If
+                                                            MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
 
                                                         End If
 
-                                                        'Else
-
-                                                        '    MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
-                                                        '    MediaBroadcastWorksheetPostBuyReport.DetailActualRating = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
-
-                                                        '    If MediaBroadcastWorksheetMarketBook.UseImpressions Then
-
-                                                        '        MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
-
-                                                        '    Else
-
-                                                        '        MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
-
-                                                        '    End If
-
-                                                        'End If
-
                                                     End If
 
-                                                Next
+                                                    'Else
 
-                                            End If
+                                                    '    MediaBroadcastWorksheetPostBuyReport.DetailActualImpression = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
+                                                    '    MediaBroadcastWorksheetPostBuyReport.DetailActualRating = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
 
-                                        End If
+                                                    '    If MediaBroadcastWorksheetMarketBook.UseImpressions Then
 
-                                    End If
+                                                    '        MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Impressions / 1000, 2)
 
-                                Next
+                                                    '    Else
 
-                            Next
+                                                    '        MediaBroadcastWorksheetPostBuyReport.DetailActual = FormatNumber(TVWorksheetRatingAndShareData.Rating, 2)
 
-                        End If
+                                                    '    End If
 
-                        MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                                  Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
+                                                    'End If
 
-                        MediaBroadcastWorksheetPostBuyReports.ForEach(Sub(Entity)
+                                                End If
 
-                                                                          If String.IsNullOrWhiteSpace(Entity.PostBook) AndAlso String.IsNullOrWhiteSpace(Entity.BookName) = False Then
-
-                                                                              Entity.PostBook = Entity.BookName.Replace("-LO", "-L")
-
-                                                                          End If
-
-                                                                      End Sub)
-
-                        MediaBroadcastWorksheetPostBuyDRWs = MediaBroadcastWorksheetPostBuyReports.Select(Function(Entity) New AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPostBuyDRWReport(Entity)).ToList
-
-                        For Each MediaBroadcastWorksheetMarketDetailID In MediaBroadcastWorksheetMarketDetailIDs
-
-                            For Each Line In MediaBroadcastWorksheetPostBuyDRWs.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID)
-
-                                MediaBroadcastWorksheetPostBuyReport = MediaBroadcastWorksheetPostBuyReports.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
-
-                                If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
-
-                                    Line.ActualGrossImpressions = Math.Round((From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                                              Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                                              Select Entity.DetailActualImpression.GetValueOrDefault(0)).Sum, 1)
-
-
-                                    Line.ActualGRP = (From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                      Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                      Select Entity.DetailActualRating.GetValueOrDefault(0)).Sum
-
-                                    Line.ActualImpressions = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
-                                    Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
-
-                                    Line.EstimatedImpressions = Math.Round(MediaBroadcastWorksheetPostBuyReport.DetailEstimateImpression.GetValueOrDefault(0), 1)
-                                    Line.EstimatedRtg = MediaBroadcastWorksheetPostBuyReport.DetailEstimateRating.GetValueOrDefault(0)
-
-                                    Line.EstimatedGRP = (From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                         Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                         Select Entity.DetailEstimateRating.GetValueOrDefault(0)).Sum
-
-                                    Line.EstimatedGrossImpressions = Math.Round((From Entity In MediaBroadcastWorksheetPostBuyReports
-                                                                                 Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
-                                                                                 Select Entity.DetailEstimateImpression.GetValueOrDefault(0)).Sum, 1)
-
-                                    Line.RefreshIndexes()
-
-                                    If MediaBroadcastWorksheetPostBuyReport.OverridePost Then
-
-                                        Line.ActualRtg = Line.EstimatedRtg.GetValueOrDefault(0)
-
-                                        If Line.EstimatedRtg.GetValueOrDefault(0) = 0 Then
-
-                                            Line.RatingsIndex = 0
-
-                                        Else
-
-                                            Line.RatingsIndex = Line.ActualRtg.GetValueOrDefault(0) / Line.EstimatedRtg * 100
+                                            Next
 
                                         End If
-
-                                    Else
-
-                                        Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
-
-                                        Line.RatingsIndex = Line.DetailActualRatingIndex
-
-                                    End If
-
-                                    If MediaBroadcastWorksheetPostBuyReport.OverridePost Then
-
-                                        Line.ActualGRP = Line.EstimatedGRP.GetValueOrDefault(0)
-
-                                    End If
-
-                                    If MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions Then
-
-                                        Line.ActualImpressions = Math.Round(Line.EstimatedImpressions.GetValueOrDefault(0), 1)
-
-                                        If Line.EstimatedImpressions.GetValueOrDefault(0) = 0 Then
-
-                                            Line.ImpressionsIndex = 0
-
-                                        Else
-
-                                            Line.ImpressionsIndex = Line.ActualImpressions.GetValueOrDefault(0) / Line.EstimatedImpressions * 100
-
-                                        End If
-
-                                    Else
-
-                                        Line.ActualImpressions = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
-
-                                        Line.ImpressionsIndex = Line.DetailActualImpressionIndex
-
-                                    End If
-
-                                    If MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions Then
-
-                                        Line.ActualGrossImpressions = Math.Round(Line.EstimatedGrossImpressions.GetValueOrDefault(0), 1)
 
                                     End If
 
@@ -13713,7 +13890,117 @@
 
                         Next
 
-                    End Using
+                    End If
+
+                    MediaBroadcastWorksheetMarketDetailIDs = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                              Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
+
+                    MediaBroadcastWorksheetPostBuyReports.ForEach(Sub(Entity)
+
+                                                                      If String.IsNullOrWhiteSpace(Entity.PostBook) AndAlso String.IsNullOrWhiteSpace(Entity.BookName) = False Then
+
+                                                                          Entity.PostBook = Entity.BookName.Replace("-LO", "-L")
+
+                                                                      End If
+
+                                                                  End Sub)
+
+                    MediaBroadcastWorksheetPostBuyDRWs = MediaBroadcastWorksheetPostBuyReports.Select(Function(Entity) New AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPostBuyDRWReport(Entity)).ToList
+
+                    For Each MediaBroadcastWorksheetMarketDetailID In MediaBroadcastWorksheetMarketDetailIDs
+
+                        For Each Line In MediaBroadcastWorksheetPostBuyDRWs.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID)
+
+                            MediaBroadcastWorksheetPostBuyReport = MediaBroadcastWorksheetPostBuyReports.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID).FirstOrDefault
+
+                            If MediaBroadcastWorksheetPostBuyReport IsNot Nothing Then
+
+                                Line.ActualGrossImpressions = Math.Round((From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                          Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                                          Select Entity.DetailActualImpression.GetValueOrDefault(0)).Sum, 1)
+
+
+                                Line.ActualGRP = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                  Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                  Select Entity.DetailActualRating.GetValueOrDefault(0)).Sum
+
+                                Line.ActualImpressions = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
+                                Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
+
+                                Line.EstimatedImpressions = Math.Round(MediaBroadcastWorksheetPostBuyReport.DetailEstimateImpression.GetValueOrDefault(0), 1)
+                                Line.EstimatedRtg = MediaBroadcastWorksheetPostBuyReport.DetailEstimateRating.GetValueOrDefault(0)
+
+                                Line.EstimatedGRP = (From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                     Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                     Select Entity.DetailEstimateRating.GetValueOrDefault(0)).Sum
+
+                                Line.EstimatedGrossImpressions = Math.Round((From Entity In MediaBroadcastWorksheetPostBuyReports
+                                                                             Where Entity.MediaBroadcastWorksheetMarketDetailID = MediaBroadcastWorksheetMarketDetailID
+                                                                             Select Entity.DetailEstimateImpression.GetValueOrDefault(0)).Sum, 1)
+
+                                Line.RefreshIndexes()
+
+                                If MediaBroadcastWorksheetPostBuyReport.OverridePost Then
+
+                                    Line.ActualRtg = Line.EstimatedRtg.GetValueOrDefault(0)
+
+                                    If Line.EstimatedRtg.GetValueOrDefault(0) = 0 Then
+
+                                        Line.RatingsIndex = 0
+
+                                    Else
+
+                                        Line.RatingsIndex = Line.ActualRtg.GetValueOrDefault(0) / Line.EstimatedRtg * 100
+
+                                    End If
+
+                                Else
+
+                                    Line.ActualRtg = Line.DetailActualRating.GetValueOrDefault(0)
+
+                                    Line.RatingsIndex = Line.DetailActualRatingIndex
+
+                                End If
+
+                                If MediaBroadcastWorksheetPostBuyReport.OverridePost Then
+
+                                    Line.ActualGRP = Line.EstimatedGRP.GetValueOrDefault(0)
+
+                                End If
+
+                                If MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions Then
+
+                                    Line.ActualImpressions = Math.Round(Line.EstimatedImpressions.GetValueOrDefault(0), 1)
+
+                                    If Line.EstimatedImpressions.GetValueOrDefault(0) = 0 Then
+
+                                        Line.ImpressionsIndex = 0
+
+                                    Else
+
+                                        Line.ImpressionsIndex = Line.ActualImpressions.GetValueOrDefault(0) / Line.EstimatedImpressions * 100
+
+                                    End If
+
+                                Else
+
+                                    Line.ActualImpressions = Math.Round(Line.DetailActualImpression.GetValueOrDefault(0), 1)
+
+                                    Line.ImpressionsIndex = Line.DetailActualImpressionIndex
+
+                                End If
+
+                                If MediaBroadcastWorksheetPostBuyReport.OverridePostImpressions Then
+
+                                    Line.ActualGrossImpressions = Math.Round(Line.EstimatedGrossImpressions.GetValueOrDefault(0), 1)
+
+                                End If
+
+                            End If
+
+                        Next
+
+                    Next
 
                 End If
 

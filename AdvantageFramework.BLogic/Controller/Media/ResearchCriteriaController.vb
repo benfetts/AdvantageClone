@@ -99,6 +99,22 @@
 
                     End If
 
+                ElseIf Type = "SpotTVPuertoRico" Then
+
+                    ResearchCriteriaViewModel = New AdvantageFramework.ViewModels.Media.ResearchCriteriaViewModel(AdvantageFramework.ViewModels.Media.ResearchCriteriaViewModel.ResearchType.SpotTVPuertoRico, IsCopy)
+
+                    If ResearchID.HasValue Then
+
+                        ResearchCriteriaViewModel.ResearchCriteria = New AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria((From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearch)
+                                                                                                                                         Where Entity.ID = ResearchID.Value
+                                                                                                                                         Select Entity).SingleOrDefault)
+
+                    Else
+
+                        ResearchCriteriaViewModel.ResearchCriteria = New AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria
+
+                    End If
+
                 End If
 
             End Using
@@ -642,6 +658,139 @@
             End Using
 
             UpdateNational = Updated
+
+        End Function
+        Public Function AddTVPuertoRico(ResearchCriteriaViewModel As AdvantageFramework.ViewModels.Media.ResearchCriteriaViewModel,
+                                        CriteriaName As String, ByRef ErrorText As String, ByRef MediaSpotTVPuertoRicoResearchID As Nullable(Of Integer)) As Boolean
+
+            'objects
+            Dim Added As Boolean = False
+            Dim MediaSpotTVPuertoRicoResearch As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch = Nothing
+            Dim IsValid As Boolean = True
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                MediaSpotTVPuertoRicoResearch = New AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch
+
+                MediaSpotTVPuertoRicoResearch.DbContext = DbContext
+                MediaSpotTVPuertoRicoResearch.UserCode = DbContext.UserCode
+                MediaSpotTVPuertoRicoResearch.CriteriaName = CriteriaName
+                MediaSpotTVPuertoRicoResearch.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.Ranker
+
+                If DbContext.NPRUniverses.Any Then
+
+                    MediaSpotTVPuertoRicoResearch.ShareEndDate = DbContext.GetQuery(Of Database.Entities.NPRUniverse).Max(Function(Entity) Entity.Date)
+                    MediaSpotTVPuertoRicoResearch.ShareStartDate = MediaSpotTVPuertoRicoResearch.ShareEndDate.Value.AddDays(-27)
+
+                End If
+
+                ErrorText = MediaSpotTVPuertoRicoResearch.ValidateEntity(IsValid)
+
+                If IsValid Then
+
+                    DbContext.MediaSpotTVPuertoRicoResearchs.Add(MediaSpotTVPuertoRicoResearch)
+                    DbContext.SaveChanges()
+
+                    MediaSpotTVPuertoRicoResearchID = MediaSpotTVPuertoRicoResearch.ID
+
+                    Added = True
+
+                End If
+
+            End Using
+
+            AddTVPuertoRico = Added
+
+        End Function
+        Public Function CopyTVPuertoRico(ResearchCriteriaViewModel As AdvantageFramework.ViewModels.Media.ResearchCriteriaViewModel,
+                                         CriteriaName As String, CopyResearchID As Integer, ByRef ErrorText As String, ByRef MediaSpotTVPuertoRicoResearchID As Integer) As Boolean
+
+            'objects
+            Dim Copied As Boolean = False
+            Dim MediaSpotTVPuertoRicoResearch As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch = Nothing
+            Dim IsValid As Boolean = True
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                MediaSpotTVPuertoRicoResearch = (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearch).Include("MediaSpotTVPuertoRicoResearchDayTimes").Include("MediaSpotTVPuertoRicoResearchDemos").Include("MediaSpotTVPuertoRicoResearchMetrics").Include("MediaSpotTVPuertoRicoResearchStations")
+                                                 Where Entity.ID = CopyResearchID
+                                                 Select Entity).SingleOrDefault
+
+                If MediaSpotTVPuertoRicoResearch IsNot Nothing Then
+
+                    Try
+
+                        If Not (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearch)
+                                Where Entity.CriteriaName.ToUpper = DirectCast(CriteriaName, String).Trim.ToUpper
+                                Select Entity).Any Then
+
+                            MediaSpotTVPuertoRicoResearch.UserCode = Session.UserCode
+                            MediaSpotTVPuertoRicoResearch.CriteriaName = CriteriaName
+
+                            DbContext.MediaSpotTVPuertoRicoResearchs.Add(MediaSpotTVPuertoRicoResearch)
+                            DbContext.SaveChanges()
+
+                            MediaSpotTVPuertoRicoResearchID = MediaSpotTVPuertoRicoResearch.ID
+
+                            Copied = True
+
+                        Else
+
+                            ErrorText = "Report name exists."
+
+                        End If
+
+                    Catch ex As Exception
+                        ErrorText = ex.Message
+                    End Try
+
+                Else
+
+                    ErrorText = "Cannot find selected report to copy from."
+
+                End If
+
+            End Using
+
+            CopyTVPuertoRico = Copied
+
+        End Function
+        Public Function UpdateTVPuertoRico(ResearchCriteriaViewModel As AdvantageFramework.ViewModels.Media.ResearchCriteriaViewModel,
+                                           CriteriaName As String, ByRef ErrorText As String) As Boolean
+
+            'objects
+            Dim Updated As Boolean = False
+            Dim MediaSpotTVPuertoRicoResearch As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch = Nothing
+            Dim IsValid As Boolean = True
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                MediaSpotTVPuertoRicoResearch = (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearch)
+                                                 Where Entity.ID = ResearchCriteriaViewModel.ID
+                                                 Select Entity).SingleOrDefault
+
+                If MediaSpotTVPuertoRicoResearch IsNot Nothing Then
+
+                    MediaSpotTVPuertoRicoResearch.DbContext = DbContext
+                    MediaSpotTVPuertoRicoResearch.CriteriaName = CriteriaName.Trim
+
+                    ErrorText = MediaSpotTVPuertoRicoResearch.ValidateCustomProperties(AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch.Properties.CriteriaName.ToString, IsValid, CriteriaName.Trim)
+
+                    If IsValid Then
+
+                        DbContext.Entry(Of AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch)(MediaSpotTVPuertoRicoResearch).State = Entity.EntityState.Modified
+
+                        DbContext.SaveChanges()
+
+                        Updated = True
+
+                    End If
+
+                End If
+
+            End Using
+
+            UpdateTVPuertoRico = Updated
 
         End Function
 

@@ -27,6 +27,8 @@
             OfficeCode
             EndDate
             Type
+            CampaignCode
+            CampaignName
         End Enum
 
 #End Region
@@ -175,6 +177,12 @@
         <System.Runtime.Serialization.DataMemberAttribute(),
         AdvantageFramework.BaseClasses.Attributes.Entity()>
         Public Property Type() As String
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity()>
+        Public Property CampaignCode() As String
+        <System.Runtime.Serialization.DataMemberAttribute(),
+        AdvantageFramework.BaseClasses.Attributes.Entity()>
+        Public Property CampaignName() As String
 
 #End Region
 

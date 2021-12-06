@@ -131,8 +131,33 @@
 
                 If GeneralLedgerRecurringEntry.LastPostPeriod IsNot Nothing Then
 
-                    LastPostedDate = New Date(GeneralLedgerRecurringEntry.LastPostPeriod.Year, GeneralLedgerRecurringEntry.LastPostPeriod.Month.GetValueOrDefault(1), 1)
-                    SelectedPostPeriodDate = New Date(PostPeriod.Year, PostPeriod.Month.GetValueOrDefault(1), 1)
+                    If GeneralLedgerRecurringEntry.LastPostPeriod.Month.GetValueOrDefault(1) > 12 AndAlso GeneralLedgerRecurringEntry.LastPostPeriod.Month.GetValueOrDefault(1) <> 99 Then
+
+                        LastPostedDate = New Date(GeneralLedgerRecurringEntry.LastPostPeriod.Year, GeneralLedgerRecurringEntry.LastPostPeriod.Month.GetValueOrDefault(1) - 12, 1)
+
+                    ElseIf GeneralLedgerRecurringEntry.LastPostPeriod.Month.GetValueOrDefault(1) <> 99 Then
+
+                        LastPostedDate = New Date(GeneralLedgerRecurringEntry.LastPostPeriod.Year, GeneralLedgerRecurringEntry.LastPostPeriod.Month.GetValueOrDefault(1), 1)
+
+                    Else
+
+                        LastPostedDate = Now
+
+                    End If
+
+                    If PostPeriod.Month.GetValueOrDefault(1) > 12 AndAlso PostPeriod.Month.GetValueOrDefault(1) <> 99 Then
+
+                        SelectedPostPeriodDate = New Date(PostPeriod.Year, PostPeriod.Month.GetValueOrDefault(1) - 12, 1)
+
+                    ElseIf PostPeriod.Month.GetValueOrDefault(1) <> 99 Then
+
+                        SelectedPostPeriodDate = New Date(PostPeriod.Year, PostPeriod.Month.GetValueOrDefault(1), 1)
+
+                    Else
+
+                        SelectedPostPeriodDate = Now
+
+                    End If
 
                     If GeneralLedgerRecurringEntry.Cycle.Type = "A" Then
 

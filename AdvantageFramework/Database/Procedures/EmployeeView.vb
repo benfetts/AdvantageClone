@@ -893,8 +893,9 @@
                                             " CAL_TIME_PASSWORD = {123}, " &
                                             " CAL_TIME_HOST = {124}, " &
                                             " CAL_TIME_PORT = {125}, " &
-                                            " CAL_TIME_SSL = {126} " &
-                                            " WHERE EMP_CODE  = {127}",
+                                            " CAL_TIME_SSL = {126}, " &
+                                            " BILLABLE_HOURS_GOAL = {127} " &
+                                            " WHERE EMP_CODE  = {128}",
                                             If(Employee.AccountNumber IsNot Nothing AndAlso Employee.AccountNumber <> "", "'" & Employee.AccountNumber.Replace("'", "''") & "'", "NULL"),
                                             If(Employee.Address IsNot Nothing AndAlso Employee.Address <> "", "'" & Employee.Address.Replace("'", "''") & "'", "NULL"),
                                             If(Employee.Address2 IsNot Nothing AndAlso Employee.Address2 <> "", "'" & Employee.Address2.Replace("'", "''") & "'", "NULL"),
@@ -1022,6 +1023,7 @@
                                             If(Employee.CalendarTimeHost IsNot Nothing AndAlso Employee.CalendarTimeHost <> "", "'" & Employee.CalendarTimeHost.Replace("'", "''") & "'", "NULL"),
                                             If(Employee.CalendarTimePort IsNot Nothing, Employee.CalendarTimePort.Value.ToString(System.Globalization.CultureInfo.InvariantCulture), "NULL"),
                                             If(Employee.CalendarTimeSSL, 1, 0),
+                                            If(Employee.BillableHoursGoal IsNot Nothing, Employee.BillableHoursGoal.Value.ToString(System.Globalization.CultureInfo.InvariantCulture), "NULL"),
                                             "'" & Employee.Code.Replace("'", "''") & "'")
 
             Try

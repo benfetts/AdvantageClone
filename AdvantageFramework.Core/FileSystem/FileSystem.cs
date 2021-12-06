@@ -772,7 +772,7 @@ namespace AdvantageFramework.Core.FileSystem
                 if (Agency != null && Document != null)
                 {
                     AdvantageFramework.Core.Security.Impersonate.RunImpersonated(Agency.DocRepositoryUserName, Agency.DocRepositoryUserDomain,
-                        AdvantageFramework.Core.StringUtilities.Methods.RijndaelSimpleDecrypt(Agency.DocRepositoryUserPassword), () =>
+                        AdvantageFramework.Core.Security.Encryption.Decrypt(Agency.DocRepositoryUserPassword), () =>
                     {
                         try
                         {
@@ -789,10 +789,14 @@ namespace AdvantageFramework.Core.FileSystem
 
                                 Downloaded = true;
                             }
+                            else {
+                                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("LoadRepositoryFilePath failed", System.Diagnostics.EventLogEntryType.Error);
+                            }
                         }
                         catch (Exception ex)
                         {
                             Downloaded = false;
+                            AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                         }
                     });
 
@@ -804,7 +808,9 @@ namespace AdvantageFramework.Core.FileSystem
             catch (Exception ex)
             {
                 Downloaded = false;
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
             }
+
             return Downloaded;
         }
         public static bool Download(AdvantageFramework.Core.Database.Entities.Agency Agency, AdvantageFramework.Core.Database.Entities.Document Document, string SaveLocation, ref string NewFileName, ref bool FileExists)
@@ -1397,6 +1403,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 FileLoaded = false;
             }
             return FileLoaded;
@@ -1410,10 +1417,17 @@ namespace AdvantageFramework.Core.FileSystem
                 RepositoryFilePath = AdvantageFramework.Core.StringUtilities.Methods.AppendTrailingCharacter(FileSystemDirectory, @"\") + FileName;
 
                 if (System.IO.File.Exists(RepositoryFilePath))
+                {
                     FileLoaded = true;
+                }
+                else
+                {
+                    AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("File repository \"" + RepositoryFilePath + "\" does not exist.", System.Diagnostics.EventLogEntryType.Error);
+                }
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 FileLoaded = false;
             }
 
@@ -1433,6 +1447,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
             }
         }
         public static void CheckFileForRepositoryConstraints(AdvantageFramework.Core.Database.DbContext DbContext, long FileLength, ref bool IsValid, ref string ErrorMessage)
@@ -1466,6 +1481,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
             }
         }
         public static bool CheckRepositoryLimit(AdvantageFramework.Core.Database.DbContext DbContext, long DocumentRepositoryLimit, ref string ErrorMessage)
@@ -1490,6 +1506,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
             }
 
             return ValidRepositoryLimit;
@@ -1518,6 +1535,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
             }
 
             return ValidRepositoryLimit;
@@ -1535,6 +1553,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 UploadLocation = "";
             }
 
@@ -1563,6 +1582,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 DownloadLocation = "";
             }
 
@@ -1613,6 +1633,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 ValidFileName = FileName;
             }
 
@@ -1717,6 +1738,7 @@ namespace AdvantageFramework.Core.FileSystem
             }
             catch (Exception ex)
             {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 return "";
             }
         }

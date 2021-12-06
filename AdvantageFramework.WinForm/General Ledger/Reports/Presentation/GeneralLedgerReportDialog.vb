@@ -58,6 +58,10 @@ Namespace GeneralLedger.Reports.Presentation
 
                         StandardGeneralLedgerReport = ReportWriter.Methods.StandardGeneralLedgerReports.TrialBalance
 
+                    Case AdvantageFramework.EnumUtilities.LoadEnumObject(AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.DetailByTransaction).Code
+
+                        StandardGeneralLedgerReport = ReportWriter.Methods.StandardGeneralLedgerReports.DetailByTransaction
+
                     Case Else
 
                         StandardGeneralLedgerReport = Nothing
@@ -526,7 +530,8 @@ Namespace GeneralLedger.Reports.Presentation
                     SetupTrialBalanceCriteria()
 
                 ElseIf Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.DetailByAccountLandscape OrElse
-                       Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.DetailByAccountPortrait Then
+                       Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.DetailByAccountPortrait OrElse
+                       Me.SelectedReport = ReportWriter.StandardGeneralLedgerReports.DetailByTransaction Then
 
                     SetupDetailByAccountReport()
 

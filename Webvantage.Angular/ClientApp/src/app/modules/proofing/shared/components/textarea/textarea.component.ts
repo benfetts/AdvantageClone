@@ -71,11 +71,11 @@ export class TextareaComponent implements OnInit, OnChanges {
     this.editor.nativeElement.value = this.text;
   }
 
-  value(): string {
+  value(val : string): string {
     var kendoEditor = kendo.jQuery(this.editor.nativeElement).data('kendoEditor');
 
     if (kendoEditor) {
-      return kendoEditor.value();
+      return kendoEditor.value(val);
     }
 
     return '';

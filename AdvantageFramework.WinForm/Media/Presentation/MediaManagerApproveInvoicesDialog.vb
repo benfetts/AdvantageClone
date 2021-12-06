@@ -2384,7 +2384,8 @@
 
                     ElseIf GridColumn.FieldName = AdvantageFramework.Database.Classes.BroadcastOrderDetailVerification.Properties.Book.ToString Then
 
-                        If _OrderWorksheetDetail.RatingsService <> Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore.ToString AndAlso (ButtonItemInvoiceDetail_ShowIMPs.Checked OrElse ButtonItemInvoiceDetail_ShowGRPs.Checked) Then
+                        If _OrderWorksheetDetail.RatingsService <> Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore.ToString AndAlso
+                                _OrderWorksheetDetail.RatingsService <> "Nielsen Puerto Rico" AndAlso (ButtonItemInvoiceDetail_ShowIMPs.Checked OrElse ButtonItemInvoiceDetail_ShowGRPs.Checked) Then
 
                             GridColumn.VisibleIndex = VisibleIndex
                             VisibleIndex += 1

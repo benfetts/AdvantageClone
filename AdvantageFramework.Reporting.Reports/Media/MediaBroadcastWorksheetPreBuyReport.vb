@@ -260,28 +260,62 @@
         End Sub
         Private Sub LabelGroupHeaderStation_ScheduleShareBookLabel_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelGroupHeaderStation_ScheduleShareBookLabel.BeforePrint
 
-            If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.ScheduleBooks.ToString) Is Nothing OrElse
-                    String.IsNullOrWhiteSpace(Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.ScheduleBooks.ToString)) Then
+            If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.RatingsServiceID.ToString) = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
 
-                e.Cancel = True
+                If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.SchedulePeriod.ToString) Is Nothing OrElse
+                        String.IsNullOrWhiteSpace(Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.SchedulePeriod.ToString)) Then
 
-            ElseIf Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.RatingsServiceID.ToString) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
+                    e.Cancel = True
 
-                LabelGroupHeaderStation_ScheduleShareBookLabel.Text = LabelGroupHeaderStation_ScheduleShareBookLabel.Text.Replace("H/PUT", "SIU")
+                Else
+
+                    LabelGroupHeaderStation_ScheduleShareBookLabel.Text = "Schedule Period:"
+
+                End If
+
+            Else
+
+                If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.ScheduleBooks.ToString) Is Nothing OrElse
+                        String.IsNullOrWhiteSpace(Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.ScheduleBooks.ToString)) Then
+
+                    e.Cancel = True
+
+                ElseIf Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.RatingsServiceID.ToString) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
+
+                    LabelGroupHeaderStation_ScheduleShareBookLabel.Text = LabelGroupHeaderStation_ScheduleShareBookLabel.Text.Replace("H/PUT", "SIU")
+
+                End If
 
             End If
 
         End Sub
         Private Sub LabelGroupHeaderStation_PreBuyShareBookLabel_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelGroupHeaderStation_PreBuyShareBookLabel.BeforePrint
 
-            If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.PreBuyBooks.ToString) Is Nothing OrElse
-                    String.IsNullOrWhiteSpace(Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.PreBuyBooks.ToString)) Then
+            If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.RatingsServiceID.ToString) = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
 
-                e.Cancel = True
+                If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.PreBuyPeriod.ToString) Is Nothing OrElse
+                        String.IsNullOrWhiteSpace(Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.PreBuyPeriod.ToString)) Then
 
-            ElseIf Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.RatingsServiceID.ToString) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
+                    e.Cancel = True
 
-                LabelGroupHeaderStation_PreBuyShareBookLabel.Text = LabelGroupHeaderStation_PreBuyShareBookLabel.Text.Replace("H/PUT", "SIU")
+                Else
+
+                    LabelGroupHeaderStation_PreBuyShareBookLabel.Text = "Pre Buy Period:"
+
+                End If
+
+            Else
+
+                If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.PreBuyBooks.ToString) Is Nothing OrElse
+                        String.IsNullOrWhiteSpace(Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.PreBuyBooks.ToString)) Then
+
+                    e.Cancel = True
+
+                ElseIf Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport.Properties.RatingsServiceID.ToString) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
+
+                    LabelGroupHeaderStation_PreBuyShareBookLabel.Text = LabelGroupHeaderStation_PreBuyShareBookLabel.Text.Replace("H/PUT", "SIU")
+
+                End If
 
             End If
 

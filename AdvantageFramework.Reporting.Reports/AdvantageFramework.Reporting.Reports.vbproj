@@ -1756,6 +1756,12 @@
     <Compile Include="General Ledger\AccountAllocationDetailsSubReport.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="General Ledger\DetailGeneralLedgerByTransactionReport.Designer.vb">
+      <DependentUpon>DetailGeneralLedgerByTransactionReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="General Ledger\DetailGeneralLedgerByTransactionReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="General Ledger\GLDetailByTransactionReport.Designer.vb">
       <DependentUpon>GLDetailByTransactionReport.vb</DependentUpon>
     </Compile>
@@ -4058,6 +4064,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="General Ledger\AccountAllocationDetailsSubReport.resx">
       <DependentUpon>AccountAllocationDetailsSubReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General Ledger\DetailGeneralLedgerByTransactionReport.resx">
+      <DependentUpon>DetailGeneralLedgerByTransactionReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="General Ledger\GLReportWriterAccountReport.resx">
       <DependentUpon>GLReportWriterAccountReport.vb</DependentUpon>

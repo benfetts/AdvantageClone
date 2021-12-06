@@ -51,6 +51,10 @@ Namespace Controller.Reporting
 
                         ViewModel.RepositoryNielsenTVBooks = ShareHPUTBookController.GetRepositoryAllComscoreTVBooks
 
+                    ElseIf SelectedValue = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+
+                        ViewModel.RepositoryNielsenTVBooks = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.NielsenTVBook)
+
                     End If
 
                     ClientCodes = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheet.LoadAllActive(DbContext)
@@ -207,6 +211,7 @@ Namespace Controller.Reporting
             Dim MaxDate As Date? = Nothing
             Dim LatestShareBookID As Integer? = Nothing
             Dim MediaBroadcastWorksheetPrePostReportCriteria As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrePostReportCriteria = Nothing
+            Dim PeriodEndDate As Date = Nothing
 
             MediaBroadcastWorksheetCriteriaViewModel = New AdvantageFramework.ViewModels.Reporting.MediaBroadcastWorksheetCriteriaViewModel
             MediaBroadcastWorksheetCriteriaViewModel.MediaType = MediaBroadcastWorksheetPrePostReportCriteriaMediaType
@@ -238,21 +243,46 @@ Namespace Controller.Reporting
 
                 If MediaBroadcastWorksheetCriteriaViewModel.MediaType = Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV Then
 
-                    ShareHPUTBookController = New AdvantageFramework.Controller.Media.ShareHPUTBookController(Me.Session)
-
-                    If MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen Then
-
-                        MediaBroadcastWorksheetCriteriaViewModel.RepositoryNielsenTVBooks = ShareHPUTBookController.GetRepositoryAllNielsenTVBooks
+                    If MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
 
                         MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheetMarketBooksPreBuy.AddRange(MediaBroadcastWorksheetMarkets.Select(Function(Entity) New DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook(Entity, MediaBroadcastWorksheetPrePostReportCriteriaBuyType)))
 
-                    ElseIf MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore Then
+                        If DbContext.NPRUniverses.Any Then
 
-                        MediaBroadcastWorksheetCriteriaViewModel.RepositoryNielsenTVBooks = ShareHPUTBookController.GetRepositoryAllComscoreTVBooks().OrderByDescending(Function(NB) NB.Year).ThenByDescending(Function(NB) NB.Month).ThenBy(Function(NB) NB.StreamSort).ToList
+                            PeriodEndDate = DbContext.GetQuery(Of Database.Entities.NPRUniverse).Max(Function(Entity) Entity.Date)
 
-                        MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheetMarketBooksPreBuy.AddRange(From Entity In MediaBroadcastWorksheetMarkets
-                                                                                                                   Where Entity.Market.ComscoreNewMarketNumber IsNot Nothing
-                                                                                                                   Select New DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook(Entity, MediaBroadcastWorksheetPrePostReportCriteriaBuyType))
+                            For Each MediaBroadcastWorksheetMarketBook In MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheetMarketBooksPreBuy
+
+                                If MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue = False Then
+
+                                    MediaBroadcastWorksheetMarketBook.PeriodStart = PeriodEndDate.AddDays(-27)
+                                    MediaBroadcastWorksheetMarketBook.PeriodEnd = PeriodEndDate
+
+                                End If
+
+                            Next
+
+                        End If
+
+                    Else
+
+                        ShareHPUTBookController = New AdvantageFramework.Controller.Media.ShareHPUTBookController(Me.Session)
+
+                        If MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen Then
+
+                            MediaBroadcastWorksheetCriteriaViewModel.RepositoryNielsenTVBooks = ShareHPUTBookController.GetRepositoryAllNielsenTVBooks
+
+                            MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheetMarketBooksPreBuy.AddRange(MediaBroadcastWorksheetMarkets.Select(Function(Entity) New DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook(Entity, MediaBroadcastWorksheetPrePostReportCriteriaBuyType)))
+
+                        ElseIf MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore Then
+
+                            MediaBroadcastWorksheetCriteriaViewModel.RepositoryNielsenTVBooks = ShareHPUTBookController.GetRepositoryAllComscoreTVBooks().OrderByDescending(Function(NB) NB.Year).ThenByDescending(Function(NB) NB.Month).ThenBy(Function(NB) NB.StreamSort).ToList
+
+                            MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheetMarketBooksPreBuy.AddRange(From Entity In MediaBroadcastWorksheetMarkets
+                                                                                                                       Where Entity.Market.ComscoreNewMarketNumber IsNot Nothing
+                                                                                                                       Select New DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook(Entity, MediaBroadcastWorksheetPrePostReportCriteriaBuyType))
+
+                        End If
 
                     End If
 
@@ -318,6 +348,8 @@ Namespace Controller.Reporting
                         MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID3 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID3
                         MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID4 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID4
                         MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID5 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID5
+                        MediaBroadcastWorksheetMarketBook.PeriodStart = MediaBroadcastWorksheetPrePostReportCriteria.PeriodStart
+                        MediaBroadcastWorksheetMarketBook.PeriodEnd = MediaBroadcastWorksheetPrePostReportCriteria.PeriodEnd
 
                     ElseIf MediaBroadcastWorksheetCriteriaViewModel.MediaType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV Then
 
@@ -492,6 +524,7 @@ Namespace Controller.Reporting
             Dim MediaBroadcastWorksheetPrePostReportCriteriaMediaType As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV
             Dim MediaTypeCode As String = Nothing
             Dim ClientCodes As String() = Nothing
+            Dim PeriodEndDate As Date = Nothing
 
             MediaBroadcastWorksheetPrePostReportCriteriaMediaType = MediaBroadcastWorksheetCriteriaViewModel.MediaType
 
@@ -522,7 +555,8 @@ Namespace Controller.Reporting
                                                             Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
                                                             Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
                                                             Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
-                                                            ClientCodes.Contains(Entity.MediaBroadcastWorksheet.ClientCode)
+                                                            ClientCodes.Contains(Entity.MediaBroadcastWorksheet.ClientCode) AndAlso
+                                                            Entity.MediaBroadcastWorksheet.RatingsServiceID = RatingServiceID
                                                       Select Entity).ToList
 
                 Else
@@ -535,7 +569,8 @@ Namespace Controller.Reporting
                                                             Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
                                                             Entity.MediaBroadcastWorksheet.ClientCode = ClientCode AndAlso
                                                             Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
-                                                            Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo
+                                                            Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
+                                                            Entity.MediaBroadcastWorksheet.RatingsServiceID = RatingServiceID
                                                       Select Entity).ToList
 
                 End If
@@ -556,64 +591,77 @@ Namespace Controller.Reporting
 
                 IsAgencyASP = AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(DbContext)
 
-                Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+                For Each MediaBroadcastWorksheetMarketBook In MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheetMarketBooksPreBuy
 
-                    For Each MediaBroadcastWorksheetMarketBook In MediaBroadcastWorksheetCriteriaViewModel.MediaBroadcastWorksheetMarketBooksPreBuy
+                    MediaBroadcastWorksheetMarket = MediaBroadcastWorksheetMarkets.SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID)
 
-                        MediaBroadcastWorksheetMarket = MediaBroadcastWorksheetMarkets.SingleOrDefault(Function(Entity) Entity.ID = MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID)
+                    If MediaBroadcastWorksheetMarket IsNot Nothing Then
 
-                        If MediaBroadcastWorksheetMarket IsNot Nothing Then
+                        For Each VendorCode In MediaBroadcastWorksheetMarket.MediaBroadcastWorksheetMarketDetails.Select(Function(Entity) Entity.VendorCode).Distinct.ToList
 
-                            For Each VendorCode In MediaBroadcastWorksheetMarket.MediaBroadcastWorksheetMarketDetails.Select(Function(Entity) Entity.VendorCode).Distinct.ToList
+                            Try
 
-                                Try
+                                MediaBroadcastWorksheetMarketDetail = MediaBroadcastWorksheetMarket.MediaBroadcastWorksheetMarketDetails.FirstOrDefault(Function(Entity) Entity.VendorCode = VendorCode)
 
-                                    MediaBroadcastWorksheetMarketDetail = MediaBroadcastWorksheetMarket.MediaBroadcastWorksheetMarketDetails.FirstOrDefault(Function(Entity) Entity.VendorCode = VendorCode)
+                            Catch ex As Exception
+                                MediaBroadcastWorksheetMarketDetail = Nothing
+                            End Try
 
-                                Catch ex As Exception
-                                    MediaBroadcastWorksheetMarketDetail = Nothing
-                                End Try
+                            If MediaBroadcastWorksheetMarketDetail IsNot Nothing Then
 
-                                If MediaBroadcastWorksheetMarketDetail IsNot Nothing Then
+                                If MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors.Any(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarket.ID AndAlso
+                                                                                                                           Entity.MarketCode = MediaBroadcastWorksheetMarket.MarketCode AndAlso
+                                                                                                                           Entity.VendorCode = MediaBroadcastWorksheetMarketDetail.VendorCode) = False Then
 
-                                    If MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors.Any(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarket.ID AndAlso
-                                                                                                                               Entity.MarketCode = MediaBroadcastWorksheetMarket.MarketCode AndAlso
-                                                                                                                               Entity.VendorCode = MediaBroadcastWorksheetMarketDetail.VendorCode) = False Then
-
-                                        MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors.Add(New DTO.Reporting.WorksheetMarketVendor(MediaBroadcastWorksheetMarketDetail))
-
-                                    End If
+                                    MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors.Add(New DTO.Reporting.WorksheetMarketVendor(MediaBroadcastWorksheetMarketDetail))
 
                                 End If
 
-                            Next
+                            End If
 
-                        End If
+                        Next
 
-                        MediaBroadcastWorksheetPrePostReportCriteria = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetPrePostReportCriteria.Load(DbContext)
-                                                                        Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID AndAlso
-                                                                              Entity.UserCode = Session.UserCode AndAlso
-                                                                              Entity.BuyType = MediaBroadcastWorksheetPrePostReportCriteriaBuyType AndAlso
-                                                                              Entity.MediaType = MediaBroadcastWorksheetPrePostReportCriteriaMediaType
-                                                                        Select Entity).SingleOrDefault
+                    End If
 
-                        If MediaBroadcastWorksheetPrePostReportCriteria IsNot Nothing Then
+                    MediaBroadcastWorksheetPrePostReportCriteria = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetPrePostReportCriteria.Load(DbContext)
+                                                                    Where Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketID AndAlso
+                                                                          Entity.UserCode = Session.UserCode AndAlso
+                                                                          Entity.BuyType = MediaBroadcastWorksheetPrePostReportCriteriaBuyType AndAlso
+                                                                          Entity.MediaType = MediaBroadcastWorksheetPrePostReportCriteriaMediaType
+                                                                    Select Entity).SingleOrDefault
 
-                            MediaBroadcastWorksheetMarketBook.ShareBookID = MediaBroadcastWorksheetPrePostReportCriteria.SharebookNielsenTVBookID
-                            MediaBroadcastWorksheetMarketBook.HPUTBookID = MediaBroadcastWorksheetPrePostReportCriteria.HUTPUTNielsenTVBookID
-                            MediaBroadcastWorksheetMarketBook.UsePrimaryDemo = MediaBroadcastWorksheetPrePostReportCriteria.UsePrimaryDemo
-                            MediaBroadcastWorksheetMarketBook.UseImpressions = MediaBroadcastWorksheetPrePostReportCriteria.UseImpressions
-                            MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID = MediaBroadcastWorksheetPrePostReportCriteria.PrimaryMediaDemographicID
-                            MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID = MediaBroadcastWorksheetPrePostReportCriteria.SecondaryMediaDemographicID
-                            MediaBroadcastWorksheetMarketBook.StartDate = MediaBroadcastWorksheetPrePostReportCriteria.StartDate.GetValueOrDefault(MediaBroadcastWorksheetMarketBook.StartDate)
-                            MediaBroadcastWorksheetMarketBook.EndDate = MediaBroadcastWorksheetPrePostReportCriteria.EndDate.GetValueOrDefault(MediaBroadcastWorksheetMarketBook.EndDate)
-                            MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID1
-                            MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID2 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID2
-                            MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID3 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID3
-                            MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID4 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID4
-                            MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID5 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID5
+                    If MediaBroadcastWorksheetPrePostReportCriteria IsNot Nothing Then
 
-                        ElseIf MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV Then
+                        MediaBroadcastWorksheetMarketBook.ShareBookID = MediaBroadcastWorksheetPrePostReportCriteria.SharebookNielsenTVBookID
+                        MediaBroadcastWorksheetMarketBook.HPUTBookID = MediaBroadcastWorksheetPrePostReportCriteria.HUTPUTNielsenTVBookID
+                        MediaBroadcastWorksheetMarketBook.UsePrimaryDemo = MediaBroadcastWorksheetPrePostReportCriteria.UsePrimaryDemo
+                        MediaBroadcastWorksheetMarketBook.UseImpressions = MediaBroadcastWorksheetPrePostReportCriteria.UseImpressions
+                        MediaBroadcastWorksheetMarketBook.PrimaryMediaDemographicID = MediaBroadcastWorksheetPrePostReportCriteria.PrimaryMediaDemographicID
+                        MediaBroadcastWorksheetMarketBook.SecondaryMediaDemographicID = MediaBroadcastWorksheetPrePostReportCriteria.SecondaryMediaDemographicID
+                        MediaBroadcastWorksheetMarketBook.StartDate = MediaBroadcastWorksheetPrePostReportCriteria.StartDate.GetValueOrDefault(MediaBroadcastWorksheetMarketBook.StartDate)
+                        MediaBroadcastWorksheetMarketBook.EndDate = MediaBroadcastWorksheetPrePostReportCriteria.EndDate.GetValueOrDefault(MediaBroadcastWorksheetMarketBook.EndDate)
+                        MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID1 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID1
+                        MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID2 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID2
+                        MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID3 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID3
+                        MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID4 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID4
+                        MediaBroadcastWorksheetMarketBook.NielsenRadioPeriodID5 = MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID5
+                        MediaBroadcastWorksheetMarketBook.PeriodStart = MediaBroadcastWorksheetPrePostReportCriteria.PeriodStart
+                        MediaBroadcastWorksheetMarketBook.PeriodEnd = MediaBroadcastWorksheetPrePostReportCriteria.PeriodEnd
+
+                    ElseIf MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV Then
+
+                        If RatingServiceID = Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico AndAlso Session.IsNielsenPuertoRicoSetup Then
+
+                            If DbContext.NPRUniverses.Any Then
+
+                                PeriodEndDate = DbContext.GetQuery(Of Database.Entities.NPRUniverse).Max(Function(Entity) Entity.Date)
+
+                                MediaBroadcastWorksheetMarketBook.PeriodStart = PeriodEndDate.AddDays(-27)
+                                MediaBroadcastWorksheetMarketBook.PeriodEnd = PeriodEndDate
+
+                            End If
+
+                        Else
 
                             If MediaBroadcastWorksheetMarketBook.IsCable AndAlso MediaBroadcastWorksheetMarketBook.MediaBroadcastWorksheetMarketTVGeographyID.GetValueOrDefault(1) = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.TVGeographies.CDMA Then
 
@@ -634,12 +682,12 @@ Namespace Controller.Reporting
 
                                 If (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext)
                                     Where MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID) AndAlso
-                                          Entity.Spots > 0
+                                      Entity.Spots > 0
                                     Select Entity.Date).Any Then
 
                                     MaxDate = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetailDate.Load(DbContext)
                                                Where MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID) AndAlso
-                                                     Entity.Spots > 0
+                                                 Entity.Spots > 0
                                                Select Entity.Date).Max
 
                                 End If
@@ -662,21 +710,21 @@ Namespace Controller.Reporting
 
                             End If
 
-                            'ElseIf MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.Radio Then
-
                         End If
 
-                        MediaBroadcastWorksheetMarketBook.SetEntityError(Me.MediaBroadcastWorksheetMarketBookPreBuyValidateEntity(MediaBroadcastWorksheetMarketBook, True))
-
-                    Next
-
-                    If MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors IsNot Nothing Then
-
-                        MediaBroadcastWorksheetCriteriaViewModel.WorksheetMarketVendors = MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors.OrderBy(Function(Entity) Entity.MarketCode).ThenBy(Function(Entity) Entity.VendorCode).ToList
+                        'ElseIf MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.Radio Then
 
                     End If
 
-                End Using
+                    MediaBroadcastWorksheetMarketBook.SetEntityError(Me.MediaBroadcastWorksheetMarketBookValidateEntity(MediaBroadcastWorksheetMarketBook, True))
+
+                Next
+
+                If MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors IsNot Nothing Then
+
+                    MediaBroadcastWorksheetCriteriaViewModel.WorksheetMarketVendors = MediaBroadcastWorksheetCriteriaViewModel.AllWorksheetMarketVendors.OrderBy(Function(Entity) Entity.MarketCode).ThenBy(Function(Entity) Entity.VendorCode).ToList
+
+                End If
 
             End Using
 
@@ -740,10 +788,13 @@ Namespace Controller.Reporting
 
             'objects
             Dim PropertyDescriptors As Generic.List(Of System.ComponentModel.PropertyDescriptor) = Nothing
+            Dim MediaBroadcastWorksheetMarketBook As AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook = Nothing
 
             PropertyDescriptors = System.ComponentModel.TypeDescriptor.GetProperties(DTO).OfType(Of System.ComponentModel.PropertyDescriptor)().ToList
 
             If DTO.GetType.Equals(GetType(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook)) Then
+
+                MediaBroadcastWorksheetMarketBook = DTO
 
                 For Each PropertyDescriptor In PropertyDescriptors
 
@@ -765,6 +816,14 @@ Namespace Controller.Reporting
 
                             DTO.SetRequired(PropertyDescriptor, True)
 
+                        Case AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString
+
+                            DTO.SetRequired(PropertyDescriptor, MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue OrElse MediaBroadcastWorksheetMarketBook.PeriodEnd.HasValue)
+
+                        Case AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString
+
+                            DTO.SetRequired(PropertyDescriptor, MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue OrElse MediaBroadcastWorksheetMarketBook.PeriodEnd.HasValue)
+
                     End Select
 
                 Next
@@ -777,8 +836,11 @@ Namespace Controller.Reporting
             'objects
             Dim ErrorText As String = ""
             Dim PropertyValue As Object = Nothing
+            Dim MediaBroadcastWorksheetMarketBook As AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook = Nothing
 
             If DTO.GetType.Equals(GetType(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook)) Then
+
+                MediaBroadcastWorksheetMarketBook = DTO
 
                 Select Case PropertyName
 
@@ -814,6 +876,57 @@ Namespace Controller.Reporting
 
                         End If
 
+                    Case AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString
+
+                        PropertyValue = Value
+
+                        If PropertyValue IsNot Nothing AndAlso MediaBroadcastWorksheetMarketBook.PeriodEnd.HasValue Then
+
+                            If PropertyValue > MediaBroadcastWorksheetMarketBook.PeriodEnd.Value Then
+
+                                IsValid = False
+
+                                ErrorText = "Periods must be in chronological order, please correct."
+
+                            ElseIf (From Entity In DbContext.GetQuery(Of Database.Entities.NPRUniverse)
+                                    Where Entity.Date >= DirectCast(PropertyValue, Date) AndAlso
+                                          Entity.Date <= MediaBroadcastWorksheetMarketBook.PeriodEnd.Value
+                                    Select Entity).Count <> DateDiff(DateInterval.Day, DirectCast(PropertyValue, Date), MediaBroadcastWorksheetMarketBook.PeriodEnd.Value) + 1 Then
+
+                                IsValid = False
+
+                                ErrorText = "More than one universe record is missing for the period date range specified."
+
+                            End If
+
+                        End If
+
+
+                    Case AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString
+
+                        PropertyValue = Value
+
+                        If PropertyValue IsNot Nothing AndAlso MediaBroadcastWorksheetMarketBook.PeriodStart.HasValue Then
+
+                            If PropertyValue < MediaBroadcastWorksheetMarketBook.PeriodStart.Value Then
+
+                                IsValid = False
+
+                                ErrorText = "Periods must be in chronological order, please correct."
+
+                            ElseIf (From Entity In DbContext.GetQuery(Of Database.Entities.NPRUniverse)
+                                    Where Entity.Date >= MediaBroadcastWorksheetMarketBook.PeriodStart.Value AndAlso
+                                          Entity.Date <= DirectCast(PropertyValue, Date)
+                                    Select Entity).Count <> DateDiff(DateInterval.Day, MediaBroadcastWorksheetMarketBook.PeriodStart.Value, DirectCast(PropertyValue, Date)) + 1 Then
+
+                                IsValid = False
+
+                                ErrorText = "More than one universe record is missing for the period date range specified."
+
+                            End If
+
+                        End If
+
                 End Select
 
             End If
@@ -841,26 +954,26 @@ Namespace Controller.Reporting
             MediaBroadcastWorksheetMarketBookValidateEntity = ErrorText
 
         End Function
-        Public Function MediaBroadcastWorksheetMarketBookPreBuyValidateEntity(ByRef MediaBroadcastWorksheetMarketBook As AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook, ByRef IsValid As Boolean) As String
+        'Public Function MediaBroadcastWorksheetMarketBookPreBuyValidateEntity(ByRef MediaBroadcastWorksheetMarketBook As AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook, ByRef IsValid As Boolean) As String
 
-            'objects
-            Dim ErrorText As String = Nothing
+        '    'objects
+        '    Dim ErrorText As String = Nothing
 
-            SetRequiredFields(MediaBroadcastWorksheetMarketBook)
+        '    SetRequiredFields(MediaBroadcastWorksheetMarketBook)
 
-            Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+        '    Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-                Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+        '        Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
 
-                    ErrorText = ValidateDTO(DbContext, DataContext, MediaBroadcastWorksheetMarketBook, IsValid)
+        '            ErrorText = ValidateDTO(DbContext, DataContext, MediaBroadcastWorksheetMarketBook, IsValid)
 
-                End Using
+        '        End Using
 
-            End Using
+        '    End Using
 
-            MediaBroadcastWorksheetMarketBookPreBuyValidateEntity = ErrorText
+        '    MediaBroadcastWorksheetMarketBookPreBuyValidateEntity = ErrorText
 
-        End Function
+        'End Function
         Public Function ValidateEntityProperty(MediaBroadcastWorksheetMarketBook As AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook, FieldName As String, ByRef IsValid As Boolean, ByRef Value As Object) As String
 
             'objects

@@ -39,8 +39,10 @@
 			NeilsenRadioPeriodID2
 			NeilsenRadioPeriodID3
 			NeilsenRadioPeriodID4
-			NeilsenRadioPeriodID5
-			CreatedByUserCode
+            NeilsenRadioPeriodID5
+            PeriodStart
+            PeriodEnd
+            CreatedByUserCode
 			CreatedDate
 			ModifiedByUserCode
             ModifiedDate
@@ -99,7 +101,7 @@
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True, ShowColumnInGrid:=False)>
         Public Property MarketEastlanHispanicRadioCode As Nullable(Of Short)
         <MaxLength(6)>
-        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="", PropertyType:=BaseClasses.Methods.PropertyTypes.BuyerEmployeeCode, CustomColumnCaption:="Buyer Code")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", PropertyType:=BaseClasses.Methods.PropertyTypes.BuyerEmployeeCode, CustomColumnCaption:="Buyer Code")>
         Public Property BuyerEmployeeCode() As String
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True, CustomColumnCaption:="Buyer Name")>
         Public Property BuyerEmployeeName() As String
@@ -138,6 +140,10 @@
         Public Property NeilsenRadioPeriodID4() As Nullable(Of Integer)
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", PropertyType:=BaseClasses.PropertyTypes.NielsenRadioPeriod, CustomColumnCaption:="Book 5")>
         Public Property NeilsenRadioPeriodID5() As Nullable(Of Integer)
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property PeriodStart() As Nullable(Of Date)
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property PeriodEnd() As Nullable(Of Date)
         <Required>
         <MaxLength(100)>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="", ShowColumnInGrid:=False)>
@@ -209,6 +215,8 @@
             Me.NeilsenRadioPeriodID3 = Nothing
             Me.NeilsenRadioPeriodID4 = Nothing
             Me.NeilsenRadioPeriodID5 = Nothing
+            Me.PeriodStart = Nothing
+            Me.PeriodEnd = Nothing
             Me.CreatedByUserCode = String.Empty
             Me.CreatedDate = Date.MinValue
             Me.ModifiedByUserCode = Nothing
@@ -315,6 +323,8 @@
             Me.NeilsenRadioPeriodID3 = MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID3
             Me.NeilsenRadioPeriodID4 = MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID4
             Me.NeilsenRadioPeriodID5 = MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID5
+            Me.PeriodStart = MediaBroadcastWorksheetMarket.PeriodStart
+            Me.PeriodEnd = MediaBroadcastWorksheetMarket.PeriodEnd
             Me.CreatedByUserCode = MediaBroadcastWorksheetMarket.CreatedByUserCode
             Me.CreatedDate = MediaBroadcastWorksheetMarket.CreatedDate
             Me.ModifiedByUserCode = MediaBroadcastWorksheetMarket.ModifiedByUserCode
@@ -351,8 +361,10 @@
 			MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID2 = Me.NeilsenRadioPeriodID2
 			MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID3 = Me.NeilsenRadioPeriodID3
 			MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID4 = Me.NeilsenRadioPeriodID4
-			MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID5 = Me.NeilsenRadioPeriodID5
-			MediaBroadcastWorksheetMarket.CreatedByUserCode = Me.CreatedByUserCode
+            MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID5 = Me.NeilsenRadioPeriodID5
+            MediaBroadcastWorksheetMarket.PeriodStart = Me.PeriodStart
+            MediaBroadcastWorksheetMarket.PeriodEnd = Me.PeriodEnd
+            MediaBroadcastWorksheetMarket.CreatedByUserCode = Me.CreatedByUserCode
 			MediaBroadcastWorksheetMarket.CreatedDate = Me.CreatedDate
 			MediaBroadcastWorksheetMarket.ModifiedByUserCode = Me.ModifiedByUserCode
 			MediaBroadcastWorksheetMarket.ModifiedDate = Me.ModifiedDate
@@ -371,6 +383,6 @@
 
 #End Region
 
-	End Class
+    End Class
 
 End Namespace

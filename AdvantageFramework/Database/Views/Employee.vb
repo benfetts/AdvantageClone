@@ -163,6 +163,7 @@
             [Function]
             EmployeeRateHistories
             EmployeeTitle
+            BillableHoursGoal
         End Enum
 
 #End Region
@@ -649,6 +650,11 @@
         Public Overridable Property [Function] As Database.Entities.Function
         Public Overridable Property EmployeeRateHistories As ICollection(Of Database.Entities.EmployeeRateHistory)
         Public Overridable Property EmployeeTitle As Database.Entities.EmployeeTitle
+
+
+        <Column("BILLABLE_HOURS_GOAL")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property BillableHoursGoal() As Nullable(Of Decimal)
 
 #End Region
 

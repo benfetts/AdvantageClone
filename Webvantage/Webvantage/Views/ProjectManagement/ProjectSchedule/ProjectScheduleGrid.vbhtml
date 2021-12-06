@@ -191,22 +191,23 @@ end functions
 
     $(() => {
         ScheduleTreeListDataSource = new kendo.data.TreeListDataSource({
+            batch: true,
             filter: (e) => {
             },
             transport: {
                 create: (e) => {
-                    let event = e;
                     $.ajax({
                         url: "@Href("~/ProjectManagement/ProjectSchedule/CreateProjectScheduleTask")",
                         type: 'POST',
                         dataType: 'json',
-                        data: e.data,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(e.data.models),
                         success: (results) => {
                             taskInserted = false;
-                            event.success(results);
+                            e.success(results);
                         },
                         error: (results) => {
-                            event.error(results);
+                            e.error(results);
                         }
                     });
                 },
@@ -247,84 +248,92 @@ end functions
                     });
                 },
                 update: (e) => {
-                    var data = {
-                        AlertId: e.data.AlertId,
-                        AttachedEntityType: e.data.AttachedEntityType,
-                        ClientContact: e.data.ClientContact,
-                        ClientContactName: e.data.ClientContactName,
-                        DataContext: e.data.DataContext,
-                        DbContext: e.data.DbContext,
-                        DispersedHours: e.data.DispersedHours,
-                        DueDateComments: e.data.DueDateComments,
-                        DueDateLock: e.data.DueDateLock,
-                        DueTime: e.data.DueTime,
-                        EmployeeCode: e.data.EmployeeCode,
-                        EmployeeCodes: e.data.EmployeeCodes,
-                        EmployeeName: e.data.EmployeeName,
-                        EntityError: e.data.EntityError,
-                        Error: e.data.Error,
-                        EstimateFunction: e.data.EstimateFunction,
-                        FunctionComments: e.data.FunctionComments,
-                        FunctionDescription: e.data.FunctionDescription,
-                        GridOrder: e.data.GridOrder,
-                        HasAlerts: e.data.HasAlerts,
-                        HasAssignment: e.data.HasAssignment,
-                        HasChildren: e.data.HasChildren,
-                        HasDocuments: e.data.HasDocuments,
-                        HasPredecessors: e.data.HasPredecessors,
-                        ID: e.data.ID,
-                        JobCompletedDate: e.data.JobCompletedDate != null ? e.data.JobCompletedDate.toJSON() : e.data.JobCompletedDate,
-                        JobComponentNumber: e.data.JobComponentNumber,
-                        JobDays: e.data.JobDays,
-                        JobDueDate: e.data.JobDueDate != null ? e.data.JobDueDate.toJSON() : e.data.JobDueDate,
-                        JobHours: e.data.JobHours,
-                        JobNumber: e.data.JobNumber,
-                        JobOrder: e.data.JobOrder,
-                        JobRevisedDate: e.data.JobRevisedDate != null ? e.data.JobRevisedDate.toJSON() : e.data.JobRevisedDate,
-                        Level: e.data.Level,
-                        Milestone: e.data.Milestone,
-                        ParentTaskSequenceNumber: e.data.ParentTaskSequenceNumber,
-                        PercentComplete: e.data.PercentComplete,
-                        PhaseDescription: e.data.PhaseDescription,
-                        PhaseEndDate: e.data.PhaseEndDate != null ? e.data.PhaseEndDate.toJSON() : e.data.PhaseEndDate,
-                        PhaseOrder: e.data.PhaseOrder,
-                        PhaseStartDate: e.data.PhaseStartDate != null ? e.data.PhaseStartDate.toJSON() : e.data.PhaseStartDate,
-                        PostedHours: e.data.PostedHours,
-                        Predecessor: e.data.Predecessor,
-                        PredecessorLevelNotation: e.data.PredecessorLevelNotation,
-                        PredecessorSequenceNumbers: e.data.PredecessorSequenceNumbers,
-                        RevisedDueTime: e.data.RevisedDueTime,
-                        RevisionDateComments: e.data.RevisionDateComments,
-                        SequenceNumber: e.data.SequenceNumber,
-                        TaskCode: e.data.TaskCode,
-                        TaskDescription: e.data.TaskDescription,
-                        TaskStartDate: e.data.TaskStartDate != null ? e.data.TaskStartDate.toJSON() : e.data.TaskStartDate,
-                        TaskStatus: e.data.TaskStatus,
-                        TempCompleteDateString: e.data.TempCompleteDateString,
-                        TemporaryCompleteDate: e.data.TemporaryCompleteDate != null ? e.data.TemporaryCompleteDate.toJSON() : e.data.TemporaryCompleteDate,
-                        TrafficPhaseID: e.data.TrafficPhaseID,
-                        TrafficRole: e.data.TrafficRole,
-                        hasChildren: e.data.hasChildren,
-                        Priority: e.data.Priority
-                    }
+                    var data = [];
+                    e.data.models.forEach((v, i, a) => {
+                        data[i] = {
+                            AlertId: v.AlertId,
+                            //AttachedEntityType: v.AttachedEntityType,
+                            ClientContact: v.ClientContact,
+                            ClientContactName: v.ClientContactName,
+                            //DataContext: v.DataContext,
+                            //DbContext: v.DbContext,
+                            DispersedHours: v.DispersedHours,
+                            DueDateComments: v.DueDateComments,
+                            DueDateLock: v.DueDateLock,
+                            DueTime: v.DueTime,
+                            EmployeeCode: v.EmployeeCode,
+                            //EmployeeCodes: v.EmployeeCodes,
+                            EmployeeName: v.EmployeeName,
+                            //EntityError: v.EntityError,
+                            //Error: v.Error,
+                            EstimateFunction: v.EstimateFunction,
+                            FunctionComments: v.FunctionComments,
+                            FunctionDescription: v.FunctionDescription,
+                            GridOrder: v.GridOrder,
+                            HasAlerts: v.HasAlerts,
+                            HasAssignment: v.HasAssignment,
+                            HasChildren: v.HasChildren,
+                            HasDocuments: v.HasDocuments,
+                            HasPredecessors: v.HasPredecessors,
+                            ID: v.ID,
+                            JobCompletedDate: v.JobCompletedDate != null ? v.JobCompletedDate.toJSON() : v.JobCompletedDate,
+                            JobComponentNumber: v.JobComponentNumber,
+                            JobDays: v.JobDays,
+                            JobDueDate: v.JobDueDate != null ? v.JobDueDate.toJSON() : v.JobDueDate,
+                            JobHours: v.JobHours,
+                            JobNumber: v.JobNumber,
+                            JobOrder: v.JobOrder,
+                            JobRevisedDate: v.JobRevisedDate != null ? v.JobRevisedDate.toJSON() : v.JobRevisedDate,
+                            Level: v.Level,
+                            Milestone: v.Milestone,
+                            ParentTaskSequenceNumber: v.ParentTaskSequenceNumber,
+                            PercentComplete: v.PercentComplete,
+                            PhaseDescription: v.PhaseDescription,
+                            PhaseEndDate: v.PhaseEndDate != null ? v.PhaseEndDate.toJSON() : v.PhaseEndDate,
+                            PhaseOrder: v.PhaseOrder,
+                            PhaseStartDate: v.PhaseStartDate != null ? v.PhaseStartDate.toJSON() : v.PhaseStartDate,
+                            PostedHours: v.PostedHours,
+                            Predecessor: v.Predecessor,
+                            PredecessorLevelNotation: v.PredecessorLevelNotation,
+                            PredecessorSequenceNumbers: v.PredecessorSequenceNumbers,
+                            RevisedDueTime: v.RevisedDueTime,
+                            RevisionDateComments: v.RevisionDateComments,
+                            SequenceNumber: v.SequenceNumber,
+                            TaskCode: v.TaskCode,
+                            TaskDescription: v.TaskDescription,
+                            TaskStartDate: v.TaskStartDate != null ? v.TaskStartDate.toJSON() : v.TaskStartDate,
+                            TaskStatus: v.TaskStatus,
+                            //TempCompleteDateString: v.TempCompleteDateString,
+                            TemporaryCompleteDate: v.TemporaryCompleteDate != null ? v.TemporaryCompleteDate.toJSON() : v.TemporaryCompleteDate,
+                            TrafficPhaseID: v.TrafficPhaseID,
+                            TrafficRole: v.TrafficRole,
+                            //hasChildren: v.hasChildren,
+                            Priority: v.Priority
+                        }
+                    });
 
                     $.ajax({
                         url: "@Href("~/ProjectManagement/ProjectSchedule/UpdateProjectScheduleTask")",
                         dataType: 'json',
-                        data: data,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(data),
                         method: "POST",
                         success: (results) => {
-                            if (results.ErrorMessage == '') {
-                                taskEdited = false;
-                                e.success(results.Task);
-                                //refreshGrid();
-                            } else {
-                                e.error(results.ErrorMessage);
-                                alert(results.ErrorMessage);
-                            }
+                            //well the call worked, but who knows if they all saved....
+                            var tasks = [];
+                            results.forEach((v, i, a) => {
+                                tasks[i] = v.Task;
+
+                                if (v.ErrorMessage !== '') {
+                                    alert(results.ErrorMessage);
+                                }
+                                
+                            });
+
+                            e.success(tasks);
                         },
                         error: (jqXHR, textStatus, errorThrown) => {
-                            alert(textStatus);
+                            alert(errorThrown);
                             e.error(errorThrown);
                         }
                     }).then(() => {
@@ -332,17 +341,22 @@ end functions
                     });
                 },
                 destroy: (e) => {
-                    console.log('destroy', e);
-                    var data = {
-                        JobNumber: e.data.JobNumber,
-                        JobComponentNumber: e.data.JobComponentNumber,
-                        SequenceNumber: e.data.SequenceNumber
-                    }
+                    var data =  [];
+
+                    e.data.models.forEach((v, i, a) => {
+                        data[i] = {
+                            JobNumber: v.JobNumber,
+                            JobComponentNumber: v.JobComponentNumber,
+                            SequenceNumber: v.SequenceNumber
+                        }
+                    });
 
                     $.ajax({
                         url: "@Href("~/ProjectManagement/ProjectSchedule/DeleteTask")",
                         dataType: 'json',
-                        data: data,
+                        contentType: "application/json; charset=utf-8",
+                        type: 'POST',
+                        data: JSON.stringify(data),
                         success: (results) => {
                             if (results.Message !== '') {
                                 showKendoAlert('Unable to delete all selected tasks! ' + results.Message);
@@ -432,7 +446,9 @@ end functions
                 { field: "PostedHours", aggregate: "sum" },
                 { field: "DispersedHours", aggregate: "sum" },
                 { field: "JobDays", aggregate: "sum" },
-                { field: "JobHours", aggregate: "sum" }
+                { field: "JobHours", aggregate: "sum" },
+                { field: "TaskStartDate", aggregate: "min" },
+                { field: "JobRevisedDate", aggregate: "max" }
             ]
         });
 
@@ -455,7 +471,7 @@ end functions
             Else
                     @<text> editable: false, </text>
             End If
-            selectable: "multiple, row", //multiple,
+            selectable: "row, multiple",
             edit: edit,
             navigatable: true,
             allowCopy: true,
@@ -477,11 +493,12 @@ end functions
                             $(selector).closest("td").removeClass("ps-standard-light-orange");
                             $(selector).closest("td").removeClass("ps-standard-light-grey");
                             $(selector).closest("td").removeClass("ps-standard-light-green");
+                            $(selector).closest("td").removeClass("ps-projected");
 
                             $(selector).closest("td").addClass(className);
                         }
                     }
-                },50);
+                },0);
 
             },
             change: (e) => {
@@ -528,25 +545,6 @@ end functions
                     e.items[0].dirtyFields[e.field] = true;
                 }
 
-                //let model = e.model;
-                //let that = e.sender;
-                //setTimeout(() => {
-                //    let selector = `div[taskduedate-cell='${model.AlertId}']`;
-                //    if (model) {
-                //        var className = getDueDateClass(model);
-
-                //        if ($(selector).length) {
-                //            $(selector).closest("td").removeClass("ps-standard-light-pink");
-                //            $(selector).closest("td").removeClass("ps-standard-light-orange");
-                //            $(selector).closest("td").removeClass("ps-standard-light-grey");
-                //            $(selector).closest("td").removeClass("ps-standard-light-green");
-
-                //            $(selector).closest("td").addClass(className);
-                //        }
-                //    }
-                //}, 50);
-
-
                 var that = e.sender;
                 var rows = e.sender.table.find("tr");
                 rows.each(function (idx, row) {
@@ -564,6 +562,7 @@ end functions
                             $(selector).closest("td").removeClass("ps-standard-light-orange");
                             $(selector).closest("td").removeClass("ps-standard-light-grey");
                             $(selector).closest("td").removeClass("ps-standard-light-green");
+                            $(selector).closest("td").removeClass("ps-projected");
 
                             $(selector).closest("td").addClass(className);
                         }
@@ -599,6 +598,12 @@ end functions
                     var dueDateCell = $(row).find("td.due-date");
 
                     if (dataItem) {
+                        dueDateCell.removeClass("ps-standard-light-pink");
+                        dueDateCell.removeClass("ps-standard-light-orange");
+                        dueDateCell.removeClass("ps-standard-light-grey");
+                        dueDateCell.removeClass("ps-standard-light-green");
+                        dueDateCell.removeClass("ps-projected");
+
                         dueDateCell.addClass(getDueDateClass(dataItem));
                     }
                 });
@@ -1379,29 +1384,6 @@ end functions
 
         $("#treelist table").on("keydown", ((e) => {
             if (e.keyCode === kendo.keys.TAB) {
-                //e.preventDefault();
-                //var grid = $("#treelist").data("kendoTreeList");
-                //var current = grid.current();
-                //if (!current.hasClass("editable-cell")) {
-                //    var nextCell;
-                //    if (e.shiftKey) {
-                //        nextCell = current.prevAll("editable-cell");
-                //        if (!nextCell[0]) {
-                //            //search the next row
-                //            var prevRow = current.parent().prev();
-                //            var nextCell = prevRow.children();
-                //        }
-                //    } else {
-                //        nextCell = current.nextAll("editable-cell");
-                //        if (!nextCell[0]) {
-                //            //search the next row
-                //            var nextRow = current.parent().next();
-                //            var nextCell = nextRow.children();
-                //        }
-                //    }
-                //    //grid.current(nextCell[0]);
-                //    grid.editCell(nextCell[0]);
-                //}
             }
             else if (e.code == 'Space') {
                 var grid = $("#treelist").data("kendoTreeList");
@@ -1603,14 +1585,7 @@ end functions
                     treeList.setDataSource([]);
 
                     for (var i = 0; i < rows.length; i++) {
-                        //var dataItem = treeList.dataItem(rows[i]);
-                        //setTimeout(deleteItem, 0, treeList.dataItem(rows[i]),treeList);
-
-                        console.log(rows[i]);
-
                         promises[i] = deferedDelete(dataSource.getByUid($(rows[i]).data('uid')), dataSource);
-
-                        //dataItems[i] = dataItem;
                     }
 
                     await Promise.all(promises);
@@ -1715,12 +1690,12 @@ end functions
     }
 
     function resizeGrid() {
-        let dfd = jQuery.Deferred();
+        let dfd = $.Deferred();
         var treeList = $("#treelist");
         var kendoTreeList = treeList.data("kendoTreeList")
         kendoTreeList.resize();
 
-        kendoTreeList.dataSource.read().then(() => {
+        refreshGrid().then(() => {
             $(".k-grid-content-locked").height($(".k-grid-content").height());
             dfd.resolve();
         });
@@ -1728,12 +1703,14 @@ end functions
     }
 
     function refreshGrid() {
-        let dfd = jQuery.Deferred();
-
+        let dfd = $.Deferred();
         var treeList = $("#treelist");
         var kendoTreeList = treeList.data("kendoTreeList")
+        kendo.ui.progress(kendoTreeList.element, true);
+
         kendoTreeList.dataSource.read().then(() => {
             $(".k-grid-content-locked").height($(".k-grid-content").height());
+            kendo.ui.progress(kendoTreeList.element, false);
             dfd.resolve();
         });
 
@@ -1755,10 +1732,13 @@ end functions
         var columns = jQuery.grep(kendoTreeList.columns, (function (v, i) { return kendoTreeList.columns[i].CalculateByPredecessor == true; }));
         var notColumns = jQuery.grep(kendoTreeList.columns, (function (v, i) { return kendoTreeList.columns[i].NotCalculateByPredecessor == true; }));
 
+        kendo.ui.progress(kendoTreeList.element, true);
+
         if (CalculateByPredecessor) {
             jQuery.each(columns,(idx, column) => {
                 kendoTreeList.showColumn(column);
             });
+
             jQuery.each(notColumns, (idx, column) => {
                 kendoTreeList.hideColumn(column);
             });
@@ -1767,14 +1747,14 @@ end functions
             $("#CalcStartDateWrapper").hide();
             $("#AddInto").show();
 
-            kendoTreeList.setOptions({
-                editable:  {
-                    move: true,
-                    mode: 'incell'
-                }
-            });
+            //kendoTreeList.setOptions({
+            //    editable:  {
+            //        move: true,
+            //        mode: 'incell'
+            //    }
+            //});
 
-            kendoTreeList.refresh(false);
+            //kendoTreeList.refresh(false);
 
             $('#dropInto').show();
             $('#ContextInto').show();
@@ -1792,22 +1772,20 @@ end functions
             $("#CalcStartDateWrapper").show();
             $("#AddInto").hide();
 
-            kendoTreeList.setOptions({
-                editable: {
-                    move: true,
-                    mode: 'incell'
-                }
-            });
+            //kendoTreeList.setOptions({
+            //    editable: {
+            //        move: true,
+            //        mode: 'incell'
+            //    }
+            //});
 
-            kendoTreeList.refresh(false);
+            //kendoTreeList.refresh(false);
 
             $('#dropInto').hide();
             $('#ContextInto').hide();
         }
-
         CalculateByPredecessorChangeGantt(CalculateByPredecessor);
-
-        //
+        kendo.ui.progress(kendoTreeList.element, false);
         lockColumns();
     }
 
@@ -1826,7 +1804,6 @@ end functions
             taskEdited = false;
             taskInserted = false;
             setSave();
-            //treelist.dataSource.read();
             loadJobInfo();
         });
     }
@@ -1913,52 +1890,17 @@ end functions
     }
 
     async function toggleAll(e) {
-        var view = $('#treelist').data("kendoTreeList").dataSource.view();
         var treelist = $('#treelist').data("kendoTreeList");
         var checked = e.target.checked;
-
-        var promises = [];
-
         kendo.ui.progress(treelist.element, true);
-
-        for (var i = 0; i < view.length; i++) {
-            //view[i].set("checked", checked);
-
-            //setTimeout(() => {
-                //var tr = $("#treelist .k-grid-content tr:nth(" + i + ")");
-                //if (checked === true) {
-                //    treelist.select(tr);
-                //} else {
-                //    treelist.clearSelection();
-                //}
-            //},0);
-
-            promises[i] = selectRowDefered(treelist, i, checked);
-
+        if (checked) {
+            var tr = $("#treelist [data-uid]");
+            treelist.select(tr);
         }
-
-        await Promise.all(promises);
-
+        else {
+            treelist.clearSelection();
+        }
         kendo.ui.progress(treelist.element, false);
-    }
-
-    function selectRowDefered(tree, row, checked){
-        var d = $.Deferred()
-
-        setTimeout(selectRow, 0, tree, row, checked,d);
-
-        return d.promise();
-    }
-
-    function selectRow(tree,row,checked,d) {
-        var tr = $("#treelist .k-grid-content tr:nth(" + row + ")");
-        if (checked === true) {
-            tree.select(tr);
-        } else {
-            tree.clearSelection();
-        }
-
-        d.resolve();
     }
 
     function cancelChanges() {
@@ -1970,7 +1912,7 @@ end functions
     }
 
     function refresh() {
-        $('#treelist').data("kendoTreeList").dataSource.read();
+        refreshGrid();
         taskDeleted = false;
         taskEdited = false;
         taskInserted = false;
@@ -1996,18 +1938,14 @@ end functions
                     if (element.select) {
                         element.select();
                     }
-                })
+                },0);
             }
         });
         setSave();
     }
-
     function treeListDataBound(e) {
-        var that = e.sender;
-
         var treelist = $('#treelist').data("kendoTreeList");
         var column = treelist.columns[treelist.columns.length - 1];
-
         if (column.attributes && column.attributes.class && column.attributes.class.indexOf(' lastColumn') < 0) {
             column.attributes.class = column.attributes.class + ' lastColumn';
             if (column.headerAttributes) {
@@ -2015,26 +1953,13 @@ end functions
             }
         }
     }
-
-    //function dirtyField(data, fieldName) {
-    //    var hasClass = $("[data-uid=" + data.uid + "]").find(".k-dirty-cell").length < 1;
-    //    if (data.dirty && data.dirtyFields[fieldName] && hasClass) {
-    //        return "<span class='k-dirty'></span>"
-    //    }
-    //    else {
-    //        return "";
-    //    }
-    //}
-
     //editors
     function priorityEditor(container, options) {
-
         var dataSource = [{ Code: 1, Name: 'HH' },
         { Code: 2, Name: 'H' },
         { Code: 3, Name: '--' },
         { Code: 4, Name: 'L' },
         { Code: 5, Name: 'LL' }];
-
         $('<input class="combo-40" data-value-field="Code" data-bind="value:' + options.field + '"/>')
             .appendTo(container)
             .kendoComboBox({
@@ -2043,9 +1968,7 @@ end functions
                 valuePrimitive: true,
                 dataSource: dataSource
             });
-
     }
-
     function dateEditor(container, options) {
         let item;
         item = $('<input id="ActiveDatePicker" class="date-sm" style="width: 100%" data-bind="value:' + options.field + '" />')
@@ -2082,15 +2005,13 @@ end functions
                     var className = getDueDateClass(options.model);
 
                     let selector = `div[taskduedate-cell='${options.model.AlertId}']`;
-
-                    var elm = $(selector);
-
                     //due date was manually entered
                     if ($(selector).length) {
                         $(selector).closest("td").removeClass("ps-standard-light-pink");
                         $(selector).closest("td").removeClass("ps-standard-light-orange");
                         $(selector).closest("td").removeClass("ps-standard-light-grey");
                         $(selector).closest("td").removeClass("ps-standard-light-green");
+                        $(selector).closest("td").removeClass("ps-projected");
 
                         $(selector).closest("td").addClass(className);
                     } else {
@@ -2112,7 +2033,6 @@ end functions
                         options.model.set("JobDays", d);
                     });
                 }
-
                 container.addClass('ps-standard-light-green');
             }
         });
@@ -2120,18 +2040,15 @@ end functions
         item.bind("focus", (() => {
                 setTimeout(function () {
                     $('#ActiveDatePicker').select();
-                },50);
+                },0);
         }));
-
         item.bind("mousedown", (e) => { e.stopPropagation(); });
-
         item.bind('keydown', (e) => {
             if ((e.key == 'ArrowLeft' || e.key == 'ArrowRight') && e.shiftKey) {
                 e.stopPropagation();
             }
         });
     }
-
     function timeEditor(container, options) {
         $('<input data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '"/>')
             .appendTo(container)
@@ -2522,7 +2439,7 @@ end functions
                                     var multiSelect = $('#EmployeeMultiSelect').data('kendoMultiSelect');
                                     multiSelect.value(POS);
                                 }
-                            }, 100);
+                            }, 50);
                         }
                     }
 
@@ -2708,7 +2625,7 @@ end functions
                                     var multiSelect = $('#EmployeeMultiSelect').data('kendoMultiSelect');
                                     multiSelect.value(POS);
                                 }
-                            }, 100);
+                            }, 50);
                         }
                     }
 
@@ -2811,10 +2728,14 @@ end functions
     }
 
     function dispersedHourTemplate(dataItem) {
-        if (dataItem.HasChildren == false && dataItem.DispersedHours)
-        {
-            return '<div onClick="dispersedHourClick(' + dataItem.AlertId + ')"><a href="#">' + dataItem.DispersedHours + '</a></div>'
+        if (dataItem.HasChildren == false && dataItem.DispersedHours) {
+            return '<div onClick="dispersedHourClick(' + dataItem.AlertId + ')"><a href="#">' + dataItem.DispersedHours + '</a></div>';
         }
+        else if (dataItem.HasChildren == true && treeList.dataSource._aggregateResult[dataItem.id].DispersedHours && treeList.dataSource._aggregateResult[dataItem.id].DispersedHours.sum) {
+            //var treeList = $("#treelist").data("kendoTreeList");
+            return '<div>' + treeList.dataSource._aggregateResult[dataItem.id].DispersedHours.sum + '</div>';
+        }
+
         return '<div onClick="dispersedHourClick(' + dataItem.AlertId + ')">&nbsp</div>'
     }
 
@@ -3002,6 +2923,9 @@ End If
         if (dataItem.HasChildren == false && dataItem.TaskStartDate) {
             return kendo.toString(kendo.parseDate(dataItem.TaskStartDate), "MM/dd/yyyy");
         }
+        else if (dataItem.HasChildren == true && treeList.dataSource._aggregateResult[dataItem.id].TaskStartDate && treeList.dataSource._aggregateResult[dataItem.id].TaskStartDate.min) {
+            return kendo.toString(kendo.parseDate(treeList.dataSource._aggregateResult[dataItem.id].TaskStartDate.min), "MM/dd/yyyy");
+        }
 
         return '';
     }
@@ -3013,9 +2937,12 @@ End If
 
             dueDate = kendo.toString(kendo.parseDate(dataItem.JobRevisedDate), "MM/dd/yyyy");
 
-            dueDateFormatted = '<div style="padding-left:3px;" taskDueDate-cell=' + dataItem.AlertId +'>' + dueDate + '</div>';
+            dueDateFormatted = '<div style="padding-left:3px;" taskDueDate-cell=' + dataItem.AlertId + '>' + dueDate + '</div>';
 
             return dueDateFormatted;
+        }
+        else if (dataItem.HasChildren == true && treeList.dataSource._aggregateResult[dataItem.id].JobRevisedDate && treeList.dataSource._aggregateResult[dataItem.id].JobRevisedDate.max) {
+            return kendo.toString(kendo.parseDate(treeList.dataSource._aggregateResult[dataItem.id].JobRevisedDate.max), "MM/dd/yyyy");
         }
 
         return '';
@@ -3549,6 +3476,7 @@ End If
 
     function lockColumns() {
         var kendoTreeList = $("#treelist").data("kendoTreeList")
+        kendo.ui.progress(kendoTreeList.element, true);
         var lockedColumns = 0;
         kendoTreeList.columns.forEach((v, i, a) => {
 
@@ -3567,6 +3495,9 @@ End If
                 }
             }
         });
+
+        kendo.ui.progress(kendoTreeList.element, false);
+
     }
 
 </script>
@@ -3601,11 +3532,13 @@ End If
 
         @<div class="go-center" style="display:flex;margin:0px">
             # var theID = 'DueDateLock_' + SequenceNumber; #
+    #if(HasChildren == false){#
             #if(DueDateLock === 1){#
             @(Html.Kendo().CheckBox().Name("DueDateLock").Checked(True).HtmlAttributes(New With {.id = "#: theID #", .onchange = "updateCheckBox();", .class = " k-fubar "}).ToClientTemplate)
             #}else{#
             @(Html.Kendo().CheckBox().Name("DueDateLock").Checked(False).HtmlAttributes(New With {.id = "#: theID #", .onchange = "updateCheckBox();", .class = " k-fubar "}).ToClientTemplate)
             #}#
+    #}#
         </div>
 
     Else

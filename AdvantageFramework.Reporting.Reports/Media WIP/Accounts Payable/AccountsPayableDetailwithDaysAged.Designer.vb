@@ -1,4 +1,4 @@
-Namespace MediaWIP.AccountsPayable
+﻿Namespace MediaWIP.AccountsPayable
 
     Partial Public Class AccountsPayableDetailwithDaysAged
         Private components As System.ComponentModel.IContainer
@@ -998,7 +998,7 @@ Namespace MediaWIP.AccountsPayable
             '
             'InvoiceID
             '
-            Me.InvoiceID.Expression = "Concat([InvoiceNumber],'-',ToStr([APIdentifier]))"
+            Me.InvoiceID.Expression = "[InvoiceID2]"
             Me.InvoiceID.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
             Me.InvoiceID.Name = "InvoiceID"
             '
@@ -1010,13 +1010,13 @@ Namespace MediaWIP.AccountsPayable
             '
             'GLAPID
             '
-            Me.GLAPID.Expression = "Concat([GLAccountCode],[APIdentifier])"
+            Me.GLAPID.Expression = "[GLAPID2]"
             Me.GLAPID.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
             Me.GLAPID.Name = "GLAPID"
             '
             'BalanceAmountSumGLAPID
             '
-            Me.BalanceAmountSumGLAPID.Expression = "[][[GLAPID]=[^.GLAPID]].Sum([BalanceAmount])"
+            Me.BalanceAmountSumGLAPID.Expression = "[][[GLAPID2]=[^.GLAPID2]].Sum([BalanceAmount])"
             Me.BalanceAmountSumGLAPID.FieldType = DevExpress.XtraReports.UI.FieldType.[Double]
             Me.BalanceAmountSumGLAPID.Name = "BalanceAmountSumGLAPID"
             '
@@ -1039,7 +1039,7 @@ Namespace MediaWIP.AccountsPayable
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.DisplayName = "500-Accounts Payable Detail with Days Aged"
-            Me.FilterString = "[BalanceAmountSumGLAPID] <> 0.0"
+            'Me.FilterString = "[BalanceAmountSumGLAPID] <> 0.0"  'PH Comment this for speed
             Me.Font = New System.Drawing.Font("Arial", 9.0!)
             Me.FormattingRuleSheet.AddRange(New DevExpress.XtraReports.UI.FormattingRule() {Me.DetailVisible})
             Me.Landscape = True

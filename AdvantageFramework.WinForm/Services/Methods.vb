@@ -133,6 +133,8 @@
 
                                                                                                                     AdvantageFramework.Services.DocumentRepositoryCapacityWarning.Run(DatabaseProfile)
 
+                                                                                                                    AdvantageFramework.Services.NielsenPuertoRico.Run(DatabaseProfile)
+
                                                                                                                 End Sub)
 
                                                   End Sub)

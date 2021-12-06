@@ -125,7 +125,9 @@ DECLARE @inter_company				smallint,
 		[VendorCode] varchar(6) NULL,
 		[OfficeCode] varchar(4) NULL,
 		[EndDate] smalldatetime NULL,
-        [Type] varchar(6) NULL
+        [Type] varchar(6) NULL,
+        [CampaignCode] varchar(6) NULL,
+        [CampaignName] varchar(128) NULL
 	)
 	
 	DECLARE @NewspaperOrders TABLE (

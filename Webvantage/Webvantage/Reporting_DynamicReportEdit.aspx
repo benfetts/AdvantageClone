@@ -37,7 +37,12 @@
 			}
         }
 
-        function Refresh() {            
+        function Refresh() {
+
+            //console.log('Refresh');
+
+            //ReportDashboard.ReloadData();
+
             setTimeout(function () {
                __doPostBack('onclick#Refresh', 'Refresh');
             }, 0);             
@@ -46,6 +51,11 @@
      
         }
         function ReloadColumns(radWindowCaller) {
+
+            //console.log('ReloadColumns');
+
+            //ReportDashboard.ReloadData();
+
             setTimeout(function () {
                 __doPostBack('onclick#ReloadColumns', 'ReloadColumns');
             }, 0);              
@@ -54,6 +64,11 @@
    
         };
         function RefreshGrid(radWindowCaller) {
+
+            //console.log('RefreshGrid');
+
+            //ReportDashboard.ReloadData();
+
             setTimeout(function () {
                 __doPostBack('onclick#Refresh', 'Refresh');
             }, 0);             
@@ -62,6 +77,11 @@
    
         };
         function RefreshPage(radWindowCaller) {
+
+            console.log('RefreshPage');
+
+            ReportDashboard.ReloadData();
+
             setTimeout(function () {                
             __doPostBack('onclick#Refresh', 'Refresh');
             }, 0);             
@@ -78,6 +98,11 @@
    
         };
         function RealPostBack(eventTarget, eventArgument) {
+
+            //console.log('RealPostBack');
+
+            //ReportDashboard.ReloadData();
+
             setTimeout(function () {
                 __doPostBack(eventTarget, eventArgument);
             }, 0);               
@@ -94,6 +119,11 @@
    
         };
         function OnClientClose(sender, EventArgs) {
+
+            //console.log('OnClientClose');
+
+            //ReportDashboard.ReloadData();
+
             setTimeout(function () {
                 __doPostBack('onclick#Refresh', 'Refresh');
             }, 0);             

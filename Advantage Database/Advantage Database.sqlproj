@@ -31,7 +31,7 @@
     <RootNamespace>Advantage Database</RootNamespace>
     <DefaultSchema>dbo</DefaultSchema>
     <PreviousProjectVersion>4.1</PreviousProjectVersion>
-    <SccProjectName>$/Advantage/Production</SccProjectName>
+    <SccProjectName>$/Advantage/Dev</SccProjectName>
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
     <SccAuxPath>http://tasc-code.gotoadvantage.com:8080/tfs/advantage</SccAuxPath>
     <SccLocalPath>..</SccLocalPath>
@@ -1334,7 +1334,9 @@
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetStatus.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetSupervisors.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetTaskDescriptions.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetTasks.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetTasks.proc.sql">
+      <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
+    </None>
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetTrafficCodes.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetTrafficCodes_Name.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_dd_GetUsers.proc.sql" />
@@ -1699,7 +1701,9 @@
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_job_required_udf4.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_job_required_udf5.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_Job_Template_AddJobProcessLog.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_Job_Template_AddNewComponent.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_Job_Template_AddNewComponent.proc.sql">
+      <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
+    </None>
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_Job_Template_ChangeTemplate.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_Job_Template_CheckDuplicateContacts.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_Job_Template_ContactDPList.proc.sql" />
@@ -3858,7 +3862,9 @@
     <None Include="Programmability\Functions\fn_BroadcastCal2.function.sql" />
     <None Include="Tables\PURCHASE_ORDER_DOCUMENT.table.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_timesheet_load_by_employee.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_broadcast_order_dtl_verification.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_broadcast_order_dtl_verification.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Programmability\Stored Procedures\Procs1\advsp_broadcast_order_verification.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_ar_np_coop_bill.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_ap_pmt_hist_base.proc.sql" />
@@ -4180,6 +4186,7 @@
     <None Include="Programmability\Stored Procedures\Procs1\advsp_vendor_dcm_mapping_load.proc.sql" />
     <None Include="Tables\EMPLOYEE_ADDL_EMAIL.table.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_gl_processing_load_unposted_journal_entry.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\usp_wv_AAM_Update_Grid_Records.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_cp_dto_dashboard_alert.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\usp_cp_calendar_task_month_rpt.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_yaypay_contact_export.proc.sql" />
@@ -4187,7 +4194,6 @@
     <None Include="Programmability\Stored Procedures\Procs1\advsp_sec_client_get_api.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\usp_cp_calendar_task_month_rpt2.proc.sql" />
     <None Include="Tables\PROOFING_STATUS.table.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_broadcast_orders_for_vendor_rep_by_order_number.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_client_ar_stmt_contact_add_update_api.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_client_contact_add_update_api.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_client_contact_detail_add_update_api.proc.sql" />
@@ -4224,22 +4230,7 @@
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_PaymentCenterUpdateColumnOrderSettings.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_job_forecast_summary_report.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_broadcast_invoice_summary_report.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_lookup_ts_job_component_index.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_lookup_ts_job_component_paging.proc.sql" />
     <None Include="Programmability\Functions\advtf_ar_address_table_prod.function.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_ad_sizes.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_demographics.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_markets.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_outdoor_types.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_quarters.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_rate_types.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_tactics.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_vendors.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_type_template_data.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_plan_estimate_template_dayparts.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_type_template_daypart_percents.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_gl_update_to_summary.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_quickbooks_bill_detail.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_revise_order_brdcast_units_by_order.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_revise_order_brdcast_units_by_order_void.proc.sql" />
     <None Include="Programmability\Functions\advtf_proofing_get_approvals_list.function.sql" />
@@ -4261,11 +4252,34 @@
     <None Include="Programmability\Stored Procedures\Procs1\advsp_proofing_get_asset_info.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_proofing_can_delete_document.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_get_spot_matching_adjacency_settings.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_utilities_get_job_info.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_utilities_get_job_info.proc.sql">
+      <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
+    </None>
     <None Include="Tables\LEGACY_APP_CTRL.table.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_api_load_ar_stmt_product_contacts.proc.sql" />
-    <None Include="Programmability\Stored Procedures\Procs1\advsp_media_broadcast_worksheet_other_traffic_flight_summary_report.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_check_register_with_invoice_details.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_proofing_load_cs_backup_counts.proc.sql" />
+    <None Include="Programmability\Functions\advtf_npr_audience_spot_tv_research.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_hutput_spot_tv_research.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_intab_spot_tv_research.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_universe_spot_tv_research.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_worksheet_audience.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_worksheet_hutput.function.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_npr_spot_tv_puerto_rico_research_results.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_npr_worksheet_ratings.proc.sql" />
+    <None Include="Programmability\Functions\advtf_npr_worksheet_intab.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_worksheet_universe.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_audience_spot_tv_research_trend.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_hutput_spot_tv_research_trend.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_intab_spot_tv_research_trend.function.sql" />
+    <None Include="Programmability\Functions\advtf_npr_universe_spot_tv_research_trend.function.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_npr_spot_tv_puerto_rico_research_results_trend.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_pmt_mgr_wftb.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_employee_time_util_dashboard.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_EmployeeUtilizationGetColumnSettings.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_EmployeeUtilizationGetUserViewSettings.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_EmployeeUtilizationUpdateColumnOrderSettings.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_EmployeeUtilizationUpdateColumnWidthSettings.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs2\usp_wv_get_Financial_data.proc.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="DB1">

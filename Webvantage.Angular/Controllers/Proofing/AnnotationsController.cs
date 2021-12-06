@@ -77,6 +77,8 @@ namespace Webvantage.Angular.Controllers.Proofing
             AdvantageFramework.Core.Database.Entities.ProofingMarkup [] newMarkups;
             try
             {
+                bool sendEmail = false;
+
                 AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
                 List<AdvantageFramework.Core.Database.Entities.ProofingMarkup> entities = new List<AdvantageFramework.Core.Database.Entities.ProofingMarkup>();
 
@@ -85,7 +87,7 @@ namespace Webvantage.Angular.Controllers.Proofing
                     entities.Add(new AdvantageFramework.Core.Database.Entities.ProofingMarkup()
                     {
                         //AlertId = qs.AlertID,
-                        //this is where the cocument id is set, so that it is either the one that is passed or the one from the qs
+                        //this is where the document id is set, so that it is either the one that is passed or the one from the qs
                         DocumentId = Annot.DocumentId != null ? (int)Annot.DocumentId : qs.DocumentID,
                         EmpCode = string.IsNullOrWhiteSpace(qs.EmployeeCode) ? null: qs.EmployeeCode,
                         Generated = DateTime.Now,
@@ -101,10 +103,11 @@ namespace Webvantage.Angular.Controllers.Proofing
 
                 if (Annotations[0].Mentions != null && Annotations[0].Mentions.Length > 0)
                 {
+                    sendEmail = true;
                     _controller.AddAlertMentions(qs, qs.AlertID, Annotations[0].Mentions, newMarkups[0].CommentId != null ? (int)newMarkups[0].CommentId : 0);
                 }
 
-                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, false);
+                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, sendEmail);
             }
             catch (Exception ex)
             {

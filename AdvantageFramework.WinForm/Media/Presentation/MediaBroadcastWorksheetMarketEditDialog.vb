@@ -64,6 +64,8 @@
             DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.NeilsenRadioPeriodID4.ToString)
             DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.NeilsenRadioPeriodID5.ToString)
             DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.Length.ToString)
+            DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString)
+            DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString)
 
             If _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV Then
 
@@ -210,6 +212,19 @@
                     DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.NeilsenRadioPeriodID3.ToString)
                     DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.NeilsenRadioPeriodID4.ToString)
                     DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.NeilsenRadioPeriodID5.ToString)
+                    DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString)
+                    DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString)
+
+                    If _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+
+                        DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.IsCable.ToString)
+                        DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString)
+                        DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.SharebookNielsenTVBookID.ToString)
+                        DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.HUTPUTNielsenTVBookID.ToString)
+                        DataGridViewForm_Markets.MakeColumnVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString)
+                        DataGridViewForm_Markets.MakeColumnVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString)
+
+                    End If
 
                 ElseIf _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotRadio Then
 
@@ -217,6 +232,8 @@
                     DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString)
                     DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.SharebookNielsenTVBookID.ToString)
                     DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.HUTPUTNielsenTVBookID.ToString)
+                    DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString)
+                    DataGridViewForm_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString)
 
                     If Me.Session.IsNielsenSetup Then
 
@@ -916,6 +933,7 @@
 
             'objects
             Dim WorksheetSecondaryDemo As AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetSecondaryDemo = Nothing
+            Dim SetBuyer As Boolean = False
 
             _Controller.MarketEdit_InitNewRowEvent(_ViewModel)
 
@@ -923,7 +941,21 @@
 
             If _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV Then
 
-                DataGridViewForm_Markets.CurrentView.SetRowCellValue(e.RowHandle, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.TVGeographies.DMA)
+                If _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen Then
+
+                    DataGridViewForm_Markets.CurrentView.SetRowCellValue(e.RowHandle, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.TVGeographies.DMA)
+
+                ElseIf _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico AndAlso _ViewModel.Worksheet.NPRPrepopulateDates Then
+
+                    DirectCast(DataGridViewForm_Markets.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket).PeriodEnd = _Controller.MarketEdit_GetRepositoryPeriodEnd()
+
+                    If DirectCast(DataGridViewForm_Markets.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket).PeriodEnd.HasValue Then
+
+                        DirectCast(DataGridViewForm_Markets.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket).PeriodStart = DirectCast(DataGridViewForm_Markets.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket).PeriodEnd.Value.AddDays(-27)
+
+                    End If
+
+                End If
 
             ElseIf _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotRadio Then
 
@@ -943,6 +975,34 @@
                 If WorksheetSecondaryDemo IsNot Nothing Then
 
                     DataGridViewForm_Markets.CurrentView.SetRowCellValue(e.RowHandle, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.SecondaryMediaDemographicID.ToString, WorksheetSecondaryDemo.MediaDemographicID)
+
+                End If
+
+            End If
+
+            If _ViewModel.AutoPlaceBuyerOnMarket Then
+
+                If DataGridViewForm_Markets.CurrentView.FocusedColumn Is Nothing Then
+
+                    SetBuyer = True
+
+                Else
+
+                    If DataGridViewForm_Markets.CurrentView.FocusedColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.BuyerEmployeeCode.ToString Then
+
+                        SetBuyer = (DataGridViewForm_Markets.CurrentView.ActiveEditor IsNot Nothing AndAlso DataGridViewForm_Markets.CurrentView.ActiveEditor.EditValue <> Me.Session.User.EmployeeCode)
+
+                    Else
+
+                        SetBuyer = (DataGridViewForm_Markets.CurrentView.GetRowCellValue(e.RowHandle, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.BuyerEmployeeCode.ToString) Is Nothing)
+
+                    End If
+
+                End If
+
+                If SetBuyer Then
+
+                    DataGridViewForm_Markets.CurrentView.SetRowCellValue(e.RowHandle, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.BuyerEmployeeCode.ToString, Me.Session.User.EmployeeCode)
 
                 End If
 
@@ -1232,6 +1292,15 @@
 
                 End If
 
+            ElseIf DataGridViewForm_Markets.CurrentView.FocusedColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString OrElse
+                    DataGridViewForm_Markets.CurrentView.FocusedColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString Then
+
+                If DataGridViewForm_Markets.CurrentView.GetFocusedRowCellValue(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MarketCode.ToString) = Nothing Then
+
+                    e.Cancel = True
+
+                End If
+
             End If
 
         End Sub
@@ -1260,25 +1329,25 @@
             End If
 
         End Sub
-        Private Sub DataGridViewForm_Markets_ValidatingEditorEvent(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles DataGridViewForm_Markets.ValidatingEditorEvent
+        'Private Sub DataGridViewForm_Markets_ValidatingEditorEvent(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles DataGridViewForm_Markets.ValidatingEditorEvent
 
-            'objects
-            Dim FocusedRow As AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket = Nothing
-            Dim ErrorText As String = String.Empty
+        '    'objects
+        '    Dim FocusedRow As AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket = Nothing
+        '    Dim ErrorText As String = String.Empty
 
-            FocusedRow = DataGridViewForm_Markets.CurrentView.GetFocusedRow
+        '    FocusedRow = DataGridViewForm_Markets.CurrentView.GetFocusedRow
 
-            If FocusedRow IsNot Nothing Then
+        '    If FocusedRow IsNot Nothing Then
 
-                ErrorText = _Controller.MarketEdit_ValidateProperty(FocusedRow, DataGridViewForm_Markets.CurrentView.FocusedColumn.FieldName, e.Valid, e.Value)
+        '        ErrorText = _Controller.MarketEdit_ValidateProperty(FocusedRow, DataGridViewForm_Markets.CurrentView.FocusedColumn.FieldName, e.Valid, e.Value)
 
-                DataGridViewForm_Markets.CurrentView.SetColumnError(DataGridViewForm_Markets.CurrentView.FocusedColumn, ErrorText)
+        '        DataGridViewForm_Markets.CurrentView.SetColumnError(DataGridViewForm_Markets.CurrentView.FocusedColumn, ErrorText)
 
-                e.Valid = True
+        '        e.Valid = True
 
-            End If
+        '    End If
 
-        End Sub
+        'End Sub
         Private Sub DataGridViewForm_Markets_RepositoryDataSourceLoadingEvent(FieldName As String, ByRef Datasource As Object) Handles DataGridViewForm_Markets.RepositoryDataSourceLoadingEvent
 
             If FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.SharebookNielsenTVBookID.ToString OrElse
@@ -1547,6 +1616,39 @@
                     ToolTipControlInfo = New DevExpress.Utils.ToolTipControlInfo(GridHitInfo.RowHandle.ToString & " - " & GridHitInfo.Column.ToString(), _ViewModel.BookTooltip)
 
                     e.Info = ToolTipControlInfo
+
+                End If
+
+            End If
+
+        End Sub
+        Private Sub DataGridViewForm_Markets_SubItemDateInputEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles DataGridViewForm_Markets.SubItemDateInputEditValueChanging
+
+            'objects
+            Dim GridColumn As DevExpress.XtraGrid.Columns.GridColumn = Nothing
+
+            If DataGridViewForm_Markets.IsNewItemRow() = False AndAlso e.NewValue <> e.OldValue AndAlso
+                    _ViewModel.HasASelectedWorksheetMarket AndAlso _ViewModel.SelectedWorksheetMarket.HasData Then
+
+                GridColumn = DataGridViewForm_Markets.CurrentView.FocusedColumn
+
+                If GridColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString OrElse
+                        GridColumn.FieldName = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString Then
+
+                    If _ViewModel.ShowWarningForChangingNielsenData Then
+
+                        If AdvantageFramework.WinForm.MessageBox.Show("WARNING: By changing survey criteria for a market, all market schedule data will be recalculated." &
+                                                                      vbNewLine & vbNewLine & "Are you sure you want to continue?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
+
+                            _ViewModel.ShowWarningForChangingNielsenData = False
+
+                        Else
+
+                            e.Cancel = True
+
+                        End If
+
+                    End If
 
                 End If
 

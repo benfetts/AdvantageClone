@@ -853,10 +853,10 @@ Partial Public Class PurchaseOrder_Print
     Private Sub RadComboBoxReportFormat_SelectedIndexChanged(sender As Object, e As RadComboBoxSelectedIndexChangedEventArgs) Handles RadComboBoxReportFormat.SelectedIndexChanged
         If RadComboBoxReportFormat.SelectedValue = "purchaseorderRR" Or RadComboBoxReportFormat.SelectedValue = "purchaseorder3" Then
 
-            Me.CheckBoxUseLocationName.Checked = False
-            Me.CheckBoxUseLocationName.Enabled = False
-            Me.CheckBoxUseClientName.Checked = False
-            Me.CheckBoxUseClientName.Enabled = False
+            'Me.CheckBoxUseLocationName.Checked = False
+            'Me.CheckBoxUseLocationName.Enabled = False
+            'Me.CheckBoxUseClientName.Checked = False
+            'Me.CheckBoxUseClientName.Enabled = False
 
         Else
 

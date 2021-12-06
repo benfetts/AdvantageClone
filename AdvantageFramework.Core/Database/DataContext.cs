@@ -1700,7 +1700,7 @@ namespace AdvantageFramework.Core.Database
 
                 entity.Property(e => e.EmpPhoneWorkExt).IsUnicode(false);
 
-                entity.Property(e => e.EmpSsNbr).IsUnicode(false);
+                //entity.Property(e => e.EmpSsNbr).IsUnicode(false);
 
                 entity.Property(e => e.EmpState).IsUnicode(false);
 

@@ -44,6 +44,7 @@
             SpotRadio
             SpotRadioCounty
             SpotNational
+            SpotTVPuertoRico
         End Enum
 
 #End Region

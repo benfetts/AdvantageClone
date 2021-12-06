@@ -114,7 +114,8 @@
                                              ByVal UserName As String, ByVal Password As String,
                                              ByVal FTPPath As String, ByVal LocalPath As String,
                                              ByRef DownloadedFiles As Generic.List(Of String),
-                                             Optional ByVal ActionOnExistingFiles As Rebex.IO.ActionOnExistingFiles = Rebex.IO.ActionOnExistingFiles.OverwriteAll) As Boolean
+                                             Optional ByVal ActionOnExistingFiles As Rebex.IO.ActionOnExistingFiles = Rebex.IO.ActionOnExistingFiles.OverwriteAll,
+                                             Optional ByVal ExcludeFiles As Generic.List(Of String) = Nothing) As Boolean
 
             'objects
             Dim Downloaded As Boolean = False
@@ -183,15 +184,19 @@
 
                         If RebexItem.IsFile Then
 
-                            Try
+                            If ExcludeFiles Is Nothing OrElse (ExcludeFiles IsNot Nothing AndAlso ExcludeFiles.Contains(LocalPath & RebexItem.Path) = False) Then
 
-                                FTP.Download(System.IO.Path.Combine(FTPPath, RebexItem.Path), LocalPath, Rebex.IO.TraversalMode.NonRecursive, Rebex.IO.TransferMethod.Copy, ActionOnExistingFiles)
+                                Try
 
-                                DownloadedFiles.Add(LocalPath & RebexItem.Name)
+                                    FTP.Download(System.IO.Path.Combine(FTPPath, RebexItem.Path), LocalPath, Rebex.IO.TraversalMode.NonRecursive, Rebex.IO.TransferMethod.Copy, ActionOnExistingFiles)
 
-                            Catch ex As Exception
-                                Downloaded = False
-                            End Try
+                                    DownloadedFiles.Add(LocalPath & RebexItem.Name)
+
+                                Catch ex As Exception
+                                    Downloaded = False
+                                End Try
+
+                            End If
 
                         End If
 

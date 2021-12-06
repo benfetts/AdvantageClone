@@ -1,4 +1,4 @@
-Namespace InvoicePrinting.Classes
+﻿Namespace InvoicePrinting.Classes
 
 	<Serializable()>
 	Public Class ComboInvoiceDetail
@@ -34,6 +34,7 @@ Namespace InvoicePrinting.Classes
             ClientReference
             AccountExecutive
             Campaign
+            VATNumber
         End Enum
 
 #End Region
@@ -242,6 +243,8 @@ Namespace InvoicePrinting.Classes
         Public Property AccountExecutive() As String
         <System.Runtime.Serialization.DataMemberAttribute()>
         Public Property Campaign() As String
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property VATNumber() As String
 
 #End Region
 

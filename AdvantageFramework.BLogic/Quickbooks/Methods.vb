@@ -801,36 +801,36 @@
 
             RecordSourceID = GetQuickBooksRecordSourceID(DbContext)
 
-            If (From Entity In AdvantageFramework.Database.Procedures.VendorCrossReference.LoadByRecordSourceID(DbContext, RecordSourceID)
-                Where Entity.SourceVendorCode = QBVendorID AndAlso
-                      Entity.VendorCode <> VendorCode
-                Select Entity).Any = False Then
+            'If (From Entity In AdvantageFramework.Database.Procedures.VendorCrossReference.LoadByRecordSourceID(DbContext, RecordSourceID)
+            '    Where Entity.SourceVendorCode = QBVendorID AndAlso
+            '          Entity.VendorCode <> VendorCode
+            '    Select Entity).Any = False Then
 
-                VendorCrossReference = (From Entity In AdvantageFramework.Database.Procedures.VendorCrossReference.LoadByRecordSourceID(DbContext, RecordSourceID)
-                                        Where Entity.VendorCode = VendorCode
-                                        Select Entity).SingleOrDefault
+            VendorCrossReference = (From Entity In AdvantageFramework.Database.Procedures.VendorCrossReference.LoadByRecordSourceID(DbContext, RecordSourceID)
+                                    Where Entity.VendorCode = VendorCode
+                                    Select Entity).SingleOrDefault
 
-                If VendorCrossReference Is Nothing Then
+            If VendorCrossReference Is Nothing Then
 
-                    VendorCrossReference = New Database.Entities.VendorCrossReference
-                    VendorCrossReference.DbContext = DbContext
-                    VendorCrossReference.VendorCode = VendorCode
-                    VendorCrossReference.RecordSourceID = RecordSourceID
-                    VendorCrossReference.SourceVendorCode = QBVendorID
+                VendorCrossReference = New Database.Entities.VendorCrossReference
+                VendorCrossReference.DbContext = DbContext
+                VendorCrossReference.VendorCode = VendorCode
+                VendorCrossReference.RecordSourceID = RecordSourceID
+                VendorCrossReference.SourceVendorCode = QBVendorID
 
-                    Updated = AdvantageFramework.Database.Procedures.VendorCrossReference.Insert(DbContext, VendorCrossReference)
+                Updated = AdvantageFramework.Database.Procedures.VendorCrossReference.Insert(DbContext, VendorCrossReference)
 
-                Else
+            Else
 
-                    VendorCrossReference.SourceVendorCode = QBVendorID
-                    DbContext.Entry(VendorCrossReference).State = Entity.EntityState.Modified
-                    DbContext.SaveChanges()
+                VendorCrossReference.SourceVendorCode = QBVendorID
+                DbContext.Entry(VendorCrossReference).State = Entity.EntityState.Modified
+                DbContext.SaveChanges()
 
-                    Updated = True
-
-                End If
+                Updated = True
 
             End If
+
+            'End If
 
             UpdateVendorCrossReference = Updated
 

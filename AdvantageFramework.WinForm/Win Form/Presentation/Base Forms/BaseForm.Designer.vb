@@ -1,6 +1,6 @@
 ﻿Namespace WinForm.Presentation.BaseForms
 
-    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+    <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
     Partial Class BaseForm
         Inherits DevComponents.DotNetBar.Office2007Form
 
@@ -24,7 +24,9 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
-            Me._DefaultLookAndFeel = New DevExpress.LookAndFeel.DefaultLookAndFeel()
+            Me.components = New System.ComponentModel.Container()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BaseForm))
+            Me._DefaultLookAndFeel = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
             Me.SuspendLayout()
             '
             '_DefaultLookAndFeel

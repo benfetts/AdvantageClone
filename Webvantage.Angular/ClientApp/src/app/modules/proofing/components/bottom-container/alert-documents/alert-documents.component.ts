@@ -6,6 +6,7 @@ import { IToolbarBottomButtons } from '../../../interfaces/toolbar-bottom-button
 import { ActiveFileService } from '../../../services/active-file.service';
 import { AlertDocumentService } from '../../../services/alert-document.service';
 import { BottomPanelButtonsService } from '../../../services/bottom-panel-buttons.service';
+import { CenterPanelButtonsService } from '../../../services/center-panel-buttons.service';
 
 @Component({
   selector: 'proof-alert-documents',
@@ -23,6 +24,7 @@ export class AlertDocumentsComponent implements OnInit, OnDestroy {
   constructor(private alertDocumentService: AlertDocumentService,
     private bottomPanelButtonsService: BottomPanelButtonsService,
     private activeFileService: ActiveFileService,
+    private centerPanelButtonService: CenterPanelButtonsService,
     private ref: ChangeDetectorRef) {
   }
 
@@ -94,6 +96,8 @@ export class AlertDocumentsComponent implements OnInit, OnDestroy {
       this.documents.forEach(button => button.selected = false);
       this.documents[index] = { ...this.documents[index], selected: true };
     }
+
+    this.centerPanelButtonService.setRevision(null);
 
     this.activeFileService.setDocument(this.documents[index]);
   }

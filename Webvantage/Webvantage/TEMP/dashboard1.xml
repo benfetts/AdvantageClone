@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source 1" ComponentName="dashboardObjectDataSource1">
+      <DataSource Type="System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+      <CalculatedFields>
+        <CalculatedField Name="Budget/Total Var" Expression="[ComponentBudget] - [TotalToDate]" DataType="Auto" />
+      </CalculatedFields>
+      <Filter>Not Contains([ItemDescription], 'Estimate Amount') And Not Contains([ItemDescription], 'Advance Billing') And Not Contains([FunctionDescription], 'Outside Services')</Filter>
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Pivot ComponentName="pivotDashboardItem1" Name="Drill Down: Job, E=Fee, V=OOP" DataSource="dashboardObjectDataSource1" FilterString="Not Contains([DataItem8], 'Esitmate Amount') And Not Contains([DataItem8], 'Advance Billing')">
+      <InteractivityOptions IgnoreMasterFilters="true" />
+      <DataItems>
+        <Measure DataMember="BillableTotal" Name="Billable Total" DefaultId="DataItem1">
+          <NumericFormat FormatType="Currency" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Measure DataMember="NonBillableAmount" Name="Non Billable" DefaultId="DataItem2">
+          <NumericFormat FormatType="Currency" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Measure DataMember="Total" Name="Total" DefaultId="DataItem3">
+          <NumericFormat FormatType="Currency" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Dimension DataMember="JobDescription" DefaultId="DataItem5" />
+        <Dimension DataMember="ClientDescription" DefaultId="DataItem7" />
+        <Dimension DataMember="ItemDescription" DefaultId="DataItem8" />
+        <Dimension DataMember="FunctionType" DefaultId="DataItem0" />
+      </DataItems>
+      <Rows>
+        <Row DefaultId="DataItem7" />
+        <Row DefaultId="DataItem5" />
+        <Row DefaultId="DataItem0" />
+        <Row DefaultId="DataItem8" />
+      </Rows>
+      <Values>
+        <Value DefaultId="DataItem1" />
+        <Value DefaultId="DataItem2" />
+        <Value DefaultId="DataItem3" />
+      </Values>
+      <AutoExpandRowGroups>true</AutoExpandRowGroups>
+    </Pivot>
+    <Grid ComponentName="gridDashboardItem1" Name="" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="JobDescription" DefaultId="DataItem1" />
+        <Measure DataMember="NonBillableAmount" DefaultId="DataItem4">
+          <NumericFormat FormatType="Currency" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Measure DataMember="TotalToDateHoursAmount" DefaultId="DataItem6">
+          <NumericFormat FormatType="Currency" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Measure DataMember="TotalToDateVendorCharges" DefaultId="DataItem7">
+          <NumericFormat FormatType="Currency" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Measure DataMember="TotalToDate" DefaultId="DataItem8">
+          <NumericFormat FormatType="Currency" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+        <Measure DataMember="JobDescription" SummaryType="Mode" DefaultId="DataItem5" />
+        <Dimension DataMember="Total" SortOrder="Descending" DefaultId="DataItem2" />
+      </DataItems>
+      <HiddenMeasures>
+        <Measure DefaultId="DataItem5" />
+      </HiddenMeasures>
+      <GridColumns>
+        <GridDimensionColumn Name="Job Description">
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridMeasureColumn Name="Non Billable Amount">
+          <Measure DefaultId="DataItem4" />
+        </GridMeasureColumn>
+        <GridMeasureColumn Name="Total Hours Amount">
+          <Measure DefaultId="DataItem6" />
+        </GridMeasureColumn>
+        <GridMeasureColumn Name="Total OOP">
+          <Measure DefaultId="DataItem7" />
+        </GridMeasureColumn>
+        <GridMeasureColumn Name="Job Total">
+          <Measure DefaultId="DataItem8" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <SparklineArgument DefaultId="DataItem2" />
+      <GridOptions ColumnWidthMode="AutoFitToContents" />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="pivotDashboardItem1" Weight="49.92412746585736" />
+      <LayoutItem DashboardItem="gridDashboardItem1" Weight="50.07587253414264" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

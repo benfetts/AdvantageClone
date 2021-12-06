@@ -139,16 +139,29 @@
                 CheckBoxGender_WorkingWomen.Enabled = False
                 CheckBoxGender_Children.Enabled = False
 
+            ElseIf _MediaDemoSourceID = Database.Entities.MediaDemoSourceID.NielsenPuertoRico Then
+
+                CheckBoxGender_Children.Enabled = False
+                CheckBoxGender_Boys.Enabled = False
+                CheckBoxGender_Girls.Enabled = False
+                CheckBoxGender_WorkingWomen.Enabled = False
+
+                CheckBoxGender_Men.Enabled = True
+                CheckBoxGender_Women.Enabled = True
+
+                ComboBoxControl_AgeFrom.SetRequired(True)
+                ComboBoxControl_AgeTo.SetRequired(True)
+
             Else
 
                 CheckBoxGender_WorkingWomen.Enabled = (_Type = Type.National) AndAlso Not _ViewModel.IsSystem AndAlso (Not _ViewModel.GetMediaDemographicEntity.IsMales AndAlso
                                                                                                                        Not _ViewModel.GetMediaDemographicEntity.IsFemales)
                 CheckBoxGender_Children.Enabled = (_Type = Type.TV) AndAlso Not _ViewModel.IsSystem
 
-            End If
+                CheckBoxGender_Men.Enabled = (_Type <> Type.National) OrElse (_Type = Type.National) AndAlso Not _ViewModel.IsSystem AndAlso Not _ViewModel.GetMediaDemographicEntity.IsWorkingWomen
+                CheckBoxGender_Women.Enabled = (_Type <> Type.National) OrElse (_Type = Type.National) AndAlso Not _ViewModel.IsSystem AndAlso Not _ViewModel.GetMediaDemographicEntity.IsWorkingWomen
 
-            CheckBoxGender_Men.Enabled = (_Type <> Type.National) OrElse (_Type = Type.National) AndAlso Not _ViewModel.IsSystem AndAlso Not _ViewModel.GetMediaDemographicEntity.IsWorkingWomen
-            CheckBoxGender_Women.Enabled = (_Type <> Type.National) OrElse (_Type = Type.National) AndAlso Not _ViewModel.IsSystem AndAlso Not _ViewModel.GetMediaDemographicEntity.IsWorkingWomen
+            End If
 
             If _MediaDemoSourceID = Database.Entities.MediaDemoSourceID.Numeris Then
 
@@ -166,14 +179,18 @@
 
             ComboBoxControl_AgeTo.Enabled = (_ViewModel.HasGenderChecked) AndAlso _ViewModel.AgeFrom.HasValue AndAlso Not _ViewModel.IsSystem
 
-            If _ViewModel.NielsenDemographics IsNot Nothing Then
+            If _MediaDemoSourceID <> Database.Entities.MediaDemoSourceID.NielsenPuertoRico Then
 
-                ComboBoxControl_AgeTo.SetRequired(Not _ViewModel.NielsenDemographics.Where(Function(ND) ND.AgeTo Is Nothing).Any)
+                If _ViewModel.NielsenDemographics IsNot Nothing Then
 
-            Else
+                    ComboBoxControl_AgeTo.SetRequired(Not _ViewModel.NielsenDemographics.Where(Function(ND) ND.AgeTo Is Nothing).Any)
 
-                ComboBoxControl_AgeTo.SetRequired(False)
-                ComboBoxControl_AgeTo.Validate(Nothing)
+                Else
+
+                    ComboBoxControl_AgeTo.SetRequired(False)
+                    ComboBoxControl_AgeTo.Validate(Nothing)
+
+                End If
 
             End If
 
@@ -429,6 +446,17 @@
             CheckBoxGender_Men.Checked = _ViewModel.GetMediaDemographicEntity.IsMales
             CheckBoxGender_Women.Checked = _ViewModel.GetMediaDemographicEntity.IsFemales
             CheckBoxGender_WorkingWomen.Checked = _ViewModel.GetMediaDemographicEntity.IsWorkingWomen
+
+            If _MediaDemoSourceID = Database.Entities.Methods.MediaDemoSourceID.Nielsen OrElse
+                    _MediaDemoSourceID = Database.Entities.Methods.MediaDemoSourceID.NielsenPuertoRico Then
+
+                DataGridViewControl_DemoDetails.Visible = True
+
+            Else
+
+                DataGridViewControl_DemoDetails.Visible = False
+
+            End If
 
             _IsRefreshing = False
 

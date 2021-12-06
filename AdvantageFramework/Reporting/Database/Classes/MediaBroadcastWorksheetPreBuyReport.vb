@@ -62,6 +62,8 @@
             PreBuyBooks
             CableNetworkID
             Quarter
+            SchedulePeriod
+            PreBuyPeriod
         End Enum
 
 #End Region
@@ -206,6 +208,8 @@
                     RatingsServiceSourceName = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen.ToString
                 ElseIf RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore Then
                     RatingsServiceSourceName = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore.ToString
+                ElseIf RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+                    RatingsServiceSourceName = "Nielsen Puerto Rico"
                 Else
                     RatingsServiceSourceName = String.Empty
                 End If
@@ -261,6 +265,9 @@
         Public Property OverridePostImpressions As Boolean
         <AdvantageFramework.BaseClasses.Attributes.EntityAttribute(ShowColumnInGrid:=False)>
         Public Property BookID As Integer
+
+        Public Property SchedulePeriod As String
+        Public Property PreBuyPeriod As String
 
 #End Region
 

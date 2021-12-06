@@ -172,7 +172,7 @@ Public Class Adassist
 
                 Else
 
-                    'DebugLines = NewDebugLine(DebugLines, "DID NOT Find ConnectionDatabaseProfile " & ODBC.DatabaseName)
+                    'DebugLines = NewDebugLine(DebugLines, "DID NOT Find ConnectionDatabaseProfile " & ConnectionDatabaseProfile.ToString)
 
                 End If
 
@@ -180,17 +180,17 @@ Public Class Adassist
 
                 'DebugLines = NewDebugLine(DebugLines, "Error --> " & ex.Message)
 
-                If ex.InnerException IsNot Nothing Then
+                'If ex.InnerException IsNot Nothing Then
 
-                    'DebugLines = NewDebugLine(DebugLines, "Error --> " & ex.InnerException.Message)
+                '    DebugLines = NewDebugLine(DebugLines, "Error --> " & ex.InnerException.Message)
 
-                    If ex.InnerException.InnerException IsNot Nothing Then
+                '    If ex.InnerException.InnerException IsNot Nothing Then
 
-                        'DebugLines = NewDebugLine(DebugLines, "Error --> " & ex.InnerException.InnerException.Message)
+                '        DebugLines = NewDebugLine(DebugLines, "Error --> " & ex.InnerException.InnerException.Message)
 
-                    End If
+                '    End If
 
-                End If
+                'End If
 
             End Try
 

@@ -15,6 +15,7 @@
         Public Enum Properties
             ID
             ReportScheduleType
+            ReportName
             EmployeeCode
             ReportID
             ExportType
@@ -53,6 +54,8 @@
         Public Property ID() As Integer
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, ShowColumnInGrid:=False)>
         Public Property ReportScheduleType() As AdvantageFramework.Database.Entities.AdvantageServiceReportScheduleType
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True)>
+        Public Property ReportName() As String
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True)>
         Public Property EmployeeCode() As String
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, ShowColumnInGrid:=False)>
@@ -150,6 +153,7 @@
             If DynamicReport IsNot Nothing Then
 
                 Me.DynamicReportType = DynamicReport.Type
+                Me.ReportName = DynamicReport.Description
 
             End If
 

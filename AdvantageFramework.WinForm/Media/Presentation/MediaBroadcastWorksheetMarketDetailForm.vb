@@ -58,6 +58,7 @@
         Protected _ParsingImpressionsValue As Boolean = False
         Protected _HasShownSubmarketForm As Boolean = False
         'Private Delegate Sub SafeCallDelegate(enable As Boolean)
+        Protected _PuertoRicoPeriodWarningShown As Boolean = False
 
 #End Region
 
@@ -2943,6 +2944,12 @@
 
                 ComboBoxItemMarkets_Markets.ComboBoxEx.SelectedValue = _ViewModel.SelectedWorksheetMarket.ID
 
+                DateEditPeriodStart_Date.EditValue = _ViewModel.SelectedWorksheetMarket.PeriodStart
+                DateEditPeriodEnd_Date.EditValue = _ViewModel.SelectedWorksheetMarket.PeriodEnd
+
+                DateEditPeriodStart_Date.SetRequired(_ViewModel.SelectedWorksheetMarket.PeriodStart.HasValue OrElse _ViewModel.SelectedWorksheetMarket.PeriodEnd.HasValue)
+                DateEditPeriodEnd_Date.SetRequired(_ViewModel.SelectedWorksheetMarket.PeriodStart.HasValue OrElse _ViewModel.SelectedWorksheetMarket.PeriodEnd.HasValue)
+
             Else
 
                 ComboBoxItemMarkets_Markets.ComboBoxEx.SelectedValue = 0
@@ -5319,6 +5326,8 @@
 
             FormatGrid()
 
+            ItemContainerTVPuertoRico_PeriodEnd.Visible = False
+
             If _ViewModel.DoesWorksheetAllowSubmarkets Then
 
                 SetupWorksheetWithSubmarkets()
@@ -5326,6 +5335,10 @@
             ElseIf _ViewModel.IsCanadianWorksheet AndAlso _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotRadio Then
 
                 SetupWorksheet_CanadianRadio()
+
+            ElseIf _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+
+                SetupWorksheet_PuertoRicoTV()
 
             Else
 
@@ -5346,6 +5359,23 @@
             ButtonItemVendors_Traffic.Visible = False
             RibbonBarOptions_Market.Visible = False
             RibbonBarOptions_Research.Visible = False
+
+        End Sub
+        Private Sub SetupWorksheet_PuertoRicoTV()
+
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.CableNetworkStationCode.ToString, True)
+
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryReach.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryFrequency.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryCumeImpressions.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryCumeRating.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryCume.ToString, True)
+
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryReach.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryFrequency.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryCumeImpressions.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryCumeRating.ToString, True)
+            BandedDataGridViewForm_MarketDetails.MakeColumnNotVisible(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryCume.ToString, True)
 
         End Sub
         Private Sub SetupWorksheetWithSubmarkets()
@@ -6053,13 +6083,28 @@
 
             If _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV Then
 
-                LoadSharebooks()
+                If _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen OrElse
+                        _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore Then
 
-                LoadHUTPUTBooks()
+                    LoadSharebooks()
 
-                ItemContainerResearch_TVBooks.Visible = True
-                ItemContainerSchedule_RadioPeriods1.Visible = False
-                ItemContainerSchedule_RadioPeriods2.Visible = False
+                    LoadHUTPUTBooks()
+
+                    ItemContainerResearch_TVBooks.Visible = True
+                    ItemContainerSchedule_RadioPeriods1.Visible = False
+                    ItemContainerSchedule_RadioPeriods2.Visible = False
+
+                    ItemContainerResearch_TVPuertoRico.Visible = False
+
+                ElseIf _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+
+                    ItemContainerResearch_TVBooks.Visible = False
+                    ItemContainerSchedule_RadioPeriods1.Visible = False
+                    ItemContainerSchedule_RadioPeriods2.Visible = False
+
+                    ItemContainerTVPuertoRico_PeriodEnd.Visible = True
+
+                End If
 
             ElseIf _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotRadio Then
 
@@ -6072,6 +6117,8 @@
                 ItemContainerResearch_TVBooks.Visible = False
                 ItemContainerSchedule_RadioPeriods1.Visible = True
                 ItemContainerSchedule_RadioPeriods2.Visible = True
+
+                ItemContainerResearch_TVPuertoRico.Visible = False
 
             End If
 
@@ -6405,12 +6452,16 @@
 
                 If _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV Then
 
-                    LoadSharebooks()
+                    If _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen Then
 
-                    LoadHUTPUTBooks()
+                        LoadSharebooks()
 
-                    ComboBoxItemSharebook_Sharebook.SelectedIndex = -1
-                    ComboBoxItemHUTPUT_HUTPUT.SelectedIndex = -1
+                        LoadHUTPUTBooks()
+
+                        ComboBoxItemSharebook_Sharebook.SelectedIndex = -1
+                        ComboBoxItemHUTPUT_HUTPUT.SelectedIndex = -1
+
+                    End If
 
                 ElseIf _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotRadio Then
 
@@ -10025,7 +10076,7 @@
                         If RowIndexes.Count > 0 Then
 
                             If _ViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV AndAlso
-                                    _ViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.GetValueOrDefault(0) > 0 Then
+                                    (_ViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.GetValueOrDefault(0) > 0 OrElse _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico) Then
 
                                 'If DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookPrimaryRating.ToString) <> DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryRating.ToString) OrElse
                                 '        DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookPrimaryShare.ToString) <> DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryShare.ToString) OrElse
@@ -12998,6 +13049,80 @@
         Private Sub ButtonItemAutoFill_SelectSpots_Click(sender As Object, e As EventArgs) Handles ButtonItemAutoFill_SelectSpots.Click
 
             ToggleSelectionMode(True)
+
+        End Sub
+        Private Sub DateEditPeriodDate_EditValueChanged(sender As Object, e As EventArgs) Handles DateEditPeriodStart_Date.EditValueChanged, DateEditPeriodEnd_Date.EditValueChanged
+
+            Dim PeriodStartErrorText As String = String.Empty
+            Dim PeriodEndErrorText As String = String.Empty
+            Dim RowIndexes As Generic.List(Of Integer) = Nothing
+
+            If Me.FormShown AndAlso _ViewModel IsNot Nothing AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
+
+                If _PuertoRicoPeriodWarningShown = False AndAlso AdvantageFramework.WinForm.MessageBox.Show(Me,
+                                                              "WARNING: By changing survey criteria for a market, all market schedule data will be recalculated." & vbNewLine & vbNewLine & "Are you sure you want to continue?",
+                                                              AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
+
+                    _PuertoRicoPeriodWarningShown = True
+
+                End If
+
+                _Controller.MarketDetails_SetSelectedMarketPeriodDates(DateEditPeriodStart_Date.GetValue, DateEditPeriodEnd_Date.GetValue, _ViewModel, PeriodStartErrorText, PeriodEndErrorText)
+
+                DateEditPeriodStart_Date.ErrorText = PeriodStartErrorText
+                DateEditPeriodEnd_Date.ErrorText = PeriodEndErrorText
+
+                DateEditPeriodStart_Date.SetRequired(_ViewModel.SelectedWorksheetMarket.PeriodStart.HasValue OrElse _ViewModel.SelectedWorksheetMarket.PeriodEnd.HasValue)
+                DateEditPeriodEnd_Date.SetRequired(_ViewModel.SelectedWorksheetMarket.PeriodStart.HasValue OrElse _ViewModel.SelectedWorksheetMarket.PeriodEnd.HasValue)
+
+                DateEditPeriodStart_Date.Refresh()
+                DateEditPeriodEnd_Date.Refresh()
+
+                _Controller.MarketDetails_UserEntryChanged(_ViewModel)
+
+                If _ViewModel.SelectedWorksheetMarket.PeriodStart.HasValue AndAlso _ViewModel.SelectedWorksheetMarket.PeriodEnd.HasValue AndAlso
+                        String.IsNullOrWhiteSpace(PeriodStartErrorText) AndAlso String.IsNullOrWhiteSpace(PeriodEndErrorText) Then
+
+                    Me.ShowWaitForm("Refreshing Ratings...")
+
+                    'recalculate
+                    RowIndexes = New Generic.List(Of Integer)
+
+                    For DataTableRowIndex As Integer = 0 To _ViewModel.DataTable.Rows.Count - 1
+
+                        RowIndexes.Add(DataTableRowIndex)
+
+                    Next
+
+                    _Controller.MarketDetails_LoadPrimaryRatingAndShareData(_ViewModel, RowIndexes)
+
+                    _PuertoRicoPeriodWarningShown = False
+
+                    Me.CloseWaitForm()
+
+                End If
+
+                RefreshViewModel(False)
+
+            End If
+
+        End Sub
+        Private Sub DateEditPeriodStart_Date_FinalizeValidationEvent(ByRef IsValid As Boolean, ByRef ErrorText As String) Handles DateEditPeriodStart_Date.FinalizeValidationEvent, DateEditPeriodEnd_Date.FinalizeValidationEvent
+
+            Dim PeriodStartErrorText As String = String.Empty
+            Dim PeriodEndErrorText As String = String.Empty
+
+            If Me.FormShown AndAlso _ViewModel IsNot Nothing AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
+
+                _Controller.MarketDetails_SetSelectedMarketPeriodDates(DateEditPeriodStart_Date.GetValue, DateEditPeriodEnd_Date.GetValue, _ViewModel, PeriodStartErrorText, PeriodEndErrorText)
+
+                DateEditPeriodStart_Date.ErrorText = PeriodStartErrorText
+                DateEditPeriodEnd_Date.ErrorText = PeriodEndErrorText
+
+                DateEditPeriodStart_Date.Refresh()
+                DateEditPeriodEnd_Date.Refresh()
+
+            End If
 
         End Sub
 

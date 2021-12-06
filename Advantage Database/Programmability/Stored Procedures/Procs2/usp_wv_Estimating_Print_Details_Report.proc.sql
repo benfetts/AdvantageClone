@@ -1034,7 +1034,7 @@ SELECT @ClientCode = CL_CODE, @DivisionCode = DIV_CODE, @ProductCode = PRD_CODE 
 
 if @JobNum > 0
 Begin
-	SELECT @OfficeCOde = ISNULL(OFFICE_CODE,'') FROM JOB_LOG WHERE JOB_NUMBER = @JobNum
+	SELECT @OfficeCode = ISNULL(OFFICE_CODE,'') FROM JOB_LOG WHERE JOB_NUMBER = @JobNum
 End
 Else
 Begin

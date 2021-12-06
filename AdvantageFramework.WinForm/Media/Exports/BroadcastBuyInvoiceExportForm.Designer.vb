@@ -29,12 +29,17 @@
             Me.RibbonBarMergeContainerForm_Options = New DevComponents.DotNetBar.RibbonBarMergeContainer()
             Me.RibbonBarOptions_Actions = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
             Me.ButtonItemActions_Export = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
+            Me.ButtonItemExport_ToExcel = New DevComponents.DotNetBar.ButtonItem()
+            Me.ButtonItemExport_ToXML = New DevComponents.DotNetBar.ButtonItem()
             Me.TextBoxOptions_OutputFolder = New AdvantageFramework.WinForm.MVC.Presentation.Controls.TextBox()
             Me.LabelOptions_OutputFolder = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.RadioButtonControlOptions_Quarter = New AdvantageFramework.WinForm.MVC.Presentation.Controls.RadioButtonControl()
             Me.RadioButtonControlOptions_BroadcastMonth = New AdvantageFramework.WinForm.MVC.Presentation.Controls.RadioButtonControl()
             Me.TabControlForm_Selections = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelOptionsTab_Options = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelOptions_BroadcastWeekEnd = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.LabelOptions_BroadcastWeekStart = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.RadioButtonControlOptions_BroadcastWeeks = New AdvantageFramework.WinForm.MVC.Presentation.Controls.RadioButtonControl()
             Me.ComboBoxOptions_Quarter = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
             Me.ComboBoxOptions_BroadcastMonth = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
             Me.LabelOptions_From = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
@@ -45,12 +50,18 @@
             Me.RadioButtonSelectClients_ChooseClients = New AdvantageFramework.WinForm.MVC.Presentation.Controls.RadioButtonControl()
             Me.RadioButtonSelectClients_AllClients = New AdvantageFramework.WinForm.MVC.Presentation.Controls.RadioButtonControl()
             Me.TabItemSelections_SelectClientsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.DateEditoptions_BroadcastStartDate = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit()
+            Me.DateEditoptions_BroadcastEndDate = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit()
             Me.RibbonBarMergeContainerForm_Options.SuspendLayout()
             CType(Me.TabControlForm_Selections, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlForm_Selections.SuspendLayout()
             Me.TabControlPanelOptionsTab_Options.SuspendLayout()
             CType(Me.NumericInputOptions_Year.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlPanel_Clients.SuspendLayout()
+            CType(Me.DateEditoptions_BroadcastStartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.DateEditoptions_BroadcastStartDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.DateEditoptions_BroadcastEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.DateEditoptions_BroadcastEndDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
             'RibbonBarMergeContainerForm_Options
@@ -111,14 +122,26 @@
             '
             'ButtonItemActions_Export
             '
+            Me.ButtonItemActions_Export.AutoExpandOnClick = True
             Me.ButtonItemActions_Export.BeginGroup = True
             Me.ButtonItemActions_Export.ButtonStyle = DevComponents.DotNetBar.eButtonStyle.ImageAndText
             Me.ButtonItemActions_Export.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
             Me.ButtonItemActions_Export.Name = "ButtonItemActions_Export"
             Me.ButtonItemActions_Export.SecurityEnabled = True
             Me.ButtonItemActions_Export.Stretch = True
+            Me.ButtonItemActions_Export.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemExport_ToExcel, Me.ButtonItemExport_ToXML})
             Me.ButtonItemActions_Export.SubItemsExpandWidth = 14
             Me.ButtonItemActions_Export.Text = "Export"
+            '
+            'ButtonItemExport_ToExcel
+            '
+            Me.ButtonItemExport_ToExcel.Name = "ButtonItemExport_ToExcel"
+            Me.ButtonItemExport_ToExcel.Text = "To Excel"
+            '
+            'ButtonItemExport_ToXML
+            '
+            Me.ButtonItemExport_ToXML.Name = "ButtonItemExport_ToXML"
+            Me.ButtonItemExport_ToXML.Text = "To XML"
             '
             'TextBoxOptions_OutputFolder
             '
@@ -139,7 +162,7 @@
             Me.TextBoxOptions_OutputFolder.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
             Me.TextBoxOptions_OutputFolder.FocusHighlightEnabled = True
             Me.TextBoxOptions_OutputFolder.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxOptions_OutputFolder.Location = New System.Drawing.Point(147, 86)
+            Me.TextBoxOptions_OutputFolder.Location = New System.Drawing.Point(147, 114)
             Me.TextBoxOptions_OutputFolder.MaxFileSize = CType(0, Long)
             Me.TextBoxOptions_OutputFolder.Name = "TextBoxOptions_OutputFolder"
             Me.TextBoxOptions_OutputFolder.PreventEnterBeep = True
@@ -147,7 +170,7 @@
             Me.TextBoxOptions_OutputFolder.ShowSpellCheckCompleteMessage = True
             Me.TextBoxOptions_OutputFolder.Size = New System.Drawing.Size(554, 20)
             Me.TextBoxOptions_OutputFolder.StartingFolderName = Nothing
-            Me.TextBoxOptions_OutputFolder.TabIndex = 7
+            Me.TextBoxOptions_OutputFolder.TabIndex = 12
             Me.TextBoxOptions_OutputFolder.TabOnEnter = True
             '
             'LabelOptions_OutputFolder
@@ -157,11 +180,11 @@
             '
             '
             Me.LabelOptions_OutputFolder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelOptions_OutputFolder.Location = New System.Drawing.Point(5, 86)
+            Me.LabelOptions_OutputFolder.Location = New System.Drawing.Point(5, 113)
             Me.LabelOptions_OutputFolder.Name = "LabelOptions_OutputFolder"
             Me.LabelOptions_OutputFolder.Size = New System.Drawing.Size(136, 20)
             Me.LabelOptions_OutputFolder.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelOptions_OutputFolder.TabIndex = 6
+            Me.LabelOptions_OutputFolder.TabIndex = 11
             Me.LabelOptions_OutputFolder.Text = "Output Folder:"
             '
             'RadioButtonControlOptions_Quarter
@@ -226,6 +249,11 @@
             '
             'TabControlPanelOptionsTab_Options
             '
+            Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.DateEditoptions_BroadcastEndDate)
+            Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.DateEditoptions_BroadcastStartDate)
+            Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.LabelOptions_BroadcastWeekEnd)
+            Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.LabelOptions_BroadcastWeekStart)
+            Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.RadioButtonControlOptions_BroadcastWeeks)
             Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.ComboBoxOptions_Quarter)
             Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.ComboBoxOptions_BroadcastMonth)
             Me.TabControlPanelOptionsTab_Options.Controls.Add(Me.TextBoxOptions_OutputFolder)
@@ -249,6 +277,52 @@
             Me.TabControlPanelOptionsTab_Options.Style.GradientAngle = 90
             Me.TabControlPanelOptionsTab_Options.TabIndex = 0
             Me.TabControlPanelOptionsTab_Options.TabItem = Me.TabItemMCS_OptionsTab
+            '
+            'LabelOptions_BroadcastWeekEnd
+            '
+            Me.LabelOptions_BroadcastWeekEnd.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelOptions_BroadcastWeekEnd.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelOptions_BroadcastWeekEnd.Location = New System.Drawing.Point(301, 86)
+            Me.LabelOptions_BroadcastWeekEnd.Name = "LabelOptions_BroadcastWeekEnd"
+            Me.LabelOptions_BroadcastWeekEnd.Size = New System.Drawing.Size(31, 20)
+            Me.LabelOptions_BroadcastWeekEnd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelOptions_BroadcastWeekEnd.TabIndex = 9
+            Me.LabelOptions_BroadcastWeekEnd.Text = "End:"
+            '
+            'LabelOptions_BroadcastWeekStart
+            '
+            Me.LabelOptions_BroadcastWeekStart.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelOptions_BroadcastWeekStart.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelOptions_BroadcastWeekStart.Location = New System.Drawing.Point(147, 86)
+            Me.LabelOptions_BroadcastWeekStart.Name = "LabelOptions_BroadcastWeekStart"
+            Me.LabelOptions_BroadcastWeekStart.Size = New System.Drawing.Size(31, 20)
+            Me.LabelOptions_BroadcastWeekStart.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelOptions_BroadcastWeekStart.TabIndex = 7
+            Me.LabelOptions_BroadcastWeekStart.Text = "Start:"
+            '
+            'RadioButtonControlOptions_BroadcastWeeks
+            '
+            Me.RadioButtonControlOptions_BroadcastWeeks.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.RadioButtonControlOptions_BroadcastWeeks.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.RadioButtonControlOptions_BroadcastWeeks.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+            Me.RadioButtonControlOptions_BroadcastWeeks.Location = New System.Drawing.Point(5, 86)
+            Me.RadioButtonControlOptions_BroadcastWeeks.Name = "RadioButtonControlOptions_BroadcastWeeks"
+            Me.RadioButtonControlOptions_BroadcastWeeks.SecurityEnabled = True
+            Me.RadioButtonControlOptions_BroadcastWeeks.Size = New System.Drawing.Size(136, 20)
+            Me.RadioButtonControlOptions_BroadcastWeeks.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.RadioButtonControlOptions_BroadcastWeeks.TabIndex = 6
+            Me.RadioButtonControlOptions_BroadcastWeeks.TabOnEnter = True
+            Me.RadioButtonControlOptions_BroadcastWeeks.TabStop = False
+            Me.RadioButtonControlOptions_BroadcastWeeks.Text = "Broadcast Weeks"
             '
             'ComboBoxOptions_Quarter
             '
@@ -444,6 +518,64 @@
             Me.TabItemSelections_SelectClientsTab.Name = "TabItemSelections_SelectClientsTab"
             Me.TabItemSelections_SelectClientsTab.Text = "Select Clients"
             '
+            'DateEditoptions_BroadcastStartDate
+            '
+            Me.DateEditoptions_BroadcastStartDate.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
+            Me.DateEditoptions_BroadcastStartDate.DisplayName = ""
+            Me.DateEditoptions_BroadcastStartDate.EditValue = Nothing
+            Me.DateEditoptions_BroadcastStartDate.Location = New System.Drawing.Point(184, 86)
+            Me.DateEditoptions_BroadcastStartDate.Name = "DateEditoptions_BroadcastStartDate"
+            Me.DateEditoptions_BroadcastStartDate.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.[False]
+            Me.DateEditoptions_BroadcastStartDate.Properties.AllowMouseWheel = False
+            Me.DateEditoptions_BroadcastStartDate.Properties.Appearance.BackColor = System.Drawing.Color.White
+            Me.DateEditoptions_BroadcastStartDate.Properties.Appearance.Options.UseBackColor = True
+            Me.DateEditoptions_BroadcastStartDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditoptions_BroadcastStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditoptions_BroadcastStartDate.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Vista
+            Me.DateEditoptions_BroadcastStartDate.Properties.DisplayFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditoptions_BroadcastStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditoptions_BroadcastStartDate.Properties.EditFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditoptions_BroadcastStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditoptions_BroadcastStartDate.Properties.Mask.EditMask = ""
+            Me.DateEditoptions_BroadcastStartDate.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
+            Me.DateEditoptions_BroadcastStartDate.Properties.MaxValue = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateEditoptions_BroadcastStartDate.Properties.MinValue = New Date(1900, 1, 1, 0, 0, 0, 0)
+            Me.DateEditoptions_BroadcastStartDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.[True]
+            Me.DateEditoptions_BroadcastStartDate.SecurityEnabled = True
+            Me.DateEditoptions_BroadcastStartDate.Size = New System.Drawing.Size(111, 20)
+            Me.DateEditoptions_BroadcastStartDate.TabIndex = 22
+            Me.DateEditoptions_BroadcastStartDate.TabOnEnter = True
+            Me.DateEditoptions_BroadcastStartDate.Tag = "9/2/2015"
+            '
+            'DateEditoptions_BroadcastEndDate
+            '
+            Me.DateEditoptions_BroadcastEndDate.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
+            Me.DateEditoptions_BroadcastEndDate.DisplayName = ""
+            Me.DateEditoptions_BroadcastEndDate.EditValue = Nothing
+            Me.DateEditoptions_BroadcastEndDate.Location = New System.Drawing.Point(338, 86)
+            Me.DateEditoptions_BroadcastEndDate.Name = "DateEditoptions_BroadcastEndDate"
+            Me.DateEditoptions_BroadcastEndDate.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.[False]
+            Me.DateEditoptions_BroadcastEndDate.Properties.AllowMouseWheel = False
+            Me.DateEditoptions_BroadcastEndDate.Properties.Appearance.BackColor = System.Drawing.Color.White
+            Me.DateEditoptions_BroadcastEndDate.Properties.Appearance.Options.UseBackColor = True
+            Me.DateEditoptions_BroadcastEndDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditoptions_BroadcastEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditoptions_BroadcastEndDate.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Vista
+            Me.DateEditoptions_BroadcastEndDate.Properties.DisplayFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditoptions_BroadcastEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditoptions_BroadcastEndDate.Properties.EditFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditoptions_BroadcastEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditoptions_BroadcastEndDate.Properties.Mask.EditMask = ""
+            Me.DateEditoptions_BroadcastEndDate.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
+            Me.DateEditoptions_BroadcastEndDate.Properties.MaxValue = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateEditoptions_BroadcastEndDate.Properties.MinValue = New Date(1900, 1, 1, 0, 0, 0, 0)
+            Me.DateEditoptions_BroadcastEndDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.[True]
+            Me.DateEditoptions_BroadcastEndDate.SecurityEnabled = True
+            Me.DateEditoptions_BroadcastEndDate.Size = New System.Drawing.Size(111, 20)
+            Me.DateEditoptions_BroadcastEndDate.TabIndex = 23
+            Me.DateEditoptions_BroadcastEndDate.TabOnEnter = True
+            Me.DateEditoptions_BroadcastEndDate.Tag = "9/2/2015"
+            '
             'BroadcastBuyInvoiceExportForm
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -460,6 +592,10 @@
             Me.TabControlPanelOptionsTab_Options.ResumeLayout(False)
             CType(Me.NumericInputOptions_Year.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlPanel_Clients.ResumeLayout(False)
+            CType(Me.DateEditoptions_BroadcastStartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DateEditoptions_BroadcastStartDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DateEditoptions_BroadcastEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DateEditoptions_BroadcastEndDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
 
         End Sub
@@ -482,6 +618,13 @@
         Friend WithEvents TabItemMCS_OptionsTab As DevComponents.DotNetBar.TabItem
         Friend WithEvents ComboBoxOptions_Quarter As WinForm.MVC.Presentation.Controls.ComboBox
         Friend WithEvents ComboBoxOptions_BroadcastMonth As WinForm.MVC.Presentation.Controls.ComboBox
+        Friend WithEvents ButtonItemExport_ToExcel As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents ButtonItemExport_ToXML As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents LabelOptions_BroadcastWeekEnd As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents LabelOptions_BroadcastWeekStart As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents RadioButtonControlOptions_BroadcastWeeks As WinForm.MVC.Presentation.Controls.RadioButtonControl
+        Friend WithEvents DateEditoptions_BroadcastEndDate As WinForm.MVC.Presentation.Controls.DateEdit
+        Friend WithEvents DateEditoptions_BroadcastStartDate As WinForm.MVC.Presentation.Controls.DateEdit
     End Class
 
 End Namespace

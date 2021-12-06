@@ -172,10 +172,27 @@
                 PostPeriod_ToMonth.DataSource = (From Entity In AdvantageFramework.Database.Procedures.PostPeriod.Load(DbContext) Select [Code] = Entity.Code).ToList
 
                 CurrentPostPeriod = AdvantageFramework.Database.Procedures.PostPeriod.LoadCurrentPostPeriod(DbContext)
+
+                If CurrentPostPeriod Is Nothing Then
+
+                    Try
+
+                        CurrentPostPeriod = AdvantageFramework.Database.Procedures.PostPeriod.LoadAllActiveGLPostPeriods(DbContext).FirstOrDefault()
+
+                    Catch ex As Exception
+                        CurrentPostPeriod = Nothing
+                    End Try
+
+                End If
+
             End Using
 
-            PostPeriod_FromMonth.Text = CurrentPostPeriod.Code
-            PostPeriod_ToMonth.Text = CurrentPostPeriod.Code
+            If CurrentPostPeriod IsNot Nothing Then
+
+                PostPeriod_FromMonth.Text = CurrentPostPeriod.Code
+                PostPeriod_ToMonth.Text = CurrentPostPeriod.Code
+
+            End If
 
             PanelForm_TopSection.Visible = _ShowReportOption
 

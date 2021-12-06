@@ -1,4 +1,4 @@
-Namespace InvoicePrinting.Classes
+﻿Namespace InvoicePrinting.Classes
 
     <Serializable()>
     Public Class MediaInvoiceDetail
@@ -124,8 +124,9 @@ Namespace InvoicePrinting.Classes
             PriorBillAmount
 			CloseDate
 			VendorInvoiceCategoryID
-			VendorInvoiceCategory
-		End Enum
+            VendorInvoiceCategory
+            VATNumber
+        End Enum
 
 #End Region
 
@@ -1286,12 +1287,14 @@ Namespace InvoicePrinting.Classes
 				_VendorInvoiceCategory = value
 			End Set
 		End Property
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property VATNumber() As String
 
 #End Region
 
 #Region " Methods "
 
-		Public Overrides Function ToString() As String
+        Public Overrides Function ToString() As String
 
             ToString = Me.ClientCode.ToString
 

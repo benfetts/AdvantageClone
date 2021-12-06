@@ -573,6 +573,19 @@
 
 #Region " Properties "
 
+        Public Overridable Property MediaSpotTVPuertoRicoResearchs() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearch)
+        Public Overridable Property MediaSpotTVPuertoRicoResearchDayTimes() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearchDayTime)
+        Public Overridable Property MediaSpotTVPuertoRicoResearchDemos() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearchDemo)
+        Public Overridable Property MediaSpotTVPuertoRicoResearchMetrics() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearchMetric)
+        Public Overridable Property MediaSpotTVPuertoRicoResearchStations() As System.Data.Entity.DbSet(Of Database.Entities.MediaSpotTVPuertoRicoResearchStation)
+
+        Public Overridable Property NPRAudiences() As System.Data.Entity.DbSet(Of Database.Entities.NPRAudience)
+        Public Overridable Property NPRFiles() As System.Data.Entity.DbSet(Of Database.Entities.NPRFile)
+        Public Overridable Property NPRHutputs() As System.Data.Entity.DbSet(Of Database.Entities.NPRHutput)
+        Public Overridable Property NPRIntabs() As System.Data.Entity.DbSet(Of Database.Entities.NPRIntab)
+        Public Overridable Property NPRStations() As System.Data.Entity.DbSet(Of Database.Entities.NPRStation)
+        Public Overridable Property NPRUniverses() As System.Data.Entity.DbSet(Of Database.Entities.NPRUniverse)
+
         Public Overridable Property MediaPlanDocuments() As System.Data.Entity.DbSet(Of Database.Entities.MediaPlanDocument)
         Public Overridable Property QuickbooksSettings() As System.Data.Entity.DbSet(Of Database.Entities.QuickbooksSetting)
 

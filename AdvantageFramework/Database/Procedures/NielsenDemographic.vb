@@ -29,10 +29,11 @@
 
 #Region " Methods "
 
-        Public Function LoadByType(DbContext As Database.DbContext, Type As String) As System.Data.Entity.Infrastructure.DbQuery(Of Database.Entities.NielsenDemographic)
+        Public Function LoadByType(DbContext As Database.DbContext, Type As String, MediaDemoSourceID As Integer) As System.Data.Entity.Infrastructure.DbQuery(Of Database.Entities.NielsenDemographic)
 
             LoadByType = From NielsenDemographic In DbContext.GetQuery(Of Database.Entities.NielsenDemographic)
-                         Where NielsenDemographic.Type = Type
+                         Where NielsenDemographic.Type = Type AndAlso
+                               NielsenDemographic.MediaDemoSourceID = MediaDemoSourceID
                          Select NielsenDemographic
 
         End Function

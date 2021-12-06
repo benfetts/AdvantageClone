@@ -38,6 +38,8 @@
             ARType
             AccruedLiabilityAmount
             APInvoiceAmount
+            APLimitedJobFlag
+            AccruedLiabilityAmountFunction
         End Enum
 
 #End Region
@@ -104,6 +106,9 @@
         Public Property ARType As String
         Public Property AccruedLiabilityAmount As Nullable(Of Decimal)
         Public Property APInvoiceAmount As Nullable(Of Decimal)
+        Public Property APLimitedJobFlag As Nullable(Of Byte)
+
+        Public Property AccruedLiabilityAmountFunction As Nullable(Of Decimal)
 
 #End Region
 

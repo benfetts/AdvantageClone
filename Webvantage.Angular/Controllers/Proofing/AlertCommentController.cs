@@ -38,6 +38,8 @@ namespace Webvantage.Angular.Controllers.Proofing
         [HttpPost]
         public void Post([FromQuery] string dl, [FromBody] AlertComment comment)
         {
+            bool sendEmail = false;
+
             AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
 
             AdvantageFramework.Core.Database.Entities.AlertComment _comment = AdvantageFramework.Core.BLogic.Proofing.Methods.CreateAlertComment(
@@ -45,10 +47,11 @@ namespace Webvantage.Angular.Controllers.Proofing
 
             if (comment.Mentions != null && comment.Mentions.Length > 0)
             {
+                sendEmail = true;
                 _controller.AddAlertMentions(qs, qs.AlertID, comment.Mentions, _comment.CommentId);
             }
 
-            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, false);
+            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, sendEmail);
         }
 
         // PUT api/<AlertCommentController>/5

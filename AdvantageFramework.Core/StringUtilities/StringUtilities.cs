@@ -905,7 +905,7 @@ namespace AdvantageFramework.Core.StringUtilities
                 }
                 catch (Exception ex)
                 {
-                    return "";
+                    return cipherText;
                 }
 
                 // First, we must create a password, from which the key will be 

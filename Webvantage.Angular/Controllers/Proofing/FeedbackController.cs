@@ -62,8 +62,9 @@ namespace Webvantage.Angular.Controllers.Proofing
             AdvantageFramework.Core.Database.Entities.AlertComment newComment = null;
             try
             {
-                AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
+                bool sendEmail = false;
 
+                AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
 
                 AdvantageFramework.Core.Database.Entities.AlertComment comment = AdvantageFramework.Core.BLogic.Proofing.Methods.CreateComment(qs, new AdvantageFramework.Core.Database.Entities.AlertComment()
                 {
@@ -78,11 +79,11 @@ namespace Webvantage.Angular.Controllers.Proofing
 
                 if (value.Mentions != null && value.Mentions.Length > 0)
                 {
+                    sendEmail = true;
                     _controller.AddAlertMentions(qs, qs.AlertID, value.Mentions, comment.CommentId);
                 }
 
-                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, false);
-
+                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, sendEmail);
 
             }
             catch (Exception ex)

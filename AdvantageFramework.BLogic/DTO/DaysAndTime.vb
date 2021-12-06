@@ -16,6 +16,7 @@
             Radio = 1
             TV = 2
             National = 3
+            TVPuertoRico = 4
         End Enum
 
         Public Enum Properties
@@ -57,9 +58,13 @@
 
                     DayStartHour = 600
 
-                Else
+                ElseIf Me.BroadcastType = BroadcastTypes.TV Then
 
                     DayStartHour = 300
+
+                Else 'If Me.BroadcastType = BroadcastTypes.TVPuertoRico Then
+
+                    DayStartHour = 200
 
                 End If
 
@@ -168,6 +173,10 @@
 
                 Me.IsUsing3rdPartyData = WorksheetMarket.NeilsenRadioPeriodID1.HasValue
 
+            ElseIf Me.BroadcastType = BroadcastTypes.TVPuertoRico Then
+
+                Me.IsUsing3rdPartyData = True
+
             Else
 
                 Me.IsUsing3rdPartyData = False
@@ -199,6 +208,10 @@
             ElseIf Me.BroadcastType = BroadcastTypes.Radio Then
 
                 Me.IsUsing3rdPartyData = MediaBroadcastWorksheetMarket.NeilsenRadioPeriodID1.HasValue
+
+            ElseIf Me.BroadcastType = BroadcastTypes.TVPuertoRico Then
+
+                Me.IsUsing3rdPartyData = True
 
             Else
 
@@ -242,6 +255,25 @@
             Me.EndTime = MediaSpotNationalResearch.EndTime
 
             Me.IsUsing3rdPartyData = True
+
+        End Sub
+        Public Sub New(BroadcastType As BroadcastTypes, MediaSpotTVPuertoRicoResearchDayTime As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchDayTime)
+
+            Me.BroadcastType = BroadcastType
+
+            Me.Days = MediaSpotTVPuertoRicoResearchDayTime.Days
+            Me.Sunday = MediaSpotTVPuertoRicoResearchDayTime.Sunday
+            Me.Monday = MediaSpotTVPuertoRicoResearchDayTime.Monday
+            Me.Tuesday = MediaSpotTVPuertoRicoResearchDayTime.Tuesday
+            Me.Wednesday = MediaSpotTVPuertoRicoResearchDayTime.Wednesday
+            Me.Thursday = MediaSpotTVPuertoRicoResearchDayTime.Thursday
+            Me.Friday = MediaSpotTVPuertoRicoResearchDayTime.Friday
+            Me.Saturday = MediaSpotTVPuertoRicoResearchDayTime.Saturday
+            Me.StartTime = MediaSpotTVPuertoRicoResearchDayTime.StartTime
+            Me.EndTime = MediaSpotTVPuertoRicoResearchDayTime.EndTime
+
+            Me.IsUsing3rdPartyData = True
+            Me.MediaSpotTVResearchDayTimeID = MediaSpotTVPuertoRicoResearchDayTime.ID
 
         End Sub
         Public Sub SaveToEntity(ByRef WorksheetMarketDetail As AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarketDetail)
@@ -659,6 +691,87 @@
                 Else
 
                     MediaSpotNationalResearch.EndHour = DatePart(DateInterval.Hour, CDate(Now.ToShortDateString & " " & MediaSpotNationalResearch.EndTime)) * 100 + DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotNationalResearch.EndTime))
+
+                End If
+
+            End If
+
+        End Sub
+        Public Sub SaveToEntity(ByRef MediaSpotTVPuertoRicoResearchDayTime As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchDayTime)
+
+            'objects
+            Dim NewStartTime As Date = Date.MinValue
+
+            MediaSpotTVPuertoRicoResearchDayTime.Days = Me.Days
+            MediaSpotTVPuertoRicoResearchDayTime.Sunday = Me.Sunday
+            MediaSpotTVPuertoRicoResearchDayTime.Monday = Me.Monday
+            MediaSpotTVPuertoRicoResearchDayTime.Tuesday = Me.Tuesday
+            MediaSpotTVPuertoRicoResearchDayTime.Wednesday = Me.Wednesday
+            MediaSpotTVPuertoRicoResearchDayTime.Thursday = Me.Thursday
+            MediaSpotTVPuertoRicoResearchDayTime.Friday = Me.Friday
+            MediaSpotTVPuertoRicoResearchDayTime.Saturday = Me.Saturday
+
+            If Not String.IsNullOrWhiteSpace(Me.StartTime) AndAlso Date.TryParse(Now.ToShortDateString & " " & Me.StartTime, NewStartTime) Then
+
+                MediaSpotTVPuertoRicoResearchDayTime.StartTime = Me.StartTime
+
+            Else
+
+                MediaSpotTVPuertoRicoResearchDayTime.StartTime = String.Empty
+
+            End If
+
+            If Not String.IsNullOrWhiteSpace(Me.EndTime) AndAlso Date.TryParse(Now.ToShortDateString & " " & Me.EndTime, NewStartTime) Then
+
+                MediaSpotTVPuertoRicoResearchDayTime.EndTime = Me.EndTime
+
+            Else
+
+                MediaSpotTVPuertoRicoResearchDayTime.EndTime = String.Empty
+
+            End If
+
+            If Not String.IsNullOrWhiteSpace(MediaSpotTVPuertoRicoResearchDayTime.StartTime) AndAlso Date.TryParse(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime, NewStartTime) Then
+
+                If DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime)) Mod 15 = 0 Then
+
+                    If DatePart(DateInterval.Hour, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime)) * 100 + DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime)) < Me.DayStartHour Then
+
+                        MediaSpotTVPuertoRicoResearchDayTime.StartHour = DatePart(DateInterval.Hour, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime)) * 100 + DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime)) + 2400
+
+                    Else
+
+                        MediaSpotTVPuertoRicoResearchDayTime.StartHour = DatePart(DateInterval.Hour, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime)) * 100 + DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime))
+
+                    End If
+
+                Else
+
+                    NewStartTime = DateAdd(DateInterval.Minute, -(DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime)) Mod 15), CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.StartTime))
+
+                    If DatePart(DateInterval.Hour, NewStartTime) * 100 + DatePart(DateInterval.Minute, NewStartTime) < Me.DayStartHour Then
+
+                        MediaSpotTVPuertoRicoResearchDayTime.StartHour = DatePart(DateInterval.Hour, NewStartTime) * 100 + DatePart(DateInterval.Minute, NewStartTime) + 2400
+
+                    Else
+
+                        MediaSpotTVPuertoRicoResearchDayTime.StartHour = DatePart(DateInterval.Hour, NewStartTime) * 100 + DatePart(DateInterval.Minute, NewStartTime)
+
+                    End If
+
+                End If
+
+            End If
+
+            If Not String.IsNullOrWhiteSpace(MediaSpotTVPuertoRicoResearchDayTime.EndTime) AndAlso Date.TryParse(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.EndTime, NewStartTime) Then
+
+                If DatePart(DateInterval.Hour, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.EndTime)) * 100 + DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.EndTime)) < Me.DayStartHour Then
+
+                    MediaSpotTVPuertoRicoResearchDayTime.EndHour = DatePart(DateInterval.Hour, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.EndTime)) * 100 + DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.EndTime)) + 2400
+
+                Else
+
+                    MediaSpotTVPuertoRicoResearchDayTime.EndHour = DatePart(DateInterval.Hour, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.EndTime)) * 100 + DatePart(DateInterval.Minute, CDate(Now.ToShortDateString & " " & MediaSpotTVPuertoRicoResearchDayTime.EndTime))
 
                 End If
 

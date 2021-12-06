@@ -424,7 +424,7 @@ BEGIN
 			A.[FILENAME],
 			A.[GENERATED]
 		;
-    END
+	END
 	ELSE
 	BEGIN
 		SELECT 

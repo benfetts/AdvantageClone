@@ -3338,6 +3338,13 @@
                     TextBoxPaymentManager_CustomerID.Enabled = True
                     TextBoxPaymentManager_Word.Enabled = True
 
+                ElseIf SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFTB" Then
+
+                    LabelPaymentManager_CustomerID.Text = "N/A:"
+                    LabelPaymentManager_Word.Text = "N/A:"
+                    TextBoxPaymentManager_CustomerID.Enabled = False
+                    TextBoxPaymentManager_Word.Enabled = False
+
                 Else
 
                     LabelPaymentManager_CustomerID.Text = ""
@@ -3356,7 +3363,8 @@
                        SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "BOAP" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "HSBC" OrElse
                        SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFBP" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "ACHG" OrElse
                        SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "ACHR" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFBF" OrElse
-                       SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "CHA2" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WTB" Then
+                       SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "CHA2" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WTB" OrElse
+                       SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFTB" Then
 
                     EnableDisablePaymentManagerACHSettings(True)
 

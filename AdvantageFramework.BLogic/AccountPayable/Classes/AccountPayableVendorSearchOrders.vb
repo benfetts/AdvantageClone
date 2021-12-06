@@ -16,6 +16,8 @@
             Number
             VendorName
             VendorCode
+            CampaignCode
+            CampaignName
         End Enum
 
 #End Region
@@ -57,6 +59,10 @@
                 _VendorCode = value
             End Set
         End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity()>
+        Public Property CampaignCode() As String
+        <AdvantageFramework.BaseClasses.Attributes.Entity()>
+        Public Property CampaignName() As String
 
 #End Region
 

@@ -136,7 +136,7 @@ Partial Public Class Resources_Emps_Find
                             RowHoursAllowed = CType(CType(CurrentGridRow.FindControl("HfEVENT_TASK_HOURS_ALLOWED"), HiddenField).Value, Decimal)
                         Catch ex As Exception
                             RowHoursAllowed = 0
-                            err = True
+                            'err = True
                         End Try
 
                         'Using DbContext = New AdvantageFramework.Database.DbContext(Session("ConnString"), Session("UserCode"))

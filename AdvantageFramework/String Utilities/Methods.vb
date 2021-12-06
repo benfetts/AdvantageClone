@@ -1528,7 +1528,14 @@
             Dim Ignore = False
 
             If Message.Contains("cannot append header after") = True OrElse
+               Message.Contains("EmployeePicture") = True OrElse
+               Message.Contains("CommentPicture") = True OrElse
                Message.Contains("does not implement IController") = True OrElse
+               Message.Contains("null entry for parameter") = True OrElse
+               Message.Contains("Conversion from string") = True OrElse
+               Message.Contains("no row at position 0") = True OrElse
+               Message.Contains("Value cannot be null") = True OrElse
+               Message.Contains("Conversion from string") = True OrElse
                Message.Contains("reference not set to an instance") = True Then
 
                 Ignore = True

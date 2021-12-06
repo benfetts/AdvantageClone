@@ -78,11 +78,13 @@
             DataGridViewForm_Market.MakeColumnNotVisible(AdvantageFramework.Database.Entities.Market.Properties.StateID.ToString)
             DataGridViewForm_Market.MakeColumnNotVisible(AdvantageFramework.Database.Entities.Market.Properties.CountryID.ToString)
             DataGridViewForm_Market.MakeColumnNotVisible(AdvantageFramework.Database.Entities.Market.Properties.ComscoreNewMarketNumber.ToString)
+            DataGridViewForm_Market.MakeColumnNotVisible(AdvantageFramework.Database.Entities.Market.Properties.IsPuertoRico.ToString)
 
             DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.Code.ToString)
             DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.Description.ToString)
             DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.IsInactive.ToString)
             DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.CountryID.ToString)
+            DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.IsPuertoRico.ToString)
             DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.StateID.ToString)
             DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.NielsenTVCode.ToString)
             DataGridViewForm_Market.MakeColumnVisible(AdvantageFramework.Database.Entities.Market.Properties.NielsenTVDMACode.ToString)
@@ -224,6 +226,7 @@
                 BindingSource = New System.Windows.Forms.BindingSource
 
                 BindingSource.DataSource = (From Country In DbContext.Countries
+                                            Where Country.ID <> DTO.Countries.PuertoRico
                                             Select [Name] = Country.Name,
                                                    [ID] = Country.ID).ToList
 
@@ -602,41 +605,95 @@
             'objects
             Dim Market As AdvantageFramework.Database.Entities.Market = Nothing
 
-            If e.RowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle AndAlso e.Column.FieldName = AdvantageFramework.Database.Entities.Market.Properties.IsInactive.ToString Then
+            If e.RowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
 
-                Try
-
-                    Market = DataGridViewForm_Market.GetFirstSelectedRowDataBoundItem
-
-                Catch ex As Exception
-                    Market = Nothing
-                End Try
-
-                If Market IsNot Nothing Then
+                If e.Column.FieldName = AdvantageFramework.Database.Entities.Market.Properties.IsInactive.ToString OrElse
+                        e.Column.FieldName = AdvantageFramework.Database.Entities.Market.Properties.IsPuertoRico.ToString Then
 
                     Try
 
-                        Market.IsInactive = Convert.ToInt16(e.Value)
+                        Market = DataGridViewForm_Market.GetFirstSelectedRowDataBoundItem
 
                     Catch ex As Exception
-                        Market.IsInactive = Market.IsInactive
+                        Market = Nothing
                     End Try
 
-                    AdvantageFramework.WinForm.MessageBox.SuppressMessageBox = True
+                    If Market IsNot Nothing Then
 
-                    Try
+                        If e.Column.FieldName = AdvantageFramework.Database.Entities.Market.Properties.IsInactive.ToString Then
 
-                        Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+                            Try
 
-                            Saved = AdvantageFramework.Database.Procedures.Market.Update(DbContext, Market)
+                                Market.IsInactive = Convert.ToInt16(e.Value)
 
-                        End Using
+                            Catch ex As Exception
+                                Market.IsInactive = Market.IsInactive
+                            End Try
 
-                    Catch ex As Exception
+                            AdvantageFramework.WinForm.MessageBox.SuppressMessageBox = True
 
-                    End Try
+                            Try
 
-                    AdvantageFramework.WinForm.MessageBox.SuppressMessageBox = False
+                                Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                                    Saved = AdvantageFramework.Database.Procedures.Market.Update(DbContext, Market)
+
+                                End Using
+
+                            Catch ex As Exception
+
+                            End Try
+
+                            AdvantageFramework.WinForm.MessageBox.SuppressMessageBox = False
+
+                        ElseIf e.Column.FieldName = AdvantageFramework.Database.Entities.Market.Properties.IsPuertoRico.ToString Then
+
+                            Try
+
+                                Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                                    For Each DataBoundItem In DataGridViewForm_Market.GetAllRowsDataBoundItems.OfType(Of AdvantageFramework.Database.Entities.Market).ToList
+
+                                        DataBoundItem.IsPuertoRico = False
+
+                                    Next
+
+                                    Market.IsPuertoRico = False
+
+                                    Try
+
+                                        DbContext.Database.ExecuteSqlCommand("UPDATE dbo.MARKET SET IS_PUERTO_RICO = 0")
+
+                                    Catch ex As Exception
+
+                                    End Try
+
+                                    If e.Value Then
+
+                                        Try
+
+                                            DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.MARKET SET IS_PUERTO_RICO = 1 WHERE MARKET_CODE = '{0}'", Market.Code))
+                                            Market.IsPuertoRico = True
+
+                                        Catch ex As Exception
+
+                                        End Try
+
+                                    End If
+
+                                End Using
+
+                            Catch ex As Exception
+
+                            End Try
+
+                            DataGridViewForm_Market.CurrentView.RefreshData()
+
+                        End If
+
+                        Saved = True
+
+                    End If
 
                 End If
 

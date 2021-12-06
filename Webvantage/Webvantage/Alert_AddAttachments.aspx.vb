@@ -16,7 +16,7 @@
 #Region " Variables "
 
     Private _AddAttachmentComment As Boolean = False
-    Private _DocumentList As New Generic.List(Of Webvantage.CommentDocument)
+    Private _DocumentList As New Generic.List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument)
     Private _IsProofHQEnabled As Boolean = False
     Private _LegacyAlertObject As Alert
     Private _ClientPortalID As Integer = 0
@@ -58,7 +58,7 @@
 
                 If Not Me._DocumentList Is Nothing AndAlso Me._DocumentList.Count > 0 Then
 
-                    Dim m As New CommentDocument()
+                    Dim m As New AdvantageFramework.AlertSystem.Classes.CommentDocument()
 
                     DocListString = m.ObjectToString(Me._DocumentList)
 
@@ -377,7 +377,7 @@
                                     doc = AdvantageFramework.Database.Procedures.Document.LoadByDocumentID(DbContext, DocumentID)
                                     If Not doc Is Nothing Then
 
-                                        Dim d As New Webvantage.CommentDocument()
+                                        Dim d As New AdvantageFramework.AlertSystem.Classes.CommentDocument()
                                         With d
 
                                             .Filename = doc.FileName
@@ -594,7 +594,7 @@
 
                                     If Me._AddAttachmentComment = True Then
 
-                                        Dim d As New Webvantage.CommentDocument()
+                                        Dim d As New AdvantageFramework.AlertSystem.Classes.CommentDocument()
                                         With d
 
                                             .Filename = Me.RadUploadAlertDocuments.UploadedFiles(i).FileName

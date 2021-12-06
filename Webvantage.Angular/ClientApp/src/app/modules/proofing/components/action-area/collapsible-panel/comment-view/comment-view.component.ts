@@ -84,10 +84,10 @@ export class CommentViewComponent implements OnInit {
       }
 
       var result = document.getElementsByClassName("active");
-      result[0].scrollIntoView();
-
+      if (result[0]) {
+        result[0].scrollIntoView();
+      }
     });
-
   }
 
   markUpclicked(index: number): void {

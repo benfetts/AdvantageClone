@@ -23,7 +23,7 @@ BEGIN
 										  [BUDGET_AMT] [decimal](14,2) NOT NULL)
 	CREATE TABLE #EMPLOYEE_TITLE_BILLING_RATES([RowID] [int] IDENTITY(1,1), 
 											   [EMPLOYEE_TITLE_ID] [int] NOT NULL,
-											   [BILL_RATE] [decimal](14,2) NOT NULL)
+											   [BILL_RATE] [decimal](14,2) NULL)
 	CREATE TABLE #EMPLOYEE_RATES([RowID] [int] IDENTITY(1,1), 
 								 [EMP_CODE] [varchar](6) COLLATE SQL_Latin1_General_CP1_CS_AS,
 								 [BILL_RATE] [decimal](14,2) NOT NULL,

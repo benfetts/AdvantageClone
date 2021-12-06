@@ -834,6 +834,8 @@
     <Compile Include="Controllers\Account\GMController.vb" />
     <Compile Include="Controllers\Billing\PaymentCenterController.vb" />
     <Compile Include="Controllers\Dashboard\DashboardController.vb" />
+    <Compile Include="Controllers\Dashboard\EmployeeUtilizationController.vb" />
+    <Compile Include="Controllers\Dashboard\FinancialController.vb" />
     <Compile Include="Controllers\Desktop\InboxController.vb" />
     <Compile Include="Controllers\Desktop\CalendarController.vb" />
     <Compile Include="Controllers\Desktop\DocumentManagerController.vb" />
@@ -2712,6 +2714,7 @@
     <Content Include="Images\Logos\pdftron_logo.png" />
     <Content Include="Images\Logos\simplifi_aqua_color.png" />
     <Content Include="Images\Logos\simplifi_logo.png" />
+    <Content Include="JScripts\financial.dashboard.mvc.js" />
     <Content Include="JScripts\kendo.draganddrop.min.js" />
     <Content Include="JScripts\kendo.listview.min.js" />
     <Content Include="JScripts\proofing.externalreviewers.mvc.js" />
@@ -2725,6 +2728,9 @@
     <Content Include="JScripts\proofing._proofsbyjobgrid.mvc.min.js">
       <DependentUpon>proofing._proofsbyjobgrid.mvc.js</DependentUpon>
     </Content>
+    <Content Include="JScripts\utilization.datagrid.mvc.js" />
+    <Content Include="JScripts\utilization.filter.mvc.js" />
+    <Content Include="JScripts\utilization.mvc.js" />
     <Content Include="Quickbooks_Authentication.aspx" />
     <Content Include="Images\document-preview-view.png" />
     <Content Include="Images\excel-preview-view-no-bg.png" />
@@ -7262,7 +7268,6 @@
     <Content Include="OpenJobs_Settings.aspx" />
     <Content Include="popcomments.aspx" />
     <Content Include="ProgressIndicator.aspx" />
-    <Content Include="ProjectSchedule_GanttView.aspx" />
     <Content Include="RadEditorToolbars.xml" />
     <Content Include="Reporting_DynamicReportColumnEdit.aspx" />
     <Content Include="Reporting_DynamicReportEdit.aspx" />
@@ -7960,13 +7965,6 @@
     </Compile>
     <Compile Include="ProgressIndicator.aspx.vb">
       <DependentUpon>ProgressIndicator.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProjectSchedule_GanttView.aspx.designer.vb">
-      <DependentUpon>ProjectSchedule_GanttView.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectSchedule_GanttView.aspx.vb">
-      <DependentUpon>ProjectSchedule_GanttView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Reporting_JobDetailAnalysis.aspx.designer.vb">
@@ -10441,6 +10439,15 @@
     <Content Include="Views\ProjectManagement\Proofing\ExternalReviewers.vbhtml" />
     <Content Include="Views\ProjectManagement\Proofing\_ExternalReviewersGrid.vbhtml" />
     <Content Include="Views\ProjectManagement\Proofing\_ProofsByJobGrid.vbhtml" />
+    <Content Include="Views\ProjectManagement\Proofing\SyncTool.vbhtml" />
+    <Content Include="Views\ProjectManagement\Proofing\_SyncToolGrid.vbhtml" />
+    <Content Include="Views\ProjectManagement\Proofing\FeedbackSummary.vbhtml" />
+    <Content Include="Views\ProjectManagement\Proofing\_FeedbackSummaryGrid.vbhtml" />
+    <Content Include="Views\Dashboard\EmployeeUtilization\Index.vbhtml" />
+    <Content Include="Views\Dashboard\EmployeeUtilization\_UtilizationFilter.vbhtml" />
+    <Content Include="Views\Dashboard\EmployeeUtilization\_UtilizationGrid.vbhtml" />
+    <Content Include="Views\Dashboard\Financial\Index.vbhtml" />
+    <Content Include="Views\Dashboard\Financial\_FinancialDashboard.vbhtml" />
     <None Include="Web References\localhost\GetRepositoryDoc.wsdl" />
     <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -11385,7 +11392,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2055</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/WebvantageProduction</IISUrl>
+          <IISUrl>http://localhost/WebvantageDev</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost/WebvantageDevNext</IISAppRootUrl>
           <NTLMAuthentication>True</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

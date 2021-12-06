@@ -325,12 +325,12 @@
                     .ThenBy(Function(x) x.VendorCode) _
                     .ThenBy(Function(x) x.Days) _
                     .ThenBy(Function(x) x.Rate) _
-                    .Select(Function(x) New GroupingHolder(x.Market, 0, x.VendorCode, x.ProgramName, x.Days, x.Rate, x.EarliestDate)).ToList
+                    .Select(Function(x) New GroupingHolder(x.Market, x.LineNumber, x.VendorCode, x.ProgramName, x.Days, x.Rate, x.EarliestDate)).ToList
 
                     Dim AllGroupings As List(Of GroupingHolder) = New List(Of GroupingHolder) ' because Linq .Distinct does not work Above
 
                     For Each Datum In tAllGroupings
-                        If Not (AllGroupings.Where(Function(x) (x.Market = Datum.Market) AndAlso (x.LineNumber = Datum.LineNumber) AndAlso (x.VendorCode = Datum.VendorCode) AndAlso (x.Days = Datum.Days) AndAlso (x.Rate = Datum.Rate)).Any) Then
+                        If Not (AllGroupings.Where(Function(x) (x.Market = Datum.Market) AndAlso (x.LineNumber = Datum.LineNumber) AndAlso (x.VendorCode = Datum.VendorCode) AndAlso (x.Rate = Datum.Rate)).Any) Then
                             AllGroupings.Add(Datum)
                         End If
                     Next
@@ -339,35 +339,38 @@
 
                         Dim DoesLastRowExist As Boolean =
                             MediaBroadcastWorksheetBroadcastScheduleDetails _
-                                .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.ProgramName = Grouping.ProgramName) AndAlso (x.Days = Grouping.Days) AndAlso (x.Rate = Grouping.Rate) AndAlso (x.BucketLastRow = True)).Any
+                                .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.LineNumber = Grouping.LineNumber) AndAlso (x.Rate = Grouping.Rate) AndAlso (x.BucketLastRow = True)).Any
 
-                        Dim LastRowLineNumber As Integer
+                        If DoesLastRowExist = False Then
+
+                            Dim LastRowLineNumber As Integer
 
 
-                        If Not (MediaBroadcastWorksheetBroadcastScheduleDetails _
-                                .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.ProgramName = Grouping.ProgramName) AndAlso (x.BucketLastRow = True)).Any) Then
-                            LastRowLineNumber = 0
-                        Else
-                            LastRowLineNumber = MediaBroadcastWorksheetBroadcastScheduleDetails _
-                                .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.ProgramName = Grouping.ProgramName) AndAlso (x.BucketLastRow = True)).FirstOrDefault.LineNumber
-                        End If
+                            If Not (MediaBroadcastWorksheetBroadcastScheduleDetails _
+                                    .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.ProgramName = Grouping.ProgramName) AndAlso (x.Days = Grouping.Days) AndAlso (x.Rate = Grouping.Rate) AndAlso (x.BucketLastRow = True)).Any) Then
+                                LastRowLineNumber = Grouping.LineNumber
+                            Else
+                                LastRowLineNumber = MediaBroadcastWorksheetBroadcastScheduleDetails _
+                                    .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.ProgramName = Grouping.ProgramName) AndAlso (x.Days = Grouping.Days) AndAlso (x.Rate = Grouping.Rate) AndAlso (x.BucketLastRow = True)).FirstOrDefault.LineNumber
+                            End If
 
-                        Dim LastRowBucketRowNumber As Integer
+                            Dim LastRowBucketRowNumber As Integer
 
-                        If Not (MediaBroadcastWorksheetBroadcastScheduleDetails _
-                                .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.ProgramName = Grouping.ProgramName) AndAlso (x.BucketLastRow = True)).Any) Then
-                            LastRowBucketRowNumber = 0
-                        Else
-                            LastRowBucketRowNumber = MediaBroadcastWorksheetBroadcastScheduleDetails _
-                                .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.ProgramName = Grouping.ProgramName) AndAlso (x.BucketLastRow = True)).FirstOrDefault.BucketRow
-                        End If
+                            If Not (MediaBroadcastWorksheetBroadcastScheduleDetails _
+                                    .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.LineNumber = Grouping.LineNumber) AndAlso (x.BucketLastRow = True)).Any) Then
+                                LastRowBucketRowNumber = MediaBroadcastWorksheetBroadcastScheduleDetails.Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.BucketLastRow = True)).Select(Function(Entity) Entity.BucketRow).Max
+                            Else
+                                LastRowBucketRowNumber = MediaBroadcastWorksheetBroadcastScheduleDetails _
+                                    .Where(Function(x) (x.Market = Grouping.Market) AndAlso (x.VendorCode = Grouping.VendorCode) AndAlso (x.LineNumber = Grouping.LineNumber) AndAlso (x.BucketLastRow = True)).FirstOrDefault.BucketRow
+                            End If
 
-                        If Not (DoesLastRowExist) Then
-                            AddReportPlaceHolder(MediaBroadcastWorksheetBroadcastScheduleDetails, Grouping, LastRowLineNumber, LastRowBucketRowNumber, True)
+                            'If Not (DoesLastRowExist) Then
+                            AddReportPlaceHolder(MediaBroadcastWorksheetBroadcastScheduleDetails, Grouping, Grouping.LineNumber, LastRowBucketRowNumber, True)
+                            'End If
+
                         End If
 
                     Next
-
 
                     'Redo the sort on MediaBroadcastWorksheetBroadcastScheduleDetails
 
@@ -738,6 +741,10 @@
 
                         End If
 
+                    ElseIf DataLine.RatingsServiceID.GetValueOrDefault(0) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico Then
+
+                        DataLine.RatingsSource = "Nielsen Puerto Rico"
+
                     Else
 
                         DataLine.Survey = String.Empty
@@ -785,6 +792,21 @@
             If FirstMatchingDetail IsNot Nothing Then
 
                 CopyPropertiesByName(PlaceholderScheduleDetail, FirstMatchingDetail)
+
+                PlaceholderScheduleDetail.Week1Costs = 0
+                PlaceholderScheduleDetail.Week2Costs = 0
+                PlaceholderScheduleDetail.Week3Costs = 0
+                PlaceholderScheduleDetail.Week4Costs = 0
+                PlaceholderScheduleDetail.Week5Costs = 0
+                PlaceholderScheduleDetail.Week6Costs = 0
+                PlaceholderScheduleDetail.Week7Costs = 0
+                PlaceholderScheduleDetail.Week8Costs = 0
+                PlaceholderScheduleDetail.Week9Costs = 0
+                PlaceholderScheduleDetail.Week10Costs = 0
+                PlaceholderScheduleDetail.Week11Costs = 0
+                PlaceholderScheduleDetail.Week12Costs = 0
+                PlaceholderScheduleDetail.Week13Costs = 0
+                PlaceholderScheduleDetail.Week14Costs = 0
 
                 PlaceholderScheduleDetail.Week1Spots = 0
                 PlaceholderScheduleDetail.Week2Spots = 0

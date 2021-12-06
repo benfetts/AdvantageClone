@@ -20,6 +20,7 @@ BEGIN
 														 ELSE V.EASTLAN_RADIO_STATION_COMBO_ID END, 0),
 		[VendorNCCTVSyscodeID] = ISNULL(V.NCC_TV_SYSCODE_ID, 0),
 		[VendorNielsenTVStationCode] = ISNULL(CASE WHEN MBW.RATINGS_SERVICE_ID = 1 THEN V.NIELSEN_TV_STATION_CODE
+                                                   WHEN MBW.RATINGS_SERVICE_ID = 5 THEN V.NPR_STATION_ID
 												   ELSE V.COMSCORE_TV_STATION_ID END, 0),
 		[VendorIsCableSystem] = V.IS_CABLE_SYSTEM,
 		[CableNetworkStationCode] = MBWMD.CABLE_NETWORK_STATION_CODE,

@@ -901,6 +901,7 @@
                     CheckBoxMediaOrders_UseVendorsRateType.Checked = AdvantageFramework.Agency.LoadVendorsRateTypeSetting(DataContext)
 
                     CheckBoxMediaGeneral_MediaRequireCampaign.Checked = AdvantageFramework.Agency.LoadMediaRequireCampaign(DataContext)
+                    CheckBoxMediaGeneral_MediaAutoBuyer.Checked = AdvantageFramework.Agency.LoadMediaAutoBuyer(DataContext)
 
                     Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.MEDIATRAFFIC_STARTDT.ToString)
 
@@ -1724,6 +1725,7 @@
                     AdvantageFramework.Agency.SaveVendorsRateTypeSetting(DataContext, CheckBoxMediaOrders_UseVendorsRateType.Checked)
 
                     AdvantageFramework.Agency.SaveMediaRequireCampaign(DataContext, CheckBoxMediaGeneral_MediaRequireCampaign.Checked)
+                    AdvantageFramework.Agency.SaveMediaAutoBuyer(DataContext, CheckBoxMediaGeneral_MediaAutoBuyer.Checked)
 
                     Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.MEDIATRAFFIC_STARTDT.ToString)
 

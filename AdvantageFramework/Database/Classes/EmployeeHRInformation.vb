@@ -46,6 +46,7 @@
             PurchaseOrderApprovalRuleCode
             SupervisorApprovalRequired
             AlternateApproverCode
+            BillableHoursGoal
         End Enum
 
 #End Region
@@ -350,6 +351,15 @@
             End Get
             Set(ByVal value As String)
                 _Employee.AlternateApproverCode = value
+            End Set
+        End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=True, CustomColumnCaption:="Billable Hours Percent Goal")>
+        Public Property BillableHoursGoal As Nullable(Of Decimal)
+            Get
+                BillableHoursGoal = _Employee.BillableHoursGoal
+            End Get
+            Set(value As Nullable(Of Decimal))
+                _Employee.BillableHoursGoal = value
             End Set
         End Property
 

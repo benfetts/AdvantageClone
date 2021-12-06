@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="GLReportWriterGLRowFormatReport" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-	<TypeInfo>AdvantageFramework.GeneralLedger.ReportWriter.Classes.GLReportWriterGLRowFormatReport, AdvantageFramework.BLogic, Version=6.70.08.00, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5</TypeInfo>
+	<TypeInfo>AdvantageFramework.GeneralLedger.ReportWriter.Classes.GLReportWriterGLRowFormatReport, AdvantageFramework.BLogic, Version=6.70.08.01, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5</TypeInfo>
 </GenericObjectDataSource>

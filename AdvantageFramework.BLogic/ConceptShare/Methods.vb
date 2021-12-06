@@ -3759,6 +3759,67 @@ Namespace ConceptShare
 #Region " Activity Feed "
 
         Public Function GenerateReviewFeedbackSummary(ConceptShareConnection As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection,
+                                                      ProjectID As Integer,
+                                                      ReviewID As Integer,
+                                                      EmailAddress As String,
+                                                      Subject As String, AlertID As Integer) As Byte()
+
+            Dim FeedBackSummary As Byte()
+            Dim EmailReports As New Generic.List(Of ConceptShareAPI.EmailReport)
+            Dim FeedbackSummaryOptions As New ConceptShareAPI.FeedbackSummaryOptions
+            Dim SummaryOptions As New ConceptShareAPI.SummaryOptions
+            Dim AssetOptions As New ConceptShareAPI.AssetOptions
+            Dim FeedbackOptions As New ConceptShareAPI.FeedbackOptions
+            Dim EmailReport As New ConceptShareAPI.EmailReport
+            Dim EmailReportAddress As New ConceptShareAPI.EmailReportAddress
+
+            EmailReportAddress.EmailAddress = EmailAddress
+            EmailReportAddress.Name = EmailAddress
+
+            EmailReport.Subject = String.Format("[ReviewID:  {0}] - {1}", ReviewID, Subject)
+            'EmailReport.Message = String.Format("Filename:  {0}<br/><br/>AlertID:  {1}<br/><br/>ReviewID:  {2}", Subject, AlertID, ReviewID)
+            EmailReport.Message = String.Format("AlertID:  {0}" & Environment.NewLine, AlertID)
+            EmailReport.Message &= String.Format("ReviewID:  {0}" & Environment.NewLine, ReviewID)
+            EmailReport.Message &= String.Format("Filename:  {0}" & Environment.NewLine, Subject)
+
+            EmailReport.Recipients = {EmailReportAddress}
+
+            EmailReports.Add(EmailReport)
+
+            SummaryOptions.BreakPageOnAsset = True
+            SummaryOptions.IncludeAssetsWithoutFeedback = True
+            SummaryOptions.IncludeCoverPage = False
+            SummaryOptions.IncludeDeletedAssets = False
+            SummaryOptions.IncludePageNumbers = True
+
+            FeedbackOptions.OnlyFeedbackWithReferenceLinks = False
+            FeedbackOptions.OnlyFeedbackWithReplies = False
+            FeedbackOptions.OnlyUnreadFeedback = False
+
+            AssetOptions.BreakPageOnFeedback = True
+            AssetOptions.IncludeGeneralComments = True
+            AssetOptions.IncludeReviews = True
+            AssetOptions.IncludeUploadInformation = True
+            AssetOptions.IncludeVersions = True
+            'AssetOptions.IncludeChangeRequests = False
+            AssetOptions.IncludeCustomForms = False
+            AssetOptions.IncludeFolderPath = False
+
+            FeedbackSummaryOptions.ProjectId = ProjectID
+            FeedbackSummaryOptions.ReviewId = ReviewID
+            FeedbackSummaryOptions.SummaryOptions = SummaryOptions
+            FeedbackSummaryOptions.AssetOptions = AssetOptions
+            FeedbackSummaryOptions.DeliveryOptions = ConceptShareAPI.DeliveryOptions.EmailMe
+            FeedbackSummaryOptions.SortFeedbackBy = ConceptShareAPI.FeedbackSortType.DateCreated
+            FeedbackSummaryOptions.FeedbackEmails = EmailReports.ToArray
+            FeedbackSummaryOptions.FeedbackOptions = FeedbackOptions
+
+            FeedBackSummary = ConceptShareConnection.APIServiceClient.GenerateFeedbackSummary(ConceptShareConnection.APIContext, FeedbackSummaryOptions)
+
+            Return FeedBackSummary
+
+        End Function
+        Public Function GenerateReviewFeedbackSummary(ConceptShareConnection As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection,
                                                       ProjectID As Integer, ReviewID As Integer) As Byte()
 
             Dim FeedBackSummary As Byte()
@@ -3923,9 +3984,333 @@ Namespace ConceptShare
 
 #End Region
 
+        Public Function LoadFeedbackSummaryLog(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                               ByRef ErrorMessage As String) As Generic.List(Of AdvantageFramework.ConceptShare.ConceptShareFeedbackLog)
+
+            Dim Log As Generic.List(Of AdvantageFramework.ConceptShare.ConceptShareFeedbackLog) = Nothing
+
+            Try
+
+                Log = DbContext.Database.SqlQuery(Of AdvantageFramework.ConceptShare.ConceptShareFeedbackLog)(String.Format("EXEC [dbo].[advsp_proofing_get_cs_feedback_log];")).ToList()
+
+            Catch ex As Exception
+                Log = Nothing
+                ErrorMessage = AdvantageFramework.StringUtilities.FullErrorToString(ex)
+            End Try
+
+            If Log Is Nothing Then Log = New List(Of ConceptShareFeedbackLog)
+
+            Return Log
+
+        End Function
+        Public Function LoadAssetBackupStats(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                             ByVal SecuritySession As AdvantageFramework.Security.Session,
+                                             ByRef ErrorMessage As String) As BackupStats
+
+            Dim Stats As BackupStats = Nothing
+            Dim AssetCount As Integer = 0
+
+            Try
+
+                Stats = DbContext.Database.SqlQuery(Of BackupStats)(String.Format("EXEC [dbo].[advsp_proofing_load_cs_backup_counts];")).SingleOrDefault()
+
+            Catch ex As Exception
+                Stats = Nothing
+                ErrorMessage = AdvantageFramework.StringUtilities.FullErrorToString(ex)
+            End Try
+
+            If Stats Is Nothing Then Stats = New BackupStats
+
+            Using DataContext = New AdvantageFramework.Database.DataContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
+
+                Dim ReviewInfos As Generic.List(Of ReviewInfo) = Nothing
+
+                Try
+
+                    ReviewInfos = DbContext.Database.SqlQuery(Of ReviewInfo)(String.Format("SELECT [AlertID] = ALERT_ID, [ProjectID] = CS_PROJECT_ID, [ReviewID] = CS_REVIEW_ID FROM ALERT A WITH(NOLOCK) WHERE IS_CS_REVIEW = 1;")).ToList()
+
+                Catch ex As Exception
+                    ReviewInfos = Nothing
+                End Try
+                If ReviewInfos IsNot Nothing AndAlso ReviewInfos.Count > 0 Then
+
+                    Dim ConceptShareConnection As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection
+                    Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
+                    Dim Result As BackupReviewResult = Nothing
+                    Dim BackupSuccess As Boolean = False
+                    Dim Assets As Generic.List(Of AdvantageFramework.ConceptShareAPI.Asset) = Nothing
+
+                    Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+
+                    ConceptShareConnection = Nothing
+                    ConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext)
+
+                    If ConceptShareConnection IsNot Nothing Then
+
+                        For Each Review As ReviewInfo In ReviewInfos
+
+                            Assets = Nothing
+
+                            Try
+
+                                Assets = AdvantageFramework.ConceptShare.LoadReviewAssets(ConceptShareConnection, Review.ReviewID)
+
+                            Catch ex As Exception
+                                Assets = Nothing
+                            End Try
+
+                            If Assets IsNot Nothing AndAlso Assets.Count > 0 Then
+
+                                AssetCount += Assets.Count
+
+                            End If
+
+                        Next
+
+                        Stats.TotalAssetsCS = AssetCount
+
+                    End If
+
+                End If
+
+            End Using
+
+            Return Stats
+
+        End Function
+
 #End Region
 
     End Module
+
+    <Serializable()>
+    Public Class ThreadableAssetBackup
+
+        Private _SecuritySession As AdvantageFramework.Security.Session = Nothing
+
+
+        Public Sub BackupAllReviews()
+
+            Dim SyncThreadStart As New ParameterizedThreadStart(AddressOf Me._BackupAllReviews)
+            Dim SyncThread As New Thread(SyncThreadStart)
+            SyncThread.Start()
+
+        End Sub
+        Private Sub _BackupAllReviews()
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(_SecuritySession.ConnectionString, _SecuritySession.UserCode)
+
+                Using DataContext = New AdvantageFramework.Database.DataContext(_SecuritySession.ConnectionString, _SecuritySession.UserCode)
+
+                    Dim ReviewInfos As Generic.List(Of ReviewInfo) = Nothing
+
+                    Try
+
+                        ReviewInfos = DbContext.Database.SqlQuery(Of ReviewInfo)(String.Format("SELECT [AlertID] = ALERT_ID, [ProjectID] = CS_PROJECT_ID, [ReviewID] = CS_REVIEW_ID FROM ALERT A WITH(NOLOCK) WHERE IS_CS_REVIEW = 1;")).ToList()
+
+                    Catch ex As Exception
+                        ReviewInfos = Nothing
+                    End Try
+
+                    If ReviewInfos IsNot Nothing AndAlso ReviewInfos.Count > 0 Then
+
+                        Dim ConceptShareConnection As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection
+                        Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
+                        Dim Result As BackupReviewResult = Nothing
+                        Dim BackupSuccess As Boolean = False
+
+                        Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+
+                        ConceptShareConnection = Nothing
+                        ConceptShareConnection = New AdvantageFramework.ConceptShare.Classes.ConceptShareConnection(DataContext)
+
+                        If ConceptShareConnection IsNot Nothing Then
+
+                            For Each Review As ReviewInfo In ReviewInfos
+
+                                Result = Nothing
+                                Result = New BackupReviewResult
+
+                                BackupReviewAssetByID(DbContext, DataContext, ConceptShareConnection, Agency, Review, Result)
+
+                            Next
+
+                        End If
+
+                    End If
+
+                End Using
+
+            End Using
+
+        End Sub
+        Private Sub BackupReviewAssetByID(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                          ByVal DataContext As AdvantageFramework.Database.DataContext,
+                                          ByVal ConceptShareConnection As AdvantageFramework.ConceptShare.Classes.ConceptShareConnection,
+                                          ByVal Agency As AdvantageFramework.Database.Entities.Agency,
+                                          ByVal Review As ReviewInfo,
+                                          ByRef Result As BackupReviewResult)
+
+            Dim Success As Boolean = False
+            Dim Assets As Generic.List(Of AdvantageFramework.ConceptShareAPI.Asset) = Nothing
+            Dim OkayToUpload As Boolean = True
+            Dim AlertController = New AdvantageFramework.Controller.Desktop.AlertController(_SecuritySession)
+            Dim FinalLevel As String = "Job,Job Component"
+            Dim FinalLevelDetail As String = "Job,Job Component:{0},{1}"
+            Dim Document As AdvantageFramework.Database.Entities.Document = Nothing
+
+            If Result Is Nothing Then Result = New BackupReviewResult
+
+            Result.Review = Review
+
+            Try
+
+                Assets = AdvantageFramework.ConceptShare.LoadReviewAssets(ConceptShareConnection, Review.ReviewID)
+
+            Catch ex As Exception
+                Assets = Nothing
+            End Try
+            If Assets IsNot Nothing Then
+
+                For Each Asset As AdvantageFramework.ConceptShareAPI.Asset In Assets
+
+                    If BackItUp(DbContext, Review.AlertID, Review.ReviewID, Asset.Id) = True Then
+
+                        Success = False
+
+                        Try
+
+                            Dim FileBytes() As Byte = AdvantageFramework.ConceptShare.DownloadAsset(ConceptShareConnection, Asset.Id)
+                            Dim FullPathToRepositoryDoc As String = String.Empty
+                            Dim RepositoryFilename As String = String.Empty
+                            Dim Filename As String = String.Empty
+
+                            If FileBytes IsNot Nothing AndAlso FileBytes.Length > 0 Then
+
+                                If AdvantageFramework.FileSystem.Add(Agency, "", Asset.FileName, "", _SecuritySession.UserCode,
+                                                             FinalLevel, String.Format(FinalLevelDetail, Review.JobNumber, Review.JobComponentNumber),
+                                                             AdvantageFramework.FileSystem.Methods.DocumentSource.Alert,
+                                                             FullPathToRepositoryDoc, FileBytes, RepositoryFilename, Nothing) Then
+
+                                    Dim FileInfo = New System.IO.FileInfo(FullPathToRepositoryDoc)
+
+                                    'Add to document table
+                                    Document = New AdvantageFramework.Database.Entities.Document
+
+                                    Document.FileSystemFileName = RepositoryFilename
+                                    Document.FileName = Asset.FileName
+                                    Document.Description = Nothing
+                                    Document.Keywords = Nothing
+                                    Document.MIMEType = AdvantageFramework.FileSystem.GetMIMETypeByExtension(Asset.OriginalExtension)
+                                    Document.UploadedDate = Now
+                                    Document.UserCode = _SecuritySession.UserCode
+                                    Document.FileSize = FileInfo.Length
+                                    Document.IsPrivate = Nothing
+                                    Document.DocumentTypeID = 2 'file
+
+                                    Try
+
+                                        Document.ID = (From Entity In AdvantageFramework.Database.Procedures.Document.Load(DbContext)
+                                                       Select Entity.ID).Max + 1
+
+                                    Catch ex As Exception
+                                        Document.ID = 1
+                                    End Try
+                                    If AdvantageFramework.Database.Procedures.Document.Insert(DbContext, Document) Then
+
+                                        If Document.FileName.ToLower.EndsWith("png") OrElse Document.FileName.ToLower.EndsWith("bmp") OrElse
+                                                    Document.FileName.ToLower.EndsWith("tiff") OrElse Document.FileName.ToLower.EndsWith("gif") OrElse
+                                                    Document.FileName.ToLower.EndsWith("jpeg") OrElse Document.FileName.ToLower.EndsWith("jpg") Then
+
+                                            AdvantageFramework.DocumentManager.UpdateDocumentThumbnail(DbContext, Agency, Document.ID, Nothing)
+
+                                        End If
+
+                                        If AdvantageFramework.DocumentManager.AddAlertAttachment(DbContext, Review.AlertID, Document.ID) = True Then
+
+                                            Try
+                                                AdvantageFramework.DocumentManager.AddJobComponentDocument(DataContext, Review.JobNumber,
+                                                                                                   Review.JobComponentNumber, Document.ID)
+                                            Catch ex As Exception
+                                            End Try
+
+                                        End If
+
+                                    End If
+
+                                End If
+
+                            End If
+
+                            Success = True
+
+                        Catch ex As Exception
+                            Success = False
+                        End Try
+
+                        LogBackup(DbContext, Review.AlertID, Review.ProjectID, Review.ReviewID, Asset.Id, Document.ID, Asset.FileName, Success)
+
+                    End If
+
+                Next
+
+            End If
+
+        End Sub
+        Private Function BackItUp(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                  ByVal AlertID As Integer,
+                                  ByVal ReviewID As Integer,
+                                  ByVal AssetID As Integer) As Boolean
+
+            Dim YesBackItUp As Boolean = False
+            Dim RecExists As Integer = 0
+
+            Try
+
+                RecExists = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT COUNT(1) FROM CS_BACKUP_LOG C WITH(NOLOCK) WHERE C.AlertID = {0} AND C.ReviewID = {1} AND C.AssetID = {2};",
+                                                                                  AlertID, ReviewID, AssetID)).SingleOrDefault()
+
+            Catch ex As Exception
+                RecExists = -1
+            End Try
+
+            If RecExists = 0 Then
+
+                YesBackItUp = True
+
+            End If
+
+            Return YesBackItUp
+
+        End Function
+        Private Sub LogBackup(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                              ByVal AlertID As Integer, ByVal ProjectID As Integer, ByVal ReviewID As Integer,
+                              ByVal AssetID As Integer, ByVal DocumentID As Integer,
+                              ByVal Filename As String,
+                              ByVal BackedUp As Boolean)
+
+            Try
+
+                DbContext.Database.ExecuteSqlCommand(String.Format("INSERT INTO CS_BACKUP_LOG (AlertID, ProjectID, ReviewID, AssetID, DocumentID, Filename, BackedUp) VALUES ({0}, {1}, {2}, {3}, {4}, '{5}', {6});",
+                                                                   AlertID,
+                                                                   ProjectID,
+                                                                   ReviewID,
+                                                                   AssetID,
+                                                                   DocumentID,
+                                                                   Filename,
+                                                                   If(BackedUp = True, 1, 0)))
+
+            Catch ex As Exception
+            End Try
+
+        End Sub
+        Sub New(ByRef SecuritySession As AdvantageFramework.Security.Session)
+
+            Me._SecuritySession = SecuritySession
+
+        End Sub
+
+    End Class
 
     <Serializable()>
     Public Class ThreadableSync
@@ -4955,6 +5340,62 @@ Namespace ConceptShare
         Sub New()
 
         End Sub
+
+    End Class
+    <Serializable()> Public Class BackupReviewResult
+        Public Property Review As ReviewInfo = Nothing
+        Public Property Success As Boolean = False
+        Public Property ErrorMessage As String = String.Empty
+        Sub New()
+
+        End Sub
+    End Class
+    <Serializable()> Public Class ReviewInfo
+        Public Property AlertID As Integer = 0
+        Public Property ProjectID As Integer = 0
+        Public Property ReviewID As Integer = 0
+        Public Property JobNumber As Integer = 0
+        Public Property JobComponentNumber As Short = 0
+        Sub New()
+
+        End Sub
+    End Class
+    <Serializable()> Public Class ConceptShareBackupLog
+        Public Property ID As Integer?
+        Public Property AlertID As Integer?
+        Public Property ProjectID As Integer?
+        Public Property ReviewID As Integer?
+        Public Property AssetID As Integer?
+        Public Property DocumentID As Integer?
+        Public Property BackedUp As Boolean?
+        Sub New()
+
+        End Sub
+    End Class
+    <Serializable()> Public Class ConceptShareFeedbackLog
+        Public Property ID As Integer?
+        Public Property AlertID As Integer?
+        Public Property ProjectID As Integer?
+        Public Property ReviewID As Integer?
+        Public Property JobNumber As Integer?
+        Public Property JobComponentNumber As Short?
+        Public Property Title As String
+        Public Property Filename As String
+        Public Property EmployeeCode As String
+        Public Property BackupDate As Date?
+        Public Property BackedUp As Boolean?
+        Public Property BackUpFailed As Boolean?
+        Public Property FailReason As String
+        Sub New()
+
+        End Sub
+    End Class
+    <Serializable()> Public Class BackupStats
+        Public Property TotalReviewsDB As Integer? = 0
+        Public Property TotalAssetsDB As Integer? = 0
+        Public Property TotalBackedUpDB As Integer? = 0
+        Public Property TotalFailedDB As Integer? = 0
+        Public Property TotalAssetsCS As Integer? = 0
 
     End Class
 

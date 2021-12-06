@@ -95,9 +95,9 @@ namespace AdvantageFramework.Core.Database.Entities
         [Column("EMP_STATE")]
         [StringLength(10)]
         public string EmpState { get; set; }
-        [Column("EMP_SS_NBR")]
-        [StringLength(20)]
-        public string EmpSsNbr { get; set; }
+        //[Column("EMP_SS_NBR")]
+        //[StringLength(20)]
+        //public string EmpSsNbr { get; set; }
         [Column("EMP_ZIP")]
         [StringLength(10)]
         public string EmpZip { get; set; }

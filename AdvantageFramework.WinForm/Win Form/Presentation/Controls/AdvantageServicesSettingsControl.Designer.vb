@@ -24,6 +24,8 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
+            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdvantageServicesSettingsControl))
             Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
             Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -49,27 +51,28 @@
             Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-            Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdvantageServicesSettingsControl))
             Dim EditorButtonImageOptions6 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
             Dim SerializableAppearanceObject21 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Dim SerializableAppearanceObject22 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Dim SerializableAppearanceObject23 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Dim SerializableAppearanceObject24 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
             Me.TabControlForm_Services = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelNielsenTab_Nielsen = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlNielsen_NielsenSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.LabelNielsenSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.ComboBoxNielsenSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.LabelNielsenSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.DateTimePickerNielsenSettings_RunAtDaily = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.TabItemNielsenSettings_NielsenSettingsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelNielsenTab_NIelsenLog = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TextBoxNielsenLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemNielsenSettings_NielsenLogTab = New DevComponents.DotNetBar.TabItem()
-            Me.LabelNielsen_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelNielsen_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_NielsenTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelNielsenPuertoRicoSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
+            Me.LabelNielsenPuertoRicoSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxNielsenPuertoRicoLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelNielsenPuertoRico_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelNielsenPuertoRico_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_NielsenPuertoRicoTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelMediaOceanImportTab_MediaOceanImport = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlMediaOceanImport_MediaOceanImportSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelMediaOceanImportSettingsTab_MediaOceanImportSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -90,13 +93,111 @@
             Me.LabelMediaOceanImportSettings_FTPUser = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.TextBoxMediaOceanImportSettings_FTPAddress = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.LabelMediaOceanImportSettings_FTPAddress = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemMediaOceanImportSettings_MediaOceanImportSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMediaOceanImportSettings_MediaOceanImportSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelMediaOceanImportLogTab_MediaOceanImportLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxMediaOceanImportLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemMediaOceanImportSettings_MediaOceanImportLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMediaOceanImportSettings_MediaOceanImportLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelMediaOceanImport_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelMediaOceanImport_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_MediaOceanImportTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_MediaOceanImportTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelInOutTab_InOut = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlInOut_InOutSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelInOutSettingsTab_InOutSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.Label3 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelInOutSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DateTimePickerInOutSettings_RunAtDaily = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
+            Me.TabItemInOutSettings_InOutSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelInOutTab_InOutLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxInOutLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemInOutSettings_InOutLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelInOut_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelInOut_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_InOutTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelComScoreTab_ComScore = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlComScore_ComScoreSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelComScoreSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.ComboBoxComScoreSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
+            Me.LabelComScoreSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DateTimePickerComScoreSettings_RunAtDaily = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
+            Me.TabItemComScoreSettings_ComScoreSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelComScoreTab_ComScoreLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxComScoreLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemComScoreSettings_ComScoreLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelComScore_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelComScore_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_ComscoreTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelEmailListenerTab_EmailListener = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlEmailListener_EmailListenerSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelSettingsTab_EmailListenerSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.NumericInputEmailListenerSettings_RunAtEvery = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelEmailListenerSettings_StartofSignatureCode = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelEmailListenerSettings_RunAtEvery = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemEmailListenerSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelLogTab_EmailListenerLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxEmailListenerLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemEmailListenerSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelEmailListener_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelEmailListener_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_EmailListenerTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelNielsenTab_Nielsen = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlNielsen_NielsenSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelNielsenSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.ComboBoxNielsenSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
+            Me.LabelNielsenSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DateTimePickerNielsenSettings_RunAtDaily = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
+            Me.TabItemNielsenSettings_NielsenSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelNielsenTab_NIelsenLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxNielsenLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemNielsenSettings_NielsenLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelNielsen_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelNielsen_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_NielsenTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelDocumentRepositoryCapacityWarning_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_DocumentRepositoryCapacityWarningTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
+            Me.LabelAutomatedAssignmentsSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxAutomatedAssignmentsLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelAutomatedAssignments_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelAutomatedAssignments_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_AutomatedAssignmentsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TextBoxCSIPreferredPartnerLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.LabelCSIPreferredPartner_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelCSIPreferredPartner_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemServices_CSIPreferredPartnerTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelContractTab_Contract = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlContract_ContractSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelContractSettingsTab_ContractSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -107,26 +208,26 @@
             Me.CheckBoxContractSettings_ContractRenewal = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             Me.LabelContractAlertSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.DateTimePickerContractAlertSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.TabItemContractSettings_ContractSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemContractSettings_ContractSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlContractLogTab_ContractLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxContractLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemContractSettings_ContractLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemContractSettings_ContractLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelContract_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelContract_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_ContractTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_ContractTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelPaidTimeOffAccrualsTab_PaidTimeOffAccruals = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlPaidTimeOffAccruals_PaidTimeOffAccrualsSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelPaidTimeOffAccrualsSettingsTab_PaidTimeOffAccrualsSettings = New DevComponents.DotNetBar.TabControlPanel()
             Me.LabelPaidTimeOffAccrualsSettings_LastRanDetails = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.ComboBoxPaidTimeOffAccrualsSettings_RunOnDay = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
             Me.LabelPaidTimeOffAccrualsSettings_RunOnDay = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemPaidTimeOffAccrualsSettings_PaidTimeOffAccrualsSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemPaidTimeOffAccrualsSettings_PaidTimeOffAccrualsSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelPaidTimeOffAccrualsLogTab_PaidTimeOffAccrualsLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxPaidTimeOffAccrualsLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemPaidTimeOffAccrualsSettings_PaidTimeOffAccrualsLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemPaidTimeOffAccrualsSettings_PaidTimeOffAccrualsLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelPaidTimeOffAccruals_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelPaidTimeOffAccruals_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_PaidTimeOffAccrualsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_PaidTimeOffAccrualsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelCoreMediaCheckExportTab_CoreMediaCheckExport = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlCoreMediaCheckExport_CoreMediaCheckExportSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelCoreMediaCheckExportSettingsTab_CoreMediaCheckExportSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -134,25 +235,25 @@
             Me.LabelCoreMediaCheckExportSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.DateTimePickerCoreMediaCheckExportSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
             Me.TextBoxCoreMediaCheckExportSettings_ExportPath = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemCoreMediaCheckExportSettings_CoreMediaCheckExportSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemCoreMediaCheckExportSettings_CoreMediaCheckExportSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelCoreMediaCheckExportLogTab_CoreMediaCheckExportLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxCoreMediaCheckExportLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemCoreMediaCheckExportSettings_CoreMediaCheckExportLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemCoreMediaCheckExportSettings_CoreMediaCheckExportLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelCoreMediaCheckExport_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelCoreMediaCheckExport_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_CoreMediaCheckExportTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_CoreMediaCheckExportTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelCalendarTab_Calendar = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlCalendar_CalendarSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelCalendarSettingsTab_CalendarSettings = New DevComponents.DotNetBar.TabControlPanel()
             Me.NumericInputCalendarSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
             Me.LabelCalendarSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemCalendarSettings_CalendarSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemCalendarSettings_CalendarSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelCalendarLogTab_CalendarLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxCalendarLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemCalendarSettings_CalendarLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemCalendarSettings_CalendarLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelCalendar_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelCalendar_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_CalendarTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_CalendarTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelMissingTimeTab_MissingTime = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlMissingTime_Settings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelSettingsTab_MissingTimeSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -167,10 +268,10 @@
             Me.ComboBoxMissingTimeSettings_Interval_RunDay = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
             Me.LabelMissingTimeSettings_Interval_RunDay = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.DateTimePickerMissingTimeSettings_Interval_RunAtTime = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.TabItemMissingTimeSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMissingTimeSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelLogTab_MissingTimeLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxMissingTimeLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemMissingTimeSettings_LogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMissingTimeSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelAlertsTab_Alerts = New DevComponents.DotNetBar.TabControlPanel()
             Me.GroupBoxMissingTimeAlerts_Other = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
             Me.CheckBoxMissingTimeSettings_IncludeOnlyDaysThatAreLate = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
@@ -203,10 +304,10 @@
             Me.NumericInputMissingTimeSettings_Range_DaysToCheck = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
             Me.RadioButtonMissingTimeSettings_Range_CurrentPostingPeriod = New System.Windows.Forms.RadioButton()
             Me.RadioButtonMissingTimeSettings_Range_DaysToCheck = New System.Windows.Forms.RadioButton()
-            Me.TabItemMissingTimeSettings_AlertsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMissingTimeSettings_AlertsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelMissingTime_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelMissingTime_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_MissingTimeTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_MissingTimeTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelTasksTab_Tasks = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlTask_Settings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelSettingsTab_TaskSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -228,13 +329,13 @@
             Me.CheckBoxTaskSettings_PastDue = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             Me.LabelTaskSettings_RunDay = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelTaskSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemTaskSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemTaskSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelLogTab_TaskLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxTaskLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemTaskSettings_LogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemTaskSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelTask_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelTask_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_TasksTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_TasksTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelExportTab_Export = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlMediaExport_Settings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelSettingsTab_MediaExportSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -249,7 +350,7 @@
             Me.LabelMediaExportSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.DateTimePickerMediaExportSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
             Me.TextBoxMediaExportSettings_ExportPath = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemMediaExportSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMediaExportSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelCriteriaTab_ExportCriteria = New DevComponents.DotNetBar.TabControlPanel()
             Me.GroupBoxExportCriteria_SelectedCampaigns = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
             Me.ButtonExportCriteriaCampaign_RemoveAll = New AdvantageFramework.WinForm.Presentation.Controls.Button()
@@ -260,13 +361,13 @@
             Me.ButtonExportCriteriaCampaign_AddSelected = New AdvantageFramework.WinForm.Presentation.Controls.Button()
             Me.ComboBoxExportCriteria_Clients = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
             Me.LabelExportCriteria_Client = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemMediaExportSettings_CriteriaTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMediaExportSettings_CriteriaTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelLogTab_ExportLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxExportLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemMediaExportSettings_LogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemMediaExportSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelMediaExport_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelMediaExport_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_MediaExportTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_MediaExportTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelQvAAlertTab_QvAAlert = New DevComponents.DotNetBar.TabControlPanel()
             Me.LabelQvAAlert_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelQvAAlert_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
@@ -307,78 +408,24 @@
             Me.CheckBoxThresholds_Level1 = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             Me.LabelQvAAlertSettings_SendAlertTo = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelQvAAlertSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemQvAAlertSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemQvAAlertSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelQvAAlertLog_QvAAlertLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxQvAAlertLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemQvAAlertSettings_LogTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabItemServices_QvAAlertTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelEmailListenerTab_EmailListener = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlEmailListener_EmailListenerSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelSettingsTab_EmailListenerSettings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.NumericInputEmailListenerSettings_RunAtEvery = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelEmailListenerSettings_StartofSignatureCode = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelEmailListenerSettings_RunAtEvery = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemEmailListenerSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelLogTab_EmailListenerLog = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TextBoxEmailListenerLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemEmailListenerSettings_LogTab = New DevComponents.DotNetBar.TabItem()
-            Me.LabelEmailListener_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelEmailListener_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_EmailListenerTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.LabelAutomatedAssignmentsSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TextBoxAutomatedAssignmentsLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab = New DevComponents.DotNetBar.TabItem()
-            Me.LabelAutomatedAssignments_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelAutomatedAssignments_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_AutomatedAssignmentsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelInOutTab_InOut = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlInOut_InOutSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelInOutSettingsTab_InOutSettings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.Label3 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelInOutSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.DateTimePickerInOutSettings_RunAtDaily = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.TabItemInOutSettings_InOutSettingsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelInOutTab_InOutLog = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TextBoxInOutLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemInOutSettings_InOutLogTab = New DevComponents.DotNetBar.TabItem()
-            Me.LabelInOut_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelInOut_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_InOutTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelComScoreTab_ComScore = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlComScore_ComScoreSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.LabelComScoreSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.ComboBoxComScoreSettings_Employee = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.LabelComScoreSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.DateTimePickerComScoreSettings_RunAtDaily = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.TabItemComScoreSettings_ComScoreSettingsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelComScoreTab_ComScoreLog = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TextBoxComScoreLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemComScoreSettings_ComScoreLogTab = New DevComponents.DotNetBar.TabItem()
-            Me.LabelComScore_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelComScore_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_ComscoreTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemQvAAlertSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabItemServices_QvAAlertTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelScheduledReportsTab_ScheduledReports = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlScheduledReports_ScheduledReportsSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelScheduledReportsSettingsTab_ScheduledReportsSettings = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxScheduledReportsSettings_OutputFolder = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.LabelScheduledReportsSettings_OutputFolder = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.ScheduledReportControlScheduledReports_ScheduledReports = New AdvantageFramework.WinForm.Presentation.Controls.ScheduledReportControl()
-            Me.TabItemScheduledReportsSettings_ScheduledReportsSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemScheduledReportsSettings_ScheduledReportsSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelScheduledReportsLogTab_ScheduledReportsLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxScheduledReportsLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemScheduledReportsLog_LogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemScheduledReportsLog_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelScheduledReports_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelScheduledReports_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_ScheduledReportsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_ScheduledReportsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelTimeSheetTab_TimeSheet = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlTimeSheet_TimeSheetSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelSettingsTab_TimeSheetSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -386,24 +433,24 @@
             Me.Label1 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.NumericInputTimeSheetSettings_RunAtEvery = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
             Me.Label2 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItem1 = New DevComponents.DotNetBar.TabItem()
+            Me.TabItem1 = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanel3 = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxTimeSheetLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemTimeSheetSettings_TimeSheetLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemTimeSheetSettings_TimeSheetLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelTimeSheet_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelTimeSheet_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_CalendarTimesheetTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_CalendarTimesheetTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelVCCTab_VCC = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlVCC_Settings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelSettingsTab_VCCSettings = New DevComponents.DotNetBar.TabControlPanel()
             Me.ScheduleControlVCCSettings_Schedule = New AdvantageFramework.WinForm.Presentation.Controls.ScheduleControl()
-            Me.TabItemVCCSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemVCCSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelLogTab_VCCLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxVCCLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemVCCSettings_LogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemVCCSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelVCC_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelVCC_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_VCCTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_VCCTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelCurrencyExchangeTab_CurrencyExchange = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlCurrencyExchange_Settings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelSettingsTab_CurrencyExchangeSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -413,13 +460,13 @@
             Me.NumericInputCurrencyExchangeSettings_Interval_RunEveryHours = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
             Me.LabelCurrencyExchangeSettings_Interval_RunEveryHours = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.CheckBoxCurrencyExchangeSettings_Interval_RunEvery = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.TabItemCurrencyExchangeSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemCurrencyExchangeSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelLogTab_CurrencyExchangeLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxCurrencyExchangeLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemCurrencyExchangeSettings_LogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemCurrencyExchangeSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelCurrencyExchange_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelCurrencyExchange_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_CurrencyExchangeTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_CurrencyExchangeTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelVendorContractsTab_VendorContracts = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlVendorContracts_VendorContractSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelSettingsTab_Settings = New DevComponents.DotNetBar.TabControlPanel()
@@ -429,13 +476,13 @@
             Me.CheckBoxVendorContractNotifications_ContractRenewal = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
             Me.LabelVendorContractSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.DateTimePickerVendorContractSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.TabItemVendorContractSettings_SettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemVendorContractSettings_SettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelVendorContractLogTab_Log = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxVendorContractLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemVendorContractSettings_LogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemVendorContractSettings_LogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelVendorContracts_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelVendorContracts_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_VendorContractsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_VendorContractsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelExportsTab_Exports = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlExports_ExportsSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelExportsSettingsTab_ExportsSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -444,13 +491,13 @@
             Me.ExpandableSplitterControlExportSettings_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
             Me.PanelExportsSettingsLeftSection_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.DataGridViewExports_AvailableExports = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemExportsSettings_ExportsSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemExportsSettings_ExportsSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelExportsLogTab_ExportsLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxExportsLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemExportsSettings_ExportsLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemExportsSettings_ExportsLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelExports_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelExports_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_ExportsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_ExportsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelImportsTab_Imports = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlImports_ImportsSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelImportsSettingsTab_ImportsSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -459,13 +506,13 @@
             Me.PropertyGridControlImports_Properties = New AdvantageFramework.WinForm.Presentation.Controls.PropertyGridControl()
             Me.PanelImportsSettingsLeftSection_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.DataGridViewImports_AvailableImports = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
-            Me.TabItemImportsSettings_ImportsSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemImportsSettings_ImportsSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelImportsLogTab_ImportsLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxImportsLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemImportsSettings_ImportsLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemImportsSettings_ImportsLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelImports_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelImports_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_ImportsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_ImportsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelJobCompUDFImportTab_JobCompUDFImport = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlJobCompUDFImport_JobCompUDFImportSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelJobCompUDFImportSettingsTab_JobCompUDFImportSettings = New DevComponents.DotNetBar.TabControlPanel()
@@ -473,55 +520,25 @@
             Me.LabelJobCompUDFImportSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.DateTimePickerJobCompUDFImportSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
             Me.TextBoxJobCompUDFImportSettings_ImportPath = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemJobCompUDFImportSettings_JobCompUDFImportSettingsTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemJobCompUDFImportSettings_JobCompUDFImportSettingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelJobCompUDFImportLogTab_JobCompUDFImportLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxJobCompUDFImportLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemJobCompUDFImportSettings_JobCompUDFImportLogTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemJobCompUDFImportSettings_JobCompUDFImportLogTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelJobCompUDFImport_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelJobCompUDFImport_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_JobCompUDFImportTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold = New AdvantageFramework.WinForm.Presentation.Controls.NumericInput()
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab = New DevComponents.DotNetBar.TabItem()
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelDocumentRepositoryCapacityWarning_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_DocumentRepositoryCapacityWarningTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings = New DevComponents.DotNetBar.TabControlPanel()
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab = New DevComponents.DotNetBar.TabItem()
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TextBoxCSIPreferredPartnerLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab = New DevComponents.DotNetBar.TabItem()
-            Me.LabelCSIPreferredPartner_StatusDescription = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelCSIPreferredPartner_Status = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemServices_CSIPreferredPartnerTab = New DevComponents.DotNetBar.TabItem()
+            Me.TabItemServices_JobCompUDFImportTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelJobExportLogTab_JobExportLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxJobExportLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.TabControlPanelTimeExportLogTab_TimeExportLog = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxTimeExportLog_Log = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             CType(Me.TabControlForm_Services, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlForm_Services.SuspendLayout
-            Me.TabControlPanelNielsenTab_Nielsen.SuspendLayout
-            CType(Me.TabControlNielsen_NielsenSettings, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlNielsen_NielsenSettings.SuspendLayout
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.SuspendLayout
-            CType(Me.DateTimePickerNielsenSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanelNielsenTab_NIelsenLog.SuspendLayout
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.SuspendLayout
+            CType(Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.SuspendLayout
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.SuspendLayout
+            CType(Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.SuspendLayout
             Me.TabControlPanelMediaOceanImportTab_MediaOceanImport.SuspendLayout
             CType(Me.TabControlMediaOceanImport_MediaOceanImportSettings, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlMediaOceanImport_MediaOceanImportSettings.SuspendLayout
@@ -530,6 +547,48 @@
             CType(Me.GroupBoxMediaOceanImportSettings_Settings, System.ComponentModel.ISupportInitialize).BeginInit
             Me.GroupBoxMediaOceanImportSettings_Settings.SuspendLayout
             Me.TabControlPanelMediaOceanImportLogTab_MediaOceanImportLog.SuspendLayout
+            Me.TabControlPanelInOutTab_InOut.SuspendLayout
+            CType(Me.TabControlInOut_InOutSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlInOut_InOutSettings.SuspendLayout
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.SuspendLayout
+            CType(Me.DateTimePickerInOutSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelInOutTab_InOutLog.SuspendLayout
+            Me.TabControlPanelComScoreTab_ComScore.SuspendLayout
+            CType(Me.TabControlComScore_ComScoreSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlComScore_ComScoreSettings.SuspendLayout
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.SuspendLayout
+            CType(Me.DateTimePickerComScoreSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelComScoreTab_ComScoreLog.SuspendLayout
+            Me.TabControlPanelEmailListenerTab_EmailListener.SuspendLayout
+            CType(Me.TabControlEmailListener_EmailListenerSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlEmailListener_EmailListenerSettings.SuspendLayout
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.SuspendLayout
+            CType(Me.NumericInputEmailListenerSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelLogTab_EmailListenerLog.SuspendLayout
+            Me.TabControlPanelNielsenTab_Nielsen.SuspendLayout
+            CType(Me.TabControlNielsen_NielsenSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlNielsen_NielsenSettings.SuspendLayout
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.SuspendLayout
+            CType(Me.DateTimePickerNielsenSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelNielsenTab_NIelsenLog.SuspendLayout
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.SuspendLayout
+            CType(Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.SuspendLayout
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.SuspendLayout
+            CType(Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.SuspendLayout
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.SuspendLayout
+            CType(Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.SuspendLayout
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.SuspendLayout
+            CType(Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.SuspendLayout
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.SuspendLayout
+            CType(Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.SuspendLayout
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.SuspendLayout
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.SuspendLayout
             Me.TabControlPanelContractTab_Contract.SuspendLayout
             CType(Me.TabControlContract_ContractSettings, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlContract_ContractSettings.SuspendLayout
@@ -619,30 +678,6 @@
             CType(Me.NumericInputThresholds_Level1End.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.NumericInputThresholds_Level1Start.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlPanelQvAAlertLog_QvAAlertLog.SuspendLayout
-            Me.TabControlPanelEmailListenerTab_EmailListener.SuspendLayout
-            CType(Me.TabControlEmailListener_EmailListenerSettings, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlEmailListener_EmailListenerSettings.SuspendLayout
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.SuspendLayout
-            CType(Me.NumericInputEmailListenerSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanelLogTab_EmailListenerLog.SuspendLayout
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.SuspendLayout
-            CType(Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.SuspendLayout
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.SuspendLayout
-            CType(Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.SuspendLayout
-            Me.TabControlPanelInOutTab_InOut.SuspendLayout
-            CType(Me.TabControlInOut_InOutSettings, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlInOut_InOutSettings.SuspendLayout
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.SuspendLayout
-            CType(Me.DateTimePickerInOutSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanelInOutTab_InOutLog.SuspendLayout
-            Me.TabControlPanelComScoreTab_ComScore.SuspendLayout
-            CType(Me.TabControlComScore_ComScoreSettings, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlComScore_ComScoreSettings.SuspendLayout
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.SuspendLayout
-            CType(Me.DateTimePickerComScoreSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanelComScoreTab_ComScoreLog.SuspendLayout
             Me.TabControlPanelScheduledReportsTab_ScheduledReports.SuspendLayout
             CType(Me.TabControlScheduledReports_ScheduledReportsSettings, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlScheduledReports_ScheduledReportsSettings.SuspendLayout
@@ -704,18 +739,6 @@
             Me.TabControlPanelJobCompUDFImportSettingsTab_JobCompUDFImportSettings.SuspendLayout
             CType(Me.DateTimePickerJobCompUDFImportSettings_RunAt, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlPanelJobCompUDFImportLogTab_JobCompUDFImportLog.SuspendLayout
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.SuspendLayout
-            CType(Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.SuspendLayout
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.SuspendLayout
-            CType(Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-            CType(Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.SuspendLayout
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.SuspendLayout
-            CType(Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.SuspendLayout
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.SuspendLayout
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.SuspendLayout
             Me.TabControlPanelJobExportLogTab_JobExportLog.SuspendLayout
             Me.TabControlPanelTimeExportLogTab_TimeExportLog.SuspendLayout
             Me.SuspendLayout
@@ -726,9 +749,15 @@
             Me.TabControlForm_Services.CanReorderTabs = False
             Me.TabControlForm_Services.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlForm_Services.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelNielsenTab_Nielsen)
+            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelEmailListenerTab_EmailListener)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelMediaOceanImportTab_MediaOceanImport)
+            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelInOutTab_InOut)
+            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelComScoreTab_ComScore)
+            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelNielsenTab_Nielsen)
+            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning)
+            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments)
+            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelContractTab_Contract)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelPaidTimeOffAccrualsTab_PaidTimeOffAccruals)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelCoreMediaCheckExportTab_CoreMediaCheckExport)
@@ -737,9 +766,6 @@
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelTasksTab_Tasks)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelExportTab_Export)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelQvAAlertTab_QvAAlert)
-            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments)
-            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelInOutTab_InOut)
-            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelComScoreTab_ComScore)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelScheduledReportsTab_ScheduledReports)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelTimeSheetTab_TimeSheet)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelVCCTab_VCC)
@@ -748,8 +774,6 @@
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelExportsTab_Exports)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelImportsTab_Imports)
             Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelJobCompUDFImportTab_JobCompUDFImport)
-            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning)
-            Me.TabControlForm_Services.Controls.Add(Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner)
             Me.TabControlForm_Services.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TabControlForm_Services.ForeColor = System.Drawing.Color.Black
             Me.TabControlForm_Services.Location = New System.Drawing.Point(0, 0)
@@ -784,292 +808,339 @@
             Me.TabControlForm_Services.Tabs.Add(Me.TabItemServices_InOutTab)
             Me.TabControlForm_Services.Tabs.Add(Me.TabItemServices_AutomatedAssignmentsTab)
             Me.TabControlForm_Services.Tabs.Add(Me.TabItemServices_DocumentRepositoryCapacityWarningTab)
+            Me.TabControlForm_Services.Tabs.Add(Me.TabItemServices_NielsenPuertoRicoTab)
             '
-            'TabControlPanelNielsenTab_Nielsen
+            'TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico
             '
-            Me.TabControlPanelNielsenTab_Nielsen.Controls.Add(Me.TabControlNielsen_NielsenSettings)
-            Me.TabControlPanelNielsenTab_Nielsen.Controls.Add(Me.LabelNielsen_StatusDescription)
-            Me.TabControlPanelNielsenTab_Nielsen.Controls.Add(Me.LabelNielsen_Status)
-            Me.TabControlPanelNielsenTab_Nielsen.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNielsenTab_Nielsen.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNielsenTab_Nielsen.Location = New System.Drawing.Point(0, 71)
-            Me.TabControlPanelNielsenTab_Nielsen.Name = "TabControlPanelNielsenTab_Nielsen"
-            Me.TabControlPanelNielsenTab_Nielsen.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNielsenTab_Nielsen.Size = New System.Drawing.Size(1042, 382)
-            Me.TabControlPanelNielsenTab_Nielsen.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNielsenTab_Nielsen.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNielsenTab_Nielsen.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNielsenTab_Nielsen.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNielsenTab_Nielsen.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Controls.Add(Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Controls.Add(Me.LabelNielsenPuertoRico_StatusDescription)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Controls.Add(Me.LabelNielsenPuertoRico_Status)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Name = "TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico"
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNielsenTab_Nielsen.Style.GradientAngle = 90
-            Me.TabControlPanelNielsenTab_Nielsen.TabIndex = 63
-            Me.TabControlPanelNielsenTab_Nielsen.TabItem = Me.TabItemServices_NielsenTab
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.Style.GradientAngle = 90
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.TabIndex = 363
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.TabItem = Me.TabItemServices_NielsenPuertoRicoTab
             '
-            'TabControlNielsen_NielsenSettings
+            'TabControlNielsenPuertoRico_NielsenPuertoRicoSettings
             '
-            Me.TabControlNielsen_NielsenSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlNielsen_NielsenSettings.BackColor = System.Drawing.Color.White
-            Me.TabControlNielsen_NielsenSettings.CanReorderTabs = False
-            Me.TabControlNielsen_NielsenSettings.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlNielsen_NielsenSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlNielsen_NielsenSettings.Controls.Add(Me.TabControlPanelNielsenSettingsTab_NielsenSettings)
-            Me.TabControlNielsen_NielsenSettings.Controls.Add(Me.TabControlPanelNielsenTab_NIelsenLog)
-            Me.TabControlNielsen_NielsenSettings.ForeColor = System.Drawing.Color.Black
-            Me.TabControlNielsen_NielsenSettings.Location = New System.Drawing.Point(12, 30)
-            Me.TabControlNielsen_NielsenSettings.Name = "TabControlNielsen_NielsenSettings"
-            Me.TabControlNielsen_NielsenSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlNielsen_NielsenSettings.SelectedTabIndex = 0
-            Me.TabControlNielsen_NielsenSettings.Size = New System.Drawing.Size(1018, 340)
-            Me.TabControlNielsen_NielsenSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlNielsen_NielsenSettings.TabIndex = 26
-            Me.TabControlNielsen_NielsenSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlNielsen_NielsenSettings.Tabs.Add(Me.TabItemNielsenSettings_NielsenSettingsTab)
-            Me.TabControlNielsen_NielsenSettings.Tabs.Add(Me.TabItemNielsenSettings_NielsenLogTab)
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.CanReorderTabs = False
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Controls.Add(Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings)
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Controls.Add(Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog)
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Name = "TabControlNielsenPuertoRico_NielsenPuertoRicoSettings"
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.SelectedTabIndex = 0
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Size = New System.Drawing.Size(1018, 340)
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.TabIndex = 29
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Tabs.Add(Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab)
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.Tabs.Add(Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab)
             '
-            'TabControlPanelNielsenSettingsTab_NielsenSettings
+            'TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings
             '
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.LabelNielsenSettings_Employee)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.ComboBoxNielsenSettings_Employee)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.LabelNielsenSettings_RunAt)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.DateTimePickerNielsenSettings_RunAtDaily)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Name = "TabControlPanelNielsenSettingsTab_NielsenSettings"
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Controls.Add(Me.TextBoxNielsenPuertoRicoSettings_LocalFolder)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Controls.Add(Me.LabelNielsenPuertoRicoSettings_LocalFolder)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Controls.Add(Me.LabelNielsenPuertoRicoSettings_Employee)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Controls.Add(Me.ComboBoxNielsenPuertoRicoSettings_Employee)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Controls.Add(Me.LabelNielsenPuertoRicoSettings_RunAt)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Controls.Add(Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Name = "TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings"
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.GradientAngle = 90
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.TabIndex = 1
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.TabItem = Me.TabItemNielsenSettings_NielsenSettingsTab
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Style.GradientAngle = 90
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.TabIndex = 1
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.TabItem = Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab
             '
-            'LabelNielsenSettings_Employee
+            'TextBoxNielsenPuertoRicoSettings_LocalFolder
             '
-            Me.LabelNielsenSettings_Employee.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelNielsenSettings_Employee.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNielsenSettings_Employee.Location = New System.Drawing.Point(4, 31)
-            Me.LabelNielsenSettings_Employee.Name = "LabelNielsenSettings_Employee"
-            Me.LabelNielsenSettings_Employee.Size = New System.Drawing.Size(90, 20)
-            Me.LabelNielsenSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNielsenSettings_Employee.TabIndex = 10
-            Me.LabelNielsenSettings_Employee.Text = "Employee:"
-            '
-            'ComboBoxNielsenSettings_Employee
-            '
-            Me.ComboBoxNielsenSettings_Employee.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxNielsenSettings_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxNielsenSettings_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxNielsenSettings_Employee.AutoFindItemInDataSource = False
-            Me.ComboBoxNielsenSettings_Employee.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxNielsenSettings_Employee.BookmarkingEnabled = False
-            Me.ComboBoxNielsenSettings_Employee.ClientCode = ""
-            Me.ComboBoxNielsenSettings_Employee.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.Employee
-            Me.ComboBoxNielsenSettings_Employee.DisableMouseWheel = False
-            Me.ComboBoxNielsenSettings_Employee.DisplayMember = "FullName"
-            Me.ComboBoxNielsenSettings_Employee.DisplayName = ""
-            Me.ComboBoxNielsenSettings_Employee.DivisionCode = ""
-            Me.ComboBoxNielsenSettings_Employee.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxNielsenSettings_Employee.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxNielsenSettings_Employee.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxNielsenSettings_Employee.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxNielsenSettings_Employee.FocusHighlightEnabled = True
-            Me.ComboBoxNielsenSettings_Employee.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxNielsenSettings_Employee.FormattingEnabled = True
-            Me.ComboBoxNielsenSettings_Employee.ItemHeight = 16
-            Me.ComboBoxNielsenSettings_Employee.Location = New System.Drawing.Point(100, 32)
-            Me.ComboBoxNielsenSettings_Employee.Name = "ComboBoxNielsenSettings_Employee"
-            Me.ComboBoxNielsenSettings_Employee.ReadOnly = False
-            Me.ComboBoxNielsenSettings_Employee.SecurityEnabled = True
-            Me.ComboBoxNielsenSettings_Employee.Size = New System.Drawing.Size(180, 22)
-            Me.ComboBoxNielsenSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxNielsenSettings_Employee.TabIndex = 9
-            Me.ComboBoxNielsenSettings_Employee.TabOnEnter = True
-            Me.ComboBoxNielsenSettings_Employee.ValueMember = "Code"
-            Me.ComboBoxNielsenSettings_Employee.WatermarkText = "Select Employee"
-            '
-            'LabelNielsenSettings_RunAt
-            '
-            Me.LabelNielsenSettings_RunAt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelNielsenSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNielsenSettings_RunAt.Location = New System.Drawing.Point(4, 4)
-            Me.LabelNielsenSettings_RunAt.Name = "LabelNielsenSettings_RunAt"
-            Me.LabelNielsenSettings_RunAt.Size = New System.Drawing.Size(90, 20)
-            Me.LabelNielsenSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNielsenSettings_RunAt.TabIndex = 0
-            Me.LabelNielsenSettings_RunAt.Text = "Run At (Daily):"
-            '
-            'DateTimePickerNielsenSettings_RunAtDaily
-            '
-            Me.DateTimePickerNielsenSettings_RunAtDaily.AllowEmptyState = False
-            Me.DateTimePickerNielsenSettings_RunAtDaily.AutoResolveFreeTextEntries = False
-            '
-            '
-            '
-            Me.DateTimePickerNielsenSettings_RunAtDaily.BackgroundStyle.Class = "DateTimeInputBackground"
-            Me.DateTimePickerNielsenSettings_RunAtDaily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerNielsenSettings_RunAtDaily.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
-            Me.DateTimePickerNielsenSettings_RunAtDaily.ButtonFreeText.Checked = True
-            Me.DateTimePickerNielsenSettings_RunAtDaily.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
-            Me.DateTimePickerNielsenSettings_RunAtDaily.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
-            Me.DateTimePickerNielsenSettings_RunAtDaily.DisabledForeColor = System.Drawing.SystemColors.WindowText
-            Me.DateTimePickerNielsenSettings_RunAtDaily.DisplayName = ""
-            Me.DateTimePickerNielsenSettings_RunAtDaily.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.DateTimePickerNielsenSettings_RunAtDaily.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.DateTimePickerNielsenSettings_RunAtDaily.FocusHighlightEnabled = True
-            Me.DateTimePickerNielsenSettings_RunAtDaily.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
-            Me.DateTimePickerNielsenSettings_RunAtDaily.FreeTextEntryMode = True
-            Me.DateTimePickerNielsenSettings_RunAtDaily.IsPopupCalendarOpen = False
-            Me.DateTimePickerNielsenSettings_RunAtDaily.Location = New System.Drawing.Point(100, 6)
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            '
-            '
-            '
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.ClearButtonVisible = True
-            '
-            '
-            '
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.TodayButtonVisible = True
-            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.Visible = False
-            Me.DateTimePickerNielsenSettings_RunAtDaily.Name = "DateTimePickerNielsenSettings_RunAtDaily"
-            Me.DateTimePickerNielsenSettings_RunAtDaily.ReadOnly = False
-            Me.DateTimePickerNielsenSettings_RunAtDaily.Size = New System.Drawing.Size(180, 20)
-            Me.DateTimePickerNielsenSettings_RunAtDaily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.DateTimePickerNielsenSettings_RunAtDaily.TabIndex = 1
-            Me.DateTimePickerNielsenSettings_RunAtDaily.TabOnEnter = True
-            Me.DateTimePickerNielsenSettings_RunAtDaily.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
-            Me.DateTimePickerNielsenSettings_RunAtDaily.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
-            '
-            'TabItemNielsenSettings_NielsenSettingsTab
-            '
-            Me.TabItemNielsenSettings_NielsenSettingsTab.AttachedControl = Me.TabControlPanelNielsenSettingsTab_NielsenSettings
-            Me.TabItemNielsenSettings_NielsenSettingsTab.Name = "TabItemNielsenSettings_NielsenSettingsTab"
-            Me.TabItemNielsenSettings_NielsenSettingsTab.Text = "Settings"
-            '
-            'TabControlPanelNielsenTab_NIelsenLog
-            '
-            Me.TabControlPanelNielsenTab_NIelsenLog.Controls.Add(Me.TextBoxNielsenLog_Log)
-            Me.TabControlPanelNielsenTab_NIelsenLog.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNielsenTab_NIelsenLog.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNielsenTab_NIelsenLog.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelNielsenTab_NIelsenLog.Name = "TabControlPanelNielsenTab_NIelsenLog"
-            Me.TabControlPanelNielsenTab_NIelsenLog.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNielsenTab_NIelsenLog.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNielsenTab_NIelsenLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNielsenTab_NIelsenLog.Style.GradientAngle = 90
-            Me.TabControlPanelNielsenTab_NIelsenLog.TabIndex = 3
-            Me.TabControlPanelNielsenTab_NIelsenLog.TabItem = Me.TabItemNielsenSettings_NielsenLogTab
-            '
-            'TextBoxNielsenLog_Log
-            '
-            Me.TextBoxNielsenLog_Log.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxNielsenLog_Log.Border.Class = "TextBoxBorder"
-            Me.TextBoxNielsenLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxNielsenLog_Log.CheckSpellingOnValidate = False
-            Me.TextBoxNielsenLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxNielsenLog_Log.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxNielsenLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TextBoxNielsenLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxNielsenLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxNielsenLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxNielsenLog_Log.FocusHighlightEnabled = True
-            Me.TextBoxNielsenLog_Log.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxNielsenLog_Log.Location = New System.Drawing.Point(1, 1)
-            Me.TextBoxNielsenLog_Log.MaxFileSize = CType(0, Long)
-            Me.TextBoxNielsenLog_Log.Multiline = True
-            Me.TextBoxNielsenLog_Log.Name = "TextBoxNielsenLog_Log"
-            Me.TextBoxNielsenLog_Log.ReadOnly = True
-            Me.TextBoxNielsenLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxNielsenLog_Log.SecurityEnabled = True
-            Me.TextBoxNielsenLog_Log.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxNielsenLog_Log.Size = New System.Drawing.Size(1016, 311)
-            Me.TextBoxNielsenLog_Log.StartingFolderName = Nothing
-            Me.TextBoxNielsenLog_Log.TabIndex = 5
-            Me.TextBoxNielsenLog_Log.TabOnEnter = True
-            '
-            'TabItemNielsenSettings_NielsenLogTab
-            '
-            Me.TabItemNielsenSettings_NielsenLogTab.AttachedControl = Me.TabControlPanelNielsenTab_NIelsenLog
-            Me.TabItemNielsenSettings_NielsenLogTab.Name = "TabItemNielsenSettings_NielsenLogTab"
-            Me.TabItemNielsenSettings_NielsenLogTab.Text = "Log"
-            '
-            'LabelNielsen_StatusDescription
-            '
-            Me.LabelNielsen_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelNielsen_StatusDescription.BackColor = System.Drawing.Color.White
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.LabelNielsen_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNielsen_StatusDescription.Location = New System.Drawing.Point(58, 4)
-            Me.LabelNielsen_StatusDescription.Name = "LabelNielsen_StatusDescription"
-            Me.LabelNielsen_StatusDescription.Size = New System.Drawing.Size(972, 20)
-            Me.LabelNielsen_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNielsen_StatusDescription.TabIndex = 25
-            Me.LabelNielsen_StatusDescription.Text = "Stopped..."
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.Border.Class = "TextBoxBorder"
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.ButtonCustom.Visible = True
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.CheckSpellingOnValidate = False
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Folder
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.FocusHighlightEnabled = True
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.Location = New System.Drawing.Point(100, 59)
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.MaxFileSize = CType(0, Long)
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.Name = "TextBoxNielsenPuertoRicoSettings_LocalFolder"
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.SecurityEnabled = True
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.Size = New System.Drawing.Size(912, 20)
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.StartingFolderName = Nothing
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.TabIndex = 12
+            Me.TextBoxNielsenPuertoRicoSettings_LocalFolder.TabOnEnter = True
             '
-            'LabelNielsen_Status
+            'LabelNielsenPuertoRicoSettings_LocalFolder
             '
-            Me.LabelNielsen_Status.BackColor = System.Drawing.Color.White
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.LabelNielsen_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNielsen_Status.Location = New System.Drawing.Point(12, 4)
-            Me.LabelNielsen_Status.Name = "LabelNielsen_Status"
-            Me.LabelNielsen_Status.Size = New System.Drawing.Size(40, 20)
-            Me.LabelNielsen_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNielsen_Status.TabIndex = 12
-            Me.LabelNielsen_Status.Text = "Status:"
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.Location = New System.Drawing.Point(4, 57)
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.Name = "LabelNielsenPuertoRicoSettings_LocalFolder"
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.Size = New System.Drawing.Size(90, 20)
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.TabIndex = 11
+            Me.LabelNielsenPuertoRicoSettings_LocalFolder.Text = "Local Folder:"
             '
-            'TabItemServices_NielsenTab
+            'LabelNielsenPuertoRicoSettings_Employee
             '
-            Me.TabItemServices_NielsenTab.AttachedControl = Me.TabControlPanelNielsenTab_Nielsen
-            Me.TabItemServices_NielsenTab.Name = "TabItemServices_NielsenTab"
-            Me.TabItemServices_NielsenTab.Text = "Nielsen"
+            Me.LabelNielsenPuertoRicoSettings_Employee.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsenPuertoRicoSettings_Employee.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsenPuertoRicoSettings_Employee.Location = New System.Drawing.Point(4, 31)
+            Me.LabelNielsenPuertoRicoSettings_Employee.Name = "LabelNielsenPuertoRicoSettings_Employee"
+            Me.LabelNielsenPuertoRicoSettings_Employee.Size = New System.Drawing.Size(90, 20)
+            Me.LabelNielsenPuertoRicoSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsenPuertoRicoSettings_Employee.TabIndex = 10
+            Me.LabelNielsenPuertoRicoSettings_Employee.Text = "Employee:"
+            '
+            'ComboBoxNielsenPuertoRicoSettings_Employee
+            '
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.AutoFindItemInDataSource = False
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.BookmarkingEnabled = False
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ClientCode = ""
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.Employee
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.DisableMouseWheel = False
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.DisplayMember = "FullName"
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.DisplayName = ""
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.DivisionCode = ""
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.FocusHighlightEnabled = True
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.FormattingEnabled = True
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ItemHeight = 16
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.Location = New System.Drawing.Point(100, 32)
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.Name = "ComboBoxNielsenPuertoRicoSettings_Employee"
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ReadOnly = False
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.SecurityEnabled = True
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.Size = New System.Drawing.Size(180, 22)
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.TabIndex = 9
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.TabOnEnter = True
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.ValueMember = "Code"
+            Me.ComboBoxNielsenPuertoRicoSettings_Employee.WatermarkText = "Select Employee"
+            '
+            'LabelNielsenPuertoRicoSettings_RunAt
+            '
+            Me.LabelNielsenPuertoRicoSettings_RunAt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsenPuertoRicoSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsenPuertoRicoSettings_RunAt.Location = New System.Drawing.Point(4, 4)
+            Me.LabelNielsenPuertoRicoSettings_RunAt.Name = "LabelNielsenPuertoRicoSettings_RunAt"
+            Me.LabelNielsenPuertoRicoSettings_RunAt.Size = New System.Drawing.Size(90, 20)
+            Me.LabelNielsenPuertoRicoSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsenPuertoRicoSettings_RunAt.TabIndex = 0
+            Me.LabelNielsenPuertoRicoSettings_RunAt.Text = "Run At (Daily):"
+            '
+            'DateTimePickerNielsenPuertoRicoSettings_RunAtDaily
+            '
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.AllowEmptyState = False
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.AutoResolveFreeTextEntries = False
+            '
+            '
+            '
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.BackgroundStyle.Class = "DateTimeInputBackground"
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.ButtonFreeText.Checked = True
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.DisabledForeColor = System.Drawing.SystemColors.WindowText
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.DisplayName = ""
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.FocusHighlightEnabled = True
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.FreeTextEntryMode = True
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.IsPopupCalendarOpen = False
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Location = New System.Drawing.Point(100, 6)
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            '
+            '
+            '
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.ClearButtonVisible = True
+            '
+            '
+            '
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.TodayButtonVisible = True
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.MonthCalendar.Visible = False
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Name = "DateTimePickerNielsenPuertoRicoSettings_RunAtDaily"
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.ReadOnly = False
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Size = New System.Drawing.Size(180, 20)
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.TabIndex = 1
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.TabOnEnter = True
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
+            Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
+            '
+            'TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab
+            '
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab.AttachedControl = Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab.Name = "TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab"
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab.Text = "Settings"
+            '
+            'TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog
+            '
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Controls.Add(Me.TextBoxNielsenPuertoRicoLog_Log)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Name = "TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog"
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.Style.GradientAngle = 90
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.TabIndex = 3
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.TabItem = Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab
+            '
+            'TextBoxNielsenPuertoRicoLog_Log
+            '
+            Me.TextBoxNielsenPuertoRicoLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxNielsenPuertoRicoLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxNielsenPuertoRicoLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNielsenPuertoRicoLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxNielsenPuertoRicoLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxNielsenPuertoRicoLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNielsenPuertoRicoLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxNielsenPuertoRicoLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxNielsenPuertoRicoLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNielsenPuertoRicoLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNielsenPuertoRicoLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxNielsenPuertoRicoLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNielsenPuertoRicoLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxNielsenPuertoRicoLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxNielsenPuertoRicoLog_Log.Multiline = True
+            Me.TextBoxNielsenPuertoRicoLog_Log.Name = "TextBoxNielsenPuertoRicoLog_Log"
+            Me.TextBoxNielsenPuertoRicoLog_Log.ReadOnly = True
+            Me.TextBoxNielsenPuertoRicoLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxNielsenPuertoRicoLog_Log.SecurityEnabled = True
+            Me.TextBoxNielsenPuertoRicoLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNielsenPuertoRicoLog_Log.Size = New System.Drawing.Size(1016, 311)
+            Me.TextBoxNielsenPuertoRicoLog_Log.StartingFolderName = Nothing
+            Me.TextBoxNielsenPuertoRicoLog_Log.TabIndex = 5
+            Me.TextBoxNielsenPuertoRicoLog_Log.TabOnEnter = True
+            '
+            'TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab
+            '
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab.AttachedControl = Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab.Name = "TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab"
+            Me.TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab.Text = "Log"
+            '
+            'LabelNielsenPuertoRico_StatusDescription
+            '
+            Me.LabelNielsenPuertoRico_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelNielsenPuertoRico_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsenPuertoRico_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsenPuertoRico_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelNielsenPuertoRico_StatusDescription.Name = "LabelNielsenPuertoRico_StatusDescription"
+            Me.LabelNielsenPuertoRico_StatusDescription.Size = New System.Drawing.Size(972, 20)
+            Me.LabelNielsenPuertoRico_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsenPuertoRico_StatusDescription.TabIndex = 28
+            Me.LabelNielsenPuertoRico_StatusDescription.Text = "Stopped..."
+            '
+            'LabelNielsenPuertoRico_Status
+            '
+            Me.LabelNielsenPuertoRico_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsenPuertoRico_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsenPuertoRico_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelNielsenPuertoRico_Status.Name = "LabelNielsenPuertoRico_Status"
+            Me.LabelNielsenPuertoRico_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelNielsenPuertoRico_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsenPuertoRico_Status.TabIndex = 27
+            Me.LabelNielsenPuertoRico_Status.Text = "Status:"
+            '
+            'TabItemServices_NielsenPuertoRicoTab
+            '
+            Me.TabItemServices_NielsenPuertoRicoTab.AttachedControl = Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico
+            Me.TabItemServices_NielsenPuertoRicoTab.Name = "TabItemServices_NielsenPuertoRicoTab"
+            Me.TabItemServices_NielsenPuertoRicoTab.Text = "Nielsen Puerto Rico"
+            Me.TabItemServices_NielsenPuertoRicoTab.Visible = False
             '
             'TabControlPanelMediaOceanImportTab_MediaOceanImport
             '
@@ -1608,6 +1679,1866 @@
             Me.TabItemServices_MediaOceanImportTab.AttachedControl = Me.TabControlPanelMediaOceanImportTab_MediaOceanImport
             Me.TabItemServices_MediaOceanImportTab.Name = "TabItemServices_MediaOceanImportTab"
             Me.TabItemServices_MediaOceanImportTab.Text = "Media Ocean Import"
+            '
+            'TabControlPanelInOutTab_InOut
+            '
+            Me.TabControlPanelInOutTab_InOut.Controls.Add(Me.TabControlInOut_InOutSettings)
+            Me.TabControlPanelInOutTab_InOut.Controls.Add(Me.LabelInOut_StatusDescription)
+            Me.TabControlPanelInOutTab_InOut.Controls.Add(Me.LabelInOut_Status)
+            Me.TabControlPanelInOutTab_InOut.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelInOutTab_InOut.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelInOutTab_InOut.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelInOutTab_InOut.Name = "TabControlPanelInOutTab_InOut"
+            Me.TabControlPanelInOutTab_InOut.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelInOutTab_InOut.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelInOutTab_InOut.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelInOutTab_InOut.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelInOutTab_InOut.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelInOutTab_InOut.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelInOutTab_InOut.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelInOutTab_InOut.Style.GradientAngle = 90
+            Me.TabControlPanelInOutTab_InOut.TabIndex = 63
+            Me.TabControlPanelInOutTab_InOut.TabItem = Me.TabItemServices_InOutTab
+            '
+            'TabControlInOut_InOutSettings
+            '
+            Me.TabControlInOut_InOutSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlInOut_InOutSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlInOut_InOutSettings.CanReorderTabs = False
+            Me.TabControlInOut_InOutSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlInOut_InOutSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlInOut_InOutSettings.Controls.Add(Me.TabControlPanelInOutSettingsTab_InOutSettings)
+            Me.TabControlInOut_InOutSettings.Controls.Add(Me.TabControlPanelInOutTab_InOutLog)
+            Me.TabControlInOut_InOutSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlInOut_InOutSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlInOut_InOutSettings.Name = "TabControlInOut_InOutSettings"
+            Me.TabControlInOut_InOutSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlInOut_InOutSettings.SelectedTabIndex = 0
+            Me.TabControlInOut_InOutSettings.Size = New System.Drawing.Size(1018, 340)
+            Me.TabControlInOut_InOutSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlInOut_InOutSettings.TabIndex = 26
+            Me.TabControlInOut_InOutSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlInOut_InOutSettings.Tabs.Add(Me.TabItemInOutSettings_InOutSettingsTab)
+            Me.TabControlInOut_InOutSettings.Tabs.Add(Me.TabItemInOutSettings_InOutLogTab)
+            '
+            'TabControlPanelInOutSettingsTab_InOutSettings
+            '
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Controls.Add(Me.Label3)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Controls.Add(Me.LabelInOutSettings_RunAt)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Controls.Add(Me.DateTimePickerInOutSettings_RunAtDaily)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Name = "TabControlPanelInOutSettingsTab_InOutSettings"
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.GradientAngle = 90
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.TabIndex = 1
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.TabItem = Me.TabItemInOutSettings_InOutSettingsTab
+            '
+            'Label3
+            '
+            Me.Label3.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label3.Location = New System.Drawing.Point(4, 32)
+            Me.Label3.Name = "Label3"
+            Me.Label3.Size = New System.Drawing.Size(397, 20)
+            Me.Label3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label3.TabIndex = 9
+            Me.Label3.Text = "Set to automatically log employees out of the in/out board at the specified time." &
+    ""
+            '
+            'LabelInOutSettings_RunAt
+            '
+            Me.LabelInOutSettings_RunAt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelInOutSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelInOutSettings_RunAt.Location = New System.Drawing.Point(4, 4)
+            Me.LabelInOutSettings_RunAt.Name = "LabelInOutSettings_RunAt"
+            Me.LabelInOutSettings_RunAt.Size = New System.Drawing.Size(90, 20)
+            Me.LabelInOutSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelInOutSettings_RunAt.TabIndex = 0
+            Me.LabelInOutSettings_RunAt.Text = "Run At (Daily):"
+            '
+            'DateTimePickerInOutSettings_RunAtDaily
+            '
+            Me.DateTimePickerInOutSettings_RunAtDaily.AllowEmptyState = False
+            Me.DateTimePickerInOutSettings_RunAtDaily.AutoResolveFreeTextEntries = False
+            '
+            '
+            '
+            Me.DateTimePickerInOutSettings_RunAtDaily.BackgroundStyle.Class = "DateTimeInputBackground"
+            Me.DateTimePickerInOutSettings_RunAtDaily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerInOutSettings_RunAtDaily.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
+            Me.DateTimePickerInOutSettings_RunAtDaily.ButtonFreeText.Checked = True
+            Me.DateTimePickerInOutSettings_RunAtDaily.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
+            Me.DateTimePickerInOutSettings_RunAtDaily.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
+            Me.DateTimePickerInOutSettings_RunAtDaily.DisabledForeColor = System.Drawing.SystemColors.WindowText
+            Me.DateTimePickerInOutSettings_RunAtDaily.DisplayName = ""
+            Me.DateTimePickerInOutSettings_RunAtDaily.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.DateTimePickerInOutSettings_RunAtDaily.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.DateTimePickerInOutSettings_RunAtDaily.FocusHighlightEnabled = True
+            Me.DateTimePickerInOutSettings_RunAtDaily.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
+            Me.DateTimePickerInOutSettings_RunAtDaily.FreeTextEntryMode = True
+            Me.DateTimePickerInOutSettings_RunAtDaily.IsPopupCalendarOpen = False
+            Me.DateTimePickerInOutSettings_RunAtDaily.Location = New System.Drawing.Point(100, 6)
+            Me.DateTimePickerInOutSettings_RunAtDaily.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateTimePickerInOutSettings_RunAtDaily.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            '
+            '
+            '
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.ClearButtonVisible = True
+            '
+            '
+            '
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.TodayButtonVisible = True
+            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.Visible = False
+            Me.DateTimePickerInOutSettings_RunAtDaily.Name = "DateTimePickerInOutSettings_RunAtDaily"
+            Me.DateTimePickerInOutSettings_RunAtDaily.ReadOnly = False
+            Me.DateTimePickerInOutSettings_RunAtDaily.Size = New System.Drawing.Size(180, 20)
+            Me.DateTimePickerInOutSettings_RunAtDaily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.DateTimePickerInOutSettings_RunAtDaily.TabIndex = 1
+            Me.DateTimePickerInOutSettings_RunAtDaily.TabOnEnter = True
+            Me.DateTimePickerInOutSettings_RunAtDaily.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
+            Me.DateTimePickerInOutSettings_RunAtDaily.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
+            '
+            'TabItemInOutSettings_InOutSettingsTab
+            '
+            Me.TabItemInOutSettings_InOutSettingsTab.AttachedControl = Me.TabControlPanelInOutSettingsTab_InOutSettings
+            Me.TabItemInOutSettings_InOutSettingsTab.Name = "TabItemInOutSettings_InOutSettingsTab"
+            Me.TabItemInOutSettings_InOutSettingsTab.Text = "Settings"
+            '
+            'TabControlPanelInOutTab_InOutLog
+            '
+            Me.TabControlPanelInOutTab_InOutLog.Controls.Add(Me.TextBoxInOutLog_Log)
+            Me.TabControlPanelInOutTab_InOutLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelInOutTab_InOutLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelInOutTab_InOutLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelInOutTab_InOutLog.Name = "TabControlPanelInOutTab_InOutLog"
+            Me.TabControlPanelInOutTab_InOutLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelInOutTab_InOutLog.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelInOutTab_InOutLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelInOutTab_InOutLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelInOutTab_InOutLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelInOutTab_InOutLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelInOutTab_InOutLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelInOutTab_InOutLog.Style.GradientAngle = 90
+            Me.TabControlPanelInOutTab_InOutLog.TabIndex = 3
+            Me.TabControlPanelInOutTab_InOutLog.TabItem = Me.TabItemInOutSettings_InOutLogTab
+            '
+            'TextBoxInOutLog_Log
+            '
+            Me.TextBoxInOutLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxInOutLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxInOutLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxInOutLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxInOutLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxInOutLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxInOutLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxInOutLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxInOutLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxInOutLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxInOutLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxInOutLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxInOutLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxInOutLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxInOutLog_Log.Multiline = True
+            Me.TextBoxInOutLog_Log.Name = "TextBoxInOutLog_Log"
+            Me.TextBoxInOutLog_Log.ReadOnly = True
+            Me.TextBoxInOutLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxInOutLog_Log.SecurityEnabled = True
+            Me.TextBoxInOutLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxInOutLog_Log.Size = New System.Drawing.Size(1016, 311)
+            Me.TextBoxInOutLog_Log.StartingFolderName = Nothing
+            Me.TextBoxInOutLog_Log.TabIndex = 5
+            Me.TextBoxInOutLog_Log.TabOnEnter = True
+            '
+            'TabItemInOutSettings_InOutLogTab
+            '
+            Me.TabItemInOutSettings_InOutLogTab.AttachedControl = Me.TabControlPanelInOutTab_InOutLog
+            Me.TabItemInOutSettings_InOutLogTab.Name = "TabItemInOutSettings_InOutLogTab"
+            Me.TabItemInOutSettings_InOutLogTab.Text = "Log"
+            '
+            'LabelInOut_StatusDescription
+            '
+            Me.LabelInOut_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelInOut_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelInOut_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelInOut_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelInOut_StatusDescription.Name = "LabelInOut_StatusDescription"
+            Me.LabelInOut_StatusDescription.Size = New System.Drawing.Size(972, 20)
+            Me.LabelInOut_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelInOut_StatusDescription.TabIndex = 25
+            Me.LabelInOut_StatusDescription.Text = "Stopped..."
+            '
+            'LabelInOut_Status
+            '
+            Me.LabelInOut_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelInOut_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelInOut_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelInOut_Status.Name = "LabelInOut_Status"
+            Me.LabelInOut_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelInOut_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelInOut_Status.TabIndex = 12
+            Me.LabelInOut_Status.Text = "Status:"
+            '
+            'TabItemServices_InOutTab
+            '
+            Me.TabItemServices_InOutTab.AttachedControl = Me.TabControlPanelInOutTab_InOut
+            Me.TabItemServices_InOutTab.Name = "TabItemServices_InOutTab"
+            Me.TabItemServices_InOutTab.Text = "In/Out Board"
+            '
+            'TabControlPanelComScoreTab_ComScore
+            '
+            Me.TabControlPanelComScoreTab_ComScore.Controls.Add(Me.TabControlComScore_ComScoreSettings)
+            Me.TabControlPanelComScoreTab_ComScore.Controls.Add(Me.LabelComScore_StatusDescription)
+            Me.TabControlPanelComScoreTab_ComScore.Controls.Add(Me.LabelComScore_Status)
+            Me.TabControlPanelComScoreTab_ComScore.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelComScoreTab_ComScore.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelComScoreTab_ComScore.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelComScoreTab_ComScore.Name = "TabControlPanelComScoreTab_ComScore"
+            Me.TabControlPanelComScoreTab_ComScore.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelComScoreTab_ComScore.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelComScoreTab_ComScore.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelComScoreTab_ComScore.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelComScoreTab_ComScore.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelComScoreTab_ComScore.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelComScoreTab_ComScore.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelComScoreTab_ComScore.Style.GradientAngle = 90
+            Me.TabControlPanelComScoreTab_ComScore.TabIndex = 231
+            Me.TabControlPanelComScoreTab_ComScore.TabItem = Me.TabItemServices_ComscoreTab
+            '
+            'TabControlComScore_ComScoreSettings
+            '
+            Me.TabControlComScore_ComScoreSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlComScore_ComScoreSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlComScore_ComScoreSettings.CanReorderTabs = False
+            Me.TabControlComScore_ComScoreSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlComScore_ComScoreSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlComScore_ComScoreSettings.Controls.Add(Me.TabControlPanelComScoreSettingsTab_ComScoreSettings)
+            Me.TabControlComScore_ComScoreSettings.Controls.Add(Me.TabControlPanelComScoreTab_ComScoreLog)
+            Me.TabControlComScore_ComScoreSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlComScore_ComScoreSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlComScore_ComScoreSettings.Name = "TabControlComScore_ComScoreSettings"
+            Me.TabControlComScore_ComScoreSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlComScore_ComScoreSettings.SelectedTabIndex = 0
+            Me.TabControlComScore_ComScoreSettings.Size = New System.Drawing.Size(1018, 340)
+            Me.TabControlComScore_ComScoreSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlComScore_ComScoreSettings.TabIndex = 29
+            Me.TabControlComScore_ComScoreSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlComScore_ComScoreSettings.Tabs.Add(Me.TabItemComScoreSettings_ComScoreSettingsTab)
+            Me.TabControlComScore_ComScoreSettings.Tabs.Add(Me.TabItemComScoreSettings_ComScoreLogTab)
+            '
+            'TabControlPanelComScoreSettingsTab_ComScoreSettings
+            '
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.LabelComScoreSettings_Employee)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.ComboBoxComScoreSettings_Employee)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.LabelComScoreSettings_RunAt)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.DateTimePickerComScoreSettings_RunAtDaily)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Name = "TabControlPanelComScoreSettingsTab_ComScoreSettings"
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.GradientAngle = 90
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.TabIndex = 1
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.TabItem = Me.TabItemComScoreSettings_ComScoreSettingsTab
+            '
+            'LabelComScoreSettings_Employee
+            '
+            Me.LabelComScoreSettings_Employee.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelComScoreSettings_Employee.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelComScoreSettings_Employee.Location = New System.Drawing.Point(4, 31)
+            Me.LabelComScoreSettings_Employee.Name = "LabelComScoreSettings_Employee"
+            Me.LabelComScoreSettings_Employee.Size = New System.Drawing.Size(90, 20)
+            Me.LabelComScoreSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelComScoreSettings_Employee.TabIndex = 10
+            Me.LabelComScoreSettings_Employee.Text = "Employee:"
+            '
+            'ComboBoxComScoreSettings_Employee
+            '
+            Me.ComboBoxComScoreSettings_Employee.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxComScoreSettings_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxComScoreSettings_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxComScoreSettings_Employee.AutoFindItemInDataSource = False
+            Me.ComboBoxComScoreSettings_Employee.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxComScoreSettings_Employee.BookmarkingEnabled = False
+            Me.ComboBoxComScoreSettings_Employee.ClientCode = ""
+            Me.ComboBoxComScoreSettings_Employee.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.Employee
+            Me.ComboBoxComScoreSettings_Employee.DisableMouseWheel = False
+            Me.ComboBoxComScoreSettings_Employee.DisplayMember = "FullName"
+            Me.ComboBoxComScoreSettings_Employee.DisplayName = ""
+            Me.ComboBoxComScoreSettings_Employee.DivisionCode = ""
+            Me.ComboBoxComScoreSettings_Employee.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxComScoreSettings_Employee.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxComScoreSettings_Employee.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxComScoreSettings_Employee.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxComScoreSettings_Employee.FocusHighlightEnabled = True
+            Me.ComboBoxComScoreSettings_Employee.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxComScoreSettings_Employee.FormattingEnabled = True
+            Me.ComboBoxComScoreSettings_Employee.ItemHeight = 16
+            Me.ComboBoxComScoreSettings_Employee.Location = New System.Drawing.Point(100, 32)
+            Me.ComboBoxComScoreSettings_Employee.Name = "ComboBoxComScoreSettings_Employee"
+            Me.ComboBoxComScoreSettings_Employee.ReadOnly = False
+            Me.ComboBoxComScoreSettings_Employee.SecurityEnabled = True
+            Me.ComboBoxComScoreSettings_Employee.Size = New System.Drawing.Size(180, 22)
+            Me.ComboBoxComScoreSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxComScoreSettings_Employee.TabIndex = 9
+            Me.ComboBoxComScoreSettings_Employee.TabOnEnter = True
+            Me.ComboBoxComScoreSettings_Employee.ValueMember = "Code"
+            Me.ComboBoxComScoreSettings_Employee.WatermarkText = "Select Employee"
+            '
+            'LabelComScoreSettings_RunAt
+            '
+            Me.LabelComScoreSettings_RunAt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelComScoreSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelComScoreSettings_RunAt.Location = New System.Drawing.Point(4, 4)
+            Me.LabelComScoreSettings_RunAt.Name = "LabelComScoreSettings_RunAt"
+            Me.LabelComScoreSettings_RunAt.Size = New System.Drawing.Size(90, 20)
+            Me.LabelComScoreSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelComScoreSettings_RunAt.TabIndex = 0
+            Me.LabelComScoreSettings_RunAt.Text = "Run At (Daily):"
+            '
+            'DateTimePickerComScoreSettings_RunAtDaily
+            '
+            Me.DateTimePickerComScoreSettings_RunAtDaily.AllowEmptyState = False
+            Me.DateTimePickerComScoreSettings_RunAtDaily.AutoResolveFreeTextEntries = False
+            '
+            '
+            '
+            Me.DateTimePickerComScoreSettings_RunAtDaily.BackgroundStyle.Class = "DateTimeInputBackground"
+            Me.DateTimePickerComScoreSettings_RunAtDaily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerComScoreSettings_RunAtDaily.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
+            Me.DateTimePickerComScoreSettings_RunAtDaily.ButtonFreeText.Checked = True
+            Me.DateTimePickerComScoreSettings_RunAtDaily.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
+            Me.DateTimePickerComScoreSettings_RunAtDaily.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
+            Me.DateTimePickerComScoreSettings_RunAtDaily.DisabledForeColor = System.Drawing.SystemColors.WindowText
+            Me.DateTimePickerComScoreSettings_RunAtDaily.DisplayName = ""
+            Me.DateTimePickerComScoreSettings_RunAtDaily.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.DateTimePickerComScoreSettings_RunAtDaily.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.DateTimePickerComScoreSettings_RunAtDaily.FocusHighlightEnabled = True
+            Me.DateTimePickerComScoreSettings_RunAtDaily.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
+            Me.DateTimePickerComScoreSettings_RunAtDaily.FreeTextEntryMode = True
+            Me.DateTimePickerComScoreSettings_RunAtDaily.IsPopupCalendarOpen = False
+            Me.DateTimePickerComScoreSettings_RunAtDaily.Location = New System.Drawing.Point(100, 6)
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            '
+            '
+            '
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.ClearButtonVisible = True
+            '
+            '
+            '
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.TodayButtonVisible = True
+            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.Visible = False
+            Me.DateTimePickerComScoreSettings_RunAtDaily.Name = "DateTimePickerComScoreSettings_RunAtDaily"
+            Me.DateTimePickerComScoreSettings_RunAtDaily.ReadOnly = False
+            Me.DateTimePickerComScoreSettings_RunAtDaily.Size = New System.Drawing.Size(180, 20)
+            Me.DateTimePickerComScoreSettings_RunAtDaily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.DateTimePickerComScoreSettings_RunAtDaily.TabIndex = 1
+            Me.DateTimePickerComScoreSettings_RunAtDaily.TabOnEnter = True
+            Me.DateTimePickerComScoreSettings_RunAtDaily.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
+            Me.DateTimePickerComScoreSettings_RunAtDaily.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
+            '
+            'TabItemComScoreSettings_ComScoreSettingsTab
+            '
+            Me.TabItemComScoreSettings_ComScoreSettingsTab.AttachedControl = Me.TabControlPanelComScoreSettingsTab_ComScoreSettings
+            Me.TabItemComScoreSettings_ComScoreSettingsTab.Name = "TabItemComScoreSettings_ComScoreSettingsTab"
+            Me.TabItemComScoreSettings_ComScoreSettingsTab.Text = "Settings"
+            '
+            'TabControlPanelComScoreTab_ComScoreLog
+            '
+            Me.TabControlPanelComScoreTab_ComScoreLog.Controls.Add(Me.TextBoxComScoreLog_Log)
+            Me.TabControlPanelComScoreTab_ComScoreLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelComScoreTab_ComScoreLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelComScoreTab_ComScoreLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelComScoreTab_ComScoreLog.Name = "TabControlPanelComScoreTab_ComScoreLog"
+            Me.TabControlPanelComScoreTab_ComScoreLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelComScoreTab_ComScoreLog.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelComScoreTab_ComScoreLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelComScoreTab_ComScoreLog.Style.GradientAngle = 90
+            Me.TabControlPanelComScoreTab_ComScoreLog.TabIndex = 3
+            Me.TabControlPanelComScoreTab_ComScoreLog.TabItem = Me.TabItemComScoreSettings_ComScoreLogTab
+            '
+            'TextBoxComScoreLog_Log
+            '
+            Me.TextBoxComScoreLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxComScoreLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxComScoreLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxComScoreLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxComScoreLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxComScoreLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxComScoreLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxComScoreLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxComScoreLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxComScoreLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxComScoreLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxComScoreLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxComScoreLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxComScoreLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxComScoreLog_Log.Multiline = True
+            Me.TextBoxComScoreLog_Log.Name = "TextBoxComScoreLog_Log"
+            Me.TextBoxComScoreLog_Log.ReadOnly = True
+            Me.TextBoxComScoreLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxComScoreLog_Log.SecurityEnabled = True
+            Me.TextBoxComScoreLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxComScoreLog_Log.Size = New System.Drawing.Size(1016, 311)
+            Me.TextBoxComScoreLog_Log.StartingFolderName = Nothing
+            Me.TextBoxComScoreLog_Log.TabIndex = 5
+            Me.TextBoxComScoreLog_Log.TabOnEnter = True
+            '
+            'TabItemComScoreSettings_ComScoreLogTab
+            '
+            Me.TabItemComScoreSettings_ComScoreLogTab.AttachedControl = Me.TabControlPanelComScoreTab_ComScoreLog
+            Me.TabItemComScoreSettings_ComScoreLogTab.Name = "TabItemComScoreSettings_ComScoreLogTab"
+            Me.TabItemComScoreSettings_ComScoreLogTab.Text = "Log"
+            '
+            'LabelComScore_StatusDescription
+            '
+            Me.LabelComScore_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelComScore_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelComScore_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelComScore_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelComScore_StatusDescription.Name = "LabelComScore_StatusDescription"
+            Me.LabelComScore_StatusDescription.Size = New System.Drawing.Size(972, 20)
+            Me.LabelComScore_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelComScore_StatusDescription.TabIndex = 28
+            Me.LabelComScore_StatusDescription.Text = "Stopped..."
+            '
+            'LabelComScore_Status
+            '
+            Me.LabelComScore_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelComScore_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelComScore_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelComScore_Status.Name = "LabelComScore_Status"
+            Me.LabelComScore_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelComScore_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelComScore_Status.TabIndex = 27
+            Me.LabelComScore_Status.Text = "Status:"
+            '
+            'TabItemServices_ComscoreTab
+            '
+            Me.TabItemServices_ComscoreTab.AttachedControl = Me.TabControlPanelComScoreTab_ComScore
+            Me.TabItemServices_ComscoreTab.Name = "TabItemServices_ComscoreTab"
+            Me.TabItemServices_ComscoreTab.Text = "Comscore"
+            '
+            'TabControlPanelEmailListenerTab_EmailListener
+            '
+            Me.TabControlPanelEmailListenerTab_EmailListener.Controls.Add(Me.TabControlEmailListener_EmailListenerSettings)
+            Me.TabControlPanelEmailListenerTab_EmailListener.Controls.Add(Me.LabelEmailListener_StatusDescription)
+            Me.TabControlPanelEmailListenerTab_EmailListener.Controls.Add(Me.LabelEmailListener_Status)
+            Me.TabControlPanelEmailListenerTab_EmailListener.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelEmailListenerTab_EmailListener.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelEmailListenerTab_EmailListener.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelEmailListenerTab_EmailListener.Name = "TabControlPanelEmailListenerTab_EmailListener"
+            Me.TabControlPanelEmailListenerTab_EmailListener.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelEmailListenerTab_EmailListener.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelEmailListenerTab_EmailListener.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelEmailListenerTab_EmailListener.Style.GradientAngle = 90
+            Me.TabControlPanelEmailListenerTab_EmailListener.TabIndex = 1
+            Me.TabControlPanelEmailListenerTab_EmailListener.TabItem = Me.TabItemServices_EmailListenerTab
+            '
+            'TabControlEmailListener_EmailListenerSettings
+            '
+            Me.TabControlEmailListener_EmailListenerSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlEmailListener_EmailListenerSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlEmailListener_EmailListenerSettings.CanReorderTabs = False
+            Me.TabControlEmailListener_EmailListenerSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlEmailListener_EmailListenerSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlEmailListener_EmailListenerSettings.Controls.Add(Me.TabControlPanelSettingsTab_EmailListenerSettings)
+            Me.TabControlEmailListener_EmailListenerSettings.Controls.Add(Me.TabControlPanelLogTab_EmailListenerLog)
+            Me.TabControlEmailListener_EmailListenerSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlEmailListener_EmailListenerSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlEmailListener_EmailListenerSettings.Name = "TabControlEmailListener_EmailListenerSettings"
+            Me.TabControlEmailListener_EmailListenerSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlEmailListener_EmailListenerSettings.SelectedTabIndex = 0
+            Me.TabControlEmailListener_EmailListenerSettings.Size = New System.Drawing.Size(1018, 340)
+            Me.TabControlEmailListener_EmailListenerSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlEmailListener_EmailListenerSettings.TabIndex = 7
+            Me.TabControlEmailListener_EmailListenerSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlEmailListener_EmailListenerSettings.Tabs.Add(Me.TabItemEmailListenerSettings_SettingsTab)
+            Me.TabControlEmailListener_EmailListenerSettings.Tabs.Add(Me.TabItemEmailListenerSettings_LogTab)
+            '
+            'TabControlPanelSettingsTab_EmailListenerSettings
+            '
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.NumericInputEmailListenerSettings_RunAtEvery)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.TextBoxEmailListenerSettings_StartofSignatureCode)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.LabelEmailListenerSettings_StartofSignatureCode)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.LabelEmailListenerSettings_RunAtEvery)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Name = "TabControlPanelSettingsTab_EmailListenerSettings"
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.GradientAngle = 90
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.TabIndex = 1
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.TabItem = Me.TabItemEmailListenerSettings_SettingsTab
+            '
+            'CheckBoxEmailListenerSettings_SendEmailToAlertRecipients
+            '
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValue = 0
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValueChecked = 1
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValueUnchecked = 0
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.ChildControls = CType(resources.GetObject("CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Location = New System.Drawing.Point(132, 56)
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Name = "CheckBoxEmailListenerSettings_SendEmailToAlertRecipients"
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.OldestSibling = Nothing
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.SecurityEnabled = True
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.SiblingControls = CType(resources.GetObject("CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Size = New System.Drawing.Size(187, 20)
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.TabIndex = 4
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.TabOnEnter = True
+            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Text = "Send Email To Alert Recipients"
+            '
+            'NumericInputEmailListenerSettings_RunAtEvery
+            '
+            Me.NumericInputEmailListenerSettings_RunAtEvery.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputEmailListenerSettings_RunAtEvery.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
+            Me.NumericInputEmailListenerSettings_RunAtEvery.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputEmailListenerSettings_RunAtEvery.EnterMoveNextControl = True
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Location = New System.Drawing.Point(132, 4)
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Name = "NumericInputEmailListenerSettings_RunAtEvery"
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.IsFloatValue = False
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.Mask.EditMask = "f0"
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.MaxValue = New Decimal(New Integer() {2147483647, 0, 0, 0})
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.MinValue = New Decimal(New Integer() {-2147483648, 0, 0, -2147483648})
+            Me.NumericInputEmailListenerSettings_RunAtEvery.SecurityEnabled = True
+            Me.NumericInputEmailListenerSettings_RunAtEvery.Size = New System.Drawing.Size(75, 20)
+            Me.NumericInputEmailListenerSettings_RunAtEvery.TabIndex = 1
+            '
+            'TextBoxEmailListenerSettings_StartofSignatureCode
+            '
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Border.Class = "TextBoxBorder"
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.CheckSpellingOnValidate = False
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.FocusHighlightEnabled = True
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Location = New System.Drawing.Point(132, 30)
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.MaxFileSize = CType(0, Long)
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Name = "TextBoxEmailListenerSettings_StartofSignatureCode"
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.SecurityEnabled = True
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Size = New System.Drawing.Size(883, 20)
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.StartingFolderName = Nothing
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.TabIndex = 3
+            Me.TextBoxEmailListenerSettings_StartofSignatureCode.TabOnEnter = True
+            '
+            'LabelEmailListenerSettings_StartofSignatureCode
+            '
+            Me.LabelEmailListenerSettings_StartofSignatureCode.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelEmailListenerSettings_StartofSignatureCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelEmailListenerSettings_StartofSignatureCode.Location = New System.Drawing.Point(4, 30)
+            Me.LabelEmailListenerSettings_StartofSignatureCode.Name = "LabelEmailListenerSettings_StartofSignatureCode"
+            Me.LabelEmailListenerSettings_StartofSignatureCode.Size = New System.Drawing.Size(122, 20)
+            Me.LabelEmailListenerSettings_StartofSignatureCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelEmailListenerSettings_StartofSignatureCode.TabIndex = 2
+            Me.LabelEmailListenerSettings_StartofSignatureCode.Text = "Start of Signature Code:"
+            '
+            'LabelEmailListenerSettings_RunAtEvery
+            '
+            Me.LabelEmailListenerSettings_RunAtEvery.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelEmailListenerSettings_RunAtEvery.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelEmailListenerSettings_RunAtEvery.Location = New System.Drawing.Point(4, 4)
+            Me.LabelEmailListenerSettings_RunAtEvery.Name = "LabelEmailListenerSettings_RunAtEvery"
+            Me.LabelEmailListenerSettings_RunAtEvery.Size = New System.Drawing.Size(122, 20)
+            Me.LabelEmailListenerSettings_RunAtEvery.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelEmailListenerSettings_RunAtEvery.TabIndex = 0
+            Me.LabelEmailListenerSettings_RunAtEvery.Text = "Run at every min(s):"
+            '
+            'TabItemEmailListenerSettings_SettingsTab
+            '
+            Me.TabItemEmailListenerSettings_SettingsTab.AttachedControl = Me.TabControlPanelSettingsTab_EmailListenerSettings
+            Me.TabItemEmailListenerSettings_SettingsTab.Name = "TabItemEmailListenerSettings_SettingsTab"
+            Me.TabItemEmailListenerSettings_SettingsTab.Text = "Settings"
+            '
+            'TabControlPanelLogTab_EmailListenerLog
+            '
+            Me.TabControlPanelLogTab_EmailListenerLog.Controls.Add(Me.TextBoxEmailListenerLog_Log)
+            Me.TabControlPanelLogTab_EmailListenerLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelLogTab_EmailListenerLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelLogTab_EmailListenerLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelLogTab_EmailListenerLog.Name = "TabControlPanelLogTab_EmailListenerLog"
+            Me.TabControlPanelLogTab_EmailListenerLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelLogTab_EmailListenerLog.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelLogTab_EmailListenerLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelLogTab_EmailListenerLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelLogTab_EmailListenerLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelLogTab_EmailListenerLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelLogTab_EmailListenerLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelLogTab_EmailListenerLog.Style.GradientAngle = 90
+            Me.TabControlPanelLogTab_EmailListenerLog.TabIndex = 3
+            Me.TabControlPanelLogTab_EmailListenerLog.TabItem = Me.TabItemEmailListenerSettings_LogTab
+            '
+            'TextBoxEmailListenerLog_Log
+            '
+            Me.TextBoxEmailListenerLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxEmailListenerLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxEmailListenerLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxEmailListenerLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxEmailListenerLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxEmailListenerLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxEmailListenerLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxEmailListenerLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxEmailListenerLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxEmailListenerLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxEmailListenerLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxEmailListenerLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxEmailListenerLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxEmailListenerLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxEmailListenerLog_Log.Multiline = True
+            Me.TextBoxEmailListenerLog_Log.Name = "TextBoxEmailListenerLog_Log"
+            Me.TextBoxEmailListenerLog_Log.ReadOnly = True
+            Me.TextBoxEmailListenerLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxEmailListenerLog_Log.SecurityEnabled = True
+            Me.TextBoxEmailListenerLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxEmailListenerLog_Log.Size = New System.Drawing.Size(1016, 311)
+            Me.TextBoxEmailListenerLog_Log.StartingFolderName = Nothing
+            Me.TextBoxEmailListenerLog_Log.TabIndex = 0
+            Me.TextBoxEmailListenerLog_Log.TabOnEnter = True
+            '
+            'TabItemEmailListenerSettings_LogTab
+            '
+            Me.TabItemEmailListenerSettings_LogTab.AttachedControl = Me.TabControlPanelLogTab_EmailListenerLog
+            Me.TabItemEmailListenerSettings_LogTab.Name = "TabItemEmailListenerSettings_LogTab"
+            Me.TabItemEmailListenerSettings_LogTab.Text = "Log"
+            '
+            'LabelEmailListener_StatusDescription
+            '
+            Me.LabelEmailListener_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelEmailListener_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelEmailListener_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelEmailListener_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelEmailListener_StatusDescription.Name = "LabelEmailListener_StatusDescription"
+            Me.LabelEmailListener_StatusDescription.Size = New System.Drawing.Size(972, 20)
+            Me.LabelEmailListener_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelEmailListener_StatusDescription.TabIndex = 4
+            Me.LabelEmailListener_StatusDescription.Text = "Stopped..."
+            '
+            'LabelEmailListener_Status
+            '
+            Me.LabelEmailListener_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelEmailListener_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelEmailListener_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelEmailListener_Status.Name = "LabelEmailListener_Status"
+            Me.LabelEmailListener_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelEmailListener_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelEmailListener_Status.TabIndex = 3
+            Me.LabelEmailListener_Status.Text = "Status:"
+            '
+            'TabItemServices_EmailListenerTab
+            '
+            Me.TabItemServices_EmailListenerTab.AttachedControl = Me.TabControlPanelEmailListenerTab_EmailListener
+            Me.TabItemServices_EmailListenerTab.Name = "TabItemServices_EmailListenerTab"
+            Me.TabItemServices_EmailListenerTab.Text = "Email Listener"
+            '
+            'TabControlPanelNielsenTab_Nielsen
+            '
+            Me.TabControlPanelNielsenTab_Nielsen.Controls.Add(Me.TabControlNielsen_NielsenSettings)
+            Me.TabControlPanelNielsenTab_Nielsen.Controls.Add(Me.LabelNielsen_StatusDescription)
+            Me.TabControlPanelNielsenTab_Nielsen.Controls.Add(Me.LabelNielsen_Status)
+            Me.TabControlPanelNielsenTab_Nielsen.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNielsenTab_Nielsen.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNielsenTab_Nielsen.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelNielsenTab_Nielsen.Name = "TabControlPanelNielsenTab_Nielsen"
+            Me.TabControlPanelNielsenTab_Nielsen.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNielsenTab_Nielsen.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelNielsenTab_Nielsen.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNielsenTab_Nielsen.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNielsenTab_Nielsen.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNielsenTab_Nielsen.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNielsenTab_Nielsen.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNielsenTab_Nielsen.Style.GradientAngle = 90
+            Me.TabControlPanelNielsenTab_Nielsen.TabIndex = 63
+            Me.TabControlPanelNielsenTab_Nielsen.TabItem = Me.TabItemServices_NielsenTab
+            '
+            'TabControlNielsen_NielsenSettings
+            '
+            Me.TabControlNielsen_NielsenSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlNielsen_NielsenSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlNielsen_NielsenSettings.CanReorderTabs = False
+            Me.TabControlNielsen_NielsenSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlNielsen_NielsenSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlNielsen_NielsenSettings.Controls.Add(Me.TabControlPanelNielsenSettingsTab_NielsenSettings)
+            Me.TabControlNielsen_NielsenSettings.Controls.Add(Me.TabControlPanelNielsenTab_NIelsenLog)
+            Me.TabControlNielsen_NielsenSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlNielsen_NielsenSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlNielsen_NielsenSettings.Name = "TabControlNielsen_NielsenSettings"
+            Me.TabControlNielsen_NielsenSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlNielsen_NielsenSettings.SelectedTabIndex = 0
+            Me.TabControlNielsen_NielsenSettings.Size = New System.Drawing.Size(1018, 340)
+            Me.TabControlNielsen_NielsenSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlNielsen_NielsenSettings.TabIndex = 26
+            Me.TabControlNielsen_NielsenSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlNielsen_NielsenSettings.Tabs.Add(Me.TabItemNielsenSettings_NielsenSettingsTab)
+            Me.TabControlNielsen_NielsenSettings.Tabs.Add(Me.TabItemNielsenSettings_NielsenLogTab)
+            '
+            'TabControlPanelNielsenSettingsTab_NielsenSettings
+            '
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.LabelNielsenSettings_Employee)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.ComboBoxNielsenSettings_Employee)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.LabelNielsenSettings_RunAt)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Controls.Add(Me.DateTimePickerNielsenSettings_RunAtDaily)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Name = "TabControlPanelNielsenSettingsTab_NielsenSettings"
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.Style.GradientAngle = 90
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.TabIndex = 1
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.TabItem = Me.TabItemNielsenSettings_NielsenSettingsTab
+            '
+            'LabelNielsenSettings_Employee
+            '
+            Me.LabelNielsenSettings_Employee.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsenSettings_Employee.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsenSettings_Employee.Location = New System.Drawing.Point(4, 31)
+            Me.LabelNielsenSettings_Employee.Name = "LabelNielsenSettings_Employee"
+            Me.LabelNielsenSettings_Employee.Size = New System.Drawing.Size(90, 20)
+            Me.LabelNielsenSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsenSettings_Employee.TabIndex = 10
+            Me.LabelNielsenSettings_Employee.Text = "Employee:"
+            '
+            'ComboBoxNielsenSettings_Employee
+            '
+            Me.ComboBoxNielsenSettings_Employee.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxNielsenSettings_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxNielsenSettings_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxNielsenSettings_Employee.AutoFindItemInDataSource = False
+            Me.ComboBoxNielsenSettings_Employee.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxNielsenSettings_Employee.BookmarkingEnabled = False
+            Me.ComboBoxNielsenSettings_Employee.ClientCode = ""
+            Me.ComboBoxNielsenSettings_Employee.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.Employee
+            Me.ComboBoxNielsenSettings_Employee.DisableMouseWheel = False
+            Me.ComboBoxNielsenSettings_Employee.DisplayMember = "FullName"
+            Me.ComboBoxNielsenSettings_Employee.DisplayName = ""
+            Me.ComboBoxNielsenSettings_Employee.DivisionCode = ""
+            Me.ComboBoxNielsenSettings_Employee.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxNielsenSettings_Employee.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxNielsenSettings_Employee.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxNielsenSettings_Employee.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxNielsenSettings_Employee.FocusHighlightEnabled = True
+            Me.ComboBoxNielsenSettings_Employee.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxNielsenSettings_Employee.FormattingEnabled = True
+            Me.ComboBoxNielsenSettings_Employee.ItemHeight = 16
+            Me.ComboBoxNielsenSettings_Employee.Location = New System.Drawing.Point(100, 32)
+            Me.ComboBoxNielsenSettings_Employee.Name = "ComboBoxNielsenSettings_Employee"
+            Me.ComboBoxNielsenSettings_Employee.ReadOnly = False
+            Me.ComboBoxNielsenSettings_Employee.SecurityEnabled = True
+            Me.ComboBoxNielsenSettings_Employee.Size = New System.Drawing.Size(180, 22)
+            Me.ComboBoxNielsenSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxNielsenSettings_Employee.TabIndex = 9
+            Me.ComboBoxNielsenSettings_Employee.TabOnEnter = True
+            Me.ComboBoxNielsenSettings_Employee.ValueMember = "Code"
+            Me.ComboBoxNielsenSettings_Employee.WatermarkText = "Select Employee"
+            '
+            'LabelNielsenSettings_RunAt
+            '
+            Me.LabelNielsenSettings_RunAt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsenSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsenSettings_RunAt.Location = New System.Drawing.Point(4, 4)
+            Me.LabelNielsenSettings_RunAt.Name = "LabelNielsenSettings_RunAt"
+            Me.LabelNielsenSettings_RunAt.Size = New System.Drawing.Size(90, 20)
+            Me.LabelNielsenSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsenSettings_RunAt.TabIndex = 0
+            Me.LabelNielsenSettings_RunAt.Text = "Run At (Daily):"
+            '
+            'DateTimePickerNielsenSettings_RunAtDaily
+            '
+            Me.DateTimePickerNielsenSettings_RunAtDaily.AllowEmptyState = False
+            Me.DateTimePickerNielsenSettings_RunAtDaily.AutoResolveFreeTextEntries = False
+            '
+            '
+            '
+            Me.DateTimePickerNielsenSettings_RunAtDaily.BackgroundStyle.Class = "DateTimeInputBackground"
+            Me.DateTimePickerNielsenSettings_RunAtDaily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenSettings_RunAtDaily.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
+            Me.DateTimePickerNielsenSettings_RunAtDaily.ButtonFreeText.Checked = True
+            Me.DateTimePickerNielsenSettings_RunAtDaily.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
+            Me.DateTimePickerNielsenSettings_RunAtDaily.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
+            Me.DateTimePickerNielsenSettings_RunAtDaily.DisabledForeColor = System.Drawing.SystemColors.WindowText
+            Me.DateTimePickerNielsenSettings_RunAtDaily.DisplayName = ""
+            Me.DateTimePickerNielsenSettings_RunAtDaily.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.DateTimePickerNielsenSettings_RunAtDaily.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.DateTimePickerNielsenSettings_RunAtDaily.FocusHighlightEnabled = True
+            Me.DateTimePickerNielsenSettings_RunAtDaily.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
+            Me.DateTimePickerNielsenSettings_RunAtDaily.FreeTextEntryMode = True
+            Me.DateTimePickerNielsenSettings_RunAtDaily.IsPopupCalendarOpen = False
+            Me.DateTimePickerNielsenSettings_RunAtDaily.Location = New System.Drawing.Point(100, 6)
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            '
+            '
+            '
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.ClearButtonVisible = True
+            '
+            '
+            '
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.TodayButtonVisible = True
+            Me.DateTimePickerNielsenSettings_RunAtDaily.MonthCalendar.Visible = False
+            Me.DateTimePickerNielsenSettings_RunAtDaily.Name = "DateTimePickerNielsenSettings_RunAtDaily"
+            Me.DateTimePickerNielsenSettings_RunAtDaily.ReadOnly = False
+            Me.DateTimePickerNielsenSettings_RunAtDaily.Size = New System.Drawing.Size(180, 20)
+            Me.DateTimePickerNielsenSettings_RunAtDaily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.DateTimePickerNielsenSettings_RunAtDaily.TabIndex = 1
+            Me.DateTimePickerNielsenSettings_RunAtDaily.TabOnEnter = True
+            Me.DateTimePickerNielsenSettings_RunAtDaily.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
+            Me.DateTimePickerNielsenSettings_RunAtDaily.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
+            '
+            'TabItemNielsenSettings_NielsenSettingsTab
+            '
+            Me.TabItemNielsenSettings_NielsenSettingsTab.AttachedControl = Me.TabControlPanelNielsenSettingsTab_NielsenSettings
+            Me.TabItemNielsenSettings_NielsenSettingsTab.Name = "TabItemNielsenSettings_NielsenSettingsTab"
+            Me.TabItemNielsenSettings_NielsenSettingsTab.Text = "Settings"
+            '
+            'TabControlPanelNielsenTab_NIelsenLog
+            '
+            Me.TabControlPanelNielsenTab_NIelsenLog.Controls.Add(Me.TextBoxNielsenLog_Log)
+            Me.TabControlPanelNielsenTab_NIelsenLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNielsenTab_NIelsenLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNielsenTab_NIelsenLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNielsenTab_NIelsenLog.Name = "TabControlPanelNielsenTab_NIelsenLog"
+            Me.TabControlPanelNielsenTab_NIelsenLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNielsenTab_NIelsenLog.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNielsenTab_NIelsenLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNielsenTab_NIelsenLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNielsenTab_NIelsenLog.Style.GradientAngle = 90
+            Me.TabControlPanelNielsenTab_NIelsenLog.TabIndex = 3
+            Me.TabControlPanelNielsenTab_NIelsenLog.TabItem = Me.TabItemNielsenSettings_NielsenLogTab
+            '
+            'TextBoxNielsenLog_Log
+            '
+            Me.TextBoxNielsenLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxNielsenLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxNielsenLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNielsenLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxNielsenLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxNielsenLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNielsenLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxNielsenLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxNielsenLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNielsenLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNielsenLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxNielsenLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNielsenLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxNielsenLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxNielsenLog_Log.Multiline = True
+            Me.TextBoxNielsenLog_Log.Name = "TextBoxNielsenLog_Log"
+            Me.TextBoxNielsenLog_Log.ReadOnly = True
+            Me.TextBoxNielsenLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxNielsenLog_Log.SecurityEnabled = True
+            Me.TextBoxNielsenLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNielsenLog_Log.Size = New System.Drawing.Size(1016, 311)
+            Me.TextBoxNielsenLog_Log.StartingFolderName = Nothing
+            Me.TextBoxNielsenLog_Log.TabIndex = 5
+            Me.TextBoxNielsenLog_Log.TabOnEnter = True
+            '
+            'TabItemNielsenSettings_NielsenLogTab
+            '
+            Me.TabItemNielsenSettings_NielsenLogTab.AttachedControl = Me.TabControlPanelNielsenTab_NIelsenLog
+            Me.TabItemNielsenSettings_NielsenLogTab.Name = "TabItemNielsenSettings_NielsenLogTab"
+            Me.TabItemNielsenSettings_NielsenLogTab.Text = "Log"
+            '
+            'LabelNielsen_StatusDescription
+            '
+            Me.LabelNielsen_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelNielsen_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsen_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsen_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelNielsen_StatusDescription.Name = "LabelNielsen_StatusDescription"
+            Me.LabelNielsen_StatusDescription.Size = New System.Drawing.Size(972, 20)
+            Me.LabelNielsen_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsen_StatusDescription.TabIndex = 25
+            Me.LabelNielsen_StatusDescription.Text = "Stopped..."
+            '
+            'LabelNielsen_Status
+            '
+            Me.LabelNielsen_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNielsen_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNielsen_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelNielsen_Status.Name = "LabelNielsen_Status"
+            Me.LabelNielsen_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelNielsen_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNielsen_Status.TabIndex = 12
+            Me.LabelNielsen_Status.Text = "Status:"
+            '
+            'TabItemServices_NielsenTab
+            '
+            Me.TabItemServices_NielsenTab.AttachedControl = Me.TabControlPanelNielsenTab_Nielsen
+            Me.TabItemServices_NielsenTab.Name = "TabItemServices_NielsenTab"
+            Me.TabItemServices_NielsenTab.Text = "Nielsen"
+            '
+            'TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning
+            '
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Controls.Add(Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Controls.Add(Me.LabelDocumentRepositoryCapacityWarning_StatusDescription)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Controls.Add(Me.LabelDocumentRepositoryCapacityWarning_Status)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Name = "TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWar" &
+    "ning"
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.GradientAngle = 90
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.TabIndex = 356
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.TabItem = Me.TabItemServices_DocumentRepositoryCapacityWarningTab
+            '
+            'TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings
+            '
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.CanReorderTabs = False
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings)
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog)
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Name = "TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSett" &
+    "ings"
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.SelectedTabIndex = 0
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Size = New System.Drawing.Size(1018, 340)
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.TabIndex = 32
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Tabs.Add(Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab)
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Tabs.Add(Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab)
+            '
+            'TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings
+            '
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.LabelDocumentRepositoryCapacityWarningSettings_Email)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Name = "TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCap" &
+    "acityWarningSettings"
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.GradientAngle = 90
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.TabIndex = 1
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.TabItem = Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab
+            '
+            'NumericInputDocumentRepositoryCapacityWarningSettings_Threshold
+            '
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.Percent
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.EditValue = New Decimal(New Integer() {9, 0, 0, 65536})
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.EnterMoveNextControl = True
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Location = New System.Drawing.Point(100, 56)
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Name = "NumericInputDocumentRepositoryCapacityWarningSettings_Threshold"
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.DisplayFormat.FormatString = "p2"
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.EditFormat.FormatString = "p2"
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.Mask.EditMask = "p2"
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.SecurityEnabled = True
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Size = New System.Drawing.Size(88, 20)
+            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.TabIndex = 5
+            '
+            'LabelDocumentRepositoryCapacityWarningSettings_Threshold
+            '
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Location = New System.Drawing.Point(4, 56)
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Name = "LabelDocumentRepositoryCapacityWarningSettings_Threshold"
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Size = New System.Drawing.Size(90, 20)
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.TabIndex = 4
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Text = "Threshold:"
+            '
+            'LabelDocumentRepositoryCapacityWarningSettings_Email
+            '
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Location = New System.Drawing.Point(4, 30)
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Name = "LabelDocumentRepositoryCapacityWarningSettings_Email"
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Size = New System.Drawing.Size(90, 20)
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.TabIndex = 2
+            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Text = "Email:"
+            '
+            'TextBoxDocumentRepositoryCapacityWarningSettings_Email
+            '
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Border.Class = "TextBoxBorder"
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.CheckSpellingOnValidate = False
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.FocusHighlightEnabled = True
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Location = New System.Drawing.Point(100, 30)
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.MaxFileSize = CType(0, Long)
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Name = "TextBoxDocumentRepositoryCapacityWarningSettings_Email"
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.SecurityEnabled = True
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Size = New System.Drawing.Size(914, 20)
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.StartingFolderName = Nothing
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.TabIndex = 3
+            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.TabOnEnter = True
+            '
+            'LabelDocumentRepositoryCapacityWarningSettings_RunAt
+            '
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Location = New System.Drawing.Point(4, 4)
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Name = "LabelDocumentRepositoryCapacityWarningSettings_RunAt"
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Size = New System.Drawing.Size(90, 20)
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.TabIndex = 0
+            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Text = "Run At (Daily):"
+            '
+            'DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt
+            '
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.AllowEmptyState = False
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.AutoResolveFreeTextEntries = False
+            '
+            '
+            '
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.BackgroundStyle.Class = "DateTimeInputBackground"
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ButtonFreeText.Checked = True
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.DisabledForeColor = System.Drawing.SystemColors.WindowText
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.DisplayName = ""
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.FocusHighlightEnabled = True
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.FreeTextEntryMode = True
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.IsPopupCalendarOpen = False
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Location = New System.Drawing.Point(100, 6)
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            '
+            '
+            '
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.ClearButtonVisible = True
+            '
+            '
+            '
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
+            '
+            '
+            '
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.TodayButtonVisible = True
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.Visible = False
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Name = "DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt"
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ReadOnly = False
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Size = New System.Drawing.Size(88, 20)
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.TabIndex = 1
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.TabOnEnter = True
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
+            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
+            '
+            'TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab
+            '
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab.AttachedControl = Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab.Name = "TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarnin" &
+    "gSettingsTab"
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab.Text = "Settings"
+            '
+            'TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog
+            '
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Controls.Add(Me.TextBoxDocumentRepositoryCapacityWarningLog_Log)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Name = "TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacity" &
+    "WarningLog"
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.GradientAngle = 90
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.TabIndex = 3
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.TabItem = Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab
+            '
+            'TextBoxDocumentRepositoryCapacityWarningLog_Log
+            '
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Multiline = True
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Name = "TextBoxDocumentRepositoryCapacityWarningLog_Log"
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ReadOnly = True
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.SecurityEnabled = True
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Size = New System.Drawing.Size(1016, 311)
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.StartingFolderName = Nothing
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.TabIndex = 5
+            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.TabOnEnter = True
+            '
+            'TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab
+            '
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab.AttachedControl = Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab.Name = "TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarnin" &
+    "gLogTab"
+            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab.Text = "Log"
+            '
+            'LabelDocumentRepositoryCapacityWarning_StatusDescription
+            '
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Name = "LabelDocumentRepositoryCapacityWarning_StatusDescription"
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Size = New System.Drawing.Size(971, 20)
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.TabIndex = 31
+            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Text = "Stopped..."
+            '
+            'LabelDocumentRepositoryCapacityWarning_Status
+            '
+            Me.LabelDocumentRepositoryCapacityWarning_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelDocumentRepositoryCapacityWarning_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelDocumentRepositoryCapacityWarning_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelDocumentRepositoryCapacityWarning_Status.Name = "LabelDocumentRepositoryCapacityWarning_Status"
+            Me.LabelDocumentRepositoryCapacityWarning_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelDocumentRepositoryCapacityWarning_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelDocumentRepositoryCapacityWarning_Status.TabIndex = 30
+            Me.LabelDocumentRepositoryCapacityWarning_Status.Text = "Status:"
+            '
+            'TabItemServices_DocumentRepositoryCapacityWarningTab
+            '
+            Me.TabItemServices_DocumentRepositoryCapacityWarningTab.AttachedControl = Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning
+            Me.TabItemServices_DocumentRepositoryCapacityWarningTab.Name = "TabItemServices_DocumentRepositoryCapacityWarningTab"
+            Me.TabItemServices_DocumentRepositoryCapacityWarningTab.Text = "Document Repository Capacity Warning"
+            '
+            'TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments
+            '
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Controls.Add(Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Controls.Add(Me.LabelAutomatedAssignments_StatusDescription)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Controls.Add(Me.LabelAutomatedAssignments_Status)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Name = "TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments"
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.GradientAngle = 90
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.TabIndex = 286
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.TabItem = Me.TabItemServices_AutomatedAssignmentsTab
+            '
+            'TabControlAutomatedAssignments_AutomatedAssignmentsSettings
+            '
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.CanReorderTabs = False
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Controls.Add(Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings)
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Controls.Add(Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog)
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Name = "TabControlAutomatedAssignments_AutomatedAssignmentsSettings"
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.SelectedTabIndex = 0
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Size = New System.Drawing.Size(1018, 340)
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.TabIndex = 10
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Tabs.Add(Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab)
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Tabs.Add(Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab)
+            '
+            'TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings
+            '
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Controls.Add(Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery)
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Controls.Add(Me.LabelAutomatedAssignmentsSettings_RunAt)
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Name = "TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings"
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.GradientAngle = 90
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.TabIndex = 1
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.TabItem = Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab
+            '
+            'NumericInputAutomatedAssignmentsSettings_RunAtEvery
+            '
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.EnterMoveNextControl = True
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Location = New System.Drawing.Point(132, 4)
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Name = "NumericInputAutomatedAssignmentsSettings_RunAtEvery"
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.IsFloatValue = False
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.Mask.EditMask = "f0"
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.MaxValue = New Decimal(New Integer() {2147483647, 0, 0, 0})
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.MinValue = New Decimal(New Integer() {-2147483648, 0, 0, -2147483648})
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.SecurityEnabled = True
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Size = New System.Drawing.Size(75, 20)
+            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.TabIndex = 1
+            '
+            'LabelAutomatedAssignmentsSettings_RunAt
+            '
+            Me.LabelAutomatedAssignmentsSettings_RunAt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelAutomatedAssignmentsSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelAutomatedAssignmentsSettings_RunAt.Location = New System.Drawing.Point(4, 4)
+            Me.LabelAutomatedAssignmentsSettings_RunAt.Name = "LabelAutomatedAssignmentsSettings_RunAt"
+            Me.LabelAutomatedAssignmentsSettings_RunAt.Size = New System.Drawing.Size(122, 20)
+            Me.LabelAutomatedAssignmentsSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelAutomatedAssignmentsSettings_RunAt.TabIndex = 0
+            Me.LabelAutomatedAssignmentsSettings_RunAt.Text = "Run at every min(s):"
+            '
+            'TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab
+            '
+            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab.AttachedControl = Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings
+            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab.Name = "TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab"
+            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab.Text = "Settings"
+            '
+            'TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog
+            '
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Controls.Add(Me.TextBoxAutomatedAssignmentsLog_Log)
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Name = "TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog"
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Size = New System.Drawing.Size(1018, 313)
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.GradientAngle = 90
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.TabIndex = 3
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.TabItem = Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab
+            '
+            'TextBoxAutomatedAssignmentsLog_Log
+            '
+            Me.TextBoxAutomatedAssignmentsLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxAutomatedAssignmentsLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxAutomatedAssignmentsLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxAutomatedAssignmentsLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxAutomatedAssignmentsLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxAutomatedAssignmentsLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxAutomatedAssignmentsLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxAutomatedAssignmentsLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxAutomatedAssignmentsLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxAutomatedAssignmentsLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxAutomatedAssignmentsLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxAutomatedAssignmentsLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxAutomatedAssignmentsLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxAutomatedAssignmentsLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxAutomatedAssignmentsLog_Log.Multiline = True
+            Me.TextBoxAutomatedAssignmentsLog_Log.Name = "TextBoxAutomatedAssignmentsLog_Log"
+            Me.TextBoxAutomatedAssignmentsLog_Log.ReadOnly = True
+            Me.TextBoxAutomatedAssignmentsLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxAutomatedAssignmentsLog_Log.SecurityEnabled = True
+            Me.TextBoxAutomatedAssignmentsLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxAutomatedAssignmentsLog_Log.Size = New System.Drawing.Size(1016, 311)
+            Me.TextBoxAutomatedAssignmentsLog_Log.StartingFolderName = Nothing
+            Me.TextBoxAutomatedAssignmentsLog_Log.TabIndex = 0
+            Me.TextBoxAutomatedAssignmentsLog_Log.TabOnEnter = True
+            '
+            'TabItemAutomatedAssignments_AutomatedAssignmentsLogTab
+            '
+            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab.AttachedControl = Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog
+            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab.Name = "TabItemAutomatedAssignments_AutomatedAssignmentsLogTab"
+            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab.Text = "Log"
+            '
+            'LabelAutomatedAssignments_StatusDescription
+            '
+            Me.LabelAutomatedAssignments_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelAutomatedAssignments_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelAutomatedAssignments_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelAutomatedAssignments_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelAutomatedAssignments_StatusDescription.Name = "LabelAutomatedAssignments_StatusDescription"
+            Me.LabelAutomatedAssignments_StatusDescription.Size = New System.Drawing.Size(972, 20)
+            Me.LabelAutomatedAssignments_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelAutomatedAssignments_StatusDescription.TabIndex = 9
+            Me.LabelAutomatedAssignments_StatusDescription.Text = "Stopped..."
+            '
+            'LabelAutomatedAssignments_Status
+            '
+            Me.LabelAutomatedAssignments_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelAutomatedAssignments_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelAutomatedAssignments_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelAutomatedAssignments_Status.Name = "LabelAutomatedAssignments_Status"
+            Me.LabelAutomatedAssignments_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelAutomatedAssignments_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelAutomatedAssignments_Status.TabIndex = 8
+            Me.LabelAutomatedAssignments_Status.Text = "Status:"
+            '
+            'TabItemServices_AutomatedAssignmentsTab
+            '
+            Me.TabItemServices_AutomatedAssignmentsTab.AttachedControl = Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments
+            Me.TabItemServices_AutomatedAssignmentsTab.Name = "TabItemServices_AutomatedAssignmentsTab"
+            Me.TabItemServices_AutomatedAssignmentsTab.Text = "Automated Assignments"
+            '
+            'TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner
+            '
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Controls.Add(Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Controls.Add(Me.LabelCSIPreferredPartner_StatusDescription)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Controls.Add(Me.LabelCSIPreferredPartner_Status)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Location = New System.Drawing.Point(0, 71)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Name = "TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner"
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Size = New System.Drawing.Size(1042, 382)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.GradientAngle = 90
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.TabIndex = 12
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.TabItem = Me.TabItemServices_CSIPreferredPartnerTab
+            '
+            'TabControlCSIPreferredPartner_CSIPreferredPartnerSettings
+            '
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.BackColor = System.Drawing.Color.White
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.CanReorderTabs = False
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Controls.Add(Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings)
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Controls.Add(Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog)
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ForeColor = System.Drawing.Color.Black
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Location = New System.Drawing.Point(12, 30)
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Name = "TabControlCSIPreferredPartner_CSIPreferredPartnerSettings"
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.SelectedTabIndex = 0
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Size = New System.Drawing.Size(1018, 341)
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.TabIndex = 7
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Tabs.Add(Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab)
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Tabs.Add(Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab)
+            '
+            'TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings
+            '
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.LabelCSIPreferredPartnerSettings_UploadFolder)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.TextBoxCSIPreferredPartnerSettings_UploadFolder)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.LabelCSIPreferredPartnerSettings_DownloadFolder)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Name = "TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings"
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Size = New System.Drawing.Size(1018, 314)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.GradientAngle = 90
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.TabIndex = 1
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.TabItem = Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab
+            '
+            'LabelCSIPreferredPartnerSettings_UploadFolder
+            '
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Location = New System.Drawing.Point(4, 30)
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Name = "LabelCSIPreferredPartnerSettings_UploadFolder"
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Size = New System.Drawing.Size(90, 20)
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.TabIndex = 2
+            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Text = "Upload Folder:"
+            '
+            'TextBoxCSIPreferredPartnerSettings_UploadFolder
+            '
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Border.Class = "TextBoxBorder"
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ButtonCustom.Visible = True
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.CheckSpellingOnValidate = False
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Folder
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.FocusHighlightEnabled = True
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Location = New System.Drawing.Point(100, 30)
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.MaxFileSize = CType(0, Long)
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Name = "TextBoxCSIPreferredPartnerSettings_UploadFolder"
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.SecurityEnabled = True
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Size = New System.Drawing.Size(915, 20)
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.StartingFolderName = Nothing
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.TabIndex = 3
+            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.TabOnEnter = True
+            '
+            'LabelCSIPreferredPartnerSettings_DownloadFolder
+            '
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Location = New System.Drawing.Point(4, 4)
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Name = "LabelCSIPreferredPartnerSettings_DownloadFolder"
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Size = New System.Drawing.Size(90, 20)
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.TabIndex = 0
+            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Text = "Download Folder:"
+            '
+            'TextBoxCSIPreferredPartnerSettings_DownloadFolder
+            '
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Border.Class = "TextBoxBorder"
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ButtonCustom.Visible = True
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.CheckSpellingOnValidate = False
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Folder
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.FocusHighlightEnabled = True
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Location = New System.Drawing.Point(100, 4)
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.MaxFileSize = CType(0, Long)
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Name = "TextBoxCSIPreferredPartnerSettings_DownloadFolder"
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.SecurityEnabled = True
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Size = New System.Drawing.Size(915, 20)
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.StartingFolderName = Nothing
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.TabIndex = 1
+            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.TabOnEnter = True
+            '
+            'TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab
+            '
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab.AttachedControl = Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab.Name = "TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab"
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab.Text = "Settings"
+            '
+            'TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog
+            '
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Controls.Add(Me.TextBoxCSIPreferredPartnerLog_Log)
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Name = "TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog"
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Size = New System.Drawing.Size(1018, 314)
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.GradientAngle = 90
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.TabIndex = 3
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.TabItem = Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab
+            '
+            'TextBoxCSIPreferredPartnerLog_Log
+            '
+            Me.TextBoxCSIPreferredPartnerLog_Log.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxCSIPreferredPartnerLog_Log.Border.Class = "TextBoxBorder"
+            Me.TextBoxCSIPreferredPartnerLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxCSIPreferredPartnerLog_Log.CheckSpellingOnValidate = False
+            Me.TextBoxCSIPreferredPartnerLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxCSIPreferredPartnerLog_Log.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxCSIPreferredPartnerLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TextBoxCSIPreferredPartnerLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxCSIPreferredPartnerLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxCSIPreferredPartnerLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxCSIPreferredPartnerLog_Log.FocusHighlightEnabled = True
+            Me.TextBoxCSIPreferredPartnerLog_Log.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxCSIPreferredPartnerLog_Log.Location = New System.Drawing.Point(1, 1)
+            Me.TextBoxCSIPreferredPartnerLog_Log.MaxFileSize = CType(0, Long)
+            Me.TextBoxCSIPreferredPartnerLog_Log.Multiline = True
+            Me.TextBoxCSIPreferredPartnerLog_Log.Name = "TextBoxCSIPreferredPartnerLog_Log"
+            Me.TextBoxCSIPreferredPartnerLog_Log.ReadOnly = True
+            Me.TextBoxCSIPreferredPartnerLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.TextBoxCSIPreferredPartnerLog_Log.SecurityEnabled = True
+            Me.TextBoxCSIPreferredPartnerLog_Log.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxCSIPreferredPartnerLog_Log.Size = New System.Drawing.Size(1016, 312)
+            Me.TextBoxCSIPreferredPartnerLog_Log.StartingFolderName = Nothing
+            Me.TextBoxCSIPreferredPartnerLog_Log.TabIndex = 17
+            Me.TextBoxCSIPreferredPartnerLog_Log.TabOnEnter = True
+            '
+            'TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab
+            '
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab.AttachedControl = Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab.Name = "TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab"
+            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab.Text = "Log"
+            '
+            'LabelCSIPreferredPartner_StatusDescription
+            '
+            Me.LabelCSIPreferredPartner_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelCSIPreferredPartner_StatusDescription.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelCSIPreferredPartner_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCSIPreferredPartner_StatusDescription.Location = New System.Drawing.Point(58, 4)
+            Me.LabelCSIPreferredPartner_StatusDescription.Name = "LabelCSIPreferredPartner_StatusDescription"
+            Me.LabelCSIPreferredPartner_StatusDescription.Size = New System.Drawing.Size(972, 20)
+            Me.LabelCSIPreferredPartner_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCSIPreferredPartner_StatusDescription.TabIndex = 6
+            Me.LabelCSIPreferredPartner_StatusDescription.Text = "Stopped..."
+            '
+            'LabelCSIPreferredPartner_Status
+            '
+            Me.LabelCSIPreferredPartner_Status.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelCSIPreferredPartner_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCSIPreferredPartner_Status.Location = New System.Drawing.Point(12, 4)
+            Me.LabelCSIPreferredPartner_Status.Name = "LabelCSIPreferredPartner_Status"
+            Me.LabelCSIPreferredPartner_Status.Size = New System.Drawing.Size(40, 20)
+            Me.LabelCSIPreferredPartner_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCSIPreferredPartner_Status.TabIndex = 5
+            Me.LabelCSIPreferredPartner_Status.Text = "Status:"
+            '
+            'TabItemServices_CSIPreferredPartnerTab
+            '
+            Me.TabItemServices_CSIPreferredPartnerTab.AttachedControl = Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner
+            Me.TabItemServices_CSIPreferredPartnerTab.Name = "TabItemServices_CSIPreferredPartnerTab"
+            Me.TabItemServices_CSIPreferredPartnerTab.Text = "CSI Preferred Partner"
             '
             'TabControlPanelContractTab_Contract
             '
@@ -5359,7 +7290,7 @@
             Me.NumericInputThresholds_Level3Start.EnterMoveNextControl = True
             Me.NumericInputThresholds_Level3Start.Location = New System.Drawing.Point(144, 129)
             Me.NumericInputThresholds_Level3Start.Name = "NumericInputThresholds_Level3Start"
-            Me.NumericInputThresholds_Level3Start.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+            Me.NumericInputThresholds_Level3Start.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
             Me.NumericInputThresholds_Level3Start.Properties.DisplayFormat.FormatString = "p2"
             Me.NumericInputThresholds_Level3Start.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
             Me.NumericInputThresholds_Level3Start.Properties.EditFormat.FormatString = "p2"
@@ -5379,7 +7310,7 @@
             Me.NumericInputThresholds_Level2End.EnterMoveNextControl = True
             Me.NumericInputThresholds_Level2End.Location = New System.Drawing.Point(240, 77)
             Me.NumericInputThresholds_Level2End.Name = "NumericInputThresholds_Level2End"
-            Me.NumericInputThresholds_Level2End.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+            Me.NumericInputThresholds_Level2End.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
             Me.NumericInputThresholds_Level2End.Properties.DisplayFormat.FormatString = "p2"
             Me.NumericInputThresholds_Level2End.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
             Me.NumericInputThresholds_Level2End.Properties.EditFormat.FormatString = "p2"
@@ -5399,7 +7330,7 @@
             Me.NumericInputThresholds_Level2Start.EnterMoveNextControl = True
             Me.NumericInputThresholds_Level2Start.Location = New System.Drawing.Point(144, 77)
             Me.NumericInputThresholds_Level2Start.Name = "NumericInputThresholds_Level2Start"
-            Me.NumericInputThresholds_Level2Start.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+            Me.NumericInputThresholds_Level2Start.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
             Me.NumericInputThresholds_Level2Start.Properties.DisplayFormat.FormatString = "p2"
             Me.NumericInputThresholds_Level2Start.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
             Me.NumericInputThresholds_Level2Start.Properties.EditFormat.FormatString = "p2"
@@ -5419,7 +7350,7 @@
             Me.NumericInputThresholds_Level1End.EnterMoveNextControl = True
             Me.NumericInputThresholds_Level1End.Location = New System.Drawing.Point(240, 25)
             Me.NumericInputThresholds_Level1End.Name = "NumericInputThresholds_Level1End"
-            Me.NumericInputThresholds_Level1End.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+            Me.NumericInputThresholds_Level1End.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
             Me.NumericInputThresholds_Level1End.Properties.DisplayFormat.FormatString = "p2"
             Me.NumericInputThresholds_Level1End.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
             Me.NumericInputThresholds_Level1End.Properties.EditFormat.FormatString = "p2"
@@ -5439,7 +7370,7 @@
             Me.NumericInputThresholds_Level1Start.EnterMoveNextControl = True
             Me.NumericInputThresholds_Level1Start.Location = New System.Drawing.Point(144, 25)
             Me.NumericInputThresholds_Level1Start.Name = "NumericInputThresholds_Level1Start"
-            Me.NumericInputThresholds_Level1Start.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+            Me.NumericInputThresholds_Level1Start.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions6, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject21, SerializableAppearanceObject22, SerializableAppearanceObject23, SerializableAppearanceObject24, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
             Me.NumericInputThresholds_Level1Start.Properties.DisplayFormat.FormatString = "p2"
             Me.NumericInputThresholds_Level1Start.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
             Me.NumericInputThresholds_Level1Start.Properties.EditFormat.FormatString = "p2"
@@ -5810,1008 +7741,6 @@
             Me.TabItemServices_QvAAlertTab.AttachedControl = Me.TabControlPanelQvAAlertTab_QvAAlert
             Me.TabItemServices_QvAAlertTab.Name = "TabItemServices_QvAAlertTab"
             Me.TabItemServices_QvAAlertTab.Text = "QvA Alert"
-            '
-            'TabControlPanelEmailListenerTab_EmailListener
-            '
-            Me.TabControlPanelEmailListenerTab_EmailListener.Controls.Add(Me.TabControlEmailListener_EmailListenerSettings)
-            Me.TabControlPanelEmailListenerTab_EmailListener.Controls.Add(Me.LabelEmailListener_StatusDescription)
-            Me.TabControlPanelEmailListenerTab_EmailListener.Controls.Add(Me.LabelEmailListener_Status)
-            Me.TabControlPanelEmailListenerTab_EmailListener.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelEmailListenerTab_EmailListener.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelEmailListenerTab_EmailListener.Location = New System.Drawing.Point(0, 71)
-            Me.TabControlPanelEmailListenerTab_EmailListener.Name = "TabControlPanelEmailListenerTab_EmailListener"
-            Me.TabControlPanelEmailListenerTab_EmailListener.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelEmailListenerTab_EmailListener.Size = New System.Drawing.Size(1042, 382)
-            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelEmailListenerTab_EmailListener.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelEmailListenerTab_EmailListener.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelEmailListenerTab_EmailListener.Style.GradientAngle = 90
-            Me.TabControlPanelEmailListenerTab_EmailListener.TabIndex = 1
-            Me.TabControlPanelEmailListenerTab_EmailListener.TabItem = Me.TabItemServices_EmailListenerTab
-            '
-            'TabControlEmailListener_EmailListenerSettings
-            '
-            Me.TabControlEmailListener_EmailListenerSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlEmailListener_EmailListenerSettings.BackColor = System.Drawing.Color.White
-            Me.TabControlEmailListener_EmailListenerSettings.CanReorderTabs = False
-            Me.TabControlEmailListener_EmailListenerSettings.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlEmailListener_EmailListenerSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlEmailListener_EmailListenerSettings.Controls.Add(Me.TabControlPanelSettingsTab_EmailListenerSettings)
-            Me.TabControlEmailListener_EmailListenerSettings.Controls.Add(Me.TabControlPanelLogTab_EmailListenerLog)
-            Me.TabControlEmailListener_EmailListenerSettings.ForeColor = System.Drawing.Color.Black
-            Me.TabControlEmailListener_EmailListenerSettings.Location = New System.Drawing.Point(12, 30)
-            Me.TabControlEmailListener_EmailListenerSettings.Name = "TabControlEmailListener_EmailListenerSettings"
-            Me.TabControlEmailListener_EmailListenerSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlEmailListener_EmailListenerSettings.SelectedTabIndex = 0
-            Me.TabControlEmailListener_EmailListenerSettings.Size = New System.Drawing.Size(1018, 340)
-            Me.TabControlEmailListener_EmailListenerSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlEmailListener_EmailListenerSettings.TabIndex = 7
-            Me.TabControlEmailListener_EmailListenerSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlEmailListener_EmailListenerSettings.Tabs.Add(Me.TabItemEmailListenerSettings_SettingsTab)
-            Me.TabControlEmailListener_EmailListenerSettings.Tabs.Add(Me.TabItemEmailListenerSettings_LogTab)
-            '
-            'TabControlPanelSettingsTab_EmailListenerSettings
-            '
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.NumericInputEmailListenerSettings_RunAtEvery)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.TextBoxEmailListenerSettings_StartofSignatureCode)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.LabelEmailListenerSettings_StartofSignatureCode)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Controls.Add(Me.LabelEmailListenerSettings_RunAtEvery)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Name = "TabControlPanelSettingsTab_EmailListenerSettings"
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.Style.GradientAngle = 90
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.TabIndex = 1
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.TabItem = Me.TabItemEmailListenerSettings_SettingsTab
-            '
-            'CheckBoxEmailListenerSettings_SendEmailToAlertRecipients
-            '
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValue = 0
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValueChecked = 1
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.CheckValueUnchecked = 0
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.ChildControls = CType(resources.GetObject("CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Location = New System.Drawing.Point(132, 56)
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Name = "CheckBoxEmailListenerSettings_SendEmailToAlertRecipients"
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.OldestSibling = Nothing
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.SecurityEnabled = True
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.SiblingControls = CType(resources.GetObject("CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Size = New System.Drawing.Size(187, 20)
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.TabIndex = 4
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.TabOnEnter = True
-            Me.CheckBoxEmailListenerSettings_SendEmailToAlertRecipients.Text = "Send Email To Alert Recipients"
-            '
-            'NumericInputEmailListenerSettings_RunAtEvery
-            '
-            Me.NumericInputEmailListenerSettings_RunAtEvery.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputEmailListenerSettings_RunAtEvery.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
-            Me.NumericInputEmailListenerSettings_RunAtEvery.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputEmailListenerSettings_RunAtEvery.EnterMoveNextControl = True
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Location = New System.Drawing.Point(132, 4)
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Name = "NumericInputEmailListenerSettings_RunAtEvery"
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.IsFloatValue = False
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.Mask.EditMask = "f0"
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.MaxValue = New Decimal(New Integer() {2147483647, 0, 0, 0})
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Properties.MinValue = New Decimal(New Integer() {-2147483648, 0, 0, -2147483648})
-            Me.NumericInputEmailListenerSettings_RunAtEvery.SecurityEnabled = True
-            Me.NumericInputEmailListenerSettings_RunAtEvery.Size = New System.Drawing.Size(75, 20)
-            Me.NumericInputEmailListenerSettings_RunAtEvery.TabIndex = 1
-            '
-            'TextBoxEmailListenerSettings_StartofSignatureCode
-            '
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Border.Class = "TextBoxBorder"
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.CheckSpellingOnValidate = False
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.FocusHighlightEnabled = True
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Location = New System.Drawing.Point(132, 30)
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.MaxFileSize = CType(0, Long)
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Name = "TextBoxEmailListenerSettings_StartofSignatureCode"
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.SecurityEnabled = True
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.Size = New System.Drawing.Size(883, 20)
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.StartingFolderName = Nothing
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.TabIndex = 3
-            Me.TextBoxEmailListenerSettings_StartofSignatureCode.TabOnEnter = True
-            '
-            'LabelEmailListenerSettings_StartofSignatureCode
-            '
-            Me.LabelEmailListenerSettings_StartofSignatureCode.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelEmailListenerSettings_StartofSignatureCode.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelEmailListenerSettings_StartofSignatureCode.Location = New System.Drawing.Point(4, 30)
-            Me.LabelEmailListenerSettings_StartofSignatureCode.Name = "LabelEmailListenerSettings_StartofSignatureCode"
-            Me.LabelEmailListenerSettings_StartofSignatureCode.Size = New System.Drawing.Size(122, 20)
-            Me.LabelEmailListenerSettings_StartofSignatureCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelEmailListenerSettings_StartofSignatureCode.TabIndex = 2
-            Me.LabelEmailListenerSettings_StartofSignatureCode.Text = "Start of Signature Code:"
-            '
-            'LabelEmailListenerSettings_RunAtEvery
-            '
-            Me.LabelEmailListenerSettings_RunAtEvery.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelEmailListenerSettings_RunAtEvery.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelEmailListenerSettings_RunAtEvery.Location = New System.Drawing.Point(4, 4)
-            Me.LabelEmailListenerSettings_RunAtEvery.Name = "LabelEmailListenerSettings_RunAtEvery"
-            Me.LabelEmailListenerSettings_RunAtEvery.Size = New System.Drawing.Size(122, 20)
-            Me.LabelEmailListenerSettings_RunAtEvery.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelEmailListenerSettings_RunAtEvery.TabIndex = 0
-            Me.LabelEmailListenerSettings_RunAtEvery.Text = "Run at every min(s):"
-            '
-            'TabItemEmailListenerSettings_SettingsTab
-            '
-            Me.TabItemEmailListenerSettings_SettingsTab.AttachedControl = Me.TabControlPanelSettingsTab_EmailListenerSettings
-            Me.TabItemEmailListenerSettings_SettingsTab.Name = "TabItemEmailListenerSettings_SettingsTab"
-            Me.TabItemEmailListenerSettings_SettingsTab.Text = "Settings"
-            '
-            'TabControlPanelLogTab_EmailListenerLog
-            '
-            Me.TabControlPanelLogTab_EmailListenerLog.Controls.Add(Me.TextBoxEmailListenerLog_Log)
-            Me.TabControlPanelLogTab_EmailListenerLog.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelLogTab_EmailListenerLog.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelLogTab_EmailListenerLog.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelLogTab_EmailListenerLog.Name = "TabControlPanelLogTab_EmailListenerLog"
-            Me.TabControlPanelLogTab_EmailListenerLog.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelLogTab_EmailListenerLog.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelLogTab_EmailListenerLog.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelLogTab_EmailListenerLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelLogTab_EmailListenerLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelLogTab_EmailListenerLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelLogTab_EmailListenerLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelLogTab_EmailListenerLog.Style.GradientAngle = 90
-            Me.TabControlPanelLogTab_EmailListenerLog.TabIndex = 3
-            Me.TabControlPanelLogTab_EmailListenerLog.TabItem = Me.TabItemEmailListenerSettings_LogTab
-            '
-            'TextBoxEmailListenerLog_Log
-            '
-            Me.TextBoxEmailListenerLog_Log.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxEmailListenerLog_Log.Border.Class = "TextBoxBorder"
-            Me.TextBoxEmailListenerLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxEmailListenerLog_Log.CheckSpellingOnValidate = False
-            Me.TextBoxEmailListenerLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxEmailListenerLog_Log.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxEmailListenerLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TextBoxEmailListenerLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxEmailListenerLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxEmailListenerLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxEmailListenerLog_Log.FocusHighlightEnabled = True
-            Me.TextBoxEmailListenerLog_Log.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxEmailListenerLog_Log.Location = New System.Drawing.Point(1, 1)
-            Me.TextBoxEmailListenerLog_Log.MaxFileSize = CType(0, Long)
-            Me.TextBoxEmailListenerLog_Log.Multiline = True
-            Me.TextBoxEmailListenerLog_Log.Name = "TextBoxEmailListenerLog_Log"
-            Me.TextBoxEmailListenerLog_Log.ReadOnly = True
-            Me.TextBoxEmailListenerLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxEmailListenerLog_Log.SecurityEnabled = True
-            Me.TextBoxEmailListenerLog_Log.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxEmailListenerLog_Log.Size = New System.Drawing.Size(1016, 311)
-            Me.TextBoxEmailListenerLog_Log.StartingFolderName = Nothing
-            Me.TextBoxEmailListenerLog_Log.TabIndex = 0
-            Me.TextBoxEmailListenerLog_Log.TabOnEnter = True
-            '
-            'TabItemEmailListenerSettings_LogTab
-            '
-            Me.TabItemEmailListenerSettings_LogTab.AttachedControl = Me.TabControlPanelLogTab_EmailListenerLog
-            Me.TabItemEmailListenerSettings_LogTab.Name = "TabItemEmailListenerSettings_LogTab"
-            Me.TabItemEmailListenerSettings_LogTab.Text = "Log"
-            '
-            'LabelEmailListener_StatusDescription
-            '
-            Me.LabelEmailListener_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelEmailListener_StatusDescription.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelEmailListener_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelEmailListener_StatusDescription.Location = New System.Drawing.Point(58, 4)
-            Me.LabelEmailListener_StatusDescription.Name = "LabelEmailListener_StatusDescription"
-            Me.LabelEmailListener_StatusDescription.Size = New System.Drawing.Size(972, 20)
-            Me.LabelEmailListener_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelEmailListener_StatusDescription.TabIndex = 4
-            Me.LabelEmailListener_StatusDescription.Text = "Stopped..."
-            '
-            'LabelEmailListener_Status
-            '
-            Me.LabelEmailListener_Status.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelEmailListener_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelEmailListener_Status.Location = New System.Drawing.Point(12, 4)
-            Me.LabelEmailListener_Status.Name = "LabelEmailListener_Status"
-            Me.LabelEmailListener_Status.Size = New System.Drawing.Size(40, 20)
-            Me.LabelEmailListener_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelEmailListener_Status.TabIndex = 3
-            Me.LabelEmailListener_Status.Text = "Status:"
-            '
-            'TabItemServices_EmailListenerTab
-            '
-            Me.TabItemServices_EmailListenerTab.AttachedControl = Me.TabControlPanelEmailListenerTab_EmailListener
-            Me.TabItemServices_EmailListenerTab.Name = "TabItemServices_EmailListenerTab"
-            Me.TabItemServices_EmailListenerTab.Text = "Email Listener"
-            '
-            'TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments
-            '
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Controls.Add(Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Controls.Add(Me.LabelAutomatedAssignments_StatusDescription)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Controls.Add(Me.LabelAutomatedAssignments_Status)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Location = New System.Drawing.Point(0, 71)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Name = "TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments"
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Size = New System.Drawing.Size(1042, 382)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.Style.GradientAngle = 90
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.TabIndex = 286
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.TabItem = Me.TabItemServices_AutomatedAssignmentsTab
-            '
-            'TabControlAutomatedAssignments_AutomatedAssignmentsSettings
-            '
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.BackColor = System.Drawing.Color.White
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.CanReorderTabs = False
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Controls.Add(Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings)
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Controls.Add(Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog)
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ForeColor = System.Drawing.Color.Black
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Location = New System.Drawing.Point(12, 30)
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Name = "TabControlAutomatedAssignments_AutomatedAssignmentsSettings"
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.SelectedTabIndex = 0
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Size = New System.Drawing.Size(1018, 340)
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.TabIndex = 10
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Tabs.Add(Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab)
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.Tabs.Add(Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab)
-            '
-            'TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings
-            '
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Controls.Add(Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery)
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Controls.Add(Me.LabelAutomatedAssignmentsSettings_RunAt)
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Name = "TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings"
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Style.GradientAngle = 90
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.TabIndex = 1
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.TabItem = Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab
-            '
-            'NumericInputAutomatedAssignmentsSettings_RunAtEvery
-            '
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.[Integer]
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.EnterMoveNextControl = True
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Location = New System.Drawing.Point(132, 4)
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Name = "NumericInputAutomatedAssignmentsSettings_RunAtEvery"
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.IsFloatValue = False
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.Mask.EditMask = "f0"
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.MaxValue = New Decimal(New Integer() {2147483647, 0, 0, 0})
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties.MinValue = New Decimal(New Integer() {-2147483648, 0, 0, -2147483648})
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.SecurityEnabled = True
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Size = New System.Drawing.Size(75, 20)
-            Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.TabIndex = 1
-            '
-            'LabelAutomatedAssignmentsSettings_RunAt
-            '
-            Me.LabelAutomatedAssignmentsSettings_RunAt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelAutomatedAssignmentsSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelAutomatedAssignmentsSettings_RunAt.Location = New System.Drawing.Point(4, 4)
-            Me.LabelAutomatedAssignmentsSettings_RunAt.Name = "LabelAutomatedAssignmentsSettings_RunAt"
-            Me.LabelAutomatedAssignmentsSettings_RunAt.Size = New System.Drawing.Size(122, 20)
-            Me.LabelAutomatedAssignmentsSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelAutomatedAssignmentsSettings_RunAt.TabIndex = 0
-            Me.LabelAutomatedAssignmentsSettings_RunAt.Text = "Run at every min(s):"
-            '
-            'TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab
-            '
-            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab.AttachedControl = Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings
-            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab.Name = "TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab"
-            Me.TabItemAutomatedAssignmentsSettings_AutomatedAssignmentsSettingsTab.Text = "Settings"
-            '
-            'TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog
-            '
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Controls.Add(Me.TextBoxAutomatedAssignmentsLog_Log)
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Name = "TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog"
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.Style.GradientAngle = 90
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.TabIndex = 3
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.TabItem = Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab
-            '
-            'TextBoxAutomatedAssignmentsLog_Log
-            '
-            Me.TextBoxAutomatedAssignmentsLog_Log.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxAutomatedAssignmentsLog_Log.Border.Class = "TextBoxBorder"
-            Me.TextBoxAutomatedAssignmentsLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxAutomatedAssignmentsLog_Log.CheckSpellingOnValidate = False
-            Me.TextBoxAutomatedAssignmentsLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxAutomatedAssignmentsLog_Log.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxAutomatedAssignmentsLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TextBoxAutomatedAssignmentsLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxAutomatedAssignmentsLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxAutomatedAssignmentsLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxAutomatedAssignmentsLog_Log.FocusHighlightEnabled = True
-            Me.TextBoxAutomatedAssignmentsLog_Log.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxAutomatedAssignmentsLog_Log.Location = New System.Drawing.Point(1, 1)
-            Me.TextBoxAutomatedAssignmentsLog_Log.MaxFileSize = CType(0, Long)
-            Me.TextBoxAutomatedAssignmentsLog_Log.Multiline = True
-            Me.TextBoxAutomatedAssignmentsLog_Log.Name = "TextBoxAutomatedAssignmentsLog_Log"
-            Me.TextBoxAutomatedAssignmentsLog_Log.ReadOnly = True
-            Me.TextBoxAutomatedAssignmentsLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxAutomatedAssignmentsLog_Log.SecurityEnabled = True
-            Me.TextBoxAutomatedAssignmentsLog_Log.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxAutomatedAssignmentsLog_Log.Size = New System.Drawing.Size(1016, 311)
-            Me.TextBoxAutomatedAssignmentsLog_Log.StartingFolderName = Nothing
-            Me.TextBoxAutomatedAssignmentsLog_Log.TabIndex = 0
-            Me.TextBoxAutomatedAssignmentsLog_Log.TabOnEnter = True
-            '
-            'TabItemAutomatedAssignments_AutomatedAssignmentsLogTab
-            '
-            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab.AttachedControl = Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog
-            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab.Name = "TabItemAutomatedAssignments_AutomatedAssignmentsLogTab"
-            Me.TabItemAutomatedAssignments_AutomatedAssignmentsLogTab.Text = "Log"
-            '
-            'LabelAutomatedAssignments_StatusDescription
-            '
-            Me.LabelAutomatedAssignments_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelAutomatedAssignments_StatusDescription.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelAutomatedAssignments_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelAutomatedAssignments_StatusDescription.Location = New System.Drawing.Point(58, 4)
-            Me.LabelAutomatedAssignments_StatusDescription.Name = "LabelAutomatedAssignments_StatusDescription"
-            Me.LabelAutomatedAssignments_StatusDescription.Size = New System.Drawing.Size(972, 20)
-            Me.LabelAutomatedAssignments_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelAutomatedAssignments_StatusDescription.TabIndex = 9
-            Me.LabelAutomatedAssignments_StatusDescription.Text = "Stopped..."
-            '
-            'LabelAutomatedAssignments_Status
-            '
-            Me.LabelAutomatedAssignments_Status.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelAutomatedAssignments_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelAutomatedAssignments_Status.Location = New System.Drawing.Point(12, 4)
-            Me.LabelAutomatedAssignments_Status.Name = "LabelAutomatedAssignments_Status"
-            Me.LabelAutomatedAssignments_Status.Size = New System.Drawing.Size(40, 20)
-            Me.LabelAutomatedAssignments_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelAutomatedAssignments_Status.TabIndex = 8
-            Me.LabelAutomatedAssignments_Status.Text = "Status:"
-            '
-            'TabItemServices_AutomatedAssignmentsTab
-            '
-            Me.TabItemServices_AutomatedAssignmentsTab.AttachedControl = Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments
-            Me.TabItemServices_AutomatedAssignmentsTab.Name = "TabItemServices_AutomatedAssignmentsTab"
-            Me.TabItemServices_AutomatedAssignmentsTab.Text = "Automated Assignments"
-            '
-            'TabControlPanelInOutTab_InOut
-            '
-            Me.TabControlPanelInOutTab_InOut.Controls.Add(Me.TabControlInOut_InOutSettings)
-            Me.TabControlPanelInOutTab_InOut.Controls.Add(Me.LabelInOut_StatusDescription)
-            Me.TabControlPanelInOutTab_InOut.Controls.Add(Me.LabelInOut_Status)
-            Me.TabControlPanelInOutTab_InOut.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelInOutTab_InOut.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelInOutTab_InOut.Location = New System.Drawing.Point(0, 71)
-            Me.TabControlPanelInOutTab_InOut.Name = "TabControlPanelInOutTab_InOut"
-            Me.TabControlPanelInOutTab_InOut.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelInOutTab_InOut.Size = New System.Drawing.Size(1042, 382)
-            Me.TabControlPanelInOutTab_InOut.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelInOutTab_InOut.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelInOutTab_InOut.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelInOutTab_InOut.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelInOutTab_InOut.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelInOutTab_InOut.Style.GradientAngle = 90
-            Me.TabControlPanelInOutTab_InOut.TabIndex = 63
-            Me.TabControlPanelInOutTab_InOut.TabItem = Me.TabItemServices_InOutTab
-            '
-            'TabControlInOut_InOutSettings
-            '
-            Me.TabControlInOut_InOutSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlInOut_InOutSettings.BackColor = System.Drawing.Color.White
-            Me.TabControlInOut_InOutSettings.CanReorderTabs = False
-            Me.TabControlInOut_InOutSettings.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlInOut_InOutSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlInOut_InOutSettings.Controls.Add(Me.TabControlPanelInOutSettingsTab_InOutSettings)
-            Me.TabControlInOut_InOutSettings.Controls.Add(Me.TabControlPanelInOutTab_InOutLog)
-            Me.TabControlInOut_InOutSettings.ForeColor = System.Drawing.Color.Black
-            Me.TabControlInOut_InOutSettings.Location = New System.Drawing.Point(12, 30)
-            Me.TabControlInOut_InOutSettings.Name = "TabControlInOut_InOutSettings"
-            Me.TabControlInOut_InOutSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlInOut_InOutSettings.SelectedTabIndex = 0
-            Me.TabControlInOut_InOutSettings.Size = New System.Drawing.Size(1018, 340)
-            Me.TabControlInOut_InOutSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlInOut_InOutSettings.TabIndex = 26
-            Me.TabControlInOut_InOutSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlInOut_InOutSettings.Tabs.Add(Me.TabItemInOutSettings_InOutSettingsTab)
-            Me.TabControlInOut_InOutSettings.Tabs.Add(Me.TabItemInOutSettings_InOutLogTab)
-            '
-            'TabControlPanelInOutSettingsTab_InOutSettings
-            '
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Controls.Add(Me.Label3)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Controls.Add(Me.LabelInOutSettings_RunAt)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Controls.Add(Me.DateTimePickerInOutSettings_RunAtDaily)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Name = "TabControlPanelInOutSettingsTab_InOutSettings"
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.Style.GradientAngle = 90
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.TabIndex = 1
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.TabItem = Me.TabItemInOutSettings_InOutSettingsTab
-            '
-            'Label3
-            '
-            Me.Label3.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.Label3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.Label3.Location = New System.Drawing.Point(4, 32)
-            Me.Label3.Name = "Label3"
-            Me.Label3.Size = New System.Drawing.Size(397, 20)
-            Me.Label3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.Label3.TabIndex = 9
-            Me.Label3.Text = "Set to automatically log employees out of the in/out board at the specified time." &
-    ""
-            '
-            'LabelInOutSettings_RunAt
-            '
-            Me.LabelInOutSettings_RunAt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelInOutSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelInOutSettings_RunAt.Location = New System.Drawing.Point(4, 4)
-            Me.LabelInOutSettings_RunAt.Name = "LabelInOutSettings_RunAt"
-            Me.LabelInOutSettings_RunAt.Size = New System.Drawing.Size(90, 20)
-            Me.LabelInOutSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelInOutSettings_RunAt.TabIndex = 0
-            Me.LabelInOutSettings_RunAt.Text = "Run At (Daily):"
-            '
-            'DateTimePickerInOutSettings_RunAtDaily
-            '
-            Me.DateTimePickerInOutSettings_RunAtDaily.AllowEmptyState = False
-            Me.DateTimePickerInOutSettings_RunAtDaily.AutoResolveFreeTextEntries = False
-            '
-            '
-            '
-            Me.DateTimePickerInOutSettings_RunAtDaily.BackgroundStyle.Class = "DateTimeInputBackground"
-            Me.DateTimePickerInOutSettings_RunAtDaily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerInOutSettings_RunAtDaily.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
-            Me.DateTimePickerInOutSettings_RunAtDaily.ButtonFreeText.Checked = True
-            Me.DateTimePickerInOutSettings_RunAtDaily.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
-            Me.DateTimePickerInOutSettings_RunAtDaily.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
-            Me.DateTimePickerInOutSettings_RunAtDaily.DisabledForeColor = System.Drawing.SystemColors.WindowText
-            Me.DateTimePickerInOutSettings_RunAtDaily.DisplayName = ""
-            Me.DateTimePickerInOutSettings_RunAtDaily.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.DateTimePickerInOutSettings_RunAtDaily.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.DateTimePickerInOutSettings_RunAtDaily.FocusHighlightEnabled = True
-            Me.DateTimePickerInOutSettings_RunAtDaily.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
-            Me.DateTimePickerInOutSettings_RunAtDaily.FreeTextEntryMode = True
-            Me.DateTimePickerInOutSettings_RunAtDaily.IsPopupCalendarOpen = False
-            Me.DateTimePickerInOutSettings_RunAtDaily.Location = New System.Drawing.Point(100, 6)
-            Me.DateTimePickerInOutSettings_RunAtDaily.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
-            Me.DateTimePickerInOutSettings_RunAtDaily.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            '
-            '
-            '
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.ClearButtonVisible = True
-            '
-            '
-            '
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.TodayButtonVisible = True
-            Me.DateTimePickerInOutSettings_RunAtDaily.MonthCalendar.Visible = False
-            Me.DateTimePickerInOutSettings_RunAtDaily.Name = "DateTimePickerInOutSettings_RunAtDaily"
-            Me.DateTimePickerInOutSettings_RunAtDaily.ReadOnly = False
-            Me.DateTimePickerInOutSettings_RunAtDaily.Size = New System.Drawing.Size(180, 20)
-            Me.DateTimePickerInOutSettings_RunAtDaily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.DateTimePickerInOutSettings_RunAtDaily.TabIndex = 1
-            Me.DateTimePickerInOutSettings_RunAtDaily.TabOnEnter = True
-            Me.DateTimePickerInOutSettings_RunAtDaily.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
-            Me.DateTimePickerInOutSettings_RunAtDaily.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
-            '
-            'TabItemInOutSettings_InOutSettingsTab
-            '
-            Me.TabItemInOutSettings_InOutSettingsTab.AttachedControl = Me.TabControlPanelInOutSettingsTab_InOutSettings
-            Me.TabItemInOutSettings_InOutSettingsTab.Name = "TabItemInOutSettings_InOutSettingsTab"
-            Me.TabItemInOutSettings_InOutSettingsTab.Text = "Settings"
-            '
-            'TabControlPanelInOutTab_InOutLog
-            '
-            Me.TabControlPanelInOutTab_InOutLog.Controls.Add(Me.TextBoxInOutLog_Log)
-            Me.TabControlPanelInOutTab_InOutLog.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelInOutTab_InOutLog.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelInOutTab_InOutLog.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelInOutTab_InOutLog.Name = "TabControlPanelInOutTab_InOutLog"
-            Me.TabControlPanelInOutTab_InOutLog.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelInOutTab_InOutLog.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelInOutTab_InOutLog.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelInOutTab_InOutLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelInOutTab_InOutLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelInOutTab_InOutLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelInOutTab_InOutLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelInOutTab_InOutLog.Style.GradientAngle = 90
-            Me.TabControlPanelInOutTab_InOutLog.TabIndex = 3
-            Me.TabControlPanelInOutTab_InOutLog.TabItem = Me.TabItemInOutSettings_InOutLogTab
-            '
-            'TextBoxInOutLog_Log
-            '
-            Me.TextBoxInOutLog_Log.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxInOutLog_Log.Border.Class = "TextBoxBorder"
-            Me.TextBoxInOutLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxInOutLog_Log.CheckSpellingOnValidate = False
-            Me.TextBoxInOutLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxInOutLog_Log.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxInOutLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TextBoxInOutLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxInOutLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxInOutLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxInOutLog_Log.FocusHighlightEnabled = True
-            Me.TextBoxInOutLog_Log.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxInOutLog_Log.Location = New System.Drawing.Point(1, 1)
-            Me.TextBoxInOutLog_Log.MaxFileSize = CType(0, Long)
-            Me.TextBoxInOutLog_Log.Multiline = True
-            Me.TextBoxInOutLog_Log.Name = "TextBoxInOutLog_Log"
-            Me.TextBoxInOutLog_Log.ReadOnly = True
-            Me.TextBoxInOutLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxInOutLog_Log.SecurityEnabled = True
-            Me.TextBoxInOutLog_Log.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxInOutLog_Log.Size = New System.Drawing.Size(1016, 311)
-            Me.TextBoxInOutLog_Log.StartingFolderName = Nothing
-            Me.TextBoxInOutLog_Log.TabIndex = 5
-            Me.TextBoxInOutLog_Log.TabOnEnter = True
-            '
-            'TabItemInOutSettings_InOutLogTab
-            '
-            Me.TabItemInOutSettings_InOutLogTab.AttachedControl = Me.TabControlPanelInOutTab_InOutLog
-            Me.TabItemInOutSettings_InOutLogTab.Name = "TabItemInOutSettings_InOutLogTab"
-            Me.TabItemInOutSettings_InOutLogTab.Text = "Log"
-            '
-            'LabelInOut_StatusDescription
-            '
-            Me.LabelInOut_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelInOut_StatusDescription.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelInOut_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelInOut_StatusDescription.Location = New System.Drawing.Point(58, 4)
-            Me.LabelInOut_StatusDescription.Name = "LabelInOut_StatusDescription"
-            Me.LabelInOut_StatusDescription.Size = New System.Drawing.Size(972, 20)
-            Me.LabelInOut_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelInOut_StatusDescription.TabIndex = 25
-            Me.LabelInOut_StatusDescription.Text = "Stopped..."
-            '
-            'LabelInOut_Status
-            '
-            Me.LabelInOut_Status.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelInOut_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelInOut_Status.Location = New System.Drawing.Point(12, 4)
-            Me.LabelInOut_Status.Name = "LabelInOut_Status"
-            Me.LabelInOut_Status.Size = New System.Drawing.Size(40, 20)
-            Me.LabelInOut_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelInOut_Status.TabIndex = 12
-            Me.LabelInOut_Status.Text = "Status:"
-            '
-            'TabItemServices_InOutTab
-            '
-            Me.TabItemServices_InOutTab.AttachedControl = Me.TabControlPanelInOutTab_InOut
-            Me.TabItemServices_InOutTab.Name = "TabItemServices_InOutTab"
-            Me.TabItemServices_InOutTab.Text = "In/Out Board"
-            '
-            'TabControlPanelComScoreTab_ComScore
-            '
-            Me.TabControlPanelComScoreTab_ComScore.Controls.Add(Me.TabControlComScore_ComScoreSettings)
-            Me.TabControlPanelComScoreTab_ComScore.Controls.Add(Me.LabelComScore_StatusDescription)
-            Me.TabControlPanelComScoreTab_ComScore.Controls.Add(Me.LabelComScore_Status)
-            Me.TabControlPanelComScoreTab_ComScore.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelComScoreTab_ComScore.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelComScoreTab_ComScore.Location = New System.Drawing.Point(0, 71)
-            Me.TabControlPanelComScoreTab_ComScore.Name = "TabControlPanelComScoreTab_ComScore"
-            Me.TabControlPanelComScoreTab_ComScore.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelComScoreTab_ComScore.Size = New System.Drawing.Size(1042, 382)
-            Me.TabControlPanelComScoreTab_ComScore.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelComScoreTab_ComScore.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelComScoreTab_ComScore.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelComScoreTab_ComScore.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelComScoreTab_ComScore.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelComScoreTab_ComScore.Style.GradientAngle = 90
-            Me.TabControlPanelComScoreTab_ComScore.TabIndex = 231
-            Me.TabControlPanelComScoreTab_ComScore.TabItem = Me.TabItemServices_ComscoreTab
-            '
-            'TabControlComScore_ComScoreSettings
-            '
-            Me.TabControlComScore_ComScoreSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlComScore_ComScoreSettings.BackColor = System.Drawing.Color.White
-            Me.TabControlComScore_ComScoreSettings.CanReorderTabs = False
-            Me.TabControlComScore_ComScoreSettings.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlComScore_ComScoreSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlComScore_ComScoreSettings.Controls.Add(Me.TabControlPanelComScoreSettingsTab_ComScoreSettings)
-            Me.TabControlComScore_ComScoreSettings.Controls.Add(Me.TabControlPanelComScoreTab_ComScoreLog)
-            Me.TabControlComScore_ComScoreSettings.ForeColor = System.Drawing.Color.Black
-            Me.TabControlComScore_ComScoreSettings.Location = New System.Drawing.Point(12, 30)
-            Me.TabControlComScore_ComScoreSettings.Name = "TabControlComScore_ComScoreSettings"
-            Me.TabControlComScore_ComScoreSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlComScore_ComScoreSettings.SelectedTabIndex = 0
-            Me.TabControlComScore_ComScoreSettings.Size = New System.Drawing.Size(1018, 340)
-            Me.TabControlComScore_ComScoreSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlComScore_ComScoreSettings.TabIndex = 29
-            Me.TabControlComScore_ComScoreSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlComScore_ComScoreSettings.Tabs.Add(Me.TabItemComScoreSettings_ComScoreSettingsTab)
-            Me.TabControlComScore_ComScoreSettings.Tabs.Add(Me.TabItemComScoreSettings_ComScoreLogTab)
-            '
-            'TabControlPanelComScoreSettingsTab_ComScoreSettings
-            '
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.LabelComScoreSettings_Employee)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.ComboBoxComScoreSettings_Employee)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.LabelComScoreSettings_RunAt)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Controls.Add(Me.DateTimePickerComScoreSettings_RunAtDaily)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Name = "TabControlPanelComScoreSettingsTab_ComScoreSettings"
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.Style.GradientAngle = 90
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.TabIndex = 1
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.TabItem = Me.TabItemComScoreSettings_ComScoreSettingsTab
-            '
-            'LabelComScoreSettings_Employee
-            '
-            Me.LabelComScoreSettings_Employee.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelComScoreSettings_Employee.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelComScoreSettings_Employee.Location = New System.Drawing.Point(4, 31)
-            Me.LabelComScoreSettings_Employee.Name = "LabelComScoreSettings_Employee"
-            Me.LabelComScoreSettings_Employee.Size = New System.Drawing.Size(90, 20)
-            Me.LabelComScoreSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelComScoreSettings_Employee.TabIndex = 10
-            Me.LabelComScoreSettings_Employee.Text = "Employee:"
-            '
-            'ComboBoxComScoreSettings_Employee
-            '
-            Me.ComboBoxComScoreSettings_Employee.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxComScoreSettings_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxComScoreSettings_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxComScoreSettings_Employee.AutoFindItemInDataSource = False
-            Me.ComboBoxComScoreSettings_Employee.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxComScoreSettings_Employee.BookmarkingEnabled = False
-            Me.ComboBoxComScoreSettings_Employee.ClientCode = ""
-            Me.ComboBoxComScoreSettings_Employee.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.Employee
-            Me.ComboBoxComScoreSettings_Employee.DisableMouseWheel = False
-            Me.ComboBoxComScoreSettings_Employee.DisplayMember = "FullName"
-            Me.ComboBoxComScoreSettings_Employee.DisplayName = ""
-            Me.ComboBoxComScoreSettings_Employee.DivisionCode = ""
-            Me.ComboBoxComScoreSettings_Employee.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxComScoreSettings_Employee.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxComScoreSettings_Employee.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxComScoreSettings_Employee.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxComScoreSettings_Employee.FocusHighlightEnabled = True
-            Me.ComboBoxComScoreSettings_Employee.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxComScoreSettings_Employee.FormattingEnabled = True
-            Me.ComboBoxComScoreSettings_Employee.ItemHeight = 16
-            Me.ComboBoxComScoreSettings_Employee.Location = New System.Drawing.Point(100, 32)
-            Me.ComboBoxComScoreSettings_Employee.Name = "ComboBoxComScoreSettings_Employee"
-            Me.ComboBoxComScoreSettings_Employee.ReadOnly = False
-            Me.ComboBoxComScoreSettings_Employee.SecurityEnabled = True
-            Me.ComboBoxComScoreSettings_Employee.Size = New System.Drawing.Size(180, 22)
-            Me.ComboBoxComScoreSettings_Employee.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxComScoreSettings_Employee.TabIndex = 9
-            Me.ComboBoxComScoreSettings_Employee.TabOnEnter = True
-            Me.ComboBoxComScoreSettings_Employee.ValueMember = "Code"
-            Me.ComboBoxComScoreSettings_Employee.WatermarkText = "Select Employee"
-            '
-            'LabelComScoreSettings_RunAt
-            '
-            Me.LabelComScoreSettings_RunAt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelComScoreSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelComScoreSettings_RunAt.Location = New System.Drawing.Point(4, 4)
-            Me.LabelComScoreSettings_RunAt.Name = "LabelComScoreSettings_RunAt"
-            Me.LabelComScoreSettings_RunAt.Size = New System.Drawing.Size(90, 20)
-            Me.LabelComScoreSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelComScoreSettings_RunAt.TabIndex = 0
-            Me.LabelComScoreSettings_RunAt.Text = "Run At (Daily):"
-            '
-            'DateTimePickerComScoreSettings_RunAtDaily
-            '
-            Me.DateTimePickerComScoreSettings_RunAtDaily.AllowEmptyState = False
-            Me.DateTimePickerComScoreSettings_RunAtDaily.AutoResolveFreeTextEntries = False
-            '
-            '
-            '
-            Me.DateTimePickerComScoreSettings_RunAtDaily.BackgroundStyle.Class = "DateTimeInputBackground"
-            Me.DateTimePickerComScoreSettings_RunAtDaily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerComScoreSettings_RunAtDaily.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
-            Me.DateTimePickerComScoreSettings_RunAtDaily.ButtonFreeText.Checked = True
-            Me.DateTimePickerComScoreSettings_RunAtDaily.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
-            Me.DateTimePickerComScoreSettings_RunAtDaily.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
-            Me.DateTimePickerComScoreSettings_RunAtDaily.DisabledForeColor = System.Drawing.SystemColors.WindowText
-            Me.DateTimePickerComScoreSettings_RunAtDaily.DisplayName = ""
-            Me.DateTimePickerComScoreSettings_RunAtDaily.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.DateTimePickerComScoreSettings_RunAtDaily.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.DateTimePickerComScoreSettings_RunAtDaily.FocusHighlightEnabled = True
-            Me.DateTimePickerComScoreSettings_RunAtDaily.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
-            Me.DateTimePickerComScoreSettings_RunAtDaily.FreeTextEntryMode = True
-            Me.DateTimePickerComScoreSettings_RunAtDaily.IsPopupCalendarOpen = False
-            Me.DateTimePickerComScoreSettings_RunAtDaily.Location = New System.Drawing.Point(100, 6)
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            '
-            '
-            '
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.ClearButtonVisible = True
-            '
-            '
-            '
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.TodayButtonVisible = True
-            Me.DateTimePickerComScoreSettings_RunAtDaily.MonthCalendar.Visible = False
-            Me.DateTimePickerComScoreSettings_RunAtDaily.Name = "DateTimePickerComScoreSettings_RunAtDaily"
-            Me.DateTimePickerComScoreSettings_RunAtDaily.ReadOnly = False
-            Me.DateTimePickerComScoreSettings_RunAtDaily.Size = New System.Drawing.Size(180, 20)
-            Me.DateTimePickerComScoreSettings_RunAtDaily.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.DateTimePickerComScoreSettings_RunAtDaily.TabIndex = 1
-            Me.DateTimePickerComScoreSettings_RunAtDaily.TabOnEnter = True
-            Me.DateTimePickerComScoreSettings_RunAtDaily.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
-            Me.DateTimePickerComScoreSettings_RunAtDaily.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
-            '
-            'TabItemComScoreSettings_ComScoreSettingsTab
-            '
-            Me.TabItemComScoreSettings_ComScoreSettingsTab.AttachedControl = Me.TabControlPanelComScoreSettingsTab_ComScoreSettings
-            Me.TabItemComScoreSettings_ComScoreSettingsTab.Name = "TabItemComScoreSettings_ComScoreSettingsTab"
-            Me.TabItemComScoreSettings_ComScoreSettingsTab.Text = "Settings"
-            '
-            'TabControlPanelComScoreTab_ComScoreLog
-            '
-            Me.TabControlPanelComScoreTab_ComScoreLog.Controls.Add(Me.TextBoxComScoreLog_Log)
-            Me.TabControlPanelComScoreTab_ComScoreLog.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelComScoreTab_ComScoreLog.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelComScoreTab_ComScoreLog.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelComScoreTab_ComScoreLog.Name = "TabControlPanelComScoreTab_ComScoreLog"
-            Me.TabControlPanelComScoreTab_ComScoreLog.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelComScoreTab_ComScoreLog.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelComScoreTab_ComScoreLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelComScoreTab_ComScoreLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelComScoreTab_ComScoreLog.Style.GradientAngle = 90
-            Me.TabControlPanelComScoreTab_ComScoreLog.TabIndex = 3
-            Me.TabControlPanelComScoreTab_ComScoreLog.TabItem = Me.TabItemComScoreSettings_ComScoreLogTab
-            '
-            'TextBoxComScoreLog_Log
-            '
-            Me.TextBoxComScoreLog_Log.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxComScoreLog_Log.Border.Class = "TextBoxBorder"
-            Me.TextBoxComScoreLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxComScoreLog_Log.CheckSpellingOnValidate = False
-            Me.TextBoxComScoreLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxComScoreLog_Log.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxComScoreLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TextBoxComScoreLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxComScoreLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxComScoreLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxComScoreLog_Log.FocusHighlightEnabled = True
-            Me.TextBoxComScoreLog_Log.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxComScoreLog_Log.Location = New System.Drawing.Point(1, 1)
-            Me.TextBoxComScoreLog_Log.MaxFileSize = CType(0, Long)
-            Me.TextBoxComScoreLog_Log.Multiline = True
-            Me.TextBoxComScoreLog_Log.Name = "TextBoxComScoreLog_Log"
-            Me.TextBoxComScoreLog_Log.ReadOnly = True
-            Me.TextBoxComScoreLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxComScoreLog_Log.SecurityEnabled = True
-            Me.TextBoxComScoreLog_Log.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxComScoreLog_Log.Size = New System.Drawing.Size(1016, 311)
-            Me.TextBoxComScoreLog_Log.StartingFolderName = Nothing
-            Me.TextBoxComScoreLog_Log.TabIndex = 5
-            Me.TextBoxComScoreLog_Log.TabOnEnter = True
-            '
-            'TabItemComScoreSettings_ComScoreLogTab
-            '
-            Me.TabItemComScoreSettings_ComScoreLogTab.AttachedControl = Me.TabControlPanelComScoreTab_ComScoreLog
-            Me.TabItemComScoreSettings_ComScoreLogTab.Name = "TabItemComScoreSettings_ComScoreLogTab"
-            Me.TabItemComScoreSettings_ComScoreLogTab.Text = "Log"
-            '
-            'LabelComScore_StatusDescription
-            '
-            Me.LabelComScore_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelComScore_StatusDescription.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelComScore_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelComScore_StatusDescription.Location = New System.Drawing.Point(58, 4)
-            Me.LabelComScore_StatusDescription.Name = "LabelComScore_StatusDescription"
-            Me.LabelComScore_StatusDescription.Size = New System.Drawing.Size(972, 20)
-            Me.LabelComScore_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelComScore_StatusDescription.TabIndex = 28
-            Me.LabelComScore_StatusDescription.Text = "Stopped..."
-            '
-            'LabelComScore_Status
-            '
-            Me.LabelComScore_Status.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelComScore_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelComScore_Status.Location = New System.Drawing.Point(12, 4)
-            Me.LabelComScore_Status.Name = "LabelComScore_Status"
-            Me.LabelComScore_Status.Size = New System.Drawing.Size(40, 20)
-            Me.LabelComScore_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelComScore_Status.TabIndex = 27
-            Me.LabelComScore_Status.Text = "Status:"
-            '
-            'TabItemServices_ComscoreTab
-            '
-            Me.TabItemServices_ComscoreTab.AttachedControl = Me.TabControlPanelComScoreTab_ComScore
-            Me.TabItemServices_ComscoreTab.Name = "TabItemServices_ComscoreTab"
-            Me.TabItemServices_ComscoreTab.Text = "Comscore"
             '
             'TabControlPanelScheduledReportsTab_ScheduledReports
             '
@@ -8877,578 +9806,6 @@
             Me.TabItemServices_JobCompUDFImportTab.Name = "TabItemServices_JobCompUDFImportTab"
             Me.TabItemServices_JobCompUDFImportTab.Text = "Job/Comp UDF Import"
             '
-            'TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning
-            '
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Controls.Add(Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Controls.Add(Me.LabelDocumentRepositoryCapacityWarning_StatusDescription)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Controls.Add(Me.LabelDocumentRepositoryCapacityWarning_Status)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Location = New System.Drawing.Point(0, 71)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Name = "TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWar" &
-    "ning"
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Size = New System.Drawing.Size(1042, 382)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.Style.GradientAngle = 90
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.TabIndex = 356
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.TabItem = Me.TabItemServices_DocumentRepositoryCapacityWarningTab
-            '
-            'TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings
-            '
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.BackColor = System.Drawing.Color.White
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.CanReorderTabs = False
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings)
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog)
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ForeColor = System.Drawing.Color.Black
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Location = New System.Drawing.Point(12, 30)
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Name = "TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSett" &
-    "ings"
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.SelectedTabIndex = 0
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Size = New System.Drawing.Size(1018, 340)
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.TabIndex = 32
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Tabs.Add(Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab)
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.Tabs.Add(Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab)
-            '
-            'TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings
-            '
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.LabelDocumentRepositoryCapacityWarningSettings_Email)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Controls.Add(Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Name = "TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCap" &
-    "acityWarningSettings"
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Style.GradientAngle = 90
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.TabIndex = 1
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.TabItem = Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab
-            '
-            'NumericInputDocumentRepositoryCapacityWarningSettings_Threshold
-            '
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.ControlType = AdvantageFramework.WinForm.Presentation.Controls.NumericInput.Type.Percent
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.EditValue = New Decimal(New Integer() {9, 0, 0, 65536})
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.EnterMoveNextControl = True
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Location = New System.Drawing.Point(100, 56)
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Name = "NumericInputDocumentRepositoryCapacityWarningSettings_Threshold"
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, True, False, False, EditorButtonImageOptions6, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject21, SerializableAppearanceObject22, SerializableAppearanceObject23, SerializableAppearanceObject24, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.DisplayFormat.FormatString = "p2"
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.EditFormat.FormatString = "p2"
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.Mask.EditMask = "p2"
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties.MaxValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.SecurityEnabled = True
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Size = New System.Drawing.Size(88, 20)
-            Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.TabIndex = 5
-            '
-            'LabelDocumentRepositoryCapacityWarningSettings_Threshold
-            '
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Location = New System.Drawing.Point(4, 56)
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Name = "LabelDocumentRepositoryCapacityWarningSettings_Threshold"
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Size = New System.Drawing.Size(90, 20)
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.TabIndex = 4
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Threshold.Text = "Threshold:"
-            '
-            'LabelDocumentRepositoryCapacityWarningSettings_Email
-            '
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Location = New System.Drawing.Point(4, 30)
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Name = "LabelDocumentRepositoryCapacityWarningSettings_Email"
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Size = New System.Drawing.Size(90, 20)
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.TabIndex = 2
-            Me.LabelDocumentRepositoryCapacityWarningSettings_Email.Text = "Email:"
-            '
-            'TextBoxDocumentRepositoryCapacityWarningSettings_Email
-            '
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Border.Class = "TextBoxBorder"
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.CheckSpellingOnValidate = False
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.FocusHighlightEnabled = True
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Location = New System.Drawing.Point(100, 30)
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.MaxFileSize = CType(0, Long)
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Name = "TextBoxDocumentRepositoryCapacityWarningSettings_Email"
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.SecurityEnabled = True
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.Size = New System.Drawing.Size(914, 20)
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.StartingFolderName = Nothing
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.TabIndex = 3
-            Me.TextBoxDocumentRepositoryCapacityWarningSettings_Email.TabOnEnter = True
-            '
-            'LabelDocumentRepositoryCapacityWarningSettings_RunAt
-            '
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Location = New System.Drawing.Point(4, 4)
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Name = "LabelDocumentRepositoryCapacityWarningSettings_RunAt"
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Size = New System.Drawing.Size(90, 20)
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.TabIndex = 0
-            Me.LabelDocumentRepositoryCapacityWarningSettings_RunAt.Text = "Run At (Daily):"
-            '
-            'DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt
-            '
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.AllowEmptyState = False
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.AutoResolveFreeTextEntries = False
-            '
-            '
-            '
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.BackgroundStyle.Class = "DateTimeInputBackground"
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ButtonFreeText.Checked = True
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker.Type.TimeOnly
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.DateTimeSelectorVisibility = DevComponents.Editors.DateTimeAdv.eDateTimeSelectorVisibility.TimeSelector
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.DisabledForeColor = System.Drawing.SystemColors.WindowText
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.DisplayName = ""
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.FocusHighlightEnabled = True
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.FreeTextEntryMode = True
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.IsPopupCalendarOpen = False
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Location = New System.Drawing.Point(100, 6)
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MaxDate = New Date(2079, 6, 6, 0, 0, 0, 0)
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MinDate = New Date(1900, 1, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            '
-            '
-            '
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.ClearButtonVisible = True
-            '
-            '
-            '
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.DisplayMonth = New Date(2011, 6, 1, 0, 0, 0, 0)
-            '
-            '
-            '
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.TodayButtonVisible = True
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.MonthCalendar.Visible = False
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Name = "DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt"
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.ReadOnly = False
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Size = New System.Drawing.Size(88, 20)
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.TabIndex = 1
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.TabOnEnter = True
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.TimeSelectorTimeFormat = DevComponents.Editors.DateTimeAdv.eTimeSelectorFormat.Time12H
-            Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt.Value = New Date(2014, 10, 23, 15, 22, 0, 207)
-            '
-            'TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab
-            '
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab.AttachedControl = Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab.Name = "TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarnin" &
-    "gSettingsTab"
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningSettingsTab.Text = "Settings"
-            '
-            'TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog
-            '
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Controls.Add(Me.TextBoxDocumentRepositoryCapacityWarningLog_Log)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Name = "TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacity" &
-    "WarningLog"
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Size = New System.Drawing.Size(1018, 313)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.Style.GradientAngle = 90
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.TabIndex = 3
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.TabItem = Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab
-            '
-            'TextBoxDocumentRepositoryCapacityWarningLog_Log
-            '
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Border.Class = "TextBoxBorder"
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.CheckSpellingOnValidate = False
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.FocusHighlightEnabled = True
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Location = New System.Drawing.Point(1, 1)
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.MaxFileSize = CType(0, Long)
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Multiline = True
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Name = "TextBoxDocumentRepositoryCapacityWarningLog_Log"
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ReadOnly = True
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.SecurityEnabled = True
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.Size = New System.Drawing.Size(1016, 311)
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.StartingFolderName = Nothing
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.TabIndex = 5
-            Me.TextBoxDocumentRepositoryCapacityWarningLog_Log.TabOnEnter = True
-            '
-            'TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab
-            '
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab.AttachedControl = Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab.Name = "TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarnin" &
-    "gLogTab"
-            Me.TabItemDocumentRepositoryCapacityWarningSettings_DocumentRepositoryCapacityWarningLogTab.Text = "Log"
-            '
-            'LabelDocumentRepositoryCapacityWarning_StatusDescription
-            '
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Location = New System.Drawing.Point(58, 4)
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Name = "LabelDocumentRepositoryCapacityWarning_StatusDescription"
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Size = New System.Drawing.Size(971, 20)
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.TabIndex = 31
-            Me.LabelDocumentRepositoryCapacityWarning_StatusDescription.Text = "Stopped..."
-            '
-            'LabelDocumentRepositoryCapacityWarning_Status
-            '
-            Me.LabelDocumentRepositoryCapacityWarning_Status.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelDocumentRepositoryCapacityWarning_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelDocumentRepositoryCapacityWarning_Status.Location = New System.Drawing.Point(12, 4)
-            Me.LabelDocumentRepositoryCapacityWarning_Status.Name = "LabelDocumentRepositoryCapacityWarning_Status"
-            Me.LabelDocumentRepositoryCapacityWarning_Status.Size = New System.Drawing.Size(40, 20)
-            Me.LabelDocumentRepositoryCapacityWarning_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelDocumentRepositoryCapacityWarning_Status.TabIndex = 30
-            Me.LabelDocumentRepositoryCapacityWarning_Status.Text = "Status:"
-            '
-            'TabItemServices_DocumentRepositoryCapacityWarningTab
-            '
-            Me.TabItemServices_DocumentRepositoryCapacityWarningTab.AttachedControl = Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning
-            Me.TabItemServices_DocumentRepositoryCapacityWarningTab.Name = "TabItemServices_DocumentRepositoryCapacityWarningTab"
-            Me.TabItemServices_DocumentRepositoryCapacityWarningTab.Text = "Document Repository Capacity Warning"
-            '
-            'TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner
-            '
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Controls.Add(Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Controls.Add(Me.LabelCSIPreferredPartner_StatusDescription)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Controls.Add(Me.LabelCSIPreferredPartner_Status)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Location = New System.Drawing.Point(0, 71)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Name = "TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner"
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Size = New System.Drawing.Size(1042, 382)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.Style.GradientAngle = 90
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.TabIndex = 12
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.TabItem = Me.TabItemServices_CSIPreferredPartnerTab
-            '
-            'TabControlCSIPreferredPartner_CSIPreferredPartnerSettings
-            '
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.BackColor = System.Drawing.Color.White
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.CanReorderTabs = False
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Controls.Add(Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings)
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Controls.Add(Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog)
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ForeColor = System.Drawing.Color.Black
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Location = New System.Drawing.Point(12, 30)
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Name = "TabControlCSIPreferredPartner_CSIPreferredPartnerSettings"
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.SelectedTabIndex = 0
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Size = New System.Drawing.Size(1018, 341)
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.TabIndex = 7
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Tabs.Add(Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab)
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.Tabs.Add(Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab)
-            '
-            'TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings
-            '
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.LabelCSIPreferredPartnerSettings_UploadFolder)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.TextBoxCSIPreferredPartnerSettings_UploadFolder)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.LabelCSIPreferredPartnerSettings_DownloadFolder)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Controls.Add(Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Name = "TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings"
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Size = New System.Drawing.Size(1018, 314)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.Style.GradientAngle = 90
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.TabIndex = 1
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.TabItem = Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab
-            '
-            'LabelCSIPreferredPartnerSettings_UploadFolder
-            '
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Location = New System.Drawing.Point(4, 30)
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Name = "LabelCSIPreferredPartnerSettings_UploadFolder"
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Size = New System.Drawing.Size(90, 20)
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.TabIndex = 2
-            Me.LabelCSIPreferredPartnerSettings_UploadFolder.Text = "Upload Folder:"
-            '
-            'TextBoxCSIPreferredPartnerSettings_UploadFolder
-            '
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Border.Class = "TextBoxBorder"
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ButtonCustom.Visible = True
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.CheckSpellingOnValidate = False
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Folder
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.FocusHighlightEnabled = True
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Location = New System.Drawing.Point(100, 30)
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.MaxFileSize = CType(0, Long)
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Name = "TextBoxCSIPreferredPartnerSettings_UploadFolder"
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.SecurityEnabled = True
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.Size = New System.Drawing.Size(915, 20)
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.StartingFolderName = Nothing
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.TabIndex = 3
-            Me.TextBoxCSIPreferredPartnerSettings_UploadFolder.TabOnEnter = True
-            '
-            'LabelCSIPreferredPartnerSettings_DownloadFolder
-            '
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Location = New System.Drawing.Point(4, 4)
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Name = "LabelCSIPreferredPartnerSettings_DownloadFolder"
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Size = New System.Drawing.Size(90, 20)
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.TabIndex = 0
-            Me.LabelCSIPreferredPartnerSettings_DownloadFolder.Text = "Download Folder:"
-            '
-            'TextBoxCSIPreferredPartnerSettings_DownloadFolder
-            '
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Border.Class = "TextBoxBorder"
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ButtonCustom.Visible = True
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.CheckSpellingOnValidate = False
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Folder
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.FocusHighlightEnabled = True
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Location = New System.Drawing.Point(100, 4)
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.MaxFileSize = CType(0, Long)
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Name = "TextBoxCSIPreferredPartnerSettings_DownloadFolder"
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.SecurityEnabled = True
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.Size = New System.Drawing.Size(915, 20)
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.StartingFolderName = Nothing
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.TabIndex = 1
-            Me.TextBoxCSIPreferredPartnerSettings_DownloadFolder.TabOnEnter = True
-            '
-            'TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab
-            '
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab.AttachedControl = Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab.Name = "TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab"
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerSettingsTab.Text = "Settings"
-            '
-            'TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog
-            '
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Controls.Add(Me.TextBoxCSIPreferredPartnerLog_Log)
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Name = "TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog"
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Size = New System.Drawing.Size(1018, 314)
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.Style.GradientAngle = 90
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.TabIndex = 3
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.TabItem = Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab
-            '
-            'TextBoxCSIPreferredPartnerLog_Log
-            '
-            Me.TextBoxCSIPreferredPartnerLog_Log.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxCSIPreferredPartnerLog_Log.Border.Class = "TextBoxBorder"
-            Me.TextBoxCSIPreferredPartnerLog_Log.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxCSIPreferredPartnerLog_Log.CheckSpellingOnValidate = False
-            Me.TextBoxCSIPreferredPartnerLog_Log.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxCSIPreferredPartnerLog_Log.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxCSIPreferredPartnerLog_Log.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TextBoxCSIPreferredPartnerLog_Log.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxCSIPreferredPartnerLog_Log.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxCSIPreferredPartnerLog_Log.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxCSIPreferredPartnerLog_Log.FocusHighlightEnabled = True
-            Me.TextBoxCSIPreferredPartnerLog_Log.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxCSIPreferredPartnerLog_Log.Location = New System.Drawing.Point(1, 1)
-            Me.TextBoxCSIPreferredPartnerLog_Log.MaxFileSize = CType(0, Long)
-            Me.TextBoxCSIPreferredPartnerLog_Log.Multiline = True
-            Me.TextBoxCSIPreferredPartnerLog_Log.Name = "TextBoxCSIPreferredPartnerLog_Log"
-            Me.TextBoxCSIPreferredPartnerLog_Log.ReadOnly = True
-            Me.TextBoxCSIPreferredPartnerLog_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-            Me.TextBoxCSIPreferredPartnerLog_Log.SecurityEnabled = True
-            Me.TextBoxCSIPreferredPartnerLog_Log.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxCSIPreferredPartnerLog_Log.Size = New System.Drawing.Size(1016, 312)
-            Me.TextBoxCSIPreferredPartnerLog_Log.StartingFolderName = Nothing
-            Me.TextBoxCSIPreferredPartnerLog_Log.TabIndex = 17
-            Me.TextBoxCSIPreferredPartnerLog_Log.TabOnEnter = True
-            '
-            'TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab
-            '
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab.AttachedControl = Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab.Name = "TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab"
-            Me.TabItemCSIPreferredPartnerSettings_CSIPreferredPartnerLogTab.Text = "Log"
-            '
-            'LabelCSIPreferredPartner_StatusDescription
-            '
-            Me.LabelCSIPreferredPartner_StatusDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelCSIPreferredPartner_StatusDescription.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCSIPreferredPartner_StatusDescription.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCSIPreferredPartner_StatusDescription.Location = New System.Drawing.Point(58, 4)
-            Me.LabelCSIPreferredPartner_StatusDescription.Name = "LabelCSIPreferredPartner_StatusDescription"
-            Me.LabelCSIPreferredPartner_StatusDescription.Size = New System.Drawing.Size(972, 20)
-            Me.LabelCSIPreferredPartner_StatusDescription.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCSIPreferredPartner_StatusDescription.TabIndex = 6
-            Me.LabelCSIPreferredPartner_StatusDescription.Text = "Stopped..."
-            '
-            'LabelCSIPreferredPartner_Status
-            '
-            Me.LabelCSIPreferredPartner_Status.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCSIPreferredPartner_Status.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCSIPreferredPartner_Status.Location = New System.Drawing.Point(12, 4)
-            Me.LabelCSIPreferredPartner_Status.Name = "LabelCSIPreferredPartner_Status"
-            Me.LabelCSIPreferredPartner_Status.Size = New System.Drawing.Size(40, 20)
-            Me.LabelCSIPreferredPartner_Status.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCSIPreferredPartner_Status.TabIndex = 5
-            Me.LabelCSIPreferredPartner_Status.Text = "Status:"
-            '
-            'TabItemServices_CSIPreferredPartnerTab
-            '
-            Me.TabItemServices_CSIPreferredPartnerTab.AttachedControl = Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner
-            Me.TabItemServices_CSIPreferredPartnerTab.Name = "TabItemServices_CSIPreferredPartnerTab"
-            Me.TabItemServices_CSIPreferredPartnerTab.Text = "CSI Preferred Partner"
-            '
             'TabControlPanelJobExportLogTab_JobExportLog
             '
             Me.TabControlPanelJobExportLogTab_JobExportLog.Controls.Add(Me.TextBoxJobExportLog_Log)
@@ -9555,12 +9912,12 @@
             Me.Size = New System.Drawing.Size(1042, 453)
             CType(Me.TabControlForm_Services, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlForm_Services.ResumeLayout(False)
-            Me.TabControlPanelNielsenTab_Nielsen.ResumeLayout(False)
-            CType(Me.TabControlNielsen_NielsenSettings, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlNielsen_NielsenSettings.ResumeLayout(False)
-            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.ResumeLayout(False)
-            CType(Me.DateTimePickerNielsenSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanelNielsenTab_NIelsenLog.ResumeLayout(False)
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico.ResumeLayout(False)
+            CType(Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlNielsenPuertoRico_NielsenPuertoRicoSettings.ResumeLayout(False)
+            Me.TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.ResumeLayout(False)
+            CType(Me.DateTimePickerNielsenPuertoRicoSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog.ResumeLayout(False)
             Me.TabControlPanelMediaOceanImportTab_MediaOceanImport.ResumeLayout(False)
             CType(Me.TabControlMediaOceanImport_MediaOceanImportSettings, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlMediaOceanImport_MediaOceanImportSettings.ResumeLayout(False)
@@ -9569,6 +9926,48 @@
             CType(Me.GroupBoxMediaOceanImportSettings_Settings, System.ComponentModel.ISupportInitialize).EndInit
             Me.GroupBoxMediaOceanImportSettings_Settings.ResumeLayout(False)
             Me.TabControlPanelMediaOceanImportLogTab_MediaOceanImportLog.ResumeLayout(False)
+            Me.TabControlPanelInOutTab_InOut.ResumeLayout(False)
+            CType(Me.TabControlInOut_InOutSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlInOut_InOutSettings.ResumeLayout(False)
+            Me.TabControlPanelInOutSettingsTab_InOutSettings.ResumeLayout(False)
+            CType(Me.DateTimePickerInOutSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelInOutTab_InOutLog.ResumeLayout(False)
+            Me.TabControlPanelComScoreTab_ComScore.ResumeLayout(False)
+            CType(Me.TabControlComScore_ComScoreSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlComScore_ComScoreSettings.ResumeLayout(False)
+            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.ResumeLayout(False)
+            CType(Me.DateTimePickerComScoreSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelComScoreTab_ComScoreLog.ResumeLayout(False)
+            Me.TabControlPanelEmailListenerTab_EmailListener.ResumeLayout(False)
+            CType(Me.TabControlEmailListener_EmailListenerSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlEmailListener_EmailListenerSettings.ResumeLayout(False)
+            Me.TabControlPanelSettingsTab_EmailListenerSettings.ResumeLayout(False)
+            CType(Me.NumericInputEmailListenerSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelLogTab_EmailListenerLog.ResumeLayout(False)
+            Me.TabControlPanelNielsenTab_Nielsen.ResumeLayout(False)
+            CType(Me.TabControlNielsen_NielsenSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlNielsen_NielsenSettings.ResumeLayout(False)
+            Me.TabControlPanelNielsenSettingsTab_NielsenSettings.ResumeLayout(False)
+            CType(Me.DateTimePickerNielsenSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelNielsenTab_NIelsenLog.ResumeLayout(False)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.ResumeLayout(False)
+            CType(Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ResumeLayout(False)
+            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.ResumeLayout(False)
+            CType(Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.ResumeLayout(False)
+            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.ResumeLayout(False)
+            CType(Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ResumeLayout(False)
+            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.ResumeLayout(False)
+            CType(Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.ResumeLayout(False)
+            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.ResumeLayout(False)
+            CType(Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ResumeLayout(False)
+            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.ResumeLayout(False)
+            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.ResumeLayout(False)
             Me.TabControlPanelContractTab_Contract.ResumeLayout(False)
             CType(Me.TabControlContract_ContractSettings, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlContract_ContractSettings.ResumeLayout(False)
@@ -9661,30 +10060,6 @@
             CType(Me.NumericInputThresholds_Level1End.Properties, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.NumericInputThresholds_Level1Start.Properties, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelQvAAlertLog_QvAAlertLog.ResumeLayout(False)
-            Me.TabControlPanelEmailListenerTab_EmailListener.ResumeLayout(False)
-            CType(Me.TabControlEmailListener_EmailListenerSettings, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlEmailListener_EmailListenerSettings.ResumeLayout(False)
-            Me.TabControlPanelSettingsTab_EmailListenerSettings.ResumeLayout(False)
-            CType(Me.NumericInputEmailListenerSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanelLogTab_EmailListenerLog.ResumeLayout(False)
-            Me.TabControlPanelAutomatedAssignmentsTab_AutomatedAssignments.ResumeLayout(False)
-            CType(Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlAutomatedAssignments_AutomatedAssignmentsSettings.ResumeLayout(False)
-            Me.TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.ResumeLayout(False)
-            CType(Me.NumericInputAutomatedAssignmentsSettings_RunAtEvery.Properties, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanelAutomatedAssignmentsLogTab_AutomatedAssignmentsLog.ResumeLayout(False)
-            Me.TabControlPanelInOutTab_InOut.ResumeLayout(False)
-            CType(Me.TabControlInOut_InOutSettings, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlInOut_InOutSettings.ResumeLayout(False)
-            Me.TabControlPanelInOutSettingsTab_InOutSettings.ResumeLayout(False)
-            CType(Me.DateTimePickerInOutSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanelInOutTab_InOutLog.ResumeLayout(False)
-            Me.TabControlPanelComScoreTab_ComScore.ResumeLayout(False)
-            CType(Me.TabControlComScore_ComScoreSettings, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlComScore_ComScoreSettings.ResumeLayout(False)
-            Me.TabControlPanelComScoreSettingsTab_ComScoreSettings.ResumeLayout(False)
-            CType(Me.DateTimePickerComScoreSettings_RunAtDaily, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanelComScoreTab_ComScoreLog.ResumeLayout(False)
             Me.TabControlPanelScheduledReportsTab_ScheduledReports.ResumeLayout(False)
             CType(Me.TabControlScheduledReports_ScheduledReportsSettings, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlScheduledReports_ScheduledReportsSettings.ResumeLayout(False)
@@ -9746,18 +10121,6 @@
             Me.TabControlPanelJobCompUDFImportSettingsTab_JobCompUDFImportSettings.ResumeLayout(False)
             CType(Me.DateTimePickerJobCompUDFImportSettings_RunAt, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelJobCompUDFImportLogTab_JobCompUDFImportLog.ResumeLayout(False)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning.ResumeLayout(False)
-            CType(Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlDocumentRepositoryCapacityWarning_DocumentRepositoryCapacityWarningSettings.ResumeLayout(False)
-            Me.TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.ResumeLayout(False)
-            CType(Me.NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.Properties, System.ComponentModel.ISupportInitialize).EndInit
-            CType(Me.DateTimePickerDocumentRepositoryCapacityWarningSettings_RunAt, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlPanelDocumentRepositoryCapacityWarningLogTab_DocumentRepositoryCapacityWarningLog.ResumeLayout(False)
-            Me.TabControlPanelCSIPreferredPartnerTab_CSIPreferredPartner.ResumeLayout(False)
-            CType(Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TabControlCSIPreferredPartner_CSIPreferredPartnerSettings.ResumeLayout(False)
-            Me.TabControlPanelCSIPreferredPartnerSettingsTab_CSIPreferredPartnerSettings.ResumeLayout(False)
-            Me.TabControlPanelCSIPreferredPartnerLogTab_CSIPreferredPartnerLog.ResumeLayout(False)
             Me.TabControlPanelJobExportLogTab_JobExportLog.ResumeLayout(False)
             Me.TabControlPanelTimeExportLogTab_TimeExportLog.ResumeLayout(False)
             Me.ResumeLayout(False)
@@ -10222,6 +10585,22 @@
         Friend WithEvents LabelDocumentRepositoryCapacityWarning_StatusDescription As Label
         Friend WithEvents LabelDocumentRepositoryCapacityWarning_Status As Label
         Friend WithEvents TabItemServices_DocumentRepositoryCapacityWarningTab As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents TabControlNielsenPuertoRico_NielsenPuertoRicoSettings As TabControl
+        Friend WithEvents TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents LabelNielsenPuertoRicoSettings_Employee As Label
+        Friend WithEvents ComboBoxNielsenPuertoRicoSettings_Employee As ComboBox
+        Friend WithEvents LabelNielsenPuertoRicoSettings_RunAt As Label
+        Friend WithEvents DateTimePickerNielsenPuertoRicoSettings_RunAtDaily As DateTimePicker
+        Friend WithEvents TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoSettingsTab As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRicoLog As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents TextBoxNielsenPuertoRicoLog_Log As TextBox
+        Friend WithEvents TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab As DevComponents.DotNetBar.TabItem
+        Friend WithEvents LabelNielsenPuertoRico_StatusDescription As Label
+        Friend WithEvents LabelNielsenPuertoRico_Status As Label
+        Friend WithEvents TabItemServices_NielsenPuertoRicoTab As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TextBoxNielsenPuertoRicoSettings_LocalFolder As TextBox
+        Friend WithEvents LabelNielsenPuertoRicoSettings_LocalFolder As Label
     End Class
 
 End Namespace

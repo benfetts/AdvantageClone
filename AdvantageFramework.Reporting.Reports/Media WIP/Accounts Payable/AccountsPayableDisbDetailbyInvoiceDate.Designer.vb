@@ -1,4 +1,4 @@
-Namespace MediaWIP.AccountsPayable
+﻿Namespace MediaWIP.AccountsPayable
 
     Partial Public Class AccountsPayableDisbDetailbyInvoiceDate
         Private components As System.ComponentModel.IContainer
@@ -1042,7 +1042,7 @@ Namespace MediaWIP.AccountsPayable
             '
             'InvoiceID
             '
-            Me.InvoiceID.Expression = "Concat([InvoiceNumber],'-',ToStr([APIdentifier]))"
+            Me.InvoiceID.Expression = "[InvoiceID2]"
             Me.InvoiceID.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
             Me.InvoiceID.Name = "InvoiceID"
             '

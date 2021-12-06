@@ -356,7 +356,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60084</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost/APIProd</IISUrl>
+          <IISUrl>https://localhost/APIDev</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -85,6 +85,8 @@
 		Public Property HasMarketsModified As Boolean
         Public Property ShowWarningForChangingNielsenData As Boolean
         Public Property HasDataBeenEnteredInAnyMarketSchedules As Boolean
+        Public Property IsLoggedInUserInMediaBuyer As Boolean
+        Public Property AutoPlaceBuyerOnMarket As Boolean
 
 #End Region
 
@@ -114,6 +116,8 @@
 			Me.HasMarketsModified = False
 			Me.ShowWarningForChangingNielsenData = True
             Me.HasDataBeenEnteredInAnyMarketSchedules = False
+            Me.IsLoggedInUserInMediaBuyer = False
+            Me.AutoPlaceBuyerOnMarket = False
 
         End Sub
 

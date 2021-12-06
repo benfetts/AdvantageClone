@@ -63,6 +63,15 @@ Namespace Database.Procedures.MediaDemographic
                                   Select MediaDemographic
 
         End Function
+        Public Function LoadActiveNielsenPuertoRicoTV(DbContext As Database.DbContext) As System.Data.Entity.Infrastructure.DbQuery(Of Database.Entities.MediaDemographic)
+
+            LoadActiveNielsenPuertoRicoTV = From MediaDemographic In DbContext.GetQuery(Of Database.Entities.MediaDemographic)
+                                            Where MediaDemographic.IsInactive = False AndAlso
+                                                  MediaDemographic.Type = "T" AndAlso
+                                                  MediaDemographic.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.NielsenPuertoRico
+                                            Select MediaDemographic
+
+        End Function
         Public Function LoadActiveComscoreTV(DbContext As Database.DbContext) As System.Data.Entity.Infrastructure.DbQuery(Of Database.Entities.MediaDemographic)
 
             LoadActiveComscoreTV = From MediaDemographic In DbContext.GetQuery(Of Database.Entities.MediaDemographic)

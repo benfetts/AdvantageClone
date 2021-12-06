@@ -562,10 +562,20 @@ Public Class MVCControllerBase
         'objects
         Dim Result As ImageResult = Nothing
 
-        Result = New ImageResult
+        Try
 
-        Result.Image = Image
-        Result.ImageFormat = ImageFormat
+            If Image IsNot Nothing Then
+
+                Result = New ImageResult
+
+                Result.Image = Image
+                Result.ImageFormat = ImageFormat
+
+            End If
+
+        Catch ex As Exception
+            Result = Nothing
+        End Try
 
         Return Result
 

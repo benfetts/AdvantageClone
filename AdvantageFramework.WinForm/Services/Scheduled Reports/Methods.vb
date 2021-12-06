@@ -371,32 +371,83 @@
             DataGridViewReport_Report = Nothing
 
         End Sub
-        Private Sub ExecuteReport(ByRef DbContext As AdvantageFramework.Database.DbContext, ByRef ReportingDbContext As AdvantageFramework.Reporting.Database.DbContext,
-                                  AdvantageServiceReportSchedule As AdvantageFramework.Database.Entities.AdvantageServiceReportSchedule,
-                                  OutputFolder As String)
+        Private Function ExecuteReport(ByRef DbContext As AdvantageFramework.Database.DbContext, ByRef ReportingDbContext As AdvantageFramework.Reporting.Database.DbContext,
+                                       DataContext As AdvantageFramework.Database.DataContext, Session As AdvantageFramework.Security.Session,
+                                       AdvantageServiceReportSchedule As AdvantageFramework.Database.Entities.AdvantageServiceReportSchedule,
+                                       OutputFolder As String, ByRef ErrorMessage As String) As Boolean
 
             'objects
             Dim DynamicReport As AdvantageFramework.Reporting.Database.Entities.DynamicReport = Nothing
             Dim ParameterDictionary As Generic.Dictionary(Of String, Object) = Nothing
             Dim DynamicReportObjects As IEnumerable = Nothing
+            Dim Executed As Boolean = True
+            Dim [Continue] As Boolean = True
+            Dim VirtualCreditCardTransactionEFSDetails As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.VirtualCreditCardTransactionEFSDetail) = Nothing
 
             DynamicReport = AdvantageFramework.Reporting.Database.Procedures.DynamicReport.LoadByDynamicReportID(ReportingDbContext, AdvantageServiceReportSchedule.ReportID)
 
             If DynamicReport IsNot Nothing Then
 
-                ParameterDictionary = AdvantageFramework.ClassUtilities.ReadObjectContentInDocument(AdvantageServiceReportSchedule.ParameterDictionary)
+                If DynamicReport.Type = AdvantageFramework.Reporting.DynamicReports.VirtualCreditCardTransactionEFS Then
 
-                DynamicReportObjects = AdvantageFramework.Reporting.LoadDynamicReportData(DbContext, ReportingDbContext, DynamicReport.Type, False, AdvantageServiceReportSchedule.Criteria.GetValueOrDefault(0), AdvantageServiceReportSchedule.FilterString, AdvantageServiceReportSchedule.FromDate.GetValueOrDefault("1/1/1900"), AdvantageServiceReportSchedule.ToDate.GetValueOrDefault("1/1/1900"), AdvantageServiceReportSchedule.ShowJobsWithNoDetails, ParameterDictionary, Nothing).OfType(Of Object).ToList
+                    If AdvantageFramework.VCC.LoadVCCProvider(DataContext) <> AdvantageFramework.VCC.VCCProviders.EFS Then
 
-                If DynamicReportObjects IsNot Nothing Then
+                        ErrorMessage = "VCC Provider must be EFS."
+                        Executed = False
+                        [Continue] = False
 
-                    ExportData(DbContext, ReportingDbContext, DynamicReportObjects, AdvantageServiceReportSchedule, DynamicReport, OutputFolder)
+                    ElseIf Not AdvantageFramework.VCC.IsVCCServiceSetup(Session) Then
+
+                        ErrorMessage = "VCC settings are not configured correctly."
+                        Executed = False
+                        [Continue] = False
+
+                    Else
+
+                        VirtualCreditCardTransactionEFSDetails = New Generic.List(Of AdvantageFramework.Reporting.Database.Classes.VirtualCreditCardTransactionEFSDetail)
+
+                        If AdvantageFramework.VCC.GetTransactionsForDataset(Session, Now.AddDays(-1).ToShortDateString, Now.AddDays(-1).ToShortDateString, VirtualCreditCardTransactionEFSDetails, ErrorMessage) = True Then
+
+                            ParameterDictionary = New Generic.Dictionary(Of String, Object)
+
+                            ParameterDictionary(AdvantageFramework.Reporting.VirtualCreditCardTransactionsEFSInitialCriteria.DateRangeType.ToString) = 1
+                            ParameterDictionary(AdvantageFramework.Reporting.VirtualCreditCardTransactionsEFSInitialCriteria.VirtualCreditCardTransactionEFSDetails.ToString) = VirtualCreditCardTransactionEFSDetails
+                            ParameterDictionary(AdvantageFramework.Reporting.VirtualCreditCardTransactionsEFSInitialCriteria.StartDate.ToString) = Now.AddDays(-1).ToShortDateString
+                            ParameterDictionary(AdvantageFramework.Reporting.VirtualCreditCardTransactionsEFSInitialCriteria.EndDate.ToString) = Now.AddDays(-1).ToShortDateString
+                            ParameterDictionary(AdvantageFramework.Reporting.VirtualCreditCardTransactionsEFSInitialCriteria.IncludeTransactionDetail.ToString) = True
+
+                        Else
+
+                            Executed = False
+                            [Continue] = False
+
+                        End If
+
+                    End If
+
+                Else
+
+                    ParameterDictionary = AdvantageFramework.ClassUtilities.ReadObjectContentInDocument(AdvantageServiceReportSchedule.ParameterDictionary)
+
+                End If
+
+                If [Continue] Then
+
+                    DynamicReportObjects = AdvantageFramework.Reporting.LoadDynamicReportData(DbContext, ReportingDbContext, DynamicReport.Type, False, AdvantageServiceReportSchedule.Criteria.GetValueOrDefault(0), AdvantageServiceReportSchedule.FilterString, AdvantageServiceReportSchedule.FromDate.GetValueOrDefault("1/1/1900"), AdvantageServiceReportSchedule.ToDate.GetValueOrDefault("1/1/1900"), AdvantageServiceReportSchedule.ShowJobsWithNoDetails, ParameterDictionary, Nothing).OfType(Of Object).ToList
+
+                    If DynamicReportObjects IsNot Nothing Then
+
+                        ExportData(DbContext, ReportingDbContext, DynamicReportObjects, AdvantageServiceReportSchedule, DynamicReport, OutputFolder)
+
+                    End If
 
                 End If
 
             End If
 
-        End Sub
+            ExecuteReport = Executed
+
+        End Function
         Public Sub ProcessDatabase(DatabaseProfile As AdvantageFramework.Database.DatabaseProfile, ProcessNow As Boolean)
 
             'objects
@@ -408,6 +459,7 @@
             Dim ParameterDictionary As Generic.Dictionary(Of String, Object) = Nothing
             Dim DynamicReportObjects As IEnumerable = Nothing
             Dim RunReport As Boolean = False
+            Dim ErrorMessage As String = String.Empty
 
             Try
 
@@ -492,7 +544,13 @@
 
                                     If RunReport OrElse ProcessNow Then
 
-                                        ExecuteReport(DbContext, ReportingDbContext, AdvantageServiceReportSchedule, OutputFolder)
+                                        ErrorMessage = String.Empty
+
+                                        If ExecuteReport(DbContext, ReportingDbContext, DataContext, Session, AdvantageServiceReportSchedule, OutputFolder, ErrorMessage) = False AndAlso String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+
+                                            WriteToEventLog("Scheduled reports Error Processing - " & ErrorMessage & " --> " & DatabaseProfile.DatabaseName)
+
+                                        End If
 
                                         System.GC.Collect()
 

@@ -15,6 +15,7 @@
             SpotTV
             SpotRadioCounty
             National
+            SpotTVPuertoRico
         End Enum
 
 
@@ -355,6 +356,73 @@
 
 #End Region
 
+#Region " Spot TV Puerto Rico "
+
+        Public Property SpotTVPuertoRicoAddEnabled As Boolean
+
+        Public ReadOnly Property SpotTVPuertoRicoExportEnabled As Boolean
+            Get
+                SpotTVPuertoRicoExportEnabled = Me.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing AndAlso Me.SpotTVPuertoRicoReportDataTable IsNot Nothing
+            End Get
+        End Property
+        Public ReadOnly Property SpotTVPuertoRicoEditEnabled As Boolean
+            Get
+                SpotTVPuertoRicoEditEnabled = Me.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing
+            End Get
+        End Property
+        Public ReadOnly Property SpotTVPuertoRicoDeleteEnabled As Boolean
+            Get
+                SpotTVPuertoRicoDeleteEnabled = Me.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing
+            End Get
+        End Property
+        Public ReadOnly Property SpotTVPuertoRicoCopyEnabled As Boolean
+            Get
+                SpotTVPuertoRicoCopyEnabled = Me.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing
+            End Get
+        End Property
+        Public ReadOnly Property SpotTVPuertoRicoProcessEnabled As Boolean
+            Get
+                SpotTVPuertoRicoProcessEnabled = Me.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing AndAlso Not Me.SpotTVPuertoRicoIsDirty
+            End Get
+        End Property
+        Public ReadOnly Property SpotTVPuertoRicoSaveEnabled As Boolean
+            Get
+                SpotTVPuertoRicoSaveEnabled = Me.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing AndAlso Me.SpotTVPuertoRicoIsDirty
+            End Get
+        End Property
+
+        Public Property SpotTVPuertoRicoDayTimeIsNewRow As Boolean
+        Public Property SpotTVPuertoRicoDayTimeCancelEnabled As Boolean
+        Public Property SpotTVPuertoRicoDayTimeDeleteEnabled As Boolean
+
+        Public Property SpotTVPuertoRicoIsDirty As Boolean
+
+        Public Property SpotTVPuertoRicoResearchCriteriaList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria)
+        Public Property SpotTVPuertoRicoSelectedResearchCriteria As AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria
+
+        Public Property SpotTVPuertoRicoResearchReportTypeList As Generic.List(Of AdvantageFramework.DTO.ComboBoxItem)
+
+        Public Property SpotTVPuertoRicoAvailableStationList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station)
+        Public Property SpotTVPuertoRicoSelectedStationList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station)
+
+        Public Property SpotTVPuertoRicoDayTimeList As Generic.List(Of AdvantageFramework.DTO.DaysAndTime)
+        Public Property SpotTVPuertoRicoSelectedDayTimes As Generic.List(Of AdvantageFramework.DTO.DaysAndTime)
+
+        Public Property SpotTVPuertoRicoAvailableDemographicList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic)
+        Public Property SpotTVPuertoRicoSelectedDemographicList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic)
+
+        Public Property SpotTVPuertoRicoAvailableMetricList As Generic.List(Of AdvantageFramework.DTO.Media.Metric)
+        Public Property SpotTVPuertoRicoSelectedMetricList As Generic.List(Of AdvantageFramework.DTO.Media.Metric)
+
+        Public Property SpotTVPuertoRicoResearchResultList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult)
+        Public Property SpotTVPuertoRicoReportDataTable As System.Data.DataTable
+
+        'Public Property Dashboard As AdvantageFramework.DTO.Dashboard
+
+        'Public Property ProgramWeeks As String
+
+#End Region
+
 #End Region
 
 #Region " Methods "
@@ -397,6 +465,16 @@
 
             Me.NationalDemographicSelectedList = New Generic.List(Of DTO.Media.National.Demographic)
             Me.NationalDemographicAvailableList = New Generic.List(Of DTO.Media.National.Demographic)
+
+            'Spot TV Puerto Rico
+            Me.SpotTVPuertoRicoAvailableStationList = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station)
+            Me.SpotTVPuertoRicoSelectedStationList = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station)
+
+            Me.SpotTVPuertoRicoAvailableDemographicList = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic)
+            Me.SpotTVPuertoRicoSelectedDemographicList = New Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic)
+
+            Me.SpotTVPuertoRicoAvailableMetricList = New Generic.List(Of AdvantageFramework.DTO.Media.Metric)
+            Me.SpotTVPuertoRicoSelectedMetricList = New Generic.List(Of AdvantageFramework.DTO.Media.Metric)
 
         End Sub
 

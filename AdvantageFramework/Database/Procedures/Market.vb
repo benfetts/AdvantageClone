@@ -1,6 +1,6 @@
 ﻿Namespace Database.Procedures.Market
 
-    <HideModuleName()> _
+    <HideModuleName()>
     Public Module Methods
 
 #Region " Constants "
@@ -97,6 +97,23 @@
             MarketIsCanadian = (DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT COUNT(*) FROM dbo.MARKET WHERE MARKET_CODE = '{0}' AND COUNTRY_ID = 2", MarketCode)).FirstOrDefault > 0)
 
             IsMarketCanadian = MarketIsCanadian
+
+        End Function
+        Public Function IsMarketPuertoRican(DbContext As Database.DbContext, MarketCode As String) As Boolean
+
+            Dim Market As AdvantageFramework.Database.Entities.Market = Nothing
+
+            Market = LoadByCode(DbContext, MarketCode)
+
+            If Market IsNot Nothing AndAlso Market.IsPuertoRico Then
+
+                IsMarketPuertoRican = True
+
+            Else
+
+                IsMarketPuertoRican = False
+
+            End If
 
         End Function
         Public Function IsMarketSetAsAllCanada(DbContext As Database.DbContext, MarketCode As String) As Boolean

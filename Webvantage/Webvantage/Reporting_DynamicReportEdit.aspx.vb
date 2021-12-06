@@ -2251,7 +2251,7 @@ Public Class Reporting_DynamicReportEdit
 
         'If RadMultiPageReport.SelectedIndex = 1 OrElse Session("DRPT_UseBlankData") Then
 
-        If Session("DRPT_Data") Is Nothing Then
+        If Session("DRPT_Data") Is Nothing OrElse ASPxDashboardViewer.IsCallback Then
 
             Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
 

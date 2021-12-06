@@ -1,4 +1,4 @@
-Imports DataDynamics.ActiveReports 
+ï»¿Imports DataDynamics.ActiveReports 
 Imports DataDynamics.ActiveReports.Document
 Imports System.Data.SqlClient
 Imports System
@@ -13,6 +13,7 @@ Public Class arptPurchaseOrderRR
     Public logopath As String
     Public imgPath As String 'global default image.
     Public LogoID As String
+    Public LogoName As String
     Public PODate As String
     Public Void As Boolean
     Public ds1 As DataSet
@@ -24,6 +25,10 @@ Public Class arptPurchaseOrderRR
     Public DefaultFooterFontSize As Double = 0
     Public AgencyName As String
     Public DefaultLocation As AdvantageFramework.Database.Entities.Location
+    Public _Clientname As String = ""
+    Public UseLocationName As Boolean = False
+    Public UseClientName As Boolean = False
+
 
     Private POHeader1 As arptPOHeader = Nothing
 
@@ -147,7 +152,7 @@ Public Class arptPurchaseOrderRR
                     BuildLocationString(String.Format("{0:(###) ###-####}", Me.DefaultLocation.Fax), CBool(Me.DefaultLocation.PrintFaxHeader.GetValueOrDefault(0)), LocationInfo)
                     BuildLocationString(Me.DefaultLocation.Email, CBool(Me.DefaultLocation.PrintEmailHeader.GetValueOrDefault(0)), LocationInfo)
 
-                    Me.txt_agency_full_header.Text = String.Join(" • ", LocationInfo)
+                    Me.txt_agency_full_header.Text = String.Join(" â€¢ ", LocationInfo)
 
                 Else
 
@@ -265,7 +270,7 @@ Public Class arptPurchaseOrderRR
             'End If
 
 
-            Me.txt_agency_full_header.Text = header 'LTrim(Me.txt_agency_full_header.Text.Replace("|", "•"))
+            Me.txt_agency_full_header.Text = header 'LTrim(Me.txt_agency_full_header.Text.Replace("|", "â€¢"))
             'Me.txtAgent.Text = Me.AgencyName
         Catch ex As Exception
             'Me.txt_hdr_agency_name.Text = ex.Message.ToString
@@ -394,7 +399,7 @@ Public Class arptPurchaseOrderRR
             BuildLocationString(String.Format("{0:(###) ###-####}", Me.DefaultLocation.Fax), CBool(Me.DefaultLocation.PrintFaxFooter.GetValueOrDefault(0)), LocationInfo)
             BuildLocationString(Me.DefaultLocation.Email, CBool(Me.DefaultLocation.PrintEmailFooter.GetValueOrDefault(0)), LocationInfo)
 
-            Me.txt_agency_full_footer.Text = String.Join(" • ", LocationInfo)
+            Me.txt_agency_full_footer.Text = String.Join(" â€¢ ", LocationInfo)
 
         End If
 
@@ -403,18 +408,18 @@ Public Class arptPurchaseOrderRR
     Private Sub PageFooter1_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles PageFooter1.Format
         'Check if nothing, the descriptions can be long and may not exist yet.
         If Me.txt_agency_full_footer.Text <> Nothing Then
-            Me.txt_agency_full_footer.Text = RTrim(LTrim(Me.txt_agency_full_footer.Text.Replace("|", "•")))
+            Me.txt_agency_full_footer.Text = RTrim(LTrim(Me.txt_agency_full_footer.Text.Replace("|", "â€¢")))
         End If
     End Sub
 
     Private Sub FixAddress()
         Try
-            'Dim str As String = RTrim(LTrim(Me.txt_agency_full_header.Text.Replace("|", "•")))
-            ''str = Webvantage.MiscFN.RemoveTrailingDelimiter(str, "•")
+            'Dim str As String = RTrim(LTrim(Me.txt_agency_full_header.Text.Replace("|", "â€¢")))
+            ''str = Webvantage.MiscFN.RemoveTrailingDelimiter(str, "â€¢")
             'Me.txt_agency_full_header.Text = str
 
-            'Dim str2 As String = RTrim(LTrim(Me.txt_agency_full_footer.Text.Replace("|", "•")))
-            ''str2 = Webvantage.MiscFN.RemoveTrailingDelimiter(str2, "•")
+            'Dim str2 As String = RTrim(LTrim(Me.txt_agency_full_footer.Text.Replace("|", "â€¢")))
+            ''str2 = Webvantage.MiscFN.RemoveTrailingDelimiter(str2, "â€¢")
             'Me.txt_agency_full_footer.Text = str2
         Catch ex As Exception
 
@@ -469,6 +474,16 @@ Public Class arptPurchaseOrderRR
         Try
             ReportFunctions.SetCulture(Me, CultureCode)
             Me.txt_PO_total.Text = String.Format("{0:c}", CDec(Me.txt_PO_total.Text))
+
+            If UseLocationName = True Then
+                Me.Label18.Text = Me.LogoName & " Authorization:"
+            End If
+
+            If UseClientName = True Then
+                Me.Label18.Text = "Agency Authorization as agent for " & _Clientname & ":"
+            End If
+
+
         Catch ex As Exception
 
         End Try

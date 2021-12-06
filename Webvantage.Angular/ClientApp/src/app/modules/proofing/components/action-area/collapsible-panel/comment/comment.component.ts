@@ -177,9 +177,7 @@ export class CommentComponent implements OnInit {
   }
 
   isExternal(feedback: IFeedback): boolean {
-    console.log(feedback);
-    console.log(feedback.proofingXReviwerId);
-    return feedback.proofingXReviwerId > 0;
+    return (feedback.proofingXReviwerId != null && feedback.proofingXReviwerId > 0);
   }
 
   ngAfterViewInit() {    

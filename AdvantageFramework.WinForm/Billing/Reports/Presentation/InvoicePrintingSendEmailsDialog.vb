@@ -471,6 +471,14 @@
 
                         End Using
 
+                        Using DataContext = New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                            _EmailSettings.SenderName = AdvantageFramework.InvoicePrinting.LoadDefaultSenderName(DataContext)
+                            _EmailSettings.FromEmail = AdvantageFramework.InvoicePrinting.LoadDefaultFromEmail(DataContext)
+                            _EmailSettings.ReplyTo = AdvantageFramework.InvoicePrinting.LoadDefaultReplyTo(DataContext)
+
+                        End Using
+
                         _EmailSettings.Subject = TextBoxForm_Subject.Text
                         _EmailSettings.Body = TextBoxForm_Body.Text
 

@@ -7,8 +7,15 @@ Imports MvcCodeRouting.Web.Mvc
 Imports Webvantage.Controllers
 Imports System.Data.SqlClient
 Imports AdvantageFramework.ProjectSchedule.Classes
+Imports System.Diagnostics
 
 Namespace Controllers.ProjectManagement
+
+    Public Class TasksToDelete
+        Property JobNumber As Integer
+        Property JobComponentNumber As Short
+        Property SequenceNumber As Short
+    End Class
 
     Public Class ProjectScheduleController
         Inherits MVCControllerBase
@@ -730,16 +737,23 @@ Namespace Controllers.ProjectManagement
             Return Json(New With {.Tasks = Tasks, .Message = Message})
 
         End Function
+        'Optional ByVal JobNumber As Integer = 0, Optional ByVal JobComponentNumber As Short = 0, Optional ByVal SequenceNumber As Short = 0
         <AcceptVerbs("POST", "DELETE", "GET", "PUT")>
-        Public Function DeleteTask(Optional ByVal JobNumber As Integer = 0, Optional ByVal JobComponentNumber As Short = 0, Optional ByVal SequenceNumber As Short = 0) As ActionResult
+        Public Function DeleteTask(Tasks As List(Of TasksToDelete)) As ActionResult
 
             'objects
             Dim Message As String = ""
 
+            Debug.Write(Request)
+
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                DeleteTask(DbContext, JobNumber, JobComponentNumber, SequenceNumber, Message)
+                For Each Task As TasksToDelete In Tasks
+
+                    DeleteTask(DbContext, Task.JobNumber, Task.JobComponentNumber, Task.SequenceNumber, Message)
+
+                Next
 
             End Using
 
@@ -956,13 +970,9 @@ Namespace Controllers.ProjectManagement
             UpdateEmployees = String.Empty
         End Function
 
+        Public Function UpdateScheduleTask(ScheduleTask As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask,
+                                                  Optional ShowingClientContacts As Boolean = True, Optional ShowingEmployees As Boolean = True) As Object
 
-        <AcceptVerbs("POST")>
-        Public Function UpdateProjectScheduleTask(DataSourceRequest As Kendo.Mvc.UI.DataSourceRequest,
-                                                  ScheduleTask As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask,
-                                                  Optional ShowingClientContacts As Boolean = True, Optional ShowingEmployees As Boolean = True) As ActionResult
-
-            'objects
             Dim JobComponentTask As AdvantageFramework.Database.Entities.JobComponentTask = Nothing
             Dim DbScheduleTask As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask = Nothing
             Dim LastScheduleTask As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask = Nothing
@@ -1750,16 +1760,24 @@ Namespace Controllers.ProjectManagement
                 ReturnObject.ErrorMessage = "Something went wrong. " + ex.Message
             End Try
 
-            Return MaxJson(ReturnObject, JsonRequestBehavior.AllowGet)
-
-            'Return Json(ReturnObject)
+            Return ReturnObject
 
         End Function
-        <AcceptVerbs("POST", "PUT")>
-        Public Function CreateProjectScheduleTask(DataSourceRequest As Kendo.Mvc.UI.DataSourceRequest,
-                                                  ScheduleTask As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask) As ActionResult
 
-            'objects
+
+        <AcceptVerbs("POST")>
+        Public Function UpdateProjectScheduleTask(ScheduleTasks As List(Of AdvantageFramework.ProjectSchedule.Classes.ScheduleTask)) As ActionResult
+            Dim ReturnObjects As List(Of Object) = New List(Of Object)
+
+            For Each Task In ScheduleTasks
+                ReturnObjects.Add(UpdateScheduleTask(Task))
+            Next
+
+            Return MaxJson(ReturnObjects, JsonRequestBehavior.AllowGet)
+
+        End Function
+
+        Public Function CreateScheduleTask(ScheduleTask As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask) As AdvantageFramework.ProjectSchedule.Classes.ScheduleTask
             Dim JobComponentTask As AdvantageFramework.Database.Entities.JobComponentTask = Nothing
             Dim AppVars As Webvantage.cAppVars = Nothing
             AppVars = New cAppVars(cAppVars.Application.PROJECT_SCHEDULE)
@@ -1798,17 +1816,24 @@ Namespace Controllers.ProjectManagement
 
             End Using
 
-            If ScheduleTask Is Nothing Then
-
-                Return Json(New Kendo.Mvc.UI.DataSourceResult() With {.Errors = "Please enter a valid task."})
-
-            Else
-
-                Return Json(ScheduleTask)
-
-            End If
+            Return ScheduleTask
 
         End Function
+
+        <AcceptVerbs("POST", "PUT")>
+        Public Function CreateProjectScheduleTask(ScheduleTasks As List(Of AdvantageFramework.ProjectSchedule.Classes.ScheduleTask)) As ActionResult
+
+            Dim NewTasks As List(Of ScheduleTask) = New List(Of ScheduleTask)
+
+            'objects
+            For Each task In ScheduleTasks
+                NewTasks.Add(CreateScheduleTask(task))
+            Next
+
+            Return MaxJson(NewTasks, JsonRequestBehavior.AllowGet)
+
+        End Function
+
         Private Function GetPredecessors(DbContext As AdvantageFramework.Database.DbContext, JobNumber As Integer, JobComponentNumber As Short, SequenceNumber As Integer) As IEnumerable
 
             Try
@@ -6260,16 +6285,13 @@ Namespace Controllers.ProjectManagement
 
         Public Function UpdateTask(ByVal updateParameters As JobDataCRUDModel(Of ScheduleTask)) As JsonResult
 
+            Dim Tasks As List(Of ScheduleTask)
             Dim Task As ScheduleTask = updateParameters.Value
 
-            Me.UpdateProjectScheduleTask(Nothing, Task)
+            Tasks.Add(Task)
 
-        End Function
+            Me.UpdateProjectScheduleTask(Tasks)
 
-        Public Function ejDeleteTask(Optional ByVal updateParameters As JobDataCRUDModel(Of ScheduleTask) = Nothing) As JsonResult
-            Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
-
-            End Using
         End Function
 
         Public Function RemoveTask(ByVal updateParameters As JobDataCRUDModel(Of ScheduleTask)) As JsonResult
@@ -6292,7 +6314,7 @@ Namespace Controllers.ProjectManagement
                             ScheduleTask.JobComponentNumber = updateParameters.JobComponentNumber
                         End If
 
-                        CreateProjectScheduleTask(Nothing, ScheduleTask)
+                        CreateScheduleTask(ScheduleTask)
 
                     Next
 

@@ -4,6 +4,16 @@ GO
 CREATE PROCEDURE [dbo].[usp_wv_Traffic_Schedule_Calculate_JobPred] @job_number integer, @job_component_nbr smallint, @use_predecessor bit, @emp_code as varchar(6), @ret_val integer OUTPUT
 AS
 
+/****** Object:  StoredProcedure [dbo].[usp_wv_Traffic_Schedule_Calculate_JobPred]    Script Date: 10/19/2021 2:45:22 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[usp_wv_Traffic_Schedule_Calculate_JobPred] @job_number integer, @job_component_nbr smallint, @use_predecessor bit, @emp_code as varchar(6), @ret_val integer OUTPUT
+AS
+
 SET ANSI_NULLS ON
 SET ANSI_WARNINGS OFF
 SET ARITHABORT OFF
@@ -74,9 +84,18 @@ SELECT JOB_NUMBER, JOB_COMPONENT_NBR FROM #JOBS
 	WHILE ( @@FETCH_STATUS = 0 )
 	BEGIN
 		--SELECT @job_num, @job_comp
-		SELECT @job_pred_end_date = JOB_FIRST_USE_DATE 
-		FROM JOB_COMPONENT
-		WHERE (JOB_NUMBER = @job_num) AND (JOB_COMPONENT_NBR = @job_comp)
+		if @trf_calc_by_cmp = 0
+		BEGIN
+			SELECT @job_pred_end_date = JOB_FIRST_USE_DATE 
+			FROM JOB_COMPONENT
+			WHERE (JOB_NUMBER = @job_num) AND (JOB_COMPONENT_NBR = @job_comp)
+		END
+		ELSE
+		BEGIN
+			SELECT @job_pred_end_date = ISNULL(JOB_TRAFFIC.COMPLETED_DATE,JOB_FIRST_USE_DATE)
+			FROM JOB_COMPONENT JOIN JOB_TRAFFIC ON JOB_TRAFFIC.JOB_NUMBER = JOB_COMPONENT.JOB_NUMBER and JOB_TRAFFIC.JOB_COMPONENT_NBR = JOB_COMPONENT.JOB_COMPONENT_NBR
+			WHERE (JOB_COMPONENT.JOB_NUMBER = @job_num) AND ( JOB_COMPONENT.JOB_COMPONENT_NBR = @job_comp)
+		END
 		--SELECT @job_pred_end_date
 
 		DECLARE pred_cursor_pred CURSOR FOR
@@ -154,12 +173,7 @@ SELECT JOB_NUMBER, JOB_COMPONENT_NBR FROM #JOBS
 
 	CLOSE job_cursor
 	DEALLOCATE job_cursor
-
-
-
-
-
-
-
-
 end_tran:
+GO
+
+

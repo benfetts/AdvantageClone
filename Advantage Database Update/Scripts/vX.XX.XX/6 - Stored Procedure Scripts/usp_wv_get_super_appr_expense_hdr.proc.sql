@@ -1,0 +1,140 @@
+﻿IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'[dbo].[usp_wv_get_super_appr_expense_hdr]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE [dbo].[usp_wv_get_super_appr_expense_hdr]
+GO
+CREATE PROCEDURE [dbo].[usp_wv_get_super_appr_expense_hdr]
+@user_id	VARCHAR(100),
+@superCode  VARCHAR(6),
+@emp_code 	VARCHAR(6),
+@start_date	SMALLDATETIME,
+@end_date	SMALLDATETIME,
+@PENDING	INTEGER,
+@DENIED 	INTEGER,
+@APPROVED 	INTEGER
+AS
+/*=========== QUERY ===========*/
+BEGIN
+	DECLARE
+	@SHOW_OPEN BIT = 1
+	;
+	SELECT 
+		A.EMPLOYEE,
+		A.INV_NBR, 
+		A.INV_DATE, 
+		A.EXP_DESC, 
+		A.[STATUS], 
+		A.SUBMITTED_FLAG, 
+		A.APPROVED_FLAG, 
+		A.APPR_NOTES, 
+		A.EMP_CODE,
+		A.SUBMITTED_TO,
+		SUM(A.TOTALEXPENSE) AS TOTALEXPENSE, 
+		SUM(A.TOTALPAYABLE) AS TOTALPAYABLE,
+		A.SUPERVISOR_CODE,
+		A.EXP_RPT_APPROVER,
+		(SELECT COUNT(1) FROM EXPENSE_DOCS ED WHERE A.INV_NBR = ED.INV_NBR) AS DOC_COUNT 
+	FROM
+		(
+			SELECT 
+				EMPLOYEE = ISNULL(E.EMP_FNAME + ' ', '') + ISNULL(E.EMP_MI + '. ', '') + ISNULL(E.EMP_LNAME, ''),
+				EH.INV_NBR, 
+				EH.INV_DATE, 
+				EH.EXP_DESC, 
+				EH.[STATUS], 
+				EH.SUBMITTED_FLAG, 
+				APPROVED_FLAG =	CASE	
+									WHEN EH.SUBMITTED_FLAG = 2 THEN EH.SUBMITTED_FLAG
+									ELSE EH.APPROVED_FLAG
+								END, 
+				APPR_NOTES =	CASE
+									WHEN DATALENGTH(EH.APPR_NOTES) = 0 THEN NULL
+									ELSE EH.APPR_NOTES
+								END,
+				EH.EMP_CODE,
+				EH.SUBMITTED_TO,
+				E.SUPERVISOR_CODE,
+				E.EXP_RPT_APPROVER,
+				TOTALEXPENSE = SUM(ED.AMOUNT), 
+				TOTALPAYABLE = CASE WHEN ED.CC_FLAG IS NULL THEN CASE WHEN ED.PAYMENT_TYPE = 1 THEN SUM(CHARINDEX('1', CAST(ED.PAYMENT_TYPE AS CHAR(1))) * ED.AMOUNT) ELSE 0 END ELSE SUM(CHARINDEX('0', CAST(ED.CC_FLAG AS CHAR(1))) * ED.AMOUNT) END
+			 FROM 
+				EXPENSE_HEADER EH WITH(NOLOCK)
+				INNER JOIN EMPLOYEE E WITH(NOLOCK) ON EH.EMP_CODE = E.EMP_CODE 
+				LEFT OUTER JOIN EXPENSE_DETAIL ED WITH(NOLOCK) ON EH.INV_NBR = ED.INV_NBR AND ED.LINE_NBR > 0
+			WHERE
+				SUBMITTED_FLAG = 1 
+				AND (APPROVED_BY = @superCode OR APPROVED_BY IS NULL OR DATALENGTH(APPROVED_BY) = 0)
+				AND (SUBMITTED_TO IS NULL OR SUBMITTED_TO = @superCode OR DATALENGTH(SUBMITTED_TO) = 0)
+				AND
+				1 = CASE
+						WHEN @start_date IS NULL AND @end_date IS NULL THEN 1
+						WHEN @start_date IS NULL AND @end_date IS NOT NULL AND EH.INV_DATE <= @end_date THEN 1
+						WHEN @start_date IS NOT NULL AND @end_date IS NULL AND EH.INV_DATE >= @start_date THEN 1
+						WHEN @start_date IS NOT NULL AND @end_date IS NOT NULL AND EH.INV_DATE BETWEEN @start_date AND @end_date THEN 1
+						ELSE 0
+					END
+				AND
+				1 = CASE
+						WHEN @emp_code IS NULL OR RTRIM(LTRIM(@emp_code)) = '' OR DATALENGTH(@emp_code) = 0 THEN 1
+						WHEN @emp_code IS NOT NULL AND EH.EMP_CODE = @emp_code AND DATALENGTH(@emp_code) > 0 THEN 1
+						ELSE 0
+					END
+				AND	(
+						(@SHOW_OPEN = 1 AND ISNULL(EH.[STATUS],0) = 0)
+						OR	(
+								@PENDING = 1 AND	(
+														(EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 0) 
+														OR (EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 1 AND EH.APPROVED_FLAG = 0) 
+														OR (EH.[STATUS] = 4)
+													)
+							)
+						OR	(
+								@APPROVED = 1 AND	(
+														(EH.[STATUS] = 2) 
+														OR (EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 1 AND EH.APPROVED_FLAG = 2)
+													)
+							)
+						OR	(
+								@DENIED = 1 AND		(
+														(EH.[STATUS] = 5) 
+														OR (EH.[STATUS] = 1 AND EH.SUBMITTED_FLAG = 1 AND EH.APPROVED_FLAG = 1)
+													)
+							)
+					)
+			GROUP BY 
+				E.EMP_FNAME,
+				E.EMP_MI,
+				E.EMP_LNAME,
+				EH.EMP_CODE, 
+				EH.INV_NBR, 
+				EH.INV_DATE, 
+				EH.EXP_DESC, 
+				EH.[STATUS], 
+				EH.SUBMITTED_FLAG, 
+				EH.APPROVED_FLAG, 
+				EH.APPR_NOTES, 
+				EH.EMP_CODE,
+				EH.SUBMITTED_TO,
+				E.SUPERVISOR_CODE,
+				E.EXP_RPT_APPROVER,
+				ED.CC_FLAG,
+				ED.PAYMENT_TYPE
+		) AS A
+	GROUP BY 
+		A.EMPLOYEE,
+		A.INV_NBR,
+		A.INV_DATE,
+		A.EXP_DESC,
+		A.[STATUS],
+		A.SUBMITTED_FLAG,
+		A.APPROVED_FLAG,
+		A.APPR_NOTES,
+		A.EMP_CODE,
+		A.SUBMITTED_TO,
+		A.SUPERVISOR_CODE,
+		A.EXP_RPT_APPROVER
+	ORDER BY
+		A.EMPLOYEE,
+		A.INV_DATE DESC
+	;
+END
+/*=========== QUERY ===========*/
+GO

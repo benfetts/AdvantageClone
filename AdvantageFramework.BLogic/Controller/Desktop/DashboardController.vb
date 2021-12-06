@@ -1186,9 +1186,9 @@ Namespace Controller.Dashboard
 
                 End Select
 
-        End If
+            End If
 
-        Return List
+            Return List
 
         End Function
         Private Function LoadDashboardItemCount(ByVal Type As DashboardType, Optional ByVal IsClientPortal As Boolean = False) As Integer

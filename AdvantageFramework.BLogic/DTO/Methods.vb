@@ -15,6 +15,7 @@
             UnitedStates = 1
             Canada = 2
             Australia = 3
+            PuertoRico = 4
         End Enum
 
 #End Region

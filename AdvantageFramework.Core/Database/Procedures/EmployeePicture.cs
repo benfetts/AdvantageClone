@@ -30,6 +30,14 @@ namespace AdvantageFramework.Core.Database.Procedures
                                                                  where SecUser.UserCode.ToLower() == UserCode.ToLower()
                                                                  select EmployeePicture).FirstOrDefault();
 
+            if(employeePicture == null)
+            {
+                employeePicture = new Entities.EmployeePicture()
+                {
+                    EmpCode = UserCode.ToLower()
+                };
+            }
+
             if (employeePicture != null && employeePicture.EmpImage == null)
             {
                 EmployeeCloak employeeCloak = (from EmployeeCloak in DbContext.EmployeeCloaks.AsQueryable()
@@ -40,7 +48,7 @@ namespace AdvantageFramework.Core.Database.Procedures
                 if (employeeCloak != null)
                 {
                     string init = employeeCloak.EmpFname.Substring(0,1) + employeeCloak.EmpLname.Substring(0, 1);
-                    Image image = DrawText(init, new Font(FontFamily.GenericMonospace, 150, FontStyle.Bold), Color.Black, Color.Aqua);
+                    Image image = DrawText(init, new Font(FontFamily.GenericSansSerif, 8, FontStyle.Regular), Color.White, Color.FromArgb(0,188,212));
                     employeePicture.EmpImage = ImageToByteArray(image);
                 }
             }
@@ -62,11 +70,11 @@ namespace AdvantageFramework.Core.Database.Procedures
             SizeF textSize = drawing.MeasureString(text, font);
             img.Dispose();
             drawing.Dispose();
-            img = new Bitmap((int)textSize.Width + 10, (int)textSize.Height + 10);
+            img = new Bitmap(32, 32);//(int)textSize.Width + 10, (int)textSize.Height + 10);
             drawing = Graphics.FromImage(img);
             drawing.Clear(backColor);
             Brush textBrush = new SolidBrush(textColor);
-            drawing.DrawString(text, font, textBrush, 5, 5);
+            drawing.DrawString(text, font, textBrush, 5, 10);
             drawing.Save();
             textBrush.Dispose();
             drawing.Dispose();

@@ -1006,9 +1006,10 @@
 
         End Function
         Public Function Add(ByVal Agency As AdvantageFramework.Database.Entities.Agency, ByVal File As String, ByVal Description As String, ByVal Keywords As String,
-                             ByVal UserCodeOrEmployeeName As String, Optional ByVal FinalLevel As String = "", Optional ByVal FinalLevelDescription As String = "",
-                             Optional ByVal DocumentSource As AdvantageFramework.FileSystem.DocumentSource = DocumentSource.Default, Optional ByRef FileSystemFile As String = "", Optional ByRef byteFile() As Byte = Nothing,
-                             Optional ByRef FileName As String = "", Optional ByVal EventLog As System.Diagnostics.EventLog = Nothing) As Boolean
+                            ByVal UserCodeOrEmployeeName As String, Optional ByVal FinalLevel As String = "", Optional ByVal FinalLevelDescription As String = "",
+                            Optional ByVal DocumentSource As AdvantageFramework.FileSystem.DocumentSource = DocumentSource.Default,
+                            Optional ByRef FileSystemFile As String = "", Optional ByRef byteFile() As Byte = Nothing,
+                            Optional ByRef FileName As String = "", Optional ByVal EventLog As System.Diagnostics.EventLog = Nothing) As Boolean
 
             'objects
             Dim FileAdded As Boolean = False
@@ -1044,8 +1045,18 @@
 
                     XMLDocument.LoadXml(StringBuilder.ToString)
                     XMLDocument.SelectSingleNode("//documents/document").Attributes("filename").Value = FileName
-                    XMLDocument.SelectSingleNode("//documents/document").Attributes("realfilename").Value = New System.IO.FileInfo(File).Name
-                    XMLDocument.SelectSingleNode("//documents/document").Attributes("description").Value = Description
+                    'Hack for ConceptShare fix
+                    If String.IsNullOrWhiteSpace(File) = True AndAlso String.IsNullOrWhiteSpace(Description) = False Then
+
+                        XMLDocument.SelectSingleNode("//documents/document").Attributes("realfilename").Value = Description
+                        XMLDocument.SelectSingleNode("//documents/document").Attributes("description").Value = Description
+
+                    Else
+
+                        XMLDocument.SelectSingleNode("//documents/document").Attributes("realfilename").Value = New System.IO.FileInfo(File).Name
+                        XMLDocument.SelectSingleNode("//documents/document").Attributes("description").Value = Description
+
+                    End If
                     XMLDocument.SelectSingleNode("//documents/document").Attributes("author").Value = UserCodeOrEmployeeName
                     XMLDocument.SelectSingleNode("//documents/document").Attributes("keywords").Value = Keywords
                     XMLDocument.SelectSingleNode("//documents/document").Attributes("finallevel").Value = FinalLevel

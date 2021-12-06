@@ -23,6 +23,7 @@
         Protected _Controller As AdvantageFramework.Controller.Media.BroadcastResearchController = Nothing
         Protected _NielsenCopyright As String = "Copyright © " & Now.Year.ToString & " The Nielsen Company"
         Protected _ComscoreCopyright As String = "Copyright © " & Now.Year.ToString & " Comscore"
+        Protected _NielsenPuertoRicoCopyright As String = "Copyright © " & Now.Year.ToString & " Nielsen Media, Puerto Rico"
         Private _MissingIntegrationSettingsMessageShown As Boolean = False
 
 #End Region
@@ -73,6 +74,12 @@
 
                 TabControlNational_ResearchCriteria.SelectedTab = TabItemNational_ReportType
 
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico AndAlso AdvantageFramework.Media.Presentation.BroadcastResearchToolReportEditDialog.ShowFormDialog(AdvantageFramework.DTO.Media.Methods.ResearchCriteriaTypes.SpotTVPuertoRico, AdvantageFramework.Media.Presentation.BroadcastResearchToolReportEditDialog.ResearchType.SpotTVPuertoRico, ResearchID) = Windows.Forms.DialogResult.OK Then
+
+                LoadSpotTVPuertoRicoViewModel(ResearchID, True)
+
+                TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab = TabItemSpotTVPuertoRico_ReportTypeStations
+
             End If
 
         End Sub
@@ -122,6 +129,16 @@
 
                 End If
 
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico Then
+
+                ResearchID = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID
+
+                If AdvantageFramework.Media.Presentation.BroadcastResearchToolReportEditDialog.ShowFormDialog(AdvantageFramework.DTO.Media.Methods.ResearchCriteriaTypes.SpotTVPuertoRico, AdvantageFramework.Media.Presentation.BroadcastResearchToolReportEditDialog.ResearchType.SpotTVPuertoRico, _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID) = Windows.Forms.DialogResult.OK Then
+
+                    LoadSpotTVPuertoRicoViewModel(ResearchID, True)
+
+                End If
+
             End If
 
         End Sub
@@ -159,6 +176,14 @@
                 If AdvantageFramework.WinForm.MessageBox.Show("You have unsaved changes. Do you want to save your changes?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
 
                     IsOkay = SaveNational()
+
+                End If
+
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico AndAlso _ViewModel.SpotTVPuertoRicoSaveEnabled Then
+
+                If AdvantageFramework.WinForm.MessageBox.Show("You have unsaved changes. Do you want to save your changes?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo) = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
+
+                    IsOkay = SaveSpotTVPuertoRico()
 
                 End If
 
@@ -291,20 +316,24 @@
             If Me.FormShown Then
 
                 RibbonBarOptions_Demographics.Visible = (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVTab) AndAlso TabControlSpotTV_ResearchCriteria.SelectedTab.Equals(TabItemSpotTV_Demographics)) OrElse
-                    (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab) AndAlso TabControlNational_ResearchCriteria.SelectedTab.Equals(TabItemNational_Demographics))
+                    (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab) AndAlso TabControlNational_ResearchCriteria.SelectedTab.Equals(TabItemNational_Demographics)) OrElse
+                    (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) AndAlso TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab.Equals(TabItemSpotTVPuertoRico_Demographics))
 
                 RibbonBarOptions_Metrics.Visible = (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVTab) AndAlso TabControlSpotTV_ResearchCriteria.SelectedTab.Equals(TabItemSpotTV_Metrics)) OrElse
                     (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotRadioTab) AndAlso TabControlSpotRadio_ResearchCriteria.SelectedTab.Equals(TabItemSpotRadioCounty_Metrics)) OrElse
                     (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotRadioCountyTab) AndAlso TabControlSpotRadioCounty_ResearchCriteria.SelectedTab.Equals(TabItemSpotRadioCounty_Metrics)) OrElse
-                    (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab) AndAlso TabControlNational_ResearchCriteria.SelectedTab.Equals(TabItemNational_Metrics))
+                    (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab) AndAlso TabControlNational_ResearchCriteria.SelectedTab.Equals(TabItemNational_Metrics)) OrElse
+                    (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) AndAlso TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab.Equals(TabItemSpotTVPuertoRico_Metrics))
 
                 ButtonItemDemographics_Up.Enabled = RibbonBarOptions_Demographics.Visible AndAlso
                     (DataGridViewSpotTV_SelectedDemographics.HasOnlyOneSelectedRow AndAlso DataGridViewSpotTV_SelectedDemographics.CurrentView.FocusedRowHandle > 0) OrElse
-                    (DataGridViewNational_DemographicsSelected.HasOnlyOneSelectedRow AndAlso DataGridViewNational_DemographicsSelected.CurrentView.FocusedRowHandle > 0)
+                    (DataGridViewNational_DemographicsSelected.HasOnlyOneSelectedRow AndAlso DataGridViewNational_DemographicsSelected.CurrentView.FocusedRowHandle > 0) OrElse
+                    (DataGridViewSpotTVPuertoRico_SelectedDemographics.HasOnlyOneSelectedRow AndAlso DataGridViewSpotTVPuertoRico_SelectedDemographics.CurrentView.FocusedRowHandle > 0)
 
                 ButtonItemDemographics_Down.Enabled = RibbonBarOptions_Demographics.Visible AndAlso
                     (DataGridViewSpotTV_SelectedDemographics.HasOnlyOneSelectedRow AndAlso DataGridViewSpotTV_SelectedDemographics.CurrentView.FocusedRowHandle <> DataGridViewSpotTV_SelectedDemographics.CurrentView.RowCount - 1) OrElse
-                    (DataGridViewNational_DemographicsSelected.HasOnlyOneSelectedRow AndAlso DataGridViewNational_DemographicsSelected.CurrentView.FocusedRowHandle <> DataGridViewNational_DemographicsSelected.CurrentView.RowCount - 1)
+                    (DataGridViewNational_DemographicsSelected.HasOnlyOneSelectedRow AndAlso DataGridViewNational_DemographicsSelected.CurrentView.FocusedRowHandle <> DataGridViewNational_DemographicsSelected.CurrentView.RowCount - 1) OrElse
+                    (DataGridViewSpotTVPuertoRico_SelectedDemographics.HasOnlyOneSelectedRow AndAlso DataGridViewSpotTVPuertoRico_SelectedDemographics.CurrentView.FocusedRowHandle <> DataGridViewSpotTVPuertoRico_SelectedDemographics.CurrentView.RowCount - 1)
 
                 ButtonItemMetrics_Up.Enabled = ((TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVTab) AndAlso TabControlSpotTV_ResearchCriteria.SelectedTab.Equals(TabItemSpotTV_Metrics) AndAlso
                                                 RibbonBarOptions_Metrics.Visible AndAlso DataGridViewSpotTV_SelectedMetrics.HasOnlyOneSelectedRow AndAlso
@@ -317,7 +346,10 @@
                                                 DataGridViewSpotRadioCounty_SelectedMetrics.CurrentView.FocusedRowHandle > 0)) OrElse
                                                ((TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab) AndAlso TabControlNational_ResearchCriteria.SelectedTab.Equals(TabItemNational_Metrics) AndAlso
                                                 RibbonBarOptions_Metrics.Visible AndAlso DataGridViewNational_MetricsSelected.HasOnlyOneSelectedRow AndAlso
-                                                DataGridViewNational_MetricsSelected.CurrentView.FocusedRowHandle > 0))
+                                                DataGridViewNational_MetricsSelected.CurrentView.FocusedRowHandle > 0)) OrElse
+                                                ((TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) AndAlso TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab.Equals(TabItemSpotTVPuertoRico_Metrics) AndAlso
+                                                RibbonBarOptions_Metrics.Visible AndAlso DataGridViewSpotTVPuertoRico_SelectedMetrics.HasOnlyOneSelectedRow AndAlso
+                                                DataGridViewSpotTVPuertoRico_SelectedMetrics.CurrentView.FocusedRowHandle > 0))
 
                 ButtonItemMetrics_Down.Enabled = ((TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVTab) AndAlso TabControlSpotTV_ResearchCriteria.SelectedTab.Equals(TabItemSpotTV_Metrics) AndAlso
                                                   RibbonBarOptions_Metrics.Visible AndAlso DataGridViewSpotTV_SelectedMetrics.HasOnlyOneSelectedRow AndAlso
@@ -330,7 +362,10 @@
                                                   DataGridViewSpotRadioCounty_SelectedMetrics.CurrentView.FocusedRowHandle <> DataGridViewSpotRadioCounty_SelectedMetrics.CurrentView.RowCount - 1)) OrElse
                                                  ((TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab) AndAlso TabControlNational_ResearchCriteria.SelectedTab.Equals(TabItemNational_Metrics) AndAlso
                                                   RibbonBarOptions_Metrics.Visible AndAlso DataGridViewNational_MetricsSelected.HasOnlyOneSelectedRow AndAlso
-                                                  DataGridViewNational_MetricsSelected.CurrentView.FocusedRowHandle <> DataGridViewNational_MetricsSelected.CurrentView.RowCount - 1))
+                                                  DataGridViewNational_MetricsSelected.CurrentView.FocusedRowHandle <> DataGridViewNational_MetricsSelected.CurrentView.RowCount - 1)) OrElse
+                                                  ((TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) AndAlso TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab.Equals(TabItemSpotTVPuertoRico_Metrics) AndAlso
+                                                  RibbonBarOptions_Metrics.Visible AndAlso DataGridViewSpotTVPuertoRico_SelectedMetrics.HasOnlyOneSelectedRow AndAlso
+                                                  DataGridViewSpotTVPuertoRico_SelectedMetrics.CurrentView.FocusedRowHandle <> DataGridViewSpotTVPuertoRico_SelectedMetrics.CurrentView.RowCount - 1))
 
                 RibbonBarOptions_ReportView.Visible = TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotRadioTab) AndAlso TabControlSpotRadio_ResearchCriteria.SelectedTab.Equals(TabItemSpotRadio_Results) AndAlso
                         _ViewModel.SelectedResearchCriteria IsNot Nothing AndAlso _ViewModel.SelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotRadioResearchReportType.AudienceComposition
@@ -395,7 +430,8 @@
 
                 RibbonBarOptions_Dashboard.Visible = (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVTab) AndAlso TabControlSpotTV_ResearchCriteria.SelectedTab.Equals(TabItemSpotTV_Results)) OrElse
                                                      (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotRadioTab) AndAlso TabControlSpotRadio_ResearchCriteria.SelectedTab.Equals(TabItemSpotRadio_Results)) OrElse
-                                                     (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotRadioCountyTab) AndAlso TabControlSpotRadioCounty_ResearchCriteria.SelectedTab.Equals(TabItemSpotRadioCounty_Results))
+                                                     (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotRadioCountyTab) AndAlso TabControlSpotRadioCounty_ResearchCriteria.SelectedTab.Equals(TabItemSpotRadioCounty_Results)) OrElse
+                                                     (TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) AndAlso TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab.Equals(TabItemSpotTVPuertoRico_Results))
 
                 ButtonItemView_Books.Enabled = TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVTab) OrElse TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotRadioTab)
 
@@ -406,6 +442,12 @@
                 TextBoxNationalDates_StartTime.SetRequired(TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab))
                 TextBoxNationalDates_EndTime.SetRequired(TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab))
                 ComboBoxNationalDates_Stream.SetRequired(TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_NationalTab))
+
+                'puerto rico
+                ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.SetRequired(TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab))
+
+                DateEditSpotTVPuertoRicoPeriod_ShareStartDate.SetRequired(TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab))
+                DateEditSpotTVPuertoRicoPeriod_ShareEndDate.SetRequired(TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab))
 
             End If
 
@@ -2780,6 +2822,53 @@
             End If
 
         End Sub
+        Private Sub LoadTVPuertoRicoDashboardDataSource()
+
+            If DashboardViewerTVPuertoRicoDashboard_Dashboard.Dashboard IsNot Nothing Then
+
+                If DashboardViewerTVPuertoRicoDashboard_Dashboard.Dashboard.DataSources.Count = 0 Then
+
+                    DashboardViewerTVPuertoRicoDashboard_Dashboard.Dashboard.DataSources.Add(_ViewModel.SpotTVPuertoRicoResearchResultList)
+
+                Else
+
+                    DashboardViewerTVPuertoRicoDashboard_Dashboard.Dashboard.DataSources(0).Data = _ViewModel.SpotTVPuertoRicoResearchResultList
+
+                End If
+
+                DashboardViewerTVPuertoRicoDashboard_Dashboard.Refresh()
+
+            End If
+
+        End Sub
+        Private Sub LoadTVPuertoRicoDashboard(ForceReload As Boolean)
+
+            'objects
+            Dim MemoryStream As System.IO.MemoryStream = Nothing
+
+            If DashboardViewerTVPuertoRicoDashboard_Dashboard.Dashboard Is Nothing OrElse ForceReload Then
+
+                If _ViewModel.Dashboard IsNot Nothing AndAlso _ViewModel.Dashboard.Layout IsNot Nothing AndAlso _ViewModel.Dashboard.Layout.Length > 0 Then
+
+                    MemoryStream = New System.IO.MemoryStream(_ViewModel.Dashboard.Layout)
+
+                    DashboardViewerTVPuertoRicoDashboard_Dashboard.LoadDashboard(MemoryStream)
+
+                Else
+
+                    If AdvantageFramework.My.Resources.BroadcastResearchToolDashboard_TVPuertoRico IsNot Nothing AndAlso AdvantageFramework.My.Resources.BroadcastResearchToolDashboard_TVPuertoRico.Length > 0 Then
+
+                        MemoryStream = New System.IO.MemoryStream(AdvantageFramework.My.Resources.BroadcastResearchToolDashboard_TVPuertoRico)
+
+                        DashboardViewerTVPuertoRicoDashboard_Dashboard.LoadDashboard(MemoryStream)
+
+                    End If
+
+                End If
+
+            End If
+
+        End Sub
 
 #Region "  Show Form Methods "
 
@@ -2798,6 +2887,11 @@
 
 #Region "  Form Event Handlers "
 
+        Private Sub BroadcastResearchToolForm_BeforeFormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.BeforeFormClosing
+
+            Me.FormAction = WinForm.Presentation.Methods.FormActions.Clearing
+
+        End Sub
         Private Sub BroadcastResearchToolForm_FormClosed(sender As Object, e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
 
             RemoveHandler RadioButtonSpotRadioGeography_DMA.CheckedChangedEx, AddressOf GeographyChanged
@@ -2895,6 +2989,9 @@
 
             BandedDataGridViewNationalResults.OptionsCustomization.AllowColumnMoving = False
             BandedDataGridViewNationalResults.OptionsCustomization.AllowQuickHideColumns = False
+
+            BandedDataGridViewSpotTVPuertoRicoResults.OptionsCustomization.AllowColumnMoving = False
+            BandedDataGridViewSpotTVPuertoRicoResults.OptionsCustomization.AllowQuickHideColumns = False
 
             Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.Loading
 
@@ -3038,11 +3135,39 @@
             DataGridViewNational_NetworksSelected.OptionsBehavior.Editable = False
             DataGridViewNational_NetworksSelected.ShowSelectDeselectAllButtons = True
 
+            DataGridViewSpotTVPuertoRico_UserCriterias.OptionsFind.AlwaysVisible = True
+            DataGridViewSpotTVPuertoRico_UserCriterias.OptionsBehavior.Editable = False
+            DataGridViewSpotTVPuertoRico_UserCriterias.MultiSelect = False
+
+            DataGridViewSpotTVPuertoRico_AvailableStations.OptionsBehavior.Editable = False
+            DataGridViewSpotTVPuertoRico_SelectedStations.OptionsBehavior.Editable = False
+
+            DataGridViewSpotTVPuertoRico_DayTimes.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+            DataGridViewSpotTVPuertoRico_DayTimes.UseEmbeddedNavigator = True
+
+            DataGridViewSpotTVPuertoRico_AvailableDemographics.OptionsBehavior.Editable = False
+            DataGridViewSpotTVPuertoRico_SelectedDemographics.OptionsBehavior.Editable = False
+
+            DataGridViewSpotTVPuertoRico_AvailableMetrics.OptionsBehavior.Editable = False
+            DataGridViewSpotTVPuertoRico_SelectedMetrics.OptionsBehavior.Editable = False
+
+            DataGridViewSpotTVPuertoRico_SelectedDemographics.CurrentView.OptionsMenu.EnableColumnMenu = False
+            DataGridViewSpotTVPuertoRico_SelectedDemographics.CurrentView.OptionsCustomization.AllowFilter = False
+            DataGridViewSpotTVPuertoRico_SelectedDemographics.CurrentView.OptionsCustomization.AllowSort = False
+
+            DataGridViewSpotTVPuertoRico_SelectedMetrics.CurrentView.OptionsMenu.EnableColumnMenu = False
+            DataGridViewSpotTVPuertoRico_SelectedMetrics.CurrentView.OptionsCustomization.AllowFilter = False
+            DataGridViewSpotTVPuertoRico_SelectedMetrics.CurrentView.OptionsCustomization.AllowSort = False
+
+            LabelSpotTVPuertoRicoResults_Footer.Text = AdvantageFramework.DTO.Media.ConstNielsenTVFooter
+            LabelSpotTVPuertoRicoResults_Footer.AutoSize = True
+
         End Sub
         Private Sub BroadcastResearchToolForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 
             ResizeRadioWarning()
             ResizeTVWarning()
+            ResizeTVPuertoRicoWarning()
 
         End Sub
         Private Sub BroadcastResearchToolForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -3073,6 +3198,15 @@
             DataGridViewSpotRadioCounty_AvailableStations.ShowSelectDeselectAllButtons = True
             DataGridViewSpotRadioCounty_SelectedStations.ShowSelectDeselectAllButtons = True
 
+            DataGridViewSpotTVPuertoRico_AvailableStations.ShowSelectDeselectAllButtons = True
+            DataGridViewSpotTVPuertoRico_SelectedStations.ShowSelectDeselectAllButtons = True
+
+            DataGridViewSpotTVPuertoRico_AvailableDemographics.ShowSelectDeselectAllButtons = True
+            DataGridViewSpotTVPuertoRico_SelectedDemographics.ShowSelectDeselectAllButtons = True
+
+            DataGridViewSpotTVPuertoRico_AvailableMetrics.ShowSelectDeselectAllButtons = True
+            DataGridViewSpotTVPuertoRico_SelectedMetrics.ShowSelectDeselectAllButtons = True
+
             Me.ShowWaitForm("Validating data sources...")
 
             _Controller = New AdvantageFramework.Controller.Media.BroadcastResearchController(Me.Session)
@@ -3091,6 +3225,10 @@
                     LoadSpotRadioViewModel(Nothing, True)
 
                     TabItemTabs_SpotTVTab.Visible = False
+
+                ElseIf Me.Session.IsNielsenPuertoRicoSetup Then
+
+                    LoadSpotTVPuertoRicoViewModel(Nothing, True)
 
                 ElseIf Me.Session.IsNationalSetup Then
 
@@ -3182,6 +3320,16 @@
 
                     End If
 
+                ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico Then
+
+                    If AdvantageFramework.Media.Presentation.BroadcastResearchToolReportEditDialog.ShowFormDialog(AdvantageFramework.DTO.Media.Methods.ResearchCriteriaTypes.SpotTVPuertoRico, AdvantageFramework.Media.Presentation.BroadcastResearchToolReportEditDialog.ResearchType.SpotTVPuertoRico, _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID, ResearchID) = Windows.Forms.DialogResult.OK Then
+
+                        LoadSpotTVPuertoRicoViewModel(ResearchID, True)
+
+                        TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab = TabItemSpotTVPuertoRico_ReportTypeStations
+
+                    End If
+
                 End If
 
             End If
@@ -3237,6 +3385,18 @@
                 Else
 
                     LoadNationalViewModel(Nothing, True)
+
+                End If
+
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico AndAlso AdvantageFramework.WinForm.MessageBox.Show("Are you sure you want to delete '" & _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.CriteriaName & "'?", AdvantageFramework.WinForm.MessageBox.MessageBoxButtons.YesNo, "Confirm Delete") = AdvantageFramework.WinForm.MessageBox.DialogResults.Yes Then
+
+                If Not _Controller.DeleteSpotTVPuertoRico(_ViewModel, ErrorMessage) Then
+
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                Else
+
+                    LoadSpotTVPuertoRicoViewModel(Nothing, True)
 
                 End If
 
@@ -3306,6 +3466,20 @@
 
                 End If
 
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico Then
+
+                BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.OptionsPrint.AutoWidth = False
+
+                If DataGridViewSpotTVPuertoRico_UserCriterias.HasASelectedRow Then
+
+                    BandedDataGridViewSpotTVPuertoRicoResults.Print(DefaultLookAndFeel.LookAndFeel, DirectCast(DataGridViewSpotTVPuertoRico_UserCriterias.GetFirstSelectedRowDataBoundItem, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).CriteriaName, _Controller.GetAgency, _Controller.Session, UseLandscape:=True)
+
+                Else
+
+                    BandedDataGridViewSpotTVPuertoRicoResults.Print(DefaultLookAndFeel.LookAndFeel, "Spot TV Puerto Rico Research", _Controller.GetAgency, _Controller.Session, UseLandscape:=True)
+
+                End If
+
             End If
 
         End Sub
@@ -3326,6 +3500,10 @@
             ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.National Then
 
                 SaveNational()
+
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico Then
+
+                SaveSpotTVPuertoRico()
 
             End If
 
@@ -3470,6 +3648,50 @@
 
                 End If
 
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico AndAlso SaveSpotTVPuertoRicoViewModel() Then
+
+                Try
+
+                    If _Controller.RunSpotTVPuertoRicoReport(_ViewModel, ErrorMessage, InfoMessage) Then
+
+                        LoadTVPuertoRicoDashboard(False)
+
+                        LoadTVPuertoRicoDashboardDataSource()
+
+                        RefreshSpotTVPuertoRicoTab()
+
+                        TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab = TabItemSpotTVPuertoRico_Results
+
+                        TabControlResults_TVPuertoRicoResults.SelectedTab = TabItemTVPuertoRicoResults_TVDataTab
+
+                        ResizeTVPuertoRicoWarning()
+
+                        If String.IsNullOrWhiteSpace(InfoMessage) = False Then
+
+                            AdvantageFramework.WinForm.MessageBox.Show(InfoMessage)
+
+                        End If
+
+                    Else
+
+                        AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                    End If
+
+                Catch ex As Exception
+
+                    If Not String.IsNullOrWhiteSpace(ex.Message) AndAlso ex.Message.ToUpper.Contains("COMSCORE") Then
+
+                        AdvantageFramework.WinForm.MessageBox.Show(ex.Message)
+
+                    Else
+
+                        AdvantageFramework.WinForm.MessageBox.Show(ex.Message)
+
+                    End If
+
+                End Try
+
             End If
 
             Me.CloseWaitForm()
@@ -3537,6 +3759,16 @@
 
                 DataGridViewNational_MetricsSelected.SelectRow(0, SelectedID)
 
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico Then
+
+                SelectedID = DirectCast(DataGridViewSpotTVPuertoRico_SelectedMetrics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.DTO.Media.Metric).ID
+
+                _Controller.MoveMetricSpotTVPuertoRico(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedMetrics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.Controller.Media.BroadcastResearchController.MoveItemDirection.Down)
+
+                RefreshSpotTVPuertoRicoTab()
+
+                DataGridViewSpotTVPuertoRico_SelectedMetrics.SelectRow(0, SelectedID)
+
             End If
 
         End Sub
@@ -3584,6 +3816,16 @@
                 RefreshNationalTab(True)
 
                 DataGridViewNational_MetricsSelected.SelectRow(0, SelectedID)
+
+            ElseIf _ViewModel.SelectedResearchTab = AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico Then
+
+                SelectedID = DirectCast(DataGridViewSpotTVPuertoRico_SelectedMetrics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.DTO.Media.Metric).ID
+
+                _Controller.MoveMetricSpotTVPuertoRico(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedMetrics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.Controller.Media.BroadcastResearchController.MoveItemDirection.Up)
+
+                RefreshSpotTVPuertoRicoTab()
+
+                DataGridViewSpotTVPuertoRico_SelectedMetrics.SelectRow(0, SelectedID)
 
             End If
 
@@ -3639,6 +3881,18 @@
                     Else
 
                         LoadNationalViewModel(Nothing, True)
+
+                    End If
+
+                ElseIf e.NewTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) Then
+
+                    If DataGridViewNational_UserCriterias.HasASelectedRow Then
+
+                        LoadSpotTVPuertoRicoViewModel(DirectCast(DataGridViewNational_UserCriterias.GetFirstSelectedRowDataBoundItem, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).ID, False)
+
+                    Else
+
+                        LoadSpotTVPuertoRicoViewModel(Nothing, True)
 
                     End If
 
@@ -3745,6 +3999,35 @@
                     End If
 
                     LoadRadioCountyDashboardDataSource()
+
+                End If
+
+            ElseIf TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) Then
+
+                MemoryStream = New System.IO.MemoryStream
+
+                If DashboardViewerTVPuertoRicoDashboard_Dashboard.Dashboard IsNot Nothing Then
+
+                    DashboardViewerTVPuertoRicoDashboard_Dashboard.Dashboard.SaveToXml(MemoryStream)
+
+                    DashboardLayout = MemoryStream.ToArray
+                    MemoryStream.Flush()
+                    MemoryStream.Close()
+
+                    If AdvantageFramework.Reporting.Presentation.DashboardEditorForm.ShowFormDialog(Me.Session, _ViewModel.SpotTVPuertoRicoResearchResultList, DashboardLayout, False) = Windows.Forms.DialogResult.OK Then
+
+                        MemoryStream = New System.IO.MemoryStream
+
+                        MemoryStream.Write(DashboardLayout, 0, DashboardLayout.Length)
+                        MemoryStream.Seek(0, IO.SeekOrigin.Begin)
+
+                        _Controller.SaveTVPuertoRicoDashboard(_ViewModel, DashboardLayout)
+
+                        LoadTVPuertoRicoDashboard(True)
+
+                    End If
+
+                    LoadTVPuertoRicoDashboardDataSource()
 
                 End If
 
@@ -4075,6 +4358,16 @@
 
                 DataGridViewNational_DemographicsSelected.SelectRow(0, SelectedID)
 
+            ElseIf TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) Then
+
+                SelectedID = DirectCast(DataGridViewSpotTVPuertoRico_SelectedDemographics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic).ID
+
+                _Controller.MoveDemographic(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedDemographics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.Controller.Media.BroadcastResearchController.MoveItemDirection.Down)
+
+                RefreshSpotTVPuertoRicoTab()
+
+                DataGridViewSpotTVPuertoRico_SelectedDemographics.SelectRow(0, SelectedID)
+
             End If
 
         End Sub
@@ -4101,6 +4394,16 @@
                 RefreshNationalTab(False)
 
                 DataGridViewNational_DemographicsSelected.SelectRow(0, SelectedID)
+
+            ElseIf TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) Then
+
+                SelectedID = DirectCast(DataGridViewSpotTVPuertoRico_SelectedDemographics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic).ID
+
+                _Controller.MoveDemographic(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedDemographics.GetFirstSelectedRowDataBoundItem, AdvantageFramework.Controller.Media.BroadcastResearchController.MoveItemDirection.Up)
+
+                RefreshSpotTVPuertoRicoTab()
+
+                DataGridViewSpotTVPuertoRico_SelectedDemographics.SelectRow(0, SelectedID)
 
             End If
 
@@ -4281,6 +4584,9 @@
 
         End Sub
         Private Sub DataGridViewSpotTV_DayTimes_InitNewRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles DataGridViewSpotTV_DayTimes.InitNewRowEvent
+
+            DirectCast(DataGridViewSpotTV_DayTimes.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.DaysAndTime).BroadcastType = DTO.DaysAndTime.BroadcastTypes.TV
+            DirectCast(DataGridViewSpotTV_DayTimes.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.DaysAndTime).IsUsing3rdPartyData = True
 
             _Controller.DayTimeInitNewRowEvent(_ViewModel)
 
@@ -5415,6 +5721,8 @@
             End If
 
         End Sub
+
+#End Region
 
 #Region " Spot Radio County "
 
@@ -7741,6 +8049,1314 @@
         End Sub
 
 #End Region
+
+#Region " Spot TV Puerto Rico "
+
+        Private Sub LoadSpotTVPuertoRicoViewModel(ResearchID As Nullable(Of Integer), LoadGrid As Boolean)
+
+            Me.FormAction = AdvantageFramework.WinForm.Presentation.Methods.FormActions.Loading
+
+            TabItemSpotTVPuertoRico_PeriodsDaysTimes.Tag = False
+
+            _ViewModel = _Controller.LoadSpotTVPuertoRico(ResearchID)
+
+            If Not _MissingIntegrationSettingsMessageShown AndAlso String.IsNullOrWhiteSpace(_ViewModel.MissingIntegrationSettingsMessage) = False Then
+
+                AdvantageFramework.WinForm.MessageBox.Show(_ViewModel.MissingIntegrationSettingsMessage)
+                _MissingIntegrationSettingsMessageShown = True
+
+            End If
+
+            ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.DataSource = _ViewModel.SpotTVPuertoRicoResearchReportTypeList
+
+            If LoadGrid Then
+
+                DataGridViewSpotTVPuertoRico_UserCriterias.DataSource = _ViewModel.SpotTVPuertoRicoResearchCriteriaList
+
+                If DataGridViewSpotTVPuertoRico_UserCriterias.Columns(AdvantageFramework.DTO.Media.SpotTV.ResearchCriteria.Properties.CriteriaName.ToString) IsNot Nothing Then
+
+                    DataGridViewSpotTVPuertoRico_UserCriterias.Columns(AdvantageFramework.DTO.Media.SpotTV.ResearchCriteria.Properties.CriteriaName.ToString).BestFit()
+
+                End If
+
+                DataGridViewSpotTVPuertoRico_UserCriterias.CurrentView.BestFitColumns()
+
+            Else
+
+                DataGridViewSpotTVPuertoRico_UserCriterias.CurrentView.RefreshData()
+
+            End If
+
+            If _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria Is Nothing Then
+
+                DataGridViewSpotTVPuertoRico_UserCriterias.FocusToFindPanel(True)
+
+                NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.EditValue = Nothing
+
+            Else
+
+                DataGridViewSpotTVPuertoRico_UserCriterias.SelectRow(AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria.Properties.ID.ToString, _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID, True)
+
+                ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.SelectedValue = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType.ToString
+
+                CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Checked = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName
+                CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Checked = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.GroupByDaysTimes
+                'CheckBoxSpotTVPuertoRicoOptions_SubtotalByWeekdayWeekend.Checked = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.SubtotalByWeekdayWeekend
+
+                NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.EditValue = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.MaxRank
+
+                DateEditSpotTVPuertoRicoPeriod_ShareStartDate.EditValue = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareStartDate
+                DateEditSpotTVPuertoRicoPeriod_ShareEndDate.EditValue = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareEndDate
+
+                DataGridViewSpotTVPuertoRico_AvailableStations.DataSource = _ViewModel.SpotTVPuertoRicoAvailableStationList
+                DataGridViewSpotTVPuertoRico_AvailableStations.CurrentView.BestFitColumns()
+
+                DataGridViewSpotTVPuertoRico_SelectedStations.DataSource = _ViewModel.SpotTVPuertoRicoSelectedStationList
+                DataGridViewSpotTVPuertoRico_SelectedStations.CurrentView.BestFitColumns()
+
+                DataGridViewSpotTVPuertoRico_DayTimes.DataSource = _ViewModel.SpotTVPuertoRicoDayTimeList
+                DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.BestFitColumns()
+
+                DataGridViewSpotTVPuertoRico_AvailableDemographics.DataSource = _ViewModel.SpotTVPuertoRicoAvailableDemographicList
+                DataGridViewSpotTVPuertoRico_AvailableDemographics.CurrentView.BestFitColumns()
+
+                DataGridViewSpotTVPuertoRico_SelectedDemographics.DataSource = _ViewModel.SpotTVPuertoRicoSelectedDemographicList
+                DataGridViewSpotTVPuertoRico_SelectedDemographics.CurrentView.BestFitColumns()
+
+                DataGridViewSpotTVPuertoRico_AvailableMetrics.DataSource = _ViewModel.SpotTVPuertoRicoAvailableMetricList
+                DataGridViewSpotTVPuertoRico_AvailableMetrics.CurrentView.BestFitColumns()
+
+                DataGridViewSpotTVPuertoRico_SelectedMetrics.DataSource = _ViewModel.SpotTVPuertoRicoSelectedMetricList
+                DataGridViewSpotTVPuertoRico_SelectedMetrics.CurrentView.BestFitColumns()
+
+                ShowOrHideDemographicsColumns(DataGridViewSpotTVPuertoRico_AvailableDemographics)
+                ShowOrHideDemographicsColumns(DataGridViewSpotTVPuertoRico_SelectedDemographics)
+
+            End If
+
+            RefreshSpotTVPuertoRicoTab()
+
+            Me.ClearChanged()
+
+            Me.FormAction = AdvantageFramework.WinForm.Presentation.Methods.FormActions.None
+
+        End Sub
+        Private Sub RefreshSpotTVPuertoRicoTab(Optional RefreshData As Boolean = True)
+
+            TabControlSpotTVPuertoRico_ResearchCriteria.Enabled = (_ViewModel.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing)
+
+            ButtonItemActions_Export.Enabled = _ViewModel.SpotTVPuertoRicoExportEnabled
+            ButtonItemActions_Add.Enabled = _ViewModel.SpotTVPuertoRicoAddEnabled
+            ButtonItemActions_Edit.Enabled = _ViewModel.SpotTVPuertoRicoEditEnabled
+            ButtonItemActions_Save.Enabled = _ViewModel.SpotTVPuertoRicoSaveEnabled
+            ButtonItemActions_Delete.Enabled = _ViewModel.SpotTVPuertoRicoDeleteEnabled
+            ButtonItemActions_Copy.Enabled = _ViewModel.SpotTVPuertoRicoCopyEnabled
+            ButtonItemActions_Process.Enabled = _ViewModel.SpotTVPuertoRicoProcessEnabled
+            ButtonItemActions_Refresh.Enabled = (_ViewModel.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing)
+
+            TabItemSpotTVPuertoRico_Results.Visible = (Not _ViewModel.SpotTVPuertoRicoIsDirty AndAlso _ViewModel.SpotTVPuertoRicoReportDataTable IsNot Nothing)
+
+            NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Visible = (_ViewModel.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.Ranker)
+            LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.Visible = NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Visible
+
+            If RefreshData Then
+
+                If _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria IsNot Nothing Then
+
+                    CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Checked = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName
+                    CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Checked = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.GroupByDaysTimes
+                    'CheckBoxSpotTVPuertoRicoOptions_SubtotalByWeekdayWeekend.Checked = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.SubtotalByWeekdayWeekend
+
+                End If
+
+                DataGridViewSpotTVPuertoRico_AvailableStations.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_AvailableStations.DataSource = _ViewModel.SpotTVPuertoRicoAvailableStationList
+
+                DataGridViewSpotTVPuertoRico_SelectedStations.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_SelectedStations.DataSource = _ViewModel.SpotTVPuertoRicoSelectedStationList
+
+                DataGridViewSpotTVPuertoRico_DayTimes.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_DayTimes.DataSource = _ViewModel.SpotTVPuertoRicoDayTimeList
+
+                DataGridViewSpotTVPuertoRico_AvailableDemographics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_AvailableDemographics.DataSource = _ViewModel.SpotTVPuertoRicoAvailableDemographicList
+
+                DataGridViewSpotTVPuertoRico_SelectedDemographics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_SelectedDemographics.DataSource = _ViewModel.SpotTVPuertoRicoSelectedDemographicList
+
+                DataGridViewSpotTVPuertoRico_AvailableMetrics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_AvailableMetrics.DataSource = _ViewModel.SpotTVPuertoRicoAvailableMetricList
+
+                DataGridViewSpotTVPuertoRico_SelectedMetrics.DataSource = Nothing
+                DataGridViewSpotTVPuertoRico_SelectedMetrics.DataSource = _ViewModel.SpotTVPuertoRicoSelectedMetricList
+
+                ShowOrHideDemographicsColumns(DataGridViewSpotTVPuertoRico_AvailableDemographics)
+                ShowOrHideDemographicsColumns(DataGridViewSpotTVPuertoRico_SelectedDemographics)
+
+                If _ViewModel.SpotTVPuertoRicoReportDataTable IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoProcessEnabled AndAlso _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.Ranker Then
+
+                    SetupSpotTVPuertoRicoRankerDataBands()
+
+                ElseIf _ViewModel.SpotTVPuertoRicoReportDataTable IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoProcessEnabled AndAlso _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.TrendByDate Then
+
+                    SetupSpotTVPuertoRicoTrendByDateDataBands()
+
+                    'ElseIf _ViewModel.SpotTVPuertoRicoReportDataTable IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoProcessEnabled AndAlso _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.TrendByStation Then
+
+                    '    SetupSpotTVPuertoRicoTrendByStationDataBands()
+
+                Else
+
+                    BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Bands.Clear()
+                    BandedDataGridViewSpotTVPuertoRicoResults.ClearGridCustomization()
+
+                End If
+
+            End If
+
+            EnableOrDisableActions()
+
+        End Sub
+        Private Sub SetupSpotTVPuertoRicoRankerDataBands()
+
+            'objects
+            Dim CopyrightGridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+            Dim BlankGridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+            Dim DemoBands As Generic.List(Of DevExpress.XtraGrid.Views.BandedGrid.GridBand) = Nothing
+            Dim DemoBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+            Dim GridColumn As DevExpress.XtraGrid.Columns.GridColumn = Nothing
+            Dim VisibleIndex As Integer = 0
+            Dim DoneSorting As Boolean = False
+            Dim SortString As String = Nothing
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.BeginUpdate()
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Bands.Clear()
+            BandedDataGridViewSpotTVPuertoRicoResults.ClearGridCustomization()
+            BandedDataGridViewSpotTVPuertoRicoResults.AutoUpdateViewCaption = False
+
+            DemoBands = New Generic.List(Of DevExpress.XtraGrid.Views.BandedGrid.GridBand)
+
+            CopyrightGridBand = New DevExpress.XtraGrid.Views.BandedGrid.GridBand
+            CopyrightGridBand.Name = "Copyright"
+
+            CopyrightGridBand.Caption = _NielsenPuertoRicoCopyright
+
+            CopyrightGridBand.OptionsBand.AllowMove = False
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Bands.Add(CopyrightGridBand)
+
+            BlankGridBand = CopyrightGridBand.Children.AddBand("")
+
+            If _ViewModel.SpotTVPuertoRicoResearchResultList IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoResearchResultList.Count > 0 Then
+
+                BlankGridBand.Caption = "Date Range: " & _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareStartDate.Value.ToShortDateString() & " - " & _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareEndDate.Value.ToShortDateString()
+
+            End If
+
+            BlankGridBand.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            BlankGridBand.AppearanceHeader.Options.UseTextOptions = True
+            BlankGridBand.OptionsBand.FixedWidth = True
+            BlankGridBand.Tag = "BLANK"
+            BlankGridBand.OptionsBand.AllowMove = False
+
+            For Each ResearchResult In (From Entity In _ViewModel.SpotTVPuertoRicoResearchResultList
+                                        Select Entity.DemographicOrder, Entity.Demographic).OrderBy(Function(Entity) Entity.DemographicOrder).Distinct.ToList
+
+                DemoBand = CopyrightGridBand.Children.AddBand(ResearchResult.Demographic)
+                DemoBand.Tag = ResearchResult.DemographicOrder
+                DemoBand.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+                DemoBand.AppearanceHeader.Options.UseTextOptions = True
+                DemoBand.OptionsBand.FixedWidth = True
+                DemoBand.OptionsBand.AllowMove = False
+
+                DemoBands.Add(DemoBand)
+
+            Next
+
+            BandedDataGridViewSpotTVPuertoRicoResults.ClearDatasource(_ViewModel.SpotTVPuertoRicoReportDataTable.Clone)
+
+            BandedDataGridViewSpotTVPuertoRicoResults.ItemDescription = "Research Result(s)"
+
+            For Each GridColumn In BandedDataGridViewSpotTVPuertoRicoResults.Columns
+
+                If GridColumn.FieldName = AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Station.ToString OrElse
+                        GridColumn.FieldName = AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Days.ToString OrElse
+                        GridColumn.FieldName = AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Times.ToString OrElse
+                        GridColumn.FieldName = AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.ProgramName.ToString Then
+
+                    BlankGridBand.Columns.Add(GridColumn)
+                    GridColumn.Tag = BlankGridBand
+
+                ElseIf IsNumeric(Mid(GridColumn.FieldName, GridColumn.FieldName.Length, 1)) AndAlso GridColumn.FieldName.StartsWith("Demo") Then
+
+                    GridColumn.Visible = False
+
+                ElseIf IsNumeric(Mid(GridColumn.FieldName, GridColumn.FieldName.Length, 1)) Then
+
+                    GridColumn.Caption = AdvantageFramework.StringUtilities.RemoveAllNonAlpha(GridColumn.FieldName)
+                    GridColumn.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False
+
+                End If
+
+            Next
+
+            For Each DemoBand In DemoBands
+
+                For Each GridColumn In BandedDataGridViewSpotTVPuertoRicoResults.Columns
+
+                    If GridColumn.FieldName.EndsWith(DemoBand.Tag) Then
+
+                        DemoBand.Columns.Add(GridColumn)
+
+                        GridColumn.SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom
+
+                        GridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+
+                        If GridColumn.FieldName.StartsWith("Rating") Then
+
+                            GridColumn.DisplayFormat.FormatString = "n2"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Share") Then
+
+                            GridColumn.DisplayFormat.FormatString = "n2"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Impressions") Then
+
+                            GridColumn.Caption = "Aud (000)"
+                            GridColumn.DisplayFormat.FormatString = "n1"
+
+                        ElseIf GridColumn.FieldName.StartsWith("HPUT") Then
+
+                            GridColumn.Caption = "H/PUT"
+                            GridColumn.DisplayFormat.FormatString = "n2"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Intab") Then
+
+                            GridColumn.Caption = "Sample Size"
+                            GridColumn.DisplayFormat.FormatString = "n0"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Universe") Then
+
+                            GridColumn.DisplayFormat.FormatString = "n0"
+
+                        ElseIf GridColumn.FieldName.StartsWith("ShowIntabWarning") Then
+
+                            GridColumn.Visible = False
+
+                        End If
+
+                    End If
+
+                Next
+
+            Next
+
+            If _ViewModel.SpotTVPuertoRicoReportDataTable.Rows.Count > 0 Then
+
+                For Each GridColumn In BandedDataGridViewSpotTVPuertoRicoResults.Columns
+
+                    If GridColumn.FieldName.StartsWith("Rank") Then
+
+                        VisibleIndex = BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(GridColumn.FieldName).VisibleIndex + 1
+
+                        _ViewModel.SpotTVPuertoRicoReportDataTable.Columns.Add("NullRankCheck", GetType(Integer), GridColumn.FieldName & " Is Null")
+
+                        SortString = "NullRankCheck ASC, " & GridColumn.FieldName & " ASC"
+
+                        Exit For
+
+                    End If
+
+                Next
+
+                While Not DoneSorting AndAlso BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(VisibleIndex + 1) IsNot Nothing
+
+                    If BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(VisibleIndex + 1).FieldName.StartsWith("Rank") Then
+
+                        DoneSorting = True
+
+                    Else
+
+                        SortString += ", " & BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(VisibleIndex + 1).FieldName & " DESC"
+
+                    End If
+
+                    VisibleIndex += 1
+
+                    If VisibleIndex > BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.VisibleColumns.Count - 1 Then
+
+                        DoneSorting = True
+
+                    End If
+
+                End While
+
+            End If
+
+            _ViewModel.SpotTVPuertoRicoReportDataTable.DefaultView.Sort = SortString
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.ViewCaption = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.CriteriaName & " (Ranker)"
+            BandedDataGridViewSpotTVPuertoRicoResults.DataSource = _ViewModel.SpotTVPuertoRicoReportDataTable.DefaultView.ToTable
+
+            If _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.GroupByDaysTimes Then
+
+                If BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Days.ToString) IsNot Nothing Then
+
+                    BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Days.ToString).Group()
+
+                End If
+
+                If BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Times.ToString) IsNot Nothing Then
+
+                    BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Times.ToString).Group()
+
+                End If
+
+            End If
+
+            BandedDataGridViewSpotTVPuertoRicoResults.OptionsBehavior.Editable = False
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.EndUpdate()
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.BestFitColumns()
+
+            BestFitBands(BandedDataGridViewSpotTVPuertoRicoResults)
+
+        End Sub
+        Private Function SaveSpotTVPuertoRicoViewModel() As Boolean
+
+            Dim Saved As Boolean = True
+
+            DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.CloseEditorForUpdating()
+
+            _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.GetSelectedValue
+            _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.MaxRank = NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.GetValue
+            _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName = CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Checked
+            _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.GroupByDaysTimes = CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Checked
+            _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.SubtotalByWeekdayWeekend = CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Checked
+
+            _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareStartDate = DateEditSpotTVPuertoRicoPeriod_ShareStartDate.GetValue
+            _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareEndDate = DateEditSpotTVPuertoRicoPeriod_ShareEndDate.GetValue
+
+            _ViewModel.SpotTVPuertoRicoSelectedStationList = DataGridViewSpotTVPuertoRico_SelectedStations.GetAllRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station).ToList
+            _ViewModel.SpotTVPuertoRicoDayTimeList = DataGridViewSpotTVPuertoRico_DayTimes.GetAllRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.DaysAndTime).ToList
+
+            _ViewModel.SpotTVPuertoRicoSelectedDemographicList = DataGridViewSpotTVPuertoRico_SelectedDemographics.GetAllRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic).ToList
+            _ViewModel.SpotTVPuertoRicoSelectedMetricList = DataGridViewSpotTVPuertoRico_SelectedMetrics.GetAllRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.Metric).ToList
+
+            If _ViewModel.SpotTVPuertoRicoDayTimeList.Any(Function(Entity) Entity.HasError) = True Then
+
+                Saved = False
+                TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab = TabItemSpotTVPuertoRico_PeriodsDaysTimes
+                AdvantageFramework.WinForm.MessageBox.Show("Fix errors in Days/Times first.")
+
+            End If
+
+            SaveSpotTVPuertoRicoViewModel = Saved
+
+        End Function
+        Private Function SaveSpotTVPuertoRico() As Boolean
+
+            'objects
+            Dim ErrorMessage As String = Nothing
+            Dim Saved As Boolean = False
+
+            If Me.Validator Then
+
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.Methods.FormActions.Saving)
+
+                If SaveSpotTVPuertoRicoViewModel() Then
+
+                    Saved = _Controller.SaveSpotTVPuertoRico(_ViewModel, ErrorMessage)
+
+                End If
+
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.Methods.FormActions.None)
+
+                If Saved Then
+
+                    LoadSpotTVPuertoRicoViewModel(_ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID, True)
+
+                ElseIf String.IsNullOrEmpty(ErrorMessage) = False Then
+
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                End If
+
+            Else
+
+                For Each LastFailedValidationResult In Me.SuperValidator.LastFailedValidationResults.ToList
+
+                    ErrorMessage &= LastFailedValidationResult.Validator.ErrorMessage & vbCrLf
+
+                Next
+
+                AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+            End If
+
+            SaveSpotTVPuertoRico = Saved
+
+        End Function
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_CreateReportFooterAreaEvent(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.CreateReportFooterAreaEvent
+
+            'objects
+            Dim TextBrick As DevExpress.XtraPrinting.TextBrick = Nothing
+            Dim SizeF As System.Drawing.SizeF = Nothing
+            Dim RectangleF As System.Drawing.RectangleF = Nothing
+
+            If (_ViewModel.SpotTVPuertoRicoResearchResultList IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoResearchResultList.Count > 0 AndAlso
+                    _ViewModel.SpotTVPuertoRicoResearchResultList.Where(Function(Entity) Entity.ShowIntabWarning).Any) Then
+
+                Try
+
+                    TextBrick = New DevExpress.XtraPrinting.TextBrick
+                    TextBrick.Text = AdvantageFramework.DTO.Media.ConstNielsenTVFooter
+                    TextBrick.BackColor = System.Drawing.Color.White
+                    TextBrick.HorzAlignment = DevExpress.Utils.HorzAlignment.Near
+                    TextBrick.VertAlignment = DevExpress.Utils.VertAlignment.Top
+                    TextBrick.StringFormat = DevExpress.XtraPrinting.BrickStringFormat.Create(DevExpress.XtraPrinting.TextAlignment.TopLeft, True)
+
+                    SizeF = e.Graph.MeasureString(AdvantageFramework.DTO.Media.ConstNielsenTVFooter, CInt(Math.Ceiling(e.Graph.ClientPageSize.Width)), TextBrick.StringFormat.Value)
+
+                    RectangleF = New System.Drawing.RectangleF(0, 0, SizeF.Width, SizeF.Height)
+                    RectangleF.Height = RectangleF.Height + 20
+
+                    e.Graph.DrawBrick(TextBrick, RectangleF)
+
+                Catch ex As Exception
+
+                End Try
+
+            End If
+
+        End Sub
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_CustomColumnDisplayTextEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.CustomColumnDisplayTextEvent
+
+            Dim DataRow As System.Data.DataRow = Nothing
+            'Dim ColumnIndex As Integer = 0
+            'Dim ShowAsterisk As Boolean = False
+
+            'DataRow = BandedDataGridViewSpotTVPuertoRicoResults.GetRowDataBoundItem(BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.GetRowHandle(e.ListSourceRowIndex)).row
+
+            'For ColumnIndex = 0 To DataRow.Table.Columns.Count - 1
+
+            '    If DataRow.Table.Columns(ColumnIndex).ColumnName.StartsWith("ShowIntabWarning") AndAlso DataRow(ColumnIndex).Equals(System.DBNull.Value) = False AndAlso DataRow(ColumnIndex) = True Then
+
+            '        ShowAsterisk = True
+            '        Exit For
+
+            '    End If
+
+            'Next
+
+            'If e.Column.FieldName.EndsWith(ColumnIndex) AndAlso ShowAsterisk Then
+
+            '    e.DisplayText = FormatNumber(e.Value, 0).ToString & " *"
+
+            'End If
+
+            If e.Column.FieldName.StartsWith(AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Intab.ToString) AndAlso Not e.Value.Equals(System.DBNull.Value) Then
+
+                DataRow = BandedDataGridViewSpotTVPuertoRicoResults.GetRowDataBoundItem(BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.GetRowHandle(e.ListSourceRowIndex)).row
+
+                If DataRow.Item(Replace(e.Column.FieldName, "Intab", "ShowIntabWarning")) = True Then
+
+                    e.DisplayText = FormatNumber(e.Value, 0).ToString & " *"
+
+                End If
+
+            End If
+
+        End Sub
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_CustomColumnSortEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.CustomColumnSortEvent
+
+            'objects
+            Dim Value1 As Decimal? = Nothing
+            Dim Value2 As Decimal? = Nothing
+
+            Try
+
+                If e.Value1 Is Nothing Then
+
+                    Value1 = CDec(1000000000)
+
+                Else
+
+                    Value1 = CDec(e.Value1)
+
+                End If
+
+                If e.Value2 Is Nothing Then
+
+                    Value2 = CDec(1000000000)
+
+                Else
+
+                    Value2 = CDec(e.Value2)
+
+                End If
+
+                e.Handled = True
+                e.Result = System.Collections.Comparer.Default.Compare(Value1, Value2)
+
+            Catch ex As Exception
+
+            End Try
+
+        End Sub
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_CustomDrawBandHeaderEvent(sender As Object, e As DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.CustomDrawBandHeaderEvent
+
+            'objects
+            Dim Font As System.Drawing.Font = Nothing
+
+            If e.Band IsNot Nothing AndAlso e.Band.Name = "Copyright" Then
+
+                Font = New System.Drawing.Font(e.Appearance.Font, Drawing.FontStyle.Regular)
+                e.Appearance.Font = Font
+                e.Appearance.ForeColor = System.Drawing.Color.Red
+
+            End If
+
+        End Sub
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_EndGroupingEvent(sender As Object, e As EventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.EndGroupingEvent
+
+            'objects
+            Dim AssignGridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.BeginUpdate()
+
+            BandedDataGridViewSpotTVPuertoRicoResults.OptionsView.ShowGroupPanel = (BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.GroupedColumns.Count > 0)
+
+            For Each column In BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns
+
+                If BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.GroupedColumns.Contains(column) Then
+
+                    column.OwnerBand = Nothing
+
+                Else
+
+                    AssignGridBand = TryCast(column.Tag, DevExpress.XtraGrid.Views.BandedGrid.GridBand)
+
+                    If AssignGridBand IsNot Nothing Then
+
+                        column.OwnerBand = AssignGridBand
+
+                    End If
+
+                End If
+
+            Next
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.ExpandAllGroups()
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.EndUpdate()
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.BestFitColumns()
+
+            BestFitBands(BandedDataGridViewSpotTVPuertoRicoResults)
+
+        End Sub
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_EndSortingEvent(sender As Object, e As EventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.EndSortingEvent
+
+            BestFitBands(BandedDataGridViewSpotTVPuertoRicoResults)
+
+        End Sub
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_PopupMenuShowingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.PopupMenuShowingEvent
+
+            'objects
+            Dim BlankGridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+
+            If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Column Then
+
+                BlankGridBand = BandedDataGridViewSpotTVResults.CurrentView.Bands.Where(Function(Band) Band.Tag = "BLANK").FirstOrDefault
+
+                For Each MenuItem In e.Menu.Items.OfType(Of DevExpress.Utils.Menu.DXMenuItem)()
+
+                    If MenuItem.Caption.Equals(DevExpress.XtraGrid.Localization.GridLocalizer.Active.GetLocalizedString(DevExpress.XtraGrid.Localization.GridStringId.MenuColumnColumnCustomization)) OrElse
+                            MenuItem.Caption.ToUpper = "COLUMN/BAND CHOOSER" OrElse
+                            MenuItem.Caption.Equals(DevExpress.XtraGrid.Localization.GridLocalizer.Active.GetLocalizedString(DevExpress.XtraGrid.Localization.GridStringId.MenuColumnRemoveColumn)) Then
+
+                        MenuItem.Visible = False
+
+                    End If
+
+                    If MenuItem.Caption.Equals(DevExpress.XtraGrid.Localization.GridLocalizer.Active.GetLocalizedString(DevExpress.XtraGrid.Localization.GridStringId.MenuColumnGroup)) OrElse
+                                MenuItem.Caption.Equals(DevExpress.XtraGrid.Localization.GridLocalizer.Active.GetLocalizedString(DevExpress.XtraGrid.Localization.GridStringId.MenuColumnGroupBox)) OrElse
+                                MenuItem.Caption.ToUpper.Equals("SHOW GROUP BY BOX") Then
+
+                        MenuItem.Visible = False
+
+                    End If
+
+                    If BlankGridBand IsNot Nothing AndAlso Not BlankGridBand.Columns.Contains(e.HitInfo.Column) Then
+
+                        If MenuItem.Caption.Equals(DevExpress.XtraGrid.Localization.GridLocalizer.Active.GetLocalizedString(DevExpress.XtraGrid.Localization.GridStringId.MenuColumnGroup)) OrElse
+                                MenuItem.Caption.Equals(DevExpress.XtraGrid.Localization.GridLocalizer.Active.GetLocalizedString(DevExpress.XtraGrid.Localization.GridStringId.MenuColumnGroupBox)) Then
+
+                            MenuItem.Visible = False
+
+                        End If
+
+                    End If
+
+                Next
+
+            End If
+
+        End Sub
+        Private Sub BandedDataGridViewSpotTVPuertoRicoResults_RowCellStyleEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.RowCellStyleEvent
+
+            If e.Column.FieldName.StartsWith("Rank") Then
+
+                If BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.GetRow(e.RowHandle) IsNot Nothing AndAlso e.CellValue.Equals(System.DBNull.Value) = False AndAlso
+                        _ViewModel.SpotTVPuertoRicoReportDataTable IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoReportDataTable.Select(e.Column.FieldName & " = " & e.CellValue).Count > 1 Then
+
+                    e.Appearance.Font = New System.Drawing.Font(e.Appearance.Font, System.Drawing.FontStyle.Italic)
+
+                End If
+
+            End If
+
+        End Sub
+        'Private Sub BandedDataGridViewSpotTVPuertoRicoResults_RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles BandedDataGridViewSpotTVPuertoRicoResults.RowDoubleClickEvent
+
+        '    'objects
+        '    Dim BandedGridView As DevExpress.XtraGrid.Views.BandedGrid.BandedGridView = Nothing
+        '    Dim BandedGridHitInfo As DevExpress.XtraGrid.Views.BandedGrid.ViewInfo.BandedGridHitInfo = Nothing
+        '    Dim IDs() As String = Nothing
+        '    Dim StationCode As Integer = 0
+        '    Dim ColumnHandle As Integer = 0
+
+        '    If (_ViewModel.SpotTVSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.TrendByBook OrElse
+        '            _ViewModel.SpotTVSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.TrendByStation) Then
+
+        '        BandedGridView = TryCast(sender, DevExpress.XtraGrid.Views.BandedGrid.BandedGridView)
+
+        '        If BandedGridView IsNot Nothing Then
+
+        '            BandedGridHitInfo = BandedGridView.CalcHitInfo(e.Location)
+
+        '            If BandedGridHitInfo IsNot Nothing AndAlso BandedGridHitInfo.InRowCell AndAlso BandedGridHitInfo.Column.FieldName.StartsWith(AdvantageFramework.DTO.Media.SpotTV.ResearchResult.Properties.ProgramName.ToString) AndAlso
+        '                    DirectCast(BandedGridView.GetRow(e.RowHandle), System.Data.DataRowView).Row.ItemArray(BandedGridView.Columns(BandedGridHitInfo.Column.FieldName).ColumnHandle).ToString = "Various" Then
+
+        '                If _ViewModel.SpotTVSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.TrendByBook Then
+
+        '                    StationCode = Replace(BandedGridHitInfo.Column.FieldName, AdvantageFramework.DTO.Media.SpotTV.ResearchResult.Properties.ProgramName.ToString, "")
+
+        '                End If
+
+        '                For Each Column As DevExpress.XtraGrid.Columns.GridColumn In BandedGridView.Columns
+
+        '                    If _ViewModel.SpotTVSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.TrendByBook AndAlso Column.FieldName = "BookIDDaytimeID" Then
+
+        '                        ColumnHandle = Column.ColumnHandle
+        '                        Exit For
+
+        '                    ElseIf _ViewModel.SpotTVSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.TrendByStation AndAlso Column.FieldName = "BookIDDaytimeID" & BandedGridHitInfo.Band.Tag Then
+
+        '                        ColumnHandle = Column.ColumnHandle
+        '                        Exit For
+
+        '                    ElseIf _ViewModel.SpotTVSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVResearchReportType.TrendByStation AndAlso Column.FieldName = AdvantageFramework.DTO.Media.SpotTV.ResearchResult.Properties.StationCode.ToString Then
+
+        '                        StationCode = DirectCast(BandedGridView.GetRow(e.RowHandle), System.Data.DataRowView).Row.ItemArray(Column.ColumnHandle).ToString
+
+        '                    End If
+
+        '                Next
+
+        '                If ColumnHandle <> 0 Then
+
+        '                    IDs = DirectCast(BandedGridView.GetRow(e.RowHandle), System.Data.DataRowView).Row.ItemArray(ColumnHandle).ToString.Split("|")
+
+        '                    If IDs.Length = 2 Then
+
+        '                        _Controller.GetProgramDetails(_ViewModel, StationCode, IDs(0), IDs(1))
+
+        '                        If Not String.IsNullOrWhiteSpace(_ViewModel.ProgramWeeks) Then
+
+        '                            AdvantageFramework.WinForm.MessageBox.Show(_ViewModel.ProgramWeeks, Title:="Week - Program")
+
+        '                        End If
+
+        '                    End If
+
+        '                End If
+
+        '            End If
+
+        '        End If
+
+        '    End If
+
+        'End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_DayTimes_CellValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles DataGridViewSpotTVPuertoRico_DayTimes.CellValueChangedEvent
+
+            _Controller.DayTimeCellChangedPuertoRico(_ViewModel)
+
+            RefreshSpotTVPuertoRicoTab(False)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_DayTimes_CustomRowCellEditForEditingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs) Handles DataGridViewSpotTVPuertoRico_DayTimes.CustomRowCellEditForEditingEvent
+
+            'objects
+            Dim RepositoryItemTextEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit = Nothing
+            Dim RepositoryItemTimeEdit As DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit = Nothing
+
+            If e.Column.FieldName = AdvantageFramework.DTO.DaysAndTime.Properties.Days.ToString Then
+
+                RepositoryItemTextEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+
+                AddHandler RepositoryItemTextEdit.Enter, AddressOf RepositoryItem_Enter
+
+                e.RepositoryItem = RepositoryItemTextEdit
+
+            End If
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_DayTimes_EmbeddedNavigatorButtonClick(sender As Object, e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs) Handles DataGridViewSpotTVPuertoRico_DayTimes.EmbeddedNavigatorButtonClick
+
+            If Not e.Handled Then
+
+                Select Case CType(e.Button.Tag, DevExpress.XtraEditors.NavigatorButtonType)
+
+                    Case DevExpress.XtraEditors.NavigatorButtonType.CancelEdit
+
+                        DataGridViewSpotTVPuertoRico_DayTimes.CancelNewItemRow()
+
+                        _Controller.DayTimeCancelNewItemRowPuertoRico(_ViewModel)
+
+                        RefreshSpotTVPuertoRicoTab()
+
+                        e.Handled = True
+
+                    Case DevExpress.XtraEditors.NavigatorButtonType.Remove
+
+                        _Controller.DeleteSelectedDayTimesPuertoRico(_ViewModel, DataGridViewSpotTVPuertoRico_DayTimes.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.DaysAndTime).ToList)
+
+                        RefreshSpotTVPuertoRicoTab()
+
+                        e.Handled = True
+
+                End Select
+
+            End If
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_DayTimes_InitNewRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles DataGridViewSpotTVPuertoRico_DayTimes.InitNewRowEvent
+
+            DirectCast(DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.DaysAndTime).BroadcastType = DTO.DaysAndTime.BroadcastTypes.TVPuertoRico
+            DirectCast(DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.DaysAndTime).IsUsing3rdPartyData = True
+
+            _Controller.DayTimeInitNewRowPuertoRicoEvent(_ViewModel)
+
+            RefreshSpotTVPuertoRicoTab(False)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_DayTimes_SelectionChangedEvent(sender As Object, e As EventArgs) Handles DataGridViewSpotTVPuertoRico_DayTimes.SelectionChangedEvent
+
+            _Controller.DayTimeSelectionChangedPuertoRico(_ViewModel, DataGridViewSpotTVPuertoRico_DayTimes.IsNewItemRow,
+                                                          DataGridViewSpotTVPuertoRico_DayTimes.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.DaysAndTime).ToList)
+
+            RefreshSpotTVPuertoRicoTab(False)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_DayTimes_ValidatingEditorEvent(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles DataGridViewSpotTVPuertoRico_DayTimes.ValidatingEditorEvent
+
+            'objects
+            Dim FocusedRow As AdvantageFramework.DTO.DaysAndTime = Nothing
+            Dim ErrorText As String = String.Empty
+
+            FocusedRow = DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.GetFocusedRow
+
+            If FocusedRow IsNot Nothing Then
+
+                FocusedRow.BroadcastType = DTO.DaysAndTime.BroadcastTypes.TVPuertoRico
+
+                ErrorText = _Controller.DayTimeValidateEntityProperty(FocusedRow, DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.FocusedColumn.FieldName, e.Valid, e.Value)
+
+                DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.SetColumnError(DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.FocusedColumn, ErrorText)
+
+                e.Valid = True
+
+            End If
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_DayTimes_ValidateRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs) Handles DataGridViewSpotTVPuertoRico_DayTimes.ValidateRowEvent
+
+            If e.Row IsNot Nothing Then
+
+                e.ErrorText = _Controller.DayTimeValidateEntity(e.Row, e.Valid)
+
+                If DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.IsNewItemRow(e.RowHandle) = False Then
+
+                    e.Valid = True
+
+                Else
+
+                    DataGridViewSpotTVPuertoRico_DayTimes.CurrentView.NewItemRowText = e.ErrorText
+
+                    If e.Valid Then
+
+                        _Controller.DayTimeAddNewRowPuertoRicoEvent(_ViewModel)
+
+                        RefreshSpotTVPuertoRicoTab(False)
+
+                    End If
+
+                End If
+
+            End If
+
+        End Sub
+        Private Sub ButtonSpotTVPuertoRicoDemographics_AddToSelected_Click(sender As Object, e As EventArgs) Handles ButtonSpotTVPuertoRicoDemographics_AddToSelected.Click
+
+            _Controller.AddToSelectedPuertoRicoDemographics(_ViewModel, DataGridViewSpotTVPuertoRico_AvailableDemographics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+        End Sub
+        Private Sub ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected_Click(sender As Object, e As EventArgs) Handles ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.Click
+
+            _Controller.RemoveFromSelectedPuertoRicoDemographics(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedDemographics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+        End Sub
+        Private Sub ButtonSpotTVPuertoRicoMetrics_AddToSelected_Click(sender As Object, e As EventArgs) Handles ButtonSpotTVPuertoRicoMetrics_AddToSelected.Click
+
+            _Controller.AddToSelectedSpotTVPuertoRicoMetrics(_ViewModel, DataGridViewSpotTVPuertoRico_AvailableMetrics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.Metric).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+        End Sub
+        Private Sub ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected_Click(sender As Object, e As EventArgs) Handles ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.Click
+
+            _Controller.RemoveFromSelectedSpotTVPuertoRicoMetrics(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedMetrics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.Metric).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+        End Sub
+        Private Sub ButtonSpotTVPuertoRicoStation_AddToSelected_Click(sender As Object, e As EventArgs) Handles ButtonSpotTVPuertoRicoStation_AddToSelected.Click
+
+            _Controller.AddToSelectedSpotTVPuertoRicoStations(_ViewModel, DataGridViewSpotTVPuertoRico_AvailableStations.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+        End Sub
+        Private Sub ButtonSpotTVPuertoRicoStation_RemoveFromSelected_Click(sender As Object, e As EventArgs) Handles ButtonSpotTVPuertoRicoStation_RemoveFromSelected.Click
+
+            _Controller.RemoveFromSelectedSpotTVPuertoRicoStations(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedStations.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_AvailableDemographics_RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles DataGridViewSpotTVPuertoRico_AvailableDemographics.RowDoubleClickEvent
+
+            _Controller.AddToSelectedPuertoRicoDemographics(_ViewModel, DataGridViewSpotTVPuertoRico_AvailableDemographics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+            SelectAdjacentRow(DataGridViewSpotTVPuertoRico_AvailableDemographics, e.RowHandle)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_AvailableMetrics_RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles DataGridViewSpotTVPuertoRico_AvailableMetrics.RowDoubleClickEvent
+
+            _Controller.AddToSelectedSpotTVPuertoRicoMetrics(_ViewModel, DataGridViewSpotTVPuertoRico_AvailableMetrics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.Metric).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+            SelectAdjacentRow(DataGridViewSpotTVPuertoRico_AvailableMetrics, e.RowHandle)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_AvailableStations_RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles DataGridViewSpotTVPuertoRico_AvailableStations.RowDoubleClickEvent
+
+            _Controller.AddToSelectedSpotTVPuertoRicoStations(_ViewModel, DataGridViewSpotTVPuertoRico_AvailableStations.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+            SelectAdjacentRow(DataGridViewSpotTVPuertoRico_AvailableStations, e.RowHandle)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_SelectedDemographics_RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles DataGridViewSpotTVPuertoRico_SelectedDemographics.RowDoubleClickEvent
+
+            _Controller.RemoveFromSelectedPuertoRicoDemographics(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedDemographics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+            SelectAdjacentRow(DataGridViewSpotTVPuertoRico_SelectedDemographics, e.RowHandle)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_SelectedMetrics_RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles DataGridViewSpotTVPuertoRico_SelectedMetrics.RowDoubleClickEvent
+
+            _Controller.RemoveFromSelectedSpotTVPuertoRicoMetrics(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedMetrics.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.Metric).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+            SelectAdjacentRow(DataGridViewSpotTVPuertoRico_SelectedMetrics, e.RowHandle)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_SelectedStations_RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles DataGridViewSpotTVPuertoRico_SelectedStations.RowDoubleClickEvent
+
+            _Controller.RemoveFromSelectedSpotTVPuertoRicoStations(_ViewModel, DataGridViewSpotTVPuertoRico_SelectedStations.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station).ToList)
+
+            RefreshSpotTVPuertoRicoTab()
+
+            SelectAdjacentRow(DataGridViewSpotTVPuertoRico_SelectedStations, e.RowHandle)
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_UserCriterias_BeforeLeaveRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowAllowEventArgs) Handles DataGridViewSpotTVPuertoRico_UserCriterias.BeforeLeaveRowEvent
+
+            e.Allow = CheckForUnsavedChanges()
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_UserCriterias_FocusedRowChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles DataGridViewSpotTVPuertoRico_UserCriterias.FocusedRowChangedEvent
+
+            If Me.FormShown AndAlso Me.FormAction = AdvantageFramework.WinForm.Presentation.Methods.FormActions.None Then
+
+                _Controller.SetSelectedSpotTVPuertoRicoResearchCriteria(_ViewModel, DataGridViewSpotTVPuertoRico_UserCriterias.CurrentView.GetRowCellValue(e.FocusedRowHandle, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria.Properties.ID.ToString))
+
+                Me.FormAction = AdvantageFramework.WinForm.Presentation.Methods.FormActions.LoadingSelectedItem
+
+                LoadSpotTVPuertoRicoViewModel(DirectCast(DataGridViewSpotTVPuertoRico_UserCriterias.GetFirstSelectedRowDataBoundItem, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).ID, False)
+
+                TabItemSpotTVPuertoRico_PeriodsDaysTimes.Tag = False
+
+                'LoadSpotTVpuertoricoBooksTab()
+
+                TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab = TabItemSpotTVPuertoRico_ReportTypeStations
+
+                Me.FormAction = AdvantageFramework.WinForm.Presentation.Methods.FormActions.None
+
+            End If
+
+        End Sub
+        Private Sub CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes_CheckedChangedEx(sender As Object, e As DevComponents.DotNetBar.Controls.CheckBoxXChangeEventArgs) Handles CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.CheckedChangedEx
+
+            If e.EventSource <> DevComponents.DotNetBar.eEventSource.Code Then
+
+                _Controller.PuertoRicoOptionGroupByDaysTimesChanged(e.NewChecked.Checked, _ViewModel)
+
+                RefreshSpotTVPuertoRicoTab()
+
+            End If
+
+        End Sub
+        Private Sub CheckBoxSpotTVPuertoRicoOptions_ShowProgramName_CheckedChangedEx(sender As Object, e As DevComponents.DotNetBar.Controls.CheckBoxXChangeEventArgs) Handles CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.CheckedChangedEx
+
+            If e.EventSource <> DevComponents.DotNetBar.eEventSource.Code Then
+
+                _Controller.PuertoRicoOptionShowProgramNameChanged(e.NewChecked.Checked, _ViewModel)
+
+                RefreshSpotTVPuertoRicoTab()
+
+            End If
+
+        End Sub
+        'Private Sub CheckBoxSpotTVPuertoRicoOptions_SubtotalByWeekdayWeekend_CheckedChangedEx(sender As Object, e As DevComponents.DotNetBar.Controls.CheckBoxXChangeEventArgs) Handles CheckBoxSpotTVPuertoRicoOptions_SubtotalByWeekdayWeekend.CheckedChangedEx
+
+        '    If e.EventSource <> DevComponents.DotNetBar.eEventSource.Code Then
+
+        '        _Controller.PuertoRicoOptionSubtotalByWeekdayWeekendChanged(e.NewChecked.Checked, _ViewModel)
+
+        '        RefreshSpotTVPuertoRicoTab()
+
+        '    End If
+
+        'End Sub
+        Private Sub ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.SelectedValueChanged
+
+            If Me.FormAction = WinForm.Presentation.Methods.FormActions.None AndAlso _ViewModel IsNot Nothing Then
+
+                _Controller.PuertoRicoReportTypeChanged(_ViewModel, ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.GetSelectedValue)
+
+                RefreshSpotTVPuertoRicoTab()
+
+            End If
+
+        End Sub
+        Private Sub DateEditSpotTVPuertoRicoPeriod_ShareEndDate_EditValueChanged(sender As Object, e As EventArgs) Handles DateEditSpotTVPuertoRicoPeriod_ShareEndDate.EditValueChanged
+
+            If Me.FormAction = WinForm.Presentation.Methods.FormActions.None AndAlso _ViewModel IsNot Nothing Then
+
+                _Controller.PuertoRicoDatesChanged(_ViewModel)
+
+                RefreshSpotTVPuertoRicoTab()
+
+            End If
+
+        End Sub
+        Private Sub DateEditSpotTVPuertoRicoPeriod_ShareStartDate_EditValueChanged(sender As Object, e As EventArgs) Handles DateEditSpotTVPuertoRicoPeriod_ShareStartDate.EditValueChanged
+
+            If Me.FormAction = WinForm.Presentation.Methods.FormActions.None AndAlso _ViewModel IsNot Nothing Then
+
+                _Controller.PuertoRicoDatesChanged(_ViewModel)
+
+                RefreshSpotTVPuertoRicoTab()
+
+            End If
+
+        End Sub
+        Private Sub NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank_EditValueChanged(sender As Object, e As EventArgs) Handles NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.EditValueChanged
+
+            If Me.FormShown AndAlso Me.FormAction = AdvantageFramework.WinForm.Presentation.Methods.FormActions.None Then
+
+                _Controller.SetTVPuertoRicoMaxRank(_ViewModel, NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.GetValue)
+
+                RefreshSpotTVPuertoRicoTab()
+
+            End If
+
+        End Sub
+        Private Sub ResizeTVPuertoRicoWarning()
+
+            If TabControlForm_Tabs.SelectedTab.Equals(TabItemTabs_SpotTVPuertoRicoTab) AndAlso TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTab.Equals(TabItemSpotTVPuertoRico_Results) Then
+
+                If (_ViewModel.SpotTVPuertoRicoResearchResultList IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoResearchResultList.Count > 0 AndAlso
+                        _ViewModel.SpotTVPuertoRicoResearchResultList.Where(Function(Entity) Entity.ShowIntabWarning).Any) Then
+
+                    LabelSpotTVPuertoRicoResults_Footer.Visible = True
+                    BandedDataGridViewSpotTVPuertoRicoResults.Height = TabControlPanelSpotTVPuertoRicoResults_Results.Height - LabelSpotTVPuertoRicoResults_Footer.Height - 50
+
+                Else
+
+                    LabelSpotTVPuertoRicoResults_Footer.Visible = False
+                    BandedDataGridViewSpotTVPuertoRicoResults.Height = TabControlPanelSpotTVPuertoRicoResults_Results.Height - 42
+
+                End If
+
+            End If
+
+        End Sub
+        'Private Sub TabControlSpotTVPuertoRico_ResearchCriteria_SelectedTabChanging(sender As Object, e As DevComponents.DotNetBar.TabStripTabChangingEventArgs) Handles TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTabChanging
+
+        '    If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.Methods.FormActions.None Then
+
+        '        If e.NewTab.Equals(TabItemSpotTV_Books) Then
+
+        '            If Not _ViewModel.IsMarketSelected Then
+
+        '                Me.FormAction = WinForm.Presentation.Methods.FormActions.LoadingSelectedItem
+
+        '                e.Cancel = True
+
+        '                AdvantageFramework.WinForm.MessageBox.Show("Please select a market first.")
+
+        '                TabControlSpotTV_ResearchCriteria.SelectedTab = TabItemSpotTV_MarketStations
+
+        '                Me.FormAction = WinForm.Presentation.Methods.FormActions.None
+
+        '            Else
+
+        '                LoadSpotTVBooksTab()
+
+        '            End If
+
+        '        ElseIf Not _ViewModel.IsMarketSelected Then
+
+        '            Me.FormAction = WinForm.Presentation.Methods.FormActions.LoadingSelectedItem
+
+        '            e.Cancel = True
+
+        '            AdvantageFramework.WinForm.MessageBox.Show("Please select a market first.")
+
+        '            TabControlSpotTV_ResearchCriteria.SelectedTab = TabItemSpotTV_MarketStations
+
+        '            Me.FormAction = WinForm.Presentation.Methods.FormActions.None
+
+        '        End If
+
+        '    End If
+
+        'End Sub
+        Private Sub TabControlSpotTVPuertoRico_ResearchCriteria_SelectedTabChanged(sender As Object, e As DevComponents.DotNetBar.TabStripTabChangedEventArgs) Handles TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTabChanged
+
+            EnableOrDisableActions()
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_SelectedDemographics_SelectionChangedEvent(sender As Object, e As EventArgs) Handles DataGridViewSpotTVPuertoRico_SelectedDemographics.SelectionChangedEvent
+
+            EnableOrDisableActions()
+
+        End Sub
+        Private Sub DataGridViewSpotTVPuertoRico_SelectedMetrics_SelectionChangedEvent(sender As Object, e As EventArgs) Handles DataGridViewSpotTVPuertoRico_SelectedMetrics.SelectionChangedEvent
+
+            EnableOrDisableActions()
+
+        End Sub
+        Private Sub SetupSpotTVPuertoRicoTrendByDateDataBands()
+
+            'objects
+            Dim CopyrightGridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+            Dim BlankGridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+            Dim StationMetricsBands As Generic.List(Of DevExpress.XtraGrid.Views.BandedGrid.GridBand) = Nothing
+            Dim StationMetricsBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
+            Dim GridColumn As DevExpress.XtraGrid.Columns.GridColumn = Nothing
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.BeginUpdate()
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Bands.Clear()
+            BandedDataGridViewSpotTVPuertoRicoResults.ClearGridCustomization()
+            BandedDataGridViewSpotTVPuertoRicoResults.AutoUpdateViewCaption = False
+
+            StationMetricsBands = New Generic.List(Of DevExpress.XtraGrid.Views.BandedGrid.GridBand)
+
+            CopyrightGridBand = New DevExpress.XtraGrid.Views.BandedGrid.GridBand
+            CopyrightGridBand.Name = "Copyright"
+            CopyrightGridBand.Caption = _NielsenPuertoRicoCopyright
+
+            CopyrightGridBand.OptionsBand.AllowMove = False
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Bands.Add(CopyrightGridBand)
+
+            BlankGridBand = CopyrightGridBand.Children.AddBand("")
+
+            If _ViewModel.SpotTVPuertoRicoResearchResultList IsNot Nothing AndAlso _ViewModel.SpotTVPuertoRicoResearchResultList.Count > 0 Then
+
+                BlankGridBand.Caption = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareStartDate.Value.ToShortDateString() & " - " & _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShareEndDate.Value.ToShortDateString() & " / " & _ViewModel.SpotTVPuertoRicoResearchResultList.First.Demographic
+
+            End If
+
+            BlankGridBand.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+            BlankGridBand.AppearanceHeader.Options.UseTextOptions = True
+            BlankGridBand.OptionsBand.FixedWidth = True
+            BlankGridBand.OptionsBand.AllowMove = False
+
+            For Each ResearchResult In (From Entity In _ViewModel.SpotTVPuertoRicoResearchResultList
+                                        Select Entity.Station,
+                                               Entity.StationID).Distinct.OrderBy(Function(Entity) Entity.Station).ToList
+
+                StationMetricsBand = CopyrightGridBand.Children.AddBand("")
+
+                StationMetricsBand.Caption = ResearchResult.Station
+                StationMetricsBand.Tag = ResearchResult.StationID
+                StationMetricsBand.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+                StationMetricsBand.AppearanceHeader.Options.UseTextOptions = True
+                StationMetricsBand.OptionsBand.FixedWidth = True
+                StationMetricsBand.OptionsBand.AllowMove = False
+
+                StationMetricsBands.Add(StationMetricsBand)
+
+            Next
+
+            BandedDataGridViewSpotTVPuertoRicoResults.ClearDatasource(_ViewModel.SpotTVPuertoRicoReportDataTable.Clone)
+
+            BandedDataGridViewSpotTVPuertoRicoResults.ItemDescription = "Research Result(s)"
+
+            For Each GridColumn In BandedDataGridViewSpotTVPuertoRicoResults.Columns
+
+                If GridColumn.FieldName = AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.TrendDate.ToString OrElse
+                        GridColumn.FieldName = "Day" OrElse
+                        GridColumn.FieldName = AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.Times.ToString Then
+
+                    BlankGridBand.Columns.Add(GridColumn)
+                    GridColumn.Tag = BlankGridBand
+
+                    If GridColumn.FieldName = AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult.Properties.TrendDate.ToString Then
+
+                        GridColumn.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False
+                        GridColumn.Caption = "Date"
+
+                    End If
+
+                ElseIf IsNumeric(Mid(GridColumn.FieldName, GridColumn.FieldName.Length, 1)) AndAlso GridColumn.FieldName.StartsWith("Station") Then
+
+                    GridColumn.Visible = False
+
+                ElseIf IsNumeric(Mid(GridColumn.FieldName, GridColumn.FieldName.Length, 1)) Then
+
+                    GridColumn.Caption = AdvantageFramework.StringUtilities.RemoveAllNonAlpha(GridColumn.FieldName)
+
+                End If
+
+            Next
+
+            For Each StationMetricsBand In StationMetricsBands
+
+                For Each GridColumn In BandedDataGridViewSpotTVPuertoRicoResults.Columns
+
+                    If GridColumn.FieldName.EndsWith("_" & StationMetricsBand.Tag) Then
+
+                        StationMetricsBand.Columns.Add(GridColumn)
+
+                        GridColumn.SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom
+
+                        GridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+
+                        If GridColumn.FieldName.StartsWith("Rating") Then
+
+                            GridColumn.DisplayFormat.FormatString = "n2"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Share") Then
+
+                            GridColumn.DisplayFormat.FormatString = "n2"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Impressions") Then
+
+                            GridColumn.Caption = "Aud (000)"
+                            GridColumn.DisplayFormat.FormatString = "n1"
+
+                        ElseIf GridColumn.FieldName.StartsWith("HPUT") Then
+
+                            GridColumn.Caption = "H/PUT"
+
+                            GridColumn.DisplayFormat.FormatString = "n2"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Intab") Then
+
+                            GridColumn.Caption = "Sample Size"
+                            GridColumn.DisplayFormat.FormatString = "n0"
+
+                        ElseIf GridColumn.FieldName.StartsWith("Universe") Then
+
+                            GridColumn.DisplayFormat.FormatString = "n0"
+
+                        ElseIf GridColumn.FieldName.StartsWith("ProgramName") Then
+
+                            GridColumn.Caption = "Program Name"
+
+                        ElseIf GridColumn.FieldName.StartsWith("ShowIntabWarning") Then
+
+                            GridColumn.Visible = False
+
+                        End If
+
+                    End If
+
+                Next
+
+            Next
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.ViewCaption = _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.CriteriaName & " (Trend By Date)"
+            BandedDataGridViewSpotTVPuertoRicoResults.DataSource = _ViewModel.SpotTVPuertoRicoReportDataTable
+
+            If _ViewModel.SpotTVPuertoRicoSelectedResearchCriteria.GroupByDaysTimes Then
+
+                If BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTV.ResearchResult.Properties.Days.ToString) IsNot Nothing Then
+
+                    BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTV.ResearchResult.Properties.Days.ToString).Group()
+
+                End If
+
+                If BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTV.ResearchResult.Properties.Times.ToString) IsNot Nothing Then
+
+                    BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.Columns(AdvantageFramework.DTO.Media.SpotTV.ResearchResult.Properties.Times.ToString).Group()
+
+                End If
+
+            End If
+
+            BandedDataGridViewSpotTVPuertoRicoResults.OptionsBehavior.Editable = False
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.EndUpdate()
+
+            BandedDataGridViewSpotTVPuertoRicoResults.CurrentView.BestFitColumns()
+
+            BestFitBands(BandedDataGridViewSpotTVPuertoRicoResults)
+
+        End Sub
 
 #End Region
 

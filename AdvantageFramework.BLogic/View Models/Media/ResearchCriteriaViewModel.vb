@@ -15,6 +15,7 @@
             SpotTV
             SpotRadioCounty
             National
+            SpotTVPuertoRico
         End Enum
 
 #End Region
@@ -46,6 +47,10 @@
 
                     AddVisible = Me.ResearchCriteria IsNot Nothing AndAlso Not DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.National.ResearchCriteria).ID.HasValue
 
+                ElseIf Not _IsCopy AndAlso _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                    AddVisible = Me.ResearchCriteria IsNot Nothing AndAlso Not DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).ID.HasValue
+
                 Else
 
                     AddVisible = False
@@ -70,6 +75,10 @@
                 ElseIf Not _IsCopy AndAlso _ResearchType = ResearchType.National Then
 
                     UpdateVisible = Me.ResearchCriteria IsNot Nothing AndAlso DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.National.ResearchCriteria).ID.HasValue
+
+                ElseIf Not _IsCopy AndAlso _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                    UpdateVisible = Me.ResearchCriteria IsNot Nothing AndAlso DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).ID.HasValue
 
                 Else
 
@@ -121,7 +130,7 @@
 
                     End If
 
-                Else
+                ElseIf _ResearchType = ResearchType.National Then
 
                     If _IsCopy Then
 
@@ -130,6 +139,18 @@
                     Else
 
                         FormCaption = If(Me.ResearchCriteria IsNot Nothing AndAlso DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.National.ResearchCriteria).ID.HasValue, "Edit Report", "Add Report")
+
+                    End If
+
+                Else
+
+                    If _IsCopy Then
+
+                        FormCaption = "Copy " & DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).CriteriaName & " to:"
+
+                    Else
+
+                        FormCaption = If(Me.ResearchCriteria IsNot Nothing AndAlso DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).ID.HasValue, "Edit Report", "Add Report")
 
                     End If
 
@@ -156,6 +177,10 @@
 
                     CriteriaName = If(Me.ResearchCriteria IsNot Nothing, DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.National.ResearchCriteria).CriteriaName, Nothing)
 
+                ElseIf Not _IsCopy AndAlso _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                    CriteriaName = If(Me.ResearchCriteria IsNot Nothing, DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).CriteriaName, Nothing)
+
                 Else
 
                     CriteriaName = String.Empty
@@ -177,9 +202,13 @@
 
                     ID = If(Me.ResearchCriteria IsNot Nothing, DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.SpotRadioCounty.ResearchCriteria).ID.Value, 0)
 
-                Else
+                ElseIf _ResearchType = ResearchType.National Then
 
                     ID = If(Me.ResearchCriteria IsNot Nothing, DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.National.ResearchCriteria).ID.Value, 0)
+
+                Else
+
+                    ID = If(Me.ResearchCriteria IsNot Nothing, DirectCast(Me.ResearchCriteria, AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria).ID.Value, 0)
 
                 End If
             End Get
@@ -209,6 +238,10 @@
             ElseIf _ResearchType = ResearchType.National Then
 
                 ResearchCriteria = New AdvantageFramework.DTO.Media.National.ResearchCriteria
+
+            ElseIf _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                ResearchCriteria = New AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria
 
             End If
 

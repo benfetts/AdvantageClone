@@ -25,6 +25,8 @@
             Numeris = 3
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("4", "OzTAM")>
             OzTAM = 4
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("5", "Nielsen Puerto Rico")>
+            NielsenPuertoRico = 5
         End Enum
 
         Public Enum NCCTVGeo As Short

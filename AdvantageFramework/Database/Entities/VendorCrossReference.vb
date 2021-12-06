@@ -66,6 +66,7 @@
             'objects
             Dim ErrorText As String = ""
             Dim PropertyValue As Object = Nothing
+            Dim RecordSource As AdvantageFramework.Database.Entities.RecordSource = Nothing
 
             Select Case PropertyName
 
@@ -75,14 +76,27 @@
 
                     If Me.IsEntityBeingAdded() Then
 
-                        If (From Entity In DirectCast(Me.DbContext, AdvantageFramework.Database.DbContext).VendorCrossReferences
-                            Where Entity.SourceVendorCode.ToUpper = DirectCast(PropertyValue, String).ToUpper AndAlso
-                                  Entity.RecordSourceID = Me.RecordSourceID
-                            Select Entity).Any Then
+                        RecordSource = (From Entity In AdvantageFramework.Database.Procedures.RecordSource.Load(DbContext)
+                                        Where Entity.Name = "QuickBooks" AndAlso
+                                              Entity.IsSystemSource = True
+                                        Select Entity).SingleOrDefault
 
-                            IsValid = False
+                        If RecordSource IsNot Nothing AndAlso RecordSource.ID = Me.RecordSourceID Then
 
-                            ErrorText = "Please enter a unique source vendor code."
+                            'allow duplicate source vendor codes
+
+                        Else
+
+                            If (From Entity In DirectCast(Me.DbContext, AdvantageFramework.Database.DbContext).VendorCrossReferences
+                                Where Entity.SourceVendorCode.ToUpper = DirectCast(PropertyValue, String).ToUpper AndAlso
+                                      Entity.RecordSourceID = Me.RecordSourceID
+                                Select Entity).Any Then
+
+                                IsValid = False
+
+                                ErrorText = "Please enter a unique source vendor code."
+
+                            End If
 
                         End If
 

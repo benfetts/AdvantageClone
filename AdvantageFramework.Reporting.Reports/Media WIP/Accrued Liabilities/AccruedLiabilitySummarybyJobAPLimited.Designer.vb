@@ -1,4 +1,4 @@
-Namespace MediaWIP.AccruedLiabilities
+﻿Namespace MediaWIP.AccruedLiabilities
 
     Partial Public Class AccruedLiabilitySummarybyJobAPLimited
         Private components As System.ComponentModel.IContainer
@@ -36,17 +36,14 @@ Namespace MediaWIP.AccruedLiabilities
             Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
             Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
             Me.GLAccountHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
-            Me.GLAccountFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
-            Me.JobCompHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
-            Me.JobCompFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
-            Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
-            Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
-            Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
             Me.label2 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label1 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.GLAccountFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
             Me.label17 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label13 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label14 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.JobCompHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
+            Me.JobCompFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
             Me.label12 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label11 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label10 = New DevExpress.XtraReports.UI.XRLabel()
@@ -54,8 +51,10 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label8 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label7 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label6 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
             Me.label27 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label26 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.end_period = New DevExpress.XtraReports.Parameters.Parameter()
             Me.line2 = New DevExpress.XtraReports.UI.XRLine()
             Me.line1 = New DevExpress.XtraReports.UI.XRLine()
             Me.label25 = New DevExpress.XtraReports.UI.XRLabel()
@@ -68,20 +67,18 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label5 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label4 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label3 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
             Me.label28 = New DevExpress.XtraReports.UI.XRLabel()
             Me.line3 = New DevExpress.XtraReports.UI.XRLine()
             Me.pageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
             Me.pageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
+            Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
             Me.label18 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label15 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label16 = New DevExpress.XtraReports.UI.XRLabel()
             Me.JobComp = New DevExpress.XtraReports.UI.CalculatedField()
             Me.GLAccount = New DevExpress.XtraReports.UI.CalculatedField()
-            Me.AccruedLiabilityAmountJob = New DevExpress.XtraReports.UI.CalculatedField()
-            Me.APInvoiceAmountJob = New DevExpress.XtraReports.UI.CalculatedField()
-            Me.APLimitedJobFlag = New DevExpress.XtraReports.UI.CalculatedField()
             Me.APInvoiceAmountLimited = New DevExpress.XtraReports.UI.CalculatedField()
-            Me.end_period = New DevExpress.XtraReports.Parameters.Parameter()
             Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,43 +113,6 @@ Namespace MediaWIP.AccruedLiabilities
             Me.GLAccountHeader.Name = "GLAccountHeader"
             Me.GLAccountHeader.RepeatEveryPage = True
             '
-            'GLAccountFooter
-            '
-            Me.GLAccountFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label17, Me.label13, Me.label14})
-            Me.GLAccountFooter.HeightF = 36.0!
-            Me.GLAccountFooter.Level = 1
-            Me.GLAccountFooter.Name = "GLAccountFooter"
-            '
-            'JobCompHeader
-            '
-            Me.JobCompHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("OfficeCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("ClientCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("DivisionCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("ProductCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("JobComp", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
-            Me.JobCompHeader.HeightF = 0!
-            Me.JobCompHeader.Name = "JobCompHeader"
-            '
-            'JobCompFooter
-            '
-            Me.JobCompFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label12, Me.label11, Me.label10, Me.label9, Me.label8, Me.label7, Me.label6})
-            Me.JobCompFooter.HeightF = 18.0!
-            Me.JobCompFooter.Name = "JobCompFooter"
-            '
-            'PageHeader
-            '
-            Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label27, Me.label26, Me.line2, Me.line1, Me.label25, Me.label24, Me.label23, Me.label22, Me.label21, Me.label20, Me.label19, Me.label5, Me.label4, Me.label3})
-            Me.PageHeader.HeightF = 127.0833!
-            Me.PageHeader.Name = "PageHeader"
-            '
-            'PageFooter
-            '
-            Me.PageFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label28, Me.line3, Me.pageInfo2, Me.pageInfo1})
-            Me.PageFooter.HeightF = 33.0!
-            Me.PageFooter.Name = "PageFooter"
-            '
-            'ReportFooter
-            '
-            Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label18, Me.label15, Me.label16})
-            Me.ReportFooter.HeightF = 18.00001!
-            Me.ReportFooter.Name = "ReportFooter"
-            '
             'label2
             '
             Me.label2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "GLAccount")})
@@ -175,6 +135,13 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label1.SizeF = New System.Drawing.SizeF(79.16667!, 18.0!)
             Me.label1.StylePriority.UseFont = False
             Me.label1.Text = "GL Account: "
+            '
+            'GLAccountFooter
+            '
+            Me.GLAccountFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label17, Me.label13, Me.label14})
+            Me.GLAccountFooter.HeightF = 36.0!
+            Me.GLAccountFooter.Level = 1
+            Me.GLAccountFooter.Name = "GLAccountFooter"
             '
             'label17
             '
@@ -226,6 +193,18 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label14.TextFormatString = "{0:n2}"
             Me.label14.WordWrap = False
+            '
+            'JobCompHeader
+            '
+            Me.JobCompHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("OfficeCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("ClientCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("DivisionCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("ProductCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("JobComp", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
+            Me.JobCompHeader.HeightF = 0!
+            Me.JobCompHeader.Name = "JobCompHeader"
+            '
+            'JobCompFooter
+            '
+            Me.JobCompFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label12, Me.label11, Me.label10, Me.label9, Me.label8, Me.label7, Me.label6})
+            Me.JobCompFooter.HeightF = 18.0!
+            Me.JobCompFooter.Name = "JobCompFooter"
             '
             'label12
             '
@@ -327,6 +306,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label6.Text = "label6"
             Me.label6.WordWrap = False
             '
+            'PageHeader
+            '
+            Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label27, Me.label26, Me.line2, Me.line1, Me.label25, Me.label24, Me.label23, Me.label22, Me.label21, Me.label20, Me.label19, Me.label5, Me.label4, Me.label3})
+            Me.PageHeader.HeightF = 127.0833!
+            Me.PageHeader.Name = "PageHeader"
+            '
             'label27
             '
             Me.label27.Font = New System.Drawing.Font("Arial", 8.0!)
@@ -352,6 +337,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label26.StylePriority.UseFont = False
             Me.label26.Text = "label26"
             Me.label26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+            '
+            'end_period
+            '
+            Me.end_period.Description = "End Period"
+            Me.end_period.Name = "end_period"
+            Me.end_period.Visible = False
             '
             'line2
             '
@@ -497,6 +488,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label3.StylePriority.UseFont = False
             Me.label3.Text = "Accrued Liability Summary by Job"
             '
+            'PageFooter
+            '
+            Me.PageFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label28, Me.line3, Me.pageInfo2, Me.pageInfo1})
+            Me.PageFooter.HeightF = 33.0!
+            Me.PageFooter.Name = "PageFooter"
+            '
             'label28
             '
             Me.label28.CanGrow = False
@@ -549,6 +546,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.pageInfo1.SizeF = New System.Drawing.SizeF(252.0833!, 23.0!)
             Me.pageInfo1.StylePriority.UseFont = False
             Me.pageInfo1.TextFormatString = "{0:dddd, MMMM dd, yyyy h:mm tt}"
+            '
+            'ReportFooter
+            '
+            Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label18, Me.label15, Me.label16})
+            Me.ReportFooter.HeightF = 18.00001!
+            Me.ReportFooter.Name = "ReportFooter"
             '
             'label18
             '
@@ -613,35 +616,11 @@ Namespace MediaWIP.AccruedLiabilities
             Me.GLAccount.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
             Me.GLAccount.Name = "GLAccount"
             '
-            'AccruedLiabilityAmountJob
-            '
-            Me.AccruedLiabilityAmountJob.Expression = "[][[JobComp]=[^.JobComp]].sum([AccruedLiabilityAmount])"
-            Me.AccruedLiabilityAmountJob.FieldType = DevExpress.XtraReports.UI.FieldType.[Double]
-            Me.AccruedLiabilityAmountJob.Name = "AccruedLiabilityAmountJob"
-            '
-            'APInvoiceAmountJob
-            '
-            Me.APInvoiceAmountJob.Expression = "[][[JobComp]=[^.JobComp]].sum([APInvoiceAmount])"
-            Me.APInvoiceAmountJob.FieldType = DevExpress.XtraReports.UI.FieldType.[Double]
-            Me.APInvoiceAmountJob.Name = "APInvoiceAmountJob"
-            '
-            'APLimitedJobFlag
-            '
-            Me.APLimitedJobFlag.Expression = "IIf([AccruedLiabilityAmountJob]<[APInvoiceAmountJob],1,0)"
-            Me.APLimitedJobFlag.FieldType = DevExpress.XtraReports.UI.FieldType.Int16
-            Me.APLimitedJobFlag.Name = "APLimitedJobFlag"
-            '
             'APInvoiceAmountLimited
             '
             Me.APInvoiceAmountLimited.Expression = "IIf([APLimitedJobFlag]=1,[AccruedLiabilityAmount],[APInvoiceAmount])"
             Me.APInvoiceAmountLimited.FieldType = DevExpress.XtraReports.UI.FieldType.[Double]
             Me.APInvoiceAmountLimited.Name = "APInvoiceAmountLimited"
-            '
-            'end_period
-            '
-            Me.end_period.Description = "End Period"
-            Me.end_period.Name = "end_period"
-            Me.end_period.Visible = False
             '
             'BindingSource
             '
@@ -650,7 +629,7 @@ Namespace MediaWIP.AccruedLiabilities
             'AccruedLiabilitySummarybyJobAPLimited
             '
             Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.GLAccountHeader, Me.GLAccountFooter, Me.JobCompHeader, Me.JobCompFooter, Me.PageHeader, Me.PageFooter, Me.ReportFooter})
-            Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.JobComp, Me.GLAccount, Me.AccruedLiabilityAmountJob, Me.APInvoiceAmountJob, Me.APLimitedJobFlag, Me.APInvoiceAmountLimited})
+            Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.JobComp, Me.GLAccount, Me.APInvoiceAmountLimited})
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.DisplayName = "700 Accrued Liability Summary by Job-AP Limited"
@@ -710,9 +689,6 @@ Namespace MediaWIP.AccruedLiabilities
         Friend WithEvents label16 As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents JobComp As DevExpress.XtraReports.UI.CalculatedField
         Friend WithEvents GLAccount As DevExpress.XtraReports.UI.CalculatedField
-        Friend WithEvents AccruedLiabilityAmountJob As DevExpress.XtraReports.UI.CalculatedField
-        Friend WithEvents APInvoiceAmountJob As DevExpress.XtraReports.UI.CalculatedField
-        Friend WithEvents APLimitedJobFlag As DevExpress.XtraReports.UI.CalculatedField
         Friend WithEvents APInvoiceAmountLimited As DevExpress.XtraReports.UI.CalculatedField
         Friend WithEvents BindingSource As System.Windows.Forms.BindingSource
     End Class

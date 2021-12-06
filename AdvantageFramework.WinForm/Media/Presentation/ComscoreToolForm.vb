@@ -119,7 +119,7 @@
 
                     If Market IsNot Nothing AndAlso Market.ComscoreNewMarketNumber.HasValue Then
 
-                        SearchableComboBox_ComscoreStation.DataSource = DbContext.Database.SqlQuery(Of AdvantageFramework.DTO.Media.SpotTV.Station)(String.Format("exec [advsp_comscore_stations] {0}, NULL", Market.ComscoreNewMarketNumber.Value)).ToList.Where(Function(Entity) Entity.ComscorePrimaryMarketNumber IsNot Nothing AndAlso Entity.ComscorePrimaryMarketNumber = Market.ComscoreNewMarketNumber.Value).ToList
+                        SearchableComboBox_ComscoreStation.DataSource = DbContext.Database.SqlQuery(Of AdvantageFramework.DTO.Media.SpotTV.Station)(String.Format("exec [advsp_comscore_stations] {0}, NULL", Market.ComscoreNewMarketNumber.Value)).ToList '.Where(Function(Entity) Entity.ComscorePrimaryMarketNumber IsNot Nothing AndAlso Entity.ComscorePrimaryMarketNumber = Market.ComscoreNewMarketNumber.Value).ToList
 
                     End If
 

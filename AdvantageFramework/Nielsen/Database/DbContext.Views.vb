@@ -17,15 +17,15 @@ Imports System.Data.Entity.Infrastructure.MappingViews
 
 <Assembly: DbMappingViewCacheTypeAttribute(
     GetType(AdvantageFramework.Nielsen.Database.DbContext),
-    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets365c2c2cab12eb184ceaba68d7d722d2a2ebcebead85b2b04dbec350e46af990))>
+    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets742e542fd8d6d57451c33fe0771bf0856e6373a22f01267c52d23d4f89d3c214))>
 
 Namespace Edm_EntityMappingGeneratedViews
 
     ''' <summary>
     ''' Implements a mapping view cache.
     ''' </summary>
-    <GeneratedCode("Entity Framework 6 Power Tools", "0.9.2.0")>
-    Friend NotInheritable Class ViewsForBaseEntitySets365c2c2cab12eb184ceaba68d7d722d2a2ebcebead85b2b04dbec350e46af990
+    <GeneratedCode("Entity Framework 6 Power Tools", "0.9.5.0")>
+    Friend NotInheritable Class ViewsForBaseEntitySets742e542fd8d6d57451c33fe0771bf0856e6373a22f01267c52d23d4f89d3c214
         Inherits DbMappingViewCache
 
         ''' <summary>
@@ -33,7 +33,7 @@ Namespace Edm_EntityMappingGeneratedViews
         ''' </summary>
         Public Overrides ReadOnly Property MappingHashValue As String
             Get
-                Return "365c2c2cab12eb184ceaba68d7d722d2a2ebcebead85b2b04dbec350e46af990"
+                Return "742e542fd8d6d57451c33fe0771bf0856e6373a22f01267c52d23d4f89d3c214"
             End Get
         End Property
 
@@ -606,13 +606,14 @@ Namespace Edm_EntityMappingGeneratedViews
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing NCCTVCablenet" & vbCrLf &
-                "        [CodeFirstDatabaseSchema.NCCTVCablenet](T1.[NCCTVCablenet.NCC_TV_CABLENET_ID], T1.[NCCTVCablenet.NETWORK_CODE], T1.[NCCTVCablenet.NETWORK_NAME], T1.[NCCTVCablenet.STATION_CODE])" & vbCrLf &
+                "        [CodeFirstDatabaseSchema.NCCTVCablenet](T1.[NCCTVCablenet.NCC_TV_CABLENET_ID], T1.[NCCTVCablenet.NETWORK_CODE], T1.[NCCTVCablenet.NETWORK_NAME], T1.[NCCTVCablenet.STATION_CODE], T1.[NCCTVCablenet.COMSCORE_STATION_CODE])" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.ID AS [NCCTVCablenet.NCC_TV_CABLENET_ID], " & vbCrLf &
                 "            T.NetworkCode AS [NCCTVCablenet.NETWORK_CODE], " & vbCrLf &
                 "            T.NetworkName AS [NCCTVCablenet.NETWORK_NAME], " & vbCrLf &
                 "            T.StationCode AS [NCCTVCablenet.STATION_CODE], " & vbCrLf &
+                "            T.ComscoreStationCode AS [NCCTVCablenet.COMSCORE_STATION_CODE], " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
                 "        FROM DbContext.NCCTVCablenets AS T" & vbCrLf &
                 "    ) AS T1")
@@ -626,13 +627,14 @@ Namespace Edm_EntityMappingGeneratedViews
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing NCCTVCablenets" & vbCrLf &
-                "        [AdvantageFramework.Nielsen.Database.NCCTVCablenet](T1.NCCTVCablenet_ID, T1.NCCTVCablenet_NetworkCode, T1.NCCTVCablenet_NetworkName, T1.NCCTVCablenet_StationCode)" & vbCrLf &
+                "        [AdvantageFramework.Nielsen.Database.NCCTVCablenet](T1.NCCTVCablenet_ID, T1.NCCTVCablenet_NetworkCode, T1.NCCTVCablenet_NetworkName, T1.NCCTVCablenet_StationCode, T1.NCCTVCablenet_ComscoreStationCode)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.NCC_TV_CABLENET_ID AS NCCTVCablenet_ID, " & vbCrLf &
                 "            T.NETWORK_CODE AS NCCTVCablenet_NetworkCode, " & vbCrLf &
                 "            T.NETWORK_NAME AS NCCTVCablenet_NetworkName, " & vbCrLf &
                 "            T.STATION_CODE AS NCCTVCablenet_StationCode, " & vbCrLf &
+                "            T.COMSCORE_STATION_CODE AS NCCTVCablenet_ComscoreStationCode, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
                 "        FROM CodeFirstDatabase.NCCTVCablenet AS T" & vbCrLf &
                 "    ) AS T1")

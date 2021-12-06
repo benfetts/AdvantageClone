@@ -70,12 +70,22 @@
             Me.IsInactive = CableNetworkStation.IsInactive
 
         End Sub
-        Public Sub New(NCCTVCablenet As AdvantageFramework.Nielsen.Database.Entities.NCCTVCablenet)
+        Public Sub New(NCCTVCablenet As AdvantageFramework.Nielsen.Database.Entities.NCCTVCablenet, IsComscore As Boolean)
 
             Me.ID = NCCTVCablenet.ID
             Me.Code = NCCTVCablenet.NetworkCode
             Me.Description = NCCTVCablenet.NetworkName
-            Me.NielsenTVStationCode = NCCTVCablenet.StationCode.GetValueOrDefault(0)
+
+            If IsComscore Then
+
+                Me.NielsenTVStationCode = NCCTVCablenet.ComscoreStationCode.GetValueOrDefault(0)
+
+            Else
+
+                Me.NielsenTVStationCode = NCCTVCablenet.StationCode.GetValueOrDefault(0)
+
+            End If
+
             Me.IsInactive = False
 
         End Sub

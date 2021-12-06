@@ -39,6 +39,7 @@
           <Property Name="NetworkCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NetworkName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StationCode" Type="Int32" />
+          <Property Name="ComscoreStationCode" Type="Int32" />
         </EntityType>
         <EntityType Name="NCCTVCarriageUELogRevision" customannotation:ClrType="AdvantageFramework.Nielsen.Database.Entities.NCCTVCarriageUELogRevision, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
@@ -1125,6 +1126,7 @@
                 <ScalarProperty Name="NetworkCode" ColumnName="NETWORK_CODE" />
                 <ScalarProperty Name="NetworkName" ColumnName="NETWORK_NAME" />
                 <ScalarProperty Name="StationCode" ColumnName="STATION_CODE" />
+                <ScalarProperty Name="ComscoreStationCode" ColumnName="COMSCORE_STATION_CODE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2140,7 +2142,7 @@
       </Mapping>
     </Mappings>
     <StorageModels>
-      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CodeFirstDatabaseSchema" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="NCCTVAIUELogRevision">
           <Key>
             <PropertyRef Name="NCC_TV_AI_UE_LOG_REVISION_ID" />
@@ -2177,6 +2179,7 @@
           <Property Name="NETWORK_CODE" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="NETWORK_NAME" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="STATION_CODE" Type="int" Nullable="true" />
+          <Property Name="COMSCORE_STATION_CODE" Type="int" Nullable="true" />
         </EntityType>
         <EntityType Name="NCCTVCarriageUELogRevision">
           <Key>
@@ -3228,7 +3231,7 @@
       </DesignerInfoPropertySet>
     </Options>
     <Diagrams >
-      <Diagram DiagramId="9d22178982ef4a828cd12a299f3cf74b" Name="Diagram1">
+      <Diagram DiagramId="875c49cafcbf417da5681bac8f821af6" Name="Diagram1">
         <EntityTypeShape EntityType="AdvantageFramework.Nielsen.Database.NCCTVAIUELogRevision" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AdvantageFramework.Nielsen.Database.NCCTVAIUELog" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AdvantageFramework.Nielsen.Database.NCCTVAIUE" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />

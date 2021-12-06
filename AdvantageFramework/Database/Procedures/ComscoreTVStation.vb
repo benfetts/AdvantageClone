@@ -58,11 +58,11 @@
                                 Select ComscoreTVStation
 
         End Function
-        Public Function LoadByNumber(DbContext As Database.DbContext, Number As Integer) As Database.Entities.ComscoreTVStation
+        Public Function LoadFirstByNetworkNumber(DbContext As Database.DbContext, Number As Integer) As Database.Entities.ComscoreTVStation
 
-            LoadByNumber = (From ComscoreTVStation In DbContext.GetQuery(Of Database.Entities.ComscoreTVStation)
-                            Where ComscoreTVStation.Number = Number
-                            Select ComscoreTVStation).SingleOrDefault
+            LoadFirstByNetworkNumber = (From ComscoreTVStation In DbContext.GetQuery(Of Database.Entities.ComscoreTVStation)
+                                        Where ComscoreTVStation.NetworkNumber = Number
+                                        Select ComscoreTVStation).OrderBy(Function(CTS) CTS.Number).FirstOrDefault
 
         End Function
         Public Function LoadByID(DbContext As Database.DbContext, ID As Integer) As Database.Entities.ComscoreTVStation

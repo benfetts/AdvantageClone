@@ -6394,13 +6394,13 @@
 
                 SaveGridLayout()
 
+                _Controller.MarketDetails_Save(_ViewModel)
+
                 If _ViewModel.Worksheet IsNot Nothing AndAlso _ViewModel.Worksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
 
                     CacheComscoreData()
 
                 End If
-
-                _Controller.MarketDetails_Save(_ViewModel)
 
                 RefreshMediaBroadcastWorksheetSetupForm()
 

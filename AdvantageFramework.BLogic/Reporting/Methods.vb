@@ -11166,7 +11166,7 @@
 
                                     If MediaBroadcastWorksheetPreBuyReport.NCCTVSyscodeID.HasValue Then
 
-                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, CInt(StationCode))
+                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadFirstByNetworkNumber(DbContext, CInt(StationCode))
 
                                     Else
 
@@ -11222,7 +11222,7 @@
                                                                           Where Entity.ID = MediaBroadcastWorksheetPreBuyReport.BookID
                                                                           Select Entity).SingleOrDefault
 
-                                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, MediaBroadcastWorksheetPreBuyReport.NielsenTVStationCode.Value)
+                                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadFirstByNetworkNumber(DbContext, MediaBroadcastWorksheetPreBuyReport.NielsenTVStationCode.Value)
 
                                                         If ComscoreTVBook IsNot Nothing AndAlso ComscoreTVStation IsNot Nothing Then
 
@@ -12328,7 +12328,7 @@
 
                                     If MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.HasValue Then
 
-                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, CInt(StationCode))
+                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadFirstByNetworkNumber(DbContext, CInt(StationCode))
 
                                     Else
 
@@ -12489,7 +12489,7 @@
                                                                           Where Entity.ID = MediaBroadcastWorksheetPostBuyReport.BookID
                                                                           Select Entity).SingleOrDefault
 
-                                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.Value)
+                                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadFirstByNetworkNumber(DbContext, MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.Value)
 
                                                         If ComscoreTVBook IsNot Nothing AndAlso ComscoreTVStation IsNot Nothing Then
 
@@ -13686,7 +13686,7 @@
 
                                     If MediaBroadcastWorksheetPostBuyReport.NCCTVSyscodeID.HasValue Then
 
-                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, CInt(StationCode))
+                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadFirstByNetworkNumber(DbContext, CInt(StationCode))
 
                                     Else
 
@@ -13847,7 +13847,7 @@
                                                                           Where Entity.ID = MediaBroadcastWorksheetPostBuyReport.BookID
                                                                           Select Entity).SingleOrDefault
 
-                                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByNumber(DbContext, MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.Value)
+                                                        ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadFirstByNetworkNumber(DbContext, MediaBroadcastWorksheetPostBuyReport.NielsenTVStationCode.Value)
 
                                                         If ComscoreTVBook IsNot Nothing AndAlso ComscoreTVStation IsNot Nothing Then
 

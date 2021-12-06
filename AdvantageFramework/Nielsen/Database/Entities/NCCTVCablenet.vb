@@ -17,6 +17,7 @@
             NetworkCode
             NetworkName
             StationCode
+            ComscoreStationCode
         End Enum
 
 #End Region
@@ -48,6 +49,9 @@
         <Column("STATION_CODE")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property StationCode() As Nullable(Of Integer)
+        <Column("COMSCORE_STATION_CODE")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property ComscoreStationCode() As Nullable(Of Integer)
 
 #End Region
 

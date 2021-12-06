@@ -11907,7 +11907,7 @@
 
                                 If AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).Any Then
 
-                                    MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).ToList
+                                    MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity, False)).ToList
 
                                 Else
 
@@ -11925,7 +11925,31 @@
 
                     ElseIf MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore AndAlso Me.Session.IsComscoreSetup Then
 
-                        MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadCableNetworks(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).ToList
+                        If Me.Session.IsNielsenSetup Then
+
+                            Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+
+                                NielsenDbContext.Database.Connection.Open()
+
+                                If AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).Any Then
+
+                                    MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity, True)).ToList
+
+                                Else
+
+                                    MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
+
+                                End If
+
+                            End Using
+
+                        Else
+
+                            MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
+
+                        End If
+                        'old
+                        'MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadCableNetworks(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).ToList
 
                     End If
 
@@ -29582,8 +29606,8 @@
                                 If DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) Then
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                                         Where Entity.Number = NielsenTVStationCode
-                                                         Select Entity).FirstOrDefault
+                                                         Where Entity.NetworkNumber = NielsenTVStationCode
+                                                         Select Entity).OrderBy(Function(E) E.Number).First
 
                                 Else
 
@@ -31751,6 +31775,7 @@
             Dim ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook) = Nothing
             Dim ShareHPUTBook As DTO.Media.ShareHPUTBook = Nothing
             Dim VendorCodes As IEnumerable(Of String) = Nothing
+            Dim CableNetworkNielsenTVStationCodes As IEnumerable(Of Integer) = Nothing
 
             If MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet IsNot Nothing AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket IsNot Nothing AndAlso
                     MediaBroadcastWorksheetMarketDetailsViewModel.HasPrimaryDemographic AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.SharebookNielsenTVBookID.HasValue AndAlso

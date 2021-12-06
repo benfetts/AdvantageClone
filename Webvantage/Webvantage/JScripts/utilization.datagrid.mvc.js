@@ -511,7 +511,7 @@ function GenerateColumnDetailSettings() {
                     case "RequiredHours":
                         myColumns.push({
                             field: "RequiredHours", title: "Required Hours", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterRequiredHoursTemplate, format: "{0:n2}", aggregates: ["sum"]
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterRequiredHoursTemplate, format: "{0:n2}"
                         });
                         break;
                     case "BillableHoursGoal":
@@ -553,7 +553,7 @@ function GenerateColumnDetailSettings() {
                     case "BillableHoursPercent":
                         myColumns.push({
                             field: "BillableHoursPercent", title: "Billable Hours %", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterBillableHoursPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterBillableHoursPercentTemplate, format: "{0:n2}", template: billableHoursPercentTemplate
                         });
                         break;
                     case "BillablePercentGoal":
@@ -577,25 +577,25 @@ function GenerateColumnDetailSettings() {
                     case "NonBillableHoursPercent":
                         myColumns.push({
                             field: "NonBillableHoursPercent", title: "Non Billable Hours %", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterNonBillableHoursPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterNonBillableHoursPercentTemplate, format: "{0:n2}", template: NonbillableHoursPercentTemplate
                         });
                         break;
                     case "NewBusinessPercent":
                         myColumns.push({
                             field: "NewBusinessPercent", title: "New Business %", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterNewBusinessPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterNewBusinessPercentTemplate, format: "{0:n2}", template: NewBusinessTemplate
                         });
                         break;
                     case "OOOPercent":
                         myColumns.push({
                             field: "OOOPercent", title: "PTO %", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterOOOPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterOOOPercentTemplate, format: "{0:n2}", template: PTOTemplate
                         });
                         break;
                     case "TotalUtilization":
                         myColumns.push({
                             field: "PercentOfRequiredHours", title: "Total Utilization", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterTotalUtilizationTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterTotalUtilizationTemplate, format: "{0:n2}", template: TotalUtilizationTemplate
                         });
                         break;
                     case "DirectHoursGoal":
@@ -631,25 +631,25 @@ function GenerateColumnDetailSettings() {
                     case "PercentDirect":
                         myColumns.push({
                             field: "PercentDirect", title: "Direct %", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterDirectPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterDirectPercentTemplate, format: "{0:n2}", template: DirectTemplate
                         });
                         break;
                     case "PercentNonDirect":
                         myColumns.push({
                             field: "PercentNonDirect", title: "Indirect %", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterNonDirectPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterNonDirectPercentTemplate, format: "{0:n2}", template: IndirectTemplate
                         });
                         break;
                     case "PercentOfDirectHoursGoal":
                         myColumns.push({
                             field: "PercentOfDirectHoursGoal", title: "% of Direct Hours Goal", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterDirectHoursGoalPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterDirectHoursGoalPercentTemplate, format: "{0:n2}", template: DirectHoursGoalPercentTemplate
                         });
                         break;
                     case "PercentOfBillableHoursGoal":
                         myColumns.push({
                             field: "PercentOfBillableHoursGoal", title: "% of Billable Hours Goal", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterBillableHoursGoalPercentTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterBillableHoursGoalPercentTemplate, format: "{0:n2}", template: BillableHoursGoalPercentTemplate
                         });
                         break;
 
@@ -666,6 +666,133 @@ function GenerateColumnDetailSettings() {
 
 }
 
+function billableHoursPercentTemplate(dataItem) {
+
+    let BillableHoursPercent = '';
+
+    if (dataItem.RequiredHours !== undefined) {
+        if (dataItem.RequiredHours === 0) {
+            BillableHoursPercent = 'n/a';
+            return BillableHoursPercent;
+        } else {
+            return kendo.toString(dataItem.BillableHoursPercent, 'n');
+        }
+    }    
+
+}
+function NonbillableHoursPercentTemplate(dataItem) {
+
+    let NonBillableHoursPercent = '';
+
+    if (dataItem.RequiredHours !== undefined) {
+        if (dataItem.RequiredHours === 0) {
+            NonBillableHoursPercent = 'n/a';
+            return NonBillableHoursPercent;
+        } else {
+            return kendo.toString(dataItem.NonBillableHoursPercent, 'n');
+        }
+    }
+
+}
+function NewBusinessTemplate(dataItem) {
+
+    let NewBusinessPercent = '';
+
+    if (dataItem.RequiredHours !== undefined) {
+        if (dataItem.RequiredHours === 0) {
+            NewBusinessPercent = 'n/a';
+            return NewBusinessPercent;
+        } else {
+            return kendo.toString(dataItem.NewBusinessPercent, 'n');
+        }
+    }
+
+}
+function DirectTemplate(dataItem) {
+
+    let DirectPercent = '';
+
+    if (dataItem.RequiredHours !== undefined) {
+        if (dataItem.RequiredHours === 0) {
+            DirectPercent = 'n/a';
+            return DirectPercent;
+        } else {
+            return kendo.toString(dataItem.DirectPercent, 'n');
+        }
+    }
+
+}
+function IndirectTemplate(dataItem) {
+
+    let IndirectPercent = '';
+
+    if (dataItem.RequiredHours !== undefined) {
+        if (dataItem.RequiredHours === 0) {
+            IndirectPercent = 'n/a';
+            return IndirectPercent;
+        } else {
+            return kendo.toString(dataItem.IndirectPercent, 'n');
+        }
+    }
+
+}
+function PTOTemplate(dataItem) {
+
+    let PTOPercent = '';
+
+    if (dataItem.RequiredHours !== undefined) {
+        if (dataItem.RequiredHours === 0) {
+            PTOPercent = 'n/a';
+            return PTOPercent;
+        } else {
+            return kendo.toString(dataItem.OOOPercent, 'n');
+        }
+    }
+
+}
+function DirectHoursGoalPercentTemplate(dataItem) {
+
+    let DirectHoursGoalPercent = '';
+
+    if (dataItem.DirectHoursGoal !== undefined) {
+        if (dataItem.DirectHoursGoal === 0) {
+            DirectHoursGoalPercent = 'n/a';
+            return DirectHoursGoalPercent;
+        } else {
+            return kendo.toString(dataItem.PercentOfDirectHoursGoal, 'n');
+        }
+    }
+
+}
+function BillableHoursGoalPercentTemplate(dataItem) {
+
+    let BillableHoursGoalPercent = '';
+
+    if (dataItem.DirectHoursGoal !== undefined) {
+        if (dataItem.DirectHoursGoal === 0) {
+            BillableHoursGoalPercent = 'n/a';
+            return BillableHoursGoalPercent;
+        } else {
+            return kendo.toString(dataItem.PercentOfBillableHoursGoal, 'n');
+        }
+    }
+
+}
+function TotalUtilizationTemplate(dataItem) {
+
+    let TotalUtilization = '';
+
+    if (dataItem.RequiredHours !== undefined) {
+        if (dataItem.RequiredHours === 0) {
+            TotalUtilization = 'n/a';
+            return TotalUtilization;
+        } else {
+            return kendo.toString(dataItem.PercentOfRequiredHours, 'n');
+        }
+    }
+
+}
+
 function groupFooterEmployeeNameTemplate(dataItem) {
     let EmployeeName = '';
 
@@ -678,7 +805,6 @@ function groupFooterEmployeeNameTemplate(dataItem) {
     return EmployeeName;
 
 }
-
 function groupFooterRequiredHoursTemplate(dataItem) {
     let RequiredHours = '';
 
@@ -795,13 +921,13 @@ function groupFooterBillableHoursPercentTemplate(dataItem) {
 
     if (dataItem.RequiredHours !== undefined) {
         if (dataItem.RequiredHours.sum === 0) {
-            BillableHoursPercent = 0.00;
+            BillableHoursPercent = 'n/a';
+            return BillableHoursPercent;
         } else {
             BillableHoursPercent = (dataItem.BillableHours.sum / dataItem.RequiredHours.sum) * 100;
+            return kendo.toString(BillableHoursPercent, 'n');
         }
-    }
-
-    return kendo.toString(BillableHoursPercent, 'n');
+    }    
 
 }
 function groupFooterBillablePercentGoalTemplate(dataItem) {
@@ -814,7 +940,6 @@ function groupFooterBillablePercentGoalTemplate(dataItem) {
     return kendo.toString(BillablePercentGoal, 'n');
 
 }
-
 function groupFooterDirectPercentGoalTemplate(dataItem) {
     let DirectPercentGoal = '';
 
@@ -825,7 +950,6 @@ function groupFooterDirectPercentGoalTemplate(dataItem) {
     return kendo.toString(DirectPercentGoal, 'n');
 
 }
-
 function groupFooterBillableVarianceTemplate(dataItem) {
     let BillableHoursPercent = '';
     let BillableVariance = '';

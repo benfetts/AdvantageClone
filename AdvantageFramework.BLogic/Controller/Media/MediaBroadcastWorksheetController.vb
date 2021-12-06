@@ -38201,13 +38201,13 @@
 
                                 If AccountPayableTVBroadcastDetail.TimeOfDay.Hours = 0 OrElse AccountPayableTVBroadcastDetail.TimeOfDay.Hours = 1 Then
 
-                                    Data = Station.ID.ToString & vbTab & AccountPayableTVBroadcastDetail.RunDate.ToString("yyyyMMdd") & vbTab &
+                                    Data = Station.ETAMCrossReference.Value.ToString & vbTab & AccountPayableTVBroadcastDetail.RunDate.ToString("yyyyMMdd") & vbTab &
                                         (AccountPayableTVBroadcastDetail.TimeOfDay.Hours + 24).ToString & AccountPayableTVBroadcastDetail.TimeOfDay.Minutes.ToString.PadLeft(2, "0") & "00" & vbTab &
                                         AccountPayableTVBroadcastDetail.Length.ToString & vbTab & CInt(AccountPayableTVBroadcastDetail.GrossRate) & vbTab & " "
 
                                 Else
 
-                                    Data = Station.ID.ToString & vbTab & AccountPayableTVBroadcastDetail.RunDate.ToString("yyyyMMdd") & vbTab &
+                                    Data = Station.ETAMCrossReference.ToString & vbTab & AccountPayableTVBroadcastDetail.RunDate.ToString("yyyyMMdd") & vbTab &
                                         AccountPayableTVBroadcastDetail.TimeOfDay.Hours.ToString.PadLeft(2, "0") & AccountPayableTVBroadcastDetail.TimeOfDay.Minutes.ToString.PadLeft(2, "0") & "00" & vbTab &
                                         AccountPayableTVBroadcastDetail.Length.ToString & vbTab & CInt(AccountPayableTVBroadcastDetail.GrossRate) & vbTab & " "
 

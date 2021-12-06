@@ -330,6 +330,8 @@
                     RatingsServiceSourceName = Nielsen.Database.Entities.Methods.RatingsServiceID.Nielsen.ToString
                 ElseIf RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore Then
                     RatingsServiceSourceName = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore.ToString
+                ElseIf RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+                    RatingsServiceSourceName = "Nielsen"
                 Else
                     RatingsServiceSourceName = String.Empty
                 End If

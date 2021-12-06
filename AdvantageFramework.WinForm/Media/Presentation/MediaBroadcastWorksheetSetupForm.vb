@@ -271,6 +271,8 @@
             DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.ModifiedByUserCode.ToString)
             DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.ModifiedDate.ToString)
             DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.Length.ToString)
+            DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString)
+            DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString)
 
             If _ViewModel.SelectedWorksheet IsNot Nothing Then
 
@@ -331,6 +333,17 @@
                         End If
 
                         DataGridViewRightSection_Markets.MakeColumnVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MaxRevisionOrderStatus.ToString)
+
+                        If _ViewModel.SelectedWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+
+                            DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.IsCable.ToString)
+                            DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString)
+                            DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.SharebookNielsenTVBookID.ToString)
+                            DataGridViewRightSection_Markets.MakeColumnNotVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.HUTPUTNielsenTVBookID.ToString)
+                            DataGridViewRightSection_Markets.MakeColumnVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodStart.ToString)
+                            DataGridViewRightSection_Markets.MakeColumnVisible(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.PeriodEnd.ToString)
+
+                        End If
 
                         AddColumnToGridFunctions(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.IsCable.ToString)
                         AddColumnToGridFunctions(AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString)
@@ -585,6 +598,7 @@
             Dim ReportPrintTool As DevExpress.XtraReports.UI.ReportPrintTool = Nothing
             Dim PrintingSystemCommandHandler As AdvantageFramework.WinForm.Presentation.Controls.Classes.PrintingSystemCommandHandler = Nothing
             Dim AgencyImportPath As String = String.Empty
+            Dim IsPuertoRico As Boolean = False
 
             If InStr(XtraReport.ToString, "PreBuy") > 1 Then
 
@@ -598,7 +612,13 @@
 
             End If
 
-            If AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog.ShowFormDialog(ParameterDictionary, BuyType, MediaType, _ViewModel.SelectedWorksheet.ID) = Windows.Forms.DialogResult.OK Then
+            If _ViewModel.SelectedWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+
+                IsPuertoRico = True
+
+            End If
+
+            If AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog.ShowFormDialog(ParameterDictionary, BuyType, MediaType, _ViewModel.SelectedWorksheet.ID, IsPuertoRico) = Windows.Forms.DialogResult.OK Then
 
                 Me.ShowWaitForm("Loading...")
 
@@ -750,7 +770,8 @@
 
             ' ** Braxton **
 
-            If AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog.ShowFormDialog(ParameterDictionary, _ViewModel.SelectedWorksheet.ID) = Windows.Forms.DialogResult.OK Then
+            If AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog.ShowFormDialog(ParameterDictionary, _ViewModel.SelectedWorksheet.ID,
+                    If(_ViewModel.SelectedWorksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico, True, False)) = Windows.Forms.DialogResult.OK Then
 
                 Me.ShowWaitForm("Loading...")
 

@@ -21,6 +21,7 @@
             AgeFrom
             AgeTo
             Gender
+            MediaDemoSourceID
         End Enum
 
 #End Region
@@ -68,6 +69,10 @@
         <Column("GENDER")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property Gender() As String
+        <Required>
+        <Column("MEDIA_DEMO_SOURCE_ID")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="", ShowColumnInGrid:=False)>
+        Public Property MediaDemoSourceID() As Integer
 
 #End Region
 

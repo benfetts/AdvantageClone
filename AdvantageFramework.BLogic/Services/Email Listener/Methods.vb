@@ -350,6 +350,9 @@
             Dim MediaTrafficVendor As AdvantageFramework.Database.Entities.MediaTrafficVendor = Nothing
             Dim MediaTrafficVendorStatus As AdvantageFramework.Database.Entities.MediaTrafficVendorStatus = Nothing
             Dim EmailErrorMessage As String = ""
+            Dim CommentDocument As AdvantageFramework.AlertSystem.Classes.CommentDocument = Nothing
+            Dim CommentDocumentList As List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument) = Nothing
+            Dim CommentDocumentListString As String = String.Empty
 
             AskBlueCommandProcessed = AskBlueProcessor.ProcessEmailForCommand(Message)
 
@@ -368,20 +371,6 @@
                     Alert = AdvantageFramework.Database.Procedures.Alert.LoadByAlertID(DbContext, AlertID)
 
                     If Alert IsNot Nothing Then
-
-                        'Alert.Subject = Message.Subject
-
-                        'Alert.Subject = AdvantageFramework.StringUtilities.PadWithCharacter(Alert.Subject, AlertSubjectMaxLength, "", False, True)
-
-                        'If AdvantageFramework.Database.Procedures.Alert.Update(DbContext, Alert) Then
-
-                        '    WriteToEventLog("Updated alert subject")
-
-                        'Else
-
-                        '    WriteToEventLog("Failed to Update alert subject")
-
-                        'End If
 
                         If Alert.AlertCategoryID = AdvantageFramework.Database.Entities.AlertCategories.RFPGenerated Then
 
@@ -729,6 +718,26 @@
 
                                                     AlertAttachmentAdded = AdvantageFramework.Database.Procedures.AlertAttachment.Insert(DbContext, AlertAttachment)
 
+                                                    Try
+
+                                                        CommentDocument = Nothing
+                                                        CommentDocument = New AlertSystem.Classes.CommentDocument
+
+                                                        CommentDocument.Filename = Document.FileName
+                                                        CommentDocument.DocumentId = Document.ID
+                                                        CommentDocument.MimeType = Document.MIMEType
+
+                                                        If CommentDocumentList Is Nothing Then CommentDocumentList = New List(Of AlertSystem.Classes.CommentDocument)
+
+                                                        CommentDocumentList.Add(CommentDocument)
+
+                                                    Catch ex As Exception
+                                                        WriteToEventLog("Failed to add document link to comment.  Reason:  " &
+                                                                        Environment.NewLine &
+                                                                        AdvantageFramework.StringUtilities.FullErrorToString(ex))
+
+                                                    End Try
+
                                                 End If
 
                                             End If
@@ -767,6 +776,31 @@
 
                             Next
 
+                            Try
+
+                                If CommentDocumentList IsNot Nothing AndAlso CommentDocumentList.Count > 0 Then
+
+                                    CommentDocument = New AdvantageFramework.AlertSystem.Classes.CommentDocument
+
+                                    CommentDocumentListString = CommentDocument.ObjectToString(CommentDocumentList)
+
+                                    If Not String.IsNullOrWhiteSpace(CommentDocumentListString) Then
+
+                                        DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE [dbo].[ALERT_COMMENT] SET DOCUMENT_LIST = '{0}' WHERE COMMENT_ID = {1} AND ALERT_ID = {2}",
+                                                                                       CommentDocumentListString,
+                                                                                       AlertComment.ID,
+                                                                                       AlertComment.AlertID))
+
+                                    End If
+
+                                End If
+
+                            Catch ex As Exception
+                                WriteToEventLog("Failed to add document links to comment. Reason:" &
+                                                Environment.NewLine &
+                                                AdvantageFramework.StringUtilities.FullErrorToString(ex))
+                            End Try
+
                             If SendEmailToAlertRecipients Then
 
                                 If AdvantageFramework.AlertSystem.IsAlertAnAlertAssignment(Alert) Then
@@ -803,13 +837,13 @@
 
                     Else
 
-                        WriteToEventLog("Failed to find alert in system")
+                        WriteToEventLog("Failed to find alert in system.")
 
                     End If
 
                 Else
 
-                    WriteToEventLog("Failed to parse alert id from email message")
+                    WriteToEventLog("Failed to parse alert id from email message.")
 
                 End If
 

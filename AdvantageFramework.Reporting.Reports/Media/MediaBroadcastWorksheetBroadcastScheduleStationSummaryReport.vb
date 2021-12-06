@@ -403,6 +403,10 @@
 
                         End If
 
+                    ElseIf DataLine.RatingsServiceID.GetValueOrDefault(0) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico Then
+
+                        DataLine.RatingsSource = "Nielsen Puerto Rico"
+
                     Else
 
                         DataLine.Survey = String.Empty
@@ -932,7 +936,7 @@
 
                 If Not (_CurrentDataLine.ShowRatings And _CurrentDataLine.ShowImpressions And _CurrentDataLine.ShowCPPM And _CurrentDataLine.ShowRF) Then
                     XrTableCell51.Visible = False
-                    XrTableCell16.Visible = False
+                    XrTableCell68.Visible = False
 
                     XrTableCell21.Visible = False
                     XrTableCell22.Visible = False

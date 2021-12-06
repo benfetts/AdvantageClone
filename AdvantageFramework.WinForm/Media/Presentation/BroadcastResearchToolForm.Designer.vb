@@ -52,6 +52,133 @@
             Me.ButtonItemActions_Process = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.ButtonItemActions_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.TabControlForm_Tabs = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotTVPuertoRico_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewSpotTVPuertoRico_DayTimes = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit()
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit()
+            Me.TabItemSpotTVPuertoRico_PeriodsDaysTimes = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.Panel3 = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.TabItemSpotTVPuertoRico_ReportTypeStations = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlResults_TVPuertoRicoResults = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelSpotTVPuertoRicoResults_Footer = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.BandedDataGridViewSpotTVPuertoRicoResults = New AdvantageFramework.WinForm.MVC.Presentation.Controls.BandedDataGridView()
+            Me.TabItemTVPuertoRicoResults_TVDataTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanel5 = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
+            Me.TabItemTVPuertoRicoResults_TVDashboardTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabItemSpotTVPuertoRico_Results = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelSpotTVPuertoRicoDemographics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotTVPuertoRicoDemographics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemSpotTVPuertoRico_Demographics = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelSpotTVPuertoRicoMetrics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotTVPuertoRicoMetrics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemSpotTVPuertoRico_Metrics = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotTVPuertoRico_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemTabs_SpotTVPuertoRicoTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTV_SpotTV = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotTV_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.TabControlSpotTV_ResearchCriteria = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelSpotTVMarketStations_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.ComboBoxSpotTVMarketStation_Source = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
+            Me.LabelSpotTVMarketStation_Source = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.LabelSpotTVMarketStation_MaximumRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.NumericInputSpotTVMarketStation_MaximumRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
+            Me.ComboBoxSpotTVMarketStation_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
+            Me.PanelSpotTVMarketStation_Bottom = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelBottomSpotTVMarketStation_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTV_SelectedStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotTVStation_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotTVStation_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelBottomSpotTVMarketStation_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTV_AvailableStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.GroupBoxSpotTVMarketStation_Options = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.CheckBoxSpotTVOptions_ShowSpill = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.CheckBoxSpotTVOptions_DominantProgramming = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.CheckBoxSpotTVOptions_ShowProgramName = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.LabelSpotTVMarketStation_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.LabelSpotTVMarketStation_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.SearchableComboBoxSpotTVMarketStation_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox()
+            Me.SearchableComboBoxSpotTVViewControl_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView()
+            Me.TabItemSpotTV_MarketStations = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVBooks_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewSpotTV_DayTimes = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ExpandableSplitterSpotTVDaysTimes = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.ShareHPUTBookControl_Books = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ShareHPUTBookControl()
+            Me.TabItemSpotTV_Books = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVResults_Results = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlResults_TVResults = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelTVDataTab_TVData = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelSpotTVResults_Footer = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.BandedDataGridViewSpotTVResults = New AdvantageFramework.WinForm.MVC.Presentation.Controls.BandedDataGridView()
+            Me.TabItemTVResults_TVDataTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelTVDashboardTab_TVDashboard = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DashboardViewerTVDashboard_Dashboard = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
+            Me.TabItemTVResults_TVDashboardTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabItemSpotTV_Results = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVMetrics_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotTVMetrics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelSpotTVMetrics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTV_SelectedMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotTVMetrics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotTVMetrics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControlSpotTVMetrics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotTVMetrics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTV_AvailableMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemSpotTV_Metrics = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelSpotTVDemographics_Criteria = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotTVDemographics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelSpotTVDemographics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTV_SelectedDemographics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotTVDemographics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotTVDemographics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControlSpotTVDemographics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotTVDemographics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTV_AvailableDemographics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemSpotTV_Demographics = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.ExpandableSplitterControlSpotTV_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotTV_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotTV_UserCriterias = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemTabs_SpotTVTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelNational_National = New DevComponents.DotNetBar.TabControlPanel()
             Me.PanelNational_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.TabControlNational_ResearchCriteria = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
@@ -73,6 +200,35 @@
             Me.ComboBoxNational_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
             Me.Label = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.TabItemNational_ReportType = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelNationalResults = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlResults_NationalResults = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelNational_ResultsData = New DevComponents.DotNetBar.TabControlPanel()
+            Me.BandedDataGridViewNationalResults = New AdvantageFramework.WinForm.MVC.Presentation.Controls.BandedDataGridView()
+            Me.TabItemNationalResults_Data = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelNational_ResultsDashboard = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DashboardViewerControl1 = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
+            Me.TabItemNationalResults_Dashboard = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabItemNational_Results = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelNationalMetrics = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelNationalMetrics = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelNationalMetrics_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewNational_MetricsSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonNationalMetrics_AddSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonNationalMetrics_RemoveSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControl5 = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelNationalMetrics_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewNational_MetricsAvailable = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemNational_Metrics = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelNationalDemographics = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelNationalDemographics = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelNationalDemographics_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewNational_DemographicsSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonNationalDemographics_AddSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonNationalDemographics_RemoveSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControl3 = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelNationalDemographics_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewNational_DemographicsAvailable = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemNational_Demographics = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelNationalDates = New DevComponents.DotNetBar.TabControlPanel()
             Me.CheckBoxNationalDates_ShowAirings = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
             Me.CheckBoxNationalDates_ShowProgramTypes = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
@@ -116,92 +272,10 @@
             Me.LabelNationalDates_Days = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.LabelNationalDates_StartTime = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.TabItemNational_Dates = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelNationalResults = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlResults_NationalResults = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelNational_ResultsData = New DevComponents.DotNetBar.TabControlPanel()
-            Me.BandedDataGridViewNationalResults = New AdvantageFramework.WinForm.MVC.Presentation.Controls.BandedDataGridView()
-            Me.TabItemNationalResults_Data = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelNational_ResultsDashboard = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DashboardViewerControl1 = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
-            Me.TabItemNationalResults_Dashboard = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabItemNational_Results = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelNationalDemographics = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelNationalDemographics = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.PanelNationalDemographics_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewNational_DemographicsSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ButtonNationalDemographics_AddSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ButtonNationalDemographics_RemoveSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ExpandableSplitterControl3 = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelNationalDemographics_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewNational_DemographicsAvailable = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemNational_Demographics = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelNationalMetrics = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelNationalMetrics = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.PanelNationalMetrics_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewNational_MetricsSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ButtonNationalMetrics_AddSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ButtonNationalMetrics_RemoveSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ExpandableSplitterControl5 = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelNationalMetrics_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewNational_MetricsAvailable = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemNational_Metrics = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.ExpandableSplitterControl1 = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
             Me.PanelNational_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.DataGridViewNational_UserCriterias = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
             Me.TabItemTabs_NationalTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelSpotRadioCounty_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.TabControlSpotRadioCounty_ResearchCriteria = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelCountyMarket = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewSpotRadioCounty_Years = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.GroupBoxSpotRadioCounty_Dayparts = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.CheckBoxCountyDaypart84 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
-            Me.CheckBoxCountyDaypart68 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
-            Me.CheckBoxCounty_ShowFrequency = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
-            Me.LabelCounty_MaxRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.NumericInputCounty_MaxRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
-            Me.ComboBoxCounty_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
-            Me.LabelCounty_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.SearchableComboBoxCounty_Demographic = New AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox()
-            Me.GridView4 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView()
-            Me.LabelCounty_Demographic = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.LabelCounty_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.SearchableComboBoxCounty_County = New AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox()
-            Me.GridView5 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView()
-            Me.TabItemSpotRadioCounty_MarketBooks = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelCountyResults = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlResults_RadioCountyResults = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelCountyData = New DevComponents.DotNetBar.TabControlPanel()
-            Me.BandedDataGridViewSpotRadioCountyResults = New AdvantageFramework.WinForm.MVC.Presentation.Controls.BandedDataGridView()
-            Me.TabItemRadioCountyResults_RadioCountyDataTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelCountyDashboard = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DashboardViewerRadioCountyDashboard_Dashboard = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
-            Me.TabItemCountyResults_Dashboard = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabItemSpotRadioCounty_Results = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelCountyStations = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelSpotRadioCountyStation = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.PanelBottomSpotRadioCountyStation_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotRadioCounty_SelectedStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ButtonSpotRadioCountyStation_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelBottomSpotRadioCountyStation_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotRadioCounty_AvailableStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemSpotRadioCounty_Stations = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelCountyMetrics = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelSpotRadioCountyMetrics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.PanelSpotRadioCountyMetrics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelSpotRadioCountyMetrics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemSpotRadioCounty_Metrics = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelSpotRadioCounty_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotRadioCounty_UserCriterias = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemTabs_SpotRadioCountyTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelSpotRadio_SpotRadio = New DevComponents.DotNetBar.TabControlPanel()
             Me.PanelSpotRadio_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.TabControlSpotRadio_ResearchCriteria = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
@@ -280,252 +354,281 @@
             Me.PanelSpotRadio_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
             Me.DataGridViewSpotRadio_UserCriterias = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
             Me.TabItemTabs_SpotRadioTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelSpotTV_SpotTV = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelSpotTV_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.TabControlSpotTV_ResearchCriteria = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelSpotTVMarketStations_Criteria = New DevComponents.DotNetBar.TabControlPanel()
-            Me.ComboBoxSpotTVMarketStation_Source = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
-            Me.LabelSpotTVMarketStation_Source = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.LabelSpotTVMarketStation_MaximumRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.NumericInputSpotTVMarketStation_MaximumRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
-            Me.ComboBoxSpotTVMarketStation_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
-            Me.PanelSpotTVMarketStation_Bottom = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.PanelBottomSpotTVMarketStation_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotTV_SelectedStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ButtonSpotTVStation_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ButtonSpotTVStation_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelBottomSpotTVMarketStation_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotTV_AvailableStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.GroupBoxSpotTVMarketStation_Options = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
-            Me.CheckBoxSpotTVOptions_ShowSpill = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
-            Me.CheckBoxSpotTVOptions_DominantProgramming = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
-            Me.CheckBoxSpotTVOptions_ShowProgramName = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
-            Me.LabelSpotTVMarketStation_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.LabelSpotTVMarketStation_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.SearchableComboBoxSpotTVMarketStation_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox()
-            Me.SearchableComboBoxSpotTVViewControl_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView()
-            Me.TabItemSpotTV_MarketStations = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelSpotTVBooks_Criteria = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DataGridViewSpotTV_DayTimes = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ExpandableSplitterSpotTVDaysTimes = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.ShareHPUTBookControl_Books = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ShareHPUTBookControl()
-            Me.TabItemSpotTV_Books = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelSpotTVResults_Results = New DevComponents.DotNetBar.TabControlPanel()
-            Me.TabControlResults_TVResults = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelTVDataTab_TVData = New DevComponents.DotNetBar.TabControlPanel()
-            Me.LabelSpotTVResults_Footer = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
-            Me.BandedDataGridViewSpotTVResults = New AdvantageFramework.WinForm.MVC.Presentation.Controls.BandedDataGridView()
-            Me.TabItemTVResults_TVDataTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelTVDashboardTab_TVDashboard = New DevComponents.DotNetBar.TabControlPanel()
-            Me.DashboardViewerTVDashboard_Dashboard = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
-            Me.TabItemTVResults_TVDashboardTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabItemSpotTV_Results = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelSpotTVMetrics_Criteria = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelSpotTVMetrics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.PanelSpotTVMetrics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotTV_SelectedMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ButtonSpotTVMetrics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ButtonSpotTVMetrics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ExpandableSplitterControlSpotTVMetrics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelSpotTVMetrics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotTV_AvailableMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemSpotTV_Metrics = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.TabControlPanelSpotTVDemographics_Criteria = New DevComponents.DotNetBar.TabControlPanel()
-            Me.PanelSpotTVDemographics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.PanelSpotTVDemographics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotTV_SelectedDemographics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.ButtonSpotTVDemographics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ButtonSpotTVDemographics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
-            Me.ExpandableSplitterControlSpotTVDemographics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelSpotTVDemographics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotTV_AvailableDemographics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemSpotTV_Demographics = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.ExpandableSplitterControlSpotTV_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
-            Me.PanelSpotTV_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
-            Me.DataGridViewSpotTV_UserCriterias = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
-            Me.TabItemTabs_SpotTVTab = New DevComponents.DotNetBar.TabItem(Me.components)
-            Me.RibbonBarMergeContainerForm_Options.SuspendLayout()
-            CType(Me.TabControlForm_Tabs, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlForm_Tabs.SuspendLayout()
-            Me.TabControlPanelNational_National.SuspendLayout()
-            CType(Me.PanelNational_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNational_RightSection.SuspendLayout()
-            CType(Me.TabControlNational_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlNational_ResearchCriteria.SuspendLayout()
-            Me.TabControlPanelNationalReportType.SuspendLayout()
-            CType(Me.GroupBoxNational_TimeType, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNational_TimeType.SuspendLayout()
-            CType(Me.PanelNationalReportType_Bottom, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalReportType_Bottom.SuspendLayout()
-            CType(Me.PanelNationalNetworks_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalNetworks_RightSection.SuspendLayout()
-            CType(Me.PanelNationalNetworks_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalNetworks_LeftSection.SuspendLayout()
-            CType(Me.GroupBoxNational_Ethnicity, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNational_Ethnicity.SuspendLayout()
-            Me.TabControlPanelNationalDates.SuspendLayout()
-            CType(Me.GroupBoxNationalDates_Corrections, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNationalDates_Corrections.SuspendLayout()
-            CType(Me.GroupBoxNationalDates_Premieres, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNationalDates_Premieres.SuspendLayout()
-            CType(Me.GroupBoxNationalDates_Repeats, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNationalDates_Repeats.SuspendLayout()
-            CType(Me.GroupBoxNationalDates_Overnights, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNationalDates_Overnights.SuspendLayout()
-            CType(Me.GroupBoxNationalDates_Specials, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNationalDates_Specials.SuspendLayout()
-            CType(Me.GroupBoxNationalDates_Breakouts, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNationalDates_Breakouts.SuspendLayout()
-            CType(Me.GroupBoxNational_DateCodeDates, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxNational_DateCodeDates.SuspendLayout()
-            CType(Me.DateEditNationalDates_EndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.DateEditNationalDates_EndDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.DateEditNationalDates_StartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.DateEditNationalDates_StartDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelNationalResults.SuspendLayout()
-            CType(Me.TabControlResults_NationalResults, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlResults_NationalResults.SuspendLayout()
-            Me.TabControlPanelNational_ResultsData.SuspendLayout()
-            Me.TabControlPanelNational_ResultsDashboard.SuspendLayout()
-            CType(Me.DashboardViewerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelNationalDemographics.SuspendLayout()
-            CType(Me.PanelNationalDemographics, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalDemographics.SuspendLayout()
-            CType(Me.PanelNationalDemographics_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalDemographics_RightSection.SuspendLayout()
-            CType(Me.PanelNationalDemographics_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalDemographics_LeftSection.SuspendLayout()
-            Me.TabControlPanelNationalMetrics.SuspendLayout()
-            CType(Me.PanelNationalMetrics, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalMetrics.SuspendLayout()
-            CType(Me.PanelNationalMetrics_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalMetrics_RightSection.SuspendLayout()
-            CType(Me.PanelNationalMetrics_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNationalMetrics_LeftSection.SuspendLayout()
-            CType(Me.PanelNational_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelNational_LeftSection.SuspendLayout()
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.SuspendLayout()
-            CType(Me.PanelSpotRadioCounty_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioCounty_RightSection.SuspendLayout()
-            CType(Me.TabControlSpotRadioCounty_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlSpotRadioCounty_ResearchCriteria.SuspendLayout()
-            Me.TabControlPanelCountyMarket.SuspendLayout()
-            CType(Me.GroupBoxSpotRadioCounty_Dayparts, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxSpotRadioCounty_Dayparts.SuspendLayout()
-            CType(Me.NumericInputCounty_MaxRank.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxCounty_Demographic.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxCounty_County.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelCountyResults.SuspendLayout()
-            CType(Me.TabControlResults_RadioCountyResults, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlResults_RadioCountyResults.SuspendLayout()
-            Me.TabControlPanelCountyData.SuspendLayout()
-            Me.TabControlPanelCountyDashboard.SuspendLayout()
-            CType(Me.DashboardViewerRadioCountyDashboard_Dashboard, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelCountyStations.SuspendLayout()
-            CType(Me.PanelSpotRadioCountyStation, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioCountyStation.SuspendLayout()
-            CType(Me.PanelBottomSpotRadioCountyStation_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelBottomSpotRadioCountyStation_RightSection.SuspendLayout()
-            CType(Me.PanelBottomSpotRadioCountyStation_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.SuspendLayout()
-            Me.TabControlPanelCountyMetrics.SuspendLayout()
-            CType(Me.PanelSpotRadioCountyMetrics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioCountyMetrics_Criteria.SuspendLayout()
-            CType(Me.PanelSpotRadioCountyMetrics_Right, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioCountyMetrics_Right.SuspendLayout()
-            CType(Me.PanelSpotRadioCountyMetrics_Left, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioCountyMetrics_Left.SuspendLayout()
-            CType(Me.PanelSpotRadioCounty_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioCounty_LeftSection.SuspendLayout()
-            Me.TabControlPanelSpotRadio_SpotRadio.SuspendLayout()
-            CType(Me.PanelSpotRadio_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadio_RightSection.SuspendLayout()
-            CType(Me.TabControlSpotRadio_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlSpotRadio_ResearchCriteria.SuspendLayout()
-            Me.TabControlPanelSpotRadioMarket_Criteria.SuspendLayout()
-            CType(Me.NumericInputSpotRadioMarket_MaxRank.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GroupBoxSpotRadioMarket_Options, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxSpotRadioMarket_Options.SuspendLayout()
-            CType(Me.GroupBoxSpotRadioMarket_Ethnicity, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxSpotRadioMarket_Ethnicity.SuspendLayout()
-            CType(Me.SearchableComboBoxSpotRadioMarket_Qualitative.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxSpotRadioMarket_Demographic.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxSpotRadio_Market.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxSpotRadioViewControl_Market, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelSpotRadioResults_Results.SuspendLayout()
-            CType(Me.TabControlResults_RadioResults, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlResults_RadioResults.SuspendLayout()
-            Me.TabControlPanelRadioDataTab_RadioData.SuspendLayout()
-            Me.TabControlPanelRadioDashboardTab_RadioDashboard.SuspendLayout()
-            CType(Me.DashboardViewerRadioDashboard_Dashboard, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelSpotRadioGeographyDayparts_Criteria.SuspendLayout()
-            CType(Me.GroupBoxSpotRadioMarket_ListeningType, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxSpotRadioMarket_ListeningType.SuspendLayout()
-            CType(Me.GroupBoxSpotRadioMarket_Geography, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxSpotRadioMarket_Geography.SuspendLayout()
-            Me.TabControlPanelSpotRadioMetrics_Criteria.SuspendLayout()
-            CType(Me.PanelSpotRadioMetrics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioMetrics_Criteria.SuspendLayout()
-            CType(Me.PanelSpotRadioMetrics_Right, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioMetrics_Right.SuspendLayout()
-            CType(Me.PanelSpotRadioMetrics_Left, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioMetrics_Left.SuspendLayout()
-            Me.TabControlPanelSpotRadioStations_Criteria.SuspendLayout()
-            CType(Me.PanelSpotRadioMarketStation_Bottom, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadioMarketStation_Bottom.SuspendLayout()
-            CType(Me.PanelBottomSpotRadioStation_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelBottomSpotRadioStation_RightSection.SuspendLayout()
-            CType(Me.PanelBottomSpotRadioStation_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelBottomSpotRadioStation_LeftSection.SuspendLayout()
-            CType(Me.PanelSpotRadio_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotRadio_LeftSection.SuspendLayout()
-            Me.TabControlPanelSpotTV_SpotTV.SuspendLayout()
-            CType(Me.PanelSpotTV_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTV_RightSection.SuspendLayout()
-            CType(Me.TabControlSpotTV_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlSpotTV_ResearchCriteria.SuspendLayout()
-            Me.TabControlPanelSpotTVMarketStations_Criteria.SuspendLayout()
-            CType(Me.NumericInputSpotTVMarketStation_MaximumRank.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.PanelSpotTVMarketStation_Bottom, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTVMarketStation_Bottom.SuspendLayout()
-            CType(Me.PanelBottomSpotTVMarketStation_RightSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelBottomSpotTVMarketStation_RightSection.SuspendLayout()
-            CType(Me.PanelBottomSpotTVMarketStation_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelBottomSpotTVMarketStation_LeftSection.SuspendLayout()
-            CType(Me.GroupBoxSpotTVMarketStation_Options, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.GroupBoxSpotTVMarketStation_Options.SuspendLayout()
-            CType(Me.SearchableComboBoxSpotTVMarketStation_Market.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-            CType(Me.SearchableComboBoxSpotTVViewControl_Market, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelSpotTVBooks_Criteria.SuspendLayout()
-            Me.TabControlPanelSpotTVResults_Results.SuspendLayout()
-            CType(Me.TabControlResults_TVResults, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlResults_TVResults.SuspendLayout()
-            Me.TabControlPanelTVDataTab_TVData.SuspendLayout()
-            Me.TabControlPanelTVDashboardTab_TVDashboard.SuspendLayout()
-            CType(Me.DashboardViewerTVDashboard_Dashboard, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.TabControlPanelSpotTVMetrics_Criteria.SuspendLayout()
-            CType(Me.PanelSpotTVMetrics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTVMetrics_Criteria.SuspendLayout()
-            CType(Me.PanelSpotTVMetrics_Right, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTVMetrics_Right.SuspendLayout()
-            CType(Me.PanelSpotTVMetrics_Left, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTVMetrics_Left.SuspendLayout()
-            Me.TabControlPanelSpotTVDemographics_Criteria.SuspendLayout()
-            CType(Me.PanelSpotTVDemographics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTVDemographics_Criteria.SuspendLayout()
-            CType(Me.PanelSpotTVDemographics_Right, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTVDemographics_Right.SuspendLayout()
-            CType(Me.PanelSpotTVDemographics_Left, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTVDemographics_Left.SuspendLayout()
-            CType(Me.PanelSpotTV_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
-            Me.PanelSpotTV_LeftSection.SuspendLayout()
-            Me.SuspendLayout()
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotRadioCounty_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.TabControlSpotRadioCounty_ResearchCriteria = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelCountyMarket = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DataGridViewSpotRadioCounty_Years = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.GroupBoxSpotRadioCounty_Dayparts = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.CheckBoxCountyDaypart84 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.CheckBoxCountyDaypart68 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.CheckBoxCounty_ShowFrequency = New AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox()
+            Me.LabelCounty_MaxRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.NumericInputCounty_MaxRank = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
+            Me.ComboBoxCounty_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox()
+            Me.LabelCounty_ReportType = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.SearchableComboBoxCounty_Demographic = New AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox()
+            Me.GridView4 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView()
+            Me.LabelCounty_Demographic = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.LabelCounty_Market = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.SearchableComboBoxCounty_County = New AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox()
+            Me.GridView5 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView()
+            Me.TabItemSpotRadioCounty_MarketBooks = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelCountyResults = New DevComponents.DotNetBar.TabControlPanel()
+            Me.TabControlResults_RadioCountyResults = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
+            Me.TabControlPanelCountyData = New DevComponents.DotNetBar.TabControlPanel()
+            Me.BandedDataGridViewSpotRadioCountyResults = New AdvantageFramework.WinForm.MVC.Presentation.Controls.BandedDataGridView()
+            Me.TabItemRadioCountyResults_RadioCountyDataTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelCountyDashboard = New DevComponents.DotNetBar.TabControlPanel()
+            Me.DashboardViewerRadioCountyDashboard_Dashboard = New AdvantageFramework.WinForm.Presentation.Controls.DashboardViewerControl()
+            Me.TabItemCountyResults_Dashboard = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabItemSpotRadioCounty_Results = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelCountyStations = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotRadioCountyStation = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelBottomSpotRadioCountyStation_RightSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotRadioCounty_SelectedStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotRadioCountyStation_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelBottomSpotRadioCountyStation_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotRadioCounty_AvailableStations = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemSpotRadioCounty_Stations = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelCountyMetrics = New DevComponents.DotNetBar.TabControlPanel()
+            Me.PanelSpotRadioCountyMetrics_Criteria = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.PanelSpotRadioCountyMetrics_Right = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Button()
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotRadioCountyMetrics_Left = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemSpotRadioCounty_Metrics = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight = New AdvantageFramework.WinForm.Presentation.Controls.ExpandableSplitterControl()
+            Me.PanelSpotRadioCounty_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.DataGridViewSpotRadioCounty_UserCriterias = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DataGridView()
+            Me.TabItemTabs_SpotRadioCountyTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.RibbonBarMergeContainerForm_Options.SuspendLayout
+            CType(Me.TabControlForm_Tabs, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlForm_Tabs.SuspendLayout
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRico_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRico_RightSection.SuspendLayout
+            CType(Me.TabControlSpotTVPuertoRico_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.SuspendLayout
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.SuspendLayout
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.SuspendLayout
+            CType(Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.SuspendLayout
+            CType(Me.Panel3, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.Panel3.SuspendLayout
+            CType(Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.SuspendLayout
+            CType(Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.SuspendLayout
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.SuspendLayout
+            CType(Me.TabControlResults_TVPuertoRicoResults, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlResults_TVPuertoRicoResults.SuspendLayout
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.SuspendLayout
+            Me.TabControlPanel5.SuspendLayout
+            CType(Me.DashboardViewerTVPuertoRicoDashboard_Dashboard, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRicoDemographics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRicoDemographics_Right, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRicoDemographics_Right.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRicoDemographics_Left, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRicoDemographics_Left.SuspendLayout
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRicoMetrics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRicoMetrics_Right, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRicoMetrics_Right.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRicoMetrics_Left, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRicoMetrics_Left.SuspendLayout
+            CType(Me.PanelSpotTVPuertoRico_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVPuertoRico_LeftSection.SuspendLayout
+            Me.TabControlPanelSpotTV_SpotTV.SuspendLayout
+            CType(Me.PanelSpotTV_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTV_RightSection.SuspendLayout
+            CType(Me.TabControlSpotTV_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlSpotTV_ResearchCriteria.SuspendLayout
+            Me.TabControlPanelSpotTVMarketStations_Criteria.SuspendLayout
+            CType(Me.NumericInputSpotTVMarketStation_MaximumRank.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.PanelSpotTVMarketStation_Bottom, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVMarketStation_Bottom.SuspendLayout
+            CType(Me.PanelBottomSpotTVMarketStation_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelBottomSpotTVMarketStation_RightSection.SuspendLayout
+            CType(Me.PanelBottomSpotTVMarketStation_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelBottomSpotTVMarketStation_LeftSection.SuspendLayout
+            CType(Me.GroupBoxSpotTVMarketStation_Options, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxSpotTVMarketStation_Options.SuspendLayout
+            CType(Me.SearchableComboBoxSpotTVMarketStation_Market.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.SearchableComboBoxSpotTVViewControl_Market, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelSpotTVBooks_Criteria.SuspendLayout
+            Me.TabControlPanelSpotTVResults_Results.SuspendLayout
+            CType(Me.TabControlResults_TVResults, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlResults_TVResults.SuspendLayout
+            Me.TabControlPanelTVDataTab_TVData.SuspendLayout
+            Me.TabControlPanelTVDashboardTab_TVDashboard.SuspendLayout
+            CType(Me.DashboardViewerTVDashboard_Dashboard, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelSpotTVMetrics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVMetrics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVMetrics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVMetrics_Right, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVMetrics_Right.SuspendLayout
+            CType(Me.PanelSpotTVMetrics_Left, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVMetrics_Left.SuspendLayout
+            Me.TabControlPanelSpotTVDemographics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVDemographics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVDemographics_Criteria.SuspendLayout
+            CType(Me.PanelSpotTVDemographics_Right, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVDemographics_Right.SuspendLayout
+            CType(Me.PanelSpotTVDemographics_Left, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTVDemographics_Left.SuspendLayout
+            CType(Me.PanelSpotTV_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotTV_LeftSection.SuspendLayout
+            Me.TabControlPanelNational_National.SuspendLayout
+            CType(Me.PanelNational_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNational_RightSection.SuspendLayout
+            CType(Me.TabControlNational_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlNational_ResearchCriteria.SuspendLayout
+            Me.TabControlPanelNationalReportType.SuspendLayout
+            CType(Me.GroupBoxNational_TimeType, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNational_TimeType.SuspendLayout
+            CType(Me.PanelNationalReportType_Bottom, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalReportType_Bottom.SuspendLayout
+            CType(Me.PanelNationalNetworks_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalNetworks_RightSection.SuspendLayout
+            CType(Me.PanelNationalNetworks_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalNetworks_LeftSection.SuspendLayout
+            CType(Me.GroupBoxNational_Ethnicity, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNational_Ethnicity.SuspendLayout
+            Me.TabControlPanelNationalResults.SuspendLayout
+            CType(Me.TabControlResults_NationalResults, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlResults_NationalResults.SuspendLayout
+            Me.TabControlPanelNational_ResultsData.SuspendLayout
+            Me.TabControlPanelNational_ResultsDashboard.SuspendLayout
+            CType(Me.DashboardViewerControl1, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelNationalMetrics.SuspendLayout
+            CType(Me.PanelNationalMetrics, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalMetrics.SuspendLayout
+            CType(Me.PanelNationalMetrics_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalMetrics_RightSection.SuspendLayout
+            CType(Me.PanelNationalMetrics_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalMetrics_LeftSection.SuspendLayout
+            Me.TabControlPanelNationalDemographics.SuspendLayout
+            CType(Me.PanelNationalDemographics, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalDemographics.SuspendLayout
+            CType(Me.PanelNationalDemographics_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalDemographics_RightSection.SuspendLayout
+            CType(Me.PanelNationalDemographics_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNationalDemographics_LeftSection.SuspendLayout
+            Me.TabControlPanelNationalDates.SuspendLayout
+            CType(Me.GroupBoxNationalDates_Corrections, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNationalDates_Corrections.SuspendLayout
+            CType(Me.GroupBoxNationalDates_Premieres, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNationalDates_Premieres.SuspendLayout
+            CType(Me.GroupBoxNationalDates_Repeats, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNationalDates_Repeats.SuspendLayout
+            CType(Me.GroupBoxNationalDates_Overnights, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNationalDates_Overnights.SuspendLayout
+            CType(Me.GroupBoxNationalDates_Specials, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNationalDates_Specials.SuspendLayout
+            CType(Me.GroupBoxNationalDates_Breakouts, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNationalDates_Breakouts.SuspendLayout
+            CType(Me.GroupBoxNational_DateCodeDates, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxNational_DateCodeDates.SuspendLayout
+            CType(Me.DateEditNationalDates_EndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.DateEditNationalDates_EndDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.DateEditNationalDates_StartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.DateEditNationalDates_StartDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.PanelNational_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelNational_LeftSection.SuspendLayout
+            Me.TabControlPanelSpotRadio_SpotRadio.SuspendLayout
+            CType(Me.PanelSpotRadio_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadio_RightSection.SuspendLayout
+            CType(Me.TabControlSpotRadio_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlSpotRadio_ResearchCriteria.SuspendLayout
+            Me.TabControlPanelSpotRadioMarket_Criteria.SuspendLayout
+            CType(Me.NumericInputSpotRadioMarket_MaxRank.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GroupBoxSpotRadioMarket_Options, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxSpotRadioMarket_Options.SuspendLayout
+            CType(Me.GroupBoxSpotRadioMarket_Ethnicity, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxSpotRadioMarket_Ethnicity.SuspendLayout
+            CType(Me.SearchableComboBoxSpotRadioMarket_Qualitative.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.SearchableComboBoxSpotRadioMarket_Demographic.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.SearchableComboBoxSpotRadio_Market.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.SearchableComboBoxSpotRadioViewControl_Market, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelSpotRadioResults_Results.SuspendLayout
+            CType(Me.TabControlResults_RadioResults, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlResults_RadioResults.SuspendLayout
+            Me.TabControlPanelRadioDataTab_RadioData.SuspendLayout
+            Me.TabControlPanelRadioDashboardTab_RadioDashboard.SuspendLayout
+            CType(Me.DashboardViewerRadioDashboard_Dashboard, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelSpotRadioGeographyDayparts_Criteria.SuspendLayout
+            CType(Me.GroupBoxSpotRadioMarket_ListeningType, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxSpotRadioMarket_ListeningType.SuspendLayout
+            CType(Me.GroupBoxSpotRadioMarket_Geography, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxSpotRadioMarket_Geography.SuspendLayout
+            Me.TabControlPanelSpotRadioMetrics_Criteria.SuspendLayout
+            CType(Me.PanelSpotRadioMetrics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioMetrics_Criteria.SuspendLayout
+            CType(Me.PanelSpotRadioMetrics_Right, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioMetrics_Right.SuspendLayout
+            CType(Me.PanelSpotRadioMetrics_Left, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioMetrics_Left.SuspendLayout
+            Me.TabControlPanelSpotRadioStations_Criteria.SuspendLayout
+            CType(Me.PanelSpotRadioMarketStation_Bottom, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioMarketStation_Bottom.SuspendLayout
+            CType(Me.PanelBottomSpotRadioStation_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelBottomSpotRadioStation_RightSection.SuspendLayout
+            CType(Me.PanelBottomSpotRadioStation_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelBottomSpotRadioStation_LeftSection.SuspendLayout
+            CType(Me.PanelSpotRadio_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadio_LeftSection.SuspendLayout
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.SuspendLayout
+            CType(Me.PanelSpotRadioCounty_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioCounty_RightSection.SuspendLayout
+            CType(Me.TabControlSpotRadioCounty_ResearchCriteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlSpotRadioCounty_ResearchCriteria.SuspendLayout
+            Me.TabControlPanelCountyMarket.SuspendLayout
+            CType(Me.GroupBoxSpotRadioCounty_Dayparts, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxSpotRadioCounty_Dayparts.SuspendLayout
+            CType(Me.NumericInputCounty_MaxRank.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.SearchableComboBoxCounty_Demographic.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.SearchableComboBoxCounty_County.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelCountyResults.SuspendLayout
+            CType(Me.TabControlResults_RadioCountyResults, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlResults_RadioCountyResults.SuspendLayout
+            Me.TabControlPanelCountyData.SuspendLayout
+            Me.TabControlPanelCountyDashboard.SuspendLayout
+            CType(Me.DashboardViewerRadioCountyDashboard_Dashboard, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TabControlPanelCountyStations.SuspendLayout
+            CType(Me.PanelSpotRadioCountyStation, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioCountyStation.SuspendLayout
+            CType(Me.PanelBottomSpotRadioCountyStation_RightSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelBottomSpotRadioCountyStation_RightSection.SuspendLayout
+            CType(Me.PanelBottomSpotRadioCountyStation_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.SuspendLayout
+            Me.TabControlPanelCountyMetrics.SuspendLayout
+            CType(Me.PanelSpotRadioCountyMetrics_Criteria, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioCountyMetrics_Criteria.SuspendLayout
+            CType(Me.PanelSpotRadioCountyMetrics_Right, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioCountyMetrics_Right.SuspendLayout
+            CType(Me.PanelSpotRadioCountyMetrics_Left, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioCountyMetrics_Left.SuspendLayout
+            CType(Me.PanelSpotRadioCounty_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.PanelSpotRadioCounty_LeftSection.SuspendLayout
+            Me.SuspendLayout
             '
             'RibbonBarMergeContainerForm_Options
             '
@@ -962,13 +1065,14 @@
             'TabControlForm_Tabs
             '
             Me.TabControlForm_Tabs.BackColor = System.Drawing.Color.White
-            Me.TabControlForm_Tabs.CanReorderTabs = True
+            Me.TabControlForm_Tabs.CanReorderTabs = False
             Me.TabControlForm_Tabs.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlForm_Tabs.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlForm_Tabs.Controls.Add(Me.TabControlPanelNational_National)
+            Me.TabControlForm_Tabs.Controls.Add(Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico)
             Me.TabControlForm_Tabs.Controls.Add(Me.TabControlPanelSpotTV_SpotTV)
-            Me.TabControlForm_Tabs.Controls.Add(Me.TabControlPanelSpotRadioCounty_SpotRadioCounty)
+            Me.TabControlForm_Tabs.Controls.Add(Me.TabControlPanelNational_National)
             Me.TabControlForm_Tabs.Controls.Add(Me.TabControlPanelSpotRadio_SpotRadio)
+            Me.TabControlForm_Tabs.Controls.Add(Me.TabControlPanelSpotRadioCounty_SpotRadioCounty)
             Me.TabControlForm_Tabs.Dock = System.Windows.Forms.DockStyle.Fill
             Me.TabControlForm_Tabs.ForeColor = System.Drawing.Color.Black
             Me.TabControlForm_Tabs.Location = New System.Drawing.Point(0, 0)
@@ -980,10 +1084,2305 @@
             Me.TabControlForm_Tabs.TabIndex = 6
             Me.TabControlForm_Tabs.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
             Me.TabControlForm_Tabs.Tabs.Add(Me.TabItemTabs_SpotTVTab)
+            Me.TabControlForm_Tabs.Tabs.Add(Me.TabItemTabs_SpotTVPuertoRicoTab)
             Me.TabControlForm_Tabs.Tabs.Add(Me.TabItemTabs_SpotRadioTab)
             Me.TabControlForm_Tabs.Tabs.Add(Me.TabItemTabs_SpotRadioCountyTab)
             Me.TabControlForm_Tabs.Tabs.Add(Me.TabItemTabs_NationalTab)
             Me.TabControlForm_Tabs.Text = "TabControl1"
+            '
+            'TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico
+            '
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Controls.Add(Me.PanelSpotTVPuertoRico_RightSection)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Controls.Add(Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Controls.Add(Me.PanelSpotTVPuertoRico_LeftSection)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Name = "TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico"
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Size = New System.Drawing.Size(1054, 597)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.TabIndex = 32
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.TabItem = Me.TabItemTabs_SpotTVPuertoRicoTab
+            '
+            'PanelSpotTVPuertoRico_RightSection
+            '
+            Me.PanelSpotTVPuertoRico_RightSection.Controls.Add(Me.TabControlSpotTVPuertoRico_ResearchCriteria)
+            Me.PanelSpotTVPuertoRico_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotTVPuertoRico_RightSection.Location = New System.Drawing.Point(204, 1)
+            Me.PanelSpotTVPuertoRico_RightSection.Name = "PanelSpotTVPuertoRico_RightSection"
+            Me.PanelSpotTVPuertoRico_RightSection.Size = New System.Drawing.Size(849, 595)
+            Me.PanelSpotTVPuertoRico_RightSection.TabIndex = 14
+            '
+            'TabControlSpotTVPuertoRico_ResearchCriteria
+            '
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.BackColor = System.Drawing.Color.White
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.CanReorderTabs = False
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVPuertoRicoResults_Results)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.ForeColor = System.Drawing.Color.Black
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Location = New System.Drawing.Point(12, 12)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Name = "TabControlSpotTVPuertoRico_ResearchCriteria"
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTabFont = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.SelectedTabIndex = 0
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Size = New System.Drawing.Size(825, 571)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.TabIndex = 0
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Tabs.Add(Me.TabItemSpotTVPuertoRico_ReportTypeStations)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Tabs.Add(Me.TabItemSpotTVPuertoRico_PeriodsDaysTimes)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Tabs.Add(Me.TabItemSpotTVPuertoRico_Demographics)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Tabs.Add(Me.TabItemSpotTVPuertoRico_Metrics)
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.Tabs.Add(Me.TabItemSpotTVPuertoRico_Results)
+            '
+            'TabControlPanelSpotTVPuertoRicoPeriods_Criteria
+            '
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Controls.Add(Me.DataGridViewSpotTVPuertoRico_DayTimes)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Controls.Add(Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Controls.Add(Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Controls.Add(Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Controls.Add(Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Name = "TabControlPanelSpotTVPuertoRicoPeriods_Criteria"
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.TabIndex = 11
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.TabItem = Me.TabItemSpotTVPuertoRico_PeriodsDaysTimes
+            '
+            'DataGridViewSpotTVPuertoRico_DayTimes
+            '
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.ItemDescription = "Day Time(s)"
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.Location = New System.Drawing.Point(11, 29)
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.MultiSelect = True
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.Name = "DataGridViewSpotTVPuertoRico_DayTimes"
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.Size = New System.Drawing.Size(803, 509)
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.TabIndex = 14
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_DayTimes.ViewCaptionHeight = -1
+            '
+            'LabelSpotTVPuertoRicoPeriod_ShareStartDate
+            '
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.Location = New System.Drawing.Point(12, 4)
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.Name = "LabelSpotTVPuertoRicoPeriod_ShareStartDate"
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.Size = New System.Drawing.Size(112, 20)
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.TabIndex = 24
+            Me.LabelSpotTVPuertoRicoPeriod_ShareStartDate.Text = "Period Start Date:"
+            '
+            'LabelSpotTVPuertoRicoPeriod_ShareEndDate
+            '
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.Location = New System.Drawing.Point(288, 3)
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.Name = "LabelSpotTVPuertoRicoPeriod_ShareEndDate"
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.Size = New System.Drawing.Size(71, 20)
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.TabIndex = 26
+            Me.LabelSpotTVPuertoRicoPeriod_ShareEndDate.Text = "End Date:"
+            '
+            'DateEditSpotTVPuertoRicoPeriod_ShareStartDate
+            '
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.DisplayName = ""
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.EditValue = Nothing
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Location = New System.Drawing.Point(130, 3)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Name = "DateEditSpotTVPuertoRicoPeriod_ShareStartDate"
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.[False]
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.AllowMouseWheel = False
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.Appearance.BackColor = System.Drawing.Color.White
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.Appearance.Options.UseBackColor = True
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Vista
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.DisplayFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.EditFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.Mask.EditMask = ""
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.MaxValue = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.MinValue = New Date(1900, 1, 1, 0, 0, 0, 0)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.[True]
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.SecurityEnabled = True
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Size = New System.Drawing.Size(152, 20)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.TabIndex = 25
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.TabOnEnter = True
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Tag = "9/2/2015"
+            '
+            'DateEditSpotTVPuertoRicoPeriod_ShareEndDate
+            '
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.DisplayName = ""
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.EditValue = Nothing
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Location = New System.Drawing.Point(371, 3)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Name = "DateEditSpotTVPuertoRicoPeriod_ShareEndDate"
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.AllowDropDownWhenReadOnly = DevExpress.Utils.DefaultBoolean.[False]
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.AllowMouseWheel = False
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.Appearance.BackColor = System.Drawing.Color.White
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.Appearance.Options.UseBackColor = True
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Vista
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.DisplayFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.EditFormat.FormatString = "MM/dd/yyyy"
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.Mask.EditMask = ""
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.MaxValue = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.MinValue = New Date(1900, 1, 1, 0, 0, 0, 0)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.[True]
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.SecurityEnabled = True
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Size = New System.Drawing.Size(152, 20)
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.TabIndex = 27
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.TabOnEnter = True
+            Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Tag = "9/2/2015"
+            '
+            'TabItemSpotTVPuertoRico_PeriodsDaysTimes
+            '
+            Me.TabItemSpotTVPuertoRico_PeriodsDaysTimes.AttachedControl = Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria
+            Me.TabItemSpotTVPuertoRico_PeriodsDaysTimes.Name = "TabItemSpotTVPuertoRico_PeriodsDaysTimes"
+            Me.TabItemSpotTVPuertoRico_PeriodsDaysTimes.Text = "Periods/Days/Times"
+            '
+            'TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria
+            '
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Controls.Add(Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Controls.Add(Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Controls.Add(Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Controls.Add(Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Controls.Add(Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Controls.Add(Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Name = "TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria"
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.TabIndex = 0
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.TabItem = Me.TabItemSpotTVPuertoRico_ReportTypeStations
+            '
+            'LabelSpotTVPuertoRicoReportTypeStation_MaximumRank
+            '
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.Location = New System.Drawing.Point(337, 4)
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.Name = "LabelSpotTVPuertoRicoReportTypeStation_MaximumRank"
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.Size = New System.Drawing.Size(63, 20)
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.TabIndex = 4
+            Me.LabelSpotTVPuertoRicoReportTypeStation_MaximumRank.Text = "Max Rank:"
+            '
+            'NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank
+            '
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Short]
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.EnterMoveNextControl = True
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Location = New System.Drawing.Point(406, 4)
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Name = "NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank"
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.AllowMouseWheel = False
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.Appearance.Options.UseBackColor = True
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.IsFloatValue = False
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.Mask.EditMask = "f0"
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.SecurityEnabled = True
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Size = New System.Drawing.Size(58, 20)
+            Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.TabIndex = 5
+            '
+            'ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType
+            '
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.AutoFindItemInDataSource = True
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.BookmarkingEnabled = False
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.DisableMouseWheel = True
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.DisplayMember = "Display"
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.DisplayName = "Report Type"
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.FocusHighlightEnabled = True
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.FormattingEnabled = True
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.ItemHeight = 16
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.Location = New System.Drawing.Point(99, 4)
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.Name = "ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType"
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.ReadOnly = False
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.SecurityEnabled = True
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.Size = New System.Drawing.Size(226, 22)
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.TabIndex = 5
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.TabOnEnter = True
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.ValueMember = "Value"
+            Me.ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType.WatermarkText = "Select Month"
+            '
+            'PanelSpotTVPuertoRicoReportTypeStation_Bottom
+            '
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Controls.Add(Me.Panel3)
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Controls.Add(Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight)
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Controls.Add(Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection)
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Location = New System.Drawing.Point(12, 90)
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Name = "PanelSpotTVPuertoRicoReportTypeStation_Bottom"
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.Size = New System.Drawing.Size(801, 449)
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.TabIndex = 6
+            '
+            'Panel3
+            '
+            Me.Panel3.Appearance.BackColor = System.Drawing.Color.White
+            Me.Panel3.Appearance.Options.UseBackColor = True
+            Me.Panel3.Controls.Add(Me.DataGridViewSpotTVPuertoRico_SelectedStations)
+            Me.Panel3.Controls.Add(Me.ButtonSpotTVPuertoRicoStation_AddToSelected)
+            Me.Panel3.Controls.Add(Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected)
+            Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.Panel3.Location = New System.Drawing.Point(325, 2)
+            Me.Panel3.Name = "Panel3"
+            Me.Panel3.Size = New System.Drawing.Size(474, 445)
+            Me.Panel3.TabIndex = 1
+            '
+            'DataGridViewSpotTVPuertoRico_SelectedStations
+            '
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.ItemDescription = "Selected Station(s)"
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.MultiSelect = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.Name = "DataGridViewSpotTVPuertoRico_SelectedStations"
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.Size = New System.Drawing.Size(383, 435)
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.TabIndex = 2
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedStations.ViewCaptionHeight = -1
+            '
+            'ButtonSpotTVPuertoRicoStation_AddToSelected
+            '
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.Name = "ButtonSpotTVPuertoRicoStation_AddToSelected"
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.TabIndex = 0
+            Me.ButtonSpotTVPuertoRicoStation_AddToSelected.Text = ">"
+            '
+            'ButtonSpotTVPuertoRicoStation_RemoveFromSelected
+            '
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.Name = "ButtonSpotTVPuertoRicoStation_RemoveFromSelected"
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotTVPuertoRicoStation_RemoveFromSelected.Text = "<"
+            '
+            'ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight
+            '
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.Name = "ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight"
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.Size = New System.Drawing.Size(6, 445)
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.TabIndex = 20
+            Me.ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight.TabStop = False
+            '
+            'PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection
+            '
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.Appearance.Options.UseBackColor = True
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.Controls.Add(Me.DataGridViewSpotTVPuertoRico_AvailableStations)
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.Location = New System.Drawing.Point(2, 2)
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.Name = "PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection"
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.Size = New System.Drawing.Size(317, 445)
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.TabIndex = 0
+            '
+            'DataGridViewSpotTVPuertoRico_AvailableStations
+            '
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.ItemDescription = "Available Station(s)"
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.MultiSelect = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.Name = "DataGridViewSpotTVPuertoRico_AvailableStations"
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.Size = New System.Drawing.Size(306, 445)
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.TabIndex = 0
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableStations.ViewCaptionHeight = -1
+            '
+            'GroupBoxSpotTVPuertoRicoReportTypeStation_Options
+            '
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.Controls.Add(Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes)
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.Controls.Add(Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName)
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.Location = New System.Drawing.Point(11, 32)
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.Name = "GroupBoxSpotTVPuertoRicoReportTypeStation_Options"
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.Size = New System.Drawing.Size(801, 52)
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.TabIndex = 5
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.Text = "Options"
+            '
+            'CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes
+            '
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.CheckValue = 0
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.CheckValueChecked = 1
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.CheckValueUnchecked = 0
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.ChildControls = Nothing
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Location = New System.Drawing.Point(166, 24)
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Name = "CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes"
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.OldestSibling = Nothing
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.SecurityEnabled = True
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.SiblingControls = Nothing
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Size = New System.Drawing.Size(153, 20)
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.TabIndex = 3
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.TabOnEnter = True
+            Me.CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes.Text = "Group By Days / Times"
+            '
+            'CheckBoxSpotTVPuertoRicoOptions_ShowProgramName
+            '
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.CheckValue = 0
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.CheckValueChecked = 1
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.CheckValueUnchecked = 0
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.ChildControls = Nothing
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Location = New System.Drawing.Point(7, 24)
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Name = "CheckBoxSpotTVPuertoRicoOptions_ShowProgramName"
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.OldestSibling = Nothing
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.SecurityEnabled = True
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.SiblingControls = Nothing
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Size = New System.Drawing.Size(153, 20)
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.TabIndex = 1
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.TabOnEnter = True
+            Me.CheckBoxSpotTVPuertoRicoOptions_ShowProgramName.Text = "Show Program Name"
+            '
+            'LabelSpotTVPuertoRicoReportTypeStation_ReportType
+            '
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.Location = New System.Drawing.Point(12, 4)
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.Name = "LabelSpotTVPuertoRicoReportTypeStation_ReportType"
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.Size = New System.Drawing.Size(81, 20)
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.TabIndex = 4
+            Me.LabelSpotTVPuertoRicoReportTypeStation_ReportType.Text = "Report Type:"
+            '
+            'TabItemSpotTVPuertoRico_ReportTypeStations
+            '
+            Me.TabItemSpotTVPuertoRico_ReportTypeStations.AttachedControl = Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria
+            Me.TabItemSpotTVPuertoRico_ReportTypeStations.Name = "TabItemSpotTVPuertoRico_ReportTypeStations"
+            Me.TabItemSpotTVPuertoRico_ReportTypeStations.Text = "Report Type/Stations"
+            '
+            'TabControlPanelSpotTVPuertoRicoResults_Results
+            '
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Controls.Add(Me.TabControlResults_TVPuertoRicoResults)
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Name = "TabControlPanelSpotTVPuertoRicoResults_Results"
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.TabIndex = 34
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.TabItem = Me.TabItemSpotTVPuertoRico_Results
+            '
+            'TabControlResults_TVPuertoRicoResults
+            '
+            Me.TabControlResults_TVPuertoRicoResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlResults_TVPuertoRicoResults.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+            Me.TabControlResults_TVPuertoRicoResults.CanReorderTabs = False
+            Me.TabControlResults_TVPuertoRicoResults.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlResults_TVPuertoRicoResults.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlResults_TVPuertoRicoResults.Controls.Add(Me.TabControlPanelTVPuertoRicoDataTab_TVData)
+            Me.TabControlResults_TVPuertoRicoResults.Controls.Add(Me.TabControlPanel5)
+            Me.TabControlResults_TVPuertoRicoResults.ForeColor = System.Drawing.Color.Black
+            Me.TabControlResults_TVPuertoRicoResults.Location = New System.Drawing.Point(4, 4)
+            Me.TabControlResults_TVPuertoRicoResults.Name = "TabControlResults_TVPuertoRicoResults"
+            Me.TabControlResults_TVPuertoRicoResults.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlResults_TVPuertoRicoResults.SelectedTabIndex = 0
+            Me.TabControlResults_TVPuertoRicoResults.Size = New System.Drawing.Size(817, 536)
+            Me.TabControlResults_TVPuertoRicoResults.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlResults_TVPuertoRicoResults.TabIndex = 3
+            Me.TabControlResults_TVPuertoRicoResults.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlResults_TVPuertoRicoResults.Tabs.Add(Me.TabItemTVPuertoRicoResults_TVDataTab)
+            Me.TabControlResults_TVPuertoRicoResults.Tabs.Add(Me.TabItemTVPuertoRicoResults_TVDashboardTab)
+            Me.TabControlResults_TVPuertoRicoResults.TabStop = False
+            '
+            'TabControlPanelTVPuertoRicoDataTab_TVData
+            '
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Controls.Add(Me.LabelSpotTVPuertoRicoResults_Footer)
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Controls.Add(Me.BandedDataGridViewSpotTVPuertoRicoResults)
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Name = "TabControlPanelTVPuertoRicoDataTab_TVData"
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.Style.GradientAngle = 90
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.TabIndex = 10
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.TabItem = Me.TabItemTVPuertoRicoResults_TVDataTab
+            '
+            'LabelSpotTVPuertoRicoResults_Footer
+            '
+            Me.LabelSpotTVPuertoRicoResults_Footer.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVPuertoRicoResults_Footer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVPuertoRicoResults_Footer.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.LabelSpotTVPuertoRicoResults_Footer.Location = New System.Drawing.Point(1, 444)
+            Me.LabelSpotTVPuertoRicoResults_Footer.Name = "LabelSpotTVPuertoRicoResults_Footer"
+            Me.LabelSpotTVPuertoRicoResults_Footer.Size = New System.Drawing.Size(815, 64)
+            Me.LabelSpotTVPuertoRicoResults_Footer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVPuertoRicoResults_Footer.TabIndex = 6
+            Me.LabelSpotTVPuertoRicoResults_Footer.WordWrap = True
+            '
+            'BandedDataGridViewSpotTVPuertoRicoResults
+            '
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.AllowSelectGroupHeaderRow = True
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.AutoUpdateViewCaption = True
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.ItemDescription = "Item(s)"
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.Location = New System.Drawing.Point(4, 4)
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.ModifyColumnSettingsOnEachDataSource = True
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.ModifyGridRowHeight = False
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.MultiSelect = True
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.Name = "BandedDataGridViewSpotTVPuertoRicoResults"
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.ShowRowSelectionIfHidden = True
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.ShowSelectDeselectAllButtons = False
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.Size = New System.Drawing.Size(808, 434)
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.TabIndex = 0
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.UseEmbeddedNavigator = False
+            Me.BandedDataGridViewSpotTVPuertoRicoResults.ViewCaptionHeight = -1
+            '
+            'TabItemTVPuertoRicoResults_TVDataTab
+            '
+            Me.TabItemTVPuertoRicoResults_TVDataTab.AttachedControl = Me.TabControlPanelTVPuertoRicoDataTab_TVData
+            Me.TabItemTVPuertoRicoResults_TVDataTab.Name = "TabItemTVPuertoRicoResults_TVDataTab"
+            Me.TabItemTVPuertoRicoResults_TVDataTab.Text = "Data"
+            '
+            'TabControlPanel5
+            '
+            Me.TabControlPanel5.Controls.Add(Me.DashboardViewerTVPuertoRicoDashboard_Dashboard)
+            Me.TabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanel5.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanel5.Name = "TabControlPanel5"
+            Me.TabControlPanel5.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanel5.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanel5.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanel5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanel5.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanel5.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanel5.Style.GradientAngle = 90
+            Me.TabControlPanel5.TabIndex = 11
+            Me.TabControlPanel5.TabItem = Me.TabItemTVPuertoRicoResults_TVDashboardTab
+            '
+            'DashboardViewerTVPuertoRicoDashboard_Dashboard
+            '
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.Appearance.BackColor = System.Drawing.SystemColors.Control
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.Appearance.Options.UseBackColor = True
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.Location = New System.Drawing.Point(1, 1)
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.Name = "DashboardViewerTVPuertoRicoDashboard_Dashboard"
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.PdfExportOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.PrintPreviewOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.Size = New System.Drawing.Size(815, 507)
+            Me.DashboardViewerTVPuertoRicoDashboard_Dashboard.TabIndex = 2
+            '
+            'TabItemTVPuertoRicoResults_TVDashboardTab
+            '
+            Me.TabItemTVPuertoRicoResults_TVDashboardTab.AttachedControl = Me.TabControlPanel5
+            Me.TabItemTVPuertoRicoResults_TVDashboardTab.Name = "TabItemTVPuertoRicoResults_TVDashboardTab"
+            Me.TabItemTVPuertoRicoResults_TVDashboardTab.Text = "Dashboard"
+            '
+            'TabItemSpotTVPuertoRico_Results
+            '
+            Me.TabItemSpotTVPuertoRico_Results.AttachedControl = Me.TabControlPanelSpotTVPuertoRicoResults_Results
+            Me.TabItemSpotTVPuertoRico_Results.Name = "TabItemSpotTVPuertoRico_Results"
+            Me.TabItemSpotTVPuertoRico_Results.Text = "Results"
+            '
+            'TabControlPanelSpotTVPuertoRicoDemographics_Criteria
+            '
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Controls.Add(Me.PanelSpotTVPuertoRicoDemographics_Criteria)
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Name = "TabControlPanelSpotTVPuertoRicoDemographics_Criteria"
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.TabIndex = 21
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.TabItem = Me.TabItemSpotTVPuertoRico_Demographics
+            '
+            'PanelSpotTVPuertoRicoDemographics_Criteria
+            '
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Controls.Add(Me.PanelSpotTVPuertoRicoDemographics_Right)
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics)
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Controls.Add(Me.PanelSpotTVPuertoRicoDemographics_Left)
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Location = New System.Drawing.Point(4, 4)
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Name = "PanelSpotTVPuertoRicoDemographics_Criteria"
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.Size = New System.Drawing.Size(817, 536)
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.TabIndex = 7
+            '
+            'PanelSpotTVPuertoRicoDemographics_Right
+            '
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Controls.Add(Me.DataGridViewSpotTVPuertoRico_SelectedDemographics)
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Controls.Add(Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected)
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Controls.Add(Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected)
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Location = New System.Drawing.Point(325, 2)
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Name = "PanelSpotTVPuertoRicoDemographics_Right"
+            Me.PanelSpotTVPuertoRicoDemographics_Right.Size = New System.Drawing.Size(490, 532)
+            Me.PanelSpotTVPuertoRicoDemographics_Right.TabIndex = 1
+            '
+            'DataGridViewSpotTVPuertoRico_SelectedDemographics
+            '
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.ItemDescription = "Selected Demographic(s)"
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.MultiSelect = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.Name = "DataGridViewSpotTVPuertoRico_SelectedDemographics"
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.TabIndex = 2
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedDemographics.ViewCaptionHeight = -1
+            '
+            'ButtonSpotTVPuertoRicoDemographics_AddToSelected
+            '
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.Name = "ButtonSpotTVPuertoRicoDemographics_AddToSelected"
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.TabIndex = 0
+            Me.ButtonSpotTVPuertoRicoDemographics_AddToSelected.Text = ">"
+            '
+            'ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected
+            '
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.Name = "ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected"
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected.Text = "<"
+            '
+            'ExpandableSplitterControlSpotTVPuertoRicoDemographics
+            '
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.Name = "ExpandableSplitterControlSpotTVPuertoRicoDemographics"
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.TabIndex = 20
+            Me.ExpandableSplitterControlSpotTVPuertoRicoDemographics.TabStop = False
+            '
+            'PanelSpotTVPuertoRicoDemographics_Left
+            '
+            Me.PanelSpotTVPuertoRicoDemographics_Left.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVPuertoRicoDemographics_Left.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVPuertoRicoDemographics_Left.Controls.Add(Me.DataGridViewSpotTVPuertoRico_AvailableDemographics)
+            Me.PanelSpotTVPuertoRicoDemographics_Left.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotTVPuertoRicoDemographics_Left.Location = New System.Drawing.Point(2, 2)
+            Me.PanelSpotTVPuertoRicoDemographics_Left.Name = "PanelSpotTVPuertoRicoDemographics_Left"
+            Me.PanelSpotTVPuertoRicoDemographics_Left.Size = New System.Drawing.Size(317, 532)
+            Me.PanelSpotTVPuertoRicoDemographics_Left.TabIndex = 0
+            '
+            'DataGridViewSpotTVPuertoRico_AvailableDemographics
+            '
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.ItemDescription = "Available Demographic(s)"
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.MultiSelect = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.Name = "DataGridViewSpotTVPuertoRico_AvailableDemographics"
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.TabIndex = 0
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableDemographics.ViewCaptionHeight = -1
+            '
+            'TabItemSpotTVPuertoRico_Demographics
+            '
+            Me.TabItemSpotTVPuertoRico_Demographics.AttachedControl = Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria
+            Me.TabItemSpotTVPuertoRico_Demographics.Name = "TabItemSpotTVPuertoRico_Demographics"
+            Me.TabItemSpotTVPuertoRico_Demographics.Text = "Demographics"
+            '
+            'TabControlPanelSpotTVPuertoRicoMetrics_Criteria
+            '
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Controls.Add(Me.PanelSpotTVPuertoRicoMetrics_Criteria)
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Name = "TabControlPanelSpotTVPuertoRicoMetrics_Criteria"
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.TabIndex = 25
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.TabItem = Me.TabItemSpotTVPuertoRico_Metrics
+            '
+            'PanelSpotTVPuertoRicoMetrics_Criteria
+            '
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Controls.Add(Me.PanelSpotTVPuertoRicoMetrics_Right)
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics)
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Controls.Add(Me.PanelSpotTVPuertoRicoMetrics_Left)
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Location = New System.Drawing.Point(4, 4)
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Name = "PanelSpotTVPuertoRicoMetrics_Criteria"
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.Size = New System.Drawing.Size(817, 536)
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.TabIndex = 8
+            '
+            'PanelSpotTVPuertoRicoMetrics_Right
+            '
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Controls.Add(Me.DataGridViewSpotTVPuertoRico_SelectedMetrics)
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Controls.Add(Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected)
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Controls.Add(Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected)
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Location = New System.Drawing.Point(325, 2)
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Name = "PanelSpotTVPuertoRicoMetrics_Right"
+            Me.PanelSpotTVPuertoRicoMetrics_Right.Size = New System.Drawing.Size(490, 532)
+            Me.PanelSpotTVPuertoRicoMetrics_Right.TabIndex = 1
+            '
+            'DataGridViewSpotTVPuertoRico_SelectedMetrics
+            '
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.ItemDescription = "Selected Metric(s)"
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.MultiSelect = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.Name = "DataGridViewSpotTVPuertoRico_SelectedMetrics"
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.TabIndex = 2
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_SelectedMetrics.ViewCaptionHeight = -1
+            '
+            'ButtonSpotTVPuertoRicoMetrics_AddToSelected
+            '
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.Name = "ButtonSpotTVPuertoRicoMetrics_AddToSelected"
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.TabIndex = 0
+            Me.ButtonSpotTVPuertoRicoMetrics_AddToSelected.Text = ">"
+            '
+            'ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected
+            '
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.Name = "ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected"
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected.Text = "<"
+            '
+            'ExpandableSplitterControlSpotTVPuertoRicoMetrics
+            '
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.Name = "ExpandableSplitterControlSpotTVPuertoRicoMetrics"
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.TabIndex = 20
+            Me.ExpandableSplitterControlSpotTVPuertoRicoMetrics.TabStop = False
+            '
+            'PanelSpotTVPuertoRicoMetrics_Left
+            '
+            Me.PanelSpotTVPuertoRicoMetrics_Left.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVPuertoRicoMetrics_Left.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVPuertoRicoMetrics_Left.Controls.Add(Me.DataGridViewSpotTVPuertoRico_AvailableMetrics)
+            Me.PanelSpotTVPuertoRicoMetrics_Left.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotTVPuertoRicoMetrics_Left.Location = New System.Drawing.Point(2, 2)
+            Me.PanelSpotTVPuertoRicoMetrics_Left.Name = "PanelSpotTVPuertoRicoMetrics_Left"
+            Me.PanelSpotTVPuertoRicoMetrics_Left.Size = New System.Drawing.Size(317, 532)
+            Me.PanelSpotTVPuertoRicoMetrics_Left.TabIndex = 0
+            '
+            'DataGridViewSpotTVPuertoRico_AvailableMetrics
+            '
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.ItemDescription = "Available Metric(s)"
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.MultiSelect = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.Name = "DataGridViewSpotTVPuertoRico_AvailableMetrics"
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.TabIndex = 0
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_AvailableMetrics.ViewCaptionHeight = -1
+            '
+            'TabItemSpotTVPuertoRico_Metrics
+            '
+            Me.TabItemSpotTVPuertoRico_Metrics.AttachedControl = Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria
+            Me.TabItemSpotTVPuertoRico_Metrics.Name = "TabItemSpotTVPuertoRico_Metrics"
+            Me.TabItemSpotTVPuertoRico_Metrics.Text = "Metrics"
+            '
+            'ExpandableSplitterControlSpotTVPuertoRico_LeftRight
+            '
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.ExpandableControl = Me.PanelSpotTVPuertoRico_LeftSection
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.Location = New System.Drawing.Point(198, 1)
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.Name = "ExpandableSplitterControlSpotTVPuertoRico_LeftRight"
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.Size = New System.Drawing.Size(6, 595)
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.TabIndex = 13
+            Me.ExpandableSplitterControlSpotTVPuertoRico_LeftRight.TabStop = False
+            '
+            'PanelSpotTVPuertoRico_LeftSection
+            '
+            Me.PanelSpotTVPuertoRico_LeftSection.Controls.Add(Me.DataGridViewSpotTVPuertoRico_UserCriterias)
+            Me.PanelSpotTVPuertoRico_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotTVPuertoRico_LeftSection.Location = New System.Drawing.Point(1, 1)
+            Me.PanelSpotTVPuertoRico_LeftSection.Name = "PanelSpotTVPuertoRico_LeftSection"
+            Me.PanelSpotTVPuertoRico_LeftSection.Size = New System.Drawing.Size(197, 595)
+            Me.PanelSpotTVPuertoRico_LeftSection.TabIndex = 12
+            '
+            'DataGridViewSpotTVPuertoRico_UserCriterias
+            '
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.ItemDescription = "Report(s)"
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.Location = New System.Drawing.Point(12, 12)
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.MultiSelect = False
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.Name = "DataGridViewSpotTVPuertoRico_UserCriterias"
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.Size = New System.Drawing.Size(180, 571)
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.TabIndex = 0
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTVPuertoRico_UserCriterias.ViewCaptionHeight = -1
+            '
+            'TabItemTabs_SpotTVPuertoRicoTab
+            '
+            Me.TabItemTabs_SpotTVPuertoRicoTab.AttachedControl = Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico
+            Me.TabItemTabs_SpotTVPuertoRicoTab.Name = "TabItemTabs_SpotTVPuertoRicoTab"
+            Me.TabItemTabs_SpotTVPuertoRicoTab.Text = "Spot TV Puerto Rico"
+            '
+            'TabControlPanelSpotTV_SpotTV
+            '
+            Me.TabControlPanelSpotTV_SpotTV.Controls.Add(Me.PanelSpotTV_RightSection)
+            Me.TabControlPanelSpotTV_SpotTV.Controls.Add(Me.ExpandableSplitterControlSpotTV_LeftRight)
+            Me.TabControlPanelSpotTV_SpotTV.Controls.Add(Me.PanelSpotTV_LeftSection)
+            Me.TabControlPanelSpotTV_SpotTV.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTV_SpotTV.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTV_SpotTV.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTV_SpotTV.Name = "TabControlPanelSpotTV_SpotTV"
+            Me.TabControlPanelSpotTV_SpotTV.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTV_SpotTV.Size = New System.Drawing.Size(1054, 597)
+            Me.TabControlPanelSpotTV_SpotTV.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTV_SpotTV.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTV_SpotTV.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTV_SpotTV.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTV_SpotTV.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTV_SpotTV.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTV_SpotTV.TabIndex = 1
+            Me.TabControlPanelSpotTV_SpotTV.TabItem = Me.TabItemTabs_SpotTVTab
+            '
+            'PanelSpotTV_RightSection
+            '
+            Me.PanelSpotTV_RightSection.Controls.Add(Me.TabControlSpotTV_ResearchCriteria)
+            Me.PanelSpotTV_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotTV_RightSection.Location = New System.Drawing.Point(204, 1)
+            Me.PanelSpotTV_RightSection.Name = "PanelSpotTV_RightSection"
+            Me.PanelSpotTV_RightSection.Size = New System.Drawing.Size(849, 595)
+            Me.PanelSpotTV_RightSection.TabIndex = 13
+            '
+            'TabControlSpotTV_ResearchCriteria
+            '
+            Me.TabControlSpotTV_ResearchCriteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlSpotTV_ResearchCriteria.BackColor = System.Drawing.Color.White
+            Me.TabControlSpotTV_ResearchCriteria.CanReorderTabs = False
+            Me.TabControlSpotTV_ResearchCriteria.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlSpotTV_ResearchCriteria.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVMarketStations_Criteria)
+            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVBooks_Criteria)
+            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVResults_Results)
+            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVMetrics_Criteria)
+            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVDemographics_Criteria)
+            Me.TabControlSpotTV_ResearchCriteria.ForeColor = System.Drawing.Color.Black
+            Me.TabControlSpotTV_ResearchCriteria.Location = New System.Drawing.Point(12, 12)
+            Me.TabControlSpotTV_ResearchCriteria.Name = "TabControlSpotTV_ResearchCriteria"
+            Me.TabControlSpotTV_ResearchCriteria.SelectedTabFont = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlSpotTV_ResearchCriteria.SelectedTabIndex = 0
+            Me.TabControlSpotTV_ResearchCriteria.Size = New System.Drawing.Size(825, 571)
+            Me.TabControlSpotTV_ResearchCriteria.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlSpotTV_ResearchCriteria.TabIndex = 0
+            Me.TabControlSpotTV_ResearchCriteria.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_MarketStations)
+            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Books)
+            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Demographics)
+            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Metrics)
+            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Results)
+            '
+            'TabControlPanelSpotTVMarketStations_Criteria
+            '
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.ComboBoxSpotTVMarketStation_Source)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_Source)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_MaximumRank)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.NumericInputSpotTVMarketStation_MaximumRank)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.ComboBoxSpotTVMarketStation_ReportType)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.PanelSpotTVMarketStation_Bottom)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.GroupBoxSpotTVMarketStation_Options)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_Market)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_ReportType)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.SearchableComboBoxSpotTVMarketStation_Market)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Name = "TabControlPanelSpotTVMarketStations_Criteria"
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVMarketStations_Criteria.TabIndex = 0
+            Me.TabControlPanelSpotTVMarketStations_Criteria.TabItem = Me.TabItemSpotTV_MarketStations
+            '
+            'ComboBoxSpotTVMarketStation_Source
+            '
+            Me.ComboBoxSpotTVMarketStation_Source.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxSpotTVMarketStation_Source.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+            Me.ComboBoxSpotTVMarketStation_Source.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxSpotTVMarketStation_Source.AutoFindItemInDataSource = True
+            Me.ComboBoxSpotTVMarketStation_Source.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxSpotTVMarketStation_Source.BookmarkingEnabled = False
+            Me.ComboBoxSpotTVMarketStation_Source.DisableMouseWheel = True
+            Me.ComboBoxSpotTVMarketStation_Source.DisplayMember = "Display"
+            Me.ComboBoxSpotTVMarketStation_Source.DisplayName = "Source"
+            Me.ComboBoxSpotTVMarketStation_Source.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxSpotTVMarketStation_Source.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxSpotTVMarketStation_Source.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxSpotTVMarketStation_Source.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxSpotTVMarketStation_Source.FocusHighlightEnabled = True
+            Me.ComboBoxSpotTVMarketStation_Source.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxSpotTVMarketStation_Source.FormattingEnabled = True
+            Me.ComboBoxSpotTVMarketStation_Source.ItemHeight = 16
+            Me.ComboBoxSpotTVMarketStation_Source.Location = New System.Drawing.Point(99, 4)
+            Me.ComboBoxSpotTVMarketStation_Source.Name = "ComboBoxSpotTVMarketStation_Source"
+            Me.ComboBoxSpotTVMarketStation_Source.ReadOnly = False
+            Me.ComboBoxSpotTVMarketStation_Source.SecurityEnabled = True
+            Me.ComboBoxSpotTVMarketStation_Source.Size = New System.Drawing.Size(226, 22)
+            Me.ComboBoxSpotTVMarketStation_Source.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxSpotTVMarketStation_Source.TabIndex = 1
+            Me.ComboBoxSpotTVMarketStation_Source.TabOnEnter = True
+            Me.ComboBoxSpotTVMarketStation_Source.ValueMember = "Value"
+            Me.ComboBoxSpotTVMarketStation_Source.WatermarkText = "Select Month"
+            '
+            'LabelSpotTVMarketStation_Source
+            '
+            Me.LabelSpotTVMarketStation_Source.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVMarketStation_Source.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVMarketStation_Source.Location = New System.Drawing.Point(12, 4)
+            Me.LabelSpotTVMarketStation_Source.Name = "LabelSpotTVMarketStation_Source"
+            Me.LabelSpotTVMarketStation_Source.Size = New System.Drawing.Size(81, 20)
+            Me.LabelSpotTVMarketStation_Source.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVMarketStation_Source.TabIndex = 0
+            Me.LabelSpotTVMarketStation_Source.Text = "Source:"
+            '
+            'LabelSpotTVMarketStation_MaximumRank
+            '
+            Me.LabelSpotTVMarketStation_MaximumRank.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVMarketStation_MaximumRank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVMarketStation_MaximumRank.Location = New System.Drawing.Point(337, 29)
+            Me.LabelSpotTVMarketStation_MaximumRank.Name = "LabelSpotTVMarketStation_MaximumRank"
+            Me.LabelSpotTVMarketStation_MaximumRank.Size = New System.Drawing.Size(63, 20)
+            Me.LabelSpotTVMarketStation_MaximumRank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVMarketStation_MaximumRank.TabIndex = 4
+            Me.LabelSpotTVMarketStation_MaximumRank.Text = "Max Rank:"
+            '
+            'NumericInputSpotTVMarketStation_MaximumRank
+            '
+            Me.NumericInputSpotTVMarketStation_MaximumRank.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputSpotTVMarketStation_MaximumRank.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Short]
+            Me.NumericInputSpotTVMarketStation_MaximumRank.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.NumericInputSpotTVMarketStation_MaximumRank.EnterMoveNextControl = True
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Location = New System.Drawing.Point(406, 30)
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Name = "NumericInputSpotTVMarketStation_MaximumRank"
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.AllowMouseWheel = False
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Appearance.Options.UseBackColor = True
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.IsFloatValue = False
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Mask.EditMask = "f0"
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.NumericInputSpotTVMarketStation_MaximumRank.SecurityEnabled = True
+            Me.NumericInputSpotTVMarketStation_MaximumRank.Size = New System.Drawing.Size(58, 20)
+            Me.NumericInputSpotTVMarketStation_MaximumRank.TabIndex = 5
+            '
+            'ComboBoxSpotTVMarketStation_ReportType
+            '
+            Me.ComboBoxSpotTVMarketStation_ReportType.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxSpotTVMarketStation_ReportType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+            Me.ComboBoxSpotTVMarketStation_ReportType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxSpotTVMarketStation_ReportType.AutoFindItemInDataSource = True
+            Me.ComboBoxSpotTVMarketStation_ReportType.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxSpotTVMarketStation_ReportType.BookmarkingEnabled = False
+            Me.ComboBoxSpotTVMarketStation_ReportType.DisableMouseWheel = True
+            Me.ComboBoxSpotTVMarketStation_ReportType.DisplayMember = "Display"
+            Me.ComboBoxSpotTVMarketStation_ReportType.DisplayName = "Report Type"
+            Me.ComboBoxSpotTVMarketStation_ReportType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxSpotTVMarketStation_ReportType.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxSpotTVMarketStation_ReportType.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxSpotTVMarketStation_ReportType.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxSpotTVMarketStation_ReportType.FocusHighlightEnabled = True
+            Me.ComboBoxSpotTVMarketStation_ReportType.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxSpotTVMarketStation_ReportType.FormattingEnabled = True
+            Me.ComboBoxSpotTVMarketStation_ReportType.ItemHeight = 16
+            Me.ComboBoxSpotTVMarketStation_ReportType.Location = New System.Drawing.Point(99, 55)
+            Me.ComboBoxSpotTVMarketStation_ReportType.Name = "ComboBoxSpotTVMarketStation_ReportType"
+            Me.ComboBoxSpotTVMarketStation_ReportType.ReadOnly = False
+            Me.ComboBoxSpotTVMarketStation_ReportType.SecurityEnabled = True
+            Me.ComboBoxSpotTVMarketStation_ReportType.Size = New System.Drawing.Size(226, 22)
+            Me.ComboBoxSpotTVMarketStation_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxSpotTVMarketStation_ReportType.TabIndex = 5
+            Me.ComboBoxSpotTVMarketStation_ReportType.TabOnEnter = True
+            Me.ComboBoxSpotTVMarketStation_ReportType.ValueMember = "Value"
+            Me.ComboBoxSpotTVMarketStation_ReportType.WatermarkText = "Select Month"
+            '
+            'PanelSpotTVMarketStation_Bottom
+            '
+            Me.PanelSpotTVMarketStation_Bottom.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelSpotTVMarketStation_Bottom.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVMarketStation_Bottom.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVMarketStation_Bottom.Controls.Add(Me.PanelBottomSpotTVMarketStation_RightSection)
+            Me.PanelSpotTVMarketStation_Bottom.Controls.Add(Me.ExpandableSplitterSpotTVMarketStations_LeftRight)
+            Me.PanelSpotTVMarketStation_Bottom.Controls.Add(Me.PanelBottomSpotTVMarketStation_LeftSection)
+            Me.PanelSpotTVMarketStation_Bottom.Location = New System.Drawing.Point(12, 141)
+            Me.PanelSpotTVMarketStation_Bottom.Name = "PanelSpotTVMarketStation_Bottom"
+            Me.PanelSpotTVMarketStation_Bottom.Size = New System.Drawing.Size(801, 398)
+            Me.PanelSpotTVMarketStation_Bottom.TabIndex = 6
+            '
+            'PanelBottomSpotTVMarketStation_RightSection
+            '
+            Me.PanelBottomSpotTVMarketStation_RightSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelBottomSpotTVMarketStation_RightSection.Appearance.Options.UseBackColor = True
+            Me.PanelBottomSpotTVMarketStation_RightSection.Controls.Add(Me.DataGridViewSpotTV_SelectedStations)
+            Me.PanelBottomSpotTVMarketStation_RightSection.Controls.Add(Me.ButtonSpotTVStation_AddToSelected)
+            Me.PanelBottomSpotTVMarketStation_RightSection.Controls.Add(Me.ButtonSpotTVStation_RemoveFromSelected)
+            Me.PanelBottomSpotTVMarketStation_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelBottomSpotTVMarketStation_RightSection.Location = New System.Drawing.Point(325, 2)
+            Me.PanelBottomSpotTVMarketStation_RightSection.Name = "PanelBottomSpotTVMarketStation_RightSection"
+            Me.PanelBottomSpotTVMarketStation_RightSection.Size = New System.Drawing.Size(474, 394)
+            Me.PanelBottomSpotTVMarketStation_RightSection.TabIndex = 1
+            '
+            'DataGridViewSpotTV_SelectedStations
+            '
+            Me.DataGridViewSpotTV_SelectedStations.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_SelectedStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTV_SelectedStations.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_SelectedStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_SelectedStations.ItemDescription = "Selected Station(s)"
+            Me.DataGridViewSpotTV_SelectedStations.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotTV_SelectedStations.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_SelectedStations.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_SelectedStations.MultiSelect = True
+            Me.DataGridViewSpotTV_SelectedStations.Name = "DataGridViewSpotTV_SelectedStations"
+            Me.DataGridViewSpotTV_SelectedStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_SelectedStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_SelectedStations.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_SelectedStations.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_SelectedStations.Size = New System.Drawing.Size(383, 384)
+            Me.DataGridViewSpotTV_SelectedStations.TabIndex = 2
+            Me.DataGridViewSpotTV_SelectedStations.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_SelectedStations.ViewCaptionHeight = -1
+            '
+            'ButtonSpotTVStation_AddToSelected
+            '
+            Me.ButtonSpotTVStation_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVStation_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVStation_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotTVStation_AddToSelected.Name = "ButtonSpotTVStation_AddToSelected"
+            Me.ButtonSpotTVStation_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotTVStation_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVStation_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVStation_AddToSelected.TabIndex = 0
+            Me.ButtonSpotTVStation_AddToSelected.Text = ">"
+            '
+            'ButtonSpotTVStation_RemoveFromSelected
+            '
+            Me.ButtonSpotTVStation_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVStation_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVStation_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotTVStation_RemoveFromSelected.Name = "ButtonSpotTVStation_RemoveFromSelected"
+            Me.ButtonSpotTVStation_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotTVStation_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVStation_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVStation_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotTVStation_RemoveFromSelected.Text = "<"
+            '
+            'ExpandableSplitterSpotTVMarketStations_LeftRight
+            '
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Name = "ExpandableSplitterSpotTVMarketStations_LeftRight"
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Size = New System.Drawing.Size(6, 394)
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.TabIndex = 20
+            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.TabStop = False
+            '
+            'PanelBottomSpotTVMarketStation_LeftSection
+            '
+            Me.PanelBottomSpotTVMarketStation_LeftSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelBottomSpotTVMarketStation_LeftSection.Appearance.Options.UseBackColor = True
+            Me.PanelBottomSpotTVMarketStation_LeftSection.Controls.Add(Me.DataGridViewSpotTV_AvailableStations)
+            Me.PanelBottomSpotTVMarketStation_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelBottomSpotTVMarketStation_LeftSection.Location = New System.Drawing.Point(2, 2)
+            Me.PanelBottomSpotTVMarketStation_LeftSection.Name = "PanelBottomSpotTVMarketStation_LeftSection"
+            Me.PanelBottomSpotTVMarketStation_LeftSection.Size = New System.Drawing.Size(317, 394)
+            Me.PanelBottomSpotTVMarketStation_LeftSection.TabIndex = 0
+            '
+            'DataGridViewSpotTV_AvailableStations
+            '
+            Me.DataGridViewSpotTV_AvailableStations.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_AvailableStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTV_AvailableStations.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_AvailableStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_AvailableStations.ItemDescription = "Available Station(s)"
+            Me.DataGridViewSpotTV_AvailableStations.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotTV_AvailableStations.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_AvailableStations.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_AvailableStations.MultiSelect = True
+            Me.DataGridViewSpotTV_AvailableStations.Name = "DataGridViewSpotTV_AvailableStations"
+            Me.DataGridViewSpotTV_AvailableStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_AvailableStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_AvailableStations.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_AvailableStations.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_AvailableStations.Size = New System.Drawing.Size(306, 394)
+            Me.DataGridViewSpotTV_AvailableStations.TabIndex = 0
+            Me.DataGridViewSpotTV_AvailableStations.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_AvailableStations.ViewCaptionHeight = -1
+            '
+            'GroupBoxSpotTVMarketStation_Options
+            '
+            Me.GroupBoxSpotTVMarketStation_Options.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_GroupByDaysTimes)
+            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_ShowSpill)
+            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_DominantProgramming)
+            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_ShowProgramName)
+            Me.GroupBoxSpotTVMarketStation_Options.Location = New System.Drawing.Point(12, 83)
+            Me.GroupBoxSpotTVMarketStation_Options.Name = "GroupBoxSpotTVMarketStation_Options"
+            Me.GroupBoxSpotTVMarketStation_Options.Size = New System.Drawing.Size(801, 52)
+            Me.GroupBoxSpotTVMarketStation_Options.TabIndex = 5
+            Me.GroupBoxSpotTVMarketStation_Options.Text = "Options"
+            '
+            'CheckBoxSpotTVOptions_GroupByDaysTimes
+            '
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValue = 0
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValueChecked = 1
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValueUnchecked = 0
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.ChildControls = Nothing
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Location = New System.Drawing.Point(427, 24)
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Name = "CheckBoxSpotTVOptions_GroupByDaysTimes"
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.OldestSibling = Nothing
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.SecurityEnabled = True
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.SiblingControls = Nothing
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Size = New System.Drawing.Size(153, 20)
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.TabIndex = 3
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.TabOnEnter = True
+            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Text = "Group By Days / Times"
+            '
+            'CheckBoxSpotTVOptions_ShowSpill
+            '
+            Me.CheckBoxSpotTVOptions_ShowSpill.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSpotTVOptions_ShowSpill.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValue = 0
+            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValueChecked = 1
+            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValueUnchecked = 0
+            Me.CheckBoxSpotTVOptions_ShowSpill.ChildControls = Nothing
+            Me.CheckBoxSpotTVOptions_ShowSpill.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSpotTVOptions_ShowSpill.Location = New System.Drawing.Point(323, 24)
+            Me.CheckBoxSpotTVOptions_ShowSpill.Name = "CheckBoxSpotTVOptions_ShowSpill"
+            Me.CheckBoxSpotTVOptions_ShowSpill.OldestSibling = Nothing
+            Me.CheckBoxSpotTVOptions_ShowSpill.SecurityEnabled = True
+            Me.CheckBoxSpotTVOptions_ShowSpill.SiblingControls = Nothing
+            Me.CheckBoxSpotTVOptions_ShowSpill.Size = New System.Drawing.Size(98, 20)
+            Me.CheckBoxSpotTVOptions_ShowSpill.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSpotTVOptions_ShowSpill.TabIndex = 2
+            Me.CheckBoxSpotTVOptions_ShowSpill.TabOnEnter = True
+            Me.CheckBoxSpotTVOptions_ShowSpill.Text = "Show Spill"
+            '
+            'CheckBoxSpotTVOptions_DominantProgramming
+            '
+            Me.CheckBoxSpotTVOptions_DominantProgramming.AutoCheck = False
+            Me.CheckBoxSpotTVOptions_DominantProgramming.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSpotTVOptions_DominantProgramming.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValue = 0
+            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValueChecked = 1
+            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValueUnchecked = 0
+            Me.CheckBoxSpotTVOptions_DominantProgramming.ChildControls = Nothing
+            Me.CheckBoxSpotTVOptions_DominantProgramming.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSpotTVOptions_DominantProgramming.Enabled = False
+            Me.CheckBoxSpotTVOptions_DominantProgramming.Location = New System.Drawing.Point(5, 24)
+            Me.CheckBoxSpotTVOptions_DominantProgramming.Name = "CheckBoxSpotTVOptions_DominantProgramming"
+            Me.CheckBoxSpotTVOptions_DominantProgramming.OldestSibling = Nothing
+            Me.CheckBoxSpotTVOptions_DominantProgramming.SecurityEnabled = True
+            Me.CheckBoxSpotTVOptions_DominantProgramming.SiblingControls = Nothing
+            Me.CheckBoxSpotTVOptions_DominantProgramming.Size = New System.Drawing.Size(153, 20)
+            Me.CheckBoxSpotTVOptions_DominantProgramming.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSpotTVOptions_DominantProgramming.TabIndex = 0
+            Me.CheckBoxSpotTVOptions_DominantProgramming.TabOnEnter = True
+            Me.CheckBoxSpotTVOptions_DominantProgramming.Text = "Dominant Programming"
+            '
+            'CheckBoxSpotTVOptions_ShowProgramName
+            '
+            Me.CheckBoxSpotTVOptions_ShowProgramName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxSpotTVOptions_ShowProgramName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValue = 0
+            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValueChecked = 1
+            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValueUnchecked = 0
+            Me.CheckBoxSpotTVOptions_ShowProgramName.ChildControls = Nothing
+            Me.CheckBoxSpotTVOptions_ShowProgramName.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxSpotTVOptions_ShowProgramName.Location = New System.Drawing.Point(164, 24)
+            Me.CheckBoxSpotTVOptions_ShowProgramName.Name = "CheckBoxSpotTVOptions_ShowProgramName"
+            Me.CheckBoxSpotTVOptions_ShowProgramName.OldestSibling = Nothing
+            Me.CheckBoxSpotTVOptions_ShowProgramName.SecurityEnabled = True
+            Me.CheckBoxSpotTVOptions_ShowProgramName.SiblingControls = Nothing
+            Me.CheckBoxSpotTVOptions_ShowProgramName.Size = New System.Drawing.Size(153, 20)
+            Me.CheckBoxSpotTVOptions_ShowProgramName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxSpotTVOptions_ShowProgramName.TabIndex = 1
+            Me.CheckBoxSpotTVOptions_ShowProgramName.TabOnEnter = True
+            Me.CheckBoxSpotTVOptions_ShowProgramName.Text = "Show Program Name"
+            '
+            'LabelSpotTVMarketStation_Market
+            '
+            Me.LabelSpotTVMarketStation_Market.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVMarketStation_Market.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVMarketStation_Market.Location = New System.Drawing.Point(11, 29)
+            Me.LabelSpotTVMarketStation_Market.Name = "LabelSpotTVMarketStation_Market"
+            Me.LabelSpotTVMarketStation_Market.Size = New System.Drawing.Size(81, 20)
+            Me.LabelSpotTVMarketStation_Market.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVMarketStation_Market.TabIndex = 2
+            Me.LabelSpotTVMarketStation_Market.Text = "Market:"
+            '
+            'LabelSpotTVMarketStation_ReportType
+            '
+            Me.LabelSpotTVMarketStation_ReportType.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVMarketStation_ReportType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVMarketStation_ReportType.Location = New System.Drawing.Point(12, 55)
+            Me.LabelSpotTVMarketStation_ReportType.Name = "LabelSpotTVMarketStation_ReportType"
+            Me.LabelSpotTVMarketStation_ReportType.Size = New System.Drawing.Size(81, 20)
+            Me.LabelSpotTVMarketStation_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVMarketStation_ReportType.TabIndex = 4
+            Me.LabelSpotTVMarketStation_ReportType.Text = "Report Type:"
+            '
+            'SearchableComboBoxSpotTVMarketStation_Market
+            '
+            Me.SearchableComboBoxSpotTVMarketStation_Market.ActiveFilterString = ""
+            Me.SearchableComboBoxSpotTVMarketStation_Market.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxSpotTVMarketStation_Market.AutoFillMode = False
+            Me.SearchableComboBoxSpotTVMarketStation_Market.BookmarkingEnabled = False
+            Me.SearchableComboBoxSpotTVMarketStation_Market.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.Type.Market
+            Me.SearchableComboBoxSpotTVMarketStation_Market.DataSource = Nothing
+            Me.SearchableComboBoxSpotTVMarketStation_Market.DisableMouseWheel = True
+            Me.SearchableComboBoxSpotTVMarketStation_Market.DisplayName = ""
+            Me.SearchableComboBoxSpotTVMarketStation_Market.EditValue = ""
+            Me.SearchableComboBoxSpotTVMarketStation_Market.EnterMoveNextControl = True
+            Me.SearchableComboBoxSpotTVMarketStation_Market.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.[Nothing]
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Location = New System.Drawing.Point(99, 30)
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Name = "SearchableComboBoxSpotTVMarketStation_Market"
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.DisplayMember = "Description"
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.NullText = "Select Market"
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.PopupView = Me.SearchableComboBoxSpotTVViewControl_Market
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.ShowClearButton = False
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.ValueMember = "Code"
+            Me.SearchableComboBoxSpotTVMarketStation_Market.SecurityEnabled = True
+            Me.SearchableComboBoxSpotTVMarketStation_Market.SelectedValue = ""
+            Me.SearchableComboBoxSpotTVMarketStation_Market.Size = New System.Drawing.Size(226, 20)
+            Me.SearchableComboBoxSpotTVMarketStation_Market.TabIndex = 3
+            '
+            'SearchableComboBoxSpotTVViewControl_Market
+            '
+            Me.SearchableComboBoxSpotTVViewControl_Market.AFActiveFilterString = ""
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.ColumnFilterButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.ColumnFilterButtonActive.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.CustomizationFormHint.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.DetailTip.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.Empty.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FilterCloseButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FixedLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FocusedCell.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FocusedRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.HideSelectionRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.HorzLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.Row.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.RowSeparator.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.SelectedRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.TopNewRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.VertLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.ViewCaption.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.Lines.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.Row.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.SearchableComboBoxSpotTVViewControl_Market.EnableDisabledRows = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.SearchableComboBoxSpotTVViewControl_Market.ModifyColumnSettingsOnEachDataSource = True
+            Me.SearchableComboBoxSpotTVViewControl_Market.ModifyGridRowHeight = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.Name = "SearchableComboBoxSpotTVViewControl_Market"
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsBehavior.Editable = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsCustomization.AllowQuickHideColumns = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsNavigation.AutoFocusNewRow = True
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsSelection.MultiSelect = True
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsView.ColumnAutoWidth = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsView.ShowGroupPanel = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
+            Me.SearchableComboBoxSpotTVViewControl_Market.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.SearchableComboBoxSpotTVViewControl_Market.SkipAddingControlsOnModifyColumn = False
+            Me.SearchableComboBoxSpotTVViewControl_Market.SkipSettingFontOnModifyColumn = False
+            '
+            'TabItemSpotTV_MarketStations
+            '
+            Me.TabItemSpotTV_MarketStations.AttachedControl = Me.TabControlPanelSpotTVMarketStations_Criteria
+            Me.TabItemSpotTV_MarketStations.Name = "TabItemSpotTV_MarketStations"
+            Me.TabItemSpotTV_MarketStations.Text = "Market/Report Type/Stations"
+            '
+            'TabControlPanelSpotTVBooks_Criteria
+            '
+            Me.TabControlPanelSpotTVBooks_Criteria.Controls.Add(Me.DataGridViewSpotTV_DayTimes)
+            Me.TabControlPanelSpotTVBooks_Criteria.Controls.Add(Me.ExpandableSplitterSpotTVDaysTimes)
+            Me.TabControlPanelSpotTVBooks_Criteria.Controls.Add(Me.ShareHPUTBookControl_Books)
+            Me.TabControlPanelSpotTVBooks_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVBooks_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVBooks_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVBooks_Criteria.Name = "TabControlPanelSpotTVBooks_Criteria"
+            Me.TabControlPanelSpotTVBooks_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVBooks_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVBooks_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVBooks_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVBooks_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVBooks_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVBooks_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVBooks_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVBooks_Criteria.TabIndex = 11
+            Me.TabControlPanelSpotTVBooks_Criteria.TabItem = Me.TabItemSpotTV_Books
+            '
+            'DataGridViewSpotTV_DayTimes
+            '
+            Me.DataGridViewSpotTV_DayTimes.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_DayTimes.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_DayTimes.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.DataGridViewSpotTV_DayTimes.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_DayTimes.ItemDescription = "Day Time(s)"
+            Me.DataGridViewSpotTV_DayTimes.Location = New System.Drawing.Point(1, 287)
+            Me.DataGridViewSpotTV_DayTimes.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_DayTimes.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_DayTimes.MultiSelect = True
+            Me.DataGridViewSpotTV_DayTimes.Name = "DataGridViewSpotTV_DayTimes"
+            Me.DataGridViewSpotTV_DayTimes.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_DayTimes.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_DayTimes.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_DayTimes.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_DayTimes.Size = New System.Drawing.Size(823, 256)
+            Me.DataGridViewSpotTV_DayTimes.TabIndex = 14
+            Me.DataGridViewSpotTV_DayTimes.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_DayTimes.ViewCaptionHeight = -1
+            '
+            'ExpandableSplitterSpotTVDaysTimes
+            '
+            Me.ExpandableSplitterSpotTVDaysTimes.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVDaysTimes.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterSpotTVDaysTimes.Cursor = System.Windows.Forms.Cursors.HSplit
+            Me.ExpandableSplitterSpotTVDaysTimes.Dock = System.Windows.Forms.DockStyle.Top
+            Me.ExpandableSplitterSpotTVDaysTimes.ExpandableControl = Me.ShareHPUTBookControl_Books
+            Me.ExpandableSplitterSpotTVDaysTimes.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVDaysTimes.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVDaysTimes.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterSpotTVDaysTimes.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVDaysTimes.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterSpotTVDaysTimes.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterSpotTVDaysTimes.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterSpotTVDaysTimes.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterSpotTVDaysTimes.Location = New System.Drawing.Point(1, 281)
+            Me.ExpandableSplitterSpotTVDaysTimes.Name = "ExpandableSplitterSpotTVDaysTimes"
+            Me.ExpandableSplitterSpotTVDaysTimes.Size = New System.Drawing.Size(823, 6)
+            Me.ExpandableSplitterSpotTVDaysTimes.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterSpotTVDaysTimes.TabIndex = 13
+            Me.ExpandableSplitterSpotTVDaysTimes.TabStop = False
+            '
+            'ShareHPUTBookControl_Books
+            '
+            Me.ShareHPUTBookControl_Books.Dock = System.Windows.Forms.DockStyle.Top
+            Me.ShareHPUTBookControl_Books.Location = New System.Drawing.Point(1, 1)
+            Me.ShareHPUTBookControl_Books.Name = "ShareHPUTBookControl_Books"
+            Me.ShareHPUTBookControl_Books.Size = New System.Drawing.Size(823, 280)
+            Me.ShareHPUTBookControl_Books.TabIndex = 0
+            '
+            'TabItemSpotTV_Books
+            '
+            Me.TabItemSpotTV_Books.AttachedControl = Me.TabControlPanelSpotTVBooks_Criteria
+            Me.TabItemSpotTV_Books.Name = "TabItemSpotTV_Books"
+            Me.TabItemSpotTV_Books.Text = "Books/Days/Times"
+            '
+            'TabControlPanelSpotTVResults_Results
+            '
+            Me.TabControlPanelSpotTVResults_Results.Controls.Add(Me.TabControlResults_TVResults)
+            Me.TabControlPanelSpotTVResults_Results.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVResults_Results.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVResults_Results.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVResults_Results.Name = "TabControlPanelSpotTVResults_Results"
+            Me.TabControlPanelSpotTVResults_Results.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVResults_Results.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVResults_Results.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVResults_Results.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVResults_Results.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVResults_Results.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVResults_Results.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVResults_Results.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVResults_Results.TabIndex = 34
+            Me.TabControlPanelSpotTVResults_Results.TabItem = Me.TabItemSpotTV_Results
+            '
+            'TabControlResults_TVResults
+            '
+            Me.TabControlResults_TVResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlResults_TVResults.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+            Me.TabControlResults_TVResults.CanReorderTabs = False
+            Me.TabControlResults_TVResults.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlResults_TVResults.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlResults_TVResults.Controls.Add(Me.TabControlPanelTVDataTab_TVData)
+            Me.TabControlResults_TVResults.Controls.Add(Me.TabControlPanelTVDashboardTab_TVDashboard)
+            Me.TabControlResults_TVResults.ForeColor = System.Drawing.Color.Black
+            Me.TabControlResults_TVResults.Location = New System.Drawing.Point(4, 4)
+            Me.TabControlResults_TVResults.Name = "TabControlResults_TVResults"
+            Me.TabControlResults_TVResults.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlResults_TVResults.SelectedTabIndex = 0
+            Me.TabControlResults_TVResults.Size = New System.Drawing.Size(817, 536)
+            Me.TabControlResults_TVResults.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlResults_TVResults.TabIndex = 3
+            Me.TabControlResults_TVResults.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlResults_TVResults.Tabs.Add(Me.TabItemTVResults_TVDataTab)
+            Me.TabControlResults_TVResults.Tabs.Add(Me.TabItemTVResults_TVDashboardTab)
+            Me.TabControlResults_TVResults.TabStop = False
+            '
+            'TabControlPanelTVDataTab_TVData
+            '
+            Me.TabControlPanelTVDataTab_TVData.Controls.Add(Me.LabelSpotTVResults_Footer)
+            Me.TabControlPanelTVDataTab_TVData.Controls.Add(Me.BandedDataGridViewSpotTVResults)
+            Me.TabControlPanelTVDataTab_TVData.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelTVDataTab_TVData.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelTVDataTab_TVData.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelTVDataTab_TVData.Name = "TabControlPanelTVDataTab_TVData"
+            Me.TabControlPanelTVDataTab_TVData.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelTVDataTab_TVData.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanelTVDataTab_TVData.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelTVDataTab_TVData.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelTVDataTab_TVData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelTVDataTab_TVData.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelTVDataTab_TVData.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelTVDataTab_TVData.Style.GradientAngle = 90
+            Me.TabControlPanelTVDataTab_TVData.TabIndex = 10
+            Me.TabControlPanelTVDataTab_TVData.TabItem = Me.TabItemTVResults_TVDataTab
+            '
+            'LabelSpotTVResults_Footer
+            '
+            Me.LabelSpotTVResults_Footer.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelSpotTVResults_Footer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelSpotTVResults_Footer.Dock = System.Windows.Forms.DockStyle.Bottom
+            Me.LabelSpotTVResults_Footer.Location = New System.Drawing.Point(1, 444)
+            Me.LabelSpotTVResults_Footer.Name = "LabelSpotTVResults_Footer"
+            Me.LabelSpotTVResults_Footer.Size = New System.Drawing.Size(815, 64)
+            Me.LabelSpotTVResults_Footer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelSpotTVResults_Footer.TabIndex = 6
+            Me.LabelSpotTVResults_Footer.WordWrap = True
+            '
+            'BandedDataGridViewSpotTVResults
+            '
+            Me.BandedDataGridViewSpotTVResults.AllowSelectGroupHeaderRow = True
+            Me.BandedDataGridViewSpotTVResults.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.BandedDataGridViewSpotTVResults.AutoUpdateViewCaption = True
+            Me.BandedDataGridViewSpotTVResults.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.BandedDataGridViewSpotTVResults.ItemDescription = "Item(s)"
+            Me.BandedDataGridViewSpotTVResults.Location = New System.Drawing.Point(4, 4)
+            Me.BandedDataGridViewSpotTVResults.ModifyColumnSettingsOnEachDataSource = True
+            Me.BandedDataGridViewSpotTVResults.ModifyGridRowHeight = False
+            Me.BandedDataGridViewSpotTVResults.MultiSelect = True
+            Me.BandedDataGridViewSpotTVResults.Name = "BandedDataGridViewSpotTVResults"
+            Me.BandedDataGridViewSpotTVResults.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.BandedDataGridViewSpotTVResults.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.BandedDataGridViewSpotTVResults.ShowRowSelectionIfHidden = True
+            Me.BandedDataGridViewSpotTVResults.ShowSelectDeselectAllButtons = False
+            Me.BandedDataGridViewSpotTVResults.Size = New System.Drawing.Size(808, 434)
+            Me.BandedDataGridViewSpotTVResults.TabIndex = 0
+            Me.BandedDataGridViewSpotTVResults.UseEmbeddedNavigator = False
+            Me.BandedDataGridViewSpotTVResults.ViewCaptionHeight = -1
+            '
+            'TabItemTVResults_TVDataTab
+            '
+            Me.TabItemTVResults_TVDataTab.AttachedControl = Me.TabControlPanelTVDataTab_TVData
+            Me.TabItemTVResults_TVDataTab.Name = "TabItemTVResults_TVDataTab"
+            Me.TabItemTVResults_TVDataTab.Text = "Data"
+            '
+            'TabControlPanelTVDashboardTab_TVDashboard
+            '
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Controls.Add(Me.DashboardViewerTVDashboard_Dashboard)
+            Me.TabControlPanelTVDashboardTab_TVDashboard.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Name = "TabControlPanelTVDashboardTab_TVDashboard"
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.GradientAngle = 90
+            Me.TabControlPanelTVDashboardTab_TVDashboard.TabIndex = 11
+            Me.TabControlPanelTVDashboardTab_TVDashboard.TabItem = Me.TabItemTVResults_TVDashboardTab
+            '
+            'DashboardViewerTVDashboard_Dashboard
+            '
+            Me.DashboardViewerTVDashboard_Dashboard.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.DashboardViewerTVDashboard_Dashboard.Location = New System.Drawing.Point(1, 1)
+            Me.DashboardViewerTVDashboard_Dashboard.Name = "DashboardViewerTVDashboard_Dashboard"
+            Me.DashboardViewerTVDashboard_Dashboard.PdfExportOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerTVDashboard_Dashboard.PrintPreviewOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerTVDashboard_Dashboard.Size = New System.Drawing.Size(815, 507)
+            Me.DashboardViewerTVDashboard_Dashboard.TabIndex = 2
+            '
+            'TabItemTVResults_TVDashboardTab
+            '
+            Me.TabItemTVResults_TVDashboardTab.AttachedControl = Me.TabControlPanelTVDashboardTab_TVDashboard
+            Me.TabItemTVResults_TVDashboardTab.Name = "TabItemTVResults_TVDashboardTab"
+            Me.TabItemTVResults_TVDashboardTab.Text = "Dashboard"
+            '
+            'TabItemSpotTV_Results
+            '
+            Me.TabItemSpotTV_Results.AttachedControl = Me.TabControlPanelSpotTVResults_Results
+            Me.TabItemSpotTV_Results.Name = "TabItemSpotTV_Results"
+            Me.TabItemSpotTV_Results.Text = "Results"
+            '
+            'TabControlPanelSpotTVMetrics_Criteria
+            '
+            Me.TabControlPanelSpotTVMetrics_Criteria.Controls.Add(Me.PanelSpotTVMetrics_Criteria)
+            Me.TabControlPanelSpotTVMetrics_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVMetrics_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVMetrics_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVMetrics_Criteria.Name = "TabControlPanelSpotTVMetrics_Criteria"
+            Me.TabControlPanelSpotTVMetrics_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVMetrics_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVMetrics_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVMetrics_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVMetrics_Criteria.TabIndex = 25
+            Me.TabControlPanelSpotTVMetrics_Criteria.TabItem = Me.TabItemSpotTV_Metrics
+            '
+            'PanelSpotTVMetrics_Criteria
+            '
+            Me.PanelSpotTVMetrics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelSpotTVMetrics_Criteria.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVMetrics_Criteria.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVMetrics_Criteria.Controls.Add(Me.PanelSpotTVMetrics_Right)
+            Me.PanelSpotTVMetrics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotTVMetrics)
+            Me.PanelSpotTVMetrics_Criteria.Controls.Add(Me.PanelSpotTVMetrics_Left)
+            Me.PanelSpotTVMetrics_Criteria.Location = New System.Drawing.Point(4, 4)
+            Me.PanelSpotTVMetrics_Criteria.Name = "PanelSpotTVMetrics_Criteria"
+            Me.PanelSpotTVMetrics_Criteria.Size = New System.Drawing.Size(817, 536)
+            Me.PanelSpotTVMetrics_Criteria.TabIndex = 8
+            '
+            'PanelSpotTVMetrics_Right
+            '
+            Me.PanelSpotTVMetrics_Right.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVMetrics_Right.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVMetrics_Right.Controls.Add(Me.DataGridViewSpotTV_SelectedMetrics)
+            Me.PanelSpotTVMetrics_Right.Controls.Add(Me.ButtonSpotTVMetrics_AddToSelected)
+            Me.PanelSpotTVMetrics_Right.Controls.Add(Me.ButtonSpotTVMetrics_RemoveFromSelected)
+            Me.PanelSpotTVMetrics_Right.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotTVMetrics_Right.Location = New System.Drawing.Point(325, 2)
+            Me.PanelSpotTVMetrics_Right.Name = "PanelSpotTVMetrics_Right"
+            Me.PanelSpotTVMetrics_Right.Size = New System.Drawing.Size(490, 532)
+            Me.PanelSpotTVMetrics_Right.TabIndex = 1
+            '
+            'DataGridViewSpotTV_SelectedMetrics
+            '
+            Me.DataGridViewSpotTV_SelectedMetrics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_SelectedMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTV_SelectedMetrics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_SelectedMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_SelectedMetrics.ItemDescription = "Selected Metric(s)"
+            Me.DataGridViewSpotTV_SelectedMetrics.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotTV_SelectedMetrics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_SelectedMetrics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_SelectedMetrics.MultiSelect = True
+            Me.DataGridViewSpotTV_SelectedMetrics.Name = "DataGridViewSpotTV_SelectedMetrics"
+            Me.DataGridViewSpotTV_SelectedMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_SelectedMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_SelectedMetrics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_SelectedMetrics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_SelectedMetrics.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewSpotTV_SelectedMetrics.TabIndex = 2
+            Me.DataGridViewSpotTV_SelectedMetrics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_SelectedMetrics.ViewCaptionHeight = -1
+            '
+            'ButtonSpotTVMetrics_AddToSelected
+            '
+            Me.ButtonSpotTVMetrics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVMetrics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVMetrics_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotTVMetrics_AddToSelected.Name = "ButtonSpotTVMetrics_AddToSelected"
+            Me.ButtonSpotTVMetrics_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotTVMetrics_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVMetrics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVMetrics_AddToSelected.TabIndex = 0
+            Me.ButtonSpotTVMetrics_AddToSelected.Text = ">"
+            '
+            'ButtonSpotTVMetrics_RemoveFromSelected
+            '
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.Name = "ButtonSpotTVMetrics_RemoveFromSelected"
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotTVMetrics_RemoveFromSelected.Text = "<"
+            '
+            'ExpandableSplitterControlSpotTVMetrics
+            '
+            Me.ExpandableSplitterControlSpotTVMetrics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVMetrics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotTVMetrics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVMetrics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVMetrics.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotTVMetrics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVMetrics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVMetrics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVMetrics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVMetrics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVMetrics.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControlSpotTVMetrics.Name = "ExpandableSplitterControlSpotTVMetrics"
+            Me.ExpandableSplitterControlSpotTVMetrics.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControlSpotTVMetrics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotTVMetrics.TabIndex = 20
+            Me.ExpandableSplitterControlSpotTVMetrics.TabStop = False
+            '
+            'PanelSpotTVMetrics_Left
+            '
+            Me.PanelSpotTVMetrics_Left.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVMetrics_Left.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVMetrics_Left.Controls.Add(Me.DataGridViewSpotTV_AvailableMetrics)
+            Me.PanelSpotTVMetrics_Left.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotTVMetrics_Left.Location = New System.Drawing.Point(2, 2)
+            Me.PanelSpotTVMetrics_Left.Name = "PanelSpotTVMetrics_Left"
+            Me.PanelSpotTVMetrics_Left.Size = New System.Drawing.Size(317, 532)
+            Me.PanelSpotTVMetrics_Left.TabIndex = 0
+            '
+            'DataGridViewSpotTV_AvailableMetrics
+            '
+            Me.DataGridViewSpotTV_AvailableMetrics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_AvailableMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTV_AvailableMetrics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_AvailableMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_AvailableMetrics.ItemDescription = "Available Metric(s)"
+            Me.DataGridViewSpotTV_AvailableMetrics.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotTV_AvailableMetrics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_AvailableMetrics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_AvailableMetrics.MultiSelect = True
+            Me.DataGridViewSpotTV_AvailableMetrics.Name = "DataGridViewSpotTV_AvailableMetrics"
+            Me.DataGridViewSpotTV_AvailableMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_AvailableMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_AvailableMetrics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_AvailableMetrics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_AvailableMetrics.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewSpotTV_AvailableMetrics.TabIndex = 0
+            Me.DataGridViewSpotTV_AvailableMetrics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_AvailableMetrics.ViewCaptionHeight = -1
+            '
+            'TabItemSpotTV_Metrics
+            '
+            Me.TabItemSpotTV_Metrics.AttachedControl = Me.TabControlPanelSpotTVMetrics_Criteria
+            Me.TabItemSpotTV_Metrics.Name = "TabItemSpotTV_Metrics"
+            Me.TabItemSpotTV_Metrics.Text = "Metrics"
+            '
+            'TabControlPanelSpotTVDemographics_Criteria
+            '
+            Me.TabControlPanelSpotTVDemographics_Criteria.Controls.Add(Me.PanelSpotTVDemographics_Criteria)
+            Me.TabControlPanelSpotTVDemographics_Criteria.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotTVDemographics_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotTVDemographics_Criteria.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotTVDemographics_Criteria.Name = "TabControlPanelSpotTVDemographics_Criteria"
+            Me.TabControlPanelSpotTVDemographics_Criteria.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotTVDemographics_Criteria.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotTVDemographics_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelSpotTVDemographics_Criteria.Style.GradientAngle = 90
+            Me.TabControlPanelSpotTVDemographics_Criteria.TabIndex = 21
+            Me.TabControlPanelSpotTVDemographics_Criteria.TabItem = Me.TabItemSpotTV_Demographics
+            '
+            'PanelSpotTVDemographics_Criteria
+            '
+            Me.PanelSpotTVDemographics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelSpotTVDemographics_Criteria.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVDemographics_Criteria.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVDemographics_Criteria.Controls.Add(Me.PanelSpotTVDemographics_Right)
+            Me.PanelSpotTVDemographics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotTVDemographics)
+            Me.PanelSpotTVDemographics_Criteria.Controls.Add(Me.PanelSpotTVDemographics_Left)
+            Me.PanelSpotTVDemographics_Criteria.Location = New System.Drawing.Point(4, 4)
+            Me.PanelSpotTVDemographics_Criteria.Name = "PanelSpotTVDemographics_Criteria"
+            Me.PanelSpotTVDemographics_Criteria.Size = New System.Drawing.Size(817, 536)
+            Me.PanelSpotTVDemographics_Criteria.TabIndex = 7
+            '
+            'PanelSpotTVDemographics_Right
+            '
+            Me.PanelSpotTVDemographics_Right.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVDemographics_Right.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVDemographics_Right.Controls.Add(Me.DataGridViewSpotTV_SelectedDemographics)
+            Me.PanelSpotTVDemographics_Right.Controls.Add(Me.ButtonSpotTVDemographics_AddToSelected)
+            Me.PanelSpotTVDemographics_Right.Controls.Add(Me.ButtonSpotTVDemographics_RemoveFromSelected)
+            Me.PanelSpotTVDemographics_Right.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotTVDemographics_Right.Location = New System.Drawing.Point(325, 2)
+            Me.PanelSpotTVDemographics_Right.Name = "PanelSpotTVDemographics_Right"
+            Me.PanelSpotTVDemographics_Right.Size = New System.Drawing.Size(490, 532)
+            Me.PanelSpotTVDemographics_Right.TabIndex = 1
+            '
+            'DataGridViewSpotTV_SelectedDemographics
+            '
+            Me.DataGridViewSpotTV_SelectedDemographics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_SelectedDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTV_SelectedDemographics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_SelectedDemographics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_SelectedDemographics.ItemDescription = "Selected Demographic(s)"
+            Me.DataGridViewSpotTV_SelectedDemographics.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotTV_SelectedDemographics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_SelectedDemographics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_SelectedDemographics.MultiSelect = True
+            Me.DataGridViewSpotTV_SelectedDemographics.Name = "DataGridViewSpotTV_SelectedDemographics"
+            Me.DataGridViewSpotTV_SelectedDemographics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_SelectedDemographics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_SelectedDemographics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_SelectedDemographics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_SelectedDemographics.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewSpotTV_SelectedDemographics.TabIndex = 2
+            Me.DataGridViewSpotTV_SelectedDemographics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_SelectedDemographics.ViewCaptionHeight = -1
+            '
+            'ButtonSpotTVDemographics_AddToSelected
+            '
+            Me.ButtonSpotTVDemographics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVDemographics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVDemographics_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotTVDemographics_AddToSelected.Name = "ButtonSpotTVDemographics_AddToSelected"
+            Me.ButtonSpotTVDemographics_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotTVDemographics_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVDemographics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVDemographics_AddToSelected.TabIndex = 0
+            Me.ButtonSpotTVDemographics_AddToSelected.Text = ">"
+            '
+            'ButtonSpotTVDemographics_RemoveFromSelected
+            '
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.Name = "ButtonSpotTVDemographics_RemoveFromSelected"
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotTVDemographics_RemoveFromSelected.Text = "<"
+            '
+            'ExpandableSplitterControlSpotTVDemographics
+            '
+            Me.ExpandableSplitterControlSpotTVDemographics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVDemographics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotTVDemographics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVDemographics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVDemographics.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotTVDemographics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVDemographics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTVDemographics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTVDemographics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTVDemographics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTVDemographics.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControlSpotTVDemographics.Name = "ExpandableSplitterControlSpotTVDemographics"
+            Me.ExpandableSplitterControlSpotTVDemographics.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControlSpotTVDemographics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotTVDemographics.TabIndex = 20
+            Me.ExpandableSplitterControlSpotTVDemographics.TabStop = False
+            '
+            'PanelSpotTVDemographics_Left
+            '
+            Me.PanelSpotTVDemographics_Left.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotTVDemographics_Left.Appearance.Options.UseBackColor = True
+            Me.PanelSpotTVDemographics_Left.Controls.Add(Me.DataGridViewSpotTV_AvailableDemographics)
+            Me.PanelSpotTVDemographics_Left.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotTVDemographics_Left.Location = New System.Drawing.Point(2, 2)
+            Me.PanelSpotTVDemographics_Left.Name = "PanelSpotTVDemographics_Left"
+            Me.PanelSpotTVDemographics_Left.Size = New System.Drawing.Size(317, 532)
+            Me.PanelSpotTVDemographics_Left.TabIndex = 0
+            '
+            'DataGridViewSpotTV_AvailableDemographics
+            '
+            Me.DataGridViewSpotTV_AvailableDemographics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_AvailableDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTV_AvailableDemographics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_AvailableDemographics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_AvailableDemographics.ItemDescription = "Available Demographic(s)"
+            Me.DataGridViewSpotTV_AvailableDemographics.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotTV_AvailableDemographics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_AvailableDemographics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_AvailableDemographics.MultiSelect = True
+            Me.DataGridViewSpotTV_AvailableDemographics.Name = "DataGridViewSpotTV_AvailableDemographics"
+            Me.DataGridViewSpotTV_AvailableDemographics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_AvailableDemographics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_AvailableDemographics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_AvailableDemographics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_AvailableDemographics.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewSpotTV_AvailableDemographics.TabIndex = 0
+            Me.DataGridViewSpotTV_AvailableDemographics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_AvailableDemographics.ViewCaptionHeight = -1
+            '
+            'TabItemSpotTV_Demographics
+            '
+            Me.TabItemSpotTV_Demographics.AttachedControl = Me.TabControlPanelSpotTVDemographics_Criteria
+            Me.TabItemSpotTV_Demographics.Name = "TabItemSpotTV_Demographics"
+            Me.TabItemSpotTV_Demographics.Text = "Demographics"
+            '
+            'ExpandableSplitterControlSpotTV_LeftRight
+            '
+            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandableControl = Me.PanelSpotTV_LeftSection
+            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTV_LeftRight.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotTV_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTV_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotTV_LeftRight.Location = New System.Drawing.Point(198, 1)
+            Me.ExpandableSplitterControlSpotTV_LeftRight.Name = "ExpandableSplitterControlSpotTV_LeftRight"
+            Me.ExpandableSplitterControlSpotTV_LeftRight.Size = New System.Drawing.Size(6, 595)
+            Me.ExpandableSplitterControlSpotTV_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotTV_LeftRight.TabIndex = 12
+            Me.ExpandableSplitterControlSpotTV_LeftRight.TabStop = False
+            '
+            'PanelSpotTV_LeftSection
+            '
+            Me.PanelSpotTV_LeftSection.Controls.Add(Me.DataGridViewSpotTV_UserCriterias)
+            Me.PanelSpotTV_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotTV_LeftSection.Location = New System.Drawing.Point(1, 1)
+            Me.PanelSpotTV_LeftSection.Name = "PanelSpotTV_LeftSection"
+            Me.PanelSpotTV_LeftSection.Size = New System.Drawing.Size(197, 595)
+            Me.PanelSpotTV_LeftSection.TabIndex = 11
+            '
+            'DataGridViewSpotTV_UserCriterias
+            '
+            Me.DataGridViewSpotTV_UserCriterias.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotTV_UserCriterias.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotTV_UserCriterias.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotTV_UserCriterias.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotTV_UserCriterias.ItemDescription = "Report(s)"
+            Me.DataGridViewSpotTV_UserCriterias.Location = New System.Drawing.Point(12, 12)
+            Me.DataGridViewSpotTV_UserCriterias.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotTV_UserCriterias.ModifyGridRowHeight = False
+            Me.DataGridViewSpotTV_UserCriterias.MultiSelect = False
+            Me.DataGridViewSpotTV_UserCriterias.Name = "DataGridViewSpotTV_UserCriterias"
+            Me.DataGridViewSpotTV_UserCriterias.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotTV_UserCriterias.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotTV_UserCriterias.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotTV_UserCriterias.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotTV_UserCriterias.Size = New System.Drawing.Size(180, 571)
+            Me.DataGridViewSpotTV_UserCriterias.TabIndex = 0
+            Me.DataGridViewSpotTV_UserCriterias.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotTV_UserCriterias.ViewCaptionHeight = -1
+            '
+            'TabItemTabs_SpotTVTab
+            '
+            Me.TabItemTabs_SpotTVTab.AttachedControl = Me.TabControlPanelSpotTV_SpotTV
+            Me.TabItemTabs_SpotTVTab.Name = "TabItemTabs_SpotTVTab"
+            Me.TabItemTabs_SpotTVTab.Text = "Spot TV"
             '
             'TabControlPanelNational_National
             '
@@ -1025,10 +3424,10 @@
             Me.TabControlNational_ResearchCriteria.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlNational_ResearchCriteria.ColorScheme.TabPanelBackground = System.Drawing.Color.White
             Me.TabControlNational_ResearchCriteria.Controls.Add(Me.TabControlPanelNationalReportType)
-            Me.TabControlNational_ResearchCriteria.Controls.Add(Me.TabControlPanelNationalDates)
             Me.TabControlNational_ResearchCriteria.Controls.Add(Me.TabControlPanelNationalResults)
-            Me.TabControlNational_ResearchCriteria.Controls.Add(Me.TabControlPanelNationalDemographics)
             Me.TabControlNational_ResearchCriteria.Controls.Add(Me.TabControlPanelNationalMetrics)
+            Me.TabControlNational_ResearchCriteria.Controls.Add(Me.TabControlPanelNationalDemographics)
+            Me.TabControlNational_ResearchCriteria.Controls.Add(Me.TabControlPanelNationalDates)
             Me.TabControlNational_ResearchCriteria.ForeColor = System.Drawing.Color.Black
             Me.TabControlNational_ResearchCriteria.Location = New System.Drawing.Point(12, 12)
             Me.TabControlNational_ResearchCriteria.Name = "TabControlNational_ResearchCriteria"
@@ -1359,6 +3758,474 @@
             Me.TabItemNational_ReportType.AttachedControl = Me.TabControlPanelNationalReportType
             Me.TabItemNational_ReportType.Name = "TabItemNational_ReportType"
             Me.TabItemNational_ReportType.Text = "Report Type/Networks"
+            '
+            'TabControlPanelNationalResults
+            '
+            Me.TabControlPanelNationalResults.Controls.Add(Me.TabControlResults_NationalResults)
+            Me.TabControlPanelNationalResults.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNationalResults.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNationalResults.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNationalResults.Name = "TabControlPanelNationalResults"
+            Me.TabControlPanelNationalResults.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNationalResults.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelNationalResults.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNationalResults.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNationalResults.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNationalResults.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNationalResults.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNationalResults.Style.GradientAngle = 90
+            Me.TabControlPanelNationalResults.TabIndex = 34
+            Me.TabControlPanelNationalResults.TabItem = Me.TabItemNational_Results
+            '
+            'TabControlResults_NationalResults
+            '
+            Me.TabControlResults_NationalResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlResults_NationalResults.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+            Me.TabControlResults_NationalResults.CanReorderTabs = False
+            Me.TabControlResults_NationalResults.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlResults_NationalResults.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlResults_NationalResults.Controls.Add(Me.TabControlPanelNational_ResultsData)
+            Me.TabControlResults_NationalResults.Controls.Add(Me.TabControlPanelNational_ResultsDashboard)
+            Me.TabControlResults_NationalResults.ForeColor = System.Drawing.Color.Black
+            Me.TabControlResults_NationalResults.Location = New System.Drawing.Point(4, 4)
+            Me.TabControlResults_NationalResults.Name = "TabControlResults_NationalResults"
+            Me.TabControlResults_NationalResults.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlResults_NationalResults.SelectedTabIndex = 0
+            Me.TabControlResults_NationalResults.Size = New System.Drawing.Size(817, 536)
+            Me.TabControlResults_NationalResults.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlResults_NationalResults.TabIndex = 4
+            Me.TabControlResults_NationalResults.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlResults_NationalResults.Tabs.Add(Me.TabItemNationalResults_Data)
+            Me.TabControlResults_NationalResults.Tabs.Add(Me.TabItemNationalResults_Dashboard)
+            Me.TabControlResults_NationalResults.TabStop = False
+            '
+            'TabControlPanelNational_ResultsData
+            '
+            Me.TabControlPanelNational_ResultsData.Controls.Add(Me.BandedDataGridViewNationalResults)
+            Me.TabControlPanelNational_ResultsData.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNational_ResultsData.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNational_ResultsData.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNational_ResultsData.Name = "TabControlPanelNational_ResultsData"
+            Me.TabControlPanelNational_ResultsData.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNational_ResultsData.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanelNational_ResultsData.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNational_ResultsData.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNational_ResultsData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNational_ResultsData.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNational_ResultsData.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNational_ResultsData.Style.GradientAngle = 90
+            Me.TabControlPanelNational_ResultsData.TabIndex = 10
+            Me.TabControlPanelNational_ResultsData.TabItem = Me.TabItemNationalResults_Data
+            '
+            'BandedDataGridViewNationalResults
+            '
+            Me.BandedDataGridViewNationalResults.AllowSelectGroupHeaderRow = True
+            Me.BandedDataGridViewNationalResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.BandedDataGridViewNationalResults.AutoUpdateViewCaption = True
+            Me.BandedDataGridViewNationalResults.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.BandedDataGridViewNationalResults.ItemDescription = "Item(s)"
+            Me.BandedDataGridViewNationalResults.Location = New System.Drawing.Point(4, 4)
+            Me.BandedDataGridViewNationalResults.ModifyColumnSettingsOnEachDataSource = True
+            Me.BandedDataGridViewNationalResults.ModifyGridRowHeight = False
+            Me.BandedDataGridViewNationalResults.MultiSelect = True
+            Me.BandedDataGridViewNationalResults.Name = "BandedDataGridViewNationalResults"
+            Me.BandedDataGridViewNationalResults.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.BandedDataGridViewNationalResults.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.BandedDataGridViewNationalResults.ShowRowSelectionIfHidden = True
+            Me.BandedDataGridViewNationalResults.ShowSelectDeselectAllButtons = False
+            Me.BandedDataGridViewNationalResults.Size = New System.Drawing.Size(808, 501)
+            Me.BandedDataGridViewNationalResults.TabIndex = 0
+            Me.BandedDataGridViewNationalResults.UseEmbeddedNavigator = False
+            Me.BandedDataGridViewNationalResults.ViewCaptionHeight = -1
+            '
+            'TabItemNationalResults_Data
+            '
+            Me.TabItemNationalResults_Data.AttachedControl = Me.TabControlPanelNational_ResultsData
+            Me.TabItemNationalResults_Data.Name = "TabItemNationalResults_Data"
+            Me.TabItemNationalResults_Data.Text = "Data"
+            '
+            'TabControlPanelNational_ResultsDashboard
+            '
+            Me.TabControlPanelNational_ResultsDashboard.Controls.Add(Me.DashboardViewerControl1)
+            Me.TabControlPanelNational_ResultsDashboard.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNational_ResultsDashboard.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNational_ResultsDashboard.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNational_ResultsDashboard.Name = "TabControlPanelNational_ResultsDashboard"
+            Me.TabControlPanelNational_ResultsDashboard.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNational_ResultsDashboard.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanelNational_ResultsDashboard.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNational_ResultsDashboard.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNational_ResultsDashboard.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNational_ResultsDashboard.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNational_ResultsDashboard.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNational_ResultsDashboard.Style.GradientAngle = 90
+            Me.TabControlPanelNational_ResultsDashboard.TabIndex = 11
+            Me.TabControlPanelNational_ResultsDashboard.TabItem = Me.TabItemNationalResults_Dashboard
+            '
+            'DashboardViewerControl1
+            '
+            Me.DashboardViewerControl1.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.DashboardViewerControl1.Location = New System.Drawing.Point(1, 1)
+            Me.DashboardViewerControl1.Name = "DashboardViewerControl1"
+            Me.DashboardViewerControl1.PdfExportOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerControl1.PrintPreviewOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerControl1.Size = New System.Drawing.Size(815, 507)
+            Me.DashboardViewerControl1.TabIndex = 2
+            '
+            'TabItemNationalResults_Dashboard
+            '
+            Me.TabItemNationalResults_Dashboard.AttachedControl = Me.TabControlPanelNational_ResultsDashboard
+            Me.TabItemNationalResults_Dashboard.Name = "TabItemNationalResults_Dashboard"
+            Me.TabItemNationalResults_Dashboard.Text = "Dashboard"
+            '
+            'TabItemNational_Results
+            '
+            Me.TabItemNational_Results.AttachedControl = Me.TabControlPanelNationalResults
+            Me.TabItemNational_Results.Name = "TabItemNational_Results"
+            Me.TabItemNational_Results.Text = "Results"
+            '
+            'TabControlPanelNationalMetrics
+            '
+            Me.TabControlPanelNationalMetrics.Controls.Add(Me.PanelNationalMetrics)
+            Me.TabControlPanelNationalMetrics.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNationalMetrics.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNationalMetrics.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNationalMetrics.Name = "TabControlPanelNationalMetrics"
+            Me.TabControlPanelNationalMetrics.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNationalMetrics.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelNationalMetrics.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNationalMetrics.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNationalMetrics.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNationalMetrics.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNationalMetrics.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNationalMetrics.Style.GradientAngle = 90
+            Me.TabControlPanelNationalMetrics.TabIndex = 57
+            Me.TabControlPanelNationalMetrics.TabItem = Me.TabItemNational_Metrics
+            '
+            'PanelNationalMetrics
+            '
+            Me.PanelNationalMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelNationalMetrics.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelNationalMetrics.Appearance.Options.UseBackColor = True
+            Me.PanelNationalMetrics.Controls.Add(Me.PanelNationalMetrics_RightSection)
+            Me.PanelNationalMetrics.Controls.Add(Me.ExpandableSplitterControl5)
+            Me.PanelNationalMetrics.Controls.Add(Me.PanelNationalMetrics_LeftSection)
+            Me.PanelNationalMetrics.Location = New System.Drawing.Point(4, 4)
+            Me.PanelNationalMetrics.Name = "PanelNationalMetrics"
+            Me.PanelNationalMetrics.Size = New System.Drawing.Size(817, 536)
+            Me.PanelNationalMetrics.TabIndex = 9
+            '
+            'PanelNationalMetrics_RightSection
+            '
+            Me.PanelNationalMetrics_RightSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelNationalMetrics_RightSection.Appearance.Options.UseBackColor = True
+            Me.PanelNationalMetrics_RightSection.Controls.Add(Me.DataGridViewNational_MetricsSelected)
+            Me.PanelNationalMetrics_RightSection.Controls.Add(Me.ButtonNationalMetrics_AddSelected)
+            Me.PanelNationalMetrics_RightSection.Controls.Add(Me.ButtonNationalMetrics_RemoveSelected)
+            Me.PanelNationalMetrics_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelNationalMetrics_RightSection.Location = New System.Drawing.Point(325, 2)
+            Me.PanelNationalMetrics_RightSection.Name = "PanelNationalMetrics_RightSection"
+            Me.PanelNationalMetrics_RightSection.Size = New System.Drawing.Size(490, 532)
+            Me.PanelNationalMetrics_RightSection.TabIndex = 1
+            '
+            'DataGridViewNational_MetricsSelected
+            '
+            Me.DataGridViewNational_MetricsSelected.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewNational_MetricsSelected.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewNational_MetricsSelected.AutoUpdateViewCaption = True
+            Me.DataGridViewNational_MetricsSelected.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewNational_MetricsSelected.ItemDescription = "Selected Metric(s)"
+            Me.DataGridViewNational_MetricsSelected.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewNational_MetricsSelected.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewNational_MetricsSelected.ModifyGridRowHeight = False
+            Me.DataGridViewNational_MetricsSelected.MultiSelect = True
+            Me.DataGridViewNational_MetricsSelected.Name = "DataGridViewNational_MetricsSelected"
+            Me.DataGridViewNational_MetricsSelected.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewNational_MetricsSelected.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewNational_MetricsSelected.ShowRowSelectionIfHidden = True
+            Me.DataGridViewNational_MetricsSelected.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewNational_MetricsSelected.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewNational_MetricsSelected.TabIndex = 2
+            Me.DataGridViewNational_MetricsSelected.UseEmbeddedNavigator = False
+            Me.DataGridViewNational_MetricsSelected.ViewCaptionHeight = -1
+            '
+            'ButtonNationalMetrics_AddSelected
+            '
+            Me.ButtonNationalMetrics_AddSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonNationalMetrics_AddSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonNationalMetrics_AddSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonNationalMetrics_AddSelected.Name = "ButtonNationalMetrics_AddSelected"
+            Me.ButtonNationalMetrics_AddSelected.SecurityEnabled = True
+            Me.ButtonNationalMetrics_AddSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonNationalMetrics_AddSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonNationalMetrics_AddSelected.TabIndex = 0
+            Me.ButtonNationalMetrics_AddSelected.Text = ">"
+            '
+            'ButtonNationalMetrics_RemoveSelected
+            '
+            Me.ButtonNationalMetrics_RemoveSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonNationalMetrics_RemoveSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonNationalMetrics_RemoveSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonNationalMetrics_RemoveSelected.Name = "ButtonNationalMetrics_RemoveSelected"
+            Me.ButtonNationalMetrics_RemoveSelected.SecurityEnabled = True
+            Me.ButtonNationalMetrics_RemoveSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonNationalMetrics_RemoveSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonNationalMetrics_RemoveSelected.TabIndex = 1
+            Me.ButtonNationalMetrics_RemoveSelected.Text = "<"
+            '
+            'ExpandableSplitterControl5
+            '
+            Me.ExpandableSplitterControl5.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl5.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl5.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl5.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControl5.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl5.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl5.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl5.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl5.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControl5.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl5.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl5.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl5.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControl5.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControl5.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControl5.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControl5.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControl5.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl5.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl5.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl5.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl5.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl5.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl5.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl5.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControl5.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControl5.Name = "ExpandableSplitterControl5"
+            Me.ExpandableSplitterControl5.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControl5.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControl5.TabIndex = 20
+            Me.ExpandableSplitterControl5.TabStop = False
+            '
+            'PanelNationalMetrics_LeftSection
+            '
+            Me.PanelNationalMetrics_LeftSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelNationalMetrics_LeftSection.Appearance.Options.UseBackColor = True
+            Me.PanelNationalMetrics_LeftSection.Controls.Add(Me.DataGridViewNational_MetricsAvailable)
+            Me.PanelNationalMetrics_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelNationalMetrics_LeftSection.Location = New System.Drawing.Point(2, 2)
+            Me.PanelNationalMetrics_LeftSection.Name = "PanelNationalMetrics_LeftSection"
+            Me.PanelNationalMetrics_LeftSection.Size = New System.Drawing.Size(317, 532)
+            Me.PanelNationalMetrics_LeftSection.TabIndex = 0
+            '
+            'DataGridViewNational_MetricsAvailable
+            '
+            Me.DataGridViewNational_MetricsAvailable.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewNational_MetricsAvailable.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewNational_MetricsAvailable.AutoUpdateViewCaption = True
+            Me.DataGridViewNational_MetricsAvailable.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewNational_MetricsAvailable.ItemDescription = "Available Metric(s)"
+            Me.DataGridViewNational_MetricsAvailable.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewNational_MetricsAvailable.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewNational_MetricsAvailable.ModifyGridRowHeight = False
+            Me.DataGridViewNational_MetricsAvailable.MultiSelect = True
+            Me.DataGridViewNational_MetricsAvailable.Name = "DataGridViewNational_MetricsAvailable"
+            Me.DataGridViewNational_MetricsAvailable.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewNational_MetricsAvailable.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewNational_MetricsAvailable.ShowRowSelectionIfHidden = True
+            Me.DataGridViewNational_MetricsAvailable.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewNational_MetricsAvailable.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewNational_MetricsAvailable.TabIndex = 0
+            Me.DataGridViewNational_MetricsAvailable.UseEmbeddedNavigator = False
+            Me.DataGridViewNational_MetricsAvailable.ViewCaptionHeight = -1
+            '
+            'TabItemNational_Metrics
+            '
+            Me.TabItemNational_Metrics.AttachedControl = Me.TabControlPanelNationalMetrics
+            Me.TabItemNational_Metrics.Name = "TabItemNational_Metrics"
+            Me.TabItemNational_Metrics.Text = "Metrics"
+            '
+            'TabControlPanelNationalDemographics
+            '
+            Me.TabControlPanelNationalDemographics.Controls.Add(Me.PanelNationalDemographics)
+            Me.TabControlPanelNationalDemographics.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelNationalDemographics.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelNationalDemographics.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelNationalDemographics.Name = "TabControlPanelNationalDemographics"
+            Me.TabControlPanelNationalDemographics.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelNationalDemographics.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelNationalDemographics.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelNationalDemographics.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelNationalDemographics.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelNationalDemographics.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelNationalDemographics.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelNationalDemographics.Style.GradientAngle = 90
+            Me.TabControlPanelNationalDemographics.TabIndex = 25
+            Me.TabControlPanelNationalDemographics.TabItem = Me.TabItemNational_Demographics
+            '
+            'PanelNationalDemographics
+            '
+            Me.PanelNationalDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelNationalDemographics.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelNationalDemographics.Appearance.Options.UseBackColor = True
+            Me.PanelNationalDemographics.Controls.Add(Me.PanelNationalDemographics_RightSection)
+            Me.PanelNationalDemographics.Controls.Add(Me.ExpandableSplitterControl3)
+            Me.PanelNationalDemographics.Controls.Add(Me.PanelNationalDemographics_LeftSection)
+            Me.PanelNationalDemographics.Location = New System.Drawing.Point(4, 4)
+            Me.PanelNationalDemographics.Name = "PanelNationalDemographics"
+            Me.PanelNationalDemographics.Size = New System.Drawing.Size(817, 536)
+            Me.PanelNationalDemographics.TabIndex = 8
+            '
+            'PanelNationalDemographics_RightSection
+            '
+            Me.PanelNationalDemographics_RightSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelNationalDemographics_RightSection.Appearance.Options.UseBackColor = True
+            Me.PanelNationalDemographics_RightSection.Controls.Add(Me.DataGridViewNational_DemographicsSelected)
+            Me.PanelNationalDemographics_RightSection.Controls.Add(Me.ButtonNationalDemographics_AddSelected)
+            Me.PanelNationalDemographics_RightSection.Controls.Add(Me.ButtonNationalDemographics_RemoveSelected)
+            Me.PanelNationalDemographics_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelNationalDemographics_RightSection.Location = New System.Drawing.Point(325, 2)
+            Me.PanelNationalDemographics_RightSection.Name = "PanelNationalDemographics_RightSection"
+            Me.PanelNationalDemographics_RightSection.Size = New System.Drawing.Size(490, 532)
+            Me.PanelNationalDemographics_RightSection.TabIndex = 1
+            '
+            'DataGridViewNational_DemographicsSelected
+            '
+            Me.DataGridViewNational_DemographicsSelected.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewNational_DemographicsSelected.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewNational_DemographicsSelected.AutoUpdateViewCaption = True
+            Me.DataGridViewNational_DemographicsSelected.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewNational_DemographicsSelected.ItemDescription = "Selected Demographic(s)"
+            Me.DataGridViewNational_DemographicsSelected.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewNational_DemographicsSelected.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewNational_DemographicsSelected.ModifyGridRowHeight = False
+            Me.DataGridViewNational_DemographicsSelected.MultiSelect = True
+            Me.DataGridViewNational_DemographicsSelected.Name = "DataGridViewNational_DemographicsSelected"
+            Me.DataGridViewNational_DemographicsSelected.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewNational_DemographicsSelected.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewNational_DemographicsSelected.ShowRowSelectionIfHidden = True
+            Me.DataGridViewNational_DemographicsSelected.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewNational_DemographicsSelected.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewNational_DemographicsSelected.TabIndex = 2
+            Me.DataGridViewNational_DemographicsSelected.UseEmbeddedNavigator = False
+            Me.DataGridViewNational_DemographicsSelected.ViewCaptionHeight = -1
+            '
+            'ButtonNationalDemographics_AddSelected
+            '
+            Me.ButtonNationalDemographics_AddSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonNationalDemographics_AddSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonNationalDemographics_AddSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonNationalDemographics_AddSelected.Name = "ButtonNationalDemographics_AddSelected"
+            Me.ButtonNationalDemographics_AddSelected.SecurityEnabled = True
+            Me.ButtonNationalDemographics_AddSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonNationalDemographics_AddSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonNationalDemographics_AddSelected.TabIndex = 0
+            Me.ButtonNationalDemographics_AddSelected.Text = ">"
+            '
+            'ButtonNationalDemographics_RemoveSelected
+            '
+            Me.ButtonNationalDemographics_RemoveSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonNationalDemographics_RemoveSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonNationalDemographics_RemoveSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonNationalDemographics_RemoveSelected.Name = "ButtonNationalDemographics_RemoveSelected"
+            Me.ButtonNationalDemographics_RemoveSelected.SecurityEnabled = True
+            Me.ButtonNationalDemographics_RemoveSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonNationalDemographics_RemoveSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonNationalDemographics_RemoveSelected.TabIndex = 1
+            Me.ButtonNationalDemographics_RemoveSelected.Text = "<"
+            '
+            'ExpandableSplitterControl3
+            '
+            Me.ExpandableSplitterControl3.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl3.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl3.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl3.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControl3.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl3.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl3.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl3.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl3.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControl3.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl3.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl3.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl3.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControl3.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControl3.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControl3.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControl3.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControl3.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl3.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl3.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControl3.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControl3.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControl3.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControl3.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControl3.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControl3.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControl3.Name = "ExpandableSplitterControl3"
+            Me.ExpandableSplitterControl3.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControl3.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControl3.TabIndex = 20
+            Me.ExpandableSplitterControl3.TabStop = False
+            '
+            'PanelNationalDemographics_LeftSection
+            '
+            Me.PanelNationalDemographics_LeftSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelNationalDemographics_LeftSection.Appearance.Options.UseBackColor = True
+            Me.PanelNationalDemographics_LeftSection.Controls.Add(Me.DataGridViewNational_DemographicsAvailable)
+            Me.PanelNationalDemographics_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelNationalDemographics_LeftSection.Location = New System.Drawing.Point(2, 2)
+            Me.PanelNationalDemographics_LeftSection.Name = "PanelNationalDemographics_LeftSection"
+            Me.PanelNationalDemographics_LeftSection.Size = New System.Drawing.Size(317, 532)
+            Me.PanelNationalDemographics_LeftSection.TabIndex = 0
+            '
+            'DataGridViewNational_DemographicsAvailable
+            '
+            Me.DataGridViewNational_DemographicsAvailable.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewNational_DemographicsAvailable.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewNational_DemographicsAvailable.AutoUpdateViewCaption = True
+            Me.DataGridViewNational_DemographicsAvailable.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewNational_DemographicsAvailable.ItemDescription = "Available Demographic(s)"
+            Me.DataGridViewNational_DemographicsAvailable.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewNational_DemographicsAvailable.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewNational_DemographicsAvailable.ModifyGridRowHeight = False
+            Me.DataGridViewNational_DemographicsAvailable.MultiSelect = True
+            Me.DataGridViewNational_DemographicsAvailable.Name = "DataGridViewNational_DemographicsAvailable"
+            Me.DataGridViewNational_DemographicsAvailable.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewNational_DemographicsAvailable.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewNational_DemographicsAvailable.ShowRowSelectionIfHidden = True
+            Me.DataGridViewNational_DemographicsAvailable.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewNational_DemographicsAvailable.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewNational_DemographicsAvailable.TabIndex = 0
+            Me.DataGridViewNational_DemographicsAvailable.UseEmbeddedNavigator = False
+            Me.DataGridViewNational_DemographicsAvailable.ViewCaptionHeight = -1
+            '
+            'TabItemNational_Demographics
+            '
+            Me.TabItemNational_Demographics.AttachedControl = Me.TabControlPanelNationalDemographics
+            Me.TabItemNational_Demographics.Name = "TabItemNational_Demographics"
+            Me.TabItemNational_Demographics.Text = "Demographics"
             '
             'TabControlPanelNationalDates
             '
@@ -2173,474 +5040,6 @@
             Me.TabItemNational_Dates.Name = "TabItemNational_Dates"
             Me.TabItemNational_Dates.Text = "Dates/Days/Times/Filters"
             '
-            'TabControlPanelNationalResults
-            '
-            Me.TabControlPanelNationalResults.Controls.Add(Me.TabControlResults_NationalResults)
-            Me.TabControlPanelNationalResults.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNationalResults.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNationalResults.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelNationalResults.Name = "TabControlPanelNationalResults"
-            Me.TabControlPanelNationalResults.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNationalResults.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelNationalResults.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNationalResults.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNationalResults.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNationalResults.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNationalResults.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNationalResults.Style.GradientAngle = 90
-            Me.TabControlPanelNationalResults.TabIndex = 34
-            Me.TabControlPanelNationalResults.TabItem = Me.TabItemNational_Results
-            '
-            'TabControlResults_NationalResults
-            '
-            Me.TabControlResults_NationalResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlResults_NationalResults.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-            Me.TabControlResults_NationalResults.CanReorderTabs = False
-            Me.TabControlResults_NationalResults.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlResults_NationalResults.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlResults_NationalResults.Controls.Add(Me.TabControlPanelNational_ResultsData)
-            Me.TabControlResults_NationalResults.Controls.Add(Me.TabControlPanelNational_ResultsDashboard)
-            Me.TabControlResults_NationalResults.ForeColor = System.Drawing.Color.Black
-            Me.TabControlResults_NationalResults.Location = New System.Drawing.Point(4, 4)
-            Me.TabControlResults_NationalResults.Name = "TabControlResults_NationalResults"
-            Me.TabControlResults_NationalResults.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlResults_NationalResults.SelectedTabIndex = 0
-            Me.TabControlResults_NationalResults.Size = New System.Drawing.Size(817, 536)
-            Me.TabControlResults_NationalResults.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlResults_NationalResults.TabIndex = 4
-            Me.TabControlResults_NationalResults.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlResults_NationalResults.Tabs.Add(Me.TabItemNationalResults_Data)
-            Me.TabControlResults_NationalResults.Tabs.Add(Me.TabItemNationalResults_Dashboard)
-            Me.TabControlResults_NationalResults.TabStop = False
-            '
-            'TabControlPanelNational_ResultsData
-            '
-            Me.TabControlPanelNational_ResultsData.Controls.Add(Me.BandedDataGridViewNationalResults)
-            Me.TabControlPanelNational_ResultsData.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNational_ResultsData.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNational_ResultsData.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelNational_ResultsData.Name = "TabControlPanelNational_ResultsData"
-            Me.TabControlPanelNational_ResultsData.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNational_ResultsData.Size = New System.Drawing.Size(817, 509)
-            Me.TabControlPanelNational_ResultsData.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNational_ResultsData.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNational_ResultsData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNational_ResultsData.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNational_ResultsData.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNational_ResultsData.Style.GradientAngle = 90
-            Me.TabControlPanelNational_ResultsData.TabIndex = 10
-            Me.TabControlPanelNational_ResultsData.TabItem = Me.TabItemNationalResults_Data
-            '
-            'BandedDataGridViewNationalResults
-            '
-            Me.BandedDataGridViewNationalResults.AllowSelectGroupHeaderRow = True
-            Me.BandedDataGridViewNationalResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.BandedDataGridViewNationalResults.AutoUpdateViewCaption = True
-            Me.BandedDataGridViewNationalResults.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.BandedDataGridViewNationalResults.ItemDescription = "Item(s)"
-            Me.BandedDataGridViewNationalResults.Location = New System.Drawing.Point(4, 4)
-            Me.BandedDataGridViewNationalResults.ModifyColumnSettingsOnEachDataSource = True
-            Me.BandedDataGridViewNationalResults.ModifyGridRowHeight = False
-            Me.BandedDataGridViewNationalResults.MultiSelect = True
-            Me.BandedDataGridViewNationalResults.Name = "BandedDataGridViewNationalResults"
-            Me.BandedDataGridViewNationalResults.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.BandedDataGridViewNationalResults.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.BandedDataGridViewNationalResults.ShowRowSelectionIfHidden = True
-            Me.BandedDataGridViewNationalResults.ShowSelectDeselectAllButtons = False
-            Me.BandedDataGridViewNationalResults.Size = New System.Drawing.Size(808, 501)
-            Me.BandedDataGridViewNationalResults.TabIndex = 0
-            Me.BandedDataGridViewNationalResults.UseEmbeddedNavigator = False
-            Me.BandedDataGridViewNationalResults.ViewCaptionHeight = -1
-            '
-            'TabItemNationalResults_Data
-            '
-            Me.TabItemNationalResults_Data.AttachedControl = Me.TabControlPanelNational_ResultsData
-            Me.TabItemNationalResults_Data.Name = "TabItemNationalResults_Data"
-            Me.TabItemNationalResults_Data.Text = "Data"
-            '
-            'TabControlPanelNational_ResultsDashboard
-            '
-            Me.TabControlPanelNational_ResultsDashboard.Controls.Add(Me.DashboardViewerControl1)
-            Me.TabControlPanelNational_ResultsDashboard.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNational_ResultsDashboard.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNational_ResultsDashboard.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelNational_ResultsDashboard.Name = "TabControlPanelNational_ResultsDashboard"
-            Me.TabControlPanelNational_ResultsDashboard.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNational_ResultsDashboard.Size = New System.Drawing.Size(817, 509)
-            Me.TabControlPanelNational_ResultsDashboard.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNational_ResultsDashboard.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNational_ResultsDashboard.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNational_ResultsDashboard.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNational_ResultsDashboard.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNational_ResultsDashboard.Style.GradientAngle = 90
-            Me.TabControlPanelNational_ResultsDashboard.TabIndex = 11
-            Me.TabControlPanelNational_ResultsDashboard.TabItem = Me.TabItemNationalResults_Dashboard
-            '
-            'DashboardViewerControl1
-            '
-            Me.DashboardViewerControl1.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.DashboardViewerControl1.Location = New System.Drawing.Point(1, 1)
-            Me.DashboardViewerControl1.Name = "DashboardViewerControl1"
-            Me.DashboardViewerControl1.PdfExportOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
-            Me.DashboardViewerControl1.PrintPreviewOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
-            Me.DashboardViewerControl1.Size = New System.Drawing.Size(815, 507)
-            Me.DashboardViewerControl1.TabIndex = 2
-            '
-            'TabItemNationalResults_Dashboard
-            '
-            Me.TabItemNationalResults_Dashboard.AttachedControl = Me.TabControlPanelNational_ResultsDashboard
-            Me.TabItemNationalResults_Dashboard.Name = "TabItemNationalResults_Dashboard"
-            Me.TabItemNationalResults_Dashboard.Text = "Dashboard"
-            '
-            'TabItemNational_Results
-            '
-            Me.TabItemNational_Results.AttachedControl = Me.TabControlPanelNationalResults
-            Me.TabItemNational_Results.Name = "TabItemNational_Results"
-            Me.TabItemNational_Results.Text = "Results"
-            '
-            'TabControlPanelNationalDemographics
-            '
-            Me.TabControlPanelNationalDemographics.Controls.Add(Me.PanelNationalDemographics)
-            Me.TabControlPanelNationalDemographics.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNationalDemographics.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNationalDemographics.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelNationalDemographics.Name = "TabControlPanelNationalDemographics"
-            Me.TabControlPanelNationalDemographics.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNationalDemographics.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelNationalDemographics.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNationalDemographics.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNationalDemographics.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNationalDemographics.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNationalDemographics.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNationalDemographics.Style.GradientAngle = 90
-            Me.TabControlPanelNationalDemographics.TabIndex = 25
-            Me.TabControlPanelNationalDemographics.TabItem = Me.TabItemNational_Demographics
-            '
-            'PanelNationalDemographics
-            '
-            Me.PanelNationalDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelNationalDemographics.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelNationalDemographics.Appearance.Options.UseBackColor = True
-            Me.PanelNationalDemographics.Controls.Add(Me.PanelNationalDemographics_RightSection)
-            Me.PanelNationalDemographics.Controls.Add(Me.ExpandableSplitterControl3)
-            Me.PanelNationalDemographics.Controls.Add(Me.PanelNationalDemographics_LeftSection)
-            Me.PanelNationalDemographics.Location = New System.Drawing.Point(4, 4)
-            Me.PanelNationalDemographics.Name = "PanelNationalDemographics"
-            Me.PanelNationalDemographics.Size = New System.Drawing.Size(817, 536)
-            Me.PanelNationalDemographics.TabIndex = 8
-            '
-            'PanelNationalDemographics_RightSection
-            '
-            Me.PanelNationalDemographics_RightSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelNationalDemographics_RightSection.Appearance.Options.UseBackColor = True
-            Me.PanelNationalDemographics_RightSection.Controls.Add(Me.DataGridViewNational_DemographicsSelected)
-            Me.PanelNationalDemographics_RightSection.Controls.Add(Me.ButtonNationalDemographics_AddSelected)
-            Me.PanelNationalDemographics_RightSection.Controls.Add(Me.ButtonNationalDemographics_RemoveSelected)
-            Me.PanelNationalDemographics_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelNationalDemographics_RightSection.Location = New System.Drawing.Point(325, 2)
-            Me.PanelNationalDemographics_RightSection.Name = "PanelNationalDemographics_RightSection"
-            Me.PanelNationalDemographics_RightSection.Size = New System.Drawing.Size(490, 532)
-            Me.PanelNationalDemographics_RightSection.TabIndex = 1
-            '
-            'DataGridViewNational_DemographicsSelected
-            '
-            Me.DataGridViewNational_DemographicsSelected.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewNational_DemographicsSelected.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewNational_DemographicsSelected.AutoUpdateViewCaption = True
-            Me.DataGridViewNational_DemographicsSelected.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewNational_DemographicsSelected.ItemDescription = "Selected Demographic(s)"
-            Me.DataGridViewNational_DemographicsSelected.Location = New System.Drawing.Point(86, 5)
-            Me.DataGridViewNational_DemographicsSelected.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewNational_DemographicsSelected.ModifyGridRowHeight = False
-            Me.DataGridViewNational_DemographicsSelected.MultiSelect = True
-            Me.DataGridViewNational_DemographicsSelected.Name = "DataGridViewNational_DemographicsSelected"
-            Me.DataGridViewNational_DemographicsSelected.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewNational_DemographicsSelected.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewNational_DemographicsSelected.ShowRowSelectionIfHidden = True
-            Me.DataGridViewNational_DemographicsSelected.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewNational_DemographicsSelected.Size = New System.Drawing.Size(399, 522)
-            Me.DataGridViewNational_DemographicsSelected.TabIndex = 2
-            Me.DataGridViewNational_DemographicsSelected.UseEmbeddedNavigator = False
-            Me.DataGridViewNational_DemographicsSelected.ViewCaptionHeight = -1
-            '
-            'ButtonNationalDemographics_AddSelected
-            '
-            Me.ButtonNationalDemographics_AddSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonNationalDemographics_AddSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonNationalDemographics_AddSelected.Location = New System.Drawing.Point(5, 5)
-            Me.ButtonNationalDemographics_AddSelected.Name = "ButtonNationalDemographics_AddSelected"
-            Me.ButtonNationalDemographics_AddSelected.SecurityEnabled = True
-            Me.ButtonNationalDemographics_AddSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonNationalDemographics_AddSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonNationalDemographics_AddSelected.TabIndex = 0
-            Me.ButtonNationalDemographics_AddSelected.Text = ">"
-            '
-            'ButtonNationalDemographics_RemoveSelected
-            '
-            Me.ButtonNationalDemographics_RemoveSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonNationalDemographics_RemoveSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonNationalDemographics_RemoveSelected.Location = New System.Drawing.Point(5, 31)
-            Me.ButtonNationalDemographics_RemoveSelected.Name = "ButtonNationalDemographics_RemoveSelected"
-            Me.ButtonNationalDemographics_RemoveSelected.SecurityEnabled = True
-            Me.ButtonNationalDemographics_RemoveSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonNationalDemographics_RemoveSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonNationalDemographics_RemoveSelected.TabIndex = 1
-            Me.ButtonNationalDemographics_RemoveSelected.Text = "<"
-            '
-            'ExpandableSplitterControl3
-            '
-            Me.ExpandableSplitterControl3.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl3.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl3.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl3.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControl3.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl3.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl3.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl3.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl3.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControl3.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl3.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl3.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl3.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControl3.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControl3.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControl3.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControl3.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControl3.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl3.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl3.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl3.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl3.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl3.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl3.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl3.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControl3.Location = New System.Drawing.Point(319, 2)
-            Me.ExpandableSplitterControl3.Name = "ExpandableSplitterControl3"
-            Me.ExpandableSplitterControl3.Size = New System.Drawing.Size(6, 532)
-            Me.ExpandableSplitterControl3.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControl3.TabIndex = 20
-            Me.ExpandableSplitterControl3.TabStop = False
-            '
-            'PanelNationalDemographics_LeftSection
-            '
-            Me.PanelNationalDemographics_LeftSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelNationalDemographics_LeftSection.Appearance.Options.UseBackColor = True
-            Me.PanelNationalDemographics_LeftSection.Controls.Add(Me.DataGridViewNational_DemographicsAvailable)
-            Me.PanelNationalDemographics_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelNationalDemographics_LeftSection.Location = New System.Drawing.Point(2, 2)
-            Me.PanelNationalDemographics_LeftSection.Name = "PanelNationalDemographics_LeftSection"
-            Me.PanelNationalDemographics_LeftSection.Size = New System.Drawing.Size(317, 532)
-            Me.PanelNationalDemographics_LeftSection.TabIndex = 0
-            '
-            'DataGridViewNational_DemographicsAvailable
-            '
-            Me.DataGridViewNational_DemographicsAvailable.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewNational_DemographicsAvailable.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewNational_DemographicsAvailable.AutoUpdateViewCaption = True
-            Me.DataGridViewNational_DemographicsAvailable.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewNational_DemographicsAvailable.ItemDescription = "Available Demographic(s)"
-            Me.DataGridViewNational_DemographicsAvailable.Location = New System.Drawing.Point(5, 5)
-            Me.DataGridViewNational_DemographicsAvailable.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewNational_DemographicsAvailable.ModifyGridRowHeight = False
-            Me.DataGridViewNational_DemographicsAvailable.MultiSelect = True
-            Me.DataGridViewNational_DemographicsAvailable.Name = "DataGridViewNational_DemographicsAvailable"
-            Me.DataGridViewNational_DemographicsAvailable.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewNational_DemographicsAvailable.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewNational_DemographicsAvailable.ShowRowSelectionIfHidden = True
-            Me.DataGridViewNational_DemographicsAvailable.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewNational_DemographicsAvailable.Size = New System.Drawing.Size(306, 522)
-            Me.DataGridViewNational_DemographicsAvailable.TabIndex = 0
-            Me.DataGridViewNational_DemographicsAvailable.UseEmbeddedNavigator = False
-            Me.DataGridViewNational_DemographicsAvailable.ViewCaptionHeight = -1
-            '
-            'TabItemNational_Demographics
-            '
-            Me.TabItemNational_Demographics.AttachedControl = Me.TabControlPanelNationalDemographics
-            Me.TabItemNational_Demographics.Name = "TabItemNational_Demographics"
-            Me.TabItemNational_Demographics.Text = "Demographics"
-            '
-            'TabControlPanelNationalMetrics
-            '
-            Me.TabControlPanelNationalMetrics.Controls.Add(Me.PanelNationalMetrics)
-            Me.TabControlPanelNationalMetrics.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelNationalMetrics.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelNationalMetrics.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelNationalMetrics.Name = "TabControlPanelNationalMetrics"
-            Me.TabControlPanelNationalMetrics.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelNationalMetrics.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelNationalMetrics.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelNationalMetrics.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelNationalMetrics.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelNationalMetrics.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelNationalMetrics.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelNationalMetrics.Style.GradientAngle = 90
-            Me.TabControlPanelNationalMetrics.TabIndex = 57
-            Me.TabControlPanelNationalMetrics.TabItem = Me.TabItemNational_Metrics
-            '
-            'PanelNationalMetrics
-            '
-            Me.PanelNationalMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelNationalMetrics.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelNationalMetrics.Appearance.Options.UseBackColor = True
-            Me.PanelNationalMetrics.Controls.Add(Me.PanelNationalMetrics_RightSection)
-            Me.PanelNationalMetrics.Controls.Add(Me.ExpandableSplitterControl5)
-            Me.PanelNationalMetrics.Controls.Add(Me.PanelNationalMetrics_LeftSection)
-            Me.PanelNationalMetrics.Location = New System.Drawing.Point(4, 4)
-            Me.PanelNationalMetrics.Name = "PanelNationalMetrics"
-            Me.PanelNationalMetrics.Size = New System.Drawing.Size(817, 536)
-            Me.PanelNationalMetrics.TabIndex = 9
-            '
-            'PanelNationalMetrics_RightSection
-            '
-            Me.PanelNationalMetrics_RightSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelNationalMetrics_RightSection.Appearance.Options.UseBackColor = True
-            Me.PanelNationalMetrics_RightSection.Controls.Add(Me.DataGridViewNational_MetricsSelected)
-            Me.PanelNationalMetrics_RightSection.Controls.Add(Me.ButtonNationalMetrics_AddSelected)
-            Me.PanelNationalMetrics_RightSection.Controls.Add(Me.ButtonNationalMetrics_RemoveSelected)
-            Me.PanelNationalMetrics_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelNationalMetrics_RightSection.Location = New System.Drawing.Point(325, 2)
-            Me.PanelNationalMetrics_RightSection.Name = "PanelNationalMetrics_RightSection"
-            Me.PanelNationalMetrics_RightSection.Size = New System.Drawing.Size(490, 532)
-            Me.PanelNationalMetrics_RightSection.TabIndex = 1
-            '
-            'DataGridViewNational_MetricsSelected
-            '
-            Me.DataGridViewNational_MetricsSelected.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewNational_MetricsSelected.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewNational_MetricsSelected.AutoUpdateViewCaption = True
-            Me.DataGridViewNational_MetricsSelected.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewNational_MetricsSelected.ItemDescription = "Selected Metric(s)"
-            Me.DataGridViewNational_MetricsSelected.Location = New System.Drawing.Point(86, 5)
-            Me.DataGridViewNational_MetricsSelected.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewNational_MetricsSelected.ModifyGridRowHeight = False
-            Me.DataGridViewNational_MetricsSelected.MultiSelect = True
-            Me.DataGridViewNational_MetricsSelected.Name = "DataGridViewNational_MetricsSelected"
-            Me.DataGridViewNational_MetricsSelected.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewNational_MetricsSelected.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewNational_MetricsSelected.ShowRowSelectionIfHidden = True
-            Me.DataGridViewNational_MetricsSelected.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewNational_MetricsSelected.Size = New System.Drawing.Size(399, 522)
-            Me.DataGridViewNational_MetricsSelected.TabIndex = 2
-            Me.DataGridViewNational_MetricsSelected.UseEmbeddedNavigator = False
-            Me.DataGridViewNational_MetricsSelected.ViewCaptionHeight = -1
-            '
-            'ButtonNationalMetrics_AddSelected
-            '
-            Me.ButtonNationalMetrics_AddSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonNationalMetrics_AddSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonNationalMetrics_AddSelected.Location = New System.Drawing.Point(5, 5)
-            Me.ButtonNationalMetrics_AddSelected.Name = "ButtonNationalMetrics_AddSelected"
-            Me.ButtonNationalMetrics_AddSelected.SecurityEnabled = True
-            Me.ButtonNationalMetrics_AddSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonNationalMetrics_AddSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonNationalMetrics_AddSelected.TabIndex = 0
-            Me.ButtonNationalMetrics_AddSelected.Text = ">"
-            '
-            'ButtonNationalMetrics_RemoveSelected
-            '
-            Me.ButtonNationalMetrics_RemoveSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonNationalMetrics_RemoveSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonNationalMetrics_RemoveSelected.Location = New System.Drawing.Point(5, 31)
-            Me.ButtonNationalMetrics_RemoveSelected.Name = "ButtonNationalMetrics_RemoveSelected"
-            Me.ButtonNationalMetrics_RemoveSelected.SecurityEnabled = True
-            Me.ButtonNationalMetrics_RemoveSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonNationalMetrics_RemoveSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonNationalMetrics_RemoveSelected.TabIndex = 1
-            Me.ButtonNationalMetrics_RemoveSelected.Text = "<"
-            '
-            'ExpandableSplitterControl5
-            '
-            Me.ExpandableSplitterControl5.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl5.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl5.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl5.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControl5.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl5.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl5.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl5.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl5.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControl5.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl5.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl5.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl5.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControl5.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControl5.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControl5.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControl5.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControl5.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl5.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl5.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControl5.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControl5.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControl5.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControl5.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControl5.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControl5.Location = New System.Drawing.Point(319, 2)
-            Me.ExpandableSplitterControl5.Name = "ExpandableSplitterControl5"
-            Me.ExpandableSplitterControl5.Size = New System.Drawing.Size(6, 532)
-            Me.ExpandableSplitterControl5.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControl5.TabIndex = 20
-            Me.ExpandableSplitterControl5.TabStop = False
-            '
-            'PanelNationalMetrics_LeftSection
-            '
-            Me.PanelNationalMetrics_LeftSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelNationalMetrics_LeftSection.Appearance.Options.UseBackColor = True
-            Me.PanelNationalMetrics_LeftSection.Controls.Add(Me.DataGridViewNational_MetricsAvailable)
-            Me.PanelNationalMetrics_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelNationalMetrics_LeftSection.Location = New System.Drawing.Point(2, 2)
-            Me.PanelNationalMetrics_LeftSection.Name = "PanelNationalMetrics_LeftSection"
-            Me.PanelNationalMetrics_LeftSection.Size = New System.Drawing.Size(317, 532)
-            Me.PanelNationalMetrics_LeftSection.TabIndex = 0
-            '
-            'DataGridViewNational_MetricsAvailable
-            '
-            Me.DataGridViewNational_MetricsAvailable.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewNational_MetricsAvailable.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewNational_MetricsAvailable.AutoUpdateViewCaption = True
-            Me.DataGridViewNational_MetricsAvailable.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewNational_MetricsAvailable.ItemDescription = "Available Metric(s)"
-            Me.DataGridViewNational_MetricsAvailable.Location = New System.Drawing.Point(5, 5)
-            Me.DataGridViewNational_MetricsAvailable.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewNational_MetricsAvailable.ModifyGridRowHeight = False
-            Me.DataGridViewNational_MetricsAvailable.MultiSelect = True
-            Me.DataGridViewNational_MetricsAvailable.Name = "DataGridViewNational_MetricsAvailable"
-            Me.DataGridViewNational_MetricsAvailable.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewNational_MetricsAvailable.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewNational_MetricsAvailable.ShowRowSelectionIfHidden = True
-            Me.DataGridViewNational_MetricsAvailable.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewNational_MetricsAvailable.Size = New System.Drawing.Size(306, 522)
-            Me.DataGridViewNational_MetricsAvailable.TabIndex = 0
-            Me.DataGridViewNational_MetricsAvailable.UseEmbeddedNavigator = False
-            Me.DataGridViewNational_MetricsAvailable.ViewCaptionHeight = -1
-            '
-            'TabItemNational_Metrics
-            '
-            Me.TabItemNational_Metrics.AttachedControl = Me.TabControlPanelNationalMetrics
-            Me.TabItemNational_Metrics.Name = "TabItemNational_Metrics"
-            Me.TabItemNational_Metrics.Text = "Metrics"
-            '
             'ExpandableSplitterControl1
             '
             Me.ExpandableSplitterControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -2712,1025 +5111,6 @@
             Me.TabItemTabs_NationalTab.AttachedControl = Me.TabControlPanelNational_National
             Me.TabItemTabs_NationalTab.Name = "TabItemTabs_NationalTab"
             Me.TabItemTabs_NationalTab.Text = "National"
-            '
-            'TabControlPanelSpotRadioCounty_SpotRadioCounty
-            '
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Controls.Add(Me.PanelSpotRadioCounty_RightSection)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Controls.Add(Me.ExpandableSplitterControlSpotRadioCounty_LeftRight)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Controls.Add(Me.PanelSpotRadioCounty_LeftSection)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Name = "TabControlPanelSpotRadioCounty_SpotRadioCounty"
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Size = New System.Drawing.Size(1054, 597)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.GradientAngle = 90
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.TabIndex = 9
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.TabItem = Me.TabItemTabs_SpotRadioCountyTab
-            '
-            'PanelSpotRadioCounty_RightSection
-            '
-            Me.PanelSpotRadioCounty_RightSection.Controls.Add(Me.TabControlSpotRadioCounty_ResearchCriteria)
-            Me.PanelSpotRadioCounty_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelSpotRadioCounty_RightSection.Location = New System.Drawing.Point(204, 1)
-            Me.PanelSpotRadioCounty_RightSection.Name = "PanelSpotRadioCounty_RightSection"
-            Me.PanelSpotRadioCounty_RightSection.Size = New System.Drawing.Size(849, 595)
-            Me.PanelSpotRadioCounty_RightSection.TabIndex = 13
-            '
-            'TabControlSpotRadioCounty_ResearchCriteria
-            '
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.BackColor = System.Drawing.Color.White
-            Me.TabControlSpotRadioCounty_ResearchCriteria.CanReorderTabs = False
-            Me.TabControlSpotRadioCounty_ResearchCriteria.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlSpotRadioCounty_ResearchCriteria.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyMarket)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyResults)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyStations)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyMetrics)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.ForeColor = System.Drawing.Color.Black
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Location = New System.Drawing.Point(12, 12)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Name = "TabControlSpotRadioCounty_ResearchCriteria"
-            Me.TabControlSpotRadioCounty_ResearchCriteria.SelectedTabFont = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.SelectedTabIndex = 0
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Size = New System.Drawing.Size(825, 571)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlSpotRadioCounty_ResearchCriteria.TabIndex = 0
-            Me.TabControlSpotRadioCounty_ResearchCriteria.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_MarketBooks)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_Stations)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_Metrics)
-            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_Results)
-            '
-            'TabControlPanelCountyMarket
-            '
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.DataGridViewSpotRadioCounty_Years)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.GroupBoxSpotRadioCounty_Dayparts)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.CheckBoxCounty_ShowFrequency)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_MaxRank)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.NumericInputCounty_MaxRank)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.ComboBoxCounty_ReportType)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_ReportType)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.SearchableComboBoxCounty_Demographic)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_Demographic)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_Market)
-            Me.TabControlPanelCountyMarket.Controls.Add(Me.SearchableComboBoxCounty_County)
-            Me.TabControlPanelCountyMarket.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCountyMarket.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCountyMarket.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCountyMarket.Name = "TabControlPanelCountyMarket"
-            Me.TabControlPanelCountyMarket.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCountyMarket.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelCountyMarket.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCountyMarket.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCountyMarket.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCountyMarket.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCountyMarket.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCountyMarket.Style.GradientAngle = 90
-            Me.TabControlPanelCountyMarket.TabIndex = 0
-            Me.TabControlPanelCountyMarket.TabItem = Me.TabItemSpotRadioCounty_MarketBooks
-            '
-            'DataGridViewSpotRadioCounty_Years
-            '
-            Me.DataGridViewSpotRadioCounty_Years.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotRadioCounty_Years.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotRadioCounty_Years.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotRadioCounty_Years.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotRadioCounty_Years.ItemDescription = "Year(s)"
-            Me.DataGridViewSpotRadioCounty_Years.Location = New System.Drawing.Point(11, 173)
-            Me.DataGridViewSpotRadioCounty_Years.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotRadioCounty_Years.ModifyGridRowHeight = False
-            Me.DataGridViewSpotRadioCounty_Years.MultiSelect = True
-            Me.DataGridViewSpotRadioCounty_Years.Name = "DataGridViewSpotRadioCounty_Years"
-            Me.DataGridViewSpotRadioCounty_Years.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-            Me.DataGridViewSpotRadioCounty_Years.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotRadioCounty_Years.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotRadioCounty_Years.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotRadioCounty_Years.Size = New System.Drawing.Size(805, 367)
-            Me.DataGridViewSpotRadioCounty_Years.TabIndex = 16
-            Me.DataGridViewSpotRadioCounty_Years.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotRadioCounty_Years.ViewCaptionHeight = -1
-            '
-            'GroupBoxSpotRadioCounty_Dayparts
-            '
-            Me.GroupBoxSpotRadioCounty_Dayparts.Controls.Add(Me.CheckBoxCountyDaypart84)
-            Me.GroupBoxSpotRadioCounty_Dayparts.Controls.Add(Me.CheckBoxCountyDaypart68)
-            Me.GroupBoxSpotRadioCounty_Dayparts.Location = New System.Drawing.Point(11, 85)
-            Me.GroupBoxSpotRadioCounty_Dayparts.Name = "GroupBoxSpotRadioCounty_Dayparts"
-            Me.GroupBoxSpotRadioCounty_Dayparts.Size = New System.Drawing.Size(453, 56)
-            Me.GroupBoxSpotRadioCounty_Dayparts.TabIndex = 15
-            Me.GroupBoxSpotRadioCounty_Dayparts.Text = "Daypart(s)"
-            '
-            'CheckBoxCountyDaypart84
-            '
-            Me.CheckBoxCountyDaypart84.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxCountyDaypart84.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxCountyDaypart84.CheckValue = 0
-            Me.CheckBoxCountyDaypart84.CheckValueChecked = 1
-            Me.CheckBoxCountyDaypart84.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxCountyDaypart84.CheckValueUnchecked = 0
-            Me.CheckBoxCountyDaypart84.ChildControls = Nothing
-            Me.CheckBoxCountyDaypart84.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxCountyDaypart84.Location = New System.Drawing.Point(151, 24)
-            Me.CheckBoxCountyDaypart84.Name = "CheckBoxCountyDaypart84"
-            Me.CheckBoxCountyDaypart84.OldestSibling = Nothing
-            Me.CheckBoxCountyDaypart84.SecurityEnabled = True
-            Me.CheckBoxCountyDaypart84.SiblingControls = Nothing
-            Me.CheckBoxCountyDaypart84.Size = New System.Drawing.Size(149, 20)
-            Me.CheckBoxCountyDaypart84.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxCountyDaypart84.TabIndex = 11
-            Me.CheckBoxCountyDaypart84.TabOnEnter = True
-            Me.CheckBoxCountyDaypart84.Tag = "84"
-            Me.CheckBoxCountyDaypart84.Text = "Mon-Sun / 6AM - 12AM"
-            '
-            'CheckBoxCountyDaypart68
-            '
-            Me.CheckBoxCountyDaypart68.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxCountyDaypart68.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxCountyDaypart68.CheckValue = 0
-            Me.CheckBoxCountyDaypart68.CheckValueChecked = 1
-            Me.CheckBoxCountyDaypart68.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxCountyDaypart68.CheckValueUnchecked = 0
-            Me.CheckBoxCountyDaypart68.ChildControls = Nothing
-            Me.CheckBoxCountyDaypart68.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxCountyDaypart68.Location = New System.Drawing.Point(5, 24)
-            Me.CheckBoxCountyDaypart68.Name = "CheckBoxCountyDaypart68"
-            Me.CheckBoxCountyDaypart68.OldestSibling = Nothing
-            Me.CheckBoxCountyDaypart68.SecurityEnabled = True
-            Me.CheckBoxCountyDaypart68.SiblingControls = Nothing
-            Me.CheckBoxCountyDaypart68.Size = New System.Drawing.Size(140, 20)
-            Me.CheckBoxCountyDaypart68.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxCountyDaypart68.TabIndex = 10
-            Me.CheckBoxCountyDaypart68.TabOnEnter = True
-            Me.CheckBoxCountyDaypart68.Tag = "68"
-            Me.CheckBoxCountyDaypart68.Text = "Mon-Fri / 6AM - 7PM"
-            '
-            'CheckBoxCounty_ShowFrequency
-            '
-            Me.CheckBoxCounty_ShowFrequency.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxCounty_ShowFrequency.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxCounty_ShowFrequency.CheckValue = 0
-            Me.CheckBoxCounty_ShowFrequency.CheckValueChecked = 1
-            Me.CheckBoxCounty_ShowFrequency.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxCounty_ShowFrequency.CheckValueUnchecked = 0
-            Me.CheckBoxCounty_ShowFrequency.ChildControls = Nothing
-            Me.CheckBoxCounty_ShowFrequency.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxCounty_ShowFrequency.Location = New System.Drawing.Point(11, 147)
-            Me.CheckBoxCounty_ShowFrequency.Name = "CheckBoxCounty_ShowFrequency"
-            Me.CheckBoxCounty_ShowFrequency.OldestSibling = Nothing
-            Me.CheckBoxCounty_ShowFrequency.SecurityEnabled = True
-            Me.CheckBoxCounty_ShowFrequency.SiblingControls = Nothing
-            Me.CheckBoxCounty_ShowFrequency.Size = New System.Drawing.Size(112, 20)
-            Me.CheckBoxCounty_ShowFrequency.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxCounty_ShowFrequency.TabIndex = 9
-            Me.CheckBoxCounty_ShowFrequency.TabOnEnter = True
-            Me.CheckBoxCounty_ShowFrequency.Text = "Show Frequency"
-            '
-            'LabelCounty_MaxRank
-            '
-            Me.LabelCounty_MaxRank.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCounty_MaxRank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCounty_MaxRank.Location = New System.Drawing.Point(318, 33)
-            Me.LabelCounty_MaxRank.Name = "LabelCounty_MaxRank"
-            Me.LabelCounty_MaxRank.Size = New System.Drawing.Size(63, 20)
-            Me.LabelCounty_MaxRank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCounty_MaxRank.TabIndex = 6
-            Me.LabelCounty_MaxRank.Text = "Max Rank:"
-            '
-            'NumericInputCounty_MaxRank
-            '
-            Me.NumericInputCounty_MaxRank.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputCounty_MaxRank.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Short]
-            Me.NumericInputCounty_MaxRank.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputCounty_MaxRank.EnterMoveNextControl = True
-            Me.NumericInputCounty_MaxRank.Location = New System.Drawing.Point(387, 34)
-            Me.NumericInputCounty_MaxRank.Name = "NumericInputCounty_MaxRank"
-            Me.NumericInputCounty_MaxRank.Properties.AllowMouseWheel = False
-            Me.NumericInputCounty_MaxRank.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputCounty_MaxRank.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
-            Me.NumericInputCounty_MaxRank.Properties.Appearance.Options.UseBackColor = True
-            Me.NumericInputCounty_MaxRank.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputCounty_MaxRank.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputCounty_MaxRank.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputCounty_MaxRank.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputCounty_MaxRank.Properties.IsFloatValue = False
-            Me.NumericInputCounty_MaxRank.Properties.Mask.EditMask = "f0"
-            Me.NumericInputCounty_MaxRank.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputCounty_MaxRank.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
-            Me.NumericInputCounty_MaxRank.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputCounty_MaxRank.SecurityEnabled = True
-            Me.NumericInputCounty_MaxRank.Size = New System.Drawing.Size(58, 20)
-            Me.NumericInputCounty_MaxRank.TabIndex = 7
-            '
-            'ComboBoxCounty_ReportType
-            '
-            Me.ComboBoxCounty_ReportType.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxCounty_ReportType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-            Me.ComboBoxCounty_ReportType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxCounty_ReportType.AutoFindItemInDataSource = True
-            Me.ComboBoxCounty_ReportType.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxCounty_ReportType.BookmarkingEnabled = False
-            Me.ComboBoxCounty_ReportType.DisableMouseWheel = True
-            Me.ComboBoxCounty_ReportType.DisplayMember = "Display"
-            Me.ComboBoxCounty_ReportType.DisplayName = "Report Type"
-            Me.ComboBoxCounty_ReportType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxCounty_ReportType.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxCounty_ReportType.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxCounty_ReportType.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxCounty_ReportType.FocusHighlightEnabled = True
-            Me.ComboBoxCounty_ReportType.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxCounty_ReportType.FormattingEnabled = True
-            Me.ComboBoxCounty_ReportType.ItemHeight = 16
-            Me.ComboBoxCounty_ReportType.Location = New System.Drawing.Point(99, 31)
-            Me.ComboBoxCounty_ReportType.Name = "ComboBoxCounty_ReportType"
-            Me.ComboBoxCounty_ReportType.ReadOnly = False
-            Me.ComboBoxCounty_ReportType.SecurityEnabled = True
-            Me.ComboBoxCounty_ReportType.Size = New System.Drawing.Size(213, 22)
-            Me.ComboBoxCounty_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxCounty_ReportType.TabIndex = 5
-            Me.ComboBoxCounty_ReportType.TabOnEnter = True
-            Me.ComboBoxCounty_ReportType.ValueMember = "Value"
-            Me.ComboBoxCounty_ReportType.WatermarkText = "Select Month"
-            '
-            'LabelCounty_ReportType
-            '
-            Me.LabelCounty_ReportType.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCounty_ReportType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCounty_ReportType.Location = New System.Drawing.Point(11, 31)
-            Me.LabelCounty_ReportType.Name = "LabelCounty_ReportType"
-            Me.LabelCounty_ReportType.Size = New System.Drawing.Size(82, 20)
-            Me.LabelCounty_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCounty_ReportType.TabIndex = 4
-            Me.LabelCounty_ReportType.Text = "Report Type:"
-            '
-            'SearchableComboBoxCounty_Demographic
-            '
-            Me.SearchableComboBoxCounty_Demographic.ActiveFilterString = ""
-            Me.SearchableComboBoxCounty_Demographic.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxCounty_Demographic.AutoFillMode = False
-            Me.SearchableComboBoxCounty_Demographic.BookmarkingEnabled = False
-            Me.SearchableComboBoxCounty_Demographic.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.Type.MediaDemographic
-            Me.SearchableComboBoxCounty_Demographic.DataSource = Nothing
-            Me.SearchableComboBoxCounty_Demographic.DisableMouseWheel = True
-            Me.SearchableComboBoxCounty_Demographic.DisplayName = ""
-            Me.SearchableComboBoxCounty_Demographic.EditValue = ""
-            Me.SearchableComboBoxCounty_Demographic.EnterMoveNextControl = True
-            Me.SearchableComboBoxCounty_Demographic.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.[Nothing]
-            Me.SearchableComboBoxCounty_Demographic.Location = New System.Drawing.Point(98, 59)
-            Me.SearchableComboBoxCounty_Demographic.Name = "SearchableComboBoxCounty_Demographic"
-            Me.SearchableComboBoxCounty_Demographic.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxCounty_Demographic.Properties.DisplayMember = "Description"
-            Me.SearchableComboBoxCounty_Demographic.Properties.NullText = "Select Demographic"
-            Me.SearchableComboBoxCounty_Demographic.Properties.PopupView = Me.GridView4
-            Me.SearchableComboBoxCounty_Demographic.Properties.ShowClearButton = False
-            Me.SearchableComboBoxCounty_Demographic.Properties.ValueMember = "ID"
-            Me.SearchableComboBoxCounty_Demographic.SecurityEnabled = True
-            Me.SearchableComboBoxCounty_Demographic.SelectedValue = ""
-            Me.SearchableComboBoxCounty_Demographic.Size = New System.Drawing.Size(213, 20)
-            Me.SearchableComboBoxCounty_Demographic.TabIndex = 9
-            '
-            'GridView4
-            '
-            Me.GridView4.AFActiveFilterString = ""
-            Me.GridView4.Appearance.ColumnFilterButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.ColumnFilterButtonActive.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.CustomizationFormHint.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.DetailTip.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.Empty.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.FilterCloseButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.FixedLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.FocusedCell.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.FocusedRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.GroupButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.GroupPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.HideSelectionRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.HorzLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.Row.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.RowSeparator.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.SelectedRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.TopNewRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.VertLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.Appearance.ViewCaption.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.Lines.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.AppearancePrint.Row.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView4.EnableDisabledRows = False
-            Me.GridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView4.ModifyColumnSettingsOnEachDataSource = True
-            Me.GridView4.ModifyGridRowHeight = False
-            Me.GridView4.Name = "GridView4"
-            Me.GridView4.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
-            Me.GridView4.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
-            Me.GridView4.OptionsBehavior.Editable = False
-            Me.GridView4.OptionsCustomization.AllowQuickHideColumns = False
-            Me.GridView4.OptionsNavigation.AutoFocusNewRow = True
-            Me.GridView4.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView4.OptionsSelection.MultiSelect = True
-            Me.GridView4.OptionsView.ColumnAutoWidth = False
-            Me.GridView4.OptionsView.ShowGroupPanel = False
-            Me.GridView4.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
-            Me.GridView4.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView4.SkipAddingControlsOnModifyColumn = False
-            Me.GridView4.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelCounty_Demographic
-            '
-            Me.LabelCounty_Demographic.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCounty_Demographic.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCounty_Demographic.Location = New System.Drawing.Point(11, 57)
-            Me.LabelCounty_Demographic.Name = "LabelCounty_Demographic"
-            Me.LabelCounty_Demographic.Size = New System.Drawing.Size(81, 20)
-            Me.LabelCounty_Demographic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCounty_Demographic.TabIndex = 8
-            Me.LabelCounty_Demographic.Text = "Demographic:"
-            '
-            'LabelCounty_Market
-            '
-            Me.LabelCounty_Market.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelCounty_Market.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelCounty_Market.Location = New System.Drawing.Point(11, 5)
-            Me.LabelCounty_Market.Name = "LabelCounty_Market"
-            Me.LabelCounty_Market.Size = New System.Drawing.Size(81, 20)
-            Me.LabelCounty_Market.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelCounty_Market.TabIndex = 2
-            Me.LabelCounty_Market.Text = "County:"
-            '
-            'SearchableComboBoxCounty_County
-            '
-            Me.SearchableComboBoxCounty_County.ActiveFilterString = ""
-            Me.SearchableComboBoxCounty_County.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxCounty_County.AutoFillMode = False
-            Me.SearchableComboBoxCounty_County.BookmarkingEnabled = False
-            Me.SearchableComboBoxCounty_County.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.Type.NielsenRadioCounty
-            Me.SearchableComboBoxCounty_County.DataSource = Nothing
-            Me.SearchableComboBoxCounty_County.DisableMouseWheel = True
-            Me.SearchableComboBoxCounty_County.DisplayName = ""
-            Me.SearchableComboBoxCounty_County.EditValue = ""
-            Me.SearchableComboBoxCounty_County.EnterMoveNextControl = True
-            Me.SearchableComboBoxCounty_County.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.[Nothing]
-            Me.SearchableComboBoxCounty_County.Location = New System.Drawing.Point(99, 5)
-            Me.SearchableComboBoxCounty_County.Name = "SearchableComboBoxCounty_County"
-            Me.SearchableComboBoxCounty_County.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxCounty_County.Properties.DisplayMember = "Name"
-            Me.SearchableComboBoxCounty_County.Properties.NullText = "Select County"
-            Me.SearchableComboBoxCounty_County.Properties.PopupView = Me.GridView5
-            Me.SearchableComboBoxCounty_County.Properties.ShowClearButton = False
-            Me.SearchableComboBoxCounty_County.Properties.ValueMember = "CountyCode"
-            Me.SearchableComboBoxCounty_County.SecurityEnabled = True
-            Me.SearchableComboBoxCounty_County.SelectedValue = ""
-            Me.SearchableComboBoxCounty_County.Size = New System.Drawing.Size(213, 20)
-            Me.SearchableComboBoxCounty_County.TabIndex = 3
-            '
-            'GridView5
-            '
-            Me.GridView5.AFActiveFilterString = ""
-            Me.GridView5.Appearance.ColumnFilterButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.ColumnFilterButtonActive.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.CustomizationFormHint.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.DetailTip.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.Empty.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.FilterCloseButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.FixedLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.FocusedCell.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.FocusedRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.GroupButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.GroupPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.HideSelectionRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.HorzLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.Row.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.RowSeparator.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.SelectedRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.TopNewRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.VertLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.Appearance.ViewCaption.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.Lines.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.AppearancePrint.Row.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.GridView5.EnableDisabledRows = False
-            Me.GridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView5.ModifyColumnSettingsOnEachDataSource = True
-            Me.GridView5.ModifyGridRowHeight = False
-            Me.GridView5.Name = "GridView5"
-            Me.GridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
-            Me.GridView5.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
-            Me.GridView5.OptionsBehavior.Editable = False
-            Me.GridView5.OptionsCustomization.AllowQuickHideColumns = False
-            Me.GridView5.OptionsNavigation.AutoFocusNewRow = True
-            Me.GridView5.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView5.OptionsSelection.MultiSelect = True
-            Me.GridView5.OptionsView.ColumnAutoWidth = False
-            Me.GridView5.OptionsView.ShowGroupPanel = False
-            Me.GridView5.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
-            Me.GridView5.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView5.SkipAddingControlsOnModifyColumn = False
-            Me.GridView5.SkipSettingFontOnModifyColumn = False
-            '
-            'TabItemSpotRadioCounty_MarketBooks
-            '
-            Me.TabItemSpotRadioCounty_MarketBooks.AttachedControl = Me.TabControlPanelCountyMarket
-            Me.TabItemSpotRadioCounty_MarketBooks.Name = "TabItemSpotRadioCounty_MarketBooks"
-            Me.TabItemSpotRadioCounty_MarketBooks.Text = "County/Report/Demo/DP/Years"
-            '
-            'TabControlPanelCountyResults
-            '
-            Me.TabControlPanelCountyResults.Controls.Add(Me.TabControlResults_RadioCountyResults)
-            Me.TabControlPanelCountyResults.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCountyResults.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCountyResults.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCountyResults.Name = "TabControlPanelCountyResults"
-            Me.TabControlPanelCountyResults.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCountyResults.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelCountyResults.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCountyResults.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCountyResults.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCountyResults.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCountyResults.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCountyResults.Style.GradientAngle = 90
-            Me.TabControlPanelCountyResults.TabIndex = 34
-            Me.TabControlPanelCountyResults.TabItem = Me.TabItemSpotRadioCounty_Results
-            '
-            'TabControlResults_RadioCountyResults
-            '
-            Me.TabControlResults_RadioCountyResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlResults_RadioCountyResults.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-            Me.TabControlResults_RadioCountyResults.CanReorderTabs = False
-            Me.TabControlResults_RadioCountyResults.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlResults_RadioCountyResults.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlResults_RadioCountyResults.Controls.Add(Me.TabControlPanelCountyData)
-            Me.TabControlResults_RadioCountyResults.Controls.Add(Me.TabControlPanelCountyDashboard)
-            Me.TabControlResults_RadioCountyResults.ForeColor = System.Drawing.Color.Black
-            Me.TabControlResults_RadioCountyResults.Location = New System.Drawing.Point(4, 4)
-            Me.TabControlResults_RadioCountyResults.Name = "TabControlResults_RadioCountyResults"
-            Me.TabControlResults_RadioCountyResults.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlResults_RadioCountyResults.SelectedTabIndex = 0
-            Me.TabControlResults_RadioCountyResults.Size = New System.Drawing.Size(817, 536)
-            Me.TabControlResults_RadioCountyResults.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlResults_RadioCountyResults.TabIndex = 4
-            Me.TabControlResults_RadioCountyResults.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlResults_RadioCountyResults.Tabs.Add(Me.TabItemRadioCountyResults_RadioCountyDataTab)
-            Me.TabControlResults_RadioCountyResults.Tabs.Add(Me.TabItemCountyResults_Dashboard)
-            Me.TabControlResults_RadioCountyResults.TabStop = False
-            '
-            'TabControlPanelCountyData
-            '
-            Me.TabControlPanelCountyData.Controls.Add(Me.BandedDataGridViewSpotRadioCountyResults)
-            Me.TabControlPanelCountyData.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCountyData.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCountyData.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCountyData.Name = "TabControlPanelCountyData"
-            Me.TabControlPanelCountyData.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCountyData.Size = New System.Drawing.Size(817, 509)
-            Me.TabControlPanelCountyData.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCountyData.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCountyData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCountyData.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCountyData.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCountyData.Style.GradientAngle = 90
-            Me.TabControlPanelCountyData.TabIndex = 10
-            Me.TabControlPanelCountyData.TabItem = Me.TabItemRadioCountyResults_RadioCountyDataTab
-            '
-            'BandedDataGridViewSpotRadioCountyResults
-            '
-            Me.BandedDataGridViewSpotRadioCountyResults.AllowSelectGroupHeaderRow = True
-            Me.BandedDataGridViewSpotRadioCountyResults.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.BandedDataGridViewSpotRadioCountyResults.AutoUpdateViewCaption = True
-            Me.BandedDataGridViewSpotRadioCountyResults.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.BandedDataGridViewSpotRadioCountyResults.ItemDescription = "Item(s)"
-            Me.BandedDataGridViewSpotRadioCountyResults.Location = New System.Drawing.Point(4, 4)
-            Me.BandedDataGridViewSpotRadioCountyResults.ModifyColumnSettingsOnEachDataSource = True
-            Me.BandedDataGridViewSpotRadioCountyResults.ModifyGridRowHeight = False
-            Me.BandedDataGridViewSpotRadioCountyResults.MultiSelect = True
-            Me.BandedDataGridViewSpotRadioCountyResults.Name = "BandedDataGridViewSpotRadioCountyResults"
-            Me.BandedDataGridViewSpotRadioCountyResults.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.BandedDataGridViewSpotRadioCountyResults.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.BandedDataGridViewSpotRadioCountyResults.ShowRowSelectionIfHidden = True
-            Me.BandedDataGridViewSpotRadioCountyResults.ShowSelectDeselectAllButtons = False
-            Me.BandedDataGridViewSpotRadioCountyResults.Size = New System.Drawing.Size(808, 501)
-            Me.BandedDataGridViewSpotRadioCountyResults.TabIndex = 0
-            Me.BandedDataGridViewSpotRadioCountyResults.UseEmbeddedNavigator = False
-            Me.BandedDataGridViewSpotRadioCountyResults.ViewCaptionHeight = -1
-            '
-            'TabItemRadioCountyResults_RadioCountyDataTab
-            '
-            Me.TabItemRadioCountyResults_RadioCountyDataTab.AttachedControl = Me.TabControlPanelCountyData
-            Me.TabItemRadioCountyResults_RadioCountyDataTab.Name = "TabItemRadioCountyResults_RadioCountyDataTab"
-            Me.TabItemRadioCountyResults_RadioCountyDataTab.Text = "Data"
-            '
-            'TabControlPanelCountyDashboard
-            '
-            Me.TabControlPanelCountyDashboard.Controls.Add(Me.DashboardViewerRadioCountyDashboard_Dashboard)
-            Me.TabControlPanelCountyDashboard.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCountyDashboard.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCountyDashboard.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCountyDashboard.Name = "TabControlPanelCountyDashboard"
-            Me.TabControlPanelCountyDashboard.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCountyDashboard.Size = New System.Drawing.Size(817, 509)
-            Me.TabControlPanelCountyDashboard.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCountyDashboard.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCountyDashboard.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCountyDashboard.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCountyDashboard.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCountyDashboard.Style.GradientAngle = 90
-            Me.TabControlPanelCountyDashboard.TabIndex = 11
-            Me.TabControlPanelCountyDashboard.TabItem = Me.TabItemCountyResults_Dashboard
-            '
-            'DashboardViewerRadioCountyDashboard_Dashboard
-            '
-            Me.DashboardViewerRadioCountyDashboard_Dashboard.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.DashboardViewerRadioCountyDashboard_Dashboard.Location = New System.Drawing.Point(1, 1)
-            Me.DashboardViewerRadioCountyDashboard_Dashboard.Name = "DashboardViewerRadioCountyDashboard_Dashboard"
-            Me.DashboardViewerRadioCountyDashboard_Dashboard.PdfExportOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
-            Me.DashboardViewerRadioCountyDashboard_Dashboard.PrintPreviewOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
-            Me.DashboardViewerRadioCountyDashboard_Dashboard.Size = New System.Drawing.Size(815, 507)
-            Me.DashboardViewerRadioCountyDashboard_Dashboard.TabIndex = 2
-            '
-            'TabItemCountyResults_Dashboard
-            '
-            Me.TabItemCountyResults_Dashboard.AttachedControl = Me.TabControlPanelCountyDashboard
-            Me.TabItemCountyResults_Dashboard.Name = "TabItemCountyResults_Dashboard"
-            Me.TabItemCountyResults_Dashboard.Text = "Dashboard"
-            '
-            'TabItemSpotRadioCounty_Results
-            '
-            Me.TabItemSpotRadioCounty_Results.AttachedControl = Me.TabControlPanelCountyResults
-            Me.TabItemSpotRadioCounty_Results.Name = "TabItemSpotRadioCounty_Results"
-            Me.TabItemSpotRadioCounty_Results.Text = "Results"
-            '
-            'TabControlPanelCountyStations
-            '
-            Me.TabControlPanelCountyStations.Controls.Add(Me.PanelSpotRadioCountyStation)
-            Me.TabControlPanelCountyStations.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCountyStations.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCountyStations.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCountyStations.Name = "TabControlPanelCountyStations"
-            Me.TabControlPanelCountyStations.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCountyStations.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelCountyStations.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCountyStations.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCountyStations.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCountyStations.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCountyStations.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCountyStations.Style.GradientAngle = 90
-            Me.TabControlPanelCountyStations.TabIndex = 50
-            Me.TabControlPanelCountyStations.TabItem = Me.TabItemSpotRadioCounty_Stations
-            '
-            'PanelSpotRadioCountyStation
-            '
-            Me.PanelSpotRadioCountyStation.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelSpotRadioCountyStation.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotRadioCountyStation.Appearance.Options.UseBackColor = True
-            Me.PanelSpotRadioCountyStation.Controls.Add(Me.PanelBottomSpotRadioCountyStation_RightSection)
-            Me.PanelSpotRadioCountyStation.Controls.Add(Me.ExpandableSplitterControlSpotRadioCounty_Stations)
-            Me.PanelSpotRadioCountyStation.Controls.Add(Me.PanelBottomSpotRadioCountyStation_LeftSection)
-            Me.PanelSpotRadioCountyStation.Location = New System.Drawing.Point(4, 4)
-            Me.PanelSpotRadioCountyStation.Name = "PanelSpotRadioCountyStation"
-            Me.PanelSpotRadioCountyStation.Size = New System.Drawing.Size(817, 536)
-            Me.PanelSpotRadioCountyStation.TabIndex = 7
-            '
-            'PanelBottomSpotRadioCountyStation_RightSection
-            '
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Appearance.Options.UseBackColor = True
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Controls.Add(Me.DataGridViewSpotRadioCounty_SelectedStations)
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Controls.Add(Me.ButtonSpotRadioCountyStation_AddToSelected)
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Controls.Add(Me.ButtonSpotRadioCountyStation_RemoveFromSelected)
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Location = New System.Drawing.Point(325, 2)
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Name = "PanelBottomSpotRadioCountyStation_RightSection"
-            Me.PanelBottomSpotRadioCountyStation_RightSection.Size = New System.Drawing.Size(490, 532)
-            Me.PanelBottomSpotRadioCountyStation_RightSection.TabIndex = 1
-            '
-            'DataGridViewSpotRadioCounty_SelectedStations
-            '
-            Me.DataGridViewSpotRadioCounty_SelectedStations.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotRadioCounty_SelectedStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotRadioCounty_SelectedStations.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotRadioCounty_SelectedStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotRadioCounty_SelectedStations.ItemDescription = "Selected Station(s)"
-            Me.DataGridViewSpotRadioCounty_SelectedStations.Location = New System.Drawing.Point(86, 5)
-            Me.DataGridViewSpotRadioCounty_SelectedStations.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotRadioCounty_SelectedStations.ModifyGridRowHeight = False
-            Me.DataGridViewSpotRadioCounty_SelectedStations.MultiSelect = True
-            Me.DataGridViewSpotRadioCounty_SelectedStations.Name = "DataGridViewSpotRadioCounty_SelectedStations"
-            Me.DataGridViewSpotRadioCounty_SelectedStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotRadioCounty_SelectedStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotRadioCounty_SelectedStations.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotRadioCounty_SelectedStations.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotRadioCounty_SelectedStations.Size = New System.Drawing.Size(399, 522)
-            Me.DataGridViewSpotRadioCounty_SelectedStations.TabIndex = 2
-            Me.DataGridViewSpotRadioCounty_SelectedStations.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotRadioCounty_SelectedStations.ViewCaptionHeight = -1
-            '
-            'ButtonSpotRadioCountyStation_AddToSelected
-            '
-            Me.ButtonSpotRadioCountyStation_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotRadioCountyStation_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotRadioCountyStation_AddToSelected.Location = New System.Drawing.Point(5, 5)
-            Me.ButtonSpotRadioCountyStation_AddToSelected.Name = "ButtonSpotRadioCountyStation_AddToSelected"
-            Me.ButtonSpotRadioCountyStation_AddToSelected.SecurityEnabled = True
-            Me.ButtonSpotRadioCountyStation_AddToSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotRadioCountyStation_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotRadioCountyStation_AddToSelected.TabIndex = 0
-            Me.ButtonSpotRadioCountyStation_AddToSelected.Text = ">"
-            '
-            'ButtonSpotRadioCountyStation_RemoveFromSelected
-            '
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Name = "ButtonSpotRadioCountyStation_RemoveFromSelected"
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.SecurityEnabled = True
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.TabIndex = 1
-            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Text = "<"
-            '
-            'ExpandableSplitterControlSpotRadioCounty_Stations
-            '
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Location = New System.Drawing.Point(319, 2)
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Name = "ExpandableSplitterControlSpotRadioCounty_Stations"
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Size = New System.Drawing.Size(6, 532)
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.TabIndex = 20
-            Me.ExpandableSplitterControlSpotRadioCounty_Stations.TabStop = False
-            '
-            'PanelBottomSpotRadioCountyStation_LeftSection
-            '
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.Appearance.Options.UseBackColor = True
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.Controls.Add(Me.DataGridViewSpotRadioCounty_AvailableStations)
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.Location = New System.Drawing.Point(2, 2)
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.Name = "PanelBottomSpotRadioCountyStation_LeftSection"
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.Size = New System.Drawing.Size(317, 532)
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.TabIndex = 0
-            '
-            'DataGridViewSpotRadioCounty_AvailableStations
-            '
-            Me.DataGridViewSpotRadioCounty_AvailableStations.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotRadioCounty_AvailableStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotRadioCounty_AvailableStations.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotRadioCounty_AvailableStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotRadioCounty_AvailableStations.ItemDescription = "Available Station(s)"
-            Me.DataGridViewSpotRadioCounty_AvailableStations.Location = New System.Drawing.Point(5, 5)
-            Me.DataGridViewSpotRadioCounty_AvailableStations.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotRadioCounty_AvailableStations.ModifyGridRowHeight = False
-            Me.DataGridViewSpotRadioCounty_AvailableStations.MultiSelect = True
-            Me.DataGridViewSpotRadioCounty_AvailableStations.Name = "DataGridViewSpotRadioCounty_AvailableStations"
-            Me.DataGridViewSpotRadioCounty_AvailableStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotRadioCounty_AvailableStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotRadioCounty_AvailableStations.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotRadioCounty_AvailableStations.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotRadioCounty_AvailableStations.Size = New System.Drawing.Size(306, 522)
-            Me.DataGridViewSpotRadioCounty_AvailableStations.TabIndex = 0
-            Me.DataGridViewSpotRadioCounty_AvailableStations.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotRadioCounty_AvailableStations.ViewCaptionHeight = -1
-            '
-            'TabItemSpotRadioCounty_Stations
-            '
-            Me.TabItemSpotRadioCounty_Stations.AttachedControl = Me.TabControlPanelCountyStations
-            Me.TabItemSpotRadioCounty_Stations.Name = "TabItemSpotRadioCounty_Stations"
-            Me.TabItemSpotRadioCounty_Stations.Text = "Stations"
-            '
-            'TabControlPanelCountyMetrics
-            '
-            Me.TabControlPanelCountyMetrics.Controls.Add(Me.PanelSpotRadioCountyMetrics_Criteria)
-            Me.TabControlPanelCountyMetrics.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelCountyMetrics.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelCountyMetrics.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelCountyMetrics.Name = "TabControlPanelCountyMetrics"
-            Me.TabControlPanelCountyMetrics.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelCountyMetrics.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelCountyMetrics.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelCountyMetrics.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelCountyMetrics.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelCountyMetrics.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelCountyMetrics.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelCountyMetrics.Style.GradientAngle = 90
-            Me.TabControlPanelCountyMetrics.TabIndex = 25
-            Me.TabControlPanelCountyMetrics.TabItem = Me.TabItemSpotRadioCounty_Metrics
-            '
-            'PanelSpotRadioCountyMetrics_Criteria
-            '
-            Me.PanelSpotRadioCountyMetrics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelSpotRadioCountyMetrics_Criteria.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotRadioCountyMetrics_Criteria.Appearance.Options.UseBackColor = True
-            Me.PanelSpotRadioCountyMetrics_Criteria.Controls.Add(Me.PanelSpotRadioCountyMetrics_Right)
-            Me.PanelSpotRadioCountyMetrics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotRadioCounty_Metrics)
-            Me.PanelSpotRadioCountyMetrics_Criteria.Controls.Add(Me.PanelSpotRadioCountyMetrics_Left)
-            Me.PanelSpotRadioCountyMetrics_Criteria.Location = New System.Drawing.Point(4, 4)
-            Me.PanelSpotRadioCountyMetrics_Criteria.Name = "PanelSpotRadioCountyMetrics_Criteria"
-            Me.PanelSpotRadioCountyMetrics_Criteria.Size = New System.Drawing.Size(817, 536)
-            Me.PanelSpotRadioCountyMetrics_Criteria.TabIndex = 8
-            '
-            'PanelSpotRadioCountyMetrics_Right
-            '
-            Me.PanelSpotRadioCountyMetrics_Right.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotRadioCountyMetrics_Right.Appearance.Options.UseBackColor = True
-            Me.PanelSpotRadioCountyMetrics_Right.Controls.Add(Me.DataGridViewSpotRadioCounty_SelectedMetrics)
-            Me.PanelSpotRadioCountyMetrics_Right.Controls.Add(Me.ButtonSpotRadioCountyMetrics_AddToSelected)
-            Me.PanelSpotRadioCountyMetrics_Right.Controls.Add(Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected)
-            Me.PanelSpotRadioCountyMetrics_Right.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelSpotRadioCountyMetrics_Right.Location = New System.Drawing.Point(325, 2)
-            Me.PanelSpotRadioCountyMetrics_Right.Name = "PanelSpotRadioCountyMetrics_Right"
-            Me.PanelSpotRadioCountyMetrics_Right.Size = New System.Drawing.Size(490, 532)
-            Me.PanelSpotRadioCountyMetrics_Right.TabIndex = 1
-            '
-            'DataGridViewSpotRadioCounty_SelectedMetrics
-            '
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ItemDescription = "Selected Metric(s)"
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Location = New System.Drawing.Point(86, 5)
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ModifyGridRowHeight = False
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.MultiSelect = True
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Name = "DataGridViewSpotRadioCounty_SelectedMetrics"
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Size = New System.Drawing.Size(399, 522)
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.TabIndex = 2
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ViewCaptionHeight = -1
-            '
-            'ButtonSpotRadioCountyMetrics_AddToSelected
-            '
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Location = New System.Drawing.Point(5, 5)
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Name = "ButtonSpotRadioCountyMetrics_AddToSelected"
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.SecurityEnabled = True
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.TabIndex = 0
-            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Text = ">"
-            '
-            'ButtonSpotRadioCountyMetrics_RemoveFromSelected
-            '
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Name = "ButtonSpotRadioCountyMetrics_RemoveFromSelected"
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.SecurityEnabled = True
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.TabIndex = 1
-            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Text = "<"
-            '
-            'ExpandableSplitterControlSpotRadioCounty_Metrics
-            '
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Location = New System.Drawing.Point(319, 2)
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Name = "ExpandableSplitterControlSpotRadioCounty_Metrics"
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Size = New System.Drawing.Size(6, 532)
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.TabIndex = 20
-            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.TabStop = False
-            '
-            'PanelSpotRadioCountyMetrics_Left
-            '
-            Me.PanelSpotRadioCountyMetrics_Left.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotRadioCountyMetrics_Left.Appearance.Options.UseBackColor = True
-            Me.PanelSpotRadioCountyMetrics_Left.Controls.Add(Me.DataGridViewSpotRadioCounty_AvailableMetrics)
-            Me.PanelSpotRadioCountyMetrics_Left.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelSpotRadioCountyMetrics_Left.Location = New System.Drawing.Point(2, 2)
-            Me.PanelSpotRadioCountyMetrics_Left.Name = "PanelSpotRadioCountyMetrics_Left"
-            Me.PanelSpotRadioCountyMetrics_Left.Size = New System.Drawing.Size(317, 532)
-            Me.PanelSpotRadioCountyMetrics_Left.TabIndex = 0
-            '
-            'DataGridViewSpotRadioCounty_AvailableMetrics
-            '
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ItemDescription = "Available Metric(s)"
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Location = New System.Drawing.Point(5, 5)
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ModifyGridRowHeight = False
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.MultiSelect = True
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Name = "DataGridViewSpotRadioCounty_AvailableMetrics"
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Size = New System.Drawing.Size(306, 522)
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.TabIndex = 0
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ViewCaptionHeight = -1
-            '
-            'TabItemSpotRadioCounty_Metrics
-            '
-            Me.TabItemSpotRadioCounty_Metrics.AttachedControl = Me.TabControlPanelCountyMetrics
-            Me.TabItemSpotRadioCounty_Metrics.Name = "TabItemSpotRadioCounty_Metrics"
-            Me.TabItemSpotRadioCounty_Metrics.Text = "Metrics"
-            '
-            'ExpandableSplitterControlSpotRadioCounty_LeftRight
-            '
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Location = New System.Drawing.Point(198, 1)
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Name = "ExpandableSplitterControlSpotRadioCounty_LeftRight"
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Size = New System.Drawing.Size(6, 595)
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.TabIndex = 12
-            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.TabStop = False
-            '
-            'PanelSpotRadioCounty_LeftSection
-            '
-            Me.PanelSpotRadioCounty_LeftSection.Controls.Add(Me.DataGridViewSpotRadioCounty_UserCriterias)
-            Me.PanelSpotRadioCounty_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelSpotRadioCounty_LeftSection.Location = New System.Drawing.Point(1, 1)
-            Me.PanelSpotRadioCounty_LeftSection.Name = "PanelSpotRadioCounty_LeftSection"
-            Me.PanelSpotRadioCounty_LeftSection.Size = New System.Drawing.Size(197, 595)
-            Me.PanelSpotRadioCounty_LeftSection.TabIndex = 2
-            '
-            'DataGridViewSpotRadioCounty_UserCriterias
-            '
-            Me.DataGridViewSpotRadioCounty_UserCriterias.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotRadioCounty_UserCriterias.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotRadioCounty_UserCriterias.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotRadioCounty_UserCriterias.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotRadioCounty_UserCriterias.ItemDescription = "Report(s)"
-            Me.DataGridViewSpotRadioCounty_UserCriterias.Location = New System.Drawing.Point(12, 12)
-            Me.DataGridViewSpotRadioCounty_UserCriterias.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotRadioCounty_UserCriterias.ModifyGridRowHeight = False
-            Me.DataGridViewSpotRadioCounty_UserCriterias.MultiSelect = False
-            Me.DataGridViewSpotRadioCounty_UserCriterias.Name = "DataGridViewSpotRadioCounty_UserCriterias"
-            Me.DataGridViewSpotRadioCounty_UserCriterias.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotRadioCounty_UserCriterias.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotRadioCounty_UserCriterias.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotRadioCounty_UserCriterias.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotRadioCounty_UserCriterias.Size = New System.Drawing.Size(180, 571)
-            Me.DataGridViewSpotRadioCounty_UserCriterias.TabIndex = 0
-            Me.DataGridViewSpotRadioCounty_UserCriterias.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotRadioCounty_UserCriterias.ViewCaptionHeight = -1
-            '
-            'TabItemTabs_SpotRadioCountyTab
-            '
-            Me.TabItemTabs_SpotRadioCountyTab.AttachedControl = Me.TabControlPanelSpotRadioCounty_SpotRadioCounty
-            Me.TabItemTabs_SpotRadioCountyTab.Name = "TabItemTabs_SpotRadioCountyTab"
-            Me.TabItemTabs_SpotRadioCountyTab.Text = "Spot Radio County"
             '
             'TabControlPanelSpotRadio_SpotRadio
             '
@@ -5258,1228 +6638,1024 @@
             Me.TabItemTabs_SpotRadioTab.Name = "TabItemTabs_SpotRadioTab"
             Me.TabItemTabs_SpotRadioTab.Text = "Spot Radio Market"
             '
-            'TabControlPanelSpotTV_SpotTV
+            'TabControlPanelSpotRadioCounty_SpotRadioCounty
             '
-            Me.TabControlPanelSpotTV_SpotTV.Controls.Add(Me.PanelSpotTV_RightSection)
-            Me.TabControlPanelSpotTV_SpotTV.Controls.Add(Me.ExpandableSplitterControlSpotTV_LeftRight)
-            Me.TabControlPanelSpotTV_SpotTV.Controls.Add(Me.PanelSpotTV_LeftSection)
-            Me.TabControlPanelSpotTV_SpotTV.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSpotTV_SpotTV.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSpotTV_SpotTV.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSpotTV_SpotTV.Name = "TabControlPanelSpotTV_SpotTV"
-            Me.TabControlPanelSpotTV_SpotTV.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSpotTV_SpotTV.Size = New System.Drawing.Size(1054, 597)
-            Me.TabControlPanelSpotTV_SpotTV.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSpotTV_SpotTV.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSpotTV_SpotTV.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSpotTV_SpotTV.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSpotTV_SpotTV.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Controls.Add(Me.PanelSpotRadioCounty_RightSection)
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Controls.Add(Me.ExpandableSplitterControlSpotRadioCounty_LeftRight)
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Controls.Add(Me.PanelSpotRadioCounty_LeftSection)
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Name = "TabControlPanelSpotRadioCounty_SpotRadioCounty"
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Size = New System.Drawing.Size(1054, 597)
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSpotTV_SpotTV.Style.GradientAngle = 90
-            Me.TabControlPanelSpotTV_SpotTV.TabIndex = 1
-            Me.TabControlPanelSpotTV_SpotTV.TabItem = Me.TabItemTabs_SpotTVTab
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.Style.GradientAngle = 90
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.TabIndex = 9
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.TabItem = Me.TabItemTabs_SpotRadioCountyTab
             '
-            'PanelSpotTV_RightSection
+            'PanelSpotRadioCounty_RightSection
             '
-            Me.PanelSpotTV_RightSection.Controls.Add(Me.TabControlSpotTV_ResearchCriteria)
-            Me.PanelSpotTV_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelSpotTV_RightSection.Location = New System.Drawing.Point(204, 1)
-            Me.PanelSpotTV_RightSection.Name = "PanelSpotTV_RightSection"
-            Me.PanelSpotTV_RightSection.Size = New System.Drawing.Size(849, 595)
-            Me.PanelSpotTV_RightSection.TabIndex = 13
+            Me.PanelSpotRadioCounty_RightSection.Controls.Add(Me.TabControlSpotRadioCounty_ResearchCriteria)
+            Me.PanelSpotRadioCounty_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotRadioCounty_RightSection.Location = New System.Drawing.Point(204, 1)
+            Me.PanelSpotRadioCounty_RightSection.Name = "PanelSpotRadioCounty_RightSection"
+            Me.PanelSpotRadioCounty_RightSection.Size = New System.Drawing.Size(849, 595)
+            Me.PanelSpotRadioCounty_RightSection.TabIndex = 13
             '
-            'TabControlSpotTV_ResearchCriteria
+            'TabControlSpotRadioCounty_ResearchCriteria
             '
-            Me.TabControlSpotTV_ResearchCriteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlSpotTV_ResearchCriteria.BackColor = System.Drawing.Color.White
-            Me.TabControlSpotTV_ResearchCriteria.CanReorderTabs = False
-            Me.TabControlSpotTV_ResearchCriteria.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlSpotTV_ResearchCriteria.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVMarketStations_Criteria)
-            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVBooks_Criteria)
-            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVResults_Results)
-            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVMetrics_Criteria)
-            Me.TabControlSpotTV_ResearchCriteria.Controls.Add(Me.TabControlPanelSpotTVDemographics_Criteria)
-            Me.TabControlSpotTV_ResearchCriteria.ForeColor = System.Drawing.Color.Black
-            Me.TabControlSpotTV_ResearchCriteria.Location = New System.Drawing.Point(12, 12)
-            Me.TabControlSpotTV_ResearchCriteria.Name = "TabControlSpotTV_ResearchCriteria"
-            Me.TabControlSpotTV_ResearchCriteria.SelectedTabFont = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlSpotTV_ResearchCriteria.SelectedTabIndex = 0
-            Me.TabControlSpotTV_ResearchCriteria.Size = New System.Drawing.Size(825, 571)
-            Me.TabControlSpotTV_ResearchCriteria.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlSpotTV_ResearchCriteria.TabIndex = 0
-            Me.TabControlSpotTV_ResearchCriteria.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_MarketStations)
-            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Books)
-            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Demographics)
-            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Metrics)
-            Me.TabControlSpotTV_ResearchCriteria.Tabs.Add(Me.TabItemSpotTV_Results)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.BackColor = System.Drawing.Color.White
+            Me.TabControlSpotRadioCounty_ResearchCriteria.CanReorderTabs = False
+            Me.TabControlSpotRadioCounty_ResearchCriteria.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlSpotRadioCounty_ResearchCriteria.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyMarket)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyResults)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyStations)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Controls.Add(Me.TabControlPanelCountyMetrics)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.ForeColor = System.Drawing.Color.Black
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Location = New System.Drawing.Point(12, 12)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Name = "TabControlSpotRadioCounty_ResearchCriteria"
+            Me.TabControlSpotRadioCounty_ResearchCriteria.SelectedTabFont = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.SelectedTabIndex = 0
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Size = New System.Drawing.Size(825, 571)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlSpotRadioCounty_ResearchCriteria.TabIndex = 0
+            Me.TabControlSpotRadioCounty_ResearchCriteria.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_MarketBooks)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_Stations)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_Metrics)
+            Me.TabControlSpotRadioCounty_ResearchCriteria.Tabs.Add(Me.TabItemSpotRadioCounty_Results)
             '
-            'TabControlPanelSpotTVMarketStations_Criteria
+            'TabControlPanelCountyMarket
             '
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.ComboBoxSpotTVMarketStation_Source)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_Source)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_MaximumRank)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.NumericInputSpotTVMarketStation_MaximumRank)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.ComboBoxSpotTVMarketStation_ReportType)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.PanelSpotTVMarketStation_Bottom)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.GroupBoxSpotTVMarketStation_Options)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_Market)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.LabelSpotTVMarketStation_ReportType)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Controls.Add(Me.SearchableComboBoxSpotTVMarketStation_Market)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Name = "TabControlPanelSpotTVMarketStations_Criteria"
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.DataGridViewSpotRadioCounty_Years)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.GroupBoxSpotRadioCounty_Dayparts)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.CheckBoxCounty_ShowFrequency)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_MaxRank)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.NumericInputCounty_MaxRank)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.ComboBoxCounty_ReportType)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_ReportType)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.SearchableComboBoxCounty_Demographic)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_Demographic)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.LabelCounty_Market)
+            Me.TabControlPanelCountyMarket.Controls.Add(Me.SearchableComboBoxCounty_County)
+            Me.TabControlPanelCountyMarket.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCountyMarket.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCountyMarket.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCountyMarket.Name = "TabControlPanelCountyMarket"
+            Me.TabControlPanelCountyMarket.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCountyMarket.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelCountyMarket.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCountyMarket.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCountyMarket.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCountyMarket.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCountyMarket.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSpotTVMarketStations_Criteria.Style.GradientAngle = 90
-            Me.TabControlPanelSpotTVMarketStations_Criteria.TabIndex = 0
-            Me.TabControlPanelSpotTVMarketStations_Criteria.TabItem = Me.TabItemSpotTV_MarketStations
+            Me.TabControlPanelCountyMarket.Style.GradientAngle = 90
+            Me.TabControlPanelCountyMarket.TabIndex = 0
+            Me.TabControlPanelCountyMarket.TabItem = Me.TabItemSpotRadioCounty_MarketBooks
             '
-            'ComboBoxSpotTVMarketStation_Source
+            'DataGridViewSpotRadioCounty_Years
             '
-            Me.ComboBoxSpotTVMarketStation_Source.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxSpotTVMarketStation_Source.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-            Me.ComboBoxSpotTVMarketStation_Source.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxSpotTVMarketStation_Source.AutoFindItemInDataSource = True
-            Me.ComboBoxSpotTVMarketStation_Source.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxSpotTVMarketStation_Source.BookmarkingEnabled = False
-            Me.ComboBoxSpotTVMarketStation_Source.DisableMouseWheel = True
-            Me.ComboBoxSpotTVMarketStation_Source.DisplayMember = "Display"
-            Me.ComboBoxSpotTVMarketStation_Source.DisplayName = "Source"
-            Me.ComboBoxSpotTVMarketStation_Source.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxSpotTVMarketStation_Source.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxSpotTVMarketStation_Source.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxSpotTVMarketStation_Source.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxSpotTVMarketStation_Source.FocusHighlightEnabled = True
-            Me.ComboBoxSpotTVMarketStation_Source.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxSpotTVMarketStation_Source.FormattingEnabled = True
-            Me.ComboBoxSpotTVMarketStation_Source.ItemHeight = 16
-            Me.ComboBoxSpotTVMarketStation_Source.Location = New System.Drawing.Point(99, 4)
-            Me.ComboBoxSpotTVMarketStation_Source.Name = "ComboBoxSpotTVMarketStation_Source"
-            Me.ComboBoxSpotTVMarketStation_Source.ReadOnly = False
-            Me.ComboBoxSpotTVMarketStation_Source.SecurityEnabled = True
-            Me.ComboBoxSpotTVMarketStation_Source.Size = New System.Drawing.Size(226, 22)
-            Me.ComboBoxSpotTVMarketStation_Source.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxSpotTVMarketStation_Source.TabIndex = 1
-            Me.ComboBoxSpotTVMarketStation_Source.TabOnEnter = True
-            Me.ComboBoxSpotTVMarketStation_Source.ValueMember = "Value"
-            Me.ComboBoxSpotTVMarketStation_Source.WatermarkText = "Select Month"
-            '
-            'LabelSpotTVMarketStation_Source
-            '
-            Me.LabelSpotTVMarketStation_Source.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSpotTVMarketStation_Source.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSpotTVMarketStation_Source.Location = New System.Drawing.Point(12, 4)
-            Me.LabelSpotTVMarketStation_Source.Name = "LabelSpotTVMarketStation_Source"
-            Me.LabelSpotTVMarketStation_Source.Size = New System.Drawing.Size(81, 20)
-            Me.LabelSpotTVMarketStation_Source.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSpotTVMarketStation_Source.TabIndex = 0
-            Me.LabelSpotTVMarketStation_Source.Text = "Source:"
-            '
-            'LabelSpotTVMarketStation_MaximumRank
-            '
-            Me.LabelSpotTVMarketStation_MaximumRank.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelSpotTVMarketStation_MaximumRank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSpotTVMarketStation_MaximumRank.Location = New System.Drawing.Point(337, 29)
-            Me.LabelSpotTVMarketStation_MaximumRank.Name = "LabelSpotTVMarketStation_MaximumRank"
-            Me.LabelSpotTVMarketStation_MaximumRank.Size = New System.Drawing.Size(63, 20)
-            Me.LabelSpotTVMarketStation_MaximumRank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSpotTVMarketStation_MaximumRank.TabIndex = 4
-            Me.LabelSpotTVMarketStation_MaximumRank.Text = "Max Rank:"
-            '
-            'NumericInputSpotTVMarketStation_MaximumRank
-            '
-            Me.NumericInputSpotTVMarketStation_MaximumRank.AllowKeyUpAndDownToIncrementValue = False
-            Me.NumericInputSpotTVMarketStation_MaximumRank.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Short]
-            Me.NumericInputSpotTVMarketStation_MaximumRank.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputSpotTVMarketStation_MaximumRank.EnterMoveNextControl = True
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Location = New System.Drawing.Point(406, 30)
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Name = "NumericInputSpotTVMarketStation_MaximumRank"
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.AllowMouseWheel = False
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Appearance.Options.UseBackColor = True
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.DisplayFormat.FormatString = "f0"
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.EditFormat.FormatString = "f0"
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.IsFloatValue = False
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Mask.EditMask = "f0"
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.Mask.UseMaskAsDisplayFormat = True
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
-            Me.NumericInputSpotTVMarketStation_MaximumRank.SecurityEnabled = True
-            Me.NumericInputSpotTVMarketStation_MaximumRank.Size = New System.Drawing.Size(58, 20)
-            Me.NumericInputSpotTVMarketStation_MaximumRank.TabIndex = 5
-            '
-            'ComboBoxSpotTVMarketStation_ReportType
-            '
-            Me.ComboBoxSpotTVMarketStation_ReportType.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxSpotTVMarketStation_ReportType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-            Me.ComboBoxSpotTVMarketStation_ReportType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxSpotTVMarketStation_ReportType.AutoFindItemInDataSource = True
-            Me.ComboBoxSpotTVMarketStation_ReportType.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxSpotTVMarketStation_ReportType.BookmarkingEnabled = False
-            Me.ComboBoxSpotTVMarketStation_ReportType.DisableMouseWheel = True
-            Me.ComboBoxSpotTVMarketStation_ReportType.DisplayMember = "Display"
-            Me.ComboBoxSpotTVMarketStation_ReportType.DisplayName = "Report Type"
-            Me.ComboBoxSpotTVMarketStation_ReportType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxSpotTVMarketStation_ReportType.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxSpotTVMarketStation_ReportType.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxSpotTVMarketStation_ReportType.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxSpotTVMarketStation_ReportType.FocusHighlightEnabled = True
-            Me.ComboBoxSpotTVMarketStation_ReportType.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxSpotTVMarketStation_ReportType.FormattingEnabled = True
-            Me.ComboBoxSpotTVMarketStation_ReportType.ItemHeight = 16
-            Me.ComboBoxSpotTVMarketStation_ReportType.Location = New System.Drawing.Point(99, 55)
-            Me.ComboBoxSpotTVMarketStation_ReportType.Name = "ComboBoxSpotTVMarketStation_ReportType"
-            Me.ComboBoxSpotTVMarketStation_ReportType.ReadOnly = False
-            Me.ComboBoxSpotTVMarketStation_ReportType.SecurityEnabled = True
-            Me.ComboBoxSpotTVMarketStation_ReportType.Size = New System.Drawing.Size(226, 22)
-            Me.ComboBoxSpotTVMarketStation_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxSpotTVMarketStation_ReportType.TabIndex = 5
-            Me.ComboBoxSpotTVMarketStation_ReportType.TabOnEnter = True
-            Me.ComboBoxSpotTVMarketStation_ReportType.ValueMember = "Value"
-            Me.ComboBoxSpotTVMarketStation_ReportType.WatermarkText = "Select Month"
-            '
-            'PanelSpotTVMarketStation_Bottom
-            '
-            Me.PanelSpotTVMarketStation_Bottom.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.DataGridViewSpotRadioCounty_Years.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotRadioCounty_Years.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelSpotTVMarketStation_Bottom.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotTVMarketStation_Bottom.Appearance.Options.UseBackColor = True
-            Me.PanelSpotTVMarketStation_Bottom.Controls.Add(Me.PanelBottomSpotTVMarketStation_RightSection)
-            Me.PanelSpotTVMarketStation_Bottom.Controls.Add(Me.ExpandableSplitterSpotTVMarketStations_LeftRight)
-            Me.PanelSpotTVMarketStation_Bottom.Controls.Add(Me.PanelBottomSpotTVMarketStation_LeftSection)
-            Me.PanelSpotTVMarketStation_Bottom.Location = New System.Drawing.Point(12, 141)
-            Me.PanelSpotTVMarketStation_Bottom.Name = "PanelSpotTVMarketStation_Bottom"
-            Me.PanelSpotTVMarketStation_Bottom.Size = New System.Drawing.Size(801, 398)
-            Me.PanelSpotTVMarketStation_Bottom.TabIndex = 6
+            Me.DataGridViewSpotRadioCounty_Years.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotRadioCounty_Years.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotRadioCounty_Years.ItemDescription = "Year(s)"
+            Me.DataGridViewSpotRadioCounty_Years.Location = New System.Drawing.Point(11, 173)
+            Me.DataGridViewSpotRadioCounty_Years.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotRadioCounty_Years.ModifyGridRowHeight = False
+            Me.DataGridViewSpotRadioCounty_Years.MultiSelect = True
+            Me.DataGridViewSpotRadioCounty_Years.Name = "DataGridViewSpotRadioCounty_Years"
+            Me.DataGridViewSpotRadioCounty_Years.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+            Me.DataGridViewSpotRadioCounty_Years.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotRadioCounty_Years.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotRadioCounty_Years.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotRadioCounty_Years.Size = New System.Drawing.Size(805, 367)
+            Me.DataGridViewSpotRadioCounty_Years.TabIndex = 16
+            Me.DataGridViewSpotRadioCounty_Years.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotRadioCounty_Years.ViewCaptionHeight = -1
             '
-            'PanelBottomSpotTVMarketStation_RightSection
+            'GroupBoxSpotRadioCounty_Dayparts
             '
-            Me.PanelBottomSpotTVMarketStation_RightSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelBottomSpotTVMarketStation_RightSection.Appearance.Options.UseBackColor = True
-            Me.PanelBottomSpotTVMarketStation_RightSection.Controls.Add(Me.DataGridViewSpotTV_SelectedStations)
-            Me.PanelBottomSpotTVMarketStation_RightSection.Controls.Add(Me.ButtonSpotTVStation_AddToSelected)
-            Me.PanelBottomSpotTVMarketStation_RightSection.Controls.Add(Me.ButtonSpotTVStation_RemoveFromSelected)
-            Me.PanelBottomSpotTVMarketStation_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelBottomSpotTVMarketStation_RightSection.Location = New System.Drawing.Point(325, 2)
-            Me.PanelBottomSpotTVMarketStation_RightSection.Name = "PanelBottomSpotTVMarketStation_RightSection"
-            Me.PanelBottomSpotTVMarketStation_RightSection.Size = New System.Drawing.Size(474, 394)
-            Me.PanelBottomSpotTVMarketStation_RightSection.TabIndex = 1
+            Me.GroupBoxSpotRadioCounty_Dayparts.Controls.Add(Me.CheckBoxCountyDaypart84)
+            Me.GroupBoxSpotRadioCounty_Dayparts.Controls.Add(Me.CheckBoxCountyDaypart68)
+            Me.GroupBoxSpotRadioCounty_Dayparts.Location = New System.Drawing.Point(11, 85)
+            Me.GroupBoxSpotRadioCounty_Dayparts.Name = "GroupBoxSpotRadioCounty_Dayparts"
+            Me.GroupBoxSpotRadioCounty_Dayparts.Size = New System.Drawing.Size(453, 56)
+            Me.GroupBoxSpotRadioCounty_Dayparts.TabIndex = 15
+            Me.GroupBoxSpotRadioCounty_Dayparts.Text = "Daypart(s)"
             '
-            'DataGridViewSpotTV_SelectedStations
+            'CheckBoxCountyDaypart84
             '
-            Me.DataGridViewSpotTV_SelectedStations.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_SelectedStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotTV_SelectedStations.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_SelectedStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_SelectedStations.ItemDescription = "Selected Station(s)"
-            Me.DataGridViewSpotTV_SelectedStations.Location = New System.Drawing.Point(86, 5)
-            Me.DataGridViewSpotTV_SelectedStations.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_SelectedStations.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_SelectedStations.MultiSelect = True
-            Me.DataGridViewSpotTV_SelectedStations.Name = "DataGridViewSpotTV_SelectedStations"
-            Me.DataGridViewSpotTV_SelectedStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_SelectedStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_SelectedStations.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_SelectedStations.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_SelectedStations.Size = New System.Drawing.Size(383, 384)
-            Me.DataGridViewSpotTV_SelectedStations.TabIndex = 2
-            Me.DataGridViewSpotTV_SelectedStations.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_SelectedStations.ViewCaptionHeight = -1
-            '
-            'ButtonSpotTVStation_AddToSelected
-            '
-            Me.ButtonSpotTVStation_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotTVStation_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotTVStation_AddToSelected.Location = New System.Drawing.Point(5, 5)
-            Me.ButtonSpotTVStation_AddToSelected.Name = "ButtonSpotTVStation_AddToSelected"
-            Me.ButtonSpotTVStation_AddToSelected.SecurityEnabled = True
-            Me.ButtonSpotTVStation_AddToSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotTVStation_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotTVStation_AddToSelected.TabIndex = 0
-            Me.ButtonSpotTVStation_AddToSelected.Text = ">"
-            '
-            'ButtonSpotTVStation_RemoveFromSelected
-            '
-            Me.ButtonSpotTVStation_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotTVStation_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotTVStation_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
-            Me.ButtonSpotTVStation_RemoveFromSelected.Name = "ButtonSpotTVStation_RemoveFromSelected"
-            Me.ButtonSpotTVStation_RemoveFromSelected.SecurityEnabled = True
-            Me.ButtonSpotTVStation_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotTVStation_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotTVStation_RemoveFromSelected.TabIndex = 1
-            Me.ButtonSpotTVStation_RemoveFromSelected.Text = "<"
-            '
-            'ExpandableSplitterSpotTVMarketStations_LeftRight
-            '
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Location = New System.Drawing.Point(319, 2)
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Name = "ExpandableSplitterSpotTVMarketStations_LeftRight"
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Size = New System.Drawing.Size(6, 394)
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.TabIndex = 20
-            Me.ExpandableSplitterSpotTVMarketStations_LeftRight.TabStop = False
-            '
-            'PanelBottomSpotTVMarketStation_LeftSection
-            '
-            Me.PanelBottomSpotTVMarketStation_LeftSection.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelBottomSpotTVMarketStation_LeftSection.Appearance.Options.UseBackColor = True
-            Me.PanelBottomSpotTVMarketStation_LeftSection.Controls.Add(Me.DataGridViewSpotTV_AvailableStations)
-            Me.PanelBottomSpotTVMarketStation_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelBottomSpotTVMarketStation_LeftSection.Location = New System.Drawing.Point(2, 2)
-            Me.PanelBottomSpotTVMarketStation_LeftSection.Name = "PanelBottomSpotTVMarketStation_LeftSection"
-            Me.PanelBottomSpotTVMarketStation_LeftSection.Size = New System.Drawing.Size(317, 394)
-            Me.PanelBottomSpotTVMarketStation_LeftSection.TabIndex = 0
-            '
-            'DataGridViewSpotTV_AvailableStations
-            '
-            Me.DataGridViewSpotTV_AvailableStations.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_AvailableStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotTV_AvailableStations.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_AvailableStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_AvailableStations.ItemDescription = "Available Station(s)"
-            Me.DataGridViewSpotTV_AvailableStations.Location = New System.Drawing.Point(5, 5)
-            Me.DataGridViewSpotTV_AvailableStations.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_AvailableStations.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_AvailableStations.MultiSelect = True
-            Me.DataGridViewSpotTV_AvailableStations.Name = "DataGridViewSpotTV_AvailableStations"
-            Me.DataGridViewSpotTV_AvailableStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_AvailableStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_AvailableStations.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_AvailableStations.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_AvailableStations.Size = New System.Drawing.Size(306, 394)
-            Me.DataGridViewSpotTV_AvailableStations.TabIndex = 0
-            Me.DataGridViewSpotTV_AvailableStations.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_AvailableStations.ViewCaptionHeight = -1
-            '
-            'GroupBoxSpotTVMarketStation_Options
-            '
-            Me.GroupBoxSpotTVMarketStation_Options.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_GroupByDaysTimes)
-            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_ShowSpill)
-            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_DominantProgramming)
-            Me.GroupBoxSpotTVMarketStation_Options.Controls.Add(Me.CheckBoxSpotTVOptions_ShowProgramName)
-            Me.GroupBoxSpotTVMarketStation_Options.Location = New System.Drawing.Point(12, 83)
-            Me.GroupBoxSpotTVMarketStation_Options.Name = "GroupBoxSpotTVMarketStation_Options"
-            Me.GroupBoxSpotTVMarketStation_Options.Size = New System.Drawing.Size(801, 52)
-            Me.GroupBoxSpotTVMarketStation_Options.TabIndex = 5
-            Me.GroupBoxSpotTVMarketStation_Options.Text = "Options"
-            '
-            'CheckBoxSpotTVOptions_GroupByDaysTimes
-            '
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.BackColor = System.Drawing.Color.White
+            Me.CheckBoxCountyDaypart84.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValue = 0
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValueChecked = 1
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.CheckValueUnchecked = 0
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.ChildControls = Nothing
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Location = New System.Drawing.Point(427, 24)
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Name = "CheckBoxSpotTVOptions_GroupByDaysTimes"
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.OldestSibling = Nothing
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.SecurityEnabled = True
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.SiblingControls = Nothing
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Size = New System.Drawing.Size(153, 20)
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.TabIndex = 3
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.TabOnEnter = True
-            Me.CheckBoxSpotTVOptions_GroupByDaysTimes.Text = "Group By Days / Times"
+            Me.CheckBoxCountyDaypart84.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxCountyDaypart84.CheckValue = 0
+            Me.CheckBoxCountyDaypart84.CheckValueChecked = 1
+            Me.CheckBoxCountyDaypart84.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxCountyDaypart84.CheckValueUnchecked = 0
+            Me.CheckBoxCountyDaypart84.ChildControls = Nothing
+            Me.CheckBoxCountyDaypart84.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxCountyDaypart84.Location = New System.Drawing.Point(151, 24)
+            Me.CheckBoxCountyDaypart84.Name = "CheckBoxCountyDaypart84"
+            Me.CheckBoxCountyDaypart84.OldestSibling = Nothing
+            Me.CheckBoxCountyDaypart84.SecurityEnabled = True
+            Me.CheckBoxCountyDaypart84.SiblingControls = Nothing
+            Me.CheckBoxCountyDaypart84.Size = New System.Drawing.Size(149, 20)
+            Me.CheckBoxCountyDaypart84.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxCountyDaypart84.TabIndex = 11
+            Me.CheckBoxCountyDaypart84.TabOnEnter = True
+            Me.CheckBoxCountyDaypart84.Tag = "84"
+            Me.CheckBoxCountyDaypart84.Text = "Mon-Sun / 6AM - 12AM"
             '
-            'CheckBoxSpotTVOptions_ShowSpill
+            'CheckBoxCountyDaypart68
             '
-            Me.CheckBoxSpotTVOptions_ShowSpill.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxSpotTVOptions_ShowSpill.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValue = 0
-            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValueChecked = 1
-            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSpotTVOptions_ShowSpill.CheckValueUnchecked = 0
-            Me.CheckBoxSpotTVOptions_ShowSpill.ChildControls = Nothing
-            Me.CheckBoxSpotTVOptions_ShowSpill.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSpotTVOptions_ShowSpill.Location = New System.Drawing.Point(323, 24)
-            Me.CheckBoxSpotTVOptions_ShowSpill.Name = "CheckBoxSpotTVOptions_ShowSpill"
-            Me.CheckBoxSpotTVOptions_ShowSpill.OldestSibling = Nothing
-            Me.CheckBoxSpotTVOptions_ShowSpill.SecurityEnabled = True
-            Me.CheckBoxSpotTVOptions_ShowSpill.SiblingControls = Nothing
-            Me.CheckBoxSpotTVOptions_ShowSpill.Size = New System.Drawing.Size(98, 20)
-            Me.CheckBoxSpotTVOptions_ShowSpill.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSpotTVOptions_ShowSpill.TabIndex = 2
-            Me.CheckBoxSpotTVOptions_ShowSpill.TabOnEnter = True
-            Me.CheckBoxSpotTVOptions_ShowSpill.Text = "Show Spill"
-            '
-            'CheckBoxSpotTVOptions_DominantProgramming
-            '
-            Me.CheckBoxSpotTVOptions_DominantProgramming.AutoCheck = False
-            Me.CheckBoxSpotTVOptions_DominantProgramming.BackColor = System.Drawing.Color.White
+            Me.CheckBoxCountyDaypart68.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.CheckBoxSpotTVOptions_DominantProgramming.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValue = 0
-            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValueChecked = 1
-            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSpotTVOptions_DominantProgramming.CheckValueUnchecked = 0
-            Me.CheckBoxSpotTVOptions_DominantProgramming.ChildControls = Nothing
-            Me.CheckBoxSpotTVOptions_DominantProgramming.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSpotTVOptions_DominantProgramming.Enabled = False
-            Me.CheckBoxSpotTVOptions_DominantProgramming.Location = New System.Drawing.Point(5, 24)
-            Me.CheckBoxSpotTVOptions_DominantProgramming.Name = "CheckBoxSpotTVOptions_DominantProgramming"
-            Me.CheckBoxSpotTVOptions_DominantProgramming.OldestSibling = Nothing
-            Me.CheckBoxSpotTVOptions_DominantProgramming.SecurityEnabled = True
-            Me.CheckBoxSpotTVOptions_DominantProgramming.SiblingControls = Nothing
-            Me.CheckBoxSpotTVOptions_DominantProgramming.Size = New System.Drawing.Size(153, 20)
-            Me.CheckBoxSpotTVOptions_DominantProgramming.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSpotTVOptions_DominantProgramming.TabIndex = 0
-            Me.CheckBoxSpotTVOptions_DominantProgramming.TabOnEnter = True
-            Me.CheckBoxSpotTVOptions_DominantProgramming.Text = "Dominant Programming"
+            Me.CheckBoxCountyDaypart68.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxCountyDaypart68.CheckValue = 0
+            Me.CheckBoxCountyDaypart68.CheckValueChecked = 1
+            Me.CheckBoxCountyDaypart68.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxCountyDaypart68.CheckValueUnchecked = 0
+            Me.CheckBoxCountyDaypart68.ChildControls = Nothing
+            Me.CheckBoxCountyDaypart68.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxCountyDaypart68.Location = New System.Drawing.Point(5, 24)
+            Me.CheckBoxCountyDaypart68.Name = "CheckBoxCountyDaypart68"
+            Me.CheckBoxCountyDaypart68.OldestSibling = Nothing
+            Me.CheckBoxCountyDaypart68.SecurityEnabled = True
+            Me.CheckBoxCountyDaypart68.SiblingControls = Nothing
+            Me.CheckBoxCountyDaypart68.Size = New System.Drawing.Size(140, 20)
+            Me.CheckBoxCountyDaypart68.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxCountyDaypart68.TabIndex = 10
+            Me.CheckBoxCountyDaypart68.TabOnEnter = True
+            Me.CheckBoxCountyDaypart68.Tag = "68"
+            Me.CheckBoxCountyDaypart68.Text = "Mon-Fri / 6AM - 7PM"
             '
-            'CheckBoxSpotTVOptions_ShowProgramName
+            'CheckBoxCounty_ShowFrequency
             '
-            Me.CheckBoxSpotTVOptions_ShowProgramName.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxSpotTVOptions_ShowProgramName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValue = 0
-            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValueChecked = 1
-            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxSpotTVOptions_ShowProgramName.CheckValueUnchecked = 0
-            Me.CheckBoxSpotTVOptions_ShowProgramName.ChildControls = Nothing
-            Me.CheckBoxSpotTVOptions_ShowProgramName.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxSpotTVOptions_ShowProgramName.Location = New System.Drawing.Point(164, 24)
-            Me.CheckBoxSpotTVOptions_ShowProgramName.Name = "CheckBoxSpotTVOptions_ShowProgramName"
-            Me.CheckBoxSpotTVOptions_ShowProgramName.OldestSibling = Nothing
-            Me.CheckBoxSpotTVOptions_ShowProgramName.SecurityEnabled = True
-            Me.CheckBoxSpotTVOptions_ShowProgramName.SiblingControls = Nothing
-            Me.CheckBoxSpotTVOptions_ShowProgramName.Size = New System.Drawing.Size(153, 20)
-            Me.CheckBoxSpotTVOptions_ShowProgramName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxSpotTVOptions_ShowProgramName.TabIndex = 1
-            Me.CheckBoxSpotTVOptions_ShowProgramName.TabOnEnter = True
-            Me.CheckBoxSpotTVOptions_ShowProgramName.Text = "Show Program Name"
-            '
-            'LabelSpotTVMarketStation_Market
-            '
-            Me.LabelSpotTVMarketStation_Market.BackColor = System.Drawing.Color.White
+            Me.CheckBoxCounty_ShowFrequency.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.LabelSpotTVMarketStation_Market.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSpotTVMarketStation_Market.Location = New System.Drawing.Point(11, 29)
-            Me.LabelSpotTVMarketStation_Market.Name = "LabelSpotTVMarketStation_Market"
-            Me.LabelSpotTVMarketStation_Market.Size = New System.Drawing.Size(81, 20)
-            Me.LabelSpotTVMarketStation_Market.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSpotTVMarketStation_Market.TabIndex = 2
-            Me.LabelSpotTVMarketStation_Market.Text = "Market:"
+            Me.CheckBoxCounty_ShowFrequency.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxCounty_ShowFrequency.CheckValue = 0
+            Me.CheckBoxCounty_ShowFrequency.CheckValueChecked = 1
+            Me.CheckBoxCounty_ShowFrequency.CheckValueType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxCounty_ShowFrequency.CheckValueUnchecked = 0
+            Me.CheckBoxCounty_ShowFrequency.ChildControls = Nothing
+            Me.CheckBoxCounty_ShowFrequency.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxCounty_ShowFrequency.Location = New System.Drawing.Point(11, 147)
+            Me.CheckBoxCounty_ShowFrequency.Name = "CheckBoxCounty_ShowFrequency"
+            Me.CheckBoxCounty_ShowFrequency.OldestSibling = Nothing
+            Me.CheckBoxCounty_ShowFrequency.SecurityEnabled = True
+            Me.CheckBoxCounty_ShowFrequency.SiblingControls = Nothing
+            Me.CheckBoxCounty_ShowFrequency.Size = New System.Drawing.Size(112, 20)
+            Me.CheckBoxCounty_ShowFrequency.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxCounty_ShowFrequency.TabIndex = 9
+            Me.CheckBoxCounty_ShowFrequency.TabOnEnter = True
+            Me.CheckBoxCounty_ShowFrequency.Text = "Show Frequency"
             '
-            'LabelSpotTVMarketStation_ReportType
+            'LabelCounty_MaxRank
             '
-            Me.LabelSpotTVMarketStation_ReportType.BackColor = System.Drawing.Color.White
+            Me.LabelCounty_MaxRank.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.LabelSpotTVMarketStation_ReportType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSpotTVMarketStation_ReportType.Location = New System.Drawing.Point(12, 55)
-            Me.LabelSpotTVMarketStation_ReportType.Name = "LabelSpotTVMarketStation_ReportType"
-            Me.LabelSpotTVMarketStation_ReportType.Size = New System.Drawing.Size(81, 20)
-            Me.LabelSpotTVMarketStation_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSpotTVMarketStation_ReportType.TabIndex = 4
-            Me.LabelSpotTVMarketStation_ReportType.Text = "Report Type:"
+            Me.LabelCounty_MaxRank.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCounty_MaxRank.Location = New System.Drawing.Point(318, 33)
+            Me.LabelCounty_MaxRank.Name = "LabelCounty_MaxRank"
+            Me.LabelCounty_MaxRank.Size = New System.Drawing.Size(63, 20)
+            Me.LabelCounty_MaxRank.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCounty_MaxRank.TabIndex = 6
+            Me.LabelCounty_MaxRank.Text = "Max Rank:"
             '
-            'SearchableComboBoxSpotTVMarketStation_Market
+            'NumericInputCounty_MaxRank
             '
-            Me.SearchableComboBoxSpotTVMarketStation_Market.ActiveFilterString = ""
-            Me.SearchableComboBoxSpotTVMarketStation_Market.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxSpotTVMarketStation_Market.AutoFillMode = False
-            Me.SearchableComboBoxSpotTVMarketStation_Market.BookmarkingEnabled = False
-            Me.SearchableComboBoxSpotTVMarketStation_Market.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.Type.Market
-            Me.SearchableComboBoxSpotTVMarketStation_Market.DataSource = Nothing
-            Me.SearchableComboBoxSpotTVMarketStation_Market.DisableMouseWheel = True
-            Me.SearchableComboBoxSpotTVMarketStation_Market.DisplayName = ""
-            Me.SearchableComboBoxSpotTVMarketStation_Market.EditValue = ""
-            Me.SearchableComboBoxSpotTVMarketStation_Market.EnterMoveNextControl = True
-            Me.SearchableComboBoxSpotTVMarketStation_Market.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.[Nothing]
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Location = New System.Drawing.Point(99, 30)
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Name = "SearchableComboBoxSpotTVMarketStation_Market"
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.DisplayMember = "Description"
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.NullText = "Select Market"
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.PopupView = Me.SearchableComboBoxSpotTVViewControl_Market
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.ShowClearButton = False
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Properties.ValueMember = "Code"
-            Me.SearchableComboBoxSpotTVMarketStation_Market.SecurityEnabled = True
-            Me.SearchableComboBoxSpotTVMarketStation_Market.SelectedValue = ""
-            Me.SearchableComboBoxSpotTVMarketStation_Market.Size = New System.Drawing.Size(226, 20)
-            Me.SearchableComboBoxSpotTVMarketStation_Market.TabIndex = 3
+            Me.NumericInputCounty_MaxRank.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputCounty_MaxRank.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Short]
+            Me.NumericInputCounty_MaxRank.EditValue = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.NumericInputCounty_MaxRank.EnterMoveNextControl = True
+            Me.NumericInputCounty_MaxRank.Location = New System.Drawing.Point(387, 34)
+            Me.NumericInputCounty_MaxRank.Name = "NumericInputCounty_MaxRank"
+            Me.NumericInputCounty_MaxRank.Properties.AllowMouseWheel = False
+            Me.NumericInputCounty_MaxRank.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputCounty_MaxRank.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
+            Me.NumericInputCounty_MaxRank.Properties.Appearance.Options.UseBackColor = True
+            Me.NumericInputCounty_MaxRank.Properties.DisplayFormat.FormatString = "f0"
+            Me.NumericInputCounty_MaxRank.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputCounty_MaxRank.Properties.EditFormat.FormatString = "f0"
+            Me.NumericInputCounty_MaxRank.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputCounty_MaxRank.Properties.IsFloatValue = False
+            Me.NumericInputCounty_MaxRank.Properties.Mask.EditMask = "f0"
+            Me.NumericInputCounty_MaxRank.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputCounty_MaxRank.Properties.MaxValue = New Decimal(New Integer() {32767, 0, 0, 0})
+            Me.NumericInputCounty_MaxRank.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 0})
+            Me.NumericInputCounty_MaxRank.SecurityEnabled = True
+            Me.NumericInputCounty_MaxRank.Size = New System.Drawing.Size(58, 20)
+            Me.NumericInputCounty_MaxRank.TabIndex = 7
             '
-            'SearchableComboBoxSpotTVViewControl_Market
+            'ComboBoxCounty_ReportType
             '
-            Me.SearchableComboBoxSpotTVViewControl_Market.AFActiveFilterString = ""
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.ColumnFilterButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.ColumnFilterButtonActive.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.CustomizationFormHint.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.DetailTip.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.Empty.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FilterCloseButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FixedLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FocusedCell.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FocusedRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupButton.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.HideSelectionRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.HorzLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.Row.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.RowSeparator.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.SelectedRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.TopNewRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.VertLine.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.Appearance.ViewCaption.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.Lines.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.AppearancePrint.Row.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.SearchableComboBoxSpotTVViewControl_Market.EnableDisabledRows = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.SearchableComboBoxSpotTVViewControl_Market.ModifyColumnSettingsOnEachDataSource = True
-            Me.SearchableComboBoxSpotTVViewControl_Market.ModifyGridRowHeight = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.Name = "SearchableComboBoxSpotTVViewControl_Market"
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsBehavior.Editable = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsCustomization.AllowQuickHideColumns = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsNavigation.AutoFocusNewRow = True
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsSelection.MultiSelect = True
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsView.ColumnAutoWidth = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsView.ShowGroupPanel = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
-            Me.SearchableComboBoxSpotTVViewControl_Market.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.SearchableComboBoxSpotTVViewControl_Market.SkipAddingControlsOnModifyColumn = False
-            Me.SearchableComboBoxSpotTVViewControl_Market.SkipSettingFontOnModifyColumn = False
+            Me.ComboBoxCounty_ReportType.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxCounty_ReportType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+            Me.ComboBoxCounty_ReportType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxCounty_ReportType.AutoFindItemInDataSource = True
+            Me.ComboBoxCounty_ReportType.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxCounty_ReportType.BookmarkingEnabled = False
+            Me.ComboBoxCounty_ReportType.DisableMouseWheel = True
+            Me.ComboBoxCounty_ReportType.DisplayMember = "Display"
+            Me.ComboBoxCounty_ReportType.DisplayName = "Report Type"
+            Me.ComboBoxCounty_ReportType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxCounty_ReportType.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxCounty_ReportType.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxCounty_ReportType.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxCounty_ReportType.FocusHighlightEnabled = True
+            Me.ComboBoxCounty_ReportType.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxCounty_ReportType.FormattingEnabled = True
+            Me.ComboBoxCounty_ReportType.ItemHeight = 16
+            Me.ComboBoxCounty_ReportType.Location = New System.Drawing.Point(99, 31)
+            Me.ComboBoxCounty_ReportType.Name = "ComboBoxCounty_ReportType"
+            Me.ComboBoxCounty_ReportType.ReadOnly = False
+            Me.ComboBoxCounty_ReportType.SecurityEnabled = True
+            Me.ComboBoxCounty_ReportType.Size = New System.Drawing.Size(213, 22)
+            Me.ComboBoxCounty_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxCounty_ReportType.TabIndex = 5
+            Me.ComboBoxCounty_ReportType.TabOnEnter = True
+            Me.ComboBoxCounty_ReportType.ValueMember = "Value"
+            Me.ComboBoxCounty_ReportType.WatermarkText = "Select Month"
             '
-            'TabItemSpotTV_MarketStations
+            'LabelCounty_ReportType
             '
-            Me.TabItemSpotTV_MarketStations.AttachedControl = Me.TabControlPanelSpotTVMarketStations_Criteria
-            Me.TabItemSpotTV_MarketStations.Name = "TabItemSpotTV_MarketStations"
-            Me.TabItemSpotTV_MarketStations.Text = "Market/Report Type/Stations"
+            Me.LabelCounty_ReportType.BackColor = System.Drawing.Color.White
             '
-            'TabControlPanelSpotTVBooks_Criteria
             '
-            Me.TabControlPanelSpotTVBooks_Criteria.Controls.Add(Me.DataGridViewSpotTV_DayTimes)
-            Me.TabControlPanelSpotTVBooks_Criteria.Controls.Add(Me.ExpandableSplitterSpotTVDaysTimes)
-            Me.TabControlPanelSpotTVBooks_Criteria.Controls.Add(Me.ShareHPUTBookControl_Books)
-            Me.TabControlPanelSpotTVBooks_Criteria.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSpotTVBooks_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSpotTVBooks_Criteria.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSpotTVBooks_Criteria.Name = "TabControlPanelSpotTVBooks_Criteria"
-            Me.TabControlPanelSpotTVBooks_Criteria.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSpotTVBooks_Criteria.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelSpotTVBooks_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSpotTVBooks_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSpotTVBooks_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSpotTVBooks_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSpotTVBooks_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            '
+            Me.LabelCounty_ReportType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCounty_ReportType.Location = New System.Drawing.Point(11, 31)
+            Me.LabelCounty_ReportType.Name = "LabelCounty_ReportType"
+            Me.LabelCounty_ReportType.Size = New System.Drawing.Size(82, 20)
+            Me.LabelCounty_ReportType.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCounty_ReportType.TabIndex = 4
+            Me.LabelCounty_ReportType.Text = "Report Type:"
+            '
+            'SearchableComboBoxCounty_Demographic
+            '
+            Me.SearchableComboBoxCounty_Demographic.ActiveFilterString = ""
+            Me.SearchableComboBoxCounty_Demographic.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxCounty_Demographic.AutoFillMode = False
+            Me.SearchableComboBoxCounty_Demographic.BookmarkingEnabled = False
+            Me.SearchableComboBoxCounty_Demographic.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.Type.MediaDemographic
+            Me.SearchableComboBoxCounty_Demographic.DataSource = Nothing
+            Me.SearchableComboBoxCounty_Demographic.DisableMouseWheel = True
+            Me.SearchableComboBoxCounty_Demographic.DisplayName = ""
+            Me.SearchableComboBoxCounty_Demographic.EditValue = ""
+            Me.SearchableComboBoxCounty_Demographic.EnterMoveNextControl = True
+            Me.SearchableComboBoxCounty_Demographic.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.[Nothing]
+            Me.SearchableComboBoxCounty_Demographic.Location = New System.Drawing.Point(98, 59)
+            Me.SearchableComboBoxCounty_Demographic.Name = "SearchableComboBoxCounty_Demographic"
+            Me.SearchableComboBoxCounty_Demographic.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxCounty_Demographic.Properties.DisplayMember = "Description"
+            Me.SearchableComboBoxCounty_Demographic.Properties.NullText = "Select Demographic"
+            Me.SearchableComboBoxCounty_Demographic.Properties.PopupView = Me.GridView4
+            Me.SearchableComboBoxCounty_Demographic.Properties.ShowClearButton = False
+            Me.SearchableComboBoxCounty_Demographic.Properties.ValueMember = "ID"
+            Me.SearchableComboBoxCounty_Demographic.SecurityEnabled = True
+            Me.SearchableComboBoxCounty_Demographic.SelectedValue = ""
+            Me.SearchableComboBoxCounty_Demographic.Size = New System.Drawing.Size(213, 20)
+            Me.SearchableComboBoxCounty_Demographic.TabIndex = 9
+            '
+            'GridView4
+            '
+            Me.GridView4.AFActiveFilterString = ""
+            Me.GridView4.Appearance.ColumnFilterButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.ColumnFilterButtonActive.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.CustomizationFormHint.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.DetailTip.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.Empty.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.FilterCloseButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.FixedLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.FocusedCell.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.FocusedRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.GroupButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.GroupPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.HideSelectionRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.HorzLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.Row.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.RowSeparator.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.SelectedRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.TopNewRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.VertLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.Appearance.ViewCaption.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.Lines.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.AppearancePrint.Row.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView4.EnableDisabledRows = False
+            Me.GridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView4.ModifyColumnSettingsOnEachDataSource = True
+            Me.GridView4.ModifyGridRowHeight = False
+            Me.GridView4.Name = "GridView4"
+            Me.GridView4.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
+            Me.GridView4.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
+            Me.GridView4.OptionsBehavior.Editable = False
+            Me.GridView4.OptionsCustomization.AllowQuickHideColumns = False
+            Me.GridView4.OptionsNavigation.AutoFocusNewRow = True
+            Me.GridView4.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView4.OptionsSelection.MultiSelect = True
+            Me.GridView4.OptionsView.ColumnAutoWidth = False
+            Me.GridView4.OptionsView.ShowGroupPanel = False
+            Me.GridView4.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
+            Me.GridView4.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView4.SkipAddingControlsOnModifyColumn = False
+            Me.GridView4.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelCounty_Demographic
+            '
+            Me.LabelCounty_Demographic.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelCounty_Demographic.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCounty_Demographic.Location = New System.Drawing.Point(11, 57)
+            Me.LabelCounty_Demographic.Name = "LabelCounty_Demographic"
+            Me.LabelCounty_Demographic.Size = New System.Drawing.Size(81, 20)
+            Me.LabelCounty_Demographic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCounty_Demographic.TabIndex = 8
+            Me.LabelCounty_Demographic.Text = "Demographic:"
+            '
+            'LabelCounty_Market
+            '
+            Me.LabelCounty_Market.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelCounty_Market.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelCounty_Market.Location = New System.Drawing.Point(11, 5)
+            Me.LabelCounty_Market.Name = "LabelCounty_Market"
+            Me.LabelCounty_Market.Size = New System.Drawing.Size(81, 20)
+            Me.LabelCounty_Market.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelCounty_Market.TabIndex = 2
+            Me.LabelCounty_Market.Text = "County:"
+            '
+            'SearchableComboBoxCounty_County
+            '
+            Me.SearchableComboBoxCounty_County.ActiveFilterString = ""
+            Me.SearchableComboBoxCounty_County.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxCounty_County.AutoFillMode = False
+            Me.SearchableComboBoxCounty_County.BookmarkingEnabled = False
+            Me.SearchableComboBoxCounty_County.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.Type.NielsenRadioCounty
+            Me.SearchableComboBoxCounty_County.DataSource = Nothing
+            Me.SearchableComboBoxCounty_County.DisableMouseWheel = True
+            Me.SearchableComboBoxCounty_County.DisplayName = ""
+            Me.SearchableComboBoxCounty_County.EditValue = ""
+            Me.SearchableComboBoxCounty_County.EnterMoveNextControl = True
+            Me.SearchableComboBoxCounty_County.ExtraComboBoxItem = AdvantageFramework.WinForm.MVC.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.[Nothing]
+            Me.SearchableComboBoxCounty_County.Location = New System.Drawing.Point(99, 5)
+            Me.SearchableComboBoxCounty_County.Name = "SearchableComboBoxCounty_County"
+            Me.SearchableComboBoxCounty_County.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxCounty_County.Properties.DisplayMember = "Name"
+            Me.SearchableComboBoxCounty_County.Properties.NullText = "Select County"
+            Me.SearchableComboBoxCounty_County.Properties.PopupView = Me.GridView5
+            Me.SearchableComboBoxCounty_County.Properties.ShowClearButton = False
+            Me.SearchableComboBoxCounty_County.Properties.ValueMember = "CountyCode"
+            Me.SearchableComboBoxCounty_County.SecurityEnabled = True
+            Me.SearchableComboBoxCounty_County.SelectedValue = ""
+            Me.SearchableComboBoxCounty_County.Size = New System.Drawing.Size(213, 20)
+            Me.SearchableComboBoxCounty_County.TabIndex = 3
+            '
+            'GridView5
+            '
+            Me.GridView5.AFActiveFilterString = ""
+            Me.GridView5.Appearance.ColumnFilterButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.ColumnFilterButtonActive.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.CustomizationFormHint.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.DetailTip.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.Empty.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.FilterCloseButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.FixedLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.FocusedCell.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.FocusedRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.GroupButton.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.GroupPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.HideSelectionRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.HorzLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.Row.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.RowSeparator.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.SelectedRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.TopNewRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.VertLine.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.Appearance.ViewCaption.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.FilterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.FooterPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.GroupFooter.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.GroupRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.HeaderPanel.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.Lines.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.OddRow.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.Preview.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.AppearancePrint.Row.Font = New System.Drawing.Font("Arial", 8.0!)
+            Me.GridView5.EnableDisabledRows = False
+            Me.GridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView5.ModifyColumnSettingsOnEachDataSource = True
+            Me.GridView5.ModifyGridRowHeight = False
+            Me.GridView5.Name = "GridView5"
+            Me.GridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
+            Me.GridView5.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
+            Me.GridView5.OptionsBehavior.Editable = False
+            Me.GridView5.OptionsCustomization.AllowQuickHideColumns = False
+            Me.GridView5.OptionsNavigation.AutoFocusNewRow = True
+            Me.GridView5.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView5.OptionsSelection.MultiSelect = True
+            Me.GridView5.OptionsView.ColumnAutoWidth = False
+            Me.GridView5.OptionsView.ShowGroupPanel = False
+            Me.GridView5.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Panel
+            Me.GridView5.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView5.SkipAddingControlsOnModifyColumn = False
+            Me.GridView5.SkipSettingFontOnModifyColumn = False
+            '
+            'TabItemSpotRadioCounty_MarketBooks
+            '
+            Me.TabItemSpotRadioCounty_MarketBooks.AttachedControl = Me.TabControlPanelCountyMarket
+            Me.TabItemSpotRadioCounty_MarketBooks.Name = "TabItemSpotRadioCounty_MarketBooks"
+            Me.TabItemSpotRadioCounty_MarketBooks.Text = "County/Report/Demo/DP/Years"
+            '
+            'TabControlPanelCountyResults
+            '
+            Me.TabControlPanelCountyResults.Controls.Add(Me.TabControlResults_RadioCountyResults)
+            Me.TabControlPanelCountyResults.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCountyResults.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCountyResults.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCountyResults.Name = "TabControlPanelCountyResults"
+            Me.TabControlPanelCountyResults.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCountyResults.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelCountyResults.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCountyResults.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCountyResults.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCountyResults.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCountyResults.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSpotTVBooks_Criteria.Style.GradientAngle = 90
-            Me.TabControlPanelSpotTVBooks_Criteria.TabIndex = 11
-            Me.TabControlPanelSpotTVBooks_Criteria.TabItem = Me.TabItemSpotTV_Books
+            Me.TabControlPanelCountyResults.Style.GradientAngle = 90
+            Me.TabControlPanelCountyResults.TabIndex = 34
+            Me.TabControlPanelCountyResults.TabItem = Me.TabItemSpotRadioCounty_Results
             '
-            'DataGridViewSpotTV_DayTimes
+            'TabControlResults_RadioCountyResults
             '
-            Me.DataGridViewSpotTV_DayTimes.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_DayTimes.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_DayTimes.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.DataGridViewSpotTV_DayTimes.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_DayTimes.ItemDescription = "Day Time(s)"
-            Me.DataGridViewSpotTV_DayTimes.Location = New System.Drawing.Point(1, 287)
-            Me.DataGridViewSpotTV_DayTimes.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_DayTimes.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_DayTimes.MultiSelect = True
-            Me.DataGridViewSpotTV_DayTimes.Name = "DataGridViewSpotTV_DayTimes"
-            Me.DataGridViewSpotTV_DayTimes.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_DayTimes.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_DayTimes.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_DayTimes.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_DayTimes.Size = New System.Drawing.Size(823, 256)
-            Me.DataGridViewSpotTV_DayTimes.TabIndex = 14
-            Me.DataGridViewSpotTV_DayTimes.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_DayTimes.ViewCaptionHeight = -1
+            Me.TabControlResults_RadioCountyResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TabControlResults_RadioCountyResults.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
+            Me.TabControlResults_RadioCountyResults.CanReorderTabs = False
+            Me.TabControlResults_RadioCountyResults.ColorScheme.TabBackground = System.Drawing.Color.White
+            Me.TabControlResults_RadioCountyResults.ColorScheme.TabPanelBackground = System.Drawing.Color.White
+            Me.TabControlResults_RadioCountyResults.Controls.Add(Me.TabControlPanelCountyData)
+            Me.TabControlResults_RadioCountyResults.Controls.Add(Me.TabControlPanelCountyDashboard)
+            Me.TabControlResults_RadioCountyResults.ForeColor = System.Drawing.Color.Black
+            Me.TabControlResults_RadioCountyResults.Location = New System.Drawing.Point(4, 4)
+            Me.TabControlResults_RadioCountyResults.Name = "TabControlResults_RadioCountyResults"
+            Me.TabControlResults_RadioCountyResults.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+            Me.TabControlResults_RadioCountyResults.SelectedTabIndex = 0
+            Me.TabControlResults_RadioCountyResults.Size = New System.Drawing.Size(817, 536)
+            Me.TabControlResults_RadioCountyResults.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
+            Me.TabControlResults_RadioCountyResults.TabIndex = 4
+            Me.TabControlResults_RadioCountyResults.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
+            Me.TabControlResults_RadioCountyResults.Tabs.Add(Me.TabItemRadioCountyResults_RadioCountyDataTab)
+            Me.TabControlResults_RadioCountyResults.Tabs.Add(Me.TabItemCountyResults_Dashboard)
+            Me.TabControlResults_RadioCountyResults.TabStop = False
             '
-            'ExpandableSplitterSpotTVDaysTimes
+            'TabControlPanelCountyData
             '
-            Me.ExpandableSplitterSpotTVDaysTimes.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVDaysTimes.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterSpotTVDaysTimes.Cursor = System.Windows.Forms.Cursors.HSplit
-            Me.ExpandableSplitterSpotTVDaysTimes.Dock = System.Windows.Forms.DockStyle.Top
-            Me.ExpandableSplitterSpotTVDaysTimes.ExpandableControl = Me.ShareHPUTBookControl_Books
-            Me.ExpandableSplitterSpotTVDaysTimes.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVDaysTimes.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterSpotTVDaysTimes.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterSpotTVDaysTimes.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterSpotTVDaysTimes.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterSpotTVDaysTimes.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterSpotTVDaysTimes.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterSpotTVDaysTimes.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterSpotTVDaysTimes.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterSpotTVDaysTimes.Location = New System.Drawing.Point(1, 281)
-            Me.ExpandableSplitterSpotTVDaysTimes.Name = "ExpandableSplitterSpotTVDaysTimes"
-            Me.ExpandableSplitterSpotTVDaysTimes.Size = New System.Drawing.Size(823, 6)
-            Me.ExpandableSplitterSpotTVDaysTimes.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterSpotTVDaysTimes.TabIndex = 13
-            Me.ExpandableSplitterSpotTVDaysTimes.TabStop = False
-            '
-            'ShareHPUTBookControl_Books
-            '
-            Me.ShareHPUTBookControl_Books.Dock = System.Windows.Forms.DockStyle.Top
-            Me.ShareHPUTBookControl_Books.Location = New System.Drawing.Point(1, 1)
-            Me.ShareHPUTBookControl_Books.Name = "ShareHPUTBookControl_Books"
-            Me.ShareHPUTBookControl_Books.Size = New System.Drawing.Size(823, 280)
-            Me.ShareHPUTBookControl_Books.TabIndex = 0
-            '
-            'TabItemSpotTV_Books
-            '
-            Me.TabItemSpotTV_Books.AttachedControl = Me.TabControlPanelSpotTVBooks_Criteria
-            Me.TabItemSpotTV_Books.Name = "TabItemSpotTV_Books"
-            Me.TabItemSpotTV_Books.Text = "Books/Days/Times"
-            '
-            'TabControlPanelSpotTVResults_Results
-            '
-            Me.TabControlPanelSpotTVResults_Results.Controls.Add(Me.TabControlResults_TVResults)
-            Me.TabControlPanelSpotTVResults_Results.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSpotTVResults_Results.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSpotTVResults_Results.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSpotTVResults_Results.Name = "TabControlPanelSpotTVResults_Results"
-            Me.TabControlPanelSpotTVResults_Results.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSpotTVResults_Results.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelSpotTVResults_Results.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSpotTVResults_Results.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSpotTVResults_Results.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSpotTVResults_Results.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSpotTVResults_Results.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelCountyData.Controls.Add(Me.BandedDataGridViewSpotRadioCountyResults)
+            Me.TabControlPanelCountyData.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCountyData.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCountyData.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCountyData.Name = "TabControlPanelCountyData"
+            Me.TabControlPanelCountyData.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCountyData.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanelCountyData.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCountyData.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCountyData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCountyData.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCountyData.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSpotTVResults_Results.Style.GradientAngle = 90
-            Me.TabControlPanelSpotTVResults_Results.TabIndex = 34
-            Me.TabControlPanelSpotTVResults_Results.TabItem = Me.TabItemSpotTV_Results
+            Me.TabControlPanelCountyData.Style.GradientAngle = 90
+            Me.TabControlPanelCountyData.TabIndex = 10
+            Me.TabControlPanelCountyData.TabItem = Me.TabItemRadioCountyResults_RadioCountyDataTab
             '
-            'TabControlResults_TVResults
+            'BandedDataGridViewSpotRadioCountyResults
             '
-            Me.TabControlResults_TVResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.BandedDataGridViewSpotRadioCountyResults.AllowSelectGroupHeaderRow = True
+            Me.BandedDataGridViewSpotRadioCountyResults.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TabControlResults_TVResults.BackColor = System.Drawing.Color.FromArgb(CType(CType(207, Byte), Integer), CType(CType(221, Byte), Integer), CType(CType(238, Byte), Integer))
-            Me.TabControlResults_TVResults.CanReorderTabs = False
-            Me.TabControlResults_TVResults.ColorScheme.TabBackground = System.Drawing.Color.White
-            Me.TabControlResults_TVResults.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlResults_TVResults.Controls.Add(Me.TabControlPanelTVDataTab_TVData)
-            Me.TabControlResults_TVResults.Controls.Add(Me.TabControlPanelTVDashboardTab_TVDashboard)
-            Me.TabControlResults_TVResults.ForeColor = System.Drawing.Color.Black
-            Me.TabControlResults_TVResults.Location = New System.Drawing.Point(4, 4)
-            Me.TabControlResults_TVResults.Name = "TabControlResults_TVResults"
-            Me.TabControlResults_TVResults.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-            Me.TabControlResults_TVResults.SelectedTabIndex = 0
-            Me.TabControlResults_TVResults.Size = New System.Drawing.Size(817, 536)
-            Me.TabControlResults_TVResults.Style = DevComponents.DotNetBar.eTabStripStyle.Metro
-            Me.TabControlResults_TVResults.TabIndex = 3
-            Me.TabControlResults_TVResults.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox
-            Me.TabControlResults_TVResults.Tabs.Add(Me.TabItemTVResults_TVDataTab)
-            Me.TabControlResults_TVResults.Tabs.Add(Me.TabItemTVResults_TVDashboardTab)
-            Me.TabControlResults_TVResults.TabStop = False
+            Me.BandedDataGridViewSpotRadioCountyResults.AutoUpdateViewCaption = True
+            Me.BandedDataGridViewSpotRadioCountyResults.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.BandedDataGridViewSpotRadioCountyResults.ItemDescription = "Item(s)"
+            Me.BandedDataGridViewSpotRadioCountyResults.Location = New System.Drawing.Point(4, 4)
+            Me.BandedDataGridViewSpotRadioCountyResults.ModifyColumnSettingsOnEachDataSource = True
+            Me.BandedDataGridViewSpotRadioCountyResults.ModifyGridRowHeight = False
+            Me.BandedDataGridViewSpotRadioCountyResults.MultiSelect = True
+            Me.BandedDataGridViewSpotRadioCountyResults.Name = "BandedDataGridViewSpotRadioCountyResults"
+            Me.BandedDataGridViewSpotRadioCountyResults.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.BandedDataGridViewSpotRadioCountyResults.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.BandedDataGridViewSpotRadioCountyResults.ShowRowSelectionIfHidden = True
+            Me.BandedDataGridViewSpotRadioCountyResults.ShowSelectDeselectAllButtons = False
+            Me.BandedDataGridViewSpotRadioCountyResults.Size = New System.Drawing.Size(808, 501)
+            Me.BandedDataGridViewSpotRadioCountyResults.TabIndex = 0
+            Me.BandedDataGridViewSpotRadioCountyResults.UseEmbeddedNavigator = False
+            Me.BandedDataGridViewSpotRadioCountyResults.ViewCaptionHeight = -1
             '
-            'TabControlPanelTVDataTab_TVData
+            'TabItemRadioCountyResults_RadioCountyDataTab
             '
-            Me.TabControlPanelTVDataTab_TVData.Controls.Add(Me.LabelSpotTVResults_Footer)
-            Me.TabControlPanelTVDataTab_TVData.Controls.Add(Me.BandedDataGridViewSpotTVResults)
-            Me.TabControlPanelTVDataTab_TVData.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelTVDataTab_TVData.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelTVDataTab_TVData.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelTVDataTab_TVData.Name = "TabControlPanelTVDataTab_TVData"
-            Me.TabControlPanelTVDataTab_TVData.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelTVDataTab_TVData.Size = New System.Drawing.Size(817, 509)
-            Me.TabControlPanelTVDataTab_TVData.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelTVDataTab_TVData.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelTVDataTab_TVData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelTVDataTab_TVData.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelTVDataTab_TVData.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabItemRadioCountyResults_RadioCountyDataTab.AttachedControl = Me.TabControlPanelCountyData
+            Me.TabItemRadioCountyResults_RadioCountyDataTab.Name = "TabItemRadioCountyResults_RadioCountyDataTab"
+            Me.TabItemRadioCountyResults_RadioCountyDataTab.Text = "Data"
+            '
+            'TabControlPanelCountyDashboard
+            '
+            Me.TabControlPanelCountyDashboard.Controls.Add(Me.DashboardViewerRadioCountyDashboard_Dashboard)
+            Me.TabControlPanelCountyDashboard.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCountyDashboard.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCountyDashboard.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCountyDashboard.Name = "TabControlPanelCountyDashboard"
+            Me.TabControlPanelCountyDashboard.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCountyDashboard.Size = New System.Drawing.Size(817, 509)
+            Me.TabControlPanelCountyDashboard.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCountyDashboard.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCountyDashboard.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCountyDashboard.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCountyDashboard.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelTVDataTab_TVData.Style.GradientAngle = 90
-            Me.TabControlPanelTVDataTab_TVData.TabIndex = 10
-            Me.TabControlPanelTVDataTab_TVData.TabItem = Me.TabItemTVResults_TVDataTab
+            Me.TabControlPanelCountyDashboard.Style.GradientAngle = 90
+            Me.TabControlPanelCountyDashboard.TabIndex = 11
+            Me.TabControlPanelCountyDashboard.TabItem = Me.TabItemCountyResults_Dashboard
             '
-            'LabelSpotTVResults_Footer
+            'DashboardViewerRadioCountyDashboard_Dashboard
             '
-            Me.LabelSpotTVResults_Footer.BackColor = System.Drawing.Color.White
+            Me.DashboardViewerRadioCountyDashboard_Dashboard.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.DashboardViewerRadioCountyDashboard_Dashboard.Location = New System.Drawing.Point(1, 1)
+            Me.DashboardViewerRadioCountyDashboard_Dashboard.Name = "DashboardViewerRadioCountyDashboard_Dashboard"
+            Me.DashboardViewerRadioCountyDashboard_Dashboard.PdfExportOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerRadioCountyDashboard_Dashboard.PrintPreviewOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
+            Me.DashboardViewerRadioCountyDashboard_Dashboard.Size = New System.Drawing.Size(815, 507)
+            Me.DashboardViewerRadioCountyDashboard_Dashboard.TabIndex = 2
             '
+            'TabItemCountyResults_Dashboard
             '
+            Me.TabItemCountyResults_Dashboard.AttachedControl = Me.TabControlPanelCountyDashboard
+            Me.TabItemCountyResults_Dashboard.Name = "TabItemCountyResults_Dashboard"
+            Me.TabItemCountyResults_Dashboard.Text = "Dashboard"
             '
-            Me.LabelSpotTVResults_Footer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelSpotTVResults_Footer.Dock = System.Windows.Forms.DockStyle.Bottom
-            Me.LabelSpotTVResults_Footer.Location = New System.Drawing.Point(1, 444)
-            Me.LabelSpotTVResults_Footer.Name = "LabelSpotTVResults_Footer"
-            Me.LabelSpotTVResults_Footer.Size = New System.Drawing.Size(815, 64)
-            Me.LabelSpotTVResults_Footer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelSpotTVResults_Footer.TabIndex = 6
-            Me.LabelSpotTVResults_Footer.WordWrap = True
+            'TabItemSpotRadioCounty_Results
             '
-            'BandedDataGridViewSpotTVResults
+            Me.TabItemSpotRadioCounty_Results.AttachedControl = Me.TabControlPanelCountyResults
+            Me.TabItemSpotRadioCounty_Results.Name = "TabItemSpotRadioCounty_Results"
+            Me.TabItemSpotRadioCounty_Results.Text = "Results"
             '
-            Me.BandedDataGridViewSpotTVResults.AllowSelectGroupHeaderRow = True
-            Me.BandedDataGridViewSpotTVResults.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.BandedDataGridViewSpotTVResults.AutoUpdateViewCaption = True
-            Me.BandedDataGridViewSpotTVResults.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.BandedDataGridViewSpotTVResults.ItemDescription = "Item(s)"
-            Me.BandedDataGridViewSpotTVResults.Location = New System.Drawing.Point(4, 4)
-            Me.BandedDataGridViewSpotTVResults.ModifyColumnSettingsOnEachDataSource = True
-            Me.BandedDataGridViewSpotTVResults.ModifyGridRowHeight = False
-            Me.BandedDataGridViewSpotTVResults.MultiSelect = True
-            Me.BandedDataGridViewSpotTVResults.Name = "BandedDataGridViewSpotTVResults"
-            Me.BandedDataGridViewSpotTVResults.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.BandedDataGridViewSpotTVResults.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.BandedDataGridViewSpotTVResults.ShowRowSelectionIfHidden = True
-            Me.BandedDataGridViewSpotTVResults.ShowSelectDeselectAllButtons = False
-            Me.BandedDataGridViewSpotTVResults.Size = New System.Drawing.Size(808, 434)
-            Me.BandedDataGridViewSpotTVResults.TabIndex = 0
-            Me.BandedDataGridViewSpotTVResults.UseEmbeddedNavigator = False
-            Me.BandedDataGridViewSpotTVResults.ViewCaptionHeight = -1
+            'TabControlPanelCountyStations
             '
-            'TabItemTVResults_TVDataTab
-            '
-            Me.TabItemTVResults_TVDataTab.AttachedControl = Me.TabControlPanelTVDataTab_TVData
-            Me.TabItemTVResults_TVDataTab.Name = "TabItemTVResults_TVDataTab"
-            Me.TabItemTVResults_TVDataTab.Text = "Data"
-            '
-            'TabControlPanelTVDashboardTab_TVDashboard
-            '
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Controls.Add(Me.DashboardViewerTVDashboard_Dashboard)
-            Me.TabControlPanelTVDashboardTab_TVDashboard.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Name = "TabControlPanelTVDashboardTab_TVDashboard"
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Size = New System.Drawing.Size(817, 509)
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.TabControlPanelCountyStations.Controls.Add(Me.PanelSpotRadioCountyStation)
+            Me.TabControlPanelCountyStations.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCountyStations.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCountyStations.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCountyStations.Name = "TabControlPanelCountyStations"
+            Me.TabControlPanelCountyStations.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCountyStations.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelCountyStations.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCountyStations.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCountyStations.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCountyStations.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCountyStations.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelTVDashboardTab_TVDashboard.Style.GradientAngle = 90
-            Me.TabControlPanelTVDashboardTab_TVDashboard.TabIndex = 11
-            Me.TabControlPanelTVDashboardTab_TVDashboard.TabItem = Me.TabItemTVResults_TVDashboardTab
+            Me.TabControlPanelCountyStations.Style.GradientAngle = 90
+            Me.TabControlPanelCountyStations.TabIndex = 50
+            Me.TabControlPanelCountyStations.TabItem = Me.TabItemSpotRadioCounty_Stations
             '
-            'DashboardViewerTVDashboard_Dashboard
+            'PanelSpotRadioCountyStation
             '
-            Me.DashboardViewerTVDashboard_Dashboard.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.DashboardViewerTVDashboard_Dashboard.Location = New System.Drawing.Point(1, 1)
-            Me.DashboardViewerTVDashboard_Dashboard.Name = "DashboardViewerTVDashboard_Dashboard"
-            Me.DashboardViewerTVDashboard_Dashboard.PdfExportOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
-            Me.DashboardViewerTVDashboard_Dashboard.PrintPreviewOptions.DashboardStatePosition = DevExpress.DashboardCommon.DashboardStateExportPosition.SeparatePage
-            Me.DashboardViewerTVDashboard_Dashboard.Size = New System.Drawing.Size(815, 507)
-            Me.DashboardViewerTVDashboard_Dashboard.TabIndex = 2
+            Me.PanelSpotRadioCountyStation.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelSpotRadioCountyStation.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotRadioCountyStation.Appearance.Options.UseBackColor = True
+            Me.PanelSpotRadioCountyStation.Controls.Add(Me.PanelBottomSpotRadioCountyStation_RightSection)
+            Me.PanelSpotRadioCountyStation.Controls.Add(Me.ExpandableSplitterControlSpotRadioCounty_Stations)
+            Me.PanelSpotRadioCountyStation.Controls.Add(Me.PanelBottomSpotRadioCountyStation_LeftSection)
+            Me.PanelSpotRadioCountyStation.Location = New System.Drawing.Point(4, 4)
+            Me.PanelSpotRadioCountyStation.Name = "PanelSpotRadioCountyStation"
+            Me.PanelSpotRadioCountyStation.Size = New System.Drawing.Size(817, 536)
+            Me.PanelSpotRadioCountyStation.TabIndex = 7
             '
-            'TabItemTVResults_TVDashboardTab
+            'PanelBottomSpotRadioCountyStation_RightSection
             '
-            Me.TabItemTVResults_TVDashboardTab.AttachedControl = Me.TabControlPanelTVDashboardTab_TVDashboard
-            Me.TabItemTVResults_TVDashboardTab.Name = "TabItemTVResults_TVDashboardTab"
-            Me.TabItemTVResults_TVDashboardTab.Text = "Dashboard"
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Appearance.Options.UseBackColor = True
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Controls.Add(Me.DataGridViewSpotRadioCounty_SelectedStations)
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Controls.Add(Me.ButtonSpotRadioCountyStation_AddToSelected)
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Controls.Add(Me.ButtonSpotRadioCountyStation_RemoveFromSelected)
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Location = New System.Drawing.Point(325, 2)
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Name = "PanelBottomSpotRadioCountyStation_RightSection"
+            Me.PanelBottomSpotRadioCountyStation_RightSection.Size = New System.Drawing.Size(490, 532)
+            Me.PanelBottomSpotRadioCountyStation_RightSection.TabIndex = 1
             '
-            'TabItemSpotTV_Results
+            'DataGridViewSpotRadioCounty_SelectedStations
             '
-            Me.TabItemSpotTV_Results.AttachedControl = Me.TabControlPanelSpotTVResults_Results
-            Me.TabItemSpotTV_Results.Name = "TabItemSpotTV_Results"
-            Me.TabItemSpotTV_Results.Text = "Results"
+            Me.DataGridViewSpotRadioCounty_SelectedStations.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotRadioCounty_SelectedStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotRadioCounty_SelectedStations.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotRadioCounty_SelectedStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotRadioCounty_SelectedStations.ItemDescription = "Selected Station(s)"
+            Me.DataGridViewSpotRadioCounty_SelectedStations.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotRadioCounty_SelectedStations.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotRadioCounty_SelectedStations.ModifyGridRowHeight = False
+            Me.DataGridViewSpotRadioCounty_SelectedStations.MultiSelect = True
+            Me.DataGridViewSpotRadioCounty_SelectedStations.Name = "DataGridViewSpotRadioCounty_SelectedStations"
+            Me.DataGridViewSpotRadioCounty_SelectedStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotRadioCounty_SelectedStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotRadioCounty_SelectedStations.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotRadioCounty_SelectedStations.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotRadioCounty_SelectedStations.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewSpotRadioCounty_SelectedStations.TabIndex = 2
+            Me.DataGridViewSpotRadioCounty_SelectedStations.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotRadioCounty_SelectedStations.ViewCaptionHeight = -1
             '
-            'TabControlPanelSpotTVMetrics_Criteria
+            'ButtonSpotRadioCountyStation_AddToSelected
             '
-            Me.TabControlPanelSpotTVMetrics_Criteria.Controls.Add(Me.PanelSpotTVMetrics_Criteria)
-            Me.TabControlPanelSpotTVMetrics_Criteria.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSpotTVMetrics_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSpotTVMetrics_Criteria.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSpotTVMetrics_Criteria.Name = "TabControlPanelSpotTVMetrics_Criteria"
-            Me.TabControlPanelSpotTVMetrics_Criteria.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSpotTVMetrics_Criteria.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSpotTVMetrics_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSpotTVMetrics_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Me.ButtonSpotRadioCountyStation_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotRadioCountyStation_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotRadioCountyStation_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotRadioCountyStation_AddToSelected.Name = "ButtonSpotRadioCountyStation_AddToSelected"
+            Me.ButtonSpotRadioCountyStation_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotRadioCountyStation_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotRadioCountyStation_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotRadioCountyStation_AddToSelected.TabIndex = 0
+            Me.ButtonSpotRadioCountyStation_AddToSelected.Text = ">"
+            '
+            'ButtonSpotRadioCountyStation_RemoveFromSelected
+            '
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Name = "ButtonSpotRadioCountyStation_RemoveFromSelected"
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotRadioCountyStation_RemoveFromSelected.Text = "<"
+            '
+            'ExpandableSplitterControlSpotRadioCounty_Stations
+            '
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Name = "ExpandableSplitterControlSpotRadioCounty_Stations"
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.TabIndex = 20
+            Me.ExpandableSplitterControlSpotRadioCounty_Stations.TabStop = False
+            '
+            'PanelBottomSpotRadioCountyStation_LeftSection
+            '
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.Appearance.Options.UseBackColor = True
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.Controls.Add(Me.DataGridViewSpotRadioCounty_AvailableStations)
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.Location = New System.Drawing.Point(2, 2)
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.Name = "PanelBottomSpotRadioCountyStation_LeftSection"
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.Size = New System.Drawing.Size(317, 532)
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.TabIndex = 0
+            '
+            'DataGridViewSpotRadioCounty_AvailableStations
+            '
+            Me.DataGridViewSpotRadioCounty_AvailableStations.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotRadioCounty_AvailableStations.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.DataGridViewSpotRadioCounty_AvailableStations.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotRadioCounty_AvailableStations.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotRadioCounty_AvailableStations.ItemDescription = "Available Station(s)"
+            Me.DataGridViewSpotRadioCounty_AvailableStations.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotRadioCounty_AvailableStations.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotRadioCounty_AvailableStations.ModifyGridRowHeight = False
+            Me.DataGridViewSpotRadioCounty_AvailableStations.MultiSelect = True
+            Me.DataGridViewSpotRadioCounty_AvailableStations.Name = "DataGridViewSpotRadioCounty_AvailableStations"
+            Me.DataGridViewSpotRadioCounty_AvailableStations.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotRadioCounty_AvailableStations.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotRadioCounty_AvailableStations.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotRadioCounty_AvailableStations.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotRadioCounty_AvailableStations.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewSpotRadioCounty_AvailableStations.TabIndex = 0
+            Me.DataGridViewSpotRadioCounty_AvailableStations.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotRadioCounty_AvailableStations.ViewCaptionHeight = -1
+            '
+            'TabItemSpotRadioCounty_Stations
+            '
+            Me.TabItemSpotRadioCounty_Stations.AttachedControl = Me.TabControlPanelCountyStations
+            Me.TabItemSpotRadioCounty_Stations.Name = "TabItemSpotRadioCounty_Stations"
+            Me.TabItemSpotRadioCounty_Stations.Text = "Stations"
+            '
+            'TabControlPanelCountyMetrics
+            '
+            Me.TabControlPanelCountyMetrics.Controls.Add(Me.PanelSpotRadioCountyMetrics_Criteria)
+            Me.TabControlPanelCountyMetrics.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelCountyMetrics.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelCountyMetrics.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelCountyMetrics.Name = "TabControlPanelCountyMetrics"
+            Me.TabControlPanelCountyMetrics.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelCountyMetrics.Size = New System.Drawing.Size(825, 544)
+            Me.TabControlPanelCountyMetrics.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelCountyMetrics.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelCountyMetrics.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelCountyMetrics.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelCountyMetrics.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
             Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSpotTVMetrics_Criteria.Style.GradientAngle = 90
-            Me.TabControlPanelSpotTVMetrics_Criteria.TabIndex = 25
-            Me.TabControlPanelSpotTVMetrics_Criteria.TabItem = Me.TabItemSpotTV_Metrics
+            Me.TabControlPanelCountyMetrics.Style.GradientAngle = 90
+            Me.TabControlPanelCountyMetrics.TabIndex = 25
+            Me.TabControlPanelCountyMetrics.TabItem = Me.TabItemSpotRadioCounty_Metrics
             '
-            'PanelSpotTVMetrics_Criteria
+            'PanelSpotRadioCountyMetrics_Criteria
             '
-            Me.PanelSpotTVMetrics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.PanelSpotRadioCountyMetrics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelSpotTVMetrics_Criteria.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotTVMetrics_Criteria.Appearance.Options.UseBackColor = True
-            Me.PanelSpotTVMetrics_Criteria.Controls.Add(Me.PanelSpotTVMetrics_Right)
-            Me.PanelSpotTVMetrics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotTVMetrics)
-            Me.PanelSpotTVMetrics_Criteria.Controls.Add(Me.PanelSpotTVMetrics_Left)
-            Me.PanelSpotTVMetrics_Criteria.Location = New System.Drawing.Point(4, 4)
-            Me.PanelSpotTVMetrics_Criteria.Name = "PanelSpotTVMetrics_Criteria"
-            Me.PanelSpotTVMetrics_Criteria.Size = New System.Drawing.Size(817, 536)
-            Me.PanelSpotTVMetrics_Criteria.TabIndex = 8
+            Me.PanelSpotRadioCountyMetrics_Criteria.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotRadioCountyMetrics_Criteria.Appearance.Options.UseBackColor = True
+            Me.PanelSpotRadioCountyMetrics_Criteria.Controls.Add(Me.PanelSpotRadioCountyMetrics_Right)
+            Me.PanelSpotRadioCountyMetrics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotRadioCounty_Metrics)
+            Me.PanelSpotRadioCountyMetrics_Criteria.Controls.Add(Me.PanelSpotRadioCountyMetrics_Left)
+            Me.PanelSpotRadioCountyMetrics_Criteria.Location = New System.Drawing.Point(4, 4)
+            Me.PanelSpotRadioCountyMetrics_Criteria.Name = "PanelSpotRadioCountyMetrics_Criteria"
+            Me.PanelSpotRadioCountyMetrics_Criteria.Size = New System.Drawing.Size(817, 536)
+            Me.PanelSpotRadioCountyMetrics_Criteria.TabIndex = 8
             '
-            'PanelSpotTVMetrics_Right
+            'PanelSpotRadioCountyMetrics_Right
             '
-            Me.PanelSpotTVMetrics_Right.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotTVMetrics_Right.Appearance.Options.UseBackColor = True
-            Me.PanelSpotTVMetrics_Right.Controls.Add(Me.DataGridViewSpotTV_SelectedMetrics)
-            Me.PanelSpotTVMetrics_Right.Controls.Add(Me.ButtonSpotTVMetrics_AddToSelected)
-            Me.PanelSpotTVMetrics_Right.Controls.Add(Me.ButtonSpotTVMetrics_RemoveFromSelected)
-            Me.PanelSpotTVMetrics_Right.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelSpotTVMetrics_Right.Location = New System.Drawing.Point(325, 2)
-            Me.PanelSpotTVMetrics_Right.Name = "PanelSpotTVMetrics_Right"
-            Me.PanelSpotTVMetrics_Right.Size = New System.Drawing.Size(490, 532)
-            Me.PanelSpotTVMetrics_Right.TabIndex = 1
+            Me.PanelSpotRadioCountyMetrics_Right.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotRadioCountyMetrics_Right.Appearance.Options.UseBackColor = True
+            Me.PanelSpotRadioCountyMetrics_Right.Controls.Add(Me.DataGridViewSpotRadioCounty_SelectedMetrics)
+            Me.PanelSpotRadioCountyMetrics_Right.Controls.Add(Me.ButtonSpotRadioCountyMetrics_AddToSelected)
+            Me.PanelSpotRadioCountyMetrics_Right.Controls.Add(Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected)
+            Me.PanelSpotRadioCountyMetrics_Right.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.PanelSpotRadioCountyMetrics_Right.Location = New System.Drawing.Point(325, 2)
+            Me.PanelSpotRadioCountyMetrics_Right.Name = "PanelSpotRadioCountyMetrics_Right"
+            Me.PanelSpotRadioCountyMetrics_Right.Size = New System.Drawing.Size(490, 532)
+            Me.PanelSpotRadioCountyMetrics_Right.TabIndex = 1
             '
-            'DataGridViewSpotTV_SelectedMetrics
+            'DataGridViewSpotRadioCounty_SelectedMetrics
             '
-            Me.DataGridViewSpotTV_SelectedMetrics.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_SelectedMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotTV_SelectedMetrics.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_SelectedMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_SelectedMetrics.ItemDescription = "Selected Metric(s)"
-            Me.DataGridViewSpotTV_SelectedMetrics.Location = New System.Drawing.Point(86, 5)
-            Me.DataGridViewSpotTV_SelectedMetrics.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_SelectedMetrics.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_SelectedMetrics.MultiSelect = True
-            Me.DataGridViewSpotTV_SelectedMetrics.Name = "DataGridViewSpotTV_SelectedMetrics"
-            Me.DataGridViewSpotTV_SelectedMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_SelectedMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_SelectedMetrics.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_SelectedMetrics.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_SelectedMetrics.Size = New System.Drawing.Size(399, 522)
-            Me.DataGridViewSpotTV_SelectedMetrics.TabIndex = 2
-            Me.DataGridViewSpotTV_SelectedMetrics.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_SelectedMetrics.ViewCaptionHeight = -1
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ItemDescription = "Selected Metric(s)"
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Location = New System.Drawing.Point(86, 5)
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.MultiSelect = True
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Name = "DataGridViewSpotRadioCounty_SelectedMetrics"
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.Size = New System.Drawing.Size(399, 522)
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.TabIndex = 2
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotRadioCounty_SelectedMetrics.ViewCaptionHeight = -1
             '
-            'ButtonSpotTVMetrics_AddToSelected
+            'ButtonSpotRadioCountyMetrics_AddToSelected
             '
-            Me.ButtonSpotTVMetrics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotTVMetrics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotTVMetrics_AddToSelected.Location = New System.Drawing.Point(5, 5)
-            Me.ButtonSpotTVMetrics_AddToSelected.Name = "ButtonSpotTVMetrics_AddToSelected"
-            Me.ButtonSpotTVMetrics_AddToSelected.SecurityEnabled = True
-            Me.ButtonSpotTVMetrics_AddToSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotTVMetrics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotTVMetrics_AddToSelected.TabIndex = 0
-            Me.ButtonSpotTVMetrics_AddToSelected.Text = ">"
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Location = New System.Drawing.Point(5, 5)
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Name = "ButtonSpotRadioCountyMetrics_AddToSelected"
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.SecurityEnabled = True
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.TabIndex = 0
+            Me.ButtonSpotRadioCountyMetrics_AddToSelected.Text = ">"
             '
-            'ButtonSpotTVMetrics_RemoveFromSelected
+            'ButtonSpotRadioCountyMetrics_RemoveFromSelected
             '
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.Name = "ButtonSpotTVMetrics_RemoveFromSelected"
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.SecurityEnabled = True
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.TabIndex = 1
-            Me.ButtonSpotTVMetrics_RemoveFromSelected.Text = "<"
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Name = "ButtonSpotRadioCountyMetrics_RemoveFromSelected"
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.SecurityEnabled = True
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.TabIndex = 1
+            Me.ButtonSpotRadioCountyMetrics_RemoveFromSelected.Text = "<"
             '
-            'ExpandableSplitterControlSpotTVMetrics
+            'ExpandableSplitterControlSpotRadioCounty_Metrics
             '
-            Me.ExpandableSplitterControlSpotTVMetrics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVMetrics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControlSpotTVMetrics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVMetrics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTVMetrics.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControlSpotTVMetrics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTVMetrics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControlSpotTVMetrics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTVMetrics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVMetrics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVMetrics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotTVMetrics.Location = New System.Drawing.Point(319, 2)
-            Me.ExpandableSplitterControlSpotTVMetrics.Name = "ExpandableSplitterControlSpotTVMetrics"
-            Me.ExpandableSplitterControlSpotTVMetrics.Size = New System.Drawing.Size(6, 532)
-            Me.ExpandableSplitterControlSpotTVMetrics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControlSpotTVMetrics.TabIndex = 20
-            Me.ExpandableSplitterControlSpotTVMetrics.TabStop = False
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Location = New System.Drawing.Point(319, 2)
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Name = "ExpandableSplitterControlSpotRadioCounty_Metrics"
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Size = New System.Drawing.Size(6, 532)
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.TabIndex = 20
+            Me.ExpandableSplitterControlSpotRadioCounty_Metrics.TabStop = False
             '
-            'PanelSpotTVMetrics_Left
+            'PanelSpotRadioCountyMetrics_Left
             '
-            Me.PanelSpotTVMetrics_Left.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotTVMetrics_Left.Appearance.Options.UseBackColor = True
-            Me.PanelSpotTVMetrics_Left.Controls.Add(Me.DataGridViewSpotTV_AvailableMetrics)
-            Me.PanelSpotTVMetrics_Left.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelSpotTVMetrics_Left.Location = New System.Drawing.Point(2, 2)
-            Me.PanelSpotTVMetrics_Left.Name = "PanelSpotTVMetrics_Left"
-            Me.PanelSpotTVMetrics_Left.Size = New System.Drawing.Size(317, 532)
-            Me.PanelSpotTVMetrics_Left.TabIndex = 0
+            Me.PanelSpotRadioCountyMetrics_Left.Appearance.BackColor = System.Drawing.Color.White
+            Me.PanelSpotRadioCountyMetrics_Left.Appearance.Options.UseBackColor = True
+            Me.PanelSpotRadioCountyMetrics_Left.Controls.Add(Me.DataGridViewSpotRadioCounty_AvailableMetrics)
+            Me.PanelSpotRadioCountyMetrics_Left.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotRadioCountyMetrics_Left.Location = New System.Drawing.Point(2, 2)
+            Me.PanelSpotRadioCountyMetrics_Left.Name = "PanelSpotRadioCountyMetrics_Left"
+            Me.PanelSpotRadioCountyMetrics_Left.Size = New System.Drawing.Size(317, 532)
+            Me.PanelSpotRadioCountyMetrics_Left.TabIndex = 0
             '
-            'DataGridViewSpotTV_AvailableMetrics
+            'DataGridViewSpotRadioCounty_AvailableMetrics
             '
-            Me.DataGridViewSpotTV_AvailableMetrics.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_AvailableMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotTV_AvailableMetrics.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_AvailableMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_AvailableMetrics.ItemDescription = "Available Metric(s)"
-            Me.DataGridViewSpotTV_AvailableMetrics.Location = New System.Drawing.Point(5, 5)
-            Me.DataGridViewSpotTV_AvailableMetrics.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_AvailableMetrics.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_AvailableMetrics.MultiSelect = True
-            Me.DataGridViewSpotTV_AvailableMetrics.Name = "DataGridViewSpotTV_AvailableMetrics"
-            Me.DataGridViewSpotTV_AvailableMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_AvailableMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_AvailableMetrics.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_AvailableMetrics.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_AvailableMetrics.Size = New System.Drawing.Size(306, 522)
-            Me.DataGridViewSpotTV_AvailableMetrics.TabIndex = 0
-            Me.DataGridViewSpotTV_AvailableMetrics.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_AvailableMetrics.ViewCaptionHeight = -1
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ItemDescription = "Available Metric(s)"
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Location = New System.Drawing.Point(5, 5)
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ModifyGridRowHeight = False
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.MultiSelect = True
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Name = "DataGridViewSpotRadioCounty_AvailableMetrics"
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.Size = New System.Drawing.Size(306, 522)
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.TabIndex = 0
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotRadioCounty_AvailableMetrics.ViewCaptionHeight = -1
             '
-            'TabItemSpotTV_Metrics
+            'TabItemSpotRadioCounty_Metrics
             '
-            Me.TabItemSpotTV_Metrics.AttachedControl = Me.TabControlPanelSpotTVMetrics_Criteria
-            Me.TabItemSpotTV_Metrics.Name = "TabItemSpotTV_Metrics"
-            Me.TabItemSpotTV_Metrics.Text = "Metrics"
+            Me.TabItemSpotRadioCounty_Metrics.AttachedControl = Me.TabControlPanelCountyMetrics
+            Me.TabItemSpotRadioCounty_Metrics.Name = "TabItemSpotRadioCounty_Metrics"
+            Me.TabItemSpotRadioCounty_Metrics.Text = "Metrics"
             '
-            'TabControlPanelSpotTVDemographics_Criteria
+            'ExpandableSplitterControlSpotRadioCounty_LeftRight
             '
-            Me.TabControlPanelSpotTVDemographics_Criteria.Controls.Add(Me.PanelSpotTVDemographics_Criteria)
-            Me.TabControlPanelSpotTVDemographics_Criteria.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelSpotTVDemographics_Criteria.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelSpotTVDemographics_Criteria.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelSpotTVDemographics_Criteria.Name = "TabControlPanelSpotTVDemographics_Criteria"
-            Me.TabControlPanelSpotTVDemographics_Criteria.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelSpotTVDemographics_Criteria.Size = New System.Drawing.Size(825, 544)
-            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelSpotTVDemographics_Criteria.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelSpotTVDemographics_Criteria.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelSpotTVDemographics_Criteria.Style.GradientAngle = 90
-            Me.TabControlPanelSpotTVDemographics_Criteria.TabIndex = 21
-            Me.TabControlPanelSpotTVDemographics_Criteria.TabItem = Me.TabItemSpotTV_Demographics
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.ForeColor = System.Drawing.Color.Black
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Location = New System.Drawing.Point(198, 1)
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Name = "ExpandableSplitterControlSpotRadioCounty_LeftRight"
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Size = New System.Drawing.Size(6, 595)
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.TabIndex = 12
+            Me.ExpandableSplitterControlSpotRadioCounty_LeftRight.TabStop = False
             '
-            'PanelSpotTVDemographics_Criteria
+            'PanelSpotRadioCounty_LeftSection
             '
-            Me.PanelSpotTVDemographics_Criteria.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Me.PanelSpotRadioCounty_LeftSection.Controls.Add(Me.DataGridViewSpotRadioCounty_UserCriterias)
+            Me.PanelSpotRadioCounty_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
+            Me.PanelSpotRadioCounty_LeftSection.Location = New System.Drawing.Point(1, 1)
+            Me.PanelSpotRadioCounty_LeftSection.Name = "PanelSpotRadioCounty_LeftSection"
+            Me.PanelSpotRadioCounty_LeftSection.Size = New System.Drawing.Size(197, 595)
+            Me.PanelSpotRadioCounty_LeftSection.TabIndex = 2
+            '
+            'DataGridViewSpotRadioCounty_UserCriterias
+            '
+            Me.DataGridViewSpotRadioCounty_UserCriterias.AllowSelectGroupHeaderRow = True
+            Me.DataGridViewSpotRadioCounty_UserCriterias.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelSpotTVDemographics_Criteria.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotTVDemographics_Criteria.Appearance.Options.UseBackColor = True
-            Me.PanelSpotTVDemographics_Criteria.Controls.Add(Me.PanelSpotTVDemographics_Right)
-            Me.PanelSpotTVDemographics_Criteria.Controls.Add(Me.ExpandableSplitterControlSpotTVDemographics)
-            Me.PanelSpotTVDemographics_Criteria.Controls.Add(Me.PanelSpotTVDemographics_Left)
-            Me.PanelSpotTVDemographics_Criteria.Location = New System.Drawing.Point(4, 4)
-            Me.PanelSpotTVDemographics_Criteria.Name = "PanelSpotTVDemographics_Criteria"
-            Me.PanelSpotTVDemographics_Criteria.Size = New System.Drawing.Size(817, 536)
-            Me.PanelSpotTVDemographics_Criteria.TabIndex = 7
+            Me.DataGridViewSpotRadioCounty_UserCriterias.AutoUpdateViewCaption = True
+            Me.DataGridViewSpotRadioCounty_UserCriterias.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
+            Me.DataGridViewSpotRadioCounty_UserCriterias.ItemDescription = "Report(s)"
+            Me.DataGridViewSpotRadioCounty_UserCriterias.Location = New System.Drawing.Point(12, 12)
+            Me.DataGridViewSpotRadioCounty_UserCriterias.ModifyColumnSettingsOnEachDataSource = True
+            Me.DataGridViewSpotRadioCounty_UserCriterias.ModifyGridRowHeight = False
+            Me.DataGridViewSpotRadioCounty_UserCriterias.MultiSelect = False
+            Me.DataGridViewSpotRadioCounty_UserCriterias.Name = "DataGridViewSpotRadioCounty_UserCriterias"
+            Me.DataGridViewSpotRadioCounty_UserCriterias.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+            Me.DataGridViewSpotRadioCounty_UserCriterias.SelectRowsWhenSelectDeselectAllButtonClicked = True
+            Me.DataGridViewSpotRadioCounty_UserCriterias.ShowRowSelectionIfHidden = True
+            Me.DataGridViewSpotRadioCounty_UserCriterias.ShowSelectDeselectAllButtons = False
+            Me.DataGridViewSpotRadioCounty_UserCriterias.Size = New System.Drawing.Size(180, 571)
+            Me.DataGridViewSpotRadioCounty_UserCriterias.TabIndex = 0
+            Me.DataGridViewSpotRadioCounty_UserCriterias.UseEmbeddedNavigator = False
+            Me.DataGridViewSpotRadioCounty_UserCriterias.ViewCaptionHeight = -1
             '
-            'PanelSpotTVDemographics_Right
+            'TabItemTabs_SpotRadioCountyTab
             '
-            Me.PanelSpotTVDemographics_Right.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotTVDemographics_Right.Appearance.Options.UseBackColor = True
-            Me.PanelSpotTVDemographics_Right.Controls.Add(Me.DataGridViewSpotTV_SelectedDemographics)
-            Me.PanelSpotTVDemographics_Right.Controls.Add(Me.ButtonSpotTVDemographics_AddToSelected)
-            Me.PanelSpotTVDemographics_Right.Controls.Add(Me.ButtonSpotTVDemographics_RemoveFromSelected)
-            Me.PanelSpotTVDemographics_Right.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.PanelSpotTVDemographics_Right.Location = New System.Drawing.Point(325, 2)
-            Me.PanelSpotTVDemographics_Right.Name = "PanelSpotTVDemographics_Right"
-            Me.PanelSpotTVDemographics_Right.Size = New System.Drawing.Size(490, 532)
-            Me.PanelSpotTVDemographics_Right.TabIndex = 1
-            '
-            'DataGridViewSpotTV_SelectedDemographics
-            '
-            Me.DataGridViewSpotTV_SelectedDemographics.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_SelectedDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotTV_SelectedDemographics.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_SelectedDemographics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_SelectedDemographics.ItemDescription = "Selected Demographic(s)"
-            Me.DataGridViewSpotTV_SelectedDemographics.Location = New System.Drawing.Point(86, 5)
-            Me.DataGridViewSpotTV_SelectedDemographics.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_SelectedDemographics.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_SelectedDemographics.MultiSelect = True
-            Me.DataGridViewSpotTV_SelectedDemographics.Name = "DataGridViewSpotTV_SelectedDemographics"
-            Me.DataGridViewSpotTV_SelectedDemographics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_SelectedDemographics.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_SelectedDemographics.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_SelectedDemographics.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_SelectedDemographics.Size = New System.Drawing.Size(399, 522)
-            Me.DataGridViewSpotTV_SelectedDemographics.TabIndex = 2
-            Me.DataGridViewSpotTV_SelectedDemographics.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_SelectedDemographics.ViewCaptionHeight = -1
-            '
-            'ButtonSpotTVDemographics_AddToSelected
-            '
-            Me.ButtonSpotTVDemographics_AddToSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotTVDemographics_AddToSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotTVDemographics_AddToSelected.Location = New System.Drawing.Point(5, 5)
-            Me.ButtonSpotTVDemographics_AddToSelected.Name = "ButtonSpotTVDemographics_AddToSelected"
-            Me.ButtonSpotTVDemographics_AddToSelected.SecurityEnabled = True
-            Me.ButtonSpotTVDemographics_AddToSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotTVDemographics_AddToSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotTVDemographics_AddToSelected.TabIndex = 0
-            Me.ButtonSpotTVDemographics_AddToSelected.Text = ">"
-            '
-            'ButtonSpotTVDemographics_RemoveFromSelected
-            '
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.Location = New System.Drawing.Point(5, 31)
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.Name = "ButtonSpotTVDemographics_RemoveFromSelected"
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.SecurityEnabled = True
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.TabIndex = 1
-            Me.ButtonSpotTVDemographics_RemoveFromSelected.Text = "<"
-            '
-            'ExpandableSplitterControlSpotTVDemographics
-            '
-            Me.ExpandableSplitterControlSpotTVDemographics.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVDemographics.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControlSpotTVDemographics.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVDemographics.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTVDemographics.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControlSpotTVDemographics.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTVDemographics.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControlSpotTVDemographics.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTVDemographics.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTVDemographics.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTVDemographics.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotTVDemographics.Location = New System.Drawing.Point(319, 2)
-            Me.ExpandableSplitterControlSpotTVDemographics.Name = "ExpandableSplitterControlSpotTVDemographics"
-            Me.ExpandableSplitterControlSpotTVDemographics.Size = New System.Drawing.Size(6, 532)
-            Me.ExpandableSplitterControlSpotTVDemographics.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControlSpotTVDemographics.TabIndex = 20
-            Me.ExpandableSplitterControlSpotTVDemographics.TabStop = False
-            '
-            'PanelSpotTVDemographics_Left
-            '
-            Me.PanelSpotTVDemographics_Left.Appearance.BackColor = System.Drawing.Color.White
-            Me.PanelSpotTVDemographics_Left.Appearance.Options.UseBackColor = True
-            Me.PanelSpotTVDemographics_Left.Controls.Add(Me.DataGridViewSpotTV_AvailableDemographics)
-            Me.PanelSpotTVDemographics_Left.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelSpotTVDemographics_Left.Location = New System.Drawing.Point(2, 2)
-            Me.PanelSpotTVDemographics_Left.Name = "PanelSpotTVDemographics_Left"
-            Me.PanelSpotTVDemographics_Left.Size = New System.Drawing.Size(317, 532)
-            Me.PanelSpotTVDemographics_Left.TabIndex = 0
-            '
-            'DataGridViewSpotTV_AvailableDemographics
-            '
-            Me.DataGridViewSpotTV_AvailableDemographics.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_AvailableDemographics.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotTV_AvailableDemographics.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_AvailableDemographics.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_AvailableDemographics.ItemDescription = "Available Demographic(s)"
-            Me.DataGridViewSpotTV_AvailableDemographics.Location = New System.Drawing.Point(5, 5)
-            Me.DataGridViewSpotTV_AvailableDemographics.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_AvailableDemographics.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_AvailableDemographics.MultiSelect = True
-            Me.DataGridViewSpotTV_AvailableDemographics.Name = "DataGridViewSpotTV_AvailableDemographics"
-            Me.DataGridViewSpotTV_AvailableDemographics.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_AvailableDemographics.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_AvailableDemographics.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_AvailableDemographics.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_AvailableDemographics.Size = New System.Drawing.Size(306, 522)
-            Me.DataGridViewSpotTV_AvailableDemographics.TabIndex = 0
-            Me.DataGridViewSpotTV_AvailableDemographics.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_AvailableDemographics.ViewCaptionHeight = -1
-            '
-            'TabItemSpotTV_Demographics
-            '
-            Me.TabItemSpotTV_Demographics.AttachedControl = Me.TabControlPanelSpotTVDemographics_Criteria
-            Me.TabItemSpotTV_Demographics.Name = "TabItemSpotTV_Demographics"
-            Me.TabItemSpotTV_Demographics.Text = "Demographics"
-            '
-            'ExpandableSplitterControlSpotTV_LeftRight
-            '
-            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTV_LeftRight.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandableControl = Me.PanelSpotTV_LeftSection
-            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.ExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTV_LeftRight.ForeColor = System.Drawing.Color.Black
-            Me.ExpandableSplitterControlSpotTV_LeftRight.GripDarkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.GripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTV_LeftRight.GripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.GripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(151, Byte), Integer), CType(CType(61, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(94, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground2
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotBackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemPressedBackground
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandFillColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandFillColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandLineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotExpandLineColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripDarkColor = System.Drawing.Color.FromArgb(CType(CType(101, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(207, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripDarkColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripLightColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(239, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.ExpandableSplitterControlSpotTV_LeftRight.HotGripLightColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-            Me.ExpandableSplitterControlSpotTV_LeftRight.Location = New System.Drawing.Point(198, 1)
-            Me.ExpandableSplitterControlSpotTV_LeftRight.Name = "ExpandableSplitterControlSpotTV_LeftRight"
-            Me.ExpandableSplitterControlSpotTV_LeftRight.Size = New System.Drawing.Size(6, 595)
-            Me.ExpandableSplitterControlSpotTV_LeftRight.Style = DevComponents.DotNetBar.eSplitterStyle.Office2007
-            Me.ExpandableSplitterControlSpotTV_LeftRight.TabIndex = 12
-            Me.ExpandableSplitterControlSpotTV_LeftRight.TabStop = False
-            '
-            'PanelSpotTV_LeftSection
-            '
-            Me.PanelSpotTV_LeftSection.Controls.Add(Me.DataGridViewSpotTV_UserCriterias)
-            Me.PanelSpotTV_LeftSection.Dock = System.Windows.Forms.DockStyle.Left
-            Me.PanelSpotTV_LeftSection.Location = New System.Drawing.Point(1, 1)
-            Me.PanelSpotTV_LeftSection.Name = "PanelSpotTV_LeftSection"
-            Me.PanelSpotTV_LeftSection.Size = New System.Drawing.Size(197, 595)
-            Me.PanelSpotTV_LeftSection.TabIndex = 11
-            '
-            'DataGridViewSpotTV_UserCriterias
-            '
-            Me.DataGridViewSpotTV_UserCriterias.AllowSelectGroupHeaderRow = True
-            Me.DataGridViewSpotTV_UserCriterias.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.DataGridViewSpotTV_UserCriterias.AutoUpdateViewCaption = True
-            Me.DataGridViewSpotTV_UserCriterias.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
-            Me.DataGridViewSpotTV_UserCriterias.ItemDescription = "Report(s)"
-            Me.DataGridViewSpotTV_UserCriterias.Location = New System.Drawing.Point(12, 12)
-            Me.DataGridViewSpotTV_UserCriterias.ModifyColumnSettingsOnEachDataSource = True
-            Me.DataGridViewSpotTV_UserCriterias.ModifyGridRowHeight = False
-            Me.DataGridViewSpotTV_UserCriterias.MultiSelect = False
-            Me.DataGridViewSpotTV_UserCriterias.Name = "DataGridViewSpotTV_UserCriterias"
-            Me.DataGridViewSpotTV_UserCriterias.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
-            Me.DataGridViewSpotTV_UserCriterias.SelectRowsWhenSelectDeselectAllButtonClicked = True
-            Me.DataGridViewSpotTV_UserCriterias.ShowRowSelectionIfHidden = True
-            Me.DataGridViewSpotTV_UserCriterias.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewSpotTV_UserCriterias.Size = New System.Drawing.Size(180, 571)
-            Me.DataGridViewSpotTV_UserCriterias.TabIndex = 0
-            Me.DataGridViewSpotTV_UserCriterias.UseEmbeddedNavigator = False
-            Me.DataGridViewSpotTV_UserCriterias.ViewCaptionHeight = -1
-            '
-            'TabItemTabs_SpotTVTab
-            '
-            Me.TabItemTabs_SpotTVTab.AttachedControl = Me.TabControlPanelSpotTV_SpotTV
-            Me.TabItemTabs_SpotTVTab.Name = "TabItemTabs_SpotTVTab"
-            Me.TabItemTabs_SpotTVTab.Text = "Spot TV"
+            Me.TabItemTabs_SpotRadioCountyTab.AttachedControl = Me.TabControlPanelSpotRadioCounty_SpotRadioCounty
+            Me.TabItemTabs_SpotRadioCountyTab.Name = "TabItemTabs_SpotRadioCountyTab"
+            Me.TabItemTabs_SpotRadioCountyTab.Text = "Spot Radio County"
             '
             'BroadcastResearchToolForm
             '
@@ -6492,184 +7668,226 @@
             Me.Name = "BroadcastResearchToolForm"
             Me.Text = "Broadcast Research Tool"
             Me.RibbonBarMergeContainerForm_Options.ResumeLayout(False)
-            CType(Me.TabControlForm_Tabs, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.TabControlForm_Tabs, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlForm_Tabs.ResumeLayout(False)
-            Me.TabControlPanelNational_National.ResumeLayout(False)
-            CType(Me.PanelNational_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNational_RightSection.ResumeLayout(False)
-            CType(Me.TabControlNational_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlNational_ResearchCriteria.ResumeLayout(False)
-            Me.TabControlPanelNationalReportType.ResumeLayout(False)
-            CType(Me.GroupBoxNational_TimeType, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNational_TimeType.ResumeLayout(False)
-            CType(Me.PanelNationalReportType_Bottom, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalReportType_Bottom.ResumeLayout(False)
-            CType(Me.PanelNationalNetworks_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalNetworks_RightSection.ResumeLayout(False)
-            CType(Me.PanelNationalNetworks_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalNetworks_LeftSection.ResumeLayout(False)
-            CType(Me.GroupBoxNational_Ethnicity, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNational_Ethnicity.ResumeLayout(False)
-            Me.TabControlPanelNationalDates.ResumeLayout(False)
-            CType(Me.GroupBoxNationalDates_Corrections, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNationalDates_Corrections.ResumeLayout(False)
-            CType(Me.GroupBoxNationalDates_Premieres, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNationalDates_Premieres.ResumeLayout(False)
-            CType(Me.GroupBoxNationalDates_Repeats, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNationalDates_Repeats.ResumeLayout(False)
-            CType(Me.GroupBoxNationalDates_Overnights, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNationalDates_Overnights.ResumeLayout(False)
-            CType(Me.GroupBoxNationalDates_Specials, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNationalDates_Specials.ResumeLayout(False)
-            CType(Me.GroupBoxNationalDates_Breakouts, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNationalDates_Breakouts.ResumeLayout(False)
-            CType(Me.GroupBoxNational_DateCodeDates, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxNational_DateCodeDates.ResumeLayout(False)
-            CType(Me.DateEditNationalDates_EndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.DateEditNationalDates_EndDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.DateEditNationalDates_StartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.DateEditNationalDates_StartDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelNationalResults.ResumeLayout(False)
-            CType(Me.TabControlResults_NationalResults, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlResults_NationalResults.ResumeLayout(False)
-            Me.TabControlPanelNational_ResultsData.ResumeLayout(False)
-            Me.TabControlPanelNational_ResultsDashboard.ResumeLayout(False)
-            CType(Me.DashboardViewerControl1, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelNationalDemographics.ResumeLayout(False)
-            CType(Me.PanelNationalDemographics, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalDemographics.ResumeLayout(False)
-            CType(Me.PanelNationalDemographics_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalDemographics_RightSection.ResumeLayout(False)
-            CType(Me.PanelNationalDemographics_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalDemographics_LeftSection.ResumeLayout(False)
-            Me.TabControlPanelNationalMetrics.ResumeLayout(False)
-            CType(Me.PanelNationalMetrics, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalMetrics.ResumeLayout(False)
-            CType(Me.PanelNationalMetrics_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalMetrics_RightSection.ResumeLayout(False)
-            CType(Me.PanelNationalMetrics_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNationalMetrics_LeftSection.ResumeLayout(False)
-            CType(Me.PanelNational_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelNational_LeftSection.ResumeLayout(False)
-            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.ResumeLayout(False)
-            CType(Me.PanelSpotRadioCounty_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioCounty_RightSection.ResumeLayout(False)
-            CType(Me.TabControlSpotRadioCounty_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlSpotRadioCounty_ResearchCriteria.ResumeLayout(False)
-            Me.TabControlPanelCountyMarket.ResumeLayout(False)
-            CType(Me.GroupBoxSpotRadioCounty_Dayparts, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxSpotRadioCounty_Dayparts.ResumeLayout(False)
-            CType(Me.NumericInputCounty_MaxRank.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxCounty_Demographic.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxCounty_County.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelCountyResults.ResumeLayout(False)
-            CType(Me.TabControlResults_RadioCountyResults, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlResults_RadioCountyResults.ResumeLayout(False)
-            Me.TabControlPanelCountyData.ResumeLayout(False)
-            Me.TabControlPanelCountyDashboard.ResumeLayout(False)
-            CType(Me.DashboardViewerRadioCountyDashboard_Dashboard, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelCountyStations.ResumeLayout(False)
-            CType(Me.PanelSpotRadioCountyStation, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioCountyStation.ResumeLayout(False)
-            CType(Me.PanelBottomSpotRadioCountyStation_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelBottomSpotRadioCountyStation_RightSection.ResumeLayout(False)
-            CType(Me.PanelBottomSpotRadioCountyStation_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelBottomSpotRadioCountyStation_LeftSection.ResumeLayout(False)
-            Me.TabControlPanelCountyMetrics.ResumeLayout(False)
-            CType(Me.PanelSpotRadioCountyMetrics_Criteria, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioCountyMetrics_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotRadioCountyMetrics_Right, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioCountyMetrics_Right.ResumeLayout(False)
-            CType(Me.PanelSpotRadioCountyMetrics_Left, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioCountyMetrics_Left.ResumeLayout(False)
-            CType(Me.PanelSpotRadioCounty_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioCounty_LeftSection.ResumeLayout(False)
-            Me.TabControlPanelSpotRadio_SpotRadio.ResumeLayout(False)
-            CType(Me.PanelSpotRadio_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadio_RightSection.ResumeLayout(False)
-            CType(Me.TabControlSpotRadio_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlSpotRadio_ResearchCriteria.ResumeLayout(False)
-            Me.TabControlPanelSpotRadioMarket_Criteria.ResumeLayout(False)
-            CType(Me.NumericInputSpotRadioMarket_MaxRank.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GroupBoxSpotRadioMarket_Options, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxSpotRadioMarket_Options.ResumeLayout(False)
-            CType(Me.GroupBoxSpotRadioMarket_Ethnicity, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxSpotRadioMarket_Ethnicity.ResumeLayout(False)
-            CType(Me.SearchableComboBoxSpotRadioMarket_Qualitative.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxSpotRadioMarket_Demographic.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxSpotRadio_Market.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxSpotRadioViewControl_Market, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelSpotRadioResults_Results.ResumeLayout(False)
-            CType(Me.TabControlResults_RadioResults, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlResults_RadioResults.ResumeLayout(False)
-            Me.TabControlPanelRadioDataTab_RadioData.ResumeLayout(False)
-            Me.TabControlPanelRadioDashboardTab_RadioDashboard.ResumeLayout(False)
-            CType(Me.DashboardViewerRadioDashboard_Dashboard, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.TabControlPanelSpotRadioGeographyDayparts_Criteria.ResumeLayout(False)
-            CType(Me.GroupBoxSpotRadioMarket_ListeningType, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxSpotRadioMarket_ListeningType.ResumeLayout(False)
-            CType(Me.GroupBoxSpotRadioMarket_Geography, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.GroupBoxSpotRadioMarket_Geography.ResumeLayout(False)
-            Me.TabControlPanelSpotRadioMetrics_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotRadioMetrics_Criteria, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioMetrics_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotRadioMetrics_Right, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioMetrics_Right.ResumeLayout(False)
-            CType(Me.PanelSpotRadioMetrics_Left, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioMetrics_Left.ResumeLayout(False)
-            Me.TabControlPanelSpotRadioStations_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotRadioMarketStation_Bottom, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadioMarketStation_Bottom.ResumeLayout(False)
-            CType(Me.PanelBottomSpotRadioStation_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelBottomSpotRadioStation_RightSection.ResumeLayout(False)
-            CType(Me.PanelBottomSpotRadioStation_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelBottomSpotRadioStation_LeftSection.ResumeLayout(False)
-            CType(Me.PanelSpotRadio_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
-            Me.PanelSpotRadio_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRico_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRico_RightSection.ResumeLayout(False)
+            CType(Me.TabControlSpotTVPuertoRico_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlSpotTVPuertoRico_ResearchCriteria.ResumeLayout(False)
+            Me.TabControlPanelSpotTVPuertoRicoPeriods_Criteria.ResumeLayout(False)
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareStartDate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.DateEditSpotTVPuertoRicoPeriod_ShareEndDate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria.ResumeLayout(False)
+            CType(Me.NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRicoReportTypeStation_Bottom.ResumeLayout(False)
+            CType(Me.Panel3, System.ComponentModel.ISupportInitialize).EndInit
+            Me.Panel3.ResumeLayout(False)
+            CType(Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection.ResumeLayout(False)
+            CType(Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxSpotTVPuertoRicoReportTypeStation_Options.ResumeLayout(False)
+            Me.TabControlPanelSpotTVPuertoRicoResults_Results.ResumeLayout(False)
+            CType(Me.TabControlResults_TVPuertoRicoResults, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlResults_TVPuertoRicoResults.ResumeLayout(False)
+            Me.TabControlPanelTVPuertoRicoDataTab_TVData.ResumeLayout(False)
+            Me.TabControlPanel5.ResumeLayout(False)
+            CType(Me.DashboardViewerTVPuertoRicoDashboard_Dashboard, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelSpotTVPuertoRicoDemographics_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRicoDemographics_Criteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRicoDemographics_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRicoDemographics_Right, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRicoDemographics_Right.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRicoDemographics_Left, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRicoDemographics_Left.ResumeLayout(False)
+            Me.TabControlPanelSpotTVPuertoRicoMetrics_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRicoMetrics_Criteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRicoMetrics_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRicoMetrics_Right, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRicoMetrics_Right.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRicoMetrics_Left, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRicoMetrics_Left.ResumeLayout(False)
+            CType(Me.PanelSpotTVPuertoRico_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotTVPuertoRico_LeftSection.ResumeLayout(False)
             Me.TabControlPanelSpotTV_SpotTV.ResumeLayout(False)
-            CType(Me.PanelSpotTV_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTV_RightSection, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTV_RightSection.ResumeLayout(False)
-            CType(Me.TabControlSpotTV_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.TabControlSpotTV_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlSpotTV_ResearchCriteria.ResumeLayout(False)
             Me.TabControlPanelSpotTVMarketStations_Criteria.ResumeLayout(False)
-            CType(Me.NumericInputSpotTVMarketStation_MaximumRank.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.PanelSpotTVMarketStation_Bottom, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.NumericInputSpotTVMarketStation_MaximumRank.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.PanelSpotTVMarketStation_Bottom, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTVMarketStation_Bottom.ResumeLayout(False)
-            CType(Me.PanelBottomSpotTVMarketStation_RightSection, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelBottomSpotTVMarketStation_RightSection, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelBottomSpotTVMarketStation_RightSection.ResumeLayout(False)
-            CType(Me.PanelBottomSpotTVMarketStation_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelBottomSpotTVMarketStation_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelBottomSpotTVMarketStation_LeftSection.ResumeLayout(False)
-            CType(Me.GroupBoxSpotTVMarketStation_Options, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.GroupBoxSpotTVMarketStation_Options, System.ComponentModel.ISupportInitialize).EndInit
             Me.GroupBoxSpotTVMarketStation_Options.ResumeLayout(False)
-            CType(Me.SearchableComboBoxSpotTVMarketStation_Market.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-            CType(Me.SearchableComboBoxSpotTVViewControl_Market, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.SearchableComboBoxSpotTVMarketStation_Market.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.SearchableComboBoxSpotTVViewControl_Market, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelSpotTVBooks_Criteria.ResumeLayout(False)
             Me.TabControlPanelSpotTVResults_Results.ResumeLayout(False)
-            CType(Me.TabControlResults_TVResults, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.TabControlResults_TVResults, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlResults_TVResults.ResumeLayout(False)
             Me.TabControlPanelTVDataTab_TVData.ResumeLayout(False)
             Me.TabControlPanelTVDashboardTab_TVDashboard.ResumeLayout(False)
-            CType(Me.DashboardViewerTVDashboard_Dashboard, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DashboardViewerTVDashboard_Dashboard, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelSpotTVMetrics_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotTVMetrics_Criteria, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTVMetrics_Criteria, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTVMetrics_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotTVMetrics_Right, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTVMetrics_Right, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTVMetrics_Right.ResumeLayout(False)
-            CType(Me.PanelSpotTVMetrics_Left, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTVMetrics_Left, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTVMetrics_Left.ResumeLayout(False)
             Me.TabControlPanelSpotTVDemographics_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotTVDemographics_Criteria, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTVDemographics_Criteria, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTVDemographics_Criteria.ResumeLayout(False)
-            CType(Me.PanelSpotTVDemographics_Right, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTVDemographics_Right, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTVDemographics_Right.ResumeLayout(False)
-            CType(Me.PanelSpotTVDemographics_Left, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTVDemographics_Left, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTVDemographics_Left.ResumeLayout(False)
-            CType(Me.PanelSpotTV_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.PanelSpotTV_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelSpotTV_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelNational_National.ResumeLayout(False)
+            CType(Me.PanelNational_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNational_RightSection.ResumeLayout(False)
+            CType(Me.TabControlNational_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlNational_ResearchCriteria.ResumeLayout(False)
+            Me.TabControlPanelNationalReportType.ResumeLayout(False)
+            CType(Me.GroupBoxNational_TimeType, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNational_TimeType.ResumeLayout(False)
+            CType(Me.PanelNationalReportType_Bottom, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalReportType_Bottom.ResumeLayout(False)
+            CType(Me.PanelNationalNetworks_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalNetworks_RightSection.ResumeLayout(False)
+            CType(Me.PanelNationalNetworks_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalNetworks_LeftSection.ResumeLayout(False)
+            CType(Me.GroupBoxNational_Ethnicity, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNational_Ethnicity.ResumeLayout(False)
+            Me.TabControlPanelNationalResults.ResumeLayout(False)
+            CType(Me.TabControlResults_NationalResults, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlResults_NationalResults.ResumeLayout(False)
+            Me.TabControlPanelNational_ResultsData.ResumeLayout(False)
+            Me.TabControlPanelNational_ResultsDashboard.ResumeLayout(False)
+            CType(Me.DashboardViewerControl1, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelNationalMetrics.ResumeLayout(False)
+            CType(Me.PanelNationalMetrics, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalMetrics.ResumeLayout(False)
+            CType(Me.PanelNationalMetrics_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalMetrics_RightSection.ResumeLayout(False)
+            CType(Me.PanelNationalMetrics_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalMetrics_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelNationalDemographics.ResumeLayout(False)
+            CType(Me.PanelNationalDemographics, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalDemographics.ResumeLayout(False)
+            CType(Me.PanelNationalDemographics_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalDemographics_RightSection.ResumeLayout(False)
+            CType(Me.PanelNationalDemographics_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNationalDemographics_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelNationalDates.ResumeLayout(False)
+            CType(Me.GroupBoxNationalDates_Corrections, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNationalDates_Corrections.ResumeLayout(False)
+            CType(Me.GroupBoxNationalDates_Premieres, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNationalDates_Premieres.ResumeLayout(False)
+            CType(Me.GroupBoxNationalDates_Repeats, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNationalDates_Repeats.ResumeLayout(False)
+            CType(Me.GroupBoxNationalDates_Overnights, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNationalDates_Overnights.ResumeLayout(False)
+            CType(Me.GroupBoxNationalDates_Specials, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNationalDates_Specials.ResumeLayout(False)
+            CType(Me.GroupBoxNationalDates_Breakouts, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNationalDates_Breakouts.ResumeLayout(False)
+            CType(Me.GroupBoxNational_DateCodeDates, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxNational_DateCodeDates.ResumeLayout(False)
+            CType(Me.DateEditNationalDates_EndDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.DateEditNationalDates_EndDate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.DateEditNationalDates_StartDate.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.DateEditNationalDates_StartDate.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.PanelNational_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelNational_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelSpotRadio_SpotRadio.ResumeLayout(False)
+            CType(Me.PanelSpotRadio_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadio_RightSection.ResumeLayout(False)
+            CType(Me.TabControlSpotRadio_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlSpotRadio_ResearchCriteria.ResumeLayout(False)
+            Me.TabControlPanelSpotRadioMarket_Criteria.ResumeLayout(False)
+            CType(Me.NumericInputSpotRadioMarket_MaxRank.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GroupBoxSpotRadioMarket_Options, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxSpotRadioMarket_Options.ResumeLayout(False)
+            CType(Me.GroupBoxSpotRadioMarket_Ethnicity, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxSpotRadioMarket_Ethnicity.ResumeLayout(False)
+            CType(Me.SearchableComboBoxSpotRadioMarket_Qualitative.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.SearchableComboBoxSpotRadioMarket_Demographic.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.SearchableComboBoxSpotRadio_Market.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.SearchableComboBoxSpotRadioViewControl_Market, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelSpotRadioResults_Results.ResumeLayout(False)
+            CType(Me.TabControlResults_RadioResults, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlResults_RadioResults.ResumeLayout(False)
+            Me.TabControlPanelRadioDataTab_RadioData.ResumeLayout(False)
+            Me.TabControlPanelRadioDashboardTab_RadioDashboard.ResumeLayout(False)
+            CType(Me.DashboardViewerRadioDashboard_Dashboard, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelSpotRadioGeographyDayparts_Criteria.ResumeLayout(False)
+            CType(Me.GroupBoxSpotRadioMarket_ListeningType, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxSpotRadioMarket_ListeningType.ResumeLayout(False)
+            CType(Me.GroupBoxSpotRadioMarket_Geography, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxSpotRadioMarket_Geography.ResumeLayout(False)
+            Me.TabControlPanelSpotRadioMetrics_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotRadioMetrics_Criteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioMetrics_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotRadioMetrics_Right, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioMetrics_Right.ResumeLayout(False)
+            CType(Me.PanelSpotRadioMetrics_Left, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioMetrics_Left.ResumeLayout(False)
+            Me.TabControlPanelSpotRadioStations_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotRadioMarketStation_Bottom, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioMarketStation_Bottom.ResumeLayout(False)
+            CType(Me.PanelBottomSpotRadioStation_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelBottomSpotRadioStation_RightSection.ResumeLayout(False)
+            CType(Me.PanelBottomSpotRadioStation_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelBottomSpotRadioStation_LeftSection.ResumeLayout(False)
+            CType(Me.PanelSpotRadio_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadio_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelSpotRadioCounty_SpotRadioCounty.ResumeLayout(False)
+            CType(Me.PanelSpotRadioCounty_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioCounty_RightSection.ResumeLayout(False)
+            CType(Me.TabControlSpotRadioCounty_ResearchCriteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlSpotRadioCounty_ResearchCriteria.ResumeLayout(False)
+            Me.TabControlPanelCountyMarket.ResumeLayout(False)
+            CType(Me.GroupBoxSpotRadioCounty_Dayparts, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxSpotRadioCounty_Dayparts.ResumeLayout(False)
+            CType(Me.NumericInputCounty_MaxRank.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.SearchableComboBoxCounty_Demographic.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.SearchableComboBoxCounty_County.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelCountyResults.ResumeLayout(False)
+            CType(Me.TabControlResults_RadioCountyResults, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlResults_RadioCountyResults.ResumeLayout(False)
+            Me.TabControlPanelCountyData.ResumeLayout(False)
+            Me.TabControlPanelCountyDashboard.ResumeLayout(False)
+            CType(Me.DashboardViewerRadioCountyDashboard_Dashboard, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TabControlPanelCountyStations.ResumeLayout(False)
+            CType(Me.PanelSpotRadioCountyStation, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioCountyStation.ResumeLayout(False)
+            CType(Me.PanelBottomSpotRadioCountyStation_RightSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelBottomSpotRadioCountyStation_RightSection.ResumeLayout(False)
+            CType(Me.PanelBottomSpotRadioCountyStation_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelBottomSpotRadioCountyStation_LeftSection.ResumeLayout(False)
+            Me.TabControlPanelCountyMetrics.ResumeLayout(False)
+            CType(Me.PanelSpotRadioCountyMetrics_Criteria, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioCountyMetrics_Criteria.ResumeLayout(False)
+            CType(Me.PanelSpotRadioCountyMetrics_Right, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioCountyMetrics_Right.ResumeLayout(False)
+            CType(Me.PanelSpotRadioCountyMetrics_Left, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioCountyMetrics_Left.ResumeLayout(False)
+            CType(Me.PanelSpotRadioCounty_LeftSection, System.ComponentModel.ISupportInitialize).EndInit
+            Me.PanelSpotRadioCounty_LeftSection.ResumeLayout(False)
             Me.ResumeLayout(False)
 
         End Sub
@@ -6993,6 +8211,67 @@
         Friend WithEvents DateEditNationalDates_EndDate As WinForm.MVC.Presentation.Controls.DateEdit
         Friend WithEvents CheckBoxNationalDates_ShowAirings As WinForm.MVC.Presentation.Controls.CheckBox
         Friend WithEvents CheckBoxNationalDates_ShowProgramTypes As WinForm.MVC.Presentation.Controls.CheckBox
+        Friend WithEvents TabControlPanelSpotTVPuertoRico_SpotTVPuertoRico As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents PanelSpotTVPuertoRico_RightSection As WinForm.Presentation.Controls.Panel
+        Friend WithEvents TabControlSpotTVPuertoRico_ResearchCriteria As WinForm.Presentation.Controls.TabControl
+        Friend WithEvents TabControlPanelSpotTVPuertoRicoReportTypeStations_Criteria As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents LabelSpotTVPuertoRicoReportTypeStation_MaximumRank As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents NumericInputSpotTVPuertoRicoReportTypeStation_MaximumRank As WinForm.MVC.Presentation.Controls.NumericInput
+        Friend WithEvents ComboBoxSpotTVPuertoRicoReportTypeStation_ReportType As WinForm.MVC.Presentation.Controls.ComboBox
+        Friend WithEvents PanelSpotTVPuertoRicoReportTypeStation_Bottom As WinForm.Presentation.Controls.Panel
+        Friend WithEvents Panel3 As WinForm.Presentation.Controls.Panel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_SelectedStations As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents ButtonSpotTVPuertoRicoStation_AddToSelected As WinForm.MVC.Presentation.Controls.Button
+        Friend WithEvents ButtonSpotTVPuertoRicoStation_RemoveFromSelected As WinForm.MVC.Presentation.Controls.Button
+        Friend WithEvents ExpandableSplitterSpotTVPuertoRicoReportTypeStations_LeftRight As WinForm.Presentation.Controls.ExpandableSplitterControl
+        Friend WithEvents PanelBottomSpotTVPuertoRicoReportTypeStation_LeftSection As WinForm.Presentation.Controls.Panel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_AvailableStations As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents GroupBoxSpotTVPuertoRicoReportTypeStation_Options As WinForm.Presentation.Controls.GroupBox
+        Friend WithEvents CheckBoxSpotTVPuertoRicoOptions_GroupByDaysTimes As WinForm.MVC.Presentation.Controls.CheckBox
+        Friend WithEvents CheckBoxSpotTVPuertoRicoOptions_ShowProgramName As WinForm.MVC.Presentation.Controls.CheckBox
+        Friend WithEvents LabelSpotTVPuertoRicoReportTypeStation_ReportType As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents TabItemSpotTVPuertoRico_ReportTypeStations As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabControlPanelSpotTVPuertoRicoPeriods_Criteria As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_DayTimes As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents TabItemSpotTVPuertoRico_PeriodsDaysTimes As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabControlPanelSpotTVPuertoRicoResults_Results As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents TabControlResults_TVPuertoRicoResults As WinForm.Presentation.Controls.TabControl
+        Friend WithEvents TabControlPanelTVPuertoRicoDataTab_TVData As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents LabelSpotTVPuertoRicoResults_Footer As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents BandedDataGridViewSpotTVPuertoRicoResults As WinForm.MVC.Presentation.Controls.BandedDataGridView
+        Friend WithEvents TabItemTVPuertoRicoResults_TVDataTab As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabControlPanel5 As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents DashboardViewerTVPuertoRicoDashboard_Dashboard As WinForm.Presentation.Controls.DashboardViewerControl
+        Friend WithEvents TabItemTVPuertoRicoResults_TVDashboardTab As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabItemSpotTVPuertoRico_Results As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabControlPanelSpotTVPuertoRicoMetrics_Criteria As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents PanelSpotTVPuertoRicoMetrics_Criteria As WinForm.Presentation.Controls.Panel
+        Friend WithEvents PanelSpotTVPuertoRicoMetrics_Right As WinForm.Presentation.Controls.Panel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_SelectedMetrics As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents ButtonSpotTVPuertoRicoMetrics_AddToSelected As WinForm.MVC.Presentation.Controls.Button
+        Friend WithEvents ButtonSpotTVPuertoRicoMetrics_RemoveFromSelected As WinForm.MVC.Presentation.Controls.Button
+        Friend WithEvents ExpandableSplitterControlSpotTVPuertoRicoMetrics As WinForm.Presentation.Controls.ExpandableSplitterControl
+        Friend WithEvents PanelSpotTVPuertoRicoMetrics_Left As WinForm.Presentation.Controls.Panel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_AvailableMetrics As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents TabItemSpotTVPuertoRico_Metrics As DevComponents.DotNetBar.TabItem
+        Friend WithEvents TabControlPanelSpotTVPuertoRicoDemographics_Criteria As DevComponents.DotNetBar.TabControlPanel
+        Friend WithEvents PanelSpotTVPuertoRicoDemographics_Criteria As WinForm.Presentation.Controls.Panel
+        Friend WithEvents PanelSpotTVPuertoRicoDemographics_Right As WinForm.Presentation.Controls.Panel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_SelectedDemographics As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents ButtonSpotTVPuertoRicoDemographics_AddToSelected As WinForm.MVC.Presentation.Controls.Button
+        Friend WithEvents ButtonSpotTVPuertoRicoDemographics_RemoveFromSelected As WinForm.MVC.Presentation.Controls.Button
+        Friend WithEvents ExpandableSplitterControlSpotTVPuertoRicoDemographics As WinForm.Presentation.Controls.ExpandableSplitterControl
+        Friend WithEvents PanelSpotTVPuertoRicoDemographics_Left As WinForm.Presentation.Controls.Panel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_AvailableDemographics As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents TabItemSpotTVPuertoRico_Demographics As DevComponents.DotNetBar.TabItem
+        Friend WithEvents ExpandableSplitterControlSpotTVPuertoRico_LeftRight As WinForm.Presentation.Controls.ExpandableSplitterControl
+        Friend WithEvents PanelSpotTVPuertoRico_LeftSection As WinForm.Presentation.Controls.Panel
+        Friend WithEvents DataGridViewSpotTVPuertoRico_UserCriterias As WinForm.MVC.Presentation.Controls.DataGridView
+        Friend WithEvents TabItemTabs_SpotTVPuertoRicoTab As DevComponents.DotNetBar.TabItem
+        Friend WithEvents LabelSpotTVPuertoRicoPeriod_ShareStartDate As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents LabelSpotTVPuertoRicoPeriod_ShareEndDate As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents DateEditSpotTVPuertoRicoPeriod_ShareStartDate As WinForm.MVC.Presentation.Controls.DateEdit
+        Friend WithEvents DateEditSpotTVPuertoRicoPeriod_ShareEndDate As WinForm.MVC.Presentation.Controls.DateEdit
     End Class
 
 End Namespace

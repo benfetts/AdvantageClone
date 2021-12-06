@@ -291,7 +291,7 @@
                 AutoGenerateColumns="False" GridLines="None" ShowGroupPanel="False" ShowHeader="true">
                 <ClientSettings AllowColumnsReorder="False" AllowDragToGroup="False">
                     <Resizing AllowColumnResize="false" EnableRealTimeResize="False" />
-                    <Selecting AllowRowSelect="true" />
+                    <Selecting AllowRowSelect="true" UseClientSelectColumnOnly="True" />
                 </ClientSettings>
                 <MasterTableView AllowMultiColumnSorting="true">
                     <Columns>

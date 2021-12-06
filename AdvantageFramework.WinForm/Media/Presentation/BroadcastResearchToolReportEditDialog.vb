@@ -15,6 +15,7 @@
             SpotTV
             SpotRadioCounty
             SpotNational
+            SpotTVPuertoRico
         End Enum
 
 #End Region
@@ -133,6 +134,10 @@
 
                 _ViewModel = _Controller.Load(_ResearchID, "National", _IsCopy)
 
+            ElseIf _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                _ViewModel = _Controller.Load(_ResearchID, "SpotTVPuertoRico", _IsCopy)
+
             End If
 
             RefreshViewModel()
@@ -196,6 +201,21 @@
             ElseIf _ResearchType = ResearchType.SpotNational Then
 
                 If _Controller.AddNational(_ViewModel, TextBoxForm_CriteriaName.GetText, ErrorMessage, _ResearchID) Then
+
+                    Me.ClearChanged()
+
+                    Me.DialogResult = Windows.Forms.DialogResult.OK
+                    Me.Close()
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                End If
+
+            ElseIf _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                If _Controller.AddTVPuertoRico(_ViewModel, TextBoxForm_CriteriaName.GetText, ErrorMessage, _ResearchID) Then
 
                     Me.ClearChanged()
 
@@ -282,6 +302,21 @@
 
                 End If
 
+            ElseIf _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                If _Controller.CopyTVPuertoRico(_ViewModel, TextBoxForm_CriteriaName.GetText, _ResearchID, ErrorMessage, _ResearchID) Then
+
+                    Me.ClearChanged()
+
+                    Me.DialogResult = Windows.Forms.DialogResult.OK
+                    Me.Close()
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                End If
+
             End If
 
         End Sub
@@ -338,6 +373,21 @@
             ElseIf _ResearchType = ResearchType.SpotNational Then
 
                 If _Controller.UpdateNational(_ViewModel, TextBoxForm_CriteriaName.GetText, ErrorMessage) Then
+
+                    Me.ClearChanged()
+
+                    Me.DialogResult = Windows.Forms.DialogResult.OK
+                    Me.Close()
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                End If
+
+            ElseIf _ResearchType = ResearchType.SpotTVPuertoRico Then
+
+                If _Controller.UpdateTVPuertoRico(_ViewModel, TextBoxForm_CriteriaName.GetText, ErrorMessage) Then
 
                     Me.ClearChanged()
 

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source 1" ComponentName="DashboardObjectDataSource1">
+      <DataSource Type="System.Collections.Generic.List`1[[AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult, AdvantageFramework.BLogic, Version=6.70.8.1, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Chart ComponentName="ChartDashboardItem1" Name="Rating by Station" DataSource="DashboardObjectDataSource1">
+      <ColoringOptions UseGlobalColors="false" />
+      <DataItems>
+        <Dimension DataMember="Times" DefaultId="DataItem4" />
+        <Dimension DataMember="Days" DefaultId="DataItem2" />
+        <Measure DataMember="Rating" DefaultId="DataItem3">
+          <NumericFormat FormatType="Number" />
+        </Measure>
+        <Dimension DataMember="Station" DefaultId="DataItem0" />
+        <Dimension DataMember="Books" SortByMeasure="DataItem6" DefaultId="DataItem1" />
+        <Measure DataMember="StreamYear" DefaultId="DataItem5" />
+        <Measure DataMember="StreamMonth" DefaultId="DataItem6" />
+      </DataItems>
+      <HiddenMeasures>
+        <Measure DefaultId="DataItem5" />
+        <Measure DefaultId="DataItem6" />
+      </HiddenMeasures>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+        <Argument DefaultId="DataItem2" />
+        <Argument DefaultId="DataItem4" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <AxisY Title="Rating" AlwaysShowZeroLevel="false" />
+          <Series>
+            <Simple ShowPointMarkers="true" SeriesType="Line">
+              <Value DefaultId="DataItem3" />
+              <PointLabelOptions ContentType="SeriesName" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+      <ChartLegend Visible="false" IsInsidePosition="true" InsidePosition="TopCenterHorizontal" OutsidePosition="TopLeftHorizontal" />
+    </Chart>
+    <Pie ComponentName="pieDashboardItem1" Name="Share by Station" DataSource="DashboardObjectDataSource1">
+      <ColoringOptions UseGlobalColors="false" />
+      <DataItems>
+        <Dimension DataMember="Days" DefaultId="DataItem0" />
+        <Dimension DataMember="Times" DefaultId="DataItem1" />
+        <Dimension DataMember="Station" DefaultId="DataItem2" />
+        <Measure DataMember="Share" Name="Share " DefaultId="DataItem3" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem0" />
+        <SeriesDimension DefaultId="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem2" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem3" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="ChartDashboardItem1" Weight="47.607655502392348" />
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="52.392344497607652" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

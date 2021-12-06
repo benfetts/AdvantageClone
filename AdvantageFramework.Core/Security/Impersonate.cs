@@ -125,7 +125,7 @@ namespace AdvantageFramework.Core.Security
 
             return HasBegun;
         }
-        public new static bool BeginImpersonation(/*AdvantageFramework.Security.Session Session*/)
+        public static bool BeginImpersonation(/*AdvantageFramework.Security.Session Session*/)
         {
 
             // objects

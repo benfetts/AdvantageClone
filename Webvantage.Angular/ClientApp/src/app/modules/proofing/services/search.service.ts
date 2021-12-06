@@ -38,4 +38,8 @@ export class SearchService extends BaseService {
   setSelectedResult(searchResults: ISearchResults): void {
     this.SelectedResult.next(searchResults);
   }
+
+  clearSearch(): void {
+    console.log('clear current search here');
+  }
 }

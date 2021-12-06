@@ -84,6 +84,7 @@ Partial Public Class arptPurchaseOrderRR
         Me.txtRevised = New DataDynamics.ActiveReports.TextBox()
         Me.ReportInfo1 = New DataDynamics.ActiveReports.ReportInfo()
         Me.TextBox6 = New DataDynamics.ActiveReports.TextBox()
+        Me.txtJobCompDesc = New DataDynamics.ActiveReports.TextBox()
         Me.PageHeader1 = New DataDynamics.ActiveReports.PageHeader()
         Me.Detail1 = New DataDynamics.ActiveReports.Detail()
         Me.PageFooter1 = New DataDynamics.ActiveReports.PageFooter()
@@ -103,7 +104,6 @@ Partial Public Class arptPurchaseOrderRR
         Me.GroupFooter6 = New DataDynamics.ActiveReports.GroupFooter()
         Me.GroupHeader1 = New DataDynamics.ActiveReports.GroupHeader()
         Me.GroupFooter7 = New DataDynamics.ActiveReports.GroupFooter()
-        Me.txtJobCompDesc = New DataDynamics.ActiveReports.TextBox()
         CType(Me.txtLineNumber, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txt_qty, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -577,6 +577,13 @@ Partial Public Class arptPurchaseOrderRR
         resources.ApplyResources(Me.TextBox6, "TextBox6")
         Me.TextBox6.Name = "TextBox6"
         '
+        'txtJobCompDesc
+        '
+        Me.txtJobCompDesc.DataField = "JOB_COMP_DESC"
+        resources.ApplyResources(Me.txtJobCompDesc, "txtJobCompDesc")
+        Me.txtJobCompDesc.Name = "txtJobCompDesc"
+        Me.txtJobCompDesc.Visible = False
+        '
         'PageHeader1
         '
         Me.PageHeader1.CanShrink = True
@@ -700,13 +707,6 @@ Partial Public Class arptPurchaseOrderRR
         '
         Me.GroupFooter7.Height = 0.25!
         Me.GroupFooter7.Name = "GroupFooter7"
-        '
-        'txtJobCompDesc
-        '
-        Me.txtJobCompDesc.DataField = "JOB_COMP_DESC"
-        resources.ApplyResources(Me.txtJobCompDesc, "txtJobCompDesc")
-        Me.txtJobCompDesc.Name = "txtJobCompDesc"
-        Me.txtJobCompDesc.Visible = False
         '
         'arptPurchaseOrderRR
         '

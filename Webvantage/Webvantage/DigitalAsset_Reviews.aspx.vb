@@ -89,6 +89,19 @@ Public Class DigitalAsset_Reviews
     Private Sub RadToolbarDigitalAssetReviews_ButtonClick(sender As Object, e As RadToolBarEventArgs) Handles RadToolbarDigitalAssetReviews.ButtonClick
 
         Select Case e.Item.Value
+            Case "ConceptShareMaintenance"
+
+                Dim q As New AdvantageFramework.Web.QueryString
+
+                q.Page = "ProjectManagement/Proofing/FeedbackSummary"
+
+                Me.OpenWindow(q, "ConceptShare Maintenance")
+
+            Case "GetAssetsAndThumbnails"
+
+                Dim Backup As AdvantageFramework.ConceptShare.ThreadableAssetBackup = New AdvantageFramework.ConceptShare.ThreadableAssetBackup(Me.SecuritySession)
+                Backup.BackupAllReviews()
+
             Case "Add"
 
                 If String.IsNullOrWhiteSpace(Me.ClientCode) = True OrElse
@@ -398,6 +411,16 @@ Public Class DigitalAsset_Reviews
             Else
 
                 Me.DivConceptShare.Visible = False
+
+                Try
+
+                    Me.RadToolbarDigitalAssetReviews.FindItemByValue("RadToolBarSeparatorGetAssetsAndThumbnails").Visible = False
+                    Me.RadToolbarDigitalAssetReviews.FindItemByValue("ConceptShareMaintenance").Visible = False
+                    'Me.RadToolbarDigitalAssetReviews.FindItemByValue("GetAssetsAndThumbnails").Visible = False
+                    'Me.RadToolbarDigitalAssetReviews.FindItemByValue("RefreshGetAssetsAndThumbnails").Visible = False
+
+                Catch ex As Exception
+                End Try
 
             End If
 

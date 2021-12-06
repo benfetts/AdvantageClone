@@ -26,6 +26,8 @@
             InvoiceNumber
             FILM
             SpotsInvoice
+            PerCostSpot
+            APApprovalComment
         End Enum
 
 #End Region
@@ -52,6 +54,8 @@
         Public Property InvoiceNumber() As String
         Public Property FILM() As String
         Public Property SpotsInvoice() As Integer
+        Public Property PerCostSpot() As Decimal
+        Public Property APApprovalComment() As String
 
 #End Region
 

@@ -1236,8 +1236,8 @@ Namespace Controllers.Desktop
 
             'objects
             Dim AlertComments As Generic.List(Of AdvantageFramework.DTO.Desktop.AlertComment) = Nothing
-            Dim CommentDocuments As Generic.List(Of CommentDocument) = Nothing
-            Dim CommentDocument As CommentDocument = Nothing
+            Dim CommentDocuments As Generic.List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument) = Nothing
+            Dim CommentDocument As AdvantageFramework.AlertSystem.Classes.CommentDocument = Nothing
 
             AlertComments = _Controller.LoadAlertComments(AlertID, DocumentID, HideSystemComments, MiscFN.IsClientPortal)
 
@@ -1247,7 +1247,7 @@ Namespace Controllers.Desktop
 
                     If Not String.IsNullOrWhiteSpace(AlertComment.DocumentList) Then
 
-                        CommentDocument = New CommentDocument
+                        CommentDocument = New AdvantageFramework.AlertSystem.Classes.CommentDocument
                         CommentDocuments = CommentDocument.StringToObject(AlertComment.DocumentList)
 
                         If CommentDocuments IsNot Nothing AndAlso CommentDocuments.Count > 0 Then
@@ -2868,8 +2868,8 @@ Namespace Controllers.Desktop
             Dim Added As Boolean = False
             Dim TempDirectory As String = Nothing
             Dim TempFiles As Generic.List(Of String) = Nothing
-            Dim CommentDocuments As Generic.List(Of Webvantage.CommentDocument) = Nothing
-            Dim CommentDocument As Webvantage.CommentDocument = Nothing
+            Dim CommentDocuments As Generic.List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument) = Nothing
+            Dim CommentDocument As AdvantageFramework.AlertSystem.Classes.CommentDocument = Nothing
             Dim Documents As Generic.List(Of AdvantageFramework.Database.Entities.Document) = Nothing
             Dim DocumentList As String = Nothing
             Dim LinksList As Generic.List(Of Link) = Nothing
@@ -2899,7 +2899,7 @@ Namespace Controllers.Desktop
                         If Documents IsNot Nothing AndAlso Documents.Count > 0 Then
 
                             CommentDocuments = (From item In Documents
-                                                Select New CommentDocument With {.Filename = item.FileName,
+                                                Select New AdvantageFramework.AlertSystem.Classes.CommentDocument With {.Filename = item.FileName,
                                                                                  .DocumentId = item.ID,
                                                                                  .MimeType = item.MIMEType}).ToList
 
@@ -2919,11 +2919,11 @@ Namespace Controllers.Desktop
                 End If
                 If LinksList IsNot Nothing AndAlso LinksList.Count > 0 Then
 
-                    Dim CommentDoc As Webvantage.CommentDocument = Nothing
+                    Dim CommentDoc As AdvantageFramework.AlertSystem.Classes.CommentDocument = Nothing
 
                     If CommentDocuments Is Nothing Then
 
-                        CommentDocuments = New List(Of CommentDocument)
+                        CommentDocuments = New List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument)
 
                     End If
 
@@ -2940,7 +2940,7 @@ Namespace Controllers.Desktop
 
                         If Me._Controller.UploadURL(AlertID, Link.Title, Link.Link, Link.UploadDocumentManager, ErrorMessage) = True Then
 
-                            CommentDoc = New Webvantage.CommentDocument
+                            CommentDoc = New AdvantageFramework.AlertSystem.Classes.CommentDocument
 
                             CommentDoc.DocumentId = -1
                             CommentDoc.Title = Link.Title
@@ -2967,7 +2967,7 @@ Namespace Controllers.Desktop
                 ErrorMessages.Add(AdvantageFramework.StringUtilities.FullErrorToString(ex))
             End Try
 
-            CommentDocument = New CommentDocument
+            CommentDocument = New AdvantageFramework.AlertSystem.Classes.CommentDocument
 
             DocumentList = CommentDocument.ObjectToString(CommentDocuments)
 

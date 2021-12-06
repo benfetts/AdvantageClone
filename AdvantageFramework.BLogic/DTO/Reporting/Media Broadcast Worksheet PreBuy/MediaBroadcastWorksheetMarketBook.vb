@@ -27,6 +27,8 @@
             IsCable
             ShareBookID
             HPUTBookID
+            PeriodStart
+            PeriodEnd
             NielsenRadioPeriodID1
             NielsenRadioPeriodID2
             NielsenRadioPeriodID3
@@ -84,6 +86,10 @@
         Public Property ShareBookID() As Nullable(Of Integer)
         <AdvantageFramework.BaseClasses.Attributes.Entity(CustomColumnCaption:="Pre Buy H/PUT Book", PropertyType:=BaseClasses.Methods.PropertyTypes.NielsenTVBook)>
         Public Property HPUTBookID() As Nullable(Of Integer)
+        <AdvantageFramework.BaseClasses.Attributes.Entity(CustomColumnCaption:="Pre Buy Period Start")>
+        Public Property PeriodStart() As Nullable(Of Date)
+        <AdvantageFramework.BaseClasses.Attributes.Entity(CustomColumnCaption:="Pre Buy Period End")>
+        Public Property PeriodEnd() As Nullable(Of Date)
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True, ShowColumnInGrid:=False, CustomColumnCaption:="Source")>
         Public Property ExternalRadioSource() As Nullable(Of Integer)
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsReadOnlyColumn:=True, ShowColumnInGrid:=False, CustomColumnCaption:="Geography")>
@@ -291,6 +297,8 @@
             MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID3 = Me.NielsenRadioPeriodID3
             MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID4 = Me.NielsenRadioPeriodID4
             MediaBroadcastWorksheetPrePostReportCriteria.NeilsenRadioPeriodID5 = Me.NielsenRadioPeriodID5
+            MediaBroadcastWorksheetPrePostReportCriteria.PeriodStart = Me.PeriodStart
+            MediaBroadcastWorksheetPrePostReportCriteria.PeriodEnd = Me.PeriodEnd
 
         End Sub
         Public Overrides Function ToString() As String

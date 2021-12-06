@@ -173,6 +173,7 @@
             JR_DFLT_TMPLT
             MAX_EMAIL_SIZE
             MBW_DEFAULT_RATE
+            MEDIA_AUTO_BUYER
             MEDIA_EXCL_ORD_PDF
             MEDIA_REQ_CAMPAIGN
             MEDIATRAFFIC_STARTDT
@@ -191,6 +192,7 @@
             NIELSEN_DB_USER
             NIELSEN_SVC_TIMEOUT
             NIELSEN_WINDOWS_AUTH
+            NIELSEN_PR_ENABLED
             OPER_EXP_PCT_INC
             ORDER_AP_OUTPATH
             ORDER_MP_OUTPATH
@@ -1226,6 +1228,67 @@
             End If
 
             SaveMediaRequireCampaign = Saved
+
+        End Function
+        Public Function LoadMediaAutoBuyer(ByVal DataContext As AdvantageFramework.Database.DataContext) As Boolean
+
+            Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
+            Dim MediaAutoBuyer As Boolean = False
+
+            Try
+
+                Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.MEDIA_AUTO_BUYER.ToString)
+
+            Catch ex As Exception
+                Setting = Nothing
+            End Try
+
+            If Setting IsNot Nothing Then
+
+                MediaAutoBuyer = Setting.Value
+
+            End If
+
+            LoadMediaAutoBuyer = MediaAutoBuyer
+
+        End Function
+        Public Function SaveMediaAutoBuyer(ByVal DataContext As AdvantageFramework.Database.DataContext, MediaAutoBuyer As Boolean) As Boolean
+
+            Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
+            Dim Saved As Boolean = False
+
+            Try
+
+                Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.MEDIA_AUTO_BUYER.ToString)
+
+            Catch ex As Exception
+                Setting = Nothing
+            End Try
+
+            If Setting IsNot Nothing Then
+
+                Setting.Value = MediaAutoBuyer
+
+                Saved = AdvantageFramework.Database.Procedures.Setting.Update(DataContext, Setting)
+
+            Else
+
+                Setting = New AdvantageFramework.Database.Entities.Setting
+
+                Setting.DataContext = DataContext
+                Setting.Code = AdvantageFramework.Agency.Settings.MEDIA_AUTO_BUYER.ToString
+                Setting.Description = "Automatically place the buyer on a media plan or broadcast worksheet"
+                Setting.Value = MediaAutoBuyer
+                Setting.DefaultValue = False
+                Setting.MinimumValue = 0
+                Setting.MaximumValue = 1
+                Setting.SettingDatabaseTypeID = 16
+
+                Saved = AdvantageFramework.Database.Procedures.Setting.Insert(DataContext, Setting)
+
+            End If
+
+            SaveMediaAutoBuyer = Saved
 
         End Function
         Public Function LoadJobDetailFeesFunctionCodes(DataContext As AdvantageFramework.Database.DataContext) As Generic.List(Of String)

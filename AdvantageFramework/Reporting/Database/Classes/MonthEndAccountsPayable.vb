@@ -172,6 +172,8 @@
         Public Property DetailARInvoiceDate As Nullable(Of Date)
         Public Property DetailABReference As String
         Public Property DetailNonBillable As String
+        Public Property GLAPID2 As String
+        Public Property InvoiceID2 As String
 
 #End Region
 

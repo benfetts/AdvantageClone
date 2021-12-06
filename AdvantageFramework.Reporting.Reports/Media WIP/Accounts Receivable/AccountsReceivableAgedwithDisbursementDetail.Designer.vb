@@ -1,4 +1,4 @@
-Namespace MediaWIP.AccountsReceivable
+﻿Namespace MediaWIP.AccountsReceivable
 
     Partial Public Class AccountsReceivableAgedwithDisbursementDetail
         Private components As System.ComponentModel.IContainer

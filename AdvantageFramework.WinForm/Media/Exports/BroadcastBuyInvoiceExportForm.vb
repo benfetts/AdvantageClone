@@ -41,9 +41,25 @@
 
             ComboBoxOptions_BroadcastMonth.Enabled = RadioButtonControlOptions_BroadcastMonth.Checked
             ComboBoxOptions_BroadcastMonth.SetRequired(RadioButtonControlOptions_BroadcastMonth.Checked)
+            If ComboBoxOptions_BroadcastMonth.Enabled = False Then
+
+                ComboBoxOptions_BroadcastMonth.Validate(Nothing)
+
+            End If
 
             ComboBoxOptions_Quarter.Enabled = RadioButtonControlOptions_Quarter.Checked
             ComboBoxOptions_Quarter.SetRequired(RadioButtonControlOptions_Quarter.Checked)
+            If ComboBoxOptions_Quarter.Enabled = False Then
+
+                ComboBoxOptions_Quarter.Validate(Nothing)
+
+            End If
+
+            DateEditoptions_BroadcastStartDate.Enabled = RadioButtonControlOptions_BroadcastWeeks.Checked
+            DateEditoptions_BroadcastStartDate.SetRequired(RadioButtonControlOptions_BroadcastWeeks.Checked)
+
+            DateEditoptions_BroadcastEndDate.Enabled = RadioButtonControlOptions_BroadcastWeeks.Checked
+            DateEditoptions_BroadcastEndDate.SetRequired(RadioButtonControlOptions_BroadcastWeeks.Checked)
 
             DataGridViewSelectClients_Clients.Enabled = RadioButtonSelectClients_ChooseClients.Checked
 
@@ -77,12 +93,17 @@
             If RadioButtonControlOptions_BroadcastMonth.Checked Then
 
                 _Controller.SetBroadcastStartEndDates(ComboBoxOptions_BroadcastMonth.GetSelectedValue, Me.NumericInputOptions_Year.GetValue, _ViewModel)
-                _ViewModel.FilePrefix = MonthName(_ViewModel.Months.First) & "_" & _ViewModel.Year.ToString
+                _ViewModel.FilePrefix = MonthName(ComboBoxOptions_BroadcastMonth.GetSelectedValue) & "_" & _ViewModel.Year.ToString
 
             ElseIf RadioButtonControlOptions_Quarter.Checked Then
 
                 _Controller.SetQuarterStartEndDates(ComboBoxOptions_Quarter.GetSelectedValue, Me.NumericInputOptions_Year.GetValue, _ViewModel)
                 _ViewModel.FilePrefix = _ViewModel.Quarter & "_" & _ViewModel.Year.ToString
+
+            ElseIf RadioButtonControlOptions_BroadcastWeeks.Checked Then
+
+                _Controller.SetBroadcastStartEndDates(DateEditoptions_BroadcastStartDate.GetValue, DateEditoptions_BroadcastEndDate.GetValue, _ViewModel)
+                _ViewModel.FilePrefix = _ViewModel.StartDate.ToString("yyyyMMdd") & "_" & _ViewModel.EndDate.ToString("yyyyMMdd")
 
             End If
 
@@ -139,11 +160,15 @@
         End Sub
         Private Sub BroadcastBuyInvoiceExportForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
+            Me.ShowWaitForm("Loading...")
+
             _Controller = New AdvantageFramework.Controller.Media.Exports.BroadcastBuyInvoiceExportController(Me.Session)
 
             _ViewModel = _Controller.Load()
 
             LoadViewModel()
+
+            Me.CloseWaitForm()
 
             Me.FormAction = AdvantageFramework.WinForm.Presentation.FormActions.None
 
@@ -153,15 +178,17 @@
 
 #Region "  Control Event Handlers "
 
-        Private Sub ButtonItemActions_Export_Click(sender As Object, e As EventArgs) Handles ButtonItemActions_Export.Click
+        Private Sub ButtonItemExport_ToExcel_Click(sender As Object, e As EventArgs) Handles ButtonItemExport_ToExcel.Click
 
             Dim ErrorMessage As String = ""
 
             If Me.Validator Then
 
+                Me.ShowWaitForm("Exporting...")
+
                 SaveViewModel()
 
-                If _Controller.ExportBuyAndInvoiceFiles(_ViewModel, ErrorMessage) Then
+                If _Controller.ExportBuyAndInvoiceFilesToExcel(_ViewModel, ErrorMessage) Then
 
                     If _ViewModel.IsAgencyASP Then
 
@@ -178,6 +205,51 @@
                     AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
 
                 End If
+
+                Me.CloseWaitForm()
+
+            Else
+
+                For Each LastFailedValidationResult In Me.SuperValidator.LastFailedValidationResults.ToList
+
+                    ErrorMessage &= LastFailedValidationResult.Validator.ErrorMessage & vbCrLf
+
+                Next
+
+                AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+            End If
+
+        End Sub
+        Private Sub ButtonItemExport_ToXML_Click(sender As Object, e As EventArgs) Handles ButtonItemExport_ToXML.Click
+
+            Dim ErrorMessage As String = ""
+
+            If Me.Validator Then
+
+                Me.ShowWaitForm("Exporting...")
+
+                SaveViewModel()
+
+                If _Controller.ExportBuyAndInvoiceFilesToXml(_ViewModel, ErrorMessage) Then
+
+                    If _ViewModel.IsAgencyASP Then
+
+                        AdvantageFramework.Navigation.ShowMessageBox("Files exported successfully and also email link has been sent to your email.")
+
+                    Else
+
+                        AdvantageFramework.WinForm.MessageBox.Show("Files exported successfully.")
+
+                    End If
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show(ErrorMessage)
+
+                End If
+
+                Me.CloseWaitForm()
 
             Else
 
@@ -224,6 +296,37 @@
             If e.NewChecked.Checked Then
 
                 EnableOrDisableActions()
+
+            End If
+
+        End Sub
+        Private Sub RadioButtonControlOptions_BroadcastWeeks_CheckedChangedEx(sender As Object, e As DevComponents.DotNetBar.Controls.CheckBoxXChangeEventArgs) Handles RadioButtonControlOptions_BroadcastWeeks.CheckedChangedEx
+
+            If e.NewChecked.Checked Then
+
+                EnableOrDisableActions()
+
+            End If
+
+        End Sub
+        Private Sub DateEditoptions_BroadcastEndDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles DateEditoptions_BroadcastEndDate.Validating
+
+            If DateEditoptions_BroadcastEndDate.GetValue IsNot Nothing AndAlso CDate(DateEditoptions_BroadcastEndDate.GetValue).DayOfWeek <> DayOfWeek.Sunday Then
+
+                DateEditoptions_BroadcastEndDate.ErrorText = "End date must be a Sunday."
+                'AdvantageFramework.WinForm.MessageBox.Show("End date must be a Sunday.")
+                e.Cancel = True
+
+            End If
+
+        End Sub
+        Private Sub DateEditoptions_BroadcastStartDate_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles DateEditoptions_BroadcastStartDate.Validating
+
+            If DateEditoptions_BroadcastStartDate.GetValue IsNot Nothing AndAlso CDate(DateEditoptions_BroadcastStartDate.GetValue).DayOfWeek <> DayOfWeek.Monday Then
+
+                DateEditoptions_BroadcastStartDate.ErrorText = "Start date must be a Monday."
+                'AdvantageFramework.WinForm.MessageBox.Show("Start date must be a Monday.")
+                e.Cancel = True
 
             End If
 

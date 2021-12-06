@@ -12354,6 +12354,7 @@ ClientContactIDSqlParameter
 #Region "  Nielsen Service "
 
 #Region "  Alert "
+
         Public Function CreateAlertForNonHostedNielsenDataImport(DatabaseProfile As AdvantageFramework.Database.DatabaseProfile,
                                                                  EmployeeCode As String) As Boolean
 
@@ -12610,6 +12611,7 @@ ClientContactIDSqlParameter
 #End Region
 
 #Region "  Email "
+
         Private Function CreateAlertEmailBodyForNonHostedNielsenDataImportError()
 
             'objects
@@ -12642,6 +12644,8 @@ ClientContactIDSqlParameter
             End Try
 
         End Function
+
+#End Region
 
 #End Region
 
@@ -12796,6 +12800,302 @@ ClientContactIDSqlParameter
         End Function
 
 #End Region
+
+#End Region
+
+#Region "  Nielsen Puerto Rico Service "
+
+#Region "  Alert "
+
+        Public Function CreateAlertForNonHostedNielsenPuertoRicoDataImport(DatabaseProfile As AdvantageFramework.Database.DatabaseProfile,
+                                                                           EmployeeCode As String) As Boolean
+
+            'objects
+            Dim AlertCreated As Boolean = False
+            Dim Alert As AdvantageFramework.Database.Entities.Alert = Nothing
+            Dim AlertType As AdvantageFramework.Database.Entities.AlertType = Nothing
+            Dim AlertCategory As AdvantageFramework.Database.Entities.AlertCategory = Nothing
+            Dim EmployeeEmail As String = Nothing
+            Dim SendingEmailStatus As AdvantageFramework.Email.SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.FailedToLoadSettings
+            Dim AlertBody As String = ""
+            Dim AlertEmailBody As String = ""
+            Dim AlertSubject As String = ""
+            Dim Employee As AdvantageFramework.Database.Views.Employee = Nothing
+            Dim EmployeeName As String = ""
+            Dim AlertUser As String = ""
+
+            Using DbContext As New AdvantageFramework.Database.DbContext(DatabaseProfile.ConnectionString, DatabaseProfile.DatabaseUserName)
+
+                Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(DatabaseProfile.ConnectionString, DatabaseProfile.DatabaseUserName)
+
+                    Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, EmployeeCode)
+
+                    If Employee IsNot Nothing Then
+
+                        EmployeeName = Employee.ToString()
+
+                        AlertType = AdvantageFramework.Database.Procedures.AlertType.LoadByAlertTypeDescription(DbContext, AdvantageFramework.StringUtilities.GetNameAsWords(AdvantageFramework.AlertSystem.AlertType.ImportValidation.ToString))
+
+                        If AlertType IsNot Nothing Then
+
+                            AlertCategory = AdvantageFramework.Database.Procedures.AlertCategory.LoadByAlertTypeIDAndAlertCategoryDescription(DbContext, AlertType.ID, AdvantageFramework.StringUtilities.GetNameAsWords(AdvantageFramework.AlertSystem.ImportValidation.ImportResults.ToString))
+
+                            If AlertCategory IsNot Nothing Then
+
+                                AlertBody = AdvantageFramework.AlertSystem.CreateAlertBodyForNonHostedNielsenPuertoRicoDataImportError()
+                                AlertEmailBody = AdvantageFramework.AlertSystem.CreateAlertEmailBodyForNonHostedNielsenPuertoRicoDataImportError()
+
+                                AlertSubject = "Nielsen Puerto Rico Service" & Space(1) & System.Environment.MachineName
+
+                                AlertUser = DbContext.UserCode
+
+                                If AlertUser.Length = 0 Then
+
+                                    AlertUser = My.User.Name.Substring(My.User.Name.LastIndexOf("\") + 1)
+
+                                End If
+
+                                Alert = New AdvantageFramework.Database.Entities.Alert
+
+                                Alert.DbContext = DbContext
+                                Alert.AlertTypeID = AlertType.ID
+                                Alert.AlertCategoryID = AlertCategory.ID
+                                Alert.Subject = AlertSubject
+                                Alert.Body = AlertBody
+                                Alert.GeneratedDate = Now
+                                Alert.PriorityLevel = 3
+                                Alert.EmployeeCode = EmployeeCode
+                                Alert.UserCode = AlertUser
+                                Alert.EmailBody = AlertEmailBody
+
+                                If AdvantageFramework.Database.Procedures.Alert.Insert(DbContext, Alert) Then
+
+                                    If CheckEmployeeAlertNotificationForAlert(Employee) Then
+
+                                        If Employee.AlertNotificationType.GetValueOrDefault(0) = 3 Then
+
+                                            EmployeeEmail = Employee.Email
+
+                                        End If
+
+                                        AdvantageFramework.Database.Procedures.AlertRecipient.Insert(DbContext, Alert.ID, Employee.Code, EmployeeEmail, Nothing, Nothing, Nothing, Nothing)
+
+                                    End If
+
+                                    If CheckEmployeeAlertNotificationForEmail(Employee) Then
+
+                                        AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee, Alert.Subject, "<body bgcolor=""#FFFFFF"">" & Alert.EmailBody & "</body>", 2, SendingEmailStatus)
+
+                                    End If
+
+                                    AlertCreated = True
+
+                                End If
+
+                            Else
+
+                                Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+                                Console.WriteLine(AlertSubject)
+                                Console.WriteLine(AlertBody)
+
+                            End If
+
+                        End If
+
+                    End If
+
+                End Using
+
+            End Using
+
+            CreateAlertForNonHostedNielsenPuertoRicoDataImport = AlertCreated
+
+        End Function
+        Private Function CreateAlertBodyForNonHostedNielsenPuertoRicoDataImportError()
+
+            'objects
+            Dim AlertBody As String = ""
+            Dim StringBuilder As System.Text.StringBuilder = Nothing
+
+            Try
+
+                StringBuilder = New System.Text.StringBuilder
+
+                StringBuilder.AppendLine("Nielsen Puerto Rico data download failed.  Please contact Advantage Software Support.")
+                StringBuilder.AppendLine("")
+
+                AlertBody = StringBuilder.ToString
+
+            Catch ex As Exception
+                AlertBody = ""
+            Finally
+                CreateAlertBodyForNonHostedNielsenPuertoRicoDataImportError = AlertBody
+            End Try
+
+        End Function
+        Public Function CreateAlertForNewNielsenPuertoRicoData(DatabaseProfile As AdvantageFramework.Database.DatabaseProfile,
+                                                               EmployeeCode As String) As Boolean
+
+            'objects
+            Dim AlertCreated As Boolean = False
+            Dim Alert As AdvantageFramework.Database.Entities.Alert = Nothing
+            Dim AlertType As AdvantageFramework.Database.Entities.AlertType = Nothing
+            Dim AlertCategory As AdvantageFramework.Database.Entities.AlertCategory = Nothing
+            Dim EmployeeEmail As String = Nothing
+            Dim SendingEmailStatus As AdvantageFramework.Email.SendingEmailStatus = AdvantageFramework.Email.SendingEmailStatus.FailedToLoadSettings
+            Dim AlertBody As String = ""
+            Dim AlertEmailBody As String = ""
+            Dim AlertSubject As String = ""
+            Dim Employee As AdvantageFramework.Database.Views.Employee = Nothing
+            Dim EmployeeName As String = ""
+            Dim AlertUser As String = ""
+
+            Using DbContext As New AdvantageFramework.Database.DbContext(DatabaseProfile.ConnectionString, DatabaseProfile.DatabaseUserName)
+
+                Using SecurityDbContext = New AdvantageFramework.Security.Database.DbContext(DatabaseProfile.ConnectionString, DatabaseProfile.DatabaseUserName)
+
+                    Employee = AdvantageFramework.Database.Procedures.EmployeeView.LoadByEmployeeCode(DbContext, EmployeeCode)
+
+                    If Employee IsNot Nothing Then
+
+                        EmployeeName = Employee.ToString()
+
+                        AlertType = AdvantageFramework.Database.Procedures.AlertType.LoadByAlertTypeDescription(DbContext, AdvantageFramework.StringUtilities.GetNameAsWords(AdvantageFramework.AlertSystem.AlertType.ImportValidation.ToString))
+
+                        If AlertType IsNot Nothing Then
+
+                            AlertCategory = AdvantageFramework.Database.Procedures.AlertCategory.LoadByAlertTypeIDAndAlertCategoryDescription(DbContext, AlertType.ID, AdvantageFramework.StringUtilities.GetNameAsWords(AdvantageFramework.AlertSystem.ImportValidation.ImportResults.ToString))
+
+                            If AlertCategory IsNot Nothing Then
+
+                                AlertBody = AdvantageFramework.AlertSystem.CreateAlertBodyForNewNielsenPuertoRicoData()
+                                AlertEmailBody = AdvantageFramework.AlertSystem.CreateAlertEmailBodyForNewNielsenPuertoRicoData()
+
+                                AlertSubject = "New Nielsen Puerto Rico Data"
+
+                                AlertUser = DbContext.UserCode
+
+                                If AlertUser.Length = 0 Then
+
+                                    AlertUser = My.User.Name.Substring(My.User.Name.LastIndexOf("\") + 1)
+
+                                End If
+
+                                Alert = New AdvantageFramework.Database.Entities.Alert
+
+                                Alert.DbContext = DbContext
+                                Alert.AlertTypeID = AlertType.ID
+                                Alert.AlertCategoryID = AlertCategory.ID
+                                Alert.Subject = AlertSubject
+                                Alert.Body = AlertBody
+                                Alert.GeneratedDate = Now
+                                Alert.PriorityLevel = 3
+                                Alert.EmployeeCode = EmployeeCode
+                                Alert.UserCode = AlertUser
+                                Alert.EmailBody = AlertEmailBody
+
+                                If AdvantageFramework.Database.Procedures.Alert.Insert(DbContext, Alert) Then
+
+                                    If CheckEmployeeAlertNotificationForAlert(Employee) Then
+
+                                        If Employee.AlertNotificationType.GetValueOrDefault(0) = 3 Then
+
+                                            EmployeeEmail = Employee.Email
+
+                                        End If
+
+                                        AdvantageFramework.Database.Procedures.AlertRecipient.Insert(DbContext, Alert.ID, Employee.Code, EmployeeEmail, Nothing, Nothing, Nothing, Nothing)
+
+                                    End If
+
+                                    If CheckEmployeeAlertNotificationForEmail(Employee) Then
+
+                                        AdvantageFramework.Email.Send(DbContext, SecurityDbContext, Employee, Alert.Subject, "<body bgcolor=""#FFFFFF"">" & Alert.EmailBody & "</body>", 2, SendingEmailStatus)
+
+                                    End If
+
+                                    AlertCreated = True
+
+                                End If
+
+                            Else
+
+                                Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+                                Console.WriteLine(AlertSubject)
+                                Console.WriteLine(AlertBody)
+
+                            End If
+
+                        End If
+
+                    End If
+
+                End Using
+
+            End Using
+
+            CreateAlertForNewNielsenPuertoRicoData = AlertCreated
+
+        End Function
+        Private Function CreateAlertBodyForNewNielsenPuertoRicoData()
+
+            'objects
+            Dim AlertBody As String = ""
+            Dim StringBuilder As System.Text.StringBuilder = Nothing
+
+            Try
+
+                StringBuilder = New System.Text.StringBuilder
+
+                StringBuilder.AppendLine("Nielsen Puerto Rico data has been imported successfully.")
+                StringBuilder.AppendLine("")
+
+                AlertBody = StringBuilder.ToString
+
+            Catch ex As Exception
+                AlertBody = ""
+            Finally
+                CreateAlertBodyForNewNielsenPuertoRicoData = AlertBody
+            End Try
+
+        End Function
+
+#End Region
+
+#Region "  Email "
+
+        Private Function CreateAlertEmailBodyForNonHostedNielsenPuertoRicoDataImportError()
+
+            'objects
+            Dim AlertEmailBody As String = ""
+
+            Try
+
+                AlertEmailBody = "Nielsen Puerto Rico data download failed.  Please contact Advantage Software Support."
+
+            Catch ex As Exception
+                AlertEmailBody = ""
+            Finally
+                CreateAlertEmailBodyForNonHostedNielsenPuertoRicoDataImportError = AlertEmailBody
+            End Try
+
+        End Function
+        Private Function CreateAlertEmailBodyForNewNielsenPuertoRicoData()
+
+            'objects
+            Dim AlertEmailBody As String = ""
+
+            Try
+
+                AlertEmailBody = "Nielsen Puerto Rico data has been imported successfully."
+
+            Catch ex As Exception
+                AlertEmailBody = ""
+            Finally
+                CreateAlertEmailBodyForNewNielsenPuertoRicoData = AlertEmailBody
+            End Try
+
+        End Function
 
 #End Region
 

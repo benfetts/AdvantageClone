@@ -37,6 +37,7 @@
             AdvantageInOutWindowService
             AdvantageAutomatedAssignmentsService
             AdvantageDocumentRepositoryCapacityWarningWindowsService
+            AdvantageNielsenPuertoRicoWindowsService
         End Enum
 
         Public Enum ServiceStartupType

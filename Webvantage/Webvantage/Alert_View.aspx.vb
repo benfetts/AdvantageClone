@@ -89,7 +89,7 @@ Partial Public Class Alert_View
 
     Private ClientPortalUserHasAccess As Boolean = False
 
-    Private _DocumentList As New Generic.List(Of Webvantage.CommentDocument)
+    Private _DocumentList As New Generic.List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument)
 
     Private _IsAlertAssignmentCC As Boolean = False
 
@@ -2492,8 +2492,8 @@ Partial Public Class Alert_View
 
                                 If DataItem("DocumentList") IsNot Nothing Then
 
-                                    Dim docs As New Generic.List(Of CommentDocument)
-                                    Dim w As New CommentDocument
+                                    Dim docs As New Generic.List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument)
+                                    Dim w As New AdvantageFramework.AlertSystem.Classes.CommentDocument
 
                                     docs = w.StringToObject(DataItem("DocumentList").ToString())
 
@@ -2504,7 +2504,7 @@ Partial Public Class Alert_View
 
                                         DocumentLinksPlaceHolder.Controls.Add(SpacerLiteral)
 
-                                        For Each doc As CommentDocument In docs
+                                        For Each doc As AdvantageFramework.AlertSystem.Classes.CommentDocument In docs
 
                                             Dim LiteralSpace As New Literal
                                             LiteralSpace.Text = "&nbsp;&nbsp;"

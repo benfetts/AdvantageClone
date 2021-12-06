@@ -34,7 +34,6 @@
         Public Property StartDate As Date
         Public Property EndDate As Date
         Public Property Year As Integer
-        Public Property Months As IEnumerable(Of Integer)
         Public Property FilePrefix As String
         Public Property Quarter As String
 

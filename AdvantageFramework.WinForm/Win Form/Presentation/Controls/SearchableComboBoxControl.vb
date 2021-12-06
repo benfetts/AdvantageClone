@@ -97,6 +97,8 @@
             MediaPlanEstimateTemplate
             MediaDemographic
             QuickbookCustomer
+            Network
+            NielsenTVPuertoRicoStation
             CheckRegister
         End Enum
 
@@ -1189,6 +1191,20 @@
                     Me.Properties.DisplayMember = "DisplayName"
                     Me.Properties.ValueMember = "ID"
                     Me.Properties.NullText = "Select Customer"
+
+                Case SearchableComboBox.Type.Network
+
+                    Me.Properties.DisplayMember = "Name"
+                    Me.Properties.ValueMember = "ID"
+                    Me.Properties.NullText = "Select Network"
+
+                Case SearchableComboBox.Type.NielsenTVPuertoRicoStation
+
+                    Me.HideValueMemberColumn = True
+                    Me.Properties.DisplayMember = "Name"
+                    Me.Properties.ValueMember = "ID"
+                    Me.Properties.NullText = "Select Puerto Rico TV Station"
+                    _HideValueMemberColumn = True
 
                 Case SearchableComboBox.Type.CheckRegister
 

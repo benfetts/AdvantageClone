@@ -104,6 +104,30 @@
             Me.Order = MediaSpotNationalResearchMetric.Order
 
         End Sub
+        Public Sub New(MediaSpotTVPuertoRicoResearchMetric As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchMetric)
+
+            Me.ID = MediaSpotTVPuertoRicoResearchMetric.MediaMetricID
+            Me.Description = Replace(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description, "Impressions", "Audience")
+            Me.Description = Replace(Me.Description, "Intab", "Sample Size")
+            Me.Order = MediaSpotTVPuertoRicoResearchMetric.Order
+
+        End Sub
+        Public Sub New(IsPuertoRico As Boolean, MediaMetric As AdvantageFramework.Database.Entities.MediaMetric)
+
+            Me.ID = MediaMetric.ID
+
+            If IsPuertoRico Then
+
+                Me.Description = Replace(MediaMetric.Description, "Impressions", "Audience")
+                Me.Description = Replace(Me.Description, "Intab", "Sample Size")
+
+            Else
+
+                Me.Description = MediaMetric.Description
+
+            End If
+
+        End Sub
         Public Overrides Function ToString() As String
 
             ToString = Me.ID.ToString

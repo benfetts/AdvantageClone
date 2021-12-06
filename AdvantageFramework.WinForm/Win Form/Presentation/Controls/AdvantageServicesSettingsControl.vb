@@ -993,6 +993,12 @@
                                                                                  ComboBoxMediaOceanImportSettings_Employee.SelectedValue,
                                                                                  ImportType)
 
+                If AdvantageFramework.Database.Procedures.Agency.IsAgencyASP(_DbContext) Then
+
+                    TextBoxMediaOceanImportSettings_LocalFolder.Enabled = False
+
+                End If
+
                 If ImportType = 1 Then
 
                     RadioButtonMediaOceanImportSetting_ImportTypeDefault.Checked = True
@@ -1684,6 +1690,33 @@
 
 #End Region
 
+#Region "  Nielsen Puerto Rico "
+
+        Private Sub NielsenPuertoRicoEntryLogWritten(ByVal EventLogEntry As System.Diagnostics.EventLogEntry)
+
+            SetNielsenPuertoRicoStatus(EventLogEntry.Message & "....")
+
+        End Sub
+        Private Sub SetNielsenPuertoRicoStatus(ByVal Message As String)
+
+            AdvantageFramework.WinForm.Presentation.Controls.SetTextOnLabelControl(LabelNielsenPuertoRico_StatusDescription, Message)
+
+        End Sub
+        Private Sub LoadNielsenPuertoRicoSettings()
+
+            ComboBoxNielsenPuertoRicoSettings_Employee.DataSource = AdvantageFramework.Services.NielsenPuertoRico.LoadEmployees(_DbContext)
+
+            AdvantageFramework.Services.NielsenPuertoRico.LoadSettings(_DataContext, DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Value, ComboBoxNielsenPuertoRicoSettings_Employee.SelectedValue, TextBoxNielsenPuertoRicoSettings_LocalFolder.Text)
+
+        End Sub
+        Private Sub SaveNielsenPuertoRicoSettings()
+
+            AdvantageFramework.Services.NielsenPuertoRico.SaveSettings(_DataContext, DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.Value, ComboBoxNielsenPuertoRicoSettings_Employee.GetSelectedValue, TextBoxNielsenPuertoRicoSettings_LocalFolder.GetText)
+
+        End Sub
+
+#End Region
+
         Public Sub New()
 
             ' This call is required by the designer.
@@ -1720,6 +1753,7 @@
                 TabControlPanelInOutTab_InOut.Enabled = True
                 TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Enabled = True
                 TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Enabled = True
+                TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Enabled = True
 
             Else
 
@@ -1747,6 +1781,7 @@
                 TabControlPanelInOutTab_InOut.Enabled = False
                 TabControlPanelAutomatedAssignmentsSettingsTab_AutomatedAssignmentsSettings.Enabled = False
                 TabControlPanelDocumentRepositoryCapacityWarningSettingsTab_DocumentRepositoryCapacityWarningSettings.Enabled = False
+                TabControlPanelNielsenPuertoRicoSettingsTab_NielsenPuertoRicoSettings.Enabled = False
 
             End If
 
@@ -1925,6 +1960,12 @@
 
             End If
 
+            If LoadAll OrElse ServiceCode = Services.Service.AdvantageNielsenPuertoRicoWindowsService.ToString Then
+
+                LoadNielsenPuertoRicoSettings()
+
+            End If
+
         End Sub
         Private Function CheckUserEntryChangedSetting(ByVal TabItem As DevComponents.DotNetBar.TabItem) As Boolean
 
@@ -2022,6 +2063,10 @@
             ElseIf TabItem Is TabItemServices_DocumentRepositoryCapacityWarningTab Then
 
                 UserEntryChanged = AdvantageFramework.WinForm.Presentation.Controls.CheckUserEntryChangedSetting(TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning)
+
+            ElseIf TabItem Is TabItemServices_NielsenPuertoRicoTab Then
+
+                UserEntryChanged = AdvantageFramework.WinForm.Presentation.Controls.CheckUserEntryChangedSetting(TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico)
 
             End If
 
@@ -2121,6 +2166,10 @@
             ElseIf TabItem Is TabItemServices_DocumentRepositoryCapacityWarningTab Then
 
                 AdvantageFramework.WinForm.Presentation.Controls.ClearUserEntryChangedSetting(TabControlPanelDocumentRepositoryCapacityWarningTab_DocumentRepositoryCapacityWarning)
+
+            ElseIf TabItem Is TabItemServices_NielsenPuertoRicoTab Then
+
+                AdvantageFramework.WinForm.Presentation.Controls.ClearUserEntryChangedSetting(TabControlPanelNielsenPuertoRicoTab_NielsenPuertoRico)
 
             End If
 
@@ -2226,6 +2275,10 @@
             ElseIf TabItem Is TabItemServices_DocumentRepositoryCapacityWarningTab Then
 
                 SaveDocumentRepositoryCapacityWarningSettings()
+
+            ElseIf TabItem Is TabItemServices_NielsenPuertoRicoTab Then
+
+                SaveNielsenPuertoRicoSettings()
 
             End If
 
@@ -2426,6 +2479,10 @@
 
                     AdvantageFramework.Services.DocumentRepositoryCapacityWarning.ProcessDatabase(_SelectedDatabaseProfile)
 
+                ElseIf TabControlForm_Services.SelectedTab Is TabItemServices_NielsenPuertoRicoTab Then
+
+                    AdvantageFramework.Services.NielsenPuertoRico.ProcessDatabase(_SelectedDatabaseProfile)
+
                 End If
 
             Catch ex As Exception
@@ -2440,6 +2497,7 @@
             'objects
             Dim TabItem As DevComponents.DotNetBar.TabItem = Nothing
             Dim HasUnsavedChanges As Boolean = False
+            Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
 
             For Each TabItem In TabControlForm_Services.Tabs
 
@@ -2531,6 +2589,24 @@
 
                 Catch ex As Exception
                     _SelectedAdvantageService = Nothing
+                End Try
+
+                Try
+
+                    Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(_DataContext, AdvantageFramework.Agency.Settings.NIELSEN_PR_ENABLED.ToString)
+
+                    If Setting IsNot Nothing AndAlso Setting.Value IsNot Nothing AndAlso CInt(Setting.Value) = 1 Then
+
+                        TabItemServices_NielsenPuertoRicoTab.Visible = True
+
+                    Else
+
+                        TabItemServices_NielsenPuertoRicoTab.Visible = False
+
+                    End If
+
+                Catch ex As Exception
+                    TabItemServices_NielsenPuertoRicoTab.Visible = False
                 End Try
 
                 Try
@@ -2689,6 +2765,10 @@
                 ElseIf TabControlForm_Services.SelectedTab Is TabItemServices_DocumentRepositoryCapacityWarningTab Then
 
                     TextBoxDocumentRepositoryCapacityWarningLog_Log.Text = AdvantageFramework.Services.DocumentRepositoryCapacityWarning.LoadLogEntries
+
+                ElseIf TabControlForm_Services.SelectedTab Is TabItemServices_NielsenPuertoRicoTab Then
+
+                    TextBoxNielsenPuertoRicoLog_Log.Text = AdvantageFramework.Services.NielsenPuertoRico.LoadLogEntries
 
                 End If
 
@@ -3608,6 +3688,36 @@
                 End If
 
                 TextBoxDocumentRepositoryCapacityWarningLog_Log.ByPassUserEntryChanged = True
+
+            Catch ex As Exception
+
+            End Try
+
+            '******************************************************************************************************************************************************
+            Try
+
+                TabItemServices_NielsenPuertoRicoTab.Tag = AdvantageFramework.Services.Service.AdvantageNielsenPuertoRicoWindowsService.ToString
+
+                If Me.FromAdvantageServices Then
+
+                    TextBoxNielsenPuertoRicoLog_Log.Text = AdvantageFramework.Services.NielsenPuertoRico.LoadLog(True, LabelNielsenPuertoRico_StatusDescription.Text)
+                    LabelNielsenPuertoRico_StatusDescription.Visible = True
+                    TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab.Visible = True
+                    LabelNielsenPuertoRico_Status.Visible = True
+
+                    AddHandler AdvantageFramework.Services.NielsenPuertoRico.EntryLogWrittenEvent, AddressOf NielsenPuertoRicoEntryLogWritten
+
+                Else
+
+                    TextBoxNielsenPuertoRicoLog_Log.Text = ""
+                    LabelNielsenPuertoRico_StatusDescription.Text = ""
+                    LabelNielsenPuertoRico_StatusDescription.Visible = False
+                    TabItemNielsenPuertoRicoSettings_NielsenPuertoRicoLogTab.Visible = False
+                    LabelNielsenPuertoRico_Status.Visible = False
+
+                End If
+
+                TextBoxNielsenPuertoRicoLog_Log.ByPassUserEntryChanged = True
 
             Catch ex As Exception
 
@@ -5276,6 +5386,38 @@
 
         End Sub
         Private Sub NumericInputDocumentRepositoryCapacityWarningSettings_Threshold_EditValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles NumericInputDocumentRepositoryCapacityWarningSettings_Threshold.EditValueChanged
+
+            If _Initialized Then
+
+                RaiseEvent EnableOrDisableSaveEvent(True)
+
+            End If
+
+        End Sub
+
+#End Region
+
+#Region "  Nielsen Puerto Rico "
+
+        Private Sub DateTimePickerNielsenPuertoRicoSettings_RunAtDaily_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePickerNielsenPuertoRicoSettings_RunAtDaily.ValueChanged
+
+            If _Initialized Then
+
+                RaiseEvent EnableOrDisableSaveEvent(True)
+
+            End If
+
+        End Sub
+        Private Sub ComboBoxNielsenPuertoRicoSettings_Employee_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComboBoxNielsenPuertoRicoSettings_Employee.SelectedValueChanged
+
+            If _Initialized Then
+
+                RaiseEvent EnableOrDisableSaveEvent(True)
+
+            End If
+
+        End Sub
+        Private Sub TextBoxNielsenPuertoRicoSettings_LocalFolder_TextChanged(sender As Object, e As EventArgs) Handles TextBoxNielsenPuertoRicoSettings_LocalFolder.TextChanged
 
             If _Initialized Then
 

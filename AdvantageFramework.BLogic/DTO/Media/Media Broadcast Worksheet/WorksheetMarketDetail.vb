@@ -543,6 +543,10 @@
 
                 Me.VendorNielsenTVStationCode = If(MediaBroadcastWorksheetMarketDetail.Vendor IsNot Nothing, MediaBroadcastWorksheetMarketDetail.Vendor.ComscoreTVStationID, Nothing)
 
+            ElseIf MediaBroadcastWorksheetMarketDetail.MediaBroadcastWorksheetMarket.MediaBroadcastWorksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
+
+                Me.VendorNielsenTVStationCode = If(MediaBroadcastWorksheetMarketDetail.Vendor IsNot Nothing, MediaBroadcastWorksheetMarketDetail.Vendor.NPRStationID, Nothing)
+
             End If
 
             Me.VendorIsCableSystem = If(MediaBroadcastWorksheetMarketDetail.Vendor IsNot Nothing, MediaBroadcastWorksheetMarketDetail.Vendor.IsCableSystem, False)

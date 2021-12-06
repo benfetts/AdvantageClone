@@ -1524,6 +1524,27 @@
             End If
 
         End Sub
+        Public Sub MakeColumnNotVisible(ColumnFieldName As String, RemoveUserControl As Boolean)
+
+            If BandedGridViewGridControl_MainView.Columns(ColumnFieldName) IsNot Nothing Then
+
+                If BandedGridViewGridControl_MainView.Columns(ColumnFieldName).Visible Then
+
+                    BandedGridViewGridControl_MainView.Columns(ColumnFieldName).Visible = False
+
+                End If
+
+                If RemoveUserControl Then
+
+                    BandedGridViewGridControl_MainView.Columns(ColumnFieldName).OptionsColumn.AllowShowHide = False
+                    BandedGridViewGridControl_MainView.Columns(ColumnFieldName).OptionsColumn.ShowInCustomizationForm = False
+                    BandedGridViewGridControl_MainView.Columns(ColumnFieldName).OptionsColumn.ShowInExpressionEditor = False
+
+                End If
+
+            End If
+
+        End Sub
         Public Sub MakeColumnVisible(ColumnFieldName As String)
 
             If BandedGridViewGridControl_MainView.Columns(ColumnFieldName) IsNot Nothing Then

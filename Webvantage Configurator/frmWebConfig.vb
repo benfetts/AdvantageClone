@@ -1465,10 +1465,11 @@ Public Class frmWebConfig
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmWebConfig))
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Home")
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Home")
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.tbApp = New System.Windows.Forms.TabPage()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.ButtonProofingEventLog = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtwebconfig1 = New System.Windows.Forms.TextBox()
@@ -1511,6 +1512,7 @@ Public Class frmWebConfig
         Me.txtEmailUserName = New System.Windows.Forms.TextBox()
         Me.txtEmailFromAddress = New System.Windows.Forms.TextBox()
         Me.txtSMTPAddress = New System.Windows.Forms.TextBox()
+        Me.TxtAdmServerName = New System.Windows.Forms.TextBox()
         Me.tbDatabase = New System.Windows.Forms.TabPage()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.grpDatabase = New System.Windows.Forms.GroupBox()
@@ -1555,18 +1557,19 @@ Public Class frmWebConfig
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtIISServer = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.TxtAdmPassword = New System.Windows.Forms.TextBox()
         Me.TabPageConnection = New System.Windows.Forms.TabPage()
-        Me.ButtonTest = New System.Windows.Forms.Button()
         Me.ButtonDelete = New System.Windows.Forms.Button()
+        Me.ButtonAddDatabase = New System.Windows.Forms.Button()
+        Me.ButtonAddServer = New System.Windows.Forms.Button()
+        Me.TreeViewConnections = New System.Windows.Forms.TreeView()
+        Me.TreeViewImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.ButtonTest = New System.Windows.Forms.Button()
         Me.ButtonConnectionSave = New System.Windows.Forms.Button()
         Me.TextBoxPassword = New System.Windows.Forms.TextBox()
         Me.LabelPassword = New System.Windows.Forms.Label()
         Me.TextBoxUserName = New System.Windows.Forms.TextBox()
         Me.LabelUserName = New System.Windows.Forms.Label()
-        Me.ButtonAddDatabase = New System.Windows.Forms.Button()
-        Me.ButtonAddServer = New System.Windows.Forms.Button()
-        Me.TreeViewConnections = New System.Windows.Forms.TreeView()
-        Me.TreeViewImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.TabSMTP = New System.Windows.Forms.TabPage()
         Me.LabelLatestVersion2 = New System.Windows.Forms.Label()
         Me.LabelLatestVersion1 = New System.Windows.Forms.Label()
@@ -1610,22 +1613,19 @@ Public Class frmWebConfig
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TxtAdmPassword = New System.Windows.Forms.TextBox()
         Me.TxtAdmUserName = New System.Windows.Forms.TextBox()
-        Me.TxtAdmServerName = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBoxChatDB = New System.Windows.Forms.GroupBox()
         Me.Label40 = New System.Windows.Forms.Label()
-        Me.Label39 = New System.Windows.Forms.Label()
         Me.TextBoxChatPassword = New System.Windows.Forms.TextBox()
-        Me.Label37 = New System.Windows.Forms.Label()
         Me.TextBoxChatUsername = New System.Windows.Forms.TextBox()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.TextBoxChatDatabaseName = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.TextBoxChatServerName = New System.Windows.Forms.TextBox()
         Me.Label38 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
         Me.tbApp.SuspendLayout()
         Me.gpGeneralSettings.SuspendLayout()
         Me.grpApplicationAuthentication.SuspendLayout()
@@ -1655,7 +1655,8 @@ Public Class frmWebConfig
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(612, 479)
+        Me.btnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnExit.Location = New System.Drawing.Point(693, 506)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(134, 23)
         Me.btnExit.TabIndex = 1
@@ -1668,11 +1669,10 @@ Public Class frmWebConfig
         Me.btnHelp.Size = New System.Drawing.Size(75, 23)
         Me.btnHelp.TabIndex = 3
         Me.btnHelp.Text = "Help"
+        Me.btnHelp.Visible = False
         '
         'tbApp
         '
-        Me.tbApp.Controls.Add(Me.Button2)
-        Me.tbApp.Controls.Add(Me.ButtonProofingEventLog)
         Me.tbApp.Controls.Add(Me.Label13)
         Me.tbApp.Controls.Add(Me.txtwebconfig1)
         Me.tbApp.Controls.Add(Me.btnBrowse)
@@ -1681,16 +1681,29 @@ Public Class frmWebConfig
         Me.tbApp.Controls.Add(Me.grpApplicationAuthentication)
         Me.tbApp.Location = New System.Drawing.Point(4, 22)
         Me.tbApp.Name = "tbApp"
-        Me.tbApp.Size = New System.Drawing.Size(743, 445)
+        Me.tbApp.Size = New System.Drawing.Size(820, 472)
         Me.tbApp.TabIndex = 0
         Me.tbApp.Text = "Application"
         Me.tbApp.UseVisualStyleBackColor = True
         '
+        'Button2
+        '
+        Me.Button2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Location = New System.Drawing.Point(427, 446)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(249, 23)
+        Me.Button2.TabIndex = 14
+        Me.Button2.Text = "Check .NET"
+        Me.Button2.Visible = False
+        '
         'ButtonProofingEventLog
         '
-        Me.ButtonProofingEventLog.Location = New System.Drawing.Point(400, 239)
+        Me.ButtonProofingEventLog.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonProofingEventLog.Location = New System.Drawing.Point(427, 477)
         Me.ButtonProofingEventLog.Name = "ButtonProofingEventLog"
-        Me.ButtonProofingEventLog.Size = New System.Drawing.Size(171, 23)
+        Me.ButtonProofingEventLog.Size = New System.Drawing.Size(249, 23)
         Me.ButtonProofingEventLog.TabIndex = 13
         Me.ButtonProofingEventLog.Text = "Create Proofing Event Log"
         Me.ButtonProofingEventLog.Visible = False
@@ -1699,27 +1712,32 @@ Public Class frmWebConfig
         '
         Me.Label13.Location = New System.Drawing.Point(16, 8)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(256, 16)
+        Me.Label13.Size = New System.Drawing.Size(513, 16)
         Me.Label13.TabIndex = 12
         Me.Label13.Text = "Location of the Webvantage web.config file:"
         '
         'txtwebconfig1
         '
+        Me.txtwebconfig1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtwebconfig1.Location = New System.Drawing.Point(16, 24)
         Me.txtwebconfig1.Name = "txtwebconfig1"
-        Me.txtwebconfig1.Size = New System.Drawing.Size(642, 20)
+        Me.txtwebconfig1.Size = New System.Drawing.Size(733, 20)
         Me.txtwebconfig1.TabIndex = 10
         '
         'btnBrowse
         '
-        Me.btnBrowse.Location = New System.Drawing.Point(664, 21)
+        Me.btnBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBrowse.Location = New System.Drawing.Point(755, 24)
         Me.btnBrowse.Name = "btnBrowse"
-        Me.btnBrowse.Size = New System.Drawing.Size(75, 23)
+        Me.btnBrowse.Size = New System.Drawing.Size(58, 20)
         Me.btnBrowse.TabIndex = 11
         Me.btnBrowse.Text = "Browse"
         '
         'gpGeneralSettings
         '
+        Me.gpGeneralSettings.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gpGeneralSettings.Controls.Add(Me.CheckBoxRequireSSL)
         Me.gpGeneralSettings.Controls.Add(Me.ButtonAddFavicon)
         Me.gpGeneralSettings.Controls.Add(Me.ButtonCreateEventLog)
@@ -1733,7 +1751,7 @@ Public Class frmWebConfig
         Me.gpGeneralSettings.Controls.Add(Me.chkChooseServer)
         Me.gpGeneralSettings.Location = New System.Drawing.Point(8, 50)
         Me.gpGeneralSettings.Name = "gpGeneralSettings"
-        Me.gpGeneralSettings.Size = New System.Drawing.Size(376, 222)
+        Me.gpGeneralSettings.Size = New System.Drawing.Size(805, 222)
         Me.gpGeneralSettings.TabIndex = 3
         Me.gpGeneralSettings.TabStop = False
         Me.gpGeneralSettings.Text = "General Application Settings"
@@ -1847,20 +1865,24 @@ Public Class frmWebConfig
         '
         'btnChangeSMTPSettings
         '
+        Me.btnChangeSMTPSettings.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnChangeSMTPSettings.Location = New System.Drawing.Point(7, 373)
         Me.btnChangeSMTPSettings.Name = "btnChangeSMTPSettings"
-        Me.btnChangeSMTPSettings.Size = New System.Drawing.Size(732, 60)
+        Me.btnChangeSMTPSettings.Size = New System.Drawing.Size(810, 60)
         Me.btnChangeSMTPSettings.TabIndex = 9
         Me.btnChangeSMTPSettings.Text = "Change Settings"
         '
         'grpApplicationAuthentication
         '
+        Me.grpApplicationAuthentication.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpApplicationAuthentication.Controls.Add(Me.Chk_NTAuth_UserCode_IgnoreCase)
         Me.grpApplicationAuthentication.Controls.Add(Me.rbSqlAuthentication)
         Me.grpApplicationAuthentication.Controls.Add(Me.rbNTAuthentication)
         Me.grpApplicationAuthentication.Location = New System.Drawing.Point(8, 286)
         Me.grpApplicationAuthentication.Name = "grpApplicationAuthentication"
-        Me.grpApplicationAuthentication.Size = New System.Drawing.Size(376, 68)
+        Me.grpApplicationAuthentication.Size = New System.Drawing.Size(805, 68)
         Me.grpApplicationAuthentication.TabIndex = 2
         Me.grpApplicationAuthentication.TabStop = False
         Me.grpApplicationAuthentication.Text = "Application Authentication"
@@ -1909,6 +1931,7 @@ Public Class frmWebConfig
         Me.GroupBox1.TabIndex = 13
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Alert Refresh Rate"
+        Me.GroupBox1.Visible = False
         '
         'Label21
         '
@@ -1960,6 +1983,7 @@ Public Class frmWebConfig
         Me.gbWebFarm.TabIndex = 13
         Me.gbWebFarm.TabStop = False
         Me.gbWebFarm.Text = "Web Farming / Clear Licenses"
+        Me.gbWebFarm.Visible = False
         '
         'Label11
         '
@@ -2011,12 +2035,14 @@ Public Class frmWebConfig
         Me.GroupBox2.Controls.Add(Me.txtEmailUserName)
         Me.GroupBox2.Controls.Add(Me.txtEmailFromAddress)
         Me.GroupBox2.Controls.Add(Me.txtSMTPAddress)
-        Me.GroupBox2.Location = New System.Drawing.Point(462, 757)
+        Me.GroupBox2.Controls.Add(Me.TxtAdmServerName)
+        Me.GroupBox2.Location = New System.Drawing.Point(350, 622)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(376, 145)
         Me.GroupBox2.TabIndex = 4
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "SMTP Settings"
+        Me.GroupBox2.Visible = False
         '
         'txtretypeemailpassword
         '
@@ -2105,6 +2131,13 @@ Public Class frmWebConfig
         Me.txtSMTPAddress.Size = New System.Drawing.Size(234, 20)
         Me.txtSMTPAddress.TabIndex = 2
         Me.txtSMTPAddress.Text = "smtp.yourcompany.com"
+        '
+        'TxtAdmServerName
+        '
+        Me.TxtAdmServerName.Location = New System.Drawing.Point(12, 94)
+        Me.TxtAdmServerName.Name = "TxtAdmServerName"
+        Me.TxtAdmServerName.Size = New System.Drawing.Size(342, 20)
+        Me.TxtAdmServerName.TabIndex = 22
         '
         'tbDatabase
         '
@@ -2307,16 +2340,19 @@ Public Class frmWebConfig
         '
         'tcWebvantageConfig
         '
+        Me.tcWebvantageConfig.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tcWebvantageConfig.Controls.Add(Me.tbIIS)
         Me.tcWebvantageConfig.Controls.Add(Me.tbApp)
         Me.tcWebvantageConfig.Controls.Add(Me.TabPageConnection)
         Me.tcWebvantageConfig.Controls.Add(Me.TabSMTP)
         Me.tcWebvantageConfig.ImageList = Me.TreeViewImageList
         Me.tcWebvantageConfig.ItemSize = New System.Drawing.Size(49, 18)
-        Me.tcWebvantageConfig.Location = New System.Drawing.Point(3, 2)
+        Me.tcWebvantageConfig.Location = New System.Drawing.Point(-1, 2)
         Me.tcWebvantageConfig.Name = "tcWebvantageConfig"
         Me.tcWebvantageConfig.SelectedIndex = 0
-        Me.tcWebvantageConfig.Size = New System.Drawing.Size(751, 471)
+        Me.tcWebvantageConfig.Size = New System.Drawing.Size(828, 498)
         Me.tcWebvantageConfig.TabIndex = 0
         '
         'tbIIS
@@ -2327,21 +2363,24 @@ Public Class frmWebConfig
         Me.tbIIS.Controls.Add(Me.gbWVVirtualDir)
         Me.tbIIS.Controls.Add(Me.btnSetupVirtDir)
         Me.tbIIS.Controls.Add(Me.grpCreateWebVirtDir)
+        Me.tbIIS.Controls.Add(Me.TxtAdmPassword)
         Me.tbIIS.Location = New System.Drawing.Point(4, 22)
         Me.tbIIS.Name = "tbIIS"
-        Me.tbIIS.Size = New System.Drawing.Size(743, 445)
+        Me.tbIIS.Size = New System.Drawing.Size(820, 472)
         Me.tbIIS.TabIndex = 4
         Me.tbIIS.Text = "IIS"
         Me.tbIIS.UseVisualStyleBackColor = True
         '
         'GroupBox3
         '
+        Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.Controls.Add(Me.ButtonSetMachineConfig)
         Me.GroupBox3.Controls.Add(Me.ButtonDeleteTempFiles)
         Me.GroupBox3.Controls.Add(Me.Label34)
         Me.GroupBox3.Location = New System.Drawing.Point(8, 356)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(717, 80)
+        Me.GroupBox3.Size = New System.Drawing.Size(795, 80)
         Me.GroupBox3.TabIndex = 14
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Tools"
@@ -2375,6 +2414,8 @@ Public Class frmWebConfig
         '
         'lblProgress
         '
+        Me.lblProgress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblProgress.AutoSize = True
         Me.lblProgress.Location = New System.Drawing.Point(8, 299)
         Me.lblProgress.Name = "lblProgress"
@@ -2384,13 +2425,17 @@ Public Class frmWebConfig
         '
         'PBarIIS
         '
+        Me.PBarIIS.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PBarIIS.Location = New System.Drawing.Point(8, 318)
         Me.PBarIIS.Name = "PBarIIS"
-        Me.PBarIIS.Size = New System.Drawing.Size(591, 23)
+        Me.PBarIIS.Size = New System.Drawing.Size(669, 23)
         Me.PBarIIS.TabIndex = 9
         '
         'gbWVVirtualDir
         '
+        Me.gbWVVirtualDir.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gbWVVirtualDir.Controls.Add(Me.txtSessionTimeout)
         Me.gbWVVirtualDir.Controls.Add(Me.Label23)
         Me.gbWVVirtualDir.Controls.Add(Me.chkVirtualDirectory)
@@ -2400,7 +2445,7 @@ Public Class frmWebConfig
         Me.gbWVVirtualDir.Controls.Add(Me.lblWebconfig)
         Me.gbWVVirtualDir.Location = New System.Drawing.Point(8, 124)
         Me.gbWVVirtualDir.Name = "gbWVVirtualDir"
-        Me.gbWVVirtualDir.Size = New System.Drawing.Size(723, 170)
+        Me.gbWVVirtualDir.Size = New System.Drawing.Size(801, 170)
         Me.gbWVVirtualDir.TabIndex = 8
         Me.gbWVVirtualDir.TabStop = False
         Me.gbWVVirtualDir.Text = "Webvantage Virtual Directory"
@@ -2433,9 +2478,11 @@ Public Class frmWebConfig
         '
         'txtPhysicalPath
         '
+        Me.txtPhysicalPath.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtPhysicalPath.Location = New System.Drawing.Point(26, 58)
         Me.txtPhysicalPath.Name = "txtPhysicalPath"
-        Me.txtPhysicalPath.Size = New System.Drawing.Size(565, 20)
+        Me.txtPhysicalPath.Size = New System.Drawing.Size(769, 20)
         Me.txtPhysicalPath.TabIndex = 15
         Me.txtPhysicalPath.Text = "C:\Inetpub\wwwroot\webvantage"
         '
@@ -2449,9 +2496,11 @@ Public Class frmWebConfig
         '
         'txtVirtualDirectory
         '
+        Me.txtVirtualDirectory.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtVirtualDirectory.Location = New System.Drawing.Point(26, 98)
         Me.txtVirtualDirectory.Name = "txtVirtualDirectory"
-        Me.txtVirtualDirectory.Size = New System.Drawing.Size(565, 20)
+        Me.txtVirtualDirectory.Size = New System.Drawing.Size(769, 20)
         Me.txtVirtualDirectory.TabIndex = 13
         Me.txtVirtualDirectory.Text = "webvantage"
         '
@@ -2465,14 +2514,17 @@ Public Class frmWebConfig
         '
         'btnSetupVirtDir
         '
-        Me.btnSetupVirtDir.Location = New System.Drawing.Point(605, 309)
+        Me.btnSetupVirtDir.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSetupVirtDir.Location = New System.Drawing.Point(684, 318)
         Me.btnSetupVirtDir.Name = "btnSetupVirtDir"
-        Me.btnSetupVirtDir.Size = New System.Drawing.Size(120, 41)
+        Me.btnSetupVirtDir.Size = New System.Drawing.Size(119, 23)
         Me.btnSetupVirtDir.TabIndex = 7
         Me.btnSetupVirtDir.Text = "Setup"
         '
         'grpCreateWebVirtDir
         '
+        Me.grpCreateWebVirtDir.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpCreateWebVirtDir.Controls.Add(Me.btnLoadWebsites)
         Me.grpCreateWebVirtDir.Controls.Add(Me.drpIISWebsite)
         Me.grpCreateWebVirtDir.Controls.Add(Me.Label12)
@@ -2480,14 +2532,15 @@ Public Class frmWebConfig
         Me.grpCreateWebVirtDir.Controls.Add(Me.Label10)
         Me.grpCreateWebVirtDir.Location = New System.Drawing.Point(8, 8)
         Me.grpCreateWebVirtDir.Name = "grpCreateWebVirtDir"
-        Me.grpCreateWebVirtDir.Size = New System.Drawing.Size(723, 110)
+        Me.grpCreateWebVirtDir.Size = New System.Drawing.Size(801, 110)
         Me.grpCreateWebVirtDir.TabIndex = 2
         Me.grpCreateWebVirtDir.TabStop = False
         Me.grpCreateWebVirtDir.Text = "IIS WebSites"
         '
         'btnLoadWebsites
         '
-        Me.btnLoadWebsites.Location = New System.Drawing.Point(597, 36)
+        Me.btnLoadWebsites.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnLoadWebsites.Location = New System.Drawing.Point(676, 37)
         Me.btnLoadWebsites.Name = "btnLoadWebsites"
         Me.btnLoadWebsites.Size = New System.Drawing.Size(120, 23)
         Me.btnLoadWebsites.TabIndex = 10
@@ -2495,9 +2548,11 @@ Public Class frmWebConfig
         '
         'drpIISWebsite
         '
+        Me.drpIISWebsite.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.drpIISWebsite.Location = New System.Drawing.Point(24, 81)
         Me.drpIISWebsite.Name = "drpIISWebsite"
-        Me.drpIISWebsite.Size = New System.Drawing.Size(567, 21)
+        Me.drpIISWebsite.Size = New System.Drawing.Size(771, 21)
         Me.drpIISWebsite.TabIndex = 9
         '
         'Label12
@@ -2510,9 +2565,11 @@ Public Class frmWebConfig
         '
         'txtIISServer
         '
+        Me.txtIISServer.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtIISServer.Location = New System.Drawing.Point(24, 39)
         Me.txtIISServer.Name = "txtIISServer"
-        Me.txtIISServer.Size = New System.Drawing.Size(567, 20)
+        Me.txtIISServer.Size = New System.Drawing.Size(646, 20)
         Me.txtIISServer.TabIndex = 1
         Me.txtIISServer.Text = "localhost"
         '
@@ -2524,82 +2581,44 @@ Public Class frmWebConfig
         Me.Label10.TabIndex = 7
         Me.Label10.Text = "IIS Server IP Address or Server Name:"
         '
+        'TxtAdmPassword
+        '
+        Me.TxtAdmPassword.Location = New System.Drawing.Point(212, 650)
+        Me.TxtAdmPassword.Name = "TxtAdmPassword"
+        Me.TxtAdmPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TxtAdmPassword.Size = New System.Drawing.Size(342, 20)
+        Me.TxtAdmPassword.TabIndex = 24
+        Me.TxtAdmPassword.Visible = False
+        '
         'TabPageConnection
         '
-        Me.TabPageConnection.Controls.Add(Me.ButtonTest)
         Me.TabPageConnection.Controls.Add(Me.ButtonDelete)
+        Me.TabPageConnection.Controls.Add(Me.ButtonAddDatabase)
+        Me.TabPageConnection.Controls.Add(Me.ButtonAddServer)
+        Me.TabPageConnection.Controls.Add(Me.TreeViewConnections)
+        Me.TabPageConnection.Controls.Add(Me.ButtonTest)
         Me.TabPageConnection.Controls.Add(Me.ButtonConnectionSave)
         Me.TabPageConnection.Controls.Add(Me.TextBoxPassword)
         Me.TabPageConnection.Controls.Add(Me.LabelPassword)
         Me.TabPageConnection.Controls.Add(Me.TextBoxUserName)
         Me.TabPageConnection.Controls.Add(Me.LabelUserName)
-        Me.TabPageConnection.Controls.Add(Me.ButtonAddDatabase)
-        Me.TabPageConnection.Controls.Add(Me.ButtonAddServer)
-        Me.TabPageConnection.Controls.Add(Me.TreeViewConnections)
+        Me.TabPageConnection.Controls.Add(Me.GroupBox2)
         Me.TabPageConnection.Location = New System.Drawing.Point(4, 22)
         Me.TabPageConnection.Name = "TabPageConnection"
         Me.TabPageConnection.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPageConnection.Size = New System.Drawing.Size(743, 445)
+        Me.TabPageConnection.Size = New System.Drawing.Size(820, 472)
         Me.TabPageConnection.TabIndex = 8
         Me.TabPageConnection.Text = "Connection"
         Me.TabPageConnection.UseVisualStyleBackColor = True
         '
-        'ButtonTest
-        '
-        Me.ButtonTest.Location = New System.Drawing.Point(386, 288)
-        Me.ButtonTest.Name = "ButtonTest"
-        Me.ButtonTest.Size = New System.Drawing.Size(350, 35)
-        Me.ButtonTest.TabIndex = 9
-        Me.ButtonTest.Text = "Test"
-        '
         'ButtonDelete
         '
-        Me.ButtonDelete.Location = New System.Drawing.Point(591, 8)
+        Me.ButtonDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonDelete.Location = New System.Drawing.Point(668, 6)
         Me.ButtonDelete.Name = "ButtonDelete"
         Me.ButtonDelete.Size = New System.Drawing.Size(145, 23)
         Me.ButtonDelete.TabIndex = 2
         Me.ButtonDelete.Text = "Delete"
-        '
-        'ButtonConnectionSave
-        '
-        Me.ButtonConnectionSave.Location = New System.Drawing.Point(8, 288)
-        Me.ButtonConnectionSave.Name = "ButtonConnectionSave"
-        Me.ButtonConnectionSave.Size = New System.Drawing.Size(372, 35)
-        Me.ButtonConnectionSave.TabIndex = 8
-        Me.ButtonConnectionSave.Text = "Save"
-        '
-        'TextBoxPassword
-        '
-        Me.TextBoxPassword.Enabled = False
-        Me.TextBoxPassword.Location = New System.Drawing.Point(8, 262)
-        Me.TextBoxPassword.Name = "TextBoxPassword"
-        Me.TextBoxPassword.Size = New System.Drawing.Size(372, 20)
-        Me.TextBoxPassword.TabIndex = 7
-        Me.TextBoxPassword.UseSystemPasswordChar = True
-        '
-        'LabelPassword
-        '
-        Me.LabelPassword.Location = New System.Drawing.Point(8, 246)
-        Me.LabelPassword.Name = "LabelPassword"
-        Me.LabelPassword.Size = New System.Drawing.Size(115, 13)
-        Me.LabelPassword.TabIndex = 6
-        Me.LabelPassword.Text = "Password:"
-        '
-        'TextBoxUserName
-        '
-        Me.TextBoxUserName.Enabled = False
-        Me.TextBoxUserName.Location = New System.Drawing.Point(8, 223)
-        Me.TextBoxUserName.Name = "TextBoxUserName"
-        Me.TextBoxUserName.Size = New System.Drawing.Size(372, 20)
-        Me.TextBoxUserName.TabIndex = 5
-        '
-        'LabelUserName
-        '
-        Me.LabelUserName.Location = New System.Drawing.Point(8, 207)
-        Me.LabelUserName.Name = "LabelUserName"
-        Me.LabelUserName.Size = New System.Drawing.Size(117, 13)
-        Me.LabelUserName.TabIndex = 4
-        Me.LabelUserName.Text = "User Name:"
         '
         'ButtonAddDatabase
         '
@@ -2619,6 +2638,9 @@ Public Class frmWebConfig
         '
         'TreeViewConnections
         '
+        Me.TreeViewConnections.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TreeViewConnections.FullRowSelect = True
         Me.TreeViewConnections.HideSelection = False
         Me.TreeViewConnections.HotTracking = True
@@ -2627,7 +2649,7 @@ Public Class frmWebConfig
         Me.TreeViewConnections.Location = New System.Drawing.Point(8, 37)
         Me.TreeViewConnections.Name = "TreeViewConnections"
         Me.TreeViewConnections.SelectedImageIndex = 3
-        Me.TreeViewConnections.Size = New System.Drawing.Size(728, 167)
+        Me.TreeViewConnections.Size = New System.Drawing.Size(805, 305)
         Me.TreeViewConnections.TabIndex = 3
         '
         'TreeViewImageList
@@ -2639,6 +2661,63 @@ Public Class frmWebConfig
         Me.TreeViewImageList.Images.SetKeyName(2, "server.png")
         Me.TreeViewImageList.Images.SetKeyName(3, "DiaryEditIcon.ico")
         '
+        'ButtonTest
+        '
+        Me.ButtonTest.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButtonTest.Location = New System.Drawing.Point(436, 426)
+        Me.ButtonTest.Name = "ButtonTest"
+        Me.ButtonTest.Size = New System.Drawing.Size(377, 35)
+        Me.ButtonTest.TabIndex = 9
+        Me.ButtonTest.Text = "Test"
+        '
+        'ButtonConnectionSave
+        '
+        Me.ButtonConnectionSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ButtonConnectionSave.Location = New System.Drawing.Point(6, 426)
+        Me.ButtonConnectionSave.Name = "ButtonConnectionSave"
+        Me.ButtonConnectionSave.Size = New System.Drawing.Size(410, 35)
+        Me.ButtonConnectionSave.TabIndex = 8
+        Me.ButtonConnectionSave.Text = "Save"
+        '
+        'TextBoxPassword
+        '
+        Me.TextBoxPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBoxPassword.Enabled = False
+        Me.TextBoxPassword.Location = New System.Drawing.Point(6, 400)
+        Me.TextBoxPassword.Name = "TextBoxPassword"
+        Me.TextBoxPassword.Size = New System.Drawing.Size(807, 20)
+        Me.TextBoxPassword.TabIndex = 7
+        Me.TextBoxPassword.UseSystemPasswordChar = True
+        '
+        'LabelPassword
+        '
+        Me.LabelPassword.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelPassword.Location = New System.Drawing.Point(6, 384)
+        Me.LabelPassword.Name = "LabelPassword"
+        Me.LabelPassword.Size = New System.Drawing.Size(115, 13)
+        Me.LabelPassword.TabIndex = 6
+        Me.LabelPassword.Text = "Password:"
+        '
+        'TextBoxUserName
+        '
+        Me.TextBoxUserName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBoxUserName.Enabled = False
+        Me.TextBoxUserName.Location = New System.Drawing.Point(6, 361)
+        Me.TextBoxUserName.Name = "TextBoxUserName"
+        Me.TextBoxUserName.Size = New System.Drawing.Size(807, 20)
+        Me.TextBoxUserName.TabIndex = 5
+        '
+        'LabelUserName
+        '
+        Me.LabelUserName.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelUserName.Location = New System.Drawing.Point(6, 345)
+        Me.LabelUserName.Name = "LabelUserName"
+        Me.LabelUserName.Size = New System.Drawing.Size(117, 13)
+        Me.LabelUserName.TabIndex = 4
+        Me.LabelUserName.Text = "User Name:"
+        '
         'TabSMTP
         '
         Me.TabSMTP.Controls.Add(Me.LabelLatestVersion2)
@@ -2648,7 +2727,7 @@ Public Class frmWebConfig
         Me.TabSMTP.Controls.Add(Me.btnSmtpInstall)
         Me.TabSMTP.Location = New System.Drawing.Point(4, 22)
         Me.TabSMTP.Name = "TabSMTP"
-        Me.TabSMTP.Size = New System.Drawing.Size(743, 445)
+        Me.TabSMTP.Size = New System.Drawing.Size(820, 472)
         Me.TabSMTP.TabIndex = 7
         Me.TabSMTP.Text = "SMTP"
         Me.TabSMTP.UseVisualStyleBackColor = True
@@ -2691,9 +2770,11 @@ Public Class frmWebConfig
         '
         'btnSmtpInstall
         '
+        Me.btnSmtpInstall.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSmtpInstall.Location = New System.Drawing.Point(11, 76)
         Me.btnSmtpInstall.Name = "btnSmtpInstall"
-        Me.btnSmtpInstall.Size = New System.Drawing.Size(712, 118)
+        Me.btnSmtpInstall.Size = New System.Drawing.Size(790, 118)
         Me.btnSmtpInstall.TabIndex = 1
         Me.btnSmtpInstall.Text = "Click to Install/Upgrade SMTP Component"
         Me.btnSmtpInstall.UseVisualStyleBackColor = True
@@ -2883,9 +2964,9 @@ Public Class frmWebConfig
         Me.tvRegistry.HotTracking = True
         Me.tvRegistry.Location = New System.Drawing.Point(7, 20)
         Me.tvRegistry.Name = "tvRegistry"
-        TreeNode2.Name = "Home"
-        TreeNode2.Text = "Home"
-        Me.tvRegistry.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2})
+        TreeNode1.Name = "Home"
+        TreeNode1.Text = "Home"
+        Me.tvRegistry.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1})
         Me.tvRegistry.Size = New System.Drawing.Size(375, 167)
         Me.tvRegistry.TabIndex = 0
         '
@@ -3017,6 +3098,7 @@ Public Class frmWebConfig
         Me.Label17.Size = New System.Drawing.Size(119, 13)
         Me.Label17.TabIndex = 27
         Me.Label17.Text = "Administrator Password:"
+        Me.Label17.Visible = False
         '
         'Label15
         '
@@ -3026,6 +3108,7 @@ Public Class frmWebConfig
         Me.Label15.Size = New System.Drawing.Size(121, 13)
         Me.Label15.TabIndex = 26
         Me.Label15.Text = "Administrator Username:"
+        Me.Label15.Visible = False
         '
         'Label1
         '
@@ -3035,14 +3118,7 @@ Public Class frmWebConfig
         Me.Label1.Size = New System.Drawing.Size(121, 13)
         Me.Label1.TabIndex = 25
         Me.Label1.Text = "Database Server Name:"
-        '
-        'TxtAdmPassword
-        '
-        Me.TxtAdmPassword.Location = New System.Drawing.Point(462, 1059)
-        Me.TxtAdmPassword.Name = "TxtAdmPassword"
-        Me.TxtAdmPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TxtAdmPassword.Size = New System.Drawing.Size(342, 20)
-        Me.TxtAdmPassword.TabIndex = 24
+        Me.Label1.Visible = False
         '
         'TxtAdmUserName
         '
@@ -3050,13 +3126,7 @@ Public Class frmWebConfig
         Me.TxtAdmUserName.Name = "TxtAdmUserName"
         Me.TxtAdmUserName.Size = New System.Drawing.Size(342, 20)
         Me.TxtAdmUserName.TabIndex = 23
-        '
-        'TxtAdmServerName
-        '
-        Me.TxtAdmServerName.Location = New System.Drawing.Point(462, 940)
-        Me.TxtAdmServerName.Name = "TxtAdmServerName"
-        Me.TxtAdmServerName.Size = New System.Drawing.Size(342, 20)
-        Me.TxtAdmServerName.TabIndex = 22
+        Me.TxtAdmUserName.Visible = False
         '
         'Button1
         '
@@ -3070,21 +3140,22 @@ Public Class frmWebConfig
         'GroupBoxChatDB
         '
         Me.GroupBoxChatDB.Controls.Add(Me.Label40)
-        Me.GroupBoxChatDB.Controls.Add(Me.Label39)
         Me.GroupBoxChatDB.Controls.Add(Me.TextBoxChatPassword)
-        Me.GroupBoxChatDB.Controls.Add(Me.Label37)
         Me.GroupBoxChatDB.Controls.Add(Me.TextBoxChatUsername)
         Me.GroupBoxChatDB.Controls.Add(Me.Label36)
         Me.GroupBoxChatDB.Controls.Add(Me.TextBoxChatDatabaseName)
         Me.GroupBoxChatDB.Controls.Add(Me.Label35)
         Me.GroupBoxChatDB.Controls.Add(Me.TextBoxChatServerName)
         Me.GroupBoxChatDB.Controls.Add(Me.Label38)
-        Me.GroupBoxChatDB.Location = New System.Drawing.Point(933, 497)
+        Me.GroupBoxChatDB.Controls.Add(Me.Label39)
+        Me.GroupBoxChatDB.Controls.Add(Me.Label37)
+        Me.GroupBoxChatDB.Location = New System.Drawing.Point(18, 811)
         Me.GroupBoxChatDB.Name = "GroupBoxChatDB"
         Me.GroupBoxChatDB.Size = New System.Drawing.Size(349, 304)
         Me.GroupBoxChatDB.TabIndex = 28
         Me.GroupBoxChatDB.TabStop = False
         Me.GroupBoxChatDB.Text = "Chat Database*"
+        Me.GroupBoxChatDB.Visible = False
         '
         'Label40
         '
@@ -3096,18 +3167,6 @@ Public Class frmWebConfig
         Me.Label40.TabIndex = 11
         Me.Label40.Text = "** Clear all values to delete registry key!"
         '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(17, 173)
-        Me.Label39.MaximumSize = New System.Drawing.Size(300, 0)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(299, 39)
-        Me.Label39.TabIndex = 10
-        Me.Label39.Text = "* Chat requires its own database separate from the Advantage database.  If you ha" &
-    "ve not already done so, create a blank database and enter the information for it" &
-    " above!"
-        '
         'TextBoxChatPassword
         '
         Me.TextBoxChatPassword.Location = New System.Drawing.Point(106, 134)
@@ -3115,15 +3174,6 @@ Public Class frmWebConfig
         Me.TextBoxChatPassword.Size = New System.Drawing.Size(224, 20)
         Me.TextBoxChatPassword.TabIndex = 9
         Me.TextBoxChatPassword.UseSystemPasswordChar = True
-        '
-        'Label37
-        '
-        Me.Label37.Location = New System.Drawing.Point(2, 134)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(100, 16)
-        Me.Label37.TabIndex = 8
-        Me.Label37.Text = "Password:"
-        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TextBoxChatUsername
         '
@@ -3173,35 +3223,45 @@ Public Class frmWebConfig
         Me.Label38.Text = "SQL Server Name:"
         Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Button2
+        'Label39
         '
-        Me.Button2.Location = New System.Drawing.Point(400, 208)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(171, 23)
-        Me.Button2.TabIndex = 14
-        Me.Button2.Text = "Check .NET"
-        Me.Button2.Visible = False
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(17, 173)
+        Me.Label39.MaximumSize = New System.Drawing.Size(300, 0)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(299, 39)
+        Me.Label39.TabIndex = 10
+        Me.Label39.Text = "* Chat requires its own database separate from the Advantage database.  If you ha" &
+    "ve not already done so, create a blank database and enter the information for it" &
+    " above!"
+        '
+        'Label37
+        '
+        Me.Label37.Location = New System.Drawing.Point(2, 134)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(100, 16)
+        Me.Label37.TabIndex = 8
+        Me.Label37.Text = "Password:"
+        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmWebConfig
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(755, 509)
+        Me.ClientSize = New System.Drawing.Size(839, 541)
+        Me.Controls.Add(Me.btnExit)
+        Me.Controls.Add(Me.tcWebvantageConfig)
         Me.Controls.Add(Me.GroupBoxChatDB)
         Me.Controls.Add(Me.gbWebFarm)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.BtnDeleteCache)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.ButtonProofingEventLog)
+        Me.Controls.Add(Me.btnHelp)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TxtAdmPassword)
-        Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.TxtAdmUserName)
-        Me.Controls.Add(Me.TxtAdmServerName)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.BtnDeleteCache)
-        Me.Controls.Add(Me.GroupBox4)
-        Me.Controls.Add(Me.btnHelp)
-        Me.Controls.Add(Me.tcWebvantageConfig)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmWebConfig"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

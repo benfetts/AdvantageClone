@@ -321,7 +321,7 @@ End Code
             <textarea id="dueDateComment" rows="2" cols="20" style="height: 80%; width:-webkit-fill-available;resize:none !important;"></textarea>
         </div>
         <div style="width:100%;height:30%">
-            <span>Revision Date Comments</span>
+            <span>Revision Comments</span>
             <textarea id="revisedDateComment" rows="2" cols="20" style="height: 80%; width:-webkit-fill-available;resize:none !important;"></textarea>
         </div>
         <div style="text-align:right; width:-webkit-fill-available;height:10%;padding-top:7px">
@@ -403,7 +403,7 @@ End Code
                     <td>@(Html.Kendo().Button().Name("SetDueDateWhereNotSet").Content("Only for tasks where it is not set").Events(Sub(e) e.Click("setOriginalDueDateWhereNotSet")))</td>
                 </tr>
                 <tr>
-                    <td>@(Html.Kendo().Button().Name("ClearDates").Content("Clear Dates").Events(Sub(e) e.Click("clearDates")).Enable(Model.CanUserEdit))</td>
+                    <td>@(Html.Kendo().Button().Name("ClearDates").Content("Clear Dates").Events(Sub(e) e.Click("clearDatesClick")).Enable(Model.CanUserEdit))</td>
                     <td>@(Html.Kendo().Button().Name("SetDueDateForSelected").Content("Only selected tasks").Events(Sub(e) e.Click("setOriginalDueDateForSelected")).Enable(Model.CanUserEdit))</td>
                 </tr>
                 <tr>
@@ -465,7 +465,7 @@ End Functions
 
 End Code
 
-@(Html.Action("UnityMenu", "Utilities", UnityMenuModel))
+@*@(Html.Action("UnityMenu", "Utilities", UnityMenuModel))*@
 
 
 <script>
@@ -513,7 +513,6 @@ End Code
                     data: data,
                     dataType: "json",
                     success: function (response) {
-                        console.log(response);
                         if (response === true) {
                             $("#AutoStatus").prop("checked", true);
                         }
@@ -640,9 +639,10 @@ End Code
         $('#ExportButtonPDF').hide();
 
         resizeGrid();
-        refreshGrid().then(() => {
-            dfd.resolve();
-        });
+        //redundent redundent
+        //refreshGrid().then(() => {
+        //    dfd.resolve();
+        //});
 
         return dfd;
     }
@@ -808,6 +808,15 @@ End Code
 
     }
 
+    function clearDatesClick() {
+        clearDates().then(() => {
+            taskEdited = false;
+            setSave();
+            refreshGantt();
+            refreshGrid();
+        });
+    }
+
     function calculateDatesClick() {
         var datePicker = $("#startdate").data("kendoDatePicker");
 
@@ -822,20 +831,37 @@ End Code
             datePicker = $("#duedate").data("kendoDatePicker");
             var DueDate = datePicker.value();
             if (DueDate == null) {
-                showKendoConfirm("Please enter a due date.");
+                showKendoAlert("Please enter a due date.");
                 return;
             }
 
         }
 
+        var kendoTreeList = $("#treelist").data("kendoTreeList");
+        var data = kendoTreeList.dataSource.data();
+        var hasLockedDates = false;
+        data.forEach((v, i, a) => {
+            if (v.DueDateLock) {
+                hasLockedDates = true;
+            }
+        });
+
+        if (hasLockedDates == true) {
+            showKendoAlert("Tasks with locked due dates will not be recalculated.");
+        }
 
         if (setSave()) {
             if (onlyDateChange()) {
+                var treelist = $('#treelist').data('kendoTreeList')
+
+                kendo.ui.progress(treelist.element, true);
+
                 saveJobInfo().then(() => {
                     calculateDates().then(() => {
                         taskEdited = false;
                         setSave();
                         refreshGantt();
+                        kendo.ui.progress(treelist.element, false);
                     });
                 });
             }
@@ -846,19 +872,24 @@ End Code
                     kendo.ui.progress(treelist.element, true);
 
                     treelist.dataSource.sync().done(() => {
-                        console.log('treelist.dataSource.sync()');
                         calculateDates().then(() => {
                             taskEdited = false;
                             setSave();
                             refreshGantt();
+                            kendo.ui.progress(treelist.element, false);
                         });
                     });
                 });
             }
         }
         else {
+            var treelist = $('#treelist').data('kendoTreeList')
+
+            kendo.ui.progress(treelist.element, true);
+
             calculateDates().then(() => {
                 refreshGantt();
+                kendo.ui.progress(treelist.element, false);
             });
         }
 

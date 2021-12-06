@@ -3076,6 +3076,7 @@ Partial Public Class popReportViewer
                     End If
                     If TypeOfReport = AdvantageFramework.Reporting.ActiveReports.ReportName.PurchaseOrderRR Then
                         rpt = New ActiveReportsAssembly.arptPurchaseOrderRR
+                        rpt.LogoName = Session("POPrintLocationName")
                     End If
                     If TypeOfReport = AdvantageFramework.Reporting.ActiveReports.ReportName.PurchaseOrder3 Then
                         rpt = New ActiveReportsAssembly.arptPurchaseOrder3
@@ -3103,12 +3104,41 @@ Partial Public Class popReportViewer
 
                     End If
 
+                    Using DbContext = New AdvantageFramework.Database.DbContext(Session("ConnString"), Session("UserCode"))
+
+                        Dim POs As Generic.List(Of AdvantageFramework.Database.Entities.PurchaseOrderDetail) = Nothing
+
+                        POs = AdvantageFramework.Database.Procedures.PurchaseOrderDetail.LoadByPONumber(DbContext, Int32.Parse(Request.QueryString("ponumber").Trim)).ToList
+
+                        For Each p In POs
+                            If p.Job.Client.Name <> "" Then
+                                rpt._ClientName = p.Job.Client.Name
+                                Exit For
+                            End If
+                        Next
+
+
+                    End Using
+
                     dtPrintDef = PO.GetPO_PrintDef_By_User_DTable(session_user) 'user print def.
                     rpt.logopath = Session("POPrintLocationPath")
                     rpt.LogoID = Session("POPrintLocationID")
                     rpt.imgPath = imgPath
                     rpt.PODate = Session("POPrintDate")
                     rpt.Void = POHeader.PO_Voided
+
+                    If dtPrintDef.Rows.Count > 0 Then
+                        If IsDBNull(dtPrintDef.Rows(0)(18)) = False Then
+                            If dtPrintDef.Rows(0)(18).ToString() = "1" Then
+                                rpt.UseLocationName = True
+                            End If
+                        End If
+                        If IsDBNull(dtPrintDef.Rows(0)(19)) = False Then
+                            If dtPrintDef.Rows(0)(19).ToString() = "1" Then
+                                rpt.UseClientName = True
+                            End If
+                        End If
+                    End If
 
                     Try
                         'State server fix
@@ -5108,6 +5138,7 @@ Partial Public Class popReportViewer
                         End If
                         If strReport = "purchaseorderRR" Then
                             rpt = New ActiveReportsAssembly.arptPurchaseOrderRR
+                            rpt.LogoName = Session("POPrintLocationName")
                         End If
                         If strReport = "purchaseorder3" Then
                             rpt = New ActiveReportsAssembly.arptPurchaseOrder3
@@ -5132,6 +5163,22 @@ Partial Public Class popReportViewer
                             session_user = Session("UserCode")
                         End If
 
+                        Using DbContext = New AdvantageFramework.Database.DbContext(Session("ConnString"), Session("UserCode"))
+
+                            Dim POs As Generic.List(Of AdvantageFramework.Database.Entities.PurchaseOrderDetail) = Nothing
+
+                            POs = AdvantageFramework.Database.Procedures.PurchaseOrderDetail.LoadByPONumber(DbContext, Int32.Parse(ID.Trim)).ToList
+
+                            For Each p In POs
+                                If p.Job.Client.Name <> "" Then
+                                    rpt._ClientName = p.Job.Client.Name
+                                    Exit For
+                                End If
+                            Next
+
+
+                        End Using
+
                         dtPrintDef = PO.GetPO_PrintDef_By_User_DTable(session_user) 'user print def.
                         'If dtPrintDef.Rows.Count > 0 Then
                         '    If Not String.IsNullOrEmpty(dtPrintDef.Rows(0).Item(10)) Then
@@ -5143,6 +5190,20 @@ Partial Public Class popReportViewer
                         rpt.LogoID = Session("POPrintLocationID")
                         rpt.imgPath = imgPath
                         rpt.PODate = Session("POPrintDate")
+
+                        If dtPrintDef.Rows.Count > 0 Then
+                            If IsDBNull(dtPrintDef.Rows(0)(18)) = False Then
+                                If dtPrintDef.Rows(0)(18).ToString() = "1" Then
+                                    rpt.UseLocationName = True
+                                End If
+                            End If
+                            If IsDBNull(dtPrintDef.Rows(0)(19)) = False Then
+                                If dtPrintDef.Rows(0)(19).ToString() = "1" Then
+                                    rpt.UseClientName = True
+                                End If
+                            End If
+                        End If
+
                         If dsPO.Tables(0).Rows.Count > 0 Then
                             If dsPO.Tables(0).Rows(0)("DEL_INSTRUCT") = "" Then
                                 dsPO.Tables(0).Rows(0)("DEL_INSTRUCT") = "-"

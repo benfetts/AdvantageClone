@@ -1794,6 +1794,8 @@
                         Me.View.Columns.Add(GetNewColumn("LinkID", , "Link ID"))
                         Me.View.Columns.Add(GetNewColumn("ClientPO", , "Client PO"))
                         Me.View.Columns.Add(GetNewColumn("Type", , "Type"))
+                        Me.View.Columns.Add(GetNewColumn("CampaignCode", , "Campaign Code"))
+                        Me.View.Columns.Add(GetNewColumn("CampaignName", , "Campaign Name"))
 
                     Case SubItemGridLookUpEditControl.Type.InternetOrderLineNumber
 

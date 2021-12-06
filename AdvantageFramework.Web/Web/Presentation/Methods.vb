@@ -285,6 +285,8 @@ Namespace Web.Presentation.Bookmarks
         Desktop_DynamicReports = 93
         Desktop_UserDefinedReports = 94
         Maintenance_ProfileAdministration = 95
+        FinanceAccounting_EmployeeUtilizationDashboard = 96
+        FinanceAccounting_FinancialDashboard = 97
 
     End Enum
 
@@ -570,6 +572,10 @@ Namespace Web.Presentation.Bookmarks
                         Return "UR"
                     Case Bookmarks.BookmarkType.Maintenance_ProfileAdministration
                         Return "PA"
+                    Case Bookmarks.BookmarkType.FinanceAccounting_EmployeeUtilizationDashboard
+                        Return "EU"
+                    Case Bookmarks.BookmarkType.FinanceAccounting_FinancialDashboard
+                        Return "FI"
                     Case Else
                         Return ""
                 End Select
@@ -769,6 +775,10 @@ Namespace Web.Presentation.Bookmarks
                         Return "User Defined Reports"
                     Case Bookmarks.BookmarkType.Maintenance_ProfileAdministration
                         Return "Profile Administration"
+                    Case Bookmarks.BookmarkType.FinanceAccounting_EmployeeUtilizationDashboard
+                        Return "Employee Utilization"
+                    Case Bookmarks.BookmarkType.FinanceAccounting_FinancialDashboard
+                        Return "Financial"
                     Case Else
                         Return ""
                 End Select

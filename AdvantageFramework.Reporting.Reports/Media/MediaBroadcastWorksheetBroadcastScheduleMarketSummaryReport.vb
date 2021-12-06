@@ -26,6 +26,7 @@
         Private _Date As String = String.Empty
         Private _LocationName As String = String.Empty
         Private _LocationLogo As AdvantageFramework.Database.Entities.LocationLogo = Nothing
+        Private _IsNielsenPuertoRico As Boolean = False
 
 #End Region
 
@@ -383,6 +384,11 @@
                             End If
 
                         End If
+
+                    ElseIf DataLine.RatingsServiceID.GetValueOrDefault(0) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico Then
+
+                        DataLine.RatingsSource = "Nielsen Puerto Rico"
+                        _IsNielsenPuertoRico = True
 
                     Else
 
@@ -819,6 +825,13 @@
                     XrTableCell103.Visible = False
                     XrTableCell104.Visible = False
                 End If
+            End If
+
+            If _IsNielsenPuertoRico Then
+
+                XrTableCell103.Visible = False
+                XrTableCell104.Visible = False
+
             End If
 
         End Sub

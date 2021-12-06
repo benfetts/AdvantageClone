@@ -57,11 +57,11 @@ namespace Webvantage.Angular.Controllers.Shared
         #region Methods
 
 
-        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString,
-            AdvantageFramework.Core.Database.DbContext DbContext,
-            AdvantageFramework.Core.Database.Entities.Alert Alert,
-            bool IncludeOriginator,
-            bool IsNew,
+        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString, 
+            AdvantageFramework.Core.Database.DbContext DbContext, 
+            AdvantageFramework.Core.Database.Entities.Alert Alert, 
+            bool IncludeOriginator, 
+            bool IsNew, 
             int DocumentID,
             bool SendEmail)
         {
@@ -91,8 +91,7 @@ namespace Webvantage.Angular.Controllers.Shared
                 if (string.IsNullOrWhiteSpace(ProofingURL) == false && DocumentID > 0)
                 {
                     ProofingURL = ProofingURL + AdvantageFramework.Core.BLogic.Proofing.Methods.GetProofingURL(queryString, Alert.AlertId, DocumentID, ref err);
-                }
-                else
+                } else
                 {
                     ProofingURL = "";
                 }
@@ -149,19 +148,19 @@ namespace Webvantage.Angular.Controllers.Shared
             }
             if (Notified == true)
             {
-                RefreshWebvantage(queryString, WebvantageURL, Alert.AlertId);
+                RefreshWebvantage(queryString,WebvantageURL, Alert.AlertId);
             }
             return Notified;
         }
 
-        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString,
-            int AlertID,
-            bool Notify,
-            bool IncludeOriginator,
-            bool IsNew,
-            bool UpdateSprint,
-            int? SprintID,
-            bool OnlyCommentAdded,
+        protected bool NotifyAlertRecipients(AdvantageFramework.Core.Web.QueryString queryString, 
+            int AlertID, 
+            bool Notify, 
+            bool IncludeOriginator, 
+            bool IsNew, 
+            bool UpdateSprint, 
+            int? SprintID, 
+            bool OnlyCommentAdded, 
             int DocumentID,
             bool SendEmail)
         {

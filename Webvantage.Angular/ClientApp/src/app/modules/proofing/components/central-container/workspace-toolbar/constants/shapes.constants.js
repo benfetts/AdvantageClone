@@ -33,7 +33,7 @@ exports.shapesTypes = [
     },
     {
         text: ' ',
-        imageUrl: 'assets/icons/shape-tools/cloud.svg',
+        imageUrl: 'assets/icons/shape-tools/Cloud.svg',
         selected: false,
         name: 'AnnotationCreatePolygonCloud'
     },

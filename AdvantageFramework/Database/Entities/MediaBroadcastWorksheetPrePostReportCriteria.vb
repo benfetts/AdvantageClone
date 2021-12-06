@@ -33,6 +33,8 @@
             NeilsenRadioPeriodID3
             NeilsenRadioPeriodID4
             NeilsenRadioPeriodID5
+            PeriodStart
+            PeriodEnd
         End Enum
 
 #End Region
@@ -115,6 +117,12 @@
         <Column("NIELSEN_RADIO_PERIOD_ID5")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property NeilsenRadioPeriodID5() As Nullable(Of Integer)
+        <Column("PERIOD_START")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property PeriodStart() As Nullable(Of Date)
+        <Column("PERIOD_END")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property PeriodEnd() As Nullable(Of Date)
 
 #End Region
 

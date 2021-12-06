@@ -988,36 +988,47 @@
             Dim UsePrimaryDemoList As Generic.List(Of Boolean) = Nothing
             Dim VendorCodeList As String = Nothing
             Dim MediaBroadcastWorksheetMarketID As Integer = 0
+            Dim MarketScheduleWeeklyDetailReport As AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport = Nothing
 
-            MediaBroadcastWorksheetMarketID = Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport.Properties.MediaBroadcastWorksheetMarketID.ToString)
+            MarketScheduleWeeklyDetailReport = Me.GetCurrentRow()
 
-            MarketScheduleWeeklyDetailReports = _MarketScheduleWeeklyDetailReports.Where(Function(R) R.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID AndAlso R.Spots.GetValueOrDefault(0) > 0).ToList
+            If MarketScheduleWeeklyDetailReport.MediaType = "T" AndAlso MarketScheduleWeeklyDetailReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
 
-            MarketWorksheetMarketIdList = New Generic.List(Of Integer)
-            MarketWorksheetMarketIdList.Add(MediaBroadcastWorksheetMarketID) ' = MarketScheduleWeeklyDetailReports.Select(Function(DR) DR.MediaBroadcastWorksheetMarketID).Distinct.ToList
-
-            VendorCodeList = String.Join(",", MarketScheduleWeeklyDetailReports.Select(Function(DR) DR.VendorCode).Distinct.ToArray)
-
-            UsePrimaryDemoList = New Generic.List(Of Boolean)
-            UsePrimaryDemoList.Add(_UsePrimaryDemo)
-
-            Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
-
-                ReachFreqDetailLines = Reporting.Database.Procedures.MediaBroadcastWorksheetBroadcastScheduleReport.LoadReachFreqDetailsWithExactDates(DbContext, MarketWorksheetMarketIdList, _FromDate, _ToDate, UsePrimaryDemoList, VendorCodeList).ToList()
-
-            End Using
-
-            If _IsRadio Then
-
-                CalculateRadioReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
+                e.Cancel = True
 
             Else
 
-                CalculateReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
+                MediaBroadcastWorksheetMarketID = Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport.Properties.MediaBroadcastWorksheetMarketID.ToString)
+
+                MarketScheduleWeeklyDetailReports = _MarketScheduleWeeklyDetailReports.Where(Function(R) R.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarketID AndAlso R.Spots.GetValueOrDefault(0) > 0).ToList
+
+                MarketWorksheetMarketIdList = New Generic.List(Of Integer)
+                MarketWorksheetMarketIdList.Add(MediaBroadcastWorksheetMarketID) ' = MarketScheduleWeeklyDetailReports.Select(Function(DR) DR.MediaBroadcastWorksheetMarketID).Distinct.ToList
+
+                VendorCodeList = String.Join(",", MarketScheduleWeeklyDetailReports.Select(Function(DR) DR.VendorCode).Distinct.ToArray)
+
+                UsePrimaryDemoList = New Generic.List(Of Boolean)
+                UsePrimaryDemoList.Add(_UsePrimaryDemo)
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
+
+                    ReachFreqDetailLines = Reporting.Database.Procedures.MediaBroadcastWorksheetBroadcastScheduleReport.LoadReachFreqDetailsWithExactDates(DbContext, MarketWorksheetMarketIdList, _FromDate, _ToDate, UsePrimaryDemoList, VendorCodeList).ToList()
+
+                End Using
+
+                If _IsRadio Then
+
+                    CalculateRadioReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
+
+                Else
+
+                    CalculateReachAndFreq(MarketScheduleWeeklyDetailReports, ReachFreqDetailLines, _UsePrimaryDemo)
+
+                End If
+
+                GroupFooterMarketName_ReachFrequency.Text = FormatNumber(_Reach, 1).ToString & " / " & FormatNumber(_Frequency, 1).ToString
 
             End If
-
-            GroupFooterMarketName_ReachFrequency.Text = FormatNumber(_Reach, 1).ToString & " / " & FormatNumber(_Frequency, 1).ToString
 
         End Sub
         Private Sub LabelGroupMarketName_MediaType_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelGroupMarketName_MediaType.BeforePrint
@@ -1050,6 +1061,19 @@
         Private Sub LabelDetail_Program_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelDetail_Program.BeforePrint
 
             If Me.GetCurrentColumnValue(AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport.Properties.MediaType.ToString) = "R" Then
+
+                e.Cancel = True
+
+            End If
+
+        End Sub
+        Private Sub GroupFooterMarketName_ReachFrequencyLabel_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles GroupFooterMarketName_ReachFrequencyLabel.BeforePrint
+
+            Dim MarketScheduleWeeklyDetailReport As AdvantageFramework.Reporting.Database.Classes.MarketScheduleWeeklyDetailReport = Nothing
+
+            MarketScheduleWeeklyDetailReport = Me.GetCurrentRow()
+
+            If MarketScheduleWeeklyDetailReport.MediaType = "T" AndAlso MarketScheduleWeeklyDetailReport.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico Then
 
                 e.Cancel = True
 

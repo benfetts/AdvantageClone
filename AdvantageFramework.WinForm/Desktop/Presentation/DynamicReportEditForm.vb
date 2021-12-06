@@ -670,7 +670,8 @@
                      AdvantageFramework.Reporting.DynamicReports.JobDetail, AdvantageFramework.Reporting.DynamicReports.JobDetailItem, AdvantageFramework.Reporting.DynamicReports.JobDetailFunction,
                      AdvantageFramework.Reporting.DynamicReports.JobDetailBillMonth, AdvantageFramework.Reporting.DynamicReports.JobDetailFeesAndOOPByFunctionMinimized,
                      AdvantageFramework.Reporting.DynamicReports.JobDetailFeesAndOOPByJob1Minimized, AdvantageFramework.Reporting.DynamicReports.JobDetailFeesAndOOPByJob2Minimized,
-                     AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatus, AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatusCoopBreakout, AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatusSummary
+                     AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatus, AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatusCoopBreakout, AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatusSummary,
+                     AdvantageFramework.Reporting.DynamicReports.VirtualCreditCardTransactionEFS
 
                     ButtonItemReport_Schedule.Enabled = (_DynamicReportID <> 0)
 

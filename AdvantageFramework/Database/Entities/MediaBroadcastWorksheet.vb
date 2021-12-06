@@ -41,6 +41,7 @@
             IsGross
             UseOldCalendarDateCreation
             CountryID
+            NPRPrepopulateDates
             Client
             Division
             Product
@@ -176,6 +177,10 @@
         <Column("COUNTRY_ID")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property CountryID() As Integer
+        <Required>
+        <Column("NPR_PREPOPULATE_DATES")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
+        Public Property NPRPrepopulateDates() As Boolean
 
         Public Overridable Property Client As Database.Entities.Client
         <ForeignKey("ClientCode, DivisionCode")>

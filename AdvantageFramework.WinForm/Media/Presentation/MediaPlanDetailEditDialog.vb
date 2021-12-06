@@ -22,6 +22,7 @@
         Private _DoesHaveACampaignLevel As Boolean = False
         Private _HasCampaignLevelBeenDeleted As Boolean = False
         Private _MediaRequireCampaign As Boolean = False
+        Private _MediaAutoBuyer As Boolean = False
 
 #End Region
 
@@ -245,6 +246,7 @@
             Dim MediaBuyers As Generic.List(Of AdvantageFramework.Database.Entities.MediaBuyer) = Nothing
             Dim MediaPlanEstimate As AdvantageFramework.MediaPlanning.Classes.MediaPlanEstimate = Nothing
             Dim SuperTooltipInfo As DevComponents.DotNetBar.SuperTooltipInfo = Nothing
+            Dim IsNewEstimate As Boolean = False
 
             Me.SpellChecker.ShowSpellCheckCompleteMessage = False
             TextBoxComment_Comment.ShowSpellCheckCompleteMessage = False
@@ -297,6 +299,8 @@
                 ComboBoxForm_SalesClass.SelectedValue = CStr(AdvantageFramework.EnumUtilities.GetValue(AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.PleaseSelect))
                 ComboBoxForm_Campaign.SelectedValue = CStr(AdvantageFramework.EnumUtilities.GetValue(AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.PleaseSelect))
 
+                IsNewEstimate = (_MediaPlanEstimate Is Nothing)
+
                 If _MediaPlan.SyncDetailSettings Then
 
                     If _MediaPlanEstimate IsNot Nothing Then
@@ -346,6 +350,28 @@
                     If AdvantageFramework.Agency.LoadMediaRequireCampaign(DataContext) Then
 
                         _MediaRequireCampaign = True
+
+                    End If
+
+                    If AdvantageFramework.Agency.LoadMediaAutoBuyer(DataContext) Then
+
+                        If MediaBuyers.Any(Function(Entity) Entity.EmployeeCode = Me.Session.User.EmployeeCode AndAlso Entity.IsInactive = False) Then
+
+                            Try
+
+                                _MediaAutoBuyer = True
+
+                                If IsNewEstimate Then
+
+                                    SearchableComboBoxForm_Buyer.SelectedValue = Me.Session.User.EmployeeCode
+
+                                End If
+
+                            Catch ex As Exception
+
+                            End Try
+
+                        End If
 
                     End If
 

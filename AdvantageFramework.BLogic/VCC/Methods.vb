@@ -1102,28 +1102,28 @@
             Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
             Dim Token As String = Nothing
             Dim URL As String = Nothing
-			'Dim CSTTimeZoneInfo As TimeZoneInfo = Nothing
-			Dim CentralDateTime As Date = Nothing
-			Dim VCCCard As AdvantageFramework.Database.Entities.VCCCard = Nothing
-			Dim CSTHoursOffset As Decimal = 0
-			Dim SQLHoursOffset As Decimal = 0
+            'Dim CSTTimeZoneInfo As TimeZoneInfo = Nothing
+            Dim CentralDateTime As Date = Nothing
+            Dim VCCCard As AdvantageFramework.Database.Entities.VCCCard = Nothing
+            Dim CSTHoursOffset As Decimal = 0
+            Dim SQLHoursOffset As Decimal = 0
             Dim OffSetHours As Decimal = 0
             Dim VCCCardPO As AdvantageFramework.Database.Entities.VCCCardPO = Nothing
             Dim ProcessVCCOrders As Generic.List(Of AdvantageFramework.MediaManager.Classes.VCCOrder) = Nothing
 
             Try
 
-				CSTHoursOffset = AdvantageFramework.Database.Procedures.Generic.GetOffsetFromSystemTimeZone("Central Standard Time")
+                CSTHoursOffset = AdvantageFramework.Database.Procedures.Generic.GetOffsetFromSystemTimeZone("Central Standard Time")
 
-				Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+                Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
                     SQLHoursOffset = AdvantageFramework.Database.Procedures.Generic.LoadSQLHoursOffset(DbContext)
 
                 End Using
 
-				OffSetHours = (CSTHoursOffset - SQLHoursOffset) * -1
+                OffSetHours = (CSTHoursOffset - SQLHoursOffset) * -1
 
-			Catch ex As Exception
+            Catch ex As Exception
                 ErrorMessage = ex.Message
             End Try
 
@@ -1231,59 +1231,59 @@
             RefreshVCCData = UpdatedVCCCards
 
         End Function
-		Private Function GetClearedTransactionsData(RTMCServicev2 As AdvantageFramework.RTMCService.RTMCServiceClient, DataContext As AdvantageFramework.Database.DataContext,
-													VCCOrders As Generic.List(Of AdvantageFramework.MediaManager.Classes.VCCOrder),
-													TransactionEndDate As Date, DbContext As AdvantageFramework.Database.DbContext,
-													OffSetHours As Decimal) As Boolean
+        Private Function GetClearedTransactionsData(RTMCServicev2 As AdvantageFramework.RTMCService.RTMCServiceClient, DataContext As AdvantageFramework.Database.DataContext,
+                                                    VCCOrders As Generic.List(Of AdvantageFramework.MediaManager.Classes.VCCOrder),
+                                                    TransactionEndDate As Date, DbContext As AdvantageFramework.Database.DbContext,
+                                                    OffSetHours As Decimal) As Boolean
 
-			'objects
-			Dim Requests As Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity) = Nothing
-			Dim TransactionDeliveryClearedRequestTransactionEntity As AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity = Nothing
-			Dim TransactionDeliveryClearedResponseTransactionEntities As Generic.List(Of RTMCService.TransactionDeliveryClearedResponseTransactionEntity) = Nothing
-			Dim VCCOrder As AdvantageFramework.MediaManager.Classes.VCCOrder = Nothing
-			Dim Count As Integer = 0
-			Dim AccountID As String = ""
-			Dim OutsourceID As String = ""
-			Dim CompanyID As String = ""
-			Dim DataWasRetrieved As Boolean = True
-			Dim VCCCardDetail As AdvantageFramework.Database.Entities.VCCCardDetail = Nothing
-			Dim ProcessDateTime As Date = Nothing
-			Dim ErrorMessage As String = ""
-			Dim TotalPages As Integer = 0
-			Dim PageIndex As Integer = 0
-			Dim TransactionStartDate As Date = Nothing
+            'objects
+            Dim Requests As Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity) = Nothing
+            Dim TransactionDeliveryClearedRequestTransactionEntity As AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity = Nothing
+            Dim TransactionDeliveryClearedResponseTransactionEntities As Generic.List(Of RTMCService.TransactionDeliveryClearedResponseTransactionEntity) = Nothing
+            Dim VCCOrder As AdvantageFramework.MediaManager.Classes.VCCOrder = Nothing
+            Dim Count As Integer = 0
+            Dim AccountID As String = ""
+            Dim OutsourceID As String = ""
+            Dim CompanyID As String = ""
+            Dim DataWasRetrieved As Boolean = True
+            Dim VCCCardDetail As AdvantageFramework.Database.Entities.VCCCardDetail = Nothing
+            Dim ProcessDateTime As Date = Nothing
+            Dim ErrorMessage As String = ""
+            Dim TotalPages As Integer = 0
+            Dim PageIndex As Integer = 0
+            Dim TransactionStartDate As Date = Nothing
             Dim VCCCardPODetail As AdvantageFramework.Database.Entities.VCCCardPODetail = Nothing
 
             If RTMCServicev2 IsNot Nothing AndAlso DataContext IsNot Nothing AndAlso VCCOrders IsNot Nothing AndAlso VCCOrders.Count > 0 Then
 
-				Try
+                Try
 
-					AccountID = LoadAccountID(DataContext)
-					OutsourceID = LoadOutsourceID(DataContext)
-					CompanyID = LoadCompanyID(DataContext)
+                    AccountID = LoadAccountID(DataContext)
+                    OutsourceID = LoadOutsourceID(DataContext)
+                    CompanyID = LoadCompanyID(DataContext)
 
-					TransactionDeliveryClearedResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryClearedResponseTransactionEntity)
+                    TransactionDeliveryClearedResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryClearedResponseTransactionEntity)
 
-					Try
+                    Try
 
-						TotalPages = Math.Ceiling(VCCOrders.Count / 10)
+                        TotalPages = Math.Ceiling(VCCOrders.Count / 10)
 
-					Catch ex As Exception
-						TotalPages = 1
-					End Try
+                    Catch ex As Exception
+                        TotalPages = 1
+                    End Try
 
-					For PageIndex = 0 To TotalPages Step 1
+                    For PageIndex = 0 To TotalPages Step 1
 
-						Requests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity)
+                        Requests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity)
 
-						For Each VCCOrder In VCCOrders.Skip(PageIndex * 10).Take(10)
+                        For Each VCCOrder In VCCOrders.Skip(PageIndex * 10).Take(10)
 
-							TransactionDeliveryClearedRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity
+                            TransactionDeliveryClearedRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity
 
-							TransactionDeliveryClearedRequestTransactionEntity.accountNumberField = AccountID
-							TransactionDeliveryClearedRequestTransactionEntity.cardGroupField = -1
-							TransactionDeliveryClearedRequestTransactionEntity.companyNumberField = CompanyID
-							TransactionDeliveryClearedRequestTransactionEntity.outsourceIDField = OutsourceID
+                            TransactionDeliveryClearedRequestTransactionEntity.accountNumberField = AccountID
+                            TransactionDeliveryClearedRequestTransactionEntity.cardGroupField = -1
+                            TransactionDeliveryClearedRequestTransactionEntity.companyNumberField = CompanyID
+                            TransactionDeliveryClearedRequestTransactionEntity.outsourceIDField = OutsourceID
                             TransactionDeliveryClearedRequestTransactionEntity.transactionIDField = VCCOrder.TransactionIDField
 
                             TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
@@ -1291,29 +1291,29 @@
 
                             TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
 
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
 
-							If VCCOrder.GetVCCCardEntity.LastRefreshedDate IsNot Nothing Then
+                            If VCCOrder.GetVCCCardEntity.LastRefreshedDate IsNot Nothing Then
 
-								TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
-								TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
+                                TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
+                                TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
 
                                 TransactionStartDate = AdvantageFramework.Database.Procedures.Generic.GetOffsetDateTime(OffSetHours * -1, VCCOrder.GetVCCCardEntity.LastRefreshedDate.Value.AddDays(-7))
 
                                 TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartDateField = TransactionStartDate.ToString("yyyyMMdd")
-								TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartTimeField = TransactionStartDate.ToString("HHmmssff")
+                                TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartTimeField = TransactionStartDate.ToString("HHmmssff")
 
-							Else
+                            Else
 
-								TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
-								TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
+                                TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
+                                TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
 
                                 TransactionStartDate = AdvantageFramework.Database.Procedures.Generic.GetOffsetDateTime(OffSetHours * -1, VCCOrder.GetVCCCardEntity.CreatedDate)
 
                                 TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartDateField = TransactionStartDate.ToString("yyyyMMdd")
-								TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartTimeField = -1
+                                TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartTimeField = -1
 
-							End If
+                            End If
 
                             'Dim mySerializer = New System.Xml.Serialization.XmlSerializer(GetType(RTMCService.TransactionDeliveryClearedRequestTransactionEntity))
                             'Dim myWriter = New System.IO.StreamWriter("C:\EFS_cardclearedrequest_request.xml")
@@ -1322,17 +1322,17 @@
 
                             Requests.Add(TransactionDeliveryClearedRequestTransactionEntity)
 
-						Next
+                        Next
 
-						If Requests.Count > 0 Then
+                        If Requests.Count > 0 Then
 
-							TransactionDeliveryClearedResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryCleared(Requests.ToArray))
+                            TransactionDeliveryClearedResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryCleared(Requests.ToArray))
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-					If TransactionDeliveryClearedResponseTransactionEntities IsNot Nothing AndAlso TransactionDeliveryClearedResponseTransactionEntities.Count > 0 Then
+                    If TransactionDeliveryClearedResponseTransactionEntities IsNot Nothing AndAlso TransactionDeliveryClearedResponseTransactionEntities.Count > 0 Then
 
                         For Each TransactionDeliveryClearedResponseTransactionEntity In TransactionDeliveryClearedResponseTransactionEntities
 
@@ -1454,72 +1454,72 @@
 
                     End If
 
-				Catch ex As Exception
-					DataWasRetrieved = False
-				End Try
+                Catch ex As Exception
+                    DataWasRetrieved = False
+                End Try
 
-			Else
+            Else
 
-				DataWasRetrieved = False
+                DataWasRetrieved = False
 
-			End If
+            End If
 
-			GetClearedTransactionsData = DataWasRetrieved
+            GetClearedTransactionsData = DataWasRetrieved
 
-		End Function
-		Private Function GetRejectedTransactionsData(RTMCServicev2 As AdvantageFramework.RTMCService.RTMCServiceClient, DataContext As AdvantageFramework.Database.DataContext,
-													 VCCOrders As Generic.List(Of AdvantageFramework.MediaManager.Classes.VCCOrder),
-													 TransactionEndDate As Date, DbContext As AdvantageFramework.Database.DbContext,
-													 OffSetHours As Decimal) As Boolean
+        End Function
+        Private Function GetRejectedTransactionsData(RTMCServicev2 As AdvantageFramework.RTMCService.RTMCServiceClient, DataContext As AdvantageFramework.Database.DataContext,
+                                                     VCCOrders As Generic.List(Of AdvantageFramework.MediaManager.Classes.VCCOrder),
+                                                     TransactionEndDate As Date, DbContext As AdvantageFramework.Database.DbContext,
+                                                     OffSetHours As Decimal) As Boolean
 
-			'objects
-			Dim Requests As Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity) = Nothing
-			Dim TransactionDeliveryRejectRequestTransactionEntity As AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity = Nothing
-			Dim TransactionDeliveryRejectResponseTransactionEntities As Generic.List(Of RTMCService.TransactionDeliveryRejectResponseTransactionEntity) = Nothing
-			Dim VCCOrder As AdvantageFramework.MediaManager.Classes.VCCOrder = Nothing
-			Dim Count As Integer = 0
-			Dim AccountID As String = ""
-			Dim OutsourceID As String = ""
-			Dim CompanyID As String = ""
-			Dim DataWasRetrieved As Boolean = True
-			Dim VCCCardDetail As AdvantageFramework.Database.Entities.VCCCardDetail = Nothing
-			Dim ProcessDateTime As Date = Nothing
-			Dim ErrorMessage As String = ""
-			Dim TotalPages As Integer = 0
-			Dim PageIndex As Integer = 0
-			Dim TransactionStartDate As Date = Nothing
+            'objects
+            Dim Requests As Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity) = Nothing
+            Dim TransactionDeliveryRejectRequestTransactionEntity As AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity = Nothing
+            Dim TransactionDeliveryRejectResponseTransactionEntities As Generic.List(Of RTMCService.TransactionDeliveryRejectResponseTransactionEntity) = Nothing
+            Dim VCCOrder As AdvantageFramework.MediaManager.Classes.VCCOrder = Nothing
+            Dim Count As Integer = 0
+            Dim AccountID As String = ""
+            Dim OutsourceID As String = ""
+            Dim CompanyID As String = ""
+            Dim DataWasRetrieved As Boolean = True
+            Dim VCCCardDetail As AdvantageFramework.Database.Entities.VCCCardDetail = Nothing
+            Dim ProcessDateTime As Date = Nothing
+            Dim ErrorMessage As String = ""
+            Dim TotalPages As Integer = 0
+            Dim PageIndex As Integer = 0
+            Dim TransactionStartDate As Date = Nothing
             Dim VCCCardPODetail As AdvantageFramework.Database.Entities.VCCCardPODetail = Nothing
 
             If RTMCServicev2 IsNot Nothing AndAlso DataContext IsNot Nothing AndAlso VCCOrders IsNot Nothing AndAlso VCCOrders.Count > 0 Then
 
-				Try
+                Try
 
-					AccountID = LoadAccountID(DataContext)
-					OutsourceID = LoadOutsourceID(DataContext)
-					CompanyID = LoadCompanyID(DataContext)
+                    AccountID = LoadAccountID(DataContext)
+                    OutsourceID = LoadOutsourceID(DataContext)
+                    CompanyID = LoadCompanyID(DataContext)
 
-					TransactionDeliveryRejectResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryRejectResponseTransactionEntity)
+                    TransactionDeliveryRejectResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryRejectResponseTransactionEntity)
 
-					Try
+                    Try
 
-						TotalPages = Math.Ceiling(VCCOrders.Count / 10)
+                        TotalPages = Math.Ceiling(VCCOrders.Count / 10)
 
-					Catch ex As Exception
-						TotalPages = 1
-					End Try
+                    Catch ex As Exception
+                        TotalPages = 1
+                    End Try
 
-					For PageIndex = 0 To TotalPages Step 1
+                    For PageIndex = 0 To TotalPages Step 1
 
-						Requests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity)
+                        Requests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity)
 
-						For Each VCCOrder In VCCOrders.Skip(PageIndex * 10).Take(10)
+                        For Each VCCOrder In VCCOrders.Skip(PageIndex * 10).Take(10)
 
-							TransactionDeliveryRejectRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity
+                            TransactionDeliveryRejectRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity
 
-							TransactionDeliveryRejectRequestTransactionEntity.accountNumberField = AccountID
-							TransactionDeliveryRejectRequestTransactionEntity.cardGroupField = -1
-							TransactionDeliveryRejectRequestTransactionEntity.companyNumberField = CompanyID
-							TransactionDeliveryRejectRequestTransactionEntity.outsourceIDField = OutsourceID
+                            TransactionDeliveryRejectRequestTransactionEntity.accountNumberField = AccountID
+                            TransactionDeliveryRejectRequestTransactionEntity.cardGroupField = -1
+                            TransactionDeliveryRejectRequestTransactionEntity.companyNumberField = CompanyID
+                            TransactionDeliveryRejectRequestTransactionEntity.outsourceIDField = OutsourceID
                             TransactionDeliveryRejectRequestTransactionEntity.transactionIDField = VCCOrder.TransactionIDField
 
                             TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
@@ -1527,69 +1527,69 @@
 
                             TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
 
-							TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
+                            TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
 
-							If VCCOrder.GetVCCCardEntity.LastRefreshedDate IsNot Nothing Then
+                            If VCCOrder.GetVCCCardEntity.LastRefreshedDate IsNot Nothing Then
 
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
 
                                 TransactionStartDate = AdvantageFramework.Database.Procedures.Generic.GetOffsetDateTime(OffSetHours * -1, VCCOrder.GetVCCCardEntity.LastRefreshedDate.Value.AddDays(-7))
 
                                 TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartDateField = TransactionStartDate.ToString("yyyyMMdd")
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartTimeField = TransactionStartDate.ToString("HHmmssff")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartTimeField = TransactionStartDate.ToString("HHmmssff")
 
-							Else
+                            Else
 
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndDateField = TransactionEndDate.ToString("yyyyMMdd")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndTimeField = TransactionEndDate.ToString("HHmmssff")
 
                                 TransactionStartDate = AdvantageFramework.Database.Procedures.Generic.GetOffsetDateTime(OffSetHours * -1, VCCOrder.GetVCCCardEntity.CreatedDate)
 
                                 TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartDateField = TransactionStartDate.ToString("yyyyMMdd")
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartTimeField = -1
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartTimeField = -1
 
-							End If
+                            End If
 
-							Requests.Add(TransactionDeliveryRejectRequestTransactionEntity)
+                            Requests.Add(TransactionDeliveryRejectRequestTransactionEntity)
 
-						Next
+                        Next
 
-						If Requests.Count > 0 Then
+                        If Requests.Count > 0 Then
 
-							TransactionDeliveryRejectResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryReject(Requests.ToArray))
+                            TransactionDeliveryRejectResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryReject(Requests.ToArray))
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-					If TransactionDeliveryRejectResponseTransactionEntities IsNot Nothing AndAlso TransactionDeliveryRejectResponseTransactionEntities.Count > 0 Then
+                    If TransactionDeliveryRejectResponseTransactionEntities IsNot Nothing AndAlso TransactionDeliveryRejectResponseTransactionEntities.Count > 0 Then
 
-						For Each TransactionDeliveryRejectResponseTransactionEntity In TransactionDeliveryRejectResponseTransactionEntities
+                        For Each TransactionDeliveryRejectResponseTransactionEntity In TransactionDeliveryRejectResponseTransactionEntities
 
-							Try
+                            Try
 
                                 VCCOrder = VCCOrders.SingleOrDefault(Function(Entity) Entity.TransactionIDField = TransactionDeliveryRejectResponseTransactionEntity.transactionIDField)
 
                             Catch ex As Exception
-								VCCOrder = Nothing
-							End Try
+                                VCCOrder = Nothing
+                            End Try
 
-							If VCCOrder IsNot Nothing Then
+                            If VCCOrder IsNot Nothing Then
 
-								If TransactionDeliveryRejectResponseTransactionEntity.responseCodeField = 0 AndAlso TransactionDeliveryRejectResponseTransactionEntity.rejectsSetField IsNot Nothing Then
+                                If TransactionDeliveryRejectResponseTransactionEntity.responseCodeField = 0 AndAlso TransactionDeliveryRejectResponseTransactionEntity.rejectsSetField IsNot Nothing Then
 
-									For Each SetField In TransactionDeliveryRejectResponseTransactionEntity.rejectsSetField
+                                    For Each SetField In TransactionDeliveryRejectResponseTransactionEntity.rejectsSetField
 
-										Try
+                                        Try
 
-											ProcessDateTime = DateTime.ParseExact(SetField.processDateField & " " & SetField.processTimeField.PadLeft(8, "0"), "yyyyMMdd HHmmssff", System.Globalization.CultureInfo.InvariantCulture, Globalization.DateTimeStyles.None)
+                                            ProcessDateTime = DateTime.ParseExact(SetField.processDateField & " " & SetField.processTimeField.PadLeft(8, "0"), "yyyyMMdd HHmmssff", System.Globalization.CultureInfo.InvariantCulture, Globalization.DateTimeStyles.None)
 
-											If OffSetHours <> 0 Then
+                                            If OffSetHours <> 0 Then
 
-												ProcessDateTime = AdvantageFramework.Database.Procedures.Generic.GetOffsetDateTime(OffSetHours, ProcessDateTime)
+                                                ProcessDateTime = AdvantageFramework.Database.Procedures.Generic.GetOffsetDateTime(OffSetHours, ProcessDateTime)
 
-											End If
+                                            End If
 
                                             If VCCOrder.GetVCCCardEntity.CardType = Database.Interfaces.IVCCCard.EnumCardType.MediaOrder Then
 
@@ -1650,48 +1650,48 @@
                                             End If
 
                                         Catch ex As Exception
-											ProcessDateTime = Date.MinValue
-										End Try
+                                            ProcessDateTime = Date.MinValue
+                                        End Try
 
-									Next
+                                    Next
 
-								Else
+                                Else
 
-									Try
+                                    Try
 
-										ErrorMessage += TransactionDeliveryRejectResponseTransactionEntity.messageSetField.FirstOrDefault(Function(Message) Message.typeField = RTMCService.MessageType.ErrorMsg).messageTextField
+                                        ErrorMessage += TransactionDeliveryRejectResponseTransactionEntity.messageSetField.FirstOrDefault(Function(Message) Message.typeField = RTMCService.MessageType.ErrorMsg).messageTextField
 
-									Catch ex As Exception
-										ErrorMessage = "Error retrieving rejected transactions."
-									End Try
+                                    Catch ex As Exception
+                                        ErrorMessage = "Error retrieving rejected transactions."
+                                    End Try
 
-									If ErrorMessage <> "" Then
+                                    If ErrorMessage <> "" Then
 
-										Throw New Exception(ErrorMessage)
+                                        Throw New Exception(ErrorMessage)
 
-									End If
+                                    End If
 
-								End If
+                                End If
 
-							End If
+                            End If
 
-						Next
+                        Next
 
-					End If
+                    End If
 
-				Catch ex As Exception
-					DataWasRetrieved = False
-				End Try
+                Catch ex As Exception
+                    DataWasRetrieved = False
+                End Try
 
-			Else
+            Else
 
-				DataWasRetrieved = False
+                DataWasRetrieved = False
 
-			End If
+            End If
 
-			GetRejectedTransactionsData = DataWasRetrieved
+            GetRejectedTransactionsData = DataWasRetrieved
 
-		End Function
+        End Function
         Private Function GetPendingTransactionsData(RTMCServicev2 As AdvantageFramework.RTMCService.RTMCServiceClient, DataContext As AdvantageFramework.Database.DataContext,
                                                     VCCOrders As Generic.List(Of AdvantageFramework.MediaManager.Classes.VCCOrder),
                                                     TransactionEndDate As Date, DbContext As AdvantageFramework.Database.DbContext,
@@ -2926,9 +2926,9 @@
             Dim TransactionDeliveryRejectRequestTransactionEntity As AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity = Nothing
             'Dim TransactionDeliveryMemoRequestTransactionEntity As AdvantageFramework.RTMCService.TransactionDeliveryMemoRequestTransactionEntity = Nothing
             Dim RequestDate As Date = Nothing
-			'Dim CSTTimeZoneInfo As TimeZoneInfo = Nothing
-			Dim CSTHoursOffset As Decimal = 0
-			Dim SQLHoursOffset As Decimal = 0
+            'Dim CSTTimeZoneInfo As TimeZoneInfo = Nothing
+            Dim CSTHoursOffset As Decimal = 0
+            Dim SQLHoursOffset As Decimal = 0
             Dim OffSetHours As Decimal = 0
             Dim TransactionDeliveryClearedResponseTransactionEntities As Generic.List(Of RTMCService.TransactionDeliveryClearedResponseTransactionEntity) = Nothing
             Dim TransactionDeliveryRejectResponseTransactionEntities As Generic.List(Of RTMCService.TransactionDeliveryRejectResponseTransactionEntity) = Nothing
@@ -2939,163 +2939,163 @@
 
                 Try
 
-					CSTHoursOffset = AdvantageFramework.Database.Procedures.Generic.GetOffsetFromSystemTimeZone("Central Standard Time")
+                    CSTHoursOffset = AdvantageFramework.Database.Procedures.Generic.GetOffsetFromSystemTimeZone("Central Standard Time")
 
-					Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+                    Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
                         SQLHoursOffset = AdvantageFramework.Database.Procedures.Generic.LoadSQLHoursOffset(DbContext)
 
                     End Using
 
-					OffSetHours = (CSTHoursOffset - SQLHoursOffset) * -1
+                    OffSetHours = (CSTHoursOffset - SQLHoursOffset) * -1
 
-				Catch ex As Exception
+                Catch ex As Exception
                     ErrorMessage = ex.Message
                 End Try
 
-				If RTMCServicev2 IsNot Nothing Then
+                If RTMCServicev2 IsNot Nothing Then
 
-					Try
+                    Try
 
-						AccountID = LoadAccountID(DataContext)
-						OutsourceID = LoadOutsourceID(DataContext)
-						CompanyID = LoadCompanyID(DataContext)
+                        AccountID = LoadAccountID(DataContext)
+                        OutsourceID = LoadOutsourceID(DataContext)
+                        CompanyID = LoadCompanyID(DataContext)
 
-						TransactionDeliveryClearedResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryClearedResponseTransactionEntity)
+                        TransactionDeliveryClearedResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryClearedResponseTransactionEntity)
 
-						ClearedRequests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity)
+                        ClearedRequests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity)
 
-						RequestDate = TransactionStartDate
+                        RequestDate = TransactionStartDate
 
-						While RequestDate <= TransactionEndDate
+                        While RequestDate <= TransactionEndDate
 
-							TransactionID = Format(RequestDate, "yyyyMMddHHmmssff")
+                            TransactionID = Format(RequestDate, "yyyyMMddHHmmssff")
 
-							TransactionDeliveryClearedRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity
+                            TransactionDeliveryClearedRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryClearedRequestTransactionEntity
 
-							TransactionDeliveryClearedRequestTransactionEntity.accountNumberField = AccountID
-							TransactionDeliveryClearedRequestTransactionEntity.cardGroupField = -1
-							TransactionDeliveryClearedRequestTransactionEntity.companyNumberField = CompanyID
-							TransactionDeliveryClearedRequestTransactionEntity.outsourceIDField = OutsourceID
-							TransactionDeliveryClearedRequestTransactionEntity.transactionIDField = AdvantageFramework.StringUtilities.PadWithCharacter(TransactionID, 19, "0", True, True)
+                            TransactionDeliveryClearedRequestTransactionEntity.accountNumberField = AccountID
+                            TransactionDeliveryClearedRequestTransactionEntity.cardGroupField = -1
+                            TransactionDeliveryClearedRequestTransactionEntity.companyNumberField = CompanyID
+                            TransactionDeliveryClearedRequestTransactionEntity.outsourceIDField = OutsourceID
+                            TransactionDeliveryClearedRequestTransactionEntity.transactionIDField = AdvantageFramework.StringUtilities.PadWithCharacter(TransactionID, 19, "0", True, True)
 
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
-							'TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.cardNumberField = ""
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
+                            'TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.cardNumberField = ""
 
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
 
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartDateField = RequestDate.ToString("yyyyMMdd")
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartTimeField = "00000001" 'TransactionStartDate.ToString("HHmmssff")
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartDateField = RequestDate.ToString("yyyyMMdd")
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionStartTimeField = "00000001" 'TransactionStartDate.ToString("HHmmssff")
 
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndDateField = RequestDate.ToString("yyyyMMdd")
-							TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndTimeField = "23595999" 'TransactionEndDate.ToString("HHmmssff")
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndDateField = RequestDate.ToString("yyyyMMdd")
+                            TransactionDeliveryClearedRequestTransactionEntity.keyFieldsField.transactionEndTimeField = "23595999" 'TransactionEndDate.ToString("HHmmssff")
 
-							ClearedRequests.Add(TransactionDeliveryClearedRequestTransactionEntity)
+                            ClearedRequests.Add(TransactionDeliveryClearedRequestTransactionEntity)
 
-							RequestDate = DateAdd(DateInterval.Day, 1, RequestDate)
+                            RequestDate = DateAdd(DateInterval.Day, 1, RequestDate)
 
-						End While
+                        End While
 
-						If ClearedRequests.Count > 0 Then
+                        If ClearedRequests.Count > 0 Then
 
-							TransactionDeliveryClearedResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryCleared(ClearedRequests.ToArray))
+                            TransactionDeliveryClearedResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryCleared(ClearedRequests.ToArray))
 
-						End If
+                        End If
 
-						If PopulateVirtualCreditCardTransactionEFSDetail(TransactionDeliveryClearedResponseTransactionEntities, VirtualCreditCardTransactionEFSDetails, ErrorMessage, OffSetHours) Then
+                        If PopulateVirtualCreditCardTransactionEFSDetail(TransactionDeliveryClearedResponseTransactionEntities, VirtualCreditCardTransactionEFSDetails, ErrorMessage, OffSetHours) Then
 
-							RejectRequests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity)
+                            RejectRequests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity)
 
-							TransactionDeliveryRejectResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryRejectResponseTransactionEntity)
+                            TransactionDeliveryRejectResponseTransactionEntities = New Generic.List(Of RTMCService.TransactionDeliveryRejectResponseTransactionEntity)
 
-							RequestDate = TransactionStartDate
+                            RequestDate = TransactionStartDate
 
-							While RequestDate <= TransactionEndDate
+                            While RequestDate <= TransactionEndDate
 
-								TransactionID = Format(RequestDate, "yyyyMMddHHmmssff")
+                                TransactionID = Format(RequestDate, "yyyyMMddHHmmssff")
 
-								TransactionDeliveryRejectRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity
+                                TransactionDeliveryRejectRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryRejectRequestTransactionEntity
 
-								TransactionDeliveryRejectRequestTransactionEntity.accountNumberField = AccountID
-								TransactionDeliveryRejectRequestTransactionEntity.cardGroupField = -1
-								TransactionDeliveryRejectRequestTransactionEntity.companyNumberField = CompanyID
-								TransactionDeliveryRejectRequestTransactionEntity.outsourceIDField = OutsourceID
-								TransactionDeliveryRejectRequestTransactionEntity.transactionIDField = AdvantageFramework.StringUtilities.PadWithCharacter(TransactionID, 19, "0", True, True)
+                                TransactionDeliveryRejectRequestTransactionEntity.accountNumberField = AccountID
+                                TransactionDeliveryRejectRequestTransactionEntity.cardGroupField = -1
+                                TransactionDeliveryRejectRequestTransactionEntity.companyNumberField = CompanyID
+                                TransactionDeliveryRejectRequestTransactionEntity.outsourceIDField = OutsourceID
+                                TransactionDeliveryRejectRequestTransactionEntity.transactionIDField = AdvantageFramework.StringUtilities.PadWithCharacter(TransactionID, 19, "0", True, True)
 
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
-								'TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.cardNumberField = ""
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
+                                'TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.cardNumberField = ""
 
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
 
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartDateField = RequestDate.ToString("yyyyMMdd")
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartTimeField = "00000001" 'TransactionStartDate.ToString("HHmmssff")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartDateField = RequestDate.ToString("yyyyMMdd")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionStartTimeField = "00000001" 'TransactionStartDate.ToString("HHmmssff")
 
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndDateField = RequestDate.ToString("yyyyMMdd")
-								TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndTimeField = "23595999" 'TransactionEndDate.ToString("HHmmssff")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndDateField = RequestDate.ToString("yyyyMMdd")
+                                TransactionDeliveryRejectRequestTransactionEntity.keyFieldsField.transactionEndTimeField = "23595999" 'TransactionEndDate.ToString("HHmmssff")
 
-								RejectRequests.Add(TransactionDeliveryRejectRequestTransactionEntity)
+                                RejectRequests.Add(TransactionDeliveryRejectRequestTransactionEntity)
 
-								RequestDate = DateAdd(DateInterval.Day, 1, RequestDate)
+                                RequestDate = DateAdd(DateInterval.Day, 1, RequestDate)
 
-							End While
+                            End While
 
-							If RejectRequests.Count > 0 Then
+                            If RejectRequests.Count > 0 Then
 
-								TransactionDeliveryRejectResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryReject(RejectRequests.ToArray))
+                                TransactionDeliveryRejectResponseTransactionEntities.AddRange(RTMCServicev2.TransactionDeliveryReject(RejectRequests.ToArray))
 
-							End If
+                            End If
 
-							If PopulateVirtualCreditCardTransactionEFSDetail(TransactionDeliveryRejectResponseTransactionEntities, VirtualCreditCardTransactionEFSDetails, ErrorMessage, OffSetHours) Then
+                            If PopulateVirtualCreditCardTransactionEFSDetail(TransactionDeliveryRejectResponseTransactionEntities, VirtualCreditCardTransactionEFSDetails, ErrorMessage, OffSetHours) Then
 
-								'MemoRequests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryMemoRequestTransactionEntity)
+                                'MemoRequests = New Generic.List(Of AdvantageFramework.RTMCService.TransactionDeliveryMemoRequestTransactionEntity)
 
-								'RequestDate = TransactionStartDate
+                                'RequestDate = TransactionStartDate
 
-								'While RequestDate <= TransactionEndDate
+                                'While RequestDate <= TransactionEndDate
 
-								'    TransactionID = Format(RequestDate, "yyyyMMddHHmmssff")
+                                '    TransactionID = Format(RequestDate, "yyyyMMddHHmmssff")
 
-								'    TransactionDeliveryMemoRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryMemoRequestTransactionEntity
+                                '    TransactionDeliveryMemoRequestTransactionEntity = New AdvantageFramework.RTMCService.TransactionDeliveryMemoRequestTransactionEntity
 
-								'    TransactionDeliveryMemoRequestTransactionEntity.accountNumberField = AccountID
-								'    TransactionDeliveryMemoRequestTransactionEntity.cardGroupField = -1
-								'    TransactionDeliveryMemoRequestTransactionEntity.companyNumberField = CompanyID
-								'    TransactionDeliveryMemoRequestTransactionEntity.outsourceIDField = OutsourceID
-								'    TransactionDeliveryMemoRequestTransactionEntity.transactionIDField = AdvantageFramework.StringUtilities.PadWithCharacter(TransactionID, 19, "0", True, True)
+                                '    TransactionDeliveryMemoRequestTransactionEntity.accountNumberField = AccountID
+                                '    TransactionDeliveryMemoRequestTransactionEntity.cardGroupField = -1
+                                '    TransactionDeliveryMemoRequestTransactionEntity.companyNumberField = CompanyID
+                                '    TransactionDeliveryMemoRequestTransactionEntity.outsourceIDField = OutsourceID
+                                '    TransactionDeliveryMemoRequestTransactionEntity.transactionIDField = AdvantageFramework.StringUtilities.PadWithCharacter(TransactionID, 19, "0", True, True)
 
-								'    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
-								'    'TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.cardNumberField = ""
+                                '    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField = New RTMCService.TransactionDeliveryKeyFields
+                                '    'TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.cardNumberField = ""
 
-								'    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
-								'    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
+                                '    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.lastReceivedField = New RTMCService.TransactionDeliveryLastReceived
+                                '    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.numberOfTransactionsRequestedField = 1000
 
-								'    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionStartDateField = RequestDate.ToString("yyyyMMdd")
-								'    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionStartTimeField = "00000001" 'TransactionStartDate.ToString("HHmmssff")
+                                '    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionStartDateField = RequestDate.ToString("yyyyMMdd")
+                                '    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionStartTimeField = "00000001" 'TransactionStartDate.ToString("HHmmssff")
 
-								'    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionEndDateField = RequestDate.ToString("yyyyMMdd")
-								'    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionEndTimeField = "23595999" 'TransactionEndDate.ToString("HHmmssff")
+                                '    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionEndDateField = RequestDate.ToString("yyyyMMdd")
+                                '    TransactionDeliveryMemoRequestTransactionEntity.keyFieldsField.transactionEndTimeField = "23595999" 'TransactionEndDate.ToString("HHmmssff")
 
-								'    MemoRequests.Add(TransactionDeliveryMemoRequestTransactionEntity)
+                                '    MemoRequests.Add(TransactionDeliveryMemoRequestTransactionEntity)
 
-								'    RequestDate = DateAdd(DateInterval.Day, 1, RequestDate)
+                                '    RequestDate = DateAdd(DateInterval.Day, 1, RequestDate)
 
-								'End While
+                                'End While
 
-								'PopulateVirtualCreditCardTransactionEFSDetail(RTMCServicev2.TransactionDeliveryMemo(MemoRequests.ToArray), VirtualCreditCardTransactionEFSDetails, ErrorMessage)
+                                'PopulateVirtualCreditCardTransactionEFSDetail(RTMCServicev2.TransactionDeliveryMemo(MemoRequests.ToArray), VirtualCreditCardTransactionEFSDetails, ErrorMessage)
 
-							End If
+                            End If
 
-						End If
+                        End If
 
-					Catch ex As Exception
-						ErrorMessage = ex.Message
-					End Try
+                    Catch ex As Exception
+                        ErrorMessage = ex.Message
+                    End Try
 
-				End If
+                End If
 
-			End Using
+            End Using
 
             If String.IsNullOrWhiteSpace(ErrorMessage) Then
 

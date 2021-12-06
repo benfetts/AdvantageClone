@@ -31,6 +31,7 @@
         Private _MediaBroadcastWorksheetPrePostReportCriteriaBuyType As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Pre
         Private _MediaBroadcastWorksheetID As Integer? = Nothing
         Private _MediaBroadcastWorksheetPrePostReportCriteriaMediaType As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV
+        Private _IsPuertoRico As Boolean = False
 
 #End Region
 
@@ -48,7 +49,7 @@
 
         Private Sub New(ParameterDictionary As Generic.Dictionary(Of String, Object), MediaBroadcastWorksheetPrePostReportCriteriaBuyType As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaBuyType,
                         MediaBroadcastWorksheetPrePostReportCriteriaMediaType As AdvantageFramework.Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType,
-                        MediaBroadcastWorksheetID As Integer)
+                        MediaBroadcastWorksheetID As Integer, IsPuertoRico As Boolean)
 
             ' This call is required by the Windows Form Designer.
             InitializeComponent()
@@ -58,6 +59,7 @@
             _MediaBroadcastWorksheetPrePostReportCriteriaBuyType = MediaBroadcastWorksheetPrePostReportCriteriaBuyType
             _MediaBroadcastWorksheetPrePostReportCriteriaMediaType = MediaBroadcastWorksheetPrePostReportCriteriaMediaType
             _MediaBroadcastWorksheetID = MediaBroadcastWorksheetID
+            _IsPuertoRico = IsPuertoRico
 
             If _MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Post Then
 
@@ -91,6 +93,7 @@
             Dim SubItemGridLookUpEditControl As AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemGridLookUpEditControl = Nothing
             Dim SubItemDateInput As AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemDateInput = Nothing
             Dim BroadcastCalendarWeeks As Generic.List(Of AdvantageFramework.MediaPlanning.Classes.BroadcastCalendarWeek) = Nothing
+            Dim VisibleIndex As Integer = 0
 
             If LoadGrid Then
 
@@ -116,40 +119,48 @@
 
                     ElseIf GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.IsCable.ToString Then
 
-                        GridColumn.Visible = (_ViewModel.MediaType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV)
+                        GridColumn.Visible = (_IsPuertoRico = False AndAlso _ViewModel.MediaType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV)
 
                     ElseIf GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.ShareBookID.ToString OrElse
                             GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.HPUTBookID.ToString Then
 
                         If _ViewModel.MediaType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV Then
 
-                            SubItemGridLookUpEditControl = DirectCast(GridColumn.ColumnEdit, AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemGridLookUpEditControl)
+                            If _IsPuertoRico = False Then
 
-                            SubItemGridLookUpEditControl.DataSource = _ViewModel.RepositoryNielsenTVBooks
+                                SubItemGridLookUpEditControl = DirectCast(GridColumn.ColumnEdit, AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemGridLookUpEditControl)
 
-                            If SubItemGridLookUpEditControl.View.Columns.ColumnByFieldName("ID") IsNot Nothing Then
+                                SubItemGridLookUpEditControl.DataSource = _ViewModel.RepositoryNielsenTVBooks
 
-                                SubItemGridLookUpEditControl.View.Columns.ColumnByFieldName("ID").Visible = False
+                                If SubItemGridLookUpEditControl.View.Columns.ColumnByFieldName("ID") IsNot Nothing Then
 
-                            End If
-
-                            If GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.ShareBookID.ToString AndAlso
-                                    _MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Pre Then
-
-                                GridColumn.Caption = "Pre Buy Share Book"
-
-                            End If
-
-                            If GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.HPUTBookID.ToString Then
-
-                                GridColumn.Visible = (_MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Pre)
-
-                                If _ViewModel.MediaBroadcastWorksheet IsNot Nothing AndAlso
-                                    _ViewModel.MediaBroadcastWorksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
-
-                                    GridColumn.Caption = "SIU"
+                                    SubItemGridLookUpEditControl.View.Columns.ColumnByFieldName("ID").Visible = False
 
                                 End If
+
+                                If GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.ShareBookID.ToString AndAlso
+                                        _MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Pre Then
+
+                                    GridColumn.Caption = "Pre Buy Share Book"
+
+                                End If
+
+                                If GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.HPUTBookID.ToString Then
+
+                                    GridColumn.Visible = (_MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Pre)
+
+                                    If _ViewModel.MediaBroadcastWorksheet IsNot Nothing AndAlso
+                                            _ViewModel.MediaBroadcastWorksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Comscore Then
+
+                                        GridColumn.Caption = "SIU"
+
+                                    End If
+
+                                End If
+
+                            Else
+
+                                GridColumn.Visible = False
 
                             End If
 
@@ -158,6 +169,12 @@
                             GridColumn.Visible = False
 
                         End If
+
+                    ElseIf GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString OrElse
+                            GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString Then
+
+                        GridColumn.Visible = (_IsPuertoRico = True AndAlso _ViewModel.MediaType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV AndAlso
+                                              _MediaBroadcastWorksheetPrePostReportCriteriaBuyType = AdvantageFramework.Database.Entities.Methods.MediaBroadcastWorksheetPrePostReportCriteriaBuyType.Pre)
 
                     ElseIf GridColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.NielsenRadioPeriodID1.ToString Then
 
@@ -218,6 +235,18 @@
                     End If
 
                 Next
+
+                If DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString) IsNot Nothing AndAlso
+                        DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString).Visible AndAlso
+                        DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString) IsNot Nothing AndAlso
+                        DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString).Visible AndAlso
+                        DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString).VisibleIndex <=
+                        DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString).VisibleIndex Then
+
+                    DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString).VisibleIndex =
+                        DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString).VisibleIndex + 1
+
+                End If
 
                 DataGridViewForm_Markets.SelectAll()
                 DataGridViewForm_Vendors.SelectAll()
@@ -369,12 +398,12 @@
 
 #Region "  Show Form Methods "
 
-        Public Shared Function ShowFormDialog(ByRef ParameterDictionary As Generic.Dictionary(Of String, Object), BuyType As BuyType, MediaType As MediaType, MediaBroadcastWorksheetID As Integer) As Windows.Forms.DialogResult
+        Public Shared Function ShowFormDialog(ByRef ParameterDictionary As Generic.Dictionary(Of String, Object), BuyType As BuyType, MediaType As MediaType, MediaBroadcastWorksheetID As Integer, IsPuertoRico As Boolean) As Windows.Forms.DialogResult
 
             'objects
             Dim MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog As AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog = Nothing
 
-            MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog = New AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog(ParameterDictionary, BuyType, MediaType, MediaBroadcastWorksheetID)
+            MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog = New AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog(ParameterDictionary, BuyType, MediaType, MediaBroadcastWorksheetID, IsPuertoRico)
 
             ShowFormDialog = MediaBroadcastWorksheetPrePostBuyInitialLoadingDialog.ShowDialog()
 
@@ -967,9 +996,13 @@
 
                     _Controller.DynamicReports_SetSource(_ViewModel, DirectCast(ComboBoxForm_Source.SelectedItem, AdvantageFramework.DTO.ComboBoxItem).Value)
 
+                    _IsPuertoRico = (ComboBoxForm_Source.GetSelectedValue = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico)
+
                 Else
 
                     _Controller.DynamicReports_SetSource(_ViewModel, Nothing)
+
+                    _IsPuertoRico = False
 
                 End If
 
@@ -1026,6 +1059,13 @@
                 _Controller.UpdateMediaBroadcastWorksheetMarketBooks(_ViewModel, MediaBroadcastWorksheetMarketBook)
 
                 RefreshViewModel(False)
+
+            ElseIf e.Column.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString OrElse
+                    e.Column.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString Then
+
+                _Controller.SetRequiredFields(DataGridViewForm_Markets.CurrentView.GetRow(e.RowHandle))
+
+                DataGridViewForm_Markets.ValidateAllRows()
 
             End If
 
@@ -1105,6 +1145,34 @@
 
                     End If
 
+                ElseIf DataGridViewForm_Markets.CurrentView.FocusedColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString Then
+
+                    FocusedRow.PeriodStart = e.Value
+
+                    ErrorText = _Controller.ValidateEntityProperty(FocusedRow, AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString, True, FocusedRow.PeriodEnd)
+
+                    GridColumn = DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString)
+
+                    If GridColumn IsNot Nothing Then
+
+                        DataGridViewForm_Markets.CurrentView.SetColumnError(GridColumn, ErrorText)
+
+                    End If
+
+                ElseIf DataGridViewForm_Markets.CurrentView.FocusedColumn.FieldName = AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString Then
+
+                    FocusedRow.PeriodEnd = e.Value
+
+                    ErrorText = _Controller.ValidateEntityProperty(FocusedRow, AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString, True, FocusedRow.PeriodStart)
+
+                    GridColumn = DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString)
+
+                    If GridColumn IsNot Nothing Then
+
+                        DataGridViewForm_Markets.CurrentView.SetColumnError(GridColumn, ErrorText)
+
+                    End If
+
                 End If
 
             End If
@@ -1153,6 +1221,33 @@
                         End If
 
                     End If
+
+                End If
+
+            End If
+
+        End Sub
+        Private Sub DataGridViewForm_Markets_ValidateRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs) Handles DataGridViewForm_Markets.ValidateRowEvent
+
+            Dim MediaBroadcastWorksheetMarketBook As AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook = Nothing
+
+            If e.Row IsNot Nothing Then
+
+                e.ErrorText = _Controller.MediaBroadcastWorksheetMarketBookValidateEntity(e.Row, e.Valid)
+
+                MediaBroadcastWorksheetMarketBook = e.Row
+
+                If DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString) IsNot Nothing Then
+
+                    DataGridViewForm_Markets.CurrentView.SetColumnError(DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString),
+                                                                        MediaBroadcastWorksheetMarketBook.LoadErrorText(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodStart.ToString))
+
+                End If
+
+                If DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString) IsNot Nothing Then
+
+                    DataGridViewForm_Markets.CurrentView.SetColumnError(DataGridViewForm_Markets.CurrentView.Columns(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString),
+                                                                        MediaBroadcastWorksheetMarketBook.LoadErrorText(AdvantageFramework.DTO.Reporting.MediaBroadcastWorksheetPreBuy.MediaBroadcastWorksheetMarketBook.Properties.PeriodEnd.ToString))
 
                 End If
 

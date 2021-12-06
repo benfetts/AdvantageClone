@@ -11,6 +11,7 @@
 		Public Event AlterSubItemGridLookupEditPropertiesEvent(ByRef GridColumn As DevExpress.XtraGrid.Columns.GridColumn, ByRef SubItemGridLookUpEditControl As AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemGridLookUpEditControl)
 		Public Event ColumnEditValueChangingEvent(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
 		Public Event SubItemGridLookUpEditControlEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
+        Public Event SubItemDateInputEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
 
 #Region " Constants "
 
@@ -20,7 +21,7 @@
 
 #Region " Enum "
 
-		Private Enum ImageIndexes
+        Private Enum ImageIndexes
 			DeleteImage = 0
 		End Enum
 
@@ -583,12 +584,17 @@
 			End If
 
 		End Sub
-		Protected Sub SubItemGridLookUpEditControl_EditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
+        Protected Sub SubItemGridLookUpEditControl_EditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
 
-			RaiseEvent SubItemGridLookUpEditControlEditValueChanging(sender, e)
+            RaiseEvent SubItemGridLookUpEditControlEditValueChanging(sender, e)
 
-		End Sub
-		Protected Sub SubItemGridLookUpEditControl_QueryPopup(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs)
+        End Sub
+        Protected Sub SubItemDateInput_EditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
+
+            RaiseEvent SubItemDateInputEditValueChanging(sender, e)
+
+        End Sub
+        Protected Sub SubItemGridLookUpEditControl_QueryPopup(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs)
 
 			'objects
 			Dim GridLookUpEdit As DevExpress.XtraEditors.GridLookUpEdit = Nothing
@@ -767,7 +773,7 @@
 
 			GridColumn.ColumnEdit = RepositoryItemTimeEdit
 
-		End Sub
+        End Sub
 		Protected Sub AddSubItemDateEdit(ByRef GridColumn As DevExpress.XtraGrid.Columns.GridColumn)
 
 			Dim SubItemDateInput As AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemDateInput = Nothing
@@ -788,7 +794,9 @@
 
 			GridColumn.ColumnEdit = SubItemDateInput
 
-		End Sub
+            AddHandler SubItemDateInput.EditValueChanging, AddressOf SubItemDateInput_EditValueChanging
+
+        End Sub
 		Protected Sub AddSubItemImageComboBox(ByRef GridColumn As DevExpress.XtraGrid.Columns.GridColumn, ByRef SubItemImageComboBox As AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemImageComboBox)
 
 			Me.GridControl.RepositoryItems.Add(SubItemImageComboBox)

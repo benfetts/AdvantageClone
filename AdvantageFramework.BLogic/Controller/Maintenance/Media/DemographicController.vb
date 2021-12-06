@@ -81,6 +81,7 @@
             Dim GenderCodes As Generic.List(Of String) = Nothing
             Dim AgeFromValue As Short? = Nothing
             Dim AgeToValue As Short? = Nothing
+            Dim MediaDemoSourceID As Integer = 0
 
             MediaType = DemographicSetupDetailViewModel.GetMediaDemographicEntity.Type
 
@@ -93,19 +94,24 @@
 
             End If
 
-            If DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen Then
+            MediaDemoSourceID = DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID
+
+            If DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen OrElse
+                    DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.NielsenPuertoRico Then
 
                 DemographicSetupDetailViewModel.NielsenDemographics = (From Entity In DemographicSetupDetailViewModel.RepositoryNielsenDemographicList
                                                                        Where Entity.Gender IsNot Nothing AndAlso
-                                                                       (AgeFromValue Is Nothing OrElse (AgeFromValue IsNot Nothing AndAlso Entity.AgeFrom >= AgeFromValue.Value)) AndAlso
-                                                                       (AgeToValue Is Nothing OrElse (AgeToValue IsNot Nothing AndAlso Entity.AgeTo <= AgeToValue.Value)) AndAlso
-                                                                       (Entity.Type = MediaType OrElse
-                                                                        MediaType Is Nothing) AndAlso
-                                                                       (GenderCodes.Count = 0 OrElse
-                                                                        GenderCodes.Contains(Entity.Gender))).OrderBy(Function(Entity) Entity.AgeFrom).ThenBy(Function(Entity) Entity.Gender).ToList
+                                                                             Entity.MediaDemoSourceID = MediaDemoSourceID AndAlso
+                                                                             (AgeFromValue Is Nothing OrElse (AgeFromValue IsNot Nothing AndAlso Entity.AgeFrom >= AgeFromValue.Value)) AndAlso
+                                                                             (AgeToValue Is Nothing OrElse (AgeToValue IsNot Nothing AndAlso Entity.AgeTo <= AgeToValue.Value)) AndAlso
+                                                                             (Entity.Type = MediaType OrElse
+                                                                              MediaType Is Nothing) AndAlso
+                                                                             (GenderCodes.Count = 0 OrElse
+                                                                              GenderCodes.Contains(Entity.Gender))).OrderBy(Function(Entity) Entity.AgeFrom).ThenBy(Function(Entity) Entity.Gender).ToList
 
                 DemographicSetupDetailViewModel.AgeFromDatasource = (From Entity In (From Entity In DemographicSetupDetailViewModel.RepositoryNielsenDemographicList
                                                                                      Where Entity.Gender IsNot Nothing AndAlso
+                                                                                           Entity.MediaDemoSourceID = MediaDemoSourceID AndAlso
                                                                                            Entity.Type = MediaType AndAlso
                                                                                            (GenderCodes.Count = 0 OrElse
                                                                                             GenderCodes.Contains(Entity.Gender))
@@ -114,6 +120,7 @@
 
                 DemographicSetupDetailViewModel.AgeToDatasource = (From Entity In (From Entity In DemographicSetupDetailViewModel.RepositoryNielsenDemographicList
                                                                                    Where Entity.Gender IsNot Nothing AndAlso
+                                                                                         Entity.MediaDemoSourceID = MediaDemoSourceID AndAlso
                                                                                          Entity.Type = MediaType AndAlso
                                                                                          (GenderCodes.Count = 0 OrElse
                                                                                           GenderCodes.Contains(Entity.Gender)) AndAlso
@@ -299,9 +306,10 @@
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-                If MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen Then
+                If MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen OrElse
+                        MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.NielsenPuertoRico Then
 
-                    DemographicSetupDetailViewModel.RepositoryNielsenDemographicList = AdvantageFramework.Database.Procedures.NielsenDemographic.LoadByType(DbContext, Type).ToList
+                    DemographicSetupDetailViewModel.RepositoryNielsenDemographicList = AdvantageFramework.Database.Procedures.NielsenDemographic.LoadByType(DbContext, Type, MediaDemoSourceID).ToList
 
                 Else
 
@@ -362,7 +370,8 @@
 
             If RefreshAgoToDataSource Then
 
-                If DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen Then
+                If DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen OrElse
+                        DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.NielsenPuertoRico Then
 
                     DemographicSetupDetailViewModel.AgeToDatasource = (From Entity In (From Entity In DemographicSetupDetailViewModel.NielsenDemographics
                                                                                        Where Entity.AgeFrom.HasValue AndAlso
@@ -387,7 +396,13 @@
                     DemographicSetupDetailViewModel.GetMediaDemographicEntity.Code = "N" & DemographicSetupDetailViewModel.GetMediaDemographicEntity.Type &
                                                                                      String.Join("", GenderCodes.ToArray) & AgeFrom & If(CurrentAgeTo = "+", "", CurrentAgeTo)
 
+                ElseIf DemographicSetupDetailViewModel.GetMediaDemographicEntity.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.NielsenPuertoRico Then
+
+                    DemographicSetupDetailViewModel.GetMediaDemographicEntity.Code = "P" & DemographicSetupDetailViewModel.GetMediaDemographicEntity.Type &
+                                                                                     String.Join("", GenderCodes.ToArray) & AgeFrom & If(CurrentAgeTo = "+", "", CurrentAgeTo)
+
                 Else
+
                     DemographicSetupDetailViewModel.GetMediaDemographicEntity.Code = DemographicSetupDetailViewModel.GetMediaDemographicEntity.Type &
                                                                                      String.Join("", GenderCodes.ToArray) & AgeFrom & If(CurrentAgeTo = "+", "", CurrentAgeTo)
 

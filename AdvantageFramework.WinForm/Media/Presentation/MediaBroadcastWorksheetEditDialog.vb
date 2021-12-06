@@ -64,7 +64,8 @@
             _ViewModel.Worksheet.Length = NumericInputInformation_Length.EditValue
             _ViewModel.Worksheet.CountryID = ComboBoxInformation_Country.GetSelectedValue
             _ViewModel.Worksheet.IsInactive = CheckBoxInformation_IsInactive.Checked
-            _ViewModel.Worksheet.DefaultToLatestSharebook = CheckBoxInformation_DefaultToLatestSharebook.Checked
+            _ViewModel.Worksheet.DefaultToLatestSharebook = CheckBoxInformation_DefaultToLatestSharebook.Visible AndAlso CheckBoxInformation_DefaultToLatestSharebook.Checked
+            _ViewModel.Worksheet.NPRPrepopulateDates = CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Visible AndAlso CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Checked
             _ViewModel.Worksheet.ArePiggybacksOK = CheckBoxInformation_ArePiggybacksOK.Checked
             _ViewModel.Worksheet.ProrateSecondaryDemosToPrimary = CheckBoxInformation_ProrateSecondaryDemosToPrimary.Checked
             _ViewModel.Worksheet.PrimaryMediaDemographicID = SearchableComboBoxDemos_PrimaryDemo.GetSelectedValue
@@ -95,6 +96,8 @@
             DateEditInformation_StartDate.Enabled = (_ViewModel.HasOrdersBeenCreated = False)
             NumericInputInformation_Length.Enabled = (_ViewModel.HasDataBeenEnteredInAnyMarketSchedules = False)
             CheckBoxInformation_ArePiggybacksOK.Enabled = (_ViewModel.HasOrdersBeenCreated = False)
+
+            CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Enabled = _ViewModel.DefaultToLatestSharebookEnabled
 
             If _ViewModel.Worksheet.ID = 0 Then
 
@@ -156,6 +159,7 @@
                 CheckBoxInformation_DefaultToLatestSharebook.Checked = _ViewModel.Worksheet.DefaultToLatestSharebook
                 CheckBoxInformation_ArePiggybacksOK.Checked = _ViewModel.Worksheet.ArePiggybacksOK
                 CheckBoxInformation_ProrateSecondaryDemosToPrimary.Checked = _ViewModel.Worksheet.ProrateSecondaryDemosToPrimary
+                CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Checked = _ViewModel.Worksheet.NPRPrepopulateDates
 
                 If _ViewModel.Worksheet.IsGross Then
 
@@ -186,6 +190,9 @@
             End If
 
             DataGridViewDemos_SecondaryDemos.Tag = _ViewModel.Worksheet.RatingsServiceID
+
+            CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Visible = (ComboBoxDemos_Source.SelectedValue = CInt(AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico).ToString)
+            CheckBoxInformation_DefaultToLatestSharebook.Visible = Not CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Visible
 
         End Sub
         Private Sub RefreshSpotMatching()
@@ -854,6 +861,11 @@
                     ElseIf ComboBoxInformation_Country.SelectedValue = "3" Then
 
                         ComboBoxDemos_Source.SelectedValue = "4"
+
+                    ElseIf ComboBoxInformation_Country.SelectedValue = CInt(AdvantageFramework.DTO.Countries.PuertoRico).ToString Then
+
+                        ComboBoxDemos_Source.SelectedValue = CInt(AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico).ToString
+                        CheckBoxInformation_DefaultToMostRecentFourWeekRatings.Checked = True
 
                     Else
 

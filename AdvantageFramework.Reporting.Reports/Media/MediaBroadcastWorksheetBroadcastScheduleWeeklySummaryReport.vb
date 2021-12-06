@@ -393,6 +393,10 @@
 
                         End If
 
+                    ElseIf DataLine.RatingsServiceID.GetValueOrDefault(0) = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.NielsenPuertoRico Then
+
+                        DataLine.RatingsSource = "Nielsen Puerto Rico"
+
                     Else
 
                         DataLine.Survey = String.Empty

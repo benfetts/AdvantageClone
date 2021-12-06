@@ -91,7 +91,7 @@
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property IsFemales() As Boolean
         <Column("AGE_FROM")>
-        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
         Public Property AgeFrom() As Nullable(Of Short)
         <Column("AGE_TO")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
@@ -317,9 +317,10 @@
             Dim GenderExists As Boolean = False
             Dim NielsenIDs As IEnumerable(Of Integer) = Nothing
 
-            If Me.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen Then
+            If Me.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.Nielsen OrElse
+                    Me.MediaDemoSourceID = AdvantageFramework.Database.Entities.MediaDemoSourceID.NielsenPuertoRico Then
 
-                NielsenIDs = (From Entity In AdvantageFramework.Database.Procedures.NielsenDemographic.LoadByType(DbContext, Me.Type).ToList
+                NielsenIDs = (From Entity In AdvantageFramework.Database.Procedures.NielsenDemographic.LoadByType(DbContext, Me.Type, Me.MediaDemoSourceID).ToList
                               Where Entity.Gender = Gender
                               Select Entity.ID).ToArray
 

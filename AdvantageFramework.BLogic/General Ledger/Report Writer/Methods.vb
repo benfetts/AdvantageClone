@@ -289,6 +289,8 @@
             DetailByAccountLandscape = 2
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("3", "Trial Balance")>
             TrialBalance = 3
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("4", "Detail by Transaction")>
+            DetailByTransaction = 4
         End Enum
 
 #End Region

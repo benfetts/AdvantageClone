@@ -103,22 +103,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C7AF89A1-5B74-4F0B-9AA7-F3BC4DFD72D7}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tasc-code.gotoadvantage.com:8080/tfs/advantage
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Webvantage.Angular\\Webvantage.Angular.csproj
-		SccProjectName1 = Webvantage.Angular
-		SccLocalPath1 = Webvantage.Angular
-		SccProjectUniqueName2 = AdvantageFramework.Core\\AdvantageFramework.Core.csproj
-		SccProjectName2 = AdvantageFramework.Core
-		SccLocalPath2 = AdvantageFramework.Core
-		SccProjectUniqueName3 = AdvantageFramework.Core.BLogic\\AdvantageFramework.Core.BLogic.csproj
-		SccProjectName3 = AdvantageFramework.Core.BLogic
-		SccLocalPath3 = AdvantageFramework.Core.BLogic
-		SccProjectUniqueName4 = Webvantage.Angular.Configurator\\Proofing.Configurator.vbproj
-		SccProjectName4 = Webvantage.Angular.Configurator
-		SccLocalPath4 = Webvantage.Angular.Configurator
-	EndGlobalSection
 EndGlobal

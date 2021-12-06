@@ -22,7 +22,7 @@ Namespace My.Resources
     '''<summary>
     '''  A strongly-typed resource class, for looking up localized strings, etc.
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0"),  _
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
      Global.Microsoft.VisualBasic.HideModuleNameAttribute()>  _
@@ -107,6 +107,20 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("BroadcastResearchToolDashboard_TV", resourceCulture)
                 Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        '''&lt;Dashboard CurrencyCulture=&quot;en-US&quot;&gt;
+        '''  &lt;Title Text=&quot;Dashboard&quot; /&gt;
+        '''  &lt;DataSources&gt;
+        '''    &lt;ObjectDataSource Name=&quot;Object Data Source 1&quot; ComponentName=&quot;DashboardObjectDataSource1&quot;&gt;
+        '''      &lt;DataSource Type=&quot;System.Collections.Generic.List`1[[AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult, AdvantageFramework.BLogic, Version=6.70.8.1, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 [rest of string was truncated]&quot;;.
+        '''</summary>
+        Public ReadOnly Property BroadcastResearchToolDashboard_TVPuertoRico() As String
+            Get
+                Return ResourceManager.GetString("BroadcastResearchToolDashboard_TVPuertoRico", resourceCulture)
             End Get
         End Property
         

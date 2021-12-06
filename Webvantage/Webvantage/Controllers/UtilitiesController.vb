@@ -526,33 +526,52 @@ Namespace Controllers
                 Dim Image As System.Drawing.Image = Nothing
                 Dim ImageConverter As System.Drawing.ImageConverter = Nothing
                 Dim Bitmap As System.Drawing.Bitmap = Nothing
+                Dim LoadBitmap As Boolean = False
 
                 Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                    EmployeePic = AdvantageFramework.Database.Procedures.EmployeePicture.LoadByEmployeeCode(DbContext, EmployeeCode)
+                    Try
 
-                    If EmployeePic IsNot Nothing Then
+                        EmployeePic = AdvantageFramework.Database.Procedures.EmployeePicture.LoadByEmployeeCode(DbContext, EmployeeCode)
 
-                        Picture = EmployeePic.Image
+                        If EmployeePic IsNot Nothing AndAlso
+                            EmployeePic.Image IsNot Nothing AndAlso
+                            EmployeePic.Image.Length > 0 Then
 
-                    End If
+                            Picture = EmployeePic.Image
+                            LoadBitmap = True
+
+                        End If
+
+                    Catch ex As Exception
+                        LoadBitmap = False
+                    End Try
 
                 End Using
 
-                If Picture IsNot Nothing Then
+                If LoadBitmap = True Then
 
                     Try
 
                         ImageConverter = New Drawing.ImageConverter
-                        Bitmap = DirectCast(ImageConverter.ConvertFrom(EmployeePic.Image), System.Drawing.Bitmap)
+                        Bitmap = DirectCast(ImageConverter.ConvertFrom(Picture), System.Drawing.Bitmap)
                         Image = Bitmap
 
                     Catch ex As Exception
+                        Image = Nothing
                     End Try
 
                 End If
 
-                Return ImageResult(Image, Drawing.Imaging.ImageFormat.Png)
+                If Image Is Nothing Then
+
+                    Return Nothing
+
+                Else
+
+                    Return ImageResult(Image, Drawing.Imaging.ImageFormat.Png)
+
+                End If
 
             Catch ex As Exception
                 Return Nothing
@@ -569,28 +588,39 @@ Namespace Controllers
                 Dim Image As System.Drawing.Image = Nothing
                 Dim ImageConverter As System.Drawing.ImageConverter = Nothing
                 Dim Bitmap As System.Drawing.Bitmap = Nothing
+                Dim LoadBitmap As Boolean = False
 
                 Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                    EmployeePic = AdvantageFramework.Database.Procedures.EmployeePicture.LoadByEmployeeCode(DbContext, EmployeeCode)
+                    Try
 
-                    If EmployeePic IsNot Nothing Then
+                        EmployeePic = AdvantageFramework.Database.Procedures.EmployeePicture.LoadByEmployeeCode(DbContext, EmployeeCode)
 
-                        Picture = EmployeePic.Image
+                        If EmployeePic IsNot Nothing AndAlso
+                       EmployeePic.Image IsNot Nothing AndAlso
+                       EmployeePic.Image.Length > 0 Then
 
-                    End If
+                            Picture = EmployeePic.Image
+                            LoadBitmap = True
+
+                        End If
+
+                    Catch ex As Exception
+                        LoadBitmap = False
+                    End Try
 
                 End Using
 
-                If Picture IsNot Nothing Then
+                If LoadBitmap = True Then
 
                     Try
 
                         ImageConverter = New Drawing.ImageConverter
-                        Bitmap = DirectCast(ImageConverter.ConvertFrom(EmployeePic.Image), System.Drawing.Bitmap)
+                        Bitmap = DirectCast(ImageConverter.ConvertFrom(Picture), System.Drawing.Bitmap)
                         Image = Bitmap
 
                     Catch ex As Exception
+                        Image = Nothing
                     End Try
 
                 End If

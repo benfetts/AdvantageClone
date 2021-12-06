@@ -27,7 +27,9 @@ SELECT
 	[InvoiceCost] = ap.AP_INV_AMT,
 	[InvoiceNumber] = ap.AP_INV_VCHR,
 	[FILM] = spot.AD_NUMBER,
-	[SpotsInvoice] = CAST(1 as int)
+	[SpotsInvoice] = CAST(1 as int),
+    [PerCostSpot] = spot.GROSS_RATE,
+    [APApprovalComment] = approval.COMMENTS
 FROM dbo.AP_TV_BROADCAST_DTL spot
 	INNER JOIN (
 				SELECT DISTINCT ORDER_NBR, ORDER_LINE_NBR
@@ -50,6 +52,11 @@ FROM dbo.AP_TV_BROADCAST_DTL spot
 				--		(@cmp_code_list IS NOT NULL AND CMP_CODE IN (SELECT * FROM dbo.udf_split_list(@cmp_code_list, ',')))
 				--	)
 				) orders on spot.ORDER_NBR = orders.ORDER_NBR
+    LEFT OUTER JOIN (SELECT AP_ID, ORDER_NBR, LINE_NBR, MAX(REVISION) as MaxRevision, COMMENTS
+                     FROM dbo.AP_MEDIA_APPROVAL 
+                     WHERE ACTIVE_REV = 1
+                     GROUP BY AP_ID, ORDER_NBR, LINE_NBR, COMMENTS
+                    ) approval ON spot.AP_ID = approval.AP_ID AND spot.ORDER_NBR = approval.ORDER_NBR AND spot.ORDER_LINE_NBR = approval.LINE_NBR
 	INNER JOIN dbo.AP_HEADER ap ON spot.AP_ID = ap.AP_ID AND ap.MODIFY_FLAG IS NULL AND ap.DELETE_FLAG IS NULL
 	INNER JOIN dbo.CLIENT c ON orders.CL_CODE = c.CL_CODE
 	INNER JOIN dbo.DIVISION d ON orders.CL_CODE = d.CL_CODE AND orders.DIV_CODE = d.DIV_CODE
@@ -79,7 +86,9 @@ SELECT
 	[InvoiceCost] = ap.AP_INV_AMT,
 	[InvoiceNumber] = ap.AP_INV_VCHR,
 	[FILM] = spot.AD_NUMBER,
-	[SpotsInvoice] = CAST(1 as int)
+	[SpotsInvoice] = CAST(1 as int),
+    [PerCostSpot] = spot.GROSS_RATE,
+    [APApprovalComment] = approval.COMMENTS
 FROM dbo.AP_RADIO_BROADCAST_DTL spot
 	INNER JOIN (
 				SELECT DISTINCT ORDER_NBR, ORDER_LINE_NBR
@@ -102,6 +111,11 @@ FROM dbo.AP_RADIO_BROADCAST_DTL spot
 				--		(@cmp_code_list IS NOT NULL AND CMP_CODE IN (SELECT * FROM dbo.udf_split_list(@cmp_code_list, ',')))
 				--	)
 				) orders on spot.ORDER_NBR = orders.ORDER_NBR
+    LEFT OUTER JOIN (SELECT AP_ID, ORDER_NBR, LINE_NBR, MAX(REVISION) as MaxRevision, COMMENTS
+                     FROM dbo.AP_MEDIA_APPROVAL 
+                     WHERE ACTIVE_REV = 1
+                     GROUP BY AP_ID, ORDER_NBR, LINE_NBR, COMMENTS
+                    ) approval ON spot.AP_ID = approval.AP_ID AND spot.ORDER_NBR = approval.ORDER_NBR AND spot.ORDER_LINE_NBR = approval.LINE_NBR
 	INNER JOIN dbo.AP_HEADER ap ON spot.AP_ID = ap.AP_ID AND ap.MODIFY_FLAG IS NULL AND ap.DELETE_FLAG IS NULL
 	INNER JOIN dbo.CLIENT c ON orders.CL_CODE = c.CL_CODE
 	INNER JOIN dbo.DIVISION d ON orders.CL_CODE = d.CL_CODE AND orders.DIV_CODE = d.DIV_CODE

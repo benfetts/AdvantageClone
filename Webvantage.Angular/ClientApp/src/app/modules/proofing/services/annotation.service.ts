@@ -198,8 +198,8 @@ export class AnnotationService extends BaseService {
     this.setSelected(null);
   }
 
-  getDraftAnnotations(): Observable<IAnnotation[]> {
-    return this.draftAnotations$.pipe();
+  getDraftAnnotations(): BehaviorSubject<IAnnotation[]> {
+    return this.draftAnotations$;
   }
 
   updateDraftAnnotation(markupXml: string) {

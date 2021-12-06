@@ -25,6 +25,7 @@ import { ISearchResults } from '../interfaces/search-results';
 import { CENTRAL_BUTTONS_TYPES } from '../constants/types/central-buttons-types.constants';
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 
+
 declare var WebViewer: any;
 
 @Component({
@@ -69,6 +70,11 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   public base_href: string = null;
 
   baseHref: string = "";
+
+  mimeTypes: { [key: string]: string } = {
+    'image/jpeg': 'jpg',
+    'application/pdf': 'pdf'
+  }
   
 
   constructor(private sliderToolService: SliderToolService,
@@ -288,7 +294,7 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.ref.detectChanges();
       });
 
-    this.searchService.getSearchOptions().pipe(takeUntil(this.destroy$), filter(o => o != null)).subscribe((options: ISearchOptions) => {
+    this.searchService.getSearchOptions().pipe(takeUntil(this.destroy$)).subscribe((options: ISearchOptions) => {
       this.searchText(options)
     });
 
@@ -661,12 +667,29 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.documentLoaded = false;
     this.annotationService.clearAnnotations();
 
+    console.log('loading', document);
+
     //remove any annotations that were in a draft state
     this.annotationService.clearDraftAnnotations();
 
     if (instance) {
       if (this.overlay == false || this.mainView) {
-        if (document?.documentId == null) {
+
+        var temp = document?.repositoryFilename;
+
+        if (document?.mimeType == 'URL') {
+          if (temp.includes('https://drive.google.com') && !temp.includes('export=download')) {
+            //this looks like a google drive shared link we need to make is a direct link
+            temp = this.getGoogleDriveDirectLinkFromSharedLink(temp);
+          }
+
+          this.http.get(temp, { responseType: 'blob' }).subscribe((results) => {
+            console.log(results);
+            instance.loadDocument(results, { extension: this.mimeTypes[results.type]});
+          });
+
+        }
+        else if (document?.documentId == null) {
           this.http.get(this.baseHref + 'api/ProofingDocumentName?dl=' + dl, { responseType: 'text' })
             .subscribe((filename: string) => {
               if (filename.endsWith('.mp4')) {
@@ -909,7 +932,7 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   searchText(options: ISearchOptions): void {
     var instance = this.wvInstance;
-    instance.searchTextFull(options.searchPhrase, options);
+    instance.searchTextFull(options?.searchPhrase, options);
   }
 
   getToolType(annotations): TOOL_TYPE {
@@ -1240,5 +1263,14 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
 
       return '';
     }
+  }
+
+  getGoogleDriveDirectLinkFromSharedLink(sharedLink: string): string  {
+    var idExtractor = /\/d\/(.+?)(?:\/|#|\?|$)/;
+    var result = idExtractor.exec(sharedLink);
+
+    var finalLink = "https://drive.google.com/uc?export=download&id=" + result[1];
+
+    return finalLink;
   }
 }

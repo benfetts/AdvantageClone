@@ -1,4 +1,4 @@
-Namespace MediaWIP.AccruedLiabilities
+﻿Namespace MediaWIP.AccruedLiabilities
 
     Partial Public Class AccruedLiabilitySummarybyJobSalesClassFunction
         Private components As System.ComponentModel.IContainer
@@ -35,19 +35,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
             Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
             Me.GLAccountHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
-            Me.GLAccountFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
-            Me.JobCompHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
-            Me.SalesClassFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
-            Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
-            Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
-            Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
-            Me.SalesClassHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
-            Me.FunctionFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
-            Me.FunctionHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
             Me.label2 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label1 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.GLAccountFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
             Me.label17 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label14 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.JobCompHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
             Me.label29 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label9 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label8 = New DevExpress.XtraReports.UI.XRLabel()
@@ -55,14 +48,18 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label6 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label10 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label31 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.HideZeroRows = New DevExpress.XtraReports.UI.FormattingRule()
+            Me.SalesClassFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
             Me.line4 = New DevExpress.XtraReports.UI.XRLine()
             Me.label33 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label11 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
             Me.label20 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label19 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label30 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label27 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label26 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.end_period = New DevExpress.XtraReports.Parameters.Parameter()
             Me.line2 = New DevExpress.XtraReports.UI.XRLine()
             Me.line1 = New DevExpress.XtraReports.UI.XRLine()
             Me.label24 = New DevExpress.XtraReports.UI.XRLabel()
@@ -70,23 +67,25 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label22 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label5 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label3 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
             Me.label28 = New DevExpress.XtraReports.UI.XRLabel()
             Me.line3 = New DevExpress.XtraReports.UI.XRLine()
             Me.pageInfo2 = New DevExpress.XtraReports.UI.XRPageInfo()
             Me.pageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
+            Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
             Me.label18 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label16 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.SalesClassHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
             Me.label12 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.FunctionFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
             Me.label4 = New DevExpress.XtraReports.UI.XRLabel()
             Me.label25 = New DevExpress.XtraReports.UI.XRLabel()
+            Me.FunctionHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
             Me.label15 = New DevExpress.XtraReports.UI.XRLabel()
-            Me.HideZeroRows = New DevExpress.XtraReports.UI.FormattingRule()
             Me.GLAccount = New DevExpress.XtraReports.UI.CalculatedField()
             Me.JobComp = New DevExpress.XtraReports.UI.CalculatedField()
             Me.JobCompFunction = New DevExpress.XtraReports.UI.CalculatedField()
-            Me.AccruedLiabilityAmountFunction = New DevExpress.XtraReports.UI.CalculatedField()
             Me.FunctionTotalLabel = New DevExpress.XtraReports.UI.CalculatedField()
-            Me.end_period = New DevExpress.XtraReports.Parameters.Parameter()
             Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,71 +120,6 @@ Namespace MediaWIP.AccruedLiabilities
             Me.GLAccountHeader.Name = "GLAccountHeader"
             Me.GLAccountHeader.RepeatEveryPage = True
             '
-            'GLAccountFooter
-            '
-            Me.GLAccountFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label17, Me.label14})
-            Me.GLAccountFooter.HeightF = 36.0!
-            Me.GLAccountFooter.Level = 3
-            Me.GLAccountFooter.Name = "GLAccountFooter"
-            '
-            'JobCompHeader
-            '
-            Me.JobCompHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label29, Me.label9, Me.label8, Me.label7, Me.label6, Me.label10, Me.label31})
-            Me.JobCompHeader.FormattingRules.Add(Me.HideZeroRows)
-            Me.JobCompHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("JobComp", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
-            Me.JobCompHeader.HeightF = 18.0!
-            Me.JobCompHeader.Name = "JobCompHeader"
-            Me.JobCompHeader.Visible = False
-            '
-            'SalesClassFooter
-            '
-            Me.SalesClassFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.line4, Me.label33, Me.label11})
-            Me.SalesClassFooter.HeightF = 43.0!
-            Me.SalesClassFooter.Level = 2
-            Me.SalesClassFooter.Name = "SalesClassFooter"
-            '
-            'PageHeader
-            '
-            Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label20, Me.label19, Me.label30, Me.label27, Me.label26, Me.line2, Me.line1, Me.label24, Me.label23, Me.label22, Me.label5, Me.label3})
-            Me.PageHeader.HeightF = 102.0833!
-            Me.PageHeader.Name = "PageHeader"
-            '
-            'PageFooter
-            '
-            Me.PageFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label28, Me.line3, Me.pageInfo2, Me.pageInfo1})
-            Me.PageFooter.HeightF = 33.0!
-            Me.PageFooter.Name = "PageFooter"
-            '
-            'ReportFooter
-            '
-            Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label18, Me.label16})
-            Me.ReportFooter.HeightF = 18.00001!
-            Me.ReportFooter.Name = "ReportFooter"
-            '
-            'SalesClassHeader
-            '
-            Me.SalesClassHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label12})
-            Me.SalesClassHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("OfficeCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("SalesClassCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
-            Me.SalesClassHeader.HeightF = 18.0!
-            Me.SalesClassHeader.Level = 2
-            Me.SalesClassHeader.Name = "SalesClassHeader"
-            Me.SalesClassHeader.RepeatEveryPage = True
-            '
-            'FunctionFooter
-            '
-            Me.FunctionFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label4, Me.label25})
-            Me.FunctionFooter.HeightF = 25.0!
-            Me.FunctionFooter.Level = 1
-            Me.FunctionFooter.Name = "FunctionFooter"
-            '
-            'FunctionHeader
-            '
-            Me.FunctionHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label15})
-            Me.FunctionHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("FunctionCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
-            Me.FunctionHeader.HeightF = 18.0!
-            Me.FunctionHeader.Level = 1
-            Me.FunctionHeader.Name = "FunctionHeader"
-            '
             'label2
             '
             Me.label2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "GLAccount")})
@@ -208,6 +142,13 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label1.SizeF = New System.Drawing.SizeF(79.16667!, 18.0!)
             Me.label1.StylePriority.UseFont = False
             Me.label1.Text = "GL Account: "
+            '
+            'GLAccountFooter
+            '
+            Me.GLAccountFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label17, Me.label14})
+            Me.GLAccountFooter.HeightF = 36.0!
+            Me.GLAccountFooter.Level = 3
+            Me.GLAccountFooter.Name = "GLAccountFooter"
             '
             'label17
             '
@@ -240,6 +181,15 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label14.TextFormatString = "{0:n2}"
             Me.label14.WordWrap = False
+            '
+            'JobCompHeader
+            '
+            Me.JobCompHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label29, Me.label9, Me.label8, Me.label7, Me.label6, Me.label10, Me.label31})
+            Me.JobCompHeader.FormattingRules.Add(Me.HideZeroRows)
+            Me.JobCompHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("JobComp", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
+            Me.JobCompHeader.HeightF = 18.0!
+            Me.JobCompHeader.Name = "JobCompHeader"
+            Me.JobCompHeader.Visible = False
             '
             'label29
             '
@@ -338,6 +288,19 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label31.TextFormatString = "{0:n2}"
             Me.label31.WordWrap = False
             '
+            'HideZeroRows
+            '
+            Me.HideZeroRows.Condition = "Abs([AccruedLiabilityAmountFunction])>=.01"
+            Me.HideZeroRows.Formatting.Visible = DevExpress.Utils.DefaultBoolean.[True]
+            Me.HideZeroRows.Name = "HideZeroRows"
+            '
+            'SalesClassFooter
+            '
+            Me.SalesClassFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.line4, Me.label33, Me.label11})
+            Me.SalesClassFooter.HeightF = 43.0!
+            Me.SalesClassFooter.Level = 2
+            Me.SalesClassFooter.Name = "SalesClassFooter"
+            '
             'line4
             '
             Me.line4.BackColor = System.Drawing.Color.Transparent
@@ -384,6 +347,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             Me.label11.TextFormatString = "{0:n2}"
             Me.label11.WordWrap = False
+            '
+            'PageHeader
+            '
+            Me.PageHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label20, Me.label19, Me.label30, Me.label27, Me.label26, Me.line2, Me.line1, Me.label24, Me.label23, Me.label22, Me.label5, Me.label3})
+            Me.PageHeader.HeightF = 102.0833!
+            Me.PageHeader.Name = "PageHeader"
             '
             'label20
             '
@@ -445,6 +414,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label26.StylePriority.UseFont = False
             Me.label26.Text = "label26"
             Me.label26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
+            '
+            'end_period
+            '
+            Me.end_period.Description = "End Period"
+            Me.end_period.Name = "end_period"
+            Me.end_period.Visible = False
             '
             'line2
             '
@@ -535,6 +510,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label3.StylePriority.UseFont = False
             Me.label3.Text = "Accrued Liability Summary by Job, SC and Fnc"
             '
+            'PageFooter
+            '
+            Me.PageFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label28, Me.line3, Me.pageInfo2, Me.pageInfo1})
+            Me.PageFooter.HeightF = 33.0!
+            Me.PageFooter.Name = "PageFooter"
+            '
             'label28
             '
             Me.label28.CanGrow = False
@@ -588,6 +569,12 @@ Namespace MediaWIP.AccruedLiabilities
             Me.pageInfo1.StylePriority.UseFont = False
             Me.pageInfo1.TextFormatString = "{0:dddd, MMMM dd, yyyy h:mm tt}"
             '
+            'ReportFooter
+            '
+            Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label18, Me.label16})
+            Me.ReportFooter.HeightF = 18.00001!
+            Me.ReportFooter.Name = "ReportFooter"
+            '
             'label18
             '
             Me.label18.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
@@ -620,6 +607,15 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label16.TextFormatString = "{0:n2}"
             Me.label16.WordWrap = False
             '
+            'SalesClassHeader
+            '
+            Me.SalesClassHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label12})
+            Me.SalesClassHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("OfficeCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending), New DevExpress.XtraReports.UI.GroupField("SalesClassCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
+            Me.SalesClassHeader.HeightF = 18.0!
+            Me.SalesClassHeader.Level = 2
+            Me.SalesClassHeader.Name = "SalesClassHeader"
+            Me.SalesClassHeader.RepeatEveryPage = True
+            '
             'label12
             '
             Me.label12.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "SalesClassDescription")})
@@ -631,6 +627,13 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label12.SizeF = New System.Drawing.SizeF(346.0418!, 18.0!)
             Me.label12.StylePriority.UseFont = False
             Me.label12.Text = "label12"
+            '
+            'FunctionFooter
+            '
+            Me.FunctionFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label4, Me.label25})
+            Me.FunctionFooter.HeightF = 25.0!
+            Me.FunctionFooter.Level = 1
+            Me.FunctionFooter.Name = "FunctionFooter"
             '
             'label4
             '
@@ -664,6 +667,14 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label25.TextFormatString = "{0:n2}"
             Me.label25.WordWrap = False
             '
+            'FunctionHeader
+            '
+            Me.FunctionHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.label15})
+            Me.FunctionHeader.GroupFields.AddRange(New DevExpress.XtraReports.UI.GroupField() {New DevExpress.XtraReports.UI.GroupField("FunctionCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)})
+            Me.FunctionHeader.HeightF = 18.0!
+            Me.FunctionHeader.Level = 1
+            Me.FunctionHeader.Name = "FunctionHeader"
+            '
             'label15
             '
             Me.label15.CanGrow = False
@@ -675,12 +686,6 @@ Namespace MediaWIP.AccruedLiabilities
             Me.label15.SizeF = New System.Drawing.SizeF(262.7084!, 18.0!)
             Me.label15.Text = "label15"
             Me.label15.WordWrap = False
-            '
-            'HideZeroRows
-            '
-            Me.HideZeroRows.Condition = "Abs([AccruedLiabilityAmountFunction])>=.01"
-            Me.HideZeroRows.Formatting.Visible = DevExpress.Utils.DefaultBoolean.[True]
-            Me.HideZeroRows.Name = "HideZeroRows"
             '
             'GLAccount
             '
@@ -700,23 +705,11 @@ Namespace MediaWIP.AccruedLiabilities
             Me.JobCompFunction.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
             Me.JobCompFunction.Name = "JobCompFunction"
             '
-            'AccruedLiabilityAmountFunction
-            '
-            Me.AccruedLiabilityAmountFunction.Expression = "[][[JobCompFunction]=[^.JobCompFunction]].sum([AccruedLiabilityAmount])"
-            Me.AccruedLiabilityAmountFunction.FieldType = DevExpress.XtraReports.UI.FieldType.[Double]
-            Me.AccruedLiabilityAmountFunction.Name = "AccruedLiabilityAmountFunction"
-            '
             'FunctionTotalLabel
             '
             Me.FunctionTotalLabel.Expression = "concat('Total for Function ',[FunctionCode],':')"
             Me.FunctionTotalLabel.FieldType = DevExpress.XtraReports.UI.FieldType.[String]
             Me.FunctionTotalLabel.Name = "FunctionTotalLabel"
-            '
-            'end_period
-            '
-            Me.end_period.Description = "End Period"
-            Me.end_period.Name = "end_period"
-            Me.end_period.Visible = False
             '
             'BindingSource
             '
@@ -725,7 +718,7 @@ Namespace MediaWIP.AccruedLiabilities
             'AccruedLiabilitySummarybyJobSalesClassFunction
             '
             Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.GLAccountHeader, Me.GLAccountFooter, Me.JobCompHeader, Me.SalesClassFooter, Me.PageHeader, Me.PageFooter, Me.ReportFooter, Me.SalesClassHeader, Me.FunctionFooter, Me.FunctionHeader})
-            Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.GLAccount, Me.JobComp, Me.JobCompFunction, Me.AccruedLiabilityAmountFunction, Me.FunctionTotalLabel})
+            Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.GLAccount, Me.JobComp, Me.JobCompFunction, Me.FunctionTotalLabel})
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.DisplayName = "703 Accrued Liability Summary by Job, SC and Fnc"
@@ -795,7 +788,6 @@ Namespace MediaWIP.AccruedLiabilities
         Friend WithEvents GLAccount As DevExpress.XtraReports.UI.CalculatedField
         Friend WithEvents JobComp As DevExpress.XtraReports.UI.CalculatedField
         Friend WithEvents JobCompFunction As DevExpress.XtraReports.UI.CalculatedField
-        Friend WithEvents AccruedLiabilityAmountFunction As DevExpress.XtraReports.UI.CalculatedField
         Friend WithEvents FunctionTotalLabel As DevExpress.XtraReports.UI.CalculatedField
         Friend WithEvents BindingSource As System.Windows.Forms.BindingSource
     End Class

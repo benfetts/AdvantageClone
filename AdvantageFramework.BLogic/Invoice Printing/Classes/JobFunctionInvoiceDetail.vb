@@ -1,4 +1,4 @@
-Namespace InvoicePrinting.Classes
+﻿Namespace InvoicePrinting.Classes
 
     <Serializable>
     Public Class JobFunctionInvoiceDetail
@@ -91,6 +91,7 @@ Namespace InvoicePrinting.Classes
             TotalTax
             TotalAmount
             Comment
+            VATNumber
         End Enum
 
 #End Region
@@ -196,6 +197,7 @@ Namespace InvoicePrinting.Classes
         Public Property TotalTax As Nullable(Of Decimal)
         Public Property TotalAmount As Nullable(Of Decimal)
         Public Property Comment As String
+        Public Property VATNumber As String
 
 #End Region
 
@@ -288,6 +290,7 @@ Namespace InvoicePrinting.Classes
             Me.TotalTax = InvoiceFunctionDetail.TotalTax
             Me.TotalAmount = InvoiceFunctionDetail.TotalAmount
             Me.Comment = InvoiceFunctionDetail.Comment
+            Me.VATNumber = StandardInvoiceDetail.VATNumber
 
         End Sub
         Public Overrides Function ToString() As String

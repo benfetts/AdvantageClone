@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source 1" ComponentName="dashboardObjectDataSource1">
+      <DataSource Type="System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="ClientCode" DefaultId="DataItem0" />
+        <Measure DataMember="APPaidAmount" DefaultId="DataItem1" />
+      </DataItems>
+      <Arguments>
+        <Argument DefaultId="DataItem0" />
+      </Arguments>
+      <Values>
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <TreeView ComponentName="treeViewDashboardItem1" Name="Tree View 1" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="ClientCode" DefaultId="DataItem0" />
+        <Dimension DataMember="VendorCode" DefaultId="DataItem1" />
+      </DataItems>
+      <FilterDimensions>
+        <Dimension DefaultId="DataItem0" />
+        <Dimension DefaultId="DataItem1" />
+      </FilterDimensions>
+    </TreeView>
+    <Grid ComponentName="gridDashboardItem1" Name="Grid 1" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="ClientCode" DefaultId="DataItem0" />
+        <Measure DataMember="ARCostAmount" DefaultId="DataItem1" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridMeasureColumn>
+          <Measure DefaultId="DataItem1" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutGroup Orientation="Vertical" Weight="0.5">
+        <LayoutItem DashboardItem="treeViewDashboardItem1" Weight="0.5" />
+        <LayoutItem DashboardItem="gridDashboardItem1" Weight="0.5" />
+      </LayoutGroup>
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="0.5" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

@@ -87,7 +87,7 @@ export class AssetExplorerItemComponent implements OnInit, OnDestroy {
 
   private setSelected(): void {
     this.documents.forEach((v, i, a) => {
-      if (v.documentId == this.document.documentId) {
+      if (v.documentId == this.document?.documentId) {
         a[i].selected = true;
       }
       else {

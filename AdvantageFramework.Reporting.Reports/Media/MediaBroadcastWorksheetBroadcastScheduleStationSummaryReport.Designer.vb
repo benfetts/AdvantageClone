@@ -21,6 +21,7 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
@@ -181,7 +182,7 @@
             Me.LabelPageFooter_Date = New DevExpress.XtraReports.UI.XRLabel()
             Me.XrLabelDisclamier = New DevExpress.XtraReports.UI.XRLabel()
             Me.XrPageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
-            Me.BindingSource = New System.Windows.Forms.BindingSource()
+            Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
             CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1749,7 +1750,7 @@
             Me.PageHeight = 850
             Me.PageWidth = 1100
             Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
-            Me.Version = "18.1"
+            Me.Version = "20.1"
             CType(Me.XrTable3, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.XrTable2, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).EndInit()

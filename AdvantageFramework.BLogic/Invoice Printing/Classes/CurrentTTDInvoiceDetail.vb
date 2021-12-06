@@ -1,4 +1,4 @@
-Namespace InvoicePrinting.Classes
+﻿Namespace InvoicePrinting.Classes
 
     <Serializable()>
     Public Class CurrentTTDInvoiceDetail
@@ -84,6 +84,9 @@ Namespace InvoicePrinting.Classes
 			Campaign
             CampaignComment
             DiscountAmount
+            VATNumber
+            EstimateHours
+            TTDHoursBilled
         End Enum
 
 #End Region
@@ -815,6 +818,12 @@ Namespace InvoicePrinting.Classes
                 _DiscountAmount = value
             End Set
         End Property
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property VATNumber() As String
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property EstimateHours() As Nullable(Of Decimal)
+        <System.Runtime.Serialization.DataMemberAttribute()>
+        Public Property TTDHoursBilled() As Nullable(Of Decimal)
 
 #End Region
 

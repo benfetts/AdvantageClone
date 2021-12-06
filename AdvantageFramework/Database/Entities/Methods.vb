@@ -33,6 +33,7 @@
             RevenueResourcePlanRevenueSetup = 8
             RevenueResourcePlanResourceSetup = 9
             BroadcastResearchTool_National = 10
+            BroadcastResearchTool_TVPuertoRico = 4
         End Enum
 
         Public Enum CycleTypes
@@ -1916,6 +1917,8 @@
             Numeris = 2
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("3", "OzTAM")>
             OzTAM = 3
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("4", "Nielsen Puerto Rico")>
+            NielsenPuertoRico = 4
         End Enum
 
         Public Enum RatingService As Integer
@@ -2201,6 +2204,20 @@
             Line = 2
             <AdvantageFramework.EnumUtilities.Attributes.EnumObject("3", "Standard")>
             Standard = 3
+        End Enum
+
+        'Public Enum MediaTVTypes As Short
+        '    None = 0
+        '    SpotTV = 1
+        '    LocalCable = 2
+        '    NationalTV = 3
+        'End Enum
+
+        Public Enum SpotTVPuertoRicoResearchReportType As Short
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("1", "Ranker")>
+            Ranker = 1
+            <AdvantageFramework.EnumUtilities.Attributes.EnumObject("2", "Trend by Date")>
+            TrendByDate = 2
         End Enum
 
 #End Region

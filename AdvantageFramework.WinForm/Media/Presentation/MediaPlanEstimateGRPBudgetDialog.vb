@@ -115,6 +115,8 @@
 
             Saved = _Controller.EstimateGRPBudget_Save(_ViewModel)
 
+            LoadViewModel()
+
             Save = Saved
 
         End Function

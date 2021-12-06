@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="Dashboard" />
+  <DataSources>
+    <ObjectDataSource Name="Object Data Source 1" ComponentName="dashboardObjectDataSource1">
+      <DataSource Type="System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+      <Filter>[AlertLevel] = 'AP' And Contains([IsSystemGenerated], 'No') And [CurrentState] &lt;&gt; 'Approved'</Filter>
+    </ObjectDataSource>
+  </DataSources>
+  <Items>
+    <Grid ComponentName="gridDashboardItem1" Name="AP Pending Approvals" DataSource="dashboardObjectDataSource1">
+      <DataItems>
+        <Dimension DataMember="AssignedEmployee" DefaultId="DataItem1" />
+        <Dimension DataMember="Comment" DefaultId="DataItem2" />
+        <Dimension DataMember="CurrentState" DefaultId="DataItem3" />
+        <Dimension DataMember="VendorCode" DefaultId="DataItem0" />
+        <Dimension DataMember="Subject" DefaultId="DataItem4" />
+        <Dimension DataMember="GeneratedDate" DateTimeGroupInterval="DayMonthYear" DefaultId="DataItem5" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn Name="Current State">
+          <Dimension DefaultId="DataItem3" />
+        </GridDimensionColumn>
+        <GridDimensionColumn Name="Assigned Employee">
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem2" />
+        </GridDimensionColumn>
+        <GridDimensionColumn Name="Generated Date">
+          <Dimension DefaultId="DataItem5" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem4" />
+        </GridDimensionColumn>
+        <GridDimensionColumn Name="Vendor Code">
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="gridDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

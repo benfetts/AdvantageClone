@@ -3,7 +3,7 @@
   <Runtime>
     <ConceptualModels>
       <Schema Namespace="AdvantageFramework.BillingCommandCenter.Database" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="BillingApprovalBatch" customannotation:ClrType="AdvantageFramework.BillingCommandCenter.Database.Entities.BillingApprovalBatch, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="BillingApprovalBatch" customannotation:ClrType="AdvantageFramework.BillingCommandCenter.Database.Entities.BillingApprovalBatch, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -35,7 +35,7 @@
           <Property Name="BillingApprovalBilledAny" Type="Boolean" />
           <Property Name="BillingApprovalBilledAll" Type="Boolean" />
         </EntityType>
-        <EntityType Name="BillingCommandCenter" customannotation:ClrType="AdvantageFramework.BillingCommandCenter.Database.Entities.BillingCommandCenter, AdvantageFramework, Version=6.70.8.0, Culture=neutral, PublicKeyToken=726bfc335d10597f">
+        <EntityType Name="BillingCommandCenter" customannotation:ClrType="AdvantageFramework.BillingCommandCenter.Database.Entities.BillingCommandCenter, AdvantageFramework, Version=6.70.8.1, Culture=neutral, PublicKeyToken=726bfc335d10597f">
           <Key>
             <PropertyRef Name="ID" />
           </Key>

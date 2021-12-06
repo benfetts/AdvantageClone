@@ -34,6 +34,7 @@
 
         Dim _Location As AdvantageFramework.Database.Entities.Location = Nothing
         Dim _ComscoreUseNewMarket As Boolean = False
+        Private _HideReachFrequency As Boolean = False
 
 #End Region
 
@@ -363,7 +364,8 @@
 #End Region
 
 #Region "Show Form Methods"
-        Private Sub New(ParameterDictionary As Generic.Dictionary(Of String, Object), Optional MediaBroadcastWorksheetID As Nullable(Of Integer) = Nothing)
+
+        Private Sub New(ParameterDictionary As Generic.Dictionary(Of String, Object), MediaBroadcastWorksheetID As Nullable(Of Integer), HideReachFrequency As Boolean)
 
             ' This call is required by the Windows Form Designer.
             InitializeComponent()
@@ -371,8 +373,7 @@
             ' Add any initialization after the InitializeComponent() call.
             _ParameterDictionary = ParameterDictionary
             _MediaBroadcastWorksheetID = MediaBroadcastWorksheetID
-
-            Dim MediaBroadcastWorksheets As ViewModels.Media.MediaBroadcastWorksheet.MediaBroadcastWorksheetEditViewModel = Nothing
+            _HideReachFrequency = HideReachFrequency
 
         End Sub
 
@@ -380,14 +381,22 @@
             PopulateTemplateScreen(_MediaBroadcastWorksheetID.Value)
             PopulateReportOptionsScreen(_MediaBroadcastWorksheetID.Value)
             Me.TabControl_Criteria.SelectedTabIndex = 0
+
+            If _HideReachFrequency Then
+
+                ReportOptions_CheckBoxShowRF.Visible = False
+                ReportOptions_CheckBoxShowRF.Checked = False
+
+            End If
+
         End Sub
 
-        Public Shared Function ShowFormDialog(ByRef ParameterDictionary As Generic.Dictionary(Of String, Object), Optional MediaBroadcastWorksheetID As Integer? = Nothing) As Windows.Forms.DialogResult
+        Public Shared Function ShowFormDialog(ByRef ParameterDictionary As Generic.Dictionary(Of String, Object), MediaBroadcastWorksheetID As Integer?, HideReachFrequency As Boolean) As Windows.Forms.DialogResult
 
             'objects
             Dim MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog As AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog = Nothing
 
-            MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog = New AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog(ParameterDictionary, MediaBroadcastWorksheetID)
+            MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog = New AdvantageFramework.Reporting.Presentation.MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog(ParameterDictionary, MediaBroadcastWorksheetID, HideReachFrequency)
 
             ShowFormDialog = MediaBroadcastWorksheetBroadcastScheduleCriteriaDialog.ShowDialog()
 

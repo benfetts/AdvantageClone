@@ -39,7 +39,8 @@
 
                 AdvantageServiceReportSchedule = DirectCast(DataGridViewForm_ScheduledReports.CurrentView.GetRow(DataGridViewForm_ScheduledReports.CurrentView.FocusedRowHandle), AdvantageFramework.Desktop.Classes.AdvantageServiceReportSchedule)
 
-                If AdvantageServiceReportSchedule IsNot Nothing AndAlso AdvantageServiceReportSchedule.DynamicReportType <> AdvantageFramework.Reporting.DynamicReports.Employees Then
+                If AdvantageServiceReportSchedule IsNot Nothing AndAlso AdvantageServiceReportSchedule.DynamicReportType <> AdvantageFramework.Reporting.DynamicReports.Employees AndAlso
+                        AdvantageServiceReportSchedule.DynamicReportType <> AdvantageFramework.Reporting.DynamicReports.VirtualCreditCardTransactionEFS Then
 
                     ShowCriteriaEdit = True
 

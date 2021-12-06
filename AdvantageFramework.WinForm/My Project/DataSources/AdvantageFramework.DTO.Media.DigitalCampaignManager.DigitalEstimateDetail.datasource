@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="DigitalEstimateDetail" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>AdvantageFramework.DTO.Media.DigitalCampaignManager.DigitalEstimateDetail, AdvantageFramework.BLogic, Version=6.70.8.0, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5</TypeInfo>
+   <TypeInfo>AdvantageFramework.DTO.Media.DigitalCampaignManager.DigitalEstimateDetail, AdvantageFramework.BLogic, Version=6.70.8.1, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5</TypeInfo>
 </GenericObjectDataSource>

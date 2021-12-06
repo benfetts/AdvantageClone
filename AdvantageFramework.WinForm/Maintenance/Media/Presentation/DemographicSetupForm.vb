@@ -68,6 +68,7 @@
             If _ViewModel.SelectedDemoSource = Database.Entities.Methods.MediaDemoSourceID.Numeris Then
 
                 ButtonItemView_NationalTV.Enabled = False
+                ButtonItemView_Radio.Enabled = True
 
                 If ButtonItemView_NationalTV.Checked Then
 
@@ -77,9 +78,23 @@
 
                 MediaDemographicControlRightSection_DemoControl.DataGridViewControl_DemoDetails.Visible = False
 
+            ElseIf _ViewModel.SelectedDemoSource = Database.Entities.Methods.MediaDemoSourceID.NielsenPuertoRico Then
+
+                ButtonItemView_NationalTV.Enabled = False
+                ButtonItemView_Radio.Enabled = False
+
+                If ButtonItemView_SpotTV.Checked = False Then
+
+                    ButtonItemView_SpotTV.Checked = True
+
+                End If
+
+                MediaDemographicControlRightSection_DemoControl.DataGridViewControl_DemoDetails.Visible = True
+
             Else
 
                 ButtonItemView_NationalTV.Enabled = True
+                ButtonItemView_Radio.Enabled = (_ViewModel.SelectedDemoSource = Database.Entities.Methods.MediaDemoSourceID.Nielsen)
 
                 MediaDemographicControlRightSection_DemoControl.DataGridViewControl_DemoDetails.Visible = True
 

@@ -5,6 +5,8 @@
 		Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl
 		Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserControl
 
+        Public Event FinalizeValidationEvent(ByRef IsValid As Boolean, ByRef ErrorText As String)
+
 #Region " Constants "
 
 
@@ -13,7 +15,7 @@
 
 #Region " Enum "
 
-		Public Enum [Type]
+        Public Enum [Type]
 			[Default]
 			[Broadcast]
 		End Enum
@@ -307,40 +309,41 @@
 			Dim IsValid As Boolean = True
 			Dim Name As String = ""
 
-			Try
+            Try
 
-				If _IsRequired Then
+                If _IsRequired Then
 
-					If Me.Text.Trim = "" OrElse Me.EditValue Is Nothing Then
+                    If Me.Text.Trim = "" OrElse Me.EditValue Is Nothing Then
 
-						If _DisplayName <> "" Then
+                        If _DisplayName <> "" Then
 
-							ErrorMessage = _DisplayName & " is required."
+                            ErrorMessage = _DisplayName & " is required."
 
-						Else
+                        Else
 
-							Try
+                            Try
 
-								Name = AdvantageFramework.StringUtilities.GetNameAsWords(Me.Name.Substring(Me.Name.IndexOf("_") + 1))
+                                Name = AdvantageFramework.StringUtilities.GetNameAsWords(Me.Name.Substring(Me.Name.IndexOf("_") + 1))
 
-							Catch ex As Exception
-								Name = ""
-							End Try
+                            Catch ex As Exception
+                                Name = ""
+                            End Try
 
-							ErrorMessage = Name & " is required."
+                            ErrorMessage = Name & " is required."
 
-						End If
+                        End If
 
-						IsValid = False
+                        IsValid = False
 
-					End If
+                    End If
 
-				End If
+                End If
 
-			Catch ex As Exception
-				IsValid = False
-			Finally
-				Validate = IsValid
+            Catch ex As Exception
+                IsValid = False
+            Finally
+                RaiseEvent FinalizeValidationEvent(IsValid, ErrorMessage)
+                Validate = IsValid
 			End Try
 
 		End Function

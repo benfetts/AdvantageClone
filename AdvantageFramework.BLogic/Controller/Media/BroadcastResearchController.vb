@@ -7681,6 +7681,1220 @@
 
 #End Region
 
+#Region " Spot TV Puerto Rico "
+
+        Public Function LoadSpotTVPuertoRico(ResearchID As Nullable(Of Integer)) As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel
+
+            'objects
+            Dim BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel = Nothing
+            Dim Dashboard As AdvantageFramework.Database.Entities.Dashboard = Nothing
+
+            BroadcastResearchViewModel = New AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel
+
+            BroadcastResearchViewModel.SelectedResearchTab = ViewModels.Media.BroadcastResearchViewModel.ResearchTab.SpotTVPuertoRico
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+                If Session.IsNielsenPuertoRicoSetup Then
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAddEnabled = True
+
+                End If
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoResearchCriteriaList = (From MediaSpotTVPuertoRicoResearch In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearch).ToList
+                                                                                   Select New AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchCriteria(MediaSpotTVPuertoRicoResearch)).ToList
+
+                If ResearchID.HasValue Then
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria = BroadcastResearchViewModel.SpotTVPuertoRicoResearchCriteriaList.Where(Function(Entity) Entity.ID = ResearchID.Value).SingleOrDefault
+
+                    LoadTVPuertoRicoStationList(DbContext, ResearchID.Value, BroadcastResearchViewModel)
+
+                    LoadTVPuertoRicoDemographicsList(DbContext, ResearchID.Value, BroadcastResearchViewModel)
+
+                    LoadTVPuertoRicoMetricsList(DbContext, ResearchID.Value, BroadcastResearchViewModel)
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeList = (From Entity In (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearchDayTime)
+                                                                                              Where Entity.MediaSpotTVPuertoRicoResearchID = ResearchID).ToList
+                                                                              Select New AdvantageFramework.DTO.DaysAndTime(AdvantageFramework.DTO.DaysAndTime.BroadcastTypes.TVPuertoRico, Entity)).ToList
+
+                Else
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria = Nothing
+
+                End If
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoResearchReportTypeList = (From Entity In AdvantageFramework.EnumUtilities.LoadEnumObjects(GetType(AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType))
+                                                                                     Select New AdvantageFramework.DTO.ComboBoxItem(Entity)).ToList
+
+                Dashboard = AdvantageFramework.Database.Procedures.Dashboard.LoadByDashboardType(DbContext, AdvantageFramework.Database.Entities.DashboardTypes.BroadcastResearchTool_TVPuertoRico)
+
+                If Dashboard IsNot Nothing Then
+
+                    BroadcastResearchViewModel.Dashboard = New AdvantageFramework.DTO.Dashboard(Dashboard)
+
+                Else
+
+                    BroadcastResearchViewModel.Dashboard = New AdvantageFramework.DTO.Dashboard
+
+                End If
+
+            End Using
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoReportDataTable = Nothing
+
+            LoadSpotTVPuertoRico = BroadcastResearchViewModel
+
+        End Function
+        Private Sub LoadTVPuertoRicoStationList(DbContext As AdvantageFramework.Database.DbContext, ResearchID As Integer,
+                                                ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            'objects
+            Dim AllStations As Generic.List(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station) = Nothing
+            Dim StationIDs As IEnumerable(Of Integer) = Nothing
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoAvailableStationList.Clear()
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedStationList.Clear()
+
+            AllStations = (From NPRStation In DbContext.GetQuery(Of Database.Entities.NPRStation).ToList
+                           Select New AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station(NPRStation)).ToList
+
+            StationIDs = (From MediaSpotTVPuertoRicoResearchStation In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearchStation)
+                          Where MediaSpotTVPuertoRicoResearchStation.MediaSpotTVPuertoRicoResearchID = ResearchID
+                          Select MediaSpotTVPuertoRicoResearchStation.StationID).ToArray
+
+            For Each Station In AllStations
+
+                If StationIDs.Contains(Station.ID) Then
+
+                    Station.IsSelected = True
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedStationList.Add(Station)
+
+                Else
+
+                    Station.IsSelected = False
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAvailableStationList.Add(Station)
+
+                End If
+
+            Next
+
+        End Sub
+        Private Sub LoadTVPuertoRicoDemographicsList(DbContext As AdvantageFramework.Database.DbContext, ResearchID As Integer,
+                                                     ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            'objects
+            Dim SelectedMediaDemoIDs As IEnumerable(Of Integer) = Nothing
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList = (From Entity In (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearchDemo).Include("MediaDemographic")
+                                                                                                  Where Entity.MediaSpotTVPuertoRicoResearchID = ResearchID).ToList
+                                                                                  Select New AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic(Entity)).ToList
+
+            SelectedMediaDemoIDs = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList
+                                    Select Entity.ID).ToArray
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoAvailableDemographicList = (From Entity In AdvantageFramework.Database.Procedures.MediaDemographic.LoadActiveNielsenPuertoRicoTV(DbContext).Where(Function(Entity) SelectedMediaDemoIDs.Contains(Entity.ID) = False).OrderBy(Function(Entity) Entity.Description).ToList
+                                                                                   Select New AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic(Entity)).ToList
+
+        End Sub
+        Private Sub LoadTVPuertoRicoMetricsList(DbContext As AdvantageFramework.Database.DbContext, ResearchID As Integer,
+                                                ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            'objects
+            Dim SelectedMediaMetricIDs As IEnumerable(Of Integer) = Nothing
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList = (From Entity In (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearchMetric)
+                                                                                             Where Entity.MediaSpotTVPuertoRicoResearchID = ResearchID).ToList
+                                                                             Select New AdvantageFramework.DTO.Media.Metric(Entity)).ToList
+
+            SelectedMediaMetricIDs = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList
+                                      Select Entity.ID).ToArray
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoAvailableMetricList = (From Entity In AdvantageFramework.Database.Procedures.MediaMetric.Load(DbContext).Where(Function(Entity) SelectedMediaMetricIDs.Contains(Entity.ID) = False AndAlso
+                                                                                                                                                                                       Entity.Type = "T").ToList
+                                                                              Select New AdvantageFramework.DTO.Media.Metric(True, Entity)).ToList
+
+        End Sub
+        Public Function SaveSpotTVPuertoRico(BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel, ByRef ErrorMessage As String) As Boolean
+
+            'objects
+            Dim MediaSpotTVPuertoRicoResearch As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch = Nothing
+            Dim DbTransaction As System.Data.Entity.DbContextTransaction = Nothing
+            Dim MediaSpotTVPuertoRicoResearchStation As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchStation = Nothing
+            Dim MediaSpotTVPuertoRicoResearchDayTime As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchDayTime = Nothing
+            Dim MediaSpotTVPuertoRicoResearchDemo As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchDemo = Nothing
+            Dim MediaSpotTVPuertoRicoResearchMetric As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchMetric = Nothing
+            Dim Order As Integer = 0
+            Dim Saved As Boolean = False
+            Dim DaysAndTimeController As AdvantageFramework.Controller.DaysAndTimeController = Nothing
+            Dim Updated As Boolean = False
+            Dim IsValid As Boolean = True
+
+            If RequiredSpotTVPuertoRicoDataPresent(BroadcastResearchViewModel, ErrorMessage) Then
+
+                DaysAndTimeController = New AdvantageFramework.Controller.DaysAndTimeController(Me.Session)
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                    MediaSpotTVPuertoRicoResearch = (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearch)
+                                                     Where Entity.ID = BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID
+                                                     Select Entity).SingleOrDefault
+
+                    If MediaSpotTVPuertoRicoResearch IsNot Nothing Then
+
+                        BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.SaveToEntity(MediaSpotTVPuertoRicoResearch)
+
+                        Try
+
+                            DbContext.Database.Connection.Open()
+
+                            DbTransaction = DbContext.Database.BeginTransaction
+
+                            DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_DEMO WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+                            DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_METRIC WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+                            DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_STATION WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+                            DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_DAYTIME WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+
+                            For Each Station In BroadcastResearchViewModel.SpotTVPuertoRicoSelectedStationList
+
+                                MediaSpotTVPuertoRicoResearchStation = New AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchStation
+                                MediaSpotTVPuertoRicoResearchStation.DbContext = DbContext
+
+                                MediaSpotTVPuertoRicoResearchStation.MediaSpotTVPuertoRicoResearchID = MediaSpotTVPuertoRicoResearch.ID
+                                MediaSpotTVPuertoRicoResearchStation.StationID = Station.ID
+
+                                DbContext.MediaSpotTVPuertoRicoResearchStations.Add(MediaSpotTVPuertoRicoResearchStation)
+
+                            Next
+
+                            For Each DaysAndTime In BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeList
+
+                                MediaSpotTVPuertoRicoResearchDayTime = New AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchDayTime
+                                MediaSpotTVPuertoRicoResearchDayTime.DbContext = DbContext
+
+                                DaysAndTimeController.ParseDays(DaysAndTime, DaysAndTime.Days, True)
+                                DaysAndTime.SaveToEntity(MediaSpotTVPuertoRicoResearchDayTime)
+
+                                MediaSpotTVPuertoRicoResearchDayTime.MediaSpotTVPuertoRicoResearchID = MediaSpotTVPuertoRicoResearch.ID
+
+                                DbContext.MediaSpotTVPuertoRicoResearchDayTimes.Add(MediaSpotTVPuertoRicoResearchDayTime)
+
+                            Next
+
+                            Order = 1
+
+                            For Each Demographic In BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList
+
+                                MediaSpotTVPuertoRicoResearchDemo = New AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchDemo
+                                MediaSpotTVPuertoRicoResearchDemo.DbContext = DbContext
+
+                                MediaSpotTVPuertoRicoResearchDemo.MediaSpotTVPuertoRicoResearchID = MediaSpotTVPuertoRicoResearch.ID
+                                MediaSpotTVPuertoRicoResearchDemo.Order = Order
+                                MediaSpotTVPuertoRicoResearchDemo.MediaDemoID = Demographic.ID
+
+                                DbContext.MediaSpotTVPuertoRicoResearchDemos.Add(MediaSpotTVPuertoRicoResearchDemo)
+
+                                Order += 1
+
+                            Next
+
+                            Order = 1
+
+                            For Each Metric In BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList
+
+                                MediaSpotTVPuertoRicoResearchMetric = New AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchMetric
+                                MediaSpotTVPuertoRicoResearchMetric.DbContext = DbContext
+
+                                MediaSpotTVPuertoRicoResearchMetric.MediaSpotTVPuertoRicoResearchID = MediaSpotTVPuertoRicoResearch.ID
+                                MediaSpotTVPuertoRicoResearchMetric.Order = Order
+                                MediaSpotTVPuertoRicoResearchMetric.MediaMetricID = Metric.ID
+
+                                DbContext.MediaSpotTVPuertoRicoResearchMetrics.Add(MediaSpotTVPuertoRicoResearchMetric)
+
+                                Order += 1
+
+                            Next
+
+                            DbContext.SaveChanges()
+
+                            DbContext.UpdateObject(MediaSpotTVPuertoRicoResearch)
+
+                            ErrorMessage = MediaSpotTVPuertoRicoResearch.ValidateEntity(IsValid)
+
+                            If IsValid Then
+
+                                DbContext.SaveChanges()
+
+                                Updated = True
+
+                            Else
+
+                                Throw New Exception(ErrorMessage)
+
+                            End If
+
+                            DbTransaction.Commit()
+
+                            Saved = True
+
+                            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = False
+                            BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList = Nothing
+                            BroadcastResearchViewModel.SpotTVPuertoRicoReportDataTable = Nothing
+
+                        Catch ex As Exception
+                            ErrorMessage = ex.Message
+                        Finally
+
+                            If DbContext.Database.Connection.State = ConnectionState.Open Then
+
+                                DbContext.Database.Connection.Close()
+
+                            End If
+
+                        End Try
+
+                    Else
+
+                        ErrorMessage = "This research criteria is no longer valid in the system."
+
+                    End If
+
+                End Using
+
+            End If
+
+            SaveSpotTVPuertoRico = Saved
+
+        End Function
+        Public Function DeleteSpotTVPuertoRico(BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel, ByRef ErrorMessage As String) As Boolean
+
+            'objects 
+            Dim Deleted As Boolean = True
+            Dim MediaSpotTVPuertoRicoResearch As AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearch = Nothing
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                MediaSpotTVPuertoRicoResearch = (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearch)
+                                                 Where Entity.ID = BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID
+                                                 Select Entity).SingleOrDefault
+
+                If MediaSpotTVPuertoRicoResearch IsNot Nothing Then
+
+                    Try
+
+                        DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_DEMO WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+                        DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_METRIC WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+                        DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_STATION WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+                        DbContext.Database.ExecuteSqlCommand(String.Format("DELETE dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_DAYTIME WHERE MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_ID = {0}", MediaSpotTVPuertoRicoResearch.ID))
+
+                        DbContext.DeleteEntityObject(MediaSpotTVPuertoRicoResearch)
+
+                        DbContext.SaveChanges()
+
+                        Deleted = True
+
+                    Catch ex As Exception
+                        Deleted = False
+                    End Try
+
+                End If
+
+            End Using
+
+            DeleteSpotTVPuertoRico = Deleted
+
+        End Function
+        Public Sub SetSelectedSpotTVPuertoRicoResearchCriteria(BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel, ID As Integer)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria = BroadcastResearchViewModel.SpotTVPuertoRicoResearchCriteriaList.Where(Function(Entity) Entity.ID = ID).SingleOrDefault
+
+        End Sub
+        Public Sub AddToSelectedPuertoRicoDemographics(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                       AvailableDemographicsSelected As IEnumerable(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic))
+
+            If AvailableDemographicsSelected IsNot Nothing AndAlso AvailableDemographicsSelected.Count > 0 Then
+
+                For Each Demographic In AvailableDemographicsSelected
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Add(Demographic)
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAvailableDemographicList.Remove(Demographic)
+
+                Next
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+            End If
+
+        End Sub
+        Public Sub RemoveFromSelectedPuertoRicoDemographics(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                            SelectedDemographicSelected As IEnumerable(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Demographic))
+
+            If SelectedDemographicSelected IsNot Nothing AndAlso SelectedDemographicSelected.Count > 0 Then
+
+                For Each Demographic In SelectedDemographicSelected
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAvailableDemographicList.Add(Demographic)
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Remove(Demographic)
+
+                Next
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+            End If
+
+        End Sub
+        Public Sub MovePuertoRicoDemographic(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                             Demographic As DTO.Media.SpotTVPuertoRico.Demographic, Direction As MoveItemDirection)
+
+            'objects
+            Dim OldIndex As Integer = -1
+
+            OldIndex = BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.IndexOf(Demographic)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.RemoveAt(OldIndex)
+
+            If Direction = MoveItemDirection.Down Then
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Insert(OldIndex + 1, Demographic)
+
+            Else
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Insert(OldIndex - 1, Demographic)
+
+            End If
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub AddToSelectedSpotTVPuertoRicoMetrics(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                        AvailableMetricsSelected As IEnumerable(Of AdvantageFramework.DTO.Media.Metric))
+
+            If AvailableMetricsSelected IsNot Nothing AndAlso AvailableMetricsSelected.Count > 0 Then
+
+                For Each Metric In AvailableMetricsSelected
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList.Add(Metric)
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAvailableMetricList.Remove(Metric)
+
+                Next
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+            End If
+
+        End Sub
+        Public Sub RemoveFromSelectedSpotTVPuertoRicoMetrics(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                             SelectedMetricSelected As IEnumerable(Of AdvantageFramework.DTO.Media.Metric))
+
+            If SelectedMetricSelected IsNot Nothing AndAlso SelectedMetricSelected.Count > 0 Then
+
+                For Each Metric In SelectedMetricSelected
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAvailableMetricList.Add(Metric)
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList.Remove(Metric)
+
+                Next
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+            End If
+
+        End Sub
+        Public Sub MoveMetricSpotTVPuertoRico(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                              Metric As DTO.Media.Metric, Direction As MoveItemDirection)
+
+            'objects
+            Dim OldIndex As Integer = -1
+
+            OldIndex = BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList.IndexOf(Metric)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList.RemoveAt(OldIndex)
+
+            If Direction = MoveItemDirection.Down Then
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList.Insert(OldIndex + 1, Metric)
+
+            Else
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList.Insert(OldIndex - 1, Metric)
+
+            End If
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub AddToSelectedSpotTVPuertoRicoStations(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                         AvailableNielsenStationsSelected As IEnumerable(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station))
+
+            If AvailableNielsenStationsSelected IsNot Nothing AndAlso AvailableNielsenStationsSelected.Count > 0 Then
+
+                For Each NielsenStation In AvailableNielsenStationsSelected
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedStationList.Add(NielsenStation)
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAvailableStationList.Remove(NielsenStation)
+
+                Next
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+            End If
+
+        End Sub
+        Public Sub RemoveFromSelectedSpotTVPuertoRicoStations(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                              SelectedNielsenStationsSelected As IEnumerable(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.Station))
+
+            If SelectedNielsenStationsSelected IsNot Nothing AndAlso SelectedNielsenStationsSelected.Count > 0 Then
+
+                For Each NielsenStation In SelectedNielsenStationsSelected
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoAvailableStationList.Add(NielsenStation)
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedStationList.Remove(NielsenStation)
+
+                Next
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+            End If
+
+        End Sub
+        Public Sub DeleteSelectedDayTimesPuertoRico(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                    SelectedDayTimes As Generic.List(Of DTO.DaysAndTime))
+
+            If SelectedDayTimes IsNot Nothing AndAlso SelectedDayTimes.Count > 0 Then
+
+                For Each SelectedDayTime In SelectedDayTimes
+
+                    BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeList.Remove(SelectedDayTime)
+
+                Next
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+            End If
+
+        End Sub
+        Public Sub DayTimeCancelNewItemRowPuertoRico(BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeIsNewRow = False
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeCancelEnabled = False
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeDeleteEnabled = BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeList IsNot Nothing AndAlso BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeList.Count > 0
+
+        End Sub
+        Public Sub DayTimeSelectionChangedPuertoRico(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                     IsNewItemRow As Boolean,
+                                                     SelectedDayTimes As Generic.List(Of AdvantageFramework.DTO.DaysAndTime))
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeIsNewRow = IsNewItemRow
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeCancelEnabled = IsNewItemRow
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeDeleteEnabled = Not IsNewItemRow
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDayTimes = SelectedDayTimes
+
+        End Sub
+        Public Sub DayTimeAddNewRowPuertoRicoEvent(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub DayTimeCellChangedPuertoRico(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub DayTimeInitNewRowPuertoRicoEvent(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeIsNewRow = True
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeCancelEnabled = True
+            BroadcastResearchViewModel.SpotTVPuertoRicoDayTimeDeleteEnabled = False
+
+        End Sub
+        Public Sub PuertoRicoOptionGroupByDaysTimesChanged(Checked As Boolean, ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.GroupByDaysTimes = Checked
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub PuertoRicoOptionShowProgramNameChanged(Checked As Boolean, ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName = Checked
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub PuertoRicoOptionSubtotalByWeekdayWeekendChanged(Checked As Boolean, ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.SubtotalByWeekdayWeekend = Checked
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub PuertoRicoReportTypeChanged(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel, ReportType As Short)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = ReportType
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub PuertoRicoDatesChanged(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Private Function RequiredSpotTVPuertoRicoDataPresent(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                             ByRef ErrorMessage As String) As Boolean
+
+            'objects
+            Dim IsPresent As Boolean = False
+
+            ErrorMessage = String.Empty
+
+            If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedStationList Is Nothing OrElse BroadcastResearchViewModel.SpotTVPuertoRicoSelectedStationList.Count = 0 Then
+
+                ErrorMessage += vbCrLf & "At least one station must be selected."
+
+            ElseIf BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDayTimes Is Nothing OrElse BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDayTimes.Count = 0 Then
+
+                ErrorMessage += vbCrLf & "At least one day/time must be selected."
+
+            ElseIf BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDayTimes.Any(Function(Entity) Entity.HasError) Then
+
+                ErrorMessage += vbCrLf & "Please fix day/time errors before saving."
+
+            End If
+
+            If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList Is Nothing OrElse BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Count = 0 Then
+
+                ErrorMessage += vbCrLf & "At least one demographic must be selected."
+
+            ElseIf (BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.TrendByDate) AndAlso
+                    BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Count > 1 Then
+
+                ErrorMessage += vbCrLf & "Only one demographic can be selected for a trend report."
+
+            End If
+
+            If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList Is Nothing OrElse BroadcastResearchViewModel.SpotTVPuertoRicoSelectedMetricList.Count = 0 Then
+
+                ErrorMessage += vbCrLf & "At least one metric must be selected."
+
+            End If
+
+            If String.IsNullOrWhiteSpace(ErrorMessage) Then
+
+                IsPresent = True
+
+            End If
+
+            RequiredSpotTVPuertoRicoDataPresent = IsPresent
+
+        End Function
+        Public Function RunSpotTVPuertoRicoReport(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                  ByRef ErrorMessage As String,
+                                                  ByRef InfoMessage As String)
+
+            'objects
+            Dim ResearchID As Integer = Nothing
+            Dim StationIDs As Generic.List(Of Integer) = Nothing
+            Dim MediaSpotTVPuertoRicoResearchMetricList As Generic.List(Of AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchMetric) = Nothing
+            Dim Success As Boolean = False
+            Dim CallLettersList As Generic.List(Of String) = Nothing
+            Dim DemographicStreams As Integer = 0
+            Dim StationDemographicStreamCount As Dictionary(Of Integer, Integer) = Nothing
+            Dim StationDaytimeIDBookCount As Dictionary(Of Integer, Integer) = Nothing
+
+            If RequiredSpotTVPuertoRicoDataPresent(BroadcastResearchViewModel, ErrorMessage) Then
+
+                Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+                    ResearchID = BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ID.Value
+
+                    StationIDs = (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearchStation)
+                                  Where Entity.MediaSpotTVPuertoRicoResearchID = ResearchID
+                                  Select Entity.StationID).Distinct.ToList
+
+                    If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.Ranker Then
+
+                        BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList = DbContext.Database.SqlQuery(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult)(String.Format("EXEC advsp_npr_spot_tv_puerto_rico_research_results {0}, '{1}'", ResearchID, String.Join(",", StationIDs.ToArray))).ToList()
+
+                        'DemographicStreams = BroadcastResearchViewModel.SpotTVResearchResultList.Select(Function(Result) Result.DemographicStream).Distinct.Count
+
+                        'If AdvantageFramework.Database.Procedures.MediaSpotTVResearchBook.LoadByMediaSpotTVResearchID(DbContext, ResearchID).Count > DemographicStreams Then
+
+                        '    DemographicStreams = AdvantageFramework.Database.Procedures.MediaSpotTVResearchBook.LoadByMediaSpotTVResearchID(DbContext, ResearchID).Count
+
+                        'End If
+
+                        'StationDemographicStreamCount = (From Entity In (From Entity In BroadcastResearchViewModel.SpotTVResearchResultList
+                        '                                                 Select Entity.NielsenTVStationID, Entity.DemographicStream).Distinct.ToList
+                        '                                 Group By Entity.NielsenTVStationID Into Group
+                        '                                 Select New With {.NielsenTVStationID = NielsenTVStationID,
+                        '                                                          .Count = Group.Count}).ToDictionary(Function(E) E.NielsenTVStationID, Function(E) E.Count)
+
+                        'For Each KeyPair In StationDemographicStreamCount
+
+                        '    If KeyPair.Value = DemographicStreams Then
+
+                        '        NielsenStationIDs.Remove(KeyPair.Key)
+
+                        '    End If
+
+                        'Next
+
+                    ElseIf (BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.TrendByDate) Then
+
+                        BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList = DbContext.Database.SqlQuery(Of AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult)(String.Format("EXEC advsp_npr_spot_tv_puerto_rico_research_results_trend {0}, '{1}'", ResearchID, String.Join(",", StationIDs.ToArray))).ToList()
+
+                        'DaytimeIDBooks = (From Entity In BroadcastResearchViewModel.SpotTVResearchResultList
+                        '                  Select Entity.DaytimeID, Entity.Books).Distinct.Count
+
+                        'If AdvantageFramework.Database.Procedures.MediaSpotTVResearchBook.LoadByMediaSpotTVResearchID(DbContext, ResearchID).Count > DaytimeIDBooks Then
+
+                        '    DaytimeIDBooks = AdvantageFramework.Database.Procedures.MediaSpotTVResearchBook.LoadByMediaSpotTVResearchID(DbContext, ResearchID).Count
+
+                        'End If
+
+                        'StationDaytimeIDBookCount = (From Entity In (From Entity In BroadcastResearchViewModel.SpotTVResearchResultList
+                        '                                             Select Entity.NielsenTVStationID, Entity.DaytimeID, Entity.Books).Distinct.ToList
+                        '                             Group By Entity.NielsenTVStationID Into Group
+                        '                             Select New With {.NielsenTVStationID = NielsenTVStationID,
+                        '                                                      .Count = Group.Count}).ToDictionary(Function(E) E.NielsenTVStationID, Function(E) E.Count)
+
+                        'For Each KeyPair In StationDaytimeIDBookCount
+
+                        '    If KeyPair.Value = DaytimeIDBooks Then
+
+                        '        NielsenStationIDs.Remove(KeyPair.Key)
+
+                        '    End If
+
+                        'Next
+
+                    End If
+
+                    'If NielsenStationIDs.Count > 0 Then
+
+                    '    CallLettersList = (From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenTVStation.Load(NielsenDbContext)
+                    '                       Where NielsenStationIDs.Contains(Entity.ID)
+                    '                       Select Entity.CallLetters).ToList
+
+                    '    InfoMessage = "The following " & CallLettersList.Count & " station(s) do not have data for all criteria selected: " & vbCrLf & String.Join(", ", CallLettersList.ToArray)
+
+                    'End If
+
+                    MediaSpotTVPuertoRicoResearchMetricList = (From Entity In DbContext.GetQuery(Of Database.Entities.MediaSpotTVPuertoRicoResearchMetric)
+                                                               Where Entity.MediaSpotTVPuertoRicoResearchID = ResearchID
+                                                               Select Entity).ToList
+
+                    If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.Ranker Then
+
+                        BroadcastResearchViewModel.SpotTVPuertoRicoReportDataTable = CreateSpotTVPuertoRicoRankerReportDataTable(BroadcastResearchViewModel, MediaSpotTVPuertoRicoResearchMetricList)
+
+                    ElseIf BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ReportType = AdvantageFramework.Database.Entities.SpotTVPuertoRicoResearchReportType.TrendByDate Then
+
+                        BroadcastResearchViewModel.SpotTVPuertoRicoReportDataTable = CreateSpotTVPuertoRicoTrendByDateReportDataTable(BroadcastResearchViewModel, MediaSpotTVPuertoRicoResearchMetricList)
+
+                    End If
+
+                    Success = True
+
+                End Using
+
+            End If
+
+            RunSpotTVPuertoRicoReport = Success
+
+        End Function
+        Private Function CreateSpotTVPuertoRicoRankerReportDataTable(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                                     MediaSpotTVPuertoRicoResearchMetricList As Generic.List(Of AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchMetric)) As System.Data.DataTable
+
+            'objects
+            Dim DataTable As System.Data.DataTable = Nothing
+            Dim DataColumn As System.Data.DataColumn = Nothing
+            Dim DataRow As System.Data.DataRow = Nothing
+            Dim SortString As String = Nothing
+            Dim RankDataTable As System.Data.DataTable = Nothing
+            Dim DataRowRank As Nullable(Of Integer) = Nothing
+            Dim StationCodeDaytimeIDs As Generic.List(Of String) = Nothing
+            Dim RankStationCode As Integer = Nothing
+            Dim RankDaytimeID As Integer = Nothing
+            Dim RankDataRow As System.Data.DataRow = Nothing
+
+            DataTable = New System.Data.DataTable
+
+            StationCodeDaytimeIDs = New Generic.List(Of String)
+
+            DataColumn = DataTable.Columns.Add("StationCode")
+            DataColumn.DataType = GetType(Integer)
+
+            DataColumn = DataTable.Columns.Add("DaytimeID")
+            DataColumn.DataType = GetType(Integer)
+
+            DataColumn = DataTable.Columns.Add("Station")
+            DataColumn.DataType = GetType(String)
+
+            DataColumn = DataTable.Columns.Add("Days")
+            DataColumn.DataType = GetType(String)
+
+            DataColumn = DataTable.Columns.Add("Times")
+            DataColumn.DataType = GetType(String)
+
+            If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName Then
+
+                DataColumn = DataTable.Columns.Add("ProgramName")
+                DataColumn.DataType = GetType(String)
+
+            End If
+
+            For Each Demo In (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                              Select Entity.DemographicOrder, Entity.Demographic).OrderBy(Function(Entity) Entity.DemographicOrder).Distinct.ToList
+
+                DataColumn = DataTable.Columns.Add("Demo" & Demo.DemographicOrder)
+                DataColumn.DataType = GetType(String)
+
+                DataColumn = DataTable.Columns.Add("Rank" & Demo.DemographicOrder)
+                DataColumn.DataType = GetType(Integer)
+
+                For Each MediaSpotTVPuertoRicoResearchMetric In MediaSpotTVPuertoRicoResearchMetricList.OrderBy(Function(Entity) Entity.Order)
+
+                    DataColumn = DataTable.Columns.Add(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & Demo.DemographicOrder)
+                    DataColumn.DataType = GetType(Decimal)
+
+                    If SortString Is Nothing Then
+
+                        SortString = MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description & " DESC"
+
+                    End If
+                    'SortString += If(String.IsNullOrWhiteSpace(SortString), MediaSpotTVResearchMetric.MediaMetric.Description & " DESC", ", " & MediaSpotTVResearchMetric.MediaMetric.Description & " DESC")
+
+                Next
+
+                DataColumn = DataTable.Columns.Add("ShowIntabWarning" & Demo.DemographicOrder)
+                DataColumn.DataType = GetType(Boolean)
+
+            Next
+
+            For Each ResearchResult In (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                        Select Entity.StationID, Entity.Station, Entity.DaytimeID).Distinct.ToList
+
+                DataRow = DataTable.NewRow
+
+                DataRow("StationCode") = ResearchResult.StationID
+
+                DataRow("DaytimeID") = ResearchResult.DaytimeID
+
+                DataRow("Station") = ResearchResult.Station
+
+                DataRow("Days") = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                   Where Entity.StationID = ResearchResult.StationID AndAlso
+                                         Entity.DaytimeID = ResearchResult.DaytimeID
+                                   Select Entity).FirstOrDefault.Days
+
+                DataRow("Times") = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                    Where Entity.StationID = ResearchResult.StationID AndAlso
+                                          Entity.DaytimeID = ResearchResult.DaytimeID
+                                    Select Entity).FirstOrDefault.Times
+
+                If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName Then
+
+                    DataRow("ProgramName") = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                              Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                    Entity.DaytimeID = ResearchResult.DaytimeID
+                                              Select Entity).FirstOrDefault.ProgramName
+
+                End If
+
+                For Each DemoOrder In (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                       Where Entity.StationID = ResearchResult.StationID AndAlso
+                                             Entity.DaytimeID = ResearchResult.DaytimeID
+                                       Select Entity).OrderBy(Function(Entity) Entity.DemographicOrder).Distinct.ToList
+
+                    DataRow("Demo" & DemoOrder.DemographicOrder) = DemoOrder.DemographicOrder
+
+                    If DemoOrder.DemographicOrder = 1 OrElse Not BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.MaxRank.HasValue Then
+
+                        'rank
+                        RankDataTable = AdvantageFramework.Database.ToDataTable((From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                 Where Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                 Select Entity).ToList)
+
+                        RankDataTable.DefaultView.Sort = Replace(SortString, "/", "")
+
+                        If MediaSpotTVPuertoRicoResearchMetricList IsNot Nothing AndAlso MediaSpotTVPuertoRicoResearchMetricList.Count > 0 Then
+
+                            RankIt(RankDataTable, MediaSpotTVPuertoRicoResearchMetricList.OrderBy(Function(Entity) Entity.Order).FirstOrDefault.MediaMetric.Description.Replace("/", ""))
+
+                        End If
+
+                        If Not DataRowRank.HasValue Then
+
+                            DataRowRank = RankDataTable.Select("StationID = " & ResearchResult.StationID & " AND DaytimeID = " & ResearchResult.DaytimeID).FirstOrDefault.Item("Rank")
+
+                        End If
+
+                        DataRow("Rank" & DemoOrder.DemographicOrder) = RankDataTable.Select("StationID = " & ResearchResult.StationID & " AND DaytimeID = " & ResearchResult.DaytimeID).FirstOrDefault.Item("Rank")
+
+                    End If
+
+                    For Each MediaSpotTVPuertoRicoResearchMetric In MediaSpotTVPuertoRicoResearchMetricList.OrderBy(Function(Entity) Entity.Order)
+
+                        Select Case MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "")
+
+                            Case "Rating"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & DemoOrder.DemographicOrder) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                      Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                                                                                                                            Entity.DaytimeID = ResearchResult.DaytimeID AndAlso
+                                                                                                                                                            Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                                                                                      Select Entity).FirstOrDefault.Rating
+
+                            Case "Share"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & DemoOrder.DemographicOrder) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                      Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                                                                                                                            Entity.DaytimeID = ResearchResult.DaytimeID AndAlso
+                                                                                                                                                            Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                                                                                      Select Entity).FirstOrDefault.Share
+
+                            Case "Impressions"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & DemoOrder.DemographicOrder) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                      Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                                                                                                                            Entity.DaytimeID = ResearchResult.DaytimeID AndAlso
+                                                                                                                                                            Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                                                                                      Select Entity).FirstOrDefault.Impressions
+
+                            Case "HPUT"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & DemoOrder.DemographicOrder) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                      Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                                                                                                                            Entity.DaytimeID = ResearchResult.DaytimeID AndAlso
+                                                                                                                                                            Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                                                                                      Select Entity).FirstOrDefault.HPUT
+
+                            Case "Intab"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & DemoOrder.DemographicOrder) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                      Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                                                                                                                            Entity.DaytimeID = ResearchResult.DaytimeID AndAlso
+                                                                                                                                                            Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                                                                                      Select Entity).FirstOrDefault.Intab
+
+                                DataRow("ShowIntabWarning" & DemoOrder.DemographicOrder) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                            Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                                                                  Entity.DaytimeID = ResearchResult.DaytimeID AndAlso
+                                                                                                  Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                            Select Entity).FirstOrDefault.ShowIntabWarning
+
+                            Case "Universe"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & DemoOrder.DemographicOrder) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                      Where Entity.StationID = ResearchResult.StationID AndAlso
+                                                                                                                                                            Entity.DaytimeID = ResearchResult.DaytimeID AndAlso
+                                                                                                                                                            Entity.DemographicOrder = DemoOrder.DemographicOrder
+                                                                                                                                                      Select Entity).FirstOrDefault.Universe
+
+                        End Select
+
+                    Next
+
+                Next
+
+                If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.MaxRank.HasValue Then
+
+                    If DataRowRank.Value <= BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.MaxRank.Value Then
+
+                        DataTable.Rows.Add(DataRow)
+
+                        StationCodeDaytimeIDs.Add(ResearchResult.StationID.ToString & "|" & ResearchResult.DaytimeID.ToString)
+
+                    End If
+
+                    DataRowRank = Nothing
+
+                Else
+
+                    DataTable.Rows.Add(DataRow)
+
+                End If
+
+            Next
+
+            For Each StationCodeDaytimeID In StationCodeDaytimeIDs
+
+                RankStationCode = Left(StationCodeDaytimeID, InStr(StationCodeDaytimeID, "|") - 1)
+                RankDaytimeID = Mid(StationCodeDaytimeID, InStr(StationCodeDaytimeID, "|") + 1)
+
+                For Each DemoOrder In (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                       Where Entity.DemographicOrder > 1 AndAlso
+                                             StationCodeDaytimeIDs.Contains(Entity.StationID & "|" & Entity.DaytimeID)
+                                       Select Entity).OrderBy(Function(Entity) Entity.DemographicOrder).Distinct.ToList
+
+                    'rank
+                    RankDataTable = AdvantageFramework.Database.ToDataTable((From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                             Where Entity.DemographicOrder = DemoOrder.DemographicOrder AndAlso
+                                                                                   StationCodeDaytimeIDs.Contains(Entity.StationID & "|" & Entity.DaytimeID)
+                                                                             Select Entity).ToList)
+
+                    RankDataTable.DefaultView.Sort = Replace(SortString, "/", "")
+
+                    If MediaSpotTVPuertoRicoResearchMetricList IsNot Nothing AndAlso MediaSpotTVPuertoRicoResearchMetricList.Count > 0 Then
+
+                        RankIt(RankDataTable, MediaSpotTVPuertoRicoResearchMetricList.OrderBy(Function(Entity) Entity.Order).FirstOrDefault.MediaMetric.Description.Replace("/", ""))
+
+                    End If
+
+                    RankDataRow = DataTable.Select("StationCode = " & RankStationCode & " AND DaytimeID = " & RankDaytimeID).FirstOrDefault
+                    RankDataRow("Rank" & DemoOrder.DemographicOrder) = RankDataTable.Select("StationID = " & RankStationCode & " AND DaytimeID = " & RankDaytimeID).FirstOrDefault.Item("Rank")
+
+                Next
+
+            Next
+
+            CreateSpotTVPuertoRicoRankerReportDataTable = DataTable
+
+        End Function
+        Public Sub SetTVPuertoRicoMaxRank(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel, MaxRank As Nullable(Of Short))
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.MaxRank = MaxRank
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Public Sub MoveDemographic(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                   Demographic As DTO.Media.SpotTVPuertoRico.Demographic, Direction As MoveItemDirection)
+
+            'objects
+            Dim OldIndex As Integer = -1
+
+            OldIndex = BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.IndexOf(Demographic)
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.RemoveAt(OldIndex)
+
+            If Direction = MoveItemDirection.Down Then
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Insert(OldIndex + 1, Demographic)
+
+            Else
+
+                BroadcastResearchViewModel.SpotTVPuertoRicoSelectedDemographicList.Insert(OldIndex - 1, Demographic)
+
+            End If
+
+            BroadcastResearchViewModel.SpotTVPuertoRicoIsDirty = True
+
+        End Sub
+        Private Function CreateSpotTVPuertoRicoTrendByDateReportDataTable(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel,
+                                                                          MediaSpotTVPuertoRicoResearchMetricList As Generic.List(Of AdvantageFramework.Database.Entities.MediaSpotTVPuertoRicoResearchMetric)) As System.Data.DataTable
+
+            'objects
+            Dim DataTable As System.Data.DataTable = Nothing
+            Dim DataColumn As System.Data.DataColumn = Nothing
+            Dim DataRow As System.Data.DataRow = Nothing
+
+            DataTable = New System.Data.DataTable
+
+            DataColumn = DataTable.Columns.Add("TrendDate")
+            DataColumn.DataType = GetType(Date)
+
+            DataColumn = DataTable.Columns.Add("Day")
+            DataColumn.DataType = GetType(String)
+
+            DataColumn = DataTable.Columns.Add("Times")
+            DataColumn.DataType = GetType(String)
+
+            DataColumn = DataTable.Columns.Add("DateDaytimeID")
+            DataColumn.DataType = GetType(String)
+
+            For Each Demo In (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                              Select Entity.StationID).Distinct.ToList
+
+                DataColumn = DataTable.Columns.Add("Station_" & Demo.ToString)
+                DataColumn.DataType = GetType(String)
+
+                For Each MediaSpotTVPuertoRicoResearchMetric In MediaSpotTVPuertoRicoResearchMetricList.OrderBy(Function(Entity) Entity.Order)
+
+                    DataColumn = DataTable.Columns.Add(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & "_" & Demo.ToString)
+                    DataColumn.DataType = GetType(Decimal)
+
+                Next
+
+                DataColumn = DataTable.Columns.Add("ShowIntabWarning_" & Demo.ToString)
+                DataColumn.DataType = GetType(Boolean)
+
+                If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName Then
+
+                    DataColumn = DataTable.Columns.Add("ProgramName_" & Demo.ToString)
+                    DataColumn.DataType = GetType(String)
+
+                End If
+
+            Next
+
+            For Each ResearchResult In (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                        Select Entity.TrendDate,
+                                               Entity.DaytimeID,
+                                               Entity.StartHour).Distinct.OrderBy(Function(Entity) Entity.TrendDate).ThenBy(Function(Entity) Entity.StartHour).ThenBy(Function(Entity) Entity.DaytimeID).ToList
+
+                DataRow = DataTable.NewRow
+
+                DataRow("DateDaytimeID") = ResearchResult.TrendDate.ToString & "|" & ResearchResult.DaytimeID.ToString
+
+                DataRow("TrendDate") = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                        Where Entity.TrendDate = ResearchResult.TrendDate AndAlso
+                                              Entity.DaytimeID = ResearchResult.DaytimeID
+                                        Select Entity).FirstOrDefault.TrendDate
+
+                Select Case CDate(DataRow("TrendDate")).DayOfWeek
+
+                    Case DayOfWeek.Monday
+                        DataRow("Day") = "M"
+
+                    Case DayOfWeek.Tuesday
+                        DataRow("Day") = "T"
+
+                    Case DayOfWeek.Wednesday
+                        DataRow("Day") = "W"
+
+                    Case DayOfWeek.Thursday
+                        DataRow("Day") = "Th"
+
+                    Case DayOfWeek.Friday
+                        DataRow("Day") = "F"
+
+                    Case DayOfWeek.Saturday
+                        DataRow("Day") = "Sa"
+
+                    Case DayOfWeek.Sunday
+                        DataRow("Day") = "Su"
+
+                End Select
+
+                'DataRow("Days") = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                '                   Where Entity.TrendDate = ResearchResult.TrendDate AndAlso
+                '                         Entity.DaytimeID = ResearchResult.DaytimeID
+                '                   Select Entity).FirstOrDefault.Days
+
+                DataRow("Times") = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                    Where Entity.TrendDate = ResearchResult.TrendDate AndAlso
+                                          Entity.DaytimeID = ResearchResult.DaytimeID
+                                    Select Entity).FirstOrDefault.Times
+
+                For Each StreamOrder In (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                         Where Entity.TrendDate = ResearchResult.TrendDate AndAlso
+                                               Entity.DaytimeID = ResearchResult.DaytimeID
+                                         Select Entity.StationID, Entity.TrendDate, Entity.DaytimeID, Entity.ProgramName).Distinct.ToList
+
+                    DataRow("Station_" & StreamOrder.StationID) = StreamOrder.StationID
+
+                    For Each MediaSpotTVPuertoRicoResearchMetric In MediaSpotTVPuertoRicoResearchMetricList.OrderBy(Function(Entity) Entity.Order)
+
+                        Select Case MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "")
+
+                            Case "Rating"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & "_" & StreamOrder.StationID.ToString) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                                Where Entity.StationID = StreamOrder.StationID AndAlso
+                                                                                                                                                                      Entity.DaytimeID = StreamOrder.DaytimeID AndAlso
+                                                                                                                                                                      Entity.TrendDate = StreamOrder.TrendDate
+                                                                                                                                                                Select Entity).FirstOrDefault.Rating
+
+                            Case "Share"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & "_" & StreamOrder.StationID.ToString) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                                Where Entity.StationID = StreamOrder.StationID AndAlso
+                                                                                                                                                                      Entity.DaytimeID = StreamOrder.DaytimeID AndAlso
+                                                                                                                                                                      Entity.TrendDate = StreamOrder.TrendDate
+                                                                                                                                                                Select Entity).FirstOrDefault.Share
+
+                            Case "Impressions"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & "_" & StreamOrder.StationID.ToString) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                                Where Entity.StationID = StreamOrder.StationID AndAlso
+                                                                                                                                                                      Entity.DaytimeID = StreamOrder.DaytimeID AndAlso
+                                                                                                                                                                      Entity.TrendDate = StreamOrder.TrendDate
+                                                                                                                                                                Select Entity).FirstOrDefault.Impressions
+
+                            Case "HPUT"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & "_" & StreamOrder.StationID.ToString) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                                Where Entity.StationID = StreamOrder.StationID AndAlso
+                                                                                                                                                                      Entity.DaytimeID = StreamOrder.DaytimeID AndAlso
+                                                                                                                                                                      Entity.TrendDate = StreamOrder.TrendDate
+                                                                                                                                                                Select Entity).FirstOrDefault.HPUT
+
+                            Case "Intab"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & "_" & StreamOrder.StationID.ToString) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                                Where Entity.StationID = StreamOrder.StationID AndAlso
+                                                                                                                                                                      Entity.DaytimeID = StreamOrder.DaytimeID AndAlso
+                                                                                                                                                                      Entity.TrendDate = StreamOrder.TrendDate
+                                                                                                                                                                Select Entity).FirstOrDefault.Intab
+
+                                DataRow("ShowIntabWarning" & "_" & StreamOrder.StationID.ToString) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                      Where Entity.StationID = StreamOrder.StationID AndAlso
+                                                                                                            Entity.DaytimeID = StreamOrder.DaytimeID AndAlso
+                                                                                                            Entity.TrendDate = StreamOrder.TrendDate
+                                                                                                      Select Entity).FirstOrDefault.ShowIntabWarning
+
+                            Case "Universe"
+
+                                DataRow(MediaSpotTVPuertoRicoResearchMetric.MediaMetric.Description.Replace("/", "") & "_" & StreamOrder.StationID.ToString) = (From Entity In BroadcastResearchViewModel.SpotTVPuertoRicoResearchResultList
+                                                                                                                                                                Where Entity.StationID = StreamOrder.StationID AndAlso
+                                                                                                                                                                      Entity.DaytimeID = StreamOrder.DaytimeID AndAlso
+                                                                                                                                                                      Entity.TrendDate = StreamOrder.TrendDate
+                                                                                                                                                                Select Entity).FirstOrDefault.Universe
+
+                        End Select
+
+                    Next
+
+                    If BroadcastResearchViewModel.SpotTVPuertoRicoSelectedResearchCriteria.ShowProgramName Then
+
+                        DataRow("ProgramName" & "_" & StreamOrder.StationID) = StreamOrder.ProgramName
+
+                    End If
+
+                Next
+
+                DataTable.Rows.Add(DataRow)
+
+            Next
+
+            CreateSpotTVPuertoRicoTrendByDateReportDataTable = DataTable
+
+        End Function
+        Public Sub SaveTVPuertoRicoDashboard(ByRef BroadcastResearchViewModel As AdvantageFramework.ViewModels.Media.BroadcastResearchViewModel, DashboardLayout() As Byte)
+
+            'objects
+            Dim Dashboard As AdvantageFramework.Database.Entities.Dashboard = Nothing
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                Dashboard = AdvantageFramework.Database.Procedures.Dashboard.LoadByDashboardType(DbContext, AdvantageFramework.Database.Entities.DashboardTypes.BroadcastResearchTool_TVPuertoRico)
+
+                If Dashboard IsNot Nothing Then
+
+                    Dashboard.Layout = DashboardLayout
+
+                    AdvantageFramework.Database.Procedures.Dashboard.Update(DbContext, Dashboard)
+
+                Else
+
+                    Dashboard = New AdvantageFramework.Database.Entities.Dashboard
+
+                    Dashboard.DbContext = DbContext
+                    Dashboard.Type = AdvantageFramework.Database.Entities.DashboardTypes.BroadcastResearchTool_TVPuertoRico
+                    Dashboard.Layout = DashboardLayout
+
+                    AdvantageFramework.Database.Procedures.Dashboard.Insert(DbContext, Dashboard)
+
+                End If
+
+            End Using
+
+            BroadcastResearchViewModel.Dashboard.Layout = DashboardLayout
+
+        End Sub
+
+#End Region
+
 #End Region
 
 #End Region

@@ -2145,7 +2145,7 @@ namespace AdvantageFramework.Core.Web
         private void ProcessKeyToValue(string ThisKey, string ThisValue)
         {
             {
-                switch (ThisKey.ToLower()) // Keep the key alphabetical please
+                switch (ThisKey?.ToLower()) // Keep the key alphabetical please
                 {
                     case "a":
                     case "alertid":

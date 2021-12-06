@@ -35,9 +35,12 @@ export class DescriptionComponent implements OnInit {
   ngOnInit() {
     this.annotationService.getSelected().subscribe((annotation) => {
       if (annotation) {
-        console.log('annotation was selected');
         if (annotation.draft) {
-          if (this.textArea && this.textArea.value() != '') annotation.markup = this.textArea.value();
+          this.annotationService.getDraftAnnotations().value.forEach((v, i, a) => {
+            this.textArea.value(v.markup);
+            annotation.markup = v.markup;
+          });
+          //if (this.textArea && this.textArea.value() != '' && this.selectedAnnotation?.draft) annotation.markup = this.textArea.value();
           this.description = annotation.markup;
         }
 
@@ -54,7 +57,7 @@ export class DescriptionComponent implements OnInit {
         }
       }
       else {
-        console.log('there was a null annotation selected.');
+        //console.log('there was a null annotation selected.');
         if (this.annotationService.getDraftAnnotationCount() == 0) {
           this.description = '';
           this.disabled = true;
@@ -69,7 +72,6 @@ export class DescriptionComponent implements OnInit {
         }
       }, 100);
 
-      this.ref.detectChanges();
     });
 
     this.centerPanelButtonsService.getCentralPanelButtons().pipe(map(buttons => {

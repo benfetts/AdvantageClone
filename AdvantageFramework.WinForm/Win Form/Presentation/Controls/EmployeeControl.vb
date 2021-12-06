@@ -1,21 +1,23 @@
-﻿Namespace WinForm.Presentation.Controls
+﻿Imports DevExpress.XtraEditors.Controls
 
-	Public Class EmployeeControl
+Namespace WinForm.Presentation.Controls
 
-		Public Event SelectedTabChanged(sender As Object, e As DevComponents.DotNetBar.TabStripTabChangedEventArgs)
-		Public Event DepartmentTeamInitNewRowEvent(ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
-		Public Event DepartmentTeamAddNewRowEvent(ByVal RowObject As Object)
-		Public Event AlertGroupInitNewRowEvent(ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
-		Public Event AlertGroupAddNewRowEvent(ByVal RowObject As Object)
-		Public Event RoleInitNewRowEvent(ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
-		Public Event RoleAddNewRowEvent(ByVal RowObject As Object)
-		Public Event SelectedBillingRateDetailChanged()
-		Public Event SelectedBillingRateLevelChanged()
-		Public Event EmployeeOfficesChangedEvent()
-		Public Event TimesheetFunctionsChangedEvent()
-		Public Event CDPsChangedEvent()
-		Public Event EmployeesChangedEvent()
-		Public Event SelectedDocumentChanged()
+    Public Class EmployeeControl
+
+        Public Event SelectedTabChanged(sender As Object, e As DevComponents.DotNetBar.TabStripTabChangedEventArgs)
+        Public Event DepartmentTeamInitNewRowEvent(ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
+        Public Event DepartmentTeamAddNewRowEvent(ByVal RowObject As Object)
+        Public Event AlertGroupInitNewRowEvent(ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
+        Public Event AlertGroupAddNewRowEvent(ByVal RowObject As Object)
+        Public Event RoleInitNewRowEvent(ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
+        Public Event RoleAddNewRowEvent(ByVal RowObject As Object)
+        Public Event SelectedBillingRateDetailChanged()
+        Public Event SelectedBillingRateLevelChanged()
+        Public Event EmployeeOfficesChangedEvent()
+        Public Event TimesheetFunctionsChangedEvent()
+        Public Event CDPsChangedEvent()
+        Public Event EmployeesChangedEvent()
+        Public Event SelectedDocumentChanged()
         Public Event BillingRateDetailInitNewRowEvent()
         Public Event AdditionalEmailsSelectionChangedEvent()
 
@@ -428,6 +430,7 @@
                                 NumericInputTimeTracking_MonthlyBillableHoursGoal.EditValue = Nothing
                                 NumericInputTimeTracking_SeniorityPriority.EditValue = Nothing
                                 NumericInputTimeTracking_StandardAnnualHours.EditValue = Nothing
+                                NumericInputTimeTracking_BillableHoursGoal.EditValue = Nothing
 
                                 TabItemEmployeeDetails_HRAndRateInformationTab.Visible = Not Me.CanUserCustom1
 
@@ -807,6 +810,7 @@
                 NumericInputTimeTracking_StandardAnnualHours.EditValue = Employee.AnnualHours
                 NumericInputTimeTracking_MonthlyBillableHoursGoal.EditValue = Employee.MonthHoursGoal
                 NumericInputTimeTracking_DirectHoursGoal.EditValue = Employee.DirectHours
+                NumericInputTimeTracking_BillableHoursGoal.EditValue = Employee.BillableHoursGoal
 
                 LoadStandardWorkDaysGrid()
                 LoadVacationSickAndPersonalTimeOffGrid()
@@ -1859,6 +1863,7 @@
                 Employee.AnnualHours = NumericInputTimeTracking_StandardAnnualHours.GetValue
                 Employee.MonthHoursGoal = NumericInputTimeTracking_MonthlyBillableHoursGoal.GetValue
                 Employee.DirectHours = NumericInputTimeTracking_DirectHoursGoal.GetValue
+                Employee.BillableHoursGoal = NumericInputTimeTracking_BillableHoursGoal.GetValue
 
                 SaveStandardWorkDays(Employee)
                 SaveVacationSickAndPersonalTime(Employee)
@@ -2632,33 +2637,41 @@
 
                                         Try
 
-                                            For Each EmployeeAdditionalEmail In _RemovedAdditionalEmails.ToList
+                                            If _RemovedAdditionalEmails IsNot Nothing Then
 
-                                                If EmployeeAdditionalEmail.ID > 0 Then
+                                                For Each EmployeeAdditionalEmail In _RemovedAdditionalEmails.ToList
 
-                                                    DbContext.Database.ExecuteSqlCommand(String.Format("DELETE FROM dbo.EMPLOYEE_ADDL_EMAIL WHERE EMPLOYEE_ADDL_EMAIL_ID = {0}", EmployeeAdditionalEmail.ID))
+                                                    If EmployeeAdditionalEmail.ID > 0 Then
 
-                                                End If
+                                                        DbContext.Database.ExecuteSqlCommand(String.Format("DELETE FROM dbo.EMPLOYEE_ADDL_EMAIL WHERE EMPLOYEE_ADDL_EMAIL_ID = {0}", EmployeeAdditionalEmail.ID))
 
-                                                _RemovedAdditionalEmails.Remove(EmployeeAdditionalEmail)
+                                                    End If
 
-                                            Next
+                                                    _RemovedAdditionalEmails.Remove(EmployeeAdditionalEmail)
 
-                                            For Each EmployeeAdditionalEmail In _AdditionalEmails
+                                                Next
 
-                                                If EmployeeAdditionalEmail.ID > 0 Then
+                                            End If
 
-                                                    DbContext.EmployeeAdditionalEmails.Attach(EmployeeAdditionalEmail)
+                                            If _AdditionalEmails IsNot Nothing Then
 
-                                                    DbContext.Entry(EmployeeAdditionalEmail).Property("Email").IsModified = True
+                                                For Each EmployeeAdditionalEmail In _AdditionalEmails
 
-                                                Else
+                                                    If EmployeeAdditionalEmail.ID > 0 Then
 
-                                                    DbContext.EmployeeAdditionalEmails.Add(EmployeeAdditionalEmail)
+                                                        DbContext.EmployeeAdditionalEmails.Attach(EmployeeAdditionalEmail)
 
-                                                End If
+                                                        DbContext.Entry(EmployeeAdditionalEmail).Property("Email").IsModified = True
 
-                                            Next
+                                                    Else
+
+                                                        DbContext.EmployeeAdditionalEmails.Add(EmployeeAdditionalEmail)
+
+                                                    End If
+
+                                                Next
+
+                                            End If
 
                                             DbContext.Configuration.AutoDetectChangesEnabled = True
 
@@ -3020,6 +3033,7 @@
             NumericInputTimeTracking_DirectHoursGoal.EditValue = Nothing
             NumericInputTimeTracking_MonthlyBillableHoursGoal.EditValue = Nothing
             NumericInputTimeTracking_StandardAnnualHours.EditValue = Nothing
+            NumericInputTimeTracking_BillableHoursGoal.EditValue = Nothing
 
             DataGridViewTimeTracking_EmployeeTimeOff.DataSource = Nothing
             DataGridViewTimeTracking_WorkDays.DataSource = Nothing
@@ -4084,6 +4098,24 @@
                     e.Cancel = True
 
                     AdvantageFramework.WinForm.MessageBox.Show("The Direct Hours Percent Goal is outside the allowable range. Please enter a percent up to 100%.")
+
+                End If
+
+            Catch ex As Exception
+
+            End Try
+
+        End Sub
+
+        Private Sub NumericInputTimeTracking_BillableHoursGoal_EditValueChanging(sender As Object, e As ChangingEventArgs) Handles NumericInputTimeTracking_BillableHoursGoal.EditValueChanging
+
+            Try
+
+                If e.NewValue IsNot Nothing AndAlso IsNumeric(e.NewValue) AndAlso Convert.ToDecimal(e.NewValue, System.Globalization.NumberFormatInfo.InvariantInfo) > 100 Then
+
+                    e.Cancel = True
+
+                    AdvantageFramework.WinForm.MessageBox.Show("The Billable Hours Percent Goal is outside the allowable range. Please enter a percent up to 100%.")
 
                 End If
 

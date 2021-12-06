@@ -1,65 +1,65 @@
 ﻿Namespace WinForm.MVC.Presentation.Controls
 
-	Public Class DataGridView
-		Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl
+    Public Class DataGridView
+        Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl
 
-		Public Event SelectionChangedEvent(sender As Object, e As System.EventArgs)
-		Public Event CellValueChangingEvent(ByRef Saved As Boolean, sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
-		Public Event CellValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
-		Public Event ColumnValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
-		Public Event ValidatingEditorEvent(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs)
-		Public Event ValidateRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs)
-		Public Event InitNewRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
-		Public Event AddNewRowEvent(RowObject As Object)
-		Public Event ShownEditorEvent(sender As Object, e As System.EventArgs)
-		Public Event ShowingEditorEvent(sender As Object, e As System.ComponentModel.CancelEventArgs)
-		Public Event RowClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs)
-		Public Event RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs)
-		Public Event NewItemRowCellValueChangingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
-		Public Event NewItemRowCellValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
-		Public Event FocusedRowChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs)
-		Public Event BeforeLeaveRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowAllowEventArgs)
-		Public Event RepositoryDataSourceLoadingEvent(FieldName As String, ByRef Datasource As Object)
-		Public Event QueryPopupNeedDatasourceEvent(FieldName As String, ByRef OverrideDefaultDatasource As Boolean, ByRef Datasource As Object)
-		Public Event SelectAllEvent()
-		Public Event DeselectAllEvent()
-		Public Event DataSourceChangedEvent(sender As Object, e As System.EventArgs)
-		Public Event EmbeddedNavigatorButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
-		Public Event CustomRowCellEditForEditingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs)
-		Public Event PopupMenuShowingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs)
-		Public Event CustomDrawGroupRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs)
-		Public Event CustomRowCellEditEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs)
-		Public Event RowCellStyleEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs)
-		Public Event CustomDrawRowFooterEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs)
-		Public Event CustomDrawRowFooterCellEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs)
-		Public Event MouseDownEvent(sender As Object, e As System.Windows.Forms.MouseEventArgs)
-		Public Event CustomDrawCellEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs)
-		Public Event AlterSubItemGridLookupEditPropertiesEvent(ByRef GridColumn As DevExpress.XtraGrid.Columns.GridColumn, ByRef SubItemGridLookUpEditControl As AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemGridLookUpEditControl)
-		Public Event HideCustomizationFormEvent(sender As Object, e As EventArgs)
-		Public Event ShowCustomizationFormEvent(sender As Object, e As EventArgs)
-		Public Event CustomSummaryCalculateEvent(sender As Object, e As DevExpress.Data.CustomSummaryEventArgs)
-		Public Event CustomDrawColumnHeaderEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventArgs)
-		Public Event CustomColumnDisplayTextEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs)
-		Public Event CustomColumnGroupEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs)
-		Public Event CustomColumnSortEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs)
-		Public Event ProcessGridKeyEvent(sender As Object, e As System.Windows.Forms.KeyEventArgs)
-		Public Event FocusedColumnChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventArgs)
-		Public Event CustomUnboundColumnDataEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs)
-		Public Event CustomRowFilterEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowFilterEventArgs)
-		Public Event ColumnEditValueChangingEvent(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
-		Public Event EndGroupingEvent(sender As Object, e As EventArgs)
-		Public Event CustomDrawFooterEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs)
-		Public Event EndSortingEvent(sender As Object, e As EventArgs)
-		Public Event DragObjectOverEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs)
-		Public Event ColumnFilterChangedEvent(sender As Object, e As EventArgs)
-		Public Event ColumnPositionChangedEvent(sender As Object, e As EventArgs)
-		Public Event ColumnWidthChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.ColumnEventArgs)
-		Public Event CreateReportFooterAreaEvent(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
-		Public Event CreateMarginalFooterAreaEvent(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
-		Public Event CreateReportHeaderAreaEvent(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
-		Public Event GridViewKeyDownEvent(sender As Object, e As System.Windows.Forms.KeyEventArgs)
-		Public Event CustomDrawFilterPanelEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomDrawObjectEventArgs)
-		Public Event CustomDrawFooterCellEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs)
+        Public Event SelectionChangedEvent(sender As Object, e As System.EventArgs)
+        Public Event CellValueChangingEvent(ByRef Saved As Boolean, sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
+        Public Event CellValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
+        Public Event ColumnValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
+        Public Event ValidatingEditorEvent(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs)
+        Public Event ValidateRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs)
+        Public Event InitNewRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs)
+        Public Event AddNewRowEvent(RowObject As Object)
+        Public Event ShownEditorEvent(sender As Object, e As System.EventArgs)
+        Public Event ShowingEditorEvent(sender As Object, e As System.ComponentModel.CancelEventArgs)
+        Public Event RowClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs)
+        Public Event RowDoubleClickEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs)
+        Public Event NewItemRowCellValueChangingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
+        Public Event NewItemRowCellValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs)
+        Public Event FocusedRowChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs)
+        Public Event BeforeLeaveRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowAllowEventArgs)
+        Public Event RepositoryDataSourceLoadingEvent(FieldName As String, ByRef Datasource As Object)
+        Public Event QueryPopupNeedDatasourceEvent(FieldName As String, ByRef OverrideDefaultDatasource As Boolean, ByRef Datasource As Object)
+        Public Event SelectAllEvent()
+        Public Event DeselectAllEvent()
+        Public Event DataSourceChangedEvent(sender As Object, e As System.EventArgs)
+        Public Event EmbeddedNavigatorButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
+        Public Event CustomRowCellEditForEditingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs)
+        Public Event PopupMenuShowingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs)
+        Public Event CustomDrawGroupRowEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs)
+        Public Event CustomRowCellEditEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs)
+        Public Event RowCellStyleEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs)
+        Public Event CustomDrawRowFooterEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs)
+        Public Event CustomDrawRowFooterCellEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs)
+        Public Event MouseDownEvent(sender As Object, e As System.Windows.Forms.MouseEventArgs)
+        Public Event CustomDrawCellEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs)
+        Public Event AlterSubItemGridLookupEditPropertiesEvent(ByRef GridColumn As DevExpress.XtraGrid.Columns.GridColumn, ByRef SubItemGridLookUpEditControl As AdvantageFramework.WinForm.MVC.Presentation.Controls.SubItemGridLookUpEditControl)
+        Public Event HideCustomizationFormEvent(sender As Object, e As EventArgs)
+        Public Event ShowCustomizationFormEvent(sender As Object, e As EventArgs)
+        Public Event CustomSummaryCalculateEvent(sender As Object, e As DevExpress.Data.CustomSummaryEventArgs)
+        Public Event CustomDrawColumnHeaderEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventArgs)
+        Public Event CustomColumnDisplayTextEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs)
+        Public Event CustomColumnGroupEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs)
+        Public Event CustomColumnSortEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs)
+        Public Event ProcessGridKeyEvent(sender As Object, e As System.Windows.Forms.KeyEventArgs)
+        Public Event FocusedColumnChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventArgs)
+        Public Event CustomUnboundColumnDataEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs)
+        Public Event CustomRowFilterEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowFilterEventArgs)
+        Public Event ColumnEditValueChangingEvent(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
+        Public Event EndGroupingEvent(sender As Object, e As EventArgs)
+        Public Event CustomDrawFooterEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs)
+        Public Event EndSortingEvent(sender As Object, e As EventArgs)
+        Public Event DragObjectOverEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs)
+        Public Event ColumnFilterChangedEvent(sender As Object, e As EventArgs)
+        Public Event ColumnPositionChangedEvent(sender As Object, e As EventArgs)
+        Public Event ColumnWidthChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.ColumnEventArgs)
+        Public Event CreateReportFooterAreaEvent(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
+        Public Event CreateMarginalFooterAreaEvent(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
+        Public Event CreateReportHeaderAreaEvent(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
+        Public Event GridViewKeyDownEvent(sender As Object, e As System.Windows.Forms.KeyEventArgs)
+        Public Event CustomDrawFilterPanelEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomDrawObjectEventArgs)
+        Public Event CustomDrawFooterCellEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs)
         Public Event SubItemGridLookUpEditControlEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
         Public Event MasterRowGetChildListEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs)
         Public Event MasterRowGetRelationNameEvent(sender As Object, e As DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs)
@@ -76,6 +76,7 @@
         Public Event GroupRowExpandingEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowAllowEventArgs)
         Public Event StartSortingEvent(sender As Object, e As EventArgs)
         Public Event RowCountChangedEvent(ByVal sender As Object, ByVal e As System.EventArgs)
+        Public Event SubItemDateInputEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs)
 
 #Region " Constants "
 
@@ -92,23 +93,23 @@
 #Region " Variables "
 
         Protected _BookmarkColumnIndex As Integer = -1
-		Protected _FormSettingsLoaded As Boolean = False
-		Protected _CurrentBookmark As Object = Nothing
-		Protected _NextBookmark As Object = Nothing
-		Protected _ItemDescription As String = ""
-		Protected WithEvents _BindingSource As System.Windows.Forms.BindingSource = Nothing
-		Protected _BindingSourcePositionChanged As Boolean = False
-		Protected _PreviousPosition As Integer = -1
-		Protected _UserEntryChanged As Boolean = False
-		Protected _ByPassUserEntryChanged As Boolean = False
-		Protected _SuspendedForLoading As Boolean = False
-		Protected _AllowSelectGroupHeaderRow As Boolean = True
-		Protected _ChangesAutoSaved As Boolean = False
-		Protected _AutoUpdateViewCaption As Boolean = True
-		Protected _UseEmbeddedNavigator As Boolean = False
-		Protected _CustomDeleteButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
-		Protected _CustomCancelEditButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
-		Protected _ShowRowSelectionIfHidden As Boolean = True
+        Protected _FormSettingsLoaded As Boolean = False
+        Protected _CurrentBookmark As Object = Nothing
+        Protected _NextBookmark As Object = Nothing
+        Protected _ItemDescription As String = ""
+        Protected WithEvents _BindingSource As System.Windows.Forms.BindingSource = Nothing
+        Protected _BindingSourcePositionChanged As Boolean = False
+        Protected _PreviousPosition As Integer = -1
+        Protected _UserEntryChanged As Boolean = False
+        Protected _ByPassUserEntryChanged As Boolean = False
+        Protected _SuspendedForLoading As Boolean = False
+        Protected _AllowSelectGroupHeaderRow As Boolean = True
+        Protected _ChangesAutoSaved As Boolean = False
+        Protected _AutoUpdateViewCaption As Boolean = True
+        Protected _UseEmbeddedNavigator As Boolean = False
+        Protected _CustomDeleteButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
+        Protected _CustomCancelEditButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
+        Protected _ShowRowSelectionIfHidden As Boolean = True
         Protected _SelectRowsWhenSelectDeselectAllButtonClicked As Boolean = True
 
 #End Region
@@ -116,360 +117,360 @@
 #Region " Properties "
 
         Public Property AutoUpdateViewCaption As Boolean
-			Get
-				AutoUpdateViewCaption = _AutoUpdateViewCaption
-			End Get
-			Set(value As Boolean)
-				_AutoUpdateViewCaption = value
-			End Set
-		End Property
-		Public Property ItemDescription() As String
-			Get
-				ItemDescription = _ItemDescription
-			End Get
-			Set(value As String)
-				_ItemDescription = value
-			End Set
-		End Property
-		Public Property FilterPopupMode As DevExpress.XtraGrid.Columns.FilterPopupMode
-			Get
-				FilterPopupMode = GridViewGridControl_MainView.FilterPopupMode
-			End Get
-			Set(value As DevExpress.XtraGrid.Columns.FilterPopupMode)
-				GridViewGridControl_MainView.FilterPopupMode = value
-			End Set
-		End Property
-		Public ReadOnly Property UserEntryChanged As Boolean Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.UserEntryChanged
-			Get
-				UserEntryChanged = _UserEntryChanged
-			End Get
-		End Property
-		Public WriteOnly Property ByPassUserEntryChanged As Boolean Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.ByPassUserEntryChanged
-			Set(value As Boolean)
-				_ByPassUserEntryChanged = value
-			End Set
-		End Property
-		Public WriteOnly Property SuspendedForLoading As Boolean Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.SuspendedForLoading
-			Set(value As Boolean)
-				_SuspendedForLoading = value
-			End Set
-		End Property
-		Public Property ViewCaptionHeight() As Integer
-			Get
-				ViewCaptionHeight = GridViewGridControl_MainView.ViewCaptionHeight
-			End Get
-			Set(value As Integer)
-				GridViewGridControl_MainView.ViewCaptionHeight = value
-			End Set
-		End Property
-		Public Property ShowSelectDeselectAllButtons() As Boolean
-			Get
-				ShowSelectDeselectAllButtons = PanelControl_BottomPanel.Visible
-			End Get
-			Set(value As Boolean)
-				PanelControl_BottomPanel.Visible = value
-			End Set
-		End Property
-		<System.ComponentModel.Browsable(False)>
-		Public ReadOnly Property Columns() As DevExpress.XtraGrid.Columns.GridColumnCollection
-			Get
-				Columns = GridViewGridControl_MainView.Columns
-			End Get
-		End Property
-		Public Property MultiSelect() As Boolean
-			Get
-				MultiSelect = GridViewGridControl_MainView.OptionsSelection.MultiSelect
-			End Get
-			Set(value As Boolean)
-				GridViewGridControl_MainView.OptionsSelection.MultiSelect = value
-			End Set
-		End Property
-		Public Property NewItemRowPosition() As DevExpress.XtraGrid.Views.Grid.NewItemRowPosition
-			Get
-				NewItemRowPosition = GridViewGridControl_MainView.OptionsView.NewItemRowPosition
-			End Get
-			Set(value As DevExpress.XtraGrid.Views.Grid.NewItemRowPosition)
-				GridViewGridControl_MainView.OptionsView.NewItemRowPosition = value
-			End Set
-		End Property
-		Public ReadOnly Property HasOnlyOneSelectedRow(Optional ExcludeNonDataRows As Boolean = True) As Boolean
-			Get
+            Get
+                AutoUpdateViewCaption = _AutoUpdateViewCaption
+            End Get
+            Set(value As Boolean)
+                _AutoUpdateViewCaption = value
+            End Set
+        End Property
+        Public Property ItemDescription() As String
+            Get
+                ItemDescription = _ItemDescription
+            End Get
+            Set(value As String)
+                _ItemDescription = value
+            End Set
+        End Property
+        Public Property FilterPopupMode As DevExpress.XtraGrid.Columns.FilterPopupMode
+            Get
+                FilterPopupMode = GridViewGridControl_MainView.FilterPopupMode
+            End Get
+            Set(value As DevExpress.XtraGrid.Columns.FilterPopupMode)
+                GridViewGridControl_MainView.FilterPopupMode = value
+            End Set
+        End Property
+        Public ReadOnly Property UserEntryChanged As Boolean Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.UserEntryChanged
+            Get
+                UserEntryChanged = _UserEntryChanged
+            End Get
+        End Property
+        Public WriteOnly Property ByPassUserEntryChanged As Boolean Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.ByPassUserEntryChanged
+            Set(value As Boolean)
+                _ByPassUserEntryChanged = value
+            End Set
+        End Property
+        Public WriteOnly Property SuspendedForLoading As Boolean Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.SuspendedForLoading
+            Set(value As Boolean)
+                _SuspendedForLoading = value
+            End Set
+        End Property
+        Public Property ViewCaptionHeight() As Integer
+            Get
+                ViewCaptionHeight = GridViewGridControl_MainView.ViewCaptionHeight
+            End Get
+            Set(value As Integer)
+                GridViewGridControl_MainView.ViewCaptionHeight = value
+            End Set
+        End Property
+        Public Property ShowSelectDeselectAllButtons() As Boolean
+            Get
+                ShowSelectDeselectAllButtons = PanelControl_BottomPanel.Visible
+            End Get
+            Set(value As Boolean)
+                PanelControl_BottomPanel.Visible = value
+            End Set
+        End Property
+        <System.ComponentModel.Browsable(False)>
+        Public ReadOnly Property Columns() As DevExpress.XtraGrid.Columns.GridColumnCollection
+            Get
+                Columns = GridViewGridControl_MainView.Columns
+            End Get
+        End Property
+        Public Property MultiSelect() As Boolean
+            Get
+                MultiSelect = GridViewGridControl_MainView.OptionsSelection.MultiSelect
+            End Get
+            Set(value As Boolean)
+                GridViewGridControl_MainView.OptionsSelection.MultiSelect = value
+            End Set
+        End Property
+        Public Property NewItemRowPosition() As DevExpress.XtraGrid.Views.Grid.NewItemRowPosition
+            Get
+                NewItemRowPosition = GridViewGridControl_MainView.OptionsView.NewItemRowPosition
+            End Get
+            Set(value As DevExpress.XtraGrid.Views.Grid.NewItemRowPosition)
+                GridViewGridControl_MainView.OptionsView.NewItemRowPosition = value
+            End Set
+        End Property
+        Public ReadOnly Property HasOnlyOneSelectedRow(Optional ExcludeNonDataRows As Boolean = True) As Boolean
+            Get
 
-				HasOnlyOneSelectedRow = (GridViewGridControl_MainView.SelectedRowsCount = 1)
+                HasOnlyOneSelectedRow = (GridViewGridControl_MainView.SelectedRowsCount = 1)
 
-				If ExcludeNonDataRows AndAlso HasOnlyOneSelectedRow Then
+                If ExcludeNonDataRows AndAlso HasOnlyOneSelectedRow Then
 
-					HasOnlyOneSelectedRow = GridViewGridControl_MainView.IsDataRow(GridViewGridControl_MainView.FocusedRowHandle)
+                    HasOnlyOneSelectedRow = GridViewGridControl_MainView.IsDataRow(GridViewGridControl_MainView.FocusedRowHandle)
 
-				End If
+                End If
 
-			End Get
-		End Property
-		Public ReadOnly Property HasOnlyNewItemRowSelected() As Boolean
-			Get
-				HasOnlyNewItemRowSelected = (GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle) AndAlso
-											GridViewGridControl_MainView.SelectedRowsCount = 1)
-			End Get
-		End Property
-		Public ReadOnly Property HasOnlyAutoFilterSelectedRow() As Boolean
-			Get
-				HasOnlyAutoFilterSelectedRow = (GridViewGridControl_MainView.IsFilterRow(GridViewGridControl_MainView.FocusedRowHandle) AndAlso
-											GridViewGridControl_MainView.SelectedRowsCount = 1)
-			End Get
-		End Property
-		Public ReadOnly Property HasMultipleSelectedRows(Optional ExcludeNonDataRows As Boolean = True) As Boolean
-			Get
+            End Get
+        End Property
+        Public ReadOnly Property HasOnlyNewItemRowSelected() As Boolean
+            Get
+                HasOnlyNewItemRowSelected = (GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle) AndAlso
+                                            GridViewGridControl_MainView.SelectedRowsCount = 1)
+            End Get
+        End Property
+        Public ReadOnly Property HasOnlyAutoFilterSelectedRow() As Boolean
+            Get
+                HasOnlyAutoFilterSelectedRow = (GridViewGridControl_MainView.IsFilterRow(GridViewGridControl_MainView.FocusedRowHandle) AndAlso
+                                            GridViewGridControl_MainView.SelectedRowsCount = 1)
+            End Get
+        End Property
+        Public ReadOnly Property HasMultipleSelectedRows(Optional ExcludeNonDataRows As Boolean = True) As Boolean
+            Get
 
-				'objects
-				Dim SelectedRowsList As Generic.List(Of Integer) = Nothing
+                'objects
+                Dim SelectedRowsList As Generic.List(Of Integer) = Nothing
 
-				HasMultipleSelectedRows = (GridViewGridControl_MainView.SelectedRowsCount > 1)
+                HasMultipleSelectedRows = (GridViewGridControl_MainView.SelectedRowsCount > 1)
 
-				If ExcludeNonDataRows AndAlso HasMultipleSelectedRows Then
+                If ExcludeNonDataRows AndAlso HasMultipleSelectedRows Then
 
-					SelectedRowsList = New Generic.List(Of Integer)
+                    SelectedRowsList = New Generic.List(Of Integer)
 
-					For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                    For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-						If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                        If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-							SelectedRowsList.Add(RowHandle)
+                            SelectedRowsList.Add(RowHandle)
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-					HasMultipleSelectedRows = (SelectedRowsList.Count > 1)
+                    HasMultipleSelectedRows = (SelectedRowsList.Count > 1)
 
-				End If
+                End If
 
-			End Get
-		End Property
-		Public ReadOnly Property HasOnlyDataRowsSelected() As Boolean
-			Get
+            End Get
+        End Property
+        Public ReadOnly Property HasOnlyDataRowsSelected() As Boolean
+            Get
 
-				'objects
-				Dim OnlyDataRowsSelected As Boolean = False
+                'objects
+                Dim OnlyDataRowsSelected As Boolean = False
 
-				If GridViewGridControl_MainView.GetSelectedRows.Count > 1 Then
+                If GridViewGridControl_MainView.GetSelectedRows.Count > 1 Then
 
-					OnlyDataRowsSelected = True
+                    OnlyDataRowsSelected = True
 
-					For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                    For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-						If GridViewGridControl_MainView.IsDataRow(RowHandle) = False Then
+                        If GridViewGridControl_MainView.IsDataRow(RowHandle) = False Then
 
-							OnlyDataRowsSelected = False
+                            OnlyDataRowsSelected = False
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-				End If
+                End If
 
-				HasOnlyDataRowsSelected = OnlyDataRowsSelected
+                HasOnlyDataRowsSelected = OnlyDataRowsSelected
 
-			End Get
-		End Property
-		Public ReadOnly Property HasOnlyGroupRowsSelected() As Boolean
-			Get
+            End Get
+        End Property
+        Public ReadOnly Property HasOnlyGroupRowsSelected() As Boolean
+            Get
 
-				'objects
-				Dim OnlyGroupRowsSelected As Boolean = False
+                'objects
+                Dim OnlyGroupRowsSelected As Boolean = False
 
-				If GridViewGridControl_MainView.GetSelectedRows.Count > 1 Then
+                If GridViewGridControl_MainView.GetSelectedRows.Count > 1 Then
 
-					OnlyGroupRowsSelected = True
+                    OnlyGroupRowsSelected = True
 
-					For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                    For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-						If GridViewGridControl_MainView.IsGroupRow(RowHandle) = False Then
+                        If GridViewGridControl_MainView.IsGroupRow(RowHandle) = False Then
 
-							OnlyGroupRowsSelected = False
+                            OnlyGroupRowsSelected = False
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-				End If
+                End If
 
-				HasOnlyGroupRowsSelected = OnlyGroupRowsSelected
+                HasOnlyGroupRowsSelected = OnlyGroupRowsSelected
 
-			End Get
-		End Property
-		Public ReadOnly Property HasASelectedRow(Optional ExcludeNonDataRows As Boolean = True) As Boolean
-			Get
+            End Get
+        End Property
+        Public ReadOnly Property HasASelectedRow(Optional ExcludeNonDataRows As Boolean = True) As Boolean
+            Get
 
-				'objects
-				Dim SelectedRowsList As Generic.List(Of Integer) = Nothing
+                'objects
+                Dim SelectedRowsList As Generic.List(Of Integer) = Nothing
 
-				HasASelectedRow = (GridViewGridControl_MainView.SelectedRowsCount > 0)
+                HasASelectedRow = (GridViewGridControl_MainView.SelectedRowsCount > 0)
 
-				If ExcludeNonDataRows AndAlso HasASelectedRow Then
+                If ExcludeNonDataRows AndAlso HasASelectedRow Then
 
-					SelectedRowsList = New Generic.List(Of Integer)
+                    SelectedRowsList = New Generic.List(Of Integer)
 
-					For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                    For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-						If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                        If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-							SelectedRowsList.Add(RowHandle)
+                            SelectedRowsList.Add(RowHandle)
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-					HasASelectedRow = SelectedRowsList.Any
+                    HasASelectedRow = SelectedRowsList.Any
 
-				End If
+                End If
 
-			End Get
-		End Property
-		Public ReadOnly Property HasRows() As Boolean
-			Get
-				HasRows = (GridViewGridControl_MainView.DataRowCount > 0)
-			End Get
-		End Property
-		<ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
-		Public Property DataSource() As Object
-			Get
-				DataSource = DataGridView_GridControl.DataSource
-			End Get
-			Set(value As Object)
-				LoadDataSource(value)
-			End Set
-		End Property
-		Public ReadOnly Property BindingSource() As System.Windows.Forms.BindingSource
-			Get
-				BindingSource = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource)
-			End Get
-		End Property
-		Public ReadOnly Property OptionsBehavior As DevExpress.XtraGrid.Views.Grid.GridOptionsBehavior
-			Get
-				OptionsBehavior = Me.GridViewGridControl_MainView.OptionsBehavior
-			End Get
-		End Property
-		Public ReadOnly Property OptionsCustomization As DevExpress.XtraGrid.Views.Grid.GridOptionsCustomization
-			Get
-				OptionsCustomization = Me.GridViewGridControl_MainView.OptionsCustomization
-			End Get
-		End Property
-		Public ReadOnly Property OptionsDetail As DevExpress.XtraGrid.Views.Grid.GridOptionsDetail
-			Get
-				OptionsDetail = Me.GridViewGridControl_MainView.OptionsDetail
-			End Get
-		End Property
-		Public ReadOnly Property OptionsFilter As DevExpress.XtraGrid.Views.Base.ColumnViewOptionsFilter
-			Get
-				OptionsFilter = Me.GridViewGridControl_MainView.OptionsFilter
-			End Get
-		End Property
-		Public ReadOnly Property OptionsFind As DevExpress.XtraGrid.Views.Base.ColumnViewOptionsFind
-			Get
-				OptionsFind = Me.GridViewGridControl_MainView.OptionsFind
-			End Get
-		End Property
-		Public ReadOnly Property OptionsLayout As DevExpress.Utils.OptionsLayoutGrid
-			Get
-				OptionsLayout = Me.GridViewGridControl_MainView.OptionsLayout
-			End Get
-		End Property
-		Public ReadOnly Property OptionsHint As DevExpress.XtraGrid.Views.Grid.GridOptionsHint
-			Get
-				OptionsHint = Me.GridViewGridControl_MainView.OptionsHint
-			End Get
-		End Property
-		Public ReadOnly Property OptionsMenu As DevExpress.XtraGrid.Views.Grid.GridOptionsMenu
-			Get
-				OptionsMenu = Me.GridViewGridControl_MainView.OptionsMenu
-			End Get
-		End Property
-		Public ReadOnly Property OptionsNavigation As DevExpress.XtraGrid.Views.Grid.GridOptionsNavigation
-			Get
-				OptionsNavigation = Me.GridViewGridControl_MainView.OptionsNavigation
-			End Get
-		End Property
-		Public ReadOnly Property OptionsPrint As DevExpress.XtraGrid.Views.Grid.GridOptionsPrint
-			Get
-				OptionsPrint = Me.GridViewGridControl_MainView.OptionsPrint
-			End Get
-		End Property
-		Public ReadOnly Property OptionsSelection As DevExpress.XtraGrid.Views.Grid.GridOptionsSelection
-			Get
-				OptionsSelection = Me.GridViewGridControl_MainView.OptionsSelection
-			End Get
-		End Property
-		Public ReadOnly Property OptionsView As DevExpress.XtraGrid.Views.Grid.GridOptionsView
-			Get
-				OptionsView = Me.GridViewGridControl_MainView.OptionsView
-			End Get
-		End Property
-		Public ReadOnly Property GridControl As AdvantageFramework.WinForm.MVC.Presentation.Controls.GridControl
-			Get
-				GridControl = Me.DataGridView_GridControl
-			End Get
-		End Property
-		Public ReadOnly Property CurrentView As AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView
-			Get
-				CurrentView = Me.GridViewGridControl_MainView
-			End Get
-		End Property
-		Public Property AllowSelectGroupHeaderRow As Boolean
-			Get
-				AllowSelectGroupHeaderRow = _AllowSelectGroupHeaderRow
-			End Get
-			Set(value As Boolean)
-				_AllowSelectGroupHeaderRow = value
-			End Set
-		End Property
-		Public Property UseEmbeddedNavigator As Boolean
-			Get
-				UseEmbeddedNavigator = _UseEmbeddedNavigator
-			End Get
-			Set(ByVal value As Boolean)
-				_UseEmbeddedNavigator = UseEmbeddedNavigator
-				SetupEmbeddedNavigator(value)
-			End Set
-		End Property
-		Public ReadOnly Property CustomDeleteButton As DevExpress.XtraEditors.NavigatorCustomButton
-			Get
-				CustomDeleteButton = _CustomDeleteButton
-			End Get
-		End Property
-		Public ReadOnly Property CustomCancelEditButton As DevExpress.XtraEditors.NavigatorCustomButton
-			Get
-				CustomCancelEditButton = _CustomCancelEditButton
-			End Get
-		End Property
-		Public Property ModifyGridRowHeight As Boolean
-			Get
-				ModifyGridRowHeight = GridViewGridControl_MainView.ModifyGridRowHeight
-			End Get
-			Set(value As Boolean)
-				GridViewGridControl_MainView.ModifyGridRowHeight = value
-			End Set
-		End Property
-		Public ReadOnly Property EmbeddedNavigator As DevExpress.XtraEditors.ControlNavigator
-			Get
-				EmbeddedNavigator = Me.GridControl.EmbeddedNavigator
-			End Get
-		End Property
-		Public Property ModifyColumnSettingsOnEachDataSource As Boolean
-			Get
-				ModifyColumnSettingsOnEachDataSource = GridViewGridControl_MainView.ModifyColumnSettingsOnEachDataSource
-			End Get
-			Set(value As Boolean)
-				GridViewGridControl_MainView.ModifyColumnSettingsOnEachDataSource = value
-			End Set
-		End Property
-		Public Property ShowRowSelectionIfHidden As Boolean
-			Get
-				ShowRowSelectionIfHidden = _ShowRowSelectionIfHidden
-			End Get
-			Set(value As Boolean)
-				_ShowRowSelectionIfHidden = value
-			End Set
-		End Property
+            End Get
+        End Property
+        Public ReadOnly Property HasRows() As Boolean
+            Get
+                HasRows = (GridViewGridControl_MainView.DataRowCount > 0)
+            End Get
+        End Property
+        <ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)>
+        Public Property DataSource() As Object
+            Get
+                DataSource = DataGridView_GridControl.DataSource
+            End Get
+            Set(value As Object)
+                LoadDataSource(value)
+            End Set
+        End Property
+        Public ReadOnly Property BindingSource() As System.Windows.Forms.BindingSource
+            Get
+                BindingSource = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource)
+            End Get
+        End Property
+        Public ReadOnly Property OptionsBehavior As DevExpress.XtraGrid.Views.Grid.GridOptionsBehavior
+            Get
+                OptionsBehavior = Me.GridViewGridControl_MainView.OptionsBehavior
+            End Get
+        End Property
+        Public ReadOnly Property OptionsCustomization As DevExpress.XtraGrid.Views.Grid.GridOptionsCustomization
+            Get
+                OptionsCustomization = Me.GridViewGridControl_MainView.OptionsCustomization
+            End Get
+        End Property
+        Public ReadOnly Property OptionsDetail As DevExpress.XtraGrid.Views.Grid.GridOptionsDetail
+            Get
+                OptionsDetail = Me.GridViewGridControl_MainView.OptionsDetail
+            End Get
+        End Property
+        Public ReadOnly Property OptionsFilter As DevExpress.XtraGrid.Views.Base.ColumnViewOptionsFilter
+            Get
+                OptionsFilter = Me.GridViewGridControl_MainView.OptionsFilter
+            End Get
+        End Property
+        Public ReadOnly Property OptionsFind As DevExpress.XtraGrid.Views.Base.ColumnViewOptionsFind
+            Get
+                OptionsFind = Me.GridViewGridControl_MainView.OptionsFind
+            End Get
+        End Property
+        Public ReadOnly Property OptionsLayout As DevExpress.Utils.OptionsLayoutGrid
+            Get
+                OptionsLayout = Me.GridViewGridControl_MainView.OptionsLayout
+            End Get
+        End Property
+        Public ReadOnly Property OptionsHint As DevExpress.XtraGrid.Views.Grid.GridOptionsHint
+            Get
+                OptionsHint = Me.GridViewGridControl_MainView.OptionsHint
+            End Get
+        End Property
+        Public ReadOnly Property OptionsMenu As DevExpress.XtraGrid.Views.Grid.GridOptionsMenu
+            Get
+                OptionsMenu = Me.GridViewGridControl_MainView.OptionsMenu
+            End Get
+        End Property
+        Public ReadOnly Property OptionsNavigation As DevExpress.XtraGrid.Views.Grid.GridOptionsNavigation
+            Get
+                OptionsNavigation = Me.GridViewGridControl_MainView.OptionsNavigation
+            End Get
+        End Property
+        Public ReadOnly Property OptionsPrint As DevExpress.XtraGrid.Views.Grid.GridOptionsPrint
+            Get
+                OptionsPrint = Me.GridViewGridControl_MainView.OptionsPrint
+            End Get
+        End Property
+        Public ReadOnly Property OptionsSelection As DevExpress.XtraGrid.Views.Grid.GridOptionsSelection
+            Get
+                OptionsSelection = Me.GridViewGridControl_MainView.OptionsSelection
+            End Get
+        End Property
+        Public ReadOnly Property OptionsView As DevExpress.XtraGrid.Views.Grid.GridOptionsView
+            Get
+                OptionsView = Me.GridViewGridControl_MainView.OptionsView
+            End Get
+        End Property
+        Public ReadOnly Property GridControl As AdvantageFramework.WinForm.MVC.Presentation.Controls.GridControl
+            Get
+                GridControl = Me.DataGridView_GridControl
+            End Get
+        End Property
+        Public ReadOnly Property CurrentView As AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView
+            Get
+                CurrentView = Me.GridViewGridControl_MainView
+            End Get
+        End Property
+        Public Property AllowSelectGroupHeaderRow As Boolean
+            Get
+                AllowSelectGroupHeaderRow = _AllowSelectGroupHeaderRow
+            End Get
+            Set(value As Boolean)
+                _AllowSelectGroupHeaderRow = value
+            End Set
+        End Property
+        Public Property UseEmbeddedNavigator As Boolean
+            Get
+                UseEmbeddedNavigator = _UseEmbeddedNavigator
+            End Get
+            Set(ByVal value As Boolean)
+                _UseEmbeddedNavigator = UseEmbeddedNavigator
+                SetupEmbeddedNavigator(value)
+            End Set
+        End Property
+        Public ReadOnly Property CustomDeleteButton As DevExpress.XtraEditors.NavigatorCustomButton
+            Get
+                CustomDeleteButton = _CustomDeleteButton
+            End Get
+        End Property
+        Public ReadOnly Property CustomCancelEditButton As DevExpress.XtraEditors.NavigatorCustomButton
+            Get
+                CustomCancelEditButton = _CustomCancelEditButton
+            End Get
+        End Property
+        Public Property ModifyGridRowHeight As Boolean
+            Get
+                ModifyGridRowHeight = GridViewGridControl_MainView.ModifyGridRowHeight
+            End Get
+            Set(value As Boolean)
+                GridViewGridControl_MainView.ModifyGridRowHeight = value
+            End Set
+        End Property
+        Public ReadOnly Property EmbeddedNavigator As DevExpress.XtraEditors.ControlNavigator
+            Get
+                EmbeddedNavigator = Me.GridControl.EmbeddedNavigator
+            End Get
+        End Property
+        Public Property ModifyColumnSettingsOnEachDataSource As Boolean
+            Get
+                ModifyColumnSettingsOnEachDataSource = GridViewGridControl_MainView.ModifyColumnSettingsOnEachDataSource
+            End Get
+            Set(value As Boolean)
+                GridViewGridControl_MainView.ModifyColumnSettingsOnEachDataSource = value
+            End Set
+        End Property
+        Public Property ShowRowSelectionIfHidden As Boolean
+            Get
+                ShowRowSelectionIfHidden = _ShowRowSelectionIfHidden
+            End Get
+            Set(value As Boolean)
+                _ShowRowSelectionIfHidden = value
+            End Set
+        End Property
         Public Property SelectRowsWhenSelectDeselectAllButtonClicked As Boolean
             Get
                 SelectRowsWhenSelectDeselectAllButtonClicked = _SelectRowsWhenSelectDeselectAllButtonClicked
@@ -485,141 +486,141 @@
 
         Public Sub New()
 
-			' This call is required by the designer.
-			InitializeComponent()
+            ' This call is required by the designer.
+            InitializeComponent()
 
-			' Add any initialization after the InitializeComponent() call.
-			Me.DoubleBuffered = True
+            ' Add any initialization after the InitializeComponent() call.
+            Me.DoubleBuffered = True
 
-			_ItemDescription = "Item(s)"
+            _ItemDescription = "Item(s)"
 
-			SetHeaderText()
+            SetHeaderText()
 
-			GridViewGridControl_MainView.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always
+            GridViewGridControl_MainView.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always
 
-		End Sub
-		Public Sub ClearChanged() Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.ClearChanged
+        End Sub
+        Public Sub ClearChanged() Implements AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl.ClearChanged
 
-			_UserEntryChanged = False
+            _UserEntryChanged = False
 
-			Try
+            Try
 
-				GridViewGridControl_MainView.ClearChanged()
+                GridViewGridControl_MainView.ClearChanged()
 
-			Catch ex As Exception
+            Catch ex As Exception
 
-			End Try
+            End Try
 
-		End Sub
-		Public Function IsNewItemOrAutoFilterRow(RowHandle As Integer) As Boolean
+        End Sub
+        Public Function IsNewItemOrAutoFilterRow(RowHandle As Integer) As Boolean
 
-			IsNewItemOrAutoFilterRow = GridViewGridControl_MainView.IsNewItemOrAutoFilterRow(RowHandle)
+            IsNewItemOrAutoFilterRow = GridViewGridControl_MainView.IsNewItemOrAutoFilterRow(RowHandle)
 
-		End Function
-		Public Function IsNewItemOrAutoFilterRow() As Boolean
+        End Function
+        Public Function IsNewItemOrAutoFilterRow() As Boolean
 
-			IsNewItemOrAutoFilterRow = GridViewGridControl_MainView.IsNewItemOrAutoFilterRow()
+            IsNewItemOrAutoFilterRow = GridViewGridControl_MainView.IsNewItemOrAutoFilterRow()
 
-		End Function
-		Public Function IsNewItemRow(RowHandle As Integer) As Boolean
+        End Function
+        Public Function IsNewItemRow(RowHandle As Integer) As Boolean
 
-			IsNewItemRow = GridViewGridControl_MainView.IsNewItemRow(RowHandle)
+            IsNewItemRow = GridViewGridControl_MainView.IsNewItemRow(RowHandle)
 
-		End Function
-		Public Function IsNewItemRow() As Boolean
+        End Function
+        Public Function IsNewItemRow() As Boolean
 
-			IsNewItemRow = GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle)
+            IsNewItemRow = GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle)
 
-		End Function
-		Public Sub ClearDatasource(Optional DefaultList As Object = Nothing)
+        End Function
+        Public Sub ClearDatasource(Optional DefaultList As Object = Nothing)
 
-			If Me.NewItemRowPosition <> DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None Then
+            If Me.NewItemRowPosition <> DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None Then
 
-				Me.CancelNewItemRow()
+                Me.CancelNewItemRow()
 
-			End If
+            End If
 
-			Me.DataSource = DefaultList
+            Me.DataSource = DefaultList
 
-		End Sub
-		Protected Overrides Sub LoadFormSettings(Form As System.Windows.Forms.Form)
+        End Sub
+        Protected Overrides Sub LoadFormSettings(Form As System.Windows.Forms.Form)
 
-			If _FormSettingsLoaded = False AndAlso Me.Name <> "" AndAlso
-				Form.Controls.Find(Me.Name, True).Any Then
+            If _FormSettingsLoaded = False AndAlso Me.Name <> "" AndAlso
+                Form.Controls.Find(Me.Name, True).Any Then
 
-				'If TypeOf Form Is AdvantageFramework.WinForm.MVC.Presentation.BaseForms.Interfaces.IBaseForm Then
+                'If TypeOf Form Is AdvantageFramework.WinForm.MVC.Presentation.BaseForms.Interfaces.IBaseForm Then
 
-				'	_Session = DirectCast(Form, AdvantageFramework.WinForm.MVC.Presentation.BaseForms.Interfaces.IBaseForm).Session
+                '	_Session = DirectCast(Form, AdvantageFramework.WinForm.MVC.Presentation.BaseForms.Interfaces.IBaseForm).Session
 
-				'End If
+                'End If
 
-				'GridViewGridControl_MainView.Session = _Session
+                'GridViewGridControl_MainView.Session = _Session
 
-				_FormSettingsLoaded = True
+                _FormSettingsLoaded = True
 
-			End If
+            End If
 
-		End Sub
-		Protected Friend Function CustomValidate(ByRef ErrorMessage As String) As Boolean
+        End Sub
+        Protected Friend Function CustomValidate(ByRef ErrorMessage As String) As Boolean
 
-			'objects
-			Dim IsValid As Boolean = True
+            'objects
+            Dim IsValid As Boolean = True
 
-			Try
+            Try
 
-				IsValid = Not Me.HasAnyInvalidRows
+                IsValid = Not Me.HasAnyInvalidRows
 
-				If IsValid = False Then
+                If IsValid = False Then
 
-					ErrorMessage = "Please fix invalid rows"
+                    ErrorMessage = "Please fix invalid rows"
 
-				End If
+                End If
 
-			Catch ex As Exception
-				IsValid = True
-			Finally
-				CustomValidate = IsValid
-			End Try
+            Catch ex As Exception
+                IsValid = True
+            Finally
+                CustomValidate = IsValid
+            End Try
 
-		End Function
-		Protected Overridable Sub SetupDataGrid()
+        End Function
+        Protected Overridable Sub SetupDataGrid()
 
-			_BookmarkColumnIndex = -1
-			_ByPassUserEntryChanged = True
+            _BookmarkColumnIndex = -1
+            _ByPassUserEntryChanged = True
 
-		End Sub
-		Protected Sub LoadDataSource(ByRef Value As Object)
+        End Sub
+        Protected Sub LoadDataSource(ByRef Value As Object)
 
-			DataGridView_GridControl.BeginUpdate()
-			GridViewGridControl_MainView.BeginUpdate()
+            DataGridView_GridControl.BeginUpdate()
+            GridViewGridControl_MainView.BeginUpdate()
 
-			LoadBookmarks()
+            LoadBookmarks()
 
-			If _BindingSource Is Nothing Then
+            If _BindingSource Is Nothing Then
 
-				_BindingSource = New System.Windows.Forms.BindingSource
+                _BindingSource = New System.Windows.Forms.BindingSource
 
-			End If
+            End If
 
-			If TypeOf Value Is IEnumerable Then
+            If TypeOf Value Is IEnumerable Then
 
-				Try
+                Try
 
-					Me.CurrentView.ObjectType = DirectCast(Value, IEnumerable).AsQueryable.ElementType
+                    Me.CurrentView.ObjectType = DirectCast(Value, IEnumerable).AsQueryable.ElementType
 
-				Catch ex As Exception
+                Catch ex As Exception
 
-				End Try
+                End Try
 
-			Else
+            Else
 
-				Me.CurrentView.ObjectType = GetType(Object)
+                Me.CurrentView.ObjectType = GetType(Object)
 
-			End If
+            End If
 
-			_BindingSource.DataSource = Value
+            _BindingSource.DataSource = Value
 
-			DataGridView_GridControl.DataSource = _BindingSource
+            DataGridView_GridControl.DataSource = _BindingSource
 
             If GridViewGridControl_MainView.RestoredLayoutNonVisibleGridColumnList IsNot Nothing Then
 
@@ -637,71 +638,71 @@
 
             Me.ClearChanged()
 
-			If _PreviousPosition = 0 AndAlso _BindingSource.Position = 0 Then
+            If _PreviousPosition = 0 AndAlso _BindingSource.Position = 0 Then
 
-				GridViewGridControl_MainView.GridViewSelectionChanged()
+                GridViewGridControl_MainView.GridViewSelectionChanged()
 
-			ElseIf GridViewGridControl_MainView.FocusedRowHandle = 0 AndAlso _BindingSource.Position = 1 Then
+            ElseIf GridViewGridControl_MainView.FocusedRowHandle = 0 AndAlso _BindingSource.Position = 1 Then
 
-				GridViewGridControl_MainView.GridViewSelectionChanged()
+                GridViewGridControl_MainView.GridViewSelectionChanged()
 
-			End If
+            End If
 
-			If _ItemDescription = "" OrElse _ItemDescription = "Item(s)" Then
+            If _ItemDescription = "" OrElse _ItemDescription = "Item(s)" Then
 
-				_ItemDescription = AdvantageFramework.WinForm.Presentation.Controls.LoadDefaultGridViewItemDescription(Me.CurrentView.ObjectType)
+                _ItemDescription = AdvantageFramework.WinForm.Presentation.Controls.LoadDefaultGridViewItemDescription(Me.CurrentView.ObjectType)
 
-			End If
+            End If
 
-			SetHeaderText()
+            SetHeaderText()
 
-			SetBookmarks()
+            SetBookmarks()
 
-			DataGridView_GridControl.EndUpdate()
-			GridViewGridControl_MainView.EndUpdate()
+            DataGridView_GridControl.EndUpdate()
+            GridViewGridControl_MainView.EndUpdate()
 
-		End Sub
-		Public Sub ModifyColumn(FieldName As String, Optional Visible As Boolean = True, Optional Caption As String = Nothing)
+        End Sub
+        Public Sub ModifyColumn(FieldName As String, Optional Visible As Boolean = True, Optional Caption As String = Nothing)
 
-			'objects
-			Dim VisibleIndex As Integer = Nothing
+            'objects
+            Dim VisibleIndex As Integer = Nothing
 
-			Try
+            Try
 
-				If Me.Columns(FieldName) IsNot Nothing Then
+                If Me.Columns(FieldName) IsNot Nothing Then
 
-					If Visible Then
+                    If Visible Then
 
-						Try
+                        Try
 
-							VisibleIndex = (From Column In Me.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)()
-											Select [VI] = Column.VisibleIndex).Max + 1
+                            VisibleIndex = (From Column In Me.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)()
+                                            Select [VI] = Column.VisibleIndex).Max + 1
 
-						Catch ex As Exception
-							VisibleIndex = 0
-						End Try
+                        Catch ex As Exception
+                            VisibleIndex = 0
+                        End Try
 
-						Me.Columns(FieldName).VisibleIndex = VisibleIndex
+                        Me.Columns(FieldName).VisibleIndex = VisibleIndex
 
-					Else
+                    Else
 
-						Me.Columns(FieldName).Visible = False
+                        Me.Columns(FieldName).Visible = False
 
-					End If
+                    End If
 
-					If String.IsNullOrEmpty(Caption) = False Then
+                    If String.IsNullOrEmpty(Caption) = False Then
 
-						Me.Columns(FieldName).Caption = Caption
+                        Me.Columns(FieldName).Caption = Caption
 
-					End If
+                    End If
 
-				End If
+                End If
 
-			Catch ex As Exception
+            Catch ex As Exception
 
-			End Try
+            End Try
 
-		End Sub
+        End Sub
         Protected Sub SetHeaderText()
 
             If _AutoUpdateViewCaption Then
@@ -730,659 +731,659 @@
         End Sub
         Public Function GetAllSelectedRowsDataBoundItems() As IEnumerable
 
-			GetAllSelectedRowsDataBoundItems = GridViewGridControl_MainView.GetSelectedRows.Where(Function(RowHandle) GridViewGridControl_MainView.IsDataRow(RowHandle) = True).Select(Function(RowHandle) DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle)))
+            GetAllSelectedRowsDataBoundItems = GridViewGridControl_MainView.GetSelectedRows.Where(Function(RowHandle) GridViewGridControl_MainView.IsDataRow(RowHandle) = True).Select(Function(RowHandle) DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle)))
 
-		End Function
-		Public Function GetAllSelectedRowsRowHandlesAndDataBoundItems() As Generic.Dictionary(Of Integer, Object)
+        End Function
+        Public Function GetAllSelectedRowsRowHandlesAndDataBoundItems() As Generic.Dictionary(Of Integer, Object)
 
-			'objects
-			Dim RowHandlesAndDataBoundItems As Generic.Dictionary(Of Integer, Object) = Nothing
+            'objects
+            Dim RowHandlesAndDataBoundItems As Generic.Dictionary(Of Integer, Object) = Nothing
 
-			RowHandlesAndDataBoundItems = New Generic.Dictionary(Of Integer, Object)
+            RowHandlesAndDataBoundItems = New Generic.Dictionary(Of Integer, Object)
 
-			For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+            For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-				If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-					Try
+                    Try
 
-						RowHandlesAndDataBoundItems(RowHandle) = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
+                        RowHandlesAndDataBoundItems(RowHandle) = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
 
-					Catch ex As Exception
-						RowHandlesAndDataBoundItems(RowHandle) = Nothing
-					End Try
+                    Catch ex As Exception
+                        RowHandlesAndDataBoundItems(RowHandle) = Nothing
+                    End Try
 
-				End If
+                End If
 
-			Next
+            Next
 
-			GetAllSelectedRowsRowHandlesAndDataBoundItems = RowHandlesAndDataBoundItems
+            GetAllSelectedRowsRowHandlesAndDataBoundItems = RowHandlesAndDataBoundItems
 
-		End Function
-		Public Function GetAllRowsRowHandlesAndDataBoundItems() As Generic.Dictionary(Of Integer, Object)
+        End Function
+        Public Function GetAllRowsRowHandlesAndDataBoundItems() As Generic.Dictionary(Of Integer, Object)
 
-			'objects
-			Dim RowHandlesAndDataBoundItems As Generic.Dictionary(Of Integer, Object) = Nothing
+            'objects
+            Dim RowHandlesAndDataBoundItems As Generic.Dictionary(Of Integer, Object) = Nothing
 
-			RowHandlesAndDataBoundItems = New Generic.Dictionary(Of Integer, Object)
+            RowHandlesAndDataBoundItems = New Generic.Dictionary(Of Integer, Object)
 
-			For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
+            For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
 
-				If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-					Try
+                    Try
 
-						RowHandlesAndDataBoundItems(RowHandle) = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
+                        RowHandlesAndDataBoundItems(RowHandle) = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
 
-					Catch ex As Exception
-						RowHandlesAndDataBoundItems(RowHandle) = Nothing
-					End Try
+                    Catch ex As Exception
+                        RowHandlesAndDataBoundItems(RowHandle) = Nothing
+                    End Try
 
-				End If
+                End If
 
-			Next
+            Next
 
-			GetAllRowsRowHandlesAndDataBoundItems = RowHandlesAndDataBoundItems
+            GetAllRowsRowHandlesAndDataBoundItems = RowHandlesAndDataBoundItems
 
-		End Function
-		Public Function CheckForModifiedRows() As Boolean
+        End Function
+        Public Function CheckForModifiedRows() As Boolean
 
-			CheckForModifiedRows = GridViewGridControl_MainView.CheckForModifiedRows
+            CheckForModifiedRows = GridViewGridControl_MainView.CheckForModifiedRows
 
-		End Function
-		Public Function RemoveFromModifiedRows(DataBoundObject As Object) As Boolean
+        End Function
+        Public Function RemoveFromModifiedRows(DataBoundObject As Object) As Boolean
 
-			RemoveFromModifiedRows = GridViewGridControl_MainView.RemoveFromModifiedRows(DataBoundObject)
+            RemoveFromModifiedRows = GridViewGridControl_MainView.RemoveFromModifiedRows(DataBoundObject)
 
-		End Function
-		Public Function AddToModifiedRows(RowHandle As Integer) As Boolean
+        End Function
+        Public Function AddToModifiedRows(RowHandle As Integer) As Boolean
 
-			AddToModifiedRows = GridViewGridControl_MainView.AddToModifiedRows(RowHandle)
+            AddToModifiedRows = GridViewGridControl_MainView.AddToModifiedRows(RowHandle)
 
-		End Function
-		Public Function GetAllModifiedRows() As Generic.List(Of Object)
+        End Function
+        Public Function GetAllModifiedRows() As Generic.List(Of Object)
 
-			GetAllModifiedRows = GridViewGridControl_MainView.GetAllModifiedRows
+            GetAllModifiedRows = GridViewGridControl_MainView.GetAllModifiedRows
 
-		End Function
-		Public Function HasAnyInvalidRows() As Boolean
+        End Function
+        Public Function HasAnyInvalidRows() As Boolean
 
-			HasAnyInvalidRows = GridViewGridControl_MainView.HasAnyInvalidRows
+            HasAnyInvalidRows = GridViewGridControl_MainView.HasAnyInvalidRows
 
-		End Function
-		Public Function GetAllRowsDataBoundItems() As IEnumerable
+        End Function
+        Public Function GetAllRowsDataBoundItems() As IEnumerable
 
-			'objects
-			Dim DataBoundItems As Generic.List(Of Object) = Nothing
+            'objects
+            Dim DataBoundItems As Generic.List(Of Object) = Nothing
 
-			DataBoundItems = New Generic.List(Of Object)
+            DataBoundItems = New Generic.List(Of Object)
 
-			For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
+            For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
 
-				If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-					DataBoundItems.Add(DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle)))
+                    DataBoundItems.Add(DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle)))
 
-				End If
+                End If
 
-			Next
+            Next
 
-			GetAllRowsDataBoundItems = DataBoundItems
+            GetAllRowsDataBoundItems = DataBoundItems
 
-		End Function
-		Public Function GetAllRowsCellValues(BookmarkColumnIndex As Integer) As IEnumerable
+        End Function
+        Public Function GetAllRowsCellValues(BookmarkColumnIndex As Integer) As IEnumerable
 
-			'objects
-			Dim CellValues As Generic.List(Of Object) = Nothing
+            'objects
+            Dim CellValues As Generic.List(Of Object) = Nothing
 
-			CellValues = New Generic.List(Of Object)
+            CellValues = New Generic.List(Of Object)
 
-			If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
+            If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
 
-				For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
+                For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
 
-					If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                    If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-						CellValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
+                        CellValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
 
-					End If
+                    End If
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetAllRowsCellValues = CellValues
+            GetAllRowsCellValues = CellValues
 
-		End Function
-		Public Function GetAllSelectedRowsCellValues(BookmarkColumnIndex As Integer) As IEnumerable
+        End Function
+        Public Function GetAllSelectedRowsCellValues(BookmarkColumnIndex As Integer) As IEnumerable
 
-			'objects
-			Dim CellValues As Generic.List(Of Object) = Nothing
+            'objects
+            Dim CellValues As Generic.List(Of Object) = Nothing
 
-			CellValues = New Generic.List(Of Object)
+            CellValues = New Generic.List(Of Object)
 
-			If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
+            If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
 
-				For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-					If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                    If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-						CellValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
+                        CellValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
 
-					End If
+                    End If
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetAllSelectedRowsCellValues = CellValues
+            GetAllSelectedRowsCellValues = CellValues
 
-		End Function
-		Public Function GetAllRowsBookmarkValues(BookmarkColumnIndex As Integer) As IEnumerable
+        End Function
+        Public Function GetAllRowsBookmarkValues(BookmarkColumnIndex As Integer) As IEnumerable
 
-			'objects
-			Dim BookmarkValues As Generic.List(Of Object) = Nothing
+            'objects
+            Dim BookmarkValues As Generic.List(Of Object) = Nothing
 
-			BookmarkValues = New Generic.List(Of Object)
+            BookmarkValues = New Generic.List(Of Object)
 
-			If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
+            If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
 
-				For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
+                For RowHandle = 0 To GridViewGridControl_MainView.RowCount - 1
 
-					If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                    If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-						BookmarkValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
+                        BookmarkValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
 
-					End If
+                    End If
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetAllRowsBookmarkValues = BookmarkValues
+            GetAllRowsBookmarkValues = BookmarkValues
 
-		End Function
-		Public Function GetAllRowsBookmarkValues() As IEnumerable
+        End Function
+        Public Function GetAllRowsBookmarkValues() As IEnumerable
 
-			GetAllRowsBookmarkValues = GetAllRowsBookmarkValues(_BookmarkColumnIndex)
+            GetAllRowsBookmarkValues = GetAllRowsBookmarkValues(_BookmarkColumnIndex)
 
-		End Function
-		Public Function GetAllSelectedRowsBookmarkValues() As IEnumerable
+        End Function
+        Public Function GetAllSelectedRowsBookmarkValues() As IEnumerable
 
-			GetAllSelectedRowsBookmarkValues = GetAllSelectedRowsBookmarkValues(_BookmarkColumnIndex)
+            GetAllSelectedRowsBookmarkValues = GetAllSelectedRowsBookmarkValues(_BookmarkColumnIndex)
 
-		End Function
-		Public Function GetAllSelectedRowsBookmarkValues(BookmarkColumnIndex As Integer) As IEnumerable
+        End Function
+        Public Function GetAllSelectedRowsBookmarkValues(BookmarkColumnIndex As Integer) As IEnumerable
 
-			'objects
-			Dim BookmarkValues As Generic.List(Of Object) = Nothing
+            'objects
+            Dim BookmarkValues As Generic.List(Of Object) = Nothing
 
-			BookmarkValues = New Generic.List(Of Object)
+            BookmarkValues = New Generic.List(Of Object)
 
-			If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
+            If BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
 
-				For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-					If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                    If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-						BookmarkValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
+                        BookmarkValues.Add(GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex)))
 
-					End If
+                    End If
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetAllSelectedRowsBookmarkValues = BookmarkValues
+            GetAllSelectedRowsBookmarkValues = BookmarkValues
 
-		End Function
-		Public Function GetFirstSelectedRowBookmarkValue() As Object
+        End Function
+        Public Function GetFirstSelectedRowBookmarkValue() As Object
 
-			GetFirstSelectedRowBookmarkValue = GetFirstSelectedRowBookmarkValue(_BookmarkColumnIndex)
+            GetFirstSelectedRowBookmarkValue = GetFirstSelectedRowBookmarkValue(_BookmarkColumnIndex)
 
-		End Function
-		Public Function GetFirstSelectedRowBookmarkValue(BookmarkColumnIndex As Integer) As Object
+        End Function
+        Public Function GetFirstSelectedRowBookmarkValue(BookmarkColumnIndex As Integer) As Object
 
-			'objects
-			Dim BookmarkValue As Object = Nothing
+            'objects
+            Dim BookmarkValue As Object = Nothing
 
-			If Me.HasASelectedRow AndAlso BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns IsNot Nothing AndAlso
-				BookmarkColumnIndex < GridViewGridControl_MainView.Columns.Count AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
+            If Me.HasASelectedRow AndAlso BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns IsNot Nothing AndAlso
+                BookmarkColumnIndex < GridViewGridControl_MainView.Columns.Count AndAlso GridViewGridControl_MainView.Columns(BookmarkColumnIndex) IsNot Nothing Then
 
-				For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-					If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                    If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-						BookmarkValue = GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex))
-						Exit For
+                        BookmarkValue = GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(BookmarkColumnIndex))
+                        Exit For
 
-					End If
+                    End If
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetFirstSelectedRowBookmarkValue = BookmarkValue
+            GetFirstSelectedRowBookmarkValue = BookmarkValue
 
-		End Function
-		Public Function GetFirstSelectedRowCellValue(FieldName As String) As Object
+        End Function
+        Public Function GetFirstSelectedRowCellValue(FieldName As String) As Object
 
-			'objects
-			Dim BookmarkValue As Object = Nothing
+            'objects
+            Dim BookmarkValue As Object = Nothing
 
-			If Me.HasASelectedRow AndAlso GridViewGridControl_MainView.Columns IsNot Nothing AndAlso GridViewGridControl_MainView.Columns.ColumnByFieldName(FieldName) IsNot Nothing Then
+            If Me.HasASelectedRow AndAlso GridViewGridControl_MainView.Columns IsNot Nothing AndAlso GridViewGridControl_MainView.Columns.ColumnByFieldName(FieldName) IsNot Nothing Then
 
-				For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-					If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                    If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-						BookmarkValue = GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns.ColumnByFieldName(FieldName))
-						Exit For
+                        BookmarkValue = GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns.ColumnByFieldName(FieldName))
+                        Exit For
 
-					End If
+                    End If
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetFirstSelectedRowCellValue = BookmarkValue
+            GetFirstSelectedRowCellValue = BookmarkValue
 
-		End Function
-		Public Function GetFirstSelectedRowDataBoundItem() As Object
+        End Function
+        Public Function GetFirstSelectedRowDataBoundItem() As Object
 
-			'objects
-			Dim DataBoundItem As Object = Nothing
+            'objects
+            Dim DataBoundItem As Object = Nothing
 
-			If Me.HasASelectedRow Then
+            If Me.HasASelectedRow Then
 
-				For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-					If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                    If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-						DataBoundItem = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
-						Exit For
+                        DataBoundItem = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
+                        Exit For
 
-					End If
+                    End If
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetFirstSelectedRowDataBoundItem = DataBoundItem
+            GetFirstSelectedRowDataBoundItem = DataBoundItem
 
-		End Function
-		Public Function GetRowDataBoundItem(RowHandle As Integer) As Object
+        End Function
+        Public Function GetRowDataBoundItem(RowHandle As Integer) As Object
 
-			'objects
-			Dim DataBoundItem As Object = Nothing
+            'objects
+            Dim DataBoundItem As Object = Nothing
 
-			If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+            If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-				Try
+                Try
 
-					DataBoundItem = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
+                    DataBoundItem = DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(GridViewGridControl_MainView.GetDataSourceRowIndex(RowHandle))
 
-				Catch ex As Exception
-					DataBoundItem = Nothing
-				End Try
+                Catch ex As Exception
+                    DataBoundItem = Nothing
+                End Try
 
-			End If
+            End If
 
-			GetRowDataBoundItem = DataBoundItem
+            GetRowDataBoundItem = DataBoundItem
 
-		End Function
-		Public Function GetRowBookmarkValue(RowHandle As Integer) As Object
+        End Function
+        Public Function GetRowBookmarkValue(RowHandle As Integer) As Object
 
-			'objects
-			Dim BookmarkValue As Object = Nothing
+            'objects
+            Dim BookmarkValue As Object = Nothing
 
-			If _BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(_BookmarkColumnIndex) IsNot Nothing Then
+            If _BookmarkColumnIndex > -1 AndAlso GridViewGridControl_MainView.Columns(_BookmarkColumnIndex) IsNot Nothing Then
 
-				If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-					Try
+                    Try
 
-						BookmarkValue = GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(_BookmarkColumnIndex))
+                        BookmarkValue = GridViewGridControl_MainView.GetRowCellValue(RowHandle, GridViewGridControl_MainView.Columns(_BookmarkColumnIndex))
 
-					Catch ex As Exception
-						BookmarkValue = Nothing
-					End Try
+                    Catch ex As Exception
+                        BookmarkValue = Nothing
+                    End Try
 
-				End If
+                End If
 
-			End If
+            End If
 
-			GetRowBookmarkValue = BookmarkValue
+            GetRowBookmarkValue = BookmarkValue
 
-		End Function
-		Public Sub HideOrShowColumn(FieldName As String, Visible As Boolean)
+        End Function
+        Public Sub HideOrShowColumn(FieldName As String, Visible As Boolean)
 
-			If GridViewGridControl_MainView.Columns(FieldName) IsNot Nothing Then
+            If GridViewGridControl_MainView.Columns(FieldName) IsNot Nothing Then
 
-				GridViewGridControl_MainView.Columns(FieldName).Visible = Visible
+                GridViewGridControl_MainView.Columns(FieldName).Visible = Visible
 
-			End If
+            End If
 
-		End Sub
-		Public Sub HideOrShowColumn(FieldName As String, Visible As Boolean, ByRef VisibleIndex As Integer)
+        End Sub
+        Public Sub HideOrShowColumn(FieldName As String, Visible As Boolean, ByRef VisibleIndex As Integer)
 
-			If GridViewGridControl_MainView.Columns(FieldName) IsNot Nothing Then
+            If GridViewGridControl_MainView.Columns(FieldName) IsNot Nothing Then
 
-				GridViewGridControl_MainView.Columns(FieldName).VisibleIndex = VisibleIndex
-				GridViewGridControl_MainView.Columns(FieldName).Visible = Visible
+                GridViewGridControl_MainView.Columns(FieldName).VisibleIndex = VisibleIndex
+                GridViewGridControl_MainView.Columns(FieldName).Visible = Visible
 
-				VisibleIndex = VisibleIndex + 1
+                VisibleIndex = VisibleIndex + 1
 
-			End If
+            End If
 
-		End Sub
-		Public Sub ResetColumnOrderByObjectType()
+        End Sub
+        Public Sub ResetColumnOrderByObjectType()
 
-			GridViewGridControl_MainView.ResetColumnOrderByObjectType()
+            GridViewGridControl_MainView.ResetColumnOrderByObjectType()
 
-		End Sub
-		Protected Sub LoadBookmarks()
+        End Sub
+        Protected Sub LoadBookmarks()
 
-			If Me.HasASelectedRow AndAlso
-				_BookmarkColumnIndex > -1 Then
+            If Me.HasASelectedRow AndAlso
+                _BookmarkColumnIndex > -1 Then
 
-				_CurrentBookmark = Me.GetFirstSelectedRowBookmarkValue
-				_NextBookmark = Nothing
+                _CurrentBookmark = Me.GetFirstSelectedRowBookmarkValue
+                _NextBookmark = Nothing
 
-				For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-					If RowHandle + 1 < Me.CurrentView.RowCount Then
+                    If RowHandle + 1 < Me.CurrentView.RowCount Then
 
-						If GridViewGridControl_MainView.IsDataRow(RowHandle + 1) Then
+                        If GridViewGridControl_MainView.IsDataRow(RowHandle + 1) Then
 
-							_NextBookmark = Me.CurrentView.GetRowCellValue(RowHandle + 1, Me.CurrentView.Columns(_BookmarkColumnIndex))
-							Exit For
+                            _NextBookmark = Me.CurrentView.GetRowCellValue(RowHandle + 1, Me.CurrentView.Columns(_BookmarkColumnIndex))
+                            Exit For
 
-						End If
+                        End If
 
-					Else
+                    Else
 
-						Exit For
+                        Exit For
 
-					End If
+                    End If
 
-				Next
+                Next
 
-				If _NextBookmark IsNot Nothing Then
+                If _NextBookmark IsNot Nothing Then
 
-					For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
+                    For Each RowHandle In GridViewGridControl_MainView.GetSelectedRows
 
-						If RowHandle - 1 >= 0 Then
+                        If RowHandle - 1 >= 0 Then
 
-							If GridViewGridControl_MainView.IsDataRow(RowHandle - 1) Then
+                            If GridViewGridControl_MainView.IsDataRow(RowHandle - 1) Then
 
-								_NextBookmark = Me.CurrentView.GetRowCellValue(RowHandle - 1, Me.CurrentView.Columns(_BookmarkColumnIndex))
-								Exit For
+                                _NextBookmark = Me.CurrentView.GetRowCellValue(RowHandle - 1, Me.CurrentView.Columns(_BookmarkColumnIndex))
+                                Exit For
 
-							End If
+                            End If
 
-						Else
+                        Else
 
-							Exit For
+                            Exit For
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-				End If
+                End If
 
-			Else
+            Else
 
-				_CurrentBookmark = Nothing
-				_NextBookmark = Nothing
+                _CurrentBookmark = Nothing
+                _NextBookmark = Nothing
 
-			End If
+            End If
 
-		End Sub
-		Public Sub SetBookmarks()
+        End Sub
+        Public Sub SetBookmarks()
 
-			If Me.HasRows Then
+            If Me.HasRows Then
 
-				If _CurrentBookmark IsNot Nothing AndAlso
-					_BookmarkColumnIndex > -1 Then
+                If _CurrentBookmark IsNot Nothing AndAlso
+                    _BookmarkColumnIndex > -1 Then
 
-					SelectRow(_CurrentBookmark)
+                    SelectRow(_CurrentBookmark)
 
-				End If
+                End If
 
-				If Me.HasASelectedRow = False AndAlso
-					_NextBookmark IsNot Nothing AndAlso
-					_BookmarkColumnIndex > -1 Then
+                If Me.HasASelectedRow = False AndAlso
+                    _NextBookmark IsNot Nothing AndAlso
+                    _BookmarkColumnIndex > -1 Then
 
-					SelectRow(_NextBookmark)
+                    SelectRow(_NextBookmark)
 
-				End If
+                End If
 
-				If Me.CurrentView.SelectedRowsCount = 0 Then
+                If Me.CurrentView.SelectedRowsCount = 0 Then
 
-					For RowHandle = 0 To Me.CurrentView.RowCount - 1
+                    For RowHandle = 0 To Me.CurrentView.RowCount - 1
 
-						If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
+                        If GridViewGridControl_MainView.IsDataRow(RowHandle) Then
 
-							Try
+                            Try
 
-								GridViewGridControl_MainView.SelectRow(RowHandle)
-								GridViewGridControl_MainView.FocusedRowHandle = RowHandle
+                                GridViewGridControl_MainView.SelectRow(RowHandle)
+                                GridViewGridControl_MainView.FocusedRowHandle = RowHandle
 
-							Catch ex As Exception
+                            Catch ex As Exception
 
-							End Try
+                            End Try
 
-							Exit For
+                            Exit For
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-				End If
+                End If
 
-			End If
+            End If
 
-		End Sub
-		Public Sub GridViewSelectionChanged()
+        End Sub
+        Public Sub GridViewSelectionChanged()
 
-			GridViewGridControl_MainView.GridViewSelectionChanged()
+            GridViewGridControl_MainView.GridViewSelectionChanged()
 
-		End Sub
-		Public Sub FocusToFindPanel(DeselectAllRows As Boolean)
+        End Sub
+        Public Sub FocusToFindPanel(DeselectAllRows As Boolean)
 
-			If GridViewGridControl_MainView.OptionsFind.AllowFindPanel = False Then
+            If GridViewGridControl_MainView.OptionsFind.AllowFindPanel = False Then
 
-				GridViewGridControl_MainView.OptionsFind.AllowFindPanel = True
+                GridViewGridControl_MainView.OptionsFind.AllowFindPanel = True
 
-			End If
+            End If
 
-			GridViewGridControl_MainView.ShowFindPanel()
+            GridViewGridControl_MainView.ShowFindPanel()
 
-			GridViewGridControl_MainView.OptionsFind.AlwaysVisible = True
-			GridViewGridControl_MainView.OptionsFind.ShowFindButton = False
-			GridViewGridControl_MainView.OptionsFind.ShowCloseButton = False
-			GridViewGridControl_MainView.OptionsFind.SearchInPreview = False
+            GridViewGridControl_MainView.OptionsFind.AlwaysVisible = True
+            GridViewGridControl_MainView.OptionsFind.ShowFindButton = False
+            GridViewGridControl_MainView.OptionsFind.ShowCloseButton = False
+            GridViewGridControl_MainView.OptionsFind.SearchInPreview = False
 
-			If DeselectAllRows Then
+            If DeselectAllRows Then
 
-				HideRowSelection()
+                HideRowSelection()
 
-			End If
+            End If
 
-		End Sub
-		Public Sub ShowRowSelection(RaiseGridViewSelectionChanged As Boolean)
+        End Sub
+        Public Sub ShowRowSelection(RaiseGridViewSelectionChanged As Boolean)
 
-			If GridViewGridControl_MainView.OptionsView.ShowIndicator = False Then
+            If GridViewGridControl_MainView.OptionsView.ShowIndicator = False Then
 
-				GridViewGridControl_MainView.OptionsView.ShowIndicator = True
-				GridViewGridControl_MainView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-				GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedCell = True
-				GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedRow = True
-				GridViewGridControl_MainView.OptionsSelection.EnableAppearanceHideSelection = True
+                GridViewGridControl_MainView.OptionsView.ShowIndicator = True
+                GridViewGridControl_MainView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+                GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedCell = True
+                GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedRow = True
+                GridViewGridControl_MainView.OptionsSelection.EnableAppearanceHideSelection = True
 
-				If RaiseGridViewSelectionChanged Then
+                If RaiseGridViewSelectionChanged Then
 
-					GridViewGridControl_MainView.GridViewSelectionChanged()
+                    GridViewGridControl_MainView.GridViewSelectionChanged()
 
-				End If
+                End If
 
-			End If
+            End If
 
-		End Sub
-		Public Sub HideRowSelection()
+        End Sub
+        Public Sub HideRowSelection()
 
-			If GridViewGridControl_MainView.OptionsView.ShowIndicator Then
+            If GridViewGridControl_MainView.OptionsView.ShowIndicator Then
 
-				GridViewGridControl_MainView.OptionsView.ShowIndicator = False
-				GridViewGridControl_MainView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None
-				GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedCell = False
-				GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedRow = False
-				GridViewGridControl_MainView.OptionsSelection.EnableAppearanceHideSelection = False
+                GridViewGridControl_MainView.OptionsView.ShowIndicator = False
+                GridViewGridControl_MainView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None
+                GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedCell = False
+                GridViewGridControl_MainView.OptionsSelection.EnableAppearanceFocusedRow = False
+                GridViewGridControl_MainView.OptionsSelection.EnableAppearanceHideSelection = False
 
-			End If
+            End If
 
-		End Sub
-		Public Sub SelectRow(BookmarkValue As Object)
+        End Sub
+        Public Sub SelectRow(BookmarkValue As Object)
 
-			SelectRow(_BookmarkColumnIndex, BookmarkValue)
+            SelectRow(_BookmarkColumnIndex, BookmarkValue)
 
-		End Sub
-		Public Sub SelectRow(BookmarkValue As Object, DeselectRows As Boolean)
+        End Sub
+        Public Sub SelectRow(BookmarkValue As Object, DeselectRows As Boolean)
 
-			SelectRow(_BookmarkColumnIndex, BookmarkValue, DeselectRows)
+            SelectRow(_BookmarkColumnIndex, BookmarkValue, DeselectRows)
 
-		End Sub
-		Public Sub SelectRow(BookmarkColumnIndex As Integer, BookmarkValue As Object)
+        End Sub
+        Public Sub SelectRow(BookmarkColumnIndex As Integer, BookmarkValue As Object)
 
-			SelectRow(BookmarkColumnIndex, BookmarkValue, True)
+            SelectRow(BookmarkColumnIndex, BookmarkValue, True)
 
-		End Sub
-		Public Sub SelectRow(BookmarkColumnIndex As Integer, BookmarkValue As Object, DeselectRows As Boolean)
+        End Sub
+        Public Sub SelectRow(BookmarkColumnIndex As Integer, BookmarkValue As Object, DeselectRows As Boolean)
 
-			Dim e As DevExpress.Data.SelectionChangedEventArgs = Nothing
+            Dim e As DevExpress.Data.SelectionChangedEventArgs = Nothing
 
-			If BookmarkValue IsNot Nothing AndAlso
-				BookmarkColumnIndex > -1 Then
+            If BookmarkValue IsNot Nothing AndAlso
+                BookmarkColumnIndex > -1 Then
 
-				Me.CurrentView.BeginSelection()
+                Me.CurrentView.BeginSelection()
 
-				If DeselectRows Then
+                If DeselectRows Then
 
-					Me.CurrentView.ClearSelection()
+                    Me.CurrentView.ClearSelection()
 
-				End If
+                End If
 
-				For RowHandle = 0 To Me.CurrentView.RowCount - 1
+                For RowHandle = 0 To Me.CurrentView.RowCount - 1
 
-					If Me.CurrentView.GetRowCellValue(RowHandle, Me.CurrentView.Columns(BookmarkColumnIndex)) = BookmarkValue Then
+                    If Me.CurrentView.GetRowCellValue(RowHandle, Me.CurrentView.Columns(BookmarkColumnIndex)) = BookmarkValue Then
 
-						Me.CurrentView.SelectRow(RowHandle)
+                        Me.CurrentView.SelectRow(RowHandle)
 
-						If RowHandle = 0 AndAlso Me.CurrentView.FocusedRowHandle = 0 Then
+                        If RowHandle = 0 AndAlso Me.CurrentView.FocusedRowHandle = 0 Then
 
-							DeselectGroupHeaderRows()
+                            DeselectGroupHeaderRows()
 
-							RaiseEvent SelectionChangedEvent(GridViewGridControl_MainView, e)
+                            RaiseEvent SelectionChangedEvent(GridViewGridControl_MainView, e)
 
-						Else
+                        Else
 
-							Me.CurrentView.FocusedRowHandle = RowHandle
+                            Me.CurrentView.FocusedRowHandle = RowHandle
 
-						End If
+                        End If
 
-						Exit For
+                        Exit For
 
-					End If
+                    End If
 
-				Next
+                Next
 
-				Me.CurrentView.EndSelection()
+                Me.CurrentView.EndSelection()
 
-			End If
+            End If
 
-		End Sub
-		Public Sub SelectRow(ColumnName As String, ColumnValue As Object, DeselectRows As Boolean)
+        End Sub
+        Public Sub SelectRow(ColumnName As String, ColumnValue As Object, DeselectRows As Boolean)
 
-			Dim e As DevExpress.Data.SelectionChangedEventArgs = Nothing
+            Dim e As DevExpress.Data.SelectionChangedEventArgs = Nothing
 
-			Me.CurrentView.BeginSelection()
+            Me.CurrentView.BeginSelection()
 
-			If DeselectRows Then
+            If DeselectRows Then
 
-				Me.CurrentView.ClearSelection()
+                Me.CurrentView.ClearSelection()
 
-			End If
+            End If
 
-			For RowHandle = 0 To Me.CurrentView.RowCount - 1
+            For RowHandle = 0 To Me.CurrentView.RowCount - 1
 
-				If Me.CurrentView.GetRowCellValue(RowHandle, Me.CurrentView.Columns(ColumnName)) = ColumnValue Then
+                If Me.CurrentView.GetRowCellValue(RowHandle, Me.CurrentView.Columns(ColumnName)) = ColumnValue Then
 
-					Me.CurrentView.SelectRow(RowHandle)
+                    Me.CurrentView.SelectRow(RowHandle)
 
-					If RowHandle = 0 AndAlso Me.CurrentView.FocusedRowHandle = 0 Then
+                    If RowHandle = 0 AndAlso Me.CurrentView.FocusedRowHandle = 0 Then
 
-						DeselectGroupHeaderRows()
+                        DeselectGroupHeaderRows()
 
-						RaiseEvent SelectionChangedEvent(GridViewGridControl_MainView, e)
+                        RaiseEvent SelectionChangedEvent(GridViewGridControl_MainView, e)
 
-					Else
+                    Else
 
-						Me.CurrentView.FocusedRowHandle = RowHandle
+                        Me.CurrentView.FocusedRowHandle = RowHandle
 
-					End If
+                    End If
 
-					Exit For
+                    Exit For
 
-				End If
+                End If
 
-			Next
+            Next
 
-			Me.CurrentView.EndSelection()
+            Me.CurrentView.EndSelection()
 
-		End Sub
-		Public Sub SelectAllRowsByValue(BookmarkColumnIndex As Integer, BookmarkValue As Object, DeselectRows As Boolean)
+        End Sub
+        Public Sub SelectAllRowsByValue(BookmarkColumnIndex As Integer, BookmarkValue As Object, DeselectRows As Boolean)
 
-			Dim e As DevExpress.Data.SelectionChangedEventArgs = Nothing
+            Dim e As DevExpress.Data.SelectionChangedEventArgs = Nothing
 
-			If BookmarkValue IsNot Nothing AndAlso
-				BookmarkColumnIndex > -1 Then
+            If BookmarkValue IsNot Nothing AndAlso
+                BookmarkColumnIndex > -1 Then
 
-				Me.CurrentView.BeginSelection()
+                Me.CurrentView.BeginSelection()
 
-				If DeselectRows Then
+                If DeselectRows Then
 
-					Me.CurrentView.ClearSelection()
+                    Me.CurrentView.ClearSelection()
 
-				End If
+                End If
 
-				For RowHandle = 0 To Me.CurrentView.RowCount - 1
+                For RowHandle = 0 To Me.CurrentView.RowCount - 1
 
-					If Me.CurrentView.GetRowCellValue(RowHandle, Me.CurrentView.Columns(BookmarkColumnIndex)) = BookmarkValue Then
+                    If Me.CurrentView.GetRowCellValue(RowHandle, Me.CurrentView.Columns(BookmarkColumnIndex)) = BookmarkValue Then
 
-						Me.CurrentView.SelectRow(RowHandle)
+                        Me.CurrentView.SelectRow(RowHandle)
 
-						If RowHandle = 0 AndAlso Me.CurrentView.FocusedRowHandle = 0 Then
+                        If RowHandle = 0 AndAlso Me.CurrentView.FocusedRowHandle = 0 Then
 
-							DeselectGroupHeaderRows()
+                            DeselectGroupHeaderRows()
 
-							RaiseEvent SelectionChangedEvent(GridViewGridControl_MainView, e)
+                            RaiseEvent SelectionChangedEvent(GridViewGridControl_MainView, e)
 
-						Else
+                        Else
 
-							Me.CurrentView.FocusedRowHandle = RowHandle
+                            Me.CurrentView.FocusedRowHandle = RowHandle
 
-						End If
+                        End If
 
-					End If
+                    End If
 
-				Next
+                Next
 
-				Me.CurrentView.EndSelection()
+                Me.CurrentView.EndSelection()
 
-			End If
+            End If
 
-		End Sub
+        End Sub
         Public Sub ClearColumns()
 
             If GridViewGridControl_MainView.Columns.Count > 0 Then
@@ -1512,328 +1513,328 @@
         End Sub
         Public Sub CancelNewItemRow()
 
-			Me.CurrentView.CancelNewItemRow()
+            Me.CurrentView.CancelNewItemRow()
 
-		End Sub
-		Public Sub MakeColumnNotVisible(ColumnFieldName As String)
+        End Sub
+        Public Sub MakeColumnNotVisible(ColumnFieldName As String)
 
-			If GridViewGridControl_MainView.Columns(ColumnFieldName) IsNot Nothing Then
+            If GridViewGridControl_MainView.Columns(ColumnFieldName) IsNot Nothing Then
 
-				If GridViewGridControl_MainView.Columns(ColumnFieldName).Visible Then
+                If GridViewGridControl_MainView.Columns(ColumnFieldName).Visible Then
 
-					GridViewGridControl_MainView.Columns(ColumnFieldName).Visible = False
+                    GridViewGridControl_MainView.Columns(ColumnFieldName).Visible = False
 
-				End If
+                End If
 
-			End If
+            End If
 
-		End Sub
-		Public Sub MakeColumnVisible(ColumnFieldName As String)
+        End Sub
+        Public Sub MakeColumnVisible(ColumnFieldName As String)
 
-			If GridViewGridControl_MainView.Columns(ColumnFieldName) IsNot Nothing Then
+            If GridViewGridControl_MainView.Columns(ColumnFieldName) IsNot Nothing Then
 
-				If GridViewGridControl_MainView.Columns(ColumnFieldName).Visible = False Then
+                If GridViewGridControl_MainView.Columns(ColumnFieldName).Visible = False Then
 
-					GridViewGridControl_MainView.Columns(ColumnFieldName).VisibleIndex = GridViewGridControl_MainView.VisibleColumns.Count
-					GridViewGridControl_MainView.Columns(ColumnFieldName).Visible = True
+                    GridViewGridControl_MainView.Columns(ColumnFieldName).VisibleIndex = GridViewGridControl_MainView.VisibleColumns.Count
+                    GridViewGridControl_MainView.Columns(ColumnFieldName).Visible = True
 
-				End If
+                End If
 
-			End If
+            End If
 
-		End Sub
-		Public Sub MakeIsInactiveColumnNotVisible()
+        End Sub
+        Public Sub MakeIsInactiveColumnNotVisible()
 
-			MakeColumnNotVisible("IsInactive")
+            MakeColumnNotVisible("IsInactive")
 
-		End Sub
-		Public Sub ClearGridCustomization()
+        End Sub
+        Public Sub ClearGridCustomization()
 
-			GridViewGridControl_MainView.ClearSorting()
-			GridViewGridControl_MainView.ClearColumnsFilter()
-			GridViewGridControl_MainView.ClearGrouping()
-			GridViewGridControl_MainView.GroupSummary.Clear()
+            GridViewGridControl_MainView.ClearSorting()
+            GridViewGridControl_MainView.ClearColumnsFilter()
+            GridViewGridControl_MainView.ClearGrouping()
+            GridViewGridControl_MainView.GroupSummary.Clear()
 
-			If _BindingSource IsNot Nothing Then
+            If _BindingSource IsNot Nothing Then
 
-				_BindingSource.DataSource = Nothing
+                _BindingSource.DataSource = Nothing
 
-			End If
+            End If
 
-			Me.ClearColumns()
+            Me.ClearColumns()
 
-			Me.GridControl.RepositoryItems.Clear()
+            Me.GridControl.RepositoryItems.Clear()
 
-		End Sub
-		Public Sub ValidateAllRows()
+        End Sub
+        Public Sub ValidateAllRows()
 
-			GridViewGridControl_MainView.ValidateAllRows()
+            GridViewGridControl_MainView.ValidateAllRows()
 
-		End Sub
-		Public Sub ValidateAllRowsAndClearChanged(Optional RaiseFormClearChanged As Boolean = False)
+        End Sub
+        Public Sub ValidateAllRowsAndClearChanged(Optional RaiseFormClearChanged As Boolean = False)
 
-			GridViewGridControl_MainView.ValidateAllRows()
+            GridViewGridControl_MainView.ValidateAllRows()
 
-			Me.ClearChanged()
+            Me.ClearChanged()
 
-			If RaiseFormClearChanged Then
+            If RaiseFormClearChanged Then
 
-				If TypeOf Me.FindForm Is AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl Then
+                If TypeOf Me.FindForm Is AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl Then
 
-					DirectCast(Me.FindForm, AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl).ClearChanged()
+                    DirectCast(Me.FindForm, AdvantageFramework.WinForm.Presentation.Controls.Interfaces.IUserEntryControl).ClearChanged()
 
-				End If
+                End If
 
-			End If
+            End If
 
-		End Sub
-		Public Sub SetUserEntryChanged()
+        End Sub
+        Public Sub SetUserEntryChanged()
 
-			_UserEntryChanged = True
+            _UserEntryChanged = True
 
-			AdvantageFramework.WinForm.MVC.Presentation.Controls.UserEntryChanged(Me)
+            AdvantageFramework.WinForm.MVC.Presentation.Controls.UserEntryChanged(Me)
 
-		End Sub
-		Public Sub DeselectAll()
+        End Sub
+        Public Sub DeselectAll()
 
-			GridViewGridControl_MainView.ClearSelection()
+            GridViewGridControl_MainView.ClearSelection()
 
-		End Sub
-		Public Sub SelectAll()
+        End Sub
+        Public Sub SelectAll()
 
-			GridViewGridControl_MainView.SelectAll()
+            GridViewGridControl_MainView.SelectAll()
 
-		End Sub
-		Private Sub DeselectGroupHeaderRows()
+        End Sub
+        Private Sub DeselectGroupHeaderRows()
 
-			Try
+            Try
 
-				If Me.CurrentView.GroupCount > 0 AndAlso _AllowSelectGroupHeaderRow = False Then
+                If Me.CurrentView.GroupCount > 0 AndAlso _AllowSelectGroupHeaderRow = False Then
 
-					For Each RowHandle In Me.CurrentView.GetSelectedRows
+                    For Each RowHandle In Me.CurrentView.GetSelectedRows
 
-						If Me.CurrentView.IsGroupRow(RowHandle) Then
+                        If Me.CurrentView.IsGroupRow(RowHandle) Then
 
-							Me.CurrentView.UnselectRow(RowHandle)
+                            Me.CurrentView.UnselectRow(RowHandle)
 
-						End If
+                        End If
 
-					Next
+                    Next
 
-				End If
+                End If
 
-			Catch ex As Exception
+            Catch ex As Exception
 
-			End Try
+            End Try
 
-		End Sub
-		Public Sub SetBookmarkColumnIndex(BookmarkColumnIndex As Integer)
+        End Sub
+        Public Sub SetBookmarkColumnIndex(BookmarkColumnIndex As Integer)
 
-			_BookmarkColumnIndex = BookmarkColumnIndex
+            _BookmarkColumnIndex = BookmarkColumnIndex
 
-		End Sub
-		Public Sub HideAllColumns()
+        End Sub
+        Public Sub HideAllColumns()
 
-			For Each GridColumn In Me.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)()
+            For Each GridColumn In Me.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)()
 
-				GridColumn.VisibleIndex = -1
-				GridColumn.Visible = False
+                GridColumn.VisibleIndex = -1
+                GridColumn.Visible = False
 
-			Next
+            Next
 
-		End Sub
-		Public Sub ShowColumnSelectionMenu()
+        End Sub
+        Public Sub ShowColumnSelectionMenu()
 
-			'objects
-			Dim BarCheckItem As DevExpress.XtraBars.BarCheckItem = Nothing
+            'objects
+            Dim BarCheckItem As DevExpress.XtraBars.BarCheckItem = Nothing
 
-			BarSubItemPopup_Columns.ItemLinks.Clear()
+            BarSubItemPopup_Columns.ItemLinks.Clear()
 
-			For Each GridColumn In Me.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)()
+            For Each GridColumn In Me.Columns.OfType(Of DevExpress.XtraGrid.Columns.GridColumn)()
 
-				If GridColumn.OptionsColumn.AllowShowHide AndAlso GridColumn.OptionsColumn.ShowInCustomizationForm Then
+                If GridColumn.OptionsColumn.AllowShowHide AndAlso GridColumn.OptionsColumn.ShowInCustomizationForm Then
 
-					BarCheckItem = New DevExpress.XtraBars.BarCheckItem
+                    BarCheckItem = New DevExpress.XtraBars.BarCheckItem
 
-					If String.IsNullOrWhiteSpace(GridColumn.Caption) = False Then
+                    If String.IsNullOrWhiteSpace(GridColumn.Caption) = False Then
 
-						BarCheckItem.Caption = GridColumn.Caption
+                        BarCheckItem.Caption = GridColumn.Caption
 
-					Else
+                    Else
 
-						BarCheckItem.Caption = AdvantageFramework.StringUtilities.GetNameAsWords(GridColumn.FieldName)
+                        BarCheckItem.Caption = AdvantageFramework.StringUtilities.GetNameAsWords(GridColumn.FieldName)
 
-					End If
+                    End If
 
-					BarCheckItem.Tag = GridColumn
-					BarCheckItem.CloseSubMenuOnClick = False
-					BarCheckItem.Checked = GridColumn.Visible
+                    BarCheckItem.Tag = GridColumn
+                    BarCheckItem.CloseSubMenuOnClick = False
+                    BarCheckItem.Checked = GridColumn.Visible
 
-					BarSubItemPopup_Columns.AddItem(BarCheckItem)
+                    BarSubItemPopup_Columns.AddItem(BarCheckItem)
 
-					AddHandler BarCheckItem.CheckedChanged, AddressOf BarCheckItem_CheckChanged
+                    AddHandler BarCheckItem.CheckedChanged, AddressOf BarCheckItem_CheckChanged
 
-				End If
+                End If
 
-			Next
+            Next
 
-			PopupMenuGrid_Popup.ShowPopup(System.Windows.Forms.Control.MousePosition)
+            PopupMenuGrid_Popup.ShowPopup(System.Windows.Forms.Control.MousePosition)
 
-		End Sub
-		Private Sub BarCheckItem_CheckChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
+        End Sub
+        Private Sub BarCheckItem_CheckChanged(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs)
 
-			'objects
-			Dim GridColumn As DevExpress.XtraGrid.Columns.GridColumn = Nothing
-			Dim BarCheckItem As DevExpress.XtraBars.BarCheckItem = Nothing
+            'objects
+            Dim GridColumn As DevExpress.XtraGrid.Columns.GridColumn = Nothing
+            Dim BarCheckItem As DevExpress.XtraBars.BarCheckItem = Nothing
 
-			BarCheckItem = DirectCast(e.Item, DevExpress.XtraBars.BarCheckItem)
+            BarCheckItem = DirectCast(e.Item, DevExpress.XtraBars.BarCheckItem)
 
-			If BarCheckItem.Tag IsNot Nothing AndAlso TypeOf BarCheckItem.Tag Is DevExpress.XtraGrid.Columns.GridColumn Then
+            If BarCheckItem.Tag IsNot Nothing AndAlso TypeOf BarCheckItem.Tag Is DevExpress.XtraGrid.Columns.GridColumn Then
 
-				GridColumn = DirectCast(BarCheckItem.Tag, DevExpress.XtraGrid.Columns.GridColumn)
+                GridColumn = DirectCast(BarCheckItem.Tag, DevExpress.XtraGrid.Columns.GridColumn)
 
-				GridColumn.Visible = BarCheckItem.Checked
+                GridColumn.Visible = BarCheckItem.Checked
 
-			End If
+            End If
 
-		End Sub
-		Protected Function CreateCheckItem(Caption As String, GridColumn As DevExpress.XtraGrid.Columns.GridColumn, FixedStyle As DevExpress.XtraGrid.Columns.FixedStyle, Optional Image As System.Drawing.Image = Nothing) As DevExpress.Utils.Menu.DXMenuCheckItem
+        End Sub
+        Protected Function CreateCheckItem(Caption As String, GridColumn As DevExpress.XtraGrid.Columns.GridColumn, FixedStyle As DevExpress.XtraGrid.Columns.FixedStyle, Optional Image As System.Drawing.Image = Nothing) As DevExpress.Utils.Menu.DXMenuCheckItem
 
-			'objects
-			Dim DXMenuCheckItem As DevExpress.Utils.Menu.DXMenuCheckItem = Nothing
+            'objects
+            Dim DXMenuCheckItem As DevExpress.Utils.Menu.DXMenuCheckItem = Nothing
 
-			DXMenuCheckItem = New DevExpress.Utils.Menu.DXMenuCheckItem(Caption, False, Image, New EventHandler(AddressOf OnFixedClick))
+            DXMenuCheckItem = New DevExpress.Utils.Menu.DXMenuCheckItem(Caption, False, Image, New EventHandler(AddressOf OnFixedClick))
 
-			DXMenuCheckItem.Tag = New AdvantageFramework.WinForm.Presentation.Controls.Classes.MenuInfo(GridColumn, FixedStyle)
+            DXMenuCheckItem.Tag = New AdvantageFramework.WinForm.Presentation.Controls.Classes.MenuInfo(GridColumn, FixedStyle)
 
-			CreateCheckItem = DXMenuCheckItem
+            CreateCheckItem = DXMenuCheckItem
 
-		End Function
-		Protected Sub OnFixedClick(sender As Object, e As EventArgs)
+        End Function
+        Protected Sub OnFixedClick(sender As Object, e As EventArgs)
 
-			'objects
-			Dim DXMenuItem As DevExpress.Utils.Menu.DXMenuItem = Nothing
-			Dim MenuInfo As AdvantageFramework.WinForm.Presentation.Controls.Classes.MenuInfo = Nothing
+            'objects
+            Dim DXMenuItem As DevExpress.Utils.Menu.DXMenuItem = Nothing
+            Dim MenuInfo As AdvantageFramework.WinForm.Presentation.Controls.Classes.MenuInfo = Nothing
 
-			DXMenuItem = DirectCast(sender, DevExpress.Utils.Menu.DXMenuItem)
+            DXMenuItem = DirectCast(sender, DevExpress.Utils.Menu.DXMenuItem)
 
-			MenuInfo = DXMenuItem.Tag
+            MenuInfo = DXMenuItem.Tag
 
-			If MenuInfo IsNot Nothing Then
+            If MenuInfo IsNot Nothing Then
 
-				MenuInfo.GridColumn.Fixed = MenuInfo.FixedStyle
+                MenuInfo.GridColumn.Fixed = MenuInfo.FixedStyle
 
-			End If
+            End If
 
-		End Sub
-		Public Function GetBindingSourceDataBoundItems() As IEnumerable
+        End Sub
+        Public Function GetBindingSourceDataBoundItems() As IEnumerable
 
-			'objects
-			Dim DataBoundItems As Generic.List(Of Object) = Nothing
+            'objects
+            Dim DataBoundItems As Generic.List(Of Object) = Nothing
 
-			DataBoundItems = New Generic.List(Of Object)
+            DataBoundItems = New Generic.List(Of Object)
 
-			If Me.BindingSource IsNot Nothing Then
+            If Me.BindingSource IsNot Nothing Then
 
-				For Item = 0 To Me.BindingSource.Count - 1
+                For Item = 0 To Me.BindingSource.Count - 1
 
-					DataBoundItems.Add(DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(Item))
+                    DataBoundItems.Add(DirectCast(DataGridView_GridControl.DataSource, System.Windows.Forms.BindingSource).Item(Item))
 
-				Next
+                Next
 
-			End If
+            End If
 
-			GetBindingSourceDataBoundItems = DataBoundItems
+            GetBindingSourceDataBoundItems = DataBoundItems
 
-		End Function
-		Public Sub RefreshDataSource()
+        End Function
+        Public Sub RefreshDataSource()
 
-			Me.GridControl.RefreshDataSource()
+            Me.GridControl.RefreshDataSource()
 
-		End Sub
-		Public Sub SetupForEditableGrid()
+        End Sub
+        Public Sub SetupForEditableGrid()
 
-			GridViewGridControl_MainView.OptionsBehavior.Editable = True
-			GridViewGridControl_MainView.OptionsCustomization.AllowColumnMoving = False
-			GridViewGridControl_MainView.OptionsCustomization.AllowGroup = False
-			GridViewGridControl_MainView.OptionsCustomization.AllowQuickHideColumns = False
+            GridViewGridControl_MainView.OptionsBehavior.Editable = True
+            GridViewGridControl_MainView.OptionsCustomization.AllowColumnMoving = False
+            GridViewGridControl_MainView.OptionsCustomization.AllowGroup = False
+            GridViewGridControl_MainView.OptionsCustomization.AllowQuickHideColumns = False
 
-		End Sub
-		Protected Sub SetupEmbeddedNavigator(ByVal UseEmbeddedNavigator As Boolean)
+        End Sub
+        Protected Sub SetupEmbeddedNavigator(ByVal UseEmbeddedNavigator As Boolean)
 
-			Dim DeleteCustomButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
-			Dim CancelEditCustomButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
+            Dim DeleteCustomButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
+            Dim CancelEditCustomButton As DevExpress.XtraEditors.NavigatorCustomButton = Nothing
 
-			DataGridView_GridControl.UseEmbeddedNavigator = UseEmbeddedNavigator
+            DataGridView_GridControl.UseEmbeddedNavigator = UseEmbeddedNavigator
 
-			AddHandler DataGridView_GridControl.EmbeddedNavigator.ButtonClick, AddressOf GridViewGridControl_EmbeddedNavigator_ButtonClick
+            AddHandler DataGridView_GridControl.EmbeddedNavigator.ButtonClick, AddressOf GridViewGridControl_EmbeddedNavigator_ButtonClick
 
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.Edit.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.PrevPage.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.Prev.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.NextPage.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.Next.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.Last.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.First.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.Append.Visible = False
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.Edit.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.PrevPage.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.Prev.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.NextPage.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.Next.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.Last.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.First.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.Append.Visible = False
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
 
-			DataGridView_GridControl.EmbeddedNavigator.Buttons.CustomButtons.Clear()
+            DataGridView_GridControl.EmbeddedNavigator.Buttons.CustomButtons.Clear()
 
-			DeleteCustomButton = DataGridView_GridControl.EmbeddedNavigator.Buttons.CustomButtons.Add()
+            DeleteCustomButton = DataGridView_GridControl.EmbeddedNavigator.Buttons.CustomButtons.Add()
 
-			DeleteCustomButton.Tag = DevExpress.XtraEditors.NavigatorButtonType.Remove
-			DeleteCustomButton.Enabled = Me.HasASelectedRow
-			DeleteCustomButton.Hint = "Delete"
-			DeleteCustomButton.ImageIndex = CInt(DevExpress.XtraEditors.NavigatorButtonType.CancelEdit - 1)
+            DeleteCustomButton.Tag = DevExpress.XtraEditors.NavigatorButtonType.Remove
+            DeleteCustomButton.Enabled = Me.HasASelectedRow
+            DeleteCustomButton.Hint = "Delete"
+            DeleteCustomButton.ImageIndex = CInt(DevExpress.XtraEditors.NavigatorButtonType.CancelEdit - 1)
 
-			_CustomDeleteButton = DeleteCustomButton
+            _CustomDeleteButton = DeleteCustomButton
 
-			CancelEditCustomButton = DataGridView_GridControl.EmbeddedNavigator.Buttons.CustomButtons.Add()
+            CancelEditCustomButton = DataGridView_GridControl.EmbeddedNavigator.Buttons.CustomButtons.Add()
 
-			CancelEditCustomButton.Tag = DevExpress.XtraEditors.NavigatorButtonType.CancelEdit
-			CancelEditCustomButton.Enabled = False
-			CancelEditCustomButton.Hint = "Cancel"
-			CancelEditCustomButton.ImageIndex = CInt(DevExpress.XtraEditors.NavigatorButtonType.Remove - 1)
+            CancelEditCustomButton.Tag = DevExpress.XtraEditors.NavigatorButtonType.CancelEdit
+            CancelEditCustomButton.Enabled = False
+            CancelEditCustomButton.Hint = "Cancel"
+            CancelEditCustomButton.ImageIndex = CInt(DevExpress.XtraEditors.NavigatorButtonType.Remove - 1)
 
-			_CustomCancelEditButton = CancelEditCustomButton
+            _CustomCancelEditButton = CancelEditCustomButton
 
-			DataGridView_GridControl.EmbeddedNavigator.TextStringFormat = ""
+            DataGridView_GridControl.EmbeddedNavigator.TextStringFormat = ""
 
-		End Sub
-		Public Sub EnabledDisableNavigatorButtons()
+        End Sub
+        Public Sub EnabledDisableNavigatorButtons()
 
-			If _CustomDeleteButton IsNot Nothing Then
+            If _CustomDeleteButton IsNot Nothing Then
 
-				_CustomDeleteButton.Enabled = (Me.IsNewItemOrAutoFilterRow() = False AndAlso Me.HasASelectedRow(False))
+                _CustomDeleteButton.Enabled = (Me.IsNewItemOrAutoFilterRow() = False AndAlso Me.HasASelectedRow(False))
 
-			End If
+            End If
 
-			If _CustomCancelEditButton IsNot Nothing Then
+            If _CustomCancelEditButton IsNot Nothing Then
 
-				_CustomCancelEditButton.Enabled = GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle)
+                _CustomCancelEditButton.Enabled = GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle)
 
-			End If
+            End If
 
-		End Sub
-		Public Sub SelectOnlyThisRow(RowHandle As Integer)
+        End Sub
+        Public Sub SelectOnlyThisRow(RowHandle As Integer)
 
-			Me.CurrentView.FocusedRowHandle = RowHandle
-			Me.CurrentView.SelectRow(RowHandle)
+            Me.CurrentView.FocusedRowHandle = RowHandle
+            Me.CurrentView.SelectRow(RowHandle)
 
-			For Each SelectedRowHandle In Me.CurrentView.GetSelectedRows
+            For Each SelectedRowHandle In Me.CurrentView.GetSelectedRows
 
-				If SelectedRowHandle <> RowHandle Then
+                If SelectedRowHandle <> RowHandle Then
 
-					Me.CurrentView.UnselectRow(SelectedRowHandle)
+                    Me.CurrentView.UnselectRow(SelectedRowHandle)
 
-				End If
+                End If
 
-			Next
+            Next
 
-		End Sub
+        End Sub
         Public Sub CloseGridEditorAndSaveValueToDataSource()
 
             If Me.CurrentView.PostEditor() Then
@@ -1848,459 +1849,459 @@
 
         Private Sub GridViewGridControl_MainView_BeforeLeaveRow(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowAllowEventArgs) Handles GridViewGridControl_MainView.BeforeLeaveRow
 
-			If GridViewGridControl_MainView.IsValidRowHandle(e.RowHandle) Then
+            If GridViewGridControl_MainView.IsValidRowHandle(e.RowHandle) Then
 
-				RaiseEvent BeforeLeaveRowEvent(sender, e)
+                RaiseEvent BeforeLeaveRowEvent(sender, e)
 
-			End If
+            End If
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_AddNewRowEvent(RowObject As Object) Handles GridViewGridControl_MainView.AddNewRowEvent
+        End Sub
+        Private Sub GridViewGridControl_MainView_AddNewRowEvent(RowObject As Object) Handles GridViewGridControl_MainView.AddNewRowEvent
 
-			RaiseEvent AddNewRowEvent(RowObject)
+            RaiseEvent AddNewRowEvent(RowObject)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridViewGridControl_MainView.CellValueChanging
+        End Sub
+        Private Sub GridViewGridControl_MainView_CellValueChanging(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridViewGridControl_MainView.CellValueChanging
 
-			_ChangesAutoSaved = False
+            _ChangesAutoSaved = False
 
-			RaiseEvent CellValueChangingEvent(_ChangesAutoSaved, sender, e)
+            RaiseEvent CellValueChangingEvent(_ChangesAutoSaved, sender, e)
 
-			If _ChangesAutoSaved = False AndAlso
-				Me.IsNewItemOrAutoFilterRow(e.RowHandle) = False AndAlso _ByPassUserEntryChanged = False AndAlso
-				_SuspendedForLoading = False Then
+            If _ChangesAutoSaved = False AndAlso
+                Me.IsNewItemOrAutoFilterRow(e.RowHandle) = False AndAlso _ByPassUserEntryChanged = False AndAlso
+                _SuspendedForLoading = False Then
 
-				_UserEntryChanged = True
+                _UserEntryChanged = True
 
-				AdvantageFramework.WinForm.MVC.Presentation.Controls.UserEntryChanged(Me)
+                AdvantageFramework.WinForm.MVC.Presentation.Controls.UserEntryChanged(Me)
 
-			End If
+            End If
 
-			If Me.GridViewGridControl_MainView.IsNewItemRow(e.RowHandle) Then
+            If Me.GridViewGridControl_MainView.IsNewItemRow(e.RowHandle) Then
 
-				RaiseEvent NewItemRowCellValueChangingEvent(sender, e)
+                RaiseEvent NewItemRowCellValueChangingEvent(sender, e)
 
-			End If
+            End If
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CellValueChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridViewGridControl_MainView.CellValueChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_CellValueChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridViewGridControl_MainView.CellValueChanged
 
-			RaiseEvent CellValueChangedEvent(sender, e)
+            RaiseEvent CellValueChangedEvent(sender, e)
 
-			If _ChangesAutoSaved = False AndAlso
-				Me.IsNewItemOrAutoFilterRow(e.RowHandle) = False AndAlso _ByPassUserEntryChanged = False AndAlso
-				_SuspendedForLoading = False Then
+            If _ChangesAutoSaved = False AndAlso
+                Me.IsNewItemOrAutoFilterRow(e.RowHandle) = False AndAlso _ByPassUserEntryChanged = False AndAlso
+                _SuspendedForLoading = False Then
 
-				_UserEntryChanged = True
+                _UserEntryChanged = True
 
-				AdvantageFramework.WinForm.MVC.Presentation.Controls.UserEntryChanged(Me)
+                AdvantageFramework.WinForm.MVC.Presentation.Controls.UserEntryChanged(Me)
 
-			End If
+            End If
 
-			If Me.GridViewGridControl_MainView.IsNewItemRow(e.RowHandle) Then
+            If Me.GridViewGridControl_MainView.IsNewItemRow(e.RowHandle) Then
 
-				RaiseEvent NewItemRowCellValueChangedEvent(sender, e)
+                RaiseEvent NewItemRowCellValueChangedEvent(sender, e)
 
-			End If
+            End If
 
-			RaiseEvent ColumnValueChangedEvent(sender, e)
+            RaiseEvent ColumnValueChangedEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomRowCellEdit(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs) Handles GridViewGridControl_MainView.CustomRowCellEdit
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomRowCellEdit(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs) Handles GridViewGridControl_MainView.CustomRowCellEdit
 
-			RaiseEvent CustomRowCellEditEvent(sender, e)
+            RaiseEvent CustomRowCellEditEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomRowCellEditForEditing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs) Handles GridViewGridControl_MainView.CustomRowCellEditForEditing
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomRowCellEditForEditing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs) Handles GridViewGridControl_MainView.CustomRowCellEditForEditing
 
-			RaiseEvent CustomRowCellEditForEditingEvent(sender, e)
+            RaiseEvent CustomRowCellEditForEditingEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles GridViewGridControl_MainView.RowClick
+        End Sub
+        Private Sub GridViewGridControl_MainView_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles GridViewGridControl_MainView.RowClick
 
-			If e.Button = Windows.Forms.MouseButtons.Left Then
+            If e.Button = Windows.Forms.MouseButtons.Left Then
 
-				If e.Clicks = 2 Then
+                If e.Clicks = 2 Then
 
-					RaiseEvent RowDoubleClickEvent(sender, e)
+                    RaiseEvent RowDoubleClickEvent(sender, e)
 
-				ElseIf e.Clicks = 1 Then
+                ElseIf e.Clicks = 1 Then
 
-					RaiseEvent RowClickEvent(sender, e)
+                    RaiseEvent RowClickEvent(sender, e)
 
-				End If
+                End If
 
-			End If
+            End If
 
-			If _ShowRowSelectionIfHidden Then
+            If _ShowRowSelectionIfHidden Then
 
-				ShowRowSelection(True)
+                ShowRowSelection(True)
 
-			End If
+            End If
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_RowCountChanged(sender As Object, e As System.EventArgs) Handles GridViewGridControl_MainView.RowCountChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_RowCountChanged(sender As Object, e As System.EventArgs) Handles GridViewGridControl_MainView.RowCountChanged
 
-			SetHeaderText()
+            SetHeaderText()
 
             RaiseEvent RowCountChangedEvent(sender, e)
 
         End Sub
-		Private Sub GridViewGridControl_MainView_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridViewGridControl_MainView.FocusedRowChanged
+        Private Sub GridViewGridControl_MainView_FocusedRowChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs) Handles GridViewGridControl_MainView.FocusedRowChanged
 
-			If GridViewGridControl_MainView.OptionsSelection.MultiSelect = False Then
+            If GridViewGridControl_MainView.OptionsSelection.MultiSelect = False Then
 
-				DeselectGroupHeaderRows()
+                DeselectGroupHeaderRows()
 
-				RaiseEvent FocusedRowChangedEvent(sender, e)
+                RaiseEvent FocusedRowChangedEvent(sender, e)
 
-				If _ShowRowSelectionIfHidden Then
+                If _ShowRowSelectionIfHidden Then
 
-					ShowRowSelection(True)
+                    ShowRowSelection(True)
 
-				End If
+                End If
 
-			End If
+            End If
 
-			EnabledDisableNavigatorButtons()
+            EnabledDisableNavigatorButtons()
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_SelectionChanged(sender As System.Object, e As DevExpress.Data.SelectionChangedEventArgs) Handles GridViewGridControl_MainView.SelectionChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_SelectionChanged(sender As System.Object, e As DevExpress.Data.SelectionChangedEventArgs) Handles GridViewGridControl_MainView.SelectionChanged
 
-			If Me.HasASelectedRow = False AndAlso GridViewGridControl_MainView.FocusedRowHandle >= 0 Then
+            If Me.HasASelectedRow = False AndAlso GridViewGridControl_MainView.FocusedRowHandle >= 0 Then
 
-				GridViewGridControl_MainView.SelectRow(GridViewGridControl_MainView.FocusedRowHandle)
+                GridViewGridControl_MainView.SelectRow(GridViewGridControl_MainView.FocusedRowHandle)
 
-			End If
+            End If
 
-			If GridViewGridControl_MainView.OptionsSelection.MultiSelect Then
+            If GridViewGridControl_MainView.OptionsSelection.MultiSelect Then
 
-				DeselectGroupHeaderRows()
+                DeselectGroupHeaderRows()
 
-				RaiseEvent SelectionChangedEvent(sender, e)
+                RaiseEvent SelectionChangedEvent(sender, e)
 
-				If _ShowRowSelectionIfHidden Then
+                If _ShowRowSelectionIfHidden Then
 
-					ShowRowSelection(True)
+                    ShowRowSelection(True)
 
-				End If
+                End If
 
-			End If
+            End If
 
-			EnabledDisableNavigatorButtons()
+            EnabledDisableNavigatorButtons()
 
-		End Sub
-		Private Sub ButtonBottomPanel_DeselectAll_Click(sender As Object, e As System.EventArgs) Handles ButtonBottomPanel_DeselectAll.Click
+        End Sub
+        Private Sub ButtonBottomPanel_DeselectAll_Click(sender As Object, e As System.EventArgs) Handles ButtonBottomPanel_DeselectAll.Click
 
-			If _SelectRowsWhenSelectDeselectAllButtonClicked Then
+            If _SelectRowsWhenSelectDeselectAllButtonClicked Then
 
-				GridViewGridControl_MainView.ClearSelection()
+                GridViewGridControl_MainView.ClearSelection()
 
-			End If
+            End If
 
-			RaiseEvent DeselectAllEvent()
+            RaiseEvent DeselectAllEvent()
 
-		End Sub
-		Private Sub ButtonBottomPanel_SelectAll_Click(sender As Object, e As System.EventArgs) Handles ButtonBottomPanel_SelectAll.Click
+        End Sub
+        Private Sub ButtonBottomPanel_SelectAll_Click(sender As Object, e As System.EventArgs) Handles ButtonBottomPanel_SelectAll.Click
 
-			If _SelectRowsWhenSelectDeselectAllButtonClicked Then
+            If _SelectRowsWhenSelectDeselectAllButtonClicked Then
 
-				GridViewGridControl_MainView.SelectAll()
+                GridViewGridControl_MainView.SelectAll()
 
-			End If
+            End If
 
-			RaiseEvent SelectAllEvent()
+            RaiseEvent SelectAllEvent()
 
-		End Sub
-		Private Sub DataGridView_GridControl_ProcessGridKey(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles DataGridView_GridControl.ProcessGridKey
+        End Sub
+        Private Sub DataGridView_GridControl_ProcessGridKey(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles DataGridView_GridControl.ProcessGridKey
 
-			If e.KeyData = Windows.Forms.Keys.Escape Then
+            If e.KeyData = Windows.Forms.Keys.Escape Then
 
-				If GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle) Then
+                If GridViewGridControl_MainView.IsNewItemRow(GridViewGridControl_MainView.FocusedRowHandle) Then
 
-					If GridViewGridControl_MainView.GetRow(GridViewGridControl_MainView.FocusedRowHandle) IsNot Nothing Then
+                    If GridViewGridControl_MainView.GetRow(GridViewGridControl_MainView.FocusedRowHandle) IsNot Nothing Then
 
-						GridViewGridControl_MainView.CancelUpdateCurrentRow()
-						GridViewGridControl_MainView.NewItemRowText = ""
+                        GridViewGridControl_MainView.CancelUpdateCurrentRow()
+                        GridViewGridControl_MainView.NewItemRowText = ""
 
-					End If
+                    End If
 
-				End If
+                End If
 
-			ElseIf e.KeyData = Windows.Forms.Keys.Enter Then
+            ElseIf e.KeyData = Windows.Forms.Keys.Enter Then
 
-				If TypeOf GridViewGridControl_MainView.ActiveEditor Is DevExpress.XtraEditors.GridLookUpEdit Then
+                If TypeOf GridViewGridControl_MainView.ActiveEditor Is DevExpress.XtraEditors.GridLookUpEdit Then
 
-					If DirectCast(GridViewGridControl_MainView.ActiveEditor, DevExpress.XtraEditors.GridLookUpEdit).IsPopupOpen = False Then
+                    If DirectCast(GridViewGridControl_MainView.ActiveEditor, DevExpress.XtraEditors.GridLookUpEdit).IsPopupOpen = False Then
 
-						e.Handled = True
-						e.SuppressKeyPress = True
+                        e.Handled = True
+                        e.SuppressKeyPress = True
 
-						DirectCast(GridViewGridControl_MainView.ActiveEditor, DevExpress.XtraEditors.GridLookUpEdit).SendKey(New Windows.Forms.KeyEventArgs(Windows.Forms.Keys.Tab))
+                        DirectCast(GridViewGridControl_MainView.ActiveEditor, DevExpress.XtraEditors.GridLookUpEdit).SendKey(New Windows.Forms.KeyEventArgs(Windows.Forms.Keys.Tab))
 
-					End If
+                    End If
 
-				End If
+                End If
 
-			ElseIf e.KeyData = Windows.Forms.Keys.Up OrElse e.KeyData = Windows.Forms.Keys.Down Then
+            ElseIf e.KeyData = Windows.Forms.Keys.Up OrElse e.KeyData = Windows.Forms.Keys.Down Then
 
-				If TypeOf GridViewGridControl_MainView.ActiveEditor Is DevExpress.XtraEditors.BaseSpinEdit Then
+                If TypeOf GridViewGridControl_MainView.ActiveEditor Is DevExpress.XtraEditors.BaseSpinEdit Then
 
-					If e.KeyData = Windows.Forms.Keys.Up AndAlso GridViewGridControl_MainView.FocusedRowHandle <> 0 Then
+                    If e.KeyData = Windows.Forms.Keys.Up AndAlso GridViewGridControl_MainView.FocusedRowHandle <> 0 Then
 
-						GridViewGridControl_MainView.MovePrev()
+                        GridViewGridControl_MainView.MovePrev()
 
-					ElseIf e.KeyData = Windows.Forms.Keys.Down AndAlso GridViewGridControl_MainView.FocusedRowHandle <> GridViewGridControl_MainView.RowCount - 1 Then
+                    ElseIf e.KeyData = Windows.Forms.Keys.Down AndAlso GridViewGridControl_MainView.FocusedRowHandle <> GridViewGridControl_MainView.RowCount - 1 Then
 
-						GridViewGridControl_MainView.MoveNext()
+                        GridViewGridControl_MainView.MoveNext()
 
-					End If
+                    End If
 
-				End If
+                End If
 
-			ElseIf e.KeyData = Windows.Forms.Keys.Tab Then
+            ElseIf e.KeyData = Windows.Forms.Keys.Tab Then
 
-				If Not GridViewGridControl_MainView.IsNewItemOrAutoFilterRow() Then
+                If Not GridViewGridControl_MainView.IsNewItemOrAutoFilterRow() Then
 
-					If GridViewGridControl_MainView.FocusedRowHandle = GridViewGridControl_MainView.RowCount - 1 AndAlso
-						GridViewGridControl_MainView.FocusedColumn.Equals(GridViewGridControl_MainView.VisibleColumns.Last) Then
+                    If GridViewGridControl_MainView.FocusedRowHandle = GridViewGridControl_MainView.RowCount - 1 AndAlso
+                        GridViewGridControl_MainView.FocusedColumn.Equals(GridViewGridControl_MainView.VisibleColumns.Last) Then
 
-						e.Handled = True
-						e.SuppressKeyPress = True
+                        e.Handled = True
+                        e.SuppressKeyPress = True
 
-						GridViewGridControl_MainView.CloseEditorForUpdating()
-						GridViewGridControl_MainView.ShowEditor()
+                        GridViewGridControl_MainView.CloseEditorForUpdating()
+                        GridViewGridControl_MainView.ShowEditor()
 
-						If GridViewGridControl_MainView.ActiveEditor IsNot Nothing Then
+                        If GridViewGridControl_MainView.ActiveEditor IsNot Nothing Then
 
-							GridViewGridControl_MainView.ActiveEditor.SelectAll()
+                            GridViewGridControl_MainView.ActiveEditor.SelectAll()
 
-						End If
+                        End If
 
-					End If
+                    End If
 
-				End If
+                End If
 
-			Else
+            Else
 
-				RaiseEvent ProcessGridKeyEvent(sender, e)
+                RaiseEvent ProcessGridKeyEvent(sender, e)
 
-			End If
+            End If
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_DataSourceChanged(sender As Object, e As System.EventArgs) Handles GridViewGridControl_MainView.DataSourceChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_DataSourceChanged(sender As Object, e As System.EventArgs) Handles GridViewGridControl_MainView.DataSourceChanged
 
-			RaiseEvent DataSourceChangedEvent(sender, e)
+            RaiseEvent DataSourceChangedEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ValidateRow(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs) Handles GridViewGridControl_MainView.ValidateRow
+        End Sub
+        Private Sub GridViewGridControl_MainView_ValidateRow(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs) Handles GridViewGridControl_MainView.ValidateRow
 
-			RaiseEvent ValidateRowEvent(sender, e)
+            RaiseEvent ValidateRowEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ValidatingEditor(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles GridViewGridControl_MainView.ValidatingEditor
+        End Sub
+        Private Sub GridViewGridControl_MainView_ValidatingEditor(sender As Object, e As DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs) Handles GridViewGridControl_MainView.ValidatingEditor
 
-			RaiseEvent ValidatingEditorEvent(sender, e)
+            RaiseEvent ValidatingEditorEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_InitNewRow(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles GridViewGridControl_MainView.InitNewRow
+        End Sub
+        Private Sub GridViewGridControl_MainView_InitNewRow(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles GridViewGridControl_MainView.InitNewRow
 
-			RaiseEvent InitNewRowEvent(sender, e)
+            RaiseEvent InitNewRowEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ShownEditor(sender As Object, e As System.EventArgs) Handles GridViewGridControl_MainView.ShownEditor
+        End Sub
+        Private Sub GridViewGridControl_MainView_ShownEditor(sender As Object, e As System.EventArgs) Handles GridViewGridControl_MainView.ShownEditor
 
-			RaiseEvent ShownEditorEvent(sender, e)
+            RaiseEvent ShownEditorEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ColumnEditValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridViewGridControl_MainView.ColumnEditValueChangedEvent
+        End Sub
+        Private Sub GridViewGridControl_MainView_ColumnEditValueChangedEvent(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles GridViewGridControl_MainView.ColumnEditValueChangedEvent
 
-			RaiseEvent ColumnValueChangedEvent(sender, e)
+            RaiseEvent ColumnValueChangedEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ShowingEditor(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles GridViewGridControl_MainView.ShowingEditor
+        End Sub
+        Private Sub GridViewGridControl_MainView_ShowingEditor(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles GridViewGridControl_MainView.ShowingEditor
 
-			RaiseEvent ShowingEditorEvent(sender, e)
+            RaiseEvent ShowingEditorEvent(sender, e)
 
-			If Me.HasRows = False AndAlso Me.IsNewItemRow(Me.CurrentView.FocusedRowHandle) Then
+            If Me.HasRows = False AndAlso Me.IsNewItemRow(Me.CurrentView.FocusedRowHandle) Then
 
-				GridViewGridControl_MainView.GridViewSelectionChanged()
+                GridViewGridControl_MainView.GridViewSelectionChanged()
 
-			End If
+            End If
 
-		End Sub
-		Private Sub _BindingSource_PositionChanged(sender As Object, e As System.EventArgs) Handles _BindingSource.PositionChanged
+        End Sub
+        Private Sub _BindingSource_PositionChanged(sender As Object, e As System.EventArgs) Handles _BindingSource.PositionChanged
 
-			_BindingSourcePositionChanged = True
+            _BindingSourcePositionChanged = True
 
-			_PreviousPosition = _BindingSource.Position
+            _PreviousPosition = _BindingSource.Position
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_QueryPopupNeedDatasource(FieldName As String, ByRef OverrideDefaultDatasource As Boolean, ByRef Datasource As Object) Handles GridViewGridControl_MainView.QueryPopupNeedDatasource
+        End Sub
+        Private Sub GridViewGridControl_MainView_QueryPopupNeedDatasource(FieldName As String, ByRef OverrideDefaultDatasource As Boolean, ByRef Datasource As Object) Handles GridViewGridControl_MainView.QueryPopupNeedDatasource
 
-			RaiseEvent QueryPopupNeedDatasourceEvent(FieldName, OverrideDefaultDatasource, Datasource)
+            RaiseEvent QueryPopupNeedDatasourceEvent(FieldName, OverrideDefaultDatasource, Datasource)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_RepositoryDataSourceLoadingEvent(FieldName As String, ByRef Datasource As Object) Handles GridViewGridControl_MainView.RepositoryDataSourceLoadingEvent
+        End Sub
+        Private Sub GridViewGridControl_MainView_RepositoryDataSourceLoadingEvent(FieldName As String, ByRef Datasource As Object) Handles GridViewGridControl_MainView.RepositoryDataSourceLoadingEvent
 
-			RaiseEvent RepositoryDataSourceLoadingEvent(FieldName, Datasource)
+            RaiseEvent RepositoryDataSourceLoadingEvent(FieldName, Datasource)
 
-		End Sub
-		Private Sub GridViewGridControl_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
+        End Sub
+        Private Sub GridViewGridControl_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
 
-			RaiseEvent EmbeddedNavigatorButtonClick(sender, e)
+            RaiseEvent EmbeddedNavigatorButtonClick(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridViewGridControl_MainView.PopupMenuShowing
+        End Sub
+        Private Sub GridViewGridControl_MainView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles GridViewGridControl_MainView.PopupMenuShowing
 
-			RaiseEvent PopupMenuShowingEvent(sender, e)
+            RaiseEvent PopupMenuShowingEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawGroupRow(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawGroupRow
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawGroupRow(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawGroupRow
 
-			RaiseEvent CustomDrawGroupRowEvent(sender, e)
+            RaiseEvent CustomDrawGroupRowEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_RowCellStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles GridViewGridControl_MainView.RowCellStyle
+        End Sub
+        Private Sub GridViewGridControl_MainView_RowCellStyle(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles GridViewGridControl_MainView.RowCellStyle
 
-			RaiseEvent RowCellStyleEvent(sender, e)
+            RaiseEvent RowCellStyleEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawRowFooter(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawRowFooter
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawRowFooter(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawRowFooter
 
-			RaiseEvent CustomDrawRowFooterEvent(sender, e)
+            RaiseEvent CustomDrawRowFooterEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawRowFooterCell(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawRowFooterCell
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawRowFooterCell(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawRowFooterCell
 
-			RaiseEvent CustomDrawRowFooterCellEvent(sender, e)
+            RaiseEvent CustomDrawRowFooterCellEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles GridViewGridControl_MainView.MouseDown
+        End Sub
+        Private Sub GridViewGridControl_MainView_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles GridViewGridControl_MainView.MouseDown
 
-			RaiseEvent MouseDownEvent(sender, e)
+            RaiseEvent MouseDownEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawCell(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawCell
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawCell(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawCell
 
-			RaiseEvent CustomDrawCellEvent(sender, e)
+            RaiseEvent CustomDrawCellEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_AlterSubItemGridLookupEditPropertiesEvent(ByRef GridColumn As DevExpress.XtraGrid.Columns.GridColumn, ByRef SubItemGridLookUpEditControl As SubItemGridLookUpEditControl) Handles GridViewGridControl_MainView.AlterSubItemGridLookupEditPropertiesEvent
+        End Sub
+        Private Sub GridViewGridControl_MainView_AlterSubItemGridLookupEditPropertiesEvent(ByRef GridColumn As DevExpress.XtraGrid.Columns.GridColumn, ByRef SubItemGridLookUpEditControl As SubItemGridLookUpEditControl) Handles GridViewGridControl_MainView.AlterSubItemGridLookupEditPropertiesEvent
 
-			RaiseEvent AlterSubItemGridLookupEditPropertiesEvent(GridColumn, SubItemGridLookUpEditControl)
+            RaiseEvent AlterSubItemGridLookupEditPropertiesEvent(GridColumn, SubItemGridLookUpEditControl)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_HideCustomizationForm(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.HideCustomizationForm
+        End Sub
+        Private Sub GridViewGridControl_MainView_HideCustomizationForm(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.HideCustomizationForm
 
-			RaiseEvent HideCustomizationFormEvent(sender, e)
+            RaiseEvent HideCustomizationFormEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ShowCustomizationForm(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.ShowCustomizationForm
+        End Sub
+        Private Sub GridViewGridControl_MainView_ShowCustomizationForm(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.ShowCustomizationForm
 
-			RaiseEvent ShowCustomizationFormEvent(sender, e)
+            RaiseEvent ShowCustomizationFormEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomSummaryCalculate(sender As Object, e As DevExpress.Data.CustomSummaryEventArgs) Handles GridViewGridControl_MainView.CustomSummaryCalculate
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomSummaryCalculate(sender As Object, e As DevExpress.Data.CustomSummaryEventArgs) Handles GridViewGridControl_MainView.CustomSummaryCalculate
 
-			RaiseEvent CustomSummaryCalculateEvent(sender, e)
+            RaiseEvent CustomSummaryCalculateEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawColumnHeader(sender As Object, e As DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawColumnHeader
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawColumnHeader(sender As Object, e As DevExpress.XtraGrid.Views.Grid.ColumnHeaderCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawColumnHeader
 
-			RaiseEvent CustomDrawColumnHeaderEvent(sender, e)
+            RaiseEvent CustomDrawColumnHeaderEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomColumnDisplayText(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs) Handles GridViewGridControl_MainView.CustomColumnDisplayText
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomColumnDisplayText(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs) Handles GridViewGridControl_MainView.CustomColumnDisplayText
 
-			RaiseEvent CustomColumnDisplayTextEvent(sender, e)
+            RaiseEvent CustomColumnDisplayTextEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomColumnGroup(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles GridViewGridControl_MainView.CustomColumnGroup
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomColumnGroup(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles GridViewGridControl_MainView.CustomColumnGroup
 
-			RaiseEvent CustomColumnGroupEvent(sender, e)
+            RaiseEvent CustomColumnGroupEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomColumnSort(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles GridViewGridControl_MainView.CustomColumnSort
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomColumnSort(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs) Handles GridViewGridControl_MainView.CustomColumnSort
 
-			RaiseEvent CustomColumnSortEvent(sender, e)
+            RaiseEvent CustomColumnSortEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_FocusedColumnChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventArgs) Handles GridViewGridControl_MainView.FocusedColumnChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_FocusedColumnChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedColumnChangedEventArgs) Handles GridViewGridControl_MainView.FocusedColumnChanged
 
-			RaiseEvent FocusedColumnChangedEvent(sender, e)
+            RaiseEvent FocusedColumnChangedEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles GridViewGridControl_MainView.CustomUnboundColumnData
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles GridViewGridControl_MainView.CustomUnboundColumnData
 
-			RaiseEvent CustomUnboundColumnDataEvent(sender, e)
+            RaiseEvent CustomUnboundColumnDataEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomRowFilter(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowFilterEventArgs) Handles GridViewGridControl_MainView.CustomRowFilter
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomRowFilter(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowFilterEventArgs) Handles GridViewGridControl_MainView.CustomRowFilter
 
-			RaiseEvent CustomRowFilterEvent(sender, e)
+            RaiseEvent CustomRowFilterEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_EndGrouping(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.EndGrouping
+        End Sub
+        Private Sub GridViewGridControl_MainView_EndGrouping(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.EndGrouping
 
-			RaiseEvent EndGroupingEvent(sender, e)
+            RaiseEvent EndGroupingEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawFooter(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawFooter
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawFooter(sender As Object, e As DevExpress.XtraGrid.Views.Base.RowObjectCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawFooter
 
-			RaiseEvent CustomDrawFooterEvent(sender, e)
+            RaiseEvent CustomDrawFooterEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_EndSorting(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.EndSorting
+        End Sub
+        Private Sub GridViewGridControl_MainView_EndSorting(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.EndSorting
 
-			RaiseEvent EndSortingEvent(sender, e)
+            RaiseEvent EndSortingEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_DragObjectOver(sender As Object, e As DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs) Handles GridViewGridControl_MainView.DragObjectOver
+        End Sub
+        Private Sub GridViewGridControl_MainView_DragObjectOver(sender As Object, e As DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs) Handles GridViewGridControl_MainView.DragObjectOver
 
-			RaiseEvent DragObjectOverEvent(sender, e)
+            RaiseEvent DragObjectOverEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ColumnFilterChanged(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.ColumnFilterChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_ColumnFilterChanged(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.ColumnFilterChanged
 
-			RaiseEvent ColumnFilterChangedEvent(sender, e)
+            RaiseEvent ColumnFilterChangedEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ColumnPositionChanged(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.ColumnPositionChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_ColumnPositionChanged(sender As Object, e As EventArgs) Handles GridViewGridControl_MainView.ColumnPositionChanged
 
-			RaiseEvent ColumnPositionChangedEvent(sender, e)
+            RaiseEvent ColumnPositionChangedEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ColumnWidthChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.ColumnEventArgs) Handles GridViewGridControl_MainView.ColumnWidthChanged
+        End Sub
+        Private Sub GridViewGridControl_MainView_ColumnWidthChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.ColumnEventArgs) Handles GridViewGridControl_MainView.ColumnWidthChanged
 
-			RaiseEvent ColumnWidthChangedEvent(sender, e)
+            RaiseEvent ColumnWidthChangedEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_ColumnEditValueChangingEvent(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles GridViewGridControl_MainView.ColumnEditValueChangingEvent
+        End Sub
+        Private Sub GridViewGridControl_MainView_ColumnEditValueChangingEvent(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles GridViewGridControl_MainView.ColumnEditValueChangingEvent
 
-			RaiseEvent ColumnEditValueChangingEvent(sender, e)
+            RaiseEvent ColumnEditValueChangingEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles GridViewGridControl_MainView.KeyDown
+        End Sub
+        Private Sub GridViewGridControl_MainView_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles GridViewGridControl_MainView.KeyDown
 
-			RaiseEvent GridViewKeyDownEvent(sender, e)
+            RaiseEvent GridViewKeyDownEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawFilterPanel(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomDrawObjectEventArgs) Handles GridViewGridControl_MainView.CustomDrawFilterPanel
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawFilterPanel(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomDrawObjectEventArgs) Handles GridViewGridControl_MainView.CustomDrawFilterPanel
 
-			RaiseEvent CustomDrawFilterPanelEvent(sender, e)
+            RaiseEvent CustomDrawFilterPanelEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_CustomDrawFooterCell(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawFooterCell
+        End Sub
+        Private Sub GridViewGridControl_MainView_CustomDrawFooterCell(sender As Object, e As DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs) Handles GridViewGridControl_MainView.CustomDrawFooterCell
 
-			RaiseEvent CustomDrawFooterCellEvent(sender, e)
+            RaiseEvent CustomDrawFooterCellEvent(sender, e)
 
-		End Sub
-		Private Sub GridViewGridControl_MainView_SubItemGridLookUpEditControlEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles GridViewGridControl_MainView.SubItemGridLookUpEditControlEditValueChanging
+        End Sub
+        Private Sub GridViewGridControl_MainView_SubItemGridLookUpEditControlEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles GridViewGridControl_MainView.SubItemGridLookUpEditControlEditValueChanging
 
-			RaiseEvent SubItemGridLookUpEditControlEditValueChanging(sender, e)
+            RaiseEvent SubItemGridLookUpEditControlEditValueChanging(sender, e)
 
-		End Sub
+        End Sub
         Private Sub GridViewGridControl_MainView_MasterRowGetChildList(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs) Handles GridViewGridControl_MainView.MasterRowGetChildList
 
             RaiseEvent MasterRowGetChildListEvent(sender, e)
@@ -2371,6 +2372,11 @@
             RaiseEvent StartSortingEvent(sender, e)
 
         End Sub
+        Private Sub GridViewGridControl_MainView_SubItemDateInputEditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles GridViewGridControl_MainView.SubItemDateInputEditValueChanging
+
+            RaiseEvent SubItemDateInputEditValueChanging(sender, e)
+
+        End Sub
 
 #End Region
 
@@ -2378,24 +2384,24 @@
 
         Private Sub ReportHeaderLink_CreateDetailArea(ByVal sender As Object, ByVal e As DevExpress.XtraPrinting.CreateAreaEventArgs)
 
-			RaiseEvent CreateReportHeaderAreaEvent(sender, e)
+            RaiseEvent CreateReportHeaderAreaEvent(sender, e)
 
-		End Sub
-		Private Sub PrintableComponentLink_CreateReportFooterArea(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
+        End Sub
+        Private Sub PrintableComponentLink_CreateReportFooterArea(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
 
-			RaiseEvent CreateReportFooterAreaEvent(sender, e)
+            RaiseEvent CreateReportFooterAreaEvent(sender, e)
 
-		End Sub
-		Private Sub PrintableComponentLink_CreateMarginalFooterArea(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
+        End Sub
+        Private Sub PrintableComponentLink_CreateMarginalFooterArea(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs)
 
-			RaiseEvent CreateMarginalFooterAreaEvent(sender, e)
+            RaiseEvent CreateMarginalFooterAreaEvent(sender, e)
 
-		End Sub
-
-#End Region
+        End Sub
 
 #End Region
 
-	End Class
+#End Region
+
+    End Class
 
 End Namespace

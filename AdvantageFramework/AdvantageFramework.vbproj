@@ -237,6 +237,17 @@
     <Compile Include="Controller\Account\PasswordController.vb" />
     <Compile Include="Controller\BaseController.vb" />
     <Compile Include="Database\Entities\MediaPlanDocument.vb" />
+    <Compile Include="Database\Entities\MediaSpotTVPuertoRicoResearch.vb" />
+    <Compile Include="Database\Entities\MediaSpotTVPuertoRicoResearchDayTime.vb" />
+    <Compile Include="Database\Entities\MediaSpotTVPuertoRicoResearchDemo.vb" />
+    <Compile Include="Database\Entities\MediaSpotTVPuertoRicoResearchMetric.vb" />
+    <Compile Include="Database\Entities\MediaSpotTVPuertoRicoResearchStation.vb" />
+    <Compile Include="Database\Entities\NPRAudience.vb" />
+    <Compile Include="Database\Entities\NPRFile.vb" />
+    <Compile Include="Database\Entities\NPRHutput.vb" />
+    <Compile Include="Database\Entities\NPRIntab.vb" />
+    <Compile Include="Database\Entities\NPRStation.vb" />
+    <Compile Include="Database\Entities\NPRUniverse.vb" />
     <Compile Include="Database\Entities\QuickbooksSetting.vb" />
     <Compile Include="Database\Entities\AlertRecipientExternalDismissed.vb" />
     <Compile Include="Database\Classes\AccountsPayableInvoiceDetailPaymentsReport .vb" />

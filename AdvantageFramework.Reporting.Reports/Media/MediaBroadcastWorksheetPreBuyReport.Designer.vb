@@ -21,6 +21,7 @@
         'Do not modify it using the code editor.
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
+            Me.components = New System.ComponentModel.Container()
             Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary2 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary3 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
@@ -129,7 +130,9 @@
             Me.ReportFooter_Cost = New DevExpress.XtraReports.UI.XRLabel()
             Me.ReportFooter_ReportTotalLabel = New DevExpress.XtraReports.UI.XRLabel()
             Me.GroupHeaderMarketName = New DevExpress.XtraReports.UI.GroupHeaderBand()
-            Me.BindingSource = New System.Windows.Forms.BindingSource()
+            Me.CalculatedFieldShareBooksOrPeriod = New DevExpress.XtraReports.UI.CalculatedField()
+            Me.CalculatedFieldPreBuyBooksOrPeriod = New DevExpress.XtraReports.UI.CalculatedField()
+            Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             '
@@ -347,7 +350,7 @@
             '
             'LabelGroupHeaderStation_PreBuyShareBook
             '
-            Me.LabelGroupHeaderStation_PreBuyShareBook.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "PreBuyBooks")})
+            Me.LabelGroupHeaderStation_PreBuyShareBook.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CalculatedFieldPreBuyBooksOrPeriod")})
             Me.LabelGroupHeaderStation_PreBuyShareBook.Font = New System.Drawing.Font("Arial", 9.0!)
             Me.LabelGroupHeaderStation_PreBuyShareBook.LocationFloat = New DevExpress.Utils.PointFloat(487.9127!, 68.00047!)
             Me.LabelGroupHeaderStation_PreBuyShareBook.Name = "LabelGroupHeaderStation_PreBuyShareBook"
@@ -1082,7 +1085,7 @@
             '
             'LabelGroupHeaderStation_ScheduleShareBook
             '
-            Me.LabelGroupHeaderStation_ScheduleShareBook.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "ScheduleBooks")})
+            Me.LabelGroupHeaderStation_ScheduleShareBook.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CalculatedFieldShareBooksOrPeriod")})
             Me.LabelGroupHeaderStation_ScheduleShareBook.Font = New System.Drawing.Font("Arial", 9.0!)
             Me.LabelGroupHeaderStation_ScheduleShareBook.LocationFloat = New DevExpress.Utils.PointFloat(487.9127!, 51.00047!)
             Me.LabelGroupHeaderStation_ScheduleShareBook.Name = "LabelGroupHeaderStation_ScheduleShareBook"
@@ -1429,6 +1432,16 @@
             Me.GroupHeaderMarketName.Name = "GroupHeaderMarketName"
             Me.GroupHeaderMarketName.Visible = False
             '
+            'CalculatedFieldShareBooksOrPeriod
+            '
+            Me.CalculatedFieldShareBooksOrPeriod.Expression = "Iif([RatingsServiceID]=5,[SchedulePeriod] , [ScheduleBooks])"
+            Me.CalculatedFieldShareBooksOrPeriod.Name = "CalculatedFieldShareBooksOrPeriod"
+            '
+            'CalculatedFieldPreBuyBooksOrPeriod
+            '
+            Me.CalculatedFieldPreBuyBooksOrPeriod.Expression = "Iif([RatingsServiceID]=5,[PreBuyPeriod] , [PreBuyBooks])" & Global.Microsoft.VisualBasic.ChrW(10)
+            Me.CalculatedFieldPreBuyBooksOrPeriod.Name = "CalculatedFieldPreBuyBooksOrPeriod"
+            '
             'BindingSource
             '
             Me.BindingSource.DataSource = GetType(AdvantageFramework.Reporting.Database.Classes.MediaBroadcastWorksheetPreBuyReport)
@@ -1436,6 +1449,7 @@
             'MediaBroadcastWorksheetPreBuyReport
             '
             Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.PageFooter, Me.ReportHeader, Me.PageHeader, Me.GroupFooterMarketName, Me.GroupHeaderStation, Me.GroupFooterStation, Me.ReportFooter, Me.GroupHeaderMarketName})
+            Me.CalculatedFields.AddRange(New DevExpress.XtraReports.UI.CalculatedField() {Me.CalculatedFieldShareBooksOrPeriod, Me.CalculatedFieldPreBuyBooksOrPeriod})
             Me.ComponentStorage.AddRange(New System.ComponentModel.IComponent() {Me.BindingSource})
             Me.DataSource = Me.BindingSource
             Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1444,7 +1458,7 @@
             Me.PageHeight = 850
             Me.PageWidth = 1100
             Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
-            Me.Version = "18.1"
+            Me.Version = "20.1"
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
@@ -1546,6 +1560,8 @@
         Friend WithEvents LabelGroupHeaderStation_Source As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents LabelGroupHeaderStation_ScheduleShareBookLabel As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents LabelGroupHeaderStation_ScheduleShareBook As DevExpress.XtraReports.UI.XRLabel
+        Friend WithEvents CalculatedFieldShareBooksOrPeriod As DevExpress.XtraReports.UI.CalculatedField
+        Friend WithEvents CalculatedFieldPreBuyBooksOrPeriod As DevExpress.XtraReports.UI.CalculatedField
     End Class
 
 End Namespace

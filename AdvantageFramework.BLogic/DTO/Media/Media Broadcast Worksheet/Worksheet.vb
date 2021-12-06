@@ -227,6 +227,9 @@
                 DoesWorksheetAllowSubmarkets = (Me.IsCanadianWorksheet AndAlso Me.MediaType = MediaTypes.SpotTV)
             End Get
         End Property
+        <Required>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="", ShowColumnInGrid:=False)>
+        Public Property NPRPrepopulateDates() As Boolean
 
 #End Region
 
@@ -279,6 +282,7 @@
             Me.Comment = Nothing
             Me.IsGross = True
             Me.UseOldCalendarDateCreation = False
+            Me.NPRPrepopulateDates = False
 
         End Sub
         Public Sub New(MediaBroadcastWorksheet As AdvantageFramework.Database.Entities.MediaBroadcastWorksheet)
@@ -347,6 +351,7 @@
             Me.Comment = MediaBroadcastWorksheet.Comment
             Me.IsGross = MediaBroadcastWorksheet.IsGross
             Me.UseOldCalendarDateCreation = MediaBroadcastWorksheet.UseOldCalendarDateCreation
+            Me.NPRPrepopulateDates = MediaBroadcastWorksheet.NPRPrepopulateDates
 
         End Sub
         Public Sub SaveToEntity(ByRef MediaBroadcastWorksheet As AdvantageFramework.Database.Entities.MediaBroadcastWorksheet)
@@ -378,6 +383,7 @@
             MediaBroadcastWorksheet.Comment = Me.Comment
             MediaBroadcastWorksheet.IsGross = Me.IsGross
             MediaBroadcastWorksheet.UseOldCalendarDateCreation = Me.UseOldCalendarDateCreation
+            MediaBroadcastWorksheet.NPRPrepopulateDates = Me.NPRPrepopulateDates
 
         End Sub
         Public Overrides Function ToString() As String

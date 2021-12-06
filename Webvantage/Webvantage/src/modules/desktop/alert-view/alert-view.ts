@@ -676,11 +676,6 @@ export class AlertView extends ModuleBase {
         window.setTimeout(() => {
             if (this.toolBar) {
                 var alertIsCompleted: boolean = false;
-                //console.log("this.Alert", this.Alert)
-                //console.log("completed?", this.Alert.IsCompleted)
-                //console.log("IsMyAssignment", this.Alert.IsMyAssignment)
-                //console.log("IsMyAlert", this.Alert.IsMyAlert)
-                //console.log("setupToolbar: openedFrom", this.openedFrom)
                 if (this.isProof == false) {
                     if (this.Alert.IsCompleted == true || this.Alert.IsMyAssignmentCompleted == true) {
                         alertIsCompleted = true;
@@ -690,7 +685,6 @@ export class AlertView extends ModuleBase {
                 } else {
                     alertIsCompleted = this.Alert.IsCompleted;
                 }
-                //console.log("alertIsCompleted", alertIsCompleted);
                 if (alertIsCompleted == true) {
                     if (this.reopenButton) {
                         this.toolBar.show(this.reopenButton.element);
@@ -751,7 +745,6 @@ export class AlertView extends ModuleBase {
                         this.toolBar.hide(this.transferButton.element);
                     }
                 }
-                //console.log("setupToolbar.isJobComponentLevel:  ", this.isJobComponentLevel)
                 if (this.isJobComponentLevel == false) {
                     if (!((this.Alert.OfficeCode && this.Alert.OfficeCode !== "")
                         && (!this.Alert.ClientCode || this.Alert.ClientCode === ""))) {
@@ -855,7 +848,7 @@ export class AlertView extends ModuleBase {
                 }
                 this.setupProofingButtons();
             }
-        }, 150);
+        }, 10);
     }
     getAttachmentTooltip(attachment: AlertAttachmentModel) {
         var tooltip = '';
@@ -1198,9 +1191,6 @@ export class AlertView extends ModuleBase {
             //console.log("TaskStatusCode", this.Alert.TaskStatusCode);
             //console.log("TaskStatusDescription", this.Alert.TaskStatusDescription);
             me.stateChangedFromLoadedState = false;
-            window.setTimeout(function () {
-                me.setupToolbar();
-            }, 0);
             if (me.isRouted == true) {
                 me.currentAlertStateID = me.Alert.AlertStateID;
             }
@@ -2898,32 +2888,6 @@ export class AlertView extends ModuleBase {
                             me.completeautoclose = true;
                             me.completeclick = true;
                             me.showSuccessNotification(msg);
-                            //console.log(response.content)
-                            //////if (response.content.Alert) {
-                            //////    //Object.assign(this.Alert, response.content.Alert);
-                            //////    var alertModel = new AlertModel;
-                            //////    Object.assign(alertModel, response.content.Alert);
-                            //////    //Object.assign(this, response.content);
-                            //////    me.Alert = alertModel;
-                            //////    if (me.Alert.StartDateString && me.Alert.StartDateString !== "") {
-                            //////        me.Alert.StartDate = this.kendoParseDate(me.Alert.StartDateString);
-                            //////    }
-                            //////    if (me.Alert.DueDateString && me.Alert.DueDateString !== "") {
-                            //////        me.Alert.DueDate = this.kendoParseDate(me.Alert.DueDateString);
-                            //////    }
-                            //////    if (me.Alert.CompletedDateString && me.Alert.CompletedDateString !== "") {
-                            //////        me.Alert.CompletedDate = this.kendoParseDate(me.Alert.CompletedDateString);
-                            //////    }
-                            //////    //console.log("after assign", this.Alert.HoursAllocatedBalance)
-                            //////    me.getAlertRecipients(false, false);
-                            //////    me.getAlertChecklists();
-                            //////    me.setupToolbar();
-                            //////    me.getAlertBody();
-                            //////    me.refreshHours();
-                            //////    if (me.Alert.AlertCategoryID == 71) {
-                            //////        me.getTaskDescription();
-                            //////    }
-                            //////}
                             me.commentView.getAlertComments();
                             me.getAlert(me.Alert.ID, me.Alert.SprintID, true, true);                                                        
                         }                        

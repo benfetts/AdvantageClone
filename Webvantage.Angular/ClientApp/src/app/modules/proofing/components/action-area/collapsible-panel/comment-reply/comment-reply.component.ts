@@ -65,7 +65,6 @@ export class CommentReplyComponent implements OnInit {
           //e.stopPropogation();
           let me = this;
           e.preventDefault();
-          console.log(e);
           this.onChange(e, commentId);
           return false;
         }
@@ -75,7 +74,6 @@ export class CommentReplyComponent implements OnInit {
       placeholder: "Write a reply here..."
     });
 
-    console.log(kendo.jQuery(".k-editor-toolbar-wrap"));
     kendo.jQuery(".k-editor-toolbar-wrap").hide();
 
     setTimeout(() => {
@@ -85,7 +83,6 @@ export class CommentReplyComponent implements OnInit {
   }
 
   getEmployeeCode(feedback) {
-    console.log(feedback);
     if (feedback.proofingXReviwerId == null || feedback.proofingXReviwerId <= 0) {
       return feedback.userCode;
     }
@@ -96,13 +93,7 @@ export class CommentReplyComponent implements OnInit {
   }
 
   getEmployeeInit(feedback) {
-    //console.log(feedback);
-    //if (feedback.proofingXReviwerId == null || feedback.proofingXReviwerId <= 0) {
-    //  return feedback.userCode;
-    //}
-
     var init = (fullname => fullname.map((n, i) => (i == 0 || i == fullname.length - 2) && n[0]).filter(n => n).join(""))(feedback.employeeFullName.split(" "));
-
     return init;
   }
 
@@ -111,8 +102,6 @@ export class CommentReplyComponent implements OnInit {
     let editorComment = editor.value();
 
     editorComment = this.mentionItem.cleanupMentionTag(editorComment);
-    console.log(this.mentionItem.mentions);
-
     var comment: IFeedback = {
       alertId: this.feedback.alertId,
       alertStateId: this.feedback.alertStateId,

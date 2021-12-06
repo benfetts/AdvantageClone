@@ -1,8 +1,8 @@
 ﻿Namespace Database.Entities
 
-	<Table("MARKET")>
-	Public Class Market
-		Inherits BaseClasses.Entity
+    <Table("MARKET")>
+    Public Class Market
+        Inherits BaseClasses.Entity
 
 #Region " Constants "
 
@@ -19,7 +19,7 @@
             NielsenTVCode
             NielsenTVDMACode
             NielsenRadioCode
-			NielsenBlackRadioCode
+            NielsenBlackRadioCode
             NielsenHispanicRadioCode
             IsCable
             EastlanRadioCode
@@ -29,19 +29,20 @@
             ComscoreNewMarketNumber
             CountryID
             StateID
+            IsPuertoRico
             InternetOrders
             JobComponents
-			MagazineOrders
-			NewspaperOrders
-			OutOfHomeOrders
-			RadioOrders
-			TVOrders
-			Partners
-			Vendors
-			MediaPlanDetailLevelLineTags
-			RadioOrderLegacies
-			TVOrderLegacies
-			DigitalResults
+            MagazineOrders
+            NewspaperOrders
+            OutOfHomeOrders
+            RadioOrders
+            TVOrders
+            Partners
+            Vendors
+            MediaPlanDetailLevelLineTags
+            RadioOrderLegacies
+            TVOrderLegacies
+            DigitalResults
             Country
             State
         End Enum
@@ -57,36 +58,36 @@
 #Region " Properties "
 
         <Key>
-		<Required>
-		<MaxLength(10)>
-		<Column("MARKET_CODE", TypeName:="varchar")>
-		<AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
-		Public Property Code() As String
-		<MaxLength(40)>
-		<Column("MARKET_DESC", TypeName:="varchar")>
+        <Required>
+        <MaxLength(10)>
+        <Column("MARKET_CODE", TypeName:="varchar")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
+        Public Property Code() As String
+        <MaxLength(40)>
+        <Column("MARKET_DESC", TypeName:="varchar")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property Description() As String
-		<Column("INACTIVE_FLAG")>
-		<AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", DefaultColumnType:=AdvantageFramework.BaseClasses.DefaultColumnTypes.StandardCheckBox)>
-		Public Property IsInactive() As Nullable(Of Short)
-		<Column("NIELSEN_TV_CODE")>
-		<MaxLength(3)>
-		<AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True)>
-		Public Property NielsenTVCode As String
-		<Column("NIELSEN_TV_DMA_CODE")>
-		<MaxLength(3)>
-		<AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True, CustomColumnCaption:="Nielsen TV DMA Code")>
-		Public Property NielsenTVDMACode As String
-		<Column("NIELSEN_RADIO_CODE")>
-		<MaxLength(3)>
-		<AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True)>
-		Public Property NielsenRadioCode As String
-		<Column("NIELSEN_BLACK_RADIO_CODE")>
-		<MaxLength(3)>
+        <Column("INACTIVE_FLAG")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", DefaultColumnType:=AdvantageFramework.BaseClasses.DefaultColumnTypes.StandardCheckBox)>
+        Public Property IsInactive() As Nullable(Of Short)
+        <Column("NIELSEN_TV_CODE")>
+        <MaxLength(3)>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True)>
+        Public Property NielsenTVCode As String
+        <Column("NIELSEN_TV_DMA_CODE")>
+        <MaxLength(3)>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True, CustomColumnCaption:="Nielsen TV DMA Code")>
+        Public Property NielsenTVDMACode As String
+        <Column("NIELSEN_RADIO_CODE")>
+        <MaxLength(3)>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True)>
+        Public Property NielsenRadioCode As String
+        <Column("NIELSEN_BLACK_RADIO_CODE")>
+        <MaxLength(3)>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True)>
         Public Property NielsenBlackRadioCode As String
-		<Column("NIELSEN_HISPANIC_RADIO_CODE")>
-		<MaxLength(3)>
+        <Column("NIELSEN_HISPANIC_RADIO_CODE")>
+        <MaxLength(3)>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", IsReadOnlyColumn:=True)>
         Public Property NielsenHispanicRadioCode As String
         <Column("IS_CABLE")>
@@ -114,6 +115,10 @@
         <Column("STATE_ID")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False, CustomColumnCaption:="State/Province")>
         Public Property StateID As Nullable(Of Integer)
+        <Required>
+        <Column("IS_PUERTO_RICO")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True)>
+        Public Property IsPuertoRico() As Boolean
 
         Public Overridable Property InternetOrders As ICollection(Of Database.Entities.InternetOrder)
         Public Overridable Property JobComponents As ICollection(Of Database.Entities.JobComponent)
@@ -186,6 +191,6 @@
 
 #End Region
 
-	End Class
+    End Class
 
 End Namespace

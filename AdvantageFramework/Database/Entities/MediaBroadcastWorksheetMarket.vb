@@ -42,6 +42,8 @@
             TrafficGuidelines
             LockedByUserCode
             CreateOrdersByWeek
+            PeriodStart
+            PeriodEnd
             MediaBroadcastWorksheet
 			Market
 			BuyerEmployee
@@ -169,6 +171,12 @@
         <Column("CREATE_ORDERS_BY_WEEK")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public Property CreateOrdersByWeek() As Boolean
+        <Column("PERIOD_START")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property PeriodStart() As Nullable(Of Date)
+        <Column("PERIOD_END")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property PeriodEnd() As Nullable(Of Date)
 
         Public Overridable Property MediaBroadcastWorksheet As Database.Entities.MediaBroadcastWorksheet
 		Public Overridable Property Market As Database.Entities.Market

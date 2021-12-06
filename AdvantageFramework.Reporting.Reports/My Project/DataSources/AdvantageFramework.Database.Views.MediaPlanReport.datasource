@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="MediaPlanReport" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>AdvantageFramework.Database.Views.MediaPlanReport, AdvantageFramework, Version=6.70.08.00, Culture=neutral, PublicKeyToken=726bfc335d10597f</TypeInfo>
+   <TypeInfo>AdvantageFramework.Database.Views.MediaPlanReport, AdvantageFramework, Version=6.70.08.01, Culture=neutral, PublicKeyToken=726bfc335d10597f</TypeInfo>
 </GenericObjectDataSource>

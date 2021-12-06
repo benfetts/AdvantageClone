@@ -49,6 +49,8 @@
         Private _ConnectionString As String = ""
         Private _CheckForNationalSetup As Boolean = False
         Private _IsNationalSetup As Boolean = False
+        Private _CheckForNielsenPuertoRicoSetup As Boolean = False
+        Private _IsNielsenPuertoRicoSetup As Boolean = False
 
 #End Region
 
@@ -1308,6 +1310,31 @@
             End Try
 
         End Sub
+        Public Function IsNielsenPuertoRicoSetup() As Boolean
+
+            Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
+
+            If _CheckForNielsenPuertoRicoSetup = False Then
+
+                _CheckForNielsenPuertoRicoSetup = True
+
+                Using DataContext = New AdvantageFramework.Database.DataContext(Me.ConnectionString, Me.UserCode)
+
+                    Setting = AdvantageFramework.Database.Procedures.Setting.LoadBySettingCode(DataContext, AdvantageFramework.Agency.Settings.NIELSEN_PR_ENABLED.ToString)
+
+                    If Setting IsNot Nothing AndAlso Setting.Value IsNot Nothing AndAlso CInt(Setting.Value) = 1 Then
+
+                        _IsNielsenPuertoRicoSetup = True
+
+                    End If
+
+                End Using
+
+            End If
+
+            IsNielsenPuertoRicoSetup = _IsNielsenPuertoRicoSetup
+
+        End Function
 
 #End Region
 

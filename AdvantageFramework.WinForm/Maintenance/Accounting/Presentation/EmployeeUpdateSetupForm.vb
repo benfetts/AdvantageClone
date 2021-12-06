@@ -330,6 +330,7 @@
                         Employee.PurchaseOrderApprovalRuleCode = EmployeeHRInformation.PurchaseOrderApprovalRuleCode
                         Employee.SupervisorApprovalRequired = EmployeeHRInformation.SupervisorApprovalRequired
                         Employee.AlternateApproverCode = EmployeeHRInformation.AlternateApproverCode
+                        Employee.BillableHoursGoal = EmployeeHRInformation.BillableHoursGoal
 
                     End If
 

@@ -534,7 +534,7 @@
     <value>7.4375</value>
   </data>
   <data name="Label18.Height" type="System.Single, mscorlib">
-    <value>0.3125</value>
+    <value>0.8125</value>
   </data>
   <data name="Label18.HyperLink" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -543,13 +543,13 @@
     <value>0</value>
   </data>
   <data name="Label18.Style" xml:space="preserve">
-    <value>font-weight: bold; text-align: right</value>
+    <value>font-weight: bold; text-align: right; vertical-align: bottom</value>
   </data>
   <data name="Label18.Text" xml:space="preserve">
     <value>Purchaser Authorization:</value>
   </data>
   <data name="Label18.Top" type="System.Single, mscorlib">
-    <value>1.125</value>
+    <value>0.625</value>
   </data>
   <data name="Label18.Width" type="System.Single, mscorlib">
     <value>1</value>

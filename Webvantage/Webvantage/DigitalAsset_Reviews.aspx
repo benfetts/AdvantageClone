@@ -59,6 +59,10 @@
             <Items>
                 <telerik:RadToolBarButton SkinID="RadToolBarButtonAdd" CommandName="Add" Value="Add" TabIndex="-1" ToolTip="Add new proof" />
                 <telerik:RadToolBarButton SkinID="RadToolBarButtonRefresh" CommandName="Refresh" Value="Refresh" TabIndex="-1" ToolTip="Refresh view" />
+                <telerik:RadToolBarButton IsSeparator="true" Value="RadToolBarSeparatorGetAssetsAndThumbnails" />
+                <telerik:RadToolBarButton ImageUrl="~/Images/Icons/Grey/256/gearwheel.png"  CommandName="ConceptShareMaintenance" Value="ConceptShareMaintenance" TabIndex="-1" ToolTip="ConceptShare Maintenance" />
+<%--                <telerik:RadToolBarButton SkinID="RadToolBarButtonExport" CommandName="GetAssetsAndThumbnails" Value="GetAssetsAndThumbnails" TabIndex="-1" ToolTip="Get Assets And Thumbnails from CS servers" />
+                <telerik:RadToolBarButton SkinID="RadToolBarButtonRefresh" CommandName="RefreshGetAssetsAndThumbnails" Value="RefreshGetAssetsAndThumbnails" TabIndex="-1" ToolTip="Refresh Get Assets and Thumbnails" />--%>
             </Items>
         </telerik:RadToolBar>
     </div>    

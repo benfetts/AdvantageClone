@@ -84,6 +84,7 @@
             AllowPOGLSelection
             LimitPOGLSelectionToOffice
             Notes
+            BillableHoursGoal
         End Enum
 
 #End Region
@@ -162,6 +163,7 @@
         Private _AllowPOGLSelection As Nullable(Of Short) = Nothing
         Private _LimitPOGLSelectionToOffice As Nullable(Of Short) = Nothing
         Private _Notes As String = Nothing
+        Private _BillableHoursPercentGoal As Nullable(Of Decimal) = Nothing
         Private _Employee As AdvantageFramework.Database.Views.Employee = Nothing
 
 #End Region
@@ -825,6 +827,15 @@
                 _Notes = value
             End Set
         End Property
+        <AdvantageFramework.BaseClasses.Attributes.Entity(ShowColumnInGrid:=False)>
+        Public Property BillableHoursPercentGoal As Nullable(Of Decimal)
+            Get
+                BillableHoursPercentGoal = _BillableHoursPercentGoal
+            End Get
+            Set(value As Nullable(Of Decimal))
+                _BillableHoursPercentGoal = value
+            End Set
+        End Property
 
 #End Region
 
@@ -878,6 +889,7 @@
             _StandardAnnualHours = Employee.AnnualHours
             _MonthlyBillableHoursGoal = Employee.MonthHoursGoal
             _DirectHoursPercentGoal = Employee.DirectHours
+            _BillableHoursPercentGoal = Employee.BillableHoursGoal
             _Status = Employee.Status
             _HourlyBillRate = Employee.BillRate
             _HourlyCostRate = Employee.CostRate

@@ -204,7 +204,6 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             int ProofingStatusExternalReviewerID, int DocumentID, ProofingStatusID? ProofingStatusID)
         {
             bool Completed = false;
-            string ErrorMessage = string.Empty;
             try
             {
                 DbContext.ExecuteNonQuery( string.Format("EXEC [dbo].[advsp_proofing_external_reviewer_set_status] {0}, {1}, {2}, {3};",
@@ -214,7 +213,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             }
             catch (Exception ex)
             {
-                ErrorMessage = ex.Message.ToString();
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 Completed = false;
             }
 
@@ -253,8 +252,20 @@ namespace AdvantageFramework.Core.BLogic.Proofing
                             if (ByteFile != null)
                                 Success = true;
                         }
+                        else
+                        {
+                            AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("Docunment download failed.", System.Diagnostics.EventLogEntryType.Error);
+                        }
+                    }
+                    else
+                    {
+                        AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("The document or agency record failed to load.", System.Diagnostics.EventLogEntryType.Error);
                     }
                 }
+            }
+            else
+            {
+                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("Connection String not Found.", System.Diagnostics.EventLogEntryType.Error);
             }
 
             return Success;

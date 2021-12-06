@@ -88,6 +88,11 @@
             Me.ItemContainerRadioPeriods2_Book5 = New DevComponents.DotNetBar.ItemContainer()
             Me.LabelItemBook5_Book5 = New DevComponents.DotNetBar.LabelItem()
             Me.ComboBoxItemBook5_Book5 = New DevComponents.DotNetBar.ComboBoxItem()
+            Me.ItemContainerResearch_TVPuertoRico = New DevComponents.DotNetBar.ItemContainer()
+            Me.ItemContainerTVPuertoRico_PeriodStart = New DevComponents.DotNetBar.ItemContainer()
+            Me.LabelItemPeriodStart_PeriodStart = New DevComponents.DotNetBar.LabelItem()
+            Me.ItemContainerTVPuertoRico_PeriodEnd = New DevComponents.DotNetBar.ItemContainer()
+            Me.LabelItemPeriodEnd_PeriodEnd = New DevComponents.DotNetBar.LabelItem()
             Me.RibbonBarOptions_Revisions = New AdvantageFramework.WinForm.Presentation.Controls.RibbonBar()
             Me.ItemContainerRevisions = New DevComponents.DotNetBar.ItemContainer()
             Me.ButtonItemRevisions_View = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
@@ -140,9 +145,18 @@
             Me.ButtonItemExport_ProposalRatesSuppressed = New DevComponents.DotNetBar.ButtonItem()
             Me.ButtonItemPrint_Settings = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             Me.LabelForm_Disclaimer = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
+            Me.ControlContainerItemPeriodStart = New DevComponents.DotNetBar.ControlContainerItem()
+            Me.DateEditPeriodStart_Date = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit()
+            Me.ControlContainerItemPeriodEnd = New DevComponents.DotNetBar.ControlContainerItem()
+            Me.DateEditPeriodEnd_Date = New AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit()
             Me.RibbonBarMergeContainerForm_Options.SuspendLayout()
+            Me.RibbonBarOptions_Research.SuspendLayout()
             Me.RibbonBarMergeContainerForm_Process.SuspendLayout()
             Me.RibbonBarMergeContainerForm_Printing.SuspendLayout()
+            CType(Me.DateEditPeriodStart_Date.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.DateEditPeriodStart_Date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.DateEditPeriodEnd_Date.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType(Me.DateEditPeriodEnd_Date.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             '
             'RibbonBarMergeContainerForm_Options
@@ -193,7 +207,7 @@
             Me.RibbonBarOptions_Submarkets.HorizontalItemAlignment = DevComponents.DotNetBar.eHorizontalItemsAlignment.Center
             Me.RibbonBarOptions_Submarkets.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemSubmarkets_Show})
             Me.RibbonBarOptions_Submarkets.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBarOptions_Submarkets.Location = New System.Drawing.Point(1986, 0)
+            Me.RibbonBarOptions_Submarkets.Location = New System.Drawing.Point(2273, 0)
             Me.RibbonBarOptions_Submarkets.MinimumSize = New System.Drawing.Size(65, 0)
             Me.RibbonBarOptions_Submarkets.Name = "RibbonBarOptions_Submarkets"
             Me.RibbonBarOptions_Submarkets.SecurityEnabled = True
@@ -240,7 +254,7 @@
             Me.RibbonBarOptions_Display.DragDropSupport = True
             Me.RibbonBarOptions_Display.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainerShow_Show2, Me.ItemContainerDisplay, Me.ItemContainerDisplay2, Me.ItemContainerDisplay3})
             Me.RibbonBarOptions_Display.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBarOptions_Display.Location = New System.Drawing.Point(1514, 0)
+            Me.RibbonBarOptions_Display.Location = New System.Drawing.Point(1801, 0)
             Me.RibbonBarOptions_Display.Name = "RibbonBarOptions_Display"
             Me.RibbonBarOptions_Display.SecurityEnabled = True
             Me.RibbonBarOptions_Display.Size = New System.Drawing.Size(472, 98)
@@ -473,7 +487,7 @@
             Me.RibbonBarOptions_Dates.DragDropSupport = True
             Me.RibbonBarOptions_Dates.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainerDates_Dates, Me.ItemContainerDates_Buttons})
             Me.RibbonBarOptions_Dates.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
-            Me.RibbonBarOptions_Dates.Location = New System.Drawing.Point(1239, 0)
+            Me.RibbonBarOptions_Dates.Location = New System.Drawing.Point(1526, 0)
             Me.RibbonBarOptions_Dates.MinimumSize = New System.Drawing.Size(65, 0)
             Me.RibbonBarOptions_Dates.Name = "RibbonBarOptions_Dates"
             Me.RibbonBarOptions_Dates.SecurityEnabled = True
@@ -636,14 +650,16 @@
             '
             Me.RibbonBarOptions_Research.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
             Me.RibbonBarOptions_Research.ContainerControlProcessDialogKey = True
+            Me.RibbonBarOptions_Research.Controls.Add(Me.DateEditPeriodStart_Date)
+            Me.RibbonBarOptions_Research.Controls.Add(Me.DateEditPeriodEnd_Date)
             Me.RibbonBarOptions_Research.Dock = System.Windows.Forms.DockStyle.Left
             Me.RibbonBarOptions_Research.DragDropSupport = True
-            Me.RibbonBarOptions_Research.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainerResearch_TVBooks, Me.ItemContainerSchedule_RadioPeriods1, Me.ItemContainerSchedule_RadioPeriods2})
+            Me.RibbonBarOptions_Research.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainerResearch_TVBooks, Me.ItemContainerSchedule_RadioPeriods1, Me.ItemContainerSchedule_RadioPeriods2, Me.ItemContainerResearch_TVPuertoRico})
             Me.RibbonBarOptions_Research.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F"
             Me.RibbonBarOptions_Research.Location = New System.Drawing.Point(795, 0)
             Me.RibbonBarOptions_Research.Name = "RibbonBarOptions_Research"
             Me.RibbonBarOptions_Research.SecurityEnabled = True
-            Me.RibbonBarOptions_Research.Size = New System.Drawing.Size(444, 98)
+            Me.RibbonBarOptions_Research.Size = New System.Drawing.Size(731, 98)
             Me.RibbonBarOptions_Research.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.RibbonBarOptions_Research.TabIndex = 25
             Me.RibbonBarOptions_Research.Text = "Research"
@@ -1018,6 +1034,77 @@
             Me.ComboBoxItemBook5_Book5.Name = "ComboBoxItemBook5_Book5"
             Me.ComboBoxItemBook5_Book5.Text = "ComboBoxItem1"
             Me.ComboBoxItemBook5_Book5.Tooltip = "Select Radio book" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+            '
+            'ItemContainerResearch_TVPuertoRico
+            '
+            '
+            '
+            '
+            Me.ItemContainerResearch_TVPuertoRico.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainerResearch_TVPuertoRico.BeginGroup = True
+            Me.ItemContainerResearch_TVPuertoRico.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
+            Me.ItemContainerResearch_TVPuertoRico.Name = "ItemContainerResearch_TVPuertoRico"
+            Me.ItemContainerResearch_TVPuertoRico.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainerTVPuertoRico_PeriodStart, Me.ItemContainerTVPuertoRico_PeriodEnd})
+            '
+            '
+            '
+            Me.ItemContainerResearch_TVPuertoRico.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainerResearch_TVPuertoRico.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'ItemContainerTVPuertoRico_PeriodStart
+            '
+            '
+            '
+            '
+            Me.ItemContainerTVPuertoRico_PeriodStart.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainerTVPuertoRico_PeriodStart.MinimumSize = New System.Drawing.Size(180, 26)
+            Me.ItemContainerTVPuertoRico_PeriodStart.Name = "ItemContainerTVPuertoRico_PeriodStart"
+            Me.ItemContainerTVPuertoRico_PeriodStart.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItemPeriodStart_PeriodStart, Me.ControlContainerItemPeriodStart})
+            '
+            '
+            '
+            Me.ItemContainerTVPuertoRico_PeriodStart.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainerTVPuertoRico_PeriodStart.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'LabelItemPeriodStart_PeriodStart
+            '
+            Me.LabelItemPeriodStart_PeriodStart.Name = "LabelItemPeriodStart_PeriodStart"
+            Me.LabelItemPeriodStart_PeriodStart.PaddingBottom = 4
+            Me.LabelItemPeriodStart_PeriodStart.PaddingTop = 4
+            Me.LabelItemPeriodStart_PeriodStart.Text = "Period Start:"
+            Me.LabelItemPeriodStart_PeriodStart.Width = 65
+            '
+            'ItemContainerTVPuertoRico_PeriodEnd
+            '
+            '
+            '
+            '
+            Me.ItemContainerTVPuertoRico_PeriodEnd.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.ItemContainerTVPuertoRico_PeriodEnd.MinimumSize = New System.Drawing.Size(180, 26)
+            Me.ItemContainerTVPuertoRico_PeriodEnd.Name = "ItemContainerTVPuertoRico_PeriodEnd"
+            Me.ItemContainerTVPuertoRico_PeriodEnd.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItemPeriodEnd_PeriodEnd, Me.ControlContainerItemPeriodEnd})
+            '
+            '
+            '
+            Me.ItemContainerTVPuertoRico_PeriodEnd.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            '
+            '
+            Me.ItemContainerTVPuertoRico_PeriodEnd.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            '
+            'LabelItemPeriodEnd_PeriodEnd
+            '
+            Me.LabelItemPeriodEnd_PeriodEnd.Name = "LabelItemPeriodEnd_PeriodEnd"
+            Me.LabelItemPeriodEnd_PeriodEnd.PaddingBottom = 4
+            Me.LabelItemPeriodEnd_PeriodEnd.PaddingTop = 4
+            Me.LabelItemPeriodEnd_PeriodEnd.Text = "Period End:"
+            Me.LabelItemPeriodEnd_PeriodEnd.Width = 65
             '
             'RibbonBarOptions_Revisions
             '
@@ -1805,6 +1892,60 @@
     "ider, Comscore."
             Me.LabelForm_Disclaimer.Visible = False
             '
+            'ControlContainerItemPeriodStart
+            '
+            Me.ControlContainerItemPeriodStart.AllowItemResize = True
+            Me.ControlContainerItemPeriodStart.Control = Me.DateEditPeriodStart_Date
+            Me.ControlContainerItemPeriodStart.MenuVisibility = DevComponents.DotNetBar.eMenuVisibility.VisibleAlways
+            Me.ControlContainerItemPeriodStart.Name = "ControlContainerItemPeriodStart"
+            Me.ControlContainerItemPeriodStart.Text = "ControlContainerItem1"
+            '
+            'DateEditPeriodStart_Date
+            '
+            Me.DateEditPeriodStart_Date.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
+            Me.DateEditPeriodStart_Date.DisplayName = ""
+            Me.DateEditPeriodStart_Date.EditValue = Nothing
+            Me.DateEditPeriodStart_Date.Location = New System.Drawing.Point(610, 3)
+            Me.DateEditPeriodStart_Date.Name = "DateEditPeriodStart_Date"
+            Me.DateEditPeriodStart_Date.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditPeriodStart_Date.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditPeriodStart_Date.Properties.LookAndFeel.SkinName = "Office 2016 Colorful"
+            Me.DateEditPeriodStart_Date.Properties.LookAndFeel.UseDefaultLookAndFeel = False
+            Me.DateEditPeriodStart_Date.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
+            Me.DateEditPeriodStart_Date.Properties.MaxValue = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateEditPeriodStart_Date.Properties.MinValue = New Date(1900, 1, 1, 0, 0, 0, 0)
+            Me.DateEditPeriodStart_Date.SecurityEnabled = True
+            Me.DateEditPeriodStart_Date.Size = New System.Drawing.Size(103, 20)
+            Me.DateEditPeriodStart_Date.TabIndex = 10002
+            Me.DateEditPeriodStart_Date.TabOnEnter = True
+            '
+            'ControlContainerItemPeriodEnd
+            '
+            Me.ControlContainerItemPeriodEnd.AllowItemResize = True
+            Me.ControlContainerItemPeriodEnd.Control = Me.DateEditPeriodEnd_Date
+            Me.ControlContainerItemPeriodEnd.MenuVisibility = DevComponents.DotNetBar.eMenuVisibility.VisibleAlways
+            Me.ControlContainerItemPeriodEnd.Name = "ControlContainerItemPeriodEnd"
+            Me.ControlContainerItemPeriodEnd.Text = "ControlContainerItem2"
+            '
+            'DateEditPeriodEnd_Date
+            '
+            Me.DateEditPeriodEnd_Date.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.DateEdit.Type.[Default]
+            Me.DateEditPeriodEnd_Date.DisplayName = ""
+            Me.DateEditPeriodEnd_Date.EditValue = Nothing
+            Me.DateEditPeriodEnd_Date.Location = New System.Drawing.Point(610, 29)
+            Me.DateEditPeriodEnd_Date.Name = "DateEditPeriodEnd_Date"
+            Me.DateEditPeriodEnd_Date.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditPeriodEnd_Date.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.DateEditPeriodEnd_Date.Properties.LookAndFeel.SkinName = "Office 2016 Colorful"
+            Me.DateEditPeriodEnd_Date.Properties.LookAndFeel.UseDefaultLookAndFeel = False
+            Me.DateEditPeriodEnd_Date.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
+            Me.DateEditPeriodEnd_Date.Properties.MaxValue = New Date(2079, 6, 6, 0, 0, 0, 0)
+            Me.DateEditPeriodEnd_Date.Properties.MinValue = New Date(1900, 1, 1, 0, 0, 0, 0)
+            Me.DateEditPeriodEnd_Date.SecurityEnabled = True
+            Me.DateEditPeriodEnd_Date.Size = New System.Drawing.Size(103, 20)
+            Me.DateEditPeriodEnd_Date.TabIndex = 10002
+            Me.DateEditPeriodEnd_Date.TabOnEnter = True
+            '
             'MediaBroadcastWorksheetMarketDetailForm
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1819,8 +1960,13 @@
             Me.Name = "MediaBroadcastWorksheetMarketDetailForm"
             Me.Text = "Worksheet Market Details"
             Me.RibbonBarMergeContainerForm_Options.ResumeLayout(False)
+            Me.RibbonBarOptions_Research.ResumeLayout(False)
             Me.RibbonBarMergeContainerForm_Process.ResumeLayout(False)
             Me.RibbonBarMergeContainerForm_Printing.ResumeLayout(False)
+            CType(Me.DateEditPeriodStart_Date.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DateEditPeriodStart_Date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DateEditPeriodEnd_Date.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+            CType(Me.DateEditPeriodEnd_Date.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
 
         End Sub
@@ -1938,6 +2084,15 @@
         Friend WithEvents ButtonItemMakegood_Offers As WinForm.Presentation.Controls.ButtonItem
         Friend WithEvents ButtonItemAutoFill_SelectSpots As DevComponents.DotNetBar.ButtonItem
         Friend WithEvents ButtonItemAutoFill_AutoFill As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents ItemContainerResearch_TVPuertoRico As DevComponents.DotNetBar.ItemContainer
+        Friend WithEvents ItemContainerTVPuertoRico_PeriodStart As DevComponents.DotNetBar.ItemContainer
+        Friend WithEvents LabelItemPeriodStart_PeriodStart As DevComponents.DotNetBar.LabelItem
+        Friend WithEvents ItemContainerTVPuertoRico_PeriodEnd As DevComponents.DotNetBar.ItemContainer
+        Friend WithEvents LabelItemPeriodEnd_PeriodEnd As DevComponents.DotNetBar.LabelItem
+        Friend WithEvents DateEditPeriodStart_Date As WinForm.MVC.Presentation.Controls.DateEdit
+        Friend WithEvents DateEditPeriodEnd_Date As WinForm.MVC.Presentation.Controls.DateEdit
+        Friend WithEvents ControlContainerItemPeriodStart As DevComponents.DotNetBar.ControlContainerItem
+        Friend WithEvents ControlContainerItemPeriodEnd As DevComponents.DotNetBar.ControlContainerItem
     End Class
 
 End Namespace

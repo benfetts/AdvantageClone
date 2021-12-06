@@ -4424,6 +4424,23 @@ Public Module Methods
 
                 End With
 
+            Case AdvantageFramework.GeneralLedger.ReportWriter.StandardGeneralLedgerReports.DetailByTransaction
+
+                XtraReport = New AdvantageFramework.Reporting.Reports.GeneralLedger.DetailGeneralLedgerByTransactionReport
+
+                With DirectCast(XtraReport, AdvantageFramework.Reporting.Reports.GeneralLedger.DetailGeneralLedgerByTransactionReport)
+
+                    .Session = Session
+
+                    .DataSource = AdvantageFramework.Reporting.Database.Procedures.GeneralLedgerDetailByAccountReport.Load(ReportingDbContext, ParameterDictionary).ToList
+
+                    .FromPostPeriod = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.StartingPostPeriodCode.ToString)
+                    .ToPostPeriod = ParameterDictionary(AdvantageFramework.Reporting.GeneralLedgerReportParameters.EndingPostPeriodCode.ToString)
+
+                    .DisplayName = "Detail General Ledger By Transaction Report"
+
+                End With
+
         End Select
 
         CreateGeneralLedgerReport = XtraReport

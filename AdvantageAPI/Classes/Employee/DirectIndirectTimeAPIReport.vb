@@ -17,6 +17,7 @@ Public Class DirectIndirectTimeAPIReport
 
 #Region " Properties "
 
+    'Force Update
     <DataMember>
     Public Property ID As Nullable(Of Integer)
     <DataMember>

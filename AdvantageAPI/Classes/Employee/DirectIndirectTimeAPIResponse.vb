@@ -21,6 +21,7 @@ Public Class DirectIndirectTimeAPIResponse
 
 #Region " Properties "
 
+    'Force Update
     <DataMember>
     Public Property Message As String = "Success..."
     <DataMember>

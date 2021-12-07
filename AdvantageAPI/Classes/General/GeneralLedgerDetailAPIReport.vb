@@ -15,6 +15,7 @@ Public Class GeneralLedgerDetailAPIReport
 
 #Region " Properties "
 
+    'Force Update
     <DataMember>
     Public Property TransactionID As Nullable(Of Integer)
     <DataMember>

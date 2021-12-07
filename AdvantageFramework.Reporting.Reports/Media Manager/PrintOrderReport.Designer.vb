@@ -34,8 +34,6 @@
             Dim XrSummary9 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Dim XrSummary10 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
             Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
-            Me.DetailSubreport_AdditionalAdSizes = New DevExpress.XtraReports.UI.XRSubreport()
-            Me.DetailSubreport_ChargeToSubReport = New DevExpress.XtraReports.UI.XRSubreport()
             Me.LabelDetail_Impressions = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelDetail_SubTypeDescription = New DevExpress.XtraReports.UI.XRLabel()
             Me.LineDetail_Bottom = New DevExpress.XtraReports.UI.XRLine()
@@ -182,7 +180,6 @@
             Me.GroupFooterOrderNumber = New DevExpress.XtraReports.UI.GroupFooterBand()
             Me.RichTextGroupFooterOrderNumber_OrderCommentTop = New DevExpress.XtraReports.UI.XRRichText()
             Me.LabelGroupFooterOrderNumber_AgencyCommentTop = New DevExpress.XtraReports.UI.XRLabel()
-            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport = New DevExpress.XtraReports.UI.XRSubreport()
             Me.LabelGroupFooterOrderNumber_LineTotalActual = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderNumber_AgencyCommissionSum = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderNumber_VendorTaxSum = New DevExpress.XtraReports.UI.XRLabel()
@@ -207,12 +204,10 @@
             Me.LabelGroupFooterOrderNumber_PositionCostSumLabel = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderNumber_BleedCostSumLabel = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderNumber_VendorTaxLabel = New DevExpress.XtraReports.UI.XRLabel()
-            Me.GroupFooterOrderNumberSubreport_NewspaperCharges = New DevExpress.XtraReports.UI.XRSubreport()
             Me.LabelFooterOrderNumber_AmountSubtotal = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelFooterOrderNumber_SubtotalLabel = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderNumber_ColorChargeHidden = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderNumber_OrderTotalLabel = New DevExpress.XtraReports.UI.XRLabel()
-            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport = New DevExpress.XtraReports.UI.XRSubreport()
             Me.LabelGroupFooterOrderNumber_ShipToLabel = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderNumber_Box = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelGroupFooterOrderCommentTop = New DevExpress.XtraReports.UI.XRLabel()
@@ -258,20 +253,25 @@
             Me.XrTableRowLeftProduct = New DevExpress.XtraReports.UI.XRTableRow()
             Me.TableCellClient_Product = New DevExpress.XtraReports.UI.XRTableCell()
             Me.TableCellClient_ProductValue = New DevExpress.XtraReports.UI.XRTableCell()
-            Me.GroupHeaderEveryPage = New DevExpress.XtraReports.UI.GroupHeaderBand()
-            Me.GroupHeaderOrderNumberTopSubreportVendorAddress = New DevExpress.XtraReports.UI.XRSubreport()
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep2 = New DevExpress.XtraReports.UI.XRSubreport()
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep1 = New DevExpress.XtraReports.UI.XRSubreport()
-            Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
-            Me.LabelSubBand1_ExtraSpaceByDesign = New DevExpress.XtraReports.UI.XRLabel()
-            Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
-            Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
             Me.XrTableRow6 = New DevExpress.XtraReports.UI.XRTableRow()
             Me.TableCellClient_Campaign = New DevExpress.XtraReports.UI.XRTableCell()
             Me.XrTableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
             Me.XrTableRow7 = New DevExpress.XtraReports.UI.XRTableRow()
             Me.TableCellClient_Market = New DevExpress.XtraReports.UI.XRTableCell()
             Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
+            Me.GroupHeaderEveryPage = New DevExpress.XtraReports.UI.GroupHeaderBand()
+            Me.SubBand1 = New DevExpress.XtraReports.UI.SubBand()
+            Me.LabelSubBand1_ExtraSpaceByDesign = New DevExpress.XtraReports.UI.XRLabel()
+            Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
+            Me.DetailSubreport_AdditionalAdSizes = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.DetailSubreport_ChargeToSubReport = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.GroupFooterOrderNumberSubreport_NewspaperCharges = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.GroupHeaderOrderNumberTopSubreportVendorAddress = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep2 = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep1 = New DevExpress.XtraReports.UI.XRSubreport()
+            Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
             CType(Me.XrTableInfo, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.RichTextGroupFooterOrderNumber_OrderCommentTop, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.RichTextGroupFooterOrderNumber_OrderComment, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -289,22 +289,6 @@
             Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
             Me.Detail.StylePriority.UseFont = False
             Me.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
-            '
-            'DetailSubreport_AdditionalAdSizes
-            '
-            Me.DetailSubreport_AdditionalAdSizes.CanShrink = True
-            Me.DetailSubreport_AdditionalAdSizes.LocationFloat = New DevExpress.Utils.PointFloat(0!, 57.95835!)
-            Me.DetailSubreport_AdditionalAdSizes.Name = "DetailSubreport_AdditionalAdSizes"
-            Me.DetailSubreport_AdditionalAdSizes.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.AdditionalAdSizesSubReport()
-            Me.DetailSubreport_AdditionalAdSizes.SizeF = New System.Drawing.SizeF(683.9166!, 18.99998!)
-            '
-            'DetailSubreport_ChargeToSubReport
-            '
-            Me.DetailSubreport_ChargeToSubReport.CanShrink = True
-            Me.DetailSubreport_ChargeToSubReport.LocationFloat = New DevExpress.Utils.PointFloat(0!, 478.125!)
-            Me.DetailSubreport_ChargeToSubReport.Name = "DetailSubreport_ChargeToSubReport"
-            Me.DetailSubreport_ChargeToSubReport.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.ChargeToSubReport()
-            Me.DetailSubreport_ChargeToSubReport.SizeF = New System.Drawing.SizeF(510.0!, 18.99998!)
             '
             'LabelDetail_Impressions
             '
@@ -1165,7 +1149,7 @@
             'LabelDetail_Headline
             '
             Me.LabelDetail_Headline.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Headline")})
-            Me.LabelDetail_Headline.LocationFloat = New DevExpress.Utils.PointFloat(333.33!, 19.9584!)
+            Me.LabelDetail_Headline.LocationFloat = New DevExpress.Utils.PointFloat(333.33!, 19.95837!)
             Me.LabelDetail_Headline.Name = "LabelDetail_Headline"
             Me.LabelDetail_Headline.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
             Me.LabelDetail_Headline.SizeF = New System.Drawing.SizeF(245.83!, 18.99998!)
@@ -1777,14 +1761,6 @@
             Me.LabelGroupFooterOrderNumber_AgencyCommentTop.StylePriority.UsePadding = False
             Me.LabelGroupFooterOrderNumber_AgencyCommentTop.Text = "LabelGroupFooterOrderNumber_AgencyComment"
             '
-            'GroupFooterOrderNumberSubreport_ChargeToSubReport
-            '
-            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.CanShrink = True
-            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.LocationFloat = New DevExpress.Utils.PointFloat(52.07672!, 233.0833!)
-            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.Name = "GroupFooterOrderNumberSubreport_ChargeToSubReport"
-            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.ChargeToSubReport()
-            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.SizeF = New System.Drawing.SizeF(510.0!, 18.99998!)
-            '
             'LabelGroupFooterOrderNumber_LineTotalActual
             '
             Me.LabelGroupFooterOrderNumber_LineTotalActual.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
@@ -2235,14 +2211,6 @@
             Me.LabelGroupFooterOrderNumber_VendorTaxLabel.Text = "Sales Tax:"
             Me.LabelGroupFooterOrderNumber_VendorTaxLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
             '
-            'GroupFooterOrderNumberSubreport_NewspaperCharges
-            '
-            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.CanShrink = True
-            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.LocationFloat = New DevExpress.Utils.PointFloat(376.0418!, 56.99997!)
-            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.Name = "GroupFooterOrderNumberSubreport_NewspaperCharges"
-            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.NewspaperChargesSubReport()
-            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.SizeF = New System.Drawing.SizeF(361.4579!, 19.0!)
-            '
             'LabelFooterOrderNumber_AmountSubtotal
             '
             Me.LabelFooterOrderNumber_AmountSubtotal.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Amount")})
@@ -2312,14 +2280,6 @@
             Me.LabelGroupFooterOrderNumber_OrderTotalLabel.StylePriority.UseTextAlignment = False
             Me.LabelGroupFooterOrderNumber_OrderTotalLabel.Text = "Order Total:"
             Me.LabelGroupFooterOrderNumber_OrderTotalLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight
-            '
-            'GroupFooterOrderNumberSubreport_VendorShippingSubReport
-            '
-            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.CanShrink = True
-            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.LocationFloat = New DevExpress.Utils.PointFloat(126.9521!, 195.0833!)
-            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.Name = "GroupFooterOrderNumberSubreport_VendorShippingSubReport"
-            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorShippingSubReport()
-            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.SizeF = New System.Drawing.SizeF(326.0!, 18.99998!)
             '
             'LabelGroupFooterOrderNumber_ShipToLabel
             '
@@ -2827,74 +2787,6 @@
             Me.TableCellClient_ProductValue.StylePriority.UsePadding = False
             Me.TableCellClient_ProductValue.Weight = 2.3023659328793995R
             '
-            'GroupHeaderEveryPage
-            '
-            Me.GroupHeaderEveryPage.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelGroupHeaderOrderNumberTop_LocationHeader, Me.LineGroupHeaderOrderHeaderTop_LocationHeader, Me.LabelHeaderOrderNumberTop_OrderLabel, Me.GroupHeaderOrderNumberTopSubreportVendorAddress, Me.GroupHeaderOrderNumberTopSubreportVendorRep2, Me.GroupHeaderOrderNumberTopSubreportVendorRep1})
-            Me.GroupHeaderEveryPage.HeightF = 169.4583!
-            Me.GroupHeaderEveryPage.Level = 2
-            Me.GroupHeaderEveryPage.Name = "GroupHeaderEveryPage"
-            Me.GroupHeaderEveryPage.RepeatEveryPage = True
-            Me.GroupHeaderEveryPage.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand1})
-            '
-            'GroupHeaderOrderNumberTopSubreportVendorAddress
-            '
-            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.CanShrink = True
-            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.LocationFloat = New DevExpress.Utils.PointFloat(52.07672!, 107.5!)
-            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.Name = "GroupHeaderOrderNumberTopSubreportVendorAddress"
-            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorAddressSubReport()
-            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.SizeF = New System.Drawing.SizeF(326.0!, 61.95831!)
-            '
-            'GroupHeaderOrderNumberTopSubreportVendorRep2
-            '
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.CanShrink = True
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.LocationFloat = New DevExpress.Utils.PointFloat(424.0!, 126.5!)
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.Name = "GroupHeaderOrderNumberTopSubreportVendorRep2"
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorRepSubReport()
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.SizeF = New System.Drawing.SizeF(326.0!, 18.99998!)
-            '
-            'GroupHeaderOrderNumberTopSubreportVendorRep1
-            '
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.CanShrink = True
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.LocationFloat = New DevExpress.Utils.PointFloat(424.0!, 107.5!)
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.Name = "GroupHeaderOrderNumberTopSubreportVendorRep1"
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorRepSubReport()
-            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.SizeF = New System.Drawing.SizeF(326.0!, 18.99998!)
-            '
-            'SubBand1
-            '
-            Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelSubBand1_ExtraSpaceByDesign})
-            Me.SubBand1.HeightF = 18.99999!
-            Me.SubBand1.Name = "SubBand1"
-            '
-            'LabelSubBand1_ExtraSpaceByDesign
-            '
-            Me.LabelSubBand1_ExtraSpaceByDesign.BackColor = System.Drawing.Color.Transparent
-            Me.LabelSubBand1_ExtraSpaceByDesign.BorderColor = System.Drawing.Color.Black
-            Me.LabelSubBand1_ExtraSpaceByDesign.Borders = DevExpress.XtraPrinting.BorderSide.None
-            Me.LabelSubBand1_ExtraSpaceByDesign.BorderWidth = 1.0!
-            Me.LabelSubBand1_ExtraSpaceByDesign.CanGrow = False
-            Me.LabelSubBand1_ExtraSpaceByDesign.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-            Me.LabelSubBand1_ExtraSpaceByDesign.ForeColor = System.Drawing.Color.Black
-            Me.LabelSubBand1_ExtraSpaceByDesign.LocationFloat = New DevExpress.Utils.PointFloat(52.07672!, 0!)
-            Me.LabelSubBand1_ExtraSpaceByDesign.Name = "LabelSubBand1_ExtraSpaceByDesign"
-            Me.LabelSubBand1_ExtraSpaceByDesign.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.LabelSubBand1_ExtraSpaceByDesign.SizeF = New System.Drawing.SizeF(52.04493!, 18.99999!)
-            Me.LabelSubBand1_ExtraSpaceByDesign.StylePriority.UseFont = False
-            Me.LabelSubBand1_ExtraSpaceByDesign.StylePriority.UsePadding = False
-            Me.LabelSubBand1_ExtraSpaceByDesign.StylePriority.UseTextAlignment = False
-            Me.LabelSubBand1_ExtraSpaceByDesign.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
-            '
-            'ReportHeader
-            '
-            Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPictureBoxHeaderLogo})
-            Me.ReportHeader.HeightF = 150.0!
-            Me.ReportHeader.Name = "ReportHeader"
-            '
-            'BindingSource
-            '
-            Me.BindingSource.AllowNew = False
-            Me.BindingSource.DataSource = GetType(AdvantageFramework.MediaManager.Classes.PrintOrder)
-            '
             'XrTableRow6
             '
             Me.XrTableRow6.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellClient_Campaign, Me.XrTableCell2})
@@ -2946,6 +2838,114 @@
             Me.XrTableCell4.StylePriority.UseFont = False
             Me.XrTableCell4.StylePriority.UsePadding = False
             Me.XrTableCell4.Weight = 2.3023659328793995R
+            '
+            'GroupHeaderEveryPage
+            '
+            Me.GroupHeaderEveryPage.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelGroupHeaderOrderNumberTop_LocationHeader, Me.LineGroupHeaderOrderHeaderTop_LocationHeader, Me.LabelHeaderOrderNumberTop_OrderLabel, Me.GroupHeaderOrderNumberTopSubreportVendorAddress, Me.GroupHeaderOrderNumberTopSubreportVendorRep2, Me.GroupHeaderOrderNumberTopSubreportVendorRep1})
+            Me.GroupHeaderEveryPage.HeightF = 169.4583!
+            Me.GroupHeaderEveryPage.Level = 2
+            Me.GroupHeaderEveryPage.Name = "GroupHeaderEveryPage"
+            Me.GroupHeaderEveryPage.RepeatEveryPage = True
+            Me.GroupHeaderEveryPage.SubBands.AddRange(New DevExpress.XtraReports.UI.SubBand() {Me.SubBand1})
+            '
+            'SubBand1
+            '
+            Me.SubBand1.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelSubBand1_ExtraSpaceByDesign})
+            Me.SubBand1.HeightF = 18.99999!
+            Me.SubBand1.Name = "SubBand1"
+            '
+            'LabelSubBand1_ExtraSpaceByDesign
+            '
+            Me.LabelSubBand1_ExtraSpaceByDesign.BackColor = System.Drawing.Color.Transparent
+            Me.LabelSubBand1_ExtraSpaceByDesign.BorderColor = System.Drawing.Color.Black
+            Me.LabelSubBand1_ExtraSpaceByDesign.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.LabelSubBand1_ExtraSpaceByDesign.BorderWidth = 1.0!
+            Me.LabelSubBand1_ExtraSpaceByDesign.CanGrow = False
+            Me.LabelSubBand1_ExtraSpaceByDesign.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+            Me.LabelSubBand1_ExtraSpaceByDesign.ForeColor = System.Drawing.Color.Black
+            Me.LabelSubBand1_ExtraSpaceByDesign.LocationFloat = New DevExpress.Utils.PointFloat(52.07672!, 0!)
+            Me.LabelSubBand1_ExtraSpaceByDesign.Name = "LabelSubBand1_ExtraSpaceByDesign"
+            Me.LabelSubBand1_ExtraSpaceByDesign.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.LabelSubBand1_ExtraSpaceByDesign.SizeF = New System.Drawing.SizeF(52.04493!, 18.99999!)
+            Me.LabelSubBand1_ExtraSpaceByDesign.StylePriority.UseFont = False
+            Me.LabelSubBand1_ExtraSpaceByDesign.StylePriority.UsePadding = False
+            Me.LabelSubBand1_ExtraSpaceByDesign.StylePriority.UseTextAlignment = False
+            Me.LabelSubBand1_ExtraSpaceByDesign.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+            '
+            'ReportHeader
+            '
+            Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrPictureBoxHeaderLogo})
+            Me.ReportHeader.HeightF = 150.0!
+            Me.ReportHeader.Name = "ReportHeader"
+            '
+            'DetailSubreport_AdditionalAdSizes
+            '
+            Me.DetailSubreport_AdditionalAdSizes.CanShrink = True
+            Me.DetailSubreport_AdditionalAdSizes.LocationFloat = New DevExpress.Utils.PointFloat(0!, 57.95835!)
+            Me.DetailSubreport_AdditionalAdSizes.Name = "DetailSubreport_AdditionalAdSizes"
+            Me.DetailSubreport_AdditionalAdSizes.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.AdditionalAdSizesSubReport()
+            Me.DetailSubreport_AdditionalAdSizes.SizeF = New System.Drawing.SizeF(683.9166!, 18.99998!)
+            '
+            'DetailSubreport_ChargeToSubReport
+            '
+            Me.DetailSubreport_ChargeToSubReport.CanShrink = True
+            Me.DetailSubreport_ChargeToSubReport.LocationFloat = New DevExpress.Utils.PointFloat(0!, 478.125!)
+            Me.DetailSubreport_ChargeToSubReport.Name = "DetailSubreport_ChargeToSubReport"
+            Me.DetailSubreport_ChargeToSubReport.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.ChargeToSubReport()
+            Me.DetailSubreport_ChargeToSubReport.SizeF = New System.Drawing.SizeF(510.0!, 18.99998!)
+            '
+            'GroupFooterOrderNumberSubreport_ChargeToSubReport
+            '
+            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.CanShrink = True
+            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.LocationFloat = New DevExpress.Utils.PointFloat(52.07672!, 233.0833!)
+            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.Name = "GroupFooterOrderNumberSubreport_ChargeToSubReport"
+            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.ChargeToSubReport()
+            Me.GroupFooterOrderNumberSubreport_ChargeToSubReport.SizeF = New System.Drawing.SizeF(510.0!, 18.99998!)
+            '
+            'GroupFooterOrderNumberSubreport_NewspaperCharges
+            '
+            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.CanShrink = True
+            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.LocationFloat = New DevExpress.Utils.PointFloat(376.0418!, 56.99997!)
+            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.Name = "GroupFooterOrderNumberSubreport_NewspaperCharges"
+            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.NewspaperChargesSubReport()
+            Me.GroupFooterOrderNumberSubreport_NewspaperCharges.SizeF = New System.Drawing.SizeF(361.4579!, 19.0!)
+            '
+            'GroupFooterOrderNumberSubreport_VendorShippingSubReport
+            '
+            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.CanShrink = True
+            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.LocationFloat = New DevExpress.Utils.PointFloat(126.9521!, 195.0833!)
+            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.Name = "GroupFooterOrderNumberSubreport_VendorShippingSubReport"
+            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorShippingSubReport()
+            Me.GroupFooterOrderNumberSubreport_VendorShippingSubReport.SizeF = New System.Drawing.SizeF(326.0!, 18.99998!)
+            '
+            'GroupHeaderOrderNumberTopSubreportVendorAddress
+            '
+            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.CanShrink = True
+            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.LocationFloat = New DevExpress.Utils.PointFloat(52.07672!, 107.5!)
+            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.Name = "GroupHeaderOrderNumberTopSubreportVendorAddress"
+            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorAddressSubReport()
+            Me.GroupHeaderOrderNumberTopSubreportVendorAddress.SizeF = New System.Drawing.SizeF(326.0!, 61.95831!)
+            '
+            'GroupHeaderOrderNumberTopSubreportVendorRep2
+            '
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.CanShrink = True
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.LocationFloat = New DevExpress.Utils.PointFloat(424.0!, 126.5!)
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.Name = "GroupHeaderOrderNumberTopSubreportVendorRep2"
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorRepSubReport()
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep2.SizeF = New System.Drawing.SizeF(326.0!, 18.99998!)
+            '
+            'GroupHeaderOrderNumberTopSubreportVendorRep1
+            '
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.CanShrink = True
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.LocationFloat = New DevExpress.Utils.PointFloat(424.0!, 107.5!)
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.Name = "GroupHeaderOrderNumberTopSubreportVendorRep1"
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.ReportSource = New AdvantageFramework.Reporting.Reports.MediaManager.VendorRepSubReport()
+            Me.GroupHeaderOrderNumberTopSubreportVendorRep1.SizeF = New System.Drawing.SizeF(326.0!, 18.99998!)
+            '
+            'BindingSource
+            '
+            Me.BindingSource.AllowNew = False
+            Me.BindingSource.DataSource = GetType(AdvantageFramework.MediaManager.Classes.PrintOrder)
             '
             'PrintOrderReport
             '

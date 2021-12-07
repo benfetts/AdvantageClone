@@ -573,6 +573,7 @@
                 rowIncludeLineMarket.Visible = False
                 rowInternetQtyOverrideText.Visible = False
                 rowSeparationPolicy.Visible = False
+                rowIncludeImpressions.Visible = False
 
                 If _OrderPrintSetting.MediaType = "I" Then
 
@@ -654,6 +655,7 @@
                     rowMiscInfo.Visible = True
                     rowOrderCopy.Visible = True
                     rowMaterialNotes.Visible = True
+                    rowIncludeImpressions.Visible = True
 
                 ElseIf _OrderPrintSetting.MediaType = "R" Then
 

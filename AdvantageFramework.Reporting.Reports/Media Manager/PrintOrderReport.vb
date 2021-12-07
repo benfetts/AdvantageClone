@@ -292,7 +292,7 @@
                 Me.LabelDetail_InsertDay.Visible = False
 
                 Me.LabelDetail_SubTypeDescription.Visible = False
-                Me.LabelDetail_Impressions.Visible = False
+                'Me.LabelDetail_Impressions.Visible = False
 
             End If
 
@@ -497,7 +497,15 @@
         End Sub
         Private Sub LabelDetail_Impressions_BeforePrint(sender As Object, e As Drawing.Printing.PrintEventArgs) Handles LabelDetail_Impressions.BeforePrint
 
-            If _MediaFrom.Substring(0, 1) <> "I" Then
+            If _MediaFrom.Substring(0, 1) = "O" Then
+
+                If _MediaOrderPrintSetting.IncludeImpressions.GetValueOrDefault(0) = 0 Then
+
+                    e.Cancel = True
+
+                End If
+
+            ElseIf _MediaFrom.Substring(0, 1) <> "I" Then
 
                 e.Cancel = True
 
@@ -1558,6 +1566,16 @@
             If _MediaOrderPrintSetting.IncludeClientAddress = False Then
 
                 e.Cancel = True
+
+            End If
+
+        End Sub
+        Private Sub LabelDetail_Headline_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelDetail_Headline.BeforePrint
+
+            If _MediaFrom.Substring(0, 1) = "O" AndAlso _MediaOrderPrintSetting.IncludeImpressions.GetValueOrDefault(0) = 1 AndAlso
+                    String.IsNullOrWhiteSpace(Me.GetCurrentColumnValue(AdvantageFramework.MediaManager.Classes.PrintOrder.Properties.Impressions.ToString)) = False Then
+
+                LabelDetail_Headline.WidthF = 162
 
             End If
 

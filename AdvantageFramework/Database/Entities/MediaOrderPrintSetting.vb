@@ -89,6 +89,7 @@
             ExchangeRate
             MediaTitleOverride
             IncludeClientAddress
+            IncludeImpressions
         End Enum
 
 #End Region
@@ -103,142 +104,142 @@
 
         <System.ComponentModel.DataAnnotations.Key>
         <System.ComponentModel.DataAnnotations.Schema.Column("USER_ID", Order:=0)>
-		<System.ComponentModel.DataAnnotations.MaxLength(100)>
-		Public Property UserCode As String
+        <System.ComponentModel.DataAnnotations.MaxLength(100)>
+        Public Property UserCode As String
 
-		<System.ComponentModel.DataAnnotations.Key>
-		<System.ComponentModel.DataAnnotations.Schema.Column("MEDIA_TYPE", Order:=1)>
-		<System.ComponentModel.DataAnnotations.MaxLength(2)>
-		Public Property MediaType As String
+        <System.ComponentModel.DataAnnotations.Key>
+        <System.ComponentModel.DataAnnotations.Schema.Column("MEDIA_TYPE", Order:=1)>
+        <System.ComponentModel.DataAnnotations.MaxLength(2)>
+        Public Property MediaType As String
 
-		<System.ComponentModel.DataAnnotations.MaxLength(6)>
-		<System.ComponentModel.DataAnnotations.Schema.Column("LOCATION_ID")>
-		Public Property LocationID As String
+        <System.ComponentModel.DataAnnotations.MaxLength(6)>
+        <System.ComponentModel.DataAnnotations.Schema.Column("LOCATION_ID")>
+        Public Property LocationID As String
 
-		<System.ComponentModel.DataAnnotations.MaxLength(100)>
-		<System.ComponentModel.DataAnnotations.Schema.Column("LOGO_PATH")>
-		Public Property LogoPath As String
+        <System.ComponentModel.DataAnnotations.MaxLength(100)>
+        <System.ComponentModel.DataAnnotations.Schema.Column("LOGO_PATH")>
+        Public Property LogoPath As String
 
-		<System.ComponentModel.DataAnnotations.MaxLength(1)>
-		<System.ComponentModel.DataAnnotations.Schema.Column("RPT_LEVEL")>
-		Public Property ReportLevel As String
+        <System.ComponentModel.DataAnnotations.MaxLength(1)>
+        <System.ComponentModel.DataAnnotations.Schema.Column("RPT_LEVEL")>
+        Public Property ReportLevel As String
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("DATE_OVERRIDE")>
-		Public Property DateOverride As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("DATE_OVERRIDE")>
+        Public Property DateOverride As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.MaxLength(20)>
-		<System.ComponentModel.DataAnnotations.Schema.Column("REP_LABEL1")>
-		Public Property Rep1Label As String
+        <System.ComponentModel.DataAnnotations.MaxLength(20)>
+        <System.ComponentModel.DataAnnotations.Schema.Column("REP_LABEL1")>
+        Public Property Rep1Label As String
 
-		<System.ComponentModel.DataAnnotations.MaxLength(20)>
-		<System.ComponentModel.DataAnnotations.Schema.Column("REP_LABEL2")>
-		Public Property Rep2Label As String
+        <System.ComponentModel.DataAnnotations.MaxLength(20)>
+        <System.ComponentModel.DataAnnotations.Schema.Column("REP_LABEL2")>
+        Public Property Rep2Label As String
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("INCLUDE_REP1")>
-		Public Property IncludeRep1 As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("INCLUDE_REP1")>
+        Public Property IncludeRep1 As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("INCLUDE_REP2")>
-		Public Property IncludeRep2 As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("INCLUDE_REP2")>
+        Public Property IncludeRep2 As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.MaxLength(50)>
-		<System.ComponentModel.DataAnnotations.Schema.Column("RPT_FORMAT")>
-		Public Property ReportFormat As String
+        <System.ComponentModel.DataAnnotations.MaxLength(50)>
+        <System.ComponentModel.DataAnnotations.Schema.Column("RPT_FORMAT")>
+        Public Property ReportFormat As String
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("HEADLINE_FLAG")>
-		Public Property Headline As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("HEADLINE_FLAG")>
+        Public Property Headline As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("LOCATION_FLAG")>
-		Public Property Location As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("LOCATION_FLAG")>
+        Public Property Location As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("EDITION_FLAG")>
-		Public Property Edition As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("EDITION_FLAG")>
+        Public Property Edition As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("MATERIAL_FLAG")>
-		Public Property Material As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("MATERIAL_FLAG")>
+        Public Property Material As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("PROD_SPECS_FLAG")>
-		Public Property ProductionSize As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("PROD_SPECS_FLAG")>
+        Public Property ProductionSize As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("SPACE_CLOSE_FLAG")>
-		Public Property SpaceCloseDate As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("SPACE_CLOSE_FLAG")>
+        Public Property SpaceCloseDate As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("AD_NUMBER_FLAG")>
-		Public Property AdNumber As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("AD_NUMBER_FLAG")>
+        Public Property AdNumber As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("JOB_NUMBER_FLAG")>
-		Public Property JobNumber As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("JOB_NUMBER_FLAG")>
+        Public Property JobNumber As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("MATL_NOTES_FLAG")>
-		Public Property MaterialNotes As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("MATL_NOTES_FLAG")>
+        Public Property MaterialNotes As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("POSITION_FLAG")>
-		Public Property PositionInfo As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("POSITION_FLAG")>
+        Public Property PositionInfo As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("CLOSE_INFO_FLAG")>
-		Public Property CloseInfo As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("CLOSE_INFO_FLAG")>
+        Public Property CloseInfo As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("RATE_INFO_FLAG")>
-		Public Property RateInfo As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("RATE_INFO_FLAG")>
+        Public Property RateInfo As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("MISC_INFO_FLAG")>
-		Public Property MiscInfo As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("MISC_INFO_FLAG")>
+        Public Property MiscInfo As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("INSTRUCTIONS_FLAG")>
-		Public Property Instructions As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("INSTRUCTIONS_FLAG")>
+        Public Property Instructions As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("ORDER_COPY_FLAG")>
-		Public Property OrderCopy As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("ORDER_COPY_FLAG")>
+        Public Property OrderCopy As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("MATL_DUE_FLAG")>
-		Public Property MaterialDueDate As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("MATL_DUE_FLAG")>
+        Public Property MaterialDueDate As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("ISSUE_FLAG")>
-		Public Property Issue As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("ISSUE_FLAG")>
+        Public Property Issue As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("TYPE_FLAG")>
-		Public Property Type As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("TYPE_FLAG")>
+        Public Property Type As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("COPY_AREA_FLAG")>
-		Public Property CopyArea As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("COPY_AREA_FLAG")>
+        Public Property CopyArea As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("PLACE1_FLAG")>
-		Public Property Placement1 As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("PLACE1_FLAG")>
+        Public Property Placement1 As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("PLACE2_FLAG")>
-		Public Property Placement2 As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("PLACE2_FLAG")>
+        Public Property Placement2 As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("URL_FLAG")>
-		Public Property URL As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("URL_FLAG")>
+        Public Property URL As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("TARGET_FLAG")>
-		Public Property TargetAudience As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("TARGET_FLAG")>
+        Public Property TargetAudience As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("SECTION_FLAG")>
-		Public Property Section As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("SECTION_FLAG")>
+        Public Property Section As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("DEF_REP_LABEL1")>
-		Public Property DefaultLabelFromVendor1 As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("DEF_REP_LABEL1")>
+        Public Property DefaultLabelFromVendor1 As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("DEF_REP_LABEL2")>
-		Public Property DefaultLabelFromVendor2 As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("DEF_REP_LABEL2")>
+        Public Property DefaultLabelFromVendor2 As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("MARKET_FLAG")>
-		Public Property Market As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("MARKET_FLAG")>
+        Public Property Market As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("GUARANTEED_FLAG")>
-		Public Property Guaranteed As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("GUARANTEED_FLAG")>
+        Public Property Guaranteed As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("PROJECTED_FLAG")>
-		Public Property Projected As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("PROJECTED_FLAG")>
+        Public Property Projected As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("ACTUAL_FLAG")>
-		Public Property Actual As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("ACTUAL_FLAG")>
+        Public Property Actual As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.Schema.Column("COST_PER_FLAG")>
-		Public Property CostPer As Nullable(Of Short)
+        <System.ComponentModel.DataAnnotations.Schema.Column("COST_PER_FLAG")>
+        Public Property CostPer As Nullable(Of Short)
 
-		<System.ComponentModel.DataAnnotations.MaxLength(1)>
-		<System.ComponentModel.DataAnnotations.Schema.Column("TITLE_OPTION")>
+        <System.ComponentModel.DataAnnotations.MaxLength(1)>
+        <System.ComponentModel.DataAnnotations.Schema.Column("TITLE_OPTION")>
         Public Property MediaTitleOption As String
 
         <System.ComponentModel.DataAnnotations.Schema.Column("CAMPAIGN_FLAG")>
@@ -351,6 +352,9 @@
 
         <System.ComponentModel.DataAnnotations.Schema.Column("INCLUDE_CLIENT_ADDRESS")>
         Public Property IncludeClientAddress As Boolean
+
+        <System.ComponentModel.DataAnnotations.Schema.Column("IMPRESS_FLAG")>
+        Public Property IncludeImpressions As Nullable(Of Short)
 
 #End Region
 

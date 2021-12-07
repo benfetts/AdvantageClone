@@ -48,6 +48,7 @@
             Me.rowPrintRevision = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowMediaTitleOption = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowMediaTitleOverride = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowIncludeClientAddress = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowApplyExchangeRate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowExchangeRate = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.categoryOptionalHeaderInformation = New DevExpress.XtraVerticalGrid.Rows.CategoryRow()
@@ -118,7 +119,7 @@
             Me.rowActual = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowCostPer = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             Me.rowInternetQtyOverrideText = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
-            Me.rowIncludeClientAddress = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
+            Me.rowIncludeImpressions = New DevExpress.XtraVerticalGrid.Rows.EditorRow()
             CType(Me.PanelForm_Form, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelForm_Form.SuspendLayout()
             Me.RibbonControlForm_MainRibbon.SuspendLayout()
@@ -444,6 +445,12 @@
             Me.rowMediaTitleOverride.Properties.Caption = "Media Title Override"
             Me.rowMediaTitleOverride.Properties.FieldName = "MediaTitleOverride"
             '
+            'rowIncludeClientAddress
+            '
+            Me.rowIncludeClientAddress.Name = "rowIncludeClientAddress"
+            Me.rowIncludeClientAddress.Properties.Caption = "Include Client Address"
+            Me.rowIncludeClientAddress.Properties.FieldName = "IncludeClientAddress"
+            '
             'rowApplyExchangeRate
             '
             Me.rowApplyExchangeRate.Name = "rowApplyExchangeRate"
@@ -567,7 +574,7 @@
             '
             'categoryOptionalDetailInformation
             '
-            Me.categoryOptionalDetailInformation.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowBroadcastShowEmptyWeeks, Me.rowShowLineNumbers, Me.rowProgramming, Me.rowStartTime, Me.rowEndTime, Me.rowLength, Me.rowRemarks, Me.rowProductionSize, Me.rowType, Me.rowHeadline, Me.rowIssue, Me.rowURL, Me.rowLocation, Me.rowCopyArea, Me.rowPlacement1, Me.rowPlacement2, Me.rowTargetAudience, Me.rowEdition, Me.rowSection, Me.rowMaterial, Me.rowAdNumber, Me.rowJobNumber, Me.rowMaterialDueDate, Me.rowSpaceCloseDate, Me.rowInstructions, Me.rowMiscInfo, Me.rowOrderCopy, Me.rowMaterialNotes, Me.rowPositionInfo, Me.rowCloseInfo, Me.rowRateInfo, Me.rowDays, Me.rowDaypart, Me.rowAddedValue, Me.rowBookends, Me.rowPrimaryRating, Me.rowPrimaryCPP, Me.rowPrintDayDate, Me.rowPrimaryImpressions, Me.rowPrimaryAQH, Me.rowPrimaryCPM, Me.rowIncludeFlighting, Me.rowIncludeLineMarket})
+            Me.categoryOptionalDetailInformation.ChildRows.AddRange(New DevExpress.XtraVerticalGrid.Rows.BaseRow() {Me.rowBroadcastShowEmptyWeeks, Me.rowShowLineNumbers, Me.rowProgramming, Me.rowStartTime, Me.rowEndTime, Me.rowLength, Me.rowRemarks, Me.rowProductionSize, Me.rowType, Me.rowHeadline, Me.rowIssue, Me.rowURL, Me.rowLocation, Me.rowCopyArea, Me.rowPlacement1, Me.rowPlacement2, Me.rowTargetAudience, Me.rowEdition, Me.rowSection, Me.rowMaterial, Me.rowAdNumber, Me.rowJobNumber, Me.rowMaterialDueDate, Me.rowSpaceCloseDate, Me.rowInstructions, Me.rowMiscInfo, Me.rowOrderCopy, Me.rowMaterialNotes, Me.rowPositionInfo, Me.rowCloseInfo, Me.rowRateInfo, Me.rowDays, Me.rowDaypart, Me.rowAddedValue, Me.rowBookends, Me.rowPrimaryRating, Me.rowPrimaryCPP, Me.rowPrintDayDate, Me.rowPrimaryImpressions, Me.rowPrimaryAQH, Me.rowPrimaryCPM, Me.rowIncludeFlighting, Me.rowIncludeLineMarket, Me.rowIncludeImpressions})
             Me.categoryOptionalDetailInformation.Name = "categoryOptionalDetailInformation"
             Me.categoryOptionalDetailInformation.Properties.Caption = "Optional Detail Information"
             '
@@ -865,11 +872,11 @@
             Me.rowInternetQtyOverrideText.Properties.Caption = "Internet Qty Override Text"
             Me.rowInternetQtyOverrideText.Properties.FieldName = "InternetQtyOverrideText"
             '
-            'rowIncludeClientAddress
+            'rowIncludeImpressions
             '
-            Me.rowIncludeClientAddress.Name = "rowIncludeClientAddress"
-            Me.rowIncludeClientAddress.Properties.Caption = "Include Client Address"
-            Me.rowIncludeClientAddress.Properties.FieldName = "IncludeClientAddress"
+            Me.rowIncludeImpressions.Name = "rowIncludeImpressions"
+            Me.rowIncludeImpressions.Properties.Caption = "Include Impressions"
+            Me.rowIncludeImpressions.Properties.FieldName = "IncludeImpressions"
             '
             'MediaOrderPrintingOptionsDialog
             '
@@ -988,6 +995,7 @@
         Friend WithEvents rowExchangeRate As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowMediaTitleOverride As DevExpress.XtraVerticalGrid.Rows.EditorRow
         Friend WithEvents rowIncludeClientAddress As DevExpress.XtraVerticalGrid.Rows.EditorRow
+        Friend WithEvents rowIncludeImpressions As DevExpress.XtraVerticalGrid.Rows.EditorRow
     End Class
 
 End Namespace

@@ -11933,7 +11933,7 @@
 
                                 If AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).Any Then
 
-                                    MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity, True)).ToList
+                                    MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.LoadWithComscoreStationCode(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity, True)).ToList
 
                                 Else
 
@@ -29479,7 +29479,6 @@
             Dim Adults18PlusTVWorksheetRatingAndShareDataList As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData) = Nothing
             Dim Adults18PlusTVWorksheetRatingAndShareData As AdvantageFramework.Classes.Media.Nielsen.TVWorksheetRatingAndShareData = Nothing
             Dim RowIndexesToRun As Generic.Dictionary(Of String, Generic.List(Of Integer)) = Nothing
-            'Dim CallLetters As String = Nothing
             Dim MediaSpotTVResearchDaytimeTypes As Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType) = Nothing
             Dim HHUEDemographicList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic) = Nothing
             Dim PrimaryMediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
@@ -29492,7 +29491,6 @@
             Dim AdjustmentFactor As Decimal = 0
             Dim CDMADemoUE As Decimal = 0
             Dim ComscoreTVStation As AdvantageFramework.Database.Entities.ComscoreTVStation = Nothing
-            Dim StationNumber As Integer = 0
 
             If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket IsNot Nothing AndAlso MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.PrimaryMediaDemographicID.HasValue Then
 
@@ -29607,7 +29605,7 @@
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
                                                          Where Entity.NetworkNumber = NielsenTVStationCode
-                                                         Select Entity).OrderBy(Function(E) E.Number).First
+                                                         Select Entity).OrderBy(Function(E) E.Number).FirstOrDefault
 
                                 Else
 
@@ -29622,9 +29620,6 @@
                                     Exit For
 
                                 End If
-
-                                'CallLetters = ComscoreTVStation.CallLetters
-                                StationNumber = ComscoreTVStation.Number
 
                                 MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
 
@@ -29644,7 +29639,7 @@
 
                                 'Try
 
-                                TVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, StationNumber, DemographicList, ShareHPUTBooks, MediaSpotTVResearchDaytimeTypes, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber, False)
+                                TVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, DemographicList, ShareHPUTBooks, MediaSpotTVResearchDaytimeTypes, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber, False)
 
                                 'Catch ex As Exception
 
@@ -29670,7 +29665,6 @@
 
                                     Try
 
-                                        'Adults18PlusTVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViews(DbContext, CallLetters, HHUEDemographicList, ShareHPUTBooks, MediaSpotTVResearchDaytimeTypes, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber)
                                         Adults18PlusTVWorksheetRatingAndShareDataList = AdvantageFramework.ComScore.GetLocalTimeViewsCache(DbContext, ComscoreTVStation.Number, HHUEDemographicList, ShareHPUTBooks, MediaSpotTVResearchDaytimeTypes, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber, False)
 
                                     Catch ex As Exception

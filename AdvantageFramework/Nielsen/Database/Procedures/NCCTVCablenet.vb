@@ -57,6 +57,13 @@
                    Select NCCTVCablenet
 
         End Function
+        Public Function LoadWithComscoreStationCode(DbContext As Nielsen.Database.DbContext) As System.Data.Entity.Infrastructure.DbQuery(Of Nielsen.Database.Entities.NCCTVCablenet)
+
+            LoadWithComscoreStationCode = From NCCTVCablenet In DbContext.GetQuery(Of Nielsen.Database.Entities.NCCTVCablenet)
+                                          Where NCCTVCablenet.ComscoreStationCode.HasValue
+                                          Select NCCTVCablenet
+
+        End Function
 
 #End Region
 

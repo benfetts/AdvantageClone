@@ -201,7 +201,7 @@ Public Class arptJobVersion
 
     Private Sub Detail1_Format(sender As Object, e As EventArgs) Handles Detail1.Format
 
-        Me.RichTextBoxValue.Html = ReportFunctions.WrapRtfInFontTag(TextBoxValue.Text.Replace("<", "&lt;").Replace(">", "&gt;"))
+        Me.RichTextBoxValue.Html = ReportFunctions.WrapRtfInFontTag(TextBoxValue.Text)
 
         If LabelIsSection.Text = "True" Then
 

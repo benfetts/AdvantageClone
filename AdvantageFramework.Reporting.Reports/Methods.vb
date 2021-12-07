@@ -6687,6 +6687,14 @@ Public Module Methods
 
                     XtraReport = CreatePaymentManagerReport(Session, ParameterDictionary)
 
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.ProductionWIPSummaryByJobDeferredSalesCosIncluded Then
+
+                    XtraReport = CreateProductionWIPSummarybyJobDeferredSalesCosIncluded(Session, Report, ParameterDictionary)
+
+                ElseIf Report = AdvantageFramework.Reporting.ReportTypes.ProductionWIPSummaryByJobHoursDeferredSalesCos Then
+
+                    XtraReport = CreateProductionWIPSummarybyJobHoursDeferredSalesCos(Session, Report, ParameterDictionary)
+
                 End If
 
             End Using
@@ -12586,6 +12594,44 @@ Public Module Methods
         End Using
 
         CreateProductionWIPAgedSummarybyJobVendorOnly = XtraReport
+
+    End Function
+    Private Function CreateProductionWIPSummarybyJobDeferredSalesCosIncluded(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobDefSalesCosInc = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobDefSalesCosInc
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndProductionWIP(ReportingDbContext, ParameterDictionary)
+
+            XtraReport.end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
+
+        End Using
+
+        CreateProductionWIPSummarybyJobDeferredSalesCosIncluded = XtraReport
+
+    End Function
+    Private Function CreateProductionWIPSummarybyJobHoursDeferredSalesCos(ByVal Session As AdvantageFramework.Security.Session, ByVal Report As AdvantageFramework.Reporting.ReportTypes,
+                                                              ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As DevExpress.XtraReports.UI.XtraReport
+
+        'objects
+        Dim XtraReport As AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobHrsDefSalesCos = Nothing
+
+        XtraReport = New AdvantageFramework.Reporting.Reports.MediaWIP.ProductionWIP.ProductionWIPSummarybyJobHrsDefSalesCos
+
+        Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+            XtraReport.DataSource = AdvantageFramework.Reporting.LoadMonthEndProductionWIP(ReportingDbContext, ParameterDictionary)
+
+            XtraReport.end_period.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
+
+        End Using
+
+        CreateProductionWIPSummarybyJobHoursDeferredSalesCos = XtraReport
 
     End Function
 

@@ -538,6 +538,9 @@ function SetDateFilters(view) {
     if ($("#Year2Button").text() === EUFilter.FromYear.toString()) {
         $("#Year2Button").addClass("k-state-active");
     }
+    if ($("#Year3Button").text() === EUFilter.FromYear.toString()) {
+        $("#Year3Button").addClass("k-state-active");
+    }
     
 
     if (EUFilter.FromMonth === 1) {
@@ -790,6 +793,7 @@ function onYear1Click(year) {
 
     $("#Year1Button").addClass("k-state-active");
     $("#Year2Button").removeClass("k-state-active");
+    $("#Year3Button").removeClass("k-state-active");
 
     let DataGrid = $("#utilizationgrid").data("kendoGrid");
     DataGrid.setDataSource(DataGrid.dataSource);
@@ -803,6 +807,21 @@ function onYear2Click(year) {
 
     $("#Year2Button").addClass("k-state-active");
     $("#Year1Button").removeClass("k-state-active");
+    $("#Year3Button").removeClass("k-state-active");
+
+    let DataGrid = $("#utilizationgrid").data("kendoGrid");
+    DataGrid.setDataSource(DataGrid.dataSource);
+    DataGrid.dataSource.read();
+
+}
+
+function onYear3Click(year) {
+
+    EUFilter.FromYear = year;
+
+    $("#Year3Button").addClass("k-state-active");
+    $("#Year1Button").removeClass("k-state-active");
+    $("#Year2Button").removeClass("k-state-active");
 
     let DataGrid = $("#utilizationgrid").data("kendoGrid");
     DataGrid.setDataSource(DataGrid.dataSource);

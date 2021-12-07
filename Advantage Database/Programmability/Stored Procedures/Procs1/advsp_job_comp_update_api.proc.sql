@@ -35,6 +35,8 @@ CREATE PROCEDURE [dbo].[advsp_job_comp_update_api]
 	@job_cl_po_nbr varchar(40) = NULL,
 	@cmp_id integer = NULL,
 
+	@service_fee_flag varchar(1) = '0',
+
 	@ret_val integer OUTPUT, 
 	@ret_val_s varchar(max) OUTPUT
 AS
@@ -55,6 +57,7 @@ PJH 01/27/20 - Added @job_comp_budget_am decimal
 PJH 03/16/20 - Added @job_tax_flag
 PJH 05/01/20 - Added 6 (closed) to @job_process_contrl NOT IN (0,1,2,5,6)
 PJH 02/15/21 - Added @cmp_id, @cmp_code
+PJH 12/03/21 - Added @@service_fee_flag
 */
 
 SET NOCOUNT ON
@@ -109,6 +112,9 @@ BEGIN TRY
 	SET @job_number = COALESCE(@job_number, 0)
 
 	SET @jt_code = @job_type
+
+	IF @service_fee_flag NOT IN ('0', '1')
+		SET @service_fee_flag = '0'
 		
 	IF @job_number > 0
 	BEGIN
@@ -291,7 +297,8 @@ BEGIN TRY
 			MODIFY_DATE = @date_time_w,
 			JOB_COMP_BUDGET_AM = @job_comp_budget_am,
 			TAX_CODE = CASE WHEN @job_tax_flag = 1 THEN @prd_tax_code ELSE TAX_CODE END, 						--PJH 03/12/2020 added tax
-			JOB_CL_PO_NBR = CASE WHEN @job_cl_po_nbr = '*' THEN JOB_CL_PO_NBR ELSE @job_cl_po_nbr END			--PJH 09/28/2020 added tax
+			JOB_CL_PO_NBR = CASE WHEN @job_cl_po_nbr = '*' THEN JOB_CL_PO_NBR ELSE @job_cl_po_nbr END,			--PJH 09/28/2020 added tax
+			SERVICE_FEE_FLAG = CASE WHEN @service_fee_flag = '*' THEN SERVICE_FEE_FLAG ELSE @service_fee_flag END
 		WHERE JOB_NUMBER = @job_number AND (JOB_COMPONENT_NBR = @job_component_nbr OR COALESCE(@job_component_nbr, 0) = 0)
 
 		IF @updt_process_ctrl = 1

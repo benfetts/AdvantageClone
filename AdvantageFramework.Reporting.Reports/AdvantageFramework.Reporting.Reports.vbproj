@@ -2863,6 +2863,18 @@
     <Compile Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJob.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobHrsDefSalesCos.Designer.vb">
+      <DependentUpon>ProductionWIPSummarybyJobHrsDefSalesCos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobHrsDefSalesCos.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobDefSalesCosInc.Designer.vb">
+      <DependentUpon>ProductionWIPSummarybyJobDefSalesCosInc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyJobDefSalesCosInc.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Media WIP\Production WIP\ProductionWIPSummarybyVendorwithPayments.Designer.vb">
       <DependentUpon>ProductionWIPSummarybyVendorwithPayments.vb</DependentUpon>
     </Compile>
@@ -4617,6 +4629,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPAgedSummarybyJob.resx">
       <DependentUpon>ProductionWIPAgedSummarybyJob.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPSummarybyJobHrsDefSalesCos.resx">
+      <DependentUpon>ProductionWIPSummarybyJobHrsDefSalesCos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPSummarybyJobDefSalesCosInc.resx">
+      <DependentUpon>ProductionWIPSummarybyJobDefSalesCosInc.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Media WIP\Production WIP\ProductionWIPSummarybyVendorwithPayments.resx">
       <DependentUpon>ProductionWIPSummarybyVendorwithPayments.vb</DependentUpon>

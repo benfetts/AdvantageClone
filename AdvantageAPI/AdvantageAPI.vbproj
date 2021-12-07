@@ -140,6 +140,11 @@
     <Compile Include="APIDbContext\Entities\AdNumber.vb" />
     <Compile Include="APIDbContext\Entities\AdSize.vb" />
     <Compile Include="APIDbContext\Entities\AlertGroup.vb" />
+    <Compile Include="Classes\Employee\DirectIndirectTimeAPIReport.vb" />
+    <Compile Include="Classes\Employee\DirectIndirectTimeAPIResponse.vb" />
+    <Compile Include="Classes\Employee\DirectTimeAPIReport.vb" />
+    <Compile Include="Classes\Employee\DirectTimeAPIResponse.vb" />
+    <Compile Include="Classes\Employee\EmptyObject.vb" />
     <Compile Include="Classes\General\ARStmtProductContact.vb" />
     <Compile Include="APIDbContext\Entities\Bank.vb" />
     <Compile Include="APIDbContext\Entities\BillingCoop.vb" />
@@ -163,6 +168,8 @@
     <Compile Include="APIDbContext\Entities\SecClient.vb" />
     <Compile Include="Classes\General\GeneralLedgerAccount.vb" />
     <Compile Include="Classes\General\GeneralLedgerAccounts.vb" />
+    <Compile Include="Classes\General\GeneralLedgerDetailAPIReport.vb" />
+    <Compile Include="Classes\General\GeneralLedgerDetailAPIResponse.vb" />
     <Compile Include="Classes\Job\CampaignWithDates.vb" />
     <Compile Include="Classes\Job\PurchaseOrder.vb" />
     <Compile Include="Classes\Job\PurchaseOrderResponse.vb" />
@@ -356,7 +363,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60084</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost/APIDev</IISUrl>
+          <IISUrl>https://localhost/APIDev_vNext</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

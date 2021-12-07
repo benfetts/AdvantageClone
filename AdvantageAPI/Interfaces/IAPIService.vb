@@ -112,7 +112,7 @@ Public Interface IAPIService
                                 JobComponentDescription As String, CampaignId As Integer, DueDate As String, JobTypeCode As String,
                                 ClientDiscountCode As String, BillingCoopCode As String, NonBillFlag As Integer,
                                 MediaDateToBill As String, JobProcessContrl As Integer, JobComponentComment As String, JobComponentBudget As Decimal,
-                                JobTaxFlag As Integer, ClientPO As String) As AddJobAndComponentResponse
+                                JobTaxFlag As Integer, ClientPO As String, Optional ByVal ServiceFeeFlag As String = Nothing) As AddJobAndComponentResponse
 
     <WebInvoke(UriTemplate:="AddOrUpdateEstimate?ServerName={SERVERNAME}&DatabaseName={DATABASENAME}&UseWindowsAuthentication={USEWINDOWSAUTHENTICATION}&UserName={USERNAME}&Password={PASSWORD}&JobNumber={JOBNUMBER}&JobComponentNumber={JOBCOMPONENTNUMBER}&CreateRevision={CREATEREVISION}&AutoApprove={AUTOAPPROVE}",
                Method:="POST", BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
@@ -197,7 +197,8 @@ Public Interface IAPIService
                                 JobNumber As Integer, JobComponentNumber As Short,
                                 JobDescription As String, JobComments As String, JobComponentDescription As String, JobComponentComments As String,
                                 JobClientReference As String, JobProcessControl As Integer, JobType As String, NonBillFlag As Integer, MediaDateToBill As String,
-                                JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer) As AddJobAndComponentResponse
+                                JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer, Optional ByVal ServiceFeeFlag As String = Nothing
+                                ) As AddJobAndComponentResponse
 
     <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
     <OperationContract()>
@@ -667,6 +668,17 @@ Public Interface IAPIService
     <OperationContract()>
     Function LoadCampaigns2WithDates(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, LoadClosed As Boolean) As CampaignAPIResponseWithDates
 
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadDirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectTimeAPIResponse
+
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadDirectIndirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectIndirectTimeAPIResponse
+
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadGeneralLedgerDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, IncludeInactiveAccounts As Boolean) As GeneralLedgerDetailAPIResponse
 
 #End Region
 End Interface

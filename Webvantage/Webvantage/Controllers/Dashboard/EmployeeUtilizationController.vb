@@ -60,8 +60,9 @@ Namespace Controllers.Dashboard
                 ViewBag.DefaultEmpCode = Me.SecuritySession.User.EmployeeCode
             End If
 
-            ViewBag.Year1 = Date.Now.Year - 1
-            ViewBag.Year2 = Date.Now.Year
+            ViewBag.Year1 = Date.Now.Year - 2
+            ViewBag.Year2 = Date.Now.Year - 1
+            ViewBag.Year3 = Date.Now.Year
 
             ViewBag.BackgroundColor = GetUserBackgroundColor(Me.SecuritySession.UserName)
             ViewBag.HasAccessToTimesheet = Me.HasAccessToTimesheet()

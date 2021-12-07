@@ -196,6 +196,9 @@ End Code
             <li id="Year2" style="padding:3px">
                 <Button id="Year2Button" class="k-toggle-button k-button k-group-start wv-icon-button" data-group="toggleYear" onclick="onYear2Click(@ViewBag.Year2)" style="width: 50px !important;" title="@ViewBag.Year2"><span style="font-size: 12px;">@ViewBag.Year2</span></Button>
             </li>
+            <li id="Year3" style="padding:3px">
+                <Button id="Year3Button" class="k-toggle-button k-button k-group-start wv-icon-button" data-group="toggleYear" onclick="onYear3Click(@ViewBag.Year3)" style="width: 50px !important;" title="@ViewBag.Year3"><span style="font-size: 12px;">@ViewBag.Year3</span></Button>
+            </li>
             <li id="Jan" style="padding:3px">
                 <Button id="JanButton" class="k-toggle-button k-button k-group-start wv-icon-button" data-group="toggleGroup" onclick="onMonthClick(1)" style="width: 50px !important;" title="Jan"><span style="font-size: 12px;">Jan</span></Button>
             </li>

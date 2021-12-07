@@ -3421,7 +3421,7 @@ Public Class APIService
                        JobDescription As String, JobComment As String, AccountExecutive As String, JobComponentDescription As String, CampaignId As Integer,
                        DueDate As String, JobTypeCode As String, ClientDiscountCode As String, BillingCoopCode As String, NonBillFlag As Integer,
                        MediaDateToBill As String, JobProcessContrl As Integer, JobComponentComment As String, JobComponentBudget As Decimal,
-                       JobTaxFlag As Integer, ClientPO As String) As AddJobAndComponentResponse Implements IAPIService.AddJobAndComponent
+                       JobTaxFlag As Integer, ClientPO As String, Optional ByVal ServiceFeeFlag As String = Nothing) As AddJobAndComponentResponse Implements IAPIService.AddJobAndComponent
 
         'objects
         Dim AddJobAndComponentResponse As AddJobAndComponentResponse = Nothing
@@ -3458,6 +3458,8 @@ Public Class APIService
         Dim SqlParameterJobTaxFlag As System.Data.SqlClient.SqlParameter = Nothing
 
         Dim SqlParameterClientPO As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterServiceFeeFlag As System.Data.SqlClient.SqlParameter = Nothing
 
         Dim SqlParameterReturnValue As System.Data.SqlClient.SqlParameter = Nothing
         Dim SqlParameterReturnValueMessage As System.Data.SqlClient.SqlParameter = Nothing
@@ -3562,6 +3564,13 @@ Public Class APIService
                     SqlParameterClientPO = New System.Data.SqlClient.SqlParameter("@client_po", SqlDbType.VarChar)
                     SqlParameterClientPO.Value = ClientPO
 
+                    SqlParameterServiceFeeFlag = New System.Data.SqlClient.SqlParameter("@service_fee_flag", SqlDbType.VarChar)
+                    If ServiceFeeFlag = Nothing Then
+                        SqlParameterServiceFeeFlag.Value = DBNull.Value
+                    Else
+                        SqlParameterServiceFeeFlag.Value = ServiceFeeFlag
+                    End If
+
                     SqlParameterJobNumber = New System.Data.SqlClient.SqlParameter("@job_number", SqlDbType.Int)
                     SqlParameterJobNumber.Direction = ParameterDirection.Output
                     SqlParameterJobNumber.Value = Nothing
@@ -3580,15 +3589,17 @@ Public Class APIService
                     SqlParameterReturnValueMessage.Value = ReturnValueMessage
 
                     DbContext.Database.ExecuteSqlCommand(Entity.TransactionalBehavior.DoNotEnsureTransaction,
-                                                         "EXEC advsp_job_comp_add_api @user_id,@action,@job_cli_ref,@job_number_in,@cl_code,@div_code,@prd_code," &
-                                                         "@sales_class,@job_desc,@job_comment,@acct_exec,@job_comp_desc," &
-                                                         "@cmp_id,@due_date,@job_type,@client_discount_code,@billing_coop_code,@non_bill_flag,
+                                                         "EXEC advsp_job_comp_add_api @user_id,@action,@job_cli_ref,@job_number_in,@cl_code,@div_code,@prd_code,
+                                                         @sales_class,@job_desc,@job_comment,@acct_exec,@job_comp_desc,
+                                                         @cmp_id,@due_date,@job_type,@client_discount_code,@billing_coop_code,@non_bill_flag,
                                                          @media_bill_date,@job_process_contrl,@job_comp_comment,@job_comp_budget_am, @job_tax_flag, @client_po,
+                                                         @service_fee_flag,
                                                          @job_number OUTPUT,@job_component_nbr OUTPUT,@ret_val OUTPUT,@ret_val_s OUTPUT",
                                                          SqlParameterUserID, SqlParameterAction, SqlParameterJobClientReference, SqlParameterJobNumberIn, SqlParameterClientCode, SqlParameterDivisionCode, SqlParameterProductCode,
                                                          SqlParameterSalesClassCode, SqlParameterJobDescription, SqlParameterJobComment, SqlParameterAccountExecutive, SqlParameterJobComponentDescription,
                                                          SqlParameterCampaignId, SqlParameterDueDate, SqlParameterJobTypeCode, SqlParameterClientDiscountCode, SqlParameterBillingCoopCode, SqlParameterNonBillFlag,
                                                          SqlParameterMediaDateToBill, SqlParameterJobProcessControl, SqlParameterJobComponentComment, SqlParameterJobComponentBudget, SqlParameterJobTaxFlag, SqlParameterClientPO,
+                                                         SqlParameterServiceFeeFlag,
                                                          SqlParameterJobNumber, SqlParameterJobComponentNumber, SqlParameterReturnValue, SqlParameterReturnValueMessage)
 
                 End Using
@@ -3632,7 +3643,8 @@ Public Class APIService
                             JobNumber As Integer, JobComponentNumber As Short,
                             JobDescription As String, JobComments As String, JobComponentDescription As String, JobComponentComments As String,
                             JobClientReference As String, JobProcessControl As Integer, JobType As String, NonBillFlag As Integer, MediaDateToBill As String,
-                            JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer) As AddJobAndComponentResponse Implements IAPIService.UpdateJobAndComponent
+                            JobComponentBudget As Decimal, JobTaxFlag As Integer, ClientPO As String, CampaignId As Integer, Optional ByVal ServiceFeeFlag As String = Nothing
+                            ) As AddJobAndComponentResponse Implements IAPIService.UpdateJobAndComponent
 
         'objects
         Dim AddJobAndComponentResponse As AddJobAndComponentResponse = Nothing
@@ -3659,6 +3671,8 @@ Public Class APIService
 
         Dim SqlParameterClientPO As System.Data.SqlClient.SqlParameter = Nothing
         Dim SqlParameterCampaignId As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterServiceFeeFlag As System.Data.SqlClient.SqlParameter = Nothing
 
         Dim SqlParameterJobNumberOut As System.Data.SqlClient.SqlParameter = Nothing
         Dim SqlParameterJobComponentNumberOut As System.Data.SqlClient.SqlParameter = Nothing
@@ -3738,6 +3752,13 @@ Public Class APIService
                     SqlParameterCampaignId = New System.Data.SqlClient.SqlParameter("@cmp_id", SqlDbType.Int)
                     SqlParameterCampaignId.Value = CampaignId
 
+                    SqlParameterServiceFeeFlag = New System.Data.SqlClient.SqlParameter("@service_fee_flag", SqlDbType.VarChar)
+                    If ServiceFeeFlag = Nothing Then
+                        SqlParameterServiceFeeFlag.Value = DBNull.Value
+                    Else
+                        SqlParameterServiceFeeFlag.Value = ServiceFeeFlag
+                    End If
+
                     SqlParameterJobNumberOut = New System.Data.SqlClient.SqlParameter("@job_number_out", SqlDbType.Int)
                     SqlParameterJobNumberOut.Direction = ParameterDirection.Output
                     SqlParameterJobNumberOut.Value = Nothing
@@ -3759,12 +3780,12 @@ Public Class APIService
                                                          "EXEC advsp_job_comp_update_api @user_id,@action,@job_number,@job_component_nbr," &
                                                          "@job_desc,@job_comments,@job_comp_desc,@job_comp_comments," &
                                                          "@job_cli_ref,@job_process_contrl,@job_type,@non_bill_flag,@media_bill_date," &
-                                                         "@job_comp_budget_am, @job_tax_flag, @client_po, @cmp_id," &
+                                                         "@job_comp_budget_am, @job_tax_flag, @client_po, @cmp_id, @service_fee_flag," &
                                                          "@ret_val OUTPUT,@ret_val_s OUTPUT",
                                                          SqlParameterUserID, SqlParameterAction, SqlParameterJobNumber, SqlParameterJobComponentNumber,
                                                          SqlParameterJobDescription, SqlParameterJobComments, SqlParameterJobComponentDescription, SqlParameterJobComponentComments,
                                                          SqlParameterJobClientReference, SqlParameterJobProcessControl, SqlParameterJobType, SqlParameterNonBillFlag, SqlParameterMediaDateToBill,
-                                                         SqlParameterJobComponentBudget, SqlParameterJobTaxFlag, SqlParameterClientPO, SqlParameterCampaignId,
+                                                         SqlParameterJobComponentBudget, SqlParameterJobTaxFlag, SqlParameterClientPO, SqlParameterCampaignId, SqlParameterServiceFeeFlag,
                                                          SqlParameterReturnValue, SqlParameterReturnValueMessage)
 
                 End Using
@@ -13191,7 +13212,7 @@ Public Class APIService
 
         Dim PurchaseOrders As New List(Of PurchaseOrder)
 
-        Dim X As Integer
+        'Dim X As Integer
         Dim Sql As String
 
         Try
@@ -13364,7 +13385,7 @@ Public Class APIService
 
         Dim sql As String
 
-        Dim Campaign As Campaign
+        'Dim Campaign As Campaign
 
         Campaigns = New Generic.List(Of CampaignWithDates)
 
@@ -13417,6 +13438,298 @@ Public Class APIService
         End If
 
         LoadCampaigns2WithDates = ResultAPIResponse
+
+    End Function
+
+    Public Function LoadDirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectTimeAPIResponse Implements IAPIService.LoadDirectTime
+
+        Dim DirectTimeAPIResponse As DirectTimeAPIResponse
+        Dim DirectTimeReport As New Generic.List(Of DirectTimeAPIReport)
+
+        DirectTimeAPIResponse = New DirectTimeAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        Dim SqlParameterReturnValue As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterReturnValueMessage As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim SqlParameterCampaignID As System.Data.SqlClient.SqlParameter = Nothing
+        Dim SqlParameterSalesClass As System.Data.SqlClient.SqlParameter = Nothing
+
+        Dim StartDate_ As Nullable(Of Date) = Nothing
+        Dim EndDate_ As Nullable(Of Date) = Nothing
+
+        Dim EstimateNumber As Integer = 0
+        Dim EstimateComponentNumber As Integer = 0
+        Dim EstimateQuoteNumber As Integer = 0
+        Dim EstimateRevisionNumber As Integer = 0
+        Dim ReturnValue As Integer = 0
+        Dim ReturnValueMessage As String = String.Empty
+
+        Dim DateType_ As Nullable(Of Integer)
+
+        If String.IsNullOrWhiteSpace(DateType) Then
+            DateType = "0" 'Default
+        End If
+
+        If InStr("0,1,2", DateType) = 0 Then
+            ErrorMessage = "Date Type must be (Date=0, EnteredDate=1, ApprovalDate=2)."
+        Else
+            DateType_ = DateType
+        End If
+
+        If ErrorMessage = "" Then
+            StartDate_ = ConvertDate(StartDate, StartDate_, "StartDate", ErrorMessage)
+        End If
+
+        If ErrorMessage = "" Then
+            EndDate_ = ConvertDate(EndDate, EndDate_, "EndDate", ErrorMessage)
+        End If
+
+        If ErrorMessage = "" Then
+            If String.IsNullOrWhiteSpace(StartDate) = True OrElse String.IsNullOrWhiteSpace(EndDate) = True Then
+                ErrorMessage = "Please provide valid start & end dates."
+            End If
+        End If
+
+        If ErrorMessage = "" Then
+            If StartDate_ > EndDate_ Then
+                ErrorMessage = "Please provide a start date on or before the end date."
+            End If
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = True Then
+
+            Try
+
+                If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, ErrorMessage) Then
+
+                    Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                        Dim SelectedJobs As Generic.List(Of Integer) = Nothing
+                        Dim SelectedJobsString As Generic.List(Of String) = Nothing
+
+                        Dim SqlParameterCriteria As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterFromDate As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterToDate As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+
+                        Dim SqlParameterClientCodeList As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterJobList As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterCampaignIDList As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterDepartmentList As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterEmployeeList As System.Data.SqlClient.SqlParameter = Nothing
+                        Dim SqlParameterFunctionList As System.Data.SqlClient.SqlParameter = Nothing
+
+                        SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
+                        SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
+                        SqlParameterToDate = New System.Data.SqlClient.SqlParameter("@END_DATE", SqlDbType.SmallDateTime)
+                        SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@UserID", SqlDbType.VarChar)
+
+                        SqlParameterClientCodeList = New System.Data.SqlClient.SqlParameter("@CLIENT_LIST", SqlDbType.VarChar)
+                        SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@DIVISION_LIST", SqlDbType.VarChar)
+                        SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@PRODUCT_LIST", SqlDbType.VarChar)
+                        SqlParameterJobList = New System.Data.SqlClient.SqlParameter("@JOB_LIST", SqlDbType.VarChar)
+                        SqlParameterCampaignIDList = New System.Data.SqlClient.SqlParameter("@CampaignIDList", SqlDbType.VarChar)
+                        SqlParameterDepartmentList = New System.Data.SqlClient.SqlParameter("@DepartmentsList", SqlDbType.VarChar)
+                        SqlParameterEmployeeList = New System.Data.SqlClient.SqlParameter("@EmployeesList", SqlDbType.VarChar)
+                        SqlParameterFunctionList = New System.Data.SqlClient.SqlParameter("@FunctionsList", SqlDbType.VarChar)
+
+
+                        SqlParameterCriteria.Value = 0  '@DATE_TYPE - Date=0, EnteredDate=1, ApprovalDate=2
+                        SqlParameterFromDate.Value = StartDate_
+                        SqlParameterToDate.Value = EndDate_
+                        SqlParameterUserID.Value = UserName
+
+                        'Not Used for API
+                        SqlParameterClientCodeList.Value = System.DBNull.Value
+                        SqlParameterClientDivisionCodeList.Value = System.DBNull.Value
+                        SqlParameterClientDivisionProductCodeList.Value = System.DBNull.Value
+                        SqlParameterJobList.Value = System.DBNull.Value
+                        SqlParameterCampaignIDList.Value = System.DBNull.Value
+                        SqlParameterDepartmentList.Value = System.DBNull.Value
+                        SqlParameterEmployeeList.Value = System.DBNull.Value
+                        SqlParameterFunctionList.Value = System.DBNull.Value
+
+
+                        'DirectTimeAPIResponse.Results
+                        DirectTimeReport = DbContext.Database.SqlQuery(Of DirectTimeAPIReport) _
+                                                                                    ("EXEC [dbo].[advsp_direct_time_load] @DATE_TYPE, @START_DATE, @END_DATE, @UserID, " &
+                                                                                     "@CLIENT_LIST, @DIVISION_LIST, @PRODUCT_LIST, @JOB_LIST, @CampaignIDList, @DepartmentsList, @EmployeesList, @FunctionsList",
+                                                                                     SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterUserID,
+                                                                                     SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterJobList, SqlParameterCampaignIDList, SqlParameterDepartmentList, SqlParameterEmployeeList, SqlParameterFunctionList).ToList
+
+                    End Using
+
+                End If
+
+            Catch ex As Exception
+                ProcessException(ex, "APIService-NotCaught")
+                ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+            End Try
+
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            DirectTimeAPIResponse.Message = ErrorMessage
+            DirectTimeAPIResponse.IsSuccessful = False
+            DirectTimeAPIResponse.IsSuccessful = False
+            DirectTimeAPIResponse.Results = Nothing
+        Else
+            DirectTimeAPIResponse.Results = DirectTimeReport
+            DirectTimeAPIResponse.Message = CStr(DirectTimeAPIResponse.Results.Count) + " records"
+        End If
+
+
+        LoadDirectTime = DirectTimeAPIResponse
+
+    End Function
+
+    Function LoadDirectIndirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectIndirectTimeAPIResponse Implements IAPIService.LoadDirectIndirectTime
+
+        Dim DirectIndirectTimeAPIResponse As DirectIndirectTimeAPIResponse
+        Dim DirectIndirectTimeReport As Generic.List(Of DirectIndirectTimeAPIReport) = Nothing
+
+        DirectIndirectTimeAPIResponse = New DirectIndirectTimeAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        Dim StartDate_ As Nullable(Of Date) = Nothing
+        Dim EndDate_ As Nullable(Of Date) = Nothing
+
+        Dim DateType_ As Nullable(Of Integer)
+
+        If String.IsNullOrWhiteSpace(DateType) Then
+            DateType = "0" 'Default
+        End If
+
+        If InStr("0,1,2", DateType) = 0 Then
+            ErrorMessage = "Date Type must be (Date=0, EnteredDate=1, ApprovalDate=2)."
+        Else
+            DateType_ = DateType
+        End If
+
+        If ErrorMessage = "" Then
+            StartDate_ = ConvertDate(StartDate, StartDate_, "StartDate", ErrorMessage)
+        End If
+
+        If ErrorMessage = "" Then
+            EndDate_ = ConvertDate(EndDate, EndDate_, "EndDate", ErrorMessage)
+        End If
+
+        If ErrorMessage = "" Then
+            If String.IsNullOrWhiteSpace(StartDate) = True OrElse String.IsNullOrWhiteSpace(EndDate) = True Then
+                ErrorMessage = "Please provide valid start & end dates."
+            End If
+        End If
+
+        If ErrorMessage = "" Then
+            If StartDate_ > EndDate_ Then
+                ErrorMessage = "Please provide a start date on or before the end date."
+            End If
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = True Then
+
+            Try
+
+                If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, ErrorMessage) Then
+
+                    Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                        DirectIndirectTimeReport = DbContext.Database.SqlQuery(Of DirectIndirectTimeAPIReport)(String.Format("EXEC [dbo].[advsp_indirect_time_load] {0}, '{1}', '{2}', '{3}'", DateType_, [StartDate], [EndDate], APISession.UserCode)).ToList
+
+                    End Using
+
+                End If
+
+            Catch ex As Exception
+                ProcessException(ex, "APIService-NotCaught")
+                ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+            End Try
+
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            DirectIndirectTimeAPIResponse.Message = ErrorMessage
+            DirectIndirectTimeAPIResponse.IsSuccessful = False
+            DirectIndirectTimeAPIResponse.IsSuccessful = False
+            DirectIndirectTimeAPIResponse.Results = Nothing
+        Else
+            DirectIndirectTimeAPIResponse.Results = DirectIndirectTimeReport
+            DirectIndirectTimeAPIResponse.Message = CStr(DirectIndirectTimeAPIResponse.Results.Count) + " records"
+        End If
+
+
+        LoadDirectIndirectTime = DirectIndirectTimeAPIResponse
+
+
+    End Function
+
+    Function LoadGeneralLedgerDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, IncludeInactiveAccounts As Boolean) As GeneralLedgerDetailAPIResponse Implements IAPIService.LoadGeneralLedgerDetail
+
+        Dim GeneralLedgerDetailAPIResponse As GeneralLedgerDetailAPIResponse
+        Dim GeneralLedgerDetailReports As Generic.List(Of GeneralLedgerDetailAPIReport) = Nothing
+
+        GeneralLedgerDetailAPIResponse = New GeneralLedgerDetailAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        Dim IncludeInactiveAccounts_ As Integer
+
+        IncludeInactiveAccounts_ = IIf(IncludeInactiveAccounts = True, 1, 0)
+
+        If ErrorMessage = "" Then
+            If String.IsNullOrWhiteSpace(PostPeriodStart) = True OrElse String.IsNullOrWhiteSpace(PostPeriodEnd) = True Then
+                ErrorMessage = "Please provide valid start & end posting periods."
+            End If
+        End If
+
+        If ErrorMessage = "" Then
+            If PostPeriodStart > PostPeriodEnd Then
+                ErrorMessage = "Please provide a PostPeriodStart on or before the PostPeriodEnd."
+            End If
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = True Then
+
+            Try
+
+                If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, ErrorMessage) Then
+
+                    Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                        GeneralLedgerDetailReports = DbContext.Database.SqlQuery(Of GeneralLedgerDetailAPIReport)(String.Format("EXEC [dbo].[advsp_gl_detail_dataset_load] '{0}', '{1}', {2}, {3}", PostPeriodStart, PostPeriodEnd, 0, IncludeInactiveAccounts_)).ToList
+
+                    End Using
+
+                End If
+
+            Catch ex As Exception
+                ProcessException(ex, "APIService-NotCaught")
+                ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+            End Try
+
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            GeneralLedgerDetailAPIResponse.Message = ErrorMessage
+            GeneralLedgerDetailAPIResponse.IsSuccessful = False
+            GeneralLedgerDetailAPIResponse.IsSuccessful = False
+            GeneralLedgerDetailAPIResponse.Results = Nothing
+        Else
+            GeneralLedgerDetailAPIResponse.Results = GeneralLedgerDetailReports
+            GeneralLedgerDetailAPIResponse.Message = CStr(GeneralLedgerDetailAPIResponse.Results.Count) + " records"
+        End If
+
+
+        LoadGeneralLedgerDetail = GeneralLedgerDetailAPIResponse
+
 
     End Function
 

@@ -224,7 +224,7 @@ BEGIN
 
 			INSERT INTO @GLOTHER_TBL
 				SELECT
-					GLO.OTHER_CODE
+					 DISTINCT GLO.OTHER_CODE
 				FROM
 					(SELECT DISTINCT
 						[OTHER_CODE] = LTRIM(RTRIM(items))
@@ -237,7 +237,7 @@ BEGIN
 
 		END
 
-	END
+	END          
 	
 	
 	IF @USE_BASE = 1 

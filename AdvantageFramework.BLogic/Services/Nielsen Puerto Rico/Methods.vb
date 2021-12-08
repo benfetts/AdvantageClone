@@ -7,7 +7,7 @@
 
 #Region " Constants "
 
-        Public Const NIELSEN_PUERTO_RICO_URL = "ftpdatapm.pr.agbnielsen.com"
+        Public Const NIELSEN_PUERTO_RICO_URL = "ftp.pr.agbnielsen.com"
 
 #End Region
 
@@ -880,7 +880,7 @@
 
                 Catch ex As Exception
                     DbTransaction.Rollback()
-                    Throw ex
+                    Throw New Exception(ex.Message & " " & NPRFile.FileName)
                 Finally
                     DbContext.Configuration.AutoDetectChangesEnabled = True
                     DbContext.Database.Connection.Close()
@@ -901,21 +901,23 @@
             Dim NPRFileNames As Generic.List(Of String) = Nothing
             Dim NPRFiles As Generic.List(Of AdvantageFramework.Database.Entities.NPRFile) = Nothing
             Dim FileStream As System.IO.FileStream = Nothing
+            Dim SftpExceptionStatus As Rebex.Net.SftpExceptionStatus = Nothing
+            Dim SFtpExceptionMessage As String = Nothing
 
-            If AdvantageFramework.FTP.GetDirectoriesFromFTP(NIELSEN_PUERTO_RICO_URL, 21, Rebex.Net.SslMode.None, "delacruz", "d3l@1920", "Advantage", LocalPath, Directories) Then
+            If AdvantageFramework.FTP.GetDirectoriesFromSFTP(NIELSEN_PUERTO_RICO_URL, 22, Rebex.Net.SslMode.None, "delacruz", "d3l@1920", "data/Advantage", LocalPath, Directories) Then
 
                 For Each Directory In Directories
 
                     NPRFileNames = (From Entity In DbContext.GetQuery(Of Database.Entities.NPRFile)
                                     Select Entity.FileName).ToList
 
-                    If AdvantageFramework.FTP.DownloadFilesFromFTP(NIELSEN_PUERTO_RICO_URL, 21, Rebex.Net.SslMode.None, "delacruz", "d3l@1920", "/Advantage/" & Directory, LocalPath, DownloadedFiles, Rebex.IO.ActionOnExistingFiles.SkipAll, NPRFileNames) Then
+                    If AdvantageFramework.FTP.DownloadFilesFromSFTP(NIELSEN_PUERTO_RICO_URL, 22, "delacruz", "d3l@1920", "data/Advantage/" & Directory, LocalPath, DownloadedFiles, SftpExceptionStatus, SFtpExceptionMessage, NPRFileNames) Then
 
                         Downloaded = True
 
                     Else
 
-                        ErrorMessage = "Problem downloading files from FTP site."
+                        ErrorMessage = "Problem downloading files from SFTP site."
 
                     End If
 
@@ -923,7 +925,7 @@
 
             Else
 
-                ErrorMessage = "Could not get directories from FTP site."
+                ErrorMessage = "Could not get directories from SFTP site."
 
             End If
 
@@ -971,7 +973,16 @@
 
                 For Each NPRFile In NPRFiles
 
-                    ProcessFile(DbContext, NPRFile)
+                    Try
+
+                        ProcessFile(DbContext, NPRFile)
+
+                    Catch ex As Exception
+
+                        ErrorMessage = ex.Message
+                        Throw New Exception(ErrorMessage)
+
+                    End Try
 
                 Next
 

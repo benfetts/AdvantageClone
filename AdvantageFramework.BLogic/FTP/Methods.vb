@@ -212,103 +212,112 @@
 
         End Function
         Public Function DownloadFilesFromSFTP(ByVal FTPHost As String, ByVal FTPPort As Integer,
-											  ByVal UserName As String, ByVal Password As String,
-											  ByVal FTPPath As String, ByVal LocalPath As String,
-											  ByRef DownloadedFiles As Generic.List(Of String),
-											  ByRef SftpExceptionStatus As Rebex.Net.SftpExceptionStatus,
-											  ByRef SFtpExceptionMessage As String) As Boolean
+                                              ByVal UserName As String, ByVal Password As String,
+                                              ByVal FTPPath As String, ByVal LocalPath As String,
+                                              ByRef DownloadedFiles As Generic.List(Of String),
+                                              ByRef SftpExceptionStatus As Rebex.Net.SftpExceptionStatus,
+                                              ByRef SFtpExceptionMessage As String,
+                                              Optional ByVal ExcludeFiles As Generic.List(Of String) = Nothing) As Boolean
 
-			'objects
-			Dim Downloaded As Boolean = False
-			Dim SFTP As Rebex.Net.Sftp = Nothing
-			Dim SftpItemCollection As Rebex.Net.SftpItemCollection = Nothing
+            'objects
+            Dim Downloaded As Boolean = False
+            Dim SFTP As Rebex.Net.Sftp = Nothing
+            Dim SftpItemCollection As Rebex.Net.SftpItemCollection = Nothing
 
-			Try
+            Try
 
-				SFTP = New Rebex.Net.Sftp
+                SFTP = New Rebex.Net.Sftp
 
-				SFTP.Timeout = 30000
+                SFTP.Timeout = 30000
 
-				SFTP.Connect(FTPHost, FTPPort)
+                SFTP.Connect(FTPHost, FTPPort)
 
-				If SFTP.IsConnected Then
+                If SFTP.IsConnected Then
 
-					SFTP.Login(UserName, Password)
+                    SFTP.Login(UserName, Password)
 
-				End If
+                End If
 
-			Catch ex As Exception
+            Catch ex As Exception
 
-				If TypeOf ex Is Rebex.Net.SftpException Then
+                If TypeOf ex Is Rebex.Net.SftpException Then
 
-					SftpExceptionStatus = CType(ex, Rebex.Net.SftpException).Status
-					SFtpExceptionMessage = CType(ex, Rebex.Net.SftpException).Message
+                    SftpExceptionStatus = CType(ex, Rebex.Net.SftpException).Status
+                    SFtpExceptionMessage = CType(ex, Rebex.Net.SftpException).Message
 
-				Else
+                Else
 
-					If SFTP IsNot Nothing Then
+                    If SFTP IsNot Nothing Then
 
-						SFTP.Dispose()
+                        SFTP.Dispose()
 
-					End If
+                    End If
 
-					SFTP = Nothing
+                    SFTP = Nothing
 
-				End If
+                End If
 
-			End Try
+            End Try
 
-			If SFTP IsNot Nothing AndAlso SFTP.IsAuthenticated Then
+            If SFTP IsNot Nothing AndAlso SFTP.IsAuthenticated Then
 
-				If DownloadedFiles Is Nothing Then
+                If DownloadedFiles Is Nothing Then
 
-					DownloadedFiles = New Generic.List(Of String)
+                    DownloadedFiles = New Generic.List(Of String)
 
-				End If
+                End If
 
-				LocalPath = AdvantageFramework.StringUtilities.AppendTrailingCharacter(LocalPath, "\")
+                LocalPath = AdvantageFramework.StringUtilities.AppendTrailingCharacter(LocalPath, "\")
 
-				Try
+                Try
 
-					Downloaded = True
+                    Downloaded = True
 
-					If String.IsNullOrWhiteSpace(FTPPath) OrElse FTPPath = "/" Then
+                    If String.IsNullOrWhiteSpace(FTPPath) OrElse FTPPath = "/" Then
 
-						SftpItemCollection = SFTP.GetList()
+                        SftpItemCollection = SFTP.GetList()
 
-					Else
+                    Else
 
-						SftpItemCollection = SFTP.GetList(FTPPath)
+                        SftpItemCollection = SFTP.GetList(FTPPath)
 
-					End If
+                    End If
 
-					For Each RebexItem In SftpItemCollection
+                    For Each RebexItem In SftpItemCollection
 
-						If RebexItem.IsFile Then
+                        If RebexItem.IsFile Then
 
-							Try
+                            Try
 
-								SFTP.Download(RebexItem.Path, LocalPath)
+                                If System.IO.File.Exists(System.IO.Path.Combine(LocalPath, RebexItem.Name)) = False Then
 
-								DownloadedFiles.Add(LocalPath & RebexItem.Name)
+                                    SFTP.Download(RebexItem.Path, LocalPath)
 
-							Catch ex As Exception
-								Downloaded = False
-							End Try
+                                    DownloadedFiles.Add(LocalPath & RebexItem.Name)
 
-						End If
+                                ElseIf ExcludeFiles IsNot Nothing AndAlso ExcludeFiles.Contains(LocalPath & RebexItem.Name) = False Then
 
-					Next
+                                    DownloadedFiles.Add(LocalPath & RebexItem.Name)
 
-				Catch ex As Exception
-					Downloaded = False
-				End Try
+                                End If
 
-			End If
+                            Catch ex As Exception
+                                Downloaded = False
+                            End Try
 
-			DownloadFilesFromSFTP = Downloaded
+                        End If
 
-		End Function
+                    Next
+
+                Catch ex As Exception
+                    Downloaded = False
+                End Try
+
+            End If
+
+            DownloadFilesFromSFTP = Downloaded
+
+        End Function
         Private Function FTPValidation(FTPHost As String, FTPPort As Integer,
                                       UserName As String, Password As String,
                                       SSLModeForFTP As Rebex.Net.SslMode, ErrorMessage As String) As Boolean
@@ -1144,6 +1153,86 @@
             End If
 
             GetDirectoriesFromFTP = Downloaded
+
+        End Function
+        Public Function GetDirectoriesFromSFTP(FTPHost As String, FTPPort As Integer,
+                                               SSLMode As Rebex.Net.SslMode,
+                                               UserName As String, Password As String,
+                                               FTPPath As String, LocalPath As String,
+                                               ByRef Directories As Generic.List(Of String)) As Boolean
+
+            'objects
+            Dim Downloaded As Boolean = False
+            Dim SFTP As Rebex.Net.Sftp = Nothing
+            Dim SFtpItemCollection As Rebex.Net.SftpItemCollection = Nothing
+
+            Try
+
+                SFTP = New Rebex.Net.Sftp
+
+                SFTP.Timeout = 30000
+
+                SFTP.Connect(FTPHost, FTPPort)
+
+                If SFTP.IsConnected Then
+
+                    SFTP.Login(UserName, Password)
+
+                End If
+
+            Catch ex As Exception
+
+                If SFTP IsNot Nothing Then
+
+                    SFTP.Dispose()
+
+                End If
+
+                SFTP = Nothing
+
+            End Try
+
+            If SFTP IsNot Nothing AndAlso SFTP.IsAuthenticated Then
+
+                If Directories Is Nothing Then
+
+                    Directories = New Generic.List(Of String)
+
+                End If
+
+                LocalPath = AdvantageFramework.StringUtilities.AppendTrailingCharacter(LocalPath, "\")
+
+                Try
+
+                    Downloaded = True
+
+                    If String.IsNullOrWhiteSpace(FTPPath) OrElse FTPPath = "/" Then
+
+                        SFtpItemCollection = SFTP.GetList()
+
+                    Else
+
+                        SFtpItemCollection = SFTP.GetList(FTPPath)
+
+                    End If
+
+                    For Each RebexItem In SFtpItemCollection
+
+                        If RebexItem.IsDirectory Then
+
+                            Directories.Add(RebexItem.Name)
+
+                        End If
+
+                    Next
+
+                Catch ex As Exception
+                    Downloaded = False
+                End Try
+
+            End If
+
+            GetDirectoriesFromSFTP = Downloaded
 
         End Function
 

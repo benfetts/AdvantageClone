@@ -185,7 +185,7 @@
                                                                                                                                                         "[Budget4] = CAST(GLS.GLSBUD4  AS decimal(18,2)), " &
                                                                                                                                                         "[PostPeriodCode] = GLS.GLSPP, " &
                                                                                                                                                         "[Year] = CASE WHEN ISNUMERIC(PP.PPGLYEAR) = 1 THEN CAST(PP.PPGLYEAR AS int) ELSE CAST(0 AS int) END, " &
-                                                                                                                                                        "[Month] = CASE WHEN PP.PPGLMONTH < 13 AND PP.PPGLMONTH IS NOT NULL THEN CAST(PP.PPGLMONTH AS int) ELSE CAST(13 AS int) END, " &
+                                                                                                                                                        "[Month] = CASE WHEN ISNUMERIC(PP.PPGLMONTH) = 1 THEN CAST(PP.PPGLMONTH AS int) ELSE CAST(99 AS int) END, " &
                                                                                                                                                         "[OfficeCode] = O.OFFICE_CODE " &
                                                                                                                                                     "FROM " &
                                                                                                                                                         "[dbo].[GLSUMMARY] AS GLS INNER JOIN " &

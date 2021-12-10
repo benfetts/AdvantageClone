@@ -495,6 +495,23 @@
             End If
 
         End Sub
+        Private Sub LabelHeaderOrderNumber_ImpressionsLabel_BeforePrint(sender As Object, e As Drawing.Printing.PrintEventArgs) Handles LabelHeaderOrderNumber_ImpressionsLabel.BeforePrint
+
+            If _MediaFrom.Substring(0, 1) = "O" Then
+
+                If _MediaOrderPrintSetting.IncludeImpressions.GetValueOrDefault(0) = 0 Then
+
+                    e.Cancel = True
+
+                End If
+
+            ElseIf _MediaFrom.Substring(0, 1) <> "I" Then
+
+                e.Cancel = True
+
+            End If
+
+        End Sub
         Private Sub LabelDetail_Impressions_BeforePrint(sender As Object, e As Drawing.Printing.PrintEventArgs) Handles LabelDetail_Impressions.BeforePrint
 
             If _MediaFrom.Substring(0, 1) = "O" Then

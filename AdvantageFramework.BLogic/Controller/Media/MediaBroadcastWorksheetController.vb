@@ -29472,13 +29472,19 @@
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
                                                          Where Entity.Number = NielsenTVStationCode
-                                                         Select Entity).First
+                                                         Select Entity).FirstOrDefault
 
                                 Else
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
                                                          Where Entity.ID = NielsenTVStationCode
-                                                         Select Entity).First
+                                                         Select Entity).FirstOrDefault
+
+                                End If
+
+                                If ComscoreTVStation Is Nothing Then
+
+                                    Exit For
 
                                 End If
 
@@ -30155,17 +30161,23 @@
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
                                                          Where Entity.Number = NielsenTVStationCode
-                                                         Select Entity).First
+                                                         Select Entity).FirstOrDefault
 
                                 Else
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
                                                          Where Entity.ID = NielsenTVStationCode
-                                                         Select Entity).First
+                                                         Select Entity).FirstOrDefault
 
                                 End If
 
                                 'CallLetters = ComscoreTVStation.CallLetters
+
+                                If ComscoreTVStation Is Nothing Then
+
+                                    Exit For
+
+                                End If
 
                                 MediaSpotTVResearchDaytimeTypes = New Generic.List(Of AdvantageFramework.Classes.Media.Nielsen.MediaSpotTVResearchDaytimeType)
 
@@ -30621,13 +30633,19 @@
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
                                                          Where Entity.Number = NielsenTVStationCode
-                                                         Select Entity).First
+                                                         Select Entity).FirstOrDefault
 
                                 Else
 
                                     ComscoreTVStation = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
                                                          Where Entity.ID = NielsenTVStationCode
-                                                         Select Entity).First
+                                                         Select Entity).FirstOrDefault
+
+                                End If
+
+                                If ComscoreTVStation Is Nothing Then
+
+                                    Exit For
 
                                 End If
 

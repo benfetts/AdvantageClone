@@ -697,6 +697,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_delete_selections.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_approve_invoice.proc.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\advsp_media_manager_load_approve_invoice_orders.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

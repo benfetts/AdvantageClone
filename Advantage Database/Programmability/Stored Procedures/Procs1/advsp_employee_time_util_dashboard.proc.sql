@@ -729,8 +729,8 @@ BEGIN
 			--NULL as [Year],
 			--E.STD_ANNUAL_HRS as StandardAnnualHours,
 			ISNULL(StandardHours,0) as RequiredHours,
-			ISNULL((StandardHours - EmployeeTimeOff) * (ISNULL(E.DIRECT_HRS_PER,0.000000) * .01),0) as DirectHoursGoal,
-			ISNULL((StandardHours - EmployeeTimeOff),0) * (ISNULL(E.BILLABLE_HOURS_GOAL,0) / 100) as BillableHoursGoal,
+			CASE WHEN ISNULL((StandardHours - EmployeeTimeOff),0) < 0 THEN 0 ELSE ISNULL((StandardHours - EmployeeTimeOff) * (ISNULL(E.DIRECT_HRS_PER,0.000000) * .01),0) END as DirectHoursGoal,
+			CASE WHEN ISNULL((StandardHours - EmployeeTimeOff),0) < 0 THEN 0 ELSE ISNULL((StandardHours - EmployeeTimeOff),0) * (ISNULL(E.BILLABLE_HOURS_GOAL,0.000000) * .01) END as BillableHoursGoal,
 			BillableHours,
 			BillableAmount,
 			NonBillableHours,
@@ -750,8 +750,8 @@ BEGIN
 			CASE WHEN ISNULL(StandardHours,0) <> 0 THEN ISNULL(((NonDirectHours)/(StandardHours)),0) * 100 ELSE 0 END as PercentNonDirect,
 			CASE WHEN ISNULL((StandardHours),0) <> 0 THEN ISNULL(((BillableHours + NonBillableHours + AgencyHours + NewBusinessHours + NonDirectHours)/(StandardHours)),0) * 100 ELSE 0 END as PercentOfRequiredHours,
 			CASE WHEN (StandardHours - EmployeeTimeOff) * (ISNULL(E.DIRECT_HRS_PER,0.000000) * .01) > 0 THEN ISNULL(((BillableHours + NonBillableHours + AgencyHours + NewBusinessHours))/((StandardHours - EmployeeTimeOff) * (ISNULL(E.DIRECT_HRS_PER,0.000000) * .01)),0) * 100 ELSE 0 END as PercentOfDirectHoursGoal,
-			CAST (CASE WHEN ISNULL(StandardHours - EmployeeTimeOff,0) * (ISNULL(E.BILLABLE_HOURS_GOAL,0) / 100) <> 0 THEN 
-			ISNULL(((BillableHours)/(ISNULL(StandardHours - EmployeeTimeOff,0) * (ISNULL(E.BILLABLE_HOURS_GOAL,0) / 100)) * 100),0) ELSE 0 END AS decimal(19,2)) as PercentOfBillableHoursGoal,
+			CAST (CASE WHEN ISNULL(StandardHours - EmployeeTimeOff,0) * (ISNULL(E.BILLABLE_HOURS_GOAL,0.000000) * .01) > 0 THEN 
+			ISNULL(((BillableHours)/(ISNULL(StandardHours - EmployeeTimeOff,0) * (ISNULL(E.BILLABLE_HOURS_GOAL,0.000000) * .01)) * 100),0) ELSE 0 END AS decimal(19,2)) as PercentOfBillableHoursGoal,
 			BilledHours,
 			BilledAmount,
 			WIPHours,

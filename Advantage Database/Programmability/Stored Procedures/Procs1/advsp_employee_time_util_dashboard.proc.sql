@@ -704,6 +704,12 @@ BEGIN
         WHERE WS.WORK_DATE BETWEEN @StartDate and @EndDate AND USERID = @UserID AND WS.EMP_CODE NOT IN (SELECT EmployeeCode FROM #emp_util_time_data_total) AND EC.EMP_TERM_DATE IS NULL
         GROUP BY WS.EMP_CODE
 
+        INSERT INTO #emp_util_time_data_total
+        SELECT EMP_CODE, NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        FROM EMPLOYEE_CLOAK EC
+        WHERE EMP_CODE NOT IN (SELECT EmployeeCode FROM #emp_util_time_data_total) AND EC.EMP_TERM_DATE IS NULL
+        
+
 		SELECT 			
 			E.OFFICE_CODE as EmployeeOffice,
 			O.OFFICE_NAME as EmployeeOfficeName,

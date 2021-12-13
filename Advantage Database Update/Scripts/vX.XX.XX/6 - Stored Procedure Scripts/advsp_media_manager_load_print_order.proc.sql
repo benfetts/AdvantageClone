@@ -686,7 +686,7 @@ END ELSE IF @MediaType = 'O' BEGIN
 							 ELSE 0 
 							 END,
 		[SubTypeDescription] = t.OD_DESC,
-		[Impressions] = CAST(COALESCE(d.IMPRESSIONS,0) as varchar),
+		[Impressions] = REPLACE(CONVERT(varchar, CAST(COALESCE(d.IMPRESSIONS,0) AS money), 1),'.00',''),
 		[BillTypeFlag] = d.BILL_TYPE_FLAG,
 		[ShippingAddressFlag] = mpd.SHIP_ADDR_FLAG,
 		[IncludeRep1] = mpd.INCLUDE_REP1,

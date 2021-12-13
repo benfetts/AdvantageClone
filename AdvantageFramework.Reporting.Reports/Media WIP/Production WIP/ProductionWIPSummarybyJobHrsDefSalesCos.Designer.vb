@@ -1040,7 +1040,6 @@
             Me.ProductFooter.HeightF = 32.29167!
             Me.ProductFooter.Level = 1
             Me.ProductFooter.Name = "ProductFooter"
-            Me.ProductFooter.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBand
             '
             'label37
             '

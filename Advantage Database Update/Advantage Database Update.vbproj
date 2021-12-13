@@ -289,6 +289,9 @@
     <Content Include="Scripts\vX.XX.XX\2 - Table Scripts\Run Second\ALERT_RCPT_X_REVIEWER_DISMISSED.table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Columns to VENDOR for 1099 alternative name.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\3 - Table Update Scripts\Add Column ATTACHMENT_PATH to ACCESS_EMAIL.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

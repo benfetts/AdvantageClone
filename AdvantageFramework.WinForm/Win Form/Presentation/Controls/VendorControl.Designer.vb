@@ -27,64 +27,6 @@
             Me.components = New System.ComponentModel.Container()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(VendorControl))
             Me.TabControlControl_VendorDetails = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlPanelMainTab_Main = New DevComponents.DotNetBar.TabControlPanel()
-            Me.LabelMain_QuickbooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.SearchableComboBoxMain_QuickBooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
-            Me.GridView17 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
-            Me.LabelMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.CheckBoxMain_Television = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Radio = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_OutOfHome = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Newspaper = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Magazine = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.CheckBoxMain_Internet = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.LabelMain_MediaCategoriesAllowed = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.ComboBoxMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
-            Me.TableLayoutPanelMain_TableLayout = New System.Windows.Forms.TableLayoutPanel()
-            Me.PanelTableLayout_RightSection = New System.Windows.Forms.Panel()
-            Me.GroupBoxMain_PayToNameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.TextBoxPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.ButtonPayToNameAndAddress_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.Button()
-            Me.ButtonItemRefresh_Vendor = New DevComponents.DotNetBar.ButtonItem()
-            Me.TextBoxPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
-            Me.LabelPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.PanelTableLayout_LeftSection = New System.Windows.Forms.Panel()
-            Me.GroupBoxMain_NameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
-            Me.LabelLeftSection_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.Address3LineControlNameAndAddress_Address = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
-            Me.LabelNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.CheckBoxMain_Inactive = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
-            Me.LabelMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.TextBoxMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.LabelMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TextBoxMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
-            Me.LabelMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.TabItemVendorDetails_MainTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelMediaDefaultsTab_MediaDefaults = New DevComponents.DotNetBar.TabControlPanel()
             Me.TabControlMediaDefaults_MediaDefaultsTab = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
             Me.TabControlPanelGeneralDefaultInformationTab_GeneralDefaultInformation = New DevComponents.DotNetBar.TabControlPanel()
@@ -105,6 +47,9 @@
             Me.LabelGeneralDefaultInformation_Deadlines = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelGeneralDefaultInformation_Units = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.PanelTableLayout_LeftColumn = New System.Windows.Forms.Panel()
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
+            Me.GridView19 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.ComboBoxGeneralDefaultInformation_CanadianVendorType = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
             Me.LabelGeneralDefaultInformation_CanadianVendorType = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.LabelMediaDefaults_Financial = New AdvantageFramework.WinForm.Presentation.Controls.Label()
@@ -175,6 +120,64 @@
             Me.LabelDefaultComments_Instructions = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.TabItemMediaDefaults_DefaultCommentsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabItemVendorDetails_MediaDefaultsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlPanelMainTab_Main = New DevComponents.DotNetBar.TabControlPanel()
+            Me.LabelMain_QuickbooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.SearchableComboBoxMain_QuickBooksVendor = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
+            Me.GridView17 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
+            Me.LabelMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_VATNumber = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.CheckBoxMain_Television = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Radio = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_OutOfHome = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Newspaper = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Magazine = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.CheckBoxMain_Internet = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.LabelMain_MediaCategoriesAllowed = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.ComboBoxMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
+            Me.TableLayoutPanelMain_TableLayout = New System.Windows.Forms.TableLayoutPanel()
+            Me.PanelTableLayout_RightSection = New System.Windows.Forms.Panel()
+            Me.GroupBoxMain_PayToNameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.TextBoxPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.ButtonPayToNameAndAddress_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.Button()
+            Me.ButtonItemRefresh_Vendor = New DevComponents.DotNetBar.ButtonItem()
+            Me.TextBoxPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelPayToNameAndAddress_Vendor = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelPayToNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelPayToNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelPayToNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
+            Me.LabelPayToNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxPayToNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.PanelTableLayout_LeftSection = New System.Windows.Forms.Panel()
+            Me.GroupBoxMain_NameAndAddress = New AdvantageFramework.WinForm.Presentation.Controls.GroupBox()
+            Me.LabelLeftSection_Name = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_Name = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.Address3LineControlNameAndAddress_Address = New AdvantageFramework.WinForm.Presentation.Controls.Address3LineControl()
+            Me.LabelNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_Phone = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_Fax = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxNameAndAddress_FaxExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxNameAndAddress_PhoneExt = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.CheckBoxMain_Inactive = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.LabelMain_DefaultCategory = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelMain_FederalTaxID = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.TextBoxMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelMain_PaymentManagerEmail = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelMain_Email = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.LabelMain_Website = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBoxMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
+            Me.LabelMain_Code = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TabItemVendorDetails_MainTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelContactsTab_Contacts = New DevComponents.DotNetBar.TabControlPanel()
             Me.TextBoxContacts_DefaultVendorContactCode = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             Me.DataGridViewContacts_Contacts = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
@@ -360,21 +363,12 @@
             Me.VendorPricingControlPricings_VendorPricings = New AdvantageFramework.WinForm.Presentation.Controls.VendorPricingControl()
             Me.TabItemVendorDetails_PricingsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.LabelDefaultNotes_ACHType = New AdvantageFramework.WinForm.Presentation.Controls.Label()
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation = New AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox()
-            Me.GridView19 = New AdvantageFramework.WinForm.Presentation.Controls.GridView()
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.Label1099Info_AlternateNameFor1099 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.CheckBox1099Info_Use1099Name = New AdvantageFramework.WinForm.Presentation.Controls.CheckBox()
+            Me.Label1099Info_VendorName = New AdvantageFramework.WinForm.Presentation.Controls.Label()
+            Me.TextBox1099Info_VendorName = New AdvantageFramework.WinForm.Presentation.Controls.TextBox()
             CType(Me.TabControlControl_VendorDetails, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlControl_VendorDetails.SuspendLayout
-            Me.TabControlPanelMainTab_Main.SuspendLayout
-            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.TableLayoutPanelMain_TableLayout.SuspendLayout
-            Me.PanelTableLayout_RightSection.SuspendLayout
-            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.GroupBoxMain_PayToNameAndAddress.SuspendLayout
-            Me.PanelTableLayout_LeftSection.SuspendLayout
-            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
-            Me.GroupBoxMain_NameAndAddress.SuspendLayout
             Me.TabControlPanelMediaDefaultsTab_MediaDefaults.SuspendLayout
             CType(Me.TabControlMediaDefaults_MediaDefaultsTab, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlMediaDefaults_MediaDefaultsTab.SuspendLayout
@@ -386,6 +380,8 @@
             CType(Me.NumericInputDeadlines_SpaceCloseDays.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.NumericInputDeadlines_MaterialCloseDays.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             Me.PanelTableLayout_LeftColumn.SuspendLayout
+            CType(Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView19, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.GridView14, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -405,6 +401,16 @@
             CType(Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlPanelDefaultCommentsTab_DefaultComments.SuspendLayout
+            Me.TabControlPanelMainTab_Main.SuspendLayout
+            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.TableLayoutPanelMain_TableLayout.SuspendLayout
+            Me.PanelTableLayout_RightSection.SuspendLayout
+            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxMain_PayToNameAndAddress.SuspendLayout
+            Me.PanelTableLayout_LeftSection.SuspendLayout
+            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).BeginInit
+            Me.GroupBoxMain_NameAndAddress.SuspendLayout
             Me.TabControlPanelContactsTab_Contacts.SuspendLayout
             Me.TabControlPanelRepresentativesTab_Representatives.SuspendLayout
             Me.TabControlPanelEEOC2Tab_EEOC2.SuspendLayout
@@ -471,8 +477,6 @@
             CType(Me.GridView10, System.ComponentModel.ISupportInitialize).BeginInit
             CType(Me.TreeListControlMediaSpecs_MediaSpecs, System.ComponentModel.ISupportInitialize).BeginInit
             Me.TabControlPanelPricingsTab_Pricings.SuspendLayout
-            CType(Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-            CType(Me.GridView19, System.ComponentModel.ISupportInitialize).BeginInit
             Me.SuspendLayout
             '
             'TabControlControl_VendorDetails
@@ -481,16 +485,16 @@
             Me.TabControlControl_VendorDetails.CanReorderTabs = False
             Me.TabControlControl_VendorDetails.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlControl_VendorDetails.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMediaDefaultsTab_MediaDefaults)
+            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanel1099InfoTab_1099Info)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMainTab_Main)
+            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelEEOCStatusTab_EEOCStatus)
+            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelEEOC2Tab_EEOC2)
+            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMediaDefaultsTab_MediaDefaults)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelContactsTab_Contacts)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelRepresentativesTab_Representatives)
-            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelEEOC2Tab_EEOC2)
-            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelEEOCStatusTab_EEOCStatus)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelLineDefaultsNotesTab_DefaultsNotes)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelContractsTab_Contracts)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelVendorServiceTaxTab_VendorServiceTax)
-            Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanel1099InfoTab_1099Info)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMediaInfoTab_MediaInfo)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelMediaDeliveryTab_MediaDelivery)
             Me.TabControlControl_VendorDetails.Controls.Add(Me.TabControlPanelDocumentsTab_Documents)
@@ -522,1217 +526,6 @@
             Me.TabControlControl_VendorDetails.Tabs.Add(Me.TabItemVendorDetails_DocumentsTab)
             Me.TabControlControl_VendorDetails.Tabs.Add(Me.TabItemVendorDetails_ContractsTab)
             Me.TabControlControl_VendorDetails.Text = "TabControl1"
-            '
-            'TabControlPanelMainTab_Main
-            '
-            Me.TabControlPanelMainTab_Main.AutoScroll = True
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_QuickbooksVendor)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.SearchableComboBoxMain_QuickBooksVendor)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_VATNumber)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_VATNumber)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Television)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Radio)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_OutOfHome)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Newspaper)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Magazine)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Internet)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_MediaCategoriesAllowed)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.ComboBoxMain_DefaultCategory)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TableLayoutPanelMain_TableLayout)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Inactive)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_DefaultCategory)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_FederalTaxID)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_FederalTaxID)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_Website)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_Email)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_PaymentManagerEmail)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_PaymentManagerEmail)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_Email)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_Website)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_Code)
-            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_Code)
-            Me.TabControlPanelMainTab_Main.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlPanelMainTab_Main.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlPanelMainTab_Main.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlPanelMainTab_Main.Name = "TabControlPanelMainTab_Main"
-            Me.TabControlPanelMainTab_Main.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlPanelMainTab_Main.Size = New System.Drawing.Size(815, 513)
-            Me.TabControlPanelMainTab_Main.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlPanelMainTab_Main.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlPanelMainTab_Main.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlPanelMainTab_Main.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlPanelMainTab_Main.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlPanelMainTab_Main.Style.GradientAngle = 90
-            Me.TabControlPanelMainTab_Main.TabIndex = 0
-            Me.TabControlPanelMainTab_Main.TabItem = Me.TabItemVendorDetails_MainTab
-            '
-            'LabelMain_QuickbooksVendor
-            '
-            Me.LabelMain_QuickbooksVendor.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_QuickbooksVendor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_QuickbooksVendor.Location = New System.Drawing.Point(197, 4)
-            Me.LabelMain_QuickbooksVendor.Name = "LabelMain_QuickbooksVendor"
-            Me.LabelMain_QuickbooksVendor.Size = New System.Drawing.Size(107, 20)
-            Me.LabelMain_QuickbooksVendor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_QuickbooksVendor.TabIndex = 35
-            Me.LabelMain_QuickbooksVendor.Text = "QuickBooks Vendor:"
-            '
-            'SearchableComboBoxMain_QuickBooksVendor
-            '
-            Me.SearchableComboBoxMain_QuickBooksVendor.ActiveFilterString = ""
-            Me.SearchableComboBoxMain_QuickBooksVendor.AddInactiveItemsOnSelectedValue = True
-            Me.SearchableComboBoxMain_QuickBooksVendor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxMain_QuickBooksVendor.AutoFillMode = False
-            Me.SearchableComboBoxMain_QuickBooksVendor.BookmarkingEnabled = False
-            Me.SearchableComboBoxMain_QuickBooksVendor.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.QuickbookCustomer
-            Me.SearchableComboBoxMain_QuickBooksVendor.DataSource = Nothing
-            Me.SearchableComboBoxMain_QuickBooksVendor.DisableMouseWheel = False
-            Me.SearchableComboBoxMain_QuickBooksVendor.DisplayName = ""
-            Me.SearchableComboBoxMain_QuickBooksVendor.EnterMoveNextControl = True
-            Me.SearchableComboBoxMain_QuickBooksVendor.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxMain_QuickBooksVendor.Location = New System.Drawing.Point(310, 4)
-            Me.SearchableComboBoxMain_QuickBooksVendor.Name = "SearchableComboBoxMain_QuickBooksVendor"
-            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.DisplayMember = "DisplayName"
-            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.NullText = "Select Customer"
-            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.PopupView = Me.GridView17
-            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.ValueMember = "ID"
-            Me.SearchableComboBoxMain_QuickBooksVendor.SecurityEnabled = True
-            Me.SearchableComboBoxMain_QuickBooksVendor.SelectedValue = Nothing
-            Me.SearchableComboBoxMain_QuickBooksVendor.Size = New System.Drawing.Size(497, 20)
-            Me.SearchableComboBoxMain_QuickBooksVendor.TabIndex = 34
-            '
-            'GridView17
-            '
-            Me.GridView17.AFActiveFilterString = ""
-            Me.GridView17.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView17.AutoFilterLookupColumns = False
-            Me.GridView17.AutoloadRepositoryDatasource = True
-            Me.GridView17.DataSourceClearing = False
-            Me.GridView17.EnableDisabledRows = False
-            Me.GridView17.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView17.Name = "GridView17"
-            Me.GridView17.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView17.OptionsView.ShowGroupPanel = False
-            Me.GridView17.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView17.RunStandardValidation = True
-            Me.GridView17.SkipAddingControlsOnModifyColumn = False
-            Me.GridView17.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelMain_VATNumber
-            '
-            Me.LabelMain_VATNumber.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_VATNumber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_VATNumber.Location = New System.Drawing.Point(419, 403)
-            Me.LabelMain_VATNumber.Name = "LabelMain_VATNumber"
-            Me.LabelMain_VATNumber.Size = New System.Drawing.Size(127, 20)
-            Me.LabelMain_VATNumber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_VATNumber.TabIndex = 26
-            Me.LabelMain_VATNumber.Text = "VAT Number:"
-            '
-            'TextBoxMain_VATNumber
-            '
-            Me.TextBoxMain_VATNumber.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxMain_VATNumber.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxMain_VATNumber.Border.Class = "TextBoxBorder"
-            Me.TextBoxMain_VATNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxMain_VATNumber.CheckSpellingOnValidate = False
-            Me.TextBoxMain_VATNumber.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxMain_VATNumber.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxMain_VATNumber.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxMain_VATNumber.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxMain_VATNumber.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxMain_VATNumber.FocusHighlightEnabled = True
-            Me.TextBoxMain_VATNumber.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxMain_VATNumber.Location = New System.Drawing.Point(552, 403)
-            Me.TextBoxMain_VATNumber.MaxFileSize = CType(0, Long)
-            Me.TextBoxMain_VATNumber.Name = "TextBoxMain_VATNumber"
-            Me.TextBoxMain_VATNumber.SecurityEnabled = True
-            Me.TextBoxMain_VATNumber.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxMain_VATNumber.Size = New System.Drawing.Size(259, 20)
-            Me.TextBoxMain_VATNumber.StartingFolderName = Nothing
-            Me.TextBoxMain_VATNumber.TabIndex = 27
-            Me.TextBoxMain_VATNumber.TabOnEnter = True
-            '
-            'CheckBoxMain_Television
-            '
-            Me.CheckBoxMain_Television.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxMain_Television.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxMain_Television.CheckValue = 0
-            Me.CheckBoxMain_Television.CheckValueChecked = 1
-            Me.CheckBoxMain_Television.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxMain_Television.CheckValueUnchecked = 0
-            Me.CheckBoxMain_Television.ChildControls = CType(resources.GetObject("CheckBoxMain_Television.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Television.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxMain_Television.Location = New System.Drawing.Point(288, 455)
-            Me.CheckBoxMain_Television.Name = "CheckBoxMain_Television"
-            Me.CheckBoxMain_Television.OldestSibling = Nothing
-            Me.CheckBoxMain_Television.SecurityEnabled = True
-            Me.CheckBoxMain_Television.SiblingControls = CType(resources.GetObject("CheckBoxMain_Television.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Television.Size = New System.Drawing.Size(125, 20)
-            Me.CheckBoxMain_Television.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxMain_Television.TabIndex = 22
-            Me.CheckBoxMain_Television.TabOnEnter = True
-            Me.CheckBoxMain_Television.Text = "Television"
-            '
-            'CheckBoxMain_Radio
-            '
-            Me.CheckBoxMain_Radio.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxMain_Radio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxMain_Radio.CheckValue = 0
-            Me.CheckBoxMain_Radio.CheckValueChecked = 1
-            Me.CheckBoxMain_Radio.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxMain_Radio.CheckValueUnchecked = 0
-            Me.CheckBoxMain_Radio.ChildControls = CType(resources.GetObject("CheckBoxMain_Radio.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Radio.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxMain_Radio.Location = New System.Drawing.Point(146, 455)
-            Me.CheckBoxMain_Radio.Name = "CheckBoxMain_Radio"
-            Me.CheckBoxMain_Radio.OldestSibling = Nothing
-            Me.CheckBoxMain_Radio.SecurityEnabled = True
-            Me.CheckBoxMain_Radio.SiblingControls = CType(resources.GetObject("CheckBoxMain_Radio.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Radio.Size = New System.Drawing.Size(136, 20)
-            Me.CheckBoxMain_Radio.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxMain_Radio.TabIndex = 21
-            Me.CheckBoxMain_Radio.TabOnEnter = True
-            Me.CheckBoxMain_Radio.Text = "Radio"
-            '
-            'CheckBoxMain_OutOfHome
-            '
-            Me.CheckBoxMain_OutOfHome.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxMain_OutOfHome.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxMain_OutOfHome.CheckValue = 0
-            Me.CheckBoxMain_OutOfHome.CheckValueChecked = 1
-            Me.CheckBoxMain_OutOfHome.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxMain_OutOfHome.CheckValueUnchecked = 0
-            Me.CheckBoxMain_OutOfHome.ChildControls = CType(resources.GetObject("CheckBoxMain_OutOfHome.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_OutOfHome.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxMain_OutOfHome.Location = New System.Drawing.Point(4, 455)
-            Me.CheckBoxMain_OutOfHome.Name = "CheckBoxMain_OutOfHome"
-            Me.CheckBoxMain_OutOfHome.OldestSibling = Nothing
-            Me.CheckBoxMain_OutOfHome.SecurityEnabled = True
-            Me.CheckBoxMain_OutOfHome.SiblingControls = CType(resources.GetObject("CheckBoxMain_OutOfHome.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_OutOfHome.Size = New System.Drawing.Size(136, 20)
-            Me.CheckBoxMain_OutOfHome.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxMain_OutOfHome.TabIndex = 20
-            Me.CheckBoxMain_OutOfHome.TabOnEnter = True
-            Me.CheckBoxMain_OutOfHome.Text = "Out of Home"
-            '
-            'CheckBoxMain_Newspaper
-            '
-            Me.CheckBoxMain_Newspaper.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxMain_Newspaper.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxMain_Newspaper.CheckValue = 0
-            Me.CheckBoxMain_Newspaper.CheckValueChecked = 1
-            Me.CheckBoxMain_Newspaper.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxMain_Newspaper.CheckValueUnchecked = 0
-            Me.CheckBoxMain_Newspaper.ChildControls = CType(resources.GetObject("CheckBoxMain_Newspaper.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Newspaper.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxMain_Newspaper.Location = New System.Drawing.Point(288, 429)
-            Me.CheckBoxMain_Newspaper.Name = "CheckBoxMain_Newspaper"
-            Me.CheckBoxMain_Newspaper.OldestSibling = Nothing
-            Me.CheckBoxMain_Newspaper.SecurityEnabled = True
-            Me.CheckBoxMain_Newspaper.SiblingControls = CType(resources.GetObject("CheckBoxMain_Newspaper.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Newspaper.Size = New System.Drawing.Size(125, 20)
-            Me.CheckBoxMain_Newspaper.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxMain_Newspaper.TabIndex = 19
-            Me.CheckBoxMain_Newspaper.TabOnEnter = True
-            Me.CheckBoxMain_Newspaper.Text = "Newspaper"
-            '
-            'CheckBoxMain_Magazine
-            '
-            Me.CheckBoxMain_Magazine.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxMain_Magazine.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxMain_Magazine.CheckValue = 0
-            Me.CheckBoxMain_Magazine.CheckValueChecked = 1
-            Me.CheckBoxMain_Magazine.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxMain_Magazine.CheckValueUnchecked = 0
-            Me.CheckBoxMain_Magazine.ChildControls = CType(resources.GetObject("CheckBoxMain_Magazine.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Magazine.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxMain_Magazine.Location = New System.Drawing.Point(146, 429)
-            Me.CheckBoxMain_Magazine.Name = "CheckBoxMain_Magazine"
-            Me.CheckBoxMain_Magazine.OldestSibling = Nothing
-            Me.CheckBoxMain_Magazine.SecurityEnabled = True
-            Me.CheckBoxMain_Magazine.SiblingControls = CType(resources.GetObject("CheckBoxMain_Magazine.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Magazine.Size = New System.Drawing.Size(136, 20)
-            Me.CheckBoxMain_Magazine.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxMain_Magazine.TabIndex = 18
-            Me.CheckBoxMain_Magazine.TabOnEnter = True
-            Me.CheckBoxMain_Magazine.Text = "Magazine"
-            '
-            'CheckBoxMain_Internet
-            '
-            Me.CheckBoxMain_Internet.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxMain_Internet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxMain_Internet.CheckValue = 0
-            Me.CheckBoxMain_Internet.CheckValueChecked = 1
-            Me.CheckBoxMain_Internet.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxMain_Internet.CheckValueUnchecked = 0
-            Me.CheckBoxMain_Internet.ChildControls = CType(resources.GetObject("CheckBoxMain_Internet.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Internet.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxMain_Internet.Location = New System.Drawing.Point(4, 429)
-            Me.CheckBoxMain_Internet.Name = "CheckBoxMain_Internet"
-            Me.CheckBoxMain_Internet.OldestSibling = Nothing
-            Me.CheckBoxMain_Internet.SecurityEnabled = True
-            Me.CheckBoxMain_Internet.SiblingControls = CType(resources.GetObject("CheckBoxMain_Internet.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Internet.Size = New System.Drawing.Size(136, 20)
-            Me.CheckBoxMain_Internet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxMain_Internet.TabIndex = 17
-            Me.CheckBoxMain_Internet.TabOnEnter = True
-            Me.CheckBoxMain_Internet.Text = "Internet"
-            '
-            'LabelMain_MediaCategoriesAllowed
-            '
-            Me.LabelMain_MediaCategoriesAllowed.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
-            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderBottomWidth = 1
-            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderColor = System.Drawing.Color.Black
-            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_MediaCategoriesAllowed.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.LabelMain_MediaCategoriesAllowed.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
-            Me.LabelMain_MediaCategoriesAllowed.Location = New System.Drawing.Point(4, 403)
-            Me.LabelMain_MediaCategoriesAllowed.Name = "LabelMain_MediaCategoriesAllowed"
-            Me.LabelMain_MediaCategoriesAllowed.Size = New System.Drawing.Size(409, 20)
-            Me.LabelMain_MediaCategoriesAllowed.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_MediaCategoriesAllowed.TabIndex = 16
-            Me.LabelMain_MediaCategoriesAllowed.Text = "Media Categories Allowed"
-            '
-            'ComboBoxMain_DefaultCategory
-            '
-            Me.ComboBoxMain_DefaultCategory.AddInactiveItemsOnSelectedValue = False
-            Me.ComboBoxMain_DefaultCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-            Me.ComboBoxMain_DefaultCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-            Me.ComboBoxMain_DefaultCategory.AutoFindItemInDataSource = False
-            Me.ComboBoxMain_DefaultCategory.AutoSelectSingleItemDatasource = False
-            Me.ComboBoxMain_DefaultCategory.BookmarkingEnabled = False
-            Me.ComboBoxMain_DefaultCategory.ClientCode = ""
-            Me.ComboBoxMain_DefaultCategory.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumDataTable
-            Me.ComboBoxMain_DefaultCategory.DisableMouseWheel = False
-            Me.ComboBoxMain_DefaultCategory.DisplayMember = "Name"
-            Me.ComboBoxMain_DefaultCategory.DisplayName = ""
-            Me.ComboBoxMain_DefaultCategory.DivisionCode = ""
-            Me.ComboBoxMain_DefaultCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-            Me.ComboBoxMain_DefaultCategory.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.ComboBoxMain_DefaultCategory.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
-            Me.ComboBoxMain_DefaultCategory.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.ComboBoxMain_DefaultCategory.FocusHighlightEnabled = True
-            Me.ComboBoxMain_DefaultCategory.ForeColor = System.Drawing.Color.Black
-            Me.ComboBoxMain_DefaultCategory.FormattingEnabled = True
-            Me.ComboBoxMain_DefaultCategory.ItemHeight = 14
-            Me.ComboBoxMain_DefaultCategory.Location = New System.Drawing.Point(147, 377)
-            Me.ComboBoxMain_DefaultCategory.Name = "ComboBoxMain_DefaultCategory"
-            Me.ComboBoxMain_DefaultCategory.ReadOnly = False
-            Me.ComboBoxMain_DefaultCategory.SecurityEnabled = True
-            Me.ComboBoxMain_DefaultCategory.Size = New System.Drawing.Size(266, 20)
-            Me.ComboBoxMain_DefaultCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ComboBoxMain_DefaultCategory.TabIndex = 15
-            Me.ComboBoxMain_DefaultCategory.TabOnEnter = True
-            Me.ComboBoxMain_DefaultCategory.ValueMember = "Value"
-            Me.ComboBoxMain_DefaultCategory.WatermarkText = "Select"
-            '
-            'TableLayoutPanelMain_TableLayout
-            '
-            Me.TableLayoutPanelMain_TableLayout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TableLayoutPanelMain_TableLayout.BackColor = System.Drawing.Color.White
-            Me.TableLayoutPanelMain_TableLayout.ColumnCount = 2
-            Me.TableLayoutPanelMain_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanelMain_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanelMain_TableLayout.Controls.Add(Me.PanelTableLayout_RightSection, 1, 0)
-            Me.TableLayoutPanelMain_TableLayout.Controls.Add(Me.PanelTableLayout_LeftSection, 0, 0)
-            Me.TableLayoutPanelMain_TableLayout.Location = New System.Drawing.Point(4, 29)
-            Me.TableLayoutPanelMain_TableLayout.Margin = New System.Windows.Forms.Padding(0)
-            Me.TableLayoutPanelMain_TableLayout.Name = "TableLayoutPanelMain_TableLayout"
-            Me.TableLayoutPanelMain_TableLayout.RowCount = 1
-            Me.TableLayoutPanelMain_TableLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanelMain_TableLayout.Size = New System.Drawing.Size(807, 342)
-            Me.TableLayoutPanelMain_TableLayout.TabIndex = 4
-            '
-            'PanelTableLayout_RightSection
-            '
-            Me.PanelTableLayout_RightSection.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelTableLayout_RightSection.Controls.Add(Me.GroupBoxMain_PayToNameAndAddress)
-            Me.PanelTableLayout_RightSection.Location = New System.Drawing.Point(403, 0)
-            Me.PanelTableLayout_RightSection.Margin = New System.Windows.Forms.Padding(0)
-            Me.PanelTableLayout_RightSection.Name = "PanelTableLayout_RightSection"
-            Me.PanelTableLayout_RightSection.Size = New System.Drawing.Size(404, 342)
-            Me.PanelTableLayout_RightSection.TabIndex = 1
-            '
-            'GroupBoxMain_PayToNameAndAddress
-            '
-            Me.GroupBoxMain_PayToNameAndAddress.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Vendor)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.ButtonPayToNameAndAddress_Refresh)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_FaxExt)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Vendor)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_PhoneExt)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_FaxExt)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Name)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_PhoneExt)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Name)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Fax)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.Address3LineControlPayToNameAndAddress_PayToAddress)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Fax)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Phone)
-            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Phone)
-            Me.GroupBoxMain_PayToNameAndAddress.Location = New System.Drawing.Point(3, 0)
-            Me.GroupBoxMain_PayToNameAndAddress.Name = "GroupBoxMain_PayToNameAndAddress"
-            Me.GroupBoxMain_PayToNameAndAddress.Size = New System.Drawing.Size(401, 342)
-            Me.GroupBoxMain_PayToNameAndAddress.TabIndex = 0
-            Me.GroupBoxMain_PayToNameAndAddress.Text = "Pay To Name and Address"
-            '
-            'TextBoxPayToNameAndAddress_Vendor
-            '
-            Me.TextBoxPayToNameAndAddress_Vendor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxPayToNameAndAddress_Vendor.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxPayToNameAndAddress_Vendor.Border.Class = "TextBoxBorder"
-            Me.TextBoxPayToNameAndAddress_Vendor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxPayToNameAndAddress_Vendor.ButtonCustom.Visible = True
-            Me.TextBoxPayToNameAndAddress_Vendor.CheckSpellingOnValidate = False
-            Me.TextBoxPayToNameAndAddress_Vendor.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Vendor
-            Me.TextBoxPayToNameAndAddress_Vendor.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxPayToNameAndAddress_Vendor.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxPayToNameAndAddress_Vendor.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxPayToNameAndAddress_Vendor.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxPayToNameAndAddress_Vendor.FocusHighlightEnabled = True
-            Me.TextBoxPayToNameAndAddress_Vendor.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxPayToNameAndAddress_Vendor.Location = New System.Drawing.Point(51, 25)
-            Me.TextBoxPayToNameAndAddress_Vendor.MaxFileSize = CType(0, Long)
-            Me.TextBoxPayToNameAndAddress_Vendor.Name = "TextBoxPayToNameAndAddress_Vendor"
-            Me.TextBoxPayToNameAndAddress_Vendor.SecurityEnabled = True
-            Me.TextBoxPayToNameAndAddress_Vendor.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxPayToNameAndAddress_Vendor.Size = New System.Drawing.Size(264, 21)
-            Me.TextBoxPayToNameAndAddress_Vendor.StartingFolderName = Nothing
-            Me.TextBoxPayToNameAndAddress_Vendor.TabIndex = 1
-            Me.TextBoxPayToNameAndAddress_Vendor.TabOnEnter = True
-            '
-            'ButtonPayToNameAndAddress_Refresh
-            '
-            Me.ButtonPayToNameAndAddress_Refresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-            Me.ButtonPayToNameAndAddress_Refresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.ButtonPayToNameAndAddress_Refresh.AutoExpandOnClick = True
-            Me.ButtonPayToNameAndAddress_Refresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-            Me.ButtonPayToNameAndAddress_Refresh.Location = New System.Drawing.Point(321, 25)
-            Me.ButtonPayToNameAndAddress_Refresh.Name = "ButtonPayToNameAndAddress_Refresh"
-            Me.ButtonPayToNameAndAddress_Refresh.SecurityEnabled = True
-            Me.ButtonPayToNameAndAddress_Refresh.Size = New System.Drawing.Size(75, 20)
-            Me.ButtonPayToNameAndAddress_Refresh.SplitButton = True
-            Me.ButtonPayToNameAndAddress_Refresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.ButtonPayToNameAndAddress_Refresh.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemRefresh_Vendor})
-            Me.ButtonPayToNameAndAddress_Refresh.TabIndex = 2
-            Me.ButtonPayToNameAndAddress_Refresh.Text = "Refresh"
-            '
-            'ButtonItemRefresh_Vendor
-            '
-            Me.ButtonItemRefresh_Vendor.Name = "ButtonItemRefresh_Vendor"
-            Me.ButtonItemRefresh_Vendor.Text = "Vendor"
-            '
-            'TextBoxPayToNameAndAddress_FaxExt
-            '
-            Me.TextBoxPayToNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxPayToNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxPayToNameAndAddress_FaxExt.Border.Class = "TextBoxBorder"
-            Me.TextBoxPayToNameAndAddress_FaxExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxPayToNameAndAddress_FaxExt.CheckSpellingOnValidate = False
-            Me.TextBoxPayToNameAndAddress_FaxExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxPayToNameAndAddress_FaxExt.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxPayToNameAndAddress_FaxExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxPayToNameAndAddress_FaxExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxPayToNameAndAddress_FaxExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxPayToNameAndAddress_FaxExt.FocusHighlightEnabled = True
-            Me.TextBoxPayToNameAndAddress_FaxExt.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxPayToNameAndAddress_FaxExt.Location = New System.Drawing.Point(337, 316)
-            Me.TextBoxPayToNameAndAddress_FaxExt.MaxFileSize = CType(0, Long)
-            Me.TextBoxPayToNameAndAddress_FaxExt.Name = "TextBoxPayToNameAndAddress_FaxExt"
-            Me.TextBoxPayToNameAndAddress_FaxExt.SecurityEnabled = True
-            Me.TextBoxPayToNameAndAddress_FaxExt.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxPayToNameAndAddress_FaxExt.Size = New System.Drawing.Size(59, 21)
-            Me.TextBoxPayToNameAndAddress_FaxExt.StartingFolderName = Nothing
-            Me.TextBoxPayToNameAndAddress_FaxExt.TabIndex = 13
-            Me.TextBoxPayToNameAndAddress_FaxExt.TabOnEnter = True
-            '
-            'LabelPayToNameAndAddress_Vendor
-            '
-            Me.LabelPayToNameAndAddress_Vendor.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelPayToNameAndAddress_Vendor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelPayToNameAndAddress_Vendor.Location = New System.Drawing.Point(5, 25)
-            Me.LabelPayToNameAndAddress_Vendor.Name = "LabelPayToNameAndAddress_Vendor"
-            Me.LabelPayToNameAndAddress_Vendor.Size = New System.Drawing.Size(40, 20)
-            Me.LabelPayToNameAndAddress_Vendor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelPayToNameAndAddress_Vendor.TabIndex = 0
-            Me.LabelPayToNameAndAddress_Vendor.Text = "Vendor:"
-            '
-            'TextBoxPayToNameAndAddress_PhoneExt
-            '
-            Me.TextBoxPayToNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxPayToNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxPayToNameAndAddress_PhoneExt.Border.Class = "TextBoxBorder"
-            Me.TextBoxPayToNameAndAddress_PhoneExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxPayToNameAndAddress_PhoneExt.CheckSpellingOnValidate = False
-            Me.TextBoxPayToNameAndAddress_PhoneExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxPayToNameAndAddress_PhoneExt.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxPayToNameAndAddress_PhoneExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxPayToNameAndAddress_PhoneExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxPayToNameAndAddress_PhoneExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxPayToNameAndAddress_PhoneExt.FocusHighlightEnabled = True
-            Me.TextBoxPayToNameAndAddress_PhoneExt.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxPayToNameAndAddress_PhoneExt.Location = New System.Drawing.Point(337, 290)
-            Me.TextBoxPayToNameAndAddress_PhoneExt.MaxFileSize = CType(0, Long)
-            Me.TextBoxPayToNameAndAddress_PhoneExt.Name = "TextBoxPayToNameAndAddress_PhoneExt"
-            Me.TextBoxPayToNameAndAddress_PhoneExt.SecurityEnabled = True
-            Me.TextBoxPayToNameAndAddress_PhoneExt.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxPayToNameAndAddress_PhoneExt.Size = New System.Drawing.Size(59, 21)
-            Me.TextBoxPayToNameAndAddress_PhoneExt.StartingFolderName = Nothing
-            Me.TextBoxPayToNameAndAddress_PhoneExt.TabIndex = 9
-            Me.TextBoxPayToNameAndAddress_PhoneExt.TabOnEnter = True
-            '
-            'LabelPayToNameAndAddress_FaxExt
-            '
-            Me.LabelPayToNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelPayToNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelPayToNameAndAddress_FaxExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelPayToNameAndAddress_FaxExt.Location = New System.Drawing.Point(307, 316)
-            Me.LabelPayToNameAndAddress_FaxExt.Name = "LabelPayToNameAndAddress_FaxExt"
-            Me.LabelPayToNameAndAddress_FaxExt.Size = New System.Drawing.Size(24, 20)
-            Me.LabelPayToNameAndAddress_FaxExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelPayToNameAndAddress_FaxExt.TabIndex = 12
-            Me.LabelPayToNameAndAddress_FaxExt.Text = "Ext:"
-            '
-            'TextBoxPayToNameAndAddress_Name
-            '
-            Me.TextBoxPayToNameAndAddress_Name.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxPayToNameAndAddress_Name.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxPayToNameAndAddress_Name.Border.Class = "TextBoxBorder"
-            Me.TextBoxPayToNameAndAddress_Name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxPayToNameAndAddress_Name.CheckSpellingOnValidate = False
-            Me.TextBoxPayToNameAndAddress_Name.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxPayToNameAndAddress_Name.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxPayToNameAndAddress_Name.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxPayToNameAndAddress_Name.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxPayToNameAndAddress_Name.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxPayToNameAndAddress_Name.FocusHighlightEnabled = True
-            Me.TextBoxPayToNameAndAddress_Name.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxPayToNameAndAddress_Name.Location = New System.Drawing.Point(51, 51)
-            Me.TextBoxPayToNameAndAddress_Name.MaxFileSize = CType(0, Long)
-            Me.TextBoxPayToNameAndAddress_Name.Name = "TextBoxPayToNameAndAddress_Name"
-            Me.TextBoxPayToNameAndAddress_Name.SecurityEnabled = True
-            Me.TextBoxPayToNameAndAddress_Name.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxPayToNameAndAddress_Name.Size = New System.Drawing.Size(345, 21)
-            Me.TextBoxPayToNameAndAddress_Name.StartingFolderName = Nothing
-            Me.TextBoxPayToNameAndAddress_Name.TabIndex = 4
-            Me.TextBoxPayToNameAndAddress_Name.TabOnEnter = True
-            '
-            'LabelPayToNameAndAddress_PhoneExt
-            '
-            Me.LabelPayToNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelPayToNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelPayToNameAndAddress_PhoneExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelPayToNameAndAddress_PhoneExt.Location = New System.Drawing.Point(307, 290)
-            Me.LabelPayToNameAndAddress_PhoneExt.Name = "LabelPayToNameAndAddress_PhoneExt"
-            Me.LabelPayToNameAndAddress_PhoneExt.Size = New System.Drawing.Size(24, 20)
-            Me.LabelPayToNameAndAddress_PhoneExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelPayToNameAndAddress_PhoneExt.TabIndex = 8
-            Me.LabelPayToNameAndAddress_PhoneExt.Text = "Ext:"
-            '
-            'LabelPayToNameAndAddress_Name
-            '
-            Me.LabelPayToNameAndAddress_Name.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelPayToNameAndAddress_Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelPayToNameAndAddress_Name.Location = New System.Drawing.Point(5, 51)
-            Me.LabelPayToNameAndAddress_Name.Name = "LabelPayToNameAndAddress_Name"
-            Me.LabelPayToNameAndAddress_Name.Size = New System.Drawing.Size(40, 20)
-            Me.LabelPayToNameAndAddress_Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelPayToNameAndAddress_Name.TabIndex = 3
-            Me.LabelPayToNameAndAddress_Name.Text = "Name:"
-            '
-            'TextBoxPayToNameAndAddress_Fax
-            '
-            Me.TextBoxPayToNameAndAddress_Fax.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxPayToNameAndAddress_Fax.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxPayToNameAndAddress_Fax.Border.Class = "TextBoxBorder"
-            Me.TextBoxPayToNameAndAddress_Fax.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxPayToNameAndAddress_Fax.CheckSpellingOnValidate = False
-            Me.TextBoxPayToNameAndAddress_Fax.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxPayToNameAndAddress_Fax.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxPayToNameAndAddress_Fax.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxPayToNameAndAddress_Fax.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxPayToNameAndAddress_Fax.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxPayToNameAndAddress_Fax.FocusHighlightEnabled = True
-            Me.TextBoxPayToNameAndAddress_Fax.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxPayToNameAndAddress_Fax.Location = New System.Drawing.Point(51, 316)
-            Me.TextBoxPayToNameAndAddress_Fax.MaxFileSize = CType(0, Long)
-            Me.TextBoxPayToNameAndAddress_Fax.Name = "TextBoxPayToNameAndAddress_Fax"
-            Me.TextBoxPayToNameAndAddress_Fax.SecurityEnabled = True
-            Me.TextBoxPayToNameAndAddress_Fax.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxPayToNameAndAddress_Fax.Size = New System.Drawing.Size(250, 21)
-            Me.TextBoxPayToNameAndAddress_Fax.StartingFolderName = Nothing
-            Me.TextBoxPayToNameAndAddress_Fax.TabIndex = 11
-            Me.TextBoxPayToNameAndAddress_Fax.TabOnEnter = True
-            '
-            'Address3LineControlPayToNameAndAddress_PayToAddress
-            '
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Address = Nothing
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Address2 = Nothing
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Address3 = Nothing
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.City = Nothing
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Country = Nothing
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.County = Nothing
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.DisableCountry = False
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.DisableCounty = False
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Location = New System.Drawing.Point(5, 77)
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Name = "Address3LineControlPayToNameAndAddress_PayToAddress"
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.ReadOnly = False
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.ShowCountry = True
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.ShowCounty = True
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Size = New System.Drawing.Size(391, 207)
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.State = Nothing
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.TabIndex = 5
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Title = "Pay To Address"
-            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Zip = Nothing
-            '
-            'LabelPayToNameAndAddress_Fax
-            '
-            Me.LabelPayToNameAndAddress_Fax.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelPayToNameAndAddress_Fax.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelPayToNameAndAddress_Fax.Location = New System.Drawing.Point(5, 316)
-            Me.LabelPayToNameAndAddress_Fax.Name = "LabelPayToNameAndAddress_Fax"
-            Me.LabelPayToNameAndAddress_Fax.Size = New System.Drawing.Size(40, 20)
-            Me.LabelPayToNameAndAddress_Fax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelPayToNameAndAddress_Fax.TabIndex = 10
-            Me.LabelPayToNameAndAddress_Fax.Text = "Fax:"
-            '
-            'LabelPayToNameAndAddress_Phone
-            '
-            Me.LabelPayToNameAndAddress_Phone.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelPayToNameAndAddress_Phone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelPayToNameAndAddress_Phone.Location = New System.Drawing.Point(5, 290)
-            Me.LabelPayToNameAndAddress_Phone.Name = "LabelPayToNameAndAddress_Phone"
-            Me.LabelPayToNameAndAddress_Phone.Size = New System.Drawing.Size(40, 20)
-            Me.LabelPayToNameAndAddress_Phone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelPayToNameAndAddress_Phone.TabIndex = 6
-            Me.LabelPayToNameAndAddress_Phone.Text = "Phone:"
-            '
-            'TextBoxPayToNameAndAddress_Phone
-            '
-            Me.TextBoxPayToNameAndAddress_Phone.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxPayToNameAndAddress_Phone.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxPayToNameAndAddress_Phone.Border.Class = "TextBoxBorder"
-            Me.TextBoxPayToNameAndAddress_Phone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxPayToNameAndAddress_Phone.CheckSpellingOnValidate = False
-            Me.TextBoxPayToNameAndAddress_Phone.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxPayToNameAndAddress_Phone.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxPayToNameAndAddress_Phone.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxPayToNameAndAddress_Phone.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxPayToNameAndAddress_Phone.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxPayToNameAndAddress_Phone.FocusHighlightEnabled = True
-            Me.TextBoxPayToNameAndAddress_Phone.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxPayToNameAndAddress_Phone.Location = New System.Drawing.Point(51, 290)
-            Me.TextBoxPayToNameAndAddress_Phone.MaxFileSize = CType(0, Long)
-            Me.TextBoxPayToNameAndAddress_Phone.Name = "TextBoxPayToNameAndAddress_Phone"
-            Me.TextBoxPayToNameAndAddress_Phone.SecurityEnabled = True
-            Me.TextBoxPayToNameAndAddress_Phone.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxPayToNameAndAddress_Phone.Size = New System.Drawing.Size(250, 21)
-            Me.TextBoxPayToNameAndAddress_Phone.StartingFolderName = Nothing
-            Me.TextBoxPayToNameAndAddress_Phone.TabIndex = 7
-            Me.TextBoxPayToNameAndAddress_Phone.TabOnEnter = True
-            '
-            'PanelTableLayout_LeftSection
-            '
-            Me.PanelTableLayout_LeftSection.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.PanelTableLayout_LeftSection.Controls.Add(Me.GroupBoxMain_NameAndAddress)
-            Me.PanelTableLayout_LeftSection.Location = New System.Drawing.Point(0, 0)
-            Me.PanelTableLayout_LeftSection.Margin = New System.Windows.Forms.Padding(0)
-            Me.PanelTableLayout_LeftSection.Name = "PanelTableLayout_LeftSection"
-            Me.PanelTableLayout_LeftSection.Size = New System.Drawing.Size(403, 342)
-            Me.PanelTableLayout_LeftSection.TabIndex = 0
-            '
-            'GroupBoxMain_NameAndAddress
-            '
-            Me.GroupBoxMain_NameAndAddress.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelLeftSection_Name)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_Name)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.Address3LineControlNameAndAddress_Address)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_Phone)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_Phone)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_Fax)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_Fax)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_PhoneExt)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_FaxExt)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_FaxExt)
-            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_PhoneExt)
-            Me.GroupBoxMain_NameAndAddress.Location = New System.Drawing.Point(0, 0)
-            Me.GroupBoxMain_NameAndAddress.Name = "GroupBoxMain_NameAndAddress"
-            Me.GroupBoxMain_NameAndAddress.Size = New System.Drawing.Size(400, 342)
-            Me.GroupBoxMain_NameAndAddress.TabIndex = 0
-            Me.GroupBoxMain_NameAndAddress.Text = "Name and Address"
-            '
-            'LabelLeftSection_Name
-            '
-            Me.LabelLeftSection_Name.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelLeftSection_Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelLeftSection_Name.Location = New System.Drawing.Point(5, 51)
-            Me.LabelLeftSection_Name.Name = "LabelLeftSection_Name"
-            Me.LabelLeftSection_Name.Size = New System.Drawing.Size(40, 20)
-            Me.LabelLeftSection_Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelLeftSection_Name.TabIndex = 0
-            Me.LabelLeftSection_Name.Text = "Name:"
-            '
-            'TextBoxNameAndAddress_Name
-            '
-            Me.TextBoxNameAndAddress_Name.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxNameAndAddress_Name.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxNameAndAddress_Name.Border.Class = "TextBoxBorder"
-            Me.TextBoxNameAndAddress_Name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxNameAndAddress_Name.CheckSpellingOnValidate = False
-            Me.TextBoxNameAndAddress_Name.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxNameAndAddress_Name.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxNameAndAddress_Name.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxNameAndAddress_Name.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxNameAndAddress_Name.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxNameAndAddress_Name.FocusHighlightEnabled = True
-            Me.TextBoxNameAndAddress_Name.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxNameAndAddress_Name.Location = New System.Drawing.Point(51, 51)
-            Me.TextBoxNameAndAddress_Name.MaxFileSize = CType(0, Long)
-            Me.TextBoxNameAndAddress_Name.Name = "TextBoxNameAndAddress_Name"
-            Me.TextBoxNameAndAddress_Name.SecurityEnabled = True
-            Me.TextBoxNameAndAddress_Name.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxNameAndAddress_Name.Size = New System.Drawing.Size(344, 21)
-            Me.TextBoxNameAndAddress_Name.StartingFolderName = Nothing
-            Me.TextBoxNameAndAddress_Name.TabIndex = 1
-            Me.TextBoxNameAndAddress_Name.TabOnEnter = True
-            '
-            'Address3LineControlNameAndAddress_Address
-            '
-            Me.Address3LineControlNameAndAddress_Address.Address = Nothing
-            Me.Address3LineControlNameAndAddress_Address.Address2 = Nothing
-            Me.Address3LineControlNameAndAddress_Address.Address3 = Nothing
-            Me.Address3LineControlNameAndAddress_Address.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.Address3LineControlNameAndAddress_Address.City = Nothing
-            Me.Address3LineControlNameAndAddress_Address.Country = Nothing
-            Me.Address3LineControlNameAndAddress_Address.County = Nothing
-            Me.Address3LineControlNameAndAddress_Address.DisableCountry = False
-            Me.Address3LineControlNameAndAddress_Address.DisableCounty = False
-            Me.Address3LineControlNameAndAddress_Address.Location = New System.Drawing.Point(5, 77)
-            Me.Address3LineControlNameAndAddress_Address.Name = "Address3LineControlNameAndAddress_Address"
-            Me.Address3LineControlNameAndAddress_Address.ReadOnly = False
-            Me.Address3LineControlNameAndAddress_Address.ShowCountry = True
-            Me.Address3LineControlNameAndAddress_Address.ShowCounty = True
-            Me.Address3LineControlNameAndAddress_Address.Size = New System.Drawing.Size(390, 207)
-            Me.Address3LineControlNameAndAddress_Address.State = Nothing
-            Me.Address3LineControlNameAndAddress_Address.TabIndex = 2
-            Me.Address3LineControlNameAndAddress_Address.Title = "Address"
-            Me.Address3LineControlNameAndAddress_Address.Zip = Nothing
-            '
-            'LabelNameAndAddress_Phone
-            '
-            Me.LabelNameAndAddress_Phone.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelNameAndAddress_Phone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNameAndAddress_Phone.Location = New System.Drawing.Point(5, 290)
-            Me.LabelNameAndAddress_Phone.Name = "LabelNameAndAddress_Phone"
-            Me.LabelNameAndAddress_Phone.Size = New System.Drawing.Size(40, 20)
-            Me.LabelNameAndAddress_Phone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNameAndAddress_Phone.TabIndex = 3
-            Me.LabelNameAndAddress_Phone.Text = "Phone:"
-            '
-            'TextBoxNameAndAddress_Phone
-            '
-            Me.TextBoxNameAndAddress_Phone.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxNameAndAddress_Phone.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxNameAndAddress_Phone.Border.Class = "TextBoxBorder"
-            Me.TextBoxNameAndAddress_Phone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxNameAndAddress_Phone.CheckSpellingOnValidate = False
-            Me.TextBoxNameAndAddress_Phone.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxNameAndAddress_Phone.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxNameAndAddress_Phone.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxNameAndAddress_Phone.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxNameAndAddress_Phone.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxNameAndAddress_Phone.FocusHighlightEnabled = True
-            Me.TextBoxNameAndAddress_Phone.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxNameAndAddress_Phone.Location = New System.Drawing.Point(51, 290)
-            Me.TextBoxNameAndAddress_Phone.MaxFileSize = CType(0, Long)
-            Me.TextBoxNameAndAddress_Phone.Name = "TextBoxNameAndAddress_Phone"
-            Me.TextBoxNameAndAddress_Phone.SecurityEnabled = True
-            Me.TextBoxNameAndAddress_Phone.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxNameAndAddress_Phone.Size = New System.Drawing.Size(249, 21)
-            Me.TextBoxNameAndAddress_Phone.StartingFolderName = Nothing
-            Me.TextBoxNameAndAddress_Phone.TabIndex = 4
-            Me.TextBoxNameAndAddress_Phone.TabOnEnter = True
-            '
-            'LabelNameAndAddress_Fax
-            '
-            Me.LabelNameAndAddress_Fax.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelNameAndAddress_Fax.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNameAndAddress_Fax.Location = New System.Drawing.Point(5, 316)
-            Me.LabelNameAndAddress_Fax.Name = "LabelNameAndAddress_Fax"
-            Me.LabelNameAndAddress_Fax.Size = New System.Drawing.Size(40, 20)
-            Me.LabelNameAndAddress_Fax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNameAndAddress_Fax.TabIndex = 7
-            Me.LabelNameAndAddress_Fax.Text = "Fax:"
-            '
-            'TextBoxNameAndAddress_Fax
-            '
-            Me.TextBoxNameAndAddress_Fax.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxNameAndAddress_Fax.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxNameAndAddress_Fax.Border.Class = "TextBoxBorder"
-            Me.TextBoxNameAndAddress_Fax.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxNameAndAddress_Fax.CheckSpellingOnValidate = False
-            Me.TextBoxNameAndAddress_Fax.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxNameAndAddress_Fax.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxNameAndAddress_Fax.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxNameAndAddress_Fax.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxNameAndAddress_Fax.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxNameAndAddress_Fax.FocusHighlightEnabled = True
-            Me.TextBoxNameAndAddress_Fax.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxNameAndAddress_Fax.Location = New System.Drawing.Point(51, 316)
-            Me.TextBoxNameAndAddress_Fax.MaxFileSize = CType(0, Long)
-            Me.TextBoxNameAndAddress_Fax.Name = "TextBoxNameAndAddress_Fax"
-            Me.TextBoxNameAndAddress_Fax.SecurityEnabled = True
-            Me.TextBoxNameAndAddress_Fax.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxNameAndAddress_Fax.Size = New System.Drawing.Size(249, 21)
-            Me.TextBoxNameAndAddress_Fax.StartingFolderName = Nothing
-            Me.TextBoxNameAndAddress_Fax.TabIndex = 8
-            Me.TextBoxNameAndAddress_Fax.TabOnEnter = True
-            '
-            'LabelNameAndAddress_PhoneExt
-            '
-            Me.LabelNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelNameAndAddress_PhoneExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNameAndAddress_PhoneExt.Location = New System.Drawing.Point(306, 290)
-            Me.LabelNameAndAddress_PhoneExt.Name = "LabelNameAndAddress_PhoneExt"
-            Me.LabelNameAndAddress_PhoneExt.Size = New System.Drawing.Size(24, 20)
-            Me.LabelNameAndAddress_PhoneExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNameAndAddress_PhoneExt.TabIndex = 5
-            Me.LabelNameAndAddress_PhoneExt.Text = "Ext:"
-            '
-            'LabelNameAndAddress_FaxExt
-            '
-            Me.LabelNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.LabelNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelNameAndAddress_FaxExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelNameAndAddress_FaxExt.Location = New System.Drawing.Point(306, 316)
-            Me.LabelNameAndAddress_FaxExt.Name = "LabelNameAndAddress_FaxExt"
-            Me.LabelNameAndAddress_FaxExt.Size = New System.Drawing.Size(24, 20)
-            Me.LabelNameAndAddress_FaxExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelNameAndAddress_FaxExt.TabIndex = 9
-            Me.LabelNameAndAddress_FaxExt.Text = "Ext:"
-            '
-            'TextBoxNameAndAddress_FaxExt
-            '
-            Me.TextBoxNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxNameAndAddress_FaxExt.Border.Class = "TextBoxBorder"
-            Me.TextBoxNameAndAddress_FaxExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxNameAndAddress_FaxExt.CheckSpellingOnValidate = False
-            Me.TextBoxNameAndAddress_FaxExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxNameAndAddress_FaxExt.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxNameAndAddress_FaxExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxNameAndAddress_FaxExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxNameAndAddress_FaxExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxNameAndAddress_FaxExt.FocusHighlightEnabled = True
-            Me.TextBoxNameAndAddress_FaxExt.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxNameAndAddress_FaxExt.Location = New System.Drawing.Point(336, 316)
-            Me.TextBoxNameAndAddress_FaxExt.MaxFileSize = CType(0, Long)
-            Me.TextBoxNameAndAddress_FaxExt.Name = "TextBoxNameAndAddress_FaxExt"
-            Me.TextBoxNameAndAddress_FaxExt.SecurityEnabled = True
-            Me.TextBoxNameAndAddress_FaxExt.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxNameAndAddress_FaxExt.Size = New System.Drawing.Size(59, 21)
-            Me.TextBoxNameAndAddress_FaxExt.StartingFolderName = Nothing
-            Me.TextBoxNameAndAddress_FaxExt.TabIndex = 10
-            Me.TextBoxNameAndAddress_FaxExt.TabOnEnter = True
-            '
-            'TextBoxNameAndAddress_PhoneExt
-            '
-            Me.TextBoxNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxNameAndAddress_PhoneExt.Border.Class = "TextBoxBorder"
-            Me.TextBoxNameAndAddress_PhoneExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxNameAndAddress_PhoneExt.CheckSpellingOnValidate = False
-            Me.TextBoxNameAndAddress_PhoneExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxNameAndAddress_PhoneExt.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxNameAndAddress_PhoneExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxNameAndAddress_PhoneExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxNameAndAddress_PhoneExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxNameAndAddress_PhoneExt.FocusHighlightEnabled = True
-            Me.TextBoxNameAndAddress_PhoneExt.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxNameAndAddress_PhoneExt.Location = New System.Drawing.Point(336, 290)
-            Me.TextBoxNameAndAddress_PhoneExt.MaxFileSize = CType(0, Long)
-            Me.TextBoxNameAndAddress_PhoneExt.Name = "TextBoxNameAndAddress_PhoneExt"
-            Me.TextBoxNameAndAddress_PhoneExt.SecurityEnabled = True
-            Me.TextBoxNameAndAddress_PhoneExt.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxNameAndAddress_PhoneExt.Size = New System.Drawing.Size(59, 21)
-            Me.TextBoxNameAndAddress_PhoneExt.StartingFolderName = Nothing
-            Me.TextBoxNameAndAddress_PhoneExt.TabIndex = 6
-            Me.TextBoxNameAndAddress_PhoneExt.TabOnEnter = True
-            '
-            'CheckBoxMain_Inactive
-            '
-            Me.CheckBoxMain_Inactive.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.CheckBoxMain_Inactive.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.CheckBoxMain_Inactive.CheckValue = 0
-            Me.CheckBoxMain_Inactive.CheckValueChecked = 1
-            Me.CheckBoxMain_Inactive.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
-            Me.CheckBoxMain_Inactive.CheckValueUnchecked = 0
-            Me.CheckBoxMain_Inactive.ChildControls = CType(resources.GetObject("CheckBoxMain_Inactive.ChildControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Inactive.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
-            Me.CheckBoxMain_Inactive.Location = New System.Drawing.Point(123, 4)
-            Me.CheckBoxMain_Inactive.Name = "CheckBoxMain_Inactive"
-            Me.CheckBoxMain_Inactive.OldestSibling = Nothing
-            Me.CheckBoxMain_Inactive.SecurityEnabled = True
-            Me.CheckBoxMain_Inactive.SiblingControls = CType(resources.GetObject("CheckBoxMain_Inactive.SiblingControls"), System.Collections.Generic.List(Of Object))
-            Me.CheckBoxMain_Inactive.Size = New System.Drawing.Size(68, 20)
-            Me.CheckBoxMain_Inactive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.CheckBoxMain_Inactive.TabIndex = 3
-            Me.CheckBoxMain_Inactive.TabOnEnter = True
-            Me.CheckBoxMain_Inactive.Text = "Inactive"
-            '
-            'LabelMain_DefaultCategory
-            '
-            Me.LabelMain_DefaultCategory.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_DefaultCategory.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_DefaultCategory.Location = New System.Drawing.Point(6, 377)
-            Me.LabelMain_DefaultCategory.Name = "LabelMain_DefaultCategory"
-            Me.LabelMain_DefaultCategory.Size = New System.Drawing.Size(135, 20)
-            Me.LabelMain_DefaultCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_DefaultCategory.TabIndex = 14
-            Me.LabelMain_DefaultCategory.Text = "Default Category:"
-            '
-            'TextBoxMain_FederalTaxID
-            '
-            Me.TextBoxMain_FederalTaxID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxMain_FederalTaxID.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxMain_FederalTaxID.Border.Class = "TextBoxBorder"
-            Me.TextBoxMain_FederalTaxID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxMain_FederalTaxID.CheckSpellingOnValidate = False
-            Me.TextBoxMain_FederalTaxID.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxMain_FederalTaxID.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxMain_FederalTaxID.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxMain_FederalTaxID.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxMain_FederalTaxID.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxMain_FederalTaxID.FocusHighlightEnabled = True
-            Me.TextBoxMain_FederalTaxID.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxMain_FederalTaxID.Location = New System.Drawing.Point(552, 377)
-            Me.TextBoxMain_FederalTaxID.MaxFileSize = CType(0, Long)
-            Me.TextBoxMain_FederalTaxID.Name = "TextBoxMain_FederalTaxID"
-            Me.TextBoxMain_FederalTaxID.SecurityEnabled = True
-            Me.TextBoxMain_FederalTaxID.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxMain_FederalTaxID.Size = New System.Drawing.Size(259, 20)
-            Me.TextBoxMain_FederalTaxID.StartingFolderName = Nothing
-            Me.TextBoxMain_FederalTaxID.TabIndex = 25
-            Me.TextBoxMain_FederalTaxID.TabOnEnter = True
-            '
-            'LabelMain_FederalTaxID
-            '
-            Me.LabelMain_FederalTaxID.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_FederalTaxID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_FederalTaxID.Location = New System.Drawing.Point(419, 377)
-            Me.LabelMain_FederalTaxID.Name = "LabelMain_FederalTaxID"
-            Me.LabelMain_FederalTaxID.Size = New System.Drawing.Size(127, 20)
-            Me.LabelMain_FederalTaxID.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_FederalTaxID.TabIndex = 24
-            Me.LabelMain_FederalTaxID.Text = "Federal Tax ID:"
-            '
-            'TextBoxMain_Website
-            '
-            Me.TextBoxMain_Website.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxMain_Website.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxMain_Website.Border.Class = "TextBoxBorder"
-            Me.TextBoxMain_Website.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxMain_Website.CheckSpellingOnValidate = False
-            Me.TextBoxMain_Website.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxMain_Website.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxMain_Website.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxMain_Website.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxMain_Website.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxMain_Website.FocusHighlightEnabled = True
-            Me.TextBoxMain_Website.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxMain_Website.Location = New System.Drawing.Point(552, 429)
-            Me.TextBoxMain_Website.MaxFileSize = CType(0, Long)
-            Me.TextBoxMain_Website.Name = "TextBoxMain_Website"
-            Me.TextBoxMain_Website.SecurityEnabled = True
-            Me.TextBoxMain_Website.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxMain_Website.Size = New System.Drawing.Size(259, 20)
-            Me.TextBoxMain_Website.StartingFolderName = Nothing
-            Me.TextBoxMain_Website.TabIndex = 29
-            Me.TextBoxMain_Website.TabOnEnter = True
-            '
-            'TextBoxMain_Email
-            '
-            Me.TextBoxMain_Email.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxMain_Email.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxMain_Email.Border.Class = "TextBoxBorder"
-            Me.TextBoxMain_Email.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxMain_Email.CheckSpellingOnValidate = False
-            Me.TextBoxMain_Email.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
-            Me.TextBoxMain_Email.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxMain_Email.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxMain_Email.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxMain_Email.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxMain_Email.FocusHighlightEnabled = True
-            Me.TextBoxMain_Email.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxMain_Email.Location = New System.Drawing.Point(552, 455)
-            Me.TextBoxMain_Email.MaxFileSize = CType(0, Long)
-            Me.TextBoxMain_Email.Name = "TextBoxMain_Email"
-            Me.TextBoxMain_Email.SecurityEnabled = True
-            Me.TextBoxMain_Email.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxMain_Email.Size = New System.Drawing.Size(259, 20)
-            Me.TextBoxMain_Email.StartingFolderName = Nothing
-            Me.TextBoxMain_Email.TabIndex = 31
-            Me.TextBoxMain_Email.TabOnEnter = True
-            '
-            'TextBoxMain_PaymentManagerEmail
-            '
-            Me.TextBoxMain_PaymentManagerEmail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.TextBoxMain_PaymentManagerEmail.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxMain_PaymentManagerEmail.Border.Class = "TextBoxBorder"
-            Me.TextBoxMain_PaymentManagerEmail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxMain_PaymentManagerEmail.CheckSpellingOnValidate = False
-            Me.TextBoxMain_PaymentManagerEmail.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
-            Me.TextBoxMain_PaymentManagerEmail.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxMain_PaymentManagerEmail.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
-            Me.TextBoxMain_PaymentManagerEmail.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxMain_PaymentManagerEmail.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxMain_PaymentManagerEmail.FocusHighlightEnabled = True
-            Me.TextBoxMain_PaymentManagerEmail.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxMain_PaymentManagerEmail.Location = New System.Drawing.Point(552, 481)
-            Me.TextBoxMain_PaymentManagerEmail.MaxFileSize = CType(0, Long)
-            Me.TextBoxMain_PaymentManagerEmail.Name = "TextBoxMain_PaymentManagerEmail"
-            Me.TextBoxMain_PaymentManagerEmail.SecurityEnabled = True
-            Me.TextBoxMain_PaymentManagerEmail.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxMain_PaymentManagerEmail.Size = New System.Drawing.Size(259, 20)
-            Me.TextBoxMain_PaymentManagerEmail.StartingFolderName = Nothing
-            Me.TextBoxMain_PaymentManagerEmail.TabIndex = 33
-            Me.TextBoxMain_PaymentManagerEmail.TabOnEnter = True
-            '
-            'LabelMain_PaymentManagerEmail
-            '
-            Me.LabelMain_PaymentManagerEmail.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_PaymentManagerEmail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_PaymentManagerEmail.Location = New System.Drawing.Point(419, 481)
-            Me.LabelMain_PaymentManagerEmail.Name = "LabelMain_PaymentManagerEmail"
-            Me.LabelMain_PaymentManagerEmail.Size = New System.Drawing.Size(127, 20)
-            Me.LabelMain_PaymentManagerEmail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_PaymentManagerEmail.TabIndex = 32
-            Me.LabelMain_PaymentManagerEmail.Text = "Payment Manager Email:"
-            '
-            'LabelMain_Email
-            '
-            Me.LabelMain_Email.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_Email.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_Email.Location = New System.Drawing.Point(419, 455)
-            Me.LabelMain_Email.Name = "LabelMain_Email"
-            Me.LabelMain_Email.Size = New System.Drawing.Size(127, 20)
-            Me.LabelMain_Email.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_Email.TabIndex = 30
-            Me.LabelMain_Email.Text = "Email:"
-            '
-            'LabelMain_Website
-            '
-            Me.LabelMain_Website.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_Website.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_Website.Location = New System.Drawing.Point(419, 429)
-            Me.LabelMain_Website.Name = "LabelMain_Website"
-            Me.LabelMain_Website.Size = New System.Drawing.Size(127, 20)
-            Me.LabelMain_Website.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_Website.TabIndex = 28
-            Me.LabelMain_Website.Text = "Website:"
-            '
-            'TextBoxMain_Code
-            '
-            Me.TextBoxMain_Code.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.TextBoxMain_Code.Border.Class = "TextBoxBorder"
-            Me.TextBoxMain_Code.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.TextBoxMain_Code.CheckSpellingOnValidate = False
-            Me.TextBoxMain_Code.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
-            Me.TextBoxMain_Code.DisabledBackColor = System.Drawing.Color.White
-            Me.TextBoxMain_Code.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
-            Me.TextBoxMain_Code.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
-            Me.TextBoxMain_Code.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
-            Me.TextBoxMain_Code.FocusHighlightEnabled = True
-            Me.TextBoxMain_Code.ForeColor = System.Drawing.Color.Black
-            Me.TextBoxMain_Code.Location = New System.Drawing.Point(50, 4)
-            Me.TextBoxMain_Code.MaxFileSize = CType(0, Long)
-            Me.TextBoxMain_Code.Name = "TextBoxMain_Code"
-            Me.TextBoxMain_Code.SecurityEnabled = True
-            Me.TextBoxMain_Code.ShowSpellCheckCompleteMessage = True
-            Me.TextBoxMain_Code.Size = New System.Drawing.Size(67, 20)
-            Me.TextBoxMain_Code.StartingFolderName = Nothing
-            Me.TextBoxMain_Code.TabIndex = 2
-            Me.TextBoxMain_Code.TabOnEnter = True
-            '
-            'LabelMain_Code
-            '
-            Me.LabelMain_Code.BackColor = System.Drawing.Color.White
-            '
-            '
-            '
-            Me.LabelMain_Code.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelMain_Code.Location = New System.Drawing.Point(4, 4)
-            Me.LabelMain_Code.Name = "LabelMain_Code"
-            Me.LabelMain_Code.Size = New System.Drawing.Size(40, 20)
-            Me.LabelMain_Code.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelMain_Code.TabIndex = 1
-            Me.LabelMain_Code.Text = "Code:"
-            '
-            'TabItemVendorDetails_MainTab
-            '
-            Me.TabItemVendorDetails_MainTab.AttachedControl = Me.TabControlPanelMainTab_Main
-            Me.TabItemVendorDetails_MainTab.Name = "TabItemVendorDetails_MainTab"
-            Me.TabItemVendorDetails_MainTab.Text = "Main"
             '
             'TabControlPanelMediaDefaultsTab_MediaDefaults
             '
@@ -2156,6 +949,64 @@
             Me.PanelTableLayout_LeftColumn.Name = "PanelTableLayout_LeftColumn"
             Me.PanelTableLayout_LeftColumn.Size = New System.Drawing.Size(509, 450)
             Me.PanelTableLayout_LeftColumn.TabIndex = 0
+            '
+            'SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation
+            '
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ActiveFilterString = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AddInactiveItemsOnSelectedValue = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AutoFillMode = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.BookmarkingEnabled = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.[Default]
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DataSource = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisableMouseWheel = False
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisplayName = ""
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.EnterMoveNextControl = True
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(167, 208)
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Name = "SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.DisplayMember = "Name"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.NullText = "Select Puerto Rico TV Station"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.PopupView = Me.GridView19
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.ValueMember = "ID"
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SecurityEnabled = True
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SelectedValue = Nothing
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(339, 20)
+            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 23
+            '
+            'GridView19
+            '
+            Me.GridView19.AFActiveFilterString = ""
+            Me.GridView19.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView19.AutoFilterLookupColumns = False
+            Me.GridView19.AutoloadRepositoryDatasource = True
+            Me.GridView19.DataSourceClearing = False
+            Me.GridView19.EnableDisabledRows = False
+            Me.GridView19.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView19.Name = "GridView19"
+            Me.GridView19.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView19.OptionsView.ShowGroupPanel = False
+            Me.GridView19.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView19.RunStandardValidation = True
+            Me.GridView19.SkipAddingControlsOnModifyColumn = False
+            Me.GridView19.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelGeneralDefaultInformation_PuertoRicoTVStation
+            '
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(-1, 208)
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Name = "LabelGeneralDefaultInformation_PuertoRicoTVStation"
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(161, 20)
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 42
+            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Text = "Puerto Rico TV Station:"
             '
             'ComboBoxGeneralDefaultInformation_CanadianVendorType
             '
@@ -3579,6 +2430,1217 @@
             Me.TabItemVendorDetails_MediaDefaultsTab.Name = "TabItemVendorDetails_MediaDefaultsTab"
             Me.TabItemVendorDetails_MediaDefaultsTab.Text = "Media Defaults"
             '
+            'TabControlPanelMainTab_Main
+            '
+            Me.TabControlPanelMainTab_Main.AutoScroll = True
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_QuickbooksVendor)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.SearchableComboBoxMain_QuickBooksVendor)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_VATNumber)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_VATNumber)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Television)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Radio)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_OutOfHome)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Newspaper)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Magazine)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Internet)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_MediaCategoriesAllowed)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.ComboBoxMain_DefaultCategory)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TableLayoutPanelMain_TableLayout)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.CheckBoxMain_Inactive)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_DefaultCategory)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_FederalTaxID)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_FederalTaxID)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_Website)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_Email)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_PaymentManagerEmail)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_PaymentManagerEmail)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_Email)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_Website)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.TextBoxMain_Code)
+            Me.TabControlPanelMainTab_Main.Controls.Add(Me.LabelMain_Code)
+            Me.TabControlPanelMainTab_Main.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlPanelMainTab_Main.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlPanelMainTab_Main.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlPanelMainTab_Main.Name = "TabControlPanelMainTab_Main"
+            Me.TabControlPanelMainTab_Main.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlPanelMainTab_Main.Size = New System.Drawing.Size(815, 513)
+            Me.TabControlPanelMainTab_Main.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlPanelMainTab_Main.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlPanelMainTab_Main.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlPanelMainTab_Main.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlPanelMainTab_Main.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlPanelMainTab_Main.Style.GradientAngle = 90
+            Me.TabControlPanelMainTab_Main.TabIndex = 0
+            Me.TabControlPanelMainTab_Main.TabItem = Me.TabItemVendorDetails_MainTab
+            '
+            'LabelMain_QuickbooksVendor
+            '
+            Me.LabelMain_QuickbooksVendor.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_QuickbooksVendor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_QuickbooksVendor.Location = New System.Drawing.Point(197, 4)
+            Me.LabelMain_QuickbooksVendor.Name = "LabelMain_QuickbooksVendor"
+            Me.LabelMain_QuickbooksVendor.Size = New System.Drawing.Size(107, 20)
+            Me.LabelMain_QuickbooksVendor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_QuickbooksVendor.TabIndex = 35
+            Me.LabelMain_QuickbooksVendor.Text = "QuickBooks Vendor:"
+            '
+            'SearchableComboBoxMain_QuickBooksVendor
+            '
+            Me.SearchableComboBoxMain_QuickBooksVendor.ActiveFilterString = ""
+            Me.SearchableComboBoxMain_QuickBooksVendor.AddInactiveItemsOnSelectedValue = True
+            Me.SearchableComboBoxMain_QuickBooksVendor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.SearchableComboBoxMain_QuickBooksVendor.AutoFillMode = False
+            Me.SearchableComboBoxMain_QuickBooksVendor.BookmarkingEnabled = False
+            Me.SearchableComboBoxMain_QuickBooksVendor.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.QuickbookCustomer
+            Me.SearchableComboBoxMain_QuickBooksVendor.DataSource = Nothing
+            Me.SearchableComboBoxMain_QuickBooksVendor.DisableMouseWheel = False
+            Me.SearchableComboBoxMain_QuickBooksVendor.DisplayName = ""
+            Me.SearchableComboBoxMain_QuickBooksVendor.EnterMoveNextControl = True
+            Me.SearchableComboBoxMain_QuickBooksVendor.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
+            Me.SearchableComboBoxMain_QuickBooksVendor.Location = New System.Drawing.Point(310, 4)
+            Me.SearchableComboBoxMain_QuickBooksVendor.Name = "SearchableComboBoxMain_QuickBooksVendor"
+            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.DisplayMember = "DisplayName"
+            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.NullText = "Select Customer"
+            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.PopupView = Me.GridView17
+            Me.SearchableComboBoxMain_QuickBooksVendor.Properties.ValueMember = "ID"
+            Me.SearchableComboBoxMain_QuickBooksVendor.SecurityEnabled = True
+            Me.SearchableComboBoxMain_QuickBooksVendor.SelectedValue = Nothing
+            Me.SearchableComboBoxMain_QuickBooksVendor.Size = New System.Drawing.Size(497, 20)
+            Me.SearchableComboBoxMain_QuickBooksVendor.TabIndex = 34
+            '
+            'GridView17
+            '
+            Me.GridView17.AFActiveFilterString = ""
+            Me.GridView17.AllowExtraItemsInGridLookupEdits = True
+            Me.GridView17.AutoFilterLookupColumns = False
+            Me.GridView17.AutoloadRepositoryDatasource = True
+            Me.GridView17.DataSourceClearing = False
+            Me.GridView17.EnableDisabledRows = False
+            Me.GridView17.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+            Me.GridView17.Name = "GridView17"
+            Me.GridView17.OptionsSelection.EnableAppearanceFocusedCell = False
+            Me.GridView17.OptionsView.ShowGroupPanel = False
+            Me.GridView17.RestoredLayoutNonVisibleGridColumnList = Nothing
+            Me.GridView17.RunStandardValidation = True
+            Me.GridView17.SkipAddingControlsOnModifyColumn = False
+            Me.GridView17.SkipSettingFontOnModifyColumn = False
+            '
+            'LabelMain_VATNumber
+            '
+            Me.LabelMain_VATNumber.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_VATNumber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_VATNumber.Location = New System.Drawing.Point(419, 403)
+            Me.LabelMain_VATNumber.Name = "LabelMain_VATNumber"
+            Me.LabelMain_VATNumber.Size = New System.Drawing.Size(127, 20)
+            Me.LabelMain_VATNumber.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_VATNumber.TabIndex = 26
+            Me.LabelMain_VATNumber.Text = "VAT Number:"
+            '
+            'TextBoxMain_VATNumber
+            '
+            Me.TextBoxMain_VATNumber.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxMain_VATNumber.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxMain_VATNumber.Border.Class = "TextBoxBorder"
+            Me.TextBoxMain_VATNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxMain_VATNumber.CheckSpellingOnValidate = False
+            Me.TextBoxMain_VATNumber.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxMain_VATNumber.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxMain_VATNumber.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxMain_VATNumber.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxMain_VATNumber.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxMain_VATNumber.FocusHighlightEnabled = True
+            Me.TextBoxMain_VATNumber.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxMain_VATNumber.Location = New System.Drawing.Point(552, 403)
+            Me.TextBoxMain_VATNumber.MaxFileSize = CType(0, Long)
+            Me.TextBoxMain_VATNumber.Name = "TextBoxMain_VATNumber"
+            Me.TextBoxMain_VATNumber.SecurityEnabled = True
+            Me.TextBoxMain_VATNumber.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxMain_VATNumber.Size = New System.Drawing.Size(259, 20)
+            Me.TextBoxMain_VATNumber.StartingFolderName = Nothing
+            Me.TextBoxMain_VATNumber.TabIndex = 27
+            Me.TextBoxMain_VATNumber.TabOnEnter = True
+            '
+            'CheckBoxMain_Television
+            '
+            Me.CheckBoxMain_Television.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxMain_Television.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxMain_Television.CheckValue = 0
+            Me.CheckBoxMain_Television.CheckValueChecked = 1
+            Me.CheckBoxMain_Television.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxMain_Television.CheckValueUnchecked = 0
+            Me.CheckBoxMain_Television.ChildControls = CType(resources.GetObject("CheckBoxMain_Television.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Television.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxMain_Television.Location = New System.Drawing.Point(288, 455)
+            Me.CheckBoxMain_Television.Name = "CheckBoxMain_Television"
+            Me.CheckBoxMain_Television.OldestSibling = Nothing
+            Me.CheckBoxMain_Television.SecurityEnabled = True
+            Me.CheckBoxMain_Television.SiblingControls = CType(resources.GetObject("CheckBoxMain_Television.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Television.Size = New System.Drawing.Size(125, 20)
+            Me.CheckBoxMain_Television.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxMain_Television.TabIndex = 22
+            Me.CheckBoxMain_Television.TabOnEnter = True
+            Me.CheckBoxMain_Television.Text = "Television"
+            '
+            'CheckBoxMain_Radio
+            '
+            Me.CheckBoxMain_Radio.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxMain_Radio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxMain_Radio.CheckValue = 0
+            Me.CheckBoxMain_Radio.CheckValueChecked = 1
+            Me.CheckBoxMain_Radio.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxMain_Radio.CheckValueUnchecked = 0
+            Me.CheckBoxMain_Radio.ChildControls = CType(resources.GetObject("CheckBoxMain_Radio.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Radio.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxMain_Radio.Location = New System.Drawing.Point(146, 455)
+            Me.CheckBoxMain_Radio.Name = "CheckBoxMain_Radio"
+            Me.CheckBoxMain_Radio.OldestSibling = Nothing
+            Me.CheckBoxMain_Radio.SecurityEnabled = True
+            Me.CheckBoxMain_Radio.SiblingControls = CType(resources.GetObject("CheckBoxMain_Radio.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Radio.Size = New System.Drawing.Size(136, 20)
+            Me.CheckBoxMain_Radio.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxMain_Radio.TabIndex = 21
+            Me.CheckBoxMain_Radio.TabOnEnter = True
+            Me.CheckBoxMain_Radio.Text = "Radio"
+            '
+            'CheckBoxMain_OutOfHome
+            '
+            Me.CheckBoxMain_OutOfHome.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxMain_OutOfHome.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxMain_OutOfHome.CheckValue = 0
+            Me.CheckBoxMain_OutOfHome.CheckValueChecked = 1
+            Me.CheckBoxMain_OutOfHome.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxMain_OutOfHome.CheckValueUnchecked = 0
+            Me.CheckBoxMain_OutOfHome.ChildControls = CType(resources.GetObject("CheckBoxMain_OutOfHome.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_OutOfHome.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxMain_OutOfHome.Location = New System.Drawing.Point(4, 455)
+            Me.CheckBoxMain_OutOfHome.Name = "CheckBoxMain_OutOfHome"
+            Me.CheckBoxMain_OutOfHome.OldestSibling = Nothing
+            Me.CheckBoxMain_OutOfHome.SecurityEnabled = True
+            Me.CheckBoxMain_OutOfHome.SiblingControls = CType(resources.GetObject("CheckBoxMain_OutOfHome.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_OutOfHome.Size = New System.Drawing.Size(136, 20)
+            Me.CheckBoxMain_OutOfHome.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxMain_OutOfHome.TabIndex = 20
+            Me.CheckBoxMain_OutOfHome.TabOnEnter = True
+            Me.CheckBoxMain_OutOfHome.Text = "Out of Home"
+            '
+            'CheckBoxMain_Newspaper
+            '
+            Me.CheckBoxMain_Newspaper.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxMain_Newspaper.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxMain_Newspaper.CheckValue = 0
+            Me.CheckBoxMain_Newspaper.CheckValueChecked = 1
+            Me.CheckBoxMain_Newspaper.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxMain_Newspaper.CheckValueUnchecked = 0
+            Me.CheckBoxMain_Newspaper.ChildControls = CType(resources.GetObject("CheckBoxMain_Newspaper.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Newspaper.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxMain_Newspaper.Location = New System.Drawing.Point(288, 429)
+            Me.CheckBoxMain_Newspaper.Name = "CheckBoxMain_Newspaper"
+            Me.CheckBoxMain_Newspaper.OldestSibling = Nothing
+            Me.CheckBoxMain_Newspaper.SecurityEnabled = True
+            Me.CheckBoxMain_Newspaper.SiblingControls = CType(resources.GetObject("CheckBoxMain_Newspaper.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Newspaper.Size = New System.Drawing.Size(125, 20)
+            Me.CheckBoxMain_Newspaper.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxMain_Newspaper.TabIndex = 19
+            Me.CheckBoxMain_Newspaper.TabOnEnter = True
+            Me.CheckBoxMain_Newspaper.Text = "Newspaper"
+            '
+            'CheckBoxMain_Magazine
+            '
+            Me.CheckBoxMain_Magazine.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxMain_Magazine.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxMain_Magazine.CheckValue = 0
+            Me.CheckBoxMain_Magazine.CheckValueChecked = 1
+            Me.CheckBoxMain_Magazine.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxMain_Magazine.CheckValueUnchecked = 0
+            Me.CheckBoxMain_Magazine.ChildControls = CType(resources.GetObject("CheckBoxMain_Magazine.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Magazine.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxMain_Magazine.Location = New System.Drawing.Point(146, 429)
+            Me.CheckBoxMain_Magazine.Name = "CheckBoxMain_Magazine"
+            Me.CheckBoxMain_Magazine.OldestSibling = Nothing
+            Me.CheckBoxMain_Magazine.SecurityEnabled = True
+            Me.CheckBoxMain_Magazine.SiblingControls = CType(resources.GetObject("CheckBoxMain_Magazine.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Magazine.Size = New System.Drawing.Size(136, 20)
+            Me.CheckBoxMain_Magazine.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxMain_Magazine.TabIndex = 18
+            Me.CheckBoxMain_Magazine.TabOnEnter = True
+            Me.CheckBoxMain_Magazine.Text = "Magazine"
+            '
+            'CheckBoxMain_Internet
+            '
+            Me.CheckBoxMain_Internet.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxMain_Internet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxMain_Internet.CheckValue = 0
+            Me.CheckBoxMain_Internet.CheckValueChecked = 1
+            Me.CheckBoxMain_Internet.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxMain_Internet.CheckValueUnchecked = 0
+            Me.CheckBoxMain_Internet.ChildControls = CType(resources.GetObject("CheckBoxMain_Internet.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Internet.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxMain_Internet.Location = New System.Drawing.Point(4, 429)
+            Me.CheckBoxMain_Internet.Name = "CheckBoxMain_Internet"
+            Me.CheckBoxMain_Internet.OldestSibling = Nothing
+            Me.CheckBoxMain_Internet.SecurityEnabled = True
+            Me.CheckBoxMain_Internet.SiblingControls = CType(resources.GetObject("CheckBoxMain_Internet.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Internet.Size = New System.Drawing.Size(136, 20)
+            Me.CheckBoxMain_Internet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxMain_Internet.TabIndex = 17
+            Me.CheckBoxMain_Internet.TabOnEnter = True
+            Me.CheckBoxMain_Internet.Text = "Internet"
+            '
+            'LabelMain_MediaCategoriesAllowed
+            '
+            Me.LabelMain_MediaCategoriesAllowed.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderBottomColor = System.Drawing.Color.Black
+            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderBottomWidth = 1
+            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.BorderColor = System.Drawing.Color.Black
+            Me.LabelMain_MediaCategoriesAllowed.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_MediaCategoriesAllowed.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.LabelMain_MediaCategoriesAllowed.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.LabelMain_MediaCategoriesAllowed.Location = New System.Drawing.Point(4, 403)
+            Me.LabelMain_MediaCategoriesAllowed.Name = "LabelMain_MediaCategoriesAllowed"
+            Me.LabelMain_MediaCategoriesAllowed.Size = New System.Drawing.Size(409, 20)
+            Me.LabelMain_MediaCategoriesAllowed.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_MediaCategoriesAllowed.TabIndex = 16
+            Me.LabelMain_MediaCategoriesAllowed.Text = "Media Categories Allowed"
+            '
+            'ComboBoxMain_DefaultCategory
+            '
+            Me.ComboBoxMain_DefaultCategory.AddInactiveItemsOnSelectedValue = False
+            Me.ComboBoxMain_DefaultCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+            Me.ComboBoxMain_DefaultCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+            Me.ComboBoxMain_DefaultCategory.AutoFindItemInDataSource = False
+            Me.ComboBoxMain_DefaultCategory.AutoSelectSingleItemDatasource = False
+            Me.ComboBoxMain_DefaultCategory.BookmarkingEnabled = False
+            Me.ComboBoxMain_DefaultCategory.ClientCode = ""
+            Me.ComboBoxMain_DefaultCategory.ControlType = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.Type.EnumDataTable
+            Me.ComboBoxMain_DefaultCategory.DisableMouseWheel = False
+            Me.ComboBoxMain_DefaultCategory.DisplayMember = "Name"
+            Me.ComboBoxMain_DefaultCategory.DisplayName = ""
+            Me.ComboBoxMain_DefaultCategory.DivisionCode = ""
+            Me.ComboBoxMain_DefaultCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+            Me.ComboBoxMain_DefaultCategory.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.ComboBoxMain_DefaultCategory.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.ComboBox.ExtraComboBoxItems.[Nothing]
+            Me.ComboBoxMain_DefaultCategory.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.ComboBoxMain_DefaultCategory.FocusHighlightEnabled = True
+            Me.ComboBoxMain_DefaultCategory.ForeColor = System.Drawing.Color.Black
+            Me.ComboBoxMain_DefaultCategory.FormattingEnabled = True
+            Me.ComboBoxMain_DefaultCategory.ItemHeight = 14
+            Me.ComboBoxMain_DefaultCategory.Location = New System.Drawing.Point(147, 377)
+            Me.ComboBoxMain_DefaultCategory.Name = "ComboBoxMain_DefaultCategory"
+            Me.ComboBoxMain_DefaultCategory.ReadOnly = False
+            Me.ComboBoxMain_DefaultCategory.SecurityEnabled = True
+            Me.ComboBoxMain_DefaultCategory.Size = New System.Drawing.Size(266, 20)
+            Me.ComboBoxMain_DefaultCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ComboBoxMain_DefaultCategory.TabIndex = 15
+            Me.ComboBoxMain_DefaultCategory.TabOnEnter = True
+            Me.ComboBoxMain_DefaultCategory.ValueMember = "Value"
+            Me.ComboBoxMain_DefaultCategory.WatermarkText = "Select"
+            '
+            'TableLayoutPanelMain_TableLayout
+            '
+            Me.TableLayoutPanelMain_TableLayout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TableLayoutPanelMain_TableLayout.BackColor = System.Drawing.Color.White
+            Me.TableLayoutPanelMain_TableLayout.ColumnCount = 2
+            Me.TableLayoutPanelMain_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+            Me.TableLayoutPanelMain_TableLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+            Me.TableLayoutPanelMain_TableLayout.Controls.Add(Me.PanelTableLayout_RightSection, 1, 0)
+            Me.TableLayoutPanelMain_TableLayout.Controls.Add(Me.PanelTableLayout_LeftSection, 0, 0)
+            Me.TableLayoutPanelMain_TableLayout.Location = New System.Drawing.Point(4, 29)
+            Me.TableLayoutPanelMain_TableLayout.Margin = New System.Windows.Forms.Padding(0)
+            Me.TableLayoutPanelMain_TableLayout.Name = "TableLayoutPanelMain_TableLayout"
+            Me.TableLayoutPanelMain_TableLayout.RowCount = 1
+            Me.TableLayoutPanelMain_TableLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+            Me.TableLayoutPanelMain_TableLayout.Size = New System.Drawing.Size(807, 342)
+            Me.TableLayoutPanelMain_TableLayout.TabIndex = 4
+            '
+            'PanelTableLayout_RightSection
+            '
+            Me.PanelTableLayout_RightSection.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelTableLayout_RightSection.Controls.Add(Me.GroupBoxMain_PayToNameAndAddress)
+            Me.PanelTableLayout_RightSection.Location = New System.Drawing.Point(403, 0)
+            Me.PanelTableLayout_RightSection.Margin = New System.Windows.Forms.Padding(0)
+            Me.PanelTableLayout_RightSection.Name = "PanelTableLayout_RightSection"
+            Me.PanelTableLayout_RightSection.Size = New System.Drawing.Size(404, 342)
+            Me.PanelTableLayout_RightSection.TabIndex = 1
+            '
+            'GroupBoxMain_PayToNameAndAddress
+            '
+            Me.GroupBoxMain_PayToNameAndAddress.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Vendor)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.ButtonPayToNameAndAddress_Refresh)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_FaxExt)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Vendor)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_PhoneExt)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_FaxExt)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Name)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_PhoneExt)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Name)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Fax)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.Address3LineControlPayToNameAndAddress_PayToAddress)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Fax)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.LabelPayToNameAndAddress_Phone)
+            Me.GroupBoxMain_PayToNameAndAddress.Controls.Add(Me.TextBoxPayToNameAndAddress_Phone)
+            Me.GroupBoxMain_PayToNameAndAddress.Location = New System.Drawing.Point(3, 0)
+            Me.GroupBoxMain_PayToNameAndAddress.Name = "GroupBoxMain_PayToNameAndAddress"
+            Me.GroupBoxMain_PayToNameAndAddress.Size = New System.Drawing.Size(401, 342)
+            Me.GroupBoxMain_PayToNameAndAddress.TabIndex = 0
+            Me.GroupBoxMain_PayToNameAndAddress.Text = "Pay To Name and Address"
+            '
+            'TextBoxPayToNameAndAddress_Vendor
+            '
+            Me.TextBoxPayToNameAndAddress_Vendor.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxPayToNameAndAddress_Vendor.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxPayToNameAndAddress_Vendor.Border.Class = "TextBoxBorder"
+            Me.TextBoxPayToNameAndAddress_Vendor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxPayToNameAndAddress_Vendor.ButtonCustom.Visible = True
+            Me.TextBoxPayToNameAndAddress_Vendor.CheckSpellingOnValidate = False
+            Me.TextBoxPayToNameAndAddress_Vendor.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Vendor
+            Me.TextBoxPayToNameAndAddress_Vendor.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxPayToNameAndAddress_Vendor.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxPayToNameAndAddress_Vendor.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxPayToNameAndAddress_Vendor.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxPayToNameAndAddress_Vendor.FocusHighlightEnabled = True
+            Me.TextBoxPayToNameAndAddress_Vendor.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxPayToNameAndAddress_Vendor.Location = New System.Drawing.Point(51, 25)
+            Me.TextBoxPayToNameAndAddress_Vendor.MaxFileSize = CType(0, Long)
+            Me.TextBoxPayToNameAndAddress_Vendor.Name = "TextBoxPayToNameAndAddress_Vendor"
+            Me.TextBoxPayToNameAndAddress_Vendor.SecurityEnabled = True
+            Me.TextBoxPayToNameAndAddress_Vendor.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxPayToNameAndAddress_Vendor.Size = New System.Drawing.Size(264, 21)
+            Me.TextBoxPayToNameAndAddress_Vendor.StartingFolderName = Nothing
+            Me.TextBoxPayToNameAndAddress_Vendor.TabIndex = 1
+            Me.TextBoxPayToNameAndAddress_Vendor.TabOnEnter = True
+            '
+            'ButtonPayToNameAndAddress_Refresh
+            '
+            Me.ButtonPayToNameAndAddress_Refresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+            Me.ButtonPayToNameAndAddress_Refresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.ButtonPayToNameAndAddress_Refresh.AutoExpandOnClick = True
+            Me.ButtonPayToNameAndAddress_Refresh.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+            Me.ButtonPayToNameAndAddress_Refresh.Location = New System.Drawing.Point(321, 25)
+            Me.ButtonPayToNameAndAddress_Refresh.Name = "ButtonPayToNameAndAddress_Refresh"
+            Me.ButtonPayToNameAndAddress_Refresh.SecurityEnabled = True
+            Me.ButtonPayToNameAndAddress_Refresh.Size = New System.Drawing.Size(75, 20)
+            Me.ButtonPayToNameAndAddress_Refresh.SplitButton = True
+            Me.ButtonPayToNameAndAddress_Refresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.ButtonPayToNameAndAddress_Refresh.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItemRefresh_Vendor})
+            Me.ButtonPayToNameAndAddress_Refresh.TabIndex = 2
+            Me.ButtonPayToNameAndAddress_Refresh.Text = "Refresh"
+            '
+            'ButtonItemRefresh_Vendor
+            '
+            Me.ButtonItemRefresh_Vendor.Name = "ButtonItemRefresh_Vendor"
+            Me.ButtonItemRefresh_Vendor.Text = "Vendor"
+            '
+            'TextBoxPayToNameAndAddress_FaxExt
+            '
+            Me.TextBoxPayToNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxPayToNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxPayToNameAndAddress_FaxExt.Border.Class = "TextBoxBorder"
+            Me.TextBoxPayToNameAndAddress_FaxExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxPayToNameAndAddress_FaxExt.CheckSpellingOnValidate = False
+            Me.TextBoxPayToNameAndAddress_FaxExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxPayToNameAndAddress_FaxExt.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxPayToNameAndAddress_FaxExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxPayToNameAndAddress_FaxExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxPayToNameAndAddress_FaxExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxPayToNameAndAddress_FaxExt.FocusHighlightEnabled = True
+            Me.TextBoxPayToNameAndAddress_FaxExt.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxPayToNameAndAddress_FaxExt.Location = New System.Drawing.Point(337, 316)
+            Me.TextBoxPayToNameAndAddress_FaxExt.MaxFileSize = CType(0, Long)
+            Me.TextBoxPayToNameAndAddress_FaxExt.Name = "TextBoxPayToNameAndAddress_FaxExt"
+            Me.TextBoxPayToNameAndAddress_FaxExt.SecurityEnabled = True
+            Me.TextBoxPayToNameAndAddress_FaxExt.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxPayToNameAndAddress_FaxExt.Size = New System.Drawing.Size(59, 21)
+            Me.TextBoxPayToNameAndAddress_FaxExt.StartingFolderName = Nothing
+            Me.TextBoxPayToNameAndAddress_FaxExt.TabIndex = 13
+            Me.TextBoxPayToNameAndAddress_FaxExt.TabOnEnter = True
+            '
+            'LabelPayToNameAndAddress_Vendor
+            '
+            Me.LabelPayToNameAndAddress_Vendor.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelPayToNameAndAddress_Vendor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelPayToNameAndAddress_Vendor.Location = New System.Drawing.Point(5, 25)
+            Me.LabelPayToNameAndAddress_Vendor.Name = "LabelPayToNameAndAddress_Vendor"
+            Me.LabelPayToNameAndAddress_Vendor.Size = New System.Drawing.Size(40, 20)
+            Me.LabelPayToNameAndAddress_Vendor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelPayToNameAndAddress_Vendor.TabIndex = 0
+            Me.LabelPayToNameAndAddress_Vendor.Text = "Vendor:"
+            '
+            'TextBoxPayToNameAndAddress_PhoneExt
+            '
+            Me.TextBoxPayToNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxPayToNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxPayToNameAndAddress_PhoneExt.Border.Class = "TextBoxBorder"
+            Me.TextBoxPayToNameAndAddress_PhoneExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxPayToNameAndAddress_PhoneExt.CheckSpellingOnValidate = False
+            Me.TextBoxPayToNameAndAddress_PhoneExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxPayToNameAndAddress_PhoneExt.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxPayToNameAndAddress_PhoneExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxPayToNameAndAddress_PhoneExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxPayToNameAndAddress_PhoneExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxPayToNameAndAddress_PhoneExt.FocusHighlightEnabled = True
+            Me.TextBoxPayToNameAndAddress_PhoneExt.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxPayToNameAndAddress_PhoneExt.Location = New System.Drawing.Point(337, 290)
+            Me.TextBoxPayToNameAndAddress_PhoneExt.MaxFileSize = CType(0, Long)
+            Me.TextBoxPayToNameAndAddress_PhoneExt.Name = "TextBoxPayToNameAndAddress_PhoneExt"
+            Me.TextBoxPayToNameAndAddress_PhoneExt.SecurityEnabled = True
+            Me.TextBoxPayToNameAndAddress_PhoneExt.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxPayToNameAndAddress_PhoneExt.Size = New System.Drawing.Size(59, 21)
+            Me.TextBoxPayToNameAndAddress_PhoneExt.StartingFolderName = Nothing
+            Me.TextBoxPayToNameAndAddress_PhoneExt.TabIndex = 9
+            Me.TextBoxPayToNameAndAddress_PhoneExt.TabOnEnter = True
+            '
+            'LabelPayToNameAndAddress_FaxExt
+            '
+            Me.LabelPayToNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelPayToNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelPayToNameAndAddress_FaxExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelPayToNameAndAddress_FaxExt.Location = New System.Drawing.Point(307, 316)
+            Me.LabelPayToNameAndAddress_FaxExt.Name = "LabelPayToNameAndAddress_FaxExt"
+            Me.LabelPayToNameAndAddress_FaxExt.Size = New System.Drawing.Size(24, 20)
+            Me.LabelPayToNameAndAddress_FaxExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelPayToNameAndAddress_FaxExt.TabIndex = 12
+            Me.LabelPayToNameAndAddress_FaxExt.Text = "Ext:"
+            '
+            'TextBoxPayToNameAndAddress_Name
+            '
+            Me.TextBoxPayToNameAndAddress_Name.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxPayToNameAndAddress_Name.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxPayToNameAndAddress_Name.Border.Class = "TextBoxBorder"
+            Me.TextBoxPayToNameAndAddress_Name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxPayToNameAndAddress_Name.CheckSpellingOnValidate = False
+            Me.TextBoxPayToNameAndAddress_Name.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxPayToNameAndAddress_Name.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxPayToNameAndAddress_Name.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxPayToNameAndAddress_Name.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxPayToNameAndAddress_Name.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxPayToNameAndAddress_Name.FocusHighlightEnabled = True
+            Me.TextBoxPayToNameAndAddress_Name.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxPayToNameAndAddress_Name.Location = New System.Drawing.Point(51, 51)
+            Me.TextBoxPayToNameAndAddress_Name.MaxFileSize = CType(0, Long)
+            Me.TextBoxPayToNameAndAddress_Name.Name = "TextBoxPayToNameAndAddress_Name"
+            Me.TextBoxPayToNameAndAddress_Name.SecurityEnabled = True
+            Me.TextBoxPayToNameAndAddress_Name.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxPayToNameAndAddress_Name.Size = New System.Drawing.Size(345, 21)
+            Me.TextBoxPayToNameAndAddress_Name.StartingFolderName = Nothing
+            Me.TextBoxPayToNameAndAddress_Name.TabIndex = 4
+            Me.TextBoxPayToNameAndAddress_Name.TabOnEnter = True
+            '
+            'LabelPayToNameAndAddress_PhoneExt
+            '
+            Me.LabelPayToNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelPayToNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelPayToNameAndAddress_PhoneExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelPayToNameAndAddress_PhoneExt.Location = New System.Drawing.Point(307, 290)
+            Me.LabelPayToNameAndAddress_PhoneExt.Name = "LabelPayToNameAndAddress_PhoneExt"
+            Me.LabelPayToNameAndAddress_PhoneExt.Size = New System.Drawing.Size(24, 20)
+            Me.LabelPayToNameAndAddress_PhoneExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelPayToNameAndAddress_PhoneExt.TabIndex = 8
+            Me.LabelPayToNameAndAddress_PhoneExt.Text = "Ext:"
+            '
+            'LabelPayToNameAndAddress_Name
+            '
+            Me.LabelPayToNameAndAddress_Name.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelPayToNameAndAddress_Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelPayToNameAndAddress_Name.Location = New System.Drawing.Point(5, 51)
+            Me.LabelPayToNameAndAddress_Name.Name = "LabelPayToNameAndAddress_Name"
+            Me.LabelPayToNameAndAddress_Name.Size = New System.Drawing.Size(40, 20)
+            Me.LabelPayToNameAndAddress_Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelPayToNameAndAddress_Name.TabIndex = 3
+            Me.LabelPayToNameAndAddress_Name.Text = "Name:"
+            '
+            'TextBoxPayToNameAndAddress_Fax
+            '
+            Me.TextBoxPayToNameAndAddress_Fax.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxPayToNameAndAddress_Fax.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxPayToNameAndAddress_Fax.Border.Class = "TextBoxBorder"
+            Me.TextBoxPayToNameAndAddress_Fax.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxPayToNameAndAddress_Fax.CheckSpellingOnValidate = False
+            Me.TextBoxPayToNameAndAddress_Fax.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxPayToNameAndAddress_Fax.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxPayToNameAndAddress_Fax.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxPayToNameAndAddress_Fax.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxPayToNameAndAddress_Fax.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxPayToNameAndAddress_Fax.FocusHighlightEnabled = True
+            Me.TextBoxPayToNameAndAddress_Fax.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxPayToNameAndAddress_Fax.Location = New System.Drawing.Point(51, 316)
+            Me.TextBoxPayToNameAndAddress_Fax.MaxFileSize = CType(0, Long)
+            Me.TextBoxPayToNameAndAddress_Fax.Name = "TextBoxPayToNameAndAddress_Fax"
+            Me.TextBoxPayToNameAndAddress_Fax.SecurityEnabled = True
+            Me.TextBoxPayToNameAndAddress_Fax.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxPayToNameAndAddress_Fax.Size = New System.Drawing.Size(250, 21)
+            Me.TextBoxPayToNameAndAddress_Fax.StartingFolderName = Nothing
+            Me.TextBoxPayToNameAndAddress_Fax.TabIndex = 11
+            Me.TextBoxPayToNameAndAddress_Fax.TabOnEnter = True
+            '
+            'Address3LineControlPayToNameAndAddress_PayToAddress
+            '
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Address = Nothing
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Address2 = Nothing
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Address3 = Nothing
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.City = Nothing
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Country = Nothing
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.County = Nothing
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.DisableCountry = False
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.DisableCounty = False
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Location = New System.Drawing.Point(5, 77)
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Name = "Address3LineControlPayToNameAndAddress_PayToAddress"
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.ReadOnly = False
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.ShowCountry = True
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.ShowCounty = True
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Size = New System.Drawing.Size(391, 207)
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.State = Nothing
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.TabIndex = 5
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Title = "Pay To Address"
+            Me.Address3LineControlPayToNameAndAddress_PayToAddress.Zip = Nothing
+            '
+            'LabelPayToNameAndAddress_Fax
+            '
+            Me.LabelPayToNameAndAddress_Fax.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelPayToNameAndAddress_Fax.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelPayToNameAndAddress_Fax.Location = New System.Drawing.Point(5, 316)
+            Me.LabelPayToNameAndAddress_Fax.Name = "LabelPayToNameAndAddress_Fax"
+            Me.LabelPayToNameAndAddress_Fax.Size = New System.Drawing.Size(40, 20)
+            Me.LabelPayToNameAndAddress_Fax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelPayToNameAndAddress_Fax.TabIndex = 10
+            Me.LabelPayToNameAndAddress_Fax.Text = "Fax:"
+            '
+            'LabelPayToNameAndAddress_Phone
+            '
+            Me.LabelPayToNameAndAddress_Phone.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelPayToNameAndAddress_Phone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelPayToNameAndAddress_Phone.Location = New System.Drawing.Point(5, 290)
+            Me.LabelPayToNameAndAddress_Phone.Name = "LabelPayToNameAndAddress_Phone"
+            Me.LabelPayToNameAndAddress_Phone.Size = New System.Drawing.Size(40, 20)
+            Me.LabelPayToNameAndAddress_Phone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelPayToNameAndAddress_Phone.TabIndex = 6
+            Me.LabelPayToNameAndAddress_Phone.Text = "Phone:"
+            '
+            'TextBoxPayToNameAndAddress_Phone
+            '
+            Me.TextBoxPayToNameAndAddress_Phone.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxPayToNameAndAddress_Phone.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxPayToNameAndAddress_Phone.Border.Class = "TextBoxBorder"
+            Me.TextBoxPayToNameAndAddress_Phone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxPayToNameAndAddress_Phone.CheckSpellingOnValidate = False
+            Me.TextBoxPayToNameAndAddress_Phone.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxPayToNameAndAddress_Phone.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxPayToNameAndAddress_Phone.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxPayToNameAndAddress_Phone.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxPayToNameAndAddress_Phone.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxPayToNameAndAddress_Phone.FocusHighlightEnabled = True
+            Me.TextBoxPayToNameAndAddress_Phone.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxPayToNameAndAddress_Phone.Location = New System.Drawing.Point(51, 290)
+            Me.TextBoxPayToNameAndAddress_Phone.MaxFileSize = CType(0, Long)
+            Me.TextBoxPayToNameAndAddress_Phone.Name = "TextBoxPayToNameAndAddress_Phone"
+            Me.TextBoxPayToNameAndAddress_Phone.SecurityEnabled = True
+            Me.TextBoxPayToNameAndAddress_Phone.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxPayToNameAndAddress_Phone.Size = New System.Drawing.Size(250, 21)
+            Me.TextBoxPayToNameAndAddress_Phone.StartingFolderName = Nothing
+            Me.TextBoxPayToNameAndAddress_Phone.TabIndex = 7
+            Me.TextBoxPayToNameAndAddress_Phone.TabOnEnter = True
+            '
+            'PanelTableLayout_LeftSection
+            '
+            Me.PanelTableLayout_LeftSection.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.PanelTableLayout_LeftSection.Controls.Add(Me.GroupBoxMain_NameAndAddress)
+            Me.PanelTableLayout_LeftSection.Location = New System.Drawing.Point(0, 0)
+            Me.PanelTableLayout_LeftSection.Margin = New System.Windows.Forms.Padding(0)
+            Me.PanelTableLayout_LeftSection.Name = "PanelTableLayout_LeftSection"
+            Me.PanelTableLayout_LeftSection.Size = New System.Drawing.Size(403, 342)
+            Me.PanelTableLayout_LeftSection.TabIndex = 0
+            '
+            'GroupBoxMain_NameAndAddress
+            '
+            Me.GroupBoxMain_NameAndAddress.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelLeftSection_Name)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_Name)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.Address3LineControlNameAndAddress_Address)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_Phone)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_Phone)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_Fax)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_Fax)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_PhoneExt)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.LabelNameAndAddress_FaxExt)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_FaxExt)
+            Me.GroupBoxMain_NameAndAddress.Controls.Add(Me.TextBoxNameAndAddress_PhoneExt)
+            Me.GroupBoxMain_NameAndAddress.Location = New System.Drawing.Point(0, 0)
+            Me.GroupBoxMain_NameAndAddress.Name = "GroupBoxMain_NameAndAddress"
+            Me.GroupBoxMain_NameAndAddress.Size = New System.Drawing.Size(400, 342)
+            Me.GroupBoxMain_NameAndAddress.TabIndex = 0
+            Me.GroupBoxMain_NameAndAddress.Text = "Name and Address"
+            '
+            'LabelLeftSection_Name
+            '
+            Me.LabelLeftSection_Name.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelLeftSection_Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelLeftSection_Name.Location = New System.Drawing.Point(5, 51)
+            Me.LabelLeftSection_Name.Name = "LabelLeftSection_Name"
+            Me.LabelLeftSection_Name.Size = New System.Drawing.Size(40, 20)
+            Me.LabelLeftSection_Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelLeftSection_Name.TabIndex = 0
+            Me.LabelLeftSection_Name.Text = "Name:"
+            '
+            'TextBoxNameAndAddress_Name
+            '
+            Me.TextBoxNameAndAddress_Name.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxNameAndAddress_Name.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxNameAndAddress_Name.Border.Class = "TextBoxBorder"
+            Me.TextBoxNameAndAddress_Name.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNameAndAddress_Name.CheckSpellingOnValidate = False
+            Me.TextBoxNameAndAddress_Name.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxNameAndAddress_Name.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNameAndAddress_Name.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxNameAndAddress_Name.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNameAndAddress_Name.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNameAndAddress_Name.FocusHighlightEnabled = True
+            Me.TextBoxNameAndAddress_Name.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNameAndAddress_Name.Location = New System.Drawing.Point(51, 51)
+            Me.TextBoxNameAndAddress_Name.MaxFileSize = CType(0, Long)
+            Me.TextBoxNameAndAddress_Name.Name = "TextBoxNameAndAddress_Name"
+            Me.TextBoxNameAndAddress_Name.SecurityEnabled = True
+            Me.TextBoxNameAndAddress_Name.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNameAndAddress_Name.Size = New System.Drawing.Size(344, 21)
+            Me.TextBoxNameAndAddress_Name.StartingFolderName = Nothing
+            Me.TextBoxNameAndAddress_Name.TabIndex = 1
+            Me.TextBoxNameAndAddress_Name.TabOnEnter = True
+            '
+            'Address3LineControlNameAndAddress_Address
+            '
+            Me.Address3LineControlNameAndAddress_Address.Address = Nothing
+            Me.Address3LineControlNameAndAddress_Address.Address2 = Nothing
+            Me.Address3LineControlNameAndAddress_Address.Address3 = Nothing
+            Me.Address3LineControlNameAndAddress_Address.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Address3LineControlNameAndAddress_Address.City = Nothing
+            Me.Address3LineControlNameAndAddress_Address.Country = Nothing
+            Me.Address3LineControlNameAndAddress_Address.County = Nothing
+            Me.Address3LineControlNameAndAddress_Address.DisableCountry = False
+            Me.Address3LineControlNameAndAddress_Address.DisableCounty = False
+            Me.Address3LineControlNameAndAddress_Address.Location = New System.Drawing.Point(5, 77)
+            Me.Address3LineControlNameAndAddress_Address.Name = "Address3LineControlNameAndAddress_Address"
+            Me.Address3LineControlNameAndAddress_Address.ReadOnly = False
+            Me.Address3LineControlNameAndAddress_Address.ShowCountry = True
+            Me.Address3LineControlNameAndAddress_Address.ShowCounty = True
+            Me.Address3LineControlNameAndAddress_Address.Size = New System.Drawing.Size(390, 207)
+            Me.Address3LineControlNameAndAddress_Address.State = Nothing
+            Me.Address3LineControlNameAndAddress_Address.TabIndex = 2
+            Me.Address3LineControlNameAndAddress_Address.Title = "Address"
+            Me.Address3LineControlNameAndAddress_Address.Zip = Nothing
+            '
+            'LabelNameAndAddress_Phone
+            '
+            Me.LabelNameAndAddress_Phone.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNameAndAddress_Phone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNameAndAddress_Phone.Location = New System.Drawing.Point(5, 290)
+            Me.LabelNameAndAddress_Phone.Name = "LabelNameAndAddress_Phone"
+            Me.LabelNameAndAddress_Phone.Size = New System.Drawing.Size(40, 20)
+            Me.LabelNameAndAddress_Phone.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNameAndAddress_Phone.TabIndex = 3
+            Me.LabelNameAndAddress_Phone.Text = "Phone:"
+            '
+            'TextBoxNameAndAddress_Phone
+            '
+            Me.TextBoxNameAndAddress_Phone.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxNameAndAddress_Phone.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxNameAndAddress_Phone.Border.Class = "TextBoxBorder"
+            Me.TextBoxNameAndAddress_Phone.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNameAndAddress_Phone.CheckSpellingOnValidate = False
+            Me.TextBoxNameAndAddress_Phone.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxNameAndAddress_Phone.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNameAndAddress_Phone.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxNameAndAddress_Phone.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNameAndAddress_Phone.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNameAndAddress_Phone.FocusHighlightEnabled = True
+            Me.TextBoxNameAndAddress_Phone.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNameAndAddress_Phone.Location = New System.Drawing.Point(51, 290)
+            Me.TextBoxNameAndAddress_Phone.MaxFileSize = CType(0, Long)
+            Me.TextBoxNameAndAddress_Phone.Name = "TextBoxNameAndAddress_Phone"
+            Me.TextBoxNameAndAddress_Phone.SecurityEnabled = True
+            Me.TextBoxNameAndAddress_Phone.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNameAndAddress_Phone.Size = New System.Drawing.Size(249, 21)
+            Me.TextBoxNameAndAddress_Phone.StartingFolderName = Nothing
+            Me.TextBoxNameAndAddress_Phone.TabIndex = 4
+            Me.TextBoxNameAndAddress_Phone.TabOnEnter = True
+            '
+            'LabelNameAndAddress_Fax
+            '
+            Me.LabelNameAndAddress_Fax.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNameAndAddress_Fax.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNameAndAddress_Fax.Location = New System.Drawing.Point(5, 316)
+            Me.LabelNameAndAddress_Fax.Name = "LabelNameAndAddress_Fax"
+            Me.LabelNameAndAddress_Fax.Size = New System.Drawing.Size(40, 20)
+            Me.LabelNameAndAddress_Fax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNameAndAddress_Fax.TabIndex = 7
+            Me.LabelNameAndAddress_Fax.Text = "Fax:"
+            '
+            'TextBoxNameAndAddress_Fax
+            '
+            Me.TextBoxNameAndAddress_Fax.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxNameAndAddress_Fax.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxNameAndAddress_Fax.Border.Class = "TextBoxBorder"
+            Me.TextBoxNameAndAddress_Fax.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNameAndAddress_Fax.CheckSpellingOnValidate = False
+            Me.TextBoxNameAndAddress_Fax.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxNameAndAddress_Fax.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNameAndAddress_Fax.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxNameAndAddress_Fax.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNameAndAddress_Fax.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNameAndAddress_Fax.FocusHighlightEnabled = True
+            Me.TextBoxNameAndAddress_Fax.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNameAndAddress_Fax.Location = New System.Drawing.Point(51, 316)
+            Me.TextBoxNameAndAddress_Fax.MaxFileSize = CType(0, Long)
+            Me.TextBoxNameAndAddress_Fax.Name = "TextBoxNameAndAddress_Fax"
+            Me.TextBoxNameAndAddress_Fax.SecurityEnabled = True
+            Me.TextBoxNameAndAddress_Fax.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNameAndAddress_Fax.Size = New System.Drawing.Size(249, 21)
+            Me.TextBoxNameAndAddress_Fax.StartingFolderName = Nothing
+            Me.TextBoxNameAndAddress_Fax.TabIndex = 8
+            Me.TextBoxNameAndAddress_Fax.TabOnEnter = True
+            '
+            'LabelNameAndAddress_PhoneExt
+            '
+            Me.LabelNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNameAndAddress_PhoneExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNameAndAddress_PhoneExt.Location = New System.Drawing.Point(306, 290)
+            Me.LabelNameAndAddress_PhoneExt.Name = "LabelNameAndAddress_PhoneExt"
+            Me.LabelNameAndAddress_PhoneExt.Size = New System.Drawing.Size(24, 20)
+            Me.LabelNameAndAddress_PhoneExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNameAndAddress_PhoneExt.TabIndex = 5
+            Me.LabelNameAndAddress_PhoneExt.Text = "Ext:"
+            '
+            'LabelNameAndAddress_FaxExt
+            '
+            Me.LabelNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.LabelNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelNameAndAddress_FaxExt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelNameAndAddress_FaxExt.Location = New System.Drawing.Point(306, 316)
+            Me.LabelNameAndAddress_FaxExt.Name = "LabelNameAndAddress_FaxExt"
+            Me.LabelNameAndAddress_FaxExt.Size = New System.Drawing.Size(24, 20)
+            Me.LabelNameAndAddress_FaxExt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelNameAndAddress_FaxExt.TabIndex = 9
+            Me.LabelNameAndAddress_FaxExt.Text = "Ext:"
+            '
+            'TextBoxNameAndAddress_FaxExt
+            '
+            Me.TextBoxNameAndAddress_FaxExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxNameAndAddress_FaxExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxNameAndAddress_FaxExt.Border.Class = "TextBoxBorder"
+            Me.TextBoxNameAndAddress_FaxExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNameAndAddress_FaxExt.CheckSpellingOnValidate = False
+            Me.TextBoxNameAndAddress_FaxExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxNameAndAddress_FaxExt.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNameAndAddress_FaxExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxNameAndAddress_FaxExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNameAndAddress_FaxExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNameAndAddress_FaxExt.FocusHighlightEnabled = True
+            Me.TextBoxNameAndAddress_FaxExt.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNameAndAddress_FaxExt.Location = New System.Drawing.Point(336, 316)
+            Me.TextBoxNameAndAddress_FaxExt.MaxFileSize = CType(0, Long)
+            Me.TextBoxNameAndAddress_FaxExt.Name = "TextBoxNameAndAddress_FaxExt"
+            Me.TextBoxNameAndAddress_FaxExt.SecurityEnabled = True
+            Me.TextBoxNameAndAddress_FaxExt.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNameAndAddress_FaxExt.Size = New System.Drawing.Size(59, 21)
+            Me.TextBoxNameAndAddress_FaxExt.StartingFolderName = Nothing
+            Me.TextBoxNameAndAddress_FaxExt.TabIndex = 10
+            Me.TextBoxNameAndAddress_FaxExt.TabOnEnter = True
+            '
+            'TextBoxNameAndAddress_PhoneExt
+            '
+            Me.TextBoxNameAndAddress_PhoneExt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxNameAndAddress_PhoneExt.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxNameAndAddress_PhoneExt.Border.Class = "TextBoxBorder"
+            Me.TextBoxNameAndAddress_PhoneExt.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxNameAndAddress_PhoneExt.CheckSpellingOnValidate = False
+            Me.TextBoxNameAndAddress_PhoneExt.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxNameAndAddress_PhoneExt.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxNameAndAddress_PhoneExt.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxNameAndAddress_PhoneExt.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxNameAndAddress_PhoneExt.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxNameAndAddress_PhoneExt.FocusHighlightEnabled = True
+            Me.TextBoxNameAndAddress_PhoneExt.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxNameAndAddress_PhoneExt.Location = New System.Drawing.Point(336, 290)
+            Me.TextBoxNameAndAddress_PhoneExt.MaxFileSize = CType(0, Long)
+            Me.TextBoxNameAndAddress_PhoneExt.Name = "TextBoxNameAndAddress_PhoneExt"
+            Me.TextBoxNameAndAddress_PhoneExt.SecurityEnabled = True
+            Me.TextBoxNameAndAddress_PhoneExt.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxNameAndAddress_PhoneExt.Size = New System.Drawing.Size(59, 21)
+            Me.TextBoxNameAndAddress_PhoneExt.StartingFolderName = Nothing
+            Me.TextBoxNameAndAddress_PhoneExt.TabIndex = 6
+            Me.TextBoxNameAndAddress_PhoneExt.TabOnEnter = True
+            '
+            'CheckBoxMain_Inactive
+            '
+            Me.CheckBoxMain_Inactive.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.CheckBoxMain_Inactive.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBoxMain_Inactive.CheckValue = 0
+            Me.CheckBoxMain_Inactive.CheckValueChecked = 1
+            Me.CheckBoxMain_Inactive.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBoxMain_Inactive.CheckValueUnchecked = 0
+            Me.CheckBoxMain_Inactive.ChildControls = CType(resources.GetObject("CheckBoxMain_Inactive.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Inactive.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBoxMain_Inactive.Location = New System.Drawing.Point(123, 4)
+            Me.CheckBoxMain_Inactive.Name = "CheckBoxMain_Inactive"
+            Me.CheckBoxMain_Inactive.OldestSibling = Nothing
+            Me.CheckBoxMain_Inactive.SecurityEnabled = True
+            Me.CheckBoxMain_Inactive.SiblingControls = CType(resources.GetObject("CheckBoxMain_Inactive.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBoxMain_Inactive.Size = New System.Drawing.Size(68, 20)
+            Me.CheckBoxMain_Inactive.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBoxMain_Inactive.TabIndex = 3
+            Me.CheckBoxMain_Inactive.TabOnEnter = True
+            Me.CheckBoxMain_Inactive.Text = "Inactive"
+            '
+            'LabelMain_DefaultCategory
+            '
+            Me.LabelMain_DefaultCategory.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_DefaultCategory.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_DefaultCategory.Location = New System.Drawing.Point(6, 377)
+            Me.LabelMain_DefaultCategory.Name = "LabelMain_DefaultCategory"
+            Me.LabelMain_DefaultCategory.Size = New System.Drawing.Size(135, 20)
+            Me.LabelMain_DefaultCategory.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_DefaultCategory.TabIndex = 14
+            Me.LabelMain_DefaultCategory.Text = "Default Category:"
+            '
+            'TextBoxMain_FederalTaxID
+            '
+            Me.TextBoxMain_FederalTaxID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxMain_FederalTaxID.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxMain_FederalTaxID.Border.Class = "TextBoxBorder"
+            Me.TextBoxMain_FederalTaxID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxMain_FederalTaxID.CheckSpellingOnValidate = False
+            Me.TextBoxMain_FederalTaxID.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxMain_FederalTaxID.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxMain_FederalTaxID.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxMain_FederalTaxID.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxMain_FederalTaxID.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxMain_FederalTaxID.FocusHighlightEnabled = True
+            Me.TextBoxMain_FederalTaxID.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxMain_FederalTaxID.Location = New System.Drawing.Point(552, 377)
+            Me.TextBoxMain_FederalTaxID.MaxFileSize = CType(0, Long)
+            Me.TextBoxMain_FederalTaxID.Name = "TextBoxMain_FederalTaxID"
+            Me.TextBoxMain_FederalTaxID.SecurityEnabled = True
+            Me.TextBoxMain_FederalTaxID.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxMain_FederalTaxID.Size = New System.Drawing.Size(259, 20)
+            Me.TextBoxMain_FederalTaxID.StartingFolderName = Nothing
+            Me.TextBoxMain_FederalTaxID.TabIndex = 25
+            Me.TextBoxMain_FederalTaxID.TabOnEnter = True
+            '
+            'LabelMain_FederalTaxID
+            '
+            Me.LabelMain_FederalTaxID.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_FederalTaxID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_FederalTaxID.Location = New System.Drawing.Point(419, 377)
+            Me.LabelMain_FederalTaxID.Name = "LabelMain_FederalTaxID"
+            Me.LabelMain_FederalTaxID.Size = New System.Drawing.Size(127, 20)
+            Me.LabelMain_FederalTaxID.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_FederalTaxID.TabIndex = 24
+            Me.LabelMain_FederalTaxID.Text = "Federal Tax ID:"
+            '
+            'TextBoxMain_Website
+            '
+            Me.TextBoxMain_Website.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxMain_Website.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxMain_Website.Border.Class = "TextBoxBorder"
+            Me.TextBoxMain_Website.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxMain_Website.CheckSpellingOnValidate = False
+            Me.TextBoxMain_Website.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxMain_Website.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxMain_Website.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxMain_Website.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxMain_Website.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxMain_Website.FocusHighlightEnabled = True
+            Me.TextBoxMain_Website.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxMain_Website.Location = New System.Drawing.Point(552, 429)
+            Me.TextBoxMain_Website.MaxFileSize = CType(0, Long)
+            Me.TextBoxMain_Website.Name = "TextBoxMain_Website"
+            Me.TextBoxMain_Website.SecurityEnabled = True
+            Me.TextBoxMain_Website.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxMain_Website.Size = New System.Drawing.Size(259, 20)
+            Me.TextBoxMain_Website.StartingFolderName = Nothing
+            Me.TextBoxMain_Website.TabIndex = 29
+            Me.TextBoxMain_Website.TabOnEnter = True
+            '
+            'TextBoxMain_Email
+            '
+            Me.TextBoxMain_Email.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxMain_Email.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxMain_Email.Border.Class = "TextBoxBorder"
+            Me.TextBoxMain_Email.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxMain_Email.CheckSpellingOnValidate = False
+            Me.TextBoxMain_Email.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
+            Me.TextBoxMain_Email.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxMain_Email.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxMain_Email.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxMain_Email.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxMain_Email.FocusHighlightEnabled = True
+            Me.TextBoxMain_Email.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxMain_Email.Location = New System.Drawing.Point(552, 455)
+            Me.TextBoxMain_Email.MaxFileSize = CType(0, Long)
+            Me.TextBoxMain_Email.Name = "TextBoxMain_Email"
+            Me.TextBoxMain_Email.SecurityEnabled = True
+            Me.TextBoxMain_Email.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxMain_Email.Size = New System.Drawing.Size(259, 20)
+            Me.TextBoxMain_Email.StartingFolderName = Nothing
+            Me.TextBoxMain_Email.TabIndex = 31
+            Me.TextBoxMain_Email.TabOnEnter = True
+            '
+            'TextBoxMain_PaymentManagerEmail
+            '
+            Me.TextBoxMain_PaymentManagerEmail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBoxMain_PaymentManagerEmail.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxMain_PaymentManagerEmail.Border.Class = "TextBoxBorder"
+            Me.TextBoxMain_PaymentManagerEmail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxMain_PaymentManagerEmail.CheckSpellingOnValidate = False
+            Me.TextBoxMain_PaymentManagerEmail.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.Email
+            Me.TextBoxMain_PaymentManagerEmail.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxMain_PaymentManagerEmail.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight
+            Me.TextBoxMain_PaymentManagerEmail.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxMain_PaymentManagerEmail.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxMain_PaymentManagerEmail.FocusHighlightEnabled = True
+            Me.TextBoxMain_PaymentManagerEmail.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxMain_PaymentManagerEmail.Location = New System.Drawing.Point(552, 481)
+            Me.TextBoxMain_PaymentManagerEmail.MaxFileSize = CType(0, Long)
+            Me.TextBoxMain_PaymentManagerEmail.Name = "TextBoxMain_PaymentManagerEmail"
+            Me.TextBoxMain_PaymentManagerEmail.SecurityEnabled = True
+            Me.TextBoxMain_PaymentManagerEmail.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxMain_PaymentManagerEmail.Size = New System.Drawing.Size(259, 20)
+            Me.TextBoxMain_PaymentManagerEmail.StartingFolderName = Nothing
+            Me.TextBoxMain_PaymentManagerEmail.TabIndex = 33
+            Me.TextBoxMain_PaymentManagerEmail.TabOnEnter = True
+            '
+            'LabelMain_PaymentManagerEmail
+            '
+            Me.LabelMain_PaymentManagerEmail.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_PaymentManagerEmail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_PaymentManagerEmail.Location = New System.Drawing.Point(419, 481)
+            Me.LabelMain_PaymentManagerEmail.Name = "LabelMain_PaymentManagerEmail"
+            Me.LabelMain_PaymentManagerEmail.Size = New System.Drawing.Size(127, 20)
+            Me.LabelMain_PaymentManagerEmail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_PaymentManagerEmail.TabIndex = 32
+            Me.LabelMain_PaymentManagerEmail.Text = "Payment Manager Email:"
+            '
+            'LabelMain_Email
+            '
+            Me.LabelMain_Email.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_Email.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_Email.Location = New System.Drawing.Point(419, 455)
+            Me.LabelMain_Email.Name = "LabelMain_Email"
+            Me.LabelMain_Email.Size = New System.Drawing.Size(127, 20)
+            Me.LabelMain_Email.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_Email.TabIndex = 30
+            Me.LabelMain_Email.Text = "Email:"
+            '
+            'LabelMain_Website
+            '
+            Me.LabelMain_Website.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_Website.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_Website.Location = New System.Drawing.Point(419, 429)
+            Me.LabelMain_Website.Name = "LabelMain_Website"
+            Me.LabelMain_Website.Size = New System.Drawing.Size(127, 20)
+            Me.LabelMain_Website.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_Website.TabIndex = 28
+            Me.LabelMain_Website.Text = "Website:"
+            '
+            'TextBoxMain_Code
+            '
+            Me.TextBoxMain_Code.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBoxMain_Code.Border.Class = "TextBoxBorder"
+            Me.TextBoxMain_Code.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBoxMain_Code.CheckSpellingOnValidate = False
+            Me.TextBoxMain_Code.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBoxMain_Code.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBoxMain_Code.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBoxMain_Code.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBoxMain_Code.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBoxMain_Code.FocusHighlightEnabled = True
+            Me.TextBoxMain_Code.ForeColor = System.Drawing.Color.Black
+            Me.TextBoxMain_Code.Location = New System.Drawing.Point(50, 4)
+            Me.TextBoxMain_Code.MaxFileSize = CType(0, Long)
+            Me.TextBoxMain_Code.Name = "TextBoxMain_Code"
+            Me.TextBoxMain_Code.SecurityEnabled = True
+            Me.TextBoxMain_Code.ShowSpellCheckCompleteMessage = True
+            Me.TextBoxMain_Code.Size = New System.Drawing.Size(67, 20)
+            Me.TextBoxMain_Code.StartingFolderName = Nothing
+            Me.TextBoxMain_Code.TabIndex = 2
+            Me.TextBoxMain_Code.TabOnEnter = True
+            '
+            'LabelMain_Code
+            '
+            Me.LabelMain_Code.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelMain_Code.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelMain_Code.Location = New System.Drawing.Point(4, 4)
+            Me.LabelMain_Code.Name = "LabelMain_Code"
+            Me.LabelMain_Code.Size = New System.Drawing.Size(40, 20)
+            Me.LabelMain_Code.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelMain_Code.TabIndex = 1
+            Me.LabelMain_Code.Text = "Code:"
+            '
+            'TabItemVendorDetails_MainTab
+            '
+            Me.TabItemVendorDetails_MainTab.AttachedControl = Me.TabControlPanelMainTab_Main
+            Me.TabItemVendorDetails_MainTab.Name = "TabItemVendorDetails_MainTab"
+            Me.TabItemVendorDetails_MainTab.Text = "Main"
+            '
             'TabControlPanelContactsTab_Contacts
             '
             Me.TabControlPanelContactsTab_Contacts.Controls.Add(Me.TextBoxContacts_DefaultVendorContactCode)
@@ -3641,6 +3703,7 @@
             Me.DataGridViewContacts_Contacts.AutoloadRepositoryDatasource = True
             Me.DataGridViewContacts_Contacts.AutoUpdateViewCaption = True
             Me.DataGridViewContacts_Contacts.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewContacts_Contacts.DataSource = Nothing
             Me.DataGridViewContacts_Contacts.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewContacts_Contacts.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewContacts_Contacts.ItemDescription = ""
@@ -3753,6 +3816,7 @@
             Me.DataGridViewRepresentatives_VendorReps.AutoloadRepositoryDatasource = True
             Me.DataGridViewRepresentatives_VendorReps.AutoUpdateViewCaption = True
             Me.DataGridViewRepresentatives_VendorReps.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewRepresentatives_VendorReps.DataSource = Nothing
             Me.DataGridViewRepresentatives_VendorReps.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewRepresentatives_VendorReps.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewRepresentatives_VendorReps.ItemDescription = ""
@@ -4267,7 +4331,6 @@
             Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoloadRepositoryDatasource = True
             Me.DataGridViewRightSection_SelectedEEOCStatuses.AutoUpdateViewCaption = True
             Me.DataGridViewRightSection_SelectedEEOCStatuses.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewRightSection_SelectedEEOCStatuses.DataSource = Nothing
             Me.DataGridViewRightSection_SelectedEEOCStatuses.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewRightSection_SelectedEEOCStatuses.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewRightSection_SelectedEEOCStatuses.ItemDescription = "Selected EEOC Status(es)"
@@ -4344,7 +4407,6 @@
             Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoloadRepositoryDatasource = True
             Me.DataGridViewLeftSection_AvailableEEOCStatuses.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_AvailableEEOCStatuses.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewLeftSection_AvailableEEOCStatuses.DataSource = Nothing
             Me.DataGridViewLeftSection_AvailableEEOCStatuses.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewLeftSection_AvailableEEOCStatuses.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_AvailableEEOCStatuses.ItemDescription = "Available EEOC Status(es)"
@@ -5749,7 +5811,7 @@
             Me.TableLayoutPanel1099Info_TableLayout.Name = "TableLayoutPanel1099Info_TableLayout"
             Me.TableLayoutPanel1099Info_TableLayout.RowCount = 1
             Me.TableLayoutPanel1099Info_TableLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-            Me.TableLayoutPanel1099Info_TableLayout.Size = New System.Drawing.Size(806, 262)
+            Me.TableLayoutPanel1099Info_TableLayout.Size = New System.Drawing.Size(806, 345)
             Me.TableLayoutPanel1099Info_TableLayout.TabIndex = 1
             '
             'Panel1099Info_RightColumn
@@ -5767,7 +5829,7 @@
             Me.Panel1099Info_RightColumn.Location = New System.Drawing.Point(403, 0)
             Me.Panel1099Info_RightColumn.Margin = New System.Windows.Forms.Padding(0)
             Me.Panel1099Info_RightColumn.Name = "Panel1099Info_RightColumn"
-            Me.Panel1099Info_RightColumn.Size = New System.Drawing.Size(403, 262)
+            Me.Panel1099Info_RightColumn.Size = New System.Drawing.Size(403, 345)
             Me.Panel1099Info_RightColumn.TabIndex = 1
             '
             'RadioButtonControl1099Info_MedicalHealthcare
@@ -5919,13 +5981,17 @@
             Me.Panel1099Info_LeftColumn.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.TextBox1099Info_VendorName)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_VendorName)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.CheckBox1099Info_Use1099Name)
+            Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_AlternateNameFor1099)
             Me.Panel1099Info_LeftColumn.Controls.Add(Me.Address3LineControl1099Info_Address)
             Me.Panel1099Info_LeftColumn.Controls.Add(Me.CheckBox1099Info_Use1099Address)
             Me.Panel1099Info_LeftColumn.Controls.Add(Me.Label1099Info_AlternateAddressFor1099)
             Me.Panel1099Info_LeftColumn.Location = New System.Drawing.Point(0, 0)
             Me.Panel1099Info_LeftColumn.Margin = New System.Windows.Forms.Padding(0)
             Me.Panel1099Info_LeftColumn.Name = "Panel1099Info_LeftColumn"
-            Me.Panel1099Info_LeftColumn.Size = New System.Drawing.Size(403, 262)
+            Me.Panel1099Info_LeftColumn.Size = New System.Drawing.Size(403, 345)
             Me.Panel1099Info_LeftColumn.TabIndex = 0
             '
             'Address3LineControl1099Info_Address
@@ -7273,63 +7339,96 @@
             Me.LabelDefaultNotes_ACHType.TabIndex = 7
             Me.LabelDefaultNotes_ACHType.Text = "ACH Type:"
             '
-            'SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation
+            'Label1099Info_AlternateNameFor1099
             '
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ActiveFilterString = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AddInactiveItemsOnSelectedValue = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Me.Label1099Info_AlternateNameFor1099.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.AutoFillMode = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.BookmarkingEnabled = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ControlType = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.Type.[Default]
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DataSource = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisableMouseWheel = False
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.DisplayName = ""
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.EnterMoveNextControl = True
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.ExtraComboBoxItem = AdvantageFramework.WinForm.Presentation.Controls.SearchableComboBox.ExtraComboBoxItems.PleaseSelect
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(167, 208)
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Name = "SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.DisplayMember = "Name"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.NullText = "Select Puerto Rico TV Station"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.PopupView = Me.GridView19
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties.ValueMember = "ID"
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SecurityEnabled = True
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.SelectedValue = Nothing
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(339, 20)
-            Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 23
-            '
-            'GridView19
-            '
-            Me.GridView19.AFActiveFilterString = ""
-            Me.GridView19.AllowExtraItemsInGridLookupEdits = True
-            Me.GridView19.AutoFilterLookupColumns = False
-            Me.GridView19.AutoloadRepositoryDatasource = True
-            Me.GridView19.DataSourceClearing = False
-            Me.GridView19.EnableDisabledRows = False
-            Me.GridView19.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-            Me.GridView19.Name = "GridView19"
-            Me.GridView19.OptionsSelection.EnableAppearanceFocusedCell = False
-            Me.GridView19.OptionsView.ShowGroupPanel = False
-            Me.GridView19.RestoredLayoutNonVisibleGridColumnList = Nothing
-            Me.GridView19.RunStandardValidation = True
-            Me.GridView19.SkipAddingControlsOnModifyColumn = False
-            Me.GridView19.SkipSettingFontOnModifyColumn = False
-            '
-            'LabelGeneralDefaultInformation_PuertoRicoTVStation
-            '
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackColor = System.Drawing.Color.White
+            Me.Label1099Info_AlternateNameFor1099.BackColor = System.Drawing.Color.White
             '
             '
             '
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Location = New System.Drawing.Point(-1, 208)
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Name = "LabelGeneralDefaultInformation_PuertoRicoTVStation"
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Size = New System.Drawing.Size(161, 20)
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.TabIndex = 42
-            Me.LabelGeneralDefaultInformation_PuertoRicoTVStation.Text = "Puerto Rico TV Station:"
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderBottomWidth = 1
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+            Me.Label1099Info_AlternateNameFor1099.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label1099Info_AlternateNameFor1099.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label1099Info_AlternateNameFor1099.ForeColor = System.Drawing.Color.FromArgb(CType(CType(32, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(53, Byte), Integer))
+            Me.Label1099Info_AlternateNameFor1099.Location = New System.Drawing.Point(2, 264)
+            Me.Label1099Info_AlternateNameFor1099.Name = "Label1099Info_AlternateNameFor1099"
+            Me.Label1099Info_AlternateNameFor1099.Size = New System.Drawing.Size(398, 20)
+            Me.Label1099Info_AlternateNameFor1099.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label1099Info_AlternateNameFor1099.TabIndex = 3
+            Me.Label1099Info_AlternateNameFor1099.Text = "Alternate Name for 1099"
+            '
+            'CheckBox1099Info_Use1099Name
+            '
+            Me.CheckBox1099Info_Use1099Name.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            '
+            '
+            '
+            Me.CheckBox1099Info_Use1099Name.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.CheckBox1099Info_Use1099Name.CheckValue = 0
+            Me.CheckBox1099Info_Use1099Name.CheckValueChecked = 1
+            Me.CheckBox1099Info_Use1099Name.CheckValueType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.CheckValueTypes.[Integer]
+            Me.CheckBox1099Info_Use1099Name.CheckValueUnchecked = 0
+            Me.CheckBox1099Info_Use1099Name.ChildControls = CType(resources.GetObject("CheckBox1099Info_Use1099Name.ChildControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Use1099Name.ControlType = AdvantageFramework.WinForm.Presentation.Controls.CheckBox.Type.Checked1Unchecked0
+            Me.CheckBox1099Info_Use1099Name.Location = New System.Drawing.Point(1, 290)
+            Me.CheckBox1099Info_Use1099Name.Name = "CheckBox1099Info_Use1099Name"
+            Me.CheckBox1099Info_Use1099Name.OldestSibling = Nothing
+            Me.CheckBox1099Info_Use1099Name.SecurityEnabled = True
+            Me.CheckBox1099Info_Use1099Name.SiblingControls = CType(resources.GetObject("CheckBox1099Info_Use1099Name.SiblingControls"), System.Collections.Generic.List(Of Object))
+            Me.CheckBox1099Info_Use1099Name.Size = New System.Drawing.Size(400, 20)
+            Me.CheckBox1099Info_Use1099Name.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.CheckBox1099Info_Use1099Name.TabIndex = 4
+            Me.CheckBox1099Info_Use1099Name.TabOnEnter = True
+            Me.CheckBox1099Info_Use1099Name.Text = "Use"
+            '
+            'Label1099Info_VendorName
+            '
+            Me.Label1099Info_VendorName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.Label1099Info_VendorName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.Label1099Info_VendorName.Location = New System.Drawing.Point(6, 314)
+            Me.Label1099Info_VendorName.Name = "Label1099Info_VendorName"
+            Me.Label1099Info_VendorName.Size = New System.Drawing.Size(52, 20)
+            Me.Label1099Info_VendorName.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.Label1099Info_VendorName.TabIndex = 5
+            Me.Label1099Info_VendorName.Text = "Name:"
+            '
+            'TextBox1099Info_VendorName
+            '
+            Me.TextBox1099Info_VendorName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.TextBox1099Info_VendorName.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.TextBox1099Info_VendorName.Border.Class = "TextBoxBorder"
+            Me.TextBox1099Info_VendorName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.TextBox1099Info_VendorName.CheckSpellingOnValidate = False
+            Me.TextBox1099Info_VendorName.ControlType = AdvantageFramework.WinForm.Presentation.Controls.TextBox.Type.[Default]
+            Me.TextBox1099Info_VendorName.DisabledBackColor = System.Drawing.Color.White
+            Me.TextBox1099Info_VendorName.ErrorIconAlignment = System.Windows.Forms.ErrorIconAlignment.MiddleLeft
+            Me.TextBox1099Info_VendorName.FileFilter = AdvantageFramework.FileSystem.Methods.FileFilters.[Default]
+            Me.TextBox1099Info_VendorName.FocusHighlightColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(141, Byte), Integer))
+            Me.TextBox1099Info_VendorName.FocusHighlightEnabled = True
+            Me.TextBox1099Info_VendorName.ForeColor = System.Drawing.Color.Black
+            Me.TextBox1099Info_VendorName.Location = New System.Drawing.Point(72, 315)
+            Me.TextBox1099Info_VendorName.MaxFileSize = CType(0, Long)
+            Me.TextBox1099Info_VendorName.Name = "TextBox1099Info_VendorName"
+            Me.TextBox1099Info_VendorName.SecurityEnabled = True
+            Me.TextBox1099Info_VendorName.ShowSpellCheckCompleteMessage = True
+            Me.TextBox1099Info_VendorName.Size = New System.Drawing.Size(323, 20)
+            Me.TextBox1099Info_VendorName.StartingFolderName = Nothing
+            Me.TextBox1099Info_VendorName.TabIndex = 6
+            Me.TextBox1099Info_VendorName.TabOnEnter = True
             '
             'VendorControl
             '
@@ -7341,16 +7440,6 @@
             Me.Size = New System.Drawing.Size(815, 540)
             CType(Me.TabControlControl_VendorDetails, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlControl_VendorDetails.ResumeLayout(False)
-            Me.TabControlPanelMainTab_Main.ResumeLayout(False)
-            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).EndInit
-            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).EndInit
-            Me.TableLayoutPanelMain_TableLayout.ResumeLayout(False)
-            Me.PanelTableLayout_RightSection.ResumeLayout(False)
-            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
-            Me.GroupBoxMain_PayToNameAndAddress.ResumeLayout(False)
-            Me.PanelTableLayout_LeftSection.ResumeLayout(False)
-            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
-            Me.GroupBoxMain_NameAndAddress.ResumeLayout(False)
             Me.TabControlPanelMediaDefaultsTab_MediaDefaults.ResumeLayout(False)
             CType(Me.TabControlMediaDefaults_MediaDefaultsTab, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlMediaDefaults_MediaDefaultsTab.ResumeLayout(False)
@@ -7362,6 +7451,8 @@
             CType(Me.NumericInputDeadlines_SpaceCloseDays.Properties, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.NumericInputDeadlines_MaterialCloseDays.Properties, System.ComponentModel.ISupportInitialize).EndInit
             Me.PanelTableLayout_LeftColumn.ResumeLayout(False)
+            CType(Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView19, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.SearchableComboBoxGeneralDefaultInformation_ComscoreStation.Properties, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.GridView14, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.SearchableComboBoxGeneralDefaultInformation_EastlanRadioStation.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -7381,6 +7472,16 @@
             CType(Me.NumericInputGeneralDefaultInformation_OveragePercent.Properties, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.NumericInputGeneralDefaultInformation_CommissionPercent.Properties, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelDefaultCommentsTab_DefaultComments.ResumeLayout(False)
+            Me.TabControlPanelMainTab_Main.ResumeLayout(False)
+            CType(Me.SearchableComboBoxMain_QuickBooksVendor.Properties, System.ComponentModel.ISupportInitialize).EndInit
+            CType(Me.GridView17, System.ComponentModel.ISupportInitialize).EndInit
+            Me.TableLayoutPanelMain_TableLayout.ResumeLayout(False)
+            Me.PanelTableLayout_RightSection.ResumeLayout(False)
+            CType(Me.GroupBoxMain_PayToNameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxMain_PayToNameAndAddress.ResumeLayout(False)
+            Me.PanelTableLayout_LeftSection.ResumeLayout(False)
+            CType(Me.GroupBoxMain_NameAndAddress, System.ComponentModel.ISupportInitialize).EndInit
+            Me.GroupBoxMain_NameAndAddress.ResumeLayout(False)
             Me.TabControlPanelContactsTab_Contacts.ResumeLayout(False)
             Me.TabControlPanelRepresentativesTab_Representatives.ResumeLayout(False)
             Me.TabControlPanelEEOC2Tab_EEOC2.ResumeLayout(False)
@@ -7447,8 +7548,6 @@
             CType(Me.GridView10, System.ComponentModel.ISupportInitialize).EndInit
             CType(Me.TreeListControlMediaSpecs_MediaSpecs, System.ComponentModel.ISupportInitialize).EndInit
             Me.TabControlPanelPricingsTab_Pricings.ResumeLayout(False)
-            CType(Me.SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation.Properties, System.ComponentModel.ISupportInitialize).EndInit
-            CType(Me.GridView19, System.ComponentModel.ISupportInitialize).EndInit
             Me.ResumeLayout(False)
 
         End Sub
@@ -7789,6 +7888,10 @@
         Friend WithEvents SearchableComboBoxGeneralDefaultInformation_PuertoRicoTVStation As SearchableComboBox
         Friend WithEvents GridView19 As GridView
         Friend WithEvents LabelGeneralDefaultInformation_PuertoRicoTVStation As Label
+        Friend WithEvents TextBox1099Info_VendorName As TextBox
+        Friend WithEvents Label1099Info_VendorName As Label
+        Friend WithEvents CheckBox1099Info_Use1099Name As CheckBox
+        Friend WithEvents Label1099Info_AlternateNameFor1099 As Label
     End Class
 
 End Namespace

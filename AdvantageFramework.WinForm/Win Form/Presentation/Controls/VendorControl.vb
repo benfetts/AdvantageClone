@@ -1033,6 +1033,8 @@
                 Address3LineControl1099Info_Address.Zip = Vendor.Vendor1099ZipCode
                 Address3LineControl1099Info_Address.County = Vendor.Vendor1099County
                 Address3LineControl1099Info_Address.Country = Vendor.Vendor1099Country
+                CheckBox1099Info_Use1099Name.Checked = Vendor.UseAlternativeNameFor1099
+                TextBox1099Info_VendorName.Text = Vendor.Vendor1099Name
 
                 DefaultCategory = Vendor.Vendor1099Category.GetValueOrDefault(0)
 
@@ -1672,6 +1674,8 @@
                 Vendor.Vendor1099ZipCode = Address3LineControl1099Info_Address.Zip
                 Vendor.Vendor1099County = Address3LineControl1099Info_Address.County
                 Vendor.Vendor1099Country = Address3LineControl1099Info_Address.Country
+                Vendor.UseAlternativeNameFor1099 = CheckBox1099Info_Use1099Name.Checked
+                Vendor.Vendor1099Name = TextBox1099Info_VendorName.Text
 
                 If RadioButtonControl1099Info_NonEmployeeCompensation.Checked Then
 
@@ -2103,6 +2107,8 @@
             ' 1099 Info Tab
             CheckBox1099Info_Use1099Address.Enabled = CheckBox1099Info_Is1099Vendor.Checked
             Address3LineControl1099Info_Address.Enabled = CheckBox1099Info_Use1099Address.Checked
+            CheckBox1099Info_Use1099Name.Enabled = CheckBox1099Info_Is1099Vendor.Checked
+            TextBox1099Info_VendorName.Enabled = CheckBox1099Info_Use1099Name.Checked
 
             ' Service Tax Tab
             If SearchableComboBoxServiceTax_Code.HasASelectedValue AndAlso
@@ -3181,6 +3187,8 @@
                 CheckBox1099Info_Is1099Vendor.Checked = False
                 CheckBox1099Info_Use1099Address.Checked = False
                 Address3LineControl1099Info_Address.ClearControl()
+                CheckBox1099Info_Use1099Name.Checked = False
+                TextBox1099Info_VendorName.Text = String.Empty
 
                 ' Contacts Tab
                 DataGridViewContacts_Contacts.DataSource = New Generic.List(Of AdvantageFramework.Database.Classes.VendorContact)
@@ -4569,6 +4577,20 @@
             If CheckBox1099Info_Use1099Address.Enabled = False Then
 
                 CheckBox1099Info_Use1099Address.Checked = False
+
+            End If
+
+        End Sub
+        Private Sub CheckBox1099Info_Use1099Name_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1099Info_Use1099Name.CheckedChanged
+
+            EnableOrDisableActions()
+
+        End Sub
+        Private Sub CheckBox1099Info_Use1099Name_EnabledChanged(sender As Object, e As EventArgs) Handles CheckBox1099Info_Use1099Name.EnabledChanged
+
+            If CheckBox1099Info_Use1099Name.Enabled = False Then
+
+                CheckBox1099Info_Use1099Name.Checked = False
 
             End If
 

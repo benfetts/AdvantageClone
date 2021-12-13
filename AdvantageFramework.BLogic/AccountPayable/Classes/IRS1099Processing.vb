@@ -62,10 +62,14 @@
         AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=True, DisplayFormat:="")>
         Public ReadOnly Property PayToName As String
             Get
-                If String.IsNullOrWhiteSpace(_Vendor.PayToAddressLine1) AndAlso String.IsNullOrWhiteSpace(_Vendor.PayToAddressLine2) Then
-                    PayToName = _Vendor.Name
+                If _Vendor.UseAlternativeNameFor1099 Then
+                    PayToName = _Vendor.Vendor1099Name
                 Else
-                    PayToName = _Vendor.PayToName
+                    If String.IsNullOrWhiteSpace(_Vendor.PayToAddressLine1) AndAlso String.IsNullOrWhiteSpace(_Vendor.PayToAddressLine2) Then
+                        PayToName = _Vendor.Name
+                    Else
+                        PayToName = _Vendor.PayToName
+                    End If
                 End If
             End Get
         End Property

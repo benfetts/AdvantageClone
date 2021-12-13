@@ -149,6 +149,8 @@
             Band
             CanadianVendorType
             NPRStationID
+            UseAlternativeNameFor1099
+            Vendor1099Name
             [Function]
             VendorTerm
             GeneralLedgerAccount
@@ -689,6 +691,13 @@
         <Column("NPR_STATION_ID")>
         <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False)>
         Public Property NPRStationID() As Nullable(Of Integer)
+        <Column("VN_1099_USE_ALT_NAME")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False)>
+        Public Property UseAlternativeNameFor1099() As Boolean
+        <MaxLength(40)>
+        <Column("VN_1099_NAME", TypeName:="varchar")>
+        <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="")>
+        Public Property Vendor1099Name() As String
 
         Public Overridable Property [Function] As Database.Entities.Function
         Public Overridable Property VendorTerm As Database.Entities.VendorTerm

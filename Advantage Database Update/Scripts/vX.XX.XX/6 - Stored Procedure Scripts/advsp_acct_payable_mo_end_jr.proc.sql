@@ -434,8 +434,8 @@ IF @detail_option = 1
 		[DetailARInvoiceDate] = ap.DTL_AR_INV_DATE,
 		[DetailABReference] = ap.DTL_AB_REFERENCE,
 		[DetailNonBillable] = ap.DTL_NON_BILLABLE,
-		[GLAPID2] = CONCAT(ap.AP_GLACODE, CAST(ap.AP_ID AS varchar(20))),
-		[InvoiceID2] = CONCAT(ap.AP_INV_VCHR, '-', CAST(ap.AP_ID AS varchar(20)))
+		[GLAPID2] = ap.AP_GLACODE + '' + CAST(ap.AP_ID AS varchar(20)),    --CONCAT(ap.AP_GLACODE, CAST(ap.AP_ID AS varchar(20))),
+		[InvoiceID2] = ap.AP_INV_VCHR + '-' + CAST(ap.AP_ID AS varchar(20))    --CONCAT(ap.AP_INV_VCHR, '-', CAST(ap.AP_ID AS varchar(20)))
 	FROM #ap_invoice As ap
 	JOIN #aging_days AS ag ON ag.AP_ID = ap.AP_ID
 	JOIN #open_apids AS oap ON oap.AP_ID = ap.AP_ID
@@ -477,8 +477,8 @@ ELSE
 		[SixtyDays] = CASE WHEN ag.AGING_DAYS BETWEEN 31 AND 60 THEN ISNULL(ap.AP_BAL_AMT,0) ELSE 0 END,
 		[NinetyDays] = CASE WHEN ag.AGING_DAYS BETWEEN 61 AND 90 THEN ISNULL(ap.AP_BAL_AMT,0) ELSE 0 END, 
 		[OverNinetyDays] = CASE WHEN ag.AGING_DAYS > 90 THEN ISNULL(ap.AP_BAL_AMT,0) ELSE 0 END,
-		[GLAPID2] = CONCAT(ap.AP_GLACODE, CAST(ap.AP_ID AS varchar(20))),
-		[InvoiceID2] = CONCAT(ap.AP_INV_VCHR, '-', CAST(ap.AP_ID AS varchar(20)))
+        [GLAPID2] = ap.AP_GLACODE + '' + CAST(ap.AP_ID AS varchar(20)),    --CONCAT(ap.AP_GLACODE, CAST(ap.AP_ID AS varchar(20))),
+		[InvoiceID2] = ap.AP_INV_VCHR + '-' + CAST(ap.AP_ID AS varchar(20))    --CONCAT(ap.AP_INV_VCHR, '-', CAST(ap.AP_ID AS varchar(20)))
 	FROM #ap_invoice AS ap
 	JOIN #aging_days AS ag ON ag.AP_ID = ap.AP_ID
 	JOIN #open_apids AS oap ON oap.AP_ID = ap.AP_ID

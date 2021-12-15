@@ -1,16 +1,6 @@
 ﻿if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[usp_wv_Job_Jacket_Search]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure [dbo].[usp_wv_Job_Jacket_Search]
 GO
-
-/****** Object:  StoredProcedure [dbo].[usp_wv_Job_Jacket_Search]    Script Date: 10/1/2021 5:22:06 PM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-
 CREATE PROCEDURE [dbo].[usp_wv_Job_Jacket_Search] (@UserID varchar(100),
 												@Office varchar(4),
 												@Client varchar(6),
@@ -30,18 +20,11 @@ CREATE PROCEDURE [dbo].[usp_wv_Job_Jacket_Search] (@UserID varchar(100),
 												@TotalRows int out,
 												@SumBudget decimal(18,2) out )
 AS
-/*
-	declare @totalRows int,
-			@sumBudget decimal(18,2)
-	EXEC [dbo].[usp_wv_Job_Jacket_Search] 'nberry','','careal','careal','carall','',19724,1,'',0,'',1,null,0,50,0,@TotalRows=@totalRows OUTPUT,@SumBudget=@sumBudget OUTPUT
-	print @totalRows
-	print @sumBudget
-*/
 	DECLARE	@Rescrictions int,
-			@sql nvarchar(4000),
-			@paramlist nvarchar(4000),
-			@whereclause nvarchar(4000),
-			@sql2 nvarchar(4000),
+			@sql nvarchar(MAX),
+			@paramlist nvarchar(MAX),
+			@whereclause nvarchar(MAX),
+			@sql2 nvarchar(MAX),
 			@start_rec int = 0,
 			@end_rec int = 0, 
 			@RestrictionsCP INT
@@ -51,15 +34,15 @@ AS
 
 	print @JOB_TYPE_CODE
 
-	if @SKIP > 0
+	if @skip > 0
 	BEGIN
-		SET @START_REC = @SKIP;
-		SET @END_REC = @SKIP + @TAKE - 1;
+		SET @start_rec = @skip;
+		SET @end_rec = @skip + @take - 1;
 	END
 	ELSE
 	BEGIN
-		SET @START_REC = @SKIP;
-		SET @END_REC = @TAKE;
+		SET @start_rec = @skip;
+		SET @end_rec = @take;
 	END
 
 
@@ -166,14 +149,9 @@ LEFT JOIN JOB_TYPE ON JOB_TYPE.JT_CODE = JOB_COMPONENT.JT_CODE' + @whereclause
 
 	SELECT @paramlist = '@UserID VarChar(100),@Client VarChar(6),@Division VarChar(6),@Product Varchar(6),@Job Varchar(6),@JobComp Varchar(6),@Office Varchar(4),@SalesClass Varchar(6),@AE Varchar(6),@CampaignID Varchar(6), @EMP_CODE varchar(6),@JOB_TYPE_CODE varchar(10),@Year varchar(4),@START_REC Int,@END_REC int, @CPID int, @TotalRows int out, @SumBudget decimal(18,2) out'
 
-	EXEC sp_executesql @sql2, @paramlist, @UserID, @Client, @Division, @Product, @Job, @JobComp, @Office, @SalesClass, @AE, @CampaignID,@EMP_CODE,@JOB_TYPE_CODE,@Year,@start_rec,@END_REC,@CPID,@TotalRows=@TotalRows out,@SumBudget=@SumBudget out
+	EXEC sp_executesql @sql2, @paramlist, @UserID, @Client, @Division, @Product, @Job, @JobComp, @Office, @SalesClass, @AE, @CampaignID,@EMP_CODE,@JOB_TYPE_CODE,@Year,@start_rec,@end_rec,@CPID,@TotalRows=@TotalRows out,@SumBudget=@SumBudget out
 
-	EXEC sp_executesql @sql, @paramlist, @UserID, @Client, @Division, @Product, @Job, @JobComp, @Office, @SalesClass, @AE, @CampaignID,@EMP_CODE,@JOB_TYPE_CODE,@Year,@start_rec,@END_REC,@CPID,@TotalRows,@SumBudget
-
-
-
-
-
+	EXEC sp_executesql @sql, @paramlist, @UserID, @Client, @Division, @Product, @Job, @JobComp, @Office, @SalesClass, @AE, @CampaignID,@EMP_CODE,@JOB_TYPE_CODE,@Year,@start_rec,@end_rec,@CPID,@TotalRows,@SumBudget
 
 GO
 

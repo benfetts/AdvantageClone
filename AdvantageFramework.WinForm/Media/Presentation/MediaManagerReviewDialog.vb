@@ -36,6 +36,7 @@
         Private _ImportWasLaunched As Boolean = False
         Private _AtLeastOneOrderFromWorksheet As Boolean = False
         Private _AtLeastOneFromWorksheetIsNotCable As Boolean = False
+        Private _CanUserUpdateCostForBroadcast As Boolean = False
 
 #End Region
 
@@ -276,6 +277,7 @@
 
             Dim IsOneDistinctOrderSelected As Boolean = False
             Dim Left As Integer = 0
+            Dim BroadcastSelectedCannotUpdate As Boolean = False
 
             If Me.FormShown AndAlso Me.FormAction = WinForm.Presentation.FormActions.None Then
 
@@ -344,9 +346,16 @@
 
                 End If
 
+                If DataGridViewOrderDetails_OrderDetails.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.MediaManager.Classes.MediaManagerReviewDetail).Where(Function(MMRD) {"R", "T"}.Contains(MMRD.MediaFrom.Substring(0, 1))).Any AndAlso
+                        _CanUserUpdateCostForBroadcast = False Then
+
+                    BroadcastSelectedCannotUpdate = True
+
+                End If
+
                 ButtonItemOrders_UpdateCost.Enabled = Not ButtonItemActions_Save.Enabled AndAlso
                     DataGridViewOrderDetails_OrderDetails.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.MediaManager.Classes.MediaManagerReviewDetail).Where(Function(MMRD) Not MMRD.Cancelled AndAlso
-                    String.IsNullOrWhiteSpace(MMRD.BillingUser) AndAlso MMRD.IsOrderClosed = False).Any
+                    String.IsNullOrWhiteSpace(MMRD.BillingUser) AndAlso MMRD.IsOrderClosed = False).Any AndAlso BroadcastSelectedCannotUpdate = False
 
                 ButtonItemVendorInvoices_CreateInvoices.Enabled = Not ButtonItemActions_Save.Enabled AndAlso
                     DataGridViewOrderDetails_OrderDetails.GetAllSelectedRowsDataBoundItems.OfType(Of AdvantageFramework.MediaManager.Classes.MediaManagerReviewDetail).Where(Function(MMRD) MMRD.BillType <> "Comm Only" AndAlso
@@ -3268,6 +3277,8 @@
             _HasAccessToVendorRep = AdvantageFramework.Security.DoesUserHaveAccessToModule(Me.Session, AdvantageFramework.Security.Modules.Maintenance_Media_VendorRep)
             _CanUserUpdateVendorReps = AdvantageFramework.Security.CanUserUpdateInModule(Me.Session, AdvantageFramework.Security.Modules.Maintenance_Media_VendorRep)
             _CanUserAddVendorReps = AdvantageFramework.Security.CanUserAddInModule(Me.Session, AdvantageFramework.Security.Modules.Maintenance_Media_VendorRep)
+
+            _CanUserUpdateCostForBroadcast = AdvantageFramework.Security.DoesUserHaveAccessToModule(Me.Session, AdvantageFramework.Security.Modules.Media_MediaManager_Actions_UpdateCostForBroadcast)
 
             ButtonItemVendorInvoices_OneInvoicePerVendor.Visible = False
 

@@ -16346,6 +16346,43 @@
           </MenuBuilder>
           <MenuBuilder>
             <Applications>
+                <Application>Advantage</Application>
+            </Applications>
+            <Code>Media_MediaManager_Actions_UpdateCostForBroadcast</Code>
+            <Description>Update Cost for Broadcast</Description>
+            <IsInactive>false</IsInactive>
+            <IsMenuItem>false</IsMenuItem>
+            <IsCategory>false</IsCategory>
+            <IsApplication>true</IsApplication>
+            <IsReport>false</IsReport>
+            <IsDesktopObject>false</IsDesktopObject>
+            <IsDashQuery>false</IsDashQuery>
+            <ImageName />
+            <HasCustomPermission>false</HasCustomPermission>
+            <WebvantageURL />
+            <WebvantageImagePathActive />
+            <WebvantageImagePath />
+            <ApplicationName />
+            <MenuName />
+            <ApplicationCode />
+            <CommandString />
+            <IconIndex>0</IconIndex>
+            <AllowMultipleInstances>0</AllowMultipleInstances>
+            <DesktopObjectName />
+            <DesktopObjectSize>0</DesktopObjectSize>
+            <ReportURL />
+            <ReportImagePathActive />
+            <ReportImagePath />
+            <ReportDescription />
+            <ReportPreviewLocation />
+            <ReportIsLocked>false</ReportIsLocked>
+            <WebvantageLargeImagePath />
+            <ReportLargeImagePath />
+            <ParentModuleCode>Media_MediaManager_Actions</ParentModuleCode>
+            <SubModules />
+          </MenuBuilder>
+          <MenuBuilder>
+            <Applications>
               <Application>Advantage</Application>
             </Applications>
             <Code>Media_MediaManager_Actions_VirtualCC</Code>

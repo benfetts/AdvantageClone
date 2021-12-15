@@ -759,6 +759,7 @@
             Media_MediaManager_Actions_GenerateOrders
             Media_MediaManager_Actions_Include_PurchaseOrders
             Media_MediaManager_Actions_UpdateCost
+            Media_MediaManager_Actions_UpdateCostForBroadcast
             Media_MediaManager_Actions_VirtualCC
             Media_MediaManager_Actions_WriteUpDown
             Media_MediaPlanning

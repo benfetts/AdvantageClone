@@ -1146,6 +1146,10 @@ function CreateFinancialViewNewBusinessGrid() {
         //editable: "incell",
         resizable: true,
         filterable: false,
+        noRecords: true,
+        //noRecords: {
+        //    template: "No records available."
+        //},
         //filter: function (e) {
         //    onFilterChange(e);
         //},

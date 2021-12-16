@@ -37,9 +37,15 @@ Public Class GeneralLedgerDetailAPIReport
     <DataMember>
     Public Property PostingPeriodEndingDate As Nullable(Of Date)
     <DataMember>
+    Public Property PostingPeriodEndingDateStr As String
+    <DataMember>
     Public Property EntryDate As Nullable(Of Date)
     <DataMember>
+    Public Property EntryDateStr As String
+    <DataMember>
     Public Property PostedToSummary As Nullable(Of Date)
+    <DataMember>
+    Public Property PostedToSummaryStr As String
     <DataMember>
     Public Property ClientCode As String
     <DataMember>

@@ -238,7 +238,6 @@ export class MentionItem extends ModuleBase {
         }        
 
         let me = this;        
-        console.log(mention);
         
         mention.on("click", function(event) {
             let mentionElement = $(event.target).closest(".mention-name");            

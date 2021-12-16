@@ -360,7 +360,7 @@ export class CommentView extends ModuleBase {
     }
     onFullScreenCommentDialogClose() {
         this.commentDialogOpen = false;
-        this.isEdit = false;
+        //this.isEdit = false;
     }
     closeFullScreenComment() {
         this.fullScreenType = 0;
@@ -561,7 +561,6 @@ export class CommentView extends ModuleBase {
             this.alertId = params.AlertID
             this.getAlertComments();
         }
-    //    console.log("activate proof?", this.isProof)
     }
     attached() {
         //console.log("activate attached?", this.isProof)

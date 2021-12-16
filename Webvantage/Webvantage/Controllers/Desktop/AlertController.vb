@@ -3015,7 +3015,7 @@ Namespace Controllers.Desktop
 
                     If Updated = True Then
 
-                        NotifyAlertRecipients(AlertComment.AlertID, True, True, False, False, Nothing, True, AlertComment.DocumentID)
+                        'NotifyAlertRecipients(AlertComment.AlertID, True, True, False, False, Nothing, True, AlertComment.DocumentID)
 
                     End If
 
@@ -3161,7 +3161,7 @@ Namespace Controllers.Desktop
 
                         DeleteTempUploadAttachments()
 
-                        NotifyAlertRecipients(AlertComment.AlertID, True, True, False, False, Nothing, True, DocumentID)
+                        'NotifyAlertRecipients(AlertComment.AlertID, True, True, False, False, Nothing, True, DocumentID)
 
                     End If
 

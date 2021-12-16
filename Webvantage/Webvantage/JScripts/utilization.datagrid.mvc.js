@@ -511,7 +511,7 @@ function GenerateColumnDetailSettings() {
                     case "RequiredHours":
                         myColumns.push({
                             field: "RequiredHours", title: "Required Hours", width: response[i].ColumnWidth, hidden: !response[i].IsVisible, attributes: { style: "width: " + response[i].ColumnWidth + "px; min-width: " + response[i].ColumnWidth + "px;" },
-                            filterable: { extra: false }, groupFooterTemplate: groupFooterRequiredHoursTemplate, format: "{0:n2}"
+                            filterable: { extra: false }, groupFooterTemplate: groupFooterRequiredHoursTemplate, format: "{0:n2}", aggregates: ["sum"]
                         });
                         break;
                     case "BillableHoursGoal":

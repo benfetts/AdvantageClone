@@ -680,5 +680,11 @@ Public Interface IAPIService
     <OperationContract()>
     Function LoadGeneralLedgerDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, IncludeInactiveAccounts As Boolean) As GeneralLedgerDetailAPIResponse
 
+    <WebGet(BodyStyle:=WebMessageBodyStyle.Wrapped, ResponseFormat:=WebMessageFormat.Json, RequestFormat:=WebMessageFormat.Json)>
+    <OperationContract()>
+    Function LoadTrialBalance(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodEnd As String) As TrialBalanceAPIResponse
+
+
+
 #End Region
 End Interface

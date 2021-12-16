@@ -87,9 +87,14 @@ Public Class DirectIndirectTimeAPIReport
     <DataMember>
     Public Property FunctionDescription As String
     <DataMember>
-    Public Property [Date] As Date
+    Public Property [Date] As Nullable(Of Date)
+    <DataMember>
+    Public Property DateStr As String
     <DataMember>
     Public Property DateEntered As Nullable(Of Date)
+    <DataMember>
+    <AdvantageFramework.BaseClasses.Attributes.Entity(IsRequired:=False, DisplayFormat:="", ShowColumnInGrid:=False, CustomColumnCaption:="AR GL Account")>
+    Public Property DateEnteredStr As String
     <DataMember>
     Public Property StandardHours As Nullable(Of Decimal)
     <DataMember>
@@ -98,6 +103,8 @@ Public Class DirectIndirectTimeAPIReport
     Public Property ApprovalUserCode As String
     <DataMember>
     Public Property ApprovalDate As Nullable(Of Date)
+    <DataMember>
+    Public Property ApprovalDateStr As String
     <DataMember>
     Public Property PendingApproval As String
     <DataMember>
@@ -145,7 +152,11 @@ Public Class DirectIndirectTimeAPIReport
     <DataMember>
     Public Property CmpBeginDate As Nullable(Of Date)
     <DataMember>
+    Public Property CmpBeginDateStr As String
+    <DataMember>
     Public Property CmpEndDate As Nullable(Of Date)
+    <DataMember>
+    Public Property CmpEndDateStr As String
     <DataMember>
     Public Property FunctionConsolidationCode As String
     <DataMember>
@@ -154,6 +165,8 @@ Public Class DirectIndirectTimeAPIReport
     Public Property Terminated As String
     <DataMember>
     Public Property TerminatedDate As Nullable(Of Date)
+    <DataMember>
+    Public Property TerminatedDateStr As String
 
 
 #End Region

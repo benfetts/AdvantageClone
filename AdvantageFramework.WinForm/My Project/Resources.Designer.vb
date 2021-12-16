@@ -111,16 +111,12 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        '''&lt;Dashboard CurrencyCulture=&quot;en-US&quot;&gt;
-        '''  &lt;Title Text=&quot;Dashboard&quot; /&gt;
-        '''  &lt;DataSources&gt;
-        '''    &lt;ObjectDataSource Name=&quot;Object Data Source 1&quot; ComponentName=&quot;DashboardObjectDataSource1&quot;&gt;
-        '''      &lt;DataSource Type=&quot;System.Collections.Generic.List`1[[AdvantageFramework.DTO.Media.SpotTVPuertoRico.ResearchResult, AdvantageFramework.BLogic, Version=6.70.8.1, Culture=neutral, PublicKeyToken=42db7fd49c65b8a5]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 [rest of string was truncated]&quot;;.
+        '''  Looks up a localized resource of type System.Byte[].
         '''</summary>
-        Public ReadOnly Property BroadcastResearchToolDashboard_TVPuertoRico() As String
+        Public ReadOnly Property BroadcastResearchToolDashboard_TVPuertoRico() As Byte()
             Get
-                Return ResourceManager.GetString("BroadcastResearchToolDashboard_TVPuertoRico", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("BroadcastResearchToolDashboard_TVPuertoRico", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
         

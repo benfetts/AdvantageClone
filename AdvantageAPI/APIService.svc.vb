@@ -13444,7 +13444,8 @@ Public Class APIService
     Public Function LoadDirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectTimeAPIResponse Implements IAPIService.LoadDirectTime
 
         Dim DirectTimeAPIResponse As DirectTimeAPIResponse
-        Dim DirectTimeReport As New Generic.List(Of DirectTimeAPIReport)
+        Dim DirectTimeReport As New DirectTimeAPIReport
+        Dim DirectTimeReports As New Generic.List(Of DirectTimeAPIReport)
 
         DirectTimeAPIResponse = New DirectTimeAPIResponse
 
@@ -13554,13 +13555,21 @@ Public Class APIService
                         SqlParameterEmployeeList.Value = System.DBNull.Value
                         SqlParameterFunctionList.Value = System.DBNull.Value
 
-
                         'DirectTimeAPIResponse.Results
-                        DirectTimeReport = DbContext.Database.SqlQuery(Of DirectTimeAPIReport) _
+                        DirectTimeReports = DbContext.Database.SqlQuery(Of DirectTimeAPIReport) _
                                                                                     ("EXEC [dbo].[advsp_direct_time_load] @DATE_TYPE, @START_DATE, @END_DATE, @UserID, " &
                                                                                      "@CLIENT_LIST, @DIVISION_LIST, @PRODUCT_LIST, @JOB_LIST, @CampaignIDList, @DepartmentsList, @EmployeesList, @FunctionsList",
                                                                                      SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterUserID,
                                                                                      SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterJobList, SqlParameterCampaignIDList, SqlParameterDepartmentList, SqlParameterEmployeeList, SqlParameterFunctionList).ToList
+
+                        For Each DirectTimeReport In DirectTimeReports
+                            If DirectTimeReport.Date.ToString > Nothing Then DirectTimeReport.DateStr = DirectTimeReport.Date.Value.ToString("yyyy-MM-dd")
+                            If DirectTimeReport.DateEntered.ToString > Nothing Then DirectTimeReport.DateEnteredStr = DirectTimeReport.DateEntered.Value.ToString("yyyy-MM-dd")
+                            If DirectTimeReport.ApprovalDate.ToString > Nothing Then DirectTimeReport.ApprovalDateStr = DirectTimeReport.ApprovalDate.Value.ToString("yyyy-MM-dd")
+                            If DirectTimeReport.CmpBeginDate.ToString > Nothing Then DirectTimeReport.CmpBeginDateStr = DirectTimeReport.CmpBeginDate.Value.ToString("yyyy-MM-dd")
+                            If DirectTimeReport.CmpEndDate.ToString > Nothing Then DirectTimeReport.CmpEndDateStr = DirectTimeReport.CmpEndDate.Value.ToString("yyyy-MM-dd")
+                            If DirectTimeReport.TerminatedDate.ToString > Nothing Then DirectTimeReport.TerminatedDateStr = DirectTimeReport.TerminatedDate.Value.ToString("yyyy-MM-dd")
+                        Next
 
                     End Using
 
@@ -13579,7 +13588,7 @@ Public Class APIService
             DirectTimeAPIResponse.IsSuccessful = False
             DirectTimeAPIResponse.Results = Nothing
         Else
-            DirectTimeAPIResponse.Results = DirectTimeReport
+            DirectTimeAPIResponse.Results = DirectTimeReports
             DirectTimeAPIResponse.Message = CStr(DirectTimeAPIResponse.Results.Count) + " records"
         End If
 
@@ -13591,7 +13600,8 @@ Public Class APIService
     Function LoadDirectIndirectTime(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, StartDate As String, EndDate As String, DateType As String) As DirectIndirectTimeAPIResponse Implements IAPIService.LoadDirectIndirectTime
 
         Dim DirectIndirectTimeAPIResponse As DirectIndirectTimeAPIResponse
-        Dim DirectIndirectTimeReport As Generic.List(Of DirectIndirectTimeAPIReport) = Nothing
+        Dim DirectIndirectTimeReport As DirectIndirectTimeAPIReport = Nothing
+        Dim DirectIndirectTimeReports As Generic.List(Of DirectIndirectTimeAPIReport) = Nothing
 
         DirectIndirectTimeAPIResponse = New DirectIndirectTimeAPIResponse
 
@@ -13641,7 +13651,16 @@ Public Class APIService
 
                     Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
 
-                        DirectIndirectTimeReport = DbContext.Database.SqlQuery(Of DirectIndirectTimeAPIReport)(String.Format("EXEC [dbo].[advsp_indirect_time_load] {0}, '{1}', '{2}', '{3}'", DateType_, [StartDate], [EndDate], APISession.UserCode)).ToList
+                        DirectIndirectTimeReports = DbContext.Database.SqlQuery(Of DirectIndirectTimeAPIReport)(String.Format("EXEC [dbo].[advsp_indirect_time_load] {0}, '{1}', '{2}', '{3}'", DateType_, [StartDate], [EndDate], APISession.UserCode)).ToList
+
+                        For Each DirectIndirectTimeReport In DirectIndirectTimeReports
+                            If DirectIndirectTimeReport.Date.ToString > Nothing Then DirectIndirectTimeReport.DateStr = DirectIndirectTimeReport.Date.Value.ToString("yyyy-MM-dd")
+                            If DirectIndirectTimeReport.DateEntered.ToString > Nothing Then DirectIndirectTimeReport.DateEnteredStr = DirectIndirectTimeReport.DateEntered.Value.ToString("yyyy-MM-dd")
+                            If DirectIndirectTimeReport.ApprovalDate.ToString > Nothing Then DirectIndirectTimeReport.ApprovalDateStr = DirectIndirectTimeReport.ApprovalDate.Value.ToString("yyyy-MM-dd")
+                            If DirectIndirectTimeReport.CmpBeginDate.ToString > Nothing Then DirectIndirectTimeReport.CmpBeginDateStr = DirectIndirectTimeReport.CmpBeginDate.Value.ToString("yyyy-MM-dd")
+                            If DirectIndirectTimeReport.CmpEndDate.ToString > Nothing Then DirectIndirectTimeReport.CmpEndDateStr = DirectIndirectTimeReport.CmpEndDate.Value.ToString("yyyy-MM-dd")
+                            If DirectIndirectTimeReport.TerminatedDate.ToString > Nothing Then DirectIndirectTimeReport.TerminatedDateStr = DirectIndirectTimeReport.TerminatedDate.Value.ToString("yyyy-MM-dd")
+                        Next
 
                     End Using
 
@@ -13660,7 +13679,7 @@ Public Class APIService
             DirectIndirectTimeAPIResponse.IsSuccessful = False
             DirectIndirectTimeAPIResponse.Results = Nothing
         Else
-            DirectIndirectTimeAPIResponse.Results = DirectIndirectTimeReport
+            DirectIndirectTimeAPIResponse.Results = DirectIndirectTimeReports
             DirectIndirectTimeAPIResponse.Message = CStr(DirectIndirectTimeAPIResponse.Results.Count) + " records"
         End If
 
@@ -13673,7 +13692,8 @@ Public Class APIService
     Function LoadGeneralLedgerDetail(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodStart As String, PostPeriodEnd As String, IncludeInactiveAccounts As Boolean) As GeneralLedgerDetailAPIResponse Implements IAPIService.LoadGeneralLedgerDetail
 
         Dim GeneralLedgerDetailAPIResponse As GeneralLedgerDetailAPIResponse
-        Dim GeneralLedgerDetailReports As Generic.List(Of GeneralLedgerDetailAPIReport) = Nothing
+        Dim GeneralLedgerDetailAPIReport As GeneralLedgerDetailAPIReport
+        Dim GeneralLedgerDetailAPIReports As Generic.List(Of GeneralLedgerDetailAPIReport) = Nothing
 
         GeneralLedgerDetailAPIResponse = New GeneralLedgerDetailAPIResponse
 
@@ -13704,7 +13724,13 @@ Public Class APIService
 
                     Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
 
-                        GeneralLedgerDetailReports = DbContext.Database.SqlQuery(Of GeneralLedgerDetailAPIReport)(String.Format("EXEC [dbo].[advsp_gl_detail_dataset_load] '{0}', '{1}', {2}, {3}", PostPeriodStart, PostPeriodEnd, 0, IncludeInactiveAccounts_)).ToList
+                        GeneralLedgerDetailAPIReports = DbContext.Database.SqlQuery(Of GeneralLedgerDetailAPIReport)(String.Format("EXEC [dbo].[advsp_gl_detail_dataset_load] '{0}', '{1}', {2}, {3}", PostPeriodStart, PostPeriodEnd, 0, IncludeInactiveAccounts_)).ToList
+
+                        For Each GeneralLedgerDetailAPIReport In GeneralLedgerDetailAPIReports
+                            If GeneralLedgerDetailAPIReport.PostingPeriodEndingDate.ToString > Nothing Then GeneralLedgerDetailAPIReport.PostingPeriodEndingDateStr = GeneralLedgerDetailAPIReport.PostingPeriodEndingDate.Value.ToString("yyyy-MM-dd")
+                            If GeneralLedgerDetailAPIReport.EntryDate.ToString > Nothing Then GeneralLedgerDetailAPIReport.EntryDateStr = GeneralLedgerDetailAPIReport.EntryDate.Value.ToString("yyyy-MM-dd")
+                            If GeneralLedgerDetailAPIReport.PostedToSummary.ToString > Nothing Then GeneralLedgerDetailAPIReport.PostedToSummaryStr = GeneralLedgerDetailAPIReport.PostedToSummary.Value.ToString("yyyy-MM-dd")
+                        Next
 
                     End Using
 
@@ -13723,12 +13749,151 @@ Public Class APIService
             GeneralLedgerDetailAPIResponse.IsSuccessful = False
             GeneralLedgerDetailAPIResponse.Results = Nothing
         Else
-            GeneralLedgerDetailAPIResponse.Results = GeneralLedgerDetailReports
+            GeneralLedgerDetailAPIResponse.Results = GeneralLedgerDetailAPIReports
             GeneralLedgerDetailAPIResponse.Message = CStr(GeneralLedgerDetailAPIResponse.Results.Count) + " records"
         End If
 
 
         LoadGeneralLedgerDetail = GeneralLedgerDetailAPIResponse
+
+
+    End Function
+
+    Function LoadTrialBalance(ServerName As String, DatabaseName As String, UseWindowsAuthentication As Integer, UserName As String, Password As String, PostPeriodEnd As String) As TrialBalanceAPIResponse Implements IAPIService.LoadTrialBalance
+
+        Dim TrialBalanceAPIResponse As TrialBalanceAPIResponse
+        Dim TrialBalanceAPIReport As TrialBalanceAPIReport
+        Dim TrialBalanceAPIReports As Generic.List(Of TrialBalanceAPIReport) = Nothing
+
+        TrialBalanceAPIResponse = New TrialBalanceAPIResponse
+
+        Dim ErrorMessage As String = String.Empty
+        Dim APISession As AdvantageFramework.Security.APISession = Nothing
+
+        Dim UserCode As String,
+            EndingPostPeriod As String, RecordSourceID As Short, Offices As String,
+            Departments As String, Others As String, Bases As String, IncludeCurrentAssets As Boolean,
+            IncludeNonCurrentAssets As Boolean, IncludeFixedAssets As Boolean, IncludeCurrentLiabilities As Boolean,
+            IncludeNonCurrentLiabilities As Boolean, IncludeEquity As Boolean, IncludeIncome As Boolean,
+            IncludeIncomeOther As Boolean, IncludeExpeseCOS As Boolean, IncludeExpenseOperating As Boolean,
+            IncludeExpenseOther As Boolean, IncludeExpenseTaxes As Boolean
+
+        'objects
+        Dim UserCodeSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim EndingPostPeriodSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim RecordSourceIDSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim OfficesSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim DepartmentsSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim OthersSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim BasesSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeCurrentAssetsSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeNonCurrentAssetsSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeFixedAssetsSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeCurrentLiabilitiesSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeNonCurrentLiabilitiesSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeEquitySqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeIncomeSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeIncomeOtherSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeExpeseCOSSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeExpenseOperatingSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeExpenseOtherSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+        Dim IncludeExpenseTaxesSqlParameter As System.Data.SqlClient.SqlParameter = Nothing
+
+        UserCodeSqlParameter = New System.Data.SqlClient.SqlParameter("@USER_CODE", SqlDbType.VarChar)
+        EndingPostPeriodSqlParameter = New System.Data.SqlClient.SqlParameter("@ENDING_PPPERIOD", SqlDbType.VarChar)
+        RecordSourceIDSqlParameter = New System.Data.SqlClient.SqlParameter("@RECORD_SOURCE_ID", SqlDbType.Int)
+        OfficesSqlParameter = New System.Data.SqlClient.SqlParameter("@OFFICES", SqlDbType.VarChar)
+        DepartmentsSqlParameter = New System.Data.SqlClient.SqlParameter("@DEPARTMENTS", SqlDbType.VarChar)
+        OthersSqlParameter = New System.Data.SqlClient.SqlParameter("@OTHERS", SqlDbType.VarChar)
+        BasesSqlParameter = New System.Data.SqlClient.SqlParameter("@BASES", SqlDbType.VarChar)
+        IncludeCurrentAssetsSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_CURRENT_ASSESTS", SqlDbType.Bit)
+        IncludeNonCurrentAssetsSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_NON_CURRENT_ASSESTS", SqlDbType.Bit)
+        IncludeFixedAssetsSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_FIXED_ASSESTS", SqlDbType.Bit)
+        IncludeCurrentLiabilitiesSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_CURRENT_LIABILITIES", SqlDbType.Bit)
+        IncludeNonCurrentLiabilitiesSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_NON_CURRENT_LIABILITIES", SqlDbType.Bit)
+        IncludeEquitySqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_EQUITY", SqlDbType.Bit)
+        IncludeIncomeSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_INCOME", SqlDbType.Bit)
+        IncludeIncomeOtherSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_INCOME_OTHER", SqlDbType.Bit)
+        IncludeExpeseCOSSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_EXPENSE_COS", SqlDbType.Bit)
+        IncludeExpenseOperatingSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_EXPENSE_OPERATING", SqlDbType.Bit)
+        IncludeExpenseOtherSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_EXPENSE_OTHER", SqlDbType.Bit)
+        IncludeExpenseTaxesSqlParameter = New System.Data.SqlClient.SqlParameter("@INCL_EXPENSE_TAXES", SqlDbType.Bit)
+
+        UserCodeSqlParameter.Value = UserName
+        EndingPostPeriodSqlParameter.Value = PostPeriodEnd
+        RecordSourceIDSqlParameter.Value = 0
+
+        OfficesSqlParameter.Value = ""
+        DepartmentsSqlParameter.Value = ""
+        OthersSqlParameter.Value = ""
+        BasesSqlParameter.Value = ""
+        IncludeCurrentAssetsSqlParameter.Value = 1
+        IncludeNonCurrentAssetsSqlParameter.Value = 1
+        IncludeFixedAssetsSqlParameter.Value = 1
+        IncludeCurrentLiabilitiesSqlParameter.Value = 1
+        IncludeNonCurrentLiabilitiesSqlParameter.Value = 1
+        IncludeEquitySqlParameter.Value = 1
+        IncludeIncomeSqlParameter.Value = 1
+        IncludeIncomeOtherSqlParameter.Value = 1
+        IncludeExpeseCOSSqlParameter.Value = 1
+        IncludeExpenseOperatingSqlParameter.Value = 1
+        IncludeExpenseOtherSqlParameter.Value = 1
+        IncludeExpenseTaxesSqlParameter.Value = 1
+
+        If ErrorMessage = "" Then
+            If String.IsNullOrWhiteSpace(PostPeriodEnd) = True Then
+                ErrorMessage = "Please provide valid end posting period."
+            End If
+        End If
+
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = True Then
+
+            Try
+
+                If LoginToAPI(ServerName, DatabaseName, UseWindowsAuthentication, UserName, Password, APISession, ErrorMessage) Then
+
+                    Using DbContext = New APIDbContext(APISession.ConnectionString, APISession.UserCode)
+
+                        'TrialBalanceAPIReports = DbContext.Database.SqlQuery(Of GeneralLedgerDetailAPIReport)(String.Format("EXEC [dbo].[advsp_gl_detail_dataset_load] '{0}', '{1}', {2}, {3}", PostPeriodEnd)).ToList
+
+                        'Vendors = DbContext.Database.SqlQuery(Of Vendor)("exec [dbo].[advsp_api_load_vendors] @IncludeInactive, @NonMedia, @Magazine, @Newspaper, @Radio, @Television, @OutOfHome, @Internet, @NonClient", IncludeInactiveSqlParameter, AllowNonMediaSqlParameter, AllowMagazineSqlParameter, AllowNewspaperSqlParameter, AllowRadioSqlParameter, AllowTelevisionSqlParameter, AllowOutOfHomeSqlParameter, AllowInternetSqlParameter, AllowNonClientSqlParameter).ToList
+
+                        TrialBalanceAPIReports = DbContext.Database.SqlQuery(Of TrialBalanceAPIReport)("EXEC dbo.advsp_gl_trial_balance_report @USER_CODE, @ENDING_PPPERIOD, @RECORD_SOURCE_ID, @OFFICES, @DEPARTMENTS, @OTHERS, @BASES, 
+                                                                                                                                            @INCL_CURRENT_ASSESTS, @INCL_NON_CURRENT_ASSESTS, @INCL_FIXED_ASSESTS, @INCL_CURRENT_LIABILITIES, 
+                                                                                                                                            @INCL_NON_CURRENT_LIABILITIES, @INCL_EQUITY, @INCL_INCOME, @INCL_INCOME_OTHER, @INCL_EXPENSE_COS, 
+                                                                                                                                            @INCL_EXPENSE_OPERATING, @INCL_EXPENSE_OTHER, @INCL_EXPENSE_TAXES",
+                                                                                                                             UserCodeSqlParameter, EndingPostPeriodSqlParameter,
+                                                                                                                             RecordSourceIDSqlParameter, OfficesSqlParameter, DepartmentsSqlParameter,
+                                                                                                                             OthersSqlParameter, BasesSqlParameter, IncludeCurrentAssetsSqlParameter,
+                                                                                                                             IncludeNonCurrentAssetsSqlParameter, IncludeFixedAssetsSqlParameter, IncludeCurrentLiabilitiesSqlParameter,
+                                                                                                                             IncludeNonCurrentLiabilitiesSqlParameter, IncludeEquitySqlParameter, IncludeIncomeSqlParameter,
+                                                                                                                             IncludeIncomeOtherSqlParameter, IncludeExpeseCOSSqlParameter, IncludeExpenseOperatingSqlParameter,
+                                                                                                                             IncludeExpenseOtherSqlParameter, IncludeExpenseTaxesSqlParameter).ToList
+
+                    End Using
+
+                End If
+
+            Catch ex As Exception
+                ProcessException(ex, "APIService-NotCaught")
+                ErrorMessage = "Critical Failure in API" & System.Environment.NewLine & System.Environment.NewLine & ex.Message
+            End Try
+
+        End If
+
+        If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+            TrialBalanceAPIResponse.Message = ErrorMessage
+            TrialBalanceAPIResponse.IsSuccessful = False
+            TrialBalanceAPIResponse.IsSuccessful = False
+            TrialBalanceAPIResponse.Results = Nothing
+        Else
+            TrialBalanceAPIResponse.Results = TrialBalanceAPIReports
+            TrialBalanceAPIResponse.Message = CStr(TrialBalanceAPIResponse.Results.Count) + " records"
+        End If
+
+
+        LoadTrialBalance = TrialBalanceAPIResponse
 
 
     End Function

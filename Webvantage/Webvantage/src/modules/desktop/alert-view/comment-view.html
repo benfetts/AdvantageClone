@@ -62,12 +62,24 @@
                 <input type="checkbox" class="k-checkbox" id="cmtHideSystemCommentsCb" checked.bind="hideSystemComments" change.delegate="showHideSystemComments()" />
                 <label class="k-checkbox-label" for="cmtHideSystemCommentsCb">Hide system comments</label>
             </div>
-            <div style="display:inline-block;">
-                <button title="Show all comments" class="btn btn-sm btn-default" click.delegate="refreshComments()" style="display: none !important;"><span class="wvi wvi-refresh"></span></button>
-                <button title="Add Comment" class="btn btn-sm btn-success" click.delegate="addComment()" disabled.bind="saveDisabled"><span class="glyphicon glyphicon-plus"></span></button>
-                <!--<button class="btn btn-sm btn-default" id="comment-attatchment"><span class="glyphicon glyphicon-paperclip"></span></button>-->
-                <button class="btn btn-sm btn-default" click.delegate="uploadFileClick()"><span class="glyphicon glyphicon-arrow-up" title="Attach file(s) to this comment."></span></button>
-                <button class="btn btn-sm btn-default" click.delegate="showFullScreenComment(false)"><span class="glyphicon glyphicon-fullscreen"></span></button>
+            <div if.bind="files.length > 0" style="padding-top: 5px;">
+                <button class="btn btn-primary btn-sm" style="margin-right: 3px; margin-bottom: 3px;" repeat.for="file of files" click.delegate="deleteFile(file)">${file.name} <span class="k-icon k-i-close"></span></button>
+            </div>
+            <div if.bind="links.length > 0" style="padding-top: 5px;">
+                <button class="btn btn-primary btn-sm" style="margin-right: 3px; margin-bottom: 3px;" repeat.for="link of links" click.delegate="deleteLink(link)">${link.title} <span class="k-icon k-i-close"></span></button>
+            </div>
+            <div style="text-align: right; margin-top: 5px;">
+                <div class="wv-cb-wrapper">
+                    <input type="checkbox" class="k-checkbox" id="cmtHideSystemCommentsCb" checked.bind="hideSystemComments" change.delegate="showHideSystemComments()" />
+                    <label class="k-checkbox-label" for="cmtHideSystemCommentsCb">Hide system comments</label>
+                </div>
+                <div style="display:inline-block;">
+                    <button title="Show all comments" class="btn btn-sm btn-default" click.delegate="refreshComments()" style="display: none !important;"><span class="wvi wvi-refresh"></span></button>
+                    <button title="Add Comment" class="btn btn-sm btn-success" click.delegate="addComment()" disabled.bind="saveDisabled"><span class="glyphicon glyphicon-plus"></span></button>
+                    <!--<button class="btn btn-sm btn-default" id="comment-attatchment"><span class="glyphicon glyphicon-paperclip"></span></button>-->
+                    <button class="btn btn-sm btn-default" click.delegate="uploadFileClick()"><span class="glyphicon glyphicon-arrow-up" title="Attach file(s) to this comment."></span></button>
+                    <button class="btn btn-sm btn-default" click.delegate="showFullScreenComment(0)"><span class="glyphicon glyphicon-fullscreen"></span></button>
+                </div>
             </div>
         </div>
     </header>
@@ -91,7 +103,9 @@
                          reply-list.bind="comment.Replies"
                          has-image.bind="comment.HasImage"
                          proofing-external-reviewer-id.bind="comment.ProofingExternalReviewerID"
-                         initials.bind="comment.Initials"></comment>
+                         initials.bind="comment.Initials"
+                         is-my-comment.bind="comment.IsMyComment"
+                         edit-function.call="editEntry(comment)"></comment>
             </div>
         </div>
     </div>
@@ -103,7 +117,8 @@
                     k-title.bind: dialogTitle;
                     k-visible.bind: false;
                     k-modal.bind: true;
-                    k-button-layout: normal;" k-on-close.delegate="onFullScreenCommentDialogClose()">
+                    k-button-layout: normal;" 
+         k-on-close.delegate="onFullScreenCommentDialogClose()">
         <div id="fullMentionContainer" style="position:absolute;">
             <mention-item view-model.ref="mentionItemFull" mention-comment-div="fullScreenCommentDiv" comment-editor.bind="fullScreenComment" vertical-offset="90" horizontal-offset="13" mention-container="fullMentionContainer"></mention-item>
         </div>

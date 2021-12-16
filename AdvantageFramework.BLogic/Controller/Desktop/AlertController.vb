@@ -2686,6 +2686,16 @@ Namespace Controller.Desktop
             'Return Added
 
         End Function
+        Public Function UpdateAlertComment(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                           ByVal CommentID As Integer,
+                                           ByVal Comment As String,
+                                           ByVal ClientContactID As Integer?,
+                                           ByVal DocumentList As String,
+                                           ByVal DocumentID As Integer?) As Boolean
+
+            Return AdvantageFramework.AlertSystem.UpdateAlertComment(DbContext, CommentID, Comment, ClientContactID, DocumentList, DocumentID)
+
+        End Function
         Public Function LoadAlertRecipients(ByVal AlertID As Integer) As Generic.List(Of AdvantageFramework.DTO.Desktop.AlertRecipient)
 
             'objects

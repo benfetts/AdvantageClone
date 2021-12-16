@@ -112,8 +112,8 @@ export class CommentView extends ModuleBase {
     ];
     @bindable AllowProofHQ: boolean = false;
     @bindable dialogTitle: string;
-    @bindable isReply: boolean = false;
-
+    @bindable fullScreenType: number = 0;
+    @bindable saveButtonText: string = "Add";
     @bindable isUploadingFile: boolean = true;
     @bindable uploadingFilePrimary: string = "k-primary";
     @bindable uploadingLinkPrimary: string = "";
@@ -324,35 +324,39 @@ export class CommentView extends ModuleBase {
             return info;
         }).join(", ");
     }
-    showFullScreenComment(isReply: boolean = false) {
+    showFullScreenComment(fullScreenType: number = 0) {
         let me = this;
-        me.isReply = isReply;
-        if (me.isReply == true) {
-            me.dialogTitle = "Add Reply";
-        } else {
+        me.fullScreenType = fullScreenType;
+        if (me.fullScreenType == 0) {
+            me.saveButtonText = "Add";
             me.dialogTitle = "Add Comment";
+            me.fullScreenComment.value(me.newCommentInput.value());
+        } else if (me.fullScreenType == 1) {
+            me.saveButtonText = "Update";
+            me.dialogTitle = "Edit Comment";
+        } else {
+            me.saveButtonText = "Add";
+            me.dialogTitle = "Add Comment";
+            me.fullScreenComment.value(me.newCommentInput.value());
         }
         me.commentDialog.title(me.dialogTitle);
         me.commentDialog.open();
-        me.fullScreenComment.wrapper.width("").height("").addClass("expandEditor");        
-        me.fullScreenComment.value(me.newCommentInput.value());        
+        me.fullScreenComment.wrapper.width("").height("").addClass("expandEditor");
         me.fullScreenComment.focus();
         me.commentDialogOpen = true;
-        
         if (this.mentionItemNew.mentions.length > 0) {
-            //console.log("new", this.mentionItemNew.mentions);
             this.mentionItemFull.mentions = this.mentionItemNew.mentions;
-            //console.log("full", this.mentionItemFull.mentions)
             this.mentionItemNew.attachClickEventToMention("#fullScreenCommentDiv");
         }
-        
         this.mentionItemFull.removeLineBreaksFromComment();
     }
     onFullScreenCommentDialogClose() {
         this.commentDialogOpen = false;
     }
     closeFullScreenComment() {
-        this.isReply = false;
+        this.fullScreenType = 0;
+        this.commentId = null;
+        this.saveButtonText = "Add";
         this.fullScreenComment.value(null);
         this.clearAttachmentUploadAndSync();
         this.links = [];
@@ -401,6 +405,9 @@ export class CommentView extends ModuleBase {
         }
 
     }
+    editComment() {
+
+    }
     addComment(fullScreen: boolean = false) {
         let me = this;
         var comment = "";
@@ -409,7 +416,7 @@ export class CommentView extends ModuleBase {
         } else {
             comment = me.newCommentInput.value();
         }
-        if (comment !== "") {
+        if (comment.trim() !== "") {
             me.showProgress(true);
             let commentMentions: MentionItem;
             if (this.commentDialogOpen) {
@@ -423,46 +430,90 @@ export class CommentView extends ModuleBase {
                 linksString = JSON.stringify(me.links);
             }
             me.syncFiles();
-            me.service.addAlertComment(me.alertId, me.commentId, comment,
-                me.fileNames, me.uploadToDocumentManager,
-                me.uploadToProofHQ, linksString, commentMentions.mentions, me.documentId)
-                .then(response => {
-                    me.showProgress(false);
-                    me.getAlertComments();
-                    me.commentScrollWindow.scrollTop = 0;
-                    me.newCommentInput.value(null);
-                    if (me.fileNames && me.fileNames.length > 0) {
-                        me.attachmentAdded = true;
-                    } else {
-                        me.attachmentAdded = false;
-                    }
-                    if (me.attachmentUpload) {
-                        me.attachmentUpload.removeAllFiles();
-                        me.attachmentUpload.clearAllFiles();
-                    }
-                    me.links = [];
-                    me.files = [];
-                    me.fileNames = [];
-                    commentMentions.mentions = [];
-                    me.syncFiles();
-                    me.urlTitle = null;
-                    me.urlLink = null;
-                    me.setUploadToFile();
-                    if (me.commentAddedCallback) {
-                        me.commentAddedCallback();
-                    }
-                    if (fullScreen) {
-                        me.closeFullScreenComment();
-                    }
-                })
-                .then(() => {
-                    me.showProgress(false);
-                });
-                
+            if (me.fullScreenType == 1 && me.commentId && me.commentId > 0) {
+                me.service.updateAlertComment(me.commentId, comment,
+                    me.fileNames, me.uploadToDocumentManager,
+                    me.uploadToProofHQ, linksString, commentMentions.mentions, me.documentId)
+                    .then(response => {
+                        me.showProgress(false);
+                        me.getAlertComments();
+                        me.commentScrollWindow.scrollTop = 0;
+                        me.newCommentInput.value(null);
+                        if (me.fileNames && me.fileNames.length > 0) {
+                            me.attachmentAdded = true;
+                        } else {
+                            me.attachmentAdded = false;
+                        }
+                        if (me.attachmentUpload) {
+                            me.attachmentUpload.removeAllFiles();
+                            me.attachmentUpload.clearAllFiles();
+                        }
+                        me.links = [];
+                        me.files = [];
+                        me.fileNames = [];
+                        commentMentions.mentions = [];
+                        me.syncFiles();
+                        me.urlTitle = null;
+                        me.urlLink = null;
+                        me.setUploadToFile();
+                        if (me.commentAddedCallback) {
+                            me.commentAddedCallback();
+                        }
+                        if (fullScreen) {
+                            me.closeFullScreenComment();
+                        }
+                    })
+                    .then(() => {
+                        me.showProgress(false);
+                    });
+            } else {
+                me.service.addAlertComment(me.alertId, me.commentId, comment,
+                    me.fileNames, me.uploadToDocumentManager,
+                    me.uploadToProofHQ, linksString, commentMentions.mentions, me.documentId)
+                    .then(response => {
+                        me.showProgress(false);
+                        me.getAlertComments();
+                        me.commentScrollWindow.scrollTop = 0;
+                        me.newCommentInput.value(null);
+                        if (me.fileNames && me.fileNames.length > 0) {
+                            me.attachmentAdded = true;
+                        } else {
+                            me.attachmentAdded = false;
+                        }
+                        if (me.attachmentUpload) {
+                            me.attachmentUpload.removeAllFiles();
+                            me.attachmentUpload.clearAllFiles();
+                        }
+                        me.links = [];
+                        me.files = [];
+                        me.fileNames = [];
+                        commentMentions.mentions = [];
+                        me.syncFiles();
+                        me.urlTitle = null;
+                        me.urlLink = null;
+                        me.setUploadToFile();
+                        if (me.commentAddedCallback) {
+                            me.commentAddedCallback();
+                        }
+                        if (fullScreen) {
+                            me.closeFullScreenComment();
+                        }
+                    })
+                    .then(() => {
+                        me.showProgress(false);
+                    });
+            }
+
         } else {
             me.alert('Please enter a comment.');
         }
-    }  
+    }
+    editEntry(entry: any) {
+        console.log("editComment from comment-view", entry);
+        this.commentId = entry.CommentID;
+        this.fullScreenComment.value(entry.Comment);
+        this.showFullScreenComment(1);
+    }
     activate(params: any) {
         if (params && params.AlertID) {
             //console.log("params", params);

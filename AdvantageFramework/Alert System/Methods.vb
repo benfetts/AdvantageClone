@@ -1894,6 +1894,49 @@ Namespace AlertSystem
             Return Added
 
         End Function
+        Public Function UpdateAlertComment(ByVal DbContext As AdvantageFramework.Database.DbContext,
+                                           ByVal CommentID As Integer,
+                                           ByVal Comment As String,
+                                           ByVal ClientContactID As Integer?,
+                                           ByVal DocumentList As String,
+                                           ByVal DocumentID As Integer?) As Boolean
+
+            'objects
+            Dim AlertComment As AdvantageFramework.Database.Entities.AlertComment = Nothing
+            Dim Updated As Boolean = False
+            Dim AlertID As Integer = 0
+
+            AlertComment = AdvantageFramework.Database.Procedures.AlertComment.LoadByCommentID(DbContext, CommentID)
+
+            If AlertComment IsNot Nothing Then
+
+                AlertID = AlertComment.AlertID
+                AlertComment.Comment = Comment
+                AlertComment.GeneratedDate = Now
+                AlertComment.HasEmailBeenSent = False
+                AlertComment.ClientContactID = ClientContactID
+                AlertComment.ParentID = CommentID
+                AlertComment.DocumentID = DocumentID
+
+                If AdvantageFramework.Database.Procedures.AlertComment.Update(DbContext, AlertComment) = True Then
+
+                    Updated = True
+
+                    AdvantageFramework.AlertSystem.UndismissCCsByAlertID(DbContext, AlertID)
+
+                    If Not String.IsNullOrWhiteSpace(DocumentList) Then
+
+                        DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE [dbo].[ALERT_COMMENT] SET DOCUMENT_LIST = '{0}' WHERE COMMENT_ID = {1} AND ALERT_ID = {2}", DocumentList, AlertComment.ID, AlertComment.AlertID))
+
+                    End If
+
+                End If
+
+            End If
+
+            Return Updated
+
+        End Function
         Public Function AddAlertClientContactRecipient(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal AlertID As Integer, ByVal ContactID As Integer) As Boolean
 
             'objects

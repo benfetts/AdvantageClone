@@ -398,6 +398,23 @@ export class AlertService extends ServiceBase {
     getBoardSprintStates(sprintId: number) {
         return this.http.get('GetBoardSprintStates', { SprintID: sprintId });
     }
+    updateAlertComment(commentID: number, comment: string,
+        files: Array<string>, uploadToRepository: boolean, uploadToProofHQ: boolean, links: string,
+        mentions?: Array<string>, documentID?: number) {
+        if (commentID && commentID > 0) {
+            var data = {
+                CommentID: commentID,
+                Comment: comment,
+                Files: files,
+                UploadToRepository: uploadToRepository,
+                UploadToProofHQ: uploadToProofHQ,
+                LinksString: links,
+                Mentions: mentions,
+                DocumentID: documentID
+            };
+            return this.http.post("UpdateAlertComment", data);
+        }
+    }
     addAlertComment(alertID: number, commentID: number, comment: string,
         files: Array<string>, uploadToRepository: boolean, uploadToProofHQ: boolean, links: string,
         mentions?: Array<string>, documentID?: number) {

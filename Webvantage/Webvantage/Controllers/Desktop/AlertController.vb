@@ -2984,6 +2984,152 @@ Namespace Controllers.Desktop
             Return MaxJson(Added)
 
         End Function
+        <HttpPost>
+        Public Function UpdateAlertComment(ByVal CommentID As Integer,
+                                           ByVal Comment As String,
+                                           ByVal Files As String(),
+                                           ByVal UploadToRepository As Boolean,
+                                           ByVal UploadToProofHQ As Boolean,
+                                           ByVal LinksString As String,
+                                           ByVal Mentions As String(),
+                                           ByVal DocumentID As Integer?,
+                                           ByVal IsExternalLink As Boolean?) As JsonResult
+
+            'objects
+            Dim Updated As Boolean = False
+            Dim TempDirectory As String = Nothing
+            Dim TempFiles As Generic.List(Of String) = Nothing
+            Dim CommentDocuments As Generic.List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument) = Nothing
+            Dim CommentDocument As AdvantageFramework.AlertSystem.Classes.CommentDocument = Nothing
+            Dim Documents As Generic.List(Of AdvantageFramework.Database.Entities.Document) = Nothing
+            Dim DocumentList As String = Nothing
+            Dim LinksList As Generic.List(Of Link) = Nothing
+            Dim ErrorMessages As New Generic.List(Of String)
+            Dim ErrorMessage As String = String.Empty
+            Dim AlertComment As AdvantageFramework.Database.Entities.AlertComment = Nothing
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
+
+                AlertComment = AdvantageFramework.Database.Procedures.AlertComment.LoadByCommentID(DbContext, CommentID)
+
+                If AlertComment IsNot Nothing Then
+
+                    Try
+
+                        If (Mentions IsNot Nothing AndAlso Mentions.Length > 0) Then
+
+                            AddMention(AlertComment.AlertID, Mentions, 0)
+
+                        End If
+
+                    Catch ex As Exception
+                    End Try
+                    If Files IsNot Nothing AndAlso Files.Count > 0 Then
+
+                        TempFiles = GetTempUploadAttachments(Files, ErrorMessage)
+
+                        If TempFiles IsNot Nothing Then
+
+                            Documents = New List(Of AdvantageFramework.Database.Entities.Document)
+
+                            If _Controller.SaveAttachments(AlertComment.AlertID, TempFiles, UploadToRepository, UploadToProofHQ, ErrorMessage, Documents) Then
+
+                                If Documents IsNot Nothing AndAlso Documents.Count > 0 Then
+
+                                    CommentDocuments = (From item In Documents
+                                                        Select New AdvantageFramework.AlertSystem.Classes.CommentDocument With {.Filename = item.FileName,
+                                                                                     .DocumentId = item.ID,
+                                                                                     .MimeType = item.MIMEType}).ToList
+
+                                End If
+
+                            End If
+
+                        End If
+
+                    End If
+                    Try
+
+                        If String.IsNullOrWhiteSpace(LinksString) = False Then
+
+                            LinksList = JsonConvert.DeserializeObject(Of Generic.List(Of Link))(LinksString)
+
+                        End If
+                        If LinksList IsNot Nothing AndAlso LinksList.Count > 0 Then
+
+                            Dim CommentDoc As AdvantageFramework.AlertSystem.Classes.CommentDocument = Nothing
+
+                            If CommentDocuments Is Nothing Then
+
+                                CommentDocuments = New List(Of AdvantageFramework.AlertSystem.Classes.CommentDocument)
+
+                            End If
+
+                            For Each Link As AlertController.Link In LinksList
+
+                                ErrorMessage = String.Empty
+                                CommentDoc = Nothing
+
+                                If Link.IsExternalLink = False Then
+
+                                    If Link.Link.ToLower().StartsWith("http://") = False AndAlso Link.Link.ToLower().StartsWith("https://") = False Then
+
+                                        Link.Link = "http://" & Link.Link
+
+                                    End If
+
+                                End If
+
+                                If Me._Controller.UploadURL(AlertComment.AlertID, Link.Title, Link.Link, Link.UploadDocumentManager, Link.IsExternalLink, ErrorMessage) = True Then
+
+                                    CommentDoc = New AdvantageFramework.AlertSystem.Classes.CommentDocument
+
+                                    CommentDoc.DocumentId = -1
+                                    CommentDoc.Title = Link.Title
+                                    CommentDoc.Filename = Link.Link
+                                    CommentDoc.MimeType = "URL"
+
+                                    CommentDocuments.Add(CommentDoc)
+
+                                Else
+
+                                    If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+
+                                        ErrorMessages.Add(ErrorMessage)
+
+                                    End If
+
+                                End If
+
+                            Next
+
+                        End If
+
+                    Catch ex As Exception
+                        ErrorMessages.Add(AdvantageFramework.StringUtilities.FullErrorToString(ex))
+                    End Try
+
+                    CommentDocument = New AdvantageFramework.AlertSystem.Classes.CommentDocument
+
+                    DocumentList = CommentDocument.ObjectToString(CommentDocuments)
+
+                    Updated = _Controller.UpdateAlertComment(DbContext, CommentID, Comment, Nothing, DocumentList, DocumentID)
+
+                    If Updated = True Then
+
+                        DeleteTempUploadAttachments()
+
+                        NotifyAlertRecipients(AlertComment.AlertID, True, True, False, False, Nothing, True, DocumentID)
+
+                    End If
+
+                End If
+
+            End Using
+
+            Return Json(Updated)
+
+        End Function
         <Serializable> Public Class Link
             Public Property Title As String = String.Empty
             Public Property Link As String = String.Empty

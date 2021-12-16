@@ -191,7 +191,7 @@ export class CommentView extends ModuleBase {
             if (me.service) {
                 me.showProgress(true);
                 if (me.hideSystemComments == null || me.hideSystemComments == undefined) {
-                    console.log("hey?")
+                    //console.log("hey?")
                     this.service.getAlertSettings().then(response => {
                         if (response.content) {
                             try {
@@ -214,6 +214,7 @@ export class CommentView extends ModuleBase {
                 } else {
                     me.service.getAlertComments(me.alertId, me.documentId, me.hideSystemComments).then(response => {
                         me.comments = response.content;
+                        //console.log("comments???", response.content)
                         if (!me.comments) {
                             me.comments = [];
                         }
@@ -292,7 +293,7 @@ export class CommentView extends ModuleBase {
             this.showProgress(false);
             //console.log("attachmentDoneProcessing files?", this.files);
         } catch (e) {
-            console.log("attachmentDoneProcessing", e);
+            //console.log("attachmentDoneProcessing", e);
         }
     }
     deleteFile(file: any) {
@@ -401,7 +402,7 @@ export class CommentView extends ModuleBase {
                 }
             });
         } catch (e) {
-            console.log("dashboard.ts:loadCounts:AllowProofHQ:error", e);
+            //console.log("dashboard.ts:loadCounts:AllowProofHQ:error", e);
         }
 
     }
@@ -509,7 +510,7 @@ export class CommentView extends ModuleBase {
         }
     }
     editEntry(entry: any) {
-        console.log("editComment from comment-view", entry);
+        //console.log("editComment from comment-view", entry);
         this.commentId = entry.CommentID;
         this.fullScreenComment.value(entry.Comment);
         this.showFullScreenComment(1);

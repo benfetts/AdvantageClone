@@ -165,7 +165,7 @@ export class AlertService extends ServiceBase {
                     newAssignmentSetup.AllowProofHQ = response.content.AllowProofHQ;
                 }
             } catch (e) {
-                console.log("ERROR alert-service.ts initNewAssignment", e);
+                //console.log("ERROR alert-service.ts initNewAssignment", e);
             }
             return newAssignmentSetup;
         });
@@ -446,7 +446,7 @@ export class AlertService extends ServiceBase {
                 return this.http.post("AddMention", data);
             }
         } catch (e) {
-            console.log("mention err:", e);
+            //console.log("mention err:", e);
         }
     }
     createAssignment(alert: AlertModel, notify: boolean, uploadToRepository: boolean, uploadToProofHQ: boolean) {

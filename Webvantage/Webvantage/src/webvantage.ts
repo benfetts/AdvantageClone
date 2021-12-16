@@ -1995,7 +1995,7 @@ export class Webvantage extends ModuleBase {
                 //}
             }
         } catch (e) {
-            console.log("refreshAlertsAndAssignmentsManagerPMD error: " + e);
+            //console.log("refreshAlertsAndAssignmentsManagerPMD error: " + e);
         }
     }
     refreshPageInsideJJ() {
@@ -2013,14 +2013,14 @@ export class Webvantage extends ModuleBase {
 
                 if (win.location.pathname.includes("Inbox")) {
                     if (win) {   
-                        console.log("JJAAM refreshed.")
+                        //console.log("JJAAM refreshed.")
                         win.refreshPage("parent");
                         this.refreshInboxFlag = false;
                     }                            
                 }
 
                 if (win.location.pathname.includes("ProjectScheduleDetail")) {
-                    console.log("JJPMD refreshed.")
+                    //console.log("JJPMD refreshed.")
                     //[ProjectScheduleDetail].refresPage();
                     if (win) {
                         win.refresPage();                        
@@ -2028,7 +2028,7 @@ export class Webvantage extends ModuleBase {
                 }
             }
         } catch (e) {
-            console.log("refreshTabInsideJJ error: " + e);
+            //console.log("refreshTabInsideJJ error: " + e);
         }
     }    
     refreshAlertsAndAssignmentsManagerTab() {     
@@ -2050,7 +2050,7 @@ export class Webvantage extends ModuleBase {
                 }
             }
         } catch (e) {
-            console.log("refreshAlertsAndAssignmentsManagerTab error: " + e);
+            //console.log("refreshAlertsAndAssignmentsManagerTab error: " + e);
         }
     }
     //refreshInboxModule(securityModule) {
@@ -2157,11 +2157,11 @@ export class Webvantage extends ModuleBase {
         //this.refreshDashboardAssignments();
     }
     refreshMyAssignmentsNotificationsAndCounts() {
-        try {
-            console.log("webvantage.ts:refreshMyAssignmentsNotificationsAndCounts");
-        } catch (e) {
-            console.log("refreshMyAssignmentsNotificationsAndCounts:error:", e);
-        }
+    //    try {
+    //        //console.log("webvantage.ts:refreshMyAssignmentsNotificationsAndCounts");
+    //    } catch (e) {
+    //        //console.log("refreshMyAssignmentsNotificationsAndCounts:error:", e);
+    //    }
     }
     refreshAlerts() {
         //console.log("webvantage.ts:refreshAlerts");

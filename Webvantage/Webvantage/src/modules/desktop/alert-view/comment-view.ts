@@ -127,6 +127,10 @@ export class CommentView extends ModuleBase {
     uploadDoneCount: number = 0;
     saveDisabled: boolean = false;
     @bindable attachmentAdded: boolean = false;
+    @bindable isExternalLink: boolean = false;
+    @bindable uploadingExternalLinkPrimary: string = "";
+    focusExternalLinkTitle: boolean = false;
+    @bindable isEdit: boolean = false;
     // methods
     setUploadToLink() {
         this.isUploadingFile = false;
@@ -332,13 +336,16 @@ export class CommentView extends ModuleBase {
             me.saveButtonText = "Add";
             me.dialogTitle = "Add Comment";
             me.fullScreenComment.value(me.newCommentInput.value());
+            me.isEdit = false;
         } else if (me.fullScreenType == 1) {
             me.saveButtonText = "Update";
             me.dialogTitle = "Edit Comment";
+            me.isEdit = true;
         } else {
             me.saveButtonText = "Add";
             me.dialogTitle = "Add Comment";
             me.fullScreenComment.value(me.newCommentInput.value());
+            me.isEdit = false;
         }
         me.commentDialog.title(me.dialogTitle);
         me.commentDialog.open();
@@ -353,6 +360,7 @@ export class CommentView extends ModuleBase {
     }
     onFullScreenCommentDialogClose() {
         this.commentDialogOpen = false;
+        this.isEdit = false;
     }
     closeFullScreenComment() {
         this.fullScreenType = 0;
@@ -406,9 +414,9 @@ export class CommentView extends ModuleBase {
         }
 
     }
-    editComment() {
+    //editComment() {
 
-    }
+    //}
     addComment(fullScreen: boolean = false) {
         let me = this;
         var comment = "";
@@ -431,42 +439,74 @@ export class CommentView extends ModuleBase {
                 linksString = JSON.stringify(me.links);
             }
             me.syncFiles();
-            if (me.fullScreenType == 1 && me.commentId && me.commentId > 0) {
-                me.service.updateAlertComment(me.commentId, comment,
-                    me.fileNames, me.uploadToDocumentManager,
-                    me.uploadToProofHQ, linksString, commentMentions.mentions, me.documentId)
-                    .then(response => {
-                        me.showProgress(false);
-                        me.getAlertComments();
-                        me.commentScrollWindow.scrollTop = 0;
-                        me.newCommentInput.value(null);
-                        if (me.fileNames && me.fileNames.length > 0) {
-                            me.attachmentAdded = true;
-                        } else {
-                            me.attachmentAdded = false;
-                        }
-                        if (me.attachmentUpload) {
-                            me.attachmentUpload.removeAllFiles();
-                            me.attachmentUpload.clearAllFiles();
-                        }
-                        me.links = [];
-                        me.files = [];
-                        me.fileNames = [];
-                        commentMentions.mentions = [];
-                        me.syncFiles();
-                        me.urlTitle = null;
-                        me.urlLink = null;
-                        me.setUploadToFile();
-                        if (me.commentAddedCallback) {
-                            me.commentAddedCallback();
-                        }
-                        if (fullScreen) {
-                            me.closeFullScreenComment();
-                        }
-                    })
-                    .then(() => {
-                        me.showProgress(false);
-                    });
+            if (me.fullScreenType == 1 && me.commentId && me.commentId > 0 && me.isEdit == true) {
+                //console.log("save edit message!", comment);
+                me.service.updateAlertCommentSimple(me.commentId, comment, commentMentions.mentions).then(response => {
+                    me.showProgress(false);
+                    me.getAlertComments();
+                    me.commentScrollWindow.scrollTop = 0;
+                    me.newCommentInput.value(null);
+                    if (me.fileNames && me.fileNames.length > 0) {
+                        me.attachmentAdded = true;
+                    } else {
+                        me.attachmentAdded = false;
+                    }
+                    if (me.attachmentUpload) {
+                        me.attachmentUpload.removeAllFiles();
+                        me.attachmentUpload.clearAllFiles();
+                    }
+                    me.links = [];
+                    me.files = [];
+                    me.fileNames = [];
+                    commentMentions.mentions = [];
+                    me.syncFiles();
+                    me.urlTitle = null;
+                    me.urlLink = null;
+                    me.setUploadToFile();
+                    if (me.commentAddedCallback) {
+                        me.commentAddedCallback();
+                    }
+                    if (fullScreen) {
+                        me.closeFullScreenComment();
+                    }
+                }).then(() => {
+                    me.showProgress(false);
+                });
+            //    me.service.updateAlertComment(me.commentId, comment,
+            //        me.fileNames, me.uploadToDocumentManager,
+            //        me.uploadToProofHQ, linksString, commentMentions.mentions, me.documentId)
+            //        .then(response => {
+            //            me.showProgress(false);
+            //            me.getAlertComments();
+            //            me.commentScrollWindow.scrollTop = 0;
+            //            me.newCommentInput.value(null);
+            //            if (me.fileNames && me.fileNames.length > 0) {
+            //                me.attachmentAdded = true;
+            //            } else {
+            //                me.attachmentAdded = false;
+            //            }
+            //            if (me.attachmentUpload) {
+            //                me.attachmentUpload.removeAllFiles();
+            //                me.attachmentUpload.clearAllFiles();
+            //            }
+            //            me.links = [];
+            //            me.files = [];
+            //            me.fileNames = [];
+            //            commentMentions.mentions = [];
+            //            me.syncFiles();
+            //            me.urlTitle = null;
+            //            me.urlLink = null;
+            //            me.setUploadToFile();
+            //            if (me.commentAddedCallback) {
+            //                me.commentAddedCallback();
+            //            }
+            //            if (fullScreen) {
+            //                me.closeFullScreenComment();
+            //            }
+            //        })
+            //        .then(() => {
+            //            me.showProgress(false);
+            //        });
             } else {
                 me.service.addAlertComment(me.alertId, me.commentId, comment,
                     me.fileNames, me.uploadToDocumentManager,

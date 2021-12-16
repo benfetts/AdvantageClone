@@ -2985,6 +2985,48 @@ Namespace Controllers.Desktop
 
         End Function
         <HttpPost>
+        Public Function UpdateAlertCommentSimple(ByVal CommentID As Integer,
+                                                 ByVal Comment As String,
+                                                 ByVal Mentions As String()) As JsonResult
+
+            Dim Updated As Boolean = False
+            Dim AlertComment As AdvantageFramework.Database.Entities.AlertComment = Nothing
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(SecuritySession.ConnectionString, SecuritySession.UserCode)
+
+                AlertComment = AdvantageFramework.Database.Procedures.AlertComment.LoadByCommentID(DbContext, CommentID)
+
+                If AlertComment IsNot Nothing Then
+
+                    Try
+
+                        If (Mentions IsNot Nothing AndAlso Mentions.Length > 0) Then
+
+                            AddMention(AlertComment.AlertID, Mentions, 0)
+
+                        End If
+
+                    Catch ex As Exception
+                    End Try
+
+                    AlertComment.Comment = Comment
+
+                    Updated = AdvantageFramework.Database.Procedures.AlertComment.Update(DbContext, AlertComment)
+
+                    If Updated = True Then
+
+                        NotifyAlertRecipients(AlertComment.AlertID, True, True, False, False, Nothing, True, AlertComment.DocumentID)
+
+                    End If
+
+                End If
+
+            End Using
+
+            Return Json(Updated)
+
+        End Function
+        <HttpPost>
         Public Function UpdateAlertComment(ByVal CommentID As Integer,
                                            ByVal Comment As String,
                                            ByVal Files As String(),

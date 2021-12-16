@@ -125,7 +125,7 @@
         <div id="fullScreenCommentDiv">
             <textarea ak-rich-editor="k-widget.two-way: fullScreenComment; k-resizable.bind: true; k-tools.bind: defaultTools;" k-on-keydown.delegate="mentionItemFull.commentKeyDownEvent($event.detail)"></textarea>
         </div>
-        <div style="margin-top: 5px;">
+        <div if.bind="isEdit == false" style="margin-top: 5px;">
             <div class="wv-form">
                 <div style="margin-bottom: 6px;">
                     <div id="buttonsContainer" class="k-button-group">

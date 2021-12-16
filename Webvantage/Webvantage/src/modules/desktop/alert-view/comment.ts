@@ -33,7 +33,8 @@ export class Comment extends ModuleBase {
     @bindable hasImage: boolean;
     @bindable proofingExternalReviewerID: number;
     @bindable initials: string;
-
+    @bindable isMyComment: boolean = false;
+    @bindable editFunction;
     reply() {
         let element = $("#replyInputComment");        
         if (element.length) {
@@ -57,6 +58,10 @@ export class Comment extends ModuleBase {
         } else {
             this.alert("Please enter a reply.");
         }
+    }
+    editComment() {
+        console.log("edit", this.alertId, this.commentId);
+        this.editFunction();
     }
     showHideReplyTextarea() {
         this.showReplyTextbox = !this.showReplyTextbox;

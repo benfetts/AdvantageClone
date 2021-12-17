@@ -513,7 +513,6 @@ End Code
                     data: data,
                     dataType: "json",
                     success: function (response) {
-                        console.log(response);
                         if (response === true) {
                             $("#AutoStatus").prop("checked", true);
                         }
@@ -746,8 +745,6 @@ End Code
     });
 
     function _resize() {
-        //console.trace();
-        console.log('_resize');
         el = $('#JobInfo');
         var bottom = el.offset().top;
         var viewHeight = $(window).height();
@@ -841,24 +838,17 @@ End Code
         }
 
         var kendoTreeList = $("#treelist").data("kendoTreeList");
-
-        console.log(kendoTreeList.dataSource);
-
         var data = kendoTreeList.dataSource.data();
+        var hasLockedDates = false;
+        data.forEach((v, i, a) => {
+            if (v.DueDateLock) {
+                hasLockedDates = true;
+            }
+        });
 
-        console.log(data);
-
-        //var hasLockedDates = false;
-
-        //data.forEach((v, i, a) => {
-        //    if (v.DueDateLock) {
-        //        hasLockedDates = true;
-        //    }
-        //});
-
-        //if (hasLockedDates == true) {
-        //    showKendoAlert("Tasks with locked due dates will not be recalculated.");
-        //}
+        if (hasLockedDates == true) {
+            showKendoAlert("Tasks with locked due dates will not be recalculated.");
+        }
 
         if (setSave()) {
             if (onlyDateChange()) {
@@ -882,7 +872,6 @@ End Code
                     kendo.ui.progress(treelist.element, true);
 
                     treelist.dataSource.sync().done(() => {
-                        console.log('treelist.dataSource.sync()');
                         calculateDates().then(() => {
                             taskEdited = false;
                             setSave();

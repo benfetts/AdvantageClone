@@ -3112,17 +3112,7 @@ Namespace Controllers.Desktop
                                 ErrorMessage = String.Empty
                                 CommentDoc = Nothing
 
-                                If Link.IsExternalLink = False Then
-
-                                    If Link.Link.ToLower().StartsWith("http://") = False AndAlso Link.Link.ToLower().StartsWith("https://") = False Then
-
-                                        Link.Link = "http://" & Link.Link
-
-                                    End If
-
-                                End If
-
-                                If Me._Controller.UploadURL(AlertComment.AlertID, Link.Title, Link.Link, Link.UploadDocumentManager, Link.IsExternalLink, ErrorMessage) = True Then
+                                If Me._Controller.UploadURL(AlertComment.AlertID, Link.Title, Link.Link, Link.UploadDocumentManager, ErrorMessage) = True Then
 
                                     CommentDoc = New AdvantageFramework.AlertSystem.Classes.CommentDocument
 

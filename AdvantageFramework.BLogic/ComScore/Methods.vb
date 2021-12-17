@@ -3755,6 +3755,7 @@
             Dim DemoNumber As Integer = 0
             Dim ComscoreCacheHeaders As Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheHeader) = Nothing
             Dim ComscoreCacheDetails As Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheDetail) = Nothing
+            Dim DbTransaction As System.Data.Entity.DbContextTransaction = Nothing
 
             LocalTimeViewCacheList = New Generic.List(Of Services.ComScore.Classes.LocalTimeViewCache)
 
@@ -3888,105 +3889,117 @@
 
             ComscoreCacheHeaders = New Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheHeader)
 
-            For Each KeyValuePair In JSONOrdinalComscoreDemoNumbers
+            Try
 
-                DemoNumber = KeyValuePair.Value
+                DbTransaction = DbContext.Database.BeginTransaction
 
-                ComscoreCacheHeaders = (From Entity In LocalTimeViewCacheList
-                                        Select Entity.MarketNumber, Entity.StationNumber).Distinct.ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheHeader With {.BookID = BookID,
+                For Each KeyValuePair In JSONOrdinalComscoreDemoNumbers
+
+                    DemoNumber = KeyValuePair.Value
+
+                    ComscoreCacheHeaders = (From Entity In LocalTimeViewCacheList
+                                            Select Entity.MarketNumber, Entity.StationNumber).Distinct.ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheHeader With {.BookID = BookID,
                                                                                                                   .MarketNumber = L.MarketNumber,
                                                                                                                   .StationNumber = L.StationNumber,
                                                                                                                   .DemoNumber = DemoNumber}).ToList
 
-                If ComscoreCacheHeaders.Count = 0 Then
+                    If ComscoreCacheHeaders.Count = 0 Then
 
-                    For Each StationNbr In StationNumbers
+                        For Each StationNbr In StationNumbers
+
+                            If (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
+                                Where Entity.BookID = BookID AndAlso
+                                      Entity.MarketNumber = MktNumber AndAlso
+                                      Entity.StationNumber = StationNbr AndAlso
+                                      Entity.DemoNumber = DemoNumber
+                                Select Entity).Any = False Then
+
+                                Dim ComscoreCacheHeader As New AdvantageFramework.Database.Entities.ComscoreCacheHeader
+                                ComscoreCacheHeader.BookID = BookID
+                                ComscoreCacheHeader.MarketNumber = MktNumber
+                                ComscoreCacheHeader.StationNumber = StationNbr
+                                ComscoreCacheHeader.DemoNumber = DemoNumber
+
+                                AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader)
+
+                            End If
+
+                        Next
+
+                    End If
+
+                    For Each ComscoreCacheHeader In ComscoreCacheHeaders
 
                         If (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
                             Where Entity.BookID = BookID AndAlso
-                                  Entity.MarketNumber = MktNumber AndAlso
-                                  Entity.StationNumber = StationNbr AndAlso
-                                  Entity.DemoNumber = DemoNumber
+                                  Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
+                                  Entity.StationNumber = ComscoreCacheHeader.StationNumber AndAlso
+                                  Entity.DemoNumber = ComscoreCacheHeader.DemoNumber
                             Select Entity).Any = False Then
 
-                            Dim ComscoreCacheHeader As New AdvantageFramework.Database.Entities.ComscoreCacheHeader
-                            ComscoreCacheHeader.BookID = BookID
-                            ComscoreCacheHeader.MarketNumber = MktNumber
-                            ComscoreCacheHeader.StationNumber = StationNbr
-                            ComscoreCacheHeader.DemoNumber = DemoNumber
+                            If AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader) Then
 
-                            AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader)
+                                If KeyValuePair.Key = 1 Then
+
+                                    ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
+                                                            Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
+                                                                  Entity.StationNumber = ComscoreCacheHeader.StationNumber
+                                                            Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
+                                                                                    .ComscoreCacheHeaderID = ComscoreCacheHeader.ID,
+                                                                                    .QuarterHour = L.QtrDateTime,
+                                                                                    .SeriesName = L.SeriesName,
+                                                                                    .Share = L.Share,
+                                                                                    .AverageAudience = L.AverageAudience,
+                                                                                    .SIU = L.SIU,
+                                                                                    .Universe = L.Universe,
+                                                                                    .MeetsDemoThreshold = L.MeetsDemoThreshold,
+                                                                                    .MeetsHighQualityDemoThreshold = L.MeetsHighQualityDemoThreshold}).ToList
+
+                                Else
+
+                                    ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
+                                                            Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
+                                                                  Entity.StationNumber = ComscoreCacheHeader.StationNumber
+                                                            Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
+                                                                                    .ComscoreCacheHeaderID = ComscoreCacheHeader.ID,
+                                                                                    .QuarterHour = L.QtrDateTime,
+                                                                                    .SeriesName = L.SeriesName,
+                                                                                    .Share = L.Share2,
+                                                                                    .AverageAudience = L.AverageAudience2,
+                                                                                    .SIU = L.SIU2,
+                                                                                    .Universe = L.Universe2,
+                                                                                    .MeetsDemoThreshold = L.MeetsDemoThreshold2,
+                                                                                    .MeetsHighQualityDemoThreshold = L.MeetsHighQualityDemoThreshold2}).ToList
+
+                                End If
+
+                                BulkInsertCacheList(DbContext, DbTransaction, ComscoreCacheDetails)
+
+                            End If
 
                         End If
 
                     Next
 
-                End If
-
-                For Each ComscoreCacheHeader In ComscoreCacheHeaders
-
-                    If (From Entity In AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Load(DbContext)
-                        Where Entity.BookID = BookID AndAlso
-                              Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
-                              Entity.StationNumber = ComscoreCacheHeader.StationNumber AndAlso
-                              Entity.DemoNumber = ComscoreCacheHeader.DemoNumber
-                        Select Entity).Any = False Then
-
-                        If AdvantageFramework.Database.Procedures.ComscoreCacheHeader.Insert(DbContext, ComscoreCacheHeader) Then
-
-                            If KeyValuePair.Key = 1 Then
-
-                                ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
-                                                        Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
-                                                              Entity.StationNumber = ComscoreCacheHeader.StationNumber
-                                                        Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
-                                                                                .ComscoreCacheHeaderID = ComscoreCacheHeader.ID,
-                                                                                .QuarterHour = L.QtrDateTime,
-                                                                                .SeriesName = L.SeriesName,
-                                                                                .Share = L.Share,
-                                                                                .AverageAudience = L.AverageAudience,
-                                                                                .SIU = L.SIU,
-                                                                                .Universe = L.Universe,
-                                                                                .MeetsDemoThreshold = L.MeetsDemoThreshold,
-                                                                                .MeetsHighQualityDemoThreshold = L.MeetsHighQualityDemoThreshold}).ToList
-
-                            Else
-
-                                ComscoreCacheDetails = (From Entity In LocalTimeViewCacheList
-                                                        Where Entity.MarketNumber = ComscoreCacheHeader.MarketNumber AndAlso
-                                                              Entity.StationNumber = ComscoreCacheHeader.StationNumber
-                                                        Select Entity).ToList.Select(Function(L) New AdvantageFramework.Database.Entities.ComscoreCacheDetail With {
-                                                                                .ComscoreCacheHeaderID = ComscoreCacheHeader.ID,
-                                                                                .QuarterHour = L.QtrDateTime,
-                                                                                .SeriesName = L.SeriesName,
-                                                                                .Share = L.Share2,
-                                                                                .AverageAudience = L.AverageAudience2,
-                                                                                .SIU = L.SIU2,
-                                                                                .Universe = L.Universe2,
-                                                                                .MeetsDemoThreshold = L.MeetsDemoThreshold2,
-                                                                                .MeetsHighQualityDemoThreshold = L.MeetsHighQualityDemoThreshold2}).ToList
-
-                            End If
-
-                            BulkInsertCacheList(DbContext, ComscoreCacheDetails)
-
-                        End If
-
-                    End If
-
                 Next
 
-            Next
+                DbTransaction.Commit()
+
+            Catch ex As Exception
+                DbTransaction.Rollback()
+
+            End Try
 
         End Sub
-        Private Sub BulkInsertCacheList(DbContext As AdvantageFramework.Database.DbContext, ComscoreCacheDetails As Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheDetail))
+        Private Sub BulkInsertCacheList(DbContext As AdvantageFramework.Database.DbContext, DbContextTransaction As Entity.DbContextTransaction,
+                                        ComscoreCacheDetails As Generic.List(Of AdvantageFramework.Database.Entities.ComscoreCacheDetail))
 
             'objects
             Dim DataTable As System.Data.DataTable = Nothing
 
             DataTable = ComscoreCacheDetails.ToDataTable
 
-            Using SqlBulkCopy = New System.Data.SqlClient.SqlBulkCopy(DbContext.ConnectionString, SqlClient.SqlBulkCopyOptions.CheckConstraints)
+            Using SqlBulkCopy = New System.Data.SqlClient.SqlBulkCopy(DirectCast(DbContext.Database.Connection, SqlClient.SqlConnection), SqlClient.SqlBulkCopyOptions.CheckConstraints, DirectCast(DbContextTransaction.UnderlyingTransaction, SqlClient.SqlTransaction))
 
                 With SqlBulkCopy
 

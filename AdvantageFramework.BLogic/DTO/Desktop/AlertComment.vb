@@ -134,6 +134,7 @@
         Public Property HasImage As Boolean? = False
         Public Property Initials As String = String.Empty
         Public Property DocumentID As Integer? = 0
+        Public Property IsMyComment As Boolean? = False
 
 #End Region
 

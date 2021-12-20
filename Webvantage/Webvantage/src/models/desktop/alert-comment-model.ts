@@ -38,6 +38,7 @@ export class AlertCommentModel extends ModelBase {
     ProofingExternalReviewerID: number;
     HasImage: boolean;
     Initials: string;
+    IsMyComment: boolean;
 
     constructor() {
         super();

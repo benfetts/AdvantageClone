@@ -15,10 +15,18 @@
                     <small>${employeeFullName}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;${formatCustodyStartAndEnd(custodyStartDate, custodyEndDate)}</small>
                 </div>
                 <div style="display: inline-block;" if.bind="replyLevel == 0">
-                    <small>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" click.delegate="toggleFullscreen()" title="${fullScreen ? 'Exit full screen' : 'Open comment in full screen'}"><span class="glyphicon glyphicon-zoom-${fullScreen ? 'out' : 'in'}"></span></a>&nbsp;&nbsp;<a href="javascript:void(0)" click.delegate="copyCommentToClipboard()" title="Copy comment text to clipboard"><span class="glyphicon glyphicon-copy"></span></a></small>
+                    <small>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;
+                        <a href="javascript:void(0)" click.delegate="toggleFullscreen()" title="${fullScreen ? 'Exit full screen' : 'Open comment in full screen'}"><span class="glyphicon glyphicon-zoom-${fullScreen ? 'out' : 'in'}"></span></a>
+                        &nbsp;&nbsp;
+                        <a href="javascript:void(0)" click.delegate="copyCommentToClipboard()" title="Copy comment text to clipboard"><span class="glyphicon glyphicon-copy"></span></a></small>
+                        <!--&nbsp;&nbsp;
+                        <a if.bind="isMyComment == true" href="javascript:void(0)" click.delegate="copyCommentToClipboard()" title="Copy comment text to clipboard"><span class="glyphicon glyphicon-copy"></span></a></small>-->
                 </div>
                 <div style="display: inline-block;" if.bind="replyLevel < 2">
                     <small>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" click.delegate="showHideReplyTextarea()" title="Reply to this comment"><span class="">Reply</span></a></small>
+                </div>
+                <div style="display: inline-block;" if.bind="isMyComment == true">
+                    <small>&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" click.delegate="editComment()" title="Edit this comment"><span class="">Edit</span></a></small>
                 </div>
             </div>
             <div innerhtml.bind="comment" ref="commentRef"></div>

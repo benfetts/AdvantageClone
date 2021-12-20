@@ -42,9 +42,6 @@ export class Comment extends ModuleBase {
 
             this.replyText = this.mentionReplyInputComment.cleanupMentionTag(this.replyText);
         }
-        
-
-
         if (this.replyText && this.replyText.trim().length > 0) {
             this.showProgress(true);
             //this.service.addAlertComment(this.alertId, this.commentId, this.replyText, null, false, false, null, this.mentionReplyInputComment.mentions)

@@ -2655,9 +2655,9 @@ Namespace AlertSystem
 
                 Try
 
-                    If String.IsNullOrEmpty(AlertView.Version) = False Then
+                    If String.IsNullOrEmpty(AlertView.VersionName) = False Then
 
-                        HtmlEmail.AddKeyValueRow("Version", AlertView.Version)
+                        HtmlEmail.AddKeyValueRow("Version", AlertView.VersionName)
 
                     End If
 
@@ -2666,9 +2666,9 @@ Namespace AlertSystem
 
                 Try
 
-                    If String.IsNullOrEmpty(AlertView.Build) = False Then
+                    If String.IsNullOrEmpty(AlertView.BuildName) = False Then
 
-                        HtmlEmail.AddKeyValueRow("Build", AlertView.Build)
+                        HtmlEmail.AddKeyValueRow("Build", AlertView.BuildName)
 
                     End If
 

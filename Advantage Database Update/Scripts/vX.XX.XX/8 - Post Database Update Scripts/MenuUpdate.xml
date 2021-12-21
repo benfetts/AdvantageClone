@@ -17909,7 +17909,7 @@
         <ParentModuleCode>FinanceAccounting</ParentModuleCode>
         <SubModules />
       </MenuBuilder>
-      <MenuBuilder>
+      <!--<MenuBuilder>
         <Applications>
           <Application>Webvantage</Application>
         </Applications>
@@ -17945,7 +17945,7 @@
         <ReportLargeImagePath />
         <ParentModuleCode>FinanceAccounting</ParentModuleCode>
         <SubModules />
-      </MenuBuilder>
+      </MenuBuilder>-->
       <MenuBuilder>
         <Applications>
           <Application>Advantage</Application>

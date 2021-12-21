@@ -488,7 +488,7 @@
             Me.NumericInputTimeTracking_BillableHoursGoal.Properties.MaxValue = New Decimal(New Integer() {100, 0, 0, 0})
             Me.NumericInputTimeTracking_BillableHoursGoal.SecurityEnabled = True
             Me.NumericInputTimeTracking_BillableHoursGoal.Size = New System.Drawing.Size(92, 20)
-            Me.NumericInputTimeTracking_BillableHoursGoal.TabIndex = 27
+            Me.NumericInputTimeTracking_BillableHoursGoal.TabIndex = 23
             '
             'LabelTimeTracking_BillableHoursGoal
             '
@@ -502,7 +502,7 @@
             Me.LabelTimeTracking_BillableHoursGoal.Name = "LabelTimeTracking_BillableHoursGoal"
             Me.LabelTimeTracking_BillableHoursGoal.Size = New System.Drawing.Size(147, 20)
             Me.LabelTimeTracking_BillableHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_BillableHoursGoal.TabIndex = 26
+            Me.LabelTimeTracking_BillableHoursGoal.TabIndex = 22
             Me.LabelTimeTracking_BillableHoursGoal.Text = "Billable Hours Percent Goal:"
             '
             'CheckBoxTimeTracking_OmitFromMissingTimeTracking
@@ -655,7 +655,7 @@
             Me.NumericInputTimeTracking_DirectHoursGoal.Properties.Mask.UseMaskAsDisplayFormat = True
             Me.NumericInputTimeTracking_DirectHoursGoal.SecurityEnabled = True
             Me.NumericInputTimeTracking_DirectHoursGoal.Size = New System.Drawing.Size(92, 20)
-            Me.NumericInputTimeTracking_DirectHoursGoal.TabIndex = 23
+            Me.NumericInputTimeTracking_DirectHoursGoal.TabIndex = 25
             '
             'NumericInputTimeTracking_MonthlyBillableHoursGoal
             '
@@ -724,7 +724,7 @@
             Me.LabelTimeTracking_DirectHoursGoal.Name = "LabelTimeTracking_DirectHoursGoal"
             Me.LabelTimeTracking_DirectHoursGoal.Size = New System.Drawing.Size(147, 20)
             Me.LabelTimeTracking_DirectHoursGoal.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_DirectHoursGoal.TabIndex = 22
+            Me.LabelTimeTracking_DirectHoursGoal.TabIndex = 24
             Me.LabelTimeTracking_DirectHoursGoal.Text = "Direct Hours Percent Goal:"
             '
             'LabelTimeTracking_MonthlyBillableHoursGoal
@@ -966,7 +966,7 @@
             Me.LabelTimeTracking_VacationSickPersonalTime.Name = "LabelTimeTracking_VacationSickPersonalTime"
             Me.LabelTimeTracking_VacationSickPersonalTime.Size = New System.Drawing.Size(726, 20)
             Me.LabelTimeTracking_VacationSickPersonalTime.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-            Me.LabelTimeTracking_VacationSickPersonalTime.TabIndex = 24
+            Me.LabelTimeTracking_VacationSickPersonalTime.TabIndex = 26
             Me.LabelTimeTracking_VacationSickPersonalTime.Text = "Vacation/Sick/Personal Time "
             '
             'DataGridViewTimeTracking_EmployeeTimeOff
@@ -982,7 +982,6 @@
             Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoloadRepositoryDatasource = True
             Me.DataGridViewTimeTracking_EmployeeTimeOff.AutoUpdateViewCaption = True
             Me.DataGridViewTimeTracking_EmployeeTimeOff.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.DataSource = Nothing
             Me.DataGridViewTimeTracking_EmployeeTimeOff.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewTimeTracking_EmployeeTimeOff.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewTimeTracking_EmployeeTimeOff.ItemDescription = ""
@@ -994,7 +993,7 @@
             Me.DataGridViewTimeTracking_EmployeeTimeOff.ShowColumnMenuOnRightClick = False
             Me.DataGridViewTimeTracking_EmployeeTimeOff.ShowSelectDeselectAllButtons = False
             Me.DataGridViewTimeTracking_EmployeeTimeOff.Size = New System.Drawing.Size(726, 111)
-            Me.DataGridViewTimeTracking_EmployeeTimeOff.TabIndex = 25
+            Me.DataGridViewTimeTracking_EmployeeTimeOff.TabIndex = 27
             Me.DataGridViewTimeTracking_EmployeeTimeOff.UseEmbeddedNavigator = False
             Me.DataGridViewTimeTracking_EmployeeTimeOff.ViewCaptionHeight = -1
             '
@@ -1049,7 +1048,6 @@
             Me.DataGridViewTimeTracking_WorkDays.AutoloadRepositoryDatasource = True
             Me.DataGridViewTimeTracking_WorkDays.AutoUpdateViewCaption = True
             Me.DataGridViewTimeTracking_WorkDays.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewTimeTracking_WorkDays.DataSource = Nothing
             Me.DataGridViewTimeTracking_WorkDays.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewTimeTracking_WorkDays.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewTimeTracking_WorkDays.ItemDescription = ""
@@ -1943,7 +1941,6 @@
             Me.DataGridViewRightSection_EmployeeDepartmentTeams.AutoloadRepositoryDatasource = True
             Me.DataGridViewRightSection_EmployeeDepartmentTeams.AutoUpdateViewCaption = True
             Me.DataGridViewRightSection_EmployeeDepartmentTeams.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewRightSection_EmployeeDepartmentTeams.DataSource = Nothing
             Me.DataGridViewRightSection_EmployeeDepartmentTeams.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewRightSection_EmployeeDepartmentTeams.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewRightSection_EmployeeDepartmentTeams.ItemDescription = ""
@@ -2017,7 +2014,6 @@
             Me.DataGridViewLeftSection_AvailableDepartmentTeam.AutoloadRepositoryDatasource = True
             Me.DataGridViewLeftSection_AvailableDepartmentTeam.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_AvailableDepartmentTeam.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewLeftSection_AvailableDepartmentTeam.DataSource = Nothing
             Me.DataGridViewLeftSection_AvailableDepartmentTeam.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewLeftSection_AvailableDepartmentTeam.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_AvailableDepartmentTeam.ItemDescription = ""
@@ -2137,7 +2133,6 @@
             Me.DataGridViewRightSection_EmployeeRoles.AutoloadRepositoryDatasource = True
             Me.DataGridViewRightSection_EmployeeRoles.AutoUpdateViewCaption = True
             Me.DataGridViewRightSection_EmployeeRoles.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewRightSection_EmployeeRoles.DataSource = Nothing
             Me.DataGridViewRightSection_EmployeeRoles.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewRightSection_EmployeeRoles.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewRightSection_EmployeeRoles.ItemDescription = ""
@@ -2211,7 +2206,6 @@
             Me.DataGridViewLeftSection_AvailableRoles.AutoloadRepositoryDatasource = True
             Me.DataGridViewLeftSection_AvailableRoles.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_AvailableRoles.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewLeftSection_AvailableRoles.DataSource = Nothing
             Me.DataGridViewLeftSection_AvailableRoles.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewLeftSection_AvailableRoles.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_AvailableRoles.ItemDescription = ""
@@ -3325,6 +3319,7 @@
             Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoloadRepositoryDatasource = True
             Me.DataGridViewAdditionalEmails_AdditionalEmails.AutoUpdateViewCaption = True
             Me.DataGridViewAdditionalEmails_AdditionalEmails.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
+            Me.DataGridViewAdditionalEmails_AdditionalEmails.DataSource = Nothing
             Me.DataGridViewAdditionalEmails_AdditionalEmails.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewAdditionalEmails_AdditionalEmails.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewAdditionalEmails_AdditionalEmails.ItemDescription = "Email(s)"
@@ -3416,7 +3411,6 @@
             Me.DataGridViewRightSection_EmployeeAlertGroups.AutoloadRepositoryDatasource = True
             Me.DataGridViewRightSection_EmployeeAlertGroups.AutoUpdateViewCaption = True
             Me.DataGridViewRightSection_EmployeeAlertGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.EditableGrid
-            Me.DataGridViewRightSection_EmployeeAlertGroups.DataSource = Nothing
             Me.DataGridViewRightSection_EmployeeAlertGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewRightSection_EmployeeAlertGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewRightSection_EmployeeAlertGroups.ItemDescription = ""
@@ -3490,7 +3484,6 @@
             Me.DataGridViewLeftSection_AvailableAlertGroups.AutoloadRepositoryDatasource = True
             Me.DataGridViewLeftSection_AvailableAlertGroups.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_AvailableAlertGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
-            Me.DataGridViewLeftSection_AvailableAlertGroups.DataSource = Nothing
             Me.DataGridViewLeftSection_AvailableAlertGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewLeftSection_AvailableAlertGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_AvailableAlertGroups.ItemDescription = ""
@@ -5441,7 +5434,6 @@
             Me.DataGridViewRightSection_EmployeeSecurityGroups.AutoloadRepositoryDatasource = True
             Me.DataGridViewRightSection_EmployeeSecurityGroups.AutoUpdateViewCaption = True
             Me.DataGridViewRightSection_EmployeeSecurityGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.[Default]
-            Me.DataGridViewRightSection_EmployeeSecurityGroups.DataSource = Nothing
             Me.DataGridViewRightSection_EmployeeSecurityGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewRightSection_EmployeeSecurityGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewRightSection_EmployeeSecurityGroups.ItemDescription = ""
@@ -5518,7 +5510,6 @@
             Me.DataGridViewLeftSection_AvailableSecurityGroups.AutoloadRepositoryDatasource = True
             Me.DataGridViewLeftSection_AvailableSecurityGroups.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_AvailableSecurityGroups.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.[Default]
-            Me.DataGridViewLeftSection_AvailableSecurityGroups.DataSource = Nothing
             Me.DataGridViewLeftSection_AvailableSecurityGroups.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewLeftSection_AvailableSecurityGroups.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_AvailableSecurityGroups.ItemDescription = ""

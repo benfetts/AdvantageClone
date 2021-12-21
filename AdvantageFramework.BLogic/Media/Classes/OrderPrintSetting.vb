@@ -92,6 +92,7 @@
             ExchangeRate
             MediaTitleOverride
             IncludeClientAddress
+            IncludeImpressions
         End Enum
 
 #End Region
@@ -184,6 +185,7 @@
         Public Property ExchangeRate As Nullable(Of Decimal)
         Public Property MediaTitleOverride As String
         Public Property IncludeClientAddress As Boolean
+        Public Property IncludeImpressions As Boolean
 
 #End Region
 
@@ -197,6 +199,8 @@
         Public Sub New(MediaType As String)
 
             Me.MediaType = MediaType
+
+            Me.IncludeImpressions = False
 
             If Me.MediaType = "R" OrElse Me.MediaType = "T" Then
 
@@ -396,6 +400,7 @@
             Me.ExchangeRate = MediaOrderPrintSetting.ExchangeRate
             Me.MediaTitleOverride = MediaOrderPrintSetting.MediaTitleOverride
             Me.IncludeClientAddress = MediaOrderPrintSetting.IncludeClientAddress
+            Me.IncludeImpressions = CBool(MediaOrderPrintSetting.IncludeImpressions.GetValueOrDefault(0))
 
             _MediaOrderPrintSetting = MediaOrderPrintSetting
 
@@ -518,6 +523,7 @@
             MediaOrderPrintSetting.ExchangeRate = Me.ExchangeRate.GetValueOrDefault(1)
             MediaOrderPrintSetting.MediaTitleOverride = Me.MediaTitleOverride
             MediaOrderPrintSetting.IncludeClientAddress = Me.IncludeClientAddress
+            MediaOrderPrintSetting.IncludeImpressions = If(Me.IncludeImpressions, 1, 0)
 
         End Sub
 

@@ -258,6 +258,12 @@
             Me.XrTableRowLeftProduct = New DevExpress.XtraReports.UI.XRTableRow()
             Me.TableCellClient_Product = New DevExpress.XtraReports.UI.XRTableCell()
             Me.TableCellClient_ProductValue = New DevExpress.XtraReports.UI.XRTableCell()
+            Me.XrTableRow6 = New DevExpress.XtraReports.UI.XRTableRow()
+            Me.TableCellClient_Campaign = New DevExpress.XtraReports.UI.XRTableCell()
+            Me.XrTableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
+            Me.XrTableRow7 = New DevExpress.XtraReports.UI.XRTableRow()
+            Me.TableCellClient_Market = New DevExpress.XtraReports.UI.XRTableCell()
+            Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
             Me.GroupHeaderEveryPage = New DevExpress.XtraReports.UI.GroupHeaderBand()
             Me.GroupHeaderOrderNumberTopSubreportVendorAddress = New DevExpress.XtraReports.UI.XRSubreport()
             Me.GroupHeaderOrderNumberTopSubreportVendorRep2 = New DevExpress.XtraReports.UI.XRSubreport()
@@ -266,12 +272,7 @@
             Me.LabelSubBand1_ExtraSpaceByDesign = New DevExpress.XtraReports.UI.XRLabel()
             Me.ReportHeader = New DevExpress.XtraReports.UI.ReportHeaderBand()
             Me.BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-            Me.XrTableRow6 = New DevExpress.XtraReports.UI.XRTableRow()
-            Me.TableCellClient_Campaign = New DevExpress.XtraReports.UI.XRTableCell()
-            Me.XrTableCell2 = New DevExpress.XtraReports.UI.XRTableCell()
-            Me.XrTableRow7 = New DevExpress.XtraReports.UI.XRTableRow()
-            Me.TableCellClient_Market = New DevExpress.XtraReports.UI.XRTableCell()
-            Me.XrTableCell4 = New DevExpress.XtraReports.UI.XRTableCell()
+            Me.LabelHeaderOrderNumber_ImpressionsLabel = New DevExpress.XtraReports.UI.XRLabel()
             CType(Me.XrTableInfo, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.RichTextGroupFooterOrderNumber_OrderCommentTop, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.RichTextGroupFooterOrderNumber_OrderComment, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1165,7 +1166,7 @@
             'LabelDetail_Headline
             '
             Me.LabelDetail_Headline.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "Headline")})
-            Me.LabelDetail_Headline.LocationFloat = New DevExpress.Utils.PointFloat(333.33!, 19.9584!)
+            Me.LabelDetail_Headline.LocationFloat = New DevExpress.Utils.PointFloat(333.33!, 19.95837!)
             Me.LabelDetail_Headline.Name = "LabelDetail_Headline"
             Me.LabelDetail_Headline.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
             Me.LabelDetail_Headline.SizeF = New System.Drawing.SizeF(245.83!, 18.99998!)
@@ -1314,7 +1315,7 @@
             Me.LabelHeaderOrderNumber_TypeHeadlineLabel.LocationFloat = New DevExpress.Utils.PointFloat(334.33!, 192.1259!)
             Me.LabelHeaderOrderNumber_TypeHeadlineLabel.Name = "LabelHeaderOrderNumber_TypeHeadlineLabel"
             Me.LabelHeaderOrderNumber_TypeHeadlineLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.LabelHeaderOrderNumber_TypeHeadlineLabel.SizeF = New System.Drawing.SizeF(245.83!, 16.67!)
+            Me.LabelHeaderOrderNumber_TypeHeadlineLabel.SizeF = New System.Drawing.SizeF(162.5!, 16.67!)
             Me.LabelHeaderOrderNumber_TypeHeadlineLabel.StylePriority.UseFont = False
             Me.LabelHeaderOrderNumber_TypeHeadlineLabel.StylePriority.UsePadding = False
             Me.LabelHeaderOrderNumber_TypeHeadlineLabel.StylePriority.UseTextAlignment = False
@@ -2626,8 +2627,8 @@
             '
             'GroupHeaderEveryPage2
             '
-            Me.GroupHeaderEveryPage2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrTableHeaderLeft, Me.LabelHeaderOrderNumber_DateLabel, Me.LabelHeaderOrderNumber_BuyerLabel, Me.LabelHeaderOrderNumber_PageLabel, Me.LabelHeaderOrderNumber_OrderNumberLabel, Me.LabelHeaderOrderNumber_Buyer, Me.LabelHeaderOrderNumber_Email, Me.LabelHeaderOrderNumber_OrderNumber, Me.LabelHeaderOrderNumber_EmailLabel, Me.LabelHeaderOrderNumber_PrintDate, Me.PageInfo_Pages, Me.LabelHeaderOrderNumber_VenRepLabel, Me.LabelHeaderOrderNumber_VendorCode, Me.LabelHeaderOrderNumber_OrderDescription, Me.LabelHeaderOrderNumber_OrderDescriptionLabel, Me.LineGroupHeaderOrderHeader_Top, Me.LineGroupHeaderOrderHeader_Bottom, Me.LabelHeaderOrderNumber_LineLabel, Me.LabelHeaderOrderNumber_StartLabel1, Me.LabelHeaderOrderNumber_StartLabel2, Me.LabelHeaderOrderNumber_EndLabel2, Me.LabelHeaderOrderNumber_EndLabel1, Me.LabelHeaderOrderNumber_SizeLabel, Me.LabelHeaderOrderNumber_TypeHeadlineLabel, Me.LabelHeaderOrderNumber_AmountLabel1, Me.LabelHeaderOrderNumber_AmountLabel2})
-            Me.GroupHeaderEveryPage2.HeightF = 217.2958!
+            Me.GroupHeaderEveryPage2.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelHeaderOrderNumber_ImpressionsLabel, Me.XrTableHeaderLeft, Me.LabelHeaderOrderNumber_DateLabel, Me.LabelHeaderOrderNumber_BuyerLabel, Me.LabelHeaderOrderNumber_PageLabel, Me.LabelHeaderOrderNumber_OrderNumberLabel, Me.LabelHeaderOrderNumber_Buyer, Me.LabelHeaderOrderNumber_Email, Me.LabelHeaderOrderNumber_OrderNumber, Me.LabelHeaderOrderNumber_EmailLabel, Me.LabelHeaderOrderNumber_PrintDate, Me.PageInfo_Pages, Me.LabelHeaderOrderNumber_VenRepLabel, Me.LabelHeaderOrderNumber_VendorCode, Me.LabelHeaderOrderNumber_OrderDescription, Me.LabelHeaderOrderNumber_OrderDescriptionLabel, Me.LineGroupHeaderOrderHeader_Top, Me.LineGroupHeaderOrderHeader_Bottom, Me.LabelHeaderOrderNumber_LineLabel, Me.LabelHeaderOrderNumber_StartLabel1, Me.LabelHeaderOrderNumber_StartLabel2, Me.LabelHeaderOrderNumber_EndLabel2, Me.LabelHeaderOrderNumber_EndLabel1, Me.LabelHeaderOrderNumber_SizeLabel, Me.LabelHeaderOrderNumber_TypeHeadlineLabel, Me.LabelHeaderOrderNumber_AmountLabel1, Me.LabelHeaderOrderNumber_AmountLabel2})
+            Me.GroupHeaderEveryPage2.HeightF = 217.2959!
             Me.GroupHeaderEveryPage2.Level = 1
             Me.GroupHeaderEveryPage2.Name = "GroupHeaderEveryPage2"
             Me.GroupHeaderEveryPage2.RepeatEveryPage = True
@@ -2827,6 +2828,58 @@
             Me.TableCellClient_ProductValue.StylePriority.UsePadding = False
             Me.TableCellClient_ProductValue.Weight = 2.3023659328793995R
             '
+            'XrTableRow6
+            '
+            Me.XrTableRow6.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellClient_Campaign, Me.XrTableCell2})
+            Me.XrTableRow6.Name = "XrTableRow6"
+            Me.XrTableRow6.Weight = 1.0R
+            '
+            'TableCellClient_Campaign
+            '
+            Me.TableCellClient_Campaign.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+            Me.TableCellClient_Campaign.Multiline = True
+            Me.TableCellClient_Campaign.Name = "TableCellClient_Campaign"
+            Me.TableCellClient_Campaign.StylePriority.UseFont = False
+            Me.TableCellClient_Campaign.Text = "Campaign:"
+            Me.TableCellClient_Campaign.Weight = 0.67714749152057474R
+            '
+            'XrTableCell2
+            '
+            Me.XrTableCell2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CampaignName")})
+            Me.XrTableCell2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.XrTableCell2.Multiline = True
+            Me.XrTableCell2.Name = "XrTableCell2"
+            Me.XrTableCell2.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.XrTableCell2.StylePriority.UseFont = False
+            Me.XrTableCell2.StylePriority.UsePadding = False
+            Me.XrTableCell2.Weight = 2.3023659328793995R
+            '
+            'XrTableRow7
+            '
+            Me.XrTableRow7.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellClient_Market, Me.XrTableCell4})
+            Me.XrTableRow7.Name = "XrTableRow7"
+            Me.XrTableRow7.Weight = 1.0R
+            '
+            'TableCellClient_Market
+            '
+            Me.TableCellClient_Market.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+            Me.TableCellClient_Market.Multiline = True
+            Me.TableCellClient_Market.Name = "TableCellClient_Market"
+            Me.TableCellClient_Market.StylePriority.UseFont = False
+            Me.TableCellClient_Market.Text = "Market:"
+            Me.TableCellClient_Market.Weight = 0.67714749152057474R
+            '
+            'XrTableCell4
+            '
+            Me.XrTableCell4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "MarketName")})
+            Me.XrTableCell4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.XrTableCell4.Multiline = True
+            Me.XrTableCell4.Name = "XrTableCell4"
+            Me.XrTableCell4.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.XrTableCell4.StylePriority.UseFont = False
+            Me.XrTableCell4.StylePriority.UsePadding = False
+            Me.XrTableCell4.Weight = 2.3023659328793995R
+            '
             'GroupHeaderEveryPage
             '
             Me.GroupHeaderEveryPage.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.LabelGroupHeaderOrderNumberTop_LocationHeader, Me.LineGroupHeaderOrderHeaderTop_LocationHeader, Me.LabelHeaderOrderNumberTop_OrderLabel, Me.GroupHeaderOrderNumberTopSubreportVendorAddress, Me.GroupHeaderOrderNumberTopSubreportVendorRep2, Me.GroupHeaderOrderNumberTopSubreportVendorRep1})
@@ -2895,57 +2948,24 @@
             Me.BindingSource.AllowNew = False
             Me.BindingSource.DataSource = GetType(AdvantageFramework.MediaManager.Classes.PrintOrder)
             '
-            'XrTableRow6
+            'LabelHeaderOrderNumber_ImpressionsLabel
             '
-            Me.XrTableRow6.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellClient_Campaign, Me.XrTableCell2})
-            Me.XrTableRow6.Name = "XrTableRow6"
-            Me.XrTableRow6.Weight = 1.0R
-            '
-            'TableCellClient_Campaign
-            '
-            Me.TableCellClient_Campaign.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-            Me.TableCellClient_Campaign.Multiline = True
-            Me.TableCellClient_Campaign.Name = "TableCellClient_Campaign"
-            Me.TableCellClient_Campaign.StylePriority.UseFont = False
-            Me.TableCellClient_Campaign.Text = "Campaign:"
-            Me.TableCellClient_Campaign.Weight = 0.67714749152057474R
-            '
-            'XrTableCell2
-            '
-            Me.XrTableCell2.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "CampaignName")})
-            Me.XrTableCell2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.XrTableCell2.Multiline = True
-            Me.XrTableCell2.Name = "XrTableCell2"
-            Me.XrTableCell2.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.XrTableCell2.StylePriority.UseFont = False
-            Me.XrTableCell2.StylePriority.UsePadding = False
-            Me.XrTableCell2.Weight = 2.3023659328793995R
-            '
-            'XrTableRow7
-            '
-            Me.XrTableRow7.Cells.AddRange(New DevExpress.XtraReports.UI.XRTableCell() {Me.TableCellClient_Market, Me.XrTableCell4})
-            Me.XrTableRow7.Name = "XrTableRow7"
-            Me.XrTableRow7.Weight = 1.0R
-            '
-            'TableCellClient_Market
-            '
-            Me.TableCellClient_Market.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
-            Me.TableCellClient_Market.Multiline = True
-            Me.TableCellClient_Market.Name = "TableCellClient_Market"
-            Me.TableCellClient_Market.StylePriority.UseFont = False
-            Me.TableCellClient_Market.Text = "Market:"
-            Me.TableCellClient_Market.Weight = 0.67714749152057474R
-            '
-            'XrTableCell4
-            '
-            Me.XrTableCell4.DataBindings.AddRange(New DevExpress.XtraReports.UI.XRBinding() {New DevExpress.XtraReports.UI.XRBinding("Text", Nothing, "MarketName")})
-            Me.XrTableCell4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            Me.XrTableCell4.Multiline = True
-            Me.XrTableCell4.Name = "XrTableCell4"
-            Me.XrTableCell4.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.XrTableCell4.StylePriority.UseFont = False
-            Me.XrTableCell4.StylePriority.UsePadding = False
-            Me.XrTableCell4.Weight = 2.3023659328793995R
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.BackColor = System.Drawing.Color.Transparent
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.BorderColor = System.Drawing.Color.Black
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.BorderWidth = 1.0!
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.CanGrow = False
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.ForeColor = System.Drawing.Color.Black
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.LocationFloat = New DevExpress.Utils.PointFloat(496.83!, 192.1259!)
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.Name = "LabelHeaderOrderNumber_ImpressionsLabel"
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.SizeF = New System.Drawing.SizeF(153.1701!, 16.67!)
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.StylePriority.UseFont = False
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.StylePriority.UsePadding = False
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.StylePriority.UseTextAlignment = False
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.Text = "Impressions"
+            Me.LabelHeaderOrderNumber_ImpressionsLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
             '
             'PrintOrderReport
             '
@@ -3205,6 +3225,7 @@
         Friend WithEvents XrTableRow7 As DevExpress.XtraReports.UI.XRTableRow
         Friend WithEvents TableCellClient_Market As DevExpress.XtraReports.UI.XRTableCell
         Friend WithEvents XrTableCell4 As DevExpress.XtraReports.UI.XRTableCell
+        Private WithEvents LabelHeaderOrderNumber_ImpressionsLabel As DevExpress.XtraReports.UI.XRLabel
     End Class
 
 End Namespace

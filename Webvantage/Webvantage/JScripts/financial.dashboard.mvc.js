@@ -1146,10 +1146,9 @@ function CreateFinancialViewNewBusinessGrid() {
         //editable: "incell",
         resizable: true,
         filterable: false,
-        noRecords: true,
-        //noRecords: {
-        //    template: "No records available."
-        //},
+        noRecords: {
+            template: "<div style='width: 100%;padding-top: 10px; padding-bottom: 10px'>None<div/>"
+        },
         //filter: function (e) {
         //    onFilterChange(e);
         //},
@@ -1200,6 +1199,9 @@ function CreateFinancialViewGrowGrid() {
         //editable: "incell",
         resizable: true,
         filterable: false,
+        noRecords: {
+            template: "<div style='width: 100%;padding-top: 10px; padding-bottom: 10px'>None<div/>"
+        },
         //filter: function (e) {
         //    onFilterChange(e);
         //},

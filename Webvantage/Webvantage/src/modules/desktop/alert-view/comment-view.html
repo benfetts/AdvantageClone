@@ -69,10 +69,6 @@
                 <button class="btn btn-primary btn-sm" style="margin-right: 3px; margin-bottom: 3px;" repeat.for="link of links" click.delegate="deleteLink(link)">${link.title} <span class="k-icon k-i-close"></span></button>
             </div>
             <div style="text-align: right; margin-top: 5px;">
-                <div class="wv-cb-wrapper">
-                    <input type="checkbox" class="k-checkbox" id="cmtHideSystemCommentsCb" checked.bind="hideSystemComments" change.delegate="showHideSystemComments()" />
-                    <label class="k-checkbox-label" for="cmtHideSystemCommentsCb">Hide system comments</label>
-                </div>
                 <div style="display:inline-block;">
                     <button title="Show all comments" class="btn btn-sm btn-default" click.delegate="refreshComments()" style="display: none !important;"><span class="wvi wvi-refresh"></span></button>
                     <button title="Add Comment" class="btn btn-sm btn-success" click.delegate="addComment()" disabled.bind="saveDisabled"><span class="glyphicon glyphicon-plus"></span></button>

@@ -1138,6 +1138,9 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_Traffic_Schedule_GetTasks_withClosed.proc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Delete COMSCORE_CACHE_HEADER with no detail.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\AAM Grid Column Update for TaskStatusDescription.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

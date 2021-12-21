@@ -1,4 +1,4 @@
-Imports DataDynamics.ActiveReports 
+﻿Imports DataDynamics.ActiveReports 
 Imports DataDynamics.ActiveReports.Document
 
 Public Class sum_rep_by_client
@@ -126,6 +126,8 @@ Public Class sum_rep_by_client
                         Me.txtNTask.Text = NexDueView(0)("TASK_DESCRIPTION").ToString()
                         If IsDBNull(NexDueView(0)("JOB_REVISED_DATE")) = False Then
                             Me.txtND.Text = CDate(NexDueView(0)("JOB_REVISED_DATE")).ToShortDateString
+                        Else
+                            Me.txtND.Text = ""
                         End If
                         Me.txtNComm.Text = IIf(NexDueView(0)("FNC_COMMENTS").Equals(System.DBNull.Value), "", NexDueView(0)("FNC_COMMENTS").ToString())
                     Else

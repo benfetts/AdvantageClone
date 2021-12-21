@@ -57,7 +57,7 @@
 
             Me.ControlNumber = GeneralLedgerRecurringEntry.ControlNumber
             Me.Description = GeneralLedgerRecurringEntry.Description
-            Me.Cycle = GeneralLedgerRecurringEntry.Cycle.Name
+            Me.Cycle = If(GeneralLedgerRecurringEntry.Cycle IsNot Nothing, GeneralLedgerRecurringEntry.Cycle.Name, "")
             Me.IsInactive = If(GeneralLedgerRecurringEntry.IsInactive.GetValueOrDefault(0) = 1, True, False)
 
         End Sub

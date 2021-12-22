@@ -547,31 +547,67 @@ Namespace Controller.Reporting
                     ClientCodes = (From Entity In MediaBroadcastWorksheetCriteriaViewModel.Clients
                                    Select Entity.Code).ToArray
 
-                    MediaBroadcastWorksheetMarkets = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.Load(DbContext).Include("MediaBroadcastWorksheet").
-                                                                                                                                                        Include("MediaBroadcastWorksheetMarketDetails").
-                                                                                                                                                        Include("MediaBroadcastWorksheetMarketDetails.Vendor").
-                                                                                                                                                        Include("Market")
-                                                      Where Entity.MediaBroadcastWorksheet.MediaTypeCode = MediaTypeCode AndAlso
-                                                            Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
-                                                            Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
-                                                            Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
-                                                            ClientCodes.Contains(Entity.MediaBroadcastWorksheet.ClientCode) AndAlso
-                                                            Entity.MediaBroadcastWorksheet.RatingsServiceID = RatingServiceID
-                                                      Select Entity).ToList
+                    If MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV Then
+
+                        MediaBroadcastWorksheetMarkets = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.Load(DbContext).Include("MediaBroadcastWorksheet").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails.Vendor").
+                                                                                                                                                              Include("Market")
+                                                          Where Entity.MediaBroadcastWorksheet.MediaTypeCode = MediaTypeCode AndAlso
+                                                                Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
+                                                                Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
+                                                                Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
+                                                                ClientCodes.Contains(Entity.MediaBroadcastWorksheet.ClientCode) AndAlso
+                                                                Entity.MediaBroadcastWorksheet.RatingsServiceID = RatingServiceID
+                                                          Select Entity).ToList
+
+                    ElseIf MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.Radio Then
+
+                        MediaBroadcastWorksheetMarkets = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.Load(DbContext).Include("MediaBroadcastWorksheet").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails.Vendor").
+                                                                                                                                                              Include("Market")
+                                                          Where Entity.MediaBroadcastWorksheet.MediaTypeCode = MediaTypeCode AndAlso
+                                                                Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
+                                                                Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
+                                                                Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
+                                                                ClientCodes.Contains(Entity.MediaBroadcastWorksheet.ClientCode) AndAlso
+                                                                Entity.ExternalRadioSource = RatingServiceID
+                                                          Select Entity).ToList
+
+                    End If
 
                 Else
 
-                    MediaBroadcastWorksheetMarkets = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.Load(DbContext).Include("MediaBroadcastWorksheet").
-                                                                                                                                                         Include("MediaBroadcastWorksheetMarketDetails").
-                                                                                                                                                         Include("MediaBroadcastWorksheetMarketDetails.Vendor").
-                                                                                                                                                         Include("Market")
-                                                      Where Entity.MediaBroadcastWorksheet.MediaTypeCode = MediaTypeCode AndAlso
-                                                            Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
-                                                            Entity.MediaBroadcastWorksheet.ClientCode = ClientCode AndAlso
-                                                            Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
-                                                            Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
-                                                            Entity.MediaBroadcastWorksheet.RatingsServiceID = RatingServiceID
-                                                      Select Entity).ToList
+                    If MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.TV Then
+
+                        MediaBroadcastWorksheetMarkets = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.Load(DbContext).Include("MediaBroadcastWorksheet").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails.Vendor").
+                                                                                                                                                              Include("Market")
+                                                          Where Entity.MediaBroadcastWorksheet.MediaTypeCode = MediaTypeCode AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.ClientCode = ClientCode AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.RatingsServiceID = RatingServiceID
+                                                          Select Entity).ToList
+
+                    ElseIf MediaBroadcastWorksheetPrePostReportCriteriaMediaType = Database.Entities.MediaBroadcastWorksheetPrePostReportCriteriaMediaType.Radio Then
+
+                        MediaBroadcastWorksheetMarkets = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarket.Load(DbContext).Include("MediaBroadcastWorksheet").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails").
+                                                                                                                                                              Include("MediaBroadcastWorksheetMarketDetails.Vendor").
+                                                                                                                                                              Include("Market")
+                                                          Where Entity.MediaBroadcastWorksheet.MediaTypeCode = MediaTypeCode AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.IsInactive = False AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.ClientCode = ClientCode AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.StartDate >= StartDateFrom AndAlso
+                                                                    Entity.MediaBroadcastWorksheet.StartDate <= StartDateTo AndAlso
+                                                                    Entity.ExternalRadioSource = RatingServiceID
+                                                          Select Entity).ToList
+
+                    End If
 
                 End If
 

@@ -407,9 +407,9 @@ Public Class TrafficSchedule_CopyFrom
                     Dim myVal As cValidations = New cValidations(CStr(Session("ConnString")))
                     Dim StrErr As String = ""
                     Dim IsValidTaskCode As Boolean = True
-                    If NewTaskCode <> "" Then
-                        IsValidTaskCode = myVal.ValidateTaskCode(NewTaskCode)
-                    End If
+                    'If NewTaskCode <> "" Then
+                    '    IsValidTaskCode = myVal.ValidateTaskCode(NewTaskCode)
+                    'End If
                     If IsValidTaskCode = True Then
 
                         ' add predecessors after all tasks have been added!!

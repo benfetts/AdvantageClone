@@ -447,7 +447,7 @@
                                         Where SalePostPeriodCodes.Contains(Entity.Code) AndAlso
                                               Entity.ARStatus = "X").Any Then
 
-                                        AdvantageFramework.WinForm.MessageBox.Show("There are processed records that exist with now closed post periods.  Please re-process before assigning invoices.")
+                                        AdvantageFramework.WinForm.MessageBox.Show("The posting period has changed since the initial processing.  Please-reprocess before assigning invoices.")
 
                                         DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.BILLING SET INV_PROCESSED = 0 WHERE BILLING_USER = '{0}'", BillingCommandCenter.BillingUser))
 

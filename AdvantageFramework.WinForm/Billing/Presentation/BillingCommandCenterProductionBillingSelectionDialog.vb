@@ -584,11 +584,11 @@
 
                 AdvantageFramework.Billing.Presentation.AssignInvoices(Me.Session, BillingCommandCenter, _BillingStatus)
 
-                EnableOrDisableActions()
-
                 Me.CloseWaitForm()
 
             End If
+
+            EnableOrDisableActions()
 
         End Sub
         Private Sub ButtonItemProcessInvoices_CoopSplits_Click(sender As Object, e As EventArgs) Handles ButtonItemProcessInvoices_CoopSplits.Click

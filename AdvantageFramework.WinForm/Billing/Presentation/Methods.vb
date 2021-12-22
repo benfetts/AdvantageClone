@@ -415,7 +415,7 @@
 
         End Function
         Public Function OkayToAssignInvoices(ByVal Session As AdvantageFramework.Security.Session, ByVal BillingCommandCenterID As Integer,
-                                             ByVal BillingStatus As AdvantageFramework.BillingCommandCenter.Database.Classes.BillingStatus,
+                                             ByRef BillingStatus As AdvantageFramework.BillingCommandCenter.Database.Classes.BillingStatus,
                                              ByRef BillingCommandCenter As AdvantageFramework.BillingCommandCenter.Database.Entities.BillingCommandCenter,
                                              Optional ByVal BypassInvoiceDatePostPeriodConfirmation As Boolean = False) As Boolean
 
@@ -423,6 +423,8 @@
             Dim BillingSelectionCriteria As AdvantageFramework.BillingCommandCenter.Classes.BillingSelectionCriteria = Nothing
             Dim Billing As AdvantageFramework.Database.Entities.Billing = Nothing
             Dim IsOkay As Boolean = False
+            Dim SalePostPeriodCodes As IEnumerable(Of String) = Nothing
+            Dim [Continue] As Boolean = True
 
             Using BCCDbContext As New AdvantageFramework.BillingCommandCenter.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
@@ -432,34 +434,67 @@
 
                     If BillingStatus IsNot Nothing AndAlso BillingStatus.IsAssigned.GetValueOrDefault(0) = 0 Then
 
-                        BillingCommandCenterInvoiceDatePostPeriod = AdvantageFramework.BillingCommandCenter.GetBillingCommandCenterInvoiceDatePostPeriod(BCCDbContext, BillingCommandCenter.BillingUser)
+                        If BillingStatus.IsProcessed Then
 
-                        If BillingCommandCenterInvoiceDatePostPeriod IsNot Nothing Then
+                            Using DataContext As New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
 
-                            BillingSelectionCriteria = New AdvantageFramework.BillingCommandCenter.Classes.BillingSelectionCriteria(BillingCommandCenterInvoiceDatePostPeriod)
-                            BillingSelectionCriteria.ShowPostPeriodWarning = True
-                            BillingSelectionCriteria.IsProcessed = BillingStatus.IsProcessed
+                                Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-                            If BypassInvoiceDatePostPeriodConfirmation OrElse AdvantageFramework.WinForm.Presentation.GenericPropertyGridDialog.ShowFormDialog("Confirm Options", BillingSelectionCriteria, False) = Windows.Forms.DialogResult.OK Then
+                                    SalePostPeriodCodes = (From Entity In AdvantageFramework.Database.Procedures.WorkARFunction.LoadByBillingUserCode(DataContext, BillingCommandCenter.BillingUser)
+                                                           Select Entity.SalePostPeriodCode).Distinct.ToArray
 
-                                Using DataContext As New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+                                    If (From Entity In AdvantageFramework.Database.Procedures.PostPeriod.Load(DbContext)
+                                        Where SalePostPeriodCodes.Contains(Entity.Code) AndAlso
+                                              Entity.ARStatus = "X").Any Then
 
-                                    Billing = AdvantageFramework.Database.Procedures.Billing.LoadByBillingUserCode(DataContext, BillingCommandCenter.BillingUser)
+                                        AdvantageFramework.WinForm.MessageBox.Show("There are processed records that exist with now closed post periods.  Please re-process before assigning invoices.")
 
-                                    If Billing IsNot Nothing Then
+                                        DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.BILLING SET INV_PROCESSED = 0 WHERE BILLING_USER = '{0}'", BillingCommandCenter.BillingUser))
 
-                                        Billing.InvoiceDate = BillingSelectionCriteria.InvoiceDate
-                                        Billing.PostPeriodCode = BillingSelectionCriteria.PostPeriodCode
+                                        BillingStatus = AdvantageFramework.BillingCommandCenter.GetBillingStatus(BCCDbContext, BillingCommandCenter.ID)
 
-                                        If AdvantageFramework.Database.Procedures.Billing.Update(DataContext, Billing) Then
-
-                                            IsOkay = True
-
-                                        End If
+                                        [Continue] = False
 
                                     End If
 
                                 End Using
+
+                            End Using
+
+                        End If
+
+                        If [Continue] Then
+
+                            BillingCommandCenterInvoiceDatePostPeriod = AdvantageFramework.BillingCommandCenter.GetBillingCommandCenterInvoiceDatePostPeriod(BCCDbContext, BillingCommandCenter.BillingUser)
+
+                            If BillingCommandCenterInvoiceDatePostPeriod IsNot Nothing Then
+
+                                BillingSelectionCriteria = New AdvantageFramework.BillingCommandCenter.Classes.BillingSelectionCriteria(BillingCommandCenterInvoiceDatePostPeriod)
+                                BillingSelectionCriteria.ShowPostPeriodWarning = True
+                                BillingSelectionCriteria.IsProcessed = BillingStatus.IsProcessed
+
+                                If BypassInvoiceDatePostPeriodConfirmation OrElse AdvantageFramework.WinForm.Presentation.GenericPropertyGridDialog.ShowFormDialog("Confirm Options", BillingSelectionCriteria, False) = Windows.Forms.DialogResult.OK Then
+
+                                    Using DataContext As New AdvantageFramework.Database.DataContext(Session.ConnectionString, Session.UserCode)
+
+                                        Billing = AdvantageFramework.Database.Procedures.Billing.LoadByBillingUserCode(DataContext, BillingCommandCenter.BillingUser)
+
+                                        If Billing IsNot Nothing Then
+
+                                            Billing.InvoiceDate = BillingSelectionCriteria.InvoiceDate
+                                            Billing.PostPeriodCode = BillingSelectionCriteria.PostPeriodCode
+
+                                            If AdvantageFramework.Database.Procedures.Billing.Update(DataContext, Billing) Then
+
+                                                IsOkay = True
+
+                                            End If
+
+                                        End If
+
+                                    End Using
+
+                                End If
 
                             End If
 

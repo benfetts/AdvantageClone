@@ -362,7 +362,7 @@
 
         Public Overrides Function ToString() As String
 
-            ToString = Me.UserCode & " " & Me.MediaType
+            ToString = Me.UserCode.ToUpper & " " & Me.MediaType
 
         End Function
 

@@ -496,7 +496,7 @@
 
                         _MediaOrderPrintSetting = New AdvantageFramework.Database.Entities.MediaOrderPrintSetting
 
-                        _MediaOrderPrintSetting.UserCode = _Session.UserCode
+                        _MediaOrderPrintSetting.UserCode = _Session.UserCode.ToUpper
                         _MediaOrderPrintSetting.MediaType = Mid(_MediaFrom, 1, 1).ToUpper
 
                         OrderPrintSetting.Save(_MediaOrderPrintSetting)

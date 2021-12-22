@@ -252,7 +252,7 @@
         End Sub
         Public Sub New(MediaOrderPrintSetting As AdvantageFramework.Database.Entities.MediaOrderPrintSetting, IsDaily As Boolean)
 
-            Me.UserCode = MediaOrderPrintSetting.UserCode
+            Me.UserCode = MediaOrderPrintSetting.UserCode.ToUpper
             Me.MediaType = MediaOrderPrintSetting.MediaType
             Me.LocationID = MediaOrderPrintSetting.LocationID
             Me.LogoPath = MediaOrderPrintSetting.LogoPath
@@ -444,8 +444,6 @@
         End Sub
         Public Sub Save(MediaOrderPrintSetting As AdvantageFramework.Database.Entities.MediaOrderPrintSetting)
 
-            'MediaOrderPrintSetting.UserCode = Me.UserCode
-            'MediaOrderPrintSetting.MediaType = Me.MediaType
             MediaOrderPrintSetting.LocationID = Me.LocationID
             MediaOrderPrintSetting.LogoPath = Me.LogoPath
             MediaOrderPrintSetting.ReportLevel = Me.ReportLevel

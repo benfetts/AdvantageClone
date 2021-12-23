@@ -339,13 +339,29 @@
             DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.Month.ToString).SortOrder = DevExpress.Data.ColumnSortOrder.Ascending
             DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.Month.ToString).SortIndex = 1
 
-            DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.EmployeeTimeStatus.ToString, False)
-            DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.Month.ToString, False)
-            DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.Year.ToString, False)
-            DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.EnteredDate.ToString, False)
-            DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.ModifiedDate.ToString, False)
-            DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.UserCode.ToString, False)
-            DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.UnpostedJournalEntry.ToString, False)
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.Description.ToString).MinWidth = 80
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.Code.ToString).MinWidth = 80
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.GLStatus.ToString).MinWidth = 50
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.APStatus.ToString).MinWidth = 55
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.ARStatus.ToString).MinWidth = 55
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.EmployeeTimeStatus.ToString).MinWidth = 100
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.StartDate.ToString).MinWidth = 80
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.EndDate.ToString).MinWidth = 80
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.Month.ToString).MinWidth = 70
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.Year.ToString).MinWidth = 70
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.EnteredDate.ToString).MinWidth = 70
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.ModifiedDate.ToString).MinWidth = 70
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.UserCode.ToString).MinWidth = 70
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.Year.ToString).MinWidth = 70
+            DataGridViewForm_Export.Columns(AdvantageFramework.Database.Classes.PostPeriod.Properties.UnpostedJournalEntry.ToString).MinWidth = 120
+
+            'DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.EmployeeTimeStatus.ToString, False)
+            'DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.Month.ToString, False)
+            'DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.Year.ToString, False)
+            'DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.EnteredDate.ToString, False)
+            'DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.ModifiedDate.ToString, False)
+            'DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.UserCode.ToString, False)
+            'DataGridViewForm_Export.HideOrShowColumn(AdvantageFramework.Database.Classes.PostPeriod.Properties.UnpostedJournalEntry.ToString, False)
 
             DataGridViewForm_Export.CurrentView.AFActiveFilterString = DataGridViewForm_PostingPeriods.CurrentView.AFActiveFilterString
 

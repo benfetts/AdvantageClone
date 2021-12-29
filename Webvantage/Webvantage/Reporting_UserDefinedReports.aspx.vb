@@ -193,8 +193,7 @@ Public Class Reporting_UserDefinedReports
 
                                 If LoadReport Then
 
-                                    If DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime OrElse
-                                            DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
+                                    If DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
                                             DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost OrElse
                                             DynamicReport = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
                                             DynamicReport = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityToInvestment OrElse
@@ -423,6 +422,10 @@ Public Class Reporting_UserDefinedReports
 
                                         Me.OpenWindow("Direct Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectTime.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 575, False, True)
 
+                                    ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime Then
+
+                                        Me.OpenWindow("Direct Indirect Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectIndirectTime.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 575, False, True)
+
                                     ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatusCoopBreakout Then
 
                                         Me.OpenWindow("Media Current Status Coop Breakout Criteria", String.Format("Reporting_InitialLoadingMediaCurrentStatusNew.aspx?UserDefinedReportID={0}", UserDefinedReportID), 525, 875, True, True)
@@ -618,8 +621,7 @@ Public Class Reporting_UserDefinedReports
 
                     Case "ViewReport"
 
-                        If DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime OrElse
-                                DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
+                        If DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
                                 DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost OrElse
                                 DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
                                 DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityToInvestment OrElse
@@ -840,11 +842,15 @@ Public Class Reporting_UserDefinedReports
 
                         ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CashTransactions Then
 
-                            Me.OpenWindow("Direct Time Inital Criteria", String.Format("Reporting_InitialLoadingCashTransaction.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
+                            Me.OpenWindow("Cash Transactions Inital Criteria", String.Format("Reporting_InitialLoadingCashTransaction.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 
                         ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectTime Then
 
                             Me.OpenWindow("Direct Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectTime.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
+
+                        ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime Then
+
+                            Me.OpenWindow("Direct Indirect Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectIndirectTime.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 
                         ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatusCoopBreakout Then
 

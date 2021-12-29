@@ -354,7 +354,7 @@
 
                 ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime Then
 
-                    DynamicReportObjects = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], ShowJobsWithNoDetails)
+                    DynamicReportObjects = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], ShowJobsWithNoDetails, ParameterDictionary)
 
                 ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectTime Then
 
@@ -1551,15 +1551,37 @@
                                                  SqlParameterSelectedDate, SqlParameterStartDate, SqlParameterEndDate, SqlParameterIncludeClosedJobs, SqlParameterClientCodes, SqlParameterAECodes, SqlParameterSalesClassCodes, SqlParameterJobTypeCodes).ToList
 
         End Function
-        Public Function LoadIndirectTime(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal Criteria As Integer, ByVal From As Date, ByVal [To] As Date, ByVal ShowJobsWithNoDetails As Boolean) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeReport)
+        Public Function LoadIndirectTime(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal Criteria As Integer, ByVal From As Date, ByVal [To] As Date, ByVal ShowJobsWithNoDetails As Boolean, ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeReport)
 
             'objects
             Dim DynamicReportObjects As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeReport) = Nothing
             'Dim ObjectQuery As IQueryable = Nothing
 
             Try
+                Dim SqlParameterCriteria As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterFromDate As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterToDate As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterOnlyActiveEmployees As System.Data.SqlClient.SqlParameter = Nothing
 
-                DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeReport)(String.Format("EXEC [dbo].[advsp_indirect_time_load] {0}, '{1}', '{2}', '{3}'", Criteria, [From].ToString("MM/dd/yyyy"), [To].ToString("MM/dd/yyyy"), DbContext.UserCode)).ToList
+                SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
+                SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
+                SqlParameterToDate = New System.Data.SqlClient.SqlParameter("@END_DATE", SqlDbType.SmallDateTime)
+                SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@UserID", SqlDbType.VarChar)
+                SqlParameterOnlyActiveEmployees = New System.Data.SqlClient.SqlParameter("@OnlyActiveEmployees", SqlDbType.Bit)
+
+                SqlParameterCriteria.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.DateType.ToString)
+                SqlParameterFromDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.FromDate.ToString)
+                SqlParameterToDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.ToDate.ToString)
+                SqlParameterUserID.Value = DbContext.UserCode
+                SqlParameterOnlyActiveEmployees.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.OnlyActiveEmployees.ToString)
+
+                'DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeReport)(String.Format("EXEC [dbo].[advsp_indirect_time_load] {0}, '{1}', '{2}', '{3}'", Criteria, [From].ToString("MM/dd/yyyy"), [To].ToString("MM/dd/yyyy"), DbContext.UserCode)).ToList
+
+                DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeReport) _
+                                                                                    ("EXEC [dbo].[advsp_indirect_time_load] @DATE_TYPE, @START_DATE, @END_DATE, @UserID, " &
+                                                                                     "@OnlyActiveEmployees",
+                                                                                     SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterUserID, SqlParameterOnlyActiveEmployees).ToList
 
             Catch ex As Exception
                 DynamicReportObjects = Nothing
@@ -1608,6 +1630,7 @@
                 Dim SqlParameterDepartmentList As System.Data.SqlClient.SqlParameter = Nothing
                 Dim SqlParameterEmployeeList As System.Data.SqlClient.SqlParameter = Nothing
                 Dim SqlParameterFunctionList As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterOnlyActiveEmployees As System.Data.SqlClient.SqlParameter = Nothing
 
                 SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
                 SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
@@ -1622,12 +1645,13 @@
                 SqlParameterDepartmentList = New System.Data.SqlClient.SqlParameter("@DepartmentsList", SqlDbType.VarChar)
                 SqlParameterEmployeeList = New System.Data.SqlClient.SqlParameter("@EmployeesList", SqlDbType.VarChar)
                 SqlParameterFunctionList = New System.Data.SqlClient.SqlParameter("@FunctionsList", SqlDbType.VarChar)
-
+                SqlParameterOnlyActiveEmployees = New System.Data.SqlClient.SqlParameter("@OnlyActiveEmployees", SqlDbType.Bit)
 
                 SqlParameterCriteria.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.DateType.ToString)
                 SqlParameterFromDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.FromDate.ToString)
                 SqlParameterToDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.ToDate.ToString)
                 SqlParameterUserID.Value = DbContext.UserCode
+                SqlParameterOnlyActiveEmployees.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.OnlyActiveEmployees.ToString)
 
 
                 SqlParameterCampaignIDList.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.SelectedCampaigns.ToString)
@@ -1722,9 +1746,9 @@
 
                 DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeReport) _
                                                                                     ("EXEC [dbo].[advsp_direct_time_load] @DATE_TYPE, @START_DATE, @END_DATE, @UserID, " &
-                                                                                     "@CLIENT_LIST, @DIVISION_LIST, @PRODUCT_LIST, @JOB_LIST, @CampaignIDList, @DepartmentsList, @EmployeesList, @FunctionsList",
+                                                                                     "@CLIENT_LIST, @DIVISION_LIST, @PRODUCT_LIST, @JOB_LIST, @CampaignIDList, @DepartmentsList, @EmployeesList, @FunctionsList, @OnlyActiveEmployees",
                                                                                      SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterUserID,
-                                                                                     SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterJobList, SqlParameterCampaignIDList, SqlParameterDepartmentList, SqlParameterEmployeeList, SqlParameterFunctionList).ToList
+                                                                                     SqlParameterClientCodeList, SqlParameterClientDivisionCodeList, SqlParameterClientDivisionProductCodeList, SqlParameterJobList, SqlParameterCampaignIDList, SqlParameterDepartmentList, SqlParameterEmployeeList, SqlParameterFunctionList, SqlParameterOnlyActiveEmployees).ToList
 
 
 

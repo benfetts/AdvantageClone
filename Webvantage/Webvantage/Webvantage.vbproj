@@ -1185,6 +1185,13 @@
       <DependentUpon>Reporting_InitialLoadingBillingApproval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Reporting_InitialLoadingDirectIndirectTime.aspx.designer.vb">
+      <DependentUpon>Reporting_InitialLoadingDirectIndirectTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting_InitialLoadingDirectIndirectTime.aspx.vb">
+      <DependentUpon>Reporting_InitialLoadingDirectIndirectTime.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Reporting_InitialLoadingEmployeeTimeAnalysis.aspx.designer.vb">
       <DependentUpon>Reporting_InitialLoadingEmployeeTimeAnalysis.aspx</DependentUpon>
     </Compile>
@@ -3442,6 +3449,7 @@
     <Content Include="PermaLink.aspx" />
     <Content Include="RadEditorToolbarsNoTools.xml" />
     <Content Include="Reporting_InitialLoadingBillingApproval.aspx" />
+    <Content Include="Reporting_InitialLoadingDirectIndirectTime.aspx" />
     <Content Include="Reporting_InitialLoadingEmployeeTimeAnalysis.aspx" />
     <Content Include="Reporting_InitialLoadingSecurityUserLoginAudit.aspx" />
     <Content Include="Reporting_InitialLoadingVendorSpendWithEEOCAndMinorityStatusSummary.aspx" />

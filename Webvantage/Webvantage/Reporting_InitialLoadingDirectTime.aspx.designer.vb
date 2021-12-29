@@ -194,6 +194,24 @@ Partial Public Class Reporting_InitialLoadingDirectTime
     Protected WithEvents RadButton2Years As Global.Telerik.Web.UI.RadButton
     
     '''<summary>
+    '''tr1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tr1 As Global.System.Web.UI.HtmlControls.HtmlTableRow
+    
+    '''<summary>
+    '''CheckBoxOnlyActiveEmployees control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CheckBoxOnlyActiveEmployees As Global.System.Web.UI.WebControls.CheckBox
+    
+    '''<summary>
     '''RadPageViewWorkloadSelectCDP control.
     '''</summary>
     '''<remarks>

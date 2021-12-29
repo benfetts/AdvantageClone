@@ -636,6 +636,7 @@ Public Class Reporting_InitialLoadingDirectTime
                 _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.DateType.ToString) = CInt(RadComboBoxCriteria.SelectedValue)
                 _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.FromDate.ToString) = RadDatePickerFrom.SelectedDate
                 _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.ToDate.ToString) = RadDatePickerTo.SelectedDate
+                _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.OnlyActiveEmployees.ToString) = If(CheckBoxOnlyActiveEmployees.Checked, 1, 0)
 
 
                 If RadioButtonAllCDP.Checked Then

@@ -37,8 +37,7 @@
             'objects
             Dim LoadData As Boolean = True
 
-            If SelectedDynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime OrElse
-                    SelectedDynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
+            If SelectedDynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
                     SelectedDynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost OrElse
                     SelectedDynamicReport = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
                     SelectedDynamicReport = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityToInvestment OrElse
@@ -493,6 +492,14 @@
             ElseIf SelectedDynamicReport = Reporting.DynamicReports.DirectTime Then
 
                 If AdvantageFramework.Reporting.Presentation.DirectTimeInitialLoadingDialog.ShowFormDialog(SelectedDynamicReport, False, Nothing, ParameterDictionary) = System.Windows.Forms.DialogResult.Cancel Then
+
+                    LoadData = False
+
+                End If
+
+            ElseIf SelectedDynamicReport = Reporting.DynamicReports.DirectIndirectTime Then
+
+                If AdvantageFramework.Reporting.Presentation.DirectIndirectTimeInitialLoadingDialog.ShowFormDialog(SelectedDynamicReport, False, Nothing, ParameterDictionary) = System.Windows.Forms.DialogResult.Cancel Then
 
                     LoadData = False
 

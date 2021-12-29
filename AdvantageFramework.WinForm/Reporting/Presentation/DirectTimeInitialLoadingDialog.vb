@@ -387,6 +387,7 @@
 
                 ComboBoxTopSection_Report.SetRequired(True)
                 ComboBoxTopSection_Report.DisplayName = "Report"
+                Me.CheckBox_OnlyActiveEmployees.Visible = False
 
             Else
 
@@ -448,6 +449,7 @@
                 _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.IncludeMarkup.ToString) = If(CheckBoxFrom_IncludeMarkup.Checked, 1, 0)
                 _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.FromDate.ToString) = DateTimePickerForm_From.Value.Date
                 _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.ToDate.ToString) = DateTimePickerForm_To.Value.Date
+                _ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.OnlyActiveEmployees.ToString) = If(CheckBox_OnlyActiveEmployees.Checked, 1, 0)
 
                 If CDPChooserControlSelectClients_SelectClients.RadioButtonControl_AllClients.Checked Then
 

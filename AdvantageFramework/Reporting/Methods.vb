@@ -788,6 +788,7 @@
             SelectedDepartments
             SelectedEmployees
             SelectedFunctions
+            OnlyActiveEmployees
         End Enum
 
         Public Enum JobDetailInitialCriteria

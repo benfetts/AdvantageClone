@@ -701,8 +701,7 @@ Public Class Reporting_DynamicReportEdit
     End Sub
     Private Sub InitialLoadingSaveDynamicReportTemplate()
 
-        If Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime OrElse
-                    Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
+        If Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
                     Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost OrElse
                     Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
                     Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityToInvestment OrElse
@@ -929,6 +928,10 @@ Public Class Reporting_DynamicReportEdit
         ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectTime Then
 
             Me.OpenWindow("Direct Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectTime.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
+
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime Then
+
+            Me.OpenWindow("Direct Indirect Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectIndirectTime.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
 
         ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.MediaCurrentStatusCoopBreakout Then
 

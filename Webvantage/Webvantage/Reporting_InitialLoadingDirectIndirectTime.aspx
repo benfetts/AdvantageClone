@@ -1,6 +1,6 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Reporting_InitialLoadingDirectTime.aspx.vb"
-    MasterPageFile="~/ChildPage.Master" Inherits="Webvantage.Reporting_InitialLoadingDirectTime"
-    Title="Set Initial Criteria" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Reporting_InitialLoadingDirectIndirectTime.aspx.vb"
+    MasterPageFile="~/ChildPage.Master" Inherits="Webvantage.Reporting_InitialLoadingDirectIndirectTime"
+    Title="Direct Indirect Initial Criteria" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderHead" runat="server">
@@ -49,7 +49,7 @@
                 <Tabs>
                     <telerik:RadTab Text="Options" PageViewID="RadPageViewOptions" Value="0" Selected="true">
                     </telerik:RadTab>
-                    <telerik:RadTab Text="Select C/D/P" PageViewID="RadPageViewWorkloadSelectCDP" Value="1">
+                    <%--<telerik:RadTab Text="Select C/D/P" PageViewID="RadPageViewWorkloadSelectCDP" Value="1">
                     </telerik:RadTab>
                     <telerik:RadTab Text="Select Campaigns" PageViewID="RadPageViewSelectCampaigns" Value="2">
                     </telerik:RadTab>
@@ -60,7 +60,7 @@
                     <telerik:RadTab Text="Select Employees" PageViewID="RadPageViewEmployees" Value="5">
                     </telerik:RadTab>
                     <telerik:RadTab Text="Select Functions" PageViewID="RadPageViewFunctions" Value="6">
-                    </telerik:RadTab>
+                    </telerik:RadTab>--%>
                 </Tabs>
             </telerik:RadTabStrip>
             <telerik:RadMultiPage ID="RadMultiPageCalendar" runat="server" SelectedIndex="0">
@@ -155,7 +155,7 @@
                     </fieldset>            
                         
                 </telerik:RadPageView>
-                <telerik:RadPageView ID="RadPageViewWorkloadSelectCDP" runat="server">
+               <%-- <telerik:RadPageView ID="RadPageViewWorkloadSelectCDP" runat="server">
                     <table id="Table1" align="center" cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
                             <td>
@@ -184,18 +184,6 @@
                                             <telerik:GridBoundColumn DataField="Client" HeaderText="Client" UniqueName="column2" SortExpression="Client"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="Is New Business" ItemStyle-HorizontalAlign="Center" UniqueName="colIsNewBusiness">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkIsNewBusiness" runat="server" Checked='<%#Eval("IsNewBusiness")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>
-                                            <telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="Is Inactive" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -221,12 +209,6 @@
                                             <telerik:GridBoundColumn DataField="Division" HeaderText="Division" UniqueName="column3" SortExpression="Division"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="Is Inactive" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -246,8 +228,6 @@
                                     </ClientSettings>
                                     <MasterTableView DataKeyNames="Code,Client,ClientCode,Office,Division,DivisionCode,Product,IsInactive">
                                         <Columns>
-                                            <%--<telerik:GridBoundColumn DataField="Office" HeaderText="Office" UniqueName="column5">
-                                            </telerik:GridBoundColumn>--%>
                                             <telerik:GridBoundColumn DataField="Client" HeaderText="Client" UniqueName="column2" SortExpression="Client"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
@@ -257,12 +237,6 @@
                                             <telerik:GridBoundColumn DataField="Product" HeaderText="Product" UniqueName="column4" SortExpression="Product"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="Is Inactive" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -304,12 +278,6 @@
                                             <telerik:GridBoundColumn DataField="Name" HeaderText="Name" UniqueName="column2" SortExpression="Name"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -355,12 +323,6 @@
                                             <telerik:GridBoundColumn DataField="Description" HeaderText="Name" UniqueName="column2" SortExpression="Description"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -400,12 +362,6 @@
                                             <telerik:GridBoundColumn DataField="Name" HeaderText="Name" UniqueName="column2" SortExpression="Name"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -445,12 +401,6 @@
                                             <telerik:GridBoundColumn DataField="Name" HeaderText="Name" UniqueName="column2" SortExpression="Name"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -490,12 +440,6 @@
                                             <telerik:GridBoundColumn DataField="Name" HeaderText="Name" UniqueName="column2" SortExpression="Name"
                                                     CurrentFilterFunction="Contains" FilterDelay="1250" AutoPostBackOnFilter="false">
                                             </telerik:GridBoundColumn>
-                                            <%--<telerik:GridTemplateColumn HeaderStyle-HorizontalAlign="Center" HeaderText="" ItemStyle-HorizontalAlign="Center" UniqueName="colInactive">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="chkInactive" runat="server" Checked='<%#Eval("IsInactive")%>' Enabled="false" />
-                                                </ItemTemplate>
-                                                <ItemStyle HorizontalAlign="center" VerticalAlign="Middle" />
-                                            </telerik:GridTemplateColumn>--%>
                                         </Columns>
                                         <RowIndicatorColumn Visible="False">
                                             <HeaderStyle Width="20px" />
@@ -511,7 +455,7 @@
                             </td>
                         </tr>
                     </table>
-                </telerik:RadPageView>
+                </telerik:RadPageView>--%>
             </telerik:RadMultiPage>
         </div>
     </div>    

@@ -9561,7 +9561,7 @@ Public Module Methods
 
         Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False)
+            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False, ParameterDictionary)
             XtraReport.DateType.Value = Criteria
             XtraReport.StartDate.Value = [From]
             XtraReport.EndDate.Value = [To]
@@ -9579,7 +9579,7 @@ Public Module Methods
 
         Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False)
+            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False, ParameterDictionary)
             XtraReport.DateType.Value = Criteria
             XtraReport.StartDate.Value = [From]
             XtraReport.EndDate.Value = [To]
@@ -9597,7 +9597,7 @@ Public Module Methods
 
         Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False)
+            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False, ParameterDictionary)
             XtraReport.DateType.Value = Criteria
             XtraReport.StartDate.Value = [From]
             XtraReport.EndDate.Value = [To]
@@ -9615,7 +9615,7 @@ Public Module Methods
 
         Using ReportingDbContext = New AdvantageFramework.Reporting.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False)
+            XtraReport.DataSource = LoadIndirectTime(ReportingDbContext, Criteria, [From], [To], False, ParameterDictionary)
             XtraReport.DateType.Value = Criteria
             XtraReport.StartDate.Value = [From]
             XtraReport.EndDate.Value = [To]

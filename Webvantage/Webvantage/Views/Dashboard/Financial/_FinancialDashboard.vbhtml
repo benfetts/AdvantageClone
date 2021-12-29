@@ -25,10 +25,12 @@
 
     #newbusinessgrid > div.k-grid-header {
         padding-right: 0px !important;
+        color: #767676 !important;
     }
 
     #growgrid > div.k-grid-header {
         padding-right: 0px !important;
+        color: #767676 !important;
     }
 
     #billablegrid > div.k-grid-header {

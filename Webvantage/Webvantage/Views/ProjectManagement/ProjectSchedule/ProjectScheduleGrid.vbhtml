@@ -3275,6 +3275,7 @@ End If
             let len = row.cells.length;
             let levelPosition = len - minColCount;
             let dataItem;
+            let ci = 0;
 
             switch (row.type) {
                 case "header":
@@ -3299,6 +3300,18 @@ End If
                                     row.cells[levelPosition + sheetColumns[k].columnIndex].value = $(sheetColumns[k].dataColumnTemplate(dataItem[0])).text();//.replace("<span>", "").replace("</span>", "");
                                 } catch (e) {
                                     console.error("EMPLOYEES ERROR: ", e);
+                                }
+                                break;
+                            case "Client Contacts":
+                                try {       
+                                    if (ci === 0) {
+                                        ci = sheetColumns[k].columnIndex
+                                        row.cells[levelPosition + sheetColumns[k].columnIndex].value = dataItem[0].ClientContact;//.replace("<span>", "").replace("</span>", "");
+                                    } else {
+                                        row.cells[levelPosition + sheetColumns[k].columnIndex].value = dataItem[0].ClientContactName;//.replace("<span>", "").replace("</span>", "");
+                                    }                                    
+                                } catch (e) {
+                                    console.error("CC ERROR: ", e);
                                 }
                                 break;
                             case "Phase":

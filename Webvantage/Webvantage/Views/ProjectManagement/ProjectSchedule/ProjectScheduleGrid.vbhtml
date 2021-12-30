@@ -3311,14 +3311,20 @@ End If
                                 break;
                             case "M/S":
                                 try {
-                                    row.cells[levelPosition + sheetColumns[k].columnIndex].value = row.cells[levelPosition + sheetColumns[k].columnIndex].value ? "TRUE" : "FALSE";
+                                    if (dataItem[0].Milestone === '1') {
+                                        row.cells[levelPosition + sheetColumns[k].columnIndex].value = "TRUE";
+                                    } else {
+                                        row.cells[levelPosition + sheetColumns[k].columnIndex].value = "FALSE";
+                                    }
+                                    //row.cells[levelPosition + sheetColumns[k].columnIndex].value = row.cells[levelPosition + sheetColumns[k].columnIndex].value ? "TRUE" : "FALSE";
+                                    //console.log(dataItem[0].Milestone);
                                 } catch (e) {
                                     console.error("M/S: ", e);
                                 }
 
                                 break;
                             case "Lock":
-                                try {
+                                try {                                    
                                     row.cells[levelPosition + sheetColumns[k].columnIndex].value = row.cells[levelPosition + sheetColumns[k].columnIndex].value ? "TRUE" : "FALSE";
                                 } catch (e) {
                                     console.error("LOCK: ", e);

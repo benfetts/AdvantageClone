@@ -12,7 +12,7 @@ function OpenEstimatedScheduleDlg(JobNumber, JobComponentNumber) {
         $('body').append(dlgStr);
 
         var myWindow = $('#ESTIMATEDSECHEDULEDLG');
-        var template = kendo.template('<span class="wvi wvi-excel-logo wv-icon-button" onclick="exportToExcel()" title="Export to Excel"></span>');
+        var template = kendo.template('<span class="wvi wvi-excel-logo wv-icon-button" onclick="exportToExcelES()" title="Export to Excel"></span>');
 
         $("#grid").kendoGrid({
             dataSource: {
@@ -181,7 +181,7 @@ function OpenEstimatedScheduleDlg(JobNumber, JobComponentNumber) {
     }
 }
 
-function exportToExcel() {
+function exportToExcelES() {
     var grid = $('#grid').data('kendoGrid');
     
     grid.saveAsExcel();

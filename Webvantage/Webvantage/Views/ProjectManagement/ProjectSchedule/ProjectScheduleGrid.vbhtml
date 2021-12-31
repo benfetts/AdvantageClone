@@ -3232,7 +3232,7 @@ End If
                     break;
                 case "footer":
                     if (footerCnt == 0) {
-                        footerIndexes.push({ index: i + 1, size: 0 });
+                        footerIndexes.push({ index: i, size: 0 });
                         ++footerCnt;
                         prevFooterIndex = i;
                         break;
@@ -3247,9 +3247,9 @@ End If
             }
         }
 
-        if (footerIndexes.length > 0) {
-            sheet.rows.splice(footerIndexes[0].index, footerIndexes[0].size);
-        }
+        //if (footerIndexes.length > 0) {
+        //    sheet.rows.splice(footerIndexes[0].index, footerIndexes[0].size);
+        //}
         
         for (let i = 0; i < sheetColumns.length; i++) {
             let idx = -1;

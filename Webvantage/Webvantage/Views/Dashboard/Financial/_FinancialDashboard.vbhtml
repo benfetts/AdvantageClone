@@ -222,11 +222,11 @@
             </div>
         </div>*@
         <div style="padding-left:10px; padding-bottom:10px">
-            <div id="newbusinessgrid" style="border: 1px solid #CCC;" tabindex="1">
+            <div id="newbusinessgrid" style="border: 1px solid #CCC; color: #767676 !important" tabindex="1">
             </div>
         </div>
         <div style="padding-left:10px;">
-            <div id="growgrid" style="border: 1px solid #CCC;" tabindex="1">
+            <div id="growgrid" style="border: 1px solid #CCC; color: #767676 !important" tabindex="1">
             </div>
         </div>
     </div>

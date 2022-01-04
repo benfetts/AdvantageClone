@@ -3111,9 +3111,11 @@ Partial Public Class popReportViewer
                         POs = AdvantageFramework.Database.Procedures.PurchaseOrderDetail.LoadByPONumber(DbContext, Int32.Parse(Request.QueryString("ponumber").Trim)).ToList
 
                         For Each p In POs
-                            If p.Job.Client.Name <> "" Then
-                                rpt._ClientName = p.Job.Client.Name
-                                Exit For
+                            If p.Job IsNot Nothing Then
+                                If p.Job.Client.Name <> "" Then
+                                    rpt._ClientName = p.Job.Client.Name
+                                    Exit For
+                                End If
                             End If
                         Next
 
@@ -5170,12 +5172,13 @@ Partial Public Class popReportViewer
                             POs = AdvantageFramework.Database.Procedures.PurchaseOrderDetail.LoadByPONumber(DbContext, Int32.Parse(ID.Trim)).ToList
 
                             For Each p In POs
-                                If p.Job.Client.Name <> "" Then
-                                    rpt._ClientName = p.Job.Client.Name
-                                    Exit For
+                                If p.Job IsNot Nothing Then
+                                    If p.Job.Client.Name <> "" Then
+                                        rpt._ClientName = p.Job.Client.Name
+                                        Exit For
+                                    End If
                                 End If
                             Next
-
 
                         End Using
 

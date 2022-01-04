@@ -223,7 +223,31 @@
 
                 If MediaRequestForProposalViewModel.MediaBroadcastWorksheetRatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore Then
 
-                    MediaRequestForProposalViewModel.RepositoryCableNetworkStations = AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).OrderBy(Function(Entity) Entity.Code).ToList
+                    'MediaRequestForProposalViewModel.RepositoryCableNetworkStations = AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).OrderBy(Function(Entity) Entity.Code).ToList
+
+                    If Me.Session.IsNielsenSetup Then
+
+                        Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+
+                            NielsenDbContext.Database.Connection.Open()
+
+                            If AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).Any Then
+
+                                MediaRequestForProposalViewModel.RepositoryCableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.LoadWithComscoreStationCode(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity, True)).ToList
+
+                            Else
+
+                                MediaRequestForProposalViewModel.RepositoryCableNetworkStations = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
+
+                            End If
+
+                        End Using
+
+                    Else
+
+                        MediaRequestForProposalViewModel.RepositoryCableNetworkStations = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
+
+                    End If
 
                 Else
 
@@ -2034,19 +2058,43 @@
         End Sub
         Public Function GetRepositoryComscoreTVStationCallLetters(MediaRequestForProposalViewModel As AdvantageFramework.ViewModels.Media.MediaRequestForProposalViewModel) As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
 
-            Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+            'Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-                If MediaRequestForProposalViewModel.ComscoreMarketNumber.HasValue Then
+            '    If MediaRequestForProposalViewModel.ComscoreMarketNumber.HasValue Then
 
-                    GetRepositoryComscoreTVStationCallLetters = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByPrimaryMarketNumber(DbContext, MediaRequestForProposalViewModel.ComscoreMarketNumber.Value).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).OrderBy(Function(Entity) Entity.Code).ToList
+            '        GetRepositoryComscoreTVStationCallLetters = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByPrimaryMarketNumber(DbContext, MediaRequestForProposalViewModel.ComscoreMarketNumber.Value).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).OrderBy(Function(Entity) Entity.Code).ToList
 
-                Else
+            '    Else
 
-                    GetRepositoryComscoreTVStationCallLetters = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadCableNetworks(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).OrderBy(Function(Entity) Entity.Code).ToList
+            '        GetRepositoryComscoreTVStationCallLetters = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadCableNetworks(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).OrderBy(Function(Entity) Entity.Code).ToList
 
-                End If
+            '    End If
 
-            End Using
+            'End Using
+
+            If Me.Session.IsNielsenSetup Then
+
+                Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+
+                    NielsenDbContext.Database.Connection.Open()
+
+                    If AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).Any Then
+
+                        GetRepositoryComscoreTVStationCallLetters = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.LoadWithComscoreStationCode(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity, True)).ToList
+
+                    Else
+
+                        GetRepositoryComscoreTVStationCallLetters = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
+
+                    End If
+
+                End Using
+
+            Else
+
+                GetRepositoryComscoreTVStationCallLetters = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
+
+            End If
 
         End Function
 

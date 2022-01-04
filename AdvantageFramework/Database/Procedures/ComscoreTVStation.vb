@@ -78,7 +78,7 @@
 
                 LoadByCallLetters = (From ComscoreTVStation In DbContext.GetQuery(Of Database.Entities.ComscoreTVStation)
                                      Where ComscoreTVStation.CallLetters = CallLetters
-                                     Select ComscoreTVStation).SingleOrDefault
+                                     Select ComscoreTVStation).OrderBy(Function(CTS) CTS.Number).FirstOrDefault
 
             Catch ex As Exception
                 LoadByCallLetters = Nothing

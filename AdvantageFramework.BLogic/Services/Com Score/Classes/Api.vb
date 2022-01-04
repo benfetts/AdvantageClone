@@ -204,7 +204,7 @@
 
             Dim Request As Services.ComScore.Classes.Request = Nothing
 
-            If Response.Status = "success" AndAlso Response.NextPageToken IsNot Nothing Then
+            If Response.Status = "success" AndAlso Response.NextPageToken IsNot Nothing AndAlso String.IsNullOrWhiteSpace(Response.NextPageToken) = False Then
 
                 Request = New Request(String.Format("
 						{{

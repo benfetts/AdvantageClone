@@ -158,6 +158,31 @@
             JournalEntrySetupViewModel.CancelEnabled = False
 
         End Sub
+        Public Function LoadSingleTransaction(ByRef JournalEntrySetupViewModel As AdvantageFramework.ViewModels.GeneralLedger.JournalEntriesBudgets.JournalEntrySetupViewModel, Transaction As Integer) As Boolean
+
+            Dim GeneralLedger As AdvantageFramework.Database.Entities.GeneralLedger = Nothing
+            Dim Loaded As Boolean = False
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
+
+                GeneralLedger = AdvantageFramework.Database.Procedures.GeneralLedger.LoadByTransaction(DbContext, Transaction)
+
+                If GeneralLedger IsNot Nothing Then
+
+                    JournalEntrySetupViewModel.PostPeriodCodeFrom = GeneralLedger.PostPeriodCode
+                    JournalEntrySetupViewModel.PostPeriodCodeTo = GeneralLedger.PostPeriodCode
+
+                    RefreshJournalEntries(DbContext, JournalEntrySetupViewModel)
+
+                    Loaded = True
+
+                End If
+
+            End Using
+
+            LoadSingleTransaction = Loaded
+
+        End Function
 
 #End Region
 

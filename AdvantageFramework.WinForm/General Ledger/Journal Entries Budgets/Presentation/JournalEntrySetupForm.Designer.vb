@@ -26,6 +26,8 @@
         Private Sub InitializeComponent()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(JournalEntrySetupForm))
             Me.PanelForm_LeftSection = New AdvantageFramework.WinForm.Presentation.Controls.Panel()
+            Me.NumericInputLeftSections_Transaction = New AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput()
+            Me.LabelLeftSection_Transaction = New AdvantageFramework.WinForm.MVC.Presentation.Controls.Label()
             Me.GridLookUpEditLeftSection_PostPeriodTo = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridLookUpEdit()
             Me.GridView1 = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView()
             Me.GridLookUpEditLeftSection_PostPeriodFrom = New AdvantageFramework.WinForm.MVC.Presentation.Controls.GridLookUpEdit()
@@ -59,6 +61,7 @@
             Me.ButtonItemActions_Refresh = New AdvantageFramework.WinForm.Presentation.Controls.ButtonItem()
             CType(Me.PanelForm_LeftSection, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.PanelForm_LeftSection.SuspendLayout()
+            CType(Me.NumericInputLeftSections_Transaction.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.GridLookUpEditLeftSection_PostPeriodTo.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.GridLookUpEditLeftSection_PostPeriodFrom.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,6 +73,8 @@
             '
             'PanelForm_LeftSection
             '
+            Me.PanelForm_LeftSection.Controls.Add(Me.NumericInputLeftSections_Transaction)
+            Me.PanelForm_LeftSection.Controls.Add(Me.LabelLeftSection_Transaction)
             Me.PanelForm_LeftSection.Controls.Add(Me.GridLookUpEditLeftSection_PostPeriodTo)
             Me.PanelForm_LeftSection.Controls.Add(Me.GridLookUpEditLeftSection_PostPeriodFrom)
             Me.PanelForm_LeftSection.Controls.Add(Me.LabelLeftSection_PostPeriodTo)
@@ -80,6 +85,43 @@
             Me.PanelForm_LeftSection.Name = "PanelForm_LeftSection"
             Me.PanelForm_LeftSection.Size = New System.Drawing.Size(274, 571)
             Me.PanelForm_LeftSection.TabIndex = 0
+            '
+            'NumericInputLeftSections_Transaction
+            '
+            Me.NumericInputLeftSections_Transaction.AllowKeyUpAndDownToIncrementValue = False
+            Me.NumericInputLeftSections_Transaction.ControlType = AdvantageFramework.WinForm.MVC.Presentation.Controls.NumericInput.Type.[Decimal]
+            Me.NumericInputLeftSections_Transaction.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+            Me.NumericInputLeftSections_Transaction.EnterMoveNextControl = True
+            Me.NumericInputLeftSections_Transaction.Location = New System.Drawing.Point(118, 64)
+            Me.NumericInputLeftSections_Transaction.Name = "NumericInputLeftSections_Transaction"
+            Me.NumericInputLeftSections_Transaction.Properties.AllowMouseWheel = False
+            Me.NumericInputLeftSections_Transaction.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+            Me.NumericInputLeftSections_Transaction.Properties.Appearance.BackColor = System.Drawing.SystemColors.Window
+            Me.NumericInputLeftSections_Transaction.Properties.Appearance.Options.UseBackColor = True
+            Me.NumericInputLeftSections_Transaction.Properties.DisplayFormat.FormatString = "f"
+            Me.NumericInputLeftSections_Transaction.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputLeftSections_Transaction.Properties.EditFormat.FormatString = "f"
+            Me.NumericInputLeftSections_Transaction.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+            Me.NumericInputLeftSections_Transaction.Properties.Mask.EditMask = "f0"
+            Me.NumericInputLeftSections_Transaction.Properties.Mask.UseMaskAsDisplayFormat = True
+            Me.NumericInputLeftSections_Transaction.SecurityEnabled = True
+            Me.NumericInputLeftSections_Transaction.Size = New System.Drawing.Size(150, 20)
+            Me.NumericInputLeftSections_Transaction.TabIndex = 13
+            Me.NumericInputLeftSections_Transaction.TabStop = False
+            '
+            'LabelLeftSection_Transaction
+            '
+            Me.LabelLeftSection_Transaction.BackColor = System.Drawing.Color.White
+            '
+            '
+            '
+            Me.LabelLeftSection_Transaction.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+            Me.LabelLeftSection_Transaction.Location = New System.Drawing.Point(12, 64)
+            Me.LabelLeftSection_Transaction.Name = "LabelLeftSection_Transaction"
+            Me.LabelLeftSection_Transaction.Size = New System.Drawing.Size(100, 20)
+            Me.LabelLeftSection_Transaction.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+            Me.LabelLeftSection_Transaction.TabIndex = 12
+            Me.LabelLeftSection_Transaction.Text = "Transaction:"
             '
             'GridLookUpEditLeftSection_PostPeriodTo
             '
@@ -198,7 +240,7 @@
             Me.DataGridViewLeftSection_JournalEntries.AutoUpdateViewCaption = True
             Me.DataGridViewLeftSection_JournalEntries.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]
             Me.DataGridViewLeftSection_JournalEntries.ItemDescription = "Vendor Invoice(s)"
-            Me.DataGridViewLeftSection_JournalEntries.Location = New System.Drawing.Point(12, 64)
+            Me.DataGridViewLeftSection_JournalEntries.Location = New System.Drawing.Point(12, 88)
             Me.DataGridViewLeftSection_JournalEntries.ModifyColumnSettingsOnEachDataSource = True
             Me.DataGridViewLeftSection_JournalEntries.ModifyGridRowHeight = False
             Me.DataGridViewLeftSection_JournalEntries.MultiSelect = False
@@ -207,7 +249,7 @@
             Me.DataGridViewLeftSection_JournalEntries.SelectRowsWhenSelectDeselectAllButtonClicked = True
             Me.DataGridViewLeftSection_JournalEntries.ShowRowSelectionIfHidden = True
             Me.DataGridViewLeftSection_JournalEntries.ShowSelectDeselectAllButtons = False
-            Me.DataGridViewLeftSection_JournalEntries.Size = New System.Drawing.Size(257, 495)
+            Me.DataGridViewLeftSection_JournalEntries.Size = New System.Drawing.Size(257, 471)
             Me.DataGridViewLeftSection_JournalEntries.TabIndex = 0
             Me.DataGridViewLeftSection_JournalEntries.UseEmbeddedNavigator = False
             Me.DataGridViewLeftSection_JournalEntries.ViewCaptionHeight = -1
@@ -599,6 +641,7 @@
             Me.Text = "Journal Entry"
             CType(Me.PanelForm_LeftSection, System.ComponentModel.ISupportInitialize).EndInit()
             Me.PanelForm_LeftSection.ResumeLayout(False)
+            CType(Me.NumericInputLeftSections_Transaction.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.GridLookUpEditLeftSection_PostPeriodTo.Properties, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me.GridLookUpEditLeftSection_PostPeriodFrom.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -641,6 +684,8 @@
         Friend WithEvents GridLookUpEdit1View As AdvantageFramework.WinForm.MVC.Presentation.Controls.GridView
         Friend WithEvents ButtonItemDocuments_Upload As WinForm.Presentation.Controls.ButtonItem
         Friend WithEvents ButtonItemUpload_EmailLink As DevComponents.DotNetBar.ButtonItem
+        Friend WithEvents LabelLeftSection_Transaction As WinForm.MVC.Presentation.Controls.Label
+        Friend WithEvents NumericInputLeftSections_Transaction As WinForm.MVC.Presentation.Controls.NumericInput
     End Class
 
 End Namespace

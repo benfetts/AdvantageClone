@@ -41,6 +41,7 @@
 
             GridLookUpEditLeftSection_PostPeriodFrom.SelectedValue = _ViewModel.PostPeriodCodeFrom
             GridLookUpEditLeftSection_PostPeriodTo.SelectedValue = _ViewModel.PostPeriodCodeTo
+            NumericInputLeftSections_Transaction.EditValue = Nothing
 
             LoadGrid()
 
@@ -90,6 +91,8 @@
 
             JournalEntryControlRightSection_JournalEntry.Enabled = (_ViewModel.SelectedJournalEntry IsNot Nothing)
 
+            NumericInputLeftSections_Transaction.Enabled = (_ViewModel.SaveEnabled = False)
+
         End Sub
         Private Sub SetControlPropertySettings()
 
@@ -120,6 +123,8 @@
                 End If
 
             End Using
+
+            NumericInputLeftSections_Transaction.ByPassUserEntryChanged = True
 
         End Sub
         Private Sub SetControlDataSources()
@@ -1245,6 +1250,56 @@
         Private Sub JournalEntryControlRightSection_JournalEntry_Details_SelectionChangedEvent(sender As Object, e As EventArgs) Handles JournalEntryControlRightSection_JournalEntry.Details_SelectionChangedEvent
 
             RefreshViewModel()
+
+        End Sub
+        Private Sub NumericInputLeftSections_Transaction_EditValueChanging(sender As Object, e As DevExpress.XtraEditors.Controls.ChangingEventArgs) Handles NumericInputLeftSections_Transaction.EditValueChanging
+
+            If Me.FormShown AndAlso IsNumeric(e.NewValue) AndAlso e.NewValue = 0 Then
+
+                e.NewValue = Nothing
+                e.Cancel = True
+
+            End If
+
+        End Sub
+        Private Sub NumericInputLeftSections_Transaction_Leave(sender As Object, e As EventArgs) Handles NumericInputLeftSections_Transaction.Leave
+
+            'objects
+            Dim Transaction As Integer = Nothing
+            Dim MediaManagerSearchResult As AdvantageFramework.MediaManager.Classes.MediaManagerSearchResult = Nothing
+            Dim OrderNumberFound As Boolean = False
+
+            If NumericInputLeftSections_Transaction.EditValue IsNot Nothing Then
+
+                Transaction = NumericInputLeftSections_Transaction.EditValue
+
+                If _Controller.LoadSingleTransaction(_ViewModel, Transaction) Then
+
+                    Me.FormAction = WinForm.Presentation.Methods.FormActions.Refreshing
+
+                    GridLookUpEditLeftSection_PostPeriodFrom.SelectedValue = _ViewModel.PostPeriodCodeFrom
+                    GridLookUpEditLeftSection_PostPeriodTo.SelectedValue = _ViewModel.PostPeriodCodeTo
+
+                    LoadGrid()
+
+                    DataGridViewLeftSection_JournalEntries.SelectAllRowsByValue(1, Transaction, True)
+
+                    Me.FormAction = WinForm.Presentation.Methods.FormActions.None
+
+                    DataGridViewLeftSection_JournalEntries.CurrentView.GridViewSelectionChanged()
+
+                Else
+
+                    AdvantageFramework.WinForm.MessageBox.Show("Transaction '" & Transaction & "' was not found.")
+
+                End If
+
+                NumericInputLeftSections_Transaction.EditValue = Nothing
+                NumericInputLeftSections_Transaction.Focus()
+
+                RefreshViewModel()
+
+            End If
 
         End Sub
 

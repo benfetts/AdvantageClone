@@ -3278,8 +3278,8 @@ End If
             let ci = 0;
 
             switch (row.type) {
-                case "header":
-                    break;
+                case "header":                    
+                    break; 
                 case "data":
                     dataItem = $.grep(e.data, function (col) {
                         return col.Level == row.cells[levelPosition].value;
@@ -3354,6 +3354,17 @@ End If
                                 }
 
                                 break;
+
+                            case "Status":
+                                try {
+                                    if (dataItem[0].hasChildren === true) {
+                                        row.cells[levelPosition + sheetColumns[k].columnIndex].value = "";
+                                    }
+                                } catch (e) {
+                                    console.error("Status: ", e);
+                                }
+
+                                break;      
                         }
                     }
 

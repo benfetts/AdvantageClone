@@ -174,6 +174,9 @@
     Public Property LineInstructions As String
     Public Property PlanComment As String
     Public Property PlanID As Nullable(Of Integer)
+    Public Property WorksheetComment As String
+    Public Property WorksheetID As Nullable(Of Integer)
+    Public Property ApprovedForBilling As Nullable(Of Byte)
 
 #End Region
 

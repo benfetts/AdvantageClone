@@ -9,6 +9,7 @@ CREATE FUNCTION [dbo].[advtf_proofing_get_documents_details] (
 RETURNS @RETURN_TABLE TABLE (   [ID] INT IDENTITY,
 								[DocumentID] INT NULL,
 								[IsLatestDocument] BIT NULL,
+								[TotalComments] INT NULL,
 								[TotalApproves] INT NULL,
 								[TotalRejects] INT NULL,
 								[TotalDefers] INT NULL,
@@ -33,6 +34,7 @@ BEGIN
 									[DocumentID] INT NULL,
 									[FileName] VARCHAR(1000) NULL,
 									[IsLatestDocument] BIT NULL,
+									[TotalComments] INT NULL,
 									[TotalApproves] INT NULL,
 									[TotalRejects] INT NULL,
 									[TotalDefers] INT NULL,
@@ -59,11 +61,22 @@ BEGIN
 			@COUNTER INT,
 			@FILENAME VARCHAR(1000),
 			@CURRENT_FILENAME VARCHAR(1000),
-			@VERSION_COUNTER INT
+			@VERSION_COUNTER INT,
+			@IS_PROOF BIT = 0
 		;
 	END
 	--  INIT
 	BEGIN
+		SELECT
+			@IS_PROOF =	CASE
+							WHEN A.ALERT_CAT_ID = 79 THEN 1
+							ELSE 0
+						END
+		FROM
+			ALERT A WITH(NOLOCK)
+		WHERE
+			A.ALERT_ID = @ALERT_ID
+		;
 		INSERT INTO @WORKING_TABLE (DocumentID, [FileName])
 		SELECT DISTINCT
 			D.DOCUMENT_ID,
@@ -99,127 +112,174 @@ BEGIN
 						) AS Z ON Y.DocumentID = Z.DocumentID
 		;
 	END
-	-- TOTAL APPROVES
+	--  TOTAL COMMENTS
 	BEGIN
-		UPDATE @WORKING_TABLE SET TotalApproves = B.CT
-		FROM
-			(
-				SELECT
-					AC.DOCUMENT_ID,
-					CT = COUNT(1)
-				FROM
-					ALERT_COMMENT AC WITH(NOLOCK)
-					INNER JOIN @WORKING_TABLE R ON AC.DOCUMENT_ID = R.DocumentID
-				WHERE
-					AC.ALERT_ID = @ALERT_ID
-					AND PROOFING_STATUS_ID IS NOT NULL
-					AND AC.PROOFING_STATUS_ID = 1
-				GROUP BY
-					AC.DOCUMENT_ID
-			) AS B INNER JOIN @WORKING_TABLE R ON B.DOCUMENT_ID = R.DocumentID
-		;
+		IF @IS_PROOF = 1
+		BEGIN
+			UPDATE @WORKING_TABLE SET TotalComments = A.CT
+			FROM
+				(
+					SELECT
+						AC.DOCUMENT_ID,
+						CT = COUNT(1)
+					FROM
+						ALERT_COMMENT AC WITH(NOLOCK)
+						INNER JOIN @WORKING_TABLE X ON AC.DOCUMENT_ID = X.DocumentID
+					WHERE
+						AC.COMMENT NOT LIKE 'NEW FILE%'
+						AND AC.COMMENT NOT LIKE 'NEW VERSION%'
+						AND AC.COMMENT NOT LIKE 'APPROVE%'
+						AND AC.COMMENT NOT LIKE 'REJECT%'
+						AND AC.COMMENT NOT LIKE 'DEFER%'
+					GROUP BY
+						AC.DOCUMENT_ID
+				) AS A INNER JOIN @WORKING_TABLE Y ON A.DOCUMENT_ID = Y.DocumentID
+			;
+		END
+		ELSE
+		BEGIN
+			UPDATE @WORKING_TABLE SET TotalComments = A.CT
+			FROM
+				(
+					SELECT
+						AC.DOCUMENT_ID,
+						CT = COUNT(1)
+					FROM
+						ALERT_COMMENT AC WITH(NOLOCK)
+						INNER JOIN @WORKING_TABLE X ON AC.DOCUMENT_ID = X.DocumentID
+					WHERE
+						(AC.IS_SYSTEM IS NULL OR AC.IS_SYSTEM = 0)
+					GROUP BY
+						AC.DOCUMENT_ID
+				) AS A INNER JOIN @WORKING_TABLE Y ON A.DOCUMENT_ID = Y.DocumentID
+			;
+		END
 	END
-	-- TOTAL REJECTS
+	--  PROOF STATS
+	IF @IS_PROOF = 1
 	BEGIN
-		UPDATE @WORKING_TABLE SET TotalRejects = B.CT
-		FROM
-			(
+		-- TOTAL APPROVES
+		BEGIN
+			UPDATE @WORKING_TABLE SET TotalApproves = B.CT
+			FROM
+				(
+					SELECT
+						AC.DOCUMENT_ID,
+						CT = COUNT(1)
+					FROM
+						ALERT_COMMENT AC WITH(NOLOCK)
+						INNER JOIN @WORKING_TABLE R ON AC.DOCUMENT_ID = R.DocumentID
+					WHERE
+						AC.ALERT_ID = @ALERT_ID
+						AND PROOFING_STATUS_ID IS NOT NULL
+						AND AC.PROOFING_STATUS_ID = 1
+					GROUP BY
+						AC.DOCUMENT_ID
+				) AS B INNER JOIN @WORKING_TABLE R ON B.DOCUMENT_ID = R.DocumentID
+			;
+		END
+		-- TOTAL REJECTS
+		BEGIN
+			UPDATE @WORKING_TABLE SET TotalRejects = B.CT
+			FROM
+				(
+					SELECT
+						AC.DOCUMENT_ID,
+						CT = COUNT(1)
+					FROM
+						ALERT_COMMENT AC WITH(NOLOCK)
+						INNER JOIN @WORKING_TABLE R ON AC.DOCUMENT_ID = R.DocumentID
+					WHERE
+						AC.ALERT_ID = @ALERT_ID
+						AND PROOFING_STATUS_ID IS NOT NULL
+						AND AC.PROOFING_STATUS_ID = 2
+					GROUP BY
+						AC.DOCUMENT_ID
+				) AS B INNER JOIN @WORKING_TABLE R ON B.DOCUMENT_ID = R.DocumentID
+			;
+		END
+		-- TOTAL DEFERS
+		BEGIN
+			UPDATE @WORKING_TABLE SET TotalDefers = B.CT
+			FROM
+				(
+					SELECT
+						AC.DOCUMENT_ID,
+						CT = COUNT(1)
+					FROM
+						ALERT_COMMENT AC WITH(NOLOCK)
+						INNER JOIN @WORKING_TABLE R ON AC.DOCUMENT_ID = R.DocumentID
+					WHERE
+						AC.ALERT_ID = @ALERT_ID
+						AND PROOFING_STATUS_ID IS NOT NULL
+						AND AC.PROOFING_STATUS_ID = 3
+					GROUP BY
+						AC.DOCUMENT_ID
+				) AS B INNER JOIN @WORKING_TABLE R ON B.DOCUMENT_ID = R.DocumentID
+			;
+		END
+		--	TOTAL MARKUPS
+		BEGIN
+			UPDATE @WORKING_TABLE SET TotalMarkups = A.CT
+			FROM
+				(
+					SELECT 
+						CT = COUNT(1),
+						PM.DOCUMENT_ID
+					FROM 
+						PROOFING_MARKUP PM WITH(NOLOCK)
+						INNER JOIN @WORKING_TABLE R ON PM.DOCUMENT_ID = R.DocumentID
+					GROUP BY
+						PM.DOCUMENT_ID
+				) AS A INNER JOIN @WORKING_TABLE RR ON A.DOCUMENT_ID = RR.DocumentID
+		END
+		-- LATEST MARKUP
+		BEGIN
+			-- INTERNAL
+			UPDATE @WORKING_TABLE SET
+				InternalLatestMarkupDate = PMM.GENERATED_DATE,
+				InternalLatestMarkupFullName = ISNULL(E.EMP_FNAME + ' ', '') + ISNULL(E.EMP_MI + '. ', '') + ISNULL(E.EMP_LNAME, '')
+			FROM
+				(
 				SELECT
-					AC.DOCUMENT_ID,
-					CT = COUNT(1)
-				FROM
-					ALERT_COMMENT AC WITH(NOLOCK)
-					INNER JOIN @WORKING_TABLE R ON AC.DOCUMENT_ID = R.DocumentID
-				WHERE
-					AC.ALERT_ID = @ALERT_ID
-					AND PROOFING_STATUS_ID IS NOT NULL
-					AND AC.PROOFING_STATUS_ID = 2
-				GROUP BY
-					AC.DOCUMENT_ID
-			) AS B INNER JOIN @WORKING_TABLE R ON B.DOCUMENT_ID = R.DocumentID
-		;
-	END
-	-- TOTAL DEFERS
-	BEGIN
-		UPDATE @WORKING_TABLE SET TotalDefers = B.CT
-		FROM
-			(
-				SELECT
-					AC.DOCUMENT_ID,
-					CT = COUNT(1)
-				FROM
-					ALERT_COMMENT AC WITH(NOLOCK)
-					INNER JOIN @WORKING_TABLE R ON AC.DOCUMENT_ID = R.DocumentID
-				WHERE
-					AC.ALERT_ID = @ALERT_ID
-					AND PROOFING_STATUS_ID IS NOT NULL
-					AND AC.PROOFING_STATUS_ID = 3
-				GROUP BY
-					AC.DOCUMENT_ID
-			) AS B INNER JOIN @WORKING_TABLE R ON B.DOCUMENT_ID = R.DocumentID
-		;
-	END
-	--	TOTAL MARKUPS
-	BEGIN
-		UPDATE @WORKING_TABLE SET TotalMarkups = A.CT
-		FROM
-			(
-				SELECT 
-					CT = COUNT(1),
+					PM_ID = MAX(PM.ID),
 					PM.DOCUMENT_ID
-				FROM 
+				FROM
 					PROOFING_MARKUP PM WITH(NOLOCK)
 					INNER JOIN @WORKING_TABLE R ON PM.DOCUMENT_ID = R.DocumentID
 				GROUP BY
 					PM.DOCUMENT_ID
-			) AS A INNER JOIN @WORKING_TABLE RR ON A.DOCUMENT_ID = RR.DocumentID
-	END
-	-- LATEST MARKUP
-	BEGIN
-		-- INTERNAL
-		UPDATE @WORKING_TABLE SET
-			InternalLatestMarkupDate = PMM.GENERATED_DATE,
-			InternalLatestMarkupFullName = ISNULL(E.EMP_FNAME + ' ', '') + ISNULL(E.EMP_MI + '. ', '') + ISNULL(E.EMP_LNAME, '')
-		FROM
-			(
-			SELECT
-				PM_ID = MAX(PM.ID),
-				PM.DOCUMENT_ID
+				) AS A INNER JOIN @WORKING_TABLE RR ON RR.DocumentID = A.DOCUMENT_ID
+				INNER JOIN PROOFING_MARKUP PMM WITH(NOLOCK) ON PMM.DOCUMENT_ID = A.DOCUMENT_ID AND PMM.ID = A.PM_ID
+				INNER JOIN EMPLOYEE_CLOAK E WITH(NOLOCK) ON E.EMP_CODE = PMM.EMP_CODE
+			WHERE
+				PMM.EMP_CODE IS NOT NULL
+				AND PMM.PROOFING_X_REVIEWER_ID IS NULL
+				AND InternalLatestMarkupDate IS NULL
+			;
+			-- EXTERNAL
+			UPDATE @WORKING_TABLE SET
+				ExternalLatestMarkupDate = PMM.GENERATED_DATE,
+				ExternalLatestMarkupFullName = X.[NAME] + ' (XR)'
 			FROM
-				PROOFING_MARKUP PM WITH(NOLOCK)
-				INNER JOIN @WORKING_TABLE R ON PM.DOCUMENT_ID = R.DocumentID
-			GROUP BY
-				PM.DOCUMENT_ID
-			) AS A INNER JOIN @WORKING_TABLE RR ON RR.DocumentID = A.DOCUMENT_ID
-			INNER JOIN PROOFING_MARKUP PMM WITH(NOLOCK) ON PMM.DOCUMENT_ID = A.DOCUMENT_ID AND PMM.ID = A.PM_ID
-			INNER JOIN EMPLOYEE_CLOAK E WITH(NOLOCK) ON E.EMP_CODE = PMM.EMP_CODE
-		WHERE
-			PMM.EMP_CODE IS NOT NULL
-			AND PMM.PROOFING_X_REVIEWER_ID IS NULL
-			AND InternalLatestMarkupDate IS NULL
-		;
-		-- EXTERNAL
-		UPDATE @WORKING_TABLE SET
-			ExternalLatestMarkupDate = PMM.GENERATED_DATE,
-			ExternalLatestMarkupFullName = X.[NAME] + ' (XR)'
-		FROM
-			(
-			SELECT
-				PM_ID = MAX(PM.ID),
-				PM.DOCUMENT_ID
-			FROM
-				PROOFING_MARKUP PM WITH(NOLOCK)
-				INNER JOIN @WORKING_TABLE R ON PM.DOCUMENT_ID = R.DocumentID
-			GROUP BY
-				PM.DOCUMENT_ID
-			) AS A INNER JOIN @WORKING_TABLE RR ON RR.DocumentID = A.DOCUMENT_ID
-			INNER JOIN PROOFING_MARKUP PMM WITH(NOLOCK) ON PMM.DOCUMENT_ID = A.DOCUMENT_ID AND PMM.ID = A.PM_ID
-			INNER JOIN PROOFING_X_REVIEWER X WITH(NOLOCK) ON X.ID = PMM.PROOFING_X_REVIEWER_ID
-		WHERE
-			PMM.EMP_CODE IS NULL
-			AND PMM.PROOFING_X_REVIEWER_ID IS NOT NULL
-			AND ExternalLatestMarkupDate IS NULL
-		;
+				(
+				SELECT
+					PM_ID = MAX(PM.ID),
+					PM.DOCUMENT_ID
+				FROM
+					PROOFING_MARKUP PM WITH(NOLOCK)
+					INNER JOIN @WORKING_TABLE R ON PM.DOCUMENT_ID = R.DocumentID
+				GROUP BY
+					PM.DOCUMENT_ID
+				) AS A INNER JOIN @WORKING_TABLE RR ON RR.DocumentID = A.DOCUMENT_ID
+				INNER JOIN PROOFING_MARKUP PMM WITH(NOLOCK) ON PMM.DOCUMENT_ID = A.DOCUMENT_ID AND PMM.ID = A.PM_ID
+				INNER JOIN PROOFING_X_REVIEWER X WITH(NOLOCK) ON X.ID = PMM.PROOFING_X_REVIEWER_ID
+			WHERE
+				PMM.EMP_CODE IS NULL
+				AND PMM.PROOFING_X_REVIEWER_ID IS NOT NULL
+				AND ExternalLatestMarkupDate IS NULL
+			;
+		END
 	END
 	-- VERSION NUMBER FOR EACH FILE
 	BEGIN
@@ -338,24 +398,29 @@ BEGIN
 	END
 	-- CLEAN UP
 	BEGIN
-		UPDATE @WORKING_TABLE 
-		SET InternalIsLatest =	CASE
-									WHEN InternalLatestMarkupDate IS NOT NULL AND ExternalLatestMarkupDate IS NULL THEN 1
-									WHEN InternalLatestMarkupDate IS NULL AND ExternalLatestMarkupDate IS NOT NULL THEN 0
-									WHEN InternalLatestMarkupDate IS NOT NULL AND ExternalLatestMarkupDate IS NOT NULL AND InternalLatestMarkupDate > ExternalLatestMarkupDate THEN 1
-									WHEN InternalLatestMarkupDate IS NOT NULL AND ExternalLatestMarkupDate IS NOT NULL AND InternalLatestMarkupDate < ExternalLatestMarkupDate THEN 0
-									ELSE NULL
-								END;
-		UPDATE @WORKING_TABLE
-		SET
-			LatestMarkupDate =	CASE
-									WHEN InternalIsLatest = 1 THEN InternalLatestMarkupDate
-									WHEN InternalIsLatest = 0 THEN ExternalLatestMarkupDate
-								END,
-			LatestMarkupFullName =	CASE
-										WHEN InternalIsLatest = 1 THEN InternalLatestMarkupFullName
-										WHEN InternalIsLatest = 0 THEN ExternalLatestMarkupFullName
+		IF @IS_PROOF = 1
+		BEGIN
+			UPDATE @WORKING_TABLE 
+			SET InternalIsLatest =	CASE
+										WHEN InternalLatestMarkupDate IS NOT NULL AND ExternalLatestMarkupDate IS NULL THEN 1
+										WHEN InternalLatestMarkupDate IS NULL AND ExternalLatestMarkupDate IS NOT NULL THEN 0
+										WHEN InternalLatestMarkupDate IS NOT NULL AND ExternalLatestMarkupDate IS NOT NULL AND InternalLatestMarkupDate > ExternalLatestMarkupDate THEN 1
+										WHEN InternalLatestMarkupDate IS NOT NULL AND ExternalLatestMarkupDate IS NOT NULL AND InternalLatestMarkupDate < ExternalLatestMarkupDate THEN 0
+										ELSE NULL
 									END
+			;
+			UPDATE @WORKING_TABLE
+			SET
+				LatestMarkupDate =	CASE
+										WHEN InternalIsLatest = 1 THEN InternalLatestMarkupDate
+										WHEN InternalIsLatest = 0 THEN ExternalLatestMarkupDate
+									END,
+				LatestMarkupFullName =	CASE
+											WHEN InternalIsLatest = 1 THEN InternalLatestMarkupFullName
+											WHEN InternalIsLatest = 0 THEN ExternalLatestMarkupFullName
+										END
+			;
+		END
 	END
 	-- INTO RETURN TABLE
 	BEGIN
@@ -373,7 +438,8 @@ BEGIN
 								   ExternalLatestMarkupFullName, 
 								   ExternalLatestMarkupDate,
 								   LatestMarkupFullName,
-								   LatestMarkupDate)
+								   LatestMarkupDate,
+								   TotalComments)
 		SELECT
 			W.DocumentID,
 			ISNULL(W.IsLatestDocument, 0),
@@ -389,7 +455,8 @@ BEGIN
 			W.ExternalLatestMarkupFullName,
 			W.ExternalLatestMarkupDate,
 			W.LatestMarkupFullName,
-			W.LatestMarkupDate
+			W.LatestMarkupDate,
+			ISNULL(W.TotalComments, 0)
 		FROM
 			@WORKING_TABLE W
 		ORDER BY

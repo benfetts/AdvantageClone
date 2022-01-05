@@ -6,7 +6,6 @@ Namespace Proofing
 #Region " Constants "
 
 
-
 #End Region
 
 #Region " Enum "
@@ -107,7 +106,21 @@ Namespace Proofing
 
                         MemoryStream = New System.IO.MemoryStream(Row.Asset.ThumbnailSource)
 
-                        PictureBoxAssetThumbnail.Image = System.Drawing.Image.FromStream(MemoryStream)
+                    Catch ex As Exception
+                        MemoryStream = Nothing
+                    End Try
+                    Try
+
+                        If MemoryStream IsNot Nothing Then
+
+                            PictureBoxAssetThumbnail.Visible = True
+                            PictureBoxAssetThumbnail.Image = System.Drawing.Image.FromStream(MemoryStream)
+
+                        Else
+
+                            PictureBoxAssetThumbnail.Visible = False
+
+                        End If
 
                     Catch ex As Exception
                         PictureBoxAssetThumbnail.Visible = False
@@ -116,6 +129,26 @@ Namespace Proofing
                 Else
 
                     PictureBoxAssetThumbnail.Visible = False
+
+                End If
+
+                Label_FileType.Visible = Not PictureBoxAssetThumbnail.Visible
+                Label_FileType.Text = ""
+
+                If Label_FileType.Visible = True Then
+
+                    Try
+
+                        Dim Ar As String()
+                        Ar = Row.Asset.FileType.Split(" ")
+
+
+
+                    Catch ex As Exception
+
+                    End Try
+
+                    Label_FileType.Text = Row.Asset.FileType
 
                 End If
 

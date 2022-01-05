@@ -27,6 +27,7 @@
             Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
             Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
             Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+            Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
             Me.XrLabel1 = New DevExpress.XtraReports.UI.XRLabel()
             Me.XrTable1 = New DevExpress.XtraReports.UI.XRTable()
             Me.XrTableRow1 = New DevExpress.XtraReports.UI.XRTableRow()
@@ -38,8 +39,8 @@
             Me.LabelVersionLabel = New DevExpress.XtraReports.UI.XRLabel()
             Me.LabelVersion = New DevExpress.XtraReports.UI.XRLabel()
             Me.PictureBoxAssetThumbnail = New DevExpress.XtraReports.UI.XRPictureBox()
+            Me.Label_FileType = New DevExpress.XtraReports.UI.XRLabel()
             Me.SubReportComments = New DevExpress.XtraReports.UI.XRSubreport()
-            Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
             CType(Me.XrTable1, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
             '
@@ -60,6 +61,17 @@
             Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLine1, Me.XrLabel1, Me.XrTable1, Me.SubReportComments})
             Me.Detail.HeightF = 223.4194!
             Me.Detail.Name = "Detail"
+            '
+            'XrLine1
+            '
+            Me.XrLine1.BorderColor = System.Drawing.Color.Silver
+            Me.XrLine1.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.XrLine1.BorderWidth = 4.0!
+            Me.XrLine1.ForeColor = System.Drawing.Color.Silver
+            Me.XrLine1.LineWidth = 4.0!
+            Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 209.4194!)
+            Me.XrLine1.Name = "XrLine1"
+            Me.XrLine1.SizeF = New System.Drawing.SizeF(600.894!, 4.000015!)
             '
             'XrLabel1
             '
@@ -94,7 +106,7 @@
             '
             'TableCell_Left
             '
-            Me.TableCell_Left.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Label_FilenameLabel, Me.Label_Filename, Me.Label_Filesize, Me.Label_FilesizeLabel, Me.LabelVersionLabel, Me.LabelVersion, Me.PictureBoxAssetThumbnail})
+            Me.TableCell_Left.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Label_FileType, Me.Label_FilenameLabel, Me.Label_Filename, Me.Label_Filesize, Me.Label_FilesizeLabel, Me.LabelVersionLabel, Me.LabelVersion, Me.PictureBoxAssetThumbnail})
             Me.TableCell_Left.Multiline = True
             Me.TableCell_Left.Name = "TableCell_Left"
             Me.TableCell_Left.Weight = 0.96153841458834133R
@@ -211,6 +223,25 @@
             Me.PictureBoxAssetThumbnail.SizeF = New System.Drawing.SizeF(100.0!, 100.0!)
             Me.PictureBoxAssetThumbnail.Sizing = DevExpress.XtraPrinting.ImageSizeMode.AutoSize
             '
+            'Label_FileType
+            '
+            Me.Label_FileType.BackColor = System.Drawing.Color.Transparent
+            Me.Label_FileType.BorderColor = System.Drawing.Color.Black
+            Me.Label_FileType.Borders = DevExpress.XtraPrinting.BorderSide.None
+            Me.Label_FileType.BorderWidth = 1.0!
+            Me.Label_FileType.CanGrow = False
+            Me.Label_FileType.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+            Me.Label_FileType.ForeColor = System.Drawing.Color.Gray
+            Me.Label_FileType.LocationFloat = New DevExpress.Utils.PointFloat(0.0000002384186!, 6.370704!)
+            Me.Label_FileType.Name = "Label_FileType"
+            Me.Label_FileType.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+            Me.Label_FileType.SizeF = New System.Drawing.SizeF(191.3021!, 100.0!)
+            Me.Label_FileType.StylePriority.UseFont = False
+            Me.Label_FileType.StylePriority.UseForeColor = False
+            Me.Label_FileType.Text = "FileType"
+            Me.Label_FileType.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+            Me.Label_FileType.Visible = False
+            '
             'SubReportComments
             '
             Me.SubReportComments.CanShrink = True
@@ -218,17 +249,6 @@
             Me.SubReportComments.Name = "SubReportComments"
             Me.SubReportComments.ReportSource = New AdvantageFramework.Reporting.Reports.Proofing.FeedbackSummaryAssetCommentsSubReport()
             Me.SubReportComments.SizeF = New System.Drawing.SizeF(386.3172!, 176.3336!)
-            '
-            'XrLine1
-            '
-            Me.XrLine1.BorderColor = System.Drawing.Color.Silver
-            Me.XrLine1.Borders = DevExpress.XtraPrinting.BorderSide.None
-            Me.XrLine1.BorderWidth = 4.0!
-            Me.XrLine1.ForeColor = System.Drawing.Color.Silver
-            Me.XrLine1.LineWidth = 4.0!
-            Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 209.4194!)
-            Me.XrLine1.Name = "XrLine1"
-            Me.XrLine1.SizeF = New System.Drawing.SizeF(600.894!, 4.000015!)
             '
             'FeedbackSummaryAssetsSubReport
             '
@@ -257,6 +277,7 @@
         Private WithEvents LabelVersion As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents XrLabel1 As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
+        Private WithEvents Label_FileType As DevExpress.XtraReports.UI.XRLabel
     End Class
 
 End Namespace

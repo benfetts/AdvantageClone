@@ -729,13 +729,19 @@ BEGIN
 							@CUSTODY_DATE,
 							UPPER(@CURR_ALERT_STATE_NAME) + ' | ' + UPPER(@PROOFING_TEXT) + ' | ' + ISNULL(E.EMP_FNAME + ' ', '') + ISNULL(E.EMP_MI + '. ', '') + E.EMP_LNAME,
 							0,
-							@CURR_ALRT_NOTIFY_HDR_ID,
-							@CURR_ALERT_STATE_ID,
+							CASE
+								WHEN @CURR_ALRT_NOTIFY_HDR_ID = 0 THEN NULL
+								ELSE @CURR_ALRT_NOTIFY_HDR_ID
+							END,
+							CASE
+								WHEN @CURR_ALERT_STATE_ID = 0 THEN NULL
+								ELSE @CURR_ALERT_STATE_ID
+							END,
 							NULL,
 							NULL,
 							@PROOFING_STATUS_ID,
 							@DOCUMENT_ID, 
-							0
+							1
 						FROM 
 							EMPLOYEE_CLOAK E WITH(NOLOCK)
 						WHERE 
@@ -917,12 +923,18 @@ BEGIN
 								@CUSTODY_DATE,
 								UPPER(@PROOFING_TEXT) + ' | ' + ISNULL(E.EMP_FNAME + ' ', '') + ISNULL(E.EMP_MI + '. ', '') + E.EMP_LNAME,
 								0,
-								@CURR_ALRT_NOTIFY_HDR_ID,
-								@CURR_ALERT_STATE_ID,
+							CASE
+								WHEN @CURR_ALRT_NOTIFY_HDR_ID = 0 THEN NULL
+								ELSE @CURR_ALRT_NOTIFY_HDR_ID
+							END,
+							CASE
+								WHEN @CURR_ALERT_STATE_ID = 0 THEN NULL
+								ELSE @CURR_ALERT_STATE_ID
+							END,
 								NULL,
 								NULL,
 								@DOCUMENT_ID,
-								0,
+								1,
 								@PROOFING_STATUS_ID
 							FROM 
 								EMPLOYEE_CLOAK E WITH(NOLOCK)

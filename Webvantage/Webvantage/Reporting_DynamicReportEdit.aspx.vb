@@ -701,9 +701,7 @@ Public Class Reporting_DynamicReportEdit
     End Sub
     Private Sub InitialLoadingSaveDynamicReportTemplate()
 
-        If Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
-                    Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost OrElse
-                    Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
+        If Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
                     Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityToInvestment OrElse
                     Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.CRMClientContracts OrElse
                     Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.JobPurchaseOrder OrElse
@@ -925,11 +923,13 @@ Public Class Reporting_DynamicReportEdit
 
             Me.OpenWindow("Resources Allocation by Week Inital Criteria", String.Format("Reporting_InitialLoadingResourceAllocationByWeek.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
 
-        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectTime Then
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectTime OrElse
+               Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost Then
 
             Me.OpenWindow("Direct Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectTime.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
 
-        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime Then
+        ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime OrElse
+               Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost Then
 
             Me.OpenWindow("Direct Indirect Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectIndirectTime.aspx?DynamicReportTemplateID={0}", _DynamicReportTemplateID), 525, 575, False, True)
 

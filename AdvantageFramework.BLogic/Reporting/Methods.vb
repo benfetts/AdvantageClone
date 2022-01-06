@@ -362,11 +362,11 @@
 
                 ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost Then
 
-                    DynamicReportObjects = LoadIndirectTimeCost(ReportingDbContext, Criteria, [From], [To], ShowJobsWithNoDetails)
+                    DynamicReportObjects = LoadIndirectTimeCost(ReportingDbContext, Criteria, [From], [To], ShowJobsWithNoDetails, ParameterDictionary)
 
                 ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost Then
 
-                    DynamicReportObjects = LoadDirectTimeCost(ReportingDbContext, Criteria, [From], [To], ShowJobsWithNoDetails)
+                    DynamicReportObjects = LoadDirectTimeCost(ReportingDbContext, Criteria, [From], [To], ShowJobsWithNoDetails, ParameterDictionary)
 
                 ElseIf DynamicReport = AdvantageFramework.Reporting.DynamicReports.JobProjectScheduleSummary Then
 
@@ -1590,15 +1590,37 @@
             End Try
 
         End Function
-        Private Function LoadIndirectTimeCost(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal Criteria As Integer, ByVal From As Date, ByVal [To] As Date, ByVal ShowJobsWithNoDetails As Boolean) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeCostReport)
+        Private Function LoadIndirectTimeCost(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal Criteria As Integer, ByVal From As Date, ByVal [To] As Date, ByVal ShowJobsWithNoDetails As Boolean, ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeCostReport)
 
             'objects
             Dim DynamicReportObjects As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeCostReport) = Nothing
             'Dim ObjectQuery As IQueryable = Nothing
 
             Try
+                Dim SqlParameterCriteria As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterFromDate As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterToDate As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterOnlyActiveEmployees As System.Data.SqlClient.SqlParameter = Nothing
 
-                DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeCostReport)(String.Format("EXEC [dbo].[advsp_indirect_time_cost_load] {0}, '{1}', '{2}', '{3}'", Criteria, [From].ToString("MM/dd/yyyy"), [To].ToString("MM/dd/yyyy"), DbContext.UserCode)).ToList
+                SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
+                SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
+                SqlParameterToDate = New System.Data.SqlClient.SqlParameter("@END_DATE", SqlDbType.SmallDateTime)
+                SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@UserID", SqlDbType.VarChar)
+                SqlParameterOnlyActiveEmployees = New System.Data.SqlClient.SqlParameter("@OnlyActiveEmployees", SqlDbType.Bit)
+
+                SqlParameterCriteria.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.DateType.ToString)
+                SqlParameterFromDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.FromDate.ToString)
+                SqlParameterToDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.ToDate.ToString)
+                SqlParameterUserID.Value = DbContext.UserCode
+                SqlParameterOnlyActiveEmployees.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.OnlyActiveEmployees.ToString)
+
+                'DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeCostReport)(String.Format("EXEC [dbo].[advsp_indirect_time_cost_load] {0}, '{1}', '{2}', '{3}'", Criteria, [From].ToString("MM/dd/yyyy"), [To].ToString("MM/dd/yyyy"), DbContext.UserCode)).ToList
+
+                DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectIndirectTimeCostReport) _
+                                                                                    ("EXEC [dbo].[advsp_indirect_time_cost_load] @DATE_TYPE, @START_DATE, @END_DATE, @UserID, " &
+                                                                                     "@OnlyActiveEmployees",
+                                                                                     SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterUserID, SqlParameterOnlyActiveEmployees).ToList
 
             Catch ex As Exception
                 DynamicReportObjects = Nothing
@@ -1771,15 +1793,37 @@
             'End Try
 
         End Function
-        Private Function LoadDirectTimeCost(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal Criteria As Integer, ByVal From As Date, ByVal [To] As Date, ByVal ShowJobsWithNoDetails As Boolean) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeCostReport)
+        Private Function LoadDirectTimeCost(ByVal DbContext As AdvantageFramework.Reporting.Database.DbContext, ByVal Criteria As Integer, ByVal From As Date, ByVal [To] As Date, ByVal ShowJobsWithNoDetails As Boolean, ByVal ParameterDictionary As Generic.Dictionary(Of String, Object)) As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeCostReport)
 
             'objects
             Dim DynamicReportObjects As Generic.List(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeCostReport) = Nothing
             'Dim ObjectQuery As IQueryable = Nothing
 
             Try
+                Dim SqlParameterCriteria As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterFromDate As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterToDate As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterUserID As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterOnlyActiveEmployees As System.Data.SqlClient.SqlParameter = Nothing
 
-                DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeCostReport)(String.Format("EXEC [dbo].[advsp_direct_time_cost_load] {0}, '{1}', '{2}', '{3}'", Criteria, [From].ToString("MM/dd/yyyy"), [To].ToString("MM/dd/yyyy"), DbContext.UserCode)).ToList
+                SqlParameterCriteria = New System.Data.SqlClient.SqlParameter("@DATE_TYPE", SqlDbType.Int)
+                SqlParameterFromDate = New System.Data.SqlClient.SqlParameter("@START_DATE", SqlDbType.SmallDateTime)
+                SqlParameterToDate = New System.Data.SqlClient.SqlParameter("@END_DATE", SqlDbType.SmallDateTime)
+                SqlParameterUserID = New System.Data.SqlClient.SqlParameter("@UserID", SqlDbType.VarChar)
+                SqlParameterOnlyActiveEmployees = New System.Data.SqlClient.SqlParameter("@OnlyActiveEmployees", SqlDbType.Bit)
+
+                SqlParameterCriteria.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.DateType.ToString)
+                SqlParameterFromDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.FromDate.ToString)
+                SqlParameterToDate.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.ToDate.ToString)
+                SqlParameterUserID.Value = DbContext.UserCode
+                SqlParameterOnlyActiveEmployees.Value = ParameterDictionary(AdvantageFramework.Reporting.DirectTimeParameters.OnlyActiveEmployees.ToString)
+
+                'DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeCostReport)(String.Format("EXEC [dbo].[advsp_direct_time_cost_load] {0}, '{1}', '{2}', '{3}'", Criteria, [From].ToString("MM/dd/yyyy"), [To].ToString("MM/dd/yyyy"), DbContext.UserCode)).ToList
+
+                DynamicReportObjects = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.DirectTimeCostReport) _
+                                                                                    ("EXEC [dbo].[advsp_direct_time_cost_load] @DATE_TYPE, @START_DATE, @END_DATE, @UserID, " &
+                                                                                     "@OnlyActiveEmployees",
+                                                                                     SqlParameterCriteria, SqlParameterFromDate, SqlParameterToDate, SqlParameterUserID, SqlParameterOnlyActiveEmployees).ToList
 
             Catch ex As Exception
                 DynamicReportObjects = Nothing

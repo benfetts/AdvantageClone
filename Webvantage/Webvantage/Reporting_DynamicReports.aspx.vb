@@ -368,9 +368,7 @@ Public Class Reporting_DynamicReports
 
                     End Try
 
-                    If DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost OrElse
-                            DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost OrElse
-                            DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
+                    If DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityDetail OrElse
                             DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CRMOpportunityToInvestment OrElse
                             DynamicReportType = AdvantageFramework.Reporting.DynamicReports.CRMClientContracts OrElse
                             DynamicReportType = AdvantageFramework.Reporting.DynamicReports.JobPurchaseOrder OrElse
@@ -584,21 +582,21 @@ Public Class Reporting_DynamicReports
 
                         Me.OpenWindow("Media Plan Comparison Summary By Vendor Criteria", String.Format("Reporting_InitialLoadingMediaPlanComparisonSummary.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 875, False, True)
 
-                    ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.Alerts OrElse
-                           Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.AlertsWithComments OrElse
-                            Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.AlertsWithRecipients Then
+                    ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.Alerts OrElse
+                           DynamicReportType = AdvantageFramework.Reporting.DynamicReports.AlertsWithComments OrElse
+                            DynamicReportType = AdvantageFramework.Reporting.DynamicReports.AlertsWithRecipients Then
 
                         Me.OpenWindow("Alerts Inital Criteria", String.Format("Reporting_InitialLoadingAlert.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 
-                    ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.ResourceAllocationByWeek Then
+                    ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.ResourceAllocationByWeek Then
 
                         Me.OpenWindow("Resources Allocation by Week Inital Criteria", String.Format("Reporting_InitialLoadingResourceAllocationByWeek.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 
-                    ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectTime Then
+                    ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectTime OrElse DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost Then
 
                         Me.OpenWindow("Direct Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectTime.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 
-                    ElseIf Session("DRPT_Type") = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime Then
+                    ElseIf DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTime OrElse DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectIndirectTimeWithEmployeeCost Then
 
                         Me.OpenWindow("Direct Indirect Time Inital Criteria", String.Format("Reporting_InitialLoadingDirectIndirectTime.aspx?DynamicReportTemplateID={0}", DynamicReportTemplateID), 525, 575, False, True)
 

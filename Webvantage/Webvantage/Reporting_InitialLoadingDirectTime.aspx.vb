@@ -600,6 +600,17 @@ Public Class Reporting_InitialLoadingDirectTime
 
             PanelCDP.Visible = False
 
+            If _DynamicReportType = AdvantageFramework.Reporting.DynamicReports.DirectTimeWithEmployeeCost Then
+
+                Me.RadTabStripTaskCalendar.Tabs.FindTabByValue(1).Visible = False
+                Me.RadTabStripTaskCalendar.Tabs.FindTabByValue(2).Visible = False
+                Me.RadTabStripTaskCalendar.Tabs.FindTabByValue(3).Visible = False
+                Me.RadTabStripTaskCalendar.Tabs.FindTabByValue(4).Visible = False
+                Me.RadTabStripTaskCalendar.Tabs.FindTabByValue(5).Visible = False
+                Me.RadTabStripTaskCalendar.Tabs.FindTabByValue(6).Visible = False
+
+            End If
+
         End If
 
     End Sub

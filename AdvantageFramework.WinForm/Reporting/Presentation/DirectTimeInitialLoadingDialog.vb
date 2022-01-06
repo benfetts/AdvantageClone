@@ -398,7 +398,16 @@
             ComboBoxTopSection_Report.DataSource = AdvantageFramework.EnumUtilities.LoadEnumObjects(GetType(AdvantageFramework.Reporting.DirectTimeReportTypes)).OrderBy(Function(EnumObject) EnumObject.Description).ToList
             ComboBoxForm_Criteria.DataSource = AdvantageFramework.EnumUtilities.GetEnumDataTable(GetType(AdvantageFramework.Reporting.DirectTimeInitialCriteria), False)
 
+            If _DynamicReport = DynamicReports.DirectTimeWithEmployeeCost Then
 
+                Me.TabItemJDA_SelectClientsTab.Visible = False
+                Me.TabItemJDA_SelectCampaignsTab.Visible = False
+                Me.TabItemJDA_SelectJobsTab.Visible = False
+                Me.TabItemJDA_SelectDepartmentsTab.Visible = False
+                Me.TabItemJDA_SelectEmployeesTab.Visible = False
+                Me.TabItemJDA_SelectFunctionsTab.Visible = False
+
+            End If
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 

@@ -1273,6 +1273,8 @@
 
                 Transaction = NumericInputLeftSections_Transaction.EditValue
 
+                NumericInputLeftSections_Transaction.EditValue = Nothing
+
                 If _Controller.LoadSingleTransaction(_ViewModel, Transaction) Then
 
                     Me.FormAction = WinForm.Presentation.Methods.FormActions.Refreshing
@@ -1280,11 +1282,15 @@
                     GridLookUpEditLeftSection_PostPeriodFrom.SelectedValue = _ViewModel.PostPeriodCodeFrom
                     GridLookUpEditLeftSection_PostPeriodTo.SelectedValue = _ViewModel.PostPeriodCodeTo
 
+                    DataGridViewLeftSection_JournalEntries.CurrentView.AFActiveFilterString = ""
+
                     LoadGrid()
 
                     DataGridViewLeftSection_JournalEntries.SelectAllRowsByValue(1, Transaction, True)
 
                     Me.FormAction = WinForm.Presentation.Methods.FormActions.None
+
+                    Me.ClearChanged()
 
                     DataGridViewLeftSection_JournalEntries.CurrentView.GridViewSelectionChanged()
 
@@ -1294,7 +1300,6 @@
 
                 End If
 
-                NumericInputLeftSections_Transaction.EditValue = Nothing
                 NumericInputLeftSections_Transaction.Focus()
 
                 RefreshViewModel()

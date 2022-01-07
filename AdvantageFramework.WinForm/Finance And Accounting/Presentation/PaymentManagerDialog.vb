@@ -21,6 +21,8 @@
         Protected _Printed As Boolean = False
         Protected _Processed As Boolean = False
         Protected _PaymentManagerType As String
+        Protected _BankCode As String = String.Empty
+        Protected _Bank As AdvantageFramework.Database.Entities.Bank = Nothing
 
 #End Region
 
@@ -40,7 +42,7 @@
         End Sub
         Private Sub LoadCheckRunIDs()
 
-            Dim BankCode As String = String.Empty
+            'Dim BankCode As String = String.Empty
 
             SearchableComboBoxForm_CheckRunID.SelectedValue = Nothing
 
@@ -50,7 +52,7 @@
 
                 If SearchableComboBoxForm_Bank.HasASelectedValue Then
 
-                    BankCode = SearchableComboBoxForm_Bank.GetSelectedValue
+                    _BankCode = SearchableComboBoxForm_Bank.GetSelectedValue
 
                     If CheckBoxForm_IncludeExported.Checked Then
 
@@ -77,6 +79,8 @@
 
                 End If
 
+                _Bank = AdvantageFramework.Database.Procedures.Bank.LoadByBankCode(DbContext, _BankCode)
+
             End Using
 
         End Sub
@@ -93,27 +97,36 @@
         End Sub
         Private Sub EnableDisableAutoFTP()
 
-            Dim BankCode As String = String.Empty
-            Dim Bank As AdvantageFramework.Database.Entities.Bank = Nothing
+            'Dim BankCode As String = String.Empty
+            'Dim Bank As AdvantageFramework.Database.Entities.Bank = Nothing
 
             If SearchableComboBoxForm_Bank.HasASelectedValue Then
 
-                BankCode = SearchableComboBoxForm_Bank.GetSelectedValue
+                'BankCode = SearchableComboBoxForm_Bank.GetSelectedValue
 
                 Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
                     DbContext.Database.Connection.Open()
 
-                    Bank = AdvantageFramework.Database.Procedures.Bank.LoadByBankCode(DbContext, BankCode)
+                    _Bank = AdvantageFramework.Database.Procedures.Bank.LoadByBankCode(DbContext, _BankCode)
 
-                    If Bank IsNot Nothing Then
+                    If _Bank IsNot Nothing Then
 
-                        If String.IsNullOrWhiteSpace(Bank.PaymentManagerFTPUsername) = False AndAlso String.IsNullOrWhiteSpace(Bank.PaymentManagerFTPFolder) = False AndAlso
-                                String.IsNullOrWhiteSpace(Bank.PaymentManagerFTPAddress) = False AndAlso Bank.PaymentManagerFTPPort.GetValueOrDefault(0) <> 0 AndAlso
-                                String.IsNullOrWhiteSpace(Bank.PaymentManagerFTPExportFolder) = False AndAlso Bank.PaymentManagerFTPPrivateKey IsNot Nothing Then
+                        If _BankCode = "FAST" Then
 
-                            CheckBoxForm_AutoFTP.Checked = True
-                            CheckBoxForm_AutoFTP.Visible = True
+                            If String.IsNullOrWhiteSpace(_Bank.PaymentManagerFTPUsername) = False AndAlso String.IsNullOrWhiteSpace(_Bank.PaymentManagerFTPFolder) = False AndAlso
+                                String.IsNullOrWhiteSpace(_Bank.PaymentManagerFTPAddress) = False AndAlso _Bank.PaymentManagerFTPPort.GetValueOrDefault(0) <> 0 AndAlso
+                                String.IsNullOrWhiteSpace(_Bank.PaymentManagerFTPExportFolder) = False AndAlso _Bank.PaymentManagerFTPPrivateKey IsNot Nothing Then
+
+                                CheckBoxForm_AutoFTP.Checked = True
+                                CheckBoxForm_AutoFTP.Visible = True
+
+                            Else
+
+                                CheckBoxForm_AutoFTP.Checked = False
+                                CheckBoxForm_AutoFTP.Visible = False
+
+                            End If
 
                         Else
 
@@ -138,10 +151,20 @@
 
             End If
 
-            BankCode = SearchableComboBoxForm_Bank.GetSelectedValue
+            _BankCode = SearchableComboBoxForm_Bank.GetSelectedValue
 
         End Sub
         Private Sub EnableDisableActions()
+
+            'Dim BankCode As String = String.Empty
+
+            _BankCode = SearchableComboBoxForm_Bank.GetSelectedValue
+
+            Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                _Bank = AdvantageFramework.Database.Procedures.Bank.LoadByBankCode(DbContext, _BankCode)
+
+            End Using
 
             ButtonItemActions_Search.Enabled = (StepProgressBarForm_Progress.Visible = False AndAlso
                 SearchableComboBoxForm_Bank.HasASelectedValue AndAlso SearchableComboBoxForm_CheckRunID.HasASelectedValue)
@@ -154,7 +177,7 @@
             'StepProgressBarItemProgress_Step2.State = DevExpress.XtraEditors.StepProgressBarItemState.Active AndAlso
 
             'Transmit
-            ButtonItemActions_Transmit.Enabled = (StepProgressBarForm_Progress.Visible AndAlso _Processed)
+            ButtonItemActions_Transmit.Enabled = (StepProgressBarForm_Progress.Visible AndAlso _Processed AndAlso _Bank.PaymentManagerType = "FAST")
             'StepProgressBarForm_Progress.SelectedItem Is StepProgressBarItemProgress_Step3 AndAlso _Processed)
             'StepProgressBarItemProgress_Step3.State = DevExpress.XtraEditors.StepProgressBarItemState.Active AndAlso
             ButtonItemActions_Cancel.Enabled = StepProgressBarForm_Progress.Visible
@@ -258,7 +281,7 @@
 
                     Select Case _PaymentManagerType
 
-                        Case "ANCH", "FAST"
+                        Case "ANCH", "FAST", "HSB1"
 
                         Case Else
 
@@ -366,6 +389,20 @@
             If _Printed AndAlso _Processed AndAlso CheckBoxForm_AutoFTP.Checked Then
 
                 ButtonItemActions_Transmit.RaiseClick()
+
+            End If
+
+            If _Printed AndAlso _Processed AndAlso _Bank.PaymentManagerType = "HSB1" Then
+
+                ResetExportProcess()
+
+                SearchableComboBoxForm_CheckRunID.SelectedValue = Nothing
+
+                LoadCheckRunIDs()
+
+                EnableDisableActions()
+
+                AdvantageFramework.WinForm.MessageBox.Show("Export complete. Your file is located in your Payment Manager File Output Directory.")
 
             End If
 

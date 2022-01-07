@@ -1,6 +1,10 @@
-﻿Namespace Controller.FinanceAndAccounting
+﻿'Imports System.Text
+'Imports System.IO
+'Imports System.Xml.Serialization
 
-    Public Class PaymentManagerController
+Namespace Controller.FinanceAndAccounting
+
+        Public Class PaymentManagerController
         Inherits AdvantageFramework.Controller.BaseController
 
 #Region " Constants "
@@ -87,7 +91,6 @@
 #Region " Variables "
 
 
-
 #End Region
 
 #Region " Properties "
@@ -150,7 +153,7 @@
 
                 Select Case ViewModel.Bank.PaymentManagerType
 
-                    Case "FAST", "ANCH"
+                    Case "FAST", "ANCH", "HSB1", "HSB2"
 
                         Using DbContext As New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
@@ -181,6 +184,7 @@
 
                         ValidPaymentManagerType = True
                         ProcessedExportFile = ProcessFASTExportFile(ViewModel, PaymentManagerReports, ErrorMessage)
+                        'ProcessedExportFile = ProcessHSBCExportFile(ViewModel, PaymentManagerReports, ErrorMessage)
 
                     Case "AOC"
                     Case "ARP"
@@ -220,6 +224,11 @@
                     Case "WFBP"
                     Case "WFPV"
                     Case "WTB"
+                    Case "HSB1"
+
+                        ProcessedExportFile = ProcessHSBCExportFile(ViewModel, PaymentManagerReports, ErrorMessage)
+
+                    Case "HSB2"
 
                     Case Else
 
@@ -555,6 +564,230 @@
             End Try
 
             ProcessFASTExportFile = ProcessedExportFile
+
+        End Function
+
+        Private Function ProcessHSBCExportFile(ViewModel As AdvantageFramework.ViewModels.FinanceAndAccounting.PaymentManagerViewModel,
+                                                 PaymentManagerReports As Generic.List(Of AdvantageFramework.DTO.FinanceAndAccounting.PaymentManagerReport),
+                                                 ByRef ErrorMessage As String) As Boolean
+
+            Dim ProcessedExportFile As Boolean = False
+            Dim ExportDirectory As String = String.Empty
+            Dim ExportFile As String = String.Empty
+            Dim VendorCodes As Generic.List(Of String) = Nothing
+            Dim Vendor As AdvantageFramework.Database.Entities.Vendor = Nothing
+            Dim ProcessingErrorMessage As String = String.Empty
+            Dim PaymentManagerNumber As String = String.Empty
+            Dim MsgId As String = String.Empty
+            Dim VendorPaymentManagerReports As Generic.List(Of AdvantageFramework.DTO.FinanceAndAccounting.PaymentManagerReport) = Nothing
+            Dim VendorPaymentManagerReport As AdvantageFramework.DTO.FinanceAndAccounting.PaymentManagerReport = Nothing
+            Dim VendorInvoiceTotal As Decimal = 0
+            Dim GrpTotalCnt As Integer = 0
+            Dim GrpTotalPmt As Decimal = 0
+            Dim RunDate As Date = Now
+            Dim Document As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.Document
+            Dim CstmrCdtTrfInitn As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.CstmrCdtTrfInitn
+
+            Dim MsgIdStr As String = String.Empty
+            Dim InstrId As String = String.Empty 'Unique transaction reference
+            Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
+            Dim Bank As AdvantageFramework.Database.Entities.Bank = Nothing
+            Dim Pmtinf As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.PmtInf
+            Dim Strd As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.Strd
+
+            CstmrCdtTrfInitn = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.CstmrCdtTrfInitn
+            Document = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.Document
+
+
+            Try
+
+                Using DbContext As New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+
+                    DbContext.Database.Connection.Open()
+
+                    Try
+
+                        PaymentManagerNumber = AdvantageFramework.Database.Procedures.AssignNumber.GetNextNumber(DbContext, "PYMT_MGR_NBR").ToString
+
+                    Catch ex As Exception
+
+                        PaymentManagerNumber = "-1"
+
+                        ProcessingErrorMessage = AdvantageFramework.ClassUtilities.GetAllExceptionMessages(ex)
+
+                    End Try
+
+                    If PaymentManagerNumber = "-1" Then
+
+                        Throw New Exception(ProcessingErrorMessage)
+
+                    End If
+
+                    If My.Computer.FileSystem.DirectoryExists(ViewModel.Bank.PaymentManagerDirectory) = False Then
+
+                        Throw New Exception("The File Output Directory (" & ViewModel.Bank.PaymentManagerDirectory & ") For bank code '" & ViewModel.Bank.Code & "' does not exist.")
+
+                    End If
+
+                    ExportDirectory = ViewModel.Bank.PaymentManagerDirectory
+
+                    If Right(ExportDirectory, 1) <> "\" Then
+                        ExportDirectory += "\"
+                    End If
+
+                    ExportFile = ViewModel.Bank.PaymentManagerType & "_" & PaymentManagerNumber & "_" & RunDate.ToString("HHmmss") & RunDate.ToString("MMddyyyy")
+
+                    MsgIdStr = ExportFile
+
+                    If ViewModel.Bank.PaymentManagerType = "HSB1" Then
+
+                        ExportFile &= ".xml"
+
+                    End If
+
+                    Try
+
+                        Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+
+                    Catch ex As Exception
+                        Agency = New AdvantageFramework.Database.Entities.Agency
+                    End Try
+
+                    'File header
+
+                    CstmrCdtTrfInitn.GrpHdr.MsgId = MsgIdStr
+                    CstmrCdtTrfInitn.GrpHdr.CreDtTm = RunDate.ToString("yyyy-MM-dd") & "T" & RunDate.ToString("HH:mm:ss")  '"2021-09-16T09:51:07"
+                    CstmrCdtTrfInitn.GrpHdr.Authstn.Cd = "AUTH"
+
+                    'CstmrCdtTrfInitn.GrpHdr.NbOfTxs = ?? Later
+                    'CstmrCdtTrfInitn.GrpHdr.CtrlSum = ?? Later
+
+                    CstmrCdtTrfInitn.GrpHdr.InitgPty.Id.OrgId.Othr.Id = ViewModel.Bank.AccountNumber 'Bank Acct Nbr
+
+                    Try
+
+                        VendorCodes = PaymentManagerReports.Select(Function(Entity) Entity.PayToVendorCode).Distinct.ToList
+
+                    Catch ex As Exception
+                        VendorCodes = New Generic.List(Of String)
+                    End Try
+
+                    For Each VendorCode In VendorCodes
+
+                        Pmtinf = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.PmtInf
+
+                        Pmtinf.PmtMtd = "CHK"
+                        'CstmrCdtTrfInitn.PmtInf.NbOfTxs = ?? Later
+                        'CstmrCdtTrfInitn.PmtInf.CtrlSum = ?? Later
+
+                        Pmtinf.PmtTpInf.SvcLvl.Cd = "NURG"  'NURG (Non Urgent)
+
+                        Pmtinf.ReqdExctnDt = RunDate.ToString("yyyy-MM-dd") '"2021-09-16" 'Check Date
+
+                        Try
+
+                            VendorPaymentManagerReports = PaymentManagerReports.Where(Function(Entity) Entity.PayToVendorCode = VendorCode)
+
+                        Catch ex As Exception
+                            VendorPaymentManagerReport = New AdvantageFramework.DTO.FinanceAndAccounting.PaymentManagerReport
+                        End Try
+
+                        Try
+
+                            Vendor = DbContext.Vendors.Find(VendorCode)
+
+                        Catch ex As Exception
+                            Vendor = New AdvantageFramework.Database.Entities.Vendor
+                        End Try
+
+                        Pmtinf.Dbtr.Nm = Agency.Name
+                        Pmtinf.Dbtr.PstlAdr.StrtNm = Agency.Address ' "123 Street Name"
+                        Pmtinf.Dbtr.PstlAdr.PstCd = Agency.Zip '"M1M1 1M1"
+                        Pmtinf.Dbtr.PstlAdr.TwnNm = Agency.City '"Toronto"
+                        Pmtinf.Dbtr.PstlAdr.CtrySubDvsn = Agency.State
+                        Pmtinf.Dbtr.PstlAdr.Ctry = Agency.Country '"CA"
+
+                        Pmtinf.DbtrAcct.Id.Othr.Id = ViewModel.Bank.AccountNumber ' Acct Nbr (9 length) 
+
+                        Pmtinf.DbtrAgt.FinInstnId.BIC = Strings.Left(ViewModel.Bank.PaymentManagerID, 11)  '"HKBCCATT"
+                        Pmtinf.DbtrAgt.FinInstnId.ClrSysMmbId.MmbId = ViewModel.Bank.PaymentManagerWord  '"001610002" 
+                        Pmtinf.DbtrAgt.FinInstnId.Nm = "HSBC Canada"  'Name of the intermediary bank
+                        Pmtinf.DbtrAgt.FinInstnId.PstlAdr.Ctry = "CA"
+
+                        Pmtinf.CdtTrfTxInf.Amt.InstdAmt.Ccy = "CAD" '<InstdAmt Ccy="CAD">300.00</InstdAmt>
+                        'Pmtinf.CdtTrfTxInf.Amt.InstdAmt.Text = ?? Later
+
+                        Pmtinf.CdtTrfTxInf.Cdtr.Nm = Vendor.Name '"Vendor Name"
+                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.StrtNm = Vendor.PayToAddressLine1
+                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.PstCd = Vendor.PayToZipCode '"M1M1 1M1"
+                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.TwnNm = Vendor.PayToCity '"Toronto"
+                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.CtrySubDvsn = Vendor.PayToState '"ON" 'Addr 2,3,4??
+                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.Ctry = Vendor.PayToCountry '"CA"
+
+                        'All invoices related to this Vendor
+                        VendorPaymentManagerReports = PaymentManagerReports.Where(Function(Entity) Entity.PayToVendorCode = VendorCode).ToList
+
+                        Pmtinf.CdtTrfTxInf.Amt.InstdAmt.Text = VendorPaymentManagerReports.Sum(Function(Entity) Entity.CheckAmount)
+
+                        Pmtinf.NbOfTxs = VendorPaymentManagerReports.Count 'or many??
+                        Pmtinf.CtrlSum = VendorPaymentManagerReports.Sum(Function(Entity) Entity.CheckAmount)
+
+                        If Pmtinf.NbOfTxs > 0 Then GrpTotalCnt += Pmtinf.NbOfTxs
+                        If Pmtinf.CtrlSum > 0 Then GrpTotalPmt += Pmtinf.CtrlSum
+
+                        For Each PaymentManagerReport In VendorPaymentManagerReports  'Loop AP Invoices here
+                            'For x = 1 To 1
+
+                            If Pmtinf.PmtInfId = Nothing Then
+
+                                Pmtinf.PmtInfId = PaymentManagerReport.APCheckNumber
+                                InstrId = Strings.Right("0000000000000000" + CStr(PaymentManagerReport.APCheckNumber), 16)
+                                Pmtinf.CdtTrfTxInf.PmtId.InstrId = InstrId 'Unique transaction reference (16 max)
+                                Pmtinf.CdtTrfTxInf.PmtId.EndToEndId = InstrId  'Unique transaction reference (16 max)
+                                Pmtinf.CdtTrfTxInf.ChqInstr.ChqNb = PaymentManagerReport.APCheckNumber
+
+                                ViewModel.Bank.BankExportSpec = AdvantageFramework.Database.Procedures.BankExportSpec.LoadByBankCode(DbContext, ViewModel.Bank.Code)
+
+                                Pmtinf.CdtTrfTxInf.ChqInstr.FrmsCd = ViewModel.Bank.BankExportSpec.BankID '"AB6" 'Special handling code
+
+                            End If
+
+                            Strd = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.Strd
+
+                            Strd.RfrdDocInf.Nb = PaymentManagerReport.APInvoiceNumber  'Ap Inv #
+                            Strd.RfrdDocAmt.RmtdAmt.Ccy = "CAD"
+                            Strd.RfrdDocAmt.RmtdAmt.Text = PaymentManagerReport.APCheckAmount.Value.ToString("###.00")
+
+                            Pmtinf.CdtTrfTxInf.RmtInf.Strd.Add(Strd)
+
+                        Next
+
+                        CstmrCdtTrfInitn.PmtInf.Add(Pmtinf)  'Add(Pmtinf)
+
+                    Next
+
+                    CstmrCdtTrfInitn.GrpHdr.NbOfTxs = GrpTotalCnt
+                    CstmrCdtTrfInitn.GrpHdr.CtrlSum = GrpTotalPmt
+
+                    Document.CstmrCdtTrfInitn = CstmrCdtTrfInitn
+
+                    My.Computer.FileSystem.WriteAllText(ExportDirectory + ExportFile, AdvantageFramework.BaseClasses.CreateXML(Document), False)
+
+                    ViewModel.BankExportFile = ExportFile
+
+                    ProcessedExportFile = True
+
+                End Using
+
+            Catch ex As Exception
+
+                ProcessedExportFile = False
+
+                ErrorMessage = "Failed creating export file." & System.Environment.NewLine & System.Environment.NewLine & AdvantageFramework.ClassUtilities.GetAllExceptionMessages(ex)
+
+            End Try
+
+            ProcessHSBCExportFile = ProcessedExportFile
 
         End Function
 

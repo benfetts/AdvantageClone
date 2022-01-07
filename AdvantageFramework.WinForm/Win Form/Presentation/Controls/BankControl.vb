@@ -2699,6 +2699,12 @@
 
                     If Bank IsNot Nothing Then
 
+                        If Bank.PaymentManagerType = "HSB1" Then
+
+                            LabelSetup_BankID.Text = "Special Handling Code:"
+
+                        End If
+
                         LoadEntityDetails(Nothing)
 
                         CheckBoxSetup_PaymentManager.CheckValue = Bank.PaymentManager.GetValueOrDefault(0)
@@ -3319,6 +3325,11 @@
                     TextBoxPaymentManager_CustomerID.Enabled = True
                     TextBoxPaymentManager_Word.Enabled = False
                     TextBoxPaymentManager_Word.Visible = False
+
+                ElseIf SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "HSB1" Then
+
+                    LabelPaymentManager_CustomerID.Text = "Debtor BIC:"
+                    LabelPaymentManager_Word.Text = "Clearing Code:"
 
                 ElseIf SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "PMX" Then
 

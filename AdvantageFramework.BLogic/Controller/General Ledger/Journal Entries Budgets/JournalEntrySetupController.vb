@@ -158,7 +158,8 @@
             JournalEntrySetupViewModel.CancelEnabled = False
 
         End Sub
-        Public Function LoadSingleTransaction(ByRef JournalEntrySetupViewModel As AdvantageFramework.ViewModels.GeneralLedger.JournalEntriesBudgets.JournalEntrySetupViewModel, Transaction As Integer) As Boolean
+        Public Function LoadSingleTransaction(ByRef JournalEntrySetupViewModel As AdvantageFramework.ViewModels.GeneralLedger.JournalEntriesBudgets.JournalEntrySetupViewModel, Transaction As Integer,
+                                              ByRef IsVoided As Boolean) As Boolean
 
             Dim GeneralLedger As AdvantageFramework.Database.Entities.GeneralLedger = Nothing
             Dim Loaded As Boolean = False
@@ -169,12 +170,20 @@
 
                 If GeneralLedger IsNot Nothing Then
 
-                    JournalEntrySetupViewModel.PostPeriodCodeFrom = GeneralLedger.PostPeriodCode
-                    JournalEntrySetupViewModel.PostPeriodCodeTo = GeneralLedger.PostPeriodCode
+                    If GeneralLedger.GLSourceCode <> "VI" Then
 
-                    RefreshJournalEntries(DbContext, JournalEntrySetupViewModel)
+                        JournalEntrySetupViewModel.PostPeriodCodeFrom = GeneralLedger.PostPeriodCode
+                        JournalEntrySetupViewModel.PostPeriodCodeTo = GeneralLedger.PostPeriodCode
 
-                    Loaded = True
+                        RefreshJournalEntries(DbContext, JournalEntrySetupViewModel)
+
+                        Loaded = True
+
+                    Else
+
+                        IsVoided = True
+
+                    End If
 
                 End If
 

@@ -1268,6 +1268,7 @@
             Dim Transaction As Integer = Nothing
             Dim MediaManagerSearchResult As AdvantageFramework.MediaManager.Classes.MediaManagerSearchResult = Nothing
             Dim OrderNumberFound As Boolean = False
+            Dim IsVoided As Boolean = False
 
             If NumericInputLeftSections_Transaction.EditValue IsNot Nothing Then
 
@@ -1275,7 +1276,7 @@
 
                 NumericInputLeftSections_Transaction.EditValue = Nothing
 
-                If _Controller.LoadSingleTransaction(_ViewModel, Transaction) Then
+                If _Controller.LoadSingleTransaction(_ViewModel, Transaction, IsVoided) Then
 
                     Me.FormAction = WinForm.Presentation.Methods.FormActions.Refreshing
 
@@ -1296,7 +1297,15 @@
 
                 Else
 
-                    AdvantageFramework.WinForm.MessageBox.Show("Transaction '" & Transaction & "' was not found.")
+                    If IsVoided Then
+
+                        AdvantageFramework.WinForm.MessageBox.Show("Transaction '" & Transaction & "' was voided.")
+
+                    Else
+
+                        AdvantageFramework.WinForm.MessageBox.Show("Transaction '" & Transaction & "' was not found.")
+
+                    End If
 
                 End If
 

@@ -153,14 +153,16 @@
             End Try
 
         End Function
-        '<System.Runtime.CompilerServices.Extension()>
-        'Public Function GetAllExceptionMessages(Exception As Exception) As String
+        <System.Runtime.CompilerServices.Extension()>
+        Public Function GetAllExceptionMessages(Exception As Exception) As String
 
-        '    Dim Messages As IEnumerable(Of String) = Exception.FromHierarchy(Function(Except) Except.InnerException).[Select](Function(Except) Except.Message)
+            'Dim Messages As IEnumerable(Of String) = Exception.FromHierarchy(Function(Except) Except.InnerException).[Select](Function(Except) Except.Message)
 
-        '    GetAllExceptionMessages = String.Join(Environment.NewLine, Messages)
+            'GetAllExceptionMessages = String.Join(Environment.NewLine, Messages)
 
-        'End Function
+            GetAllExceptionMessages = ""
+
+        End Function
 
 #End Region
 

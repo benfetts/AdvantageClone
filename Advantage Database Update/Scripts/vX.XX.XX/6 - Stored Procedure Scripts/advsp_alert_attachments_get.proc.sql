@@ -47,7 +47,9 @@ BEGIN
 			[TOTAL_REJECTED] INT,
 			[TOTAL_DEFERRED] INT,
 			[TOTAL_MARKUPS] INT,
-			[IS_LATEST] BIT
+			[IS_LATEST] BIT,
+			[TOTAL_COMMENTS] INT,
+			[CAN_DELETE] BIT DEFAULT 1
 		);
 		DECLARE
 			@IS_PROOF BIT,
@@ -350,7 +352,8 @@ BEGIN
 			SET 
 				VERSIONNUMBER = NULL, 
 				RAWVERSIONNUMBER = NULL, 
-				FILE_ORDER = NULL
+				FILE_ORDER = NULL,
+				CAN_DELETE = 1
 			;
 		END
 		ELSE
@@ -367,11 +370,19 @@ BEGIN
 				IS_LATEST = DD.IsLatestDocument,
 				VERSIONNUMBER = DD.[Version],
 				TOTAL_VERSIONS = DD.TotalVersions,
-				TOTAL_VERSIONS_FOR_ALERT_ID = DD.TotalVersionsForAlertID
+				TOTAL_VERSIONS_FOR_ALERT_ID = DD.TotalVersionsForAlertID,
+				TOTAL_COMMENTS = DD.TotalComments
 			FROM
 				[dbo].[advtf_proofing_get_documents_details] (@ALERT_ID) DD
 				INNER JOIN @ATTACHMENTS A ON DD.DocumentID = A.DOCUMENTID
 			;
+			UPDATE @ATTACHMENTS SET CAN_DELETE =	CASE
+														WHEN TOTAL_COMMENTS > 0 THEN 0
+														WHEN TOTAL_MARKUPS > 0 THEN 0
+														WHEN TOTAL_APPROVED > 0 THEN 0
+														WHEN TOTAL_DEFERRED > 0 THEN 0
+														WHEN TOTAL_REJECTED > 0 THEN 0
+													END
 		END
 	END
 	--	RETURN
@@ -415,7 +426,9 @@ BEGIN
 			[TotalRejected] = ISNULL(A.TOTAL_REJECTED, 0),
 			[TotalDeferred] = ISNULL(A.TOTAL_DEFERRED, 0),
 			[TotalMarkups] = ISNULL(A.TOTAL_MARKUPS, 0),
-			[IsLatest] = ISNULL(A.IS_LATEST, 0)
+			[IsLatest] = ISNULL(A.IS_LATEST, 0),
+			[TotalComments] = ISNULL(A.TOTAL_COMMENTS, 0),
+			[CanDelete] = ISNULL(A.CAN_DELETE, 1)
 		FROM 
 			@ATTACHMENTS A 
 		ORDER BY 
@@ -465,7 +478,9 @@ BEGIN
 			[TotalRejected] = ISNULL(A.TOTAL_REJECTED, 0),
 			[TotalDeferred] = ISNULL(A.TOTAL_DEFERRED, 0),
 			[TotalMarkups] = ISNULL(A.TOTAL_MARKUPS, 0),
-			[IsLatest] = ISNULL(A.IS_LATEST, 0)
+			[IsLatest] = ISNULL(A.IS_LATEST, 0),
+			[TotalComments] = ISNULL(A.TOTAL_COMMENTS, 0),
+			[CanDelete] = ISNULL(A.CAN_DELETE, 1)
 		FROM 
 			@ATTACHMENTS A 
 		ORDER BY 			

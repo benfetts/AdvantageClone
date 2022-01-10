@@ -226,6 +226,7 @@ Namespace Controller.FinanceAndAccounting
                     Case "WTB"
                     Case "HSB1"
 
+                        ValidPaymentManagerType = True
                         ProcessedExportFile = ProcessHSBCExportFile(ViewModel, PaymentManagerReports, ErrorMessage)
 
                     Case "HSB2"

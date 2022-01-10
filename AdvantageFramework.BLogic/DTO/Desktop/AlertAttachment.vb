@@ -92,9 +92,11 @@
         Public Property TotalRejected As Integer? = 0
         Public Property TotalDeferred As Integer? = 0
         Public Property TotalMarkups As Integer? = 0
+        Public Property TotalComments As Integer? = 0
         Public Property IsLatest As Boolean? = False
         Public Property LastMarkupDate As DateTime? = Nothing
         Public Property LastMarkupFullName As String = String.Empty
+        Public Property CanDelete As Boolean? = True
         Public ReadOnly Property GeneratedString As String
             Get
                 If Generated IsNot Nothing Then

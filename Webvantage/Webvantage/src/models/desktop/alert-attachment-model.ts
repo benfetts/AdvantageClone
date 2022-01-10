@@ -48,7 +48,9 @@ export class AlertAttachmentModel extends ModelBase {
     TotalRejected: number;
     TotalDeferred: number;
     TotalMarkups: number;
+    TotalComments: number;
     IsLatest: boolean = false;
+    CanDelete: boolean = true;
     get LastMarkupDate(): Date {
         return this._LastMarkupDate;
     }

@@ -361,6 +361,7 @@
         Private Sub ButtonItemActions_Process_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ButtonItemActions_Process.Click
 
             Dim ErrorMessage As String = String.Empty
+            Dim Updated As Boolean
 
             Me.ShowWaitForm("Processing...")
 
@@ -394,15 +395,42 @@
 
             If _Printed AndAlso _Processed AndAlso _Bank.PaymentManagerType = "HSB1" Then
 
-                ResetExportProcess()
+                Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
-                SearchableComboBoxForm_CheckRunID.SelectedValue = Nothing
+                    DbContext.Database.Connection.Open()
+                    DbContext.Configuration.AutoDetectChangesEnabled = False
 
-                LoadCheckRunIDs()
+                    Try
 
-                EnableDisableActions()
+                        Updated = DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.CHECK_REGISTER SET EXPORT_DATE = '{0}' WHERE CHECK_RUN_ID = '{1}'", DateTime.Now, SearchableComboBoxForm_CheckRunID.SelectedValue))
 
-                AdvantageFramework.WinForm.MessageBox.Show("Export complete. Your file is located in your Payment Manager File Output Directory.")
+                    Catch ex As Exception
+                        AdvantageFramework.WinForm.MessageBox.Show(ex.Message)
+                    End Try
+
+                End Using
+
+                If Updated Then
+
+                    ResetExportProcess()
+
+                    SearchableComboBoxForm_CheckRunID.SelectedValue = Nothing
+
+                    LoadCheckRunIDs()
+
+                    EnableDisableActions()
+
+                    AdvantageFramework.WinForm.MessageBox.Show("Export complete. Your file is located in your Payment Manager File Output Directory.")
+
+                Else
+
+                    ResetExportProcess()
+
+                    EnableDisableActions()
+
+                    AdvantageFramework.WinForm.MessageBox.Show("Unable to update the EFILE_DATE in CHECK_REGISTER.")
+
+                End If
 
             End If
 
@@ -479,7 +507,13 @@
                         DbContext.Database.Connection.Open()
                         DbContext.Configuration.AutoDetectChangesEnabled = False
 
-                        Updated = DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.CHECK_REGISTER SET EXPORT_DATE = '{0}' WHERE CHECK_RUN_ID = '{1}'", DateTime.Now, SearchableComboBoxForm_CheckRunID.SelectedValue))
+                        Try
+
+                            Updated = DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.CHECK_REGISTER SET EXPORT_DATE = '{0}' WHERE CHECK_RUN_ID = '{1}'", DateTime.Now, SearchableComboBoxForm_CheckRunID.SelectedValue))
+
+                        Catch ex As Exception
+                            AdvantageFramework.WinForm.MessageBox.Show(ex.Message)
+                        End Try
 
                     End Using
 

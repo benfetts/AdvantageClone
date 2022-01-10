@@ -587,8 +587,8 @@
                                                href="javascript:void(0)" title="Click to download asset" click.delegate="_downloadAttachment(attachment)"
                                                style=""><span class="wvi wvi-arrow-down"></span></a>
                                             <a name="remove_${attachment.DocumentID}" id="remove_${attachment.DocumentID}" class="thumbnail-link"
-                                               href="javascript:void(0)" title="Click to delete" click.delegate="deleteAttachment(attachment)"
-                                               style=""><span class="wvi wvi-delete" style="color: red;"></span></a>
+                                               href="javascript:void(0)" click.delegate="deleteAttachment(attachment)"
+                                               style=""><span if.bind="attachment.CanDelete == false" title="Cannot delete" class="wvi wvi-delete" style="color: #767676;"></span><span if.bind="attachment.CanDelete == true" title="Click to delete" class="wvi wvi-delete" style="color: red;"></span></a>
                                         </div>
                                     </div>
                                 </div>

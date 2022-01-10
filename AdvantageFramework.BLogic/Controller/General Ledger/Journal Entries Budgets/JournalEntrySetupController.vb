@@ -170,7 +170,11 @@
 
                 If GeneralLedger IsNot Nothing Then
 
-                    If GeneralLedger.GLSourceCode <> "VI" Then
+                    If GeneralLedger.GLSourceCode = "VI" OrElse GeneralLedger.IsVoided.GetValueOrDefault(0) = 1 Then
+
+                        IsVoided = True
+
+                    Else
 
                         JournalEntrySetupViewModel.PostPeriodCodeFrom = GeneralLedger.PostPeriodCode
                         JournalEntrySetupViewModel.PostPeriodCodeTo = GeneralLedger.PostPeriodCode
@@ -178,10 +182,6 @@
                         RefreshJournalEntries(DbContext, JournalEntrySetupViewModel)
 
                         Loaded = True
-
-                    Else
-
-                        IsVoided = True
 
                     End If
 

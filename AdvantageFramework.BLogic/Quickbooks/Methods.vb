@@ -1452,7 +1452,10 @@
                                  Select New AdvantageFramework.Quickbooks.Classes.Item(Entity)).ToList
 
                         AccountList = DataService.FindAll(Of Intuit.Ipp.Data.Account)(New Intuit.Ipp.Data.Account).Where(Function(A) A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.Expense OrElse
-                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.CostofGoodsSold).ToList
+                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.CostofGoodsSold OrElse
+                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.OtherCurrentLiability OrElse
+                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.LongTermLiability OrElse
+                                                                                                                                     A.AccountType = Intuit.Ipp.Data.AccountTypeEnum.OtherExpense).ToList
 
                         Accounts = (From Entity In AccountList
                                     Select New AdvantageFramework.Quickbooks.Classes.Account(Entity)).ToList

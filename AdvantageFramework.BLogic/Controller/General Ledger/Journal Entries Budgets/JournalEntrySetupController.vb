@@ -170,7 +170,7 @@
 
                 If GeneralLedger IsNot Nothing Then
 
-                    If GeneralLedger.GLSourceCode = "VI" OrElse GeneralLedger.IsVoided.GetValueOrDefault(0) = 1 Then
+                    If GeneralLedger.IsVoided.GetValueOrDefault(0) = 1 Then
 
                         IsVoided = True
 

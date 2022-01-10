@@ -515,14 +515,14 @@
 
                     Result = New AdvantageFramework.Proofing.Classes.ProofingCanDeleteDocumentResult
                     Result.CanDelete = 1
-                    Result.Message = String.Empty
+                    Result.CanDeleteMessage = String.Empty
 
                 End If
 
             Catch ex As Exception
                 Result = New AdvantageFramework.Proofing.Classes.ProofingCanDeleteDocumentResult
                 Result.CanDelete = 0
-                Result.Message = AdvantageFramework.StringUtilities.FullErrorToString(ex)
+                Result.CanDeleteMessage = AdvantageFramework.StringUtilities.FullErrorToString(ex)
             End Try
 
             Return Result

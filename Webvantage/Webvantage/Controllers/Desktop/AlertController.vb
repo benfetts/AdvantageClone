@@ -2468,18 +2468,10 @@ Namespace Controllers.Desktop
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                Try
-
-                    Result = AdvantageFramework.Proofing.CanDeleteDocument(DbContext, AlertID, DocumentID)
-
-                Catch ex As Exception
-                    Result = New AdvantageFramework.Proofing.Classes.ProofingCanDeleteDocumentResult
-                    Result.CanDelete = False
-                    Result.Message = AdvantageFramework.StringUtilities.FullErrorToString(ex)
-                End Try
+                Result = AdvantageFramework.Proofing.CanDeleteDocument(DbContext, AlertID, DocumentID)
 
                 CanDelete = Result.CanDelete
-                ErrorMessage = Result.Message
+                ErrorMessage = Result.CanDeleteMessage
 
             End Using
 

@@ -113,7 +113,7 @@ export class CommentView extends ModuleBase {
     @bindable AllowProofHQ: boolean = false;
     @bindable dialogTitle: string;
     @bindable fullScreenType: number = 0;
-    @bindable saveButtonText: string = "Add";
+    @bindable saveButtonText: string = "Save";
     @bindable isUploadingFile: boolean = true;
     @bindable uploadingFilePrimary: string = "k-primary";
     @bindable uploadingLinkPrimary: string = "";
@@ -333,16 +333,16 @@ export class CommentView extends ModuleBase {
         let me = this;
         me.fullScreenType = fullScreenType;
         if (me.fullScreenType == 0) {
-            me.saveButtonText = "Add";
+            //me.saveButtonText = "Add";
             me.dialogTitle = "Add Comment";
             me.fullScreenComment.value(me.newCommentInput.value());
             me.isEdit = false;
         } else if (me.fullScreenType == 1) {
-            me.saveButtonText = "Update";
+            //me.saveButtonText = "Update";
             me.dialogTitle = "Edit Comment";
             me.isEdit = true;
         } else {
-            me.saveButtonText = "Add";
+            //me.saveButtonText = "Add";
             me.dialogTitle = "Add Comment";
             me.fullScreenComment.value(me.newCommentInput.value());
             me.isEdit = false;
@@ -365,7 +365,7 @@ export class CommentView extends ModuleBase {
     closeFullScreenComment() {
         this.fullScreenType = 0;
         this.commentId = null;
-        this.saveButtonText = "Add";
+        //this.saveButtonText = "Add";
         this.fullScreenComment.value(null);
         this.clearAttachmentUploadAndSync();
         this.links = [];
@@ -592,7 +592,7 @@ export class CommentView extends ModuleBase {
         vm.getAllowProofHQ();
         this.commentDialogActions = [
             {
-                text: 'Add',
+                text: this.saveButtonText,
                 primary: true,
                 action: function (e) {
                     vm.addComment(true);

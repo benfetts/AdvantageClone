@@ -31,9 +31,6 @@
             Me.LabelTopSection_ReportSeries = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.ComboBoxTopSection_Report = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
             Me.TabControlForm_JDA = New AdvantageFramework.WinForm.Presentation.Controls.TabControl()
-            Me.TabControlSelectClientsTab_SelectClients = New DevComponents.DotNetBar.TabControlPanel()
-            Me.CDPChooserControlSelectClients_SelectClients = New AdvantageFramework.WinForm.Presentation.Controls.CDPChooserControl()
-            Me.TabItemJDA_SelectClientsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions = New DevComponents.DotNetBar.TabControlPanel()
             Me.DateTimePickerAgingDate = New AdvantageFramework.WinForm.Presentation.Controls.DateTimePicker()
             Me.RadioButtonForm_Invoice = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
@@ -53,6 +50,9 @@
             Me.ComboBoxForm_EndPostPeriod = New AdvantageFramework.WinForm.Presentation.Controls.ComboBox()
             Me.Label1 = New AdvantageFramework.WinForm.Presentation.Controls.Label()
             Me.TabItemJDA_VersionAndOptionsTab = New DevComponents.DotNetBar.TabItem(Me.components)
+            Me.TabControlSelectClientsTab_SelectClients = New DevComponents.DotNetBar.TabControlPanel()
+            Me.CDPChooserControlSelectClients_SelectClients = New AdvantageFramework.WinForm.Presentation.Controls.CDPChooserControl()
+            Me.TabItemJDA_SelectClientsTab = New DevComponents.DotNetBar.TabItem(Me.components)
             Me.TabControlPanelSelectOfficesTab_SelectOffices = New DevComponents.DotNetBar.TabControlPanel()
             Me.DataGridViewSelectOffices_Offices = New AdvantageFramework.WinForm.Presentation.Controls.DataGridView()
             Me.RadioButtonSelectOffices_AllOffices = New AdvantageFramework.WinForm.Presentation.Controls.RadioButtonControl()
@@ -63,11 +63,11 @@
             Me.PanelForm_TopSection.SuspendLayout()
             CType(Me.TabControlForm_JDA, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.TabControlForm_JDA.SuspendLayout()
-            Me.TabControlSelectClientsTab_SelectClients.SuspendLayout()
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.SuspendLayout()
             CType(Me.DateTimePickerAgingDate, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.GroupBox2.SuspendLayout()
             Me.GroupBox1.SuspendLayout()
+            Me.TabControlSelectClientsTab_SelectClients.SuspendLayout()
             Me.TabControlPanelSelectOfficesTab_SelectOffices.SuspendLayout()
             Me.Panel1.SuspendLayout()
             Me.PanelForm_Bottom.SuspendLayout()
@@ -217,8 +217,8 @@
             Me.TabControlForm_JDA.CanReorderTabs = False
             Me.TabControlForm_JDA.ColorScheme.TabBackground = System.Drawing.Color.White
             Me.TabControlForm_JDA.ColorScheme.TabPanelBackground = System.Drawing.Color.White
-            Me.TabControlForm_JDA.Controls.Add(Me.TabControlSelectClientsTab_SelectClients)
             Me.TabControlForm_JDA.Controls.Add(Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions)
+            Me.TabControlForm_JDA.Controls.Add(Me.TabControlSelectClientsTab_SelectClients)
             Me.TabControlForm_JDA.Controls.Add(Me.TabControlPanelSelectOfficesTab_SelectOffices)
             Me.TabControlForm_JDA.Location = New System.Drawing.Point(12, 3)
             Me.TabControlForm_JDA.Name = "TabControlForm_JDA"
@@ -231,43 +231,6 @@
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_VersionAndOptionsTab)
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_SelectOfficesTab)
             Me.TabControlForm_JDA.Tabs.Add(Me.TabItemJDA_SelectClientsTab)
-            '
-            'TabControlSelectClientsTab_SelectClients
-            '
-            Me.TabControlSelectClientsTab_SelectClients.Controls.Add(Me.CDPChooserControlSelectClients_SelectClients)
-            Me.TabControlSelectClientsTab_SelectClients.DisabledBackColor = System.Drawing.Color.Empty
-            Me.TabControlSelectClientsTab_SelectClients.Dock = System.Windows.Forms.DockStyle.Fill
-            Me.TabControlSelectClientsTab_SelectClients.Location = New System.Drawing.Point(0, 27)
-            Me.TabControlSelectClientsTab_SelectClients.Name = "TabControlSelectClientsTab_SelectClients"
-            Me.TabControlSelectClientsTab_SelectClients.Padding = New System.Windows.Forms.Padding(1)
-            Me.TabControlSelectClientsTab_SelectClients.Size = New System.Drawing.Size(1017, 540)
-            Me.TabControlSelectClientsTab_SelectClients.Style.BackColor1.Color = System.Drawing.Color.White
-            Me.TabControlSelectClientsTab_SelectClients.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
-            Me.TabControlSelectClientsTab_SelectClients.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-            Me.TabControlSelectClientsTab_SelectClients.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
-            Me.TabControlSelectClientsTab_SelectClients.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
-            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
-            Me.TabControlSelectClientsTab_SelectClients.Style.GradientAngle = 90
-            Me.TabControlSelectClientsTab_SelectClients.TabIndex = 3
-            Me.TabControlSelectClientsTab_SelectClients.TabItem = Me.TabItemJDA_SelectClientsTab
-            '
-            'CDPChooserControlSelectClients_SelectClients
-            '
-            Me.CDPChooserControlSelectClients_SelectClients.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-            Me.CDPChooserControlSelectClients_SelectClients.BackColor = System.Drawing.Color.Transparent
-            Me.CDPChooserControlSelectClients_SelectClients.Location = New System.Drawing.Point(4, 4)
-            Me.CDPChooserControlSelectClients_SelectClients.Name = "CDPChooserControlSelectClients_SelectClients"
-            Me.CDPChooserControlSelectClients_SelectClients.Size = New System.Drawing.Size(1009, 532)
-            Me.CDPChooserControlSelectClients_SelectClients.TabIndex = 1
-            '
-            'TabItemJDA_SelectClientsTab
-            '
-            Me.TabItemJDA_SelectClientsTab.AttachedControl = Me.TabControlSelectClientsTab_SelectClients
-            Me.TabItemJDA_SelectClientsTab.Name = "TabItemJDA_SelectClientsTab"
-            Me.TabItemJDA_SelectClientsTab.Text = "Select Clients"
-            Me.TabItemJDA_SelectClientsTab.Visible = False
             '
             'TabControlPanelVersionAndOptionsTab_VersionAndOptions
             '
@@ -354,8 +317,7 @@
             Me.DateTimePickerAgingDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.DateTimePickerAgingDate.TabIndex = 58
             Me.DateTimePickerAgingDate.TabOnEnter = True
-            Me.DateTimePickerAgingDate.Value = New Date(2013, 4, 16, 10, 23, 19, 434)
-            Me.DateTimePickerAgingDate.Visible = False
+            Me.DateTimePickerAgingDate.Value = New Date(2022, 1, 12, 0, 0, 0, 0)
             '
             'RadioButtonForm_Invoice
             '
@@ -376,7 +338,6 @@
             Me.RadioButtonForm_Invoice.TabIndex = 60
             Me.RadioButtonForm_Invoice.TabOnEnter = True
             Me.RadioButtonForm_Invoice.Text = "Invoice"
-            Me.RadioButtonForm_Invoice.Visible = False
             '
             'RadioButtonForm_InvoiceDueDate
             '
@@ -395,7 +356,6 @@
             Me.RadioButtonForm_InvoiceDueDate.TabOnEnter = True
             Me.RadioButtonForm_InvoiceDueDate.TabStop = False
             Me.RadioButtonForm_InvoiceDueDate.Text = "Invoice Due Date"
-            Me.RadioButtonForm_InvoiceDueDate.Visible = False
             '
             'LabelForm_AgingOption
             '
@@ -410,7 +370,6 @@
             Me.LabelForm_AgingOption.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelForm_AgingOption.TabIndex = 59
             Me.LabelForm_AgingOption.Text = "Aging Option:"
-            Me.LabelForm_AgingOption.Visible = False
             '
             'LabelForm_AgingDate
             '
@@ -425,7 +384,6 @@
             Me.LabelForm_AgingDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.LabelForm_AgingDate.TabIndex = 57
             Me.LabelForm_AgingDate.Text = "Aging Date:"
-            Me.LabelForm_AgingDate.Visible = False
             '
             'GroupBox2
             '
@@ -647,6 +605,43 @@
             Me.TabItemJDA_VersionAndOptionsTab.Name = "TabItemJDA_VersionAndOptionsTab"
             Me.TabItemJDA_VersionAndOptionsTab.Text = "Report Options"
             '
+            'TabControlSelectClientsTab_SelectClients
+            '
+            Me.TabControlSelectClientsTab_SelectClients.Controls.Add(Me.CDPChooserControlSelectClients_SelectClients)
+            Me.TabControlSelectClientsTab_SelectClients.DisabledBackColor = System.Drawing.Color.Empty
+            Me.TabControlSelectClientsTab_SelectClients.Dock = System.Windows.Forms.DockStyle.Fill
+            Me.TabControlSelectClientsTab_SelectClients.Location = New System.Drawing.Point(0, 27)
+            Me.TabControlSelectClientsTab_SelectClients.Name = "TabControlSelectClientsTab_SelectClients"
+            Me.TabControlSelectClientsTab_SelectClients.Padding = New System.Windows.Forms.Padding(1)
+            Me.TabControlSelectClientsTab_SelectClients.Size = New System.Drawing.Size(1017, 540)
+            Me.TabControlSelectClientsTab_SelectClients.Style.BackColor1.Color = System.Drawing.Color.White
+            Me.TabControlSelectClientsTab_SelectClients.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(176, Byte), Integer), CType(CType(210, Byte), Integer), CType(CType(255, Byte), Integer))
+            Me.TabControlSelectClientsTab_SelectClients.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+            Me.TabControlSelectClientsTab_SelectClients.Style.BorderColor.Color = System.Drawing.Color.FromArgb(CType(CType(146, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(199, Byte), Integer))
+            Me.TabControlSelectClientsTab_SelectClients.Style.BorderSide = CType(((DevComponents.DotNetBar.eBorderSide.Left Or DevComponents.DotNetBar.eBorderSide.Right) _
+            Or DevComponents.DotNetBar.eBorderSide.Bottom), DevComponents.DotNetBar.eBorderSide)
+            Me.TabControlSelectClientsTab_SelectClients.Style.GradientAngle = 90
+            Me.TabControlSelectClientsTab_SelectClients.TabIndex = 3
+            Me.TabControlSelectClientsTab_SelectClients.TabItem = Me.TabItemJDA_SelectClientsTab
+            '
+            'CDPChooserControlSelectClients_SelectClients
+            '
+            Me.CDPChooserControlSelectClients_SelectClients.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Me.CDPChooserControlSelectClients_SelectClients.BackColor = System.Drawing.Color.Transparent
+            Me.CDPChooserControlSelectClients_SelectClients.Location = New System.Drawing.Point(4, 4)
+            Me.CDPChooserControlSelectClients_SelectClients.Name = "CDPChooserControlSelectClients_SelectClients"
+            Me.CDPChooserControlSelectClients_SelectClients.Size = New System.Drawing.Size(1009, 532)
+            Me.CDPChooserControlSelectClients_SelectClients.TabIndex = 1
+            '
+            'TabItemJDA_SelectClientsTab
+            '
+            Me.TabItemJDA_SelectClientsTab.AttachedControl = Me.TabControlSelectClientsTab_SelectClients
+            Me.TabItemJDA_SelectClientsTab.Name = "TabItemJDA_SelectClientsTab"
+            Me.TabItemJDA_SelectClientsTab.Text = "Select Clients"
+            Me.TabItemJDA_SelectClientsTab.Visible = False
+            '
             'TabControlPanelSelectOfficesTab_SelectOffices
             '
             Me.TabControlPanelSelectOfficesTab_SelectOffices.Controls.Add(Me.DataGridViewSelectOffices_Offices)
@@ -775,11 +770,11 @@
             Me.PanelForm_TopSection.ResumeLayout(False)
             CType(Me.TabControlForm_JDA, System.ComponentModel.ISupportInitialize).EndInit()
             Me.TabControlForm_JDA.ResumeLayout(False)
-            Me.TabControlSelectClientsTab_SelectClients.ResumeLayout(False)
             Me.TabControlPanelVersionAndOptionsTab_VersionAndOptions.ResumeLayout(False)
             CType(Me.DateTimePickerAgingDate, System.ComponentModel.ISupportInitialize).EndInit()
             Me.GroupBox2.ResumeLayout(False)
             Me.GroupBox1.ResumeLayout(False)
+            Me.TabControlSelectClientsTab_SelectClients.ResumeLayout(False)
             Me.TabControlPanelSelectOfficesTab_SelectOffices.ResumeLayout(False)
             Me.Panel1.ResumeLayout(False)
             Me.PanelForm_Bottom.ResumeLayout(False)

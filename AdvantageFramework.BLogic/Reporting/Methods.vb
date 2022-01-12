@@ -18078,6 +18078,8 @@
                 'Dim SqlParameterClientDivisionCodeList As System.Data.SqlClient.SqlParameter = Nothing
                 'Dim SqlParameterClientDivisionProductCodeList As System.Data.SqlClient.SqlParameter = Nothing
                 Dim SqlParameterOfficeList As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterAgingOption As System.Data.SqlClient.SqlParameter = Nothing
+                Dim SqlParameterAgingDate As System.Data.SqlClient.SqlParameter = Nothing
                 'Dim SqlParameterUserCode As System.Data.SqlClient.SqlParameter = Nothing
 
                 SqlParameterEndPeriod = New System.Data.SqlClient.SqlParameter("@end_period", SqlDbType.VarChar)
@@ -18088,9 +18090,13 @@
                 'SqlParameterClientDivisionCodeList = New System.Data.SqlClient.SqlParameter("@DIVISION_LIST", SqlDbType.VarChar)
                 'SqlParameterClientDivisionProductCodeList = New System.Data.SqlClient.SqlParameter("@PRODUCT_LIST", SqlDbType.VarChar)
                 SqlParameterOfficeList = New System.Data.SqlClient.SqlParameter("@OFFICE_LIST", SqlDbType.VarChar)
+                SqlParameterAgingOption = New System.Data.SqlClient.SqlParameter("@aging_option", SqlDbType.TinyInt)
+                SqlParameterAgingDate = New System.Data.SqlClient.SqlParameter("@aging_date", SqlDbType.Date)
                 'SqlParameterUserCode = New System.Data.SqlClient.SqlParameter("@USER_CODE", SqlDbType.VarChar)
 
                 SqlParameterEndPeriod.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.EndPeriod.ToString)
+                SqlParameterAgingDate.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.AgingDate.ToString)
+                SqlParameterAgingOption.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.AgingOption.ToString)
                 'SqlParameterOrderOption.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.OrderOption.ToString)
                 'SqlParameterWIPOption.Value = ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.WIPOption.ToString)
 
@@ -18135,8 +18141,8 @@
                 End If
                 'SqlParameterUserCode.Value = ReportingDbContext.UserCode
 
-                LoadMonthEndProductionWIP = ReportingDbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.MonthEndProductionWIP)("exec dbo.advsp_production_wip_detail @end_period, @OFFICE_LIST",
-                                                     SqlParameterEndPeriod, SqlParameterOfficeList).ToList
+                LoadMonthEndProductionWIP = ReportingDbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.MonthEndProductionWIP)("exec dbo.advsp_production_wip_detail @end_period, @OFFICE_LIST, @aging_date, @aging_option",
+                                                     SqlParameterEndPeriod, SqlParameterOfficeList, SqlParameterAgingDate, SqlParameterAgingOption).ToList
             Catch ex As Exception
                 LoadMonthEndProductionWIP = Nothing
             End Try

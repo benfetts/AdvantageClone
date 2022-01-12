@@ -10,7 +10,9 @@ GO
 
 CREATE PROCEDURE [dbo].[advsp_production_wip_detail] (
 	@end_period varchar(6) = '201712',
-	@office_list varchar(4000))
+	@office_list varchar(4000),
+	@aging_date AS date = '12/31/99',
+	@aging_option bit = 1)
 AS
 
 --Stored procedure to extract production wip information
@@ -43,6 +45,7 @@ CREATE TABLE #wip_basic (
 --	FNC_CODE					varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
 	AP_TYPE						varchar(20) COLLATE SQL_Latin1_General_CP1_CS_AS,
 	POST_PERIOD					varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+    AP_DATE                     smalldatetime,
 --	GLEXACT						int NULL,
 	WIP_CODE					varchar(1) COLLATE SQL_Latin1_General_CP1_CS_AS,
 	ESTIMATE_AMT				decimal(15,2) NULL,
@@ -84,6 +87,7 @@ CREATE TABLE #wip_temp (
 	FNC_CODE					varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
 	AP_TYPE						varchar(20) COLLATE SQL_Latin1_General_CP1_CS_AS,
 	POST_PERIOD					varchar(6) COLLATE SQL_Latin1_General_CP1_CS_AS,
+    AP_DATE                     smalldatetime,
 	GLEXACT						int NULL,
 	WIP_CODE					varchar(1) COLLATE SQL_Latin1_General_CP1_CS_AS,
 	ESTIMATE_AMT				decimal(15,2) NULL,
@@ -202,7 +206,7 @@ GROUP BY h.AP_ID, d.AP_HIST_AMT, d.AP_PMT_REF
 -- 1. AP Entry
 -- ==========================================================
 INSERT INTO #wip_temp (VN_FRL_EMP_CODE, AP_INV_VCHR, JOB_NUMBER, JOB_COMPONENT_NBR, FNC_CODE,
-	AP_TYPE, POST_PERIOD, GLEXACT, AP_PROD_EXT_AMT, AP_NONRESALE_TAX, AP_MARKUP_AMT, WIP_CODE, AP_PMT_FLAG, 
+	AP_TYPE, POST_PERIOD, AP_DATE, GLEXACT, AP_PROD_EXT_AMT, AP_NONRESALE_TAX, AP_MARKUP_AMT, WIP_CODE, AP_PMT_FLAG, 
 	AP_PARTIAL_FLAG, AP_PMT_REF)
 SELECT
 	h.VN_FRL_EMP_CODE,
@@ -212,6 +216,7 @@ SELECT
 	p.FNC_CODE,
 	'AP Entry or Mod',
 	p.POST_PERIOD,
+    CASE WHEN @aging_option = 2 THEN h.AP_DATE_PAY ELSE h.AP_INV_DATE END,
 	CASE p.AR_TYPE 
 		WHEN 'VO' THEN NULL
 		ELSE p.GLEXACT
@@ -234,13 +239,13 @@ JOIN #ap_paid_filter AS d
 WHERE p.POST_PERIOD BETWEEN @start_period AND @end_period
 	AND ISNULL(p.AP_PROD_NOBILL_FLG,0) = 0
 GROUP BY h.VN_FRL_EMP_CODE, h.AP_INV_VCHR, p.JOB_NUMBER, p.JOB_COMPONENT_NBR, p.FNC_CODE,
-	p.POST_PERIOD, p.AR_TYPE, p.GLEXACT, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
+	p.POST_PERIOD, CASE WHEN @aging_option = 2 THEN h.AP_DATE_PAY ELSE h.AP_INV_DATE END, p.AR_TYPE, p.GLEXACT, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
 
 -- ==========================================================
 -- 2. AP Billing
 -- ==========================================================
 INSERT INTO #wip_temp (VN_FRL_EMP_CODE, AP_INV_VCHR, JOB_NUMBER, JOB_COMPONENT_NBR, FNC_CODE,
-	AP_TYPE, POST_PERIOD, GLEXACT, AP_PROD_EXT_AMT, AP_NONRESALE_TAX, AP_MARKUP_AMT, WIP_CODE, AP_PMT_FLAG, 
+	AP_TYPE, POST_PERIOD, AP_DATE, GLEXACT, AP_PROD_EXT_AMT, AP_NONRESALE_TAX, AP_MARKUP_AMT, WIP_CODE, AP_PMT_FLAG, 
 	AP_PARTIAL_FLAG, AP_PMT_REF)
 SELECT
 	h.VN_FRL_EMP_CODE,
@@ -253,6 +258,7 @@ SELECT
 		ELSE 'Billing Inv# ' + LTRIM(CAST(p.AR_INV_NBR AS varchar(6)))
 	END,
 	a.AR_POST_PERIOD,
+    CASE WHEN @aging_option = 2 THEN h.AP_DATE_PAY ELSE h.AP_INV_DATE END,
 	a.GLEXACT,
 	SUM(ISNULL(p.AP_PROD_EXT_AMT,0)) * -1,
 	SUM(ISNULL(p.EXT_NONRESALE_TAX,0)) * -1,
@@ -275,13 +281,13 @@ JOIN dbo.V_AR_INVOICE_DATES AS a
 WHERE ISNULL(p.AB_FLAG,0) <> 3			
 	AND a.AR_POST_PERIOD BETWEEN @start_period AND @end_period
 GROUP BY h.VN_FRL_EMP_CODE, h.AP_INV_VCHR, p.JOB_NUMBER, p.JOB_COMPONENT_NBR, p.FNC_CODE,
-	p.AR_INV_NBR, p.AR_TYPE, a.AR_POST_PERIOD, a.GLEXACT, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
+	p.AR_INV_NBR, p.AR_TYPE, a.AR_POST_PERIOD, CASE WHEN @aging_option = 2 THEN h.AP_DATE_PAY ELSE h.AP_INV_DATE END, a.GLEXACT, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
 
 -- ==========================================================
 -- 3. AP Billing No Bill
 -- ==========================================================
 INSERT INTO #wip_temp (VN_FRL_EMP_CODE, AP_INV_VCHR, JOB_NUMBER, JOB_COMPONENT_NBR, FNC_CODE,
-	AP_TYPE, POST_PERIOD, GLEXACT, AP_PROD_EXT_AMT, AP_NONRESALE_TAX, AP_MARKUP_AMT, WIP_CODE, AP_PMT_FLAG, 
+	AP_TYPE, POST_PERIOD, AP_DATE, GLEXACT, AP_PROD_EXT_AMT, AP_NONRESALE_TAX, AP_MARKUP_AMT, WIP_CODE, AP_PMT_FLAG, 
 	AP_PARTIAL_FLAG, AP_PMT_REF)
 SELECT
 	h.VN_FRL_EMP_CODE,
@@ -291,6 +297,7 @@ SELECT
 	NULL,
 	'Reconcile No Bill',
 	g.GLEHPP,
+    CASE WHEN @aging_option = 2 THEN h.AP_DATE_PAY ELSE h.AP_INV_DATE END,
 	g.GLEHXACT,
 	SUM(ISNULL(p.AP_PROD_EXT_AMT,0)) * -1,
 	SUM(ISNULL(p.EXT_NONRESALE_TAX,0)) * -1,
@@ -312,18 +319,19 @@ JOIN dbo.GLENTHDR AS g
 WHERE p.AB_FLAG = 3
 	AND g.GLEHPP BETWEEN @start_period AND @end_period
 GROUP BY h.VN_FRL_EMP_CODE, h.AP_INV_VCHR, p.JOB_NUMBER, p.JOB_COMPONENT_NBR, 
-	g.GLEHPP, g.GLEHXACT, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
+	g.GLEHPP, CASE WHEN @aging_option = 2 THEN h.AP_DATE_PAY ELSE h.AP_INV_DATE END, g.GLEHXACT, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
 
 -- ==========================================================
 -- 4. Open Employee Time with Time Period
 -- ==========================================================
-INSERT INTO #wip_temp (VN_FRL_EMP_CODE, JOB_NUMBER, JOB_COMPONENT_NBR, POST_PERIOD, 
+INSERT INTO #wip_temp (VN_FRL_EMP_CODE, JOB_NUMBER, JOB_COMPONENT_NBR, POST_PERIOD, AP_DATE, 
 	HOURS, HOURS_TOTAL_COST, HOURS_TOTAL_BILL, HOURS_MARKUP_AMT, WIP_CODE)
 SELECT
 	h.EMP_CODE,
 	d.JOB_NUMBER,
 	d.JOB_COMPONENT_NBR,
 	p.PPPERIOD,
+    h.EMP_DATE,
 	SUM(ISNULL(d.EMP_HOURS,0)),
 	SUM(ISNULL(d.TOTAL_COST,0)),
 	SUM(ISNULL(d.TOTAL_BILL,0)),
@@ -342,7 +350,7 @@ WHERE
 	h.EMP_DATE BETWEEN @start_date AND @end_date	
 	AND ISNULL(d.EMP_NON_BILL_FLAG,0) = 0
 	AND ( d.GLEXACT_BILL IS NULL OR g.GLEHPP > @end_period )
-GROUP BY h.EMP_CODE, d.JOB_NUMBER, d.JOB_COMPONENT_NBR, p.PPPERIOD, g.GLEHPP
+GROUP BY h.EMP_CODE, d.JOB_NUMBER, d.JOB_COMPONENT_NBR, p.PPPERIOD, h.EMP_DATE, g.GLEHPP
 
 -- ==========================================================
 -- 5. Open Income Only
@@ -547,6 +555,7 @@ GROUP BY d.JOB_NUMBER, d.JOB_COMPONENT_NBR, g.GLEHPP, d.FNC_TYPE
 			d.JOB_COMPONENT_NBR,
 			d.AP_TYPE,
 			d.POST_PERIOD,
+            d.AP_DATE,
 			d.WIP_CODE,
 			SUM(ISNULL(d.ESTIMATE_AMT,0)),
 			SUM(ISNULL(d.ESTIMATE_CONT,0)),
@@ -577,7 +586,7 @@ GROUP BY d.JOB_NUMBER, d.JOB_COMPONENT_NBR, g.GLEHPP, d.FNC_TYPE
             0
 		FROM #wip_temp AS d	
 		GROUP BY d.VN_FRL_EMP_CODE, d.AP_INV_VCHR, d.JOB_NUMBER, d.JOB_COMPONENT_NBR, d.AP_TYPE,  
-			d.POST_PERIOD, d.WIP_CODE, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
+			d.POST_PERIOD, d.AP_DATE, d.WIP_CODE, d.AP_PMT_FLAG, d.AP_PARTIAL_FLAG, d.AP_PMT_REF
 --SELECT * FROM #wip_basic
 
 -- ==========================================================
@@ -810,39 +819,39 @@ SELECT
 									ELSE ''
 									END,
 	[Current]					= ISNULL(CASE
-									WHEN m.PPPERIOD >= @end_period AND d.WIP_CODE = 'C' THEN d.AP_TOTAL 
-									WHEN m.PPPERIOD >= @end_period AND d.WIP_CODE = 'D' THEN d.AP_TOTAL
-									WHEN g.PPPERIOD >= @end_period AND d.WIP_CODE = 'E' THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
+									WHEN d.AP_DATE >= @aging_date AND d.WIP_CODE = 'C' THEN d.AP_TOTAL 
+									WHEN d.AP_DATE >= @aging_date AND d.WIP_CODE = 'D' THEN d.AP_TOTAL
+									WHEN d.AP_DATE >= @aging_date AND d.WIP_CODE = 'E' THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
 									ELSE 0
 									END,0),								
 	[ThirtyDays]				= ISNULL(CASE
-									WHEN (m.PPPERIOD = @end_period - 1) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
-									WHEN (m.PPPERIOD = @end_period - 1) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
-									WHEN (g.PPPERIOD = @end_period - 1) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
+									WHEN (d.AP_DATE < @aging_date AND d.AP_DATE >= DATEADD(day, -30, @aging_date)) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
+									WHEN (d.AP_DATE < @aging_date AND d.AP_DATE >= DATEADD(day, -30, @aging_date)) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
+									WHEN (d.AP_DATE < @aging_date AND d.AP_DATE >= DATEADD(day, -30, @aging_date)) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
 									ELSE 0
 									END,0),									
 	[SixtyDays]					= ISNULL(CASE
-									WHEN (m.PPPERIOD = @end_period - 2) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
-									WHEN (m.PPPERIOD = @end_period - 2) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
-									WHEN (g.PPPERIOD = @end_period - 2) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
+									WHEN (d.AP_DATE < DATEADD(day, -31, @aging_date) AND d.AP_DATE >= DATEADD(day, -60, @aging_date)) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
+									WHEN (d.AP_DATE < DATEADD(day, -31, @aging_date) AND d.AP_DATE >= DATEADD(day, -60, @aging_date)) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
+									WHEN (d.AP_DATE < DATEADD(day, -31, @aging_date) AND d.AP_DATE >= DATEADD(day, -60, @aging_date)) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
 									ELSE 0
 									END,0),									
 	[NinetyDays]				= ISNULL(CASE
-									WHEN (m.PPPERIOD = @end_period - 3) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
-									WHEN (m.PPPERIOD = @end_period - 3) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
-									WHEN (g.PPPERIOD = @end_period - 3) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
+									WHEN (d.AP_DATE < DATEADD(day, -61, @aging_date) AND d.AP_DATE >= DATEADD(day, -90, @aging_date)) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
+									WHEN (d.AP_DATE < DATEADD(day, -61, @aging_date) AND d.AP_DATE >= DATEADD(day, -90, @aging_date)) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
+									WHEN (d.AP_DATE < DATEADD(day, -61, @aging_date) AND d.AP_DATE >= DATEADD(day, -90, @aging_date)) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
 									ELSE 0
 									END,0),								
 	[OneHundredTwentyDays]		= ISNULL(CASE
-									WHEN (m.PPPERIOD = @end_period - 4) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
-									WHEN (m.PPPERIOD = @end_period - 4) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
-									WHEN (g.PPPERIOD = @end_period - 4) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
+									WHEN (d.AP_DATE < DATEADD(day, -91, @aging_date) AND d.AP_DATE >= DATEADD(day, -120, @aging_date)) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
+									WHEN (d.AP_DATE < DATEADD(day, -91, @aging_date) AND d.AP_DATE >= DATEADD(day, -120, @aging_date)) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
+									WHEN (d.AP_DATE < DATEADD(day, -91, @aging_date) AND d.AP_DATE >= DATEADD(day, -120, @aging_date)) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
 									ELSE 0
 									END,0),							
 	[Over120Days]				= ISNULL(CASE
-									WHEN (m.PPPERIOD < @end_period - 4) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
-									WHEN (m.PPPERIOD < @end_period - 4) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
-									WHEN (g.PPPERIOD < @end_period - 4) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
+									WHEN (d.AP_DATE < DATEADD(day, -121, @aging_date)) AND (d.WIP_CODE = 'C') THEN d.AP_TOTAL 
+									WHEN (d.AP_DATE < DATEADD(day, -121, @aging_date)) AND (d.WIP_CODE = 'D') THEN d.AP_TOTAL
+									WHEN (d.AP_DATE < DATEADD(day, -121, @aging_date)) AND (d.WIP_CODE = 'E') THEN d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT
 									ELSE 0
 									END,0),
 	[TotalAging]				= ISNULL(d.AP_TOTAL + d.HOURS_TOTAL_BILL + d.HOURS_MARKUP_AMT,0),			--#002 (+ d.ADVANCE_AMT)

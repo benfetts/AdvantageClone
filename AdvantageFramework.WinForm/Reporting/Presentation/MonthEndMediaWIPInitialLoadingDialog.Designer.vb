@@ -343,7 +343,7 @@
             Me.DateTimePickerAgingDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
             Me.DateTimePickerAgingDate.TabIndex = 58
             Me.DateTimePickerAgingDate.TabOnEnter = True
-            Me.DateTimePickerAgingDate.Value = New Date(2013, 4, 16, 10, 23, 19, 434)
+            Me.DateTimePickerAgingDate.Value = New Date(2022, 1, 11, 0, 0, 0, 0)
             '
             'RadioButtonForm_Invoice
             '
@@ -662,6 +662,7 @@
             Me.DataGridViewSelectOffices_Offices.AutoloadRepositoryDatasource = True
             Me.DataGridViewSelectOffices_Offices.AutoUpdateViewCaption = True
             Me.DataGridViewSelectOffices_Offices.ControlType = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.Type.NonEditableGrid
+            Me.DataGridViewSelectOffices_Offices.DataSource = Nothing
             Me.DataGridViewSelectOffices_Offices.DataSourceViewOption = AdvantageFramework.WinForm.Presentation.Controls.DataGridView.DataSourceViewOptions.[Default]
             Me.DataGridViewSelectOffices_Offices.Enabled = False
             Me.DataGridViewSelectOffices_Offices.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.[Default]

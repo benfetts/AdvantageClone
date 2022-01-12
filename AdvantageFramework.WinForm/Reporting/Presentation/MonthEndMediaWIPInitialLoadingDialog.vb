@@ -210,6 +210,15 @@
                 DateTimePickerAgingDate.ValueObject = Now.ToShortDateString
                 CheckBoxForm_IncludeDetail.Visible = True
 
+            ElseIf _DynamicReport = DynamicReports.MonthEndProductionWIP Then
+
+                LabelForm_AgingDate.Visible = True
+                LabelForm_AgingOption.Visible = True
+                DateTimePickerAgingDate.Visible = True
+                RadioButtonForm_Invoice.Visible = True
+                RadioButtonForm_InvoiceDueDate.Visible = True
+                DateTimePickerAgingDate.ValueObject = Now.ToShortDateString
+
             End If
 
 
@@ -527,11 +536,11 @@
             If ComboBoxTopSection_ReportSeries.SelectedValue = 2 Then
                 ComboBoxTopSection_Report.DataSource = AdvantageFramework.EnumUtilities.LoadEnumObjects(GetType(AdvantageFramework.Reporting.MonthEndProductionWIPReportTypes)).OrderBy(Function(EnumObject) EnumObject.Description).ToList
 
-                LabelForm_AgingDate.Visible = False
-                LabelForm_AgingOption.Visible = False
-                DateTimePickerAgingDate.Visible = False
-                RadioButtonForm_Invoice.Visible = False
-                RadioButtonForm_InvoiceDueDate.Visible = False
+                LabelForm_AgingDate.Visible = True
+                LabelForm_AgingOption.Visible = True
+                DateTimePickerAgingDate.Visible = True
+                RadioButtonForm_Invoice.Visible = True
+                RadioButtonForm_InvoiceDueDate.Visible = True
 
                 TabItemJDA_SelectClientsTab.Visible = False
                 Label1.Visible = False

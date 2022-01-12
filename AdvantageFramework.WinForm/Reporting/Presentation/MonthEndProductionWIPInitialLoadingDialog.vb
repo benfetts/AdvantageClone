@@ -333,8 +333,8 @@
 
                 End If
 
-                '_ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.AgingDate.ToString) = DateTimePickerAgingDate.Value
-                '_ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.AgingOption.ToString) = If(RadioButtonForm_Invoice.Checked, 1, 2)
+                _ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.AgingDate.ToString) = DateTimePickerAgingDate.Value
+                _ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.AgingOption.ToString) = If(RadioButtonForm_Invoice.Checked, 1, 2)
 
                 'If CInt(ComboBoxTopSection_Report.SelectedValue) = AdvantageFramework.Reporting.MonthEndReportTypesAccountsReceivable.AccountsReceivableAgedwithDisbursementDetail Then
                 '    _ParameterDictionary(AdvantageFramework.Reporting.MonthEndProductionWIPParameters.IncludeDetails.ToString) = 1

@@ -150,7 +150,7 @@ END
 
 	UPDATE a SET
 		a.intab = ROUND(h.avg_intab,0),
-		a.impressions = a.AUDIENCE,
+		a.impressions = a.audience,
 		show_intab_warning = 
 			CASE 
 				WHEN avg_intab < 50 THEN 1
@@ -193,7 +193,7 @@ END
         [ShowIntabWarning] = show_intab_warning,
         MediaDemoID = md.MEDIA_DEMO_ID 
 	FROM @AUDIENCE a
-        INNER JOIN dbo.MEDIA_DEMO md ON md.MEDIA_DEMO_ID = a.MEDIA_DEMO_ID
+        INNER JOIN dbo.MEDIA_DEMO md ON md.MEDIA_DEMO_ID = a.media_demo_id
 		INNER JOIN @MEDIA_SPOT_TV_DAYTIME_TYPE d ON a.media_spot_tv_research_daytime_id = d.ID
 		INNER JOIN dbo.NPR_STATION ns ON a.npr_station_id = ns.NPR_STATION_ID 
     WHERE

@@ -166,7 +166,7 @@ IF @debug = 1
 
 	UPDATE a SET
 		a.intab = ROUND(h.avg_intab,0),
-		a.impressions = a.AUDIENCE,
+		a.impressions = a.audience,
 		show_intab_warning = 
 			CASE 
 				WHEN avg_intab < 50 THEN 1
@@ -205,7 +205,7 @@ IF @debug = 1
         [ShowIntabWarning] = show_intab_warning,
         TrendDate = [AdjustedDateTime]
 	FROM @AUDIENCE a
-        INNER JOIN dbo.MEDIA_DEMO md ON md.MEDIA_DEMO_ID = a.MEDIA_DEMO_ID
+        INNER JOIN dbo.MEDIA_DEMO md ON md.MEDIA_DEMO_ID = a.media_demo_id
 		INNER JOIN dbo.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_DEMO rd ON rd.MEDIA_DEMO_ID = md.MEDIA_DEMO_ID
 													  AND (@ReportType = 1 OR (@ReportType IN (2, 3) AND rd.[ORDER] = 1))
 		INNER JOIN MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_DAYTIME d ON a.media_spot_tv_research_daytime_id = d.MEDIA_SPOT_TV_PUERTO_RICO_RESEARCH_DAYTIME_ID

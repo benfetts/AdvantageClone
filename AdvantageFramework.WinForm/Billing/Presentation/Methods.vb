@@ -423,7 +423,6 @@
             Dim BillingSelectionCriteria As AdvantageFramework.BillingCommandCenter.Classes.BillingSelectionCriteria = Nothing
             Dim Billing As AdvantageFramework.Database.Entities.Billing = Nothing
             Dim IsOkay As Boolean = False
-            Dim SalePostPeriodCodes As IEnumerable(Of String) = Nothing
             Dim [Continue] As Boolean = True
 
             Using BCCDbContext As New AdvantageFramework.BillingCommandCenter.Database.DbContext(Session.ConnectionString, Session.UserCode)
@@ -440,12 +439,11 @@
 
                                 Using DbContext As New AdvantageFramework.Database.DbContext(Session.ConnectionString, Session.UserCode)
 
-                                    SalePostPeriodCodes = (From Entity In AdvantageFramework.Database.Procedures.WorkARFunction.LoadByBillingUserCode(DataContext, BillingCommandCenter.BillingUser)
-                                                           Select Entity.SalePostPeriodCode).Distinct.ToArray
+                                    Billing = AdvantageFramework.Database.Procedures.Billing.LoadByBillingUserCode(DataContext, BillingCommandCenter.BillingUser)
 
-                                    If (From Entity In AdvantageFramework.Database.Procedures.PostPeriod.Load(DbContext)
-                                        Where SalePostPeriodCodes.Contains(Entity.Code) AndAlso
-                                              Entity.ARStatus = "X").Any Then
+                                    If Billing IsNot Nothing AndAlso (From Entity In AdvantageFramework.Database.Procedures.PostPeriod.Load(DbContext)
+                                                                      Where Entity.Code = Billing.PostPeriodCode AndAlso
+                                                                            Entity.ARStatus = "X").Any Then
 
                                         AdvantageFramework.WinForm.MessageBox.Show("The posting period has changed since the initial processing.  Please-reprocess before assigning invoices.")
 

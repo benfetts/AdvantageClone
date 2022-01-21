@@ -1855,24 +1855,24 @@
             'hard-coded types based on possible vendor category
             If Form = Form1099.MISC Then
 
-                ReturnValue.Append("1236C".ToString.PadRight(16, " "))      '28-43
+                ReturnValue.Append("1236C".ToString.PadRight(18, " "))      '28-45
 
             ElseIf Form = Form1099.NEC Then
 
-                ReturnValue.Append("1".ToString.PadRight(16, " "))          '28-43
+                ReturnValue.Append("1".ToString.PadRight(18, " "))          '28-45
 
             End If
 
-            ReturnValue.Append(Space(8))
+            ReturnValue.Append(Space(6)) '46-51
             ReturnValue.Append(Space(1))
             ReturnValue.Append(CompanyName.ToString.ToUpper.PadRight(40, " "))
             ReturnValue.Append(Space(40))
-            ReturnValue.Append("0")
+            ReturnValue.Append("0") '133
             ReturnValue.Append(Agency.Address.ToString.ToUpper.PadRight(40, " "))
             ReturnValue.Append(Agency.City.ToString.ToUpper.PadRight(40, " "))
             ReturnValue.Append(Mid(Agency.State.ToString.ToUpper.Trim, 1, 2))
             ReturnValue.Append(Mid(AdvantageFramework.StringUtilities.RemoveAllNonNumeric(Agency.Zip.ToString.ToUpper), 1, 9).PadRight(9, " "))
-            ReturnValue.Append(Space(15))
+            ReturnValue.Append(Space(15)) '225-239
             ReturnValue.Append(Space(260))
             ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0"))
             ReturnValue.Append(Space(241))
@@ -1900,12 +1900,12 @@
 
             ReturnValue.Append(PaymentYear)
             ReturnValue.Append(If(IsCorrectionFile, "G", " ")) ' corrected return indicator
-            ReturnValue.Append(Space(4))
+            ReturnValue.Append(Space(4)) '7-10
             ReturnValue.Append(Space(1))
-            ReturnValue.Append(AdvantageFramework.StringUtilities.RemoveAllNonNumeric(IRS1099Processing.FederalTaxID.ToUpper))
+            ReturnValue.Append(AdvantageFramework.StringUtilities.RemoveAllNonNumeric(IRS1099Processing.FederalTaxID.ToUpper)) '12-20
             ReturnValue.Append(Space(20))
             ReturnValue.Append(Space(4))
-            ReturnValue.Append(Space(10))
+            ReturnValue.Append(Space(10)) '45-54
 
             If Form = Form1099.NEC Then
 
@@ -1947,73 +1947,63 @@
 
             End If
 
-            ReturnValue.Append(PaymentAmount1.ToString.PadLeft(12, "0"))
-            ReturnValue.Append(PaymentAmount2.ToString.PadLeft(12, "0"))
-            ReturnValue.Append(PaymentAmount3.ToString.PadLeft(12, "0"))
-            ReturnValue.Append("000000000000") '4
-            ReturnValue.Append("000000000000") '5
-            ReturnValue.Append(PaymentAmount6.ToString.PadLeft(12, "0"))
-            ReturnValue.Append(PaymentAmount7.ToString.PadLeft(12, "0"))
-            ReturnValue.Append("000000000000") '8
-            ReturnValue.Append("000000000000") '9
-            ReturnValue.Append("000000000000") 'A
-            ReturnValue.Append("000000000000") 'B
-            ReturnValue.Append(PaymentAmountC.ToString.PadLeft(12, "0"))
-            ReturnValue.Append("000000000000") 'D
-            ReturnValue.Append("000000000000") 'E
-            ReturnValue.Append("000000000000") 'F
-            ReturnValue.Append("000000000000") 'G
-            ReturnValue.Append(Space(1)) 'foreign country indicator
-            ReturnValue.Append(IRS1099Processing.PayToName.ToString.ToUpper.PadRight(40, " "))
-            ReturnValue.Append(Space(40))
-            ReturnValue.Append(Space(40))
-            ReturnValue.Append(IRS1099Processing.PayToAddress.ToString.ToUpper.PadRight(40, " "))
-            ReturnValue.Append(Space(40))
-            ReturnValue.Append(IRS1099Processing.PayToCity.ToString.ToUpper.PadRight(40, " "))
+            ReturnValue.Append(PaymentAmount1.ToString.PadLeft(12, "0")) '55-66
+            ReturnValue.Append(PaymentAmount2.ToString.PadLeft(12, "0")) '67-78
+            ReturnValue.Append(PaymentAmount3.ToString.PadLeft(12, "0")) '79-90
+            ReturnValue.Append("000000000000") '4 91-102
+            ReturnValue.Append("000000000000") '5 103-114
+            ReturnValue.Append(PaymentAmount6.ToString.PadLeft(12, "0")) '115-126
+            ReturnValue.Append(PaymentAmount7.ToString.PadLeft(12, "0")) '127-138
+            ReturnValue.Append("000000000000") '8 139-150
+            ReturnValue.Append("000000000000") '9 151-162
+            ReturnValue.Append("000000000000") 'A 163-174
+            ReturnValue.Append("000000000000") 'B 175-186
+            ReturnValue.Append(PaymentAmountC.ToString.PadLeft(12, "0")) '187-198
+            ReturnValue.Append("000000000000") 'D 199-210
+            ReturnValue.Append("000000000000") 'E 211-222
+            ReturnValue.Append("000000000000") 'F 223-234
+            ReturnValue.Append("000000000000") 'G 235-246
+            ReturnValue.Append("000000000000") 'H 247-258
+            ReturnValue.Append("000000000000") 'J 259-270
+            ReturnValue.Append(Space(16)) 'blank 271-286
+            ReturnValue.Append(Space(1)) 'foreign country indicator 287
+            ReturnValue.Append(IRS1099Processing.PayToName.ToString.ToUpper.PadRight(40, " ")) '288-327
+            ReturnValue.Append(Space(40)) '328-367
+            ReturnValue.Append(IRS1099Processing.PayToAddress.ToString.ToUpper.PadRight(40, " ")) '368-407
+            ReturnValue.Append(Space(40)) '408-447 Blank
+            ReturnValue.Append(IRS1099Processing.PayToCity.ToString.ToUpper.PadRight(40, " ")) '448-487
 
             VendorStateCode = IRS1099Processing.PayToState.ToString.ToUpper.PadRight(2, " ")
 
-            ReturnValue.Append(VendorStateCode)
+            ReturnValue.Append(VendorStateCode) '488-489
 
-            ReturnValue.Append(Replace(IRS1099Processing.PayToZipCode.ToString.ToUpper, "-", "").PadRight(9, " "))
+            ReturnValue.Append(Replace(IRS1099Processing.PayToZipCode.ToString.ToUpper, "-", "").PadRight(9, " ")) '490-498
             ReturnValue.Append(Space(1))
-            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0"))
-            ReturnValue.Append(Space(36))
-            ReturnValue.Append(Space(1)) '544 second TIN notice
-            ReturnValue.Append(Space(2)) '545-546 blank
-            ReturnValue.Append(Space(1)) '547 direct sales indicator
-            ReturnValue.Append(Space(1)) '548 FATCA filing indicator
-            ReturnValue.Append(Space(114)) '549-662 blank
-            ReturnValue.Append(StateID.ToUpper.PadLeft(15, " ")) '663-677 15 digit withholding tax number (1099 STATE ID)
-            ReturnValue.Append(Space(5)) '678-682 blank
+            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0")) '500-507
+            ReturnValue.Append(Space(36)) '508-543
 
-            If StateID.StartsWith("036") Then
+            If CombinedFederalStateFiler Then
 
-                ReturnValue.Append("55") '683-684 state code for Wisconsin
+                Try
 
-            Else
+                    CombinedFederalStateCode = IRS1099FederalStateCodeList.Where(Function(FSC) FSC.StateCode = VendorStateCode).FirstOrDefault.FederalStateCode
 
-                ReturnValue.Append(Space(2)) '683-684 blank
+                Catch ex As Exception
+                    CombinedFederalStateCode = Nothing
+                End Try
 
             End If
 
-            ReturnValue.Append(Space(38)) '685-722 blank
-            ReturnValue.Append("000000000000") '723-734 special data entries
-            ReturnValue.Append(Space(12)) '735-746 state income tax withheld
+            If Form = Form1099.MISC Then '544-750 
 
-            If Form = Form1099.MISC Then
-
-                If CombinedFederalStateFiler Then
-
-                    Try
-
-                        CombinedFederalStateCode = IRS1099FederalStateCodeList.Where(Function(FSC) FSC.StateCode = VendorStateCode).FirstOrDefault.FederalStateCode
-
-                    Catch ex As Exception
-                        CombinedFederalStateCode = Nothing
-                    End Try
-
-                End If
+                ReturnValue.Append(Space(1)) '544 second TIN notice
+                ReturnValue.Append(Space(2)) '545-546 blank
+                ReturnValue.Append(Space(1)) '547 direct sales indicator
+                ReturnValue.Append(Space(1)) '548 FATCA filing indicator
+                ReturnValue.Append(Space(114)) '549-662 blank
+                ReturnValue.Append(Space(60)) '663-722 blank
+                ReturnValue.Append("000000000000") '723-734
+                ReturnValue.Append("000000000000") '735-746
 
                 If CombinedFederalStateCode IsNot Nothing Then
 
@@ -2027,7 +2017,26 @@
 
             ElseIf Form = Form1099.NEC Then
 
-                ReturnValue.Append(Space(2))    '747-748 
+                ReturnValue.Append(Space(1)) '544 second TIN notice
+                ReturnValue.Append(Space(2)) '545-546 blank
+                ReturnValue.Append(Space(1)) '547 direct sales indicator
+                ReturnValue.Append(Space(175)) '548-722 blank 'IRS spec is wrong it says 173 spaces!
+                ReturnValue.Append("000000000000") '723-734
+                ReturnValue.Append("000000000000") '735-746
+
+                If CombinedFederalStateCode IsNot Nothing Then
+
+                    ReturnValue.Append(CombinedFederalStateCode.ToUpper.PadLeft(2, "0")) '747-748 
+
+                ElseIf StateID.StartsWith("036") Then
+
+                    ReturnValue.Append("55") '747-748 
+
+                Else
+
+                    ReturnValue.Append(Space(2)) '747-748 
+
+                End If
 
             End If
 
@@ -2051,7 +2060,7 @@
             ReturnValue = New Text.StringBuilder("C")
 
             ReturnValue.Append(NumberOfBRecords.ToString.PadLeft(8, "0"))
-            ReturnValue.Append(Space(6))
+            ReturnValue.Append(Space(6)) '10-15 blank
 
             If Form = Form1099.NEC Then
 
@@ -2068,33 +2077,35 @@
 
             End If
 
-            ReturnValue.Append(PaymentAmount1.ToString.PadLeft(18, "0"))
-            ReturnValue.Append(PaymentAmount2.ToString.PadLeft(18, "0"))
-            ReturnValue.Append(PaymentAmount3.ToString.PadLeft(18, "0"))
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(PaymentAmount6.ToString.PadLeft(18, "0"))
-            ReturnValue.Append(PaymentAmount7.ToString.PadLeft(18, "0"))
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(PaymentAmountC.ToString.PadLeft(18, "0"))
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
+            ReturnValue.Append(PaymentAmount1.ToString.PadLeft(18, "0")) '16-33
+            ReturnValue.Append(PaymentAmount2.ToString.PadLeft(18, "0")) '34-51
+            ReturnValue.Append(PaymentAmount3.ToString.PadLeft(18, "0")) '52-69
+            ReturnValue.Append(EighteenZeros) '70-87
+            ReturnValue.Append(EighteenZeros) '88-105
+            ReturnValue.Append(PaymentAmount6.ToString.PadLeft(18, "0")) '106-123
+            ReturnValue.Append(PaymentAmount7.ToString.PadLeft(18, "0")) '124-141
+            ReturnValue.Append(EighteenZeros) '142-159
+            ReturnValue.Append(EighteenZeros) '160-177
+            ReturnValue.Append(EighteenZeros) '178-195
+            ReturnValue.Append(EighteenZeros) '196-213
+            ReturnValue.Append(PaymentAmountC.ToString.PadLeft(18, "0")) '214-231
+            ReturnValue.Append(EighteenZeros) '232-249
+            ReturnValue.Append(EighteenZeros) '250-267
+            ReturnValue.Append(EighteenZeros) '268-285
+            ReturnValue.Append(EighteenZeros) '286-303
+            ReturnValue.Append(EighteenZeros) '304-321
+            ReturnValue.Append(EighteenZeros) '322-339
 
-            ReturnValue.Append(Space(196))
-            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0"))
-            ReturnValue.Append(Space(241))
-            ReturnValue.Append(vbCrLf)
+            ReturnValue.Append(Space(160)) '340-499
+            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0")) '500-507
+            ReturnValue.Append(Space(241)) '508-748
+            ReturnValue.Append(vbCrLf) '749-750
 
             CreateCRecord = ReturnValue.ToString
 
         End Function
         Private Function CreateKRecord(ByVal NumberOfBRecordsForThisState As Integer, ByVal RecordSequence As Integer, ByVal IRSStateCode As Short, ByVal Total1 As String,
-                                      ByVal Total2 As String, ByVal Total3 As String, ByVal Total6 As String, ByVal Total7 As String, ByVal TotalC As String) As String
+                                       ByVal Total2 As String, ByVal Total3 As String, ByVal Total6 As String, ByVal Total7 As String, ByVal TotalC As String) As String
 
             Dim ReturnValue As Text.StringBuilder = Nothing
             Const EighteenZeros = "000000000000000000"
@@ -2102,34 +2113,36 @@
             ReturnValue = New Text.StringBuilder("K")
 
             ReturnValue.Append(NumberOfBRecordsForThisState.ToString.PadLeft(8, "0"))
-            ReturnValue.Append(Space(6))
+            ReturnValue.Append(Space(6)) '10-15 blank
 
-            ReturnValue.Append(Total1.PadLeft(18, "0"))
-            ReturnValue.Append(Total2.PadLeft(18, "0"))
-            ReturnValue.Append(Total3.PadLeft(18, "0"))
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(Total6.PadLeft(18, "0"))
-            ReturnValue.Append(Total7.PadLeft(18, "0"))
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(TotalC.PadLeft(18, "0"))
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
-            ReturnValue.Append(EighteenZeros)
+            ReturnValue.Append(Total1.PadLeft(18, "0")) '16-33
+            ReturnValue.Append(Total2.PadLeft(18, "0")) '34-51
+            ReturnValue.Append(Total3.PadLeft(18, "0")) '52-69
+            ReturnValue.Append(EighteenZeros) '70-87
+            ReturnValue.Append(EighteenZeros) '88-105
+            ReturnValue.Append(Total6.PadLeft(18, "0")) '106-123
+            ReturnValue.Append(Total7.PadLeft(18, "0")) '124-141
+            ReturnValue.Append(EighteenZeros) '142-159
+            ReturnValue.Append(EighteenZeros) '160-177
+            ReturnValue.Append(EighteenZeros) '178-195
+            ReturnValue.Append(EighteenZeros) '196-213
+            ReturnValue.Append(TotalC.PadLeft(18, "0")) '214-231
+            ReturnValue.Append(EighteenZeros) '232-249
+            ReturnValue.Append(EighteenZeros) '250-267
+            ReturnValue.Append(EighteenZeros) '268-285
+            ReturnValue.Append(EighteenZeros) '286-303
+            ReturnValue.Append(EighteenZeros) '304-321
+            ReturnValue.Append(EighteenZeros) '322-339
 
-            ReturnValue.Append(Space(196))
-            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0"))
-            ReturnValue.Append(Space(199))
-            ReturnValue.Append(Space(18)) ' state income tax
-            ReturnValue.Append(Space(18)) ' local income tax
-            ReturnValue.Append(Space(4))
+            ReturnValue.Append(Space(160)) '340-499
+            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0")) '500-507
+            ReturnValue.Append(Space(199)) '508-706
+            ReturnValue.Append(Space(18)) '707-724 state income tax
+            ReturnValue.Append(Space(18)) '725-742 local income tax
+            ReturnValue.Append(Space(4)) '743-746 blank
             ReturnValue.Append(IRSStateCode.ToString.PadLeft(2, "0")) ' combined federal/state code Part A Sec 10 Table 3
 
-            ReturnValue.Append(vbCrLf)
+            ReturnValue.Append(vbCrLf) '749-750
 
             CreateKRecord = ReturnValue.ToString
 
@@ -2140,14 +2153,14 @@
 
             ReturnValue = New Text.StringBuilder("F")
 
-            ReturnValue.Append(NumberOfARecords.ToString.PadLeft(8, "0"))
-            ReturnValue.Append("000000000000000000000")
-            ReturnValue.Append(Space(19))
-            ReturnValue.Append(NumberOfBRecords.ToString.PadLeft(8, "0"))
-            ReturnValue.Append(Space(442))
-            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0"))
-            ReturnValue.Append(Space(241))
-            ReturnValue.Append(vbCrLf)
+            ReturnValue.Append(NumberOfARecords.ToString.PadLeft(8, "0")) '2-9
+            ReturnValue.Append("000000000000000000000") '10-30
+            ReturnValue.Append(Space(19)) '31-49 blank
+            ReturnValue.Append(NumberOfBRecords.ToString.PadLeft(8, "0")) '50-57
+            ReturnValue.Append(Space(442)) '58-499
+            ReturnValue.Append(RecordSequence.ToString.PadLeft(8, "0")) '500-507
+            ReturnValue.Append(Space(241)) '508-748 blank
+            ReturnValue.Append(vbCrLf) '749-750
 
             CreateFRecord = ReturnValue.ToString
 

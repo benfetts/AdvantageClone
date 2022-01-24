@@ -1630,6 +1630,7 @@
             Dim Setting As AdvantageFramework.Database.Entities.Setting = Nothing
             Dim IRS1099FederalStateCodeList As Generic.List(Of AdvantageFramework.Database.Entities.IRS1099FederalStateCode) = Nothing
             Dim StateID As String = ""
+            Dim utf8WithoutBom As System.Text.UTF8Encoding = Nothing
 
             Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
 
@@ -1748,7 +1749,9 @@
 
             Try
 
-                My.Computer.FileSystem.WriteAllText(FullFileName, FileData.ToString, False)
+                utf8WithoutBom = New System.Text.UTF8Encoding(False)
+
+                My.Computer.FileSystem.WriteAllText(FullFileName, FileData.ToString, False, utf8WithoutBom)
 
                 AdvantageFramework.Navigation.ShowMessageBox(FullFileName & " created successfully.")
 
@@ -2001,7 +2004,20 @@
                 ReturnValue.Append(Space(1)) '547 direct sales indicator
                 ReturnValue.Append(Space(1)) '548 FATCA filing indicator
                 ReturnValue.Append(Space(114)) '549-662 blank
-                ReturnValue.Append(Space(60)) '663-722 blank
+
+                If StateID.StartsWith("036") Then
+
+                    ReturnValue.Append(StateID) '663-677  (15 chars)
+                    ReturnValue.Append(Space(5)) '678-682 blank
+                    ReturnValue.Append("55") '683-684 state code for Wisconsin
+                    ReturnValue.Append(Space(38)) '685-722 blank
+
+                Else
+
+                    ReturnValue.Append(Space(60)) '663-722 blank
+
+                End If
+
                 ReturnValue.Append("000000000000") '723-734
                 ReturnValue.Append("000000000000") '735-746
 
@@ -2020,7 +2036,22 @@
                 ReturnValue.Append(Space(1)) '544 second TIN notice
                 ReturnValue.Append(Space(2)) '545-546 blank
                 ReturnValue.Append(Space(1)) '547 direct sales indicator
-                ReturnValue.Append(Space(175)) '548-722 blank 'IRS spec is wrong it says 173 spaces!
+
+                If StateID.StartsWith("036") Then
+
+                    ReturnValue.Append(Space(115)) '548-662
+                    ReturnValue.Append(StateID) '663-677  (15 chars)
+
+                    ReturnValue.Append(Space(5)) '678-682
+                    ReturnValue.Append("55") '683-684 state code for Wisconsin
+                    ReturnValue.Append(Space(38)) '685-722
+
+                Else
+
+                    ReturnValue.Append(Space(175)) '548-722 blank 'IRS spec is wrong it says 173 spaces!
+
+                End If
+
                 ReturnValue.Append("000000000000") '723-734
                 ReturnValue.Append("000000000000") '735-746
 

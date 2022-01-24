@@ -16751,17 +16751,45 @@
 
                     If IsPrimaryDemo Then
 
-                        For Each DRV In DataRowViewList
+                        For Each DataRowView In DataRowViewList
 
-                            AllReachValuesList.Add(CDbl(DRV(MarketDetailsColumns.PrimaryReach.ToString)))
+                            RowSpots = 0
+
+                            If String.IsNullOrWhiteSpace(DateColumnName) = False Then
+
+                                RowSpots += CInt(DataRowView(DateColumnName))
+
+                            Else
+
+                                RowSpots = DataRowView(MarketDetailsColumns.TotalSpots.ToString)
+
+                            End If
+
+                            AllReachValuesList.Add(CalculateTVReach(DataRowView(MarketDetailsColumns.PrimaryImpressions.ToString), DataRowView(MarketDetailsColumns.PrimaryCumeImpressions.ToString),
+                                                                    RowSpots, DataRowView(MarketDetailsColumns.PrimaryUniverse.ToString),
+                                                                    DataRowView(MarketDetailsColumns.PrimaryRating.ToString), DataRowView(MarketDetailsColumns.BookPrimaryRating.ToString)))
 
                         Next
 
                     Else
 
-                        For Each DRV In DataRowViewList
+                        For Each DataRowView In DataRowViewList
 
-                            AllReachValuesList.Add(CDbl(DRV(MarketDetailsColumns.SecondaryReach.ToString)))
+                            RowSpots = 0
+
+                            If String.IsNullOrWhiteSpace(DateColumnName) = False Then
+
+                                RowSpots += CInt(DataRowView(DateColumnName))
+
+                            Else
+
+                                RowSpots = DataRowView(MarketDetailsColumns.TotalSpots.ToString)
+
+                            End If
+
+                            AllReachValuesList.Add(CalculateTVReach(DataRowView(MarketDetailsColumns.SecondaryImpressions.ToString), DataRowView(MarketDetailsColumns.SecondaryCumeImpressions.ToString),
+                                                                    RowSpots, DataRowView(MarketDetailsColumns.SecondaryUniverse.ToString),
+                                                                    DataRowView(MarketDetailsColumns.SecondaryRating.ToString), DataRowView(MarketDetailsColumns.BookSecondaryRating.ToString)))
 
                         Next
 
@@ -24366,9 +24394,31 @@
 
                 ElseIf DataRowViews IsNot Nothing AndAlso DataRowViews.Count > 0 Then
 
-                    For Each DRV In DataRowViews
+                    For Each DataRowView In DataRowViews
 
-                        AllReachValuesList.Add(CDbl(DRV(MarketDetailsColumns.PrimaryReach.ToString)))
+                        RowSpots = 0
+
+                        If BroadcastDate <> Date.MinValue Then
+
+                            For Each DetailDate In BroadcastDetailDates.Keys.OfType(Of Date).OrderBy(Function(DD) DD)
+
+                                If BroadcastDate = BroadcastDetailDates(DetailDate) Then
+
+                                    RowSpots += CInt(DataRowView(DetailDates(DetailDate)))
+
+                                End If
+
+                            Next
+
+                        Else
+
+                            RowSpots = DataRowView(MarketDetailsColumns.TotalSpots.ToString)
+
+                        End If
+
+                        AllReachValuesList.Add(CalculateTVReach(DataRowView(MarketDetailsColumns.PrimaryImpressions.ToString), DataRowView(MarketDetailsColumns.PrimaryCumeImpressions.ToString),
+                                                                RowSpots, DataRowView(MarketDetailsColumns.PrimaryUniverse.ToString),
+                                                                DataRowView(MarketDetailsColumns.PrimaryRating.ToString), DataRowView(MarketDetailsColumns.BookPrimaryRating.ToString)))
 
                     Next
 

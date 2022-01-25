@@ -31,7 +31,6 @@
             Me.Label_PayToAddress = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_FederalTaxID = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_CompanyFederalTaxID = New DevExpress.XtraReports.UI.XRLabel()
-            Me.Label_CompanyCountryCode = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_NonEmpComp = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_CompanyTelephone = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_CompanyCityStateZip = New DevExpress.XtraReports.UI.XRLabel()
@@ -47,7 +46,7 @@
             '
             'Detail
             '
-            Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Label_PayToAddress3, Me.Label_StateID, Me.Label_PayToName, Me.Label_PayToAddress2, Me.Label_PayToCSZ, Me.Label_PayToAddress, Me.Label_FederalTaxID, Me.Label_CompanyFederalTaxID, Me.Label_CompanyCountryCode, Me.Label_NonEmpComp, Me.Label_CompanyTelephone, Me.Label_CompanyCityStateZip, Me.Label_CompanyAddress, Me.Label_CompanyName})
+            Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Label_PayToAddress3, Me.Label_StateID, Me.Label_PayToName, Me.Label_PayToAddress2, Me.Label_PayToCSZ, Me.Label_PayToAddress, Me.Label_FederalTaxID, Me.Label_CompanyFederalTaxID, Me.Label_NonEmpComp, Me.Label_CompanyTelephone, Me.Label_CompanyCityStateZip, Me.Label_CompanyAddress, Me.Label_CompanyName})
             Me.Detail.HeightF = 368.0!
             Me.Detail.Name = "Detail"
             Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -153,23 +152,6 @@
             Me.Label_CompanyFederalTaxID.StylePriority.UseFont = False
             Me.Label_CompanyFederalTaxID.Text = "CompanyFederalTaxID"
             Me.Label_CompanyFederalTaxID.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
-            '
-            'Label_CompanyCountryCode
-            '
-            Me.Label_CompanyCountryCode.BackColor = System.Drawing.Color.Transparent
-            Me.Label_CompanyCountryCode.BorderColor = System.Drawing.Color.Black
-            Me.Label_CompanyCountryCode.Borders = DevExpress.XtraPrinting.BorderSide.None
-            Me.Label_CompanyCountryCode.BorderWidth = 1.0!
-            Me.Label_CompanyCountryCode.CanGrow = False
-            Me.Label_CompanyCountryCode.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.Label_CompanyCountryCode.ForeColor = System.Drawing.Color.Black
-            Me.Label_CompanyCountryCode.LocationFloat = New DevExpress.Utils.PointFloat(13.0!, 83.68!)
-            Me.Label_CompanyCountryCode.Name = "Label_CompanyCountryCode"
-            Me.Label_CompanyCountryCode.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.Label_CompanyCountryCode.SizeF = New System.Drawing.SizeF(150.0!, 16.67!)
-            Me.Label_CompanyCountryCode.StylePriority.UseFont = False
-            Me.Label_CompanyCountryCode.Text = "CompanyCountryCode"
-            Me.Label_CompanyCountryCode.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
             '
             'Label_NonEmpComp
             '
@@ -308,7 +290,6 @@
         Private WithEvents Label_CompanyTelephone As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Label_CompanyCityStateZip As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Label_NonEmpComp As DevExpress.XtraReports.UI.XRLabel
-        Private WithEvents Label_CompanyCountryCode As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Label_CompanyFederalTaxID As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents Label_FederalTaxID As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents Label_PayToAddress As DevExpress.XtraReports.UI.XRLabel

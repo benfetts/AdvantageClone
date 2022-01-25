@@ -105,7 +105,6 @@
             Label_CompanyAddress.Text = _Agency.Address
             Label_CompanyCityStateZip.Text = _Agency.City & ", " & _Agency.State & "  " & _Agency.Zip
             Label_CompanyTelephone.Text = _Agency.Phone
-            'Label_CompanyCountryCode.Text = "USA"
             Label_CompanyFederalTaxID.Text = _FederalTaxID
 
             Label_NonEmpComp.Text = Nothing

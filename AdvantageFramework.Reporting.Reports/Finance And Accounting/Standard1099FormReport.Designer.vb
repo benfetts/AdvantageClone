@@ -33,7 +33,6 @@
             Me.Label_FederalTaxID = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_CompanyFederalTaxID = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_BranchReporting = New DevExpress.XtraReports.UI.XRLabel()
-            Me.Label_CompanyCountryCode = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_GrossProceeds = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_OtherIncome = New DevExpress.XtraReports.UI.XRLabel()
             Me.Label_Royalties = New DevExpress.XtraReports.UI.XRLabel()
@@ -51,7 +50,7 @@
             '
             'Detail
             '
-            Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Label_PayToAddress3, Me.Label_Box17, Me.Label_MedicalHealthCare, Me.Label_PayToName, Me.Label_PayToAddress2, Me.Label_PayToCSZ, Me.Label_PayToAddress, Me.Label_FederalTaxID, Me.Label_CompanyFederalTaxID, Me.Label_BranchReporting, Me.Label_CompanyCountryCode, Me.Label_GrossProceeds, Me.Label_OtherIncome, Me.Label_Royalties, Me.Label_Rents, Me.Label_CompanyTelephone, Me.Label_CompanyCityStateZip, Me.Label_CompanyAddress, Me.Label_CompanyName})
+            Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.Label_PayToAddress3, Me.Label_Box17, Me.Label_MedicalHealthCare, Me.Label_PayToName, Me.Label_PayToAddress2, Me.Label_PayToCSZ, Me.Label_PayToAddress, Me.Label_FederalTaxID, Me.Label_CompanyFederalTaxID, Me.Label_BranchReporting, Me.Label_GrossProceeds, Me.Label_OtherIncome, Me.Label_Royalties, Me.Label_Rents, Me.Label_CompanyTelephone, Me.Label_CompanyCityStateZip, Me.Label_CompanyAddress, Me.Label_CompanyName})
             Me.Detail.HeightF = 550.0!
             Me.Detail.Name = "Detail"
             Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
@@ -187,23 +186,6 @@
             Me.Label_BranchReporting.SizeF = New System.Drawing.SizeF(20.83!, 18.75!)
             Me.Label_BranchReporting.StylePriority.UseFont = False
             Me.Label_BranchReporting.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
-            '
-            'Label_CompanyCountryCode
-            '
-            Me.Label_CompanyCountryCode.BackColor = System.Drawing.Color.Transparent
-            Me.Label_CompanyCountryCode.BorderColor = System.Drawing.Color.Black
-            Me.Label_CompanyCountryCode.Borders = DevExpress.XtraPrinting.BorderSide.None
-            Me.Label_CompanyCountryCode.BorderWidth = 1.0!
-            Me.Label_CompanyCountryCode.CanGrow = False
-            Me.Label_CompanyCountryCode.Font = New System.Drawing.Font("Arial", 8.0!)
-            Me.Label_CompanyCountryCode.ForeColor = System.Drawing.Color.Black
-            Me.Label_CompanyCountryCode.LocationFloat = New DevExpress.Utils.PointFloat(15.0!, 100.01!)
-            Me.Label_CompanyCountryCode.Name = "Label_CompanyCountryCode"
-            Me.Label_CompanyCountryCode.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
-            Me.Label_CompanyCountryCode.SizeF = New System.Drawing.SizeF(150.0!, 16.67!)
-            Me.Label_CompanyCountryCode.StylePriority.UseFont = False
-            Me.Label_CompanyCountryCode.Text = "CompanyCountryCode"
-            Me.Label_CompanyCountryCode.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
             '
             'Label_GrossProceeds
             '
@@ -371,7 +353,7 @@
             Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
             Me.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
             Me.ScriptLanguage = DevExpress.XtraReports.ScriptLanguage.VisualBasic
-            Me.Version = "18.1"
+            Me.Version = "20.1"
             CType(Me.BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
             CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
@@ -388,7 +370,6 @@
         Private WithEvents Label_GrossProceeds As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Label_OtherIncome As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Label_Royalties As DevExpress.XtraReports.UI.XRLabel
-        Private WithEvents Label_CompanyCountryCode As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Label_BranchReporting As DevExpress.XtraReports.UI.XRLabel
         Private WithEvents Label_CompanyFederalTaxID As DevExpress.XtraReports.UI.XRLabel
         Friend WithEvents Label_FederalTaxID As DevExpress.XtraReports.UI.XRLabel

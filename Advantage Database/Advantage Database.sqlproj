@@ -4281,6 +4281,7 @@
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_EmployeeUtilizationUpdateColumnWidthSettings.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs2\usp_wv_get_Financial_data.proc.sql" />
     <None Include="Programmability\Stored Procedures\Procs1\advsp_media_broadcast_worksheet_etam_export_get_station_ordernumbers.proc.sql" />
+    <None Include="Programmability\Stored Procedures\Procs1\advsp_pmt_mgr_wf2.proc.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="DB1">

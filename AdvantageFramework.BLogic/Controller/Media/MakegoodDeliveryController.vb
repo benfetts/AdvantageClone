@@ -2167,10 +2167,10 @@
                                                           Where Entity.OrderNumber = ViewModel.OrderNumber
                                                           Select Entity.MediaBroadcastWorksheetMarketDetailID).Distinct.ToArray
 
-                UnSubmittedWorksheetLineNumbers = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketStagingDetail.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
-                                                   Where Entity.IsSubmitted = False AndAlso
-                                                         MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID)
-                                                   Select Entity.MediaBroadcastWorksheetMarketDetail.LineNumber).Distinct.ToArray
+                'UnSubmittedWorksheetLineNumbers = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketStagingDetail.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
+                '                                   Where Entity.IsSubmitted = False AndAlso
+                '                                         MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID)
+                '                                   Select Entity.MediaBroadcastWorksheetMarketDetail.LineNumber).Distinct.ToArray
 
                 SubmittedWorksheetLineNumbers = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketStagingDetail.Load(DbContext).Include("MediaBroadcastWorksheetMarketDetail")
                                                  Where Entity.IsSubmitted = True AndAlso
@@ -2178,9 +2178,9 @@
                                                        MediaBroadcastWorksheetMarketDetailIDs.Contains(Entity.MediaBroadcastWorksheetMarketDetailID)
                                                  Select Entity.MediaBroadcastWorksheetMarketDetail.LineNumber).Distinct.ToArray
 
-                SubmittedWorksheetLineNumbers = (From SubmittedWorksheetLineNumber In SubmittedWorksheetLineNumbers
-                                                 Where UnSubmittedWorksheetLineNumbers.Contains(SubmittedWorksheetLineNumber) = False
-                                                 Select SubmittedWorksheetLineNumber).Distinct.ToArray
+                'SubmittedWorksheetLineNumbers = (From SubmittedWorksheetLineNumber In SubmittedWorksheetLineNumbers
+                '                                 Where UnSubmittedWorksheetLineNumbers.Contains(SubmittedWorksheetLineNumber) = False
+                '                                 Select SubmittedWorksheetLineNumber).Distinct.ToArray
 
                 DbContext.Database.ExecuteSqlCommand(String.Format("UPDATE dbo.MEDIA_BROADCAST_WORKSHEET_MARKET_STAGING_DETAIL SET IS_SUBMITTED = 0 WHERE MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL_ID IN ({0})", String.Join(",", ViewModel.MediaBroadcastWorksheetMarketDetailIDs.ToArray)))
 

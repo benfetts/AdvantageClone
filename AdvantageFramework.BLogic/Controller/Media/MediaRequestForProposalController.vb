@@ -1083,11 +1083,9 @@
 
                             If MediaRFPAvailLine.IsComscore Then
 
-                                ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByCallLetters(DbContext, MediaRFPAvailLine.ComscoreTVStationCallLetters)
+                                If MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations.Where(Function(Entity) Entity.Code = MediaRFPAvailLine.ComscoreTVStationCallLetters AndAlso Entity.IsInactive = False).Count = 1 Then
 
-                                If ComscoreTVStation IsNot Nothing Then
-
-                                    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.CableNetworkNielsenTVStationCode.ToString) = ComscoreTVStation.Number
+                                    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.CableNetworkNielsenTVStationCode.ToString) = MediaBroadcastWorksheetMarketDetailsViewModel.CableNetworkStations.Where(Function(Entity) Entity.Code = MediaRFPAvailLine.ComscoreTVStationCallLetters AndAlso Entity.IsInactive = False).First.NielsenTVStationCode
 
                                 End If
 

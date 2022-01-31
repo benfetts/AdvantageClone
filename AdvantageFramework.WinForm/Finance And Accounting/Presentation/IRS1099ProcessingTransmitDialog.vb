@@ -182,7 +182,7 @@
 
             ElseIf _Form1099Type = Exporting.Methods.Form1099.NEC Then
 
-                CheckBoxForm_CombinedFederalStateFiling.Enabled = False
+                CheckBoxForm_CombinedFederalStateFiling.Enabled = True
 
             End If
 

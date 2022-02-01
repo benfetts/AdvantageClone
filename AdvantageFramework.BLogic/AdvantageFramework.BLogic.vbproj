@@ -558,7 +558,6 @@
     <Compile Include="Classes\Finance And Accounting\Check Writing\HSBC Export CA\Strd.vb" />
     <Compile Include="Classes\Finance And Accounting\Check Writing\HSBC Export CA\SvcLvl.vb" />
     <Compile Include="Classes\Finance And Accounting\Check Writing\StringWriterWithEncoding.vb" />
-    <Compile Include="Classes\Media\Media Broadcast Worksheet\RadioDemoDataInfo.vb" />
     <Compile Include="Alert System\Classes\CommentDocument.vb" />
     <Compile Include="Controller\Finance And Accounting\PaymentManagerController.vb" />
     <Compile Include="Controller\Media\Exports\BroadcastBuyInvoiceExportController.vb" />

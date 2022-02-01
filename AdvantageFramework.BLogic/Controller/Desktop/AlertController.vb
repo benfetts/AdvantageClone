@@ -2273,6 +2273,15 @@ Namespace Controller.Desktop
 
                             If Alert.UploadedFiles IsNot Nothing AndAlso Alert.UploadedFiles.Count > 0 Then
 
+                                Try
+                                    If Alert.UploadedFiles.Count > 1 Then
+
+                                        TemporarilyLogIt("Alert.UploadedFiles.Length", Alert.UploadedFiles.Length)
+
+                                    End If
+                                Catch ex As Exception
+                                End Try
+
                                 SaveAttachments(AlertEntity, Alert.UploadedFiles, UploadToRepository, UploadToProofHQ, DocumentErrorMessage, Nothing)
 
                                 If String.IsNullOrWhiteSpace(DocumentErrorMessage) = False Then
@@ -2286,7 +2295,7 @@ Namespace Controller.Desktop
 
                                 For Each LinkedDocumentID In Alert.LinkedDocuments
 
-                                    AddAlertAttachment(AlertEntity.ID, LinkedDocumentID)
+                                    AddAlertAttachment(DbContext, AlertEntity.ID, LinkedDocumentID)
 
                                 Next
 
@@ -4923,25 +4932,6 @@ Namespace Controller.Desktop
             End Try
 
         End Function
-        Public Function AddAlertAttachment(ByVal AlertID As Integer, ByVal DocumentID As Integer) As Boolean
-
-            'objects
-            Dim AlertAttachment As AdvantageFramework.Database.Entities.AlertAttachment = Nothing
-            Dim Added As Boolean = False
-
-            If DocumentID > 0 Then
-
-                Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
-
-                    Added = AddAlertAttachment(DbContext, AlertID, DocumentID)
-
-                End Using
-
-            End If
-
-            Return Added
-
-        End Function
         Public Function AddAlertAttachment(ByVal DbContext As AdvantageFramework.Database.DbContext, ByVal AlertID As Integer, ByVal DocumentID As Integer) As Boolean
 
             Return AdvantageFramework.DocumentManager.AddAlertAttachment(DbContext, AlertID, DocumentID)
@@ -5025,160 +5015,220 @@ Namespace Controller.Desktop
             Dim RepositoryErrorMessage As String = String.Empty
             Dim DelayMilliseconds As Integer = GetUploadDelay()
             Dim LastDocumentID As Integer = 0
+            Dim MultiDoc As Boolean = False
 
             Try
 
-                Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
+                If Files IsNot Nothing Then
 
-                    Using DataContext = New AdvantageFramework.Database.DataContext(Me.Session.ConnectionString, Me.Session.UserCode)
+                    MultiDoc = Files.Count > 1
 
-                        Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
-                        Documents = New List(Of Database.Entities.Document)
+                    Using DbContext = New AdvantageFramework.Database.DbContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
-                        For Each FullFileName In Files
+                        Using DataContext = New AdvantageFramework.Database.DataContext(Me.Session.ConnectionString, Me.Session.UserCode)
 
-                            RepositoryFileName = ""
-                            RepositoryErrorMessage = ""
-                            IsValidFile = True
+                            Agency = AdvantageFramework.Database.Procedures.Agency.Load(DbContext)
+                            Documents = New List(Of Database.Entities.Document)
 
-                            If System.IO.File.Exists(FullFileName) Then
+                            Try
+                                If MultiDoc = True Then
 
-                                FileInfo = New System.IO.FileInfo(FullFileName)
+                                    TemporarilyLogIt("Gonna upload these:", String.Join(",", Files.ToArray))
 
-                                If FileInfo.Length > 0 Then
+                                End If
+                            Catch ex As Exception
+                            End Try
 
-                                    AdvantageFramework.FileSystem.CheckRepositoryConstraints(DbContext, FullFileName, IsValidFile, RepositoryErrorMessage)
+                            For Each FullFileName In Files
 
-                                    If IsValidFile Then
+                                RepositoryFileName = ""
+                                RepositoryErrorMessage = ""
+                                IsValidFile = True
 
-                                        If UploadToRepository Then
+                                If System.IO.File.Exists(FullFileName) Then
 
-                                            DocumentSource = FileSystem.DocumentSource.DocumentUpload
+                                    FileInfo = New System.IO.FileInfo(FullFileName)
 
-                                        Else
+                                    If FileInfo.Length > 0 Then
 
-                                            DocumentSource = FileSystem.DocumentSource.Alert
+                                        AdvantageFramework.FileSystem.CheckRepositoryConstraints(DbContext, FullFileName, IsValidFile, RepositoryErrorMessage)
 
-                                        End If
+                                        If IsValidFile = True Then
 
-                                        If AdvantageFramework.FileSystem.Add(Agency, FullFileName, "", "", Me.Session.UserCode, "New Alert", "Attached Doc", DocumentSource, FileName:=RepositoryFileName) Then
+                                            If UploadToRepository Then
 
-                                            If Not String.IsNullOrWhiteSpace(RepositoryFileName) Then
+                                                DocumentSource = FileSystem.DocumentSource.DocumentUpload
 
-                                                Document = New Database.Entities.Document
+                                            Else
 
-                                                Document.FileSystemFileName = RepositoryFileName
-                                                Document.FileName = FileInfo.Name
-                                                Document.Description = Nothing
-                                                Document.Keywords = Nothing
-                                                Document.MIMEType = AdvantageFramework.FileSystem.GetMIMEType(FileInfo)
-                                                Document.UploadedDate = Now
-                                                Document.UserCode = Me.Session.UserCode
-                                                Document.FileSize = FileInfo.Length
-                                                Document.IsPrivate = Nothing
-                                                Document.DocumentTypeID = 2 'file
+                                                DocumentSource = FileSystem.DocumentSource.Alert
+
+                                            End If
+
+                                            Try
+                                                If MultiDoc = True Then TemporarilyLogIt("Saving file to repository", FullFileName)
+                                            Catch ex As Exception
+                                            End Try
+
+                                            If AdvantageFramework.FileSystem.Add(Agency,
+                                                                                     FullFileName, "", "",
+                                                                                     Me.Session.UserCode,
+                                                                                     "New Alert",
+                                                                                     "Attached Doc",
+                                                                                     DocumentSource,
+                                                                                     FileName:=RepositoryFileName) Then
+
+
+                                                Try
+                                                    If MultiDoc = True Then TemporarilyLogIt("File saved", FullFileName)
+                                                Catch ex As Exception
+                                                End Try
 
                                                 Try
 
-                                                    If Alert.AlertCategoryID = 79 Then
+                                                    If DelayMilliseconds > 0 Then
 
-                                                        Document.VersionNumber = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(MAX(ISNULL(VERSION_NUMBER, 0)) + 1, 1) FROM DOCUMENTS D WITH(NOLOCK) INNER JOIN ALERT_ATTACHMENT AA WITH(NOLOCK) ON D.DOCUMENT_ID = AA.DOCUMENT_ID WHERE AA.ALERT_ID = {0};", Alert.ID)).SingleOrDefault
+                                                        System.Threading.Thread.Sleep(300)
 
                                                     End If
 
                                                 Catch ex As Exception
                                                 End Try
 
-                                                If String.IsNullOrWhiteSpace(Document.MIMEType) = True OrElse Document.MIMEType.Contains("unknown") = True Then
+                                                If Not String.IsNullOrWhiteSpace(RepositoryFileName) Then
 
-                                                    Document.MIMEType = AdvantageFramework.FileSystem.GetMIMETypeByExtension(AdvantageFramework.StringUtilities.ParseLastDot(Document.FileName))
+                                                    Document = New Database.Entities.Document
 
-                                                End If
+                                                    Document.FileSystemFileName = RepositoryFileName
+                                                    Document.FileName = FileInfo.Name
+                                                    Document.Description = Nothing
+                                                    Document.Keywords = Nothing
+                                                    Document.MIMEType = AdvantageFramework.FileSystem.GetMIMEType(FileInfo)
+                                                    Document.UploadedDate = Now
+                                                    Document.UserCode = Me.Session.UserCode
+                                                    Document.FileSize = FileInfo.Length
+                                                    Document.IsPrivate = Nothing
+                                                    Document.DocumentTypeID = 2 'file
 
-                                                Try
+                                                    Try
 
-                                                    Document.ID = (From Entity In AdvantageFramework.Database.Procedures.Document.Load(DbContext)
-                                                                   Select Entity.ID).Max + 1
+                                                        If Alert.AlertCategoryID = 79 Then
 
-                                                Catch ex As Exception
-                                                    Document.ID = 1
-                                                End Try
+                                                            Document.VersionNumber = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT ISNULL(MAX(ISNULL(VERSION_NUMBER, 0)) + 1, 1) FROM DOCUMENTS D WITH(NOLOCK) INNER JOIN ALERT_ATTACHMENT AA WITH(NOLOCK) ON D.DOCUMENT_ID = AA.DOCUMENT_ID WHERE AA.ALERT_ID = {0};", Alert.ID)).SingleOrDefault
 
-                                                If AdvantageFramework.Database.Procedures.Document.Insert(DbContext, Document) Then
-                                                    If Document.FileName.ToLower.EndsWith("png") OrElse Document.FileName.ToLower.EndsWith("bmp") OrElse
-                                                        Document.FileName.ToLower.EndsWith("tiff") OrElse Document.FileName.ToLower.EndsWith("gif") OrElse
-                                                        Document.FileName.ToLower.EndsWith("jpeg") OrElse Document.FileName.ToLower.EndsWith("jpg") Then
+                                                        End If
 
-                                                        AdvantageFramework.DocumentManager.UpdateDocumentThumbnail(DbContext, Agency, Document.ID, Nothing)
+                                                    Catch ex As Exception
+                                                    End Try
+
+                                                    If String.IsNullOrWhiteSpace(Document.MIMEType) = True OrElse Document.MIMEType.Contains("unknown") = True Then
+
+                                                        Document.MIMEType = AdvantageFramework.FileSystem.GetMIMETypeByExtension(AdvantageFramework.StringUtilities.ParseLastDot(Document.FileName))
 
                                                     End If
 
-                                                    Documents.Add(Document)
+                                                    Try
 
-                                                    Saved = AddAlertAttachment(Alert.ID, Document.ID)
+                                                        Document.ID = (From Entity In AdvantageFramework.Database.Procedures.Document.Load(DbContext)
+                                                                       Select Entity.ID).Max + 1
 
-                                                    If Saved Then
+                                                    Catch ex As Exception
+                                                        Document.ID = 1
+                                                    End Try
+
+                                                    If AdvantageFramework.Database.Procedures.Document.Insert(DbContext, Document) Then
+
+                                                        Try
+                                                            If MultiDoc = True Then TemporarilyLogIt("Document record added", Document.FileName)
+                                                        Catch ex As Exception
+                                                        End Try
 
                                                         Try
 
-                                                            DbContext.Database.ExecuteSqlCommand(String.Format("[dbo].[advsp_proofing_add_upload_comment] '{0}', {1}, {2};", Me.Session.UserCode, Alert.ID, Document.ID))
+                                                            If Document.FileName.ToLower.EndsWith("png") OrElse Document.FileName.ToLower.EndsWith("bmp") OrElse
+                                                               Document.FileName.ToLower.EndsWith("tiff") OrElse Document.FileName.ToLower.EndsWith("gif") OrElse
+                                                               Document.FileName.ToLower.EndsWith("jpeg") OrElse Document.FileName.ToLower.EndsWith("jpg") Then
+
+                                                                AdvantageFramework.DocumentManager.UpdateDocumentThumbnail(DbContext, Agency, Document.ID, Nothing)
+
+                                                            End If
 
                                                         Catch ex As Exception
                                                         End Try
 
-                                                    End If
+                                                        Documents.Add(Document)
 
-                                                    If UploadToRepository Then
+                                                        Saved = AddAlertAttachment(DbContext, Alert.ID, Document.ID)
 
-                                                        Try
+                                                        If Saved Then
 
-                                                            Select Case Alert.AlertLevel
+                                                            Try
+                                                                TemporarilyLogIt("Alert attachment record added", String.Format("AlertID:{0}, DocumentID:{1}", Alert.ID, Document.ID))
+                                                            Catch ex As Exception
+                                                            End Try
 
-                                                                Case "OF"
+                                                            Try
 
-                                                                    AdvantageFramework.DocumentManager.AddOfficeDocument(DbContext, Alert.OfficeCode, Document.ID)
+                                                                DbContext.Database.ExecuteSqlCommand(String.Format("[dbo].[advsp_proofing_add_upload_comment] '{0}', {1}, {2};", Me.Session.UserCode, Alert.ID, Document.ID))
 
-                                                                Case "CL"
+                                                            Catch ex As Exception
+                                                            End Try
 
-                                                                    AdvantageFramework.DocumentManager.AddClientDocument(DataContext, Alert.ClientCode, Document.ID)
+                                                        End If
 
-                                                                Case "DI"
+                                                        If UploadToRepository Then
 
-                                                                    AdvantageFramework.DocumentManager.AddDivisionDocument(DataContext, Alert.ClientCode, Alert.DivisionCode, Document.ID)
+                                                            Try
 
-                                                                Case "PR", "PRD"
+                                                                Select Case Alert.AlertLevel
 
-                                                                    AdvantageFramework.DocumentManager.AddProductDocument(DataContext, Alert.ClientCode, Alert.DivisionCode, Alert.ProductCode, Document.ID)
+                                                                    Case "OF"
 
-                                                                Case "JO"
+                                                                        AdvantageFramework.DocumentManager.AddOfficeDocument(DbContext, Alert.OfficeCode, Document.ID)
 
-                                                                    AdvantageFramework.DocumentManager.AddJobDocument(DataContext, Alert.JobNumber, Document.ID)
+                                                                    Case "CL"
 
-                                                                Case "JC", "ES", "EST"
+                                                                        AdvantageFramework.DocumentManager.AddClientDocument(DataContext, Alert.ClientCode, Document.ID)
 
-                                                                    AdvantageFramework.DocumentManager.AddJobComponentDocument(DataContext, Alert.JobNumber, Alert.JobComponentNumber, Document.ID)
+                                                                    Case "DI"
 
-                                                                Case "PST", "BRD"
+                                                                        AdvantageFramework.DocumentManager.AddDivisionDocument(DataContext, Alert.ClientCode, Alert.DivisionCode, Document.ID)
 
-                                                                    AdvantageFramework.DocumentManager.AddTaskDocument(DataContext, Alert.JobNumber, Alert.JobComponentNumber, Alert.TaskSequenceNumber, Document.ID)
+                                                                    Case "PR", "PRD"
 
-                                                            End Select
+                                                                        AdvantageFramework.DocumentManager.AddProductDocument(DataContext, Alert.ClientCode, Alert.DivisionCode, Alert.ProductCode, Document.ID)
 
-                                                            If UploadToProofHQ Then
+                                                                    Case "JO"
 
-                                                                Dim ByteFile() As Byte = Nothing
-                                                                ProofHQUrl = String.Empty
-                                                                ProofHQFileID = 0
+                                                                        AdvantageFramework.DocumentManager.AddJobDocument(DataContext, Alert.JobNumber, Document.ID)
 
-                                                                If AdvantageFramework.FileSystem.Download(Agency, Document, ByteFile) Then
+                                                                    Case "JC", "ES", "EST"
 
-                                                                    If AdvantageFramework.ProofHQ.UploadFile(DbContext, DataContext, Me.Session.User.EmployeeCode, ByteFile,
-                                                                                                             Document.FileName, Document.FileName, "", "", 0, ProofHQUrl, ProofHQFileID) Then
+                                                                        AdvantageFramework.DocumentManager.AddJobComponentDocument(DataContext, Alert.JobNumber, Alert.JobComponentNumber, Document.ID)
 
-                                                                        If String.IsNullOrWhiteSpace(ProofHQUrl) = False Then
+                                                                    Case "PST", "BRD"
 
-                                                                            Document.ProofHQUrl = ProofHQUrl
-                                                                            AdvantageFramework.Database.Procedures.Document.Update(DbContext, Document)
+                                                                        AdvantageFramework.DocumentManager.AddTaskDocument(DataContext, Alert.JobNumber, Alert.JobComponentNumber, Alert.TaskSequenceNumber, Document.ID)
+
+                                                                End Select
+
+                                                                If UploadToProofHQ Then
+
+                                                                    Dim ByteFile() As Byte = Nothing
+                                                                    ProofHQUrl = String.Empty
+                                                                    ProofHQFileID = 0
+
+                                                                    If AdvantageFramework.FileSystem.Download(Agency, Document, ByteFile) Then
+
+                                                                        If AdvantageFramework.ProofHQ.UploadFile(DbContext, DataContext, Me.Session.User.EmployeeCode, ByteFile,
+                                                                                                                     Document.FileName, Document.FileName, "", "", 0, ProofHQUrl, ProofHQFileID) Then
+
+                                                                            If String.IsNullOrWhiteSpace(ProofHQUrl) = False Then
+
+                                                                                Document.ProofHQUrl = ProofHQUrl
+                                                                                AdvantageFramework.Database.Procedures.Document.Update(DbContext, Document)
+
+                                                                            End If
 
                                                                         End If
 
@@ -5186,24 +5236,36 @@ Namespace Controller.Desktop
 
                                                                 End If
 
-                                                            End If
+                                                            Catch ex As Exception
+                                                            End Try
 
-                                                        Catch ex As Exception
-                                                        End Try
-
-                                                    End If
-
-                                                Else
-
-                                                    If String.IsNullOrWhiteSpace(ErrorMessage) Then
-
-                                                        ErrorMessage = FileInfo.Name & " - failed adding file to database."
+                                                        End If
 
                                                     Else
 
-                                                        ErrorMessage &= FileInfo.Name & " - failed adding file to database."
+                                                        If String.IsNullOrWhiteSpace(ErrorMessage) Then
+
+                                                            ErrorMessage = FileInfo.Name & " - failed adding file to database."
+
+                                                        Else
+
+                                                            ErrorMessage &= FileInfo.Name & " - failed adding file to database."
+
+                                                        End If
 
                                                     End If
+
+                                                End If
+
+                                            Else
+
+                                                If String.IsNullOrWhiteSpace(ErrorMessage) Then
+
+                                                    ErrorMessage = FileInfo.Name & " - failed adding file to document repository (FileSystem)."
+
+                                                Else
+
+                                                    ErrorMessage &= FileInfo.Name & " - failed adding file to document repository (FileSystem)."
 
                                                 End If
 
@@ -5213,11 +5275,11 @@ Namespace Controller.Desktop
 
                                             If String.IsNullOrWhiteSpace(ErrorMessage) Then
 
-                                                ErrorMessage = FileInfo.Name & " - failed adding file to document repository (FileSystem)."
+                                                ErrorMessage = FileInfo.Name & " - " & RepositoryErrorMessage
 
                                             Else
 
-                                                ErrorMessage &= FileInfo.Name & " - failed adding file to document repository (FileSystem)."
+                                                ErrorMessage &= FileInfo.Name & " - " & RepositoryErrorMessage
 
                                             End If
 
@@ -5227,11 +5289,11 @@ Namespace Controller.Desktop
 
                                         If String.IsNullOrWhiteSpace(ErrorMessage) Then
 
-                                            ErrorMessage = FileInfo.Name & " - " & RepositoryErrorMessage
+                                            ErrorMessage = FileInfo.Name & " - cannot upload because it is empty."
 
                                         Else
 
-                                            ErrorMessage &= FileInfo.Name & " - " & RepositoryErrorMessage
+                                            ErrorMessage &= FileInfo.Name & " - cannot upload because it is empty."
 
                                         End If
 
@@ -5241,54 +5303,61 @@ Namespace Controller.Desktop
 
                                     If String.IsNullOrWhiteSpace(ErrorMessage) Then
 
-                                        ErrorMessage = FileInfo.Name & " - cannot upload because it is empty."
+                                        ErrorMessage = My.Computer.FileSystem.GetName(FullFileName) & " - Does not exist."
 
                                     Else
 
-                                        ErrorMessage &= FileInfo.Name & " - cannot upload because it is empty."
+                                        ErrorMessage &= System.Environment.NewLine & My.Computer.FileSystem.GetName(FullFileName) & " - Does not exist."
 
                                     End If
 
                                 End If
 
-                            Else
+                                Try
 
-                                If String.IsNullOrWhiteSpace(ErrorMessage) Then
+                                    If DelayMilliseconds > 0 Then
 
-                                    ErrorMessage = My.Computer.FileSystem.GetName(FullFileName) & " - Does not exist."
+                                        System.Threading.Thread.Sleep(CType(System.Web.Configuration.WebConfigurationManager.AppSettings.Get("UploadDelay"), Integer))
 
-                                Else
+                                    End If
 
-                                    ErrorMessage &= System.Environment.NewLine & My.Computer.FileSystem.GetName(FullFileName) & " - Does not exist."
+                                Catch ex As Exception
+                                End Try
 
-                                End If
+                            Next
 
-                            End If
-
-                            Try
-
-                                If DelayMilliseconds > 0 Then
-
-                                    System.Threading.Thread.Sleep(CType(System.Web.Configuration.WebConfigurationManager.AppSettings.Get("UploadDelay"), Integer))
-
-                                End If
-
-                            Catch ex As Exception
-                            End Try
-
-                        Next
+                        End Using
 
                     End Using
 
-                End Using
+                End If
 
             Catch ex As Exception
                 Saved = False
+                ErrorMessage &= AdvantageFramework.StringUtilities.FullErrorToString(ex)
             Finally
                 SaveAttachments = Saved
+                If String.IsNullOrWhiteSpace(ErrorMessage) = False Then
+                    TemporarilyLogIt("SaveAttachments", ErrorMessage)
+                End If
+            End Try
+
+            Try
+                If MultiDoc = True Then
+                    TemporarilyLogIt("Leaving SaveAttachments function!", "")
+                End If
+            Catch ex As Exception
             End Try
 
         End Function
+        Private Sub TemporarilyLogIt(ByVal ID As String, ByVal Message As String)
+
+            Try
+                AdvantageFramework.Security.AddWebvantageEventLog(ID & ":" & Environment.NewLine & Message)
+            Catch ex As Exception
+            End Try
+
+        End Sub
         Public Function SaveAttachment(ByVal AlertID As Integer,
                                        ByVal FileName As String,
                                        ByVal UploadToRepository As Boolean,

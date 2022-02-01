@@ -1005,11 +1005,16 @@
             End Try
 
         End Function
-        Public Function Add(ByVal Agency As AdvantageFramework.Database.Entities.Agency, ByVal File As String, ByVal Description As String, ByVal Keywords As String,
-                            ByVal UserCodeOrEmployeeName As String, Optional ByVal FinalLevel As String = "", Optional ByVal FinalLevelDescription As String = "",
+        Public Function Add(ByVal Agency As AdvantageFramework.Database.Entities.Agency,
+                            ByVal File As String, ByVal Description As String, ByVal Keywords As String,
+                            ByVal UserCodeOrEmployeeName As String,
+                            Optional ByVal FinalLevel As String = "",
+                            Optional ByVal FinalLevelDescription As String = "",
                             Optional ByVal DocumentSource As AdvantageFramework.FileSystem.DocumentSource = DocumentSource.Default,
-                            Optional ByRef FileSystemFile As String = "", Optional ByRef byteFile() As Byte = Nothing,
-                            Optional ByRef FileName As String = "", Optional ByVal EventLog As System.Diagnostics.EventLog = Nothing) As Boolean
+                            Optional ByRef FileSystemFile As String = "",
+                            Optional ByRef byteFile() As Byte = Nothing,
+                            Optional ByRef FileName As String = "",
+                            Optional ByVal EventLog As System.Diagnostics.EventLog = Nothing) As Boolean
 
             'objects
             Dim FileAdded As Boolean = False

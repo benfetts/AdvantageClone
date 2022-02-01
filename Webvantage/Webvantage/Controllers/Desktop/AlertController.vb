@@ -3205,6 +3205,8 @@ Namespace Controllers.Desktop
                 TempFiles = GetTempUploadAttachments(Alert.UploadedFiles, ErrorMessage)
 
             Catch ex As Exception
+                AdvantageFramework.Security.AddWebvantageEventLog("CreateAssignment:TempFiles",
+                                                                  AdvantageFramework.StringUtilities.FullErrorToString(ex))
                 TempFiles = Nothing
             End Try
 
@@ -7247,6 +7249,7 @@ Namespace Controllers.Desktop
 
                 Catch ex As Exception
                     ErrorMessage = AdvantageFramework.StringUtilities.FullErrorToString(ex)
+                    AdvantageFramework.Security.AddWebvantageEventLog("GetTempUploadAttachments", ErrorMessage)
                 End Try
 
             End If

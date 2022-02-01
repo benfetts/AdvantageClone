@@ -21,6 +21,7 @@
         Private _LocationEntity As AdvantageFramework.Database.Entities.Location = Nothing
         Private _Guidelines As String = Nothing
         Private _HasBookends As Boolean = False
+        Private _IsLogoSet As Boolean = False
 
 #End Region
 
@@ -70,6 +71,8 @@
                 Using DbContext = New AdvantageFramework.Database.DbContext(_Session.ConnectionString, _Session.UserCode)
 
                     MediaTrafficInstructionReports = DbContext.Database.SqlQuery(Of AdvantageFramework.Reporting.Database.Classes.MediaTrafficInstructionReport)(String.Format("exec advsp_media_traffic_instruction_report {0}, '{1}'", _MediaTrafficVendorID, _Session.UserCode)).ToList
+
+                    _IsLogoSet = AdvantageFramework.Reporting.Reports.SetReportHeaderLogoLandscape(DbContext, _LocationEntity, Me.XrPictureBoxHeaderLogo)
 
                 End Using
 
@@ -129,17 +132,11 @@
         End Sub
         Private Sub XrPictureBoxHeaderLogo_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles XrPictureBoxHeaderLogo.BeforePrint
 
-            Dim Cancel As Boolean = True
+            If _IsLogoSet = False Then
 
-            If _LocationEntity IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(_LocationEntity.LogoLandscapePath) AndAlso My.Computer.FileSystem.FileExists(_LocationEntity.LogoLandscapePath) Then
-
-                XrPictureBoxHeaderLogo.ImageUrl = _LocationEntity.LogoLandscapePath
-
-                Cancel = False
+                e.Cancel = True
 
             End If
-
-            e.Cancel = Cancel
 
         End Sub
         Private Sub LabelPageHeader_Bookend_BeforePrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles LabelPageHeader_Bookend.BeforePrint

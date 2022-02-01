@@ -12111,6 +12111,42 @@ Public Module Methods
         GetNonBroadcastMediaOrderFormat = MediaOrderPrintSetting.ReportFormat
 
     End Function
+    Public Function SetReportHeaderLogoLandscape(DbContext As AdvantageFramework.Database.DbContext, Location As AdvantageFramework.Database.Entities.Location, ByRef XrPictureBoxHeaderLogo As DevExpress.XtraReports.UI.XRPictureBox) As Boolean
+
+        'objects
+        Dim LocationLogo As AdvantageFramework.Database.Entities.LocationLogo = Nothing
+        Dim LogoIsSet As Boolean = False
+
+        If Location IsNot Nothing AndAlso Location.LogoLocation = "C" Then 'Show logo
+
+            If String.IsNullOrWhiteSpace(Location.LogoLandscapePath) = False AndAlso My.Computer.FileSystem.FileExists(Location.LogoLandscapePath) Then
+
+                XrPictureBoxHeaderLogo.ImageUrl = Location.LogoLandscapePath
+                LogoIsSet = True
+
+            Else
+
+                LocationLogo = AdvantageFramework.Database.Procedures.LocationLogo.LoadByLocationAndLocationLogoTypeID(DbContext, Location.ID, AdvantageFramework.Database.Entities.LocationLogoTypes.HeaderPortrait)
+
+                If LocationLogo IsNot Nothing AndAlso LocationLogo.Image IsNot Nothing Then
+
+                    Using MemoryStream = New System.IO.MemoryStream(LocationLogo.Image)
+
+                        XrPictureBoxHeaderLogo.ImageSource = New DevExpress.XtraPrinting.Drawing.ImageSource(System.Drawing.Image.FromStream(MemoryStream))
+
+                    End Using
+
+                    LogoIsSet = True
+
+                End If
+
+            End If
+
+        End If
+
+        SetReportHeaderLogoLandscape = LogoIsSet
+
+    End Function
 
 #Region " Month End Reports "
 

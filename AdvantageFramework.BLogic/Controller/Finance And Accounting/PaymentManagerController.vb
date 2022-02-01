@@ -585,6 +585,9 @@ Namespace Controller.FinanceAndAccounting
             Dim VendorInvoiceTotal As Decimal = 0
             Dim GrpTotalCnt As Integer = 0
             Dim GrpTotalPmt As Decimal = 0
+            Dim PmtinfotalCnt As Integer = 0
+            Dim PmtinfTotalPmt As Decimal = 0
+            Dim APCheckNbr As String
             Dim RunDate As Date = Now
             Dim Document As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.Document
             Dim CstmrCdtTrfInitn As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.CstmrCdtTrfInitn
@@ -594,6 +597,7 @@ Namespace Controller.FinanceAndAccounting
             Dim Agency As AdvantageFramework.Database.Entities.Agency = Nothing
             Dim Bank As AdvantageFramework.Database.Entities.Bank = Nothing
             Dim Pmtinf As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.PmtInf
+            Dim CdtTrfTxInf As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.CdtTrfTxInf
             Dim Strd As Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.Strd
 
             CstmrCdtTrfInitn = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.CstmrCdtTrfInitn
@@ -638,7 +642,7 @@ Namespace Controller.FinanceAndAccounting
 
                     ExportFile = ViewModel.Bank.PaymentManagerType & "_" & PaymentManagerNumber & "_" & RunDate.ToString("HHmmss") & RunDate.ToString("MMddyyyy")
 
-                    MsgIdStr = ExportFile
+                    MsgIdStr = Left(ExportFile, 35)
 
                     If ViewModel.Bank.PaymentManagerType = "HSB1" Then
 
@@ -660,9 +664,6 @@ Namespace Controller.FinanceAndAccounting
                     CstmrCdtTrfInitn.GrpHdr.CreDtTm = RunDate.ToString("yyyy-MM-dd") & "T" & RunDate.ToString("HH:mm:ss")  '"2021-09-16T09:51:07"
                     CstmrCdtTrfInitn.GrpHdr.Authstn.Cd = "AUTH"
 
-                    'CstmrCdtTrfInitn.GrpHdr.NbOfTxs = ?? Later
-                    'CstmrCdtTrfInitn.GrpHdr.CtrlSum = ?? Later
-
                     CstmrCdtTrfInitn.GrpHdr.InitgPty.Id.OrgId.Othr.Id = ViewModel.Bank.AccountNumber 'Bank Acct Nbr
 
                     Try
@@ -673,17 +674,35 @@ Namespace Controller.FinanceAndAccounting
                         VendorCodes = New Generic.List(Of String)
                     End Try
 
+                    'For Each VendorCode In VendorCodes
+
+                    Pmtinf = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.PmtInf
+
+                    Pmtinf.PmtMtd = "CHK"
+                    'CstmrCdtTrfInitn.PmtInf.NbOfTxs = ?? Later
+                    'CstmrCdtTrfInitn.PmtInf.CtrlSum = ?? Later
+
+                    Pmtinf.PmtTpInf.SvcLvl.Cd = "NURG"  'NURG (Non Urgent)
+
+                    Pmtinf.ReqdExctnDt = RunDate.ToString("yyyy-MM-dd") '"2021-09-16" 'Check Date
+
+                    'Pmtinf.PmtInfId = PaymentManagerReport.APCheckNumber
+
+                    Pmtinf.Dbtr.Nm = Agency.Name
+                    Pmtinf.Dbtr.PstlAdr.StrtNm = Agency.Address ' "123 Street Name"
+                    Pmtinf.Dbtr.PstlAdr.PstCd = Agency.Zip '"M1M1 1M1"
+                    Pmtinf.Dbtr.PstlAdr.TwnNm = Agency.City '"Toronto"
+                    Pmtinf.Dbtr.PstlAdr.CtrySubDvsn = Agency.State
+                    Pmtinf.Dbtr.PstlAdr.Ctry = Agency.Country '"CA"
+
+                    Pmtinf.DbtrAcct.Id.Othr.Id = ViewModel.Bank.AccountNumber ' Acct Nbr (9 length) 
+
+                    Pmtinf.DbtrAgt.FinInstnId.BIC = Strings.Left(ViewModel.Bank.PaymentManagerID, 11)  '"HKBCCATT"
+                    Pmtinf.DbtrAgt.FinInstnId.ClrSysMmbId.MmbId = ViewModel.Bank.PaymentManagerWord  '"001610002" 
+                    Pmtinf.DbtrAgt.FinInstnId.Nm = "HSBC Canada"  'Name of the intermediary bank
+                    Pmtinf.DbtrAgt.FinInstnId.PstlAdr.Ctry = "CA"
+
                     For Each VendorCode In VendorCodes
-
-                        Pmtinf = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.PmtInf
-
-                        Pmtinf.PmtMtd = "CHK"
-                        'CstmrCdtTrfInitn.PmtInf.NbOfTxs = ?? Later
-                        'CstmrCdtTrfInitn.PmtInf.CtrlSum = ?? Later
-
-                        Pmtinf.PmtTpInf.SvcLvl.Cd = "NURG"  'NURG (Non Urgent)
-
-                        Pmtinf.ReqdExctnDt = RunDate.ToString("yyyy-MM-dd") '"2021-09-16" 'Check Date
 
                         Try
 
@@ -701,37 +720,28 @@ Namespace Controller.FinanceAndAccounting
                             Vendor = New AdvantageFramework.Database.Entities.Vendor
                         End Try
 
-                        Pmtinf.Dbtr.Nm = Agency.Name
-                        Pmtinf.Dbtr.PstlAdr.StrtNm = Agency.Address ' "123 Street Name"
-                        Pmtinf.Dbtr.PstlAdr.PstCd = Agency.Zip '"M1M1 1M1"
-                        Pmtinf.Dbtr.PstlAdr.TwnNm = Agency.City '"Toronto"
-                        Pmtinf.Dbtr.PstlAdr.CtrySubDvsn = Agency.State
-                        Pmtinf.Dbtr.PstlAdr.Ctry = Agency.Country '"CA"
+                        CdtTrfTxInf = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.CdtTrfTxInf
 
-                        Pmtinf.DbtrAcct.Id.Othr.Id = ViewModel.Bank.AccountNumber ' Acct Nbr (9 length) 
-
-                        Pmtinf.DbtrAgt.FinInstnId.BIC = Strings.Left(ViewModel.Bank.PaymentManagerID, 11)  '"HKBCCATT"
-                        Pmtinf.DbtrAgt.FinInstnId.ClrSysMmbId.MmbId = ViewModel.Bank.PaymentManagerWord  '"001610002" 
-                        Pmtinf.DbtrAgt.FinInstnId.Nm = "HSBC Canada"  'Name of the intermediary bank
-                        Pmtinf.DbtrAgt.FinInstnId.PstlAdr.Ctry = "CA"
-
-                        Pmtinf.CdtTrfTxInf.Amt.InstdAmt.Ccy = "CAD" '<InstdAmt Ccy="CAD">300.00</InstdAmt>
+                        CdtTrfTxInf.Amt.InstdAmt.Ccy = "CAD" '<InstdAmt Ccy="CAD">300.00</InstdAmt>
                         'Pmtinf.CdtTrfTxInf.Amt.InstdAmt.Text = ?? Later
 
-                        Pmtinf.CdtTrfTxInf.Cdtr.Nm = Vendor.Name '"Vendor Name"
-                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.StrtNm = Vendor.PayToAddressLine1
-                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.PstCd = Vendor.PayToZipCode '"M1M1 1M1"
-                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.TwnNm = Vendor.PayToCity '"Toronto"
-                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.CtrySubDvsn = Vendor.PayToState '"ON" 'Addr 2,3,4??
-                        Pmtinf.CdtTrfTxInf.Cdtr.PstlAdr.Ctry = Vendor.PayToCountry '"CA"
+                        CdtTrfTxInf.Cdtr.Nm = Vendor.Name '"Vendor Name"
+                        CdtTrfTxInf.Cdtr.PstlAdr.StrtNm = Vendor.PayToAddressLine1
+                        CdtTrfTxInf.Cdtr.PstlAdr.PstCd = Vendor.PayToZipCode '"M1M1 1M1"
+                        CdtTrfTxInf.Cdtr.PstlAdr.TwnNm = Vendor.PayToCity '"Toronto"
+                        CdtTrfTxInf.Cdtr.PstlAdr.CtrySubDvsn = Vendor.PayToState '"ON" 'Addr 2,3,4??
+                        CdtTrfTxInf.Cdtr.PstlAdr.Ctry = Vendor.PayToCountry '"CA"
 
                         'All invoices related to this Vendor
                         VendorPaymentManagerReports = PaymentManagerReports.Where(Function(Entity) Entity.PayToVendorCode = VendorCode).ToList
 
-                        Pmtinf.CdtTrfTxInf.Amt.InstdAmt.Text = VendorPaymentManagerReports.Sum(Function(Entity) Entity.CheckAmount)
+                        CdtTrfTxInf.Amt.InstdAmt.Text = VendorPaymentManagerReports.Sum(Function(Entity) Entity.APInvoiceAmount)
 
                         Pmtinf.NbOfTxs = VendorPaymentManagerReports.Count 'or many??
-                        Pmtinf.CtrlSum = VendorPaymentManagerReports.Sum(Function(Entity) Entity.CheckAmount)
+                        Pmtinf.CtrlSum = VendorPaymentManagerReports.Sum(Function(Entity) Entity.APInvoiceAmount)
+
+                        If Pmtinf.NbOfTxs > 0 Then PmtinfotalCnt += Pmtinf.NbOfTxs
+                        If Pmtinf.CtrlSum > 0 Then PmtinfTotalPmt += Pmtinf.CtrlSum
 
                         If Pmtinf.NbOfTxs > 0 Then GrpTotalCnt += Pmtinf.NbOfTxs
                         If Pmtinf.CtrlSum > 0 Then GrpTotalPmt += Pmtinf.CtrlSum
@@ -742,16 +752,21 @@ Namespace Controller.FinanceAndAccounting
                             If Pmtinf.PmtInfId = Nothing Then
 
                                 Pmtinf.PmtInfId = PaymentManagerReport.APCheckNumber
-                                InstrId = Strings.Right("0000000000000000" + CStr(PaymentManagerReport.APCheckNumber), 16)
-                                Pmtinf.CdtTrfTxInf.PmtId.InstrId = InstrId 'Unique transaction reference (16 max)
-                                Pmtinf.CdtTrfTxInf.PmtId.EndToEndId = InstrId  'Unique transaction reference (16 max)
-                                Pmtinf.CdtTrfTxInf.ChqInstr.ChqNb = PaymentManagerReport.APCheckNumber
-
-                                ViewModel.Bank.BankExportSpec = AdvantageFramework.Database.Procedures.BankExportSpec.LoadByBankCode(DbContext, ViewModel.Bank.Code)
-
-                                Pmtinf.CdtTrfTxInf.ChqInstr.FrmsCd = ViewModel.Bank.BankExportSpec.BankID '"AB6" 'Special handling code
 
                             End If
+
+                            APCheckNbr = PaymentManagerReport.APCheckNumber
+
+                            InstrId = Strings.Right("0000000000000000" + CStr(PaymentManagerReport.APCheckNumber), 16)
+                            CdtTrfTxInf.PmtId.InstrId = InstrId 'Unique transaction reference (16 max)
+                            CdtTrfTxInf.PmtId.EndToEndId = InstrId  'Unique transaction reference (16 max)
+                            CdtTrfTxInf.ChqInstr.ChqNb = PaymentManagerReport.APCheckNumber
+
+                            ViewModel.Bank.BankExportSpec = AdvantageFramework.Database.Procedures.BankExportSpec.LoadByBankCode(DbContext, ViewModel.Bank.Code)
+
+                            CdtTrfTxInf.ChqInstr.FrmsCd = ViewModel.Bank.BankExportSpec.BankID '"AB6" 'Special handling code
+
+                            'End If
 
                             Strd = New Classes.FinanceAndAccounting.CheckWriting.HSBCExportExp.Strd
 
@@ -759,20 +774,33 @@ Namespace Controller.FinanceAndAccounting
                             Strd.RfrdDocAmt.RmtdAmt.Ccy = "CAD"
                             Strd.RfrdDocAmt.RmtdAmt.Text = PaymentManagerReport.APCheckAmount.Value.ToString("###.00")
 
-                            Pmtinf.CdtTrfTxInf.RmtInf.Strd.Add(Strd)
+                            CdtTrfTxInf.RmtInf.Strd.Add(Strd)
 
                         Next
 
-                        CstmrCdtTrfInitn.PmtInf.Add(Pmtinf)  'Add(Pmtinf)
+                        Pmtinf.CdtTrfTxInf.Add(CdtTrfTxInf)
+
+                        'CstmrCdtTrfInitn.GrpHdr.NbOfTxs = PmtinfotalCnt
+                        'CstmrCdtTrfInitn.GrpHdr.CtrlSum = PmtinfTotalPmt
 
                     Next
+
+                    'Pmtinf.PmtInfId = Left(Pmtinf.PmtInfId + "-" + APCheckNbr, 35)
+
+                    Pmtinf.PmtInfId = MsgIdStr
+
+                    CstmrCdtTrfInitn.PmtInf.Add(Pmtinf)  'Add(Pmtinf)
+
+                    Pmtinf.NbOfTxs = PmtinfotalCnt
+                    Pmtinf.CtrlSum = PmtinfTotalPmt
 
                     CstmrCdtTrfInitn.GrpHdr.NbOfTxs = GrpTotalCnt
                     CstmrCdtTrfInitn.GrpHdr.CtrlSum = GrpTotalPmt
 
                     Document.CstmrCdtTrfInitn = CstmrCdtTrfInitn
 
-                    My.Computer.FileSystem.WriteAllText(ExportDirectory + ExportFile, AdvantageFramework.BaseClasses.CreateXML(Document), False)
+                    'AdvantageFramework.BaseClasses.CreateXML(Document)
+                    My.Computer.FileSystem.WriteAllText(ExportDirectory + ExportFile, APICreateXML(Document, ExportDirectory + ExportFile), False)
 
                     ViewModel.BankExportFile = ExportFile
 
@@ -789,6 +817,45 @@ Namespace Controller.FinanceAndAccounting
             End Try
 
             ProcessHSBCExportFile = ProcessedExportFile
+
+        End Function
+
+        Public Function APICreateXML(ByVal AFObject As Object, ByVal FileName As String) As String
+
+            'objects
+            Dim XmlSerializer As System.Xml.Serialization.XmlSerializer = Nothing
+            Dim StringWriter As System.IO.StringWriter = Nothing
+            Dim XML As String = ""
+
+            Try
+
+                XmlSerializer = New System.Xml.Serialization.XmlSerializer(AFObject.GetType)
+                StringWriter = New AdvantageFramework.Classes.FinanceAndAccounting.CheckWriting.StringWriterWithEncodingAPI(System.Text.Encoding.UTF8)
+
+                XmlSerializer.Serialize(StringWriter, AFObject)
+
+                StringWriter.Close()
+
+            Catch ex As Exception
+
+                If StringWriter IsNot Nothing Then
+
+                    StringWriter.Close()
+                    StringWriter = Nothing
+
+                End If
+
+            Finally
+
+                If StringWriter IsNot Nothing Then
+
+                    XML = StringWriter.ToString
+
+                End If
+
+                APICreateXML = XML
+
+            End Try
 
         End Function
 

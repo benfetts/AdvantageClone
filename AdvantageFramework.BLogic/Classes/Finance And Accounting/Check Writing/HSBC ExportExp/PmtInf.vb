@@ -42,7 +42,7 @@
         <XmlElement(ElementName:="DbtrAgt", [Namespace]:="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")>
         Public Property DbtrAgt As DbtrAgt
         <XmlElement(ElementName:="CdtTrfTxInf", [Namespace]:="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03")>
-        Public Property CdtTrfTxInf As CdtTrfTxInf
+        Public Property CdtTrfTxInf As List(Of CdtTrfTxInf)
 
 #End Region
 
@@ -54,7 +54,7 @@
             Me.Dbtr = New Dbtr
             Me.DbtrAcct = New DbtrAcct
             Me.DbtrAgt = New DbtrAgt
-            Me.CdtTrfTxInf = New CdtTrfTxInf
+            Me.CdtTrfTxInf = New List(Of CdtTrfTxInf)
 
         End Sub
         Public Overrides Function ToString() As String

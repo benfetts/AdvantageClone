@@ -35,7 +35,7 @@
         Public Sub New()
 
             Me.OrgId = New OrgId
-            Me.Othr = New Othr
+            'Me.Othr = New Othr
 
         End Sub
         Public Overrides Function ToString() As String

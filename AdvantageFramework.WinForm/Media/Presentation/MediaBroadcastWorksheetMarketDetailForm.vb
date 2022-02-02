@@ -6402,6 +6402,16 @@
 
                 End If
 
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.Recalculating)
+
+                _Controller.MarketDetails_Recalculate(_ViewModel)
+
+                Me.SetFormActionAndShowWaitForm(AdvantageFramework.WinForm.Presentation.FormActions.None)
+
+                BandedDataGridViewForm_MarketDetails.CurrentView.UpdateSummary()
+
+                _Controller.MarketDetails_Save(_ViewModel)
+
                 RefreshMediaBroadcastWorksheetSetupForm()
 
                 Me.ClearChanged()

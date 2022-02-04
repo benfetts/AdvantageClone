@@ -1074,7 +1074,11 @@ Namespace PurchaseOrder
 
                 If _PurchaseOrderPrintDefault.UseLocationName.GetValueOrDefault(0) = 1 Then
 
-                    XrLabel1.Text = _DefaultLocation.Name & " Authorization:"
+                    If _DefaultLocation IsNot Nothing Then
+
+                        XrLabel1.Text = _DefaultLocation.Name & " Authorization:"
+
+                    End If
 
                 End If
 

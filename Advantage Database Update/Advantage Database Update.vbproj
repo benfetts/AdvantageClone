@@ -1288,7 +1288,7 @@
     <Content Include="Scripts\vX.XX.XX\6 - Stored Procedure Scripts\usp_wv_ALERT_GET_COMMENTS.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Update MEDIA_BROADCAST_WORKSHEET_MARKET_DETAIL CABLE_NETWORK_NIELSEN_TV_STATION_CODE Comscore.sql">
+    <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Update MBWMD set CABLE_NETWORK_NIELSEN_TV_STATION_CODE for Comscore.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\vX.XX.XX\7 - Data Update Scripts\Update NPR_STATION set ETAM_XREF.sql">

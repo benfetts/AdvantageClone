@@ -1401,137 +1401,137 @@
 
                             Next
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVPVH.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVPVH.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVPVH.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVPVH.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookPrimaryVPVH.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookPrimaryVPVH.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookPrimaryVPVH.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookPrimaryVPVH.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVendorSubmittedVPVH.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVendorSubmittedVPVH.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVendorSubmittedVPVH.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryVendorSubmittedVPVH.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVPVH.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVPVH.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVPVH.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVPVH.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookSecondaryVPVH.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookSecondaryVPVH.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookSecondaryVPVH.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.BookSecondaryVPVH.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVendorSubmittedVPVH.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVendorSubmittedVPVH.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVendorSubmittedVPVH.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryVendorSubmittedVPVH.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvImpressions.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvImpressions.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvImpressions.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvImpressions.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPM.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPM.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPM.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPM.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvRating.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvRating.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvRating.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvRating.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPP.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPP.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPP.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvCPP.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGRP.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGRP.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGRP.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGRP.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGrossImpressions.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGrossImpressions.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGrossImpressions.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvGrossImpressions.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorRating.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorRating.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorRating.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorRating.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorImpressions.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorImpressions.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorImpressions.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.PrimaryEqvVendorImpressions.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvImpressions.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvImpressions.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvImpressions.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvImpressions.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPM.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPM.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPM.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPM.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvRating.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvRating.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvRating.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvRating.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPP.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPP.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPP.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvCPP.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGRP.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGRP.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGRP.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGRP.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGrossImpressions.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGrossImpressions.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGrossImpressions.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvGrossImpressions.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorRating.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorRating.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorRating.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorRating.ToString) = 0
 
-                            End If
+                            'End If
 
-                            If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorImpressions.ToString) IsNot Nothing Then
+                            'If MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Columns(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorImpressions.ToString) IsNot Nothing Then
 
-                                DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorImpressions.ToString) = 0
+                            '    DataRow(AdvantageFramework.Controller.Media.MediaBroadcastWorksheetController.MarketDetailsColumns.SecondaryEqvVendorImpressions.ToString) = 0
 
-                            End If
+                            'End If
 
                             RowIndexes.Add(MediaBroadcastWorksheetMarketDetailsViewModel.DataTable.Rows.IndexOf(DataRow))
 

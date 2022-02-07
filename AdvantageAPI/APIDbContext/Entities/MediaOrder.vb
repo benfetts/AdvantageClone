@@ -177,6 +177,7 @@
     Public Property WorksheetComment As String
     Public Property WorksheetID As Nullable(Of Integer)
     Public Property ApprovedForBilling As Nullable(Of Byte)
+    Public Property Length As Nullable(Of Integer)
 
 #End Region
 

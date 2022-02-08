@@ -24,7 +24,7 @@ CREATE PROCEDURE [dbo].[advsp_product_ar_stmt_contact_add_update_api]
 AS
 
 DECLARE @ErMessage nvarchar(2048), @ErSeverity int, @ErState int
-DECLARE @error_msg_w varchar(200)
+DECLARE @error_msg_w varchar(400)
 
 DECLARE @found int
 DECLARE @action varchar(6)
@@ -76,7 +76,7 @@ ELSE BEGIN
 		IF @error_msg_w > '' BEGIN
 			SET @error_msg_w = @error_msg_w + ' | '
 		END
-		SET @error_msg_w = @error_msg_w + 'Client code is invalid.'
+		SET @error_msg_w = @error_msg_w + 'Client code (' + @cl_code + ') is invalid.'
 	END
 	ELSE BEGIN
 		SET @found = 0	
@@ -87,7 +87,7 @@ ELSE BEGIN
 			IF @error_msg_w > '' BEGIN
 				SET @error_msg_w = @error_msg_w + ' | '
 			END
-			SET @error_msg_w = @error_msg_w + 'Client code is invalid for the given ContactID.'
+			SET @error_msg_w = @error_msg_w + 'Client code (' + @cl_code + ') is invalid for the ContactID (' + CAST(@cdp_contact_id AS varchar(14)) + ').'
 		END
 	END
 END
@@ -107,7 +107,7 @@ ELSE BEGIN
 		IF @error_msg_w > '' BEGIN
 			SET @error_msg_w = @error_msg_w + ' | '
 		END
-		SET @error_msg_w = @error_msg_w + 'Division code is invalid.'
+		SET @error_msg_w = @error_msg_w + 'Division code (' + @div_code + ') is invalid for Client code (' + @cl_code + ').'
 	END
 	ELSE BEGIN
 		SET @found = 0
@@ -120,7 +120,7 @@ ELSE BEGIN
 			IF @error_msg_w > '' BEGIN
 				SET @error_msg_w = @error_msg_w + ' | '
 			END
-			SET @error_msg_w = @error_msg_w + 'Division code is invalid for the given ContactID.'
+			SET @error_msg_w = @error_msg_w + 'Division code (' + @div_code + ') is invalid for for Client code (' + @cl_code + ') & ContactID (' + CAST(@cdp_contact_id AS varchar(14)) + ').'
 		END
 	END
 END
@@ -140,7 +140,7 @@ ELSE BEGIN
 		IF @error_msg_w > '' BEGIN
 			SET @error_msg_w = @error_msg_w + ' | '
 		END
-		SET @error_msg_w = @error_msg_w + 'Product code is invalid.'
+		SET @error_msg_w = @error_msg_w + 'Product code (' + @prd_code + ') is invalid for Client code (' + @cl_code + ') & Division code (' + @div_code + ').'
 	END
 	ELSE BEGIN
 		SET @found = 0
@@ -153,7 +153,7 @@ ELSE BEGIN
 			IF @error_msg_w > '' BEGIN
 				SET @error_msg_w = @error_msg_w + ' | '
 			END
-			SET @error_msg_w = @error_msg_w + 'Product code is invalid for the given ContactID.'
+			SET @error_msg_w = @error_msg_w + 'Product code (' + @prd_code + ') is invalid for Client code (' + @cl_code + '), Division code (' + @div_code + '), & ContactID (' + CAST(@cdp_contact_id AS varchar(14)) + ').'
 		END
 	END
 END

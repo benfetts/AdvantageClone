@@ -14,13 +14,13 @@ form,
   padding: 0 !important;
   border: none !important;
   -webkit-font-smoothing: antialiased;
-  color: #767676 !important
+  color: #767676 !important;
 }
 
 Body,
 th,
 td {
-  Font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
   font-size: 13px !important
 }
 
@@ -183,27 +183,10 @@ button.k-button-icon.k-button {
 
 .comment-content {
   overflow: hidden;
-  min-height: 34px;
+  min-height: 35px;
   height: auto;
   padding-left: 4px;
 }
-
-.comment-view-item {
-  /*  padding-top:7px;
-  border-left: 0 solid #dce3e6;
-  border-right: 0 solid #dce3e6;
-  border-top: 0 solid #dce3e6;
-  border-bottom: 1px solid #dce3e6;
-*/
-}
-
-  .comment-view-item:nth-child(even) {
-    background: #efefef !important;
-  }
-
-  .comment-view-item:nth-child(odd) {
-    background: #fff !important;
-  }
 
 .search-result:nth-child(even) {
   background: #efefef !important;
@@ -250,6 +233,15 @@ button.k-button-icon.k-button {
   border-radius: 4px;
 }
 
+.wv-editor-div {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.wv-editor-div td.k-editable-area {
+  height: 50px;
+}
+
 .k-dialog-wrapper {
   display: -ms-flexbox;
   display: flex;
@@ -270,6 +262,8 @@ button.k-button-icon.k-button {
 
   .k-dialog-wrapper .k-dialog {
     position: relative;
+    outline: 1px solid #aaa;
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, .3);
   }
 
 .k-dialog {

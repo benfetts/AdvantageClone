@@ -19,9 +19,8 @@ export class TextareaComponent implements OnInit, OnChanges {
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onMention: EventEmitter<string[]> = new EventEmitter<string[]>();
 
-  @ViewChild('myEditor', { static: true }) editor: ElementRef;
-  @ViewChild('overlay', { static: true }) overlay: ElementRef;
-  @ViewChild('myMention', { static: true }) mentionItem: MentionItemComponent;
+  @ViewChild('myFeedbackEditor', { static: true }) editor: ElementRef;
+  @ViewChild('myFeedbackMention', { static: true }) mentionItem: MentionItemComponent;
 
   public focus() {
     var control = kendo.jQuery(this.editor.nativeElement).data("kendoEditor");
@@ -34,7 +33,6 @@ export class TextareaComponent implements OnInit, OnChanges {
   }
 
   textChanged(value: string): void {
-    console.log('textChanged', value);
     this.text = value;
     this.onChange.emit(value);
     this.onMention.emit(this.mentionItem.mentions);
@@ -52,6 +50,8 @@ export class TextareaComponent implements OnInit, OnChanges {
         this.mentionItem.commentKeyDown(e);
       }
     });
+
+    foo.css("font-size", "20pt");
 
     kendo.jQuery(".k-editor-toolbar-wrap").hide();
   }

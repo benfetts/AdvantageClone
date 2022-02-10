@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using AdvantageFramework.Core.Database.Classes;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,10 +11,10 @@ namespace AdvantageFramework.Core.Database.Procedures
 {
     public class ProofingMarkup
     {
-        public static IQueryable<Entities.ProofingMarkup> LoadMarkup(AdvantageFramework.Core.Database.DbContext DbContext,
+        public static IQueryable<ProofingMarkupDto> LoadMarkup(AdvantageFramework.Core.Database.DbContext DbContext,
             int AlertId, int DocumentId)
         {
-            IQueryable<AdvantageFramework.Core.Database.Entities.ProofingMarkup> rv;
+            IQueryable<ProofingMarkupDto> rv;
 
             try
             {
@@ -22,7 +23,21 @@ namespace AdvantageFramework.Core.Database.Procedures
                       on ProofingMarkup.CommentId equals AlertComment.CommentId
                       where AlertComment.AlertId == AlertId &&
                    ProofingMarkup.DocumentId == DocumentId
-                      select ProofingMarkup);
+                      select new ProofingMarkupDto()
+                      {
+                          Id = ProofingMarkup.Id,
+                          MarkupXml = ProofingMarkup.MarkupXml,
+                          Markup = AlertComment.Comment, //PROOFING_MARKUP.MARKUP should be dropped. Redundant.
+                          EmpCode = ProofingMarkup.EmpCode,
+                          DocumentId = DocumentId,
+                          Generated = ProofingMarkup.Generated,
+                          MarkupTypeId = ProofingMarkup.MarkupTypeId,
+                          CommentId = ProofingMarkup.CommentId,
+                          Thumbnail = ProofingMarkup.Thumbnail,
+                          SeqNbr = ProofingMarkup.SeqNbr,
+                          ProofingXReviwerId = ProofingMarkup.ProofingXReviwerId,
+                          AlertId = AlertId,
+                      });
 
             }
             catch (Exception ex)

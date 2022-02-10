@@ -42,7 +42,7 @@ export interface IFeedback {
   //mark: number;
   //draft?: boolean;
   //replies?: string;
-
+  isMyComment: boolean;
   mentions: string[];
   active: boolean;
 }

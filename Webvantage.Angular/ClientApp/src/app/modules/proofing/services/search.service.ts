@@ -13,6 +13,7 @@ export class SearchService extends BaseService {
   private SearchOptions: BehaviorSubject<ISearchOptions> = new BehaviorSubject<ISearchOptions>(null);
   private SearchResults: BehaviorSubject<ISearchResults[]> = new BehaviorSubject<ISearchResults[]>(null);
   private SelectedResult: BehaviorSubject<ISearchResults> = new BehaviorSubject<ISearchResults>(null);
+  private clearSearchText: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   getSearchOptions(): Observable<ISearchOptions> {
     return this.SearchOptions;
@@ -40,6 +41,10 @@ export class SearchService extends BaseService {
   }
 
   clearSearch(): void {
-    console.log('clear current search here');
+    this.clearSearchText.next(true);
+  }
+
+  getClearSearchText(): Observable<boolean> {
+    return this.clearSearchText;
   }
 }

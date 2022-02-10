@@ -10,16 +10,27 @@
   <div class="comment-header">
     <small>
       {{feedback.employeeFullName}}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;{{feedback.generatedDate | date:'short'}}
-      &nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="showHideReplyTextarea($event, feedback.commentId)" title="Reply to this comment"><span class="">Reply</span></a>
+      <div *ngIf="feedback.isMyComment" style="float:right">&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="toggleReplyEditor($event, feedback.commentId)" title="Edit this comment"><span>Edit</span></a></div>
+      <div style="float:right">&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="toggleReply2ReplyCreate($event, feedback.commentId)" title="Reply to this comment"><span class="">Reply</span></a></div>
     </small>
   </div>
-  <div class="comment-text" [innerHTML]="feedback.comment"></div>
-  <div style="padding-top: 7px;display:grid">
-    <div [hidden]="!reply">
-      <div id="editorDiv">
-        <textarea kendo-editor #myEditor [attr.editor-data]="feedback.commentId"></textarea>
+  <div *ngIf="showReplyEditor; else no_edit">
+    <div id="replyEditorDiv-{{feedback.commentId}}" class="wv-editor-div" style="padding-top:7px">
+      <textarea kendo-editor #myReplyEditor id="replyEditor-{{feedback.commentId}}" [attr.editor-data]="feedback.commentId">{{feedback.comment}}</textarea>
+    </div>
+    <mention-item #myReplyEditorMention baseElementId="replyEditorDiv-{{feedback.commentId}}" textAreaId="replyEditor-{{feedback.commentId}}" commentType="reply"
+                  [attr.mention-data]="feedback.commentId"></mention-item>
+  </div>
+  <ng-template #no_edit>
+    <div class="comment-text" [innerHTML]="feedback.comment  | safeHtml"></div>
+  </ng-template>
+  <div style="margin-left: -13px;padding-top: 7px;display:grid">
+    <div *ngIf="showReply2ReplyCreate">
+      <div id="reply2ReplyCreateDiv-{{feedback.commentId}}" style="margin-left: 10px;" class="wv-editor-div">
+        <textarea kendo-editor #myReply2ReplyCreate id="reply2ReplyCreate-{{feedback.commentId}}" [attr.editor-data]="feedback.commentId"></textarea>
       </div>
-      <mention-item #myMention id="mention" commentType="reply" [attr.mention-data]="feedback.commentId"></mention-item>
+      <mention-item #myReply2ReplyCreateMention baseElementId="reply2ReplyCreateDiv-{{feedback.commentId}}" textAreaId="reply2ReplyCreate-{{feedback.commentId}}" commentType="reply"
+                    [attr.mention-data]="feedback.commentId"></mention-item>
     </div>
 
     <ng-container *ngFor="let _reply of feedback.replies; let i = index" style="">
@@ -34,9 +45,21 @@
         </div>
         <div class="comment-content">
           <div class="comment-header">
-            <small>{{_reply.employeeFullName}}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;{{_reply.generatedDate | date:'short'}}</small>
+            <small>
+              {{_reply.employeeFullName}}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;{{_reply.generatedDate | date:'short'}}
+              <div *ngIf="_reply.isMyComment" style="float:right">&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="toggleReply2ReplyEditor($event, _reply.commentId)" title="Edit this comment"><span>Edit</span></a></div>
+            </small>
           </div>
-          <div class="comment-text" [innerHTML]="_reply.comment"></div>
+          <div *ngIf="(showReply2ReplyEditor && reply_comment_id === _reply.commentId); else no_edit">
+            <div id="reply2ReplyEditorDiv-{{_reply.commentId}}" class="wv-editor-div" style="padding-top:7px">
+              <textarea kendo-editor #myReply2ReplyEditor id="reply2ReplyEditor-{{_reply.commentId}}" [attr.editor-data]="_reply.commentId">{{_reply.comment}}</textarea>
+            </div>
+            <mention-item #myReply2ReplyEditorMention baseElementId="reply2ReplyEditorDiv-{{_reply.commentId}}" textAreaId="reply2ReplyEditor-{{_reply.commentId}}" commentType="reply"
+                          [attr.mention-data]="_reply.commentId"></mention-item>
+          </div>
+          <ng-template #no_edit>
+            <div class="comment-text" [innerHTML]="_reply.comment | safeHtml" style="padding-bottom: 7px;"></div>
+          </ng-template>
         </div>
       </div>
     </ng-container>

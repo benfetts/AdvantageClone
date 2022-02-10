@@ -16,7 +16,8 @@ export const enum CENTRAL_BUTTONS_TYPES {
   ROTATE_LEFT = 'rotateLeft',
   TEXT_AREA = 'textArea',
   COMPARE = 'compare',
+  COMPARE_HORIZONTAL = 'compare_horizontal',
   MARKER_TOOL = 'markerTool',
   OVERLAY = 'overlay',
-  ARROW = 'arrow'
+  ARROW = 'arrow',
 }

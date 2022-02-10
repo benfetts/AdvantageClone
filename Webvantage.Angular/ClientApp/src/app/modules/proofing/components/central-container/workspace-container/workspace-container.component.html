@@ -1,7 +1,7 @@
 <ng-container *ngIf="(bottomPanelButtons | async) as bottomPanelButtons">
   <ng-container *ngIf="(comparisonService.getComparisonFilesAmount() | async) as amountOfComparisonFiles">
-    <div [ngClass]="setClassOnBlock(bottomPanelButtons.folderOpen.selected, bottomPanelButtons.fileManagerMin.selected)">
-      <ng-container [ngSwitch]="bottomPanelButtons.versions.selectedType">
+    <div [ngClass]="setClassOnBlock(bottomPanelButtons.folderOpen.selected, bottomPanelButtons.fileManagerMin.selected,viewType)">
+      <ng-container [ngSwitch]="viewType">
 
         <ng-container *ngSwitchCase="splitView">
           <div class="split-view">
@@ -30,15 +30,18 @@
 
         </ng-container>
 
-        <ng-container *ngSwitchCase="splitVertical">
+        <!--<ng-container *ngSwitchCase="splitVertical">
           <div class="only-one-view">
             <proof-workspace-view-split-vertical [onlyOneAsset]="true"></proof-workspace-view-split-vertical>
           </div>
-        </ng-container>
+        </ng-container>-->
 
         <ng-container *ngSwitchCase="splitHorizontal">
-          <div class="only-one-view">
-            <proof-workspace-view-split-horizontal [onlyOneAsset]="true"></proof-workspace-view-split-horizontal>
+          <div class="split-horizontal">
+            <proof-workspace-view [mainView]="true"></proof-workspace-view>
+          </div>
+          <div class="split-horizontal">
+            <proof-workspace-view [mainView]="false"></proof-workspace-view>
           </div>
         </ng-container>
 

@@ -34,12 +34,16 @@ namespace Webvantage.Angular.AppCode
         public string SessionID { get; set; } = "";
         public string PhysicalApplicationPath { get; set; } = "";
         public bool ResetAssignedToEmployeeCodeReadFlag { get; set; }
+        public bool IsProofingMarkupComment { get; set; } = false;
+        public bool OnlyAtMentions { get; set; } = false;
+        public string ProofingMarkupCommenterEmployeeCode = "";
         private string _Guid { get; set; } = "";
         private string _ConnectionString { get; set; } = "";
         private string _UserCode { get; set; } = "";
         private string _WebvantageURL { get; set; } = "";
         private string _ClientPortalURL { get; set; } = "";
         private string _ProofingURL { get; set; } = "";
+        public int DocumentID { get; set; } = 0;
 
         // Private _ImpersonationContext As System.Security.Principal.WindowsImpersonationContext
         // Private _CurrentWindowsIdentity As System.Security.Principal.WindowsIdentity
@@ -104,10 +108,11 @@ namespace Webvantage.Angular.AppCode
                         if (alrt is object)
                         {
                             Sent = AdvantageFramework.Core.AlertSystem.Methods.BuildAndSendAlertEmail(queryString,
-                                alrt, Subject, EmployeeCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo, AppName,
+                                alrt, DocumentID, Subject, EmployeeCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo, AppName,
                                 SupervisorApprovalComment, ExcludeAttachments, InsertEmailBodyAsAlertDescription,
                                 IsClientPortal, IncludeOriginator, ErrorMessage,
-                                ResetAssignedToEmployeeCodeReadFlag,true,"", _ProofingURL);
+                                ResetAssignedToEmployeeCodeReadFlag,true,"",
+                                _ProofingURL, IsProofingMarkupComment, OnlyAtMentions);
                         }
                     }
 
@@ -131,16 +136,18 @@ namespace Webvantage.Angular.AppCode
                             if (MiscFN.IsClientPortal() & user is null)
                             {
                                 Sent = AdvantageFramework.Core.AlertSystem.Methods.BuildAndSendAlertEmail(queryString,
-                                    alrt, Subject, EmployeeCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo, AppName,
+                                    alrt, DocumentID, Subject, EmployeeCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo, AppName,
                                     SupervisorApprovalComment, ExcludeAttachments, InsertEmailBodyAsAlertDescription, IsClientPortal,
-                                    IncludeOriginator, ErrorMessage, ResetAssignedToEmployeeCodeReadFlag, true, "", _ProofingURL);
+                                    IncludeOriginator, ErrorMessage, ResetAssignedToEmployeeCodeReadFlag, true, "", 
+                                    _ProofingURL, IsProofingMarkupComment, OnlyAtMentions);
                             }
                             else
                             {
                                 Sent = AdvantageFramework.Core.AlertSystem.Methods.BuildAndSendAlertEmail(queryString,
-                                    alrt, Subject, EmployeeCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo,
+                                    alrt, DocumentID, Subject, EmployeeCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo,
                                     AppName, SupervisorApprovalComment, ExcludeAttachments, InsertEmailBodyAsAlertDescription,
-                                    IsClientPortal, IncludeOriginator, ErrorMessage, ResetAssignedToEmployeeCodeReadFlag, true, user.EmpCode, _ProofingURL);
+                                    IsClientPortal, IncludeOriginator, ErrorMessage, ResetAssignedToEmployeeCodeReadFlag, true, user.EmpCode,
+                                    _ProofingURL, IsProofingMarkupComment, OnlyAtMentions);
                             }
                         }
                     }

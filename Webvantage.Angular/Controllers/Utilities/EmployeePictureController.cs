@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -23,13 +24,21 @@ namespace Webvantage.Angular.Controllers.Utilities
         [HttpGet("{id}")]
         public IActionResult Get(string id, [FromQuery] string dl)
         {
-            AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
-
-            AdvantageFramework.Core.Database.Entities.EmployeePicture EmployeePic = AdvantageFramework.Core.BLogic.EmployeePicture.Methods.LoadByEmployeeCode(qs, id.ToLower());
-
-            if (EmployeePic != null)
+            try
             {
-                return File(EmployeePic.EmpImage, "image/png");
+                AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
+
+                AdvantageFramework.Core.Database.Entities.EmployeePicture EmployeePic = AdvantageFramework.Core.BLogic.EmployeePicture.Methods.LoadByEmployeeCode(qs, id.ToLower());
+
+                if (EmployeePic != null)
+                {
+                    return File(EmployeePic.EmpImage, "image/png");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return NotFound();
             }
 
             return NotFound();

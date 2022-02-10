@@ -33,7 +33,7 @@
   }
 }
 
-.k-dialog-button-layout-stretched .k-primary:not(:hover):not(.k-state-hover):not(:active):not(.k-state-active),
+.k-dialog-button-layout-stretched .k-primary:not(:hover):not(.k-state-hover):not(:active):not(.k-selected),
 .k-button.k-primary:hover,
 .k-button.k-primary:active {
   border-color: $border-color;
@@ -51,7 +51,7 @@
 }
 
 .k-dialog-button-layout-stretched .k-button:focus,
-.k-dialog-button-layout-stretched .k-button.k-primary:focus, {
+.k-dialog-button-layout-stretched .k-button.k-primary:focus {
   box-shadow: none;
 }
 
@@ -60,7 +60,7 @@
   background-image: none;
 }
 
-.k-dialog-button-layout-stretched .k-button:not(:hover):not(.k-state-hover):not(:active):not(.k-state-active),
+.k-dialog-button-layout-stretched .k-button:not(:hover):not(.k-state-hover):not(:active):not(.k-selected),
 .k-dialog-button-layout-stretched .k-button {
   @include font-base(14px);
 }

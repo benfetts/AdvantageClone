@@ -30,7 +30,7 @@
     }
 
     &:active,
-    &.k-state-active {
+    &.k-selected {
       border: 1px solid $border-color;
       box-shadow: none;
       background: $blue-dark;

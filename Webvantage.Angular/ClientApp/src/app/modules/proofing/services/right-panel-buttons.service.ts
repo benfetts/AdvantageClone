@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { RIGHT_PANEL_BUTTONS_CONSTANTS } from '../constants/right-panel-buttons.constants';
 import { IRightPanelButtons } from '../interfaces/right-panel-buttons';
 import { RIGHT_PANEL_BUTTONS_TYPES } from '../constants/types/right-panel-buttons-types.constants';
+import { SearchService } from './search.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,11 @@ import { RIGHT_PANEL_BUTTONS_TYPES } from '../constants/types/right-panel-button
 export class RightPanelButtonsService {
   private buttons: IRightPanelButtons = JSON.parse(JSON.stringify(RIGHT_PANEL_BUTTONS_CONSTANTS));
   private buttons$: BehaviorSubject<IRightPanelButtons> = new BehaviorSubject<IRightPanelButtons>(this.buttons);
+
+
+  constructor(private searchService: SearchService) {
+
+  }
 
   public setRightPanelButtons(propertyName: string): void {
     const prevSelectedButtonStatus = this.buttons[propertyName].selected;
@@ -59,6 +65,11 @@ export class RightPanelButtonsService {
         }
       };
     }
+
+    if (this.buttons[search].selected == false) {
+      this.searchService.clearSearch();
+    }
+
 
     this.buttons$.next(this.buttons);
   }

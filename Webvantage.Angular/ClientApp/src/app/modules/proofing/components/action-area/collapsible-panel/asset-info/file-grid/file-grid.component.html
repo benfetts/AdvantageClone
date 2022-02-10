@@ -11,15 +11,15 @@
         <ng-template #renderBlock>
           <ng-container [ngSwitch]="columnsAsset.title">
             <ng-container *ngSwitchCase="'File Name'">
-              <p>{{assetInfo[columnsAsset.name]}}</p>
+              <p>{{assetInfo != null ? assetInfo[columnsAsset.name] : ''}}</p>
             </ng-container>
             <ng-container *ngSwitchCase="'File Size'">
-              <p>{{assetInfo[columnsAsset.name] | FileSize}}</p>
+              <p>{{(assetInfo != null ? assetInfo[columnsAsset.name]  : '1') | FileSize}}</p>
             </ng-container>
           </ng-container>
         </ng-template>
         <ng-template #textBlock>
-          {{assetInfo[columnsAsset.name]}}
+          {{assetInfo != null ? assetInfo[columnsAsset.name]  : ''}}
         </ng-template>
       </ng-template>
     </kendo-grid-column>

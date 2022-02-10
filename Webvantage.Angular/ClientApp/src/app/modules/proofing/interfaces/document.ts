@@ -19,4 +19,5 @@ export interface IDocument {
   documentTypeId: number;
   selected?: boolean;
   extension?: string;
+  commentsDisplayed?: boolean;
 }

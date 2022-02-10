@@ -5,50 +5,51 @@
   @include font-base(14px);
   color: $black-light;
   padding: 10px 10px 0 10px;
-  height: 120px;
+  // height: 120px;
 
   &-buttons {
     @include font-base(14px);
   }
 }
 
-.buttons-container {
-  background: $white;
-  display:block !important;
-
-  .description-buttons-save {
-    height: 30px;
-  }
-
-  .k-button {
-    width: 65px;
-    height: 30px;
+.description-text-area {
+  .buttons-container {
     background: $white;
-    border: 1px solid $border-color;
-    box-sizing: border-box;
-    border-radius: 3px !important;
-    float:right;
-    margin:3px;
 
-    &:hover,
-    &:focus {
+    .description-buttons-save {
+      height: 30px;
+    }
+
+    .k-button {
+      width: 65px;
+      height: 30px;
       background: $white;
       border: 1px solid $border-color;
-      box-shadow: none;
-    }
+      box-sizing: border-box;
+      border-radius: 3px !important;
+      float:right;
+      margin:3px;
 
-    &:hover {
-      background: $very-light-grey;
-    }
+      &:hover,
+      &:focus {
+        background: $white;
+        border: 1px solid $border-color;
+        box-shadow: none;
+      }
 
-    &:active,
-    &.k-state-active {
-      border: 1px solid $border-color;
-      box-shadow: none;
-      background-color: $very-light-grey;
+      &:hover {
+        background: $very-light-grey;
+      }
 
-      img {
-        opacity: 0.5;
+      &:active,
+      &.k-selected {
+        border: 1px solid $border-color;
+        box-shadow: none;
+        background-color: $very-light-grey;
+
+        img {
+          opacity: 0.5;
+        }
       }
     }
   }

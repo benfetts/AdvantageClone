@@ -7,6 +7,7 @@ export const TOOLTIPS: ITooltip = {
   reset: 'Reset',
   markers: 'Markers',
   compare: 'Compare',
+  compare_horizontal: 'Compare Horizontal',
   showPixelsDifferences: 'Show Pixel Differences',
   lock: 'Lock',
   assetExplorer: 'Asset Explorer',
@@ -32,5 +33,6 @@ export const TOOLTIPS: ITooltip = {
   expandBottomNavigation: 'Expand Bottom Navigation',
   version: 'Version',
   inAlert: 'In Alert',
-  overlay: 'Overlay Images'
+  overlay: 'Overlay Images',
+  note: 'Note',
 };

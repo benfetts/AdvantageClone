@@ -66,7 +66,7 @@ export class WorkspaceToolbarComponent implements OnInit {
     });
 
     this.buttons.subscribe(buttons => {
-      this.compare = buttons.compare.selected;
+      this.compare = buttons.compare.selected || buttons.compare_horizontal.selected;
       this.cdr.detectChanges();
     });
 

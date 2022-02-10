@@ -97,7 +97,7 @@
           min-height: 20px;
         }
 
-        &.k-state-active {
+        &.k-selected {
           background: $very-light-grey;
 
           img {
@@ -186,7 +186,7 @@ p {
 
 .k-button:active,
 .k-button:focus,
-.k-button.k-state-active {
+.k-button.k-selected {
   box-shadow: none;
 }
 

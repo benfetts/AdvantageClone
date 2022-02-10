@@ -62,5 +62,11 @@ exports.textTypes = [
         selected: false,
         name: 'AnnotationCreateTextStrikeout'
     },
+    {
+        text: ' ',
+        imageUrl: 'assets/icons/textarea/squiggly.svg',
+        selected: false,
+        name: 'AnnotationCreateTextSquiggly'
+    },
 ];
 //# sourceMappingURL=shapes.constants.js.map

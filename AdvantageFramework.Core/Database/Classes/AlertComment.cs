@@ -42,5 +42,6 @@ namespace AdvantageFramework.Core.Database.Classes
         public short? MarkupSeqNumber { get; set; }
 
         public string[] Mentions { get; set; }
+        public bool IsMyComment { get; internal set; }
     }
 }

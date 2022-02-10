@@ -72,6 +72,8 @@ export class DescriptionComponent implements OnInit {
         }
       }, 100);
 
+      this.ref.detectChanges();
+
     });
 
     this.centerPanelButtonsService.getCentralPanelButtons().pipe(map(buttons => {

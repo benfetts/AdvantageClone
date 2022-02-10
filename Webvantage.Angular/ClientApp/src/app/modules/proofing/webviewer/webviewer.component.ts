@@ -10,7 +10,7 @@ import { IAnnotation, wvAnnotation } from '../shared/Models/Annotation';
 import { TOOL_TYPE } from '../constants/types/tool-type-constants';
 import { TextSelectService } from '../services/text-select.service';
 import { ITextSelect } from '../constants/types/quad-typets';
-import { initializeVideoViewer } from '@pdftron/webviewer-video';
+//import { initializeVideoViewer } from '@pdftron/webviewer-video';
 import { RightPanelButtonsService } from '../services/right-panel-buttons.service';
 import { RIGHT_PANEL_BUTTONS_TYPES } from '../constants/types/right-panel-buttons-types.constants';
 import { IToolbarCenterButtons } from '../interfaces/toolbar-center-buttons';
@@ -24,7 +24,10 @@ import { SearchService } from '../services/search.service';
 import { ISearchResults } from '../interfaces/search-results';
 import { CENTRAL_BUTTONS_TYPES } from '../constants/types/central-buttons-types.constants';
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
-
+import { ScrollService } from '../services/scroll.service';
+import { IScrollEvent } from '../interfaces/scroll-event';
+import { FeedbackService } from '../services/feedback.service';
+import { initializeHTMLViewer } from '@pdftron/webviewer-html';
 
 declare var WebViewer: any;
 
@@ -69,13 +72,16 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   public centerPanelButtons: Observable<IToolbarCenterButtons>;
   public base_href: string = null;
 
+  public loadHTMLPage: Function = null;
+  public myID: number = null;
+
   baseHref: string = "";
 
   mimeTypes: { [key: string]: string } = {
     'image/jpeg': 'jpg',
     'application/pdf': 'pdf'
   }
-  
+
 
   constructor(private sliderToolService: SliderToolService,
     private centralPanelButtonsService: CenterPanelButtonsService,
@@ -89,12 +95,26 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
     private documentVersionService: DocumentVersionService,
     private searchService: SearchService,
     private platformLocation: PlatformLocation,
+    private scrollService: ScrollService,
+    private feedbackService: FeedbackService,
     @Inject(APP_BASE_HREF) baseHref: string) {
 
     this.baseHref = baseHref;
   }
 
   ngOnInit() {
+
+    this.feedbackService.getFeedBackUpdated().subscribe((documentId: number) => {
+      if (documentId) {
+        if (this.mainView && this.document?.documentId == documentId) {
+          this.annotationService.loadAnotations(this.dl, this.document?.documentId);
+        }
+        else if (this.document?.documentId == documentId) {
+          this.comparisonAnnotationService.loadAnotations(this.dl, this.document?.documentId);
+        }
+      }
+    });
+
     this.sliderToolService.getSliderValue()
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
@@ -294,8 +314,14 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.ref.detectChanges();
       });
 
-    this.searchService.getSearchOptions().pipe(takeUntil(this.destroy$)).subscribe((options: ISearchOptions) => {
-      this.searchText(options)
+    this.searchService.getSearchOptions().pipe(takeUntil(this.destroy$), filter(o => o != null)).subscribe((options: ISearchOptions) => {
+      this.searchText(options);
+    });
+
+    this.searchService.getClearSearchText().pipe(takeUntil(this.destroy$), filter(o => o != false)).subscribe((clear: boolean) => {
+      if (clear) {
+        this.clearSearchText();
+      }
     });
 
     this.searchService.getSelectedResult().pipe(takeUntil(this.destroy$), filter(o => o != null)).subscribe((searchResult: ISearchResults) => {
@@ -304,6 +330,19 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         if (searchResult.pageNum != docViewer.getCurrentPage()) {
           //its a pretty good bet this was set progmatically so move to the page
           docViewer.setCurrentPage(searchResult.pageNum);
+        }
+
+        docViewer.setActiveSearchResult(searchResult.searchResult);
+      }
+    });
+
+    this.scrollService.getScrollEvent().pipe(takeUntil(this.destroy$)).subscribe((e: IScrollEvent) => {
+      if (e.id != this.myID) {
+        var frame = this.viewer.nativeElement.querySelector('iframe');
+
+        if (frame) {
+          frame.contentDocument.body.querySelector('.DocumentContainer').scrollTop = e.scrollTop;
+          frame.contentDocument.body.querySelector('.DocumentContainer').scrollLeft = e.scrollLeft;
         }
       }
     });
@@ -327,7 +366,8 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
     WebViewer({
       //licenseKey: 'The Advantage Software Company, LLC(gotoadvantage.com):OEM:Webvantage::B+:AMS(20210707):C0A51FBD04E7860AB360B13AC982737860617F8BAF603A63EB1CFC921A345837128A31F5C7',
       licenseKey: 'The Advantage Software Company, LLC(gotoadvantage.com):OEM:Webvantage::B+:AMS(20220707):B0A55FBD04E7860A7360B13AC982737860617F8BAF603A63EB1CFC921A345837128A31F5C7',
-      //initialDoc: 'pdf/The Proofing Tool Final Design.pdf',
+      //the key below is for the html version of PDFtron
+      //licenseKey: 'scott.byrnes@gotoadvantage.com///22:128:203:28:12:246:218:153:163:181:107:50:196:237:29:33:225:193:212:18:207:133:32:144:133:139:236:34:160:2:213:229:5:233:252:197:232:120:115:197:97:4:7:226:63:185:109:203:254:164:61:37:43:212:36:14:253:163:249:35:67:248:45:47:5:13:170:250:228:182:196:196:88:255:221:139:33:130:105:122:233:64:192:187:115:238:34:128:143:36:132:124:172:46:66:127:207:58:45:34:101:32:189:170:103:216:40:246:41:4:178:189:144:245:112:208:8:69:160:254:222:177:238:52:8:210:181:165',
       path: isDevMode() ? './wv-resources/lib/' : '../wv-resources/lib/',
       //path: './wv-resources/lib/',
       useDownloader: false,
@@ -345,36 +385,33 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         'searchPanel']
     }, this.viewer.nativeElement).then(async instance => {
       this.wvInstance = instance;
-
-      //'leftPanelTabs',
-      //  'thumbnailControl',
-
-      // Extends WebViewer to allow loading HTML5 videos (.mp4, ogg, webm).
-      //const {
-      //  loadVideo,
-      //} = await initializeVideoViewer(
-      //  instance,
-      //  'The Advantage Software Company, LLC(gotoadvantage.com):OEM:Webvantage::B+:AMS(20220707):B0A55FBD04E7860A7360B13AC982737860617F8BAF603A63EB1CFC921A345837128A31F5C7',
-      //);
+      var frame = this.viewer.nativeElement.querySelector('iframe').contentDocument.body.querySelector('.DocumentContainer');
+      this.myID = Math.random();
+      if (frame) {
+        frame.addEventListener("scroll", (e: any) => {
+          var scrollEvent: IScrollEvent = {
+            id : this.myID,
+            scrollLeft : e.srcElement.scrollLeft,
+            scrollTop : e.srcElement.scrollTop,
+          };
+          this.scrollService.setScrollEvent(scrollEvent);
+        });
+      }
+      else {
+        console.log("DocumentContainer not found");
+      }
 
       var { Core } = instance;
-
-      //this.loadVideo = loadVideo;
-
-      //this.wvInstance.iframeWindow.addEventListener('loaderror', (event) => {
-      //  event.preventDefault();
-      //});
-
       Core.PDFNet.initialize('The Advantage Software Company, LLC(gotoadvantage.com):OEM:Webvantage::B+:AMS(20220707):B0A55FBD04E7860A7360B13AC982737860617F8BAF603A63EB1CFC921A345837128A31F5C7');
 
       this.wvInstance.setAnnotationContentOverlayHandler(annotation => {
         var div = document.createElement('div');
-        div.appendChild(document.createTextNode(this.getAnnotationTitleText(annotation)));
+        div.innerHTML = this.getAnnotationTitleText(annotation).trim();
+        div.setAttribute("style", "height: 100%; text-overflow: unset; white-space: unset;");
         return div;
       });
 
-
-      this.wvInstance.annotManager.on('annotationChanged', (annotations, action, { imported }) => {
+      this.wvInstance.annotManager.addEventListener('annotationChanged', (annotations, action, { imported }) => {
         if (imported) {
           //imported
           annotations.forEach((v) => {
@@ -420,9 +457,6 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         else if (action === 'delete') {
           console.log('delete called');
-          //  annotations.forEach((v) => {
-          //    this.annotationService.deleteAnnotation(this.annotationService.getByAU(v.Qw));
-          //  });
         }
         else {
           console.log(action);
@@ -431,7 +465,7 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         return;
       });
 
-      this.wvInstance.annotManager.on('annotationSelected', (annotations, action) => {
+      this.wvInstance.annotManager.addEventListener('annotationSelected', (annotations, action) => {
         if (action === 'selected') {
           if (annotations) {
             if (this.useMarkers) {
@@ -451,30 +485,30 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
 
               });
             }
+
+            this.wvInstance.annotManager.jumpToAnnotation(annotations[0]);
+
           }
 
           if (this.doNotRefireSelect) {
             //short circuit
-
-            //but move to the annotation
-            var docViewer = this.wvInstance.docViewer;
-            if (annotations.length == 1 && annotations[0].PageNumber != docViewer.getCurrentPage()) {
-              //its a pretty good bet this was set progmatically so move to the page
-              docViewer.setCurrentPage(annotations[0].PageNumber);
-            }
-
             this.doNotRefireSelect = false;
             return;
           }
 
           if (annotations) {
-            this.annotationService.setToolOpacity(annotations[0].Opacity);
-            this.annotationService.setToolSize(annotations[0].StrokeThickness);
-            if (annotations[0].Color) {
-              this.annotationService.setSelectedColor(annotations[0].Color.toHexString());
-            }
+            if (this.mainView) {
+              this.annotationService.setToolOpacity(annotations[0].Opacity);
+              this.annotationService.setToolSize(annotations[0].StrokeThickness);
+              if (annotations[0].Color) {
+                this.annotationService.setSelectedColor(annotations[0].Color.toHexString());
+              }
 
-            this.annotationService.setSelectedByAU(annotations[0].Dx);
+              this.annotationService.setSelectedByAU(annotations[0].Dx);
+            }
+            else {
+              this.comparisonAnnotationService.setSelectedByAU(annotations[0].Dx);
+            }
 
             this.ref.detectChanges();
             var docViewer = this.wvInstance.docViewer;
@@ -494,7 +528,7 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
 
-      this.wvInstance.docViewer.on('documentLoaded', async () => {
+      this.wvInstance.docViewer.addEventListener('documentLoaded', async () => {
         this.documentLoaded = true;
         this.annotationService.setSelected(null);
         this.setFitMode('actualSize');
@@ -503,10 +537,13 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
           this.wvInstance.openElements(['thumbnailsPanel']);
         }
 
-
         var docViewer = this.wvInstance.docViewer;
 
         await docViewer.getDocument().documentCompletePromise();
+
+        docViewer.addEventListener('activeSearchResultChanged', () => {
+        });
+
 
         if (this.mainView) {
           this.annotationService.loadAnotations(this.dl, this.document?.documentId);
@@ -519,6 +556,8 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
 
       if (this.mainView) {
         this.annotationService.getAnnotations().pipe(takeUntil(this.destroy$)).subscribe((annotations) => {
+          this.deleteAllAnnotations();
+
           if (annotations != null && this.documentLoaded == true) {
             annotations.forEach((v, i, a) => {
               instance.annotManager.importAnnotations(v.markupXml).then(annotations => {
@@ -535,6 +574,25 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
             }
           }
         });
+
+        this.annotationService.getSelected()
+          .pipe(takeUntil(this.destroy$))
+          .pipe(filter(annotation => annotation !== null))
+          .subscribe((_annotation) => {
+            if (_annotation != null) {
+              if (this.selectedAnnotation == null || this.selectedAnnotation.name == null || this.selectedAnnotation.name != _annotation.name) {
+                this.selectedAnnotation = _annotation;
+                this.selectAllAnotationsTiedToComment(this.selectedAnnotation.commentId);
+              }
+              else {
+                var annotations: Array<any> = this.getAnnotationsList();
+                this.selectedAnnotation = _annotation;
+
+                this.selectAllAnotationsTiedToComment(_annotation.commentId);
+              }
+            }
+          });
+
       }
       else {
         this.comparisonAnnotationService.getAnnotations().pipe(takeUntil(this.destroy$)).subscribe((annotations) => {
@@ -549,13 +607,38 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
                 }
               });
             });
+
+            if (this.centralPanelButtonsService.getButtonState(CENTRAL_BUTTONS_TYPES.MARKER_TOOL)) {
+              this.hideAnnotations();
+              this.useMarkers = true;
+            }
           }
         });
+
+        this.comparisonAnnotationService.getSelected()
+          .pipe(takeUntil(this.destroy$))
+          .pipe(filter(annotation => annotation !== null))
+          .subscribe((_annotation) => {
+            if (_annotation != null) {
+              if (this.selectedAnnotation == null || this.selectedAnnotation.name == null || this.selectedAnnotation.name != _annotation.name) {
+                this.selectedAnnotation = _annotation;
+                this.selectAllAnotationsTiedToComment(this.selectedAnnotation.commentId);
+              }
+              else {
+                var annotations: Array<any> = this.getAnnotationsList();
+                this.selectedAnnotation = _annotation;
+
+                this.selectAllAnotationsTiedToComment(_annotation.commentId);
+              }
+            }
+          });
+
       }
 
 
       const searchListener = (searchPattern, options, results) => {
         var searchResults: ISearchResults[] = [];
+
         results.map(result => {
           var searchResult: ISearchResults = {
             ambientStr: result.ambientStr,
@@ -563,7 +646,8 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
             resultStr: result.resultStr,
             resultStrEnd: result.resultStrEnd,
             resultStrStart: result.resultStrStart,
-            active: false
+            active: false,
+            searchResult: result
           };
 
           searchResults.push(searchResult);
@@ -604,29 +688,13 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.deleteAllDraftAnnotations();
       });
     });
-
-    this.annotationService.getSelected()
-      .pipe(takeUntil(this.destroy$))
-      .pipe(filter(annotation => annotation !== null))
-      .subscribe((_annotation) => {
-        if (_annotation != null) {
-          if (this.selectedAnnotation == null || this.selectedAnnotation.name == null || this.selectedAnnotation.name != _annotation.name) {
-            this.selectedAnnotation = _annotation;
-            this.selectAllAnotationsTiedToComment(this.selectedAnnotation.commentId);
-          }
-          else {
-            var annotations: Array<any> = this.getAnnotationsList();
-            this.selectedAnnotation = _annotation;
-
-            this.selectAllAnotationsTiedToComment(_annotation.commentId);
-          }
-        }
-      });
   }
 
   SetToolMode(Tool: string): void {
-    var docViewer = this.wvInstance.docViewer;
-    docViewer.setToolMode(docViewer.getTool(Tool));
+    var docViewer = this.wvInstance?.docViewer;
+    if (docViewer) {
+      docViewer.setToolMode(docViewer.getTool(Tool));
+    }
     this.ref.detectChanges();
   }
 
@@ -657,8 +725,12 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
       this.sliderToolService.setSliderValue(Math.round(instance.docViewer.getZoom() * 100));
     }
   }
-
-  loadDocument(dl: string, document?: IDocument, compareDocument?: IDocument) {
+  /*
+   * This is where we laod the documents. Right now there are some be assumptions made about the link type. We are assuming that if
+   * the file is on a google drive then it is a reguler file and not an html file. Other wise if it is a link we are assuming it is a link
+   * to an html page.
+   * */
+  async loadDocument(dl: string, document?: IDocument, compareDocument?: IDocument) {
     var instance = this.wvInstance;
     this.dl = dl;
     this.document = document;
@@ -667,29 +739,68 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
     this.documentLoaded = false;
     this.annotationService.clearAnnotations();
 
-    console.log('loading', document);
-
     //remove any annotations that were in a draft state
     this.annotationService.clearDraftAnnotations();
 
     if (instance) {
+      //
       if (this.overlay == false || this.mainView) {
-
         var temp = document?.repositoryFilename;
-
+        console.log('mime', document?.mimeType, 'repositoryFilename', temp, 'document', document)
         if (document?.mimeType == 'URL') {
           if (temp.includes('https://drive.google.com') && !temp.includes('export=download')) {
             //this looks like a google drive shared link we need to make is a direct link
             temp = this.getGoogleDriveDirectLinkFromSharedLink(temp);
           }
+          else if (temp.includes('https://1drv.ms')) {
+            //one drive
+            temp = btoa(encodeURI(temp.trim())).replace('/', '_').replace('+', '-');
+            if (temp.length % 4 != 0) {
+              temp += ('===').slice(0, 4 - (temp.length % 4));
+            }
+            temp = 'https://api.onedrive.com/v1.0/shares/u!' + temp + '/root/content';
+          }
+          else {
+            /*
+             * This should properly load the html viewer when the package is installed.
+             * */
+
+            //lets go with html
+            if (this.loadHTMLPage == null) {
+              const { loadHTMLPage } = await initializeHTMLViewer(instance);
+              this.loadHTMLPage = loadHTMLPage;
+            }
+
+            this.loadHTMLPage({
+              origUrl: '',
+              url: temp,
+              width: 1000,
+              height: 500,
+              license: 'scott.byrnes@gotoadvantage.com///22:128:203:28:12:246:218:153:163:181:107:50:196:237:29:33:225:193:212:18:207:133:32:144:133:139:236:34:160:2:213:229:5:233:252:197:232:120:115:197:97:4:7:226:63:185:109:203:254:164:61:37:43:212:36:14:253:163:249:35:67:248:45:47:5:13:170:250:228:182:196:196:88:255:221:139:33:130:105:122:233:64:192:187:115:238:34:128:143:36:132:124:172:46:66:127:207:58:45:34:101:32:189:170:103:216:40:246:41:4:178:189:144:245:112:208:8:69:160:254:222:177:238:52:8:210:181:165'
+            });
+
+            return;
+          }
 
           this.http.get(temp, { responseType: 'blob' }).subscribe((results) => {
-            console.log(results);
             instance.loadDocument(results, { extension: this.mimeTypes[results.type]});
           });
+          return
 
         }
-        else if (document?.documentId == null) {
+        // else if (document?.mimeType == 'video/mp4') {
+        //   // Extends WebViewer to allow loading HTML5 videos (.mp4, ogg, webm).
+        //   const {loadVideo} = await initializeVideoViewer(instance,
+        //     {
+        //       license: "scott.byrnes@gotoadvantage.com///159:21:60:200:148:200:216:191:8:72:220:108:220:174:188:38:66:59:54:111:181:208:204:55:94:24:40:74:0:4:16:229:69:252:47:148:14:98:223:217:98:88:10:73:50:55:3:250:69:66:179:94:99:122:197:102:29:112:118:117:7:222:147:78:85:29:79:167:226:245:250:212:6:221:161:240:123:127:14:181:254:205:178:232:26:165:222:242:157:221:0:12:165:105:42:2:27:74:194:33:57:113:109:161:123:199:35:132:229:27:64:36:191:211:24:127:36:231:135:157:174:191:154:61:96:102:244:149:144:202:140:186:243:50:126:159:58:165:95:57:5:91:114:248:75:19:56:122:61:119:110:77:214:128:113:73:86:0:70:112:54:91:48:7:236:112:156:187:235:29:49:180:93:186:208:33:222:8:252:152:129:79:97:52:79:91:25:37:50:39:150:77:10:207:54:221:234:101:78:21:85:166:45:127:98:193:141:130:86:74:151:5:101:147:89:98:58:103:158:220:73:35:121:188:173:197:132:169:6:91:47:232:243:147:54:248:144:58:40:56:146:89:99:225:29:147:97:135:88:103:71:174:12:68:166:145:138:87:20:211:201:174:162:93:146:37:157:133:73:240:29:18:63:167:175:43:42:184:236:210:4:127:203:66:159:201:176:169:139:74:95:248:242:203:203:78:207:111:37:43:160:76:182:49:70:135:142:204:109:210:217:69:191:161:209:140:194:93:190:173:110:76:129:62:143:66:112:206:73:147:9:17:197:234:141:97:247:24:41:66:177:2:119:39:34:131:129:82:193:82:56:38:84:26:145:50:184:83:236:125:86:6:34:208:77:142:225:190:1:158:167:135:180:64:241:6:50:250:110:75:98:166:144:47:251:68:77:177:152:186:161:71:87:163:96:115:54:244:124:108:244:106:127:170:31:41:213:0:248:109:190:34:180:61:65:149:120:130:242:223:183:150:32:136:94:86:133:124:84:176:67:229:92:184:134:126:58:24:161:184:216:33:160:158:95:21:226:94:35:96:175:157:7:159:166:231:228:35:75:1:77:54:149:110:16:195:74:189:229:50:89:139:18:216:44:184:107:36:17:255:221:171:113:254:208:211:5:12:100:148:13:248:199:103:152:0:36:146:159:114:86:12:56:215:233:195:41:75:136:188:153:111",
+        //     });
+        //     this.loadVideo = loadVideo;
+        //     //Docs here:
+        //     //Simplifi/Advantage/Webvantage.Angular/ClientApp/node_modules/@pdftron/webviewer-video/doc/index.html
+        //     //https://www.pdftron.com/documentation/web/get-started/manually-video/
+        //     //demo: https://webviewer-video.web.app/
+        // }
+        if (document?.documentId == null) {
           this.http.get(this.baseHref + 'api/ProofingDocumentName?dl=' + dl, { responseType: 'text' })
             .subscribe((filename: string) => {
               if (filename.endsWith('.mp4')) {
@@ -713,33 +824,39 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
       else {
         this.http.get(this.baseHref + 'api/ProofingDocumentName/' + document?.documentId + '?dl=' + dl, { responseType: 'text' })
           .subscribe((filename: string) => {
-            this.compare(dl, this.compareDocument?.documentId, document?.documentId, filename, document?.mimeType);
+            this.http.get(this.baseHref + 'api/ProofingDocumentName/' + this.compareDocument?.documentId + '?dl=' + dl, { responseType: 'text' }).subscribe((compareFileName) => {
+              this.compare(dl, this.compareDocument?.documentId, compareFileName ,document?.documentId, filename, document?.mimeType);
+            });
           });
       }
     }
 
     this.documentVersionService.getVersion(document?.documentId).subscribe((version) => {
-      this.version.nativeElement.innerHTML = document.filename +  ' Version ' + version;
+      this.version.nativeElement.innerHTML = (document != null ? document.filename : '') +  ' Version ' + version;
     })
   }
 
-  compare(dl: string, compareDocumentId: number,documentId: number, filename: string, mimeType: string) {
+  compare(dl: string, compareDocumentId: number, compareFileName: string, documentId: number, filename: string, mimeType: string) {
+    console.log('start of compare');
+    this.wvInstance.UI.openElements(['loadingModal']);
     if (mimeType.startsWith('image')) {
       this.compareDocumentsPixels(dl, compareDocumentId, documentId, filename);
     }
     else {
-      this.compareDocuments(dl,compareDocumentId, documentId, filename);
+      this.compareDocuments(dl, compareDocumentId, compareFileName, documentId, filename);
     }
 
     this.annotationService.loadComparisonAnotations(dl, documentId);
+
+    console.log('end of compare');
+    //this.wvInstance.UI.closeElements(['loadingModal']);
   }
 
-  async compareDocuments(dl: string, compareDocumentId: number, documentId: number, filename: string) {
-    console.log('start compare', documentId, compareDocumentId);
+  async compareDocuments(dl: string, compareDocumentId: number, compareFileName: string ,documentId: number, filename: string) {
     var url: string = this.baseHref + 'api/ProofingDocument';
 
     var doc1 = await this.getDocumentPDF(url + '/' + documentId + '/?dl=' + dl, filename);
-    var doc2 = await this.getDocumentPDF(url + '/' + compareDocumentId + '/?dl=' + dl, '_' + filename);
+    var doc2 = await this.getDocumentPDF(url + '/' + compareDocumentId + '/?dl=' + dl, '_' + compareFileName);
 
     var { Core } = this.wvInstance;
 
@@ -766,8 +883,6 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
       i++;
     }
 
-    console.log(pages);
-
     pages.forEach(async ([p1, p2]) => {
       if (!p1) {
         p1 = new Core.PDFNet.Page();
@@ -781,41 +896,6 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     await newDoc.unlock();
     this.wvInstance.UI.loadDocument(newDoc);
-
-
-  //  var doc1 = await this.getDocumentPDF(url + '/' + documentId + '/?dl=' + dl, filename);
-  //  var doc1Pages = await this.getPageArray(doc1);
-
-  //  var doc2 = await this.getDocumentPDF(url + '/' + compareDocumentId + '/?dl=' + dl, filename);
-  //  var doc2Pages = await this.getPageArray(doc2);
-
-  //  var { Core } = this.wvInstance;
-  //  const newDoc = await Core.PDFNet.PDFDoc.create();
-  //  newDoc.lock();
-
-  //  const biggestLength = Math.max(doc1Pages.length, doc2Pages.length)
-  //  const chain = Promise.resolve();
-
-  //  for (let i = 0; i < biggestLength; i++) {
-  //    chain.then(async () => {
-  //      var page1 = doc1Pages[i];
-  //      var page2 = doc2Pages[i];
-
-  //      if (!page1) {
-  //        page1 = new Core.PDFNet.Page(); // create a blank page
-  //      }
-  //      if (!page2) {
-  //        page2 = new Core.PDFNet.Page(); // create a blank page
-  //      }
-
-  //      return newDoc.appendVisualDiff(page1, page2, null);
-  //    })
-  //  }
-
-  //  await chain;
-  //  newDoc.unlock();
-
-  //  this.wvInstance.loadDocument(newDoc);
   }
 
   async compareDocumentsPixels(dl: string, compareDocumentId : number, documentId: number, filename: string) {
@@ -931,8 +1011,17 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   searchText(options: ISearchOptions): void {
-    var instance = this.wvInstance;
-    instance.searchTextFull(options?.searchPhrase, options);
+    if (this.wvInstance && options) {
+      var instance = this.wvInstance;
+      instance.searchTextFull(options?.searchPhrase, options);
+    }
+  }
+
+  clearSearchText() {
+    if (this.wvInstance) {
+      var docViewer = this.wvInstance.docViewer;
+      docViewer.clearSearchResults();
+    }
   }
 
   getToolType(annotations): TOOL_TYPE {
@@ -976,6 +1065,11 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
 
       case 'AnnotationCreateStamp': {
         toolType = TOOL_TYPE.STAMP;
+        break;
+      }
+
+      case 'AnnotationCreateSticky': {
+        toolType = TOOL_TYPE.NOTE;
         break;
       }
 
@@ -1111,11 +1205,17 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   selectAllAnotationsTiedToComment(commentID: number): void {
-    var annotations = this.annotationService.getAllWithCommentId(commentID);
+    var annotations = null;
+
+    if (this.mainView) {
+      annotations = this.annotationService.getAllWithCommentId(commentID);
+    }
+    else {
+      annotations = this.comparisonAnnotationService.getAllWithCommentId(commentID);
+    }
 
     var PDFTronannotations: Array<any> = this.getAnnotationsList();
     var selectedAnnotations: Core.Annotations.Annotation[] = [];
-
 
     if (PDFTronannotations) {
       annotations.forEach((av, ai, aa) => {
@@ -1129,9 +1229,19 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
       });
 
       if (selectedAnnotations.length == 0) {
-        var selected = this.annotationService.getSelectedValue();
+        var selected = null;
+
+        if (this.mainView) {
+          selected = this.annotationService.getSelectedValue();
+        }
+        else{
+          selected = this.comparisonAnnotationService.getSelectedValue();
+        }
+
+        console.log(selected);
+
         PDFTronannotations.forEach((v, i, a) => {
-          if (selected.name == v.Dx) {
+          if (selected?.name == v.Dx) {
             selectedAnnotations.push(a[i]);
           }
         });
@@ -1197,9 +1307,7 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showAnnotations(): void {
     if (this.wvInstance) {
-
       var annotations = this.wvInstance.annotManager.getAnnotationsList();
-
       annotations.forEach((v, i, a) => {
 
         if (a[i]['orginal_draw'] == null) {
@@ -1221,25 +1329,25 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   getAnnotationTitleText(Annotation): string {
     var rv: string = '';
 
-    var annotations : IAnnotation [] = this.annotationService.getAnnotationValues();
+    var annotations: IAnnotation[] = null;
+
+    if (this.mainView == true) {
+      annotations = this.annotationService.getAnnotationValues();
+    }
+    else {
+      annotations = this.comparisonAnnotationService.getAnnotationValues();
+    }
+
     if (annotations) {
       var annot: IAnnotation = annotations.find((v) => {
         if (v.name) {
-          return !v.name.localeCompare(Annotation.Dx);
+          return v.name == Annotation.Dx;
         }
-
         return false;
       });
 
       if (annot != null && annot.markup != null) {
-        if (annot.markup.length > 20) {
-          rv = annot.markup.substr(0, 17);
-
-          rv += '...';
-        }
-        else {
-          rv = annot.markup;
-        }
+        rv = annot.markup;
       }
       else {
         rv = '...';
@@ -1250,11 +1358,22 @@ export class WebViewerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getIdString(Annotation): string {
-    var annotations: IAnnotation[] = this.annotationService.getAnnotationValues();
+    var annotations: IAnnotation[] = null;
+
+    if (this.mainView == true) {
+      annotations = this.annotationService.getAnnotationValues();
+    }
+    else {
+      annotations = this.comparisonAnnotationService.getAnnotationValues();
+    }
 
     if (annotations) {
       var annot: IAnnotation = annotations.find((v) => {
-        return !v.name.localeCompare(Annotation.Dx);
+        if (v.name) {
+          return v.name == Annotation.Dx;
+        }
+
+        return false;
       });
 
       if (annot) {

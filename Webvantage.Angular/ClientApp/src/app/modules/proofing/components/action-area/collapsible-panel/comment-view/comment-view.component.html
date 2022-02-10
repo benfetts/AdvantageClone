@@ -5,24 +5,44 @@
       <img class="title-burger" src="assets/icons/icon-header-side-panel.svg" />
       Comments
     </div>
-    <div class="right" style="color:green; float:right; padding-right: 6px;">
-      <button (click)="addComment()" role="button" class=" wv-icon-button k-button k-grid-add wv-add-new" title="Add comment" style="width: 24px; height: 24px;">
-        <span class="wvi wvi-navigate-plus"></span>
-      </button>
-    </div>
   </div>
-  <div>
+  <div style="padding-left:7px;background-color: #E5E5E5; border-bottom: 1px solid #cccccc"><span title="{{nameVersion}}">{{nameVersion}}</span></div>
+  <div style="overflow: auto; height: 100%; height: -moz-available; height: -webkit-fill-available;">
     <div style="display:grid">
-      <div *ngIf="newComment">
-        <div id="editorDiv">
+      <div class="editor-pane">
+        <div id="editorDiv" class="wv-editor-div">
           <textarea kendo-editor #myEditor id="editor"></textarea>
+          <mention-item #myMention baseElementId="editorDiv" textAreaId="editor" commentType="comment"></mention-item>
         </div>
-        <mention-item #myMention id="mention"></mention-item>
+        <div class="right" style="float:right">
+          <button (click)="showFullScreenComment()" role="button" class="wv-icon-button k-button wv-neutral"
+            title="Enlarge" style="width: 24px; height: 24px;">
+            <span class="wvi wvi-arrow_spread2"></span>
+          </button>
+        </div>
+        <div class="right" style="color:green; float:right; padding-right: 6px;">
+          <button (click)="createComment()" role="button" class="wv-icon-button k-button k-grid-add wv-add-new"
+            title="Add comment" style="width: 24px; height: 24px;">
+            <span class="wvi wvi-navigate-plus"></span>
+          </button>
+        </div>
       </div>
-
-      <ng-container *ngFor="let feedback of feedback | orderBy:'commentId' ; let i = index">
+      <ng-container *ngFor="let feedback of sortedFeedback ; let i = index">
         <markup-comment class="comment-view-item" [feedback]="feedback" (click)="markUpclicked(i)"></markup-comment>
       </ng-container>
     </div>
   </div>
+  <kendo-dialog #myEditorDialog *ngIf="dialogOpened" class="proof-editor-dialog" [minWidth]="500" [width]="900" [height]="324"
+    title="Add Comment" (close)="onCancelClick()">
+    <div id="editorDialogEditorDiv">
+      <textarea kendo-editor #myEditorDialogEditor id="editorDialogEditor"></textarea>
+    </div>
+    <div class="buttons-container">
+      <button kendoButton (click)="onCancelClick()">Cancel</button>
+      <button class="k-primary" kendoButton (click)="onSaveClick()"
+        [disabled]="disabled">{{dialogPrimaryButtonText}}</button>
+    </div>
+  </kendo-dialog>
+  <mention-item #myEditorDialogMention baseElementId="editorDialogEditorDiv" textAreaId="editorDialogEditor"
+    commentType="comment"></mention-item>
 </div>

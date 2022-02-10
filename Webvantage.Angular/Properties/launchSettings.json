@@ -36,6 +36,24 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "nativeDebugging": false
+    },
+    "IIS Jeff": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost/Webvantage.Angular/Proofing?dl=CmzEbNJk7odBg6fGiYhbJQYeLLq1Io3pGvCgqnWcs3HcDoFFVgNj8eJdaLGYeBBXjgR80BYqAQ467bpl%2Fn3DPH4q40NjuYYcyfZ1plzP%2Fmixnx%2FOLKVnEYmruLYgjLOgquZSyLTwI%2F7n8Z9%2FxLr7M5qDzBbEeZvEcjuTOFss0056HaWfLVksc3Y1KK%202kteSORIEDsBz9pw%20fxn%20TigsGNcz7JsoOcoKsdPGYoquhjCWwSH0Y9ZTos1UAOrDAc6xPQNii3USxZgBpp9mgoaQL1csNhzqevv3%2Fmjt8y4ScdM%3DA&xyz=566",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "nativeDebugging": false
+    },
+    "IIS Jeff-vNEXT": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost/Webvantage.Angular/Proofing?dl=CmzEbNJk7odBg6fGiYhbJQYeLLq1Io3pGvCgqnWcs3HcDoFFVgNj8eJdaLGYeBBXjgR80BYqAQ467bpl%2Fn3DPOlQrWQEiYnIcGcUTShavpabcnwPGTPxwDUObvFnBB3w9xJad0nuNC%2F6nBTspTgGy2ZjxpMNZCPwMJbzhlfJIJpDX5%208rl3yAXAU4chyp6WtNoBsXLuwfJ4%2Fvs8MqpOMQ1gRRELW9OUeM01YU0djF5tsapclbKTSkYkVm8GwmAvz8Ue%20qGk87Ml%20bj5xZp%2FaKloOw18BdnE2qPUuBqj2Jfo%3DA&xyz=566",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "nativeDebugging": false
     }
   }
 }

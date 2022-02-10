@@ -53,7 +53,7 @@ namespace AdvantageFramework.Core.BLogic.EmployeeMention{
                     new Microsoft.Data.SqlClient.SqlParameter("@JOB_COMPONENT_NBR", SqlDbType.SmallInt) { Direction = ParameterDirection.Input, Value = qs.JobComponentNumber},
                     new Microsoft.Data.SqlClient.SqlParameter("@CMP_IDENTIFIER", SqlDbType.Int) { Direction = ParameterDirection.Input, Value = qs.CampaignIdentifier},
                     new Microsoft.Data.SqlClient.SqlParameter("@CLIENT_PORTAL_USER_ID", SqlDbType.Int) { Direction = ParameterDirection.Input, Value = 0},
-                    new Microsoft.Data.SqlClient.SqlParameter("@ALERT_ID", SqlDbType.Int) { Direction = ParameterDirection.Input, Value = qs.AlertID},
+                    new Microsoft.Data.SqlClient.SqlParameter("@ALERT_ID", SqlDbType.Int) { Direction = ParameterDirection.Input, Value = 0},
                     new Microsoft.Data.SqlClient.SqlParameter("@USER_CODE", SqlDbType.VarChar, 100) { Direction = ParameterDirection.Input, Value = qs.UserCode },
                     new Microsoft.Data.SqlClient.SqlParameter("@IS_REVIEWERS", SqlDbType.Bit) { Direction = ParameterDirection.Input, Value = qs.ProofingStatusExternalReviewerID},
                     new Microsoft.Data.SqlClient.SqlParameter("@EMAIL_GR_CODE", SqlDbType.VarChar, 50) { Direction = ParameterDirection.Input, Value = qs.EmailGroup }

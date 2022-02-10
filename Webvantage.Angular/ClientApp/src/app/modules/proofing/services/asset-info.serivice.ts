@@ -7,6 +7,7 @@ import { IAssetInfo } from "../interfaces/asset-info";
 import { IDocument } from "../interfaces/document";
 import { ActiveFileService } from "./active-file.service";
 import { BaseService } from "./base.service";
+import { CenterPanelButtonsService } from "./center-panel-buttons.service";
 
 
 @Injectable({
@@ -20,6 +21,7 @@ export class AssetInfoService extends BaseService {
 
   constructor(private http: HttpClient,
     private activatedRouter: ActivatedRoute,
+    private centralPanelButtonsService: CenterPanelButtonsService,
     private activeFileService: ActiveFileService) {
     super();
 
@@ -33,6 +35,12 @@ export class AssetInfoService extends BaseService {
     this.activeFileService.getDocument().pipe(filter((document) => document != null)).subscribe((document: IDocument) => {
       this.loadAssetInfo(document?.documentId);
     });
+
+    this.centralPanelButtonsService.getRevision()
+      .subscribe((document) => {
+        this.loadAssetInfo(document?.documentId);
+      });
+
   }
 
   getAssetInfo(): Observable<IAssetInfo>{
@@ -47,12 +55,20 @@ export class AssetInfoService extends BaseService {
         retry(1),
         catchError(this.handleError)
       ).subscribe((assetInfo: IAssetInfo) => {
-        console.log(assetInfo);
         assetInfo.uploadDate = new Date(assetInfo.uploadDate);
-
+        if (assetInfo.latestMarkupDate && assetInfo.latestMarkupDate != null) {
+          assetInfo.latestMarkupDate = new Date(assetInfo.latestMarkupDate);
+        } else {
+          assetInfo.latestMarkupDate = null;
+        }
         if (assetInfo.versions) {
           assetInfo.versions.forEach((v, i, a) => {
             a[i].uploadDate = new Date(v.uploadDate);
+            if (assetInfo.latestMarkupDate && assetInfo.latestMarkupDate != null) {
+              a[i].latestMarkupDate = new Date(v.latestMarkupDate);
+            } else {
+              a[i].latestMarkupDate = null;
+            }
           });
         }
 

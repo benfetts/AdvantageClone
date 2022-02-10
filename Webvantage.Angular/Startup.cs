@@ -78,7 +78,7 @@ namespace Webvantage.Angular
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-            //app.UsePathBase("/Webvantage.Angular");
+            //app.UsePathBase("/WebVantage.Angular");
 
             app.UseMvc(routes =>
             {
@@ -97,6 +97,7 @@ namespace Webvantage.Angular
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
+                    //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
 

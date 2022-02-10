@@ -87,7 +87,12 @@ export const buttonCenterTypes: IToolbarCenterButtons = {
   compare: {
     name: CENTRAL_BUTTONS_TYPES.COMPARE,
     selected: false,
-    imageUrl: 'assets/icons/rotate_left.svg'
+    imageUrl: 'assets/icons/switch.svg'
+  },
+  compare_horizontal: {
+    name: CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL,
+    selected: false,
+    imageUrl: 'assets/icons/switch.svg'
   },
   markerTool: {
     name: CENTRAL_BUTTONS_TYPES.MARKER_TOOL,

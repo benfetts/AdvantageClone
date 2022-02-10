@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -29,6 +29,7 @@ export class WorkspaceContainerComponent implements OnInit, OnDestroy {
   public isRightPanelOpen: boolean;
   public viewContainer = VIEW_CONTAINER;
   public maxAmountOfComparisonFiles = MAX_AMOUNT_OF_COMPARISON_FILES;
+  public viewType: string = 'one-asset';//
 
   private destroy$: Subject<void> = new Subject();
 
@@ -38,7 +39,8 @@ export class WorkspaceContainerComponent implements OnInit, OnDestroy {
   constructor(private comparisonService: ComparisonService,
               private centerPanelButtonsService: CenterPanelButtonsService,
               private rightPanelButtonsService: RightPanelButtonsService,
-              private bottomPanelButtonsService: BottomPanelButtonsService) {
+              private bottomPanelButtonsService: BottomPanelButtonsService,
+              private ref: ChangeDetectorRef  ) {
   }
 
   get leftSide() {
@@ -52,6 +54,12 @@ export class WorkspaceContainerComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.bottomPanelButtons = this.bottomPanelButtonsService.getBottomPanelButtons();
     this.centralPanelButtons = this.centerPanelButtonsService.getCentralPanelButtons();
+    this.centerPanelButtonsService.getView().pipe(takeUntil(this.destroy$)).subscribe((viewType) => {
+      console.log('new view type', viewType);
+      this.viewType = viewType;
+
+      this.ref.detectChanges();
+     });
 
     this.rightPanelButtonsService.getRightPanelStatus()
       .pipe(takeUntil(this.destroy$))
@@ -65,7 +73,7 @@ export class WorkspaceContainerComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public setClassOnBlock(fileManagerHidden: boolean, fileManagerMin: boolean): string {
+  public setClassOnBlock(fileManagerHidden: boolean, fileManagerMin: boolean, view : string): string {
     let classes: string;
 
     switch (fileManagerHidden) {
@@ -77,6 +85,10 @@ export class WorkspaceContainerComponent implements OnInit, OnDestroy {
         break;
       default:
         classes = 'workspace-area';
+    }
+
+    if (view == 'split-horizontal') {
+      classes += ' split-horizontal-display';
     }
 
     return classes;

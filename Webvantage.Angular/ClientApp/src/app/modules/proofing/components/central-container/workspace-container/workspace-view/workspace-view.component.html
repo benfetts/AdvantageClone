@@ -1,9 +1,22 @@
 <ng-container *ngIf="(selectedFileType | async) as selectedFileTypeService">
+  <kendo-dialog title="Incompatible types"
+                *ngIf="opened"
+                (close)="close('cancel')"
+                [minWidth]="250"
+                [width]="450">
+    <p style="margin: 30px; text-align: center;">
+      You have selected files to overlay with incompatible mime types. Please select another file.
+    </p>
+    <kendo-dialog-actions>
+      <!--<button kendoButton (click)="close('no')">No</button>-->
+      <button kendoButton (click)="close('yes')" ng-class="blue">Ok</button>
+    </kendo-dialog-actions>
+  </kendo-dialog>
+
   <div class="split-view" [ngClass]="setClassOnBlock('workspace-view')" [class.container-selected]="sideSelected">
-    <ng-content></ng-content>
     <div class="image-view-container">
-      <proof-workspace-page-preview *ngIf="pageViewerStatus(selectedFileTypeService)"
-                                    [pages]="pages"></proof-workspace-page-preview>
+      <!--<proof-workspace-page-preview *ngIf="pageViewerStatus(selectedFileTypeService)"
+                                    [pages]="pages"></proof-workspace-page-preview>-->
       <div class="image-area" [style.width]="kendoCardWidth">
         <web-viewer [mainView]="mainView"></web-viewer>
       </div>

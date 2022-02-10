@@ -13,7 +13,6 @@ import { fromEvent, Observable, Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
 
-import { ACTION_AREA_CLOSED_WIDTH, ACTION_AREA_OPENED_WIDTH } from './constants/action-area.constants';
 import { WorkspaceContainerComponent } from '../central-container/workspace-container/workspace-container.component';
 import { IRightPanelButtons } from '../../interfaces/right-panel-buttons';
 import { RightPanelButtonsService } from '../../services/right-panel-buttons.service';
@@ -35,8 +34,6 @@ const DEBOUNCE_TIME = 100;
 export class ActionAreaComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('rightPanel') public rightPanel: ElementRef;
 
-  public openWidth: number = ACTION_AREA_OPENED_WIDTH;
-  public closeWidth: number = ACTION_AREA_CLOSED_WIDTH;
   public buttons: IRightPanelButtons;
   public tooltips: ITooltip = TOOLTIPS;
 

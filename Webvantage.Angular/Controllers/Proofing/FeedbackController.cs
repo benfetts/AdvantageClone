@@ -39,7 +39,7 @@ namespace Webvantage.Angular.Controllers.Proofing
 
         // GET api/<FeedbackController>/5
         [HttpGet("{id}")]
-        public IEnumerable<AdvantageFramework.Core.Database.Classes.AlertComment> Get(int id,[FromQuery] string dl)
+        public IEnumerable<AdvantageFramework.Core.Database.Classes.AlertComment> Get(int id, [FromQuery] string dl)
         {
             try
             {
@@ -63,13 +63,19 @@ namespace Webvantage.Angular.Controllers.Proofing
             try
             {
                 bool sendEmail = false;
+                bool isProofingMarkupComment = false;
+                bool hasAtMentions = false;
+                bool onlyAtMentions = false;
+                int documentID = 0;
 
                 AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
+
+                documentID = value.DocumentId == null ? qs.DocumentID : (int)value.DocumentId;
 
                 AdvantageFramework.Core.Database.Entities.AlertComment comment = AdvantageFramework.Core.BLogic.Proofing.Methods.CreateComment(qs, new AdvantageFramework.Core.Database.Entities.AlertComment()
                 {
                     AlertId = qs.AlertID,
-                    DocumentId = value.DocumentId != null ? value.DocumentId : qs.DocumentID,
+                    DocumentId = documentID,
                     UserCode = qs.ProofingStatusExternalReviewerID <= 0 ? qs.UserCode : null,
                     GeneratedDate = DateTime.Now,
                     Comment = value.Comment,
@@ -79,11 +85,13 @@ namespace Webvantage.Angular.Controllers.Proofing
 
                 if (value.Mentions != null && value.Mentions.Length > 0)
                 {
-                    sendEmail = true;
                     _controller.AddAlertMentions(qs, qs.AlertID, value.Mentions, comment.CommentId);
+                    sendEmail = true;
+                    onlyAtMentions = true;
                 }
 
-                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, sendEmail);
+                NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, documentID,
+                    sendEmail, isProofingMarkupComment, onlyAtMentions, value.Mentions, qs.EmployeeCode);
 
             }
             catch (Exception ex)
@@ -108,14 +116,13 @@ namespace Webvantage.Angular.Controllers.Proofing
                 newComment = AdvantageFramework.Core.BLogic.Proofing.Methods.UpdateComment(qs, new AdvantageFramework.Core.Database.Entities.AlertComment()
                 {
                     AlertId = qs.AlertID,
-                    DocumentId = qs.DocumentID,
+                    DocumentId = value.DocumentId == null ? qs.DocumentID : (int)value.DocumentId,
                     UserCode = value.UserCode,
                     GeneratedDate = DateTime.Now,
                     Comment = value.Comment,
-                    ParentId = value.ParentId
-                    //MarkupTypeId = value.MarkupTypeId,
-                    //MarkupXml = value.MarkupXml,
-                    //Thumbnail = value.Thumbnail
+                    ParentId = value.ParentId,
+                    CommentId = value.CommentId,
+                    ProofingXReviwerId = qs.ProofingStatusExternalReviewerID <= 0 ? (int?)null : qs.ProofingStatusExternalReviewerID
                 });
 
             }

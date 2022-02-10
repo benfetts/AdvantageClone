@@ -1,22 +1,44 @@
+@import '../../../../theme/colors';
+@import '../../../../theme/mixins/font';
+
 .comment-view small {
   color: #2196f3;
 }
 
 .comment-view {
   height: 100% !important;
-  overflow: auto !important;
+  display: flex;
+  flex-direction: column;
+
+  .editor-pane {
+    border-bottom: 1px solid #dce3e6;
+    border-radius: 2px 2px 0px 0px;
+    padding: 5px;
+
+    div#editorDiv {
+      margin-bottom: 5px;
+      width: 100% !important;
+
+      ::ng-deep table {
+        border: 1px solid #ccc !important;
+
+        td.k-editable-area {
+          height: 75px !important;
+        }
+      }
+    }
+  }
+
+  .comment-view-item {
+    padding-right: 7px;
+  }
+
+  .comment-view-item:nth-child(even) {
+    background: #efefef !important;
+  }
+
+  .comment-view-item:nth-child(odd) {
+    background: #fff !important;
+  }
 }
 
-.comment-view > div > div > div > div#editorDiv > table > tbody > tr > td.k-editable-area {
-  height: 30px !important;
-}
-
-.comment-view > div > div > div > div#editorDiv > table {
-  border: 1px solid #767676 !important;
-  border-radius: 50%;
-}
-
-.comment-view > div > div > div > div#editorDiv {
-  margin-bottom: 5px;
-  width: 100% !important;
-}

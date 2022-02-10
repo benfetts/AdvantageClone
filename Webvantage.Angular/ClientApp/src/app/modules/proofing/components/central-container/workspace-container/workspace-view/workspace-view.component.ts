@@ -23,10 +23,13 @@ import { CenterPanelButtonsService } from '../../../../services/center-panel-but
 import { ITooltip } from '../../../../interfaces/tooltip';
 import { WebViewerComponent } from '../../../../webviewer/webviewer.component';
 import { ActivatedRoute } from '@angular/router';
-import { DocumentHistoryService } from '../../../../services/document-history.service';
+//import { DocumentHistoryService } from '../../../../services/document-history.service';
 import { ActiveFileService } from '../../../../services/active-file.service';
 import { WebViewerReadyService } from '../../../../services/web-viewer-ready.service';
 import { IDocument } from '../../../../interfaces/document';
+import { ComparisonService } from '../../../../services/comparison.service';
+import { FeedbackService } from '../../../../services/feedback.service';
+import { AssetInfoService } from '../../../../services/asset-info.serivice';
 
 const IMAGE_WIDTH = 960;
 const IMAGE_HEIGHT = 540;
@@ -66,6 +69,8 @@ export class WorkspaceViewComponent implements OnInit, OnDestroy {
   public tooltips: ITooltip = TOOLTIPS;
   public fileNameLength = FILE_NAME_LENGTH;
   public dl: string = null;
+  public overlay: boolean = false;
+  public opened: boolean = false;
 
   private document: IDocument = null;
   private compareDocument: IDocument = null;
@@ -75,9 +80,11 @@ export class WorkspaceViewComponent implements OnInit, OnDestroy {
   constructor(private rightPanelButtonsService: RightPanelButtonsService,
     private selectedFileTypeService: SelectedFileTypeService,
     private centralPanelButtonsService: CenterPanelButtonsService,
+    private comparisonService: ComparisonService,
+    private feedbackService: FeedbackService,
+    private assetInfoService: AssetInfoService,
     private activatedRouter: ActivatedRoute,
     private activeFileService: ActiveFileService,
-    private documentHistoryService: DocumentHistoryService,
     private webViewerReadyService: WebViewerReadyService,
     private ref: ChangeDetectorRef) {
   }
@@ -122,6 +129,14 @@ export class WorkspaceViewComponent implements OnInit, OnDestroy {
               if (this.dl != null) {
                 this.webViewer.loadDocument(this.dl, this.document);
               }
+            });
+
+          this.comparisonService.getComparisonFilesAmount().subscribe((amount: number) => {
+            console.log(amount);
+            if (amount < 2) {
+              this.feedbackService.loadFeedback(this.document.documentId);
+              this.assetInfoService.loadAssetInfo(this.document.documentId);
+            }
           });
 
           this.activatedRouter.queryParams.pipe(filter(e => { return e.dl; })).subscribe(e => {
@@ -130,7 +145,7 @@ export class WorkspaceViewComponent implements OnInit, OnDestroy {
         });
       });
     }
-    else{
+    else {
       this.webViewerReadyService.getCompareWebViewerReady()
         .pipe(takeUntil(this.destroy$))
         .pipe(filter(r => r == true))
@@ -141,26 +156,37 @@ export class WorkspaceViewComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.destroy$))
             .subscribe((document: IDocument) => {
               //in this case we need to know what document is loaded in the other viewer
-              console.log('this should be the document we have selected.',document);
               this.compareDocument = document;
             });
 
           this.activatedRouter.queryParams.
             pipe(filter(e => { return e.dl; }), takeUntil(this.destroy$)).
             subscribe(e => {
-            this.dl = e.dl;
+              this.dl = e.dl;
 
-              if (this.document != null && this.dl != null) {
-                this.webViewer.loadDocument(this.dl, this.document, this.compareDocument);
+              if (this.document != null && this.dl != null && this.compareDocument != null && this.compareDocument.documentId != this.document.documentId) {
+                if (!this.overlay || (this.compareDocument.mimeType.substr(0, this.compareDocument.mimeType.indexOf('/')).toLowerCase() == this.document.mimeType.substr(0, this.document.mimeType.indexOf('/')).toLowerCase())) {
+                  this.webViewer.loadDocument(this.dl, this.document, this.compareDocument);
+                }
+                else {
+                  this.opened = true;
+                  this.ref.detectChanges();
+                }
               }
             });
 
           this.centralPanelButtonsService.getCentralPanelButtons()
             .pipe(map(e => { return e.overlay; }), takeUntil(this.destroy$))
             .subscribe((button) => {
-              if (button.selected && this.document != null) {
-                console.log('load document');
-                this.webViewer.loadDocument(this.dl, this.document, this.compareDocument);
+              this.overlay = button.selected;
+              if (button.selected && this.document != null && this.compareDocument != null && this.compareDocument.documentId != this.document.documentId) {
+                if (!this.overlay || (this.compareDocument.mimeType.substr(0, this.compareDocument.mimeType.indexOf('/')).toLowerCase() == this.document.mimeType.substr(0, this.document.mimeType.indexOf('/')).toLowerCase())) {
+                  this.webViewer.loadDocument(this.dl, this.document, this.compareDocument);
+                }
+                else {
+                  this.opened = true;
+                  this.ref.detectChanges();
+                }
               }
           });
 
@@ -169,14 +195,24 @@ export class WorkspaceViewComponent implements OnInit, OnDestroy {
             .subscribe((document) => {
               this.document = document;
 
-              if (this.dl != null && this.document != null) {
-                this.webViewer.loadDocument(this.dl, this.document, this.compareDocument);
+              if (this.dl != null && this.document != null && this.compareDocument != null && this.compareDocument.documentId != this.document.documentId) {
+                if (!this.overlay ||(this.compareDocument.mimeType.substr(0, this.compareDocument.mimeType.indexOf('/')).toLowerCase() == this.document.mimeType.substr(0, this.document.mimeType.indexOf('/')).toLowerCase())) {
+                  this.webViewer.loadDocument(this.dl, this.document, this.compareDocument);
+                }
+                else {
+                  this.opened = true;
+                  this.ref.detectChanges();
+                }
               }
             });
         });
     }
   }
 
+  public close(status) {
+    this.opened = false;
+    this.ref.detectChanges();
+  }
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

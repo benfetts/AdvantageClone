@@ -38,9 +38,9 @@ export class AssetExplorerToolbarComponent implements OnInit {
   public versionsTypes: IDropDown[] = versionsTypes;
   public tooltips: ITooltip = TOOLTIPS;
 
-  constructor(private versionsAssetFileService: VersionsAssetFileService,
-              private comparisonService: ComparisonService,
-              private bottomPanelButtonsService: BottomPanelButtonsService) {
+  constructor(private comparisonService: ComparisonService,
+    private versionsAssetFileService: VersionsAssetFileService,
+    private bottomPanelButtonsService: BottomPanelButtonsService) {
   }
 
   public ngOnInit(): void {
@@ -60,7 +60,7 @@ export class AssetExplorerToolbarComponent implements OnInit {
   }
 
   public selectedButton(value: string): void {
-    this.bottomPanelButtonsService.setBottomPanelButtons(value);
+    //this.bottomPanelButtonsService.setBottomPanelButtons(value);
     if (value === LOCK) {
       this.dialogWindowOpened = true;
     }
@@ -68,7 +68,7 @@ export class AssetExplorerToolbarComponent implements OnInit {
 
   public setDialogWindowClosed(value: boolean): void {
     this.dialogWindowOpened = value;
-    this.bottomPanelButtonsService.setBottomPanelButtons(LOCK);
+    //this.bottomPanelButtonsService.setBottomPanelButtons(LOCK);
   }
 
   public showButtonsOnComprasion({ compareButton, fileManagerMaxButton }, comprasionFilesAmount: number): boolean {

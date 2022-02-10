@@ -9,10 +9,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  border: 1px solid $border-color;
-  border-top: none;
+  height: 18px;
+  border-top: 1px solid $border-color;
+  border-left: none;
   padding: 4px 7px;
+  font-size: 13px;
+  font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-stretch: 100%;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
 }
 
 .k-list .k-item.k-state-focused {
@@ -51,6 +58,11 @@
 .k-animation-container > .k-popup {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.k-animation-container .k-list-filter {
+  padding: 4px;
 }
 
 .tools,

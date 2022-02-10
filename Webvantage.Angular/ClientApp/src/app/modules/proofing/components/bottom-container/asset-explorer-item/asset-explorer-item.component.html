@@ -4,12 +4,13 @@
       <proof-item [thumbnail]="centerPanelButtons.bottomNavigation.selected"
                   [itemType]="image"
                   [selected]="document.selected"
-                  (click)="setSelectedPage(i, centerPanelButtons.compare.selected)"
+                  (click)="setSelectedPage(i, centerPanelButtons.compare.selected,centerPanelButtons.compare_horizontal.selected)"
                   [fileName]="document.filename"
                   [imageThumbnail]="document.thumbnail"
                   [extension]="document.extension"
                   [mimeType]="document.mimeType"
-                  [documentId]="document.documentId"></proof-item>
+                  [documentId]="document.documentId"
+                  [commentsDisplayed]="document.commentsDisplayed"></proof-item>
     </ng-container>
   </div>
 </ng-container>

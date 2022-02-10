@@ -68,7 +68,7 @@ exports.BUTTON_CENTER_TYPES = {
     version: {
         name: "version" /* VERSION */,
         selected: false,
-        imageUrl: 'assets/icons/versions.svg'
+        imageUrl: 'assets/icons/Versions.svg'
     },
     reticle: {
         name: "reticle" /* RETICLE */,
@@ -86,6 +86,11 @@ exports.BUTTON_CENTER_TYPES = {
     },
     compare: {
         name: "compare" /* COMPARE */,
+        selected: false,
+        imageUrl: 'assets/icons/switch.svg'
+    },
+    compare_horizontal: {
+        name: "compare_horizontal" /* COMPARE_HORIZONTAL */,
         selected: false,
         imageUrl: 'assets/icons/switch.svg'
     },

@@ -27,7 +27,7 @@ export class AssetInfoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public additionalInfoMock: string = additionalInfoMock;
   public heightScroll: string;
-  public contentMoreThanHeight: boolean;
+  public contentMoreThanHeight: boolean = true;
 
   private destroy$: Subject<void> = new Subject();
 
@@ -48,7 +48,7 @@ export class AssetInfoComponent implements OnInit, OnDestroy, AfterViewInit {
         this.updateScrollContainer();
         this.cdr.detectChanges();
       });
-    console.log('ngOnInit');
+
     this.assetInfoService.getAssetInfo()
       .pipe(filter((assetInfo: IAssetInfo) => {
         return assetInfo != null;
@@ -63,6 +63,7 @@ export class AssetInfoComponent implements OnInit, OnDestroy, AfterViewInit {
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this.cdr.detectChanges();
   }
 
   public ngAfterViewInit(): void {

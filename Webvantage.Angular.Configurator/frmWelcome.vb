@@ -1,4 +1,4 @@
-Imports System.IO
+﻿Imports System.IO
 Imports System.DirectoryServices
 Imports System.ServiceProcess
 
@@ -247,7 +247,7 @@ Public Class frmWelcome
     Private Sub ButtonWebvantage_Click(sender As Object, e As EventArgs) Handles ButtonWebvantage.Click
 
         Dim frmwebconfig As frmWebConfig = New frmWebConfig
-        frmwebconfig.SelectedApplication = MobileConfigurator.frmWebConfig.App.Webvantage
+        frmwebconfig.SelectedApplication = ProofingConfigurator.frmWebConfig.App.Webvantage
         frmwebconfig.Show()
         Me.Hide()
 
@@ -255,7 +255,7 @@ Public Class frmWelcome
     Private Sub ButtonClientPortal_Click(sender As Object, e As EventArgs) Handles ButtonClientPortal.Click
 
         Dim frmwebconfig As frmWebConfig = New frmWebConfig
-        frmwebconfig.SelectedApplication = MobileConfigurator.frmWebConfig.App.ClientPortal
+        frmwebconfig.SelectedApplication = ProofingConfigurator.frmWebConfig.App.ClientPortal
         frmwebconfig.Show()
         Me.Hide()
 
@@ -263,7 +263,7 @@ Public Class frmWelcome
     Private Sub ButtonMobileDataServices_Click(sender As Object, e As EventArgs) Handles ButtonMobileDataServices.Click
 
         Dim frmwebconfig As frmWebConfig = New frmWebConfig
-        frmwebconfig.SelectedApplication = MobileConfigurator.frmWebConfig.App.MobileDataservices
+        frmwebconfig.SelectedApplication = ProofingConfigurator.frmWebConfig.App.MobileDataservices
         frmwebconfig.Show()
         Me.Hide()
 

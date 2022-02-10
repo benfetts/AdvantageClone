@@ -20,6 +20,7 @@ export class SearchResultsComponent implements OnInit {
       this.ref.detectChanges();
     });
   }
+
   resultClicked(index: number) {
 
     console.log("selected ", index );

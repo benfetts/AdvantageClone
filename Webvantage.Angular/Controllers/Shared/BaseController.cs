@@ -63,9 +63,13 @@ namespace Webvantage.Angular.Controllers.Shared
             bool IncludeOriginator, 
             bool IsNew, 
             int DocumentID,
-            bool SendEmail)
+            bool SendEmail,
+            bool IsMarkupComment,
+            bool OnlyAtMentions,
+            string[] MentionEmployeeCodes,
+            string ProofingMarkupCommenterEmployeeCode
+            )
         {
-
             // objects
             List<string> EmployeeCodes = null;
             List<AdvantageFramework.Core.Database.Classes.AlertRecipient> AlertRecipients = null;
@@ -76,6 +80,7 @@ namespace Webvantage.Angular.Controllers.Shared
             string ClientPortalURL = null;
             string ProofingURL = null;
             string err = "";
+            bool HasAtMentions = false;
             var SubjectList = new List<string>();
             bool ResetAssignedToEmployeeCodeReadFlag = true;
             bool Notified = true;
@@ -97,6 +102,12 @@ namespace Webvantage.Angular.Controllers.Shared
                 }
 
                 EmployeeCodes = new List<string>();
+
+                if (IsMarkupComment == true && HasAtMentions == true)
+                {
+                    SendEmail = true;
+
+                }
                 AlertRecipients = (from Entity in _controller.LoadAlertRecipients(queryString, Alert.AlertId)
                                    where Entity.IsCurrentRecipient != false
                                    select Entity).ToList();
@@ -107,7 +118,14 @@ namespace Webvantage.Angular.Controllers.Shared
 
                 ResetAssignedToEmployeeCodeReadFlag = true;
 
-                if (SendEmail == true)
+                if (MentionEmployeeCodes != null && MentionEmployeeCodes.Length > 0)
+                {
+                    HasAtMentions = true;
+                    //always send when there is an at mention? if yes, need to clean up OR in the below if statement
+                    ////SendEmail = true; 
+                }
+
+                if (SendEmail == true || (IsMarkupComment == true && HasAtMentions == true))
                 {
                     EmailSessionObject = new AppCode.EmailSessionObject(queryString, null, WebvantageURL, ClientPortalURL, ProofingURL);
                     if (IsNew)
@@ -129,12 +147,29 @@ namespace Webvantage.Angular.Controllers.Shared
                     Subject = "[" + string.Join(" ", SubjectList) + "]";
                     if (EmployeeCodes is null)
                         EmployeeCodes = new List<string>();
+
+                    if (HasAtMentions == true)
+                    {
+                        for (int i = 0; i < MentionEmployeeCodes.Length; i++)
+                        {
+                            EmployeeCodes.Add(MentionEmployeeCodes[i]);
+                        }
+                    }
+
                     EmailSessionObject.AlertId = Alert.AlertId;
                     EmailSessionObject.Subject = Subject;
                     EmailSessionObject.EmployeeCodesToSendEmailTo = string.Join(", ", EmployeeCodes);
                     EmailSessionObject.ClientPortalEmailAddressessToSendTo = "";
                     EmailSessionObject.IsClientPortal = false;
                     EmailSessionObject.IncludeOriginator = true;
+                    EmailSessionObject.IsProofingMarkupComment = IsMarkupComment;
+                    EmailSessionObject.OnlyAtMentions = OnlyAtMentions;
+                    EmailSessionObject.DocumentID = DocumentID;
+
+                    if (IsMarkupComment == true)
+                    {
+                        EmailSessionObject.ProofingMarkupCommenterEmployeeCode = ProofingMarkupCommenterEmployeeCode;
+                    }
                     //EmailSessionObject.SessionID = HttpContext.Session.SessionID.ToString();
                     //EmailSessionObject.PhysicalApplicationPath = HttpContext.Request.PhysicalApplicationPath;
                     EmailSessionObject.ResetAssignedToEmployeeCodeReadFlag = ResetAssignedToEmployeeCodeReadFlag;
@@ -162,7 +197,11 @@ namespace Webvantage.Angular.Controllers.Shared
             int? SprintID, 
             bool OnlyCommentAdded, 
             int DocumentID,
-            bool SendEmail)
+            bool SendEmail,
+            bool IsMarkupComment,
+            bool OnlyAtMentions,
+            string[] Mentions,
+            string ProofingMarkupCommenterEmployeeCode)
         {
             bool NotifyAlertRecipientsRet = default;
 
@@ -176,7 +215,8 @@ namespace Webvantage.Angular.Controllers.Shared
                 {
                     if (Notify == true)
                     {
-                        Sent = NotifyAlertRecipients(queryString, DbContext, Alert, IncludeOriginator, IsNew, DocumentID, SendEmail);
+                        Sent = NotifyAlertRecipients(queryString, DbContext, Alert, IncludeOriginator, 
+                            IsNew, DocumentID, SendEmail, IsMarkupComment, OnlyAtMentions, Mentions, ProofingMarkupCommenterEmployeeCode);
                     }
                     if (OnlyCommentAdded == false)
                     {

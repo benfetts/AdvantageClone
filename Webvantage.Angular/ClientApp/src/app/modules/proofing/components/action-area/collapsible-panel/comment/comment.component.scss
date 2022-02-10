@@ -1,3 +1,6 @@
+@import '../../../../theme/colors';
+@import '../../../../theme/mixins/font';
+
 #mentionItem.k-header {
   background-color: white !important;
   visibility: hidden;
@@ -9,18 +12,27 @@
 }
 
 markup-comment > div > div > div > div > table > tbody > tr > td.k-editable-area,
-markup-comment-reply > div > div > div > div > table > tbody > tr > td.k-editable-area {
-  height: 30px !important;
+markup-comment > div > div > div > div > div > table > tbody > tr > td.k-editable-area,
+markup-comment-reply > div > div > div > div > table > tbody > tr > td.k-editable-area,
+markup-comment-reply > div > div > div > div > div > div > table > tbody > tr > td.k-editable-area,
+markup-comment-reply > div > div > div > table > tbody > tr > td.k-editable-area {
+  height: 50px !important;
 }
 
 markup-comment > div > div > div > div > table.k-editor,
-markup-comment-reply > div > div > div > div > table.k-editor {
+markup-comment > div > div > div > div > div > table.k-editor,
+markup-comment-reply > div > div > div > div > table.k-editor,
+markup-comment-reply > div > div > div > div > div > div > table.k-editor,
+markup-comment-reply > div > div > div > table.k-editor {
   border: 1px solid #767676 !important;
   border-radius: 4px;
 }
 
 markup-comment > div > div > div > div#editorDiv,
-markup-comment-reply > div > div > div > div#editorDiv {
+markup-comment > div > div > div > div > div#editorDiv,
+markup-comment-reply > div > div > div > div#editorDiv,
+markup-comment-reply > div > div > div > div > div > div#editorDiv,
+markup-comment-reply > div > div > div#editorDiv {
   margin-bottom: 5px;
   width: 87% !important;
 }
@@ -58,5 +70,59 @@ k-placeholder ::before {
 
 .active {
   border: 1px solid #808080;
+}
+
+.k-textbox::selection {
+  background-color: $blue-dark;
+}
+
+.k-button.k-primary:focus {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 30%);
+}
+
+.k-window-titlebar {
+  display: inherit;
+  background-color: $blue-dark;
+  color: white;
+}
+
+.proof-editor-dialog {
+  .k-button {
+    &.k-state-selected, &.k-primary {
+      background-color: $blue;
+      border-color: #555;
+      color: white;
+    }
+    &.k-primary:hover {
+      background-color: darken($color: $blue, $amount: 30%);
+    }
+    &.k-primary:focus, &.k-state-focused.k-primary {
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 30%);
+    }
+  }
+  .buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0 0 ;
+    .k-button {
+      width: 65px;
+    }
+    .k-button {
+      &.k-state-selected, &.k-primary {
+        background-color: $blue-dark;
+        border-color: $blue-dark;
+      }
+      &.k-primary:hover {
+        background-color: darken($color: $blue-dark, $amount: 3%);
+        border-color: $blue-dark;
+      }
+    }
+  }
+
+  kendo-editor {
+    height: 500px;
+    width: 100%;
+  }
 }
 

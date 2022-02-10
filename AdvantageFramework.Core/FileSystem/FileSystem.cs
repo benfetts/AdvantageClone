@@ -813,6 +813,32 @@ namespace AdvantageFramework.Core.FileSystem
 
             return Downloaded;
         }
+        public static bool DownloadFromExternalLink(AdvantageFramework.Core.Database.Entities.Agency Agency, AdvantageFramework.Core.Database.Entities.Document Document, ref byte[] ByteFile, ref bool FileExists)
+        {
+            byte[] _ByteFile = null;
+            bool Downloaded = false;
+            bool _FileExists = false;
+
+            if (Agency != null && Document != null)
+            {
+                AdvantageFramework.Core.Security.Impersonate.RunImpersonated(Agency.DocRepositoryUserName, Agency.DocRepositoryUserDomain,
+                    AdvantageFramework.Core.Security.Encryption.Decrypt(Agency.DocRepositoryUserPassword), () =>
+                    {
+                        using (System.IO.FileStream fs = new System.IO.FileStream(Document.RepositoryFilename, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                        {
+                            _ByteFile = new byte[fs.Length];
+                            fs.Read(_ByteFile, 0, (int)fs.Length);
+                            Downloaded = true;
+                            _FileExists = true;
+                        }
+                    });
+
+                FileExists = _FileExists;
+                ByteFile = _ByteFile;
+            }
+
+            return Downloaded;
+        }
         public static bool Download(AdvantageFramework.Core.Database.Entities.Agency Agency, AdvantageFramework.Core.Database.Entities.Document Document, string SaveLocation, ref string NewFileName, ref bool FileExists)
         {
 

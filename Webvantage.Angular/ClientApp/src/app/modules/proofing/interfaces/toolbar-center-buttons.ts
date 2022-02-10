@@ -32,6 +32,7 @@ export interface IToolbarCenterButtons {
   rotateLeft: IButtonsCenterProperties;
   textArea: IButtonsCenterProperties;
   compare: IButtonsCenterProperties;
+  compare_horizontal: IButtonsCenterProperties;
   markerTool: IButtonsCenterProperties;
   overlay: IButtonsCenterProperties;
   arrow: IButtonsCenterProperties;

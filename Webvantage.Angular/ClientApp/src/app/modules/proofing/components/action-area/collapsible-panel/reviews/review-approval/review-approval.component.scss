@@ -97,7 +97,7 @@
     }
 
     &:active,
-    &.k-state-active {
+    &.k-selected {
       border: 1px solid $border-color;
       box-shadow: none;
       background-color: $very-light-grey;
@@ -195,15 +195,12 @@
   order: -1;
 }
 
-.k-dialog-titlebar {
-    border-color: inherit;
-    color: #ffffff;
-    background-color: #ff6358;
+.approval-container {
+  .k-dialog-titlebar {
+    display: none;
+  }
 }
 
-.k-dialog-titlebar {
-  display: none;
-}
 
 .k-overlay {
   opacity: 0.8;
@@ -225,7 +222,7 @@
       background: $very-light-grey;
     }
 
-    &.k-state-active {
+    &.k-selected {
       border: 1px solid $border-color;
       box-shadow: none;
       background-color: $pressed-button;

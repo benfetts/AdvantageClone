@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FILE_NAME_TYPES } from '../../constants/types/file-name-types';
 
-import { IToolbarBottomButtons } from '../../interfaces/toolbar-bottom-buttons';
 import { IToolbarCenterButtons } from '../../interfaces/toolbar-center-buttons';
 import { BottomPanelButtonsService } from '../../services/bottom-panel-buttons.service';
 import { CenterPanelButtonsService } from '../../services/center-panel-buttons.service';
+import { ComparisonService } from '../../services/comparison.service';
 import { VersionsAssetFileService } from '../../services/versions-asset-file.service';
 
 @Component({
@@ -20,11 +20,11 @@ export class BottomContainerComponent implements OnInit {
   constructor(private bottomPanelButtonsService: BottomPanelButtonsService,
     private centerPanelButtonsService : CenterPanelButtonsService,
     private versionsAssetFileService: VersionsAssetFileService,
+    private comparisonService: ComparisonService,
     private ref: ChangeDetectorRef) {
   }
 
   public ngOnInit(): void {
-    //this.showExplorer = this.bottomPanelButtonsService.getBottomPanelButtons();
     this.showExplorer = this.centerPanelButtonsService.getCentralPanelButtons();
 
     this.versionsAssetFileService.getAssetVersion().subscribe((version) => {

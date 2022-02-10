@@ -1,5 +1,4 @@
 <proof-asset-explorer-toolbar style="display:none"></proof-asset-explorer-toolbar>
 <ng-container *ngIf="(showExplorer | async).bottomNavigation.selected">
-  <div *ngIf="(showExplorer | async).version.selected; else elseBlock"><proof-asset-explorer-item></proof-asset-explorer-item></div>
-  <ng-template #elseBlock><proof-alert-documents></proof-alert-documents></ng-template>
+  <proof-asset-explorer-item></proof-asset-explorer-item>
 <ng-container>

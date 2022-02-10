@@ -1,14 +1,15 @@
 @import '../../theme/mixins/breakpoints';
 @import '../../theme/colors';
 
-$actionAreaOpenedWidth: 405px;
+$actionAreaOpenedWidth: 475px;
 $actionAreaClosedWidth: 50px;
+$actionAreaOffsetWidth: 9px;
 
 .action-area {
   display: flex;
 
   &-open {
-    width: 356px;
+    width: $actionAreaOpenedWidth - $actionAreaOffsetWidth; // 356px;
     background-color: $white;
     border: 1px solid $border-color;
     border-radius: 3px;
@@ -58,7 +59,6 @@ $actionAreaClosedWidth: 50px;
       &:focus {
         background: $white;
         border: 1px solid $border-color;
-        box-shadow: none;
       }
 
       &:hover {
@@ -66,24 +66,30 @@ $actionAreaClosedWidth: 50px;
       }
 
       &:active,
-      &.k-state-active {
+      &.k-selected {
         border: 1px solid $border-color;
         box-shadow: none;
         background-color: $very-light-grey;
       }
 
-      &.k-state-active {
+      &.k-selected {
         img {
           opacity: 0.5;
         }
       }
     }
   }
+
+  proof-collapsible-panel {
+    display: flex;
+    width: 100%;
+  }
 }
 
 .panelbar-wrapper {
   height: 100%;
   width: $actionAreaOpenedWidth - $actionAreaClosedWidth;
+  display: flex;
 }
 
 .k-panelbar {
@@ -93,22 +99,7 @@ $actionAreaClosedWidth: 50px;
 
 .blue {
   .k-button {
-
-    &:hover,
-    &:active,
-    &:focus {
-      background: $white;
-      border: 1px solid $border-color;
-      box-shadow: none;
-    }
-
-    &:hover {
-      background: $very-light-grey;
-    }
-
-    &.k-state-active {
-      border: 1px solid $border-color;
-      box-shadow: none;
+    &.k-selected {
       background-color: $pressed-button;
 
       img {

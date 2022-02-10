@@ -5,4 +5,5 @@ export interface ISearchResults {
   resultStrEnd: number;
   resultStrStart: number;
   active: boolean;
+  searchResult: any;
 }

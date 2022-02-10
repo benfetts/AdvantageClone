@@ -5,13 +5,11 @@ import { ToolBarModule } from '@progress/kendo-angular-toolbar';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-import { PagerModule } from '@progress/kendo-angular-pager';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { UploadsModule } from '@progress/kendo-angular-upload';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { TooltipModule } from '@progress/kendo-angular-tooltip';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from "@progress/kendo-angular-dialog";
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -66,11 +64,9 @@ import { VersionsGridComponent } from './components/action-area/collapsible-pane
 import { FolderCompareButtonsComponent } from './shared/components/folder-compare-buttons/folder-compare-buttons.component';
 import { AdditionalInfoComponent } from './components/action-area/collapsible-panel/asset-info/additional-info/additional-info.component';
 import { WebViewerComponent } from './webviewer/webviewer.component';
-import { EditFeedbackComponent } from './components/action-area/collapsible-panel/feedbacks/edit-feedback/edit-feedback.component';
 import { CommentComponent } from './components/action-area/collapsible-panel/comment/comment.component';
 import { CommentViewComponent } from './components/action-area/collapsible-panel/comment-view/comment-view.component';
 import { CommentReplyComponent } from './components/action-area/collapsible-panel/comment-reply/comment-reply.component';
-import { AlertDocumentsComponent } from './components/bottom-container/alert-documents/alert-documents.component';
 import { FileSizePipe } from './shared/Pipes/file-size';
 import { SearchComponent } from './components/action-area/collapsible-panel/search/search.component';
 import { SearchResultsComponent } from './components/action-area/collapsible-panel/search/search-results/search-results.component';
@@ -78,7 +74,7 @@ import { SearchInputComponent } from './components/action-area/collapsible-panel
 import { EditorModule } from '@progress/kendo-angular-editor';
 import { SearchResultComponent } from './components/action-area/collapsible-panel/search/search-result/search-result.component';
 import { MentionItemComponent } from './shared/components/mention-item/mention-item.component';
-import { OrderByPipe } from './shared/pipes/order-by';
+import { Safe } from './shared/pipes/safe-html';
 
 @NgModule({
   declarations: [
@@ -114,7 +110,6 @@ import { OrderByPipe } from './shared/pipes/order-by';
     LinkComponent,
     FeedbacksComponent,
     FeedbackComponent,
-    EditFeedbackComponent,
     DropDownFeedbackComponent,
     PastedImageComponent,
     TextareaComponent,
@@ -137,14 +132,13 @@ import { OrderByPipe } from './shared/pipes/order-by';
     CommentComponent,
     CommentViewComponent,
     CommentReplyComponent,
-    AlertDocumentsComponent,
     FileSizePipe,
     SearchComponent,
     SearchResultsComponent,
     SearchInputComponent,
     SearchResultComponent,
     MentionItemComponent,
-    OrderByPipe
+    Safe
   ],
   imports: [
     CommonModule,
@@ -154,9 +148,7 @@ import { OrderByPipe } from './shared/pipes/order-by';
     LayoutModule,
     ButtonsModule,
     InputsModule,
-    PagerModule,
     DropDownsModule,
-    BrowserAnimationsModule,
     DialogsModule,
     NgScrollbarModule,
     UploadsModule,
@@ -166,7 +158,7 @@ import { OrderByPipe } from './shared/pipes/order-by';
     DialogModule
   ],
   exports: [ProofingComponent, WorkspaceToolbarComponent],
-  providers: [OrderByPipe]
+  providers: [Safe],
 })
 export class ProofingModule {
 }

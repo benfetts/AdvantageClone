@@ -26,6 +26,11 @@ namespace Webvantage.Angular.Controllers
 
             AdvantageFramework.Core.BLogic.Proofing.Methods.GetDocument(qs, ref file, ref FileName, ref errorMessage);
 
+            if(errorMessage != "")
+            {
+                throw new InvalidOperationException(errorMessage);
+            }
+
             new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider().TryGetContentType(FileName, out contentType);
 
             if (file != null)

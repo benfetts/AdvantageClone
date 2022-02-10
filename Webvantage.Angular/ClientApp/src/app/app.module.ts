@@ -24,10 +24,10 @@ import { EditorModule } from '@progress/kendo-angular-editor';
     ProofingModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: ProofingComponent, pathMatch: 'full' },
-      { path: 'Proofing', component: ProofingComponent },
-      { path: 'proofing', component: ProofingComponent },
-    ]),
+    { path: '', component: ProofingComponent, pathMatch: 'full' },
+    { path: 'Proofing', component: ProofingComponent },
+    { path: 'proofing', component: ProofingComponent },
+], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     GridModule,
     EditorModule

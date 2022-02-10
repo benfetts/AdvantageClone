@@ -5,6 +5,7 @@ export interface ITooltip {
   reset: string;
   markers: string;
   compare: string;
+  compare_horizontal: string;
   showPixelsDifferences: string;
   lock: string;
   assetExplorer: string;
@@ -31,4 +32,5 @@ export interface ITooltip {
   version: string;
   inAlert: string;
   overlay: string;
+  note: string;
 }

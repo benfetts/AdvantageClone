@@ -37,8 +37,8 @@ $outer-padding: 2px;
      margin: 0;
     }
 
-    &-group .k-button.k-state-active,
-    &-group .k-button:active,{
+    &-group .k-button.k-selected,
+    &-group .k-button:active{
       border: none;
       box-shadow: none;
       background-image: none;

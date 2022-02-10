@@ -22,8 +22,8 @@
     <OptionCompare>Binary</OptionCompare>
     <OptionExplicit>On</OptionExplicit>
     <OptionStrict>Off</OptionStrict>
-    <RootNamespace>MobileConfigurator</RootNamespace>
-    <StartupObject>MobileConfigurator.frmWelcome</StartupObject>
+    <RootNamespace>ProofingConfigurator</RootNamespace>
+    <StartupObject>ProofingConfigurator.frmWelcome</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <MyType>WindowsFormsWithCustomSubMain</MyType>

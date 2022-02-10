@@ -16,42 +16,126 @@ export class MentionItemComponent implements OnInit {
   //  annotation - this is a mention for an annotation (standard comment)
   //  reply - this is a mention for a reply to a comment
   @Input() public commentType;
+  @Input() public baseElementId;
+  @Input() public textAreaId;
 
-  @ViewChild('myEditor', { static: true }) editor: ElementRef;
-  @ViewChild('myDropDown', { static: false }) mentionDropDown: ElementRef;
 
   public mentions: Array<string> = [];
   public mentionables: IEmployeeMention[];
   public mentionDeleteTemplate: string;
   public employees: Array<IEmployeeMention> = [];
+  public mentionDropDownId ='';
+  public mentionDropDownDivId = '';
 
   public listItems: Array<IEmployeeMention> = this.getEmployeesNew();
 
+  public get mentionDropDownIdSelector() {
+    return `#${ this.mentionDropDownId }`;
+  }
+
+  public get mentionDropDownDivIdSelector() {
+    return `#${ this.mentionDropDownDivId }`;
+  }
+
+  public get baseElementSelector() {
+    return `#${ this.baseElementId }`;
+  }
+
+  public get textAreaSelector() {
+    return `#${ this.textAreaId }`;
+  }
+
   commentKeyDown(e: KeyboardEvent) {
+    let allow = false;
+
     if (e.shiftKey && e.keyCode == 50) {
-      e.preventDefault();      
-      this.hideMentionDropDown(false);
-      console.log("out");
-      kendo.jQuery("span[aria-owns='mentionDropDown_listbox'].k-widget.k-dropdown > .k-dropdown-wrap").hide();
+      //only allow mentions if they follow a space
+      //this will allow users to type an email address (etc.) without the @mention popping up
+      allow = this.allowMention();
 
-      kendo.jQuery("#mentionDropDown-list").css("box-shadow", "none");
-      kendo.jQuery("#mentionDropDown-list").css("border-bottom", "1px solid #ccccc");
-      if (this.commentType == 'annotation') {
-        this.positionMentionDropDown();
-      } else {
-        this.positionMentionDropDown(e);
+      if (allow) {
+        e.preventDefault();
+        this.hideMentionDropDown(false);
+        kendo.jQuery("span[aria-owns='mentionDropDown_listbox'].k-widget.k-dropdown > .k-dropdown-wrap").hide();
+
+        kendo.jQuery("#mentionDropDown-list").css("box-shadow", "none");
+        kendo.jQuery("#mentionDropDown-list").css("border-bottom", "1px solid #ccccc");
+        if (this.commentType == 'annotation') {
+          this.positionMentionDropDown();
+        } else {
+          this.positionMentionDropDown(e);
+        }
+
+        let dropdown = kendo.jQuery(this.mentionDropDownIdSelector).data("kendoDropDownList");
+
+        //this is called to show the items in the drop-down.
+        //for some reason, the items in the datasource won't show without doing so, rendering an empty list.
+        dropdown.dataSource.filter("");
+        dropdown.list.width("auto");
+
+        dropdown.select(dropdown.dataSource._total);
+        dropdown.open();
       }
+    }
+  }
 
-      //console.log(kendo.jQuery("#mentionDropDown"));
-      let dropdown = kendo.jQuery("#mentionDropDown").data("kendoDropDownList");      
+  getPlainText(comment) {
+    let tempDiv = document.createElement("div");
+    tempDiv.innerHTML = comment;
+    return tempDiv.textContent || tempDiv.innerText || "";
+  }
 
-      //this is called to show the items in the drop-down.
-      //for some reason, the items in the datasource won't show without doing so, rendering an empty list.
-      dropdown.dataSource.filter("");
-      dropdown.list.width("auto");
+  allowMention() {
+    let allow = false;
+    let editor;
+    editor = kendo.jQuery(this.textAreaSelector).data("kendoEditor");
+    let commentText = editor.value();
 
-      dropdown.select(dropdown.dataSource._total);
-      dropdown.open();
+    let plainText = this.getPlainText(commentText);
+    let lastCharacter = plainText[plainText.length - 1];
+
+    if (!lastCharacter) {
+      //there was no previous character
+      allow = true;
+    } else {
+      //insure the previous character was a space/empty
+      if (lastCharacter.trim() !== "") {
+        allow = false;
+      } else {
+        allow = true;
+      }
+    }
+
+    return allow;
+  }
+
+  mentionAutoCompleteFiltering(e) {
+    let me = this;
+
+    setTimeout(function () {
+      me.checkFilteredListCount();
+    }, 0);
+  }
+
+  checkFilteredListCount() {
+    let dropdown = kendo.jQuery(this.mentionDropDownIdSelector).data("kendoDropDownList");
+    let editor = kendo.jQuery(this.textAreaSelector).data("kendoEditor");
+
+    let items: HTMLCollection = dropdown.items();
+
+    if (items.length == 0) {
+      dropdown.close();
+
+      let filterInput: any = dropdown.filterInput[0];
+      let editorText = editor.value();
+      editor.value(editorText + "@" + filterInput.value);
+
+      //re-focus and move cursor to end
+      editor.focus();
+      let range = editor.createRange();
+      range.selectNodeContents(editor.body);
+      range.collapse(false);
+      editor.selectRange(range);
     }
   }
 
@@ -73,17 +157,10 @@ export class MentionItemComponent implements OnInit {
       xOffset = 0;
       yOffset = 3;
       commentId = kendo.jQuery(eventSender.sender.element[0]).attr("editor-data");
-
-      //let editorElement = kendo.jQuery("textarea[editor-data='" + commentId + "']");      
-      
-      //baseElement = editorElement.get(0);
-      baseElement = document.getElementById("editorDiv");
+      baseElement = document.getElementById(this.baseElementId);
     }
 
-    console.log(baseElement);
-    let loc = baseElement.getBoundingClientRect()
-    console.log(loc);
-
+    let loc = baseElement.getBoundingClientRect();
     yOffset += loc.top;
     xOffset += loc.left;
 
@@ -92,17 +169,16 @@ export class MentionItemComponent implements OnInit {
       yOffset += rect.top;
     }
 
-    let el = document.getElementById("mentionDropDownDiv");
+    let el = document.getElementById(this.mentionDropDownDivId);
     el.style.position = "absolute";
     el.style.left = xOffset + "px";
     el.style.top = yOffset + "px";
   }
 
   GetXY() {
-    let selector = "#editorDiv";
     let selection, range, rect;
 
-    let iframe: any = kendo.jQuery(selector).find("iframe").get(0);
+    let iframe: any = kendo.jQuery(this.baseElementSelector).find("iframe").get(0);
     var idoc = iframe.contentDocument || iframe.contentWindow.document;
     selection = idoc.getSelection();
 
@@ -113,7 +189,7 @@ export class MentionItemComponent implements OnInit {
   }
 
   hideMentionDropDown(hide: boolean) {
-    let dropdown = kendo.jQuery("#mentionDropDownDiv");    
+    let dropdown = kendo.jQuery(this.mentionDropDownDivIdSelector);
 
     if (hide) {
       dropdown.addClass("mention-dropdown-hide");
@@ -139,7 +215,7 @@ export class MentionItemComponent implements OnInit {
   }
 
   mentionAutoCompleteChange(e) {
-    let dropdown = kendo.jQuery("#mentionDropDown").data("kendoDropDownList");
+    let dropdown = kendo.jQuery(this.mentionDropDownIdSelector).data("kendoDropDownList");
     let empCode = dropdown.value();
     let empName = dropdown.text();
 
@@ -148,22 +224,9 @@ export class MentionItemComponent implements OnInit {
     }
 
     let styleText = "background-color:#E8F5FA;border-radius:3px;padding:2px;";
-    let editor, commentDiv;
-    let commentId;
+    let editor = kendo.jQuery(this.textAreaSelector).data("kendoEditor");
 
-    if (this.commentType == 'reply') {
-      commentId = kendo.jQuery("mention-item").attr("mention-data");
-      console.log(commentId);
-
-      editor = kendo.jQuery("textarea[editor-data='" + commentId + "']").data("kendoEditor");
-
-    } else {
-      editor = kendo.jQuery("#editor").data("kendoEditor");
-    }
-        
-    commentDiv = "editorDiv";
     editor.exec("inserthtml", { value: `<span id='${empCode}' contenteditable='false' class='mention-name' data-code='${empCode}' style='${styleText}'>@${empName}${this.mentionDeleteTemplate}</span>&nbsp;` });
-
     this.hideMentionDropDown(true);
 
     var found = false;
@@ -178,16 +241,16 @@ export class MentionItemComponent implements OnInit {
       }
     } else {
       this.mentions.push(empCode);
-    }    
+    }
 
-    this.attachClickEventToMention("#editorDiv");
-    this.cleanupNewMention("#editorDiv");
+    this.attachClickEventToMention(this.baseElementSelector);
+    this.cleanupNewMention(this.baseElementSelector);
 
     this.mentionAutoCompleteClearFilter();
   }
 
   attachClickEventToMention(commentDiv) {
-    let editorIFrame: any = kendo.jQuery(commentDiv).find("iframe");
+    let editorIFrame: any = kendo.jQuery(this.baseElementId).find("iframe");
     let mention = editorIFrame.contents().find("span > span.delete-mention");
 
     mention.on("click", function (event) {
@@ -198,7 +261,7 @@ export class MentionItemComponent implements OnInit {
 
   cleanupNewMention(commentDiv) {
     //the kendo editor is dynamically adding </br class="k-br"> tags around the newly added mention
-    //remove them.         
+    //remove them.
     let editorIFrame = kendo.jQuery(commentDiv).find("iframe");
     let mention = editorIFrame.contents().find("span.mention-name");
 
@@ -221,7 +284,7 @@ export class MentionItemComponent implements OnInit {
   }
 
   mentionAutoCompleteClearFilter() {
-    kendo.jQuery("#mentionDropDown").data("kendoDropDownList").text("");
+    kendo.jQuery(this.mentionDropDownIdSelector).data("kendoDropDownList").text("");
   }
   getEmployeesNew() {
 
@@ -241,10 +304,10 @@ export class MentionItemComponent implements OnInit {
     this.mentionDeleteTemplate = "<span class='delete-mention' style='font-weight:bold;margin-left:7px;' title='remove this mention'>X</span>";
   }
 
-  ngAfterViewInit() {        
+  ngAfterViewInit() {
     this.employees = this.getEmployeesNew();
     let me = this;
-    kendo.jQuery(this.mentionDropDown.nativeElement).kendoDropDownList({
+    kendo.jQuery(this.mentionDropDownIdSelector).kendoDropDownList({
       dataSource: this.employees,
       dataTextField: "employeeName",
       dataValueField: "employeeCode",
@@ -253,6 +316,9 @@ export class MentionItemComponent implements OnInit {
       width: 200,
       change: (e) => {
         me.mentionAutoCompleteChange(e);
+      },
+      filtering: (e) => {
+        me.mentionAutoCompleteFiltering(e);
       }
     });
 
@@ -260,6 +326,8 @@ export class MentionItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mentionDropDownDivId = `mentionDiv-${this.baseElementId}`;
+    this.mentionDropDownId = `mention-${this.baseElementId}`;
   }
 
 }

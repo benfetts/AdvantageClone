@@ -44,5 +44,6 @@ namespace AdvantageFramework.Core.Database.Entities
 
         [Column("PROOFING_X_REVIEWER_ID")]
         public int? ProofingXReviwerId { get; set; }
+        public bool IsMyComment { get; internal set; }
     }
 }

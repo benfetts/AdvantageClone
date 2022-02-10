@@ -14,9 +14,7 @@ import { TextSelectService } from '../../../services/text-select.service';
 import { ITextSelect } from '../../../constants/types/quad-typets';
 import { IButtonsTextEditProperties } from '../../../interfaces/text-buttons';
 import { DescriptionComponent } from './components/description/description.component';
-import { IFeedback } from '../../../interfaces/feedback';
-import { FeedbackService } from '../../../services/feedback.service';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { RIGHT_PANEL_BUTTONS_TYPES } from '../../../constants/types/right-panel-buttons-types.constants';
 import { SearchService } from '../../../services/search.service';
 

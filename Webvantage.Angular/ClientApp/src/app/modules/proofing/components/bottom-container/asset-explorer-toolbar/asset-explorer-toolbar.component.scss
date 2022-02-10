@@ -67,7 +67,7 @@
       background: $very-light-grey;
     }
 
-    &.k-state-active {
+    &.k-selected {
       border: 1px solid $border-color;
       box-shadow: none;
       background-color: $pressed-button;
@@ -113,7 +113,7 @@
         box-shadow: none;
       }
 
-      &.k-state-active {
+      &.k-selected {
         border: 1px solid $border-color;
         box-shadow: none;
         background-color: $pressed-button;

@@ -1,7 +1,6 @@
 <ng-container *ngIf="buttons">
   <div #rightPanel class="action-area"
-       [ngClass]="isExpanded() ? 'action-area-open' : 'action-area-closed'"
-       [style.width.px]="isExpanded() ? openWidth : closeWidth">
+       [ngClass]="isExpanded() ? 'action-area-open' : 'action-area-closed'">
     <div *ngIf="isExpanded()" class="panelbar-wrapper">
       <proof-collapsible-panel></proof-collapsible-panel>
     </div>

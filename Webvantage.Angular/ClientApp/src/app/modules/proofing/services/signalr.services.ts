@@ -58,9 +58,11 @@ export class SignalrService extends BaseService {
       catchError(this.handleError)
     ).subscribe((results: string) => {
       console.log(results);
-      this.http.get(results).subscribe((newResults) => {
-        console.log(newResults);
-      });
+      if (results && results != '') {
+        this.http.get(results).subscribe((newResults) => {
+          console.log(newResults);
+        });
+      }
     });
   }
 }

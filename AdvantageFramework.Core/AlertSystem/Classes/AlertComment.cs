@@ -147,6 +147,11 @@ namespace AdvantageFramework.Core.AlertSystem.Classes
         }
         public int? MarkupTypeID { get; set; }
         public byte[] MarkupThumbnail { get; set; }
+        public bool? IsMyComment { get; set; }
+        public int? DocumentID { get; set; }
+        public string Initials { get; set; }
+        public bool? HasImage { get; set; }
+        public int? ProofingExternalReviewerID { get; set; }
 
         #endregion
 

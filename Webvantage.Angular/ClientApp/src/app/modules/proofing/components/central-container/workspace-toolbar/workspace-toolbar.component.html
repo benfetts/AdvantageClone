@@ -30,6 +30,13 @@
                         (click)="setSelectedButton(buttons.arrow.name, markerToolButton.selected)"
                         class="rotate90"></button>
               </div>
+              <!--<div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.callOut"
+                        [selected]="buttons.arrowFrom.selected"
+                        [imageUrl]="buttons.arrowFrom.imageUrl"
+                        (click)="setSelectedButton(buttons.arrowFrom.name, markerToolButton.selected)"></button>
+              </div>-->
               <div kendoTooltip>
                 <proof-drop-down class="drop-down"
                                  [title]="tooltips.shape"
@@ -69,14 +76,6 @@
                         [disabled]="disableEdits || compare"
                         (click)="setSelectedButton(buttons.link.name, markerToolButton.selected)"></button>
               </div>
-              <div kendoTooltip>
-                <button kendoButton
-                        [title]="tooltips.search"
-                        [selected]="buttons.magnifyingGlass.selected"
-                        [imageUrl]="buttons.magnifyingGlass.imageUrl"
-                        [disabled]="!canSearchText()"
-                        (click)="setSelectedButton(buttons.magnifyingGlass.name, markerToolButton.selected)"></button>
-              </div>
               <!--<div kendoTooltip>
     <button kendoButton
             [title]="tooltips.delete"
@@ -87,6 +86,14 @@
   </div>-->
             </div>
             <div class="workspace-toolbar-tools-right-side blue">
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.search"
+                        [selected]="buttons.magnifyingGlass.selected"
+                        [imageUrl]="buttons.magnifyingGlass.imageUrl"
+                        [disabled]="!canSearchText()"
+                        (click)="setSelectedButton(buttons.magnifyingGlass.name, markerToolButton.selected)"></button>
+              </div>
               <div kendoTooltip>
                 <button kendoButton
                         [title]="tooltips.markers"
@@ -107,6 +114,14 @@
                         [selected]="buttons.compare.selected"
                         [imageUrl]="buttons.compare.imageUrl"
                         (click)="setSelectedButton(buttons.compare.name, markerToolButton.selected)"></button>
+              </div>
+              <div kendoTooltip>
+                <button kendoButton
+                        [title]="tooltips.compare_horizontal"
+                        [selected]="buttons.compare_horizontal.selected"
+                        [imageUrl]="buttons.compare_horizontal.imageUrl"
+                        (click)="setSelectedButton(buttons.compare_horizontal.name, markerToolButton.selected)"
+                        style="transform: rotate(90deg);"></button>
               </div>
               <div kendoTooltip>
                 <button kendoButton

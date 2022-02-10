@@ -7,5 +7,6 @@ export const enum TOOL_TYPE {
   CLOUD = 6,
   TEXT = 7,
   STAMP = 8,
-  LINK = 9
+  LINK = 9,
+  NOTE = 10,
 }

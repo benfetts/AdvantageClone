@@ -14,10 +14,10 @@ export class ComparisonService {
   public setComparisonFilesAmount(): void {
     console.log('setComparisonFilesAmount', this.comparison.value);
 
-    if (this.comparison.value + ONE > TWO) {
-      this.comparison.next(ZERO);
-    }
-    this.comparison.next(this.comparison.value + ONE);
+    //if (this.comparison.value + ONE > TWO) {
+    //  this.comparison.next(ZERO);
+    //}
+    this.comparison.next(TWO /*this.comparison.value + ONE*/);
   }
 
   public resetComparisonFilesAmount(): void {

@@ -31,7 +31,7 @@ export class ReviewApprovalComponent implements OnInit, OnDestroy, AfterViewInit
   public approvalTableHeader: string[] = APPROVAL_TABLE_HEADER;
   public reviewers: IReviewerGroup[];
   public heightScroll: string;
-  public contentMoreThanHeight: boolean;
+  public contentMoreThanHeight: boolean = true;
   public canUpdate: boolean = false;
   public disabled: boolean = true;
   public currentVersion: boolean = false;

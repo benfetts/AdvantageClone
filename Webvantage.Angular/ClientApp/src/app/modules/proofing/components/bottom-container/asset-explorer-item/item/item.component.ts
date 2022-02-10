@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { DocumentVersionService } from '../../../../services/document-version.service';
 
 @Component({
@@ -18,11 +16,11 @@ export class ItemComponent implements OnInit{
   @Input() public extension: string;
   @Input() public mimeType: string;
   @Input() public documentId: number;
+  @Input() public commentsDisplayed: boolean = false;
 
   version: string = 'Version';
 
-  constructor(private sanitizer: DomSanitizer,
-    private documentVersionService: DocumentVersionService,
+  constructor(private documentVersionService: DocumentVersionService,
     private ref: ChangeDetectorRef) {
   }
 

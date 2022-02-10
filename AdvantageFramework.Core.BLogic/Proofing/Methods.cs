@@ -1,4 +1,5 @@
-﻿using AdvantageFramework.Core.Database.Entities;
+﻿using AdvantageFramework.Core.Database.Classes;
+using AdvantageFramework.Core.Database.Entities;
 using AdvantageFramework.Core.Web;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -101,13 +102,13 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
             return URL;
         }
-        static public List<Approval> GetApprovalsList(string ConnectionString, int AlertId,int? DocumentId )
+        static public List<Approval> GetApprovalsList(string ConnectionString, int AlertId, int? DocumentId)
         {
             if (string.IsNullOrWhiteSpace(ConnectionString) == false)
             {
                 using (var DbContext = new AdvantageFramework.Core.Database.DbContext(ConnectionString))
                 {
-                    return GetApprovalsListAsync(DbContext,AlertId, DocumentId).Result.ToList();
+                    return GetApprovalsListAsync(DbContext, AlertId, DocumentId).Result.ToList();
                 }
             }
 
@@ -128,7 +129,8 @@ namespace AdvantageFramework.Core.BLogic.Proofing
                     "EXEC [dbo].[advsp_proofing_get_approvals_list] @ALERT_ID, @DOCUMENT_ID;",
                     parameters).AsAsyncEnumerable().ToListAsync();
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 return null;
@@ -137,7 +139,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
         }
         static public async System.Threading.Tasks.Task<Database.Entities.CompleteAssignmentResult> CompleteAssignment(
-            string ConnectionString, int AlertId, string EmployeeCode, string UserCode, int DocumentID,ProofingStatusID? ProofingStatusID)
+            string ConnectionString, int AlertId, string EmployeeCode, string UserCode, int DocumentID, ProofingStatusID? ProofingStatusID)
         {
             if (string.IsNullOrWhiteSpace(ConnectionString) == false)
             {
@@ -151,7 +153,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
         }
         static public async System.Threading.Tasks.Task<Database.Entities.CompleteAssignmentResult> CompleteAssignment(
             AdvantageFramework.Core.Database.DbContext DbContext, int AlertId,
-            string EmployeeCode, string UserCode,int DocumentID, ProofingStatusID? ProofingStatusID)
+            string EmployeeCode, string UserCode, int DocumentID, ProofingStatusID? ProofingStatusID)
         {
             AdvantageFramework.Core.Database.Entities.CompleteAssignmentResult Result = default;
             bool Completed = false;
@@ -206,7 +208,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             bool Completed = false;
             try
             {
-                DbContext.ExecuteNonQuery( string.Format("EXEC [dbo].[advsp_proofing_external_reviewer_set_status] {0}, {1}, {2}, {3};",
+                DbContext.ExecuteNonQuery(string.Format("EXEC [dbo].[advsp_proofing_external_reviewer_set_status] {0}, {1}, {2}, {3};",
                     AlertId, ProofingStatusExternalReviewerID, (int)ProofingStatusID, DocumentID));
 
                 Completed = true;
@@ -219,19 +221,20 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
             return Completed;
         }
-        static public bool GetDocument(AdvantageFramework.Core.Web.QueryString QueryString, ref byte[] ByteFile,ref string FileName ,ref string ErrorMessage)
+        static public bool GetDocument(AdvantageFramework.Core.Web.QueryString QueryString, ref byte[] ByteFile, ref string FileName, ref string ErrorMessage)
         {
             int DocumentID = QueryString.DocumentID;
 
             return GetDocument(QueryString, DocumentID, ref ByteFile, ref FileName, ref ErrorMessage);
         }
-        static public bool GetDocument(AdvantageFramework.Core.Web.QueryString queryString,int DocumentID, ref byte[] ByteFile, ref string FileName, ref string ErrorMessage)
+        static public bool GetDocument(AdvantageFramework.Core.Web.QueryString queryString, int DocumentID, ref byte[] ByteFile, ref string FileName, ref string ErrorMessage)
         {
             bool Success = false;
             string ConnectionString = queryString.ConnectionString;
             AdvantageFramework.Core.Database.Entities.Document Document = null;
             AdvantageFramework.Core.Database.Entities.Agency Agency = null;
             bool FileExists = false;
+            byte[] file = null;
 
             ByteFile = null;
 
@@ -239,22 +242,39 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             {
                 using (var DbContext = new AdvantageFramework.Core.Database.DbContext(queryString.ConnectionString))
                 {
-                    
+
                     Agency = AdvantageFramework.Core.Database.Procedures.Agency.Load(DbContext);
                     Document = AdvantageFramework.Core.Database.Procedures.Documents.LoadByDocumentID(DbContext, DocumentID);
 
                     if (Agency != null && Document != null)
                     {
-                        FileName = Document.Filename;
-
-                        if (AdvantageFramework.Core.FileSystem.Methods.Download(Agency, Document, ref ByteFile, ref FileExists))
+                        if (Document.DocumentTypeId != 9)
                         {
-                            if (ByteFile != null)
-                                Success = true;
+                            FileName = Document.Filename;
+
+                            if (AdvantageFramework.Core.FileSystem.Methods.Download(Agency, Document, ref ByteFile, ref FileExists))
+                            {
+                                if (ByteFile != null)
+                                    Success = true;
+                            }
+                            else
+                            {
+                                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("Docunment download failed.", System.Diagnostics.EventLogEntryType.Error);
+                            }
                         }
                         else
                         {
-                            AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("Docunment download failed.", System.Diagnostics.EventLogEntryType.Error);
+                            FileName = System.IO.Path.GetFileName(Document.RepositoryFilename);
+
+                            if (AdvantageFramework.Core.FileSystem.Methods.DownloadFromExternalLink(Agency, Document, ref ByteFile, ref FileExists))
+                            {
+                                if (ByteFile != null)
+                                    Success = true;
+                            }
+                            else
+                            {
+                                AdvantageFramework.Core.Security.Methods.AddToProofingEventLog("Docunment download failed.", System.Diagnostics.EventLogEntryType.Error);
+                            }
                         }
                     }
                     else
@@ -270,7 +290,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
             return Success;
         }
-        public static AlertComment CreateComment(QueryString qs, AlertComment alertComment)
+        public static Database.Entities.AlertComment CreateComment(QueryString qs, Database.Entities.AlertComment alertComment)
         {
             int DocumentID = qs.DocumentID;
             int AlertID = qs.AlertID;
@@ -299,7 +319,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
             return rv;
         }
-        public static AlertComment UpdateComment(QueryString qs, AlertComment alertComment)
+        public static Database.Entities.AlertComment UpdateComment(QueryString qs, Database.Entities.AlertComment alertComment)
         {
             int DocumentID = qs.DocumentID;
             int AlertID = qs.AlertID;
@@ -341,7 +361,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             return version;
 
         }
-        static public bool GetDocumentName(AdvantageFramework.Core.Web.QueryString QueryString,int DocumentID, ref string FileName, ref string ErrorMessage)
+        static public bool GetDocumentName(AdvantageFramework.Core.Web.QueryString QueryString, int DocumentID, ref string FileName, ref string ErrorMessage)
         {
             bool Success = false;
             string ConnectionString = QueryString.ConnectionString;
@@ -355,17 +375,24 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
                     if (Document != null)
                     {
-                        Success = true;
-                        FileName = Document.Filename;
+                        if (Document.DocumentTypeId != 9)
+                        {
+                            Success = true;
+                            FileName = Document.Filename;
+                        }
+                        else
+                        {
+                            FileName = System.IO.Path.GetFileName(Document.RepositoryFilename);
+                        }
                     }
                 }
             }
 
             return Success;
         }
-        public static ProofingMarkup[] GetAnnotations(QueryString qs, int id)
+        public static ProofingMarkupDto[] GetAnnotations(QueryString qs, int id)
         {
-            Database.Entities.ProofingMarkup[] xfdfData = null;
+            ProofingMarkupDto[] xfdfData = null;
             int DocumentID = id;
             int AlertID = qs.AlertID;
             string ConnectionString = qs.ConnectionString;
@@ -374,7 +401,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             {
                 using (var DbContext = new AdvantageFramework.Core.Database.DbContext(qs.ConnectionString))
                 {
-                    IQueryable<Database.Entities.ProofingMarkup> pm = Database.Procedures.ProofingMarkup.LoadMarkup(DbContext, AlertID, DocumentID);
+                    IQueryable<ProofingMarkupDto> pm = Database.Procedures.ProofingMarkup.LoadMarkup(DbContext, AlertID, DocumentID);
 
                     xfdfData = pm.ToArray();
                 }
@@ -382,31 +409,22 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
             return xfdfData;
         }
-        static public Database.Entities.ProofingMarkup [] GetAnnotations(AdvantageFramework.Core.Web.QueryString QueryString)
+        static public ProofingMarkupDto[] GetAnnotations(AdvantageFramework.Core.Web.QueryString QueryString)
         {
             int DocumentID = QueryString.DocumentID;
 
             return GetAnnotations(QueryString, DocumentID);
         }
-        public static AdvantageFramework.Core.Database.Entities.ProofingMarkup[] CreateAnnotations(QueryString QueryString, AdvantageFramework.Core.Database.Entities.ProofingMarkup [] annotations)
+        public static AdvantageFramework.Core.Database.Entities.ProofingMarkup[] CreateAnnotations(QueryString QueryString, AdvantageFramework.Core.Database.Entities.ProofingMarkup[] annotations)
         {
-            List<AdvantageFramework.Core.Database.Entities.ProofingMarkup> newMarkups = new List<ProofingMarkup>();
+            List<AdvantageFramework.Core.Database.Entities.ProofingMarkup> newMarkups = new List<AdvantageFramework.Core.Database.Entities.ProofingMarkup>();
 
             if (string.IsNullOrWhiteSpace(QueryString.ConnectionString) == false)
             {
                 using (var DbContext = new AdvantageFramework.Core.Database.DbContext(QueryString.ConnectionString))
                 {
-                    //create the comment for all of the markups
-                    AdvantageFramework.Core.Database.Entities.AlertComment comment = DbContext.AlertComments.Add(
-                        new AdvantageFramework.Core.Database.Entities.AlertComment() {
-                            Comment = annotations[0].Markup,
-                            AlertId = QueryString.AlertID,
-                            UserCode = QueryString.ProofingStatusExternalReviewerID <= 0 ? QueryString.UserCode : null,
-                            GeneratedDate = annotations[0].Generated,
-                            DocumentId = annotations[0].DocumentId,
-                            ProofingXReviwerId = QueryString.ProofingStatusExternalReviewerID <= 0 ? (int?)null : QueryString.ProofingStatusExternalReviewerID
-                        }).Entity;
-                    DbContext.SaveChanges();
+                    AdvantageFramework.Core.Database.Entities.AlertComment comment = newAlertComment(DbContext, QueryString.AlertID, annotations[0].DocumentId, annotations[0].Markup,
+                        QueryString.ProofingStatusExternalReviewerID <= 0 ? QueryString.UserCode : null, QueryString.ProofingStatusExternalReviewerID);
 
                     //give all the markups the same seqnbr
                     short SeqNbr = DbContext.ProofingMarkups.AsQueryable().Where(m => m.DocumentId == annotations[0].DocumentId).Select(m => m.SeqNbr).Max() ?? 0;
@@ -427,23 +445,33 @@ namespace AdvantageFramework.Core.BLogic.Proofing
         {
             return CreateAlertComment(QueryString, comment, QueryString.DocumentID);
         }
-        public static AdvantageFramework.Core.Database.Entities.AlertComment CreateAlertComment(QueryString QueryString, string comment,int DocumentId)
+
+        private static AdvantageFramework.Core.Database.Entities.AlertComment newAlertComment(Database.DbContext DbContext, int AlertID, int DocumentId, string comment, string UserCode, int ExternalReviewerID)
+        {
+
+            AdvantageFramework.Core.Database.Entities.AlertComment _comment = DbContext.AlertComments.Add(
+                new AdvantageFramework.Core.Database.Entities.AlertComment()
+                {
+                    Comment = comment,
+                    AlertId = AlertID,
+                    UserCode = UserCode,
+                    GeneratedDate = DateTime.Now,
+                    DocumentId = DocumentId,
+                    ProofingXReviwerId = ExternalReviewerID <= 0 ? (int?)null : ExternalReviewerID
+                }).Entity;
+            DbContext.SaveChanges();
+
+            return _comment;
+        }
+
+        public static AdvantageFramework.Core.Database.Entities.AlertComment CreateAlertComment(QueryString QueryString, string comment, int DocumentId)
         {
             if (string.IsNullOrWhiteSpace(QueryString.ConnectionString) == false)
             {
                 using (var DbContext = new AdvantageFramework.Core.Database.DbContext(QueryString.ConnectionString))
                 {
-                    AdvantageFramework.Core.Database.Entities.AlertComment _comment = DbContext.AlertComments.Add(
-                        new AdvantageFramework.Core.Database.Entities.AlertComment()
-                        {
-                            Comment = comment,
-                            AlertId = QueryString.AlertID,
-                            UserCode = QueryString.ProofingStatusExternalReviewerID <= 0 ? QueryString.UserCode : null,
-                            GeneratedDate = DateTime.Now,
-                            DocumentId = DocumentId,
-                            ProofingXReviwerId = QueryString.ProofingStatusExternalReviewerID <= 0 ? (int?)null : QueryString.ProofingStatusExternalReviewerID
-                        }).Entity;
-                    DbContext.SaveChanges();
+                    AdvantageFramework.Core.Database.Entities.AlertComment _comment = newAlertComment(DbContext, QueryString.AlertID, DocumentId, comment,
+                        QueryString.ProofingStatusExternalReviewerID <= 0 ? QueryString.UserCode : null, QueryString.ProofingStatusExternalReviewerID);
 
                     return _comment;
 
@@ -470,7 +498,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
 
         //    return rv;
         //}
-        public static AdvantageFramework.Core.Database.Entities.ProofingMarkup UpdateAnnotation(QueryString QueryString,int id,AdvantageFramework.Core.Database.Entities.ProofingMarkup value)
+        public static AdvantageFramework.Core.Database.Entities.ProofingMarkup UpdateAnnotation(QueryString QueryString, int id, AdvantageFramework.Core.Database.Entities.ProofingMarkup value)
         {
             string ConnectionString = QueryString.ConnectionString;
             AdvantageFramework.Core.Database.Entities.ProofingMarkup rv = null;
@@ -560,7 +588,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             return getDocumentInfo(QueryString, QueryString.DocumentID);
         }
 
-        public static Document getDocumentInfo(QueryString QueryString,int DocumentID)
+        public static Document getDocumentInfo(QueryString QueryString, int DocumentID)
         {
             Document document = null;
 
@@ -602,7 +630,7 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             {
                 using (var DbContext = new AdvantageFramework.Core.Database.DbContext(ConnectionString))
                 {
-                    rv = AdvantageFramework.Core.Database.Procedures.AlertComments.GetAlertComments(DbContext, id, qs.AlertID,qs.EmployeeCode).ToArray();
+                    rv = AdvantageFramework.Core.Database.Procedures.AlertComments.GetAlertComments(DbContext, id, qs.AlertID, qs.EmployeeCode).ToArray();
                 }
             }
 
@@ -615,10 +643,10 @@ namespace AdvantageFramework.Core.BLogic.Proofing
         public static Database.Classes.AssetInfo GetAssetInfo(QueryString qs)
         {
             return GetAssetInfo(qs, qs.DocumentID);
-        }        
+        }
 
         //  GENERIC FUNCTION TEST...Don't do this.  Need to get the generic one working!!!
-        public static Database.Classes.AssetInfo GetAssetInfo(QueryString qs, int DocumentId)   
+        public static Database.Classes.AssetInfo GetAssetInfo(QueryString qs, int DocumentId)
         {
             Database.Classes.AssetInfo assetInfo = null;
             List<Database.Classes.AssetInfo> versions = new List<Database.Classes.AssetInfo>();
@@ -658,7 +686,8 @@ namespace AdvantageFramework.Core.BLogic.Proofing
                                         LatestMarkupFullName = sdr["LatestMarkupFullName"] != System.DBNull.Value ? sdr["LatestMarkupFullName"].ToString() : String.Empty,
                                         LatestMarkupDate = sdr["LatestMarkupDate"] != System.DBNull.Value ? Convert.ToDateTime(sdr["LatestMarkupDate"]) : null
                                     });
-                                } catch (Exception ex)
+                                }
+                                catch (Exception ex)
                                 {
                                     AdvantageFramework.Core.Security.Methods.AddToProofingEventLog(ex.Message.ToString(), System.Diagnostics.EventLogEntryType.Error);
                                 }
@@ -676,14 +705,14 @@ namespace AdvantageFramework.Core.BLogic.Proofing
             if (versions != null)
             {
                 assetInfo = (from Entity in versions
-                                where Entity.DocumentId == DocumentId
-                                select Entity).SingleOrDefault();
+                             where Entity.DocumentId == DocumentId
+                             select Entity).SingleOrDefault();
             }
             if (assetInfo != null)
             {
                 assetInfo.Versions = (from Entity in versions
-                                        where Entity.FileName == assetInfo.FileName
-                                        select Entity).AsEnumerable().ToList();
+                                      where Entity.FileName == assetInfo.FileName
+                                      select Entity).AsEnumerable().ToList();
             }
             return assetInfo;
         }
@@ -796,9 +825,9 @@ namespace AdvantageFramework.Core.BLogic.Proofing
                 return IsCurrentVersion(DbContext, qs.AlertID, DocumentId);
             }
         }
-        public static bool IsCurrentVersion(AdvantageFramework.Core.Database.DbContext DbContext,int AlertId, int DocumentId)
+        public static bool IsCurrentVersion(AdvantageFramework.Core.Database.DbContext DbContext, int AlertId, int DocumentId)
         {
-            IEnumerable<Document> versions = AdvantageFramework.Core.Database.Procedures.Documents.GetHistory(DbContext, DocumentId,AlertId);
+            IEnumerable<Document> versions = AdvantageFramework.Core.Database.Procedures.Documents.GetHistory(DbContext, DocumentId, AlertId);
 
             if (versions.Count() > 0)
             {

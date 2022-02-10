@@ -6,12 +6,6 @@ export const shapesTypes: IDropDown[] = [
     selected: false,
     imageUrl: 'assets/icons/shape-tools/shapes.svg'
   },
-  //{
-  //  text: ' ',
-  //  imageUrl: 'assets/icons/shape-tools/arrow.svg',
-  //  selected: false,
-  //  name: 'AnnotationCreateArrow'
-  //},
   {
     text: ' ',
     imageUrl: 'assets/icons/shape-tools/rectangle.svg',
@@ -35,6 +29,12 @@ export const shapesTypes: IDropDown[] = [
     imageUrl: 'assets/icons/shape-tools/Cloud.svg',
     selected: false,
     name: 'AnnotationCreatePolygonCloud'
+  },
+  {
+   text: ' ',
+   imageUrl: 'assets/icons/note.svg',
+   selected: false,
+   name: 'AnnotationCreateSticky'
   },
 ];
 
@@ -61,5 +61,11 @@ export const textTypes: IDropDown[] = [
     imageUrl: 'assets/icons/textarea/strikeout.svg',
     selected: false,
     name: 'AnnotationCreateTextStrikeout'
+  },
+  {
+    text: ' ',
+    imageUrl: 'assets/icons/textarea/squiggly.svg',
+    selected: false,
+    name: 'AnnotationCreateTextSquiggly'
   },
 ];

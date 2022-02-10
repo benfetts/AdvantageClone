@@ -115,27 +115,33 @@ namespace Webvantage.Angular.Controllers.Proofing
         [HttpPost]
         public async Task<ActionResult<Aprroval>> PostAsync([FromQuery] string dl, [FromBody] Aprroval value)
         {
+            bool sendEmail = true;
+            bool isProofingMarkupComment = false;
+            int documentID = 0;
+
             Aprroval rv = new Aprroval();
 
             AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
 
             rv.UserCode = qs.UserCode;
+            documentID = value.DocumentId == null ? qs.DocumentID : (int)value.DocumentId;
 
             if (qs.ProofingStatusExternalReviewerID <= 0) {
 
                 AdvantageFramework.Core.BLogic.Proofing.ProofingStatusID _value = (AdvantageFramework.Core.BLogic.Proofing.ProofingStatusID)value.ApprovalStatus;
 
                 AdvantageFramework.Core.Database.Entities.CompleteAssignmentResult _rv = await AdvantageFramework.Core.BLogic.Proofing.Methods.CompleteAssignment(
-                    qs.ConnectionString, qs.AlertID, qs.EmployeeCode, qs.UserCode, value.DocumentId == null ? qs.DocumentID : (int)value.DocumentId, _value);
+                    qs.ConnectionString, qs.AlertID, qs.EmployeeCode, qs.UserCode, documentID, _value);
             }
             else
             {
                 AdvantageFramework.Core.BLogic.Proofing.ProofingStatusID _value = (AdvantageFramework.Core.BLogic.Proofing.ProofingStatusID)value.ApprovalStatus;
                 AdvantageFramework.Core.BLogic.Proofing.Methods.ExternalUserCompleteAssignment(qs.ConnectionString, qs.AlertID,
-                    qs.ProofingStatusExternalReviewerID, value.DocumentId == null ? qs.DocumentID : (int)value.DocumentId, _value);
+                    qs.ProofingStatusExternalReviewerID, documentID, _value);
             }
 
-            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, false, qs.DocumentID, true);
+            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, false, documentID, 
+                sendEmail, isProofingMarkupComment, false, null, qs.EmployeeCode);
 
             return rv;
         }

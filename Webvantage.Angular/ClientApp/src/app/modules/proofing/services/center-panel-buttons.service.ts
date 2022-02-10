@@ -3,7 +3,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import { IToolbarCenterButtons } from '../interfaces/toolbar-center-buttons';
 import { BUTTON_CENTER_TYPES } from '../constants/toolbar-center-buttons.constants';
-import { BottomPanelButtonsService } from './bottom-panel-buttons.service';
 import { CENTRAL_BUTTONS_TYPES } from '../constants/types/central-buttons-types.constants';
 import { shapesTypes, textTypes } from '../components/central-container/workspace-toolbar/constants/shapes.constants';
 import { ComparisonService } from './comparison.service';
@@ -18,12 +17,11 @@ export class CenterPanelButtonsService {
   private shapes: typeof shapesTypes = JSON.parse(JSON.stringify(shapesTypes));
   private text: typeof textTypes = JSON.parse(JSON.stringify(textTypes));
   private shapeButton$: BehaviorSubject<typeof shapesTypes> = new BehaviorSubject<typeof shapesTypes>(this.shapes);
-  private textButton$: BehaviorSubject<typeof textTypes> = new BehaviorSubject<typeof textTypes>(this.text);
   private revision: BehaviorSubject<IDocument> = new BehaviorSubject<IDocument>(null);
   private lastTool = null;
+  private selectedView$: BehaviorSubject<string> = new BehaviorSubject<string>('one-asset');
 
-  constructor(private bottomPanelButtonsService: BottomPanelButtonsService,
-    private comparisonService: ComparisonService ) {
+  constructor(private comparisonService: ComparisonService ) {
     this.buttons = JSON.parse(JSON.stringify(BUTTON_CENTER_TYPES));
   }
 
@@ -35,12 +33,24 @@ export class CenterPanelButtonsService {
       && this.lastTool != CENTRAL_BUTTONS_TYPES.BOTTOM_NAVIGATION
       && this.lastTool != CENTRAL_BUTTONS_TYPES.PAGE_NAVIGATION
       && this.lastTool != CENTRAL_BUTTONS_TYPES.COMPARE
+      && this.lastTool != CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL
       && this.lastTool != CENTRAL_BUTTONS_TYPES.VERSION
-      && this.lastTool != CENTRAL_BUTTONS_TYPES.MARKER_TOOL) {
+      && this.lastTool != CENTRAL_BUTTONS_TYPES.MARKER_TOOL
+      && this.lastTool != CENTRAL_BUTTONS_TYPES.OVERLAY    ) {
       if (this.buttons[this.lastTool]) {
         this.buttons[this.lastTool].selected = false;
       }
     }
+
+    //if we are going v compare turn it off h compare
+    if (propertyName == CENTRAL_BUTTONS_TYPES.COMPARE) {
+      this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL].selected = false;
+    }
+    else if (propertyName == CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL) {
+      // if we are going to h compare turn of v compare
+      this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected = false;
+    }
+
     this.lastTool = propertyName;
 
     this.buttons = {
@@ -59,7 +69,10 @@ export class CenterPanelButtonsService {
         ...this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE],
       },
       [CENTRAL_BUTTONS_TYPES.VERSION]: {
-        ...this.buttons[CENTRAL_BUTTONS_TYPES.VERSION]
+        ...this.buttons[CENTRAL_BUTTONS_TYPES.VERSION],
+      },
+      [CENTRAL_BUTTONS_TYPES.OVERLAY]: {
+        ...this.buttons[CENTRAL_BUTTONS_TYPES.OVERLAY],
       },
       [propertyName]: {
         ...this.buttons[propertyName],
@@ -67,36 +80,63 @@ export class CenterPanelButtonsService {
       }
     };
 
-    if (propertyName == CENTRAL_BUTTONS_TYPES.OVERLAY && this.buttons[CENTRAL_BUTTONS_TYPES.OVERLAY].selected) {
-      this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected = true;
-      this.buttons[CENTRAL_BUTTONS_TYPES.VERSION].selected = true;
+    console.log(this.buttons[CENTRAL_BUTTONS_TYPES.OVERLAY]);
 
-      this.comparisonService.setComparisonFilesAmount();
-      this.bottomPanelButtonsService.setViewVersion('split-view');
+    if (propertyName == CENTRAL_BUTTONS_TYPES.OVERLAY && this.buttons[CENTRAL_BUTTONS_TYPES.OVERLAY].selected) {
+      if (this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected == false && this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL].selected == false) {
+        this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected = true;
+        this.comparisonService.setComparisonFilesAmount();
+        this.setView('split-view');
+      }
+      //this.buttons[CENTRAL_BUTTONS_TYPES.VERSION].selected = true;
     }
 
     if (propertyName == CENTRAL_BUTTONS_TYPES.COMPARE && this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected == true) {
-      this.buttons[CENTRAL_BUTTONS_TYPES.VERSION].selected = true;
+      //this.buttons[CENTRAL_BUTTONS_TYPES.VERSION].selected = true;
       this.comparisonService.setComparisonFilesAmount();
-      this.bottomPanelButtonsService.setViewVersion('split-view');
+      this.setView('split-view');
     }
     else if (propertyName == CENTRAL_BUTTONS_TYPES.COMPARE && this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected == false) {
       this.revision.next(null);
+      this.buttons[CENTRAL_BUTTONS_TYPES.OVERLAY].selected = false;
       this.comparisonService.resetComparisonFilesAmount();
-      this.bottomPanelButtonsService.setViewVersion('one-asset');
+      this.setView('one-asset');
+    }
+
+    if (propertyName == CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL && this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL].selected == true) {
+      //this.buttons[CENTRAL_BUTTONS_TYPES.VERSION].selected = true;
+      this.comparisonService.setComparisonFilesAmount();
+      this.setView('split-horizontal');
+    }
+    else if (propertyName == CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL && this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL].selected == false) {
+      this.revision.next(null);
+      this.buttons[CENTRAL_BUTTONS_TYPES.OVERLAY].selected = false;
+      this.comparisonService.resetComparisonFilesAmount();
+      this.setView('one-asset');
     }
 
     if (propertyName == CENTRAL_BUTTONS_TYPES.VERSION && this.buttons[CENTRAL_BUTTONS_TYPES.VERSION].selected == false) {
-      this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected = false;
-      this.comparisonService.resetComparisonFilesAmount();
-      this.bottomPanelButtonsService.setViewVersion('one-asset');
+      //this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE].selected = false;
+      //this.buttons[CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL].selected = false;
+      //this.buttons[CENTRAL_BUTTONS_TYPES.OVERLAY].selected = false;
+    //  this.comparisonService.resetComparisonFilesAmount();
+    //  this.setView('one-asset');
     }
+
 
     //if (markerToolSelected) {
     //  this.bottomPanelButtonsService.resetMarkerTool();
     //}
 
     this.buttons$.next(this.buttons);
+  }
+
+  public setView(viewString): void {
+    this.selectedView$.next(viewString);
+  }
+
+  public getView(): Observable<string> {
+    return this.selectedView$.pipe();
   }
 
   public setShapesButtons(buttomName: string): void {

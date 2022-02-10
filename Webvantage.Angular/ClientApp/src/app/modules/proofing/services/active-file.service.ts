@@ -22,11 +22,9 @@ export class ActiveFileService extends BaseService  {
     this.activatedRouter.queryParams.pipe(filter(e => {
       return e.dl;
     })).subscribe(e => {
-
       this.latestVersionService.getLatestVersion(e.dl).subscribe(documentId => {
         this.loadDocument(e.dl, documentId);
       });
-
     });
   }
 

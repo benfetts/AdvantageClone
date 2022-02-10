@@ -1,5 +1,5 @@
 <div [ngClass]="{'active': feedback.active === true}">
-  <div style="margin-top: 5px">
+  <div style="margin-top: 5px" id="comment{{feedback.commentId}}">
     <div class="small-employee" title="{{feedback.employeeFullName}}">
       <div *ngIf="isExternal(feedback); else notExternal">
         <span class="comment-image-text comment-image">{{getEmployeeInit(feedback)}}</span>
@@ -12,7 +12,15 @@
       <div class="comment-header">
         <small>
           {{feedback.employeeFullName}}&nbsp;&nbsp;&#8226;&nbsp;&nbsp;{{feedback.generatedDate | date:'short'}}
-          <div style="float:right">&nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="showHideReplyTextarea($event, feedback.commentId)" title="Reply to this comment"><span>Reply</span></a></div>
+          <div *ngIf="feedback.isMyComment" style="float:right">
+            &nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)" (click)="showFullScreenComment($event, feedback.commentId)"
+                                              title="Edit this comment"><span>Edit</span></a>
+          </div>
+          <div style="float:right">
+            &nbsp;&nbsp;&#8226;&nbsp;&nbsp;<a href="javascript:void(0)"
+                                              (click)="toggleReplyTextarea($event, feedback.commentId)"
+                                              title="Reply to this comment"><span>Reply</span></a>
+          </div>
           <ng-template [ngIf]="feedback.markupSeqNumber && markerToolButton">
             &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
             <div style="background-color: #5cb85c; border-radius: 3px; padding-left: 3px; padding-right: 3px; float: right ">
@@ -21,20 +29,33 @@
           </ng-template>
         </small>
       </div>
-      <div class="comment-text" style="min-height:19px" [innerHTML]="feedback.comment"></div>
+      <div [innerHTML]="feedback.comment | safeHtml"></div>
     </div>
   </div>
-
-
   <div style="padding-left:35px;display:grid">
     <div *ngIf="reply">
-      <div id="editorDiv">
-        <textarea kendo-editor #myEditor id="editor" [attr.editor-data]="feedback.commentId"></textarea>
+      <div id="editorDiv-{{feedback.commentId}}" class="wv-editor-div">
+        <textarea kendo-editor #myEditor id="editor-{{feedback.commentId}}"
+          [attr.editor-data]="feedback.commentId"></textarea>
       </div>
-      <mention-item #myMention id="mention" commentType="reply" [attr.mention-data]="feedback.commentId"></mention-item>
+      <mention-item #myReply1Mention baseElementId="editorDiv-{{feedback.commentId}}" textAreaId="editor-{{feedback.commentId}}" commentType="reply"
+        [attr.mention-data]="feedback.commentId"></mention-item>
     </div>
     <ng-container *ngFor="let reply of feedback.replies; let i = index">
       <markup-comment-reply [feedback]="reply"></markup-comment-reply>
     </ng-container>
   </div>
+  <kendo-dialog *ngIf="dialogOpened" id="replyEditorDialog" class="proof-editor-dialog" [minWidth]="500" [width]="900" [height]="324"
+    title="Edit Comment" (close)="onCancelClick()">
+    <div id="editorDialogEditorDiv2">
+      <textarea kendo-editor #myEditorDialogEditor id="editorDialogEditor2"></textarea>
+    </div>
+    <div class="buttons-container">
+      <button kendoButton (click)="onCancelClick()">Cancel</button>
+      <button class="k-primary" kendoButton (click)="onSaveClick($event, feedback.commentId)"
+        [disabled]="disabled">{{dialogPrimaryButtonText}}</button>
+    </div>
+    <mention-item #myDialogMention baseElementId="replyEditorDialog" textAreaId="editorDialogEditor2" commentType="comment"
+    [attr.mention-data]="feedback.commentId"></mention-item>
+  </kendo-dialog>
 </div>

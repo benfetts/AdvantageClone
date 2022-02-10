@@ -1,5 +1,5 @@
-<div #overlay class="overlay" style="width:333px; height: 101px" [ngStyle]="{'z-index':disabled ? 9 : 0 }"></div>
-<div id="editorDiv">
-<textarea kendo-editor #myEditor id="editor"  class="editor">{{text}}</textarea>
+<div #overlay class="overlay" [ngStyle]="{'z-index':disabled ? 9 : 0 }"></div>
+<div id="feedbackEditorDiv">
+  <textarea kendo-editor #myFeedbackEditor id="feedbackEditor"  class="editor">{{text}}</textarea>
 </div>
-<mention-item #myMention id="mention" commentType="annotation"></mention-item>
+<mention-item #myFeedbackMention commentType="annotation" baseElementId="feedbackEditorDiv" textAreaId="feedbackEditor"></mention-item>

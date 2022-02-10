@@ -6,8 +6,6 @@ import { VIEW_VERSIONS_TYPES } from '../constants/types/view-versions-types';
 import { ComparisonService } from './comparison.service';
 import { IToolbarBottomButtons } from '../interfaces/toolbar-bottom-buttons';
 import { BOTTOM_BUTTONS_TYPES } from '../constants/types/bottom-buttons-types.constants';
-import { RightPanelButtonsService } from './right-panel-buttons.service';
-import { RIGHT_PANEL_BUTTONS_TYPES } from '../constants/types/right-panel-buttons-types.constants';
 import { IDocument } from '../interfaces/document';
 
 @Injectable({
@@ -19,8 +17,7 @@ export class BottomPanelButtonsService {
 
   private revision: BehaviorSubject<IDocument> = new BehaviorSubject<IDocument>(null);
 
-  constructor(private comparisonService: ComparisonService,
-              private rightPanelButtonsService: RightPanelButtonsService) {
+  constructor(private comparisonService: ComparisonService) {
   }
 
   public setBottomPanelButtons(value: string, status?: boolean): void {
@@ -57,12 +54,11 @@ export class BottomPanelButtonsService {
         ? this.buttons[versions].selectedType = VIEW_VERSIONS_TYPES.SPLIT_VIEW
         : this.buttons[versions].selectedType = VIEW_VERSIONS_TYPES.ONE_ASSET;
 
-      if (BUTTON_BOTTOM_TYPES.compare.selected) {
-        this.comparisonService.setComparisonFilesAmount();
-      } else if (!BUTTON_BOTTOM_TYPES.compare.selected) {
-        console.log('reset?');
-        this.comparisonService.resetComparisonFilesAmount();
-      }
+    //  if (BUTTON_BOTTOM_TYPES.compare.selected) {
+    //    this.comparisonService.setComparisonFilesAmount();
+    //  } else if (!BUTTON_BOTTOM_TYPES.compare.selected) {
+    //    this.comparisonService.resetComparisonFilesAmount();
+    //  }
     }
 
     //if (value === markerTool) {

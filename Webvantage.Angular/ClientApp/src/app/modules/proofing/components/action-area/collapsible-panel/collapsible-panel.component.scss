@@ -72,6 +72,7 @@
 }
 
 .panel {
+  width: 100%;
   .title {
     border-bottom: 1px solid #cccccc;
 
@@ -90,10 +91,9 @@
   }
 
   .buttons-container {
-    width: 90%;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .size-tools {
@@ -116,6 +116,11 @@
   .k-slider-horizontal {
     height: 6px;
     width: 100%;
+  }
+
+  .expanders-parent {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -149,8 +154,6 @@ p {
 }
 
 .description-text-area {
-  min-height: 180px;
-  max-height: 180px;
   border-bottom: 1px solid #cccccc;
 }
 
@@ -192,7 +195,7 @@ p {
       }
 */
 /*      &:active,
-      &.k-state-active {
+      &.k-selected {
         border: 1px solid $border-color;
         box-shadow: none;
         background-color: $very-light-grey;

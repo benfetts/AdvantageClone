@@ -24,6 +24,7 @@
       border-radius: 3px;
       padding-left: 10px;
       display: flex;
+      align-items: center;
 
       &.drop-down-opened {
         border-bottom-right-radius: 0 !important;
@@ -32,6 +33,7 @@
       .workspace-slider {
         max-width: 100px;
         margin-right: 5px;
+        display: flex;
 
         &-percents {
           display: flex;
@@ -92,20 +94,13 @@
   }
 
   .k-button {
-
-    &:hover,
-    &:focus {
-      background: $white;
-      border: 1px solid $border-color;
-      box-shadow: none;
-    }
-
     &:hover {
       background: $very-light-grey;
+      border: 1px solid $border-color;
     }
 
     &:active,
-    &.k-state-active {
+    &.k-selected {
       border: 1px solid $border-color;
       box-shadow: none;
       background-color: $very-light-grey;
@@ -118,7 +113,7 @@
 }
 
 .k-button-group .k-button:active,
-.k-button-group .k-button.k-state-active {
+.k-button-group .k-button.k-selected {
   background-image: none;
 }
 
@@ -137,22 +132,7 @@
 
 .blue {
   .k-button {
-
-    &:hover,
-    &:active,
-    &:focus {
-      background: $white;
-      border: 1px solid $border-color;
-      box-shadow: none;
-    }
-
-    &:hover {
-      background: $very-light-grey;
-    }
-
-    &.k-state-active {
-      border: 1px solid $border-color;
-      box-shadow: none;
+    &.k-selected {
       background-color: $pressed-button;
 
       img {

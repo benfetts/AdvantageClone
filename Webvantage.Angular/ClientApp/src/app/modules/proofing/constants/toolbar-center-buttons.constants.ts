@@ -68,7 +68,7 @@ export const BUTTON_CENTER_TYPES: IToolbarCenterButtons = {
   version: {
     name: CENTRAL_BUTTONS_TYPES.VERSION,
     selected: false,
-    imageUrl: 'assets/icons/versions.svg'
+    imageUrl: 'assets/icons/Versions.svg'
   },
   reticle: {
     name: CENTRAL_BUTTONS_TYPES.RETICLE,
@@ -86,6 +86,11 @@ export const BUTTON_CENTER_TYPES: IToolbarCenterButtons = {
   },
   compare: {
     name: CENTRAL_BUTTONS_TYPES.COMPARE,
+    selected: false,
+    imageUrl: 'assets/icons/switch.svg'
+  },
+  compare_horizontal: {
+    name: CENTRAL_BUTTONS_TYPES.COMPARE_HORIZONTAL,
     selected: false,
     imageUrl: 'assets/icons/switch.svg'
   },

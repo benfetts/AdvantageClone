@@ -34,7 +34,7 @@ namespace AdvantageFramework.Core.Database.Procedures
         #endregion
 
         #region Methods
-        public static IEnumerable<Classes.AlertComment> GetAlertComments(AdvantageFramework.Core.Database.DbContext dbContext, int documentID, int alertID,string EmployeeCode)
+        public static IEnumerable<Classes.AlertComment> GetAlertComments(AdvantageFramework.Core.Database.DbContext dbContext, int documentID, int alertID, string EmployeeCode)
         {
             List<Classes.AlertComment> rv = null;
 
@@ -49,11 +49,26 @@ namespace AdvantageFramework.Core.Database.Procedures
                 };
 
 
-                rv = (from comment in dbContext.Comments.FromSqlRaw("EXEC [dbo].[advsp_alert_load_comments] @ALERT_ID, @DOCUMENT_ID, @EMP_CODE, @OFFSET, @HIDE_SYTEM_COMMENTS", parameters).AsEnumerable() where comment.ParentID == 0
-                             select new Classes.AlertComment() { AlertId = comment.AlertID, CommentId = comment.CommentID ?? 0, DocumentId = comment.MarkupDocumentID ?? 0,
-                                 AlertStateId = comment.AlertStateID,Comment = comment.LongComment, MarkupId = comment.MarkupID, EmployeeFullName = comment.EmployeeFullName, CustodyEnd = comment.CustodyEndDate,
-                                 CustodyStart = comment.CustodyStartDate, GeneratedDate = comment.GeneratedDate, ParentId = comment.ParentID, UserCode = comment.UserCode, ProofingXReviwerId = comment.ProofingXReviwerId
-                             }).OrderByDescending(foo => foo.GeneratedDate).ToList();
+                rv = (from comment in dbContext.Comments.FromSqlRaw("EXEC [dbo].[advsp_alert_load_comments] @ALERT_ID, @DOCUMENT_ID, @EMP_CODE, @OFFSET, @HIDE_SYTEM_COMMENTS", parameters).AsEnumerable()
+                      where comment.ParentID == 0
+                      select new Classes.AlertComment()
+                      {
+                          AlertId = comment.AlertID,
+                          CommentId = comment.CommentID ?? 0,
+                          DocumentId = comment.MarkupDocumentID ?? documentID,
+                          AlertStateId = comment.AlertStateID,
+                          Comment = comment.LongComment,
+                          MarkupId = comment.MarkupID,
+                          EmployeeFullName = comment.EmployeeFullName,
+                          CustodyEnd = comment.CustodyEndDate,
+                          CustodyStart = comment.CustodyStartDate,
+                          GeneratedDate = comment.GeneratedDate,
+                          ParentId = comment.ParentID,
+                          UserCode = comment.UserCode,
+                          ProofingXReviwerId = comment.ProofingXReviwerId
+                         ,
+                          IsMyComment = comment.IsMyComment
+                      }).OrderByDescending(foo => foo.GeneratedDate).ToList();
 
 
                 var proofingMarkups = from ProofingMarkup in dbContext.ProofingMarkups.AsQueryable()
@@ -103,7 +118,7 @@ namespace AdvantageFramework.Core.Database.Procedures
                   {
                       AlertId = comment.AlertID,
                       CommentId = comment.CommentID ?? 0,
-                      DocumentId = comment.MarkupDocumentID ?? 0,
+                      DocumentId = comment.MarkupDocumentID ?? documentID,
                       AlertStateId = comment.AlertStateID,
                       Comment = comment.LongComment,
                       MarkupId = comment.MarkupID,
@@ -113,7 +128,8 @@ namespace AdvantageFramework.Core.Database.Procedures
                       GeneratedDate = comment.GeneratedDate,
                       ParentId = comment.ParentID,
                       UserCode = comment.UserCode,
-                      ProofingXReviwerId = comment.ProofingXReviwerId
+                      ProofingXReviwerId = comment.ProofingXReviwerId,
+                      IsMyComment = comment.IsMyComment
                   }).ToList();
 
             //rc = (from AlertComment in dbContext.AlertComments.AsQueryable()

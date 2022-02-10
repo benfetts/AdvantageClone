@@ -2159,8 +2159,6 @@ Public Class frmWebConfig
                     ProcessTree(txtPhysicalPath.Text.Trim)
                     Threading.Thread.Sleep(1000)
 
-                    Me.BackupFolders()
-
                     Try
 
                         Directory.Delete(txtPhysicalPath.Text.Trim, True)
@@ -2231,8 +2229,6 @@ Public Class frmWebConfig
                     CopyDirectoryCP(Windows.Forms.Application.StartupPath, Me.txtPhysicalPath.Text.Trim)
 
             End Select
-
-            If IsUpgrading = True Then Me.RestoreBackupFolders()
 
             Me.Cursor.Current = Cursors.Default
 
@@ -3080,7 +3076,7 @@ Public Class frmWebConfig
         Catch ex As Exception
         End Try
 
-        Me.XtraTabPageDatabase.PageVisible = False
+        Me.XtraTabPageDatabase.PageVisible = True
         Me.XtraTabPageRegistry.PageVisible = False
         Me.XtraTabPageApplication.PageVisible = False
         lblRegistryWarn.Visible = False
@@ -3460,64 +3456,7 @@ Public Class frmWebConfig
         ' save the changes
         serverManager.CommitChanges()
     End Sub
-
-    Private Sub BackupFolders()
-        Try
-
-            Dim Folders() As String
-            If Me.SelectedApplication = App.MobileDataservices Then
-
-                Folders = Split(System.Configuration.ConfigurationManager.AppSettings("ACEsMobileData"), ",")
-
-            Else
-
-                Folders = Split(System.Configuration.ConfigurationManager.AppSettings("ACEs"), ",")
-
-            End If
-
-            For Each Folder As String In Folders
-
-                If Not Directory.Exists(TempFolder & "\" & Folder & "\") Then
-
-                    Directory.CreateDirectory(TempFolder & "\" & Folder & "\")
-
-                End If
-
-                CopyDirectory(txtPhysicalPath.Text.Trim & "\" & Folder & "\", TempFolder & "\" & Folder & "\")
-
-            Next
-        Catch ex As Exception
-
-        End Try
-    End Sub
-    Private Sub RestoreBackupFolders()
-        Try
-
-            Dim Folders() As String
-            If Me.SelectedApplication = App.MobileDataservices Then
-
-                Folders = Split(System.Configuration.ConfigurationManager.AppSettings("ACEsMobileData"), ",")
-
-            Else
-
-                Folders = Split(System.Configuration.ConfigurationManager.AppSettings("ACEs"), ",")
-
-            End If
-
-            For Each Folder As String In Folders
-
-                CopyDirectory(TempFolder & "\" & Folder & "\", txtPhysicalPath.Text.Trim & "\" & Folder & "\")
-
-                Directory.Delete(TempFolder & "\" & Folder)
-
-            Next
-
-            Directory.Delete(TempFolder)
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
+    
     'Public Function SetACEPermissions(ByVal sPhysicalPath As String, ByVal strConnString As String) As Boolean
     '    Try
     '        Dim sUser As String = ""

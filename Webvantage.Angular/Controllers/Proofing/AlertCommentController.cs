@@ -39,19 +39,26 @@ namespace Webvantage.Angular.Controllers.Proofing
         public void Post([FromQuery] string dl, [FromBody] AlertComment comment)
         {
             bool sendEmail = false;
+            bool isProofingMarkupComment = false;
+            bool onlyAtMentions = false;
+            int documentID = 0;
 
             AdvantageFramework.Core.Web.QueryString qs = AdvantageFramework.Core.Web.QueryString.FromEncrypted(dl);
 
+            documentID = comment.DocumentId > 0 ? comment.DocumentId : qs.DocumentID;
+
             AdvantageFramework.Core.Database.Entities.AlertComment _comment = AdvantageFramework.Core.BLogic.Proofing.Methods.CreateAlertComment(
-                qs, comment.Comment, comment.DocumentId > 0 ? comment.DocumentId: qs.DocumentID);
+                qs, comment.Comment, documentID);
 
             if (comment.Mentions != null && comment.Mentions.Length > 0)
             {
-                sendEmail = true;
                 _controller.AddAlertMentions(qs, qs.AlertID, comment.Mentions, _comment.CommentId);
+                sendEmail = true;
+                onlyAtMentions=true;    // only at mentions when at mentions for proofing only
             }
 
-            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, qs.DocumentID, sendEmail);
+            NotifyAlertRecipients(qs, qs.AlertID, true, true, false, false, null, true, documentID, 
+                sendEmail, isProofingMarkupComment, onlyAtMentions, comment.Mentions, qs.EmployeeCode);
         }
 
         // PUT api/<AlertCommentController>/5

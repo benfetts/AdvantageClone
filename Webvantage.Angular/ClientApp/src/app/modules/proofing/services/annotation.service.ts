@@ -33,7 +33,6 @@ export class AnnotationService extends BaseService {
   constructor(private http: HttpClient,
     private activatedRouter: ActivatedRoute,
     private feedbackService: FeedbackService,
-    private updateWVService: UpdateWVService,
     private activeFileService: ActiveFileService,
     private centerPanelButtonsService: CenterPanelButtonsService,
     private signalrService: SignalrService) {
@@ -141,14 +140,16 @@ export class AnnotationService extends BaseService {
     }
   }
 
-  setSelectedById(markupId: number) {
+  setSelectedById(markupId: number) : boolean {
     var annotation = this.getById(markupId);
 
     if (annotation != null) {
       this.setSelected(annotation);
+      return true;
     }
     else {
       console.log('get annotation by id returned null.');
+      return false;
     }
   }
 
@@ -228,6 +229,9 @@ export class AnnotationService extends BaseService {
         this.feedbackService.loadFeedback(documentId);
         //refresh the webvantage page
         //this.updateWVService.updateWebvantageAlert(annotations[0].alertId);
+        comment = "";
+        documentId = 0;
+        mentions = [];
         this.signalrService.sendRefresh();
       });
   }
@@ -269,12 +273,24 @@ export class AnnotationService extends BaseService {
         //reload the comments
         this.feedbackService.loadFeedback(this.document?.documentId);
         //refresh the webvantage page
-        //this.updateWVService.updateWebvantageAlert(annotations[0].alertId);
+        //this.updateWVService.updateWebVantageAlert(annotations[0].alertId);
         this.signalrService.sendRefresh();
       });
     }
     else {
       //this is just a comment
+      var url: string = 'api/AlertComment?dl=' + this.dl;
+      this.http.post(url, {
+        comment: comment,
+        mentions: mentions
+      }).pipe(
+        catchError(this.handleError))
+        .subscribe(() => {
+          this.feedbackService.loadFeedback();
+          //refresh the webvantage page
+          //this.updateWVService.updateWebVantageAlert(annotations[0].alertId);
+          this.signalrService.sendRefresh();
+        });
     }
   }
 

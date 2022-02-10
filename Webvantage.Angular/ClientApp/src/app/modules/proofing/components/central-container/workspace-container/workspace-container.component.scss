@@ -59,6 +59,16 @@
   width: 100%;
 }
 
+.split-horizontal {
+  width: 100%;
+  height: calc(50% - 10px);
+  padding: 10px 0px 10px 0px;
+}
+
 .split-view {
   width: 49.5%;
+}
+
+.split-horizontal-display {
+  display: block;
 }

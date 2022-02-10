@@ -256,13 +256,19 @@ namespace AdvantageFramework.Core.AlertSystem
             return canExternalReviewerUpdateProofingStatus;
         }
 
-        static public bool CanExternalReviewerMarkup(string ConnectionString, int AlertID, int ProofingExternalReviewerID, int DocumentID)
+        static public bool CanMarkup(string ConnectionString, int AlertID, string EmpCode)
         {
             using (AdvantageFramework.Core.Database.DbContext DbContext = new AdvantageFramework.Core.Database.DbContext(ConnectionString))
             {
-                return CanExternalReviewerMarkup(DbContext, AlertID, ProofingExternalReviewerID, DocumentID);
+                return CanMarkup(DbContext, AlertID, EmpCode);
             }
+
         }
+        static public bool CanMarkup(AdvantageFramework.Core.Database.DbContext DbContext, int AlertID, string EmpCode)
+        {
+            return DbContext.SqlQueryBool("EXEC [advsp_proofing_can_markup] " + AlertID + ", '" + EmpCode + "';");
+        }
+
         static public bool CanExternalReviewerMarkup(AdvantageFramework.Core.Database.DbContext DbContext, int AlertID, int ProofingExternalReviewerID, int DocumentID)
         {
             bool canExternalReviewerMarkup = false;
@@ -279,14 +285,26 @@ namespace AdvantageFramework.Core.AlertSystem
             }
             return canExternalReviewerMarkup;
         }
+
+        static public bool CanExternalReviewerMarkup(string ConnectionString, int AlertID, int ProofingExternalReviewerID, int DocumentID)
+        {
+            using (AdvantageFramework.Core.Database.DbContext DbContext = new AdvantageFramework.Core.Database.DbContext(ConnectionString))
+            {
+                return CanExternalReviewerMarkup(DbContext, AlertID, ProofingExternalReviewerID, DocumentID);
+            }
+
+        }
+
         //TODO: Fix ref and default value issue on ErrorMessage
         static public bool BuildAndSendAlertEmail(QueryString qs,
-            AdvantageFramework.Core.Database.Entities.Alert Alert, string Subject,
+            AdvantageFramework.Core.Database.Entities.Alert Alert, int DocumentID, string Subject,
             string EmpCodesToSendEmailTo = "", string ClientPortalEmailAddressessToSendTo = "",
             string AppName = "", string SupervisorApprovalComment = "", bool ExcludeAttachments = false,
             bool InsertEmailBodyAsAlertDescription = false, bool IsClientPortal = false, bool IncludeOriginator = false,
             string ErrorMessage = "", bool ResetAssignedToEmpCodeReadFlag = true,
-            bool IncludeAlertVendorReps = true, string EmployeeSession = "",string ProofingURL = "")
+            bool IncludeAlertVendorReps = true, string EmployeeSession = "",string ProofingURL = "", 
+            bool isProofingMarkupComment = false,
+            bool onlyAtMentions = false)
         {
             bool Completed = false;
 
@@ -302,7 +320,8 @@ namespace AdvantageFramework.Core.AlertSystem
                         Completed = BuildAndSendAlertEmail(SecurityDbContext, DbContext, Alert, Subject,
                             EmpCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo, AppName, SupervisorApprovalComment,
                             ExcludeAttachments, InsertEmailBodyAsAlertDescription, IsClientPortal, IncludeOriginator, 
-                            ErrorMessage, ResetAssignedToEmpCodeReadFlag, IncludeAlertVendorReps,"", qs.EmployeeCode, qs.UserCode, qs.DocumentID, ProofingURL);
+                            ErrorMessage, ResetAssignedToEmpCodeReadFlag, IncludeAlertVendorReps,"", 
+                            qs.EmployeeCode, qs.UserCode, DocumentID > 0 ? DocumentID : qs.DocumentID, ProofingURL, isProofingMarkupComment, onlyAtMentions);
 
                         //Completed = BuildAndSendAlertEmail(SecurityDbContext,
                         //    DbContext, Alert, Subject, EmpCodesToSendEmailTo, ClientPortalEmailAddressessToSendTo,
@@ -362,7 +381,9 @@ namespace AdvantageFramework.Core.AlertSystem
             string SupervisorApprovalComment, bool ExcludeAttachments, bool InsertEmailBodyAsAlertDescription,
             bool IsClientPortal, bool IncludeOriginator,
             string ErrorMessage, bool ResetAssignedToEmpCodeReadFlag, bool IncludeAlertVendorReps, string EmployeeSession,
-            string FromEmpCode, string UserCode, int DocumentID = 0, string ProofingURL = "")
+            string FromEmpCode, string UserCode, int DocumentID = 0, string ProofingURL = "", 
+            bool isProofingMarkupComment = false,
+            bool onlyAtMentions = false)
         {
             bool Completed = false;
             AdvantageFramework.Core.Database.Entities.Agency Agency = null/* TODO Change to default(_) if this is not a reference type */;
@@ -461,6 +482,14 @@ namespace AdvantageFramework.Core.AlertSystem
 
                         string[] mentions = GetAlertMentions(DbContext, Alert.AlertId, UserCode);
                         RemoveAlertMentions(DbContext, Alert.AlertId, UserCode);
+                        if(isProofingMarkupComment == true || onlyAtMentions == true)
+                        {
+                            // Send only to self and at mentions.
+                            empsTo.Clear();
+                            empsCC.Clear();
+                            empsTo.Add(FromEmpCode);
+                            IncludeOriginator = false;
+                        }
                         if (mentions != null && mentions.Length > 0)
                         {
                             foreach (string item in mentions)
@@ -494,14 +523,23 @@ namespace AdvantageFramework.Core.AlertSystem
 
                 if (IsAlertAssignment || IsWorkItem)
                 {
-                    if (IncludeOriginator == true && empsCC.Contains(Alert.EmpCode) == false && empsTo.Contains(Alert.EmpCode) == false)
+                    if (IncludeOriginator == true && empsCC.Contains(Alert.EmpCode) == false && 
+                        empsTo.Contains(Alert.EmpCode) == false && 
+                        isProofingMarkupComment == false)
+                    {
                         empsCC.Add(Alert.EmpCode);
+                    }
 
                     ClientPortalEmailAddressessToSendTo = "";
 
                     Subject = Subject.Replace("[Alert", "[Assignment");
                     Subject = Subject.Replace("Alert]", "Assignment]");
 
+                }
+
+                if (onlyAtMentions == true)
+                {
+                    EmpCodesToSendEmailTo = string.Join(",", empsCC.ToArray());
                 }
 
                 if ((empsTo == null || empsTo.Count == 0) && (empsCC == null || empsCC.Count == 0) && string.IsNullOrWhiteSpace(EmpCodesToSendEmailTo) == true && string.IsNullOrWhiteSpace(ClientPortalEmailAddressessToSendTo) == true &&
@@ -599,6 +637,27 @@ namespace AdvantageFramework.Core.AlertSystem
                         {
                         }
 
+                        // Subject and description
+                        try
+                        {
+                            HTMLEmail.AddHeaderRow(Subject);
+                            HTMLEmail.AddKeyValueRow("Subject", string.IsNullOrEmpty(Alert.Subject) ? "" : Alert.Subject);
+
+                            string EmailBody = Alert.BodyHtml;
+
+                            UrlToHtmlLink(ref EmailBody, Agency.WebvantageUrl, Agency.ClientportalUrl);
+
+                            if (string.IsNullOrWhiteSpace(EmailBody) == false)
+                            {
+                                HTMLEmail.AddKeyValueRow("Description", EmailBody);
+                            }
+
+                            HTMLEmail.AddBlankRow();
+                        }
+                        catch (Exception)
+                        {
+                        }
+
                         // Thumbnail?
                         try
                         {
@@ -619,29 +678,25 @@ namespace AdvantageFramework.Core.AlertSystem
                         }
 
                         // Comments
-                        if (IsProof == true && DocumentID > 0)
+                        try
                         {
-                            CommentsHistory(DbContext, false, Alert.AlertId, DocumentID, ThumbnailFilename, Agency, ref HTMLEmail);
+                            if (IsProof == true && DocumentID > 0)
+                            {
+                                CommentsHistory(DbContext, false, Alert.AlertId, DocumentID, ThumbnailFilename, Agency, ref HTMLEmail);
+                            }
+                            else
+                            {
+                                CommentsHistory(DbContext, false, Alert.AlertId, Agency, ref HTMLEmail);
+                            }
+                            HTMLEmail.AddBlankRow();
                         }
-                        else
+                        catch (Exception)
                         {
-                            CommentsHistory(DbContext, false, Alert.AlertId, Agency, ref HTMLEmail);
                         }
 
                         // Details
                         try
                         {
-                            HTMLEmail.AddHeaderRow(Subject);
-                            HTMLEmail.AddKeyValueRow("Subject", string.IsNullOrEmpty(Alert.Subject) ? "" : Alert.Subject);
-
-                            string EmailBody = Alert.BodyHtml;
-
-                            UrlToHtmlLink(ref EmailBody, Agency.WebvantageUrl, Agency.ClientportalUrl);
-
-                            if (string.IsNullOrWhiteSpace(EmailBody) == false)
-                                HTMLEmail.AddKeyValueRow("Description", EmailBody);
-
-                            HTMLEmail.AddBlankRow();
 
                             if (AppName == "SupervisorApproval" && string.IsNullOrWhiteSpace(SupervisorApprovalComment) == false)
                             {
@@ -1251,7 +1306,8 @@ namespace AdvantageFramework.Core.AlertSystem
                           AlertStateName = comment.AlertStateName,
                           AssignmentChanged = (bool)comment.AssignmentChanged,
                           IsUnassigned = (bool)comment.IsUnassigned,
-                          ReplyLevel = (int)comment.ReplyLevel
+                          ReplyLevel = (int)comment.ReplyLevel,
+                          IsMyComment = comment.IsMyComment
                       }).ToList();
 
 

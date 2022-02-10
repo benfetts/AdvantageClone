@@ -99,6 +99,7 @@ namespace AdvantageFramework.Core.Email.Classes
         public string DocumentList { get; set; }
         public List<CommentDocument> Documents { get; set; }
         public List<AlertComment> Replies { get; set; }
+        public bool IsMyComment { get; set; }
 
         #endregion
 

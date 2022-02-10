@@ -10949,7 +10949,7 @@
             'objects
             Dim XmlNodeList As System.Xml.XmlNodeList = Nothing
             Dim NextBatchNumber As Short = 0
-            'Dim CableNetworkStations As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation) = Nothing
+            Dim CableNetworkStations As Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation) = Nothing
             Dim MediaRFPAvailLine As AdvantageFramework.Database.Entities.MediaRFPAvailLine = Nothing
             Dim DemoValuesXmlNodeList As System.Xml.XmlNodeList = Nothing
             Dim IDRank As String = Nothing
@@ -10961,7 +10961,7 @@
             Dim XmlNodeListCodes As System.Xml.XmlNodeList = Nothing
             Dim Rate As Decimal = 0
             Dim UpdateToType As String = Nothing
-            Dim ComscoreTVStation As AdvantageFramework.Database.Entities.ComscoreTVStation = Nothing
+            'Dim ComscoreTVStation As AdvantageFramework.Database.Entities.ComscoreTVStation = Nothing
 
             XmlNodeList = XmlElementSyscode.GetElementsByTagName("detailLine")
 
@@ -10979,25 +10979,33 @@
 
             End If
 
-            'If Session.IsNielsenSetup Then
+            If IsComscore Then
 
-            '    Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
+                If Session.IsNielsenSetup Then
 
-            '        CableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).ToList
+                    Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(Session.NielsenConnectionString, Nothing)
 
-            '    End Using
+                        NielsenDbContext.Database.Connection.Open()
 
-            '    If CableNetworkStations.Count = 0 Then
+                        If AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.Load(NielsenDbContext).Any Then
 
-            '        CableNetworkStations = AdvantageFramework.Database.Procedures.CableNetworkStation.Load(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).ToList
+                            CableNetworkStations = AdvantageFramework.Nielsen.Database.Procedures.NCCTVCablenet.LoadWithComscoreStationCode(NielsenDbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity, True)).ToList
 
-            '    End If
+                        Else
 
-            'Else
+                            CableNetworkStations = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
 
-            '    CableNetworkStations = AdvantageFramework.Database.Procedures.CableNetworkStation.Load(DbContext).ToList.Select(Function(Entity) New AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation(Entity)).ToList
+                        End If
 
-            'End If
+                    End Using
+
+                Else
+
+                    CableNetworkStations = New Generic.List(Of AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.CableNetworkStation)
+
+                End If
+
+            End If
 
             For Each XmlElement In XmlNodeList.OfType(Of System.Xml.XmlElement)
 
@@ -11209,11 +11217,16 @@
 
                             If IsComscore Then
 
-                                ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByCallLetters(DbContext, XmlNodeListCode.InnerXml)
+                                'ComscoreTVStation = AdvantageFramework.Database.Procedures.ComscoreTVStation.LoadByCallLetters(DbContext, XmlNodeListCode.InnerXml)
 
-                                If ComscoreTVStation IsNot Nothing Then
+                                'If ComscoreTVStation IsNot Nothing Then
 
-                                    MediaRFPAvailLine.ComscoreTVStationCallLetters = ComscoreTVStation.CallLetters
+                                '    MediaRFPAvailLine.ComscoreTVStationCallLetters = ComscoreTVStation.CallLetters
+
+                                'End If
+                                If CableNetworkStations.Where(Function(CNS) CNS.Code = XmlNodeListCode.InnerXml).Count = 1 Then
+
+                                    MediaRFPAvailLine.ComscoreTVStationCallLetters = CableNetworkStations.Where(Function(CNS) CNS.Code = XmlNodeListCode.InnerXml).First.Code
 
                                 End If
 

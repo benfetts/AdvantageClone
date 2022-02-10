@@ -4370,24 +4370,24 @@
 
                                 MediaBroadcastWorksheetEditViewModel.Worksheet.EndDate = MediaPlan.EndDate
 
-                                End If
+                            End If
 
-                            Else
+                        Else
 
-                                MediaBroadcastWorksheetEditViewModel.Worksheet.StartDate = MediaPlan.StartDate
-                        MediaBroadcastWorksheetEditViewModel.Worksheet.EndDate = MediaPlan.EndDate
+                            MediaBroadcastWorksheetEditViewModel.Worksheet.StartDate = MediaPlan.StartDate
+                            MediaBroadcastWorksheetEditViewModel.Worksheet.EndDate = MediaPlan.EndDate
+
+                        End If
 
                     End If
 
-                    End If
+                End Using
 
-            End Using
-
-            MediaBroadcastWorksheetEditViewModel.Worksheet.MediaPlanComments = GetMediaPlanComments(MediaBroadcastWorksheetEditViewModel.Worksheet.MediaTypeCode, MediaPlanID)
+                MediaBroadcastWorksheetEditViewModel.Worksheet.MediaPlanComments = GetMediaPlanComments(MediaBroadcastWorksheetEditViewModel.Worksheet.MediaTypeCode, MediaPlanID)
 
             Else
 
-            MediaBroadcastWorksheetEditViewModel.Worksheet.MediaPlanComments = String.Empty
+                MediaBroadcastWorksheetEditViewModel.Worksheet.MediaPlanComments = String.Empty
 
             End If
 
@@ -31790,9 +31790,19 @@
 
                     End If
 
-                    StationNumbers = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
-                                      Where Entity.CableNetworkNielsenTVStationCode.HasValue
-                                      Select Entity.CableNetworkNielsenTVStationCode.Value).Distinct.ToList
+                    CableNetworkNielsenTVStationCodes = (From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID)
+                                                         Where Entity.CableNetworkNielsenTVStationCode.HasValue
+                                                         Select Entity.CableNetworkNielsenTVStationCode.Value).Distinct.ToList
+
+                    If CableNetworkNielsenTVStationCodes.Count > 0 Then
+
+                        StationNumbers = DbContext.Database.SqlQuery(Of Integer)(String.Format("SELECT MIN(NUMBER) FROM dbo.COMSCORE_TV_STATION WHERE PRIMARY_MARKET_NUMBER IS NULL AND NETWORK_NUMBER IN ({0}) GROUP BY NETWORK_NUMBER", String.Join(",", CableNetworkNielsenTVStationCodes.ToArray))).ToList
+
+                    Else
+
+                        StationNumbers = New Generic.List(Of Integer)
+
+                    End If
 
                     StationNumbers.AddRange((From Entity In AdvantageFramework.Database.Procedures.MediaBroadcastWorksheetMarketDetail.LoadByMediaBroadcastWorksheetMarketID(DbContext, MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.ID).Include("Vendor.ComscoreTVStation")
                                              Where Entity.Vendor.ComscoreTVStation IsNot Nothing

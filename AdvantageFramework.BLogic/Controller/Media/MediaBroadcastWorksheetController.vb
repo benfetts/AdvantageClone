@@ -16924,19 +16924,49 @@
 
                 ElseIf DataRowViewList IsNot Nothing AndAlso DataRowViewList.Count > 0 Then
 
+                ElseIf DataRowViewList IsNot Nothing AndAlso DataRowViewList.Count > 0 Then
+
                     If IsPrimaryDemo Then
 
-                        For Each DRV In DataRowViewList
+                        For Each DataRowView In DataRowViewList
 
-                            AllReachValuesList.Add(CDbl(DRV(MarketDetailsColumns.PrimaryReach.ToString)))
+                            RowSpots = 0
+
+                            If String.IsNullOrWhiteSpace(DateColumnName) = False Then
+
+                                RowSpots += CInt(DataRowView(DateColumnName))
+
+                            Else
+
+                                RowSpots = DataRowView(MarketDetailsColumns.TotalSpots.ToString)
+
+                            End If
+
+                            AllReachValuesList.Add(CalculateRadioReach(DataRowView(MarketDetailsColumns.PrimaryAQH.ToString), DataRowView(MarketDetailsColumns.PrimaryCume.ToString),
+                                                                       RowSpots, DataRowView(MarketDetailsColumns.PrimaryUniverse.ToString),
+                                                                       DataRowView(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRowView(MarketDetailsColumns.BookPrimaryAQHRating.ToString)))
 
                         Next
 
                     Else
 
-                        For Each DRV In DataRowViewList
+                        For Each DataRowView In DataRowViewList
 
-                            AllReachValuesList.Add(CDbl(DRV(MarketDetailsColumns.SecondaryReach.ToString)))
+                            RowSpots = 0
+
+                            If String.IsNullOrWhiteSpace(DateColumnName) = False Then
+
+                                RowSpots += CInt(DataRowView(DateColumnName))
+
+                            Else
+
+                                RowSpots = DataRowView(MarketDetailsColumns.TotalSpots.ToString)
+
+                            End If
+
+                            AllReachValuesList.Add(CalculateRadioReach(DataRowView(MarketDetailsColumns.SecondaryAQH.ToString), DataRowView(MarketDetailsColumns.SecondaryCume.ToString),
+                                                                       RowSpots, DataRowView(MarketDetailsColumns.SecondaryUniverse.ToString),
+                                                                       DataRowView(MarketDetailsColumns.SecondaryAQHRating.ToString), DataRowView(MarketDetailsColumns.BookSecondaryAQHRating.ToString)))
 
                         Next
 
@@ -24504,9 +24534,31 @@
 
                 ElseIf DataRowViews IsNot Nothing AndAlso DataRowViews.Count > 0 Then
 
-                    For Each DRV In DataRowViews
+                    For Each DataRowView In DataRowViews
 
-                        AllReachValuesList.Add(CDbl(DRV(MarketDetailsColumns.PrimaryReach.ToString)))
+                        RowSpots = 0
+
+                        If BroadcastDate <> Date.MinValue Then
+
+                            For Each DetailDate In BroadcastDetailDates.Keys.OfType(Of Date).OrderBy(Function(DD) DD)
+
+                                If BroadcastDate = BroadcastDetailDates(DetailDate) Then
+
+                                    RowSpots += CInt(DataRowView(DetailDates(DetailDate)))
+
+                                End If
+
+                            Next
+
+                        Else
+
+                            RowSpots = DataRowView(MarketDetailsColumns.TotalSpots.ToString)
+
+                        End If
+
+                        AllReachValuesList.Add(CalculateRadioReach(DataRowView(MarketDetailsColumns.PrimaryAQH.ToString), DataRowView(MarketDetailsColumns.PrimaryCume.ToString),
+                                                                   RowSpots, DataRowView(MarketDetailsColumns.PrimaryUniverse.ToString),
+                                                                   DataRowView(MarketDetailsColumns.PrimaryAQHRating.ToString), DataRowView(MarketDetailsColumns.BookPrimaryAQHRating.ToString)))
 
                     Next
 

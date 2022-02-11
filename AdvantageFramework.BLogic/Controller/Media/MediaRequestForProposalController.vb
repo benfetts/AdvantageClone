@@ -1347,6 +1347,18 @@
 
                                             Exit For
 
+                                        ElseIf MediaRFPAvailLineSpot.WeekDate <= CDate(Key) AndAlso MediaRFPAvailLineSpot.WeekDate.AddDays(6) >= CDate(Key) Then
+
+                                            If MediaBroadcastWorksheetMarketDetailsViewModel.HiatusDataTable.Rows(0).Item(MediaBroadcastWorksheetMarketDetailsViewModel.DetailDates.Item(Key)) = False Then
+
+                                                DataRow(MediaBroadcastWorksheetMarketDetailsViewModel.DetailDates.Item(Key)) = If(OmitSpots, 0, MediaRFPAvailLineSpot.Quantity)
+
+                                                DataRow(MediaBroadcastWorksheetMarketDetailsViewModel.AllowSpotsToBeEnteredDates.Item(Key)) = True
+
+                                            End If
+
+                                            Exit For
+
                                         End If
 
                                     Next

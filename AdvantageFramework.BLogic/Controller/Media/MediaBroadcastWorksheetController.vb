@@ -16924,8 +16924,6 @@
 
                 ElseIf DataRowViewList IsNot Nothing AndAlso DataRowViewList.Count > 0 Then
 
-                ElseIf DataRowViewList IsNot Nothing AndAlso DataRowViewList.Count > 0 Then
-
                     If IsPrimaryDemo Then
 
                         For Each DataRowView In DataRowViewList

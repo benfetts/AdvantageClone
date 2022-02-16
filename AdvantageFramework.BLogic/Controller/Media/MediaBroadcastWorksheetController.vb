@@ -7769,7 +7769,17 @@
 
                     Next
 
-                    For Each MediaBroadcastWorksheetMarketSubmarket In DbContext.MediaBroadcastWorksheetMarketSubmarkets.Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarket.ID).ToList
+                    For Each MediaBroadcastWorksheetMarketSubmarket In DbContext.MediaBroadcastWorksheetMarketSubmarkets.Include("MediaBroadcastWorksheetMarketDetailSubmarketDemos").Where(Function(Entity) Entity.MediaBroadcastWorksheetMarketID = MediaBroadcastWorksheetMarket.ID).ToList
+
+                        If MediaBroadcastWorksheetMarketSubmarket.MediaBroadcastWorksheetMarketDetailSubmarketDemos IsNot Nothing AndAlso MediaBroadcastWorksheetMarketSubmarket.MediaBroadcastWorksheetMarketDetailSubmarketDemos.Count > 0 Then
+
+                            For Each MediaBroadcastWorksheetMarketDetailSubmarketDemo In MediaBroadcastWorksheetMarketSubmarket.MediaBroadcastWorksheetMarketDetailSubmarketDemos.ToList
+
+                                DbContext.MediaBroadcastWorksheetMarketDetailSubmarketDemos.Remove(MediaBroadcastWorksheetMarketDetailSubmarketDemo)
+
+                            Next
+
+                        End If
 
                         DbContext.MediaBroadcastWorksheetMarketSubmarkets.Remove(MediaBroadcastWorksheetMarketSubmarket)
 

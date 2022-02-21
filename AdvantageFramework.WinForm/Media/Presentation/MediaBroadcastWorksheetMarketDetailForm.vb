@@ -5139,11 +5139,14 @@
             Dim DateNumber As Integer = 0
             Dim StartDateNumber As Integer = 0
             Dim EndDateNumber As Integer = 0
+            Dim GridBand As DevExpress.XtraGrid.Views.BandedGrid.GridBand = Nothing
 
             StartDateNumber = AdvantageFramework.StringUtilities.RemoveAllNonNumeric(ComboBoxItemDates_StartDate.ComboBoxEx.SelectedValue, "0")
             EndDateNumber = AdvantageFramework.StringUtilities.RemoveAllNonNumeric(ComboBoxItemDates_EndDate.ComboBoxEx.SelectedValue, "0")
 
             Counter = StartDateNumber
+
+            GridBand = BandedDataGridViewForm_MarketDetails.CurrentView.Bands(GridBandNames.GridBandOtherData.ToString)
 
             For Each DetailDate In _ViewModel.DetailDates.Keys.OfType(Of Date).OrderBy(Function(GD) GD)
 
@@ -5174,6 +5177,12 @@
                         If _ViewModel.HiatusDataTable.Rows(0)(_ViewModel.DetailDates(DetailDate)) = False Then
 
                             BandedDataGridViewForm_MarketDetails.Columns(_ViewModel.RateDates(DetailDate).ToString).Visible = True
+
+                            CType(BandedDataGridViewForm_MarketDetails.Columns(_ViewModel.RateDates(DetailDate).ToString), DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn).RowIndex = 0
+
+                            GridBand.Columns.MoveTo(GridBand.Columns.IndexOf(BandedDataGridViewForm_MarketDetails.Columns(_ViewModel.DetailDates(DetailDate).ToString)) + 1, BandedDataGridViewForm_MarketDetails.Columns(_ViewModel.RateDates(DetailDate).ToString))
+
+                            CType(BandedDataGridViewForm_MarketDetails.Columns(_ViewModel.RateDates(DetailDate).ToString), DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn).ColVIndex = CType(BandedDataGridViewForm_MarketDetails.Columns(_ViewModel.DetailDates(DetailDate).ToString), DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn).ColVIndex + 1
 
                         Else
 

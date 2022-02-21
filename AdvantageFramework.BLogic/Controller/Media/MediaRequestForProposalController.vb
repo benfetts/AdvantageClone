@@ -1405,6 +1405,12 @@
 
                                             Exit For
 
+                                        ElseIf MediaRFPAvailLineSpot.WeekDate <= CDate(Key) AndAlso MediaRFPAvailLineSpot.WeekDate.AddDays(6) >= CDate(Key) Then
+
+                                            DataRow(MediaBroadcastWorksheetMarketDetailsViewModel.RateDates.Item(Key)) = MediaRFPAvailLineSpot.Rate
+
+                                            Exit For
+
                                         End If
 
                                     Next

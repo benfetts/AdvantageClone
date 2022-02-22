@@ -82,7 +82,8 @@ DECLARE @row_count integer,
 
 DECLARE @add_comp bit, 
 	@office_code varchar(4),
-	@prd_tax_code varchar(4)
+	@prd_tax_code varchar(4),
+	@flag_tax_jobs int
 
 SET @add_comp = 1
 SET @office_code = NULL
@@ -221,8 +222,15 @@ BEGIN TRY
 
 	IF ( @ret_val = 0 )
 	BEGIN
-		SELECT @prd_tax_code = CASE WHEN @job_tax_flag = 1 THEN PRD_PROD_TAX_CODE ELSE NULL END FROM dbo.PRODUCT 
-		WHERE CL_CODE = @cl_code AND DIV_CODE = @div_code AND PRD_CODE = @prd_code																					--PJH 03/12/2020 added tax
+		IF @job_tax_flag = 1 
+		BEGIN
+			SELECT @flag_tax_jobs = FLAG_TAX_JOBS FROM AGENCY
+			IF @flag_tax_jobs = 1 
+			BEGIN
+				SELECT @prd_tax_code = CASE WHEN @job_tax_flag = 1 THEN PRD_PROD_TAX_CODE ELSE NULL END FROM dbo.PRODUCT 
+				WHERE CL_CODE = @cl_code AND DIV_CODE = @div_code AND PRD_CODE = @prd_code																					--PJH 03/12/2020 added tax
+			END
+		END
 	END
 		
 
@@ -495,7 +503,9 @@ BEGIN TRY
 					JOB_COMP_DESC, AB_FLAG, JT_CODE, NOBILL_FLAG, JOB_MARKUP_PCT, EMAIL_GR_CODE, CLIENT_DISCOUNT_CODE, MEDIA_BILL_DATE, JOB_COMP_COMMENTS,
 					JOB_COMP_BUDGET_AM,
 					MODIFIED_BY, MODIFY_DATE,
-					TAX_CODE, JOB_CL_PO_NBR, SERVICE_FEE_FLAG )
+					TAX_CODE, 
+					TAX_FLAG,
+					JOB_CL_PO_NBR, SERVICE_FEE_FLAG )
 				 SELECT TOP 1 @job_number, @job_comp_nbr, @acct_exec, CONVERT( varchar(10), GETDATE(), 101 ), @due_date, 0, 
 					NULL, --@dp_tm_code, 
 					@job_process_contrl, 
@@ -504,7 +514,9 @@ BEGIN TRY
 					@non_bill_flag, PRD_PROD_MARKUP, EMAIL_GR_CODE, @client_discount_code, @media_bill_date, @job_comp_comment,
 					@job_comp_budget_am,
 					UPPER(@user_id), @date_time_w,
-					@prd_tax_code, @job_cl_po_nbr, @service_fee_flag
+					@prd_tax_code, 
+					CASE WHEN @flag_tax_jobs IS NOT NULL THEN 1 ELSE 0 END,
+					@job_cl_po_nbr, @service_fee_flag
 				   FROM dbo.PRODUCT
 				  WHERE CL_CODE = @cl_code
 					AND DIV_CODE = @div_code

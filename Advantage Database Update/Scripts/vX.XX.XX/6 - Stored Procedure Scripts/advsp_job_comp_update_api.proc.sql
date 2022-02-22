@@ -74,7 +74,8 @@ DECLARE @ErMessage nvarchar(2048)
 	,@ErState INT
 
 DECLARE @row_count integer, 
-	@tmp_count int
+	@tmp_count int,
+    @flag_tax_jobs int
 
 --DECLARE @list_str varchar(max)
 
@@ -146,9 +147,19 @@ BEGIN TRY
 		FROM JOB_COMPONENT
 		WHERE JOB_NUMBER = @job_number AND JOB_COMPONENT_NBR = @job_component_nbr
 
-		IF @job_tax_flag = 1
-			SELECT @prd_tax_code = PRD_PROD_TAX_CODE FROM dbo.PRODUCT 
-			WHERE CL_CODE = @cl_code AND DIV_CODE = @div_code AND PRD_CODE = @prd_code											--PJH 03/12/2020 added tax
+		--IF @job_tax_flag = 1
+		--	SELECT @prd_tax_code = PRD_PROD_TAX_CODE FROM dbo.PRODUCT 
+		--	WHERE CL_CODE = @cl_code AND DIV_CODE = @div_code AND PRD_CODE = @prd_code											--PJH 03/12/2020 added tax
+
+		IF @job_tax_flag = 1 
+		BEGIN
+			SELECT @flag_tax_jobs = FLAG_TAX_JOBS FROM AGENCY           --PJH 02/22/2022 check AGENCY flag
+			IF @flag_tax_jobs = 1 
+			BEGIN
+				SELECT @prd_tax_code = PRD_PROD_TAX_CODE FROM dbo.PRODUCT
+				WHERE CL_CODE = @cl_code AND DIV_CODE = @div_code AND PRD_CODE = @prd_code																					--PJH 03/12/2020 added tax
+			END
+		END
 
 		--If 1 or 2 then check current status
 		IF @job_process_contrl > 0
@@ -296,7 +307,8 @@ BEGIN TRY
 			MODIFIED_BY = UPPER(@user_id), 
 			MODIFY_DATE = @date_time_w,
 			JOB_COMP_BUDGET_AM = @job_comp_budget_am,
-			TAX_CODE = CASE WHEN @job_tax_flag = 1 THEN @prd_tax_code ELSE TAX_CODE END, 						--PJH 03/12/2020 added tax
+			TAX_CODE = CASE WHEN @flag_tax_jobs IS NOT NULL THEN @prd_tax_code ELSE TAX_CODE END, 						--PJH 03/12/2020 added tax
+            TAX_FLAG = CASE WHEN @flag_tax_jobs IS NOT NULL THEN 1 ELSE 0 END,
 			JOB_CL_PO_NBR = CASE WHEN @job_cl_po_nbr = '*' THEN JOB_CL_PO_NBR ELSE @job_cl_po_nbr END,			--PJH 09/28/2020 added tax
 			SERVICE_FEE_FLAG = CASE WHEN @service_fee_flag = '*' THEN SERVICE_FEE_FLAG ELSE @service_fee_flag END
 		WHERE JOB_NUMBER = @job_number AND (JOB_COMPONENT_NBR = @job_component_nbr OR COALESCE(@job_component_nbr, 0) = 0)

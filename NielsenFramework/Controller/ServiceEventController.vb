@@ -79,19 +79,28 @@
             'objects
             Dim ServiceEventViewModel As NielsenFramework.ViewModels.ServiceEventViewModel = Nothing
             Dim NielsenMarketList As Generic.List(Of AdvantageFramework.Nielsen.Database.Entities.NielsenMarket) = Nothing
+            Dim ConnectionString As String = Nothing
 
             ServiceEventViewModel = New NielsenFramework.ViewModels.ServiceEventViewModel
 
-            Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(_ConnectionString, "")
+            ConnectionString = _ConnectionString.Replace("NIELSENDATASTORE", "NIELSENHOSTED")
 
-                NielsenMarketList = AdvantageFramework.Nielsen.Database.Procedures.NielsenMarket.LoadTVMarkets(NielsenDbContext).ToList
+            Try
 
-                ServiceEventViewModel.NielsenTVBooks = New Generic.List(Of NielsenFramework.DTO.NielsenTVBook)
+                Using NielsenDbContext = New AdvantageFramework.Nielsen.Database.DbContext(ConnectionString, "")
 
-                ServiceEventViewModel.NielsenTVBooks.AddRange(From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenTVBook.Load(NielsenDbContext).OrderByDescending(Function(Entity) Entity.ID).ToList
-                                                              Select New NielsenFramework.DTO.NielsenTVBook(Entity, NielsenMarketList))
+                    NielsenMarketList = AdvantageFramework.Nielsen.Database.Procedures.NielsenMarket.LoadTVMarkets(NielsenDbContext).ToList
 
-            End Using
+                    ServiceEventViewModel.NielsenTVBooks = New Generic.List(Of NielsenFramework.DTO.NielsenTVBook)
+
+                    ServiceEventViewModel.NielsenTVBooks.AddRange(From Entity In AdvantageFramework.Nielsen.Database.Procedures.NielsenTVBook.Load(NielsenDbContext).OrderByDescending(Function(Entity) Entity.ID).ToList
+                                                                  Select New NielsenFramework.DTO.NielsenTVBook(Entity, NielsenMarketList))
+
+                End Using
+
+            Catch ex As Exception
+
+            End Try
 
             LoadNielsenTVBooks = ServiceEventViewModel
 

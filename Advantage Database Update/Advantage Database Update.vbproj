@@ -397,6 +397,9 @@
     <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advfn_bcc_is_job_closeable.function.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advfn_makegood_get_order_status.function.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\vX.XX.XX\4 - Function Scripts\advfn_media_mgr_order_footer_comment.function.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

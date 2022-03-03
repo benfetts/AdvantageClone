@@ -288,6 +288,7 @@
     <None Include="Stored Procedures\advsp_tranfer_nielsen_tv_cume_book_to_hosted.proc.sql" />
     <None Include="Stored Procedures\advsp_api_get_tv_audience.proc.sql" />
     <None Include="Stored Procedures\advsp_nielsen_tv_book_delete_datastore.proc.sql" />
+    <None Include="Stored Procedures\advsp_tranfer_nielsen_tv_program_to_hosted.proc.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SSIS Packages\Nielsen Radio Audience.dtsx" />

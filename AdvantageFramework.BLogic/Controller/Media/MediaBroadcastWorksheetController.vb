@@ -27250,8 +27250,8 @@
             Dim ShareHPUTBooks As Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook) = Nothing
             Dim ShareHPUTBook As AdvantageFramework.DTO.Media.ShareHPUTBook = Nothing
             Dim DemographicList As Generic.List(Of AdvantageFramework.DTO.Media.SpotTV.Demographic) = Nothing
-            Dim StationNumber As Integer = 0
-            'Dim CallLetters As String = String.Empty
+            Dim StationNumber As Integer = -1
+            Dim Universe As Integer = 0
 
             MeasurementTrendsDataTable = MediaBroadcastWorksheetMarketDetailsViewModel.MeasurementTrendsDataTable.Copy
             'MediaBroadcastWorksheetMarketDetailsViewModel.MeasurementTrendsDataTable.BeginLoadData()
@@ -27524,20 +27524,28 @@
 
                             If DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) Then
 
-                                'CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                '               Where Entity.Number = NielsenTVStationCode
-                                '               Select Entity).First.CallLetters
-                                StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                                 Where Entity.Number = NielsenTVStationCode
-                                                 Select Entity).First.Number
+                                If (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                    Where Entity.NetworkNumber = NielsenTVStationCode
+                                    Select Entity).Any Then
+
+                                    StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                     Where Entity.NetworkNumber = NielsenTVStationCode
+                                                     Select Entity).First.Number
+
+                                End If
+
                             Else
 
-                                'CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                '               Where Entity.ID = NielsenTVStationCode
-                                '               Select Entity).First.CallLetters
-                                StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                                 Where Entity.ID = NielsenTVStationCode
-                                                 Select Entity).First.Number
+                                If (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                    Where Entity.ID = NielsenTVStationCode
+                                    Select Entity).Any Then
+
+                                    StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                     Where Entity.ID = NielsenTVStationCode
+                                                     Select Entity).First.Number
+
+                                End If
+
                             End If
 
                             ShareHPUTBooks = New Generic.List(Of AdvantageFramework.DTO.Media.ShareHPUTBook)

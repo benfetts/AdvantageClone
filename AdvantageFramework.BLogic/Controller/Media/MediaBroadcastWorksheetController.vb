@@ -27961,8 +27961,7 @@
             Dim ShareHPUTBook As AdvantageFramework.DTO.Media.ShareHPUTBook = Nothing
             Dim PrimaryMediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
             Dim SecondaryMediaDemographic As AdvantageFramework.Database.Entities.MediaDemographic = Nothing
-            'Dim CallLetters As String = String.Empty
-            Dim StationNumber As Integer = 0
+            Dim StationNumber As Integer = -1
 
             If MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV AndAlso
                     MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Nielsen AndAlso
@@ -28118,20 +28117,27 @@
 
                         If DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) Then
 
-                            'CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                            '               Where Entity.Number = NielsenTVStationCode
-                            '               Select Entity).First.CallLetters
-                            StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                             Where Entity.Number = NielsenTVStationCode
-                                             Select Entity).First.Number
+                            If (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                Where Entity.NetworkNumber = NielsenTVStationCode
+                                Select Entity).Any Then
+
+                                StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                 Where Entity.NetworkNumber = NielsenTVStationCode
+                                                 Select Entity).First.Number
+
+                            End If
+
                         Else
 
-                            'CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                            '               Where Entity.ID = NielsenTVStationCode
-                            '               Select Entity).First.CallLetters
-                            StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                             Where Entity.ID = NielsenTVStationCode
-                                             Select Entity).First.Number
+                            If (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                Where Entity.ID = NielsenTVStationCode
+                                Select Entity).Any Then
+
+                                StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                 Where Entity.ID = NielsenTVStationCode
+                                                 Select Entity).First.Number
+
+                            End If
 
                         End If
 
@@ -28452,7 +28458,7 @@
             Dim LeadInStartEndTime As AdvantageFramework.Classes.Media.Nielsen.LeadInLeadOutStartEndTime = Nothing
             Dim LeadOutStartEndTime As AdvantageFramework.Classes.Media.Nielsen.LeadInLeadOutStartEndTime = Nothing
             Dim CallLetters As String = String.Empty
-            Dim StationNumber As Integer = 0
+            Dim StationNumber As Integer = -1
 
             If MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.MediaType = AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.MediaTypes.SpotTV AndAlso
                     ((MediaBroadcastWorksheetMarketDetailsViewModel.Worksheet.RatingsServiceID = AdvantageFramework.Nielsen.Database.Entities.RatingsServiceID.Nielsen AndAlso
@@ -28887,23 +28893,35 @@
 
                             If DataRow(MarketDetailsColumns.VendorIsCableSystem.ToString) Then
 
-                                CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                               Where Entity.Number = NielsenTVStationCode
-                                               Select Entity).First.CallLetters
+                                If (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                    Where Entity.NetworkNumber = NielsenTVStationCode
+                                    Select Entity).Any Then
 
-                                StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                                 Where Entity.Number = NielsenTVStationCode
-                                                 Select Entity).First.Number
+                                    CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                   Where Entity.NetworkNumber = NielsenTVStationCode
+                                                   Select Entity).First.CallLetters
+
+                                    StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                     Where Entity.NetworkNumber = NielsenTVStationCode
+                                                     Select Entity).First.Number
+
+                                End If
 
                             Else
 
-                                CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                               Where Entity.ID = NielsenTVStationCode
-                                               Select Entity).First.CallLetters
+                                If (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                    Where Entity.ID = NielsenTVStationCode
+                                    Select Entity).Any Then
 
-                                StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
-                                                 Where Entity.ID = NielsenTVStationCode
-                                                 Select Entity).First.Number
+                                    CallLetters = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                   Where Entity.ID = NielsenTVStationCode
+                                                   Select Entity).First.CallLetters
+
+                                    StationNumber = (From Entity In AdvantageFramework.Database.Procedures.ComscoreTVStation.Load(DbContext)
+                                                     Where Entity.ID = NielsenTVStationCode
+                                                     Select Entity).First.Number
+
+                                End If
 
                             End If
 
@@ -28926,7 +28944,13 @@
                         LeadInLeadOutParameters.StationCode = StationCode
                         LeadInLeadOutParameters.MediaSpotTVResearchDaytimeTypes = MediaSpotTVResearchDaytimeTypes
                         LeadInLeadOutParameters.VendorNCCTVSyscodeID = VendorNCCTVSyscodeID
-                        LeadInLeadOutParameters.TVGeography = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MediaBroadcastWorksheetMarketTVGeographyID.Value
+
+                        If MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MediaBroadcastWorksheetMarketTVGeographyID.HasValue Then
+
+                            LeadInLeadOutParameters.TVGeography = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MediaBroadcastWorksheetMarketTVGeographyID.Value
+
+                        End If
+
                         LeadInLeadOutParameters.Week = Week
                         LeadInLeadOutParameters.ComscoreDemoNumber = MediaDemographic.ComscoreDemoNumber.GetValueOrDefault(0)
                         LeadInLeadOutParameters.ComscoreMarketNumber = MediaBroadcastWorksheetMarketDetailsViewModel.SelectedWorksheetMarket.MarketComscoreMarketNumber.GetValueOrDefault(0)

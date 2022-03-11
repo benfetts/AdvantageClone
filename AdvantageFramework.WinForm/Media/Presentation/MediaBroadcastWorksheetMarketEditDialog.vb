@@ -945,6 +945,10 @@
 
                     DataGridViewForm_Markets.CurrentView.SetRowCellValue(e.RowHandle, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.TVGeographies.DMA)
 
+                ElseIf _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.Comscore Then
+
+                    DataGridViewForm_Markets.CurrentView.SetRowCellValue(e.RowHandle, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket.Properties.MediaBroadcastWorksheetMarketTVGeographyID.ToString, AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.TVGeographies.DMA)
+
                 ElseIf _ViewModel.Worksheet.RatingsServiceID = Nielsen.Database.Entities.Methods.RatingsServiceID.NielsenPuertoRico AndAlso _ViewModel.Worksheet.NPRPrepopulateDates Then
 
                     DirectCast(DataGridViewForm_Markets.CurrentView.GetRow(e.RowHandle), AdvantageFramework.DTO.Media.MediaBroadcastWorksheet.WorksheetMarket).PeriodEnd = _Controller.MarketEdit_GetRepositoryPeriodEnd()

@@ -695,7 +695,7 @@ Namespace Controller.FinanceAndAccounting
                     Pmtinf.Dbtr.PstlAdr.CtrySubDvsn = Agency.State
                     Pmtinf.Dbtr.PstlAdr.Ctry = Agency.Country '"CA"
 
-                    Pmtinf.DbtrAcct.Id.Othr.Id = ViewModel.Bank.AccountNumber ' Acct Nbr (9 length) 
+                    Pmtinf.DbtrAcct.Id.Othr.Id = ViewModel.Bank.PaymentManagerACHDestinationName ' Acct Nbr (9 length) 
 
                     Pmtinf.DbtrAgt.FinInstnId.BIC = Strings.Left(ViewModel.Bank.PaymentManagerID, 11)  '"HKBCCATT"
                     Pmtinf.DbtrAgt.FinInstnId.ClrSysMmbId.MmbId = ViewModel.Bank.PaymentManagerWord  '"001610002" 
@@ -737,13 +737,14 @@ Namespace Controller.FinanceAndAccounting
 
                         CdtTrfTxInf.Amt.InstdAmt.Text = VendorPaymentManagerReports.Sum(Function(Entity) Entity.APInvoiceAmount)
 
-                        Pmtinf.NbOfTxs = VendorPaymentManagerReports.Count 'or many??
+                        'Pmtinf.NbOfTxs = VendorPaymentManagerReports.Count 'or many??
+                        Pmtinf.NbOfTxs = 1
                         Pmtinf.CtrlSum = VendorPaymentManagerReports.Sum(Function(Entity) Entity.APInvoiceAmount)
 
-                        If Pmtinf.NbOfTxs > 0 Then PmtinfotalCnt += Pmtinf.NbOfTxs
+                        PmtinfotalCnt += Pmtinf.NbOfTxs
                         If Pmtinf.CtrlSum > 0 Then PmtinfTotalPmt += Pmtinf.CtrlSum
 
-                        If Pmtinf.NbOfTxs > 0 Then GrpTotalCnt += Pmtinf.NbOfTxs
+                        GrpTotalCnt += Pmtinf.NbOfTxs
                         If Pmtinf.CtrlSum > 0 Then GrpTotalPmt += Pmtinf.CtrlSum
 
                         For Each PaymentManagerReport In VendorPaymentManagerReports  'Loop AP Invoices here

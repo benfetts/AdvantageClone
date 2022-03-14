@@ -3331,6 +3331,9 @@
                     LabelPaymentManager_CustomerID.Text = "Debtor BIC:"
                     LabelPaymentManager_Word.Text = "Clearing Code:"
 
+                    LabelPaymentManager_DestinationName.Text = "Debtor Account"
+                    TextBoxPaymentManager_DestinationName.Enabled = True
+
                 ElseIf SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "PMX" Then
 
                     LabelPaymentManager_CustomerID.Text = ""
@@ -3375,7 +3378,7 @@
                        SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFBP" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "ACHG" OrElse
                        SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "ACHR" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFBF" OrElse
                        SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "CHA2" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WTB" OrElse
-                       SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFTB" Then
+                       SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "WFTB" OrElse SearchableComboBoxPaymentManager_ExportType.GetSelectedValue = "HSB1" Then
 
                     EnableDisablePaymentManagerACHSettings(True)
 

@@ -5654,7 +5654,14 @@ Namespace Controllers.ProjectManagement
             Dim Tasks As List(Of AdvantageFramework.ProjectSchedule.Classes.ScheduleTask) = New List(Of AdvantageFramework.ProjectSchedule.Classes.ScheduleTask)
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
-                Dim Offset As Decimal = AdvantageFramework.Database.Procedures.Generic.LoadTimeZoneOffsetForEmployee(DbContext, Me.SecuritySession.User.EmployeeCode)
+
+                Dim Offset As Decimal
+
+                If MiscFN.IsClientPortal() Then
+                    Offset = AdvantageFramework.Database.Procedures.Generic.LoadTimeZoneOffsetForEmployee(DbContext, "")
+                Else
+                    Offset = AdvantageFramework.Database.Procedures.Generic.LoadTimeZoneOffsetForEmployee(DbContext, Me.SecuritySession.User.EmployeeCode)
+                End If
 
                 ' lets forget all the bs and just load what we need.
                 Dim arParams As New List(Of SqlParameter)

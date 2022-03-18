@@ -3149,7 +3149,14 @@ Namespace Controllers
 
             Using DbContext = New AdvantageFramework.Database.DbContext(Me.SecuritySession.ConnectionString, Me.SecuritySession.UserCode)
 
-                Dim Offset As Decimal = AdvantageFramework.Database.Procedures.Generic.LoadTimeZoneOffsetForEmployee(DbContext, Me.SecuritySession.User.EmployeeCode)
+                Dim Offset As Decimal
+
+                If MiscFN.IsClientPortal() Then
+                    Offset = AdvantageFramework.Database.Procedures.Generic.LoadTimeZoneOffsetForEmployee(DbContext, "")
+                Else
+                    Offset = AdvantageFramework.Database.Procedures.Generic.LoadTimeZoneOffsetForEmployee(DbContext, Me.SecuritySession.User.EmployeeCode)
+                End If
+
                 Dim arParams As New List(Of SqlParameter)
 
                 Dim JobNumberSqlParameter As System.Data.SqlClient.SqlParameter = Nothing

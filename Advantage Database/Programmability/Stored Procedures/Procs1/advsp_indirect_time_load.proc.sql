@@ -7,7 +7,7 @@ CREATE PROCEDURE [dbo].[advsp_indirect_time_load]
 	@START_DATE AS smalldatetime,
 	@END_DATE AS smalldatetime,
 	@UserID varchar(100),
-    @OnlyActiveEmployees bit
+    @OnlyActiveEmployees bit = 0
 AS
     
 	DECLARE @StartDate smalldatetime, @EndDate smalldatetime,@StdHours as decimal(9,3)
@@ -539,3 +539,6 @@ SELECT
 	SELECT * FROM #DT		
 	
 	DROP TABLE #DT
+
+GRANT EXECUTE ON [advsp_indirect_time_load] TO PUBLIC AS dbo
+GO

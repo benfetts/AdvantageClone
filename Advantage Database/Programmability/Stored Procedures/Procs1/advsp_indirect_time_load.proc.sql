@@ -539,6 +539,7 @@ SELECT
 	SELECT * FROM #DT		
 	
 	DROP TABLE #DT
+GO
 
 GRANT EXECUTE ON [advsp_indirect_time_load] TO PUBLIC AS dbo
 GO
